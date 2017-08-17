@@ -1,10 +1,8 @@
 {
-    "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature2",
-    "@odata.type": "Sensor.v1_0_0.Sensor",
-    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-    "MemberId": "2",
-    "SensorType": "Humidity",
+    "@odata.type": "Sensor.v0_1_0.Sensor",
+    "Id": "2",
     "Name": "Outside Air Relative Humidity Sensor",
+    "SensorType": "Humidity",
     "SensorNumber": 2,
     "Status": {
         "State": "Enabled",
@@ -20,5 +18,8 @@
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
     "PhysicalContext": "System",
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature2",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,10 +1,8 @@
 {
-    "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/SystemTemperature5",
-    "@odata.type": "Sensor.v1_0_0.Sensor",
-    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-    "MemberId": "8",
-    "SensorType": "Temperature",
+    "@odata.type": "Sensor.v0_1_0.Sensor",
+    "Id": "8",
     "Name": "Outside Air Temperature Sensor",
+    "SensorType": "Temperature",
     "SensorNumber": 8,
     "Status": {
         "State": "Enabled",
@@ -20,5 +18,8 @@
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
     "PhysicalContext": "System",
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/SystemTemperature5",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
