@@ -35,7 +35,7 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/SystemTemperature3"
-        },
+        }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
     "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors",
