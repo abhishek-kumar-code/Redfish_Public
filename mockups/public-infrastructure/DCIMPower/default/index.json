@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#DCIMPower.v1_0_0.DCIMPower",
+    "@odata.type": "#DCIMPower.v0_1_0.DCIMPower",
     "Id": "default",
     "Name": "DCIMPower Default Domain",
     "DCIMPowerType": "Domain",
@@ -35,17 +35,13 @@
         "@odata.id": "/redfish/v1/DCIMPower/default/VFD"
     },
     "Links": {
-        "Chassis": [
-            {}
-        ],
+        "Chassis": [],
         "ManagedBy": [
             {
                 "@odata.id": "/redfish/v1/Managers/BMC"
             }
         ],
-        "RelatedSystems": [
-            {}
-        ]
+        "RelatedSystems": []
     },
     "@odata.context": "/redfish/v1/$metadata#DCIMPower.DCIMPower",
     "@odata.id": "/redfish/v1/DCIMPower/default",

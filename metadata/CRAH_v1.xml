@@ -61,19 +61,19 @@
 
       <EntityType Name="CRAH" BaseType="CRAH.CRAH">
 
-        <Property Name="FirmwareRev" Type="Edm.String">
+        <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of CRAH."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Firmware Rev of CRAH."/>
         </Property>
 
-        <Property Name="HardwareRev" Type="Edm.String">
+        <Property Name="HardwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Hardware Revision of CRAH."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Hardware Rev of CRAH."/>
         </Property>
 
-        <Property Name="DateOfManufacture" Type="Edm.Date">
+        <Property Name="DateOfManufacture" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Date of manufacture of CRAH."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual date of manufacture of CRAH."/>
@@ -229,13 +229,13 @@
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
 
-        <Property Name="ResetAllAlarms" Type="Edm.String">
+        <Property Name="ResetAllAlarms" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Reset All Alarms setting of CRAH."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Reset All Alarms setting of CRAH."/>
         </Property>
 
-        <Property Name="PauseUnit" Type="Edm.String">
+        <Property Name="PauseUnit" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Pause Unit setting of CRAH."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Pause Unit setting of CRAH."/>

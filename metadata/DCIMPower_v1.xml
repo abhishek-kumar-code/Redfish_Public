@@ -151,6 +151,11 @@
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a VFD collection for a Redfish implementation."/>
         </NavigationProperty>
 
+        <Property Name="Links" Type="DCIMPower.v0_1_0.Links" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        </Property>
+
         <Property Name="Actions" Type="DCIMPower.v0_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

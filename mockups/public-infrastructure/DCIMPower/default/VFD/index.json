@@ -7,7 +7,7 @@
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0"
         }
     ],
-    "@odata.context": "/redfish/v1/$metadata#VFDCollection",
+    "@odata.context": "/redfish/v1/$metadata#VFDCollection.VFDCollection",
     "@odata.id": "/redfish/v1/DCIMPower/default/VFD",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

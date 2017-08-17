@@ -66,19 +66,19 @@
 
       <EntityType Name="CRAC" BaseType="CRAC.CRAC">
 
-        <Property Name="FirmwareRev" Type="Edm.String">
+        <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Firmware Rev of CRAC."/>
         </Property>
 
-        <Property Name="HardwareRev" Type="Edm.String">
+        <Property Name="HardwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Hardware Revision of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Hardware Rev of CRAC."/>
         </Property>
 
-        <Property Name="DateOfManufacture" Type="Edm.Date">
+        <Property Name="DateOfManufacture" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Date of manufacture of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual date of manufacture of CRAC."/>
@@ -234,13 +234,13 @@
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
 
-        <Property Name="ResetAllAlarms" Type="Edm.String">
+        <Property Name="ResetAllAlarms" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Reset All Alarms setting of CRAC."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Reset All Alarms setting of CRAC."/>
         </Property>
 
-        <Property Name="UnitPaused" Type="Edm.String">
+        <Property Name="UnitPaused" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Paused status of CRAC."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Unit Paused boolean value of CRAC."/>
@@ -261,13 +261,13 @@
           <Annotation Term="Measures.Unit" String="min"/>
         </Property>
 
-        <Property Name="ControlProportionalGain" Type="Edm.String">
+        <Property Name="ControlProportionalGain" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Control Proportional Gain of CRAC."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Control Proportional Gain of CRAC."/>
         </Property>
 
-        <Property Name="ControlDerivative" Type="Edm.String">
+        <Property Name="ControlDerivative" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Control Derivative of CRAC."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Control Derivative of CRAC."/>

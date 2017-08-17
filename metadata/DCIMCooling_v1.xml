@@ -77,10 +77,10 @@
 
       <EntityType Name="DCIMCooling" BaseType="DCIMCooling.DCIMCooling">
 
-        <Property Name="DCIMPowerType" Type="Edm.String">
+        <Property Name="DCIMCoolingType" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual DCIM Power Type of DCIMCooling."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual DCIM Power Type of DCIMCooling."/>
+          <Annotation Term="OData.Description" String="The actual DCIM Cooling Type of DCIMCooling."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual DCIM Cooling Type of DCIMCooling."/>
         </Property>
 
         <Property Name="Status" Type="Resource.Status"/>
@@ -114,6 +114,11 @@
           <Annotation Term="OData.Description" String="This is the definition for a CRAH collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a CRAH collection for a Redfish implementation."/>
         </NavigationProperty>
+
+        <Property Name="Links" Type="DCIMCooling.v0_1_0.Links" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        </Property>
 
         <Property Name="Actions" Type="DCIMCooling.v0_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>

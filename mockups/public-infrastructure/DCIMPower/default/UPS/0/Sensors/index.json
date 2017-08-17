@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#DeviceSensorCollection.DeviceSensorCollection",
+    "@odata.type": "#SensorCollection.SensorCollection",
     "Name": "UPS 0 Sensor Collection",
     "Members@odata.count": 22,
     "Members": [

@@ -60,19 +60,19 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CoolingTower.v0_1_0">
 
       <EntityType Name="CoolingTower" BaseType="CoolingTower.CoolingTower">
-        <Property Name="FirmwareRev" Type="Edm.String">
+        <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of CoolingTower."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Firmware Revision of CoolingTower."/>
         </Property>
 
-        <Property Name="HardwareRev" Type="Edm.String">
+        <Property Name="HardwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Hardware Revision of CoolingTower."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Hardware Revision of CoolingTower."/>
         </Property>
 
-        <Property Name="DateOfManufacture" Type="Edm.Date">
+        <Property Name="DateOfManufacture" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date of manufacture of CoolingTower."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual date of manufacture of CoolingTower."/>

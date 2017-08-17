@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#DeviceSensorCollection.DeviceSensorCollection",
+    "@odata.type": "#SensorCollection.SensorCollection",
     "Name": "RackPDU 0 Sensor Collection",
     "Members@odata.count": 7,
     "Members": [
@@ -25,7 +25,7 @@
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/SystemHumidity0"
         }
     ],
-    "@odata.context": "/redfish/v1/$metadata#DeviceSensorCollection",
+    "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

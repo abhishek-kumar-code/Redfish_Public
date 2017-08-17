@@ -66,19 +66,19 @@
 
       <EntityType Name="Switchgear" BaseType="Switchgear.Switchgear">
 
-        <Property Name="FirmwareRev" Type="Edm.String">
+        <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Firmware Revision of Switchgear."/>
         </Property>
 
-        <Property Name="HardwareRev" Type="Edm.String">
+        <Property Name="HardwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Hardware Revision of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Hardware Revision of Switchgear."/>
         </Property>
 
-        <Property Name="DateOfManufacture" Type="Edm.Date">
+        <Property Name="DateOfManufacture" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date of manufacture of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual date of manufacture of Switchgear."/>
@@ -157,7 +157,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Transformer Fan Failure boolean value of Switchgear."/>
         </Property>
 
-        <Property Name="TransformerHighTemp" Type="Edm.Boolean">
+        <Property Name="TransformerHighTemp" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Transformer High Temperature boolean value of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Transformer High Temperature boolean value of Switchgear."/>

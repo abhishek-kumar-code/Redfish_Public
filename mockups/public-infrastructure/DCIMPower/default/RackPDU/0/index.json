@@ -1,57 +1,51 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#RackPDU.RackPDU",
-    "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0",
-    "@odata.type": "#RackPDU.v1_0_0.RackPDU",
-
+    "@odata.type": "#RackPDU.v0_1_0.RackPDU",
     "Id": "RackPDU0",
     "Name": "RackPDU0",
     "FirmwareRevision": "1.0.0",
-    "DateOfManufacture": "01012017",
+    "DateOfManufacture": "2017-01-11T08:00:00Z",
     "Manufacturer": "Manufacturer",
     "Model": "Model",
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
     "PhysicalLocation": "Location",
-
     "Rating": 1,
     "NumOutlets": 2,
     "NumPhases": 2,
     "BreakerRating": 3,
     "Orientation": "A",
     "LineToLineVoltage": 1000,
-    "MaxPhaseLoad": "A",
+    "MaxPhaseLoad": 50,
     "NearOverloadThreshold": 50,
     "OverloadThreshold": 70,
     "Load": 10,
     "LoadState": 1,
     "PhaseNumber": 2,
     "BankNumber": 1,
-
     "AcInput": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/#AcInput/0",
-			"RealPower": 10,
-			"RmsUnderOverVoltage": 100,
+            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/AcInput/0",
+            "MemberId": "0",
+            "RealPower": 10,
+            "RmsUnderOverVoltage": 100,
             "Sensors": {
-                "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/#AcInput/0/Sensors",
-				"@odata.type": "SensorCollection.SensorCollection",
-				"@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
-				"Name": "SensorCollection",
+                "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors",
+                "@odata.type": "#SensorCollection.SensorCollection",
+                "Name": "SensorCollection",
                 "Members": [
                     {
                         "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Voltage0",
-                        "@odata.type": "Sensor.v0_1_0.Sensor",
-                        "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                        "@odata.type": "#Sensor.v0_1_0.Sensor",
                         "Id": "0",
-                        "SensorType": "Voltage",
                         "Name": "AC Input - RMS Voltage Sensor",
+                        "SensorType": "Voltage",
                         "SensorNumber": 0,
                         "Status": {
                             "State": "Enabled",
                             "Health": "OK"
                         },
-                        "SensorReading": 12, 
+                        "CurrentReading": 12, 
                         "UpperThresholdNonCritical": 12.5,
                         "UpperThresholdCritical": 13,
                         "UpperThresholdFatal": 15,
@@ -65,17 +59,16 @@
                     },
                     {
                         "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Current0",
-                        "@odata.type": "Sensor.v0_1_0.Sensor",
-                        "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                        "@odata.type": "#Sensor.v0_1_0.Sensor",
                         "Id": "1",
-                        "SensorType": "Current",
                         "Name": "AC Input - RMS Current Sensor",
+                        "SensorType": "Current",
                         "SensorNumber": 1,
                         "Status": {
                             "State": "Enabled",
                             "Health": "OK"
                         },
-                        "SensorReading": 12, 
+                        "CurrentReading": 12, 
                         "UpperThresholdNonCritical": 12.5,
                         "UpperThresholdCritical": 13,
                         "UpperThresholdFatal": 15,
@@ -89,17 +82,16 @@
                     },
                     {
                         "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Frequency0",
-                        "@odata.type": "Sensor.v0_1_0.Sensor",
-                        "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                        "@odata.type": "#Sensor.v0_1_0.Sensor",
                         "Id": "2",
-                        "SensorType": "Frequency",
                         "Name": "AC Input - Frequency Sensor",
+                        "SensorType": "Frequency",
                         "SensorNumber": 2,
                         "Status": {
                             "State": "Enabled",
                             "Health": "OK"
                         },
-                        "SensorReading": 12, 
+                        "CurrentReading": 12, 
                         "UpperThresholdNonCritical": 12.5,
                         "UpperThresholdCritical": 13,
                         "UpperThresholdFatal": 15,
@@ -113,17 +105,16 @@
                     },
                     {
                         "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Voltage1",
-                        "@odata.type": "Sensor.v0_1_0.Sensor",
-                        "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                        "@odata.type": "#Sensor.v0_1_0.Sensor",
                         "Id": "3",
-                        "SensorType": "Voltage",
                         "Name": "AC Input - Single Phase Bank Voltage Sensor",
+                        "SensorType": "Voltage",
                         "SensorNumber": 3,
                         "Status": {
                             "State": "Enabled",
                             "Health": "OK"
                         },
-                        "SensorReading": 12, 
+                        "CurrentReading": 12, 
                         "UpperThresholdNonCritical": 12.5,
                         "UpperThresholdCritical": 13,
                         "UpperThresholdFatal": 15,
@@ -137,17 +128,16 @@
                     },
                     {
                         "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Current1",
-                        "@odata.type": "Sensor.v0_1_0.Sensor",
-                        "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                        "@odata.type": "#Sensor.v0_1_0.Sensor",
                         "Id": "4",
-                        "SensorType": "Current",
                         "Name": "AC Input - Single Phase Current Sensor",
+                        "SensorType": "Current",
                         "SensorNumber": 4,
                         "Status": {
                             "State": "Enabled",
                             "Health": "OK"
                         },
-                        "SensorReading": 12, 
+                        "CurrentReading": 12, 
                         "UpperThresholdNonCritical": 12.5,
                         "UpperThresholdCritical": 13,
                         "UpperThresholdFatal": 15,
@@ -163,10 +153,10 @@
             }
         }
     ],
-
     "Outlets": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/#Outlets/0",
+            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/0",
+            "MemberId": "0",
             "Name": "Outlet0",
             "Phase": 0,
             "State": 1,
@@ -181,7 +171,7 @@
             "Status": "A"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/#Outlets/1",
+            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/1",
             "Name": "Outlet1",
             "Phase": 0,
             "State": 1,
@@ -196,28 +186,24 @@
             "Status": "A"
         }
     ],
-
     "Oem": {},
-
     "Sensors": {
         "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors",
-        "@odata.type": "SensorCollection.SensorCollection",
-        "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
+        "@odata.type": "#SensorCollection.SensorCollection",
         "Name": "SensorCollection",
         "Members": [
             {
                 "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Voltage0",
-                "@odata.type": "Sensor.v0_1_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                "@odata.type": "#Sensor.v0_1_0.Sensor",
                 "Id": "0",
-                "SensorType": "Voltage",
                 "Name": "AC Input - RMS Voltage Sensor",
+                "SensorType": "Voltage",
                 "SensorNumber": 0,
                 "Status": {
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "SensorReading": 12, 
+                "CurrentReading": 12, 
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -231,17 +217,16 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Current0",
-                "@odata.type": "Sensor.v0_1_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                "@odata.type": "#Sensor.v0_1_0.Sensor",
                 "Id": "1",
-                "SensorType": "Current",
                 "Name": "AC Input - RMS Current Sensor",
+                "SensorType": "Current",
                 "SensorNumber": 1,
                 "Status": {
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "SensorReading": 12, 
+                "CurrentReading": 12, 
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -255,17 +240,16 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Frequency0",
-                "@odata.type": "Sensor.v0_1_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                "@odata.type": "#Sensor.v0_1_0.Sensor",
                 "Id": "2",
-                "SensorType": "Frequency",
                 "Name": "AC Input - Frequency Sensor",
+                "SensorType": "Frequency",
                 "SensorNumber": 2,
                 "Status": {
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "SensorReading": 12, 
+                "CurrentReading": 12, 
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -279,17 +263,16 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Voltage1",
-                "@odata.type": "Sensor.v0_1_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                "@odata.type": "#Sensor.v0_1_0.Sensor",
                 "Id": "3",
-                "SensorType": "Voltage",
                 "Name": "AC Input - Single Phase Bank Voltage Sensor",
+                "SensorType": "Voltage",
                 "SensorNumber": 3,
                 "Status": {
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "SensorReading": 12, 
+                "CurrentReading": 12, 
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -303,17 +286,16 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/AcInput0Current1",
-                "@odata.type": "Sensor.v0_1_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                "@odata.type": "#Sensor.v0_1_0.Sensor",
                 "Id": "4",
-                "SensorType": "Current",
                 "Name": "AC Input - Single Phase Current Sensor",
+                "SensorType": "Current",
                 "SensorNumber": 4,
                 "Status": {
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "SensorReading": 12, 
+                "CurrentReading": 12, 
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -327,17 +309,16 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/SystemTemperature0",
-                "@odata.type": "Sensor.v0_1_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                "@odata.type": "#Sensor.v0_1_0.Sensor",
                 "Id": "5",
-                "SensorType": "Temperature",
                 "Name": "Cabinet Temperature Sensor",
+                "SensorType": "Temperature",
                 "SensorNumber": 5,
                 "Status": {
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "SensorReading": 12, 
+                "CurrentReading": 12, 
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -351,17 +332,16 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/SystemHumidity0",
-                "@odata.type": "Sensor.v0_1_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+                "@odata.type": "#Sensor.v0_1_0.Sensor",
                 "Id": "6",
-                "SensorType": "Humidity",
                 "Name": "Cabinet Humidity Sensor",
+                "SensorType": "Humidity",
                 "SensorNumber": 6,
                 "Status": {
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "SensorReading": 12, 
+                "CurrentReading": 12, 
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -374,5 +354,8 @@
                 "Oem": {}
             }
         ]
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#RackPDU.RackPDU",
+    "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

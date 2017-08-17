@@ -1,5 +1,5 @@
 {
-    "@odata.type": "Sensor.v0_1_0.Sensor",
+    "@odata.type": "#Sensor.v0_1_0.Sensor",
     "Id": "1",
     "Name": "Chilled Water Supply Temperature Sensor",
     "SensorType": "Temperature",
@@ -8,7 +8,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "SensorReading": 12,
+    "CurrentReading": 12,
     "UpperThresholdNonCritical": 12.5,
     "UpperThresholdCritical": 13,
     "UpperThresholdFatal": 15,

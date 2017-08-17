@@ -76,55 +76,55 @@
 
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
 
-        <Property Name="CurrentReading" Type="Edm.Int64">
+        <Property Name="CurrentReading" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The CurrentReading for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the CurrentReading information of this Sensor."/>
         </Property>
 
-        <Property Name="UpperThresholdNonCritical" Type="Edm.Int64">
+        <Property Name="UpperThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UpperThresholdNonCritical for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the UpperThresholdNonCritical information of this Sensor."/>
         </Property>
 
-        <Property Name="UpperThresholdCritical" Type="Edm.Int64">
+        <Property Name="UpperThresholdCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UpperThresholdCritical for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the UpperThresholdCritical information of this Sensor."/>
         </Property>
 
-        <Property Name="UpperThresholdFatal" Type="Edm.Int64">
+        <Property Name="UpperThresholdFatal" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UpperThresholdFatal for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the UpperThresholdFatal information of this Sensor."/>
         </Property>
 
-        <Property Name="LowerThresholdNonCritical" Type="Edm.Int64">
+        <Property Name="LowerThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The LowerThresholdNonCritical for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the LowerThresholdNonCritical information of this Sensor."/>
         </Property>
 
-        <Property Name="LowerThresholdCritical" Type="Edm.Int64">
+        <Property Name="LowerThresholdCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The LowerThresholdCritical for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the LowerThresholdCritical information of this Sensor."/>
         </Property>
 
-        <Property Name="LowerThresholdFatal" Type="Edm.Int64">
+        <Property Name="LowerThresholdFatal" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The LowerThresholdFatal for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the LowerThresholdFatal information of this Sensor."/>
         </Property>
 
-        <Property Name="MaxReadingRange" Type="Edm.Int64">
+        <Property Name="MaxReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The MaxReadingRange for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the MaxReadingRange information of this Sensor."/>
         </Property>
 
-        <Property Name="MinReadingRange" Type="Edm.Int64">
+        <Property Name="MinReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The MinReadingRange for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the MinReadingRange information of this Sensor."/>

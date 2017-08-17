@@ -61,19 +61,19 @@
 
       <EntityType Name="PDU" BaseType="PDU.PDU">
 
-        <Property Name="FirmwareRev" Type="Edm.String">
+        <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of PDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Firmware Revision of PDU."/>
         </Property>
 
-        <Property Name="HardwareRev" Type="Edm.String">
+        <Property Name="HardwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Hardware Revision of PDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Hardware Revision of PDU."/>
         </Property>
 
-        <Property Name="DateOfManufacture" Type="Edm.Date">
+        <Property Name="DateOfManufacture" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date of manufacture of PDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual date of manufacture of PDU."/>

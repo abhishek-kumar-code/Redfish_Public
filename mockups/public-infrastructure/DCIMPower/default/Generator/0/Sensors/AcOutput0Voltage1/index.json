@@ -1,16 +1,14 @@
 {
-    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage1",
-    "@odata.type": "Sensor.v0_1_0.Sensor",
-    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-    "MemberId": "2",
-    "SensorType": "Voltage",
+    "@odata.type": "#Sensor.v0_1_0.Sensor",
+    "Id": "2",
     "Name": "AC Output - RMS Voltage (L-G) Sensor",
+    "SensorType": "Voltage",
     "SensorNumber": 2,
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-    "SensorReading": 12,
+    "CurrentReading": 12,
     "UpperThresholdNonCritical": 12.5,
     "UpperThresholdCritical": 13,
     "UpperThresholdFatal": 15,
@@ -20,5 +18,8 @@
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
     "PhysicalContext": "AC Output",
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage1",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

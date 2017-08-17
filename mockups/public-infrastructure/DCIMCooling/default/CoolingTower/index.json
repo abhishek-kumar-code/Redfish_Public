@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#CoolingTowerollection.CoolingTowerCollection",
+    "@odata.type": "#CoolingTowerCollection.CoolingTowerCollection",
     "Name": "Lab 1 Cooling Tower Collection",
     "Members@odata.count": 1,
     "Members": [

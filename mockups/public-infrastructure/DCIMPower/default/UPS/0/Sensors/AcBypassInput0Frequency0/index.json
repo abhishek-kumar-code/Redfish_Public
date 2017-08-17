@@ -1,16 +1,14 @@
 {
-    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Frequency0",
-    "@odata.type": "Sensor.v0_1_0.Sensor",
-    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-    "MemberId": "10",
-    "SensorType": "Frequency",
+    "@odata.type": "#Sensor.v0_1_0.Sensor",
+    "Id": "10",
     "Name": "AC Static Bypass Input - Frequency Sensor",
+    "SensorType": "Frequency",
     "SensorNumber": 10,
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-    "SensorReading": 12,
+    "CurrentReading": 12,
     "UpperThresholdNonCritical": 12.5,
     "UpperThresholdCritical": 13,
     "UpperThresholdFatal": 15,
@@ -20,5 +18,8 @@
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
     "PhysicalContext": "AC Static Bypass Input",
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Frequency0",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

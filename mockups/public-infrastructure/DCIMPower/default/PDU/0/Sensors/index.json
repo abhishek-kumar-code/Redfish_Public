@@ -1,7 +1,7 @@
 {
-    "@odata.type": "#DeviceSensorCollection.DeviceSensorCollection",
+    "@odata.type": "#SensorCollection.SensorCollection",
     "Name": "PDU 0 Sensor Collection",
-    "Members@odata.count": 20,
+    "Members@odata.count": 10,
     "Members": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcInput0Voltage0"
