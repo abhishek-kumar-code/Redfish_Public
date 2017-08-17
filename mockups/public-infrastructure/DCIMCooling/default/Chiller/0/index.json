@@ -63,12 +63,12 @@
     "CondensorVoltageSurgeAlarmOn": "False",
     "AcInput": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Chiller/0/#AcInput/0",
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/#AcInput/0",
             "@odata.type": "#Chiller.v0_1_0.AcInput",
             "MemberId": "0",
             "PercentCurrent": 50,
             "Sensors": {
-                "@odata.id": "/redfish/v1/DCIMPower/default/Chiller/0/#AcInput/0/Sensors",
+                "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/#AcInput/0/Sensors",
                 "@odata.type": "SensorCollection.SensorCollection",
                 "Name": "SensorCollection",
                 "Members": [
