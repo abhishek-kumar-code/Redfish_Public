@@ -127,14 +127,14 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Run Time of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Run Time of VFD."/>
-          <Annotation Term="Measures.Unit" String="psi"/>
+          <Annotation Term="Measures.Unit" String="[psi]"/>
         </Property>
 
-        <Property Name="kWHours" Type="Edm.Decimal">
+        <Property Name="KWHours" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Kilowatt-Hours of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Kilowatt-Hours of this VFD."/>
-          <Annotation Term="Measures.Unit" String="kWh"/>
+          <Annotation Term="Measures.Unit" String="kW-h"/>
         </Property>
 
         <Property Name="LastFault" Type="Edm.String">
