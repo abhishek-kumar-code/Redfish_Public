@@ -151,7 +151,7 @@
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a VFD collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="DCIMCooling.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="DCIMPower.v0_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -189,7 +189,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="DCIMCooling.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="DCIMPower.v0_1_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

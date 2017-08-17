@@ -436,7 +436,7 @@
         </Property>
 
         <!-- AC Input -->
-        <NavigationProperty Name="AcInput" Type="Collection(Chiller.v1_0_0.AcInput)">
+        <NavigationProperty Name="AcInput" Type="Collection(Chiller.v0_1_0.AcInput)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AcInput."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AcInput for a Redfish implementation."/>

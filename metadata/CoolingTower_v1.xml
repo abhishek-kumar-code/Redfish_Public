@@ -150,7 +150,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Fan Started status of CoolingTower."/>
         </Property>
 
-        <Property Name="LeadLagPosition" Type="Edm.String">
+        <Property Name="OverrideConditionLeadLagPosition" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Lead/Lag Position value of CoolingTower."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Override Condition Lead/Lag value of CoolingTower."/>

@@ -211,13 +211,13 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Substation Summary Alarm On boolean value of Switchgear."/>
         </Property>
 
-        <Property Name="PLC Failure" Type="Edm.Boolean">
+        <Property Name="PLCFailure" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual PLC Failure boolean value of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual PLC Failure boolean value of Switchgear."/>
         </Property>
 
-        <Property Name="SystemMetering" Type="Switchgear.v1_0_0.SwitchgearMetering">
+        <Property Name="SystemMetering" Type="Switchgear.v0_1_0.SwitchgearMetering">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Metering unit type of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Metering unit type (SwitchgearMetering enumeration) of Switchgear."/>
@@ -394,7 +394,7 @@
         </Property>
 
         <!-- Critical Boards -->
-        <NavigationProperty Name="CriticalBoards" Type="Collection(Switchgear.v1_0_0.CriticalBoard)">
+        <NavigationProperty Name="CriticalBoards" Type="Collection(Switchgear.v0_1_0.CriticalBoard)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Critical Boards."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for an Critical Board array for a Redfish implementation."/>
@@ -402,7 +402,7 @@
         </NavigationProperty>
 
         <!-- Switchgear -->
-        <NavigationProperty Name="Switchgear2" Type="Collection(Switchgear.v1_0_0.Switchgear2)">
+        <NavigationProperty Name="Switchgear2" Type="Collection(Switchgear.v0_1_0.Switchgear2)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Switchgear 2."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Switchgear 2 array for a Redfish implementation."/>
@@ -410,7 +410,7 @@
         </NavigationProperty>
 
         <!-- Generator Paralleling Switchgear -->
-        <NavigationProperty Name="GeneratorParallelingSwitchgear" Type="Collection(Switchgear.v1_0_0.GeneratorParallelingSwitchgear)">
+        <NavigationProperty Name="GeneratorParallelingSwitchgear" Type="Collection(Switchgear.v0_1_0.GeneratorParallelingSwitchgear)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Generator Paralleling Switchgear."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Generator Paralleling Switchgear array for a Redfish implementation."/>
@@ -427,7 +427,7 @@
       </EntityType>
 
       <!-- Critical Board definition -->
-      <EntityType Name="CriticalBoards" BaseType="Resource.v1_0_0.ReferenceableMember">
+      <EntityType Name="CriticalBoard" BaseType="Resource.v1_0_0.ReferenceableMember">
 
         <Property Name="MainBreakerOpen" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -465,13 +465,13 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Load Bank Breaker Tripped boolean value of CriticalBoard."/>
         </Property>
 
-        <Property Name="CriticalBoardsMetering" Type="Switchgear.v1_0_0.SwitchgearMetering">
+        <Property Name="CriticalBoardsMetering" Type="Switchgear.v0_1_0.SwitchgearMetering">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Switchgear Metering unit type of CriticalBoard."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Switchgear Metering unit type (CriticalBoardMetering enumeration) of CriticalBoard."/>
         </Property>
 
-        <Property Name="Actions" Type="Switchgear.v0_1_0.CriticalBoardsActions" Nullable="false">
+        <Property Name="Actions" Type="Switchgear.v0_1_0.CriticalBoardActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -517,7 +517,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Summary Alarm On boolean value of Switchgear2."/>
         </Property>
 
-        <Property Name="Switchgear2Metering" Type="Switchgear.v1_0_0.SwitchgearMetering">
+        <Property Name="Switchgear2Metering" Type="Switchgear.v0_1_0.SwitchgearMetering">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Switchgear Metering unit type of Switchgear2."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Switchgear Metering unit type (SwitchgearMetering enumeration) of Switchgear2."/>
@@ -562,7 +562,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Summary Alarm On boolean value of GeneratorParallelingSwitchgear."/>
         </Property>
 
-        <Property Name="GeneratorParallelingSwitchgearMetering" Type="GeneratorParallelingSwitchgear.v1_0_0.SwitchgearMetering">
+        <Property Name="GeneratorParallelingSwitchgearMetering" Type="Switchgear.v0_1_0.SwitchgearMetering">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual GeneratorParallelingSwitchgear Metering unit type of GeneratorParallelingSwitchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual GeneratorParallelingSwitchgear Metering unit type (GeneratorParallelingSwitchgearMetering enumeration) of GeneratorParallelingSwitchgear."/>
@@ -588,14 +588,14 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
-      <ComplexType Name="CriticalBoardsActions">
+      <ComplexType Name="CriticalBoardActions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Switchgear.v0_1_0.CriticalBoardsOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Switchgear.v0_1_0.CriticalBoardOemActions" Nullable="false"/>
       </ComplexType>
 
-      <ComplexType Name="CriticalBoardsOemActions">
+      <ComplexType Name="CriticalBoardOemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
