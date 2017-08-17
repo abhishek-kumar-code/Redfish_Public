@@ -21,19 +21,15 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
- 
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UPS">
@@ -69,19 +65,6 @@
       </EnumType>
 
       <EntityType Name="UPS" BaseType="UPS.UPS">
-      	 
-        <!-- General Information -->   
-        <Property Name="ID" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual ID of UPS."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual ID of UPS."/>
-        </Property>
-
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Name of UPS."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Name of UPS."/>
-        </Property>
 
         <Property Name="FirmwareRev" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -94,7 +77,7 @@
           <Annotation Term="OData.Description" String="The actual Hardware Revision of UPS."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Hardware Revision of UPS."/>
         </Property>
-		 
+
         <Property Name="DateOfManufacture" Type="Edm.Date">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date of manufacture of UPS."/>
@@ -106,14 +89,14 @@
           <Annotation Term="OData.Description" String="The actual Manufacturer of UPS."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of UPS."/>
         </Property>
-		 
-		<Property Name="Model" Type="Edm.String">
+
+        <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Model Number of UPS."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of UPS."/>
         </Property>
-		 
-		<Property Name="SerialNumber" Type="Edm.String">
+
+        <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Serial Number of UPS."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of UPS."/>
@@ -150,8 +133,8 @@
           <Annotation Term="OData.Description" String="The actual UPS Status Output Operating Mode of UPS."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual UPS Status Output Operating Mode of UPS."/>
         </Property>
-	 
-		    <!-- System -->
+
+        <!-- System -->
         <Property Name="Efficiency" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Efficiency percentage value of UPS."/>
@@ -192,50 +175,55 @@
         </Property>
 
         <!-- AC Utility Input -->
-        <NavigationProperty Name="AcUtilityInput" Type="Collection(UPS.v1_0_0.AcUtilityInput)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <NavigationProperty Name="AcUtilityInput" Type="Collection(UPS.v0_1_0.AcUtilityInput)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Utility Input."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for an AC Utility Input array for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- AC Bypass Input -->
-        <NavigationProperty Name="AcBypassInput" Type="Collection(UPS.v1_0_0.AcBypassInput)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <NavigationProperty Name="AcBypassInput" Type="Collection(UPS.v0_1_0.AcBypassInput)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Bypass Input."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for an AC Bypass Input array for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- DC Bus -->
-        <NavigationProperty Name="DcBus" Type="Collection(UPS.v1_0_0.DcBus)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <NavigationProperty Name="DcBus" Type="Collection(UPS.v0_1_0.DcBus)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for DC Bus."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a DC Bus array for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- AC Output -->
-        <NavigationProperty Name="AcOutput" Type="Collection(UPS.v1_0_0.AcOutput)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <NavigationProperty Name="AcOutput" Type="Collection(UPS.v0_1_0.AcOutput)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Output."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for an AC Output array for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- Sensors -->
-	      <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this sensor collection."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-   
-    </EntityType>   
 
-    <!-- AC Utility Input definition -->
-    <EntityType Name="AcUtilityInput" BaseType="Resource.v1_0_0.ReferenceableMember">    
+        <Property Name="Actions" Type="UPS.v0_1_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 
-	    <Property Name="RealPower" Type="Edm.Decimal">
+      </EntityType>
+
+      <!-- AC Utility Input definition -->
+      <EntityType Name="AcUtilityInput" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="RealPower" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Real Power for this AC Utility Input."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Real Power information of this AC Utility Input."/>
@@ -261,13 +249,18 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	  </EntityType> 
 
-    <!-- AC Bypass Input definition -->
-    <EntityType Name="AcBypassInput" BaseType="Resource.v1_0_0.ReferenceableMember">    
+        <Property Name="Actions" Type="UPS.v0_1_0.AcUtilityInputActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 
-	    <Property Name="RealPower" Type="Edm.Decimal">
+      </EntityType>
+
+      <!-- AC Bypass Input definition -->
+      <EntityType Name="AcBypassInput" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="RealPower" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Real Power for this AC Bypass Input."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Real Power information of this AC Bypass Input."/>
@@ -293,13 +286,18 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	  </EntityType> 
 
-    <!-- DC Bus definition -->
-    <EntityType Name="DcBus" BaseType="Resource.v1_0_0.ReferenceableMember">    
+        <Property Name="Actions" Type="UPS.v0_1_0.AcBypassInputActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 
-	    <Property Name="AveragePower" Type="Edm.Decimal">
+      </EntityType>
+
+      <!-- DC Bus definition -->
+      <EntityType Name="DcBus" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="AveragePower" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Average Power for this DC Bus."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Average Power information of this DC Bus."/>
@@ -318,13 +316,18 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	  </EntityType> 
 
-    <!-- AC Utility Input definition -->
-    <EntityType Name="AcOutput" BaseType="Resource.v1_0_0.ReferenceableMember">    
+        <Property Name="Actions" Type="UPS.v0_1_0.DcBusActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 
-	    <Property Name="RealPower" Type="Edm.Decimal">
+      </EntityType>
+
+      <!-- AC Utility Input definition -->
+      <EntityType Name="AcOutput" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="RealPower" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Real Power for this AC Output."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Real Power information of this AC Output."/>
@@ -378,11 +381,80 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	  </EntityType> 
-	   
-	</Schema>
-		
-  
-</edmx:DataServices>
+
+        <Property Name="Actions" Type="UPS.v0_1_0.AcOutputActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="UPS.v0_1_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="AcUtilityInputActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="UPS.v0_1_0.AcUtilityInputOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="AcUtilityInputOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="AcBypassInputActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="UPS.v0_1_0.AcBypassInputOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="AcBypassInputOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="DcBusActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="UPS.v0_1_0.DcBusOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="DcBusOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="AcOutputActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="UPS.v0_1_0.AcOutputOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="AcOutputOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+    </Schema>
+
+  </edmx:DataServices>
 </edmx:Edmx>

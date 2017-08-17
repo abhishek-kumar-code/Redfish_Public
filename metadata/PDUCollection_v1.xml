@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  VFDCollection-->
+<!--# Redfish Schema:  PDUCollection-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -20,16 +20,16 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VFD_v1.xml">
-    <edmx:Include Namespace="VFD"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PDU_v1.xml">
+    <edmx:Include Namespace="PDU"/>
   </edmx:Reference>
 
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VFDCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PDUCollection">
 
-      <EntityType Name="VFDCollection" BaseType="Resource.v1_0_0.ResourceCollection">
-        <Annotation Term="OData.Description" String="A Collection of VFD resource instances."/>
+      <EntityType Name="PDUCollection" BaseType="Resource.v1_0_0.ResourceCollection">
+        <Annotation Term="OData.Description" String="A Collection of PDU resource instances."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -45,7 +45,7 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
-        <NavigationProperty Name="Members" Type="Collection(VFD.VFD)">
+        <NavigationProperty Name="Members" Type="Collection(PDU.PDU)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>

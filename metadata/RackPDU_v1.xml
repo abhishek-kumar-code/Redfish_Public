@@ -27,13 +27,11 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
- 
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="RackPDU">
@@ -65,25 +63,12 @@
 
       <EntityType Name="RackPDU" BaseType="RackPDU.RackPDU">
 
-        <!-- General Information -->
-        <Property Name="ID" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual ID of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual ID of RackPDU."/>
-        </Property>
-
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Name of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Name of RackPDU."/>
-        </Property>        
-        	
         <Property Name="HardwareRev" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Hardware Revision of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Hardware Revision of PDU."/>
         </Property>
-		 
+
         <Property Name="FirmwareRev" Type="Edm.Date">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of RackPDU."/>
@@ -101,14 +86,14 @@
           <Annotation Term="OData.Description" String="The actual Manufacturer of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of RackPDU."/>
         </Property>
-		 
-		<Property Name="Model" Type="Edm.String">
+
+        <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Model Number of PDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of PDU."/>
         </Property>
-		 
-	    <Property Name="SerialNumber" Type="Edm.String">
+
+        <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Serial Number of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of RackPDU."/>
@@ -133,133 +118,137 @@
         </Property>
 
         <!-- System -->
-	    <Property Name="Rating" Type="Edm.Int64">
+        <Property Name="Rating" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual maximum Rating of this RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum percentage Rating of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-		
-	    <Property Name="NumOutlets" Type="Edm.Int64">
+
+        <Property Name="NumOutlets" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual maximum number of Outlets of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Outlets of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
-		
-	    <Property Name="NumPhases" Type="Edm.Int64">
+
+        <Property Name="NumPhases" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual maximum number of Phases of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Phases of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="1"/>
-        </Property> 
-		
-	    <Property Name="BreakerRating" Type="Edm.Int64">
+        </Property>
+
+        <Property Name="BreakerRating" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Breaker Rating of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Breaker Rating of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-				
-	    <Property Name="Orientation" Type="Edm.String">
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+
+        <Property Name="Orientation" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Orientation of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Orientation of PDU."/>
         </Property>
-                       
-	    <Property Name="LineToLineVoltage" Type="Edm.Decimal">
+
+        <Property Name="LineToLineVoltage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Line Voltage of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Line Voltage of PDU."/>
           <Annotation Term="Measures.Unit" String="V"/>
         </Property>
-	  
-	    <Property Name="MaxPhaseLoad" Type="Edm.Decimal">
+
+        <Property Name="MaxPhaseLoad" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Max Phase Load of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual MaxPhaseLoad of RackPDU."/>
           <Annotation Term="Measures.Unit" String="W"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-		
-		<Property Name="NearOverloadThreshold" Type="Edm.Decimal">
+
+        <Property Name="NearOverloadThreshold" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Near Overload Threshold of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Near Overload Threshold of RackPDU."/>
           <Annotation Term="Measures.Unit" String="W"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-		
-		<Property Name="OverloadThreshold" Type="Edm.Decimal">
+
+        <Property Name="OverloadThreshold" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actualOverload Threshold of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent he actual Overload Threshold of RackPDU."/>
           <Annotation Term="Measures.Unit" String="W"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-		
-	    <Property Name="Load" Type="Edm.Int64">
+
+        <Property Name="Load" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Load of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Load of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="X"/>
-		</Property>
+        </Property>
 
-		<Property Name="LoadState" Type="Edm.Int64">
+        <Property Name="LoadState" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Load State of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Load State of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="X"/>
-	    </Property>
-		
-	    <Property Name="PhaseNumber" Type="Edm.Int64">
+        </Property>
+
+        <Property Name="PhaseNumber" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Phase Number of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Phase Number of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-		
-	    <Property Name="BankNumber" Type="Edm.Int64">
+
+        <Property Name="BankNumber" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Bank Number of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Bank Number of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-		
-    	<Property Name="Status" Type="Resource.Status" Nullable="false"/>
-		
-	   	<NavigationProperty Name="AcInput" Type="Collection(RackPDU.v1_0_0.AcInput)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+
+        <NavigationProperty Name="AcInput" Type="Collection(RackPDU.v1_0_0.AcInput)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AcInput."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AcInput for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
-		<NavigationProperty Name="Outlets" Type="Collection(RackPDU.v1_0_0.Outlets)" Nullable="false">
+
+        <NavigationProperty Name="Outlets" Type="Collection(RackPDU.v1_0_0.Outlets)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for Outlets."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for Outlets for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-       
-	    <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-   
-     </EntityType>
-	  
-          
-   	 <EntityType Name="AcInput" BaseType="Resource.v1_0_0.ReferenceableMember">    
-	   
-	    <Property Name="RealPower" Type="Edm.Int64">
+
+        <Property Name="Actions" Type="RackPDU.v0_1_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <EntityType Name="AcInput" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="RealPower" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The RealPower for this AcInput."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the RealPower information of this AcInput."/>
         </Property>
-          
-	    <Property Name="RmsUnderOverVoltage" Type="Edm.Int64">
+
+        <Property Name="RmsUnderOverVoltage" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The RmsUnderOverVoltage for this AcInput."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the RmsUnderOverVoltage information of this AcInput."/>
@@ -270,85 +259,131 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	  </EntityType>   		
-	  
-	  
-	  <EntityType Name="Outlets" BaseType="Resource.v1_0_0.ReferenceableMember">
-      
-	    <Property Name="Name" Type="Edm.String">
+
+        <Property Name="Actions" Type="RackPDU.v0_1_0.AcInputActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <EntityType Name="Outlets" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletStatusOutletName for Outlet."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the OutletStatusOutletName information as provided by the manufacturer of Outlet."/>
         </Property>
-		
-		<Property Name="Phase" Type="Edm.Int64">
+
+        <Property Name="Phase" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletStatusOutletPhase for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusOutletPhase information of Outlet."/>
         </Property>
-		
-	  	<Property Name="State" Type="Edm.Int64">
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+
+        <Property Name="State" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletStatusOutletState for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusOutletState information of Outlet."/>
         </Property>
-		
-	    <Property Name="StatusBank" Type="Edm.Int64">
+
+        <Property Name="StatusBank" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletStatusOutletBank for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusOutletBank information of Outlet."/>
         </Property>
-		
-		<Property Name="Load" Type="Edm.Int64">
+
+        <Property Name="Load" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletStatusLoad for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusLoad information of Outlet."/>
         </Property>
-		
-	    <Property Name="Number" Type="Edm.Int64">
+
+        <Property Name="Number" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The StatusOutletNumber for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the StatusOutletNumber information of Outlet."/>
         </Property>
-		
-		<Property Name="Command" Type="Edm.Int64">
+
+        <Property Name="Command" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletControlOutletCommand for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletControlOutletCommand information of Outlet."/>
         </Property>
-		
-	    <Property Name="ControlBank" Type="Edm.Int64">
+
+        <Property Name="ControlBank" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletControlOutletBank for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletControlOutletBank information of Outlet."/>
         </Property>
-		
-	    <Property Name="PowerOnTime" Type="Edm.Int64">
+
+        <Property Name="PowerOnTime" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletConfigPowerOnTime for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletConfigPowerOnTime information of Outlet."/>
         </Property>
-		
-	    <Property Name="PowerOffTime" Type="Edm.Int64">
+
+        <Property Name="PowerOffTime" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletConfigPowerOffTime for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletConfigPowerOffTime information of Outlet."/>
         </Property>
-		
-	    <Property Name="RebootDuration" Type="Edm.Int64">
+
+        <Property Name="RebootDuration" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OutletConfigRebootDuration for Outlet."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletConfigRebootDuration information of Outlet."/>
         </Property>
-		
-	    <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-	 
-		  
-	 </EntityType>
-	   
-	</Schema>
-		
-  
-</edmx:DataServices>
+
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+
+        <Property Name="Actions" Type="RackPDU.v0_1_0.OutletsActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="RackPDU.v0_1_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="AcInputActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="RackPDU.v0_1_0.AcInputOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="AcInputOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="OutletsActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="RackPDU.v0_1_0.AcOutputOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OutletsOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+    </Schema>
+
+  </edmx:DataServices>
 </edmx:Edmx>

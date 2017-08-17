@@ -25,15 +25,12 @@
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
- 
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VFD">
@@ -64,19 +61,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VFD.v0_1_0">
 
       <EntityType Name="VFD" BaseType="VFD.VFD">
-      	 
-        <!-- General Information -->   
-        <Property Name="ID" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual ID of VFD."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual ID of VFD."/>
-        </Property>
-
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Name of VFD."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Name of VFD."/>
-        </Property>
 
         <Property Name="FirmwareRev" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -89,7 +73,7 @@
           <Annotation Term="OData.Description" String="The actual Hardware Revision of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Hardware Revision of VFD."/>
         </Property>
-		 
+
         <Property Name="DateOfManufacture" Type="Edm.Date">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date of manufacture of VFD."/>
@@ -101,14 +85,14 @@
           <Annotation Term="OData.Description" String="The actual Manufacturer of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Manufacturer of VFD."/>
         </Property>
-		 
-	    <Property Name="Model" Type="Edm.String">
+
+        <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Model Number of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Model Number of VFD."/>
         </Property>
-		 
-		<Property Name="SerialNumber" Type="Edm.String">
+
+        <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Serial Number of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Serial Number of VFD."/>
@@ -132,7 +116,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of VFD."/>
         </Property>
 
-		    <!-- Status -->
+        <!-- Status -->
         <Property Name="Speed" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Speed value of VFD."/>
@@ -245,42 +229,47 @@
         </Property>
 
         <!-- AC Input -->
-        <NavigationProperty Name="AcInput" Type="Collection(VFD.v1_0_0.AcInput)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <NavigationProperty Name="AcInput" Type="Collection(VFD.v0_1_0.AcInput)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Input."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AC Input for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- AC Output -->
-        <NavigationProperty Name="AcOutput" Type="Collection(VFD.v1_0_0.AcOutput)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <NavigationProperty Name="AcOutput" Type="Collection(VFD.v0_1_0.AcOutput)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Output."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AC Output for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- DC Bus -->
-        <NavigationProperty Name="DcBus" Type="Collection(VFD.v1_0_0.DcBus)" Nullable="false"> 
-		      <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <NavigationProperty Name="DcBus" Type="Collection(VFD.v0_1_0.DcBus)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for DC Bus."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for DC Bus for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-		
+
         <!-- Sensors -->
-	    <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this sensor collection."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-   
-    </EntityType>   
 
-    <!-- AC Input definition -->
-    <EntityType Name="AcInput" BaseType="Resource.v1_0_0.ReferenceableMember">    
+        <Property Name="Actions" Type="VFD.v0_1_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 
-	    <Property Name="PercentCurrent" Type="Edm.Decimal">
+      </EntityType>
+
+      <!-- AC Input definition -->
+      <EntityType Name="AcInput" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="PercentCurrent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Percent Current for this AC Input."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Percent Current percentage value of this AC Input."/>
@@ -293,11 +282,16 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	</EntityType>  
 
-    <!-- AC Output definition -->
-    <EntityType Name="AcOutput" BaseType="Resource.v1_0_0.ReferenceableMember">    
+        <Property Name="Actions" Type="VFD.v0_1_0.AcInputActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <!-- AC Output definition -->
+      <EntityType Name="AcOutput" BaseType="Resource.v1_0_0.ReferenceableMember">
 
         <Property Name="PercentRatedTorque" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -314,8 +308,8 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
-	   
-	    <Property Name="kWHours" Type="Edm.Decimal">
+
+        <Property Name="kWHours" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Kilowatt-Hours for this AC Output."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Kilowatt-Hours of this AC Output."/>
@@ -327,11 +321,16 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	</EntityType>  
 
-    <!-- DC Bus definition -->
-    <EntityType Name="DcBus" BaseType="Resource.v1_0_0.ReferenceableMember">    
+        <Property Name="Actions" Type="VFD.v0_1_0.AcOutputActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <!-- DC Bus definition -->
+      <EntityType Name="DcBus" BaseType="Resource.v1_0_0.ReferenceableMember">
 
         <Property Name="DcUnderOverVolts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -345,11 +344,67 @@
           <Annotation Term="OData.Description" String="Contains the members of this collection of sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-	 
-	</EntityType> 
-	   
-	</Schema>
-		
-  
-</edmx:DataServices>
+
+        <Property Name="Actions" Type="VFD.v0_1_0.DcBusActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="VFD.v0_1_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="AcInputActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="VFD.v0_1_0.AcInputOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="AcInputOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="AcOutputActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="VFD.v0_1_0.AcOutputOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="AcOutputOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="DcBusActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="VFD.v0_1_0.DcBusOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="DcBusOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+    </Schema>
+
+  </edmx:DataServices>
 </edmx:Edmx>

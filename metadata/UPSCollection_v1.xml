@@ -17,23 +17,13 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
- 
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UPS_v1.xml">
     <edmx:Include Namespace="UPS"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UPSCollection">
@@ -55,7 +45,7 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
-        <NavigationProperty Name="Members" Type="Collection(UPS.UPS)" Nullable="false">
+        <NavigationProperty Name="Members" Type="Collection(UPS.UPS)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
@@ -64,6 +54,5 @@
 
     </Schema>
 
-	
   </edmx:DataServices>
 </edmx:Edmx>

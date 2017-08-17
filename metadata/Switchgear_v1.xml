@@ -17,23 +17,13 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
- 
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switchgear">
@@ -63,31 +53,18 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switchgear.v0_1_0">
 
-        <EnumType Name="SwitchgearMetering">
-          <Member Name="Amps"/>
-          <Member Name="Volts"/>
-          <Member Name="kW"/>
-          <Member Name="kVA"/>
-          <Member Name="kWH"/>
-          <Member Name="kVAR"/>
-          <Member Name="kVARH"/>
-          <Member Name="PF"/>
-        </EnumType>
+      <EnumType Name="SwitchgearMetering">
+        <Member Name="Amps"/>
+        <Member Name="Volts"/>
+        <Member Name="kW"/>
+        <Member Name="kVA"/>
+        <Member Name="kWH"/>
+        <Member Name="kVAR"/>
+        <Member Name="kVARH"/>
+        <Member Name="PF"/>
+      </EnumType>
 
       <EntityType Name="Switchgear" BaseType="Switchgear.Switchgear">
-      	 
-        <!-- General Information -->   
-        <Property Name="ID" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual ID of Switchgear."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual ID of Switchgear."/>
-        </Property>
-
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Name of Switchgear."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Name of Switchgear."/>
-        </Property>
 
         <Property Name="FirmwareRev" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -100,7 +77,7 @@
           <Annotation Term="OData.Description" String="The actual Hardware Revision of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Hardware Revision of Switchgear."/>
         </Property>
-		 
+
         <Property Name="DateOfManufacture" Type="Edm.Date">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date of manufacture of Switchgear."/>
@@ -112,14 +89,14 @@
           <Annotation Term="OData.Description" String="The actual Manufacturer of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Manufacturer of Switchgear."/>
         </Property>
-		 
-		<Property Name="Model" Type="Edm.String">
+
+        <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Model Number of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Model Number of Switchgear."/>
         </Property>
-		 
-	    <Property Name="SerialNumber" Type="Edm.String">
+
+        <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Serial Number of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Serial Number of Switchgear."/>
@@ -179,7 +156,7 @@
           <Annotation Term="OData.Description" String="The actual Transformer Fan Failure boolean value of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Transformer Fan Failure boolean value of Switchgear."/>
         </Property>
-        
+
         <Property Name="TransformerHighTemp" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Transformer High Temperature boolean value of Switchgear."/>
@@ -417,15 +394,15 @@
         </Property>
 
         <!-- Critical Boards -->
-        <NavigationProperty Name="CriticalBoards" Type="Collection(Switchgear.v1_0_0.CriticalBoard)" Nullable="false">
+        <NavigationProperty Name="CriticalBoards" Type="Collection(Switchgear.v1_0_0.CriticalBoard)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Critical Boards."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for an Critical Board array for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Switchgear -->
-        <NavigationProperty Name="Switchgear2" Type="Collection(Switchgear.v1_0_0.Switchgear2)" Nullable="false">
+        <NavigationProperty Name="Switchgear2" Type="Collection(Switchgear.v1_0_0.Switchgear2)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Switchgear 2."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Switchgear 2 array for a Redfish implementation."/>
@@ -433,26 +410,26 @@
         </NavigationProperty>
 
         <!-- Generator Paralleling Switchgear -->
-        <NavigationProperty Name="GeneratorParallelingSwitchgear" Type="Collection(Switchgear.v1_0_0.GeneratorParallelingSwitchgear)" Nullable="false">
+        <NavigationProperty Name="GeneratorParallelingSwitchgear" Type="Collection(Switchgear.v1_0_0.GeneratorParallelingSwitchgear)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Generator Paralleling Switchgear."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Generator Paralleling Switchgear array for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-		
+
         <!-- Sensors -->
-	      <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-   
-    </EntityType>    		
 
-    <!-- Critical Board definition -->
-    <EntityType Name="CriticalBoards" BaseType="Resource.v1_0_0.ReferenceableMember">
-	
-		<Property Name="MainBreakerOpen" Type="Edm.Boolean">
+      </EntityType>
+
+      <!-- Critical Board definition -->
+      <EntityType Name="CriticalBoards" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="MainBreakerOpen" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Main Breaker Open boolean value of CriticalBoard."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Main Breaker Open boolean value of CriticalBoard."/>
@@ -493,13 +470,18 @@
           <Annotation Term="OData.Description" String="The actual Switchgear Metering unit type of CriticalBoard."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Switchgear Metering unit type (CriticalBoardMetering enumeration) of CriticalBoard."/>
         </Property>
-		
-	</EntityType>
 
-    <!-- Switchgear 2 definition - may need to be renamed -->
-    <EntityType Name="Switchgear2" BaseType="Resource.v1_0_0.ReferenceableMember">
-	   
-		<Property Name="CircuitBreakerOpen" Type="Edm.Boolean">
+        <Property Name="Actions" Type="Switchgear.v0_1_0.CriticalBoardsActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <!-- Switchgear 2 definition - may need to be renamed -->
+      <EntityType Name="Switchgear2" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="CircuitBreakerOpen" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Circuit Breaker Open boolean value of Switchgear2."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Circuit Breaker Open boolean value of Switchgear2."/>
@@ -540,12 +522,17 @@
           <Annotation Term="OData.Description" String="The actual Switchgear Metering unit type of Switchgear2."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Switchgear Metering unit type (SwitchgearMetering enumeration) of Switchgear2."/>
         </Property>
-		
-	</EntityType>
 
-    <EntityType Name="GeneratorParallelingSwitchgear" BaseType="Resource.v1_0_0.ReferenceableMember">
-	   
-		<Property Name="CircuitBreakerOpen" Type="Edm.Boolean">
+        <Property Name="Actions" Type="Switchgear.v0_1_0.Switchgear2Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <EntityType Name="GeneratorParallelingSwitchgear" BaseType="Resource.v1_0_0.ReferenceableMember">
+
+        <Property Name="CircuitBreakerOpen" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Circuit Breaker Open boolean value of GeneratorParallelingSwitchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Circuit Breaker Open boolean value of GeneratorParallelingSwitchgear."/>
@@ -580,11 +567,67 @@
           <Annotation Term="OData.Description" String="The actual GeneratorParallelingSwitchgear Metering unit type of GeneratorParallelingSwitchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual GeneratorParallelingSwitchgear Metering unit type (GeneratorParallelingSwitchgearMetering enumeration) of GeneratorParallelingSwitchgear."/>
         </Property>
-		
-	</EntityType>
-	   
-  </Schema>
-		
-  
-</edmx:DataServices>
+
+        <Property Name="Actions" Type="Switchgear.v0_1_0.GeneratorParallelingSwitchgearActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="Switchgear.v0_1_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="CriticalBoardsActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="Switchgear.v0_1_0.CriticalBoardsOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="CriticalBoardsOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="Switchgear2Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="Switchgear.v0_1_0.Switchgear2OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="Switchgear2OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="GeneratorParallelingSwitchgearActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="Switchgear.v0_1_0.GeneratorParallelingSwitchgearOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="GeneratorParallelingSwitchgearOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+    </Schema>
+
+  </edmx:DataServices>
 </edmx:Edmx>
