@@ -751,6 +751,7 @@
       </ComplexType>
 
     </Schema>    
+    
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
       <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location."/>
 
@@ -759,13 +760,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The longitude resource in degrees."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the longitude of the resource specified in degrees using a decimal format and not minutes or seconds."/>
-          <Annotation Term="Measures.Unit" String="°"/>
+          <Annotation Term="Measures.Unit" String="."/>
         </Property>
         <Property Name="Latitude" Type="Edm.Decimal" DefaultValue="0">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The latitude resource."/>
           <Annotation Term="OData.LongDescription" String="TThe value shall be the latitude of the resource specified in degrees using a decimal format and not minutes or seconds."/>
-          <Annotation Term="Measures.Unit" String="°"/>
+          <Annotation Term="Measures.Unit" String="."/>
         </Property>
         <Property Name="Altitude" Type="Edm.Decimal" DefaultValue="0">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
