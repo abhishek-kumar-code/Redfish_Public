@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.5.0-->
+<!--# Redfish Schema:  Resource  v1.6.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -751,6 +751,31 @@
       </ComplexType>
 
     </Schema>    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
+      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location."/>
 
+      <ComplexType Name="Location" BaseType="Resource.v1_5_0.Location">
+        <Property Name="Longitude" Type="Edm.Decimal" DefaultValue="0">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The longitude resource in degrees."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the longitude of the resource specified in degrees using a decimal format and not minutes or seconds."/>
+          <Annotation Term="Measures.Unit" String="°"/>
+        </Property>
+        <Property Name="Latitude" Type="Edm.Decimal" DefaultValue="0">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The latitude resource."/>
+          <Annotation Term="OData.LongDescription" String="TThe value shall be the latitude of the resource specified in degrees using a decimal format and not minutes or seconds."/>
+          <Annotation Term="Measures.Unit" String="°"/>
+        </Property>
+        <Property Name="Altitude" Type="Edm.Decimal" DefaultValue="0">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The altitude of the resource in meters."/>
+          <Annotation Term="OData.LongDescription" String="The altitude of the resource in meters."/>
+          <Annotation Term="Measures.Unit" String="m"/>
+        </Property>
+      </ComplexType>      
+      
+    </Schema>    
+      
   </edmx:DataServices>
 </edmx:Edmx>
