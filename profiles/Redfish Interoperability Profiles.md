@@ -348,6 +348,7 @@ The following functions are available to specify requirements for a parameter on
 | --- | --- | --- |
 | ReadRequirement | string | The requirement to apply to this parameter.|
 | MinSupportValues | array | The minimum set of enumerations that must be supported for this parameter. |
+| RecommendedValues | array | The set of enumerations, in addition to those listed in MinSupportValues, that are recommended for this parameter. |
 
 #### Example
 
@@ -360,7 +361,8 @@ This exampls shows the 'Reset' action as required for this resource, along with 
 			"Purpose": "Ability to reset the unit is a core requirement of most users.",
 			"Parameters": {
 				"ResetType": {
-					"MinSupportValues": ["ForceOff", "PowerCycle"],
+					"MinSupportValues": ["ForceOff", "PowerCycle", "On"],
+					"RecommendedValues": ["GracefulShutdown", "GracefulRestart", "ForceRestart", "PushPowerButton"],
 					"ReadRequirement": "Mandatory"
 				}
 			}

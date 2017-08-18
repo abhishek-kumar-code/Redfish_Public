@@ -183,7 +183,15 @@
 							"$ref": "#/definitions/ReadRequirement"
 						},
 						"MinSupportValues": {
-							"$ref": "#/definitions/MinSupportValues"
+							"$ref": "#/definitions/MinSupportValues",
+							"description": "The minimum set of enumerations required to be supported for this parameter."
+						},
+						"RecommendedValues": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "The set of enumerations, in addition to those listed in MinSupportValues, that are recommended to be supported for this parameter."
 						}
 					}
 				}
