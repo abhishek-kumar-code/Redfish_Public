@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.4.1-->
+<!--# Redfish Schema:  ComputerSystem  v1.4.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -273,21 +273,27 @@
       <EnumType Name="SystemType">
         <Member Name="Physical">
           <Annotation Term="OData.Description" String="A computer system."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of Physical is typically used when representating the hardware aspects of a system such as is done by a management controller."/>
         </Member>
         <Member Name="Virtual">
           <Annotation Term="OData.Description" String="A virtual machine instance running on this system."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of Virtual is typically used when representating a system that is actually a virtual machine instance."/>
         </Member>
         <Member Name="OS">
           <Annotation Term="OData.Description" String="An operating system instance."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of OS is typically used when representating a system from a Redfish service running within the operating system."/>
         </Member>
         <Member Name="PhysicallyPartitioned">
           <Annotation Term="OData.Description" String="A hardware-based partition of a computer system."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of PhysicallyPartition is typically used when representating a single system constructed from one or more physical systems via a firmware or hardware-based service."/>
         </Member>
         <Member Name="VirtuallyPartitioned">
           <Annotation Term="OData.Description" String="A virtual or software-based partition of a computer system."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of VirtuallyPartition is typically used when representating a single system constructed from one or more virtual systems via a software-based service."/>
         </Member>
         <Member Name="Composed">
           <Annotation Term="OData.Description" String="A computer system that has been created by binding resource blocks together."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of Composed is typically used when representating a single system constructed from diaggregated resource via the Redfish Composition service."/>
         </Member>
       </EnumType>
 
@@ -754,5 +760,10 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_0.ComputerSystem"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_2">
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType ."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_0.ComputerSystem"/>
+    </Schema>    
+    
   </edmx:DataServices>
 </edmx:Edmx>
