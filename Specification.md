@@ -166,15 +166,15 @@ The specifications do not set requirements that particular hardware or firmware 
 ### Goals
 
 There are many objectives and goals of Redfish as an architecture, as a data representation, and of the definition of the protocols that are used to access and interact with a Redfish Service. Redfish seeks to provide specifications that meet the following goals:
-* Scalable – To support stand-alone machines to racks of equipment found in cloud service environments.
-* Flexible – To support a wide variety of systems found in service today.
-* Extensible – To support new and vendor-specific capabilities cleanly within the framework of the data model.
+* Scalable - To support stand-alone machines to racks of equipment found in cloud service environments.
+* Flexible - To support a wide variety of systems found in service today.
+* Extensible - To support new and vendor-specific capabilities cleanly within the framework of the data model.
 * Backward Compatible - To enable new capabilities to be added while preserving investments in earlier versions of the specifications.
-* Interoperable – To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
-* System-Focused – To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
-* Standards based – To leverage protocols and standards that are widely accepted and used in environments today - in particular, programming environments that are being widely adopted for developing web-based clients today.
-* Simple – To be directly usable by software developers without requiring highly specialized programming skills or systems knowledge.
-* Lightweight – To reduce the complexity and cost of implementing and validating Redfish Services on managed systems.
+* Interoperable - To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
+* System-Focused - To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
+* Standards based - To leverage protocols and standards that are widely accepted and used in environments today - in particular, programming environments that are being widely adopted for developing web-based clients today.
+* Simple - To be directly usable by software developers without requiring highly specialized programming skills or systems knowledge.
+* Lightweight - To reduce the complexity and cost of implementing and validating Redfish Services on managed systems.
 
 ### Design tenets
 The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
