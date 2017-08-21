@@ -4,7 +4,7 @@ DocNumber: 'IS0004'
 DocClass: Informative
 DocVersion: '0.9a'
 modified: '2017-07-31'
-status: Work in Progress
+status: Work-in-Progress
 released: false
 copyright: '2017'
 ---
