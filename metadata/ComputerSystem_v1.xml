@@ -281,7 +281,7 @@
         </Member>
         <Member Name="OS">
           <Annotation Term="OData.Description" String="An operating system instance."/>
-          <Annotation Term="OData.LongDescription" String="A SystemType of OS is typically used when representating a system from a Redfish service running within the operating system."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of OS is typically used when representating an OS or hypervisor view of the system."/>
         </Member>
         <Member Name="PhysicallyPartitioned">
           <Annotation Term="OData.Description" String="A hardware-based partition of a computer system."/>
@@ -293,7 +293,7 @@
         </Member>
         <Member Name="Composed">
           <Annotation Term="OData.Description" String="A computer system that has been created by binding resource blocks together."/>
-          <Annotation Term="OData.LongDescription" String="A SystemType of Composed is typically used when representating a single system constructed from diaggregated resource via the Redfish Composition service."/>
+          <Annotation Term="OData.LongDescription" String="A SystemType of Composed is typically used when representating a single system constructed from disaggregated resource via the Redfish Composition service."/>
         </Member>
       </EnumType>
 
