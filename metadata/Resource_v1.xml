@@ -568,7 +568,7 @@
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POM field as defined in RFC5139.  (Extended)."/>
         </Property>
         <Property Name="GPSCoords" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Location.v1_5_0.Longitude and Location.v1_5_0.Latitude"/>
+          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Location.v1_6_0.Longitude and Location.v1_6_0.Latitude"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The GPS coordinates of the part."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5139. The value shall be the GPS coordinates of the location. If furnished, this shall be expressed in the format '[-][nn]n.nnnnnn, [-][nn]n.nnnnn', i.e. two numbers, either positive or negative, with six decimal places of precision, comma-separated."/>
