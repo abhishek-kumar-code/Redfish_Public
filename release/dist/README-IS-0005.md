@@ -62,7 +62,7 @@ The following new schema files are released as Work In Progress documents.
 
 # Equipment Modeling Methdology
 
-The Work In Progress(WIP) data center power and cooling equipment data models are based on an initial collection of the kinds of inventory, status, metric and sensor properties each type of equipment is often instrumented with.  Further refinement was started in the WIP schemas by creating a sensor abstraction with a related collection so that there could be flexibility in representing equipment with more or less sensors and still achieve a level of interoperable consistency in the API representation.  Additionally, the concept of one or more power and cooling "domains" (or "zones") was introduced to reflect real world installations and organization of this kind of equipment.  The following is a more detailed description of the modeling methdology used in this WIP release.
+The Work In Progress (WIP) data center power and cooling equipment data models are based on an initial collection of the kinds of inventory, status, metric and sensor properties each type of equipment is often instrumented with.  Further refinement was started in the WIP schemas by creating a sensor abstraction with a related collection so that there could be flexibility in representing equipment with more or less sensors and still achieve a level of interoperable consistency in the API representation.  Additionally, the concept of one or more power and cooling "domains" (or "zones") was introduced to reflect real world installations and organization of this kind of equipment.  The following is a more detailed description of the modeling methdology used in this WIP release.
 
 ## Domains
 * Domain Collections located in the API Service Root and referenced from API Service Root document.
@@ -101,7 +101,7 @@ Sensors types for Redfish data model aligned power equipment schema.
   * Output Ground Current
   * Battery Voltage
 
-### PDU - RackPDU
+### PDU (Power Distribution Unit) - RackPDU
 * Temperature
 * Humidity
 * AC Input Sub-Component (1-n) Sensors
@@ -238,7 +238,7 @@ Sensors types for Redfish data model aligned cooling equipment schema.
 * Compressor Line 2 Current RLA
 * Compressor Line 3 Current RLA
 
-### CRAC
+### CRAC (Computer Room Air Conditioner)
 * Supply Air Temperature
 * Return Air Temperature
 * Relative Humidity
@@ -251,7 +251,7 @@ Sensors types for Redfish data model aligned cooling equipment schema.
 * Outside Air Humidity
 * Outside Air Temperature
 
-### CRAH
+### CRAH (Computer Room Air Handler)
 * Supply Air Temperature
 * Return Air Temperature
 * Relative Humidity
