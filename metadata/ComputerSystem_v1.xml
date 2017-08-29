@@ -474,6 +474,11 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_5.ComputerSystem"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_7">
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_6.ComputerSystem"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem">
@@ -599,6 +604,11 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_3.ComputerSystem"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_5">
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_4.ComputerSystem"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem">
@@ -682,6 +692,11 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_2.ComputerSystem"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_4">
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_3.ComputerSystem"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_0">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_1.ComputerSystem">
         <NavigationProperty Name="NetworkInterfaces" Type="NetworkInterfaceCollection.NetworkInterfaceCollection" ContainsTarget="true" Nullable="false">
@@ -733,6 +748,11 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_1.ComputerSystem"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_3">
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_2.ComputerSystem"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_0">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_1.ComputerSystem"/>
 
@@ -761,9 +781,9 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_2">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType ."/>
-      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_0.ComputerSystem"/>
-    </Schema>    
-    
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_1.ComputerSystem"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
