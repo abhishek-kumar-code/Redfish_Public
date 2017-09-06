@@ -1,0 +1,116 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/1",
+    "@odata.type": "#ComputerSystem.v1_3_0.ComputerSystem",
+    "Id": "1",
+    "Name": "My Computer System",
+    "Description": "Description of server",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "HostName": "web-srv344",
+    "PowerState": "On",
+    "BiosVersion": "P79 v1.00 (09/20/2013)",
+    "Processors": {
+      "Members@odata.count": 4,
+      "Members": [
+        {
+          "ProcessorType": "CPU",
+          "ProcessorArchitecture": "x86",
+          "InstructionSet": "x86-64",
+          "Manufacturer": "Intel(R) Corporation",
+          "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+          "MaxSpeedMHz": 3700,
+          "TotalCores": 8,
+          "TotalThreads": 16
+        }
+      ]
+    },
+    "Memory": {
+      "Members@odata.count": 4,
+      "Members": [
+        {
+          "MaxTDPMilliWatts": [ 12000 ],
+          "CapacityMiB": 8192,
+          "DataWidthBits": 64,
+          "BusWidthBits": 72,
+          "ErrorCorrection": "MultiBitECC",
+          "MemoryType": "DRAM",
+          "MemoryDeviceType": "DDR4",
+          "BaseModuleType": "RDIMM",
+          "MemoryMedia": [
+            "DRAM"
+          ]
+        }
+      ]
+    },
+    "SimpleStorage": {
+      "Members@odata.count": 2,
+      "Members" : [
+        "Devices": [
+          {
+            "Manufacturer": "ACME",
+            "Model": "Drive Model string",
+	          "CapacityBytes": 322122547200
+          }
+        ]
+      ]
+    },
+    "SimpleStorage": {
+      "Members@odata.count": 4,
+      "Members" : [
+        "Devices": [
+          {
+	          "CapacityBytes": 322122547200
+          }
+        ]
+      ]
+    },
+    "EthernetInterfaces": {
+      "Members@odata.count": 4,
+      "Members": [
+        {
+          "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
+          "MACAddress": "AA:BB:CC:DD:EE:FF",
+          "SpeedMbps": 100,
+          "FullDuplex": true,
+          "HostName": "web483",
+          "FQDN": "web483.redfishspecification.org",
+          "IPv6DefaultGateway": "fe80::3ed9:2bff:fe34:600",
+          "NameServers": [
+            "names.redfishspecification.org"
+          ],
+          "IPv4Addresses": [
+            {
+              "Address": "192.168.0.10",
+              "SubnetMask": "255.255.252.0",
+              "AddressOrigin": "Static",
+              "Gateway": "192.168.0.1"
+            }
+          ],
+          "IPv6Addresses": [
+            {
+              "Address": "fe80::1ec1:deff:fe6f:1e24",
+              "PrefixLength": 64,
+              "AddressOrigin": "Static",
+              "AddressState": "Preferred"
+            }
+          ]
+        }
+      ]
+    },
+    "TrustedModules": [
+        {
+          "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+           },
+           "ModuleType":"TPM2_0",
+           "FirmwareVersion": "3.1",
+           "FirmwareVersion2": "1",
+           "InterfaceTypeSelection": "None"
+        }
+    ],
+    "SecureBoot": {
+      	"SecureBootEnable": false
+    }
+}
