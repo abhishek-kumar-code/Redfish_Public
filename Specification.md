@@ -1261,7 +1261,7 @@ Error responses are defined by an extended error resource, represented as a sing
             },
             {
                 "@odata.type" : "#Message.v1_0_0.Message",
-                "MessageId": "Base.1.0.PropertyNotWriteable",
+                "MessageId": "Base.1.0.PropertyNotWritable",
                 "RelatedProperties": [
                     "#/SKU"
                 ],
