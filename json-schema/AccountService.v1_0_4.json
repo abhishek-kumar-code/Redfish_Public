@@ -58,8 +58,8 @@
                         "null"
                     ],
                     "readonly": false,
-                    "description": "This indicates whether this service is enabled.",
-                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
+                    "description": "This indicates whether this service is enabled.  If this is set to false, the AccountService is disabled.  This means no users can be created, deleted or modified.  Any service attempting to access the Account Service, like the Session Service, will fail accessing.  Thus new sessions cannot be started with the service disabled (though established sessions may still continue operating).  Note: this does not affect Basic AUTH connections.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled.  If this is set to false, the AccountService is disabled.  This means no users can be created, deleted or modified.  Any service attempting to access the Account Service, like the Session Service, will fail accessing.  Thus new sessions cannot be started with the service disabled (though established sessions may still continue operating).  Note: this does not affect Basic AUTH connections."
                 },
                 "AuthFailureLoggingThreshold": {
                     "type": "number",

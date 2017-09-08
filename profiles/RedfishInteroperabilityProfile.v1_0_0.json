@@ -182,8 +182,19 @@
 						"ReadRequirement": {
 							"$ref": "#/definitions/ReadRequirement"
 						},
-						"MinSupportValues": {
-							"$ref": "#/definitions/MinSupportValues"
+						"ParameterValues": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "The minimum set of enumerations that must be supported for this parameter to meet the Requirement."
+						},
+						"RecommendedValues": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							},
+							"description": "For Mandatory parameters, the set of enumerations, in addition to those listed in ParameterValues, that are recommended to be supported."
 						}
 					}
 				}

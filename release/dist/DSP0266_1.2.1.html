@@ -14,7 +14,7 @@
     <p>Document Identifier: <span class="dsp">DSP0266</span></p>
     <p>Date: 2017-8-10</p>
     <p>Version: <span class="version">1.2.1</span></p>
-    
+
   </div>
   <h1 class="title">Redfish Scalable Platforms Management API Specification</h1>
   <div class="wip">
@@ -23,9 +23,9 @@
     <p><strong>Provide any comments through the DMTF Feedback Portal:</strong> <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
   </div>
   <div class="document">
-    
+
     <p>Supersedes: 1.2.0</p>
-    
+
     <p>Document Class: Normative</p>
     <p>Document Status: <span class="status">Published</span></p>
     <p>Document Language: en-US</p>
@@ -2390,33 +2390,33 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 </li>
 </ul>
 <h4 id="redfish-service-operation-to-privilege-mapping">9.2.9. Redfish Service Operation to Privilege Mapping</h4>
-<p>For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
+<p>For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that
 the authenticated identity of the requestor has the authorization to perform the requested operation on the resource specified in the request.
 Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
 against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.</p>
 <h5 id="why-specify-operation-to-privilege-mapping">9.2.9.1. Why specify Operation to Privilege Mapping</h5>
 <p>Initial versions of the Redfish specifications specified several Role to Privilege mappings for standardized Roles and normatively identified
-several Prvilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could 
+several Prvilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could
 be specified or represented in a normative fashion. The lack of a methdology to define what privilege(s) are required to perform a specific
 requested operation against the URI specified in the request puts at risk the interoperability between Redfsh service implementations that
-Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specififying 
+Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specififying
 and representing the operation to privilege mapping prevents the SPMF or other governing organization to normatively define privilege requirements for a service.</p>
 <h5 id="representing-operation-to-privilege-mappings">9.2.9.2. Representing Operation to Privilege Mappings</h5>
-<p>A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
-Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single 
-JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity 
-supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service 
-implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing 
+<p>A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the
+Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single
+JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity
+supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service
+implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing
 operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
 entity level operation to privilege mappings and related overrides are defined in the PrivilegeRegistry schema.</p>
 <p>If a Redfish service provides a Privilege Registry document, the service shall use the SPMF Redfish Privilege Mapping Registry definition
 as a base operation to privilege mapping definition for operations that the service supports in order to promote interoperability for Redfish clients.</p>
 <h5 id="operationmap-syntax">9.2.9.3. OperationMap Syntax</h5>
 <p>An operation map defines the set of privileges required to perform a specific operation on an entity, entity element, or resource.
-The operations mapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective 
-of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined prvilege labels. The 
+The operations mapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective
+of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined prvilege labels. The
 privileges required for an operation can be specified with logical AND and OR behavior as required (see Privilege AND and OR Syntax section for more information).  The following example defines
-the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to 
+the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to
 privilege mapping would represent behavior for all Manager resources in a service implementation.</p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"Manager"</span>,
@@ -2458,10 +2458,10 @@ privilege mapping would represent behavior for all Manager resources in a servic
 <p>Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
 These situations are:</p>
 <ul>
-<li>Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
-property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast 
+<li>Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password
+property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast
 to the "ConfigureUsers" privilege required for the rest of the properties on ManagerAccount resources.</li>
-<li>Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
+<li>Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
 (ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.</li>
 <li>Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
@@ -2469,7 +2469,7 @@ The overrides are defined in the context of the operation to privilege mapping f
 </ul>
 <h5 id="property-override-example">9.2.9.5. Property Override Example</h5>
 <p>In the following example, the Password property on the ManagerAccount
-resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast to the "ConfigureUsers" privilege 
+resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast to the "ConfigureUsers" privilege
 required for the rest of the properties on ManagerAccount resources.</p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"ManagerAccount"</span>,
@@ -2602,7 +2602,7 @@ required for the rest of the properties on ManagerAccount resources.</p>
             }
         ],
         <span class="hljs-attr">"HEAD"</span>: [
-            { 
+            {
                 <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
             }
         ],
