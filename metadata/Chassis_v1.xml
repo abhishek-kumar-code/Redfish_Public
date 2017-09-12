@@ -65,7 +65,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
 
       <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
+        <Annotation Term="OData.Description" String="A Chassis represents the physical components of a system.  This resource represents the sheet-metal confined spaces and logical zones such as racks, enclosures, chassis and all other containers. Subsystems (like sensors) that operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -88,7 +88,7 @@
       <Action Name="Reset" IsBound="true">
         <Parameter Name="Chassis" Type="Chassis.v1_0_0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
-          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
+          <Annotation Term="OData.Description" String="The type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the chassis. This action resets the chassis, not Systems or other contained resources, although side effects may occur which affect those resources."/>
@@ -102,38 +102,38 @@
       <EntityType Name="Chassis" BaseType="Chassis.Chassis">
         <Property Name="ChassisType" Nullable="false" Type="Chassis.v1_0_0.ChassisType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property indicates the type of physical form factor of this resource."/>
+          <Annotation Term="OData.Description" String="The type of physical form factor of the chassis."/>
           <Annotation Term="OData.LongDescription" String="ChassisType shall indicate the physical form factor for the type of chassis."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the manufacturer of this chassis."/>
+          <Annotation Term="OData.Description" String="The manufacturer of this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the chassis. This organization might be the entity from whom the chassis is purchased, but this is not necessarily true."/>
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the model number for the chassis."/>
+          <Annotation Term="OData.Description" String="The model number of the chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name by which the manufacturer generally refers to the chassis."/>
         </Property>
         <Property Name="SKU" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the SKU for this chassis."/>
+          <Annotation Term="OData.Description" String="The SKU of the chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the stock-keeping unit number for this chassis."/>
         </Property>
         <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The serial number for this chassis."/>
+          <Annotation Term="OData.Description" String="The serial number of the chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a manufacturer-allocated number used to identify the chassis."/>
         </Property>
         <Property Name="PartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The part number for this chassis."/>
+          <Annotation Term="OData.Description" String="The part number of the chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the chassis."/>
         </Property>
         <Property Name="AssetTag" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The user assigned asset tag for this chassis."/>
+          <Annotation Term="OData.Description" String="The user assigned asset tag of this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the chassis for inventory purposes."/>
         </Property>
         <Property Name="IndicatorLED" Type="Chassis.v1_0_0.IndicatorLED">
@@ -158,13 +158,13 @@
         </NavigationProperty>
         <NavigationProperty Name="Thermal" Type="Thermal.Thermal" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the thermal properties (fans, cooling, sensors) for this chassis."/>
+          <Annotation Term="OData.Description" String="A reference to the thermal properties (fans, cooling, sensors) of this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
+          <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) of this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
@@ -315,7 +315,7 @@
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_0.Chassis">
         <Property Name="PowerState" Type="Chassis.v1_0_1.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the current power state of the chassis."/>
+          <Annotation Term="OData.Description" String="The current power state of the chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the chassis."/>
         </Property>
       </EntityType>
@@ -499,7 +499,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the height of the chassis (in millimeters) as specified by the manufacturer."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="mm"/>
-        </Property>	  
+        </Property>
         <Property Name="WidthMm" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The width of the chassis."/>
@@ -513,7 +513,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the depth (length) of the chassis (in millimeters) as specified by the manufacturer."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="mm"/>
-        </Property>	 
+        </Property>
         <Property Name="WeightKg" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The weight of the chassis."/>
