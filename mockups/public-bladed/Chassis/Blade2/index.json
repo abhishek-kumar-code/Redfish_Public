@@ -15,6 +15,17 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "Location": {
+        "@odata.type": "#Resource.v1_5_0.Location",
+        "PartLocation": {
+            "@odata.type": "#Resource.v1_5_0.PartLocation",
+            "ServiceLabel": "Blade 2",
+            "LocationType": "Slot",
+            "LocationOrdinalValue": 1,
+            "Reference": "Front",
+            "Orientation": "LeftToRight",
+        }
+    },
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/Blade2/Thermal"
     },
