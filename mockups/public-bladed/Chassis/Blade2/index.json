@@ -23,7 +23,7 @@
             "LocationType": "Slot",
             "LocationOrdinalValue": 1,
             "Reference": "Front",
-            "Orientation": "LeftToRight",
+            "Orientation": "LeftToRight"
         }
     },
     "Thermal": {
