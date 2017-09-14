@@ -56,7 +56,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 ## Abstract
 The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
-There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center & cloud needs.
+There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center and cloud needs.
 
 ## Normative references
 
@@ -211,12 +211,12 @@ There are several reasons to define a RESTful interface:
 * It enables a lightweight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).
 * It is a prevalent access method in the industry.
 * It is easy to learn and easy to document.
-* There are a number of toolkits & development environments that can be used for REST.
+* There are a number of toolkits and development environments that can be used for REST.
 * It supports data model semantics and maps easily to the common CRUD operations.
 * It fits with our design principle of simplicity.
 * It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.
 * It is schema agnostic so adapts well to any modeling language.
-* By using it, Redfish can leverage existing security & discovery mechanisms in the industry.
+* By using it, Redfish can leverage existing security and discovery mechanisms in the industry.
 
 #### Follow OData conventions
 
@@ -1384,7 +1384,7 @@ Types used within a JSON payload shall be defined in, or referenced by, the [ser
 
 Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Data Model & Schema
+NOTE: Refer to the [Security](#security) clause for security implications of Data Model and Schema
 
 ### Common naming conventions
 
@@ -1696,9 +1696,11 @@ If the property references a single type, the value of the type attribute is the
 
 If the property references a collection of resources, the value of the type attribute is of the form:
 
- Collection(NamespaceQualifiedTypeName)
+~~~
+  Collection(NamespaceQualifiedTypeName)
+~~~
 
-where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.
+where `NamespaceQualifiedTypeName` is the namespace qualified name of the type of related resources.
 
 ~~~xml
   <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
@@ -2058,7 +2060,7 @@ These are some configurable properties that are global settings that define the 
 
 ### Asynchronous operations
 
-Services that support asynchronous operations will implement the Task service & Task resource.
+Services that support asynchronous operations will implement the Task service and Task resource.
 
 The Task service is used to describe the service that handles tasks.  It contains a Resource Collection of zero or more "Task" resources. The Task resource is used to describe a long running operation that is spawned when a request will take longer than a few seconds, such as when a service is instantiated. Clients will poll the URI of the task resource to determine when the operation has completed and if it was successful.
 
@@ -2352,7 +2354,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - Implementations shall support all of the predefined roles.
   - The predefined Roles may include OEM privileges.
   - The privilege array defined for the predefined roles shall not be modifiable.
-  - A service may optionally support additional "Custom" roles, and may allow users to create such custom roles by: 1) posting to the "Roles" Resource Collection; or 2) an implementation may implement a i.e.,  custom role; or 3) other mechanism outside the specification.
+  - A service may optionally define additional "Custom" roles.
+  - A service may allow users to create custom roles by issuing a POST to the "Roles" Resource Collection.
 
 * Privileges:
   - A privilege is a permission to perform an operation (e.g., Read, Write) within a defined management domain (e.g., Configuring Users).
@@ -2450,8 +2453,8 @@ privilege mapping would represent behavior for all Manager resources in a servic
 Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
 These situations are:
 * Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
-property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast 
-to the "ConfigureUsers" privilege required for the rest of the properties on ManagerAccount resources.
+property in the ManagerAccount resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast 
+to the "ConfigureUsers" privilege required for the rest of the properties in ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
 (ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
