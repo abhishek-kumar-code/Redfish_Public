@@ -30,7 +30,7 @@
 
       <EntityType Name="Bios" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The Bios schema contains properties related to a BIOS Attribute Registry. The attribute registry describes the system-specific BIOS attributes and Actions for changing to BIOS settings. Changes to the BIOS typically require a system reset before taking effect."/>
+        <Annotation Term="OData.Description" String="The Bios contains properties related to a BIOS Attribute Registry. The attribute registry describes the system-specific BIOS attributes and Actions for changing to BIOS settings. Changes to the BIOS typically require a system reset before taking effect."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent BIOS attributes for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
