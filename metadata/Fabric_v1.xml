@@ -32,11 +32,11 @@
   </edmx:Reference>
 
   <edmx:DataServices>
-  
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric">
 
       <EntityType Name="Fabric" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="Fabric contains properties describing a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones."/>
+        <Annotation Term="OData.Description" String="A Fabric represents a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a simple switchable fabric for a Redfish implementation."/>
       </EntityType>
 
