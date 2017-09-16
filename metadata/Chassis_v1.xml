@@ -65,7 +65,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
 
       <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A Chassis represents the physical components of a system.  This resource represents the sheet-metal confined spaces and logical zones such as racks, enclosures, chassis and all other containers. Subsystems (like sensors) that operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
+        <Annotation Term="OData.Description" String="The Chassis schema represents the physical components of a system.  This resource represents the sheet-metal confined spaces and logical zones such as racks, enclosures, chassis and all other containers. Subsystems (like sensors) that operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
