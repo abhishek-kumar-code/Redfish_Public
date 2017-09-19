@@ -12,9 +12,9 @@
   <div class="preamble">
     <div class="logo"></div>
     <p>Document Identifier: <span class="dsp">DSP0266</span></p>
-    <p>Date: 2017-8-10</p>
+    <p>Date: 2017-9-21</p>
     <p>Version: <span class="version">1.2.1</span></p>
-    
+
   </div>
   <h1 class="title">Redfish Scalable Platforms Management API Specification</h1>
   <div class="wip">
@@ -23,9 +23,9 @@
     <p><strong>Provide any comments through the DMTF Feedback Portal:</strong> <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
   </div>
   <div class="document">
-    
+
     <p>Supersedes: 1.2.0</p>
-    
+
     <p>Document Class: Normative</p>
     <p>Document Status: <span class="status">Published</span></p>
     <p>Document Language: en-US</p>
@@ -36,9 +36,9 @@
     <p>Copyright &copy; 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
   </div>
   <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
-  <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
+  <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
   <p>For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit <a href="http://www.dmtf.org/about/policies/disclosures.php">http://www.dmtf.org/about/policies/disclosures.php</a>.</p>
-  <p>This document’s normative language is English. Translation into other languages is permitted.</p>
+  <p>This document's normative language is English. Translation into other languages is permitted.</p>
 </div>
 <p id="toc-header">CONTENTS</p>
 <ul id="toc"><li><a href="#abstract">1. Abstract</a></li><li><a href="#normative-references">2. Normative references</a></li><li><a href="#terms-and-definitions">3. Terms and definitions</a></li><li><a href="#symbols-and-abbreviated-terms">4. Symbols and abbreviated terms</a></li><li><a href="#overview">5. Overview</a></li><ul><li><a href="#scope">5.1. Scope</a></li><li><a href="#goals">5.2. Goals</a></li><li><a href="#design-tenets">5.3. Design tenets</a></li><li><a href="#limitations">5.4. Limitations</a></li><li><a href="#additional-design-background-and-rationale">5.5. Additional design background and rationale</a></li><ul><li><a href="#rest-based">5.5.1. REST-based</a></li><li><a href="#follow-odata-conventions">5.5.2. Follow OData conventions</a></li><li><a href="#model-oriented">5.5.3. Model-oriented</a></li><li><a href="#separation-of-protocol-from-data-model">5.5.4. Separation of protocol from data model</a></li><li><a href="#hypermedia-api-service-endpoint">5.5.5. Hypermedia API service endpoint</a></li></ul><li><a href="#service-elements">5.6. Service elements</a></li><ul><li><a href="#synchronous-and-asynchronous-operation-support">5.6.1. Synchronous and asynchronous operation support</a></li><li><a href="#eventing-mechanism">5.6.2. Eventing mechanism</a></li><li><a href="#actions">5.6.3. Actions</a></li><li><a href="#service-entry-point-discovery">5.6.4. Service entry point discovery</a></li><li><a href="#remote-access-support">5.6.5. Remote access support</a></li></ul><li><a href="#security">5.7. Security</a></li></ul><li><a href="#protocol-details">6. Protocol details</a></li><ul><li><a href="#use-of-http">6.1. Use of HTTP</a></li><ul><li><a href="#uris">6.1.1. URIs</a></li><li><a href="#http-methods">6.1.2. HTTP methods</a></li><li><a href="#http-redirect">6.1.3. HTTP redirect</a></li><li><a href="#media-types">6.1.4. Media types</a></li><li><a href="#etags">6.1.5. ETags</a></li></ul><li><a href="#protocol-version">6.2. Protocol version</a></li><li><a href="#redfish-defined-uris-and-relative-uri-rules">6.3. Redfish-defined URIs and relative URI rules</a></li><li><a href="#requests">6.4. Requests</a></li><ul><li><a href="#request-headers">6.4.1. Request headers</a></li><li><a href="#read-requests-get-">6.4.2. Read requests (GET)</a></li><ul><li><a href="#service-root-request">6.4.2.1. Service root request</a></li><li><a href="#metadata-document-request">6.4.2.2. Metadata document request</a></li><li><a href="#odata-service-document-request">6.4.2.3. OData service document request</a></li><li><a href="#resource-retrieval-requests">6.4.2.4. Resource retrieval requests</a></li><ul><li><a href="#query-parameters">6.4.2.4.1. Query parameters</a></li><li><a href="#retrieving-resource-collections">6.4.2.4.2. Retrieving Resource Collections</a></li></ul></ul><li><a href="#head">6.4.3. HEAD</a></li><li><a href="#data-modification-requests">6.4.4. Data modification requests</a></li><ul><li><a href="#update-patch-">6.4.4.1. Update (PATCH)</a></li><li><a href="#replace-put-">6.4.4.2. Replace (PUT)</a></li><li><a href="#create-post-">6.4.4.3. Create (POST)</a></li><li><a href="#delete-delete-">6.4.4.4. Delete (DELETE)</a></li><li><a href="#actions-post-">6.4.4.5. Actions (POST)</a></li></ul></ul><li><a href="#responses">6.5. Responses</a></li><ul><li><a href="#response-headers">6.5.1. Response headers</a></li><ul><li><a href="#link-header">6.5.1.1. Link Header</a></li></ul><li><a href="#status-codes">6.5.2. Status codes</a></li><li><a href="#metadata-responses">6.5.3. Metadata responses</a></li><ul><li><a href="#service-metadata">6.5.3.1. Service metadata</a></li><ul><li><a href="#referencing-other-schemas">6.5.3.1.1. Referencing other schemas</a></li><li><a href="#referencing-oem-extensions">6.5.3.1.2. Referencing OEM extensions</a></li><li><a href="#annotations">6.5.3.1.3. Annotations</a></li></ul><li><a href="#odata-service-document">6.5.3.2. OData Service Document</a></li></ul><li><a href="#resource-responses">6.5.4. Resource responses</a></li><ul><li><a href="#context-property">6.5.4.1. Context property</a></li><li><a href="#resource-identifier-property">6.5.4.2. Resource identifier property</a></li><li><a href="#type-property">6.5.4.3. Type property</a></li><li><a href="#etag-property">6.5.4.4. ETag property</a></li><li><a href="#primitive-properties">6.5.4.5. Primitive properties</a></li><ul><li><a href="#datetime-values">6.5.4.5.1. DateTime values</a></li></ul><li><a href="#structured-properties">6.5.4.6. Structured properties</a></li><li><a href="#actions-property">6.5.4.7. Actions property</a></li><ul><li><a href="#action-representation">6.5.4.7.1. Action representation</a></li><li><a href="#allowable-values">6.5.4.7.2. Allowable values</a></li></ul><li><a href="#links-property">6.5.4.8. Links Property</a></li><ul><li><a href="#reference-to-a-single-related-resource">6.5.4.8.1. Reference to a single related resource</a></li><li><a href="#array-of-references-to-related-resources">6.5.4.8.2. Array of references to related resources</a></li></ul><li><a href="#oem-property">6.5.4.9. OEM property</a></li><li><a href="#partial-resource-results">6.5.4.10. Partial resource results</a></li><li><a href="#extended-information">6.5.4.11. Extended information</a></li><ul><li><a href="#extended-object-information">6.5.4.11.1. Extended object information</a></li><li><a href="#extended-property-information">6.5.4.11.2. Extended property information</a></li></ul><li><a href="#additional-annotations">6.5.4.12. Additional annotations</a></li></ul><li><a href="#resource-collection-responses">6.5.5. Resource Collection responses</a></li><ul><li><a href="#context-property">6.5.5.1. Context property</a></li><li><a href="#count-property">6.5.5.2. Count property</a></li><li><a href="#members-property">6.5.5.3. Members property</a></li><li><a href="#next-link-property-and-partial-results">6.5.5.4. Next Link Property and partial results</a></li><li><a href="#additional-annotations">6.5.5.5. Additional annotations</a></li></ul><li><a href="#error-responses">6.5.6. Error responses</a></li><ul><li><a href="#message-object">6.5.6.1. Message object</a></li></ul></ul></ul><li><a href="#data-model-and-schema">7. Data model and Schema</a></li><ul><li><a href="#schema-repository">7.1. Schema repository</a></li><ul><li><a href="#schema-file-naming-conventions">7.1.1. Schema file naming conventions</a></li><ul><li><a href="#csdl-xml-schema-file-naming">7.1.1.1. CSDL (XML) schema file naming</a></li><li><a href="#json-schema-file-naming">7.1.1.2. JSON schema file naming</a></li><li><a href="#oem-schema-file-naming">7.1.1.3. OEM schema file naming</a></li></ul><li><a href="#programmatic-access-to-schema-files">7.1.2. Programmatic access to schema files</a></li></ul><li><a href="#type-identifiers">7.2. Type identifiers</a></li><ul><li><a href="#type-identifiers-in-json">7.2.1. Type identifiers in JSON</a></li></ul><li><a href="#common-naming-conventions">7.3. Common naming conventions</a></li><li><a href="#localization-considerations">7.4. Localization considerations</a></li><li><a href="#schema-definition">7.5. Schema definition</a></li><ul><li><a href="#common-annotations">7.5.1. Common annotations</a></li><ul><li><a href="#description">7.5.1.1. Description</a></li><li><a href="#long-description">7.5.1.2. Long description</a></li></ul><li><a href="#schema-documents">7.5.2. Schema documents</a></li><ul><li><a href="#schema-modification-rules">7.5.2.1. Schema Modification Rules</a></li><li><a href="#schema-version-requirements">7.5.2.2. Schema Version Requirements</a></li><li><a href="#referencing-other-schemas">7.5.2.3. Referencing other schemas</a></li><li><a href="#namespace-definitions">7.5.2.4. Namespace definitions</a></li></ul><li><a href="#resource-type-definitions">7.5.3. Resource type definitions</a></li><li><a href="#resource-properties">7.5.4. Resource properties</a></li><ul><li><a href="#property-types">7.5.4.1. Property types</a></li><ul><li><a href="#primitive-types">7.5.4.1.1. Primitive types</a></li><li><a href="#structured-types">7.5.4.1.2. Structured types</a></li><li><a href="#enums">7.5.4.1.3. Enums</a></li><li><a href="#collections">7.5.4.1.4. Collections</a></li></ul><li><a href="#additional-properties">7.5.4.2. Additional properties</a></li><li><a href="#non-nullable-properties">7.5.4.3. Non-nullable properties</a></li><li><a href="#read-only-properties">7.5.4.4. Read-only properties</a></li><li><a href="#required-properties">7.5.4.5. Required properties</a></li><li><a href="#required-properties-on-create">7.5.4.6. Required properties on create</a></li><li><a href="#units-of-measure">7.5.4.7. Units of measure</a></li></ul><li><a href="#reference-properties">7.5.5. Reference properties</a></li><ul><li><a href="#contained-resources">7.5.5.1. Contained resources</a></li><li><a href="#expanded-references">7.5.5.2. Expanded references</a></li><li><a href="#expanded-resources">7.5.5.3. Expanded resources</a></li></ul><li><a href="#resource-actions">7.5.6. Resource actions</a></li><li><a href="#resource-extensibility">7.5.7. Resource extensibility</a></li><ul><li><a href="#oem-property">7.5.7.1. Oem property</a></li><li><a href="#oem-property-format-and-content">7.5.7.2. Oem property format and content</a></li><li><a href="#oem-property-naming">7.5.7.3. Oem property naming</a></li></ul><li><a href="#oem-property-examples">7.5.8. Oem property examples</a></li><ul><li><a href="#custom-actions">7.5.8.1. Custom actions</a></li><li><a href="#custom-annotations">7.5.8.2. Custom annotations</a></li></ul></ul><li><a href="#common-redfish-resource-properties">7.6. Common Redfish resource properties</a></li><ul><li><a href="#id">7.6.1. Id</a></li><li><a href="#name">7.6.2. Name</a></li><li><a href="#description">7.6.3. Description</a></li><li><a href="#status">7.6.4. Status</a></li><li><a href="#links">7.6.5. Links</a></li><li><a href="#members">7.6.6. Members</a></li><li><a href="#relateditem">7.6.7. RelatedItem</a></li><li><a href="#actions">7.6.8. Actions</a></li><li><a href="#oem">7.6.9. OEM</a></li></ul><li><a href="#redfish-resources">7.7. Redfish resources</a></li><ul><li><a href="#current-configuration">7.7.1. Current configuration</a></li><li><a href="#settings">7.7.2. Settings</a></li><li><a href="#services">7.7.3. Services</a></li><li><a href="#registry">7.7.4. Registry</a></li></ul><li><a href="#special-resource-situations">7.8. Special resource situations</a></li><ul><li><a href="#absent-resources">7.8.1. Absent resources</a></li><li><a href="#schema-variations">7.8.2. Schema variations</a></li></ul></ul><li><a href="#service-details">8. Service details</a></li><ul><li><a href="#eventing">8.1. Eventing</a></li><ul><li><a href="#event-message-subscription">8.1.1. Event message subscription</a></li><li><a href="#event-message-objects">8.1.2. Event message objects</a></li><li><a href="#subscription-cleanup">8.1.3. Subscription cleanup</a></li></ul><li><a href="#asynchronous-operations">8.2. Asynchronous operations</a></li><li><a href="#resource-tree-stability">8.3. Resource tree stability</a></li><li><a href="#discovery">8.4. Discovery</a></li><ul><li><a href="#upnp-compatibility">8.4.1. UPnP compatibility</a></li><li><a href="#usn-format">8.4.2. USN format</a></li><li><a href="#m-search-response">8.4.3. M-SEARCH response</a></li><li><a href="#notify-alive-and-shutdown-messages">8.4.4. Notify, alive, and shutdown messages</a></li></ul></ul><li><a href="#security">9. Security</a></li><ul><li><a href="#protocols">9.1. Protocols</a></li><ul><li><a href="#tls">9.1.1. TLS</a></li><li><a href="#cipher-suites">9.1.2. Cipher suites</a></li><li><a href="#certificates">9.1.3. Certificates</a></li></ul><li><a href="#authentication">9.2. Authentication</a></li><ul><li><a href="#http-header-security">9.2.1. HTTP header security</a></li><ul><li><a href="#http-redirect">9.2.1.1. HTTP redirect</a></li></ul><li><a href="#extended-error-handling">9.2.2. Extended error handling</a></li><li><a href="#http-header-authentication">9.2.3. HTTP header authentication</a></li><ul><li><a href="#basic-authentication">9.2.3.1. BASIC authentication</a></li><li><a href="#request-message-level-authentication">9.2.3.2. Request/Message level authentication</a></li></ul><li><a href="#session-management">9.2.4. Session Management</a></li><ul><li><a href="#session-lifecycle-management">9.2.4.1. Session lifecycle management</a></li><li><a href="#redfish-login-sessions">9.2.4.2. Redfish login sessions</a></li><li><a href="#session-login">9.2.4.3. Session login</a></li><li><a href="#x-auth-token-http-header">9.2.4.4. X-Auth-Token HTTP header</a></li><li><a href="#session-lifetime">9.2.4.5. Session lifetime</a></li><li><a href="#session-termination-or-logout">9.2.4.6. Session termination or logout</a></li></ul><li><a href="#accountservice">9.2.5. AccountService</a></li><li><a href="#async-tasks">9.2.6. Async tasks</a></li><li><a href="#event-subscriptions">9.2.7. Event subscriptions</a></li><li><a href="#privilege-model-authorization">9.2.8. Privilege model/Authorization</a></li><li><a href="#redfish-service-operation-to-privilege-mapping">9.2.9. Redfish Service Operation to Privilege Mapping</a></li><ul><li><a href="#why-specify-operation-to-privilege-mapping">9.2.9.1. Why specify Operation to Privilege Mapping</a></li><li><a href="#representing-operation-to-privilege-mappings">9.2.9.2. Representing Operation to Privilege Mappings</a></li><li><a href="#operationmap-syntax">9.2.9.3. OperationMap Syntax</a></li><li><a href="#mapping-overrides-syntax">9.2.9.4. Mapping Overrides Syntax</a></li><li><a href="#property-override-example">9.2.9.5. Property Override Example</a></li><li><a href="#subordinate-override">9.2.9.6. Subordinate Override</a></li><li><a href="#resourceuri-override">9.2.9.7. ResourceURI Override</a></li><li><a href="#privilege-and-and-or-syntax">9.2.9.8. Privilege AND and OR Syntax</a></li></ul></ul></ul><li><a href="#redfish-host-interface">10. Redfish Host Interface</a></li><li><a href="#redfish-composability">11. Redfish Composability</a></li><ul><li><a href="#composition-requests">11.1. Composition Requests</a></li><ul><li><a href="#specific-composition">11.1.1. Specific Composition</a></li></ul></ul><li><a href="#annex-a-informative-">12. ANNEX A (informative)</a></li><ul><li><a href="#change-log">12.1. Change log</a></li></ul></ul><style scoped="">.hljs{display:block;overflow-x:auto;padding:.5em;color:#333;background:#f8f8f8}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:700}.hljs-literal,.hljs-number,.hljs-tag .hljs-attr,.hljs-template-variable,.hljs-variable{color:teal}.hljs-doctag,.hljs-string{color:#d14}.hljs-section,.hljs-selector-id,.hljs-title{color:#900;font-weight:700}.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type{color:#458;font-weight:700}.hljs-attribute,.hljs-name,.hljs-tag{color:navy;font-weight:400}.hljs-link,.hljs-regexp{color:#009926}.hljs-bullet,.hljs-symbol{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:700}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}</style><h1 id="foreword">Foreword</h1>
@@ -83,7 +83,7 @@
 </ul>
 <h2 id="abstract">1. Abstract</h2>
 <p>The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.</p>
-<p>There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center &amp; cloud needs.</p>
+<p>There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center and cloud needs.</p>
 <h2 id="normative-references">2. Normative references</h2>
 <p>The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.</p>
 <ul>
@@ -295,7 +295,7 @@
 <h2 id="overview">5. Overview</h2>
 <p>The Redfish Scalable Platforms Management API ("Redfish") is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, Redfish is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, Redfish can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable Redfish Schema, expressed in an OData Schema representation with translations to a JSON Schema representation, with the payload of the messages being expressed in a JSON following OData JSON conventions. The ability to externally host the Redfish Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering Redfish Services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.</p>
 <h3 id="scope">5.1. Scope</h3>
-<p>The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an inter-operable, cross-vendor, remote and out-of-band capable interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management. While large scale systems are the primary focus, the specifications are also capable of being used for more traditional system platform management implementations.</p>
+<p>The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an interoperable, cross-vendor, remote and out-of-band capable interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management. While large scale systems are the primary focus, the specifications are also capable of being used for more traditional system platform management implementations.</p>
 <p>The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which OEM (system vendor) -specific extensions can be provided by a given implementation.</p>
 <p>The specifications set normative requirements for Redfish Services and associated materials, such as Redfish Schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.</p>
 <p>The specifications do not set requirements that particular hardware or firmware must be used to implement the Redfish interfaces and functions.</p>
@@ -328,8 +328,8 @@
 </ul>
 <h3 id="limitations">5.4. Limitations</h3>
 <p>Redfish does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, Redfish does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocols from the data model.</p>
-<p>Inter-operable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.</p>
-<p>For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer.</p>
+<p>Interoperable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.</p>
+<p>For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well-known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer.</p>
 <p>Additionally, not all Redfish resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.</p>
 <p>Lastly, the value of hyperlinks between resources and other elements can vary across implementations. Clients should not assume that hyperlinks can be reused across different instantiations of a Redfish Service.</p>
 <h3 id="additional-design-background-and-rationale">5.5. Additional design background and rationale</h3>
@@ -340,12 +340,12 @@
 <li>It enables a lightweight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).</li>
 <li>It is a prevalent access method in the industry.</li>
 <li>It is easy to learn and easy to document.</li>
-<li>There are a number of toolkits &amp; development environments that can be used for REST.</li>
+<li>There are a number of toolkits and development environments that can be used for REST.</li>
 <li>It supports data model semantics and maps easily to the common CRUD operations.</li>
 <li>It fits with our design principle of simplicity.</li>
 <li>It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.</li>
 <li>It is schema agnostic so adapts well to any modeling language.</li>
-<li>By using it, Redfish can leverage existing security &amp; discovery mechanisms in the industry.</li>
+<li>By using it, Redfish can leverage existing security and discovery mechanisms in the industry.</li>
 </ul>
 <h4 id="follow-odata-conventions">5.5.2. Follow OData conventions</h4>
 <p>With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications. While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there is no interoperability between them.</p>
@@ -923,7 +923,7 @@
 <td>ETag</td>
 <td>Conditional</td>
 <td><a href="#RFC7232">RFC 7232</a></td>
-<td>An identifier for a specific version of a resource, often a message digest.   Etags shall be included on responses to GETs of ManagerAccount objects.</td>
+<td>An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects.</td>
 </tr>
 <tr>
 <td>Server</td>
@@ -1076,7 +1076,7 @@
 </tr>
 <tr>
 <td><a id="status-405"></a>405 Method Not Allowed</td>
-<td>The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI. The response shall include an Allow header which provides a list of methods that are supported by the resource identified by the Request-URI.</td>
+<td>The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI. The response shall include an Allow header, which provides a list of methods that are supported by the resource identified by the Request-URI.</td>
 </tr>
 <tr>
 <td><a id="status-406"></a>406 Not Acceptable</td>
@@ -1240,7 +1240,7 @@
 <li><em>TypeName</em> = The name of the type of the resource.</li>
 </ul>
 <h5 id="etag-property">6.5.4.4. ETag property</h5>
-<p>ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the <a href="#etags">Etag</a> for a resource.</p>
+<p>ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the <a href="#etags">ETag</a> for a resource.</p>
 <h5 id="primitive-properties">6.5.4.5. Primitive properties</h5>
 <p>Primitive properties shall be returned as JSON values according to the following table.</p>
 <table>
@@ -1285,7 +1285,7 @@
 <h6 id="datetime-values">6.5.4.5.1. DateTime values</h6>
 <p>DateTime values shall be returned as JSON strings according to the ISO 8601 "extended" format, with time offset or UTC suffix included, of the form:</p>
 <p> <code>*YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*] (Z | (+ | - ) *hh*:*mm*)</code></p>
-<p>  where:</p>
+<p>  where</p>
 <ul>
 <li><em>SSS</em> = one or more digits representing a decimal fraction of a second, with the number of digits implying precision.</li>
 <li>The 'T' separator and 'Z' suffix shall be capitals.</li>
@@ -1490,7 +1490,7 @@
 </tr>
 <tr>
 <td>message</td>
-<td>A human readable error message corresponding to the message in the message registry.</td>
+<td>A human-readable error message corresponding to the message in the message registry.</td>
 </tr>
 <tr>
 <td>@Message.ExtendedInfo</td>
@@ -1551,7 +1551,7 @@
 </tr>
 <tr>
 <td>Message</td>
-<td>A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.</td>
+<td>A human-readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.</td>
 </tr>
 <tr>
 <td>RelatedProperties</td>
@@ -1573,7 +1573,7 @@
 </table>
 <p>Each instance of a Message object shall contain at least a MessageId, together with any applicable MessageArgs, or a Message property specifying the complete human-readable error message.</p>
 <p>MessageIds identify specific messages defined in a message registry.</p>
-<p>The value of the MessageId property shall be of the form</p>
+<p>The value of the MessageId property shall be of the form:</p>
 <p> <em>RegistryName</em>.<em>MajorVersion</em>.<em>MinorVersion</em>.<em>MessageKey</em></p>
 <p>where</p>
 <ul>
@@ -1648,15 +1648,15 @@
 <h4 id="type-identifiers-in-json">7.2.1. Type identifiers in JSON</h4>
 <p>Types used within a JSON payload shall be defined in, or referenced by, the <a href="#service-metadata">service metadata</a>.</p>
 <p>Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.</p>
-<p>NOTE: Refer to the <a href="#security">Security</a> clause for security implications of Data Model &amp; Schema</p>
+<p>NOTE: Refer to the <a href="#security">Security</a> clause for security implications of Data Model and Schema</p>
 <h3 id="common-naming-conventions">7.3. Common naming conventions</h3>
 <p>The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.</p>
 <p>Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased</p>
 <ul>
-<li>The first letter of each word shall be upper case with spaces between words shall be removed  (eg PowerState, SerialNumber.)</li>
+<li>The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)</li>
 <li>No underscores are used.</li>
-<li>Both characters are capitalized for two-character acronyms (eg IPAddress, RemoteIP)</li>
-<li>Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (eg Wwn, VirtualWwn)</li>
+<li>Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).</li>
+<li>Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn).</li>
 </ul>
 <p>Exceptions are allowed for the following cases:</p>
 <ul>
@@ -1666,12 +1666,12 @@
 </ul>
 <p>For attributes that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:</p>
 <ul>
-<li>Bandwidth (Mbps), (eg PortSpeedMbps)</li>
-<li>CPU speed (Mhz), (eg ProcessorSpeedMhz)</li>
-<li>Memory size (MegaBytes, MB), (eg MemoryMB)</li>
-<li>Counts of items (Count), (eg ProcessorCount, FanCount)</li>
-<li>The State of a resource (State) (eg PowerState.)</li>
-<li>State values where "work" is being done end in (ing) (eg Applying, Clearing)</li>
+<li>Bandwidth (Mbps), (e.g., PortSpeedMbps)</li>
+<li>CPU speed (Mhz), (e.g., ProcessorSpeedMhz)</li>
+<li>Memory size (MegaBytes, MB), (e.g., MemoryMB)</li>
+<li>Counts of items (Count), (e.g., ProcessorCount, FanCount)</li>
+<li>The State of a resource (State) (e.g., PowerState.)</li>
+<li>State values where "work" is being done end in (ing) (e.g., Applying, Clearing)</li>
 </ul>
 <h3 id="localization-considerations">7.4. Localization considerations</h3>
 <p>Localization and translation of data or meta data is outside of the scope of version 1.0 of the Redfish Specification.
@@ -1880,8 +1880,8 @@ Property names are never localized.</p>
   <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationProperty</span>&gt;</span>
 </code></pre>
 <p>If the property references a collection of resources, the value of the type attribute is of the form:</p>
-<p> Collection(NamespaceQualifiedTypeName)</p>
-<p>where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.</p>
+<pre><code>  Collection(NamespaceQualifiedTypeName)
+</code></pre><p>where <code>NamespaceQualifiedTypeName</code> is the namespace qualified name of the type of related resources.</p>
 <pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">NavigationProperty</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"RelatedTypes"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Collection(MyTypes.TypeB)"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This property represents a collection of related resources."</span>/&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of the related property."</span>/&gt;</span>
@@ -2024,9 +2024,9 @@ DEPRECATED: The identifier shall be either an ICANN-recognized domain name (incl
 <h4 id="id">7.6.1. Id</h4>
 <p>The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.</p>
 <h4 id="name">7.6.2. Name</h4>
-<p>The Name property is used to convey a human readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.</p>
+<p>The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.</p>
 <h4 id="description">7.6.3. Description</h4>
-<p>The Description property is used to convey a human readable description of the resource.  The type of the Description property shall be string.</p>
+<p>The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.</p>
 <h4 id="status">7.6.4. Status</h4>
 <p>The Status property represents the status of a resource.</p>
 <p>The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.</p>
@@ -2114,8 +2114,8 @@ DEPRECATED: The identifier shall be either an ICANN-recognized domain name (incl
 <p>Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.</p>
 <h4 id="event-message-objects">8.1.2. Event message objects</h4>
 <p>Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.</p>
-<p>This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIds in a well known format.  These MessageIds are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.</p>
-<p>The MessageId property contents shall be of the form</p>
+<p>This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIds in a well-known format.  These MessageIds are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.</p>
+<p>The MessageId property contents shall be of the form:</p>
 <p> <em>RegistryName</em>.<em>MajorVersion</em>.<em>MinorVersion</em>.<em>MessageKey</em></p>
 <p>where</p>
 <ul>
@@ -2128,7 +2128,7 @@ DEPRECATED: The identifier shall be either an ICANN-recognized domain name (incl
 <p>To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.</p>
 <p>These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service’s behavior.</p>
 <h3 id="asynchronous-operations">8.2. Asynchronous operations</h3>
-<p>Services that support asynchronous operations will implement the Task service &amp; Task resource.</p>
+<p>Services that support asynchronous operations will implement the Task service and Task resource.</p>
 <p>The Task service is used to describe the service that handles tasks.  It contains a Resource Collection of zero or more "Task" resources. The Task resource is used to describe a long running operation that is spawned when a request will take longer than a few seconds, such as when a service is instantiated. Clients will poll the URI of the task resource to determine when the operation has completed and if it was successful.</p>
 <p>The Task structure in the Redfish Schema contains the exact structure of a Task.  The type of information it contains are start time, end time, task state, task status, and zero or more messages associated with the task.</p>
 <p>Each task has a number of possible states.  The exact states and their semantics are defined in the Task resource of the Redfish Schema.</p>
@@ -2223,9 +2223,9 @@ EXT:
 </ul>
 </li>
 <li>Redfish objects shall not be available unauthenticated, except for<ul>
-<li>The root object which is needed to identify the device and service locations</li>
-<li>The $metadata object which is needed to retrieve resource types</li>
-<li>The OData Service Document which is needed for compatibility with OData clients</li>
+<li>The root object that is needed to identify the device and service locations</li>
+<li>The $metadata object that is needed to retrieve resource types</li>
+<li>The OData Service Document that is needed for compatibility with OData clients</li>
 <li>The version object located at /redfish</li>
 </ul>
 </li>
@@ -2323,7 +2323,7 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 <li>User passwords should be stored with one-way encryption techniques.</li>
 <li>Implementations may support exporting user accounts with passwords, but shall do so using encryption methods to protect them.</li>
 <li>User accounts shall support ETags and shall support atomic operations<ul>
-<li>Implementations may reject requests which do not include an ETag</li>
+<li>Implementations may reject requests that do not include an ETag</li>
 </ul>
 </li>
 <li>User Management activity is atomic</li>
@@ -2363,14 +2363,15 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 <li>Implementations shall support all of the predefined roles.</li>
 <li>The predefined Roles may include OEM privileges.</li>
 <li>The privilege array defined for the predefined roles shall not be modifiable.</li>
-<li>A service may optionally support additional "Custom" roles, and may allow users to create such custom roles by: 1) posting to the "Roles" Resource Collection; or 2) an implementation may implement a i.e.,  custom role; or 3) other mechanism outside the specification.</li>
+<li>A service may optionally define additional "Custom" roles.</li>
+<li>A service may allow users to create custom roles by issuing a POST to the "Roles" Resource Collection.</li>
 </ul>
 </li>
 <li><p>Privileges:</p>
 <ul>
 <li>A privilege is a permission to perform an operation (e.g., Read, Write) within a defined management domain (e.g., Configuring Users).</li>
 <li>The Redfish specification defines a set of "assigned privileges" in the AssignedPrivileges array in the Role resource.</li>
-<li>An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array in the Role resource.</li>
+<li>An implementation may also include "OemPrivileges", which are then specified in an OemPrivileges array in the Role resource.</li>
 <li>Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges Redfish Schema file.</li>
 <li>Multiple privileges in the mapping constitute an OR of the privileges.</li>
 </ul>
@@ -2390,33 +2391,33 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 </li>
 </ul>
 <h4 id="redfish-service-operation-to-privilege-mapping">9.2.9. Redfish Service Operation to Privilege Mapping</h4>
-<p>For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
+<p>For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that
 the authenticated identity of the requestor has the authorization to perform the requested operation on the resource specified in the request.
 Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
 against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.</p>
 <h5 id="why-specify-operation-to-privilege-mapping">9.2.9.1. Why specify Operation to Privilege Mapping</h5>
 <p>Initial versions of the Redfish specifications specified several Role to Privilege mappings for standardized Roles and normatively identified
-several Prvilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could 
-be specified or represented in a normative fashion. The lack of a methdology to define what privilege(s) are required to perform a specific
-requested operation against the URI specified in the request puts at risk the interoperability between Redfsh service implementations that
-Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specififying 
+several Privilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could
+be specified or represented in a normative fashion. The lack of a methodology to define what privilege(s) are required to perform a specific
+requested operation against the URI specified in the request puts at risk the interoperability between Redfish service implementations that
+Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specifying
 and representing the operation to privilege mapping prevents the SPMF or other governing organization to normatively define privilege requirements for a service.</p>
 <h5 id="representing-operation-to-privilege-mappings">9.2.9.2. Representing Operation to Privilege Mappings</h5>
-<p>A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
-Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single 
-JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity 
-supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service 
-implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing 
+<p>A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the
+Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single
+JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity
+supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service
+implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing
 operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
 entity level operation to privilege mappings and related overrides are defined in the PrivilegeRegistry schema.</p>
 <p>If a Redfish service provides a Privilege Registry document, the service shall use the SPMF Redfish Privilege Mapping Registry definition
 as a base operation to privilege mapping definition for operations that the service supports in order to promote interoperability for Redfish clients.</p>
 <h5 id="operationmap-syntax">9.2.9.3. OperationMap Syntax</h5>
 <p>An operation map defines the set of privileges required to perform a specific operation on an entity, entity element, or resource.
-The operations mapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective 
-of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined prvilege labels. The 
+The operations mapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective
+of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined privilege labels. The
 privileges required for an operation can be specified with logical AND and OR behavior as required (see Privilege AND and OR Syntax section for more information).  The following example defines
-the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to 
+the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to
 privilege mapping would represent behavior for all Manager resources in a service implementation.</p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"Manager"</span>,
@@ -2458,10 +2459,10 @@ privilege mapping would represent behavior for all Manager resources in a servic
 <p>Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
 These situations are:</p>
 <ul>
-<li>Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
-property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast 
-to the "ConfigureUsers" privilege required for the rest of the properties on ManagerAccount resources.</li>
-<li>Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
+<li>Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password
+property in the ManagerAccount resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast
+to the "ConfigureUsers" privilege required for the rest of the properties in ManagerAccount resources.</li>
+<li>Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
 (ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.</li>
 <li>Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
@@ -2469,7 +2470,7 @@ The overrides are defined in the context of the operation to privilege mapping f
 </ul>
 <h5 id="property-override-example">9.2.9.5. Property Override Example</h5>
 <p>In the following example, the Password property on the ManagerAccount
-resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast to the "ConfigureUsers" privilege 
+resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast to the "ConfigureUsers" privilege
 required for the rest of the properties on ManagerAccount resources.</p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"ManagerAccount"</span>,
@@ -2602,7 +2603,7 @@ required for the rest of the properties on ManagerAccount resources.</p>
             }
         ],
         <span class="hljs-attr">"HEAD"</span>: [
-            { 
+            {
                 <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
             }
         ],
@@ -2650,7 +2651,7 @@ required for the rest of the properties on ManagerAccount resources.</p>
 }
 </code></pre>
 <h5 id="privilege-and-and-or-syntax">9.2.9.8. Privilege AND and OR Syntax</h5>
-<p>Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logicial combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.</p>
+<p>Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logical combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.</p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"GET"</span>: [
         {
