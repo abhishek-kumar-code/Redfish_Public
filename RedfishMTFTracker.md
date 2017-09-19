@@ -3,7 +3,10 @@
 
 All SPMF activities with expected public output should be listed in this document, with planned or expected release dates.  
 
-This document is used by the Marketing Task Force to coordinate outbound messaging activies around the Forum's output.  
+This document is used by the Marketing Task Force to coordinate outbound messaging activies around the Forum's output. 
+
+For details on any item listed, contact: spmf-chair@dmtf.org 
+ 
 
 ## Upcoming Events
 

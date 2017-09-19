@@ -511,6 +511,13 @@
                 "number"
             ],
             "Resolution": "Resubmit the request with an appropriate string length."
+        }, 
+        "SessionTerminated": {
+            "Description": "Indicates that the DELETE operation on the Session resource resulted in the successful termination of the session.",
+            "Message": "The session was successfully terminated.",
+            "Severity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution is required."
         }
     }
 }

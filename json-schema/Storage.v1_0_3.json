@@ -91,7 +91,7 @@
                 "iSCSI": "This value shall mean that this device conforms to the IETF Internet Small Computer Systems Interface (iSCSI) Specification.",
                 "FCoE": "This value shall mean that this device conforms to the T11 FC-BB-5 Specification.",
                 "FCP": "This enumeration literal shall indicate the INCITS 481: Information technology - Fibre Channel Protocol for SCSI.  The Fibre Channel SCSI Protocol.",
-                "FICON": "This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol. ",
+                "FICON": "This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol.",
                 "NVMeOverFabrics": "This value shall mean that this device conforms to the NVM Express over Fabrics Specification.",
                 "SMB": "This value shall mean that this device conforms to the Microsoft Server Message Block Protocol.",
                 "NFSv3": "This value shall mean that this device conforms to the Network File System protocol as defined by RFC 1813.",

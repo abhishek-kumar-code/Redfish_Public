@@ -206,7 +206,9 @@ The following is a checklist for schema or specification release:
 
 A set of batch/script files are located in the root and release folder which will execute a series of tools to convert the Markdown documents to HTML.  Note that for Windows users, the node.js javascript environment used by these scripts may have issues locating the proper toolchain components of Visual Studio (C/C++).  This is a well-known issue, and following the steps documented here: https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245 can resolve that issue.  
 
-Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://github.com/cehoffman/dmtf-md2html
+Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://cehoffman.github.io/dmtf-md2html/
+
+Source code is kept in this repository: https://github.com/cehoffman/dmtf-md2html
 
 ##github.io
 
