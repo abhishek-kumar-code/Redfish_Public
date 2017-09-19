@@ -67,7 +67,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="HostInterface.v1_0_0">
 
       <EntityType Name="HostInterface" BaseType="HostInterface.HostInterface">
-        <Annotation Term="OData.Description" String="This schema defines a Host Interface resource."/>
+        <Annotation Term="OData.Description" String="The HostInterface schema represetns a single host interface."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent Host Interface resources as part of the Redfish specification."/>
         <Property Name="HostInterfaceType" Type="HostInterface.v1_0_0.HostInterfaceType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
