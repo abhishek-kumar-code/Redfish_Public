@@ -147,7 +147,7 @@
           <Annotation Term="OData.Description" String="Estimated percent error of measured vs. actual values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the percent error +/- of the measured vs. actual values."/>
         </Property>
-        
+
         <Property Name="PhysicalContext" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The PhysicalContext for this Sensor."/>
