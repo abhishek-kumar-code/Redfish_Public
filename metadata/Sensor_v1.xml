@@ -19,6 +19,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
     <edmx:Include Namespace="Resource.v1_5_0"/>
   </edmx:Reference>
 
@@ -69,7 +70,6 @@
         </Property>
 
         <Property Name="SensorLocation" Type="Resource.v1_5_0.PartLocation">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The location information for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
         </Property>
@@ -138,7 +138,7 @@
 
         <Property Name="Precision" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Number of significant digits in the Reading"/>
+          <Annotation Term="OData.Description" String="Number of significant digits in the Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the number of significant digits in the Reading."/>
         </Property>
         
