@@ -26,7 +26,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia">
 
       <EntityType Name="VirtualMedia" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="The VirtualMedia schema contains properties related to monitoring and control of an instance of virtual media such as a remote CD, DVD, or USB device. Virtual media functionality is provided by a Manager for a system or device. "/>
+        <Annotation Term="OData.Description" String="The VirtualMedia schema contains properties related to monitoring and control of an instance of virtual media such as a remote CD, DVD, or USB device. Virtual media functionality is provided by a Manager for a system or device."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a virtual media service for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
