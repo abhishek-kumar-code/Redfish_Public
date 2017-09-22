@@ -3,7 +3,7 @@ DocTitle: Redfish Standard Registries
 DocNumber: '8011'
 DocClass: Normative
 DocVersion: '2017.2'
-modified: '2017-08-18'
+modified: '2017-09-22'
 status: published
 released: True
 copyright: '2015-2017'
