@@ -282,15 +282,16 @@
 
     </Schema>
 
-	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_3_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_3_0">
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_2_0.ServiceRoot">
 	  <Property Name="Product" Type="Edm.String" Nullable="false">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-        <Annotation Term="OData.Description" String="The product associated with this Redfish service."/>
-        <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the product represented by this Redfish service."/>
-      </Property>
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The product associated with this Redfish service."/>
+            <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the product represented by this Redfish service."/>
+          </Property>
+      </EntityType>
 	
-	</Schema>  
+    </Schema>  
 
   </edmx:DataServices>
 </edmx:Edmx>
