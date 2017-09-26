@@ -19,7 +19,6 @@
     "Location": {
         "@odata.type": "#Resource.v1_5_0.Location",
         "PostalAddress": {
-            "@odata.type": "#Resource.v1_3_0.PostalAddress",
             "Country": "US",
             "Territory": "OR",
             "City": "Portland",
@@ -29,7 +28,6 @@
             "PostalCode": "97204"
         },
         "Placement": {
-            "@odata.type": "#Resource.v1_3_0.Placement",
             "Row": "North",
             "Rack": "WEB43",
             "RackOffsetUnits": "EIA_310",
