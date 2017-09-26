@@ -18,7 +18,6 @@
     "Location": {
         "@odata.type": "#Resource.v1_5_0.Location",
         "PartLocation": {
-            "@odata.type": "#Resource.v1_5_0.PartLocation",
             "ServiceLabel": "Blade 4",
             "LocationType": "Slot",
             "LocationOrdinalValue": 3,
