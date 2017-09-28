@@ -290,8 +290,8 @@
             <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the product represented by this Redfish service."/>
           </Property>
       </EntityType>
-	
-    </Schema>  
+
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
