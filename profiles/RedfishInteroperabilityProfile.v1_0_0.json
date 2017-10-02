@@ -21,6 +21,12 @@
 			"type": "string",
 			"description": "The author(s) of this Redfish Interoperability Profile."
 		},
+		"OwningEntity": {
+			"$ref": "#/definitions/OwningEntity"
+		},
+		"OwningEntityName": {
+			"$ref": "#/definitions/OwningEntityName"
+		},
 		"Purpose": {
 			"$ref": "#/definitions/Purpose"
 		},
@@ -63,15 +69,19 @@
 		"Resources": {
 			"type": "object",
 			"description": "The JSON resource requirements for this Redfish Interoperability Profile.",
-			"additionalProperties": {
-				"$ref": "#/definitions/ResourceProfile"
+			"patternProperties": {
+				"^.*$": {
+					"$ref": "#/definitions/ResourceProfile"
+				}
 			}
 		},
 		"Registries": {
 			"type": "object",
 			"description": "The Message Registry requirements for this Redfish Interoperability Profile.",
-			"additionalProperties": {
-				"$ref": "#/definitions/RegistryProfile"
+			"patternProperties": {
+				"^.*$": {
+					"$ref": "#/definitions/RegistryProfile"
+				}
 			}
 		}
 	},
@@ -81,12 +91,6 @@
 			"properties": {
 				"MinVersion": {
 					"$ref": "#/definitions/MinVersion"
-				},
-				"OwningEntity": {
-					"$ref": "#/definitions/OwningEntity"
-				},
-				"OwningEntityName": {
-					"$ref": "#/definitions/OwningEntityName"
 				},
 				"Repository": {
 					"$ref": "#/definitions/Repository"
@@ -106,18 +110,24 @@
 				"PropertyRequirements": {
 					"type": "object",
 					"description": "The property-level requirements for this Redfish Interoperability Profile.  These requirements apply to every instance of this resource.  If a property defined in the associated schema is not present, there is no requirement for that property to be supported.",
-					"additionalProperties": {
-						"$ref": "#/definitions/PropertyProfile",
-						"PropertyRequirements": {
-							"type": "object",
-							"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
-							"additionalProperties": {
-								"$ref": "#/definitions/PropertyProfile",
-								"PropertyRequirements": {
-									"type": "object",
-									"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
-									"additionalProperties": {							
-										"$ref": "#/definitions/PropertyProfile"
+					"patternProperties": {
+						"^.*$": {
+							"$ref": "#/definitions/PropertyProfile",
+							"PropertyRequirements": {
+								"type": "object",
+								"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
+								"patternProperties": {
+									"^.*$": {
+										"$ref": "#/definitions/PropertyProfile",
+										"PropertyRequirements": {
+											"type": "object",
+											"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
+											"patternProperties": {	
+												"^.*$": {
+													"$ref": "#/definitions/PropertyProfile"
+												}
+											}
+										}
 									}
 								}
 							}
@@ -213,12 +223,6 @@
 				},
 				"MinVersion": {
 					"$ref": "#/definitions/MinVersion"
-				},
-				"OwningEntity": {
-					"$ref": "#/definitions/OwningEntity"
-				},
-				"OwningEntityName": {
-					"$ref": "#/definitions/OwningEntityName"
 				},
 				"Repository": {
 					"$ref": "#/definitions/Repository"
@@ -329,9 +333,9 @@
 				"Equal",
 				"NotEqual",
 				"GreaterThan",
-				"GreaterThanEqual",
+				"GreaterThanOrEqual",
 				"LessThan",
-				"LessThanEqual",
+				"LessThanOrEqual",
 				"Present"
 			],
 			"enumDescriptions": {
@@ -341,9 +345,9 @@
 				"Equal": "The value of the property must be equal to the Values.",
 				"NotEqual": "The value of the property must not be equal to the Values.",
 				"GreaterThan": "The value of the property must be greater than the Values.",
-				"GreaterThanEqual": "The value of the property must be greater than or equal to the Values.",
+				"GreaterThanOrEqual": "The value of the property must be greater than or equal to the Values.",
 				"LessThan": "The value of the property must be less than to the Values.",
-				"LessThanEqual": "The value of the property must be less than or equal to the Values.",
+				"LessThanOrEqual": "The value of the property must be less than or equal to the Values.",
 				"Present": "The property is present in this resource."
 			}
 		},
@@ -365,7 +369,7 @@
 			"enumDescriptions": {
 				"DMTF": "A standard schema defined by the Distributed Management Task Force.",
 				"SNIA": "A standard schema defined by the Storage Networking Industry Association.",
-				"OEM": "A vendor-defined schema."
+				"Other": "A schema defined by any other entity, company or individual."
 			}
 		},
 		"OwningEntityName": {
