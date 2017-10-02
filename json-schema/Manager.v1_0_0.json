@@ -103,8 +103,8 @@
             ],
             "enumDescriptions": {
                 "SSH": "The controller supports a Command Shell connection using the SSH protocol.",
-                "Telnet": "The controller supports a Command Shell connection using the SSH protocol.",
-                "IPMI": "The controller supports a Command Shell connection using the SSH protocol.",
+                "Telnet": "The controller supports a Command Shell connection using the Telnet protocol.",
+                "IPMI": "The controller supports a Command Shell connection using the IPMI Serial-over-LAN (SOL) protocol.",
                 "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol."
             }
         },
