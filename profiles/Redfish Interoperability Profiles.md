@@ -61,10 +61,10 @@ The RequiredProfiles object contains properties (of type object) that are named 
 The following is an example of the top-level properties in a Profile, with two Required profiles included.
 
 ~~~
-	"@odata.type": "RedfishProfile.v1_0_0.RedfishProfile",
+	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "Anchovy",
-	"Version": "1.0.2",
-	"Author": "Pizza Box Project",
+	"ProfileVersion": "1.0.2",
+	"Author": "Pizza Box Consortium",
 	"Purpose": "This is a sample Redfish Interoperability profile.",
 	"ContactInfo": "pizza@contoso.com",
 	"RequiredProfiles": {
@@ -213,9 +213,9 @@ The Comparison function uses the following enumerations to represent the arithme
 | Equal | The value must be equal to the KeyValue. |
 | NotEqual | The value of the property must not be equal to the value(s) listed. |
 | GreaterThan | The value of the property must be greater than the Values. |
-| GreaterThanEqual | The value of the property must be greater than or equal to the Values. |
+| GreaterThanOrEqual | The value of the property must be greater than or equal to the Values. |
 | LessThan | The value of the property must be less than to the Values. |
-| LessThanEqual | The value of the property must be less than or equal to the Values. |
+| LessThanOrEqual | The value of the property must be less than or equal to the Values. |
 | Present | The property is present in this resource. |
 
 
