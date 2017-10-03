@@ -17,15 +17,9 @@
 			"type": "string",
 			"description": "The version of this Redfish Interoperability Profile."
 		},
-		"Author": {
-			"type": "string",
-			"description": "The author(s) of this Redfish Interoperability Profile."
-		},
 		"OwningEntity": {
-			"$ref": "#/definitions/OwningEntity"
-		},
-		"OwningEntityName": {
-			"$ref": "#/definitions/OwningEntityName"
+			"type": "string",
+			"description": "Name of the owning entity that defined this Redfish Interoperability Profile."
 		},
 		"Purpose": {
 			"$ref": "#/definitions/Purpose"
@@ -365,26 +359,6 @@
 				"type": "string"
 			},
 			"description": "The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed."
-		},
-		"OwningEntity": {
-			"type": "string",
-			"description": "Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.",
-			"enum": [
-				"DMTF",
-				"SNIA",
-				"OCP",
-				"Other"
-			],
-			"enumDescriptions": {
-				"DMTF": "A standard profile defined by the Distributed Management Task Force.",
-				"SNIA": "A standard profile defined by the Storage Networking Industry Association.",
-				"OCP": "A profile defined by the Open Compute Project.",
-				"Other": "A profile defined by any other entity, company or individual."
-			}
-		},
-		"OwningEntityName": {
-			"type": "string",
-			"description": "Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification"
 		},
 		"Repository": {
 			"type": "string",

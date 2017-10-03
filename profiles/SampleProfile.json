@@ -2,17 +2,14 @@
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "Anchovy",
 	"ProfileVersion": "1.0.2",
-	"Author": "Pizza Box Consortium",
-	"OwningEntity": "Other",
-	"OwningEntityName": "Contoso",
 	"Purpose": "This is a sample Redfish Interoperability profile.",
+	"OwningEntity": "Contoso",
 	"ContactInfo": "pizza@contoso.com",
 	"RequiredProfiles": {
 		"DMTFBasic": {
 			"MinVersion": "1.0.0"
 		},
 		"ContosoPizza": {
-
 			"Repository": "contoso.com/profiles",
 			"MinVersion": "1.0.0"
 		}

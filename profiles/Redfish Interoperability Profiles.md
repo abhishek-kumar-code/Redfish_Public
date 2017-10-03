@@ -39,25 +39,11 @@ At the top level of the JSON document are the basic properties which describe th
 | --- | --- | --- |
 | SchemaDefinition | string | The JSON schema which defines this Redfish Interoperability Profile document and can be used to validate its contents. |
 | ProfileName | string | The name of this Redfish Profile. |
-| Author | string | The author(s) of this Redfish Profile. |
 | ProfileVersion | string | The version of this Redfish Profile. |
 | Purpose | string | A description of the purpose of this Redfish Profile, such as its intended target audience, product segments, etc.|
 | ContactInfo | string | An email address that can be used to provide feedback about this Redfish Profile. |
-| OwningEntity | string | Indicates whether this profile is published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'. |
-| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
+| OwningEntity | string | Name of the owning entity that defined this Redfish Interoperability Profile. |
 | RequiredProfiles | object | A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
-
-#### Owning Entity
-
-The Owning Entity value must be one of the following enumerations.  If the property is absent from the Profile document, the value shall be 'DMTF'.  A value of 'Other' shall be further specified by the inclusion of the 'OwningEntityName' property.
-
-| value | description |
-| --- | --- |
-| DMTF | A standard profile defined by the Distributed Management Task Force. |
-| SNIA | A standard profile defined by the Storage Networking Industry Association. |
-| OCP | A profile defined by the Open Compute Project. |
-| Other | A profile defined by any other entity, company or individual. |
-
 
 #### Required Profiles
 
