@@ -43,7 +43,21 @@ At the top level of the JSON document are the basic properties which describe th
 | ProfileVersion | string | The version of this Redfish Profile. |
 | Purpose | string | A description of the purpose of this Redfish Profile, such as its intended target audience, product segments, etc.|
 | ContactInfo | string | An email address that can be used to provide feedback about this Redfish Profile. |
+| OwningEntity | string | Indicates whether this profile is published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'. |
+| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | RequiredProfiles | object | A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
+
+#### Owning Entity
+
+The Owning Entity value must be one of the following enumerations.  If the property is absent from the Profile document, the value shall be 'DMTF'.  A value of 'Other' shall be further specified by the inclusion of the 'OwningEntityName' property.
+
+| value | description |
+| --- | --- |
+| DMTF | A standard profile defined by the Distributed Management Task Force. |
+| SNIA | A standard profile defined by the Storage Networking Industry Association. |
+| OCP | A profile defined by the Open Compute Project. |
+| Other | A profile defined by any other entity, company or individual. |
+
 
 #### Required Profiles
 
@@ -52,8 +66,6 @@ The RequiredProfiles object contains properties (of type object) that are named 
 | property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
-| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
-| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 
 ### Example
@@ -132,8 +144,6 @@ The following options are available at the schema level:
 | property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
-| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
-| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | ReadRequirement | string | Resource-level requirement for this schema, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
@@ -379,8 +389,6 @@ The following functions are available to specify Registry-level requirements:
 | property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
-| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
-| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | ReadRequirement | string | Resource-level requirement for this Registry, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |

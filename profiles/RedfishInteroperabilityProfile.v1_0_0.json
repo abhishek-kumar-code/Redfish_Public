@@ -375,9 +375,9 @@
 				"Other"
 			],
 			"enumDescriptions": {
-				"DMTF": "A standard schema defined by the Distributed Management Task Force.",
-				"SNIA": "A standard schema defined by the Storage Networking Industry Association.",
-				"Other": "A schema defined by any other entity, company or individual."
+				"DMTF": "A standard profile defined by the Distributed Management Task Force.",
+				"SNIA": "A standard profile defined by the Storage Networking Industry Association.",
+				"Other": "A profile defined by any other entity, company or individual."
 			}
 		},
 		"OwningEntityName": {
