@@ -165,7 +165,7 @@ The following options are available at the property level:
 | MinSupportValues |  array | The minimum set of enumerations that must be supported for this writable property. |
 | Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
-| Values | array | The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed. |
+| Values | array | The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison. |
 | PropertyRequirements | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
 
 #### Example
@@ -210,7 +210,7 @@ The Comparison function uses the following enumerations to represent the arithme
 | NotEqual | The value of the property must not be equal to the value(s) listed. |
 | GreaterThan | The value of the property must be greater than the Values. |
 | GreaterThanOrEqual | The value of the property must be greater than or equal to the Values. |
-| LessThan | The value of the property must be less than to the Values. |
+| LessThan | The value of the property must be less than the Values. |
 | LessThanOrEqual | The value of the property must be less than or equal to the Values. |
 | Present | The property is present in this resource. |
 

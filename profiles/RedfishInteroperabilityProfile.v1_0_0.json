@@ -348,7 +348,7 @@
 				"NotEqual": "The value of the property must not be equal to the Values.",
 				"GreaterThan": "The value of the property must be greater than the Values.",
 				"GreaterThanOrEqual": "The value of the property must be greater than or equal to the Values.",
-				"LessThan": "The value of the property must be less than to the Values.",
+				"LessThan": "The value of the property must be less than the Values.",
 				"LessThanOrEqual": "The value of the property must be less than or equal to the Values.",
 				"Present": "The property is present in this resource."
 			}
@@ -358,7 +358,7 @@
 			"items": {
 				"type": "string"
 			},
-			"description": "The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed."
+			"description": "The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison."
 		},
 		"Repository": {
 			"type": "string",
