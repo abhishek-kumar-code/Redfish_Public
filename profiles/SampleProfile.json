@@ -2,7 +2,9 @@
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "Anchovy",
 	"ProfileVersion": "1.0.2",
-	"Author": "Pizza Box Project",
+	"Author": "Pizza Box Consortium",
+	"OwningEntity": "Other",
+	"OwningEntityName": "Contoso",
 	"Purpose": "This is a sample Redfish Interoperability profile.",
 	"ContactInfo": "pizza@contoso.com",
 	"RequiredProfiles": {
@@ -10,8 +12,7 @@
 			"MinVersion": "1.0.0"
 		},
 		"ContosoPizza": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
+
 			"Repository": "contoso.com/profiles",
 			"MinVersion": "1.0.0"
 		}
@@ -160,8 +161,6 @@
 			}
 		},
 		"ContosoTimeMachine": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
 			"Repository": "www.contoso.com/schemas",
 			"PropertyRequirements": {
 				"CurrentTime": {},
@@ -187,8 +186,6 @@
 			}
 		},
 		"ContosoPizzaMessages": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
 			"Repository": "contoso.com/registries",
 			"ReadRequirement": "Mandatory"
 		}

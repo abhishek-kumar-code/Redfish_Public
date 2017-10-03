@@ -41,12 +41,6 @@
 				"Repository": {
 					"$ref": "#/definitions/Repository"
 				},
-				"OwningEntity": {
-					"$ref": "#/definitions/OwningEntity"
-				},
-				"OwningEntityName": {
-					"$ref": "#/definitions/OwningEntityName"
-				},
 				"MinVersion": {
 					"$ref": "#/definitions/MinVersion"
 				}
@@ -137,8 +131,10 @@
 				"ActionRequirements": {
 					"type": "object",
 					"description": "The action requirements for this Redfish Interoperability Profile.",
-					"additionalPropeties": {
-						"$ref": "#/definitions/ActionProfile"
+					"patternProperties": {
+						"^.*$": {
+							"$ref": "#/definitions/ActionProfile"
+						}
 					}
 				}
 			}
@@ -188,23 +184,29 @@
 				},
 				"Parameters": {
 					"type": "object",
-					"additionalProperties": {
-						"ReadRequirement": {
-							"$ref": "#/definitions/ReadRequirement"
-						},
-						"ParameterValues": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							},
-							"description": "The minimum set of enumerations that must be supported for this parameter to meet the Requirement."
-						},
-						"RecommendedValues": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							},
-							"description": "For Mandatory parameters, the set of enumerations, in addition to those listed in ParameterValues, that are recommended to be supported."
+					"patternProperties": {
+						"^.*$": {
+							"type": "object",
+							"properties": {
+								"ReadRequirement": {
+									"$ref": "#/definitions/ReadRequirement"
+								},
+								"ParameterValues": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "The minimum set of enumerations that must be supported for this parameter to meet the Requirement."
+								},
+								"RecommendedValues": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"description": "For Mandatory parameters, the set of enumerations, in addition to those listed in ParameterValues, that are recommended to be supported."
+								},
+								"additionalProperties": false
+							}
 						}
 					}
 				}
@@ -230,9 +232,15 @@
 				"Messages": {
 					"type": "object",
 					"description": "The Messages in this Registry which have support requirements for this Redfish Interoperability Profile. If this property is absent, all Messages in this Registry follow the registry-level 'ReadRequirement'.",
-					"additionalProperties": {
-						"ReadRequirement": {
-							"$ref": "#/definitions/ReadRequirement"
+					"patternProperties": {
+						"^.*$": {
+							"type": "object",
+							"properties": {
+								"ReadRequirement": {
+									"$ref": "#/definitions/ReadRequirement"
+								}
+							},
+							"additionalProperties": false
 						}
 					}
 				}
