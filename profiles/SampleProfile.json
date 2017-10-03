@@ -139,7 +139,10 @@
 						"Reading": {},
 						"ReadingUnits": {},
 						"Status": {},
-						"PhysicalContext": {}
+						"PhysicalContext": {
+							"Comparison": "LinkToResource",
+							"Values": [ "Processor", "ComputerSystem", "Chassis", "Memory"]
+						}
 					}
 				},
 				"Temperatures": {

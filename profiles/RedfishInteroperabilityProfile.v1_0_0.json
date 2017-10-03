@@ -344,7 +344,8 @@
 				"GreaterThanOrEqual",
 				"LessThan",
 				"LessThanOrEqual",
-				"Present"
+				"Present",
+				"LinkToResource"
 			],
 			"enumDescriptions": {
 				"Absent": "The property is not present in this resource.",
@@ -356,7 +357,8 @@
 				"GreaterThanOrEqual": "The value of the property must be greater than or equal to the Values.",
 				"LessThan": "The value of the property must be less than to the Values.",
 				"LessThanOrEqual": "The value of the property must be less than or equal to the Values.",
-				"Present": "The property is present in this resource."
+				"Present": "The property is present in this resource.",
+				"LinkToResource": "The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the un-versioned schema name (e.g. 'Thermal' or 'Memory')."
 			}
 		},
 		"Values": {
