@@ -372,11 +372,13 @@
 			"enum": [
 				"DMTF",
 				"SNIA",
+				"OCP",
 				"Other"
 			],
 			"enumDescriptions": {
 				"DMTF": "A standard profile defined by the Distributed Management Task Force.",
 				"SNIA": "A standard profile defined by the Storage Networking Industry Association.",
+				"OCP": "A profile defined by the Open Compute Project.",
 				"Other": "A profile defined by any other entity, company or individual."
 			}
 		},
