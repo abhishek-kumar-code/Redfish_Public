@@ -119,6 +119,7 @@
       </ComplexType>
 
       <ComplexType Name="ConnectedEntity">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="Represents a remote resource that is connected to the network accessible to this endpoint."/>
         <Annotation Term="OData.LongDescription" String="This type shall represent a remote resource that is connected to a network accessible to an endpoint."/>
         <Property Name="EntityType" Type="Endpoint.v1_0_0.EntityType">
@@ -200,6 +201,7 @@
       </EnumType>
 
       <ComplexType Name="PciId">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="A PCI ID."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe a PCI ID."/>
         <Property Name="DeviceId" Type="Edm.String">
