@@ -6,14 +6,12 @@
     "Id": "1",
     "Name": "My Computer System",
     "Description": "Description of server",
-    "UUID": "00000000-0000-0000-0000-000000000000",
-    "HostName": "web-srv344",
     "PowerState": "On",
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "Processors": {
-      "Members@odata.count": 4,
-      "Members": [
+       "Members": [
         {
+          "@Redfish.RequestedCount": 4,
           "ProcessorType": "CPU",
           "ProcessorArchitecture": "x86",
           "InstructionSet": "x86-64",
@@ -26,9 +24,9 @@
       ]
     },
     "Memory": {
-      "Members@odata.count": 4,
       "Members": [
         {
+          "@Redfish.RequestedCount": 4,
           "MaxTDPMilliWatts": [ 12000 ],
           "CapacityMiB": 8192,
           "DataWidthBits": 64,
@@ -37,61 +35,45 @@
           "MemoryType": "DRAM",
           "MemoryDeviceType": "DDR4",
           "BaseModuleType": "RDIMM",
-          "MemoryMedia": [
-            "DRAM"
-          ]
+          "MemoryMedia": [ "DRAM" ]
         }
       ]
     },
     "SimpleStorage": {
-      "Members@odata.count": 2,
       "Members" : [
-        "Devices": [
-          {
-            "Manufacturer": "ACME",
-            "Model": "Drive Model string",
-	          "CapacityBytes": 322122547200
-          }
-        ]
-      ]
-    },
-    "SimpleStorage": {
-      "Members@odata.count": 4,
-      "Members" : [
-        "Devices": [
-          {
-	          "CapacityBytes": 322122547200
-          }
-        ]
+        {
+          "@Redfish.RequestedCount": 6,
+          "Devices": [
+            {
+              "Manufacturer": "ACME",
+              "Model": "Drive Model string",
+	            "CapacityBytes": 322122547200
+            }
+          ]
+        }
       ]
     },
     "EthernetInterfaces": {
-      "Members@odata.count": 4,
       "Members": [
         {
-          "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
-          "MACAddress": "AA:BB:CC:DD:EE:FF",
+          "@Redfish.RequestedCount": 2,
           "SpeedMbps": 100,
           "FullDuplex": true,
-          "HostName": "web483",
-          "FQDN": "web483.redfishspecification.org",
           "IPv6DefaultGateway": "fe80::3ed9:2bff:fe34:600",
           "NameServers": [
             "names.redfishspecification.org"
           ],
           "IPv4Addresses": [
             {
-              "Address": "192.168.0.10",
               "SubnetMask": "255.255.252.0",
-              "AddressOrigin": "Static",
+              "AddressOrigin": "Dynamic",
               "Gateway": "192.168.0.1"
             }
           ],
           "IPv6Addresses": [
             {
-              "Address": "fe80::1ec1:deff:fe6f:1e24",
               "PrefixLength": 64,
-              "AddressOrigin": "Static",
+              "AddressOrigin": "Dynamic",
               "AddressState": "Preferred"
             }
           ]

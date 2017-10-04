@@ -1,0 +1,136 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/1",
+    "@odata.type": "#ComputerSystem.v1_3_0.ComputerSystem",
+    "Id": "1",
+    "Name": "My Computer System",
+    "Description": "Description of server",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "HostName": "web-srv344",
+    "Status": {
+        "State": "Enabled"
+    },
+    "PowerState": "On",
+    "BiosVersion": "P79 v1.00 (09/20/2013)",
+    "ProcessorSummary": {
+        "Count": 8,
+        "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK",
+            "HealthRollup": "OK"
+        }
+    },
+    "MemorySummary": {
+        "TotalSystemMemoryGiB": 16,
+        "MemoryMirroring" : "System",		
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK",
+            "HealthRollup": "OK"
+        }
+    },
+    "TrustedModules": [
+        {
+          "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+           },
+           "ModuleType":"TPM2_0",
+           "FirmwareVersion": "3.1",
+           "FirmwareVersion2": "1",
+           "InterfaceTypeSelection": "None"
+        }
+    ],
+    "Processors": {
+      "Members@odata.count": 4,
+      "Members": [
+        {
+          "ProcessorType": "CPU",
+          "ProcessorArchitecture": "x86",
+          "InstructionSet": "x86-64",
+          "Manufacturer": "Intel(R) Corporation",
+          "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+          "MaxSpeedMHz": 3700,
+          "TotalCores": 8,
+          "TotalThreads": 16
+        }
+      ]
+    },
+    "Memory": {
+      "Members@odata.count": 4,
+      "Members": [
+        {
+          "MaxTDPMilliWatts": [ 12000 ],
+          "CapacityMiB": 8192,
+          "DataWidthBits": 64,
+          "BusWidthBits": 72,
+          "ErrorCorrection": "MultiBitECC",
+          "MemoryType": "DRAM",
+          "MemoryDeviceType": "DDR4",
+          "BaseModuleType": "RDIMM",
+          "MemoryMedia": [
+            "DRAM"
+          ]
+        }
+      ]
+    },
+        "@odata.id": "/redfish/v1/Systems/1/Memory"
+    },	
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces"
+    },
+    "NetworkInterfaces": {
+        "@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces"
+    },
+    "SimpleStorage": {
+      "Members@odata.count": 2,
+      "Members" : [
+        "Devices": [
+          {
+            "Manufacturer": "ACME",
+            "Model": "Drive Model string",
+	          "CapacityBytes": 322122547200
+          }
+        ]
+      ]
+    },
+    "SimpleStorage": {
+      "Members@odata.count": 4,
+      "Members" : [
+        "Devices": [
+          {
+	          "CapacityBytes": 322122547200
+          }
+        ]
+      ]
+    },
+    "SecureBoot": {
+      	"SecureBootEnable": false
+    },
+    "PCIeDevices": [
+        {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}
+    ],
+    "PCIeFunctions": [
+        {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC/Functions/1"},
+        {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC/Functions/2"}
+    ],
+    "Links": {
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/1"
+            }
+        ],
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/1"
+            }
+        ],
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/HostRootComplex1"
+            }
+        ]
+    }
+}
