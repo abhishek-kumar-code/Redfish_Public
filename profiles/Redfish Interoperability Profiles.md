@@ -39,10 +39,10 @@ At the top level of the JSON document are the basic properties which describe th
 | --- | --- | --- |
 | SchemaDefinition | string | The JSON schema which defines this Redfish Interoperability Profile document and can be used to validate its contents. |
 | ProfileName | string | The name of this Redfish Profile. |
-| Author | string | The author(s) of this Redfish Profile. |
 | ProfileVersion | string | The version of this Redfish Profile. |
 | Purpose | string | A description of the purpose of this Redfish Profile, such as its intended target audience, product segments, etc.|
 | ContactInfo | string | An email address that can be used to provide feedback about this Redfish Profile. |
+| OwningEntity | string | Name of the owning entity that defined this Redfish Interoperability Profile. |
 | RequiredProfiles | object | A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
 
 #### Required Profiles
@@ -52,8 +52,6 @@ The RequiredProfiles object contains properties (of type object) that are named 
 | property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
-| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
-| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 
 ### Example
@@ -61,10 +59,10 @@ The RequiredProfiles object contains properties (of type object) that are named 
 The following is an example of the top-level properties in a Profile, with two Required profiles included.
 
 ~~~
-	"@odata.type": "RedfishProfile.v1_0_0.RedfishProfile",
+	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "Anchovy",
-	"Version": "1.0.2",
-	"Author": "Pizza Box Project",
+	"ProfileVersion": "1.0.2",
+	"Author": "Pizza Box Consortium",
 	"Purpose": "This is a sample Redfish Interoperability profile.",
 	"ContactInfo": "pizza@contoso.com",
 	"RequiredProfiles": {
@@ -132,8 +130,6 @@ The following options are available at the schema level:
 | property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
-| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
-| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | ReadRequirement | string | Resource-level requirement for this schema, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
@@ -169,7 +165,7 @@ The following options are available at the property level:
 | MinSupportValues |  array | The minimum set of enumerations that must be supported for this writable property. |
 | Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
-| Values | array | The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed. |
+| Values | array | The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison. |
 | PropertyRequirements | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
 
 #### Example
@@ -208,14 +204,14 @@ The Comparison function uses the following enumerations to represent the arithme
 | value | description |
 | --- | --- |
 | Absent | The property is not present in this resource. |
-| AnyOf | An instance of the property in this resource must be equal to one of the values listed. |
+| AnyOf | At least one instance of the property in this resource must be equal to one of the values listed. |
 | AllOf | At least one instance of the property in this resource must be equal to each of the values listed. |
 | Equal | The value must be equal to the KeyValue. |
 | NotEqual | The value of the property must not be equal to the value(s) listed. |
 | GreaterThan | The value of the property must be greater than the Values. |
-| GreaterThanEqual | The value of the property must be greater than or equal to the Values. |
-| LessThan | The value of the property must be less than to the Values. |
-| LessThanEqual | The value of the property must be less than or equal to the Values. |
+| GreaterThanOrEqual | The value of the property must be greater than or equal to the Values. |
+| LessThan | The value of the property must be less than the Values. |
+| LessThanOrEqual | The value of the property must be less than or equal to the Values. |
 | Present | The property is present in this resource. |
 
 
@@ -379,8 +375,6 @@ The following functions are available to specify Registry-level requirements:
 | property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
-| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
-| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | ReadRequirement | string | Resource-level requirement for this Registry, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
