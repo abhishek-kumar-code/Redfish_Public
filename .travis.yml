@@ -16,6 +16,7 @@ branches:
   only:
     - master
     - /^TF-.*/
+    - /^DSP*/
 cache:
   bundler: true
   directories:
