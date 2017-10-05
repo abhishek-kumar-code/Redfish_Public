@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.5.0-->
+<!--# Redfish Schema:  Resource  v1.6.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
@@ -565,6 +568,7 @@
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POM field as defined in RFC5139.  (Extended)."/>
         </Property>
         <Property Name="GPSCoords" Type="Edm.String">
+          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Location.v1_6_0.Longitude and Location.v1_6_0.Latitude"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The GPS coordinates of the part."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5139. The value shall be the GPS coordinates of the location. If furnished, this shall be expressed in the format '[-][nn]n.nnnnnn, [-][nn]n.nnnnn', i.e. two numbers, either positive or negative, with six decimal places of precision, comma-separated."/>
@@ -749,6 +753,32 @@
           <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
         </Property>
       </ComplexType>
+
+    </Schema>    
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
+      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location."/>
+
+      <ComplexType Name="Location" BaseType="Resource.v1_5_0.Location">
+        <Property Name="Longitude" Type="Edm.Decimal" DefaultValue="0">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The longitude resource in degrees."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the longitude of the resource specified in degrees using a decimal format and not minutes or seconds."/>
+          <Annotation Term="Measures.Unit" String="deg"/>
+        </Property>
+        <Property Name="Latitude" Type="Edm.Decimal" DefaultValue="0">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The latitude resource."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the latitude of the resource specified in degrees using a decimal format and not minutes or seconds."/>
+          <Annotation Term="Measures.Unit" String="deg"/>
+        </Property>
+        <Property Name="AltitudeMeters" Type="Edm.Decimal" DefaultValue="0">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The altitude of the resource in meters."/>
+          <Annotation Term="OData.LongDescription" String="The altitude of the resource in meters."/>
+          <Annotation Term="Measures.Unit" String="m"/>
+        </Property>
+      </ComplexType>      
 
     </Schema>    
 
