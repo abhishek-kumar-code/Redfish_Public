@@ -35,13 +35,32 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 ## Educational Material
 
 ### Redfish School
-| Subject          | Presenter |
-| ---              | ---       |
-| Composability    | Mike R    |
-| Storage          | Mike R    |
-| Case for Redfish | Jeff H    |
-| Memory           | Jeff H    |
-| Fabric           |           |
+| Subject             | Presenter | Video | PPT Published  
+| ---                 | ---       | ---   | ---            |
+| Why Redfish         | Jeff A    | Y     |   |
+| Architecture        | Jeff H    | Y     |   |
+| Common Prop         | Jeff H    | Y     |   |
+| Chassis             | Jeff H    | Y     |   |
+| Managers            | Jeff H    | Y     |   |
+| Systems             | Jeff H    | Y     |   |
+| CSDL Intro          | Mike R    | Y     |   |
+| CSDL Usage          | Mike R    | Y     |   |
+| OData Client        | Mike R    | Y     |   |
+| Model: Storage      | Mike R    | Y     |   |
+| Composability       | Mike R    |       |   |
+| Case for Redfish    | Jeff H    |       |   |
+| Memory              | Jeff H    |       |   |
+| Tasks               | Jeff H    |       |   |
+| JSON Client         | Jeff A    |       |   |
+| Adv Comm Device     | Jeff H    |       |   |
+| Sessions            | Jeff H    |       |   |
+| Users & Priv        | Jon H     |       |   |
+| Eventing            | Jeff H    |       |   |
+| BIOS                | Samer     |       |   |
+| Switches            | John L    |       |   |
+| Telemetry           | John L    |       |   |
+| Host Interface      | Paul V    |       |   |
+| Profiles            | Jeff A    |       |   |
 
 ### White Papers
 
