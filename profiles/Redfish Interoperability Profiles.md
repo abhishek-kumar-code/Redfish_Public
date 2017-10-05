@@ -204,7 +204,7 @@ The Comparison function uses the following enumerations to represent the arithme
 | value | description |
 | --- | --- |
 | Absent | The property is not present in this resource. |
-| AnyOf | An instance of the property in this resource must be equal to one of the values listed. |
+| AnyOf | At least one instance of the property in this resource must be equal to one of the values listed. |
 | AllOf | At least one instance of the property in this resource must be equal to each of the values listed. |
 | Equal | The value must be equal to the KeyValue. |
 | NotEqual | The value of the property must not be equal to the value(s) listed. |
