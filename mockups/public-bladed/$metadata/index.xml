@@ -107,6 +107,8 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_3_0"/>
+    <edmx:Include Namespace="Resource.v1_5_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Role_v1.xml">
     <edmx:Include Namespace="Role"/>
