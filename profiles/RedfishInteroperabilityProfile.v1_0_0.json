@@ -342,7 +342,7 @@
 			],
 			"enumDescriptions": {
 				"Absent": "The property is not present in this resource.",
-				"AnyOf": "An instance of the property in this resource must be equal to one of the Values listed.",
+				"AnyOf": "At least one instance of the property in this resource must be equal to one of the Values listed.",
 				"AllOf": "At least one instance of the property in this resource must be equal to each of the values listed.",
 				"Equal": "The value of the property must be equal to the Values.",
 				"NotEqual": "The value of the property must not be equal to the Values.",
