@@ -74,6 +74,24 @@
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the Chassis schema.",
                     "readonly": true
                 },
+                "CompositionService": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/CompositionService.json#/definitions/CompositionService",
+                    "description": "This is a link to the CompositionService.",
+                    "longDescription": "The classes structure shall only contain a reference to a resource that complies to the CompositionService schema.",
+                    "readonly": true
+                },
+                "DCIMCooling": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/DCIMCoolingCollection.json#/definitions/DCIMCoolingCollection",
+                    "description": "This is a link to a collection of DCIMCooling domains.",
+                    "longDescription": "The classes structure shall only contain a reference to a resource that complies to the DCIMCooling schema.",
+                    "readonly": true
+                },
+                "DCIMPower": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/DCIMPowerCollection.json#/definitions/DCIMPowerCollection",
+                    "description": "This is a link to a collection of DCIMPower domains.",
+                    "longDescription": "The classes structure shall only contain a reference to a resource that complies to the DCIMPower schema.",
+                    "readonly": true
+                },
                 "Description": {
                     "anyOf": [
                         {
@@ -198,5 +216,5 @@
             "type": "object"
         }
     },
-    "title": "ServiceRoot.v1_1_0.ServiceRoot"
+    "title": "ServiceRoot.v1_3_0.ServiceRoot"
 }

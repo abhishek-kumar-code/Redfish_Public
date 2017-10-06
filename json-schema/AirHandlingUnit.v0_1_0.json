@@ -1,0 +1,980 @@
+{
+    "$ref": "#/definitions/AirHandlingUnit",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions"
+                }
+            },
+            "type": "object"
+        },
+        "AirHandlingUnit": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the AirHandlingUnit Metrics.",
+            "longDescription": "This resource shall be used to represent a cooling metrics resource for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "AHUStartStop": {
+                    "description": "The actual AHU Start/Stop value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual AHU Start/Stop value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "AirflowLossAlarmOn": {
+                    "description": "The actual Airflow Loss Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Airflow Loss Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "AlarmOn": {
+                    "description": "The actual  Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual  Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "AssetTag": {
+                    "description": "The actual Asset Tag of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Asset Tag of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ChilledWaterValveCommand": {
+                    "description": "The actual Chilled Water Valve Command percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Chilled Water Valve Command percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "CoolingCapacity": {
+                    "description": "The actual Cooling Capacity percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Cooling Capacity percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "CoolingOutput": {
+                    "description": "The actual Cooling Output percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Cooling Output percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DateOfManufacture": {
+                    "description": "Date of manufacture of AirHandlingUnit.",
+                    "format": "date-time",
+                    "longDescription": "This property shall indicate the actual date of manufacture of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DehumidificationFanSpeed": {
+                    "description": "The actual Dehumidification Fan Speed percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Dehumidification Fan Speed percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DehumidifyingStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Dehumidification Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Dehumidification Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DirtyFilterAlarmOn": {
+                    "description": "The actual Dirty Filter Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Dirty Filter Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ElectricPreheatStageX": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Electric Preheat Stage X value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Electric Preheat Stage X of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "ExhaustFanSpeedSetPoint": {
+                    "description": "The actual Exhaust Fan Speed Set Point of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Exhaust Fan Speed Set Point percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ExhaustFanStartStop": {
+                    "description": "The actual Exhaust Fan Start/Stop value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Exhaust Fan Start/Stop value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ExhaustFanStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Exhaust Fan Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Exhaust Fan Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "FanAlarmOn": {
+                    "description": "The actual Fan Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Fan Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "FanControlDeadband": {
+                    "description": "The actual Fan Control Deadband percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Fan Control Deadband percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "FanOverloadAlarmOn": {
+                    "description": "The actual Fan Overload Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Fan Overload Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "FanRunTime": {
+                    "description": "The actual Fan Run Time of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Fan Run Time of AirHandlingUnit.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "h"
+                },
+                "FanRunTimeAlarmOn": {
+                    "description": "The actual Fan Run Time Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Fan Run Time Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "FanStart": {
+                    "description": "The actual Fan Start value of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Fan Start value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FanStatus": {
+                    "description": "The actual Fan Status of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Fan Status of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FanStop": {
+                    "description": "The actual Fan Stop value of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Fan Stop value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FanVSDControlPro": {
+                    "description": "The actual Fan VSD Control Pro value of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Fan VSD Control Pro value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FirmwareRevision": {
+                    "description": "The actual Firmware Revision of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Firmware Rev of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HardwareRevision": {
+                    "description": "The actual Hardware Revision of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Hardware Rev of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HeatingOutput": {
+                    "description": "The actual Heating Output percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Heating Output percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "HiHumidityAlarmOn": {
+                    "description": "The actual High Humidity Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual High Humidity Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "HiReturnAirStaticPressureAlarmSetpoint": {
+                    "description": "The actual High Return Air Static Pressure Alarm Setpoint of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual High Return Air Static Pressure Alarm Setpoint of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "HiSupplyAirStaticPressureAlarmSetpoint": {
+                    "description": "The actual High Supply Air Static Pressure Alarm Setpoint of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual High Supply Air Static Pressure Alarm Setpoint of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "HighHumidityAlarm": {
+                    "description": "The actual High Humidity Alarm Setting percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual High Humidity Alarm Setting percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "HighWaterTempAlarmOn": {
+                    "description": "The actual High Water Temp Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual High Water Temp Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "HighWaterTempAlarmSetting": {
+                    "description": "The actual High Water Temperature Alarm Setting of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual High Water Temperature Alarm Setting of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "C"
+                },
+                "HumidifyingStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Humidification Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Humidification Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "HumidityControlDeadband": {
+                    "description": "The actual Humidity Control Deadband percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Humidity Control Deadband percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LoHumidityAlarmOn": {
+                    "description": "The actual Low Humidity Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Low Humidity Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "LossOfWaterFlowAlarmOn": {
+                    "description": "The actual Loss Of Water Flow Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual  Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "LowHumidityAlarm": {
+                    "description": "The actual Low Humidity Alarm Setting percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Low Humidity Alarm Setting percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "LowWaterTempAlarmOn": {
+                    "description": "The actual Low Water Temp Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Low Water Temp Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "LowWaterTempAlarmSetting": {
+                    "description": "The actual Low Water Temperature Alarm Setting of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Low Water Temperature Alarm Setting of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "C"
+                },
+                "ManualOverrideAlarmOn": {
+                    "description": "The actual Manual Override Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Manual Override Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Manufacturer": {
+                    "description": "The actual Manufacturer of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Manufacturer of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MaximumFanSpeed": {
+                    "description": "The actual Maximum Fan Speed percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Maximum Fan Speed percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MaximumOADamperPosition": {
+                    "description": "The actual Maximum OA Damper Position percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Maximum OA Damper Position percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MinimumFanSpeed": {
+                    "description": "The actual Minimum Fan Speed percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Minimum Fan Speed percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MinimumOADamperPosition": {
+                    "description": "The actual Minimum OA Damper Position percentage value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Minimum OA Damper Position percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Model": {
+                    "description": "The actual Model Number of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Model Number of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "PartNumber": {
+                    "description": "The actual Part Number of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Part Number of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PauseUnit": {
+                    "description": "The actual Pause Unit setting of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Pause Unit setting of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PhysicalLocation": {
+                    "description": "The actual Physical Location of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Physical Location of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "RelativeHumiditySetPoint": {
+                    "description": "The actual Relative Humidity Set Point of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Relative Humidity Set Point percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "RemoteSensorAlarmOn": {
+                    "description": "The actual Remote Sensor Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Remote Sensor Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ResetAllAlarms": {
+                    "description": "The actual Reset All Alarms setting of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Reset All Alarms setting of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ReturnAirHighTempAlarmOn": {
+                    "description": "The actual Return Air High Temp Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Return Air High Temp Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ReturnAirLowTempAlarmOn": {
+                    "description": "The actual Return Air Low Temp Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Return Air Low Temp Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ReturnAirSmokeDetectorAlarmOn": {
+                    "description": "The actual Return Air Smoke Detector Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Return Air Smoke Detector Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ReturnAirTempSensorAlarmOn": {
+                    "description": "The actual Return Air Temp Sensor Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Return Air Temp Sensor Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Sensors": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SensorCollection.json#/definitions/SensorCollection",
+                    "description": "Contains the members of this collection.",
+                    "readonly": true
+                },
+                "SerialNumber": {
+                    "description": "The actual Serial Number of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Serial Number of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "StaticPressureSetPoint": {
+                    "description": "The actual Static Pressure Set Point of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Static Pressure Set Point percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "SupplyAirHighTempAlarmOn": {
+                    "description": "The actual Supply Air High Temp Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Supply Air High Temp Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SupplyAirLowTempAlarmOn": {
+                    "description": "The actual Supply Air Low Temp Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Supply Air Low Temp Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SupplyAirSmokeDetectorAlarmOn": {
+                    "description": "The actual Supply Air Smoke Detector Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Supply Air Smoke Detector Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SupplyAirTempSensorAlarmOn": {
+                    "description": "The actual Supply Air Temp Sensor Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Supply Air Temp Sensor Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SupplyFanSpeedSetPoint": {
+                    "description": "The actual Supply Fan Speed Set Point of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Supply Fan Speed Set Point percentage value of AirHandlingUnit.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "SupplyFanStartStop": {
+                    "description": "The actual Supply Fan Start/Stop value of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Supply Fan Start/Stop value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SupplyFanStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Supply Fan Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Supply Fan Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "TemperatureControlDeadband": {
+                    "description": "The actual Temperature Control Deadband of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Temperature Control Deadband of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "C"
+                },
+                "TemperatureSetPoint": {
+                    "description": "The actual Temperature Set Point of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Temperature Set Point of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "C"
+                },
+                "UnitChilledWaterFlushCycle": {
+                    "description": "The actual Unit Chilled Water Flush Cycle setting of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Chilled Water Flush Cycle setting of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "UnitCommunicationLossAlarmOn": {
+                    "description": "The actual Unit Communication Loss Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Communication Loss Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitCoolingStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Unit Cooling Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Cooling Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "UnitHeatingStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Unit Heating Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Heating Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "UnitHiTempAlarmSetpoint": {
+                    "description": "The actual High Return or Supply Air Temperature Alarm Setting of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual High Return or Supply Air Temperature Alarm Setting of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "C"
+                },
+                "UnitLoTempAlarmSetpoint": {
+                    "description": "The actual Low Return or Supply Air Temperature Alarm Setting of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Low Return or Supply Air Temperature Alarm Setting of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "C"
+                },
+                "UnitMaintenanceDueAlarmOn": {
+                    "description": "The actual Unit Maintenance Due Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Maintenance Due Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitOffAlarmOn": {
+                    "description": "The actual Unit Off Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Off Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitOnAlarmOn": {
+                    "description": "The actual Unit On Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit On Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitOperationStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Unit Operation Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Operation Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "UnitPowerLossAlarmOn": {
+                    "description": "The actual Unit Power Loss Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Power Loss Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitServiceRequestAlarmOn": {
+                    "description": "The actual Unit Service Request Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Service Request Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitShutdownAlarmOn": {
+                    "description": "The actual Unit Shutdown Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Shutdown Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitShutdownHighPowerAlarmOn": {
+                    "description": "The actual Unit Shutdown High Power Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Shutdown High Power Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitShutdownPartialAlarmOn": {
+                    "description": "The actual Unit Shutdown Partial Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Shutdown Partial Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitStandbyAlarmOn": {
+                    "description": "The actual Unit Standby Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Unit Standby Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UnitStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OnOff"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Unit Status [ON/OFF] of AirHandlingUnit.",
+                    "longDescription": "This property shall indicate the actual Unit Status [ON/OFF] of AirHandlingUnit.",
+                    "readonly": true
+                },
+                "WaterUnderFloorAlarmOn": {
+                    "description": "The actual Water Under Floor Alarm On status of AirHandlingUnit.",
+                    "longDescription": "The value of this property shall represent the actual Water Under Floor Alarm On boolean value of AirHandlingUnit.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "OnOff": {
+            "enum": [
+                "On",
+                "Off"
+            ],
+            "type": "string"
+        }
+    },
+    "title": "AirHandlingUnit.v0_1_0.AirHandlingUnit"
+}

@@ -1,0 +1,615 @@
+{
+    "$ref": "#/definitions/Generator",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AcOutput": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/AcOutputActions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "MemberId": {
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "OutputPower": {
+                    "description": "The Output Power for this AC Output.",
+                    "longDescription": "The value of this property shall represent the Output Power information of this AC Output.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "kW"
+                },
+                "OutputReactivePower": {
+                    "description": "The Reactive Power for this AC Output.",
+                    "longDescription": "The value of this property shall represent the Reactive Power information of this AC Output.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "kW"
+                },
+                "PowerFactor": {
+                    "description": "The Power Factor for this AC Output.",
+                    "longDescription": "The value of this property shall represent the Power Factor information in pf of this AC Output.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ProtectiveRelays": {
+                    "description": "The Protective Relays for this AC Output.",
+                    "longDescription": "This property shall indicate the Protective Relays of this AC Output.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Sensors": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SensorCollection.json#/definitions/SensorCollection",
+                    "description": "Contains the members of this sensor collection.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "AcOutputActions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/AcOutputOemActions"
+                }
+            },
+            "type": "object"
+        },
+        "AcOutputOemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions"
+                }
+            },
+            "type": "object"
+        },
+        "Generator": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the Generator Metrics.",
+            "longDescription": "This resource shall be used to represent a cooling metrics resource for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "AcOutput": {
+                    "description": "This is the definition for AC Output.",
+                    "items": {
+                        "$ref": "#/definitions/AcOutput"
+                    },
+                    "longDescription": "These properties shall be the definition for AC Output for a Redfish implementation.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "AcOutput@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "AirDamperClosed": {
+                    "description": "The actual Air Damper Closed status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Air Damper Closed boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "AssetTag": {
+                    "description": "The actual Asset Tag of Generator.",
+                    "longDescription": "This property shall indicate the actual Asset Tag of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BatteryChargerFail": {
+                    "description": "The actual Battery Charger Fail status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Battery Charger Fail boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "BearingHighTemperatureFront": {
+                    "description": "The actual Bearing High Temperature (Front) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Bearing High Temperature (Front) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "BearingHighTemperatureRear": {
+                    "description": "The actual Bearing High Temperature (Rear) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Bearing High Temperature (Rear) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DateOfManufacture": {
+                    "description": "The date of manufacture of Generator.",
+                    "format": "date-time",
+                    "longDescription": "This property shall indicate the actual date of manufacture of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DayTankFuelLevel": {
+                    "description": "The actual Day Tank Fuel Level of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Day Tank Fuel Level of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DayTankLowLevelPreAlarm": {
+                    "description": "The actual Day Tank Low Level (Pre-Alarm) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Day Tank Low Level (Pre-Alarm) of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DayTankLowLevelShutDown": {
+                    "description": "The actual Day Tank Low Level (Shut-Down) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Day Tank Low Level (Shut-Down) of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DayTankRupture": {
+                    "description": "The actual Day Tank Rupture status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Day Tank Rupture boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "DayTankWaterInFuel": {
+                    "description": "The actual Day Tank Water In Fuel status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Day Tank Water In Fuel boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "EmergencyOff": {
+                    "description": "The actual Emergency Off status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Emergency Off boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "EngineCoolantTemperature": {
+                    "description": "The actual Engine Coolant Temperature of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Coolant Temperature sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "EngineCoolantTemperaturePreAlarm": {
+                    "description": "The actual Engine Coolant Temperature (Pre-Alarm) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Coolant Temperature (Pre-Alarm) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "EngineCoolantTemperatureShutDown": {
+                    "description": "The actual Engine Coolant Temperature (Shut-Down) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Coolant Temperature (Shut-Down) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "EngineFailure": {
+                    "description": "The actual Engine Failure status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Failure boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "EngineLowOilPressurePreAlarm": {
+                    "description": "The actual Engine Low Oil Pressure (Pre-Alarm) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Low Oil Pressure (Pre-Alarm) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "EngineLowOilPressureShutDown": {
+                    "description": "The actual Engine Low Oil Pressure (Pre-Alarm) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Low Oil Pressure (Pre-Alarm) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "EngineOilPressure": {
+                    "description": "The actual Engine Oil Pressure of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Oil Pressure sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "EngineRunning": {
+                    "description": "The actual Engine Running status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Engine Running boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "FirmwareRevision": {
+                    "description": "The actual Firmware Revision of Generator.",
+                    "longDescription": "This property shall indicate the actual Firmware Revision of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GeneratorPrimaryBearingTemperature": {
+                    "description": "The actual Bearing High Temperature (Front) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Bearing High Temperature (Front) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "HardwareRevision": {
+                    "description": "The actual Hardware Revision of Generator.",
+                    "longDescription": "This property shall indicate the actual Hardware Revision of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HighExhaustTemperatureLeft": {
+                    "description": "The actual High Exhaust Temperature (Left) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual High Exhaust Temperature (Left) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "HighExhaustTemperatureRight": {
+                    "description": "The actual High Exhaust Temperature (Right) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual High Exhaust Temperature (Right) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LowCoolantLevelPreAlarm": {
+                    "description": "The actual Low Coolant Level (Pre-Alarm) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Low Coolant Level (Pre-Alarm) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "LowCoolantLevelShutDown": {
+                    "description": "The actual Low Coolant Level (Shut-Down) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Low Coolant Level (Shut-Down) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "LowWaterTemperature": {
+                    "description": "The actual Low Water Temperature of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Low Water Temperature sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Manufacturer": {
+                    "description": "The actual Manufacturer of Generator.",
+                    "longDescription": "This property shall indicate the actual Manufacturer of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Model": {
+                    "description": "The actual Model Number of Generator.",
+                    "longDescription": "This property shall indicate the actual Model Number of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "OvercrankShutDown": {
+                    "description": "The actual Overcrank (Shut-Down) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Overcrank (Shut-Down) sensor reading value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "OverloadPreAlarm": {
+                    "description": "The actual Overload (Pre-Alarm) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Overload (Pre-Alarm) of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "OverloadShutDown": {
+                    "description": "The actual Overload (Shut-Down) of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Overlaod (Shut-Down) of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Overspeed": {
+                    "description": "The actual Overspeed of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Overspeed of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PartNumber": {
+                    "description": "The actual Part Number of Generator.",
+                    "longDescription": "This property shall indicate the actual Part Number of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PhysicalLocation": {
+                    "description": "The actual Physical Location of Generator.",
+                    "longDescription": "This property shall indicate the actual Physical Location of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ProtectiveRelayTripped": {
+                    "description": "The actual Protective Relay Tripped status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Protective Relay Tripped boolean value of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Sensors": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SensorCollection.json#/definitions/SensorCollection",
+                    "description": "Contains the members of this sensor collection.",
+                    "readonly": true
+                },
+                "SerialNumber": {
+                    "description": "The actual Serial Number of Generator.",
+                    "longDescription": "This property shall indicate the actual Serial Number of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SummaryAlarmOn": {
+                    "description": "The actual Summary Alarm On status of Generator.",
+                    "longDescription": "The value of this property shall represent the actual Summary Alarm On status (boolean value; true for OFF/false for ON) of Generator.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        }
+    },
+    "title": "Generator.v0_1_0.Generator"
+}
