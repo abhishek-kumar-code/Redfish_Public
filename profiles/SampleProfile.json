@@ -139,7 +139,7 @@
 						"Reading": {},
 						"ReadingUnits": {},
 						"Status": {},
-						"PhysicalContext": {
+						"RelatedItem": {
 							"Comparison": "LinkToResource",
 							"Values": [ "Processor", "ComputerSystem", "Chassis", "Memory"]
 						}
