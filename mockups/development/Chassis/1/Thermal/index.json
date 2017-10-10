@@ -22,8 +22,8 @@
             "LowerThresholdNonCritical": 42,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 42,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Systems/1/Processors/1" }
@@ -45,8 +45,8 @@
             "LowerThresholdNonCritical": 42,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 42,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Systems/1/Processors/2" }
@@ -68,8 +68,8 @@
             "LowerThresholdNonCritical": 10,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 0,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake",
             "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Chassis/1" },

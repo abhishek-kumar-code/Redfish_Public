@@ -1,18 +1,17 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "Initiator2",
-	"Name": "SAS RAID Controller 2",
-	"Description": "SAS RAID Controller 2",
+    "@odata.type": "#Endpoint.v1_0_2.Endpoint",
+    "Id": "Initiator2",
+    "Name": "SAS RAID Controller 2",
+    "Description": "SAS RAID Controller 2",
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "EntityType": "Initiator",
+            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
+            "EntityType": "StorageInitiator",
             "EntityRole": "Initiator",
             "Identifiers": [
                 {
+                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7BE"
                 }
@@ -21,10 +20,18 @@
         }
     ],
     "Links": {
+        "@odata.type": "#Endpoint.v1_0_0.Links",
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/2"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Ports/2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Ports/2"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

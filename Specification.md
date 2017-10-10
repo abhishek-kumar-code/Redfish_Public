@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.2.0'
-modified: '2017-4-14'
-SupersedesVersion: '1.1.0'
+DocVersion: '1.3.0'
+modified: '2017-9-22'
+SupersedesVersion: '1.2.1'
 status: published
 released: true
 copyright: '2014-2017'
@@ -21,34 +21,34 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett Packard Enterprise
 * Patrick Boyd - Dell Inc.
-* David Brockhaus - Emerson Network Power
+* David Brockhaus - Vertiv
 * Richard Brunner - VMware Inc.
 * Lee Calcote - Seagate Technology
 * P Chandrasekhar - Dell Inc.
 * Chris Davenport - Hewlett Packard Enterprise
-* Gamma Dean - Emerson Network Power
-* Daniel Dufresne - EMC
+* Gamma Dean - Vertiv
+* Daniel Dufresne - Dell Inc.
 * Samer El-Haj-Mahmoud - Lenovo, Hewlett Packard Enterprise
-* George Ericson - EMC
+* George Ericson - Dell Inc.
 * Wassim Fayed - Microsoft Corporation
 * Mike Garrett - Hewlett Packard Enterprise
-* Steve Geffin - Emerson Network Power
+* Steve Geffin - Vertiv
 * Joe Handzik - Hewlett Packard Enterprise
 * Jon Hass - Dell Inc.
 * Jeff Hilland - Hewlett Packard Enterprise
-* Chris Hoffman - Emerson Network Power
+* Chris Hoffman - Vertiv
 * Steven Krig - Intel Corporation
 * John Leung - Intel Corporation
 * Jagan Molleti - Dell Inc.
 * Milena Natanov - Microsoft Corporation
 * Michael Pizzo - Microsoft Corporation
 * Chris Poblete - Dell Inc.
-* Michael Raineri - EMC
+* Michael Raineri - Dell Inc.
 * Irina Salvan - Microsoft Corporation
 * Hemal Shah - Broadcom Limited
-* Jim Shelton - Emerson Network Power
+* Jim Shelton - Vertiv
 * Tom Slaight - Intel Corporation
-* Donnie Sturgeon - Emerson Network Power
+* Donnie Sturgeon - Vertiv
 * Pawel Szymanski - Intel Corporation
 * Paul Vancil - Dell Inc.
 * Linda Wu - Super Micro Computer, Inc.
@@ -56,7 +56,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 ## Abstract
 The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
-There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center & cloud needs.
+There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center and cloud needs.
 
 ## Normative references
 
@@ -67,6 +67,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
 * <a id="RFC5280">IETF RFC 5280</a>, D. Cooper et al, Web linking, [http://www.ietf.org/rfc/rfc5280.txt](http://www.ietf.org/rfc/rfc5280.txt "http://www.ietf.org/rfc/rfc5280.txt")
 * <a id="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
+* <a id="RFC6585">IETF RFC 6585</a>, M. Nottingham, et al, Additional HTTP Status Codes, [http://www.ietf.org/rfc/rfc6585.txt](http://www.ietf.org/rfc/rfc6585.txt "http://www.ietf.org/rfc/rfc6585.txt")
 * <a id="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
 * <a id="RFC6909">IETF RFC 6906</a>, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
 * <a id="RFC7230">IETF RFC 7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, [http://www.ietf.org/rfc/rfc7230.txt](http://www.ietf.org/rfc/rfc7230.txt "http://www.ietf.org/rfc/rfc7230.txt")
@@ -102,31 +103,31 @@ The terms "normative" and "informative" in this document are to be interpreted a
 
 The following additional terms are used in this document.
 
-| Term                            | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ---                             | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks, which are commonly performed out-of-band.                                                                                                                                                                                                                                   |
-| Collection                      | See Resource Collection.                                                 |
-| CRUD                            | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| Event                           | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Managed System                  | In the context of this specification, a managed system is a system that provides information or status, or is controllable, via a Redfish-defined interface.                                                                                                                                                                                                                                                                                                                                   |
-| Member                         | A Member is a single resource instance contained in a Resource Collection |
-| Message                         | A complete request or response, formatted in HTTP/HTTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                         |
-| Operation                       | The HTTP request methods that map generic CRUD operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                                                  |
-| OData                           | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Term                            | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---                             | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks, which are commonly performed out-of-band.                                                                                                                                                                                                                                    |
+| Collection                      | See Resource Collection.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| CRUD                            | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Event                           | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Managed System                  | In the context of this specification, a managed system is a system that provides information or status, or is controllable, via a Redfish-defined interface.                                                                                                                                                                                                                                                                                                                              |
+| Member                          | A Member is a single resource instance contained in a Resource Collection                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Message                         | A complete request or response, formatted in HTTP/HTTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                    |
+| Operation                       | The HTTP request methods that map generic CRUD operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                                              |
+| OData                           | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | OData Service Document          | The name for a resource that provides information about the Service Root. The Service Document  provides a standard format for enumerating the resources exposed by the service that enables generic hypermedia-driven OData clients to navigate to the resources of the Redfish Service.                                                                                                                                                                                                 |
-| Redfish Alert Receiver          | The name for the functionality that receives alerts from a Redfish Service. This functionality is typically software running on a remote system that is separate from the managed system.                                                                                                                                                                                                                                                                                                   |
-| Redfish Client                  | Name for the functionality that communicates with a Redfish Service and accesses one or more resources or functions of the Service.                                                                                                                                                                                                                                                                                                                                                            |
-| Redfish Protocol                | The set of protocols that are used to discover, connect to, and inter-communicate with a Redfish Service.                                                                                                                                                                                                                                                                                                                                                                                      |
-| Redfish Schema                  | The Schema definitions for Redfish resources.  It is defined according to OData Schema representation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                         |
-| Redfish Service                 | Also referred to as the "Service". The set of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                               |
+| Redfish Alert Receiver          | The name for the functionality that receives alerts from a Redfish Service. This functionality is typically software running on a remote system that is separate from the managed system.                                                                                                                                                                                                                                                                                                 |
+| Redfish Client                  | Name for the functionality that communicates with a Redfish Service and accesses one or more resources or functions of the Service.                                                                                                                                                                                                                                                                                                                                                       |
+| Redfish Protocol                | The set of protocols that are used to discover, connect to, and inter-communicate with a Redfish Service.                                                                                                                                                                                                                                                                                                                                                                                 |
+| Redfish Schema                  | The Schema definitions for Redfish resources.  It is defined according to OData Schema representation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                    |
+| Redfish Service                 | Also referred to as the "Service". The set of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                                                |
 | Redfish Service Entry Point     | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point.                                                                                                                                                                                                                                                                                              |
-| Request                         | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                               |
-| Resource                        | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a Collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                   |
-| Resource Collection             | A Resource Collection is a Resource that acts as a container of other Resources. The Members of a Resource Collection usually have similar characteristics. The container processes messages sent to the container. The Members of the container process messages sent only to that Member without affecting other Members of the container.                                                                                                                                                                |
-| Resource Tree                   | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource links from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops. |
-| Response                        | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                             |
-| Service Root                    | The term Service Root is used to refer to a particular resource that is directly accessed via the service entry point. This resource serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish Service.                                                                                                                                                                                         |
-| Subscription                    | The act of registering a destination for the reception of events.                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Request                         | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                          |
+| Resource                        | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a Collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                       |
+| Resource Collection             | A Resource Collection is a Resource that acts as a container of other Resources. The Members of a Resource Collection usually have similar characteristics. The container processes messages sent to the container. The Members of the container process messages sent only to that Member without affecting other Members of the container.                                                                                                                                              |
+| Resource Tree                   | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource hyperlinks from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops. |
+| Response                        | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                        |
+| Service Root                    | The term Service Root is used to refer to a particular resource that is directly accessed via the service entry point. This resource serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish Service.                                                                                                                                                                                          |
+| Subscription                    | The act of registering a destination for the reception of events.                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 ## Symbols and abbreviated terms
 
@@ -155,7 +156,7 @@ The Redfish Scalable Platforms Management API ("Redfish") is a management standa
 
 ### Scope
 
-The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an inter-operable, cross-vendor, remote and out-of-band capable interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management. While large scale systems are the primary focus, the specifications are also capable of being used for more traditional system platform management implementations.
+The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an interoperable, cross-vendor, remote and out-of-band capable interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management. While large scale systems are the primary focus, the specifications are also capable of being used for more traditional system platform management implementations.
 
 The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which OEM (system vendor) -specific extensions can be provided by a given implementation.
 
@@ -166,15 +167,15 @@ The specifications do not set requirements that particular hardware or firmware 
 ### Goals
 
 There are many objectives and goals of Redfish as an architecture, as a data representation, and of the definition of the protocols that are used to access and interact with a Redfish Service. Redfish seeks to provide specifications that meet the following goals:
-* Scalable – To support stand-alone machines to racks of equipment found in cloud service environments.
-* Flexible – To support a wide variety of systems found in service today.
-* Extensible – To support new and vendor-specific capabilities cleanly within the framework of the data model.
+* Scalable - To support stand-alone machines to racks of equipment found in cloud service environments.
+* Flexible - To support a wide variety of systems found in service today.
+* Extensible - To support new and vendor-specific capabilities cleanly within the framework of the data model.
 * Backward Compatible - To enable new capabilities to be added while preserving investments in earlier versions of the specifications.
-* Interoperable – To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
-* System-Focused – To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
-* Standards based – To leverage protocols and standards that are widely accepted and used in environments today - in particular, programming environments that are being widely adopted for developing web-based clients today.
-* Simple – To be directly usable by software developers without requiring highly specialized programming skills or systems knowledge.
-* Lightweight – To reduce the complexity and cost of implementing and validating Redfish Services on managed systems.
+* Interoperable - To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
+* System-Focused - To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
+* Standards based - To leverage protocols and standards that are widely accepted and used in environments today - in particular, programming environments that are being widely adopted for developing web-based clients today.
+* Simple - To be directly usable by software developers without requiring highly specialized programming skills or systems knowledge.
+* Lightweight - To reduce the complexity and cost of implementing and validating Redfish Services on managed systems.
 
 ### Design tenets
 The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
@@ -193,13 +194,13 @@ The following design tenets and technologies are used to help deliver the previo
 
 Redfish does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, Redfish does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocols from the data model.
 
-Inter-operable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.
+Interoperable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.
 
-For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer.
+For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well-known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer.
 
 Additionally, not all Redfish resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
 
-Lastly, the value of links between resources and other elements can vary across implementations. Clients should not assume that links can be reused across different instantiations of a Redfish Service.
+Lastly, the value of hyperlinks between resources and other elements can vary across implementations. Clients should not assume that hyperlinks can be reused across different instantiations of a Redfish Service.
 
 ### Additional design background and rationale
 
@@ -211,12 +212,12 @@ There are several reasons to define a RESTful interface:
 * It enables a lightweight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).
 * It is a prevalent access method in the industry.
 * It is easy to learn and easy to document.
-* There are a number of toolkits & development environments that can be used for REST.
+* There are a number of toolkits and development environments that can be used for REST.
 * It supports data model semantics and maps easily to the common CRUD operations.
 * It fits with our design principle of simplicity.
 * It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.
 * It is schema agnostic so adapts well to any modeling language.
-* By using it, Redfish can leverage existing security & discovery mechanisms in the industry.
+* By using it, Redfish can leverage existing security and discovery mechanisms in the industry.
 
 #### Follow OData conventions
 
@@ -236,7 +237,7 @@ The protocol operations are specified independently of the data model.  The prot
 
 #### Hypermedia API service endpoint
 
-Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service.
+Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through hyperlinks found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service.
 
 ### Service elements
 
@@ -313,9 +314,9 @@ A URI is used to identify a resource, including the base service and all Redfish
 
 To begin operations, a client must know a URI for a resource.
 
-* Performing a GET operation yields a representation of the resource containing properties and links to associated resources.
+* Performing a GET operation yields a representation of the resource containing properties and hyperlinks to associated resources.
 
-The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
+The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
 Redfish considers three parts of the URI as described in [RFC3986](#RFC3986).
 
@@ -343,7 +344,12 @@ Assuming the client is connecting through an appliance named "mgmt.vendor.com", 
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
 
-If a property in a response includes a value that contains a fragment to reference a property within a resource, it shall conform to the URI fragment identifier representation as specified in [RFC6901](#RFC6901).  If the property is defined as a [reference property](#reference-properties) within the schema, the fragment shall reference a valid [resource identifier](#resource-identifier-property).
+If a property in a response is a reference to another property within a resource, the "URI Fragment Identifier Representation" format as specified in [RFC6901](#RFC6901) shall be used.  If the property is defined as a [reference property](#reference-properties) within the schema, the fragment shall reference a valid [resource identifier](#resource-identifier-property).  For example, the following fragment identifies a property at index 0 of the Fans array within the resource /redfish/v1/Chassis/MultiBladeEncl/Thermal:
+~~~json
+{
+    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal#/Fans/0"
+}
+~~~
 
 #### HTTP methods
 
@@ -397,7 +403,7 @@ The ETag is generated and provided as part of the resource payload because the s
 
 This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.
 
-If a client [PUTs](#replace-put-) or [PATCHes](#update-patch-) a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.
+If a client [PUTs](#replace-put-) or [PATCHes](#update-patch-) a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.  If a service supports returning the ETag header on a resource, the service may respond with status code [428](#status-428) if the If-Match/If-None-Match header is missing from the PUT/PATCH request for the same resource, as specified in [RFC6585](#RFC6585).
 
 In addition to returning the ETag property on each resource,
 
@@ -426,7 +432,7 @@ While the major version of the protocol is represented in the URI, the major ver
 * *MinorVersion* = integer:  a minor update.  New functionality may have been added but nothing removed. Compatibility will be preserved with previous  minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service.
+Any resource discovered through hyperlinks found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service.
 
 A GET on the resource "/redfish" shall return the following body:
 
@@ -467,23 +473,23 @@ HTTP defines headers that can be used in request messages. The following table d
 * Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
 * Redfish Services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".
 
-| Header           | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                                     |
-| --------         | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                                    |
-| Accept           | Yes         | [RFC 7231](#RFC7231)   | Indicates to the server what media type(s) this client is prepared to accept. Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`. Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`. |
-| Accept-Encoding  | No | [RFC 7231](#RFC7231)   | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                                        |
-| Accept-Language  | No          | [RFC 7231](#RFC7231)   | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                          |
-| Content-Type     | Conditional | [RFC 7231](#RFC7231) | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                     |
-| Content-Length   | No          | [RFC 7231](#RFC7231) | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
-| OData-MaxVersion | No          | 4.0                                   | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                   |
-| OData-Version    | Yes         | 4.0                                   | Services shall reject requests which specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).  If client does not specify an Odata-Version header, the client is outside the boundaries of this specification.                                                                                                                         |
-| Authorization    | Conditional | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authentication](#basic-authentication)                                                                                                                                                                                                                                                                       |
-| User-Agent       | Yes         | [RFC 7231](#RFC7231) | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                  |
-| Host             | Yes         | [RFC 7230](#RFC7230) | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                      |
-| Origin           | Yes         | [W3C CORS](#W3C-CORS), Section 5.7     | Used to allow web applications to consume Redfish Service while preventing CSRF attacks.                                                                                                                                                                                                                                        |
-| Via              | No          | [RFC 7230](#RFC7230) | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
-| Max-Forwards     | No          | [RFC 7231](#RFC7231) | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
-| If-Match         | Conditional | [RFC 7232](#RFC7232) | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state.                                                                                                                                     |
-| If-None-Match    | No          | [RFC 7232](#RFC7232) | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).       |
+| Header           | Required    | Supported Values                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| --------         | ---         | -----------------                  | ------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Accept           | Yes         | [RFC 7231](#RFC7231)               | Indicates to the server what media type(s) this client is prepared to accept.  Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`.  Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`.  Services shall support requests for all resources with an Accept header including `application/*`, `application/*;charset=utf-8`, `*/*`, or `*/*;charset=utf-8`. |
+| Accept-Encoding  | No          | [RFC 7231](#RFC7231)               | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                      |
+| Accept-Language  | No          | [RFC 7231](#RFC7231)               | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                                                                                                                                                                                                                     |
+| Content-Type     | Conditional | [RFC 7231](#RFC7231)               | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                                                                                                                                                                                                                |
+| Content-Length   | No          | [RFC 7231](#RFC7231)               | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411).                                                                                                                                                                                                    |
+| OData-MaxVersion | No          | 4.0                                | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| OData-Version    | Yes         | 4.0                                | Services shall reject requests which specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).  If client does not specify an OData-Version header, the client is outside the boundaries of this specification.                                                                                                                                                                                       |
+| Authorization    | Conditional | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authentication](#basic-authentication)                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| User-Agent       | Yes         | [RFC 7231](#RFC7231)               | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Host             | Yes         | [RFC 7230](#RFC7230)               | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Origin           | Yes         | [W3C CORS](#W3C-CORS), Section 5.7 | Used to allow web applications to consume Redfish Service while preventing CSRF attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Via              | No          | [RFC 7230](#RFC7230)               | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Max-Forwards     | No          | [RFC 7231](#RFC7231)               | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| If-Match         | Conditional | [RFC 7232](#RFC7232)               | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state.                                                                                                                                                                                                                                                                                                                                                   |
+| If-None-Match    | No          | [RFC 7232](#RFC7232)               | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).                                                                                                                                                                                                         |
 
 * Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
@@ -522,15 +528,15 @@ Services shall not require authentication in order to retrieve the service docum
 
 ##### Resource retrieval requests
 
-Clients request resources by issuing GET requests to the URI for the individual resource. The URI for a resource may be obtained from a [resource identifier property](#resource-identifier-property) returned in a previous request (for example, within the [links](#links-property) clause of a previously returned resource). Services may, but are not required to, support the convention of retrieving individual properties of a Resource by appending a segment containing the property name to the URI of the resource.
+Clients request resources by issuing GET requests to the URI for the individual resource. The URI for a resource may be obtained from a [resource identifier property](#resource-identifier-property) returned in a previous request (for example, within the [Links Property](#links-property) of a previously returned resource). Services may, but are not required to, support the convention of retrieving individual properties of a Resource by appending a segment containing the property name to the URI of the resource.
 
 ###### Query parameters
 
 When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
 
-| Attribute | Description                                                                                                                                                                | Example                   |
-| ---       | ---                                                                                                                                                                        | ---                       |
-| $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                                                 | `http://resourcecollection?$skip=5` |
+| Attribute | Description                                                                                                                                                     | Example                             |
+| ---       | ---                                                                                                                                                             | ---                                 |
+| $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
 
 * Services should support the $top and $skip query parameters.
@@ -545,14 +551,14 @@ No requirements are placed on implementations to return a consistent set of Memb
 
 * Clients shall not make assumptions about the URIs for the Members of a Resource Collection.
 * Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its "Members" array.
-* Regardless of paging, see [partial results](#nextlink-property-and-partial-results), the total number of resources referenced by the Members array shall be returned in the [count](#count-property) property.
+* Regardless of paging, see [partial results](#next-link-property-and-partial-results), the total number of resources referenced by the Members array shall be returned in the [count](#count-property) property.
 
 #### HEAD
 
 The HEAD method differs from the GET method in that it MUST NOT return message body information.  However, all of the same meta information and status codes in the HTTP headers will be returned as though a GET method were processed, including authorization checks.
 
 * Services may support the HEAD method in order to return meta information in the form of HTTP response headers.
-* Services may support the HEAD method in order to verify link validity.
+* Services may support the HEAD method in order to verify hyperlink validity.
 * Services may support the HEAD method in order to verify resource accessibility
 * Services shall not support any other use of the HEAD method.
 * The HEAD method shall be idempotent in the absence of outside changes to the resource.
@@ -574,14 +580,15 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
-OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [links](#links-property)) are ignored on Update.
+OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [Links Property](#links-property)) are ignored on Update.
 
 ##### Replace (PUT)
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body are reset to their default value.
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
+* Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
@@ -699,9 +706,9 @@ HTTP defines headers that can be used in response messages.  The following table
 | Content-Type                       | Yes         | [RFC 7231](#RFC7231) | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
 | Content-Encoding                   | No          | [RFC 7231](#RFC7231) | Describes the encoding that has been performed on the media type                                                                                                                                                                                                                                                                |
 | Content-Length                     | No          | [RFC 7231](#RFC7231)   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
-| ETag                               | Conditional | [RFC 7232](#RFC7232) | An identifier for a specific version of a resource, often a message digest.   Etags shall be included on responses to GETs of ManagerAccount objects.                                                                                                                                                                                                       |
+| ETag                               | Conditional | [RFC 7232](#RFC7232) | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects.                                                                                                                                                                                                       |
 | Server                             | Yes         | [RFC 7231](#RFC7231) | Required to describe a product token and its version. Multiple product tokens may be listed.                                                                                                                                                                                                                                    |
-| <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)       | Link headers shall be returned as described in the clause on [Link Headers](#link-header).                                                                                                                                                                                                                                     |
+| <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)       | Link Headers shall be returned as described in the clause on [Link Headers](#link-header).                                                                                                                                                                                                                                     |
 | Location                           | Conditional | [RFC 7231](#RFC7231) | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses which create user sessions.                                                                                                      |
 | Cache-Control                      | Yes         | [RFC 7234](#RFC7234)   | This header shall be supported and is meant to indicate whether a response can be cached or not.                                                                                                                                                                                                                                |
 | Via                                | No          | [RFC 7230](#RFC7230) | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
@@ -713,17 +720,14 @@ HTTP defines headers that can be used in response messages.  The following table
 | Retry-After | No | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
 
 
-##### Link header
+##### Link Header
 
-The [Link header](#link-header-table) provides metadata information on the
-accessed resource in response to a HEAD or GET operation. In addition to
-links from the resource, the URL of the JSON Schema for the resource shall be
-returned with a `rel=describedby`.  URLs of the JSON Schema for an annotation should be returned without a `rel=describedby`. If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the @odata.id property returned in this resource.
+The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation. In addition to hyperlinks from the resource, the URL of the JSON Schema for the resource shall be returned with a `rel=describedby`.  URLs of the JSON Schema for an annotation should be returned without a `rel=describedby`. If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the @odata.id property returned in this resource.
 
-Below is an example of the link headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.  
-- The first header is an example of a link that comes from the resource.  It describes links within the resource.  This type of header is outside the scope of this specification. 
-- The second link header is an example of an Annotation link header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository. 
-- The third link header is an example for the JSON Schema that describes the actual resource. 
+Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.  
+- The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification. 
+- The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository. 
+- The third Link Header is an example for the JSON Schema that describes the actual resource. 
 - Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource will indicate the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).
 
 ~~~http
@@ -732,8 +736,7 @@ Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ~~~
 
-Link header(s) shall be returned on HEAD and a Link header satisfying
-`rel=describedby` shall be returned on GET and HEAD and a Link header satisfying Annotations should be returned on GET and HEAD.
+Link Header(s) shall be returned on HEAD and a Link Header satisfying `rel=describedby` shall be returned on GET and HEAD and a Link Header satisfying Annotations should be returned on GET and HEAD.
 
 #### Status codes
 
@@ -752,29 +755,30 @@ The following table lists some of the common HTTP status codes. Other codes may 
 * Exceptions from operations shall be mapped to HTTP status codes.
 * Redfish Services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.
 
-| HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| <a id="status-200"></a>200 OK                     | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-201"></a>201 Created                | A request that created a new resource completed successfully. The Location header shall be set to the canonical URI for the newly created resource. A representation of the newly created resource may be included in the response body.                                                                                                                                                                                                                                                         |
-| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed. The Location header shall be set to the URI of a Task resource that can later be queried to determine the status of the operation. A representation of the Task resource may be included in the response body.                                                                                                                                                                                          |
-| <a id="status-204"></a>204 No Content             | The request succeeded, but no content is being returned in the body of the response.                                                                                                                                                                                                                                                                                                                                                                                                                |
-| <a id="status-301"></a>301 Moved Permanently      | The requested resource resides under a different URI                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| <a id="status-302"></a>302 Found                  | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-304"></a>304 Not Modified           | The service has performed a conditional GET request where access is allowed, but the resource content has not changed. Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                                  |
-| <a id="status-400"></a>400 Bad Request            | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                      |
-| <a id="status-401"></a>401 Unauthorized           | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-403"></a>403 Forbidden              | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-404"></a>404 Not Found              | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| <a id="status-405"></a>405 Method Not Allowed     | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI. The response shall include an Allow header which provides a list of methods that are supported by the resource identified by the Request-URI.                                                                                                                                                                                                                   |
+| HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| <a id="status-200"></a>200 OK                     | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-201"></a>201 Created                | A request that created a new resource completed successfully.  The Location header shall be set to the canonical URI for the newly created resource.  A representation of the newly created resource may be included in the response body.                                                                                                                                                                                                                                                      |
+| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed.  The Location header shall be set to the URI of a Task resource that can later be queried to determine the status of the operation.  A representation of the Task resource may be included in the response body.                                                                                                                                                                                       |
+| <a id="status-204"></a>204 No Content             | The request succeeded, but no content is being returned in the body of the response.                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id="status-301"></a>301 Moved Permanently      | The requested resource resides under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| <a id="status-302"></a>302 Found                  | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-304"></a>304 Not Modified           | The service has performed a conditional GET request where access is allowed, but the resource content has not changed.  Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                                   |
+| <a id="status-400"></a>400 Bad Request            | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on).  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                   |
+| <a id="status-401"></a>401 Unauthorized           | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-403"></a>403 Forbidden              | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-404"></a>404 Not Found              | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| <a id="status-405"></a>405 Method Not Allowed     | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI.  The response shall include an Allow header, which provides a list of methods that are supported by the resource identified by the Request-URI.                                                                                                                                                                                                                       |
 | <a id="status-406"></a>406 Not Acceptable         | The Accept header was specified in the request and the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the Accept header.                                                                                                                                                                                                                                                                                          |
-| <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple attributes that work in a linked manner using incompatible values).                                                                                                                                                                                                                            |
-| <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known. This condition is expected to be considered permanent. Clients with link editing capabilities SHOULD delete references to the Request-URI after user approval. If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 (Not Found) SHOULD be used instead. This response is cacheable unless indicated otherwise. |
-| <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead). The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                         |
-| <a id="status-412"></a>412 Precondition Failed    | Precondition (such as OData-Version, If Match or If Not Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                   |
-| <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                           |
-| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                      |
+| <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple attributes that work in a linked manner using incompatible values).                                                                                                                                                                                                                             |
+| <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities SHOULD delete references to the Request-URI after user approval.  If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 (Not Found) SHOULD be used instead.  This response is cacheable unless indicated otherwise. |
+| <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead).  The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                        |
+| <a id="status-412"></a>412 Precondition Failed    | Precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| <a id="status-428"></a>428 Precondition Required  | The request did not provide the required precondition, such as an If-Match or If-None-Match header.                                                                                                                                                                                                                                                                                                                                                                                             |
+| <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
+| <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
+| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                  |
 
 #### Metadata responses
 Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
@@ -905,21 +909,15 @@ Responses that represent a single resource shall contain a context property name
 
 The context URL for a resource is of one of the following two forms:
 
- *MetadataUrl*#*ResourceType*[(*Selectlist*)]
- *MetadataUrl*#*ResourcePath*[(*Selectlist*)]/$entity
+ *MetadataUrl*#*ResourceType*  
+ or  
+ *MetadataUrl*#*ResourcePath*/$entity
 
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *ResourceType* = the fully qualified name of the unversioned resource type
 * *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
-* *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 * *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
-
-###### Select list
-
-If a response contains a subset of the properties defined in the Redfish Schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.
-
-Expanded [reference properties](#reference-properties) shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
 
 For example, the following context URL specifies that the result contains a single ComputerSystem resource:
 
@@ -950,7 +948,7 @@ where
 
 ##### ETag property
 
-ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the [Etag](#etags) for a resource.
+ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the [ETag](#etags) for a resource.
 
 ##### Primitive properties
 
@@ -974,7 +972,7 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
  `*YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*] (Z | (+ | - ) *hh*:*mm*)`
 
-  where:
+  where
 
 * *SSS* = one or more digits representing a decimal fraction of a second, with the number of digits implying precision.
 * The 'T' separator and 'Z' suffix shall be capitals.
@@ -999,7 +997,7 @@ where
 
 The client may use this fragment to identify the [action definition](#resource-actions) within the [referenced](#referencing-other-schemas) Redfish Schema document associated with the specified namespace.
 
-The value of the property is a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.
+The value of the property shall be a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.  The "target" property is defined in the [OData JSON Format](#OData-JSON) specification.
 
 The property representing the available action may be annotated with the [AllowableValues](#allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
 
@@ -1038,13 +1036,13 @@ The property representing the action may be annotated with the "AllowableValues"
 
 The set of allowable values is specified by including a property whose name is the name of the parameter followed by "@Redfish.AllowableValues", and whose value is a JSON array of strings representing the allowable values for the parameter.
 
-##### Links property
+##### Links Property
 
-[References](#reference-properties) to other resources are represented by the links property on the resource.
+[References](#reference-properties) to other resources are represented by the Links Property on the resource.
 
-The links property shall be named "Links" and shall contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
+The Links Property shall be named "Links" and shall contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
-The links property shall also include an [OEM property](#oem-property) for navigating vendor-specific links.
+The Links Property shall also include an [OEM property](#oem-property) for navigating vendor-specific hyperlinks.
 
 ###### Reference to a single related resource
 
@@ -1085,7 +1083,7 @@ OEM-specific properties are nested under an [OEM property](#oem-property).
 
 ##### Partial resource results
 
-Responses representing a single resource shall not be broken into multiple results. See [partial results](#nextlink-property-and-partial-results) for details about the format of these responses.
+Responses representing a single resource shall not be broken into multiple results. See [partial results](#next-link-property-and-partial-results) for details about the format of these responses.
 
 ##### Extended information
 
@@ -1184,7 +1182,7 @@ The client can get the definition of the annotation from the [service metadata](
 
 #### Resource Collection responses
 
-Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#nextlink-property-and-partial-results) for partial results.
+Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [Next Link Property](#next-link-property-and-partial-results) for partial results.
 
 
 ##### Context property
@@ -1208,9 +1206,9 @@ The total number of resources (members) available in the Resource Collection is 
 
 The Members of the Resource Collection of resources are returned as a JSON array, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type. The name of the property representing the members of the collection shall be "Members". The Members property shall not be null. Empty collections shall be returned in JSON as an empty array.
 
-##### NextLink property and partial results
+##### Next Link Property and partial results
 
-Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The next link property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
+Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a Next Link Property named "Members@odata.nextLink". The value of the Next Link Property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The Next Link Property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
 
 The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
@@ -1238,7 +1236,7 @@ Error responses are defined by an extended error resource, represented as a sing
 | Property              | Description                                                                                                                                    |
 | ---                   | ---                                                                                                                                            |
 | code                  | A string indicating a specific MessageId from the message registry. "Base.1.0.GeneralError" should be used only if there is no better message. |
-| message               | A human readable error message corresponding to the message in the message registry.
+| message               | A human-readable error message corresponding to the message in the message registry.
 | @Message.ExtendedInfo | An array of [message objects](#message-object) describing one or more error message(s).
 
 ~~~json
@@ -1263,7 +1261,7 @@ Error responses are defined by an extended error resource, represented as a sing
             },
             {
                 "@odata.type" : "#Message.v1_0_0.Message",
-                "MessageId": "Base.1.0.PropertyNotWriteable",
+                "MessageId": "Base.1.0.PropertyNotWritable",
                 "RelatedProperties": [
                     "#/SKU"
                 ],
@@ -1287,7 +1285,7 @@ Messages are represented as a JSON object with the following properties:
 | Property          | Description                                                                                                                                                                                                 |
 | ---               | ---                                                                                                                                                                                                         |
 | MessageId         | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.                                   |
-| Message           | A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
+| Message           | A human-readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
 | RelatedProperties | An optional array of JSON Pointers defining the specific properties within a JSON payload described by the message.                                                                                         |
 | MessageArgs       | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageId is specified for a parameterized message.
 | Severity          | An optional string representing the severity of the error.
@@ -1297,7 +1295,7 @@ Each instance of a Message object shall contain at least a MessageId, together w
 
 MessageIds identify specific messages defined in a message registry.
 
-The value of the MessageId property shall be of the form
+The value of the MessageId property shall be of the form:
 
  *RegistryName*.*MajorVersion*.*MinorVersion*.*MessageKey*
 
@@ -1329,6 +1327,30 @@ All Redfish schemas produced, approved and published by the SPMF are available f
 | redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file. |
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
 
+#### Schema file naming conventions
+
+Standard Redfish schema files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.
+
+##### CSDL (XML) schema file naming
+
+Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
+   
+  *TypeName*_*vMajorVersion*.*xml*
+
+For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml". 
+
+##### JSON schema file naming
+
+Redfish JSON schema files shall be named using the [Type identfiers](#type-identifiers), following the format:
+
+  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
+  
+For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
+
+##### OEM schema file naming
+
+To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
+ 
 #### Programmatic access to schema files
 
 Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
@@ -1364,17 +1386,17 @@ Types used within a JSON payload shall be defined in, or referenced by, the [ser
 
 Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Data Model & Schema
+NOTE: Refer to the [Security](#security) clause for security implications of Data Model and Schema
 
 ### Common naming conventions
 
 The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
 
 Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
-* The first letter of each word shall be upper case with spaces between words shall be removed  (eg PowerState, SerialNumber.)
+* The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
 * No underscores are used.
-* Both characters are capitalized for two-character acronyms (eg IPAddress, RemoteIP)
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (eg Wwn, VirtualWwn)
+* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
+* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn).
 
 Exceptions are allowed for the following cases:
  * Well-known technology names like "iSCSI"
@@ -1382,12 +1404,12 @@ Exceptions are allowed for the following cases:
  * Well-known abbreviations or acronyms
 
 For attributes that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
- * Bandwidth (Mbps), (eg PortSpeedMbps)
- * CPU speed (Mhz), (eg ProcessorSpeedMhz)
- * Memory size (MegaBytes, MB), (eg MemoryMB)
- * Counts of items (Count), (eg ProcessorCount, FanCount)
- * The State of a resource (State) (eg PowerState.)
- * State values where "work" is being done end in (ing) (eg Applying, Clearing)
+ * Bandwidth (Mbps), (e.g., PortSpeedMbps)
+ * CPU speed (Mhz), (e.g., ProcessorSpeedMhz)
+ * Memory size (MegaBytes, MB), (e.g., MemoryMB)
+ * Counts of items (Count), (e.g., ProcessorCount, FanCount)
+ * The State of a resource (State) (e.g., PowerState.)
+ * State values where "work" is being done end in (ing) (e.g., Applying, Clearing)
 
 ### Localization considerations
 
@@ -1676,9 +1698,11 @@ If the property references a single type, the value of the type attribute is the
 
 If the property references a collection of resources, the value of the type attribute is of the form:
 
- Collection(NamespaceQualifiedTypeName)
+~~~
+  Collection(NamespaceQualifiedTypeName)
+~~~
 
-where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.
+where `NamespaceQualifiedTypeName` is the namespace qualified name of the type of related resources.
 
 ~~~xml
   <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
@@ -1757,7 +1781,7 @@ The first parameter is called the "binding parameter" and specifies the resource
 
 #### Resource extensibility
 
-Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), links, and [actions](#custom-actions) for common Redfish resources using the Oem property on resources, links, and actions.
+Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#custom-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
@@ -1893,11 +1917,11 @@ The Id property of a resource uniquely identifies the resource within the Resour
 
 #### Name
 
-The Name property is used to convey a human readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.
+The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.
 
 #### Description
 
-The Description property is used to convey a human readable description of the resource.  The type of the Description property shall be string.
+The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
 
 #### Status
 
@@ -1907,14 +1931,14 @@ The value of the status property is a common status object type as defined by th
 
 #### Links
 
-The [Links](#links-property) property represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the Links Property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
 #### Members
 
 The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
 
 #### RelatedItem
-The [RelatedItem](#relateditem) property represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
 
 #### Actions
 
@@ -1947,11 +1971,43 @@ Redfish Resources are one of several general kinds:
 
 #### Current configuration
 
-Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH to a separate Setting resource.
+Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH and/or PUT to a separate [Settings resource](#settings).  For resources that can be modified immediately, the Allow header shall contain PATCH and/or PUT in the GET response.  When a resource is read-only, the Allow header shall not contain PATCH or PUT in the GET response.
 
 #### Settings
 
-Setting resources represent the future state and configuration of the resource.  This property is always associated with a resource through the Redfish.Settings annotation.  Where the resource represents the current state, the settings resource represents the future intended state.  The state of the resource is changed either directly, such as with a POST of an action or PUT request or indirectly, such as when a user reboots a machine outside of the Redfish Service.
+A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
+
+Below is an example body for a resource that supports a Settings resource.  A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+
+~~~json
+{
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
+        },
+        "Time": "2017-05-03T23:12:37-05:00",
+        "ETag": "someetag",
+        "Messages": []
+    },
+    ...
+}
+~~~
+
+The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response body that represents the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
+
+Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied:
+
+~~~json
+{
+    "@Redfish.SettingsApplyTime": {
+        "ApplyTime": "OnReset",   
+        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+        "MaintenanceWindowDurationInSeconds": 600
+    },
+    ...
+}
+~~~
 
 #### Services
 
@@ -2017,9 +2073,9 @@ Clients begin receiving events once a subscription has been registered with the 
 
 Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.
 
-This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIds in a well known format.  These MessageIds are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.
+This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIds in a well-known format.  These MessageIds are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.
 
-The MessageId property contents shall be of the form
+The MessageId property contents shall be of the form:
 
  *RegistryName*.*MajorVersion*.*MinorVersion*.*MessageKey*
 
@@ -2038,7 +2094,7 @@ These are some configurable properties that are global settings that define the 
 
 ### Asynchronous operations
 
-Services that support asynchronous operations will implement the Task service & Task resource.
+Services that support asynchronous operations will implement the Task service and Task resource.
 
 The Task service is used to describe the service that handles tasks.  It contains a Resource Collection of zero or more "Task" resources. The Task resource is used to describe a long running operation that is spawned when a request will take longer than a few seconds, such as when a service is instantiated. Clients will poll the URI of the task resource to determine when the operation has completed and if it was successful.
 
@@ -2181,9 +2237,9 @@ Redfish implementations shall use certificates that are compliant with X.509 v3 
   * The POST operation to the Sessions service/object needed for authentication
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
 * Redfish objects shall not be available unauthenticated, except for
-  * The root object which is needed to identify the device and service locations
-  * The $metadata object which is needed to retrieve resource types
-  * The OData Service Document which is needed for compatibility with OData clients
+  * The root object that is needed to identify the device and service locations
+  * The $metadata object that is needed to retrieve resource types
+  * The OData Service Document that is needed for compatibility with OData clients
   * The version object located at /redfish
 * External services linked via external references are not part of this spec, and may have other security requirements.
 
@@ -2216,7 +2272,7 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 ##### Redfish login sessions
 
-For functionality requiring multiple Redfish operations, or for security reasons, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the Session Service.  The URI for establishing a session can be found in the SessionService's Session property or in the Service Root's Links Section under the Sessions property.  Both URIs shall be the same.
+For functionality requiring multiple Redfish operations, or for security reasons, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the Session Service.  The URI for establishing a session can be found in the SessionService's Session property or in the Service Root's [Links Property](#links-property) under the Sessions property.  Both URIs shall be the same.
 
 ~~~json
 {
@@ -2234,7 +2290,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 ##### Session login
 
-A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions Resource Collection, including the following POST body:
+A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService's Sessions Resource Collection, including the following POST body:
 
 ~~~http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
@@ -2252,11 +2308,11 @@ OData-Version: 4.0
 
 The Origin header should be saved in reference to this session creation and compared to subsequent requests using this session to verify the request has been initiated from an authorized client domain.
 
-The response to the POST request to create a session includes:
+The response to the POST request to create a session shall include the following:
 
-*  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and
-*  a "Location header that contains a link to the newly created session resource.
-*  The JSON response body that contains a full representation of the newly created session object:
+* An X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests
+* A Location header that contains a hyperlink to the newly created session resource
+* The JSON response body that contains a full representation of the newly created session object (example below)
 
 ~~~http
 Location: /redfish/v1/SessionService/Sessions/1
@@ -2273,11 +2329,11 @@ X-Auth-Token: <session-auth-token>
 }
 ~~~
 
-The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
+The client sending the session login request should save the "Session Auth Token" and the hyperlink returned in the Location header.
 The "Session Auth Token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "Session Auth Token" received from the login POST.
-The client will later use the link that was returned in the Location header of the POST to logout or terminate the session.
+The client will later use the hyperlink that was returned in the Location header of the POST to logout or terminate the session.
 
-Note that the "Session ID" and "Session Auth Token" are different.  The Session ID uniquely identifies the session resource and is returned with the response data as well as the last segment of the Location header link.
+Note that the "Session ID" and "Session Auth Token" are different.  The Session ID uniquely identifies the session resource and is returned with the response data as well as the last segment of the Location header hyperlink.
 An administrator with sufficient privilege can view active sessions and also terminate any session using the associated sessionId.
 Only the client that executes the login will have the Session Auth Token.
 
@@ -2292,7 +2348,7 @@ Note that Redfish sessions "time-out" as opposed to having a token expiration ti
 
 ##### Session termination or logout
 
-A Redfish session is terminated when the client Logs-out.  This is accomplished by performing a DELETE to the Session resource identified by the link returned in the Location header when the session was created, or the SessionId returned in the response data.
+A Redfish session is terminated when the client Logs-out.  This is accomplished by performing a DELETE to the Session resource identified by the hyperlink returned in the Location header when the session was created, or the SessionId returned in the response data.
 
 The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users sessions from a different session.
 
@@ -2302,7 +2358,7 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 * User passwords should be stored with one-way encryption techniques.
 * Implementations may support exporting user accounts with passwords, but shall do so using encryption methods to protect them.
 * User accounts shall support ETags and shall support atomic operations
-  * Implementations may reject requests which do not include an ETag
+  * Implementations may reject requests that do not include an ETag
 * User Management activity is atomic
 * Extended error messages shall NOT provide privileged info when authentication failures occur
 
@@ -2332,12 +2388,13 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - Implementations shall support all of the predefined roles.
   - The predefined Roles may include OEM privileges.
   - The privilege array defined for the predefined roles shall not be modifiable.
-  - A service may optionally support additional "Custom" roles, and may allow users to create such custom roles by: 1) posting to the "Roles" Resource Collection; or 2) an implementation may implement a i.e.,  custom role; or 3) other mechanism outside the specification.
+  - A service may optionally define additional "Custom" roles.
+  - A service may allow users to create custom roles by issuing a POST to the "Roles" Resource Collection.
 
 * Privileges:
   - A privilege is a permission to perform an operation (e.g., Read, Write) within a defined management domain (e.g., Configuring Users).
   - The Redfish specification defines a set of "assigned privileges" in the AssignedPrivileges array in the Role resource.
-  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array in the Role resource.
+  - An implementation may also include "OemPrivileges", which are then specified in an OemPrivileges array in the Role resource.
   - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges Redfish Schema file.
   - Multiple privileges in the mapping constitute an OR of the privileges.
 
@@ -2360,10 +2417,10 @@ against a mapping of the authenticated requesting identity role/privileges and d
 ##### Why specify Operation to Privilege Mapping
 
 Initial versions of the Redfish specifications specified several Role to Privilege mappings for standardized Roles and normatively identified
-several Prvilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could 
-be specified or represented in a normative fashion. The lack of a methdology to define what privilege(s) are required to perform a specific
-requested operation against the URI specified in the request puts at risk the interoperability between Redfsh service implementations that
-Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specififying 
+several Privilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could 
+be specified or represented in a normative fashion. The lack of a methodology to define what privilege(s) are required to perform a specific
+requested operation against the URI specified in the request puts at risk the interoperability between Redfish service implementations that
+Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specifying 
 and representing the operation to privilege mapping prevents the SPMF or other governing organization to normatively define privilege requirements for a service.
 
 ##### Representing Operation to Privilege Mappings
@@ -2383,7 +2440,7 @@ as a base operation to privilege mapping definition for operations that the serv
 
 An operation map defines the set of privileges required to perform a specific operation on an entity, entity element, or resource.
 The operations mapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective 
-of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined prvilege labels. The 
+of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined privilege labels. The 
 privileges required for an operation can be specified with logical AND and OR behavior as required (see Privilege AND and OR Syntax section for more information).  The following example defines
 the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to 
 privilege mapping would represent behavior for all Manager resources in a service implementation.
@@ -2430,8 +2487,8 @@ privilege mapping would represent behavior for all Manager resources in a servic
 Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
 These situations are:
 * Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
-property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast 
-to the "ConfigureUser" privilege required for the rest of the properties on ManagerAccount resources.
+property in the ManagerAccount resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast 
+to the "ConfigureUsers" privilege required for the rest of the properties in ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
 (ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
@@ -2441,7 +2498,7 @@ The overrides are defined in the context of the operation to privilege mapping f
 ##### Property Override Example
 
 In the following example, the Password property on the ManagerAccount
-resource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast to the "ConfigureUser" privilege 
+resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast to the "ConfigureUsers" privilege 
 required for the rest of the properties on ManagerAccount resources.
 ~~~json
 {
@@ -2452,7 +2509,7 @@ required for the rest of the properties on ManagerAccount resources.
                 "Privilege": [ "ConfigureManager" ]
             },
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             },
             {
                 "Privilege": [ "ConfigureSelf" ]
@@ -2465,22 +2522,22 @@ required for the rest of the properties on ManagerAccount resources.
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ]
     },
@@ -2543,28 +2600,28 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
             {
                 "Privilege": [ "ConfigureComponent" ]
             }
-        ],
-        "SubordinateOverrides": [
-            {
-                "Targets": [
-                    "Manager",
-                    "EthernetInterfaceCollection"
-                ],
-                "OperationMap": {
-                    "GET": [
-                        {
-                            "Privilege": [ "Login" ]
-                        }
-                    ],
-                    "PATCH": [
-                        {
-                            "Privilege": [ "ConfigureManager" ]
-                        }
-                    ]
-                }
-            }
         ]
-    }
+    },
+    "SubordinateOverrides": [
+        {
+            "Targets": [
+                "Manager",
+                "EthernetInterfaceCollection"
+            ],
+            "OperationMap": {
+                "GET": [
+                    {
+                        "Privilege": [ "Login" ]
+                    }
+                ],
+                "PATCH": [
+                    {
+                        "Privilege": [ "ConfigureManager" ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ~~~
 
@@ -2604,34 +2661,34 @@ In the following example use of the ResourceURI Override syntax for representing
             {
                 "Privilege": [ "ConfigureComponent" ]
             }
-        ],
-        "ResourceURIOverrides": [
-            {
-                "Targets": [
-                    "/redfish/v1/Systems/VM6",
-                    "/redfish/v1/Systems/Sys1"
-                ],
-                "OperationMap": {
-                    "GET": [
-                        {
-                            "Privilege": [ "Login" ]
-                        }
-                    ],
-                    "PATCH": [
-                        {
-                            "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
-                        }
-                    ]
-                }
-            }
         ]
-    }
+    },
+    "ResourceURIOverrides": [
+        {
+            "Targets": [
+                "/redfish/v1/Systems/VM6",
+                "/redfish/v1/Systems/Sys1"
+            ],
+            "OperationMap": {
+                "GET": [
+                    {
+                        "Privilege": [ "Login" ]
+                    }
+                ],
+                "PATCH": [
+                    {
+                        "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ~~~
 
 ##### Privilege AND and OR Syntax
 
-Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logicial combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.
+Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logical combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.
 ~~~json
 {
     "GET": [
@@ -2673,7 +2730,7 @@ A service that supports removing a composed resource shall support the DELETE me
 
 A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Composition requests shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
 
-The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports specific compositions shall support a POST request that contains an array of links to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
+The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports specific compositions shall support a POST request that contains an array of hyperlinks to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
 
 A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
 
@@ -2702,6 +2759,23 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP 428 response code. |
+|         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
+| 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
+|         |          | Clarified wording of the "Partial resource results" section. |
+|         |          | Clarified behavior of a Service when receiving a PATCH with an empty JSON object. |
+|         |          | Added statement about other uses of the HTTP 503 response code. |
+|         |          | Clarified format of URI fragments to conform to RFC6901. |
+|         |          | Clarified use of absolute and relative URIs. |
+|         |          | Clarified definition of the "target" property as originating from OData. |
+|         |          | Clarified distinction between "hyperlinks" and the "Links Property". |
+|         |          | Corrected the JSON example of the privilege map. |
+|         |          | Clarified format of the "@odata.context" property. |
+|         |          | Added clauses about the schema file naming conventions. |
+|         |          | Clarified behavior of a Service when receiving a PUT with missing properties. |
+|         |          | Clarified valid values in the "Accept" header to include wildcards per RFC7231. |
+|         |          | Corrected "ConfigureUser" privilege to be spelled "ConfigureUsers". |
+|         |          | Corrected Session Login section to include normative language. |
 | 1.2.0   | 2017-4-14| Added support for the Redfish Composability Service. |
 |         |          | Clarified Service handling of the Accept-Encoding header in a request. |
 |         |          | Improved consistency and formatting of example requests and responses throughout. |
