@@ -16,6 +16,24 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "Location": {
+        "@odata.type": "#Resource.v1_5_0.Location",
+        "PostalAddress": {
+            "Country": "US",
+            "Territory": "OR",
+            "City": "Portland",
+            "Street": "1001 SW 5th Avenue",
+            "HouseNumber": 1100,
+            "Name": "Distributed Management Task Force, Inc.",
+            "PostalCode": "97204"
+        },
+        "Placement": {
+            "Row": "North",
+            "Rack": "WEB43",
+            "RackOffsetUnits": "EIA_310",
+            "RackOffset": 12
+        }
+    },
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal"
     },
