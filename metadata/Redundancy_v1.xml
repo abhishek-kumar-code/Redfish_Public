@@ -26,7 +26,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy">
 
-      <EntityType Name="Redundancy" BaseType="Resource.v1_0_0.ReferenceableMember">
+      <EntityType Name="Redundancy" BaseType="Resource.v1_0_0.ReferenceableMember" Abstract="true">
         <Annotation Term="OData.Description" String="This is the common redundancy definition and structure used in other Redfish schemas."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*."/>
       </EntityType>
