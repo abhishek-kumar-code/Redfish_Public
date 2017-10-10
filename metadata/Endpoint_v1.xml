@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Endpoint  v1.0.2-->
+<!--# Redfish Schema:  Endpoint  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -120,6 +120,7 @@
       </ComplexType>
 
       <ComplexType Name="ConnectedEntity">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="Represents a remote resource that is connected to the network accessible to this endpoint."/>
         <Annotation Term="OData.LongDescription" String="This type shall represent a remote resource that is connected to a network accessible to an endpoint."/>
         <Property Name="EntityType" Type="Endpoint.v1_0_0.EntityType">
@@ -201,6 +202,7 @@
       </EnumType>
 
       <ComplexType Name="PciId">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="A PCI ID."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe a PCI ID."/>
         <Property Name="DeviceId" Type="Edm.String">
@@ -239,6 +241,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_1.Endpoint"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions."/>
+      <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint"/>
     </Schema>
 
   </edmx:DataServices>
