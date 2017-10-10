@@ -20,6 +20,7 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett Packard Enterprise
+* Jeff Bobzin - Insyde Software Corp.
 * Patrick Boyd - Dell Inc.
 * David Brockhaus - Vertiv
 * Richard Brunner - VMware Inc.
@@ -565,16 +566,33 @@ The HEAD method differs from the GET method in that it MUST NOT return message b
 
 #### Data modification requests
 
-Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post-), [Update](#update-patch-), [Replace](#replace-put-) or [Delete](#delete-delete-) operation, or by invoking an [Action](#actions-post-) on the resource. Services return a status code [405](#status-405) if the specified resource exists but does not support the requested operation. If a client (4xx) or service (5xx) [status code](#status-codes) is returned, the resource shall not be modified as a result of the operation.
+Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post-), [Update](#update-patch-), [Replace](#replace-put-) or [Delete](#delete-delete-) operation, or by invoking an [Action](#actions-post-) on the resource.
+
+For Create operations,  the response from the service after successful processing shall be one of the following:
+* HTTP Status code of [201](#status-201) with a body containing the JSON representation of the newly created resource after the request has been applied.
+* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource shall be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [204](#status-204)  with empty payload in the event that service is unable to return a representation of the created resource.
+
+For Update, Replace, or Delete operations, but not for Create or Action, the response from the service after successful modification shall be one of the following:
+* HTTP Status code of [200](#status-200)  with a body containing the JSON representation of the resource after the modification has been applied.
+* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource shall be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [204](#status-204)  with empty payload in the event that service is unable to return a representation of the modified resource.
+
+The response message body containing the modified resource shall represent the complete resource originally targeted by the modification request exactly as would be returned by a GET to the same Uri after modifications are complete, except with the possible addition of property annotations as described in the sections below.
+
+Services return a HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. If a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates an error and the resource shall not have been modified or created as a result of the operation.
+
+For details on responses to Action requests, see [Action](#actions-post-).
+
 
 ##### Update (PATCH)
 
-The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to the resource are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  The response is either empty or a representation of the resource after the update was done. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.
+The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response shall contain a representation of the resource after the update was done as described in the section above. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.
 
-* Services shall support the PATCH method to update a resource. If the resource can never be updated, status code [405](#status-405) shall be returned.
-* Services may return a representation of the resource after any server-side transformations in the body of the response.
-* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
-* Services should return status code [405](#status-405) if the client specifies a PATCH request against a Resource Collection.
+* Services shall support the PATCH method to update properties within a resource.
+* If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
+* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, a HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
+* Services should return HTTP status code [405](#status-405) if the client specifies a PATCH request against a Resource Collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 * Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
 
@@ -587,7 +605,7 @@ OData markup ([resource identifiers](#resource-identifier-property), [type](#typ
 The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
-* Services may return a representation of the resource after any server-side transformations in the body of the response.
+* When Replace is successful, Services shall return a representation of the modified resource after any server-side transformations in the body of the response.
 * Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
@@ -611,9 +629,9 @@ The DELETE method is used to remove a resource.
 
 * Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
 * Services may return a representation of the just deleted resource in the response body.
-* Services should return status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
+* Services should return HTTP status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
 
-Services may return status code [404](#status-404) or a success code if the resource has already been deleted.
+Services may return HTTP status code [404](#status-404) or a success code if the resource has already been deleted.
 
 ##### Actions (POST)
 
@@ -671,7 +689,7 @@ And a computer system resource contains an [Actions](#actions-property) property
 }
 ~~~
 
-Then the following would represent a possible request for the Action:
+Then the following would represent a possible valid request for the Action:
 
 ~~~http
 POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
@@ -683,6 +701,13 @@ OData-Version: 4.0
     "ResetType": "On"
 }
 ~~~
+
+In cases where the processing of the Action may require extra time to complete, the service shall respond with HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from service after processing an Action shall return message with HTTP status code as follows:
+* Code [200](#status-200) indicating Action request was successfully processed, with the JSON message body as described in the next paragraph.
+* Code [204](#status-204) which also indicates success and is returned without a message body.
+* Or in the case of error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.
+
+In the case of return of HTTP status code 200, or 400 and above,  the body of the response shall contain a JSON object as described in [Error Responses](#error-responses) detailing any error, or in the success case, providing a message indicating success.
 
 ### Responses
 
@@ -2834,6 +2859,3 @@ OData-Version: 4.0
 |         |          | Clarified relative URI resolution rules. |
 |         |          | Clarified USN format.  |
 | 1.0.0   | 2015-8-4 | Initial release |
-
-
-
