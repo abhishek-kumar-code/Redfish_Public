@@ -61,6 +61,7 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | Telemetry           | John L    |       |   |
 | Host Interface      | Paul V    |       |   |
 | Profiles            | Jeff A    |       |   |
+| FW Update           | Jeff A    |       |   |
 
 ### White Papers
 
