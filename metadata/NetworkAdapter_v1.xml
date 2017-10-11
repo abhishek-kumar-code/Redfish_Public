@@ -274,6 +274,10 @@
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_0_1.NetworkAdapter"/>
       <EntityType Name="Controllers" BaseType="NetworkAdapter.v1_0_1.Controllers">
         <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
+        <Property Name="Actions" Type="NetworkAdapter.v1_0_1.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
       </EntityType>
     </Schema>
 
