@@ -33,7 +33,7 @@
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Some implementations may allow creating new UEFI BootOption Entries by posting to the Boot Options Collection."/>
+            <Annotation Term="OData.Description" String="Some implementations may allow creating new BootOption Entries by posting to the Boot Options Collection."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.UpdateRestrictions">

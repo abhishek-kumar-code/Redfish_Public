@@ -119,8 +119,8 @@
 
       <Action Name="SetDefaultBootOrder" IsBound="true">
         <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
-        <Annotation Term="OData.Description" String="This action is used to set the UEFI Boot Order to the default settings."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform a set the UEFI BootOrder to the default values."/>
+        <Annotation Term="OData.Description" String="This action is used to set the Boot Order to the default settings."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a set the BootOrder to the default values."/>
       </Action>
 
     </Schema>
@@ -814,8 +814,8 @@
         </Property>
         <Property Name="BootOrder" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Ordered array of BootId strings representing the persistent UEFI Boot Order associated with this computer system."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of BootId strings representing the persistent UEFI Boot Order of this computer system, as defined by the UEFI Specification."/>
+          <Annotation Term="OData.Description" String="Ordered array of BootOptionReference strings representing the persistent Boot Order associated with this computer system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of BootOptionReference strings representing the persistent Boot Order of this computer system. For UEFI systems, this is the UEFI BootOrder as defined by the UEFI Specification."/>
         </Property>
       </ComplexType>
     </Schema>

@@ -6,8 +6,8 @@
     "Id": "2",
     "Name": "Boot Option",
     "Description": "UEFI Boot Option",  
-    "BootId": "Boot0001",
-    "BootDescription": "Generic USB Boot",
+    "BootOptionReference": "Boot0001",
+    "DisplayName": "Generic USB Boot",
     "UefiDevicePath": "UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)",
     "Alias": "Usb",
     "Oem": {}

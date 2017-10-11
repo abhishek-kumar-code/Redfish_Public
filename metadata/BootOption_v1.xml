@@ -33,7 +33,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="BootOption">
 
       <EntityType Name="BootOption" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="The BootOption resource reports information about a single UEFI BootOption contained within a system."/>
+        <Annotation Term="OData.Description" String="The BootOption resource reports information about a single BootOption contained within a system."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -48,7 +48,7 @@
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
             <PropertyValue Property="Deletable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual UEFI Boot Option Entries."/>                           
+            <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual Boot Option Entries."/>                           
           </Record>
         </Annotation>
       </EntityType>
@@ -60,20 +60,20 @@
       <EntityType Name="BootOption" BaseType="BootOption.BootOption">
         <Annotation Term="OData.Description" String="This is the schema definition for the BootOption resource. It represents the properties of a bootable device available in the System."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="BootId" Type="Edm.String">
+        <Property Name="BootOptionReference" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The boot option ID that is referenced in the BootOrder."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string that corresponds to the bootable option or device. For UEFI systems, this string shall match the UEFI Boot Option variable name (e.g. Boot####). This ID is referenced by the ComputerSystem BootOrder array."/>
+          <Annotation Term="OData.Description" String="The unique boot option string that is referenced in the BootOrder."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string that corresponds to the bootable option or device. For UEFI systems, this string shall match the UEFI Boot Option variable name (e.g. Boot####). This value is referenced by the ComputerSystem BootOrder array."/>
         </Property>
-        <Property Name="BootDescription" Type="Edm.String">
+        <Property Name="DisplayName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A description of this Boot Option."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a user readable string that describes this Boot Option."/>
+          <Annotation Term="OData.Description" String="The user-readable display string of the Boot Option."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a user readable string that describes this Boot Option as it should show up in the Boot Order list in user interfaces."/>
         </Property>
         <Property Name="BootOptionEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A flag that shows if the Boot Option is enabled."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if the Boot Option is enabled.  If this property is set to false, the Boot Option referenced in the Boot Order array found on the Computer System shall be skipped.  In the UEFI context, this property shall influence the Load Option Active flag for the Boot Option."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if the Boot Option is enabled.  If this property is set to false, the Boot Option referenced in the Boot Order array found on the Computer System shall be skipped. In the UEFI context, this property shall influence the Load Option Active flag for the Boot Option."/>
         </Property>
         <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
