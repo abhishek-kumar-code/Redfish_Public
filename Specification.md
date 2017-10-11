@@ -568,26 +568,26 @@ The HEAD method differs from the GET method in that it MUST NOT return message b
 
 Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post-), [Update](#update-patch-), [Replace](#replace-put-) or [Delete](#delete-delete-) operation, or by invoking an [Action](#actions-post-) on the resource.
 
-For Create operations,  the response from the service after successful processing shall be one of the following:
+##### Responses to modification requests
+
+For Create operations,  the response from the service after successful processing of the create request may be one of the following:
 * HTTP Status code of [201](#status-201) with a body containing the JSON representation of the newly created resource after the request has been applied.
-* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource shall be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource may be returned in response to request to the Task monitor Uri after processing completes.
 * HTTP Status code of [204](#status-204)  with empty payload in the event that service is unable to return a representation of the created resource.
 
-For Update, Replace, or Delete operations, but not for Create or Action, the response from the service after successful modification shall be one of the following:
-* HTTP Status code of [200](#status-200)  with a body containing the JSON representation of the resource after the modification has been applied.
-* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource shall be returned in response to request to the Task monitor Uri after processing completes.
-* HTTP Status code of [204](#status-204)  with empty payload in the event that service is unable to return a representation of the modified resource.
+For Update, Replace, or Delete operations, the response from the service after successful modification may be one of the following:
+* HTTP Status code of [200](#status-200)  with a body containing the JSON representation of the targeted resource after the modification has been applied, or in the case of Delete operation, a representation of the deleted resource.
+* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [204](#status-204)  with empty payload in the event that service is unable to return a representation of the modified or deleted resource.
 
-The response message body containing the modified resource shall represent the complete resource originally targeted by the modification request exactly as would be returned by a GET to the same Uri after modifications are complete, except with the possible addition of property annotations as described in the sections below.
-
-Services return a HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. If a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates an error and the resource shall not have been modified or created as a result of the operation.
+Services may return a HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. Otherwise, if a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
 For details on responses to Action requests, see [Action](#actions-post-).
 
 
 ##### Update (PATCH)
 
-The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response shall contain a representation of the resource after the update was done as described in the section above. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.
+The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response may contain a representation of the resource after the update was done as described in the section above. The implementation may reject the update operation on certain fields based on its own policies and in this case, not process any of the requested modifications.
 
 * Services shall support the PATCH method to update properties within a resource.
 * If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
@@ -605,7 +605,7 @@ OData markup ([resource identifiers](#resource-identifier-property), [type](#typ
 The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
-* When Replace is successful, Services shall return a representation of the modified resource after any server-side transformations in the body of the response.
+* When Replace is successful, Services may return a representation of the modified resource after any server-side transformations in the body of the response.
 * Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
@@ -702,12 +702,10 @@ OData-Version: 4.0
 }
 ~~~
 
-In cases where the processing of the Action may require extra time to complete, the service shall respond with HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from service after processing an Action shall return message with HTTP status code as follows:
-* Code [200](#status-200) indicating Action request was successfully processed, with the JSON message body as described in the next paragraph.
+In cases where the processing of the Action may require extra time to complete, the service may respond with HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from service after processing an Action may return message with HTTP status code as follows:
+* Code [200](#status-200) indicating Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success.
 * Code [204](#status-204) which also indicates success and is returned without a message body.
-* Or in the case of error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.
-
-In the case of return of HTTP status code 200, or 400 and above,  the body of the response shall contain a JSON object as described in [Error Responses](#error-responses) detailing any error, or in the success case, providing a message indicating success.
+* Or in the case of error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed. In the case of return of HTTP status code of 400 and above,  the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
 
 ### Responses
 
