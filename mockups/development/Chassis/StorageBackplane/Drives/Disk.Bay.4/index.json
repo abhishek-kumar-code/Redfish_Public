@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.4",
-    "@odata.type": "#Drive.v1_0_0.Drive",
+    "@odata.type": "#Drive.v1_3_0.Drive",
     "IndicatorLED": "Off",
     "Model": null,
     "Status": { "State": "Absent", "Health": null },
@@ -14,7 +14,7 @@
     "NegotiatedSpeedGbs": null,
     "PredictedMediaLifeLeftPercent": null,
     "Location": {
-      "@odata.type": "#Resource.v1_5_0.Location",
+      "@odata.type": "#Resource.v1_6_0.Location",
       "PartLocation": {
         "ServiceLabel": "Bay 4",
         "LocationType": "Bay",

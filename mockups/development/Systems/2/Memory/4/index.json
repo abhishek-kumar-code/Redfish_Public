@@ -1,7 +1,7 @@
 {
 	"@odata.context": "/redfish/v1/$metadata#Memory.Memory",
 	"@odata.id": "/redfish/v1/Systems/2/Memory/4",
-	"@odata.type": "#Memory.v1_1_0.Memory",
+	"@odata.type": "#Memory.v1_4_0.Memory",
 	"Name": "Regular Memory",
 	"Id": "2",
 	"RankCount": 2,
@@ -27,7 +27,7 @@
 		"Health": "OK"
   },
   "Location": {
-    "@odata.type": "#Resource.v1_5_0.Location",
+    "@odata.type": "#Resource.v1_6_0.Location",
     "PartLocation": {
       "ServiceLabel": "Socket 4",
       "LocationType": "Socket",

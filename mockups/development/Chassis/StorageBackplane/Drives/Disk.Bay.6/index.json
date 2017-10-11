@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6",
-    "@odata.type": "#Drive.v1_0_0.Drive",
+    "@odata.type": "#Drive.v1_3_0.Drive",
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
@@ -28,7 +28,7 @@
     "CapableSpeedGbs": 12,
     "NegotiatedSpeedGbs": 12,
     "Location": {
-      "@odata.type": "#Resource.v1_5_0.Location",
+      "@odata.type": "#Resource.v1_6_0.Location",
       "PartLocation": {
         "ServiceLabel": "Bay 6",
         "LocationType": "Bay",
