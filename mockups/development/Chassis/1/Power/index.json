@@ -124,7 +124,15 @@
             ],
             "Redundancy": [
               { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
-            ]
+            ],
+            "Location": {
+              "@odata.type": "#Resource.v1_5_0.Location",
+              "PartLocation": {
+                "ServiceLabel": "PSU 1",
+                "LocationType": "Bay",
+                "LocationOrdinalValue": 0
+              }
+            }        
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/1",
@@ -172,7 +180,15 @@
             ],
             "Redundancy": [
                 { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
-            ]
+            ],
+            "Location": {
+              "@odata.type": "#Resource.v1_5_0.Location",
+              "PartLocation": {
+                "ServiceLabel": "PSU 2",
+                "LocationType": "Bay",
+                "LocationOrdinalValue": 1
+              }
+            }                
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/2",
@@ -180,7 +196,15 @@
             "Name": "Power Supply Bay 3",
             "Status": {
                 "State": "Absent"
-            }
+            },
+            "Location": {
+              "@odata.type": "#Resource.v1_5_0.Location",
+              "PartLocation": {
+                "ServiceLabel": "PSU 3",
+                "LocationType": "Bay",
+                "LocationOrdinalValue": 2
+              }
+            }                
         }
     ],
     "Redundancy": [

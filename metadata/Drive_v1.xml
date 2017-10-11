@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Drive  v1.2.0-->
+<!--# Redfish Schema:  Drive  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -371,6 +371,12 @@
         </NavigationProperty>
       </ComplexType>
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_3_0">
+      <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drivee">
+        <Property Name="Location" Type="Resource.v1_5_0.Location" Nullable="false"/>
+      </EntityType>
+    </Schema>    
 
   </edmx:DataServices>
 </edmx:Edmx>

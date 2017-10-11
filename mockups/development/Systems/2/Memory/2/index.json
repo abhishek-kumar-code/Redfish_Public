@@ -22,8 +22,16 @@
 	"MemoryMedia": [
 		"DRAM"
 	],
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	}
+  "Status": {
+    "State": "Enabled",
+    "Health": "OK"
+  },
+  "Location":  {
+    "@odata.type": "#Resource.v1_5_0.Location",
+    "PartLocation": {
+      "ServiceLabel": "Socket 2",
+      "LocationType": "Socket",
+      "LocationOrdinalValue": 1
+    }
+  }
 }

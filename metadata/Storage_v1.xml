@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Storage  v1.3.0-->
+<!--# Redfish Schema:  Storage  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -366,6 +366,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the Storage Controller."/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_4_0">
+      <EntityType Name="Storage" BaseType="Storage.v1_3_0.Storage"/>
+      <EntityType Name="StorageController" BaseType="Storage.v1_3_0.StorageController">
+        <Property Name="Location" Type="Resource.v1_5_0.Location" Nullable="false"/>      </EntityType>
     </Schema>
 
   </edmx:DataServices>

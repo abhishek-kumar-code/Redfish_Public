@@ -13,6 +13,16 @@
     "CapableSpeedGbs": null,
     "NegotiatedSpeedGbs": null,
     "PredictedMediaLifeLeftPercent": null,
+    "Location": {
+      "@odata.type": "#Resource.v1_5_0.Location",
+      "PartLocation": {
+        "ServiceLabel": "Bay 3",
+        "LocationType": "Bay",
+        "LocationOrdinalValue": 2,
+        "Reference": "Front",
+        "Orientation": "LeftToRight"
+      }
+    },
     "Links": {
         "Volumes": []
     },

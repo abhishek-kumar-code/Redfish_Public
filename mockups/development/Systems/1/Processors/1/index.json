@@ -24,5 +24,13 @@
   "Status": {
     "State": "Enabled",
     "Health": "OK"
+  },
+  "Location": {
+    "@odata.type": "#Resource.v1_5_0.Location",
+    "PartLocation": {
+      "ServiceLabel": "Processor 1",
+      "LocationType": "Socket",
+      "LocationOrdinalValue": 0
+    }
   }
 }

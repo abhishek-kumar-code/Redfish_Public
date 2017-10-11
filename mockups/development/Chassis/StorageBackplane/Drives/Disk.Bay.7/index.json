@@ -27,6 +27,16 @@
     "AssetTag": "",
     "CapableSpeedGbs": 12,
     "NegotiatedSpeedGbs": 12,
+    "Location": {
+      "@odata.type": "#Resource.v1_5_0.Location",
+      "PartLocation": {
+        "ServiceLabel": "Bay 7",
+        "LocationType": "Bay",
+        "LocationOrdinalValue": 6,
+        "Reference": "Front",
+        "Orientation": "LeftToRight"
+      }
+    },
     "Links": {
         "Volumes": [
             {"@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/1"}
