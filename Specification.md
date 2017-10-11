@@ -1977,18 +1977,28 @@ Current Configuration resources represent the service's knowledge of the current
 
 A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
 
-Below is an example body for a resource that supports a Settings resource.  A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values. The Messages property is a collection of Messages that represent the results of applying the Settings resource (at the indicated SettingsApplyTime). The ETag property contains the ETag of the Settings resource that was applied. The Time property indicate the time at which the Settings resource was applied.   
+
+
+Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
 
 ~~~json
 {
     "@Redfish.Settings": {
         "@odata.type": "#Settings.v1_0_0.Settings",
         "SettingsObject": {
-            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
+            "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
         },
         "Time": "2017-05-03T23:12:37-05:00",
-        "ETag": "someetag",
-        "Messages": []
+        "ETag": "A89B031B62",
+        "Messages": [
+           {
+              "MessageId": "Base.1.0.PropertyNotWritable",
+              "RelatedProperties": [
+                 "#/Attributes/ProcTurboMode"
+              ]
+           }
+        ]
     },
     ...
 }
@@ -2008,6 +2018,7 @@ Below is an example request body that shows a client configuring when the values
     ...
 }
 ~~~
+
 
 #### Services
 
