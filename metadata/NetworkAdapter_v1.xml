@@ -135,6 +135,7 @@
       <ComplexType Name="Controllers">
         <Annotation Term="OData.Description" String="A network controller ASIC that makes up part of a NetworkAdapter."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe a network controller ASIC that makes up part of a NetworkAdapter."/>
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Property Name="FirmwarePackageVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The version of the user-facing firmware package."/>
