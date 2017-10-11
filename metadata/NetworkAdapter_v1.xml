@@ -135,7 +135,6 @@
       <ComplexType Name="Controllers">
         <Annotation Term="OData.Description" String="A network controller ASIC that makes up part of a NetworkAdapter."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe a network controller ASIC that makes up part of a NetworkAdapter."/>
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Property Name="FirmwarePackageVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The version of the user-facing firmware package."/>
@@ -273,13 +272,10 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapter.v1_1_0">
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_0_1.NetworkAdapter"/>
-      <EntityType Name="Controllers" BaseType="NetworkAdapter.v1_0_1.Controllers">
+      
+      <ComplexType Name="Controllers" BaseType="NetworkAdapter.v1_0_1.Controllers">
         <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
-        <Property Name="Actions" Type="NetworkAdapter.v1_0_1.Actions" Nullable="false">
-          <Annotation Term="OData.Description" String="The available actions for this resource."/>
-          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
-        </Property>
-      </EntityType>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
