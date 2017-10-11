@@ -373,7 +373,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_3_0">
-      <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drivee">
+      <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drive">
         <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
       </EntityType>
     </Schema>    
