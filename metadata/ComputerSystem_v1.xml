@@ -349,7 +349,7 @@
         <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.v1_0_0.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions. UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride. UefiBootNext indicates to boot from the UEFI BootId found in BootNext."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions. UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride. UefiBootNext indicates to boot from the UEFI BootOptionReference found in BootNext."/>
         </Property>
         <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.v1_0_0.BootSourceOverrideEnabled">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -809,8 +809,8 @@
         </NavigationProperty>
         <Property Name="BootNext" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This property is the BootId of the Boot Option to perform a one time boot from when BootSourceOverrideTarget is UefiBootNext."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the BootId of the UEFI Boot Option for one time boot, as defined by the UEFI Specification. The valid values for this property are specified in the values of the BootOrder array. BootSourceOverrideEnabled = Continuous is not supported for UEFI BootNext as this setting is defined in UEFI as a one time boot only."/>
+          <Annotation Term="OData.Description" String="This property is the BootOptionReference of the Boot Option to perform a one time boot from when BootSourceOverrideTarget is UefiBootNext."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the BootOptionReference of the UEFI Boot Option for one time boot, as defined by the UEFI Specification. The valid values for this property are specified in the values of the BootOrder array. BootSourceOverrideEnabled = Continuous is not supported for UEFI BootNext as this setting is defined in UEFI as a one-time boot only."/>
         </Property>
         <Property Name="BootOrder" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
