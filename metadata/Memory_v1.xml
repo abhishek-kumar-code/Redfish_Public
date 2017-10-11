@@ -714,7 +714,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_4_0">
       <EntityType Name="Memory" BaseType="Memory.v1_3_0.Memory">
-        <Property Name="Location" Type="Resource.v1_5_0.Location" Nullable="false"/>
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
       </EntityType>
     </Schema>
 

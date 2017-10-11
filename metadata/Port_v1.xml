@@ -168,7 +168,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Port.v1_1_0">
       <EntityType Name="Port" BaseType="Port.v1_0_2.Port">
-        <Property Name="Location" Type="Resource.v1_5_0.Location" Nullable="false"/>        
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>        
       </EntityType>
     </Schema>
 

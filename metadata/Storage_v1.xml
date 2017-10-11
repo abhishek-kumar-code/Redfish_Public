@@ -371,7 +371,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_4_0">
       <EntityType Name="Storage" BaseType="Storage.v1_3_0.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_3_0.StorageController">
-        <Property Name="Location" Type="Resource.v1_5_0.Location" Nullable="false"/>      </EntityType>
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>      </EntityType>
     </Schema>
 
   </edmx:DataServices>
