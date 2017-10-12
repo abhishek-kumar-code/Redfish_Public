@@ -1,0 +1,431 @@
+{
+	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+	"ProfileName": "DMTFBasicServer",
+	"ProfileVersion": "0.92",
+	"Author": "A Work in Progress from SPMF",
+	"Purpose": "A baseline interoperability profile for typical scale-out 1P/2P servers",
+	"ContactInfo": "dmtf.org/feedback",
+	"Protocol": {
+		"MinVersion": "1.0",
+		"DiscoveryRequired": false
+	},
+	"Resources": {
+		"AccountService": {
+			"PropertyRequirements": {
+				"Accounts": {}
+			}
+		},
+		"Chassis": {
+			"PropertyRequirements": {
+				"AssetTag": {
+					"ReadRequirement": "Recommended",
+					"WriteRequirement": "Recommended"
+				},
+				"ChassisType": {},
+				"IndicatorLED": {
+					"ReadRequirement": "Recommended",
+					"WriteRequirement": "Recommended"
+				},
+				"Manufacturer": {},
+				"Model": {},
+				"SerialNumber": {},
+				"SKU": {
+					"ReadRequirement": "Recommended"
+				},
+				"PartNumber": {
+					"ReadRequirement": "Recommended"
+				},
+				"PowerState": {},
+				"Status": {
+					"PropertyRequirements": {
+						"State": {},
+						"Health": {}
+					}
+				},
+				"Thermal": {},
+				"Power": {},
+				"Links": {
+					"PropertyRequirements": {
+						"ComputerSystems": {},
+						"ManagedBy": {}
+
+					}
+				}
+			}
+		},
+		"ChassisCollection": {
+			"PropertyRequirements": {
+				"Members": {
+					"MinCount": 1
+				}
+			}
+		},
+		"ComputerSystem": {
+			"MinVersion": "1.0.0",
+			"PropertyRequirements": {
+				"AssetTag": {
+					"WriteRequirement": "Mandatory"
+				},
+				"SystemType": {},
+				"SerialNumber": {},
+				"Manufacturer": {},
+				"MemorySummary": {
+					"PropertyRequirements": {
+						"TotalSystemMemoryGiB": {}
+					}
+				},
+				"ProcessorSummary": {
+					"PropertyRequirements": {
+						"Count": {},
+						"Model": {}
+					}
+				},
+				"Model": {},
+				"SKU": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"Purpose": "Either PartNumber or SKU (or both) must be implemented.",
+						"CompareProperty": "PartNumber",
+						"Comparison": "Absent",
+						"ReadRequirement": "Mandatory"
+					}]
+				},
+				"PartNumber": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"Purpose": "Either PartNumber or SKU (or both) must be implemented.",
+						"CompareProperty": "SKU",
+						"Comparison": "Absent",
+						"ReadRequirement": "Mandatory"
+					}]
+				},
+				"PowerState": {},
+				"BiosVersion": {},
+				"UUID": {},
+				"IndicatorLED": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"Purpose": "Physical Systems must have a writable Indicator LED",
+						"CompareProperty": "SystemType",
+						"Comparison": "AnyOf",
+						"Values": ["Physical"],
+						"ReadRequirement": "Mandatory",
+						"WriteRequirement": "Mandatory"
+					}]
+				},
+				"Status": {
+					"PropertyRequirements": {
+						"State": {},
+						"Health": {}
+					}
+				},
+				"Boot": {
+					"PropertyRequirements": {
+						"BootSourceOverrideEnabled": {},
+						"BootSourceOverrideMode": {
+							"ReadRequirement": "Recommended"
+						},
+						"BootSourceOverrideTarget": {},
+						"UefiTargetBootSourceOverride": {
+							"ReadRequirement": "Recommended",
+							"ConditionalRequirements": [{
+								"Purpose": "If UEFI mode is selected, must allow for UEFI target.",
+								"CompareProperty": "BootSourceOverrideMode",
+								"Comparison": "Equal",
+								"Values": ["UEFI"],
+								"ReadRequirement": "Mandatory"
+							}]
+						}
+					}
+				},
+				"LogServices": {
+					"ReadRequirement": "Recommended"
+				},
+				"Links": {
+					"PropertyRequirements": {
+						"Chassis": {},
+						"ManagedBy": {}
+					}
+				}
+			},
+			"ActionRequirements": {
+				"Reset": {
+					"ReadRequirement": "Mandatory",
+					"Parameters": {
+						"ResetType": {
+							"ParameterValues": ["ForceOff", "On", "ForceRestart"],
+							"Purpose": "Minimal set to allow power on, off and reboot.",
+							"ReadRequirement": "Mandatory"
+						}
+					}
+				}
+			}
+		},
+		"ComputerSystemCollection": {
+			"PropertyRequirements": {
+				"Members": {
+					"MinCount": 1
+				}
+			}
+		},
+		"EthernetInterface": {
+			"MinVersion": "1.1.0",
+			"ReadRequirement": "Recommended",
+			"ConditionalRequirements": [{
+				"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
+				"ReadRequirement": "Mandatory"
+			}],
+			"PropertyRequirements": {
+				"MACAddress": {},
+				"SpeedMbps": {},
+				"InterfaceEnabled": {},
+				"LinkStatus": {},
+				"Status": {
+					"PropertyRequirements": {
+						"Health": {},
+						"State": {}
+					}
+				},
+				"HostName": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
+						"ReadRequirement": "Mandatory",
+						"WriteRequirement": "Mandatory"
+					}]
+				},
+				"FQDN": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
+						"ReadRequirement": "Mandatory",
+						"WriteRequirement": "Mandatory"
+					}]
+				},
+				"NameServers": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
+						"ReadRequirement": "Mandatory",
+						"WriteRequirement": "Mandatory"						
+					}]
+				},
+				"IPv4Addresses": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
+						"ReadRequirement": "Mandatory",
+						"WriteRequirement": "Mandatory"
+					}],
+					"PropertyRequirements": {
+						"Address": {},
+						"SubnetMask": {},
+						"AddressOrigin": {},
+						"Gateway": {}
+					}
+				},
+				"IPv6AddressPolicyTable": {
+					"ReadRequirement": "Recommended"
+				},
+				"IPv6StaticAddresses": {
+					"ReadRequirement": "Recommended"
+				},
+				"IPv6Addresses": {
+					"ReadRequirement": "Recommended",
+					"PropertyRequirements": {
+						"Address": {},
+						"PrefixLength": {},
+						"AddressOrigin": {},
+						"AddressState": {}
+					}
+				}
+			}
+		},
+		"ManagerAccount": {},
+		"ManagerCollection": {
+			"PropertyRequirements": {
+				"Members": {
+					"MinCount": 1
+				}
+			}
+		},
+		"Manager": {
+			"PropertyRequirements": {
+				"ManagerType": {},
+				"UUID": {},
+				"Status": {},
+				"FirmwareVersion": {},
+				"NetworkProtocol": {},
+				"EthernetInterfaces": {},
+				"SerialConsole": {
+					"ReadRequirement": "Mandatory",
+					"Purpose": "SSH or IPMI-based serial remote console is required.",
+					"PropertyRequirements": {
+						"ConnectTypesSupported": {
+							"Values": [ "SSH", "IPMI"],
+							"Comparison": "AnyOf"
+						}
+					}
+				},
+				"LogServices": {},
+				"Links": {
+					"PropertyRequirements": {
+						"ManagerForServers": {
+							"ReadRequirement": "IfImplemented"
+						},
+						"ManagerForChassis": {
+							"ReadRequirement": "IfImplemented"
+						}
+					}
+				}
+			},
+			"ActionRequirements": {
+				"Reset": {
+					"Parameters": {
+						"ResetType": {
+							"ReadRequirement": "Mandatory",
+							"ParameterValues": ["ForceRestart"]
+						}
+					}
+				}
+			}
+		},
+		"ManagerNetworkProtocol": {
+			"PropertyRequirements": {
+				"HostName": {},
+				"Status": {},
+				"FQDN": {},
+				"HTTP": {
+					"PropertyRequirements": {
+						"ProtocolEnable": {},
+						"Port": {}
+					}
+				},
+				"HTTPS": {
+					"PropertyRequirements": {
+						"ProtocolEnable": {},
+						"Port": {}
+					}
+				},
+				"SSH": {
+					"ReadRequirement": "Recommended",
+					"PropertyRequirements": {
+						"ProtocolEnable": {},
+						"Port": {}
+					}
+				},
+				"SSDP": {
+					"ReadRequirement": "Recommended",
+					"PropertyRequirements": {
+						"ProtocolEnable": {},
+						"Port": {},
+						"NotifyMulticstIntervalSeconds": {},
+						"NotifyIPv6Scope": {},
+						"NotifyTTL": {}
+					}
+				}
+			}
+		},
+		"Power": {
+			"PropertyRequirements": {
+				"PowerControl": {
+					"PropertyRequirements": {
+						"PowerConsumedWatts": {},
+						"PowerCapacityWatts": {},
+						"PowerLimit": {
+							"PropertyRequirements": {
+								"LimitInWatts": {},
+								"LimitException": {}
+							}
+						}
+					}
+				}
+			}
+		},
+		"SessionService": {},
+		"Thermal": {
+			"MinVersion": "1.1.0",
+			"PropertyRequirements": {
+				"Fans": {
+					"ReadRequirement": "IfImplemented",
+					"PropertyRequirements": {
+						"Status": {},
+						"Name": {
+							"ReadRequirement": "Recommended",
+							"Purpose": "Transition from the deprecated 'FanName' to 'Name'."
+						},
+						"Reading": {
+							"ReadRequirement": "Recommended"
+						},
+						"ReadingUnits": {
+							"ReadRequirement": "Recommended"
+						}
+					}
+				},
+				"Temperatures": {
+					"ReadRequirement": "Mandatory",
+					"MinCount": 3,
+					"PropertyRequirements": {
+						"ReadingCelsius": {},
+						"PhysicalContext": {
+							"Comparison": "AllOf",
+							"Values": ["CPU", "Intake", "SystemBoard"]
+						},
+						"UpperThresholdFatal": {
+							"ReadRequirement": "Recommended"
+						},
+						"UpperThresholdCritical": {
+							"ReadRequirement": "Recommended"
+						},
+						"UpperThresholdNonCritical": {
+							"ReadRequirement": "Recommended"
+						},
+						"Status": {}
+					}
+				},
+				"Redundancy": {
+					"ReadRequirement": "IfImplemented",
+					"PropertyRequirements": {
+						"MemerId": {},
+						"RedundancySet": {},
+						"Mode": {},
+						"Status": {},
+						"MinNumNeeded": {},
+						"MaxNumSupported": {
+							"ReadRequirement": "Recommended"
+						}
+					}
+				}
+			}
+		},
+		"LogService": {
+			"PropertyRequirements": {
+				"Entries": {}
+			},
+			"ActionRequirements": {
+				"ClearLog": {
+					"ReadRequirement": "Recommended"
+				}
+			}
+		},
+		"LogEntry": {
+			"PropertyRequirements": {
+				"Created": {},
+				"EntryType": {},
+				"Message": {},
+				"Severity": {}
+			}
+		},
+		"ServiceRoot": {
+			"PropertyRequirements": {
+				"AccountService": {},
+				"UUID": {},
+				"RedfishVersion": {},
+				"Systems": {},
+				"Chassis": {},
+				"Managers": {},
+				"SessionService": {}
+			}
+		}
+	}
+}
