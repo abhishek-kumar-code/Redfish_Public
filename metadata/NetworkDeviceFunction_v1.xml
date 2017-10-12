@@ -452,5 +452,32 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_0">
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_0.NetworkDeviceFunction">
+       <Property Name="RDMA" Type="NetworkDeviceFunction.v1_2_0.RDMA" Nullable="false">
+          <Annotation Term="OData.Description" String="The RDMA characteristics for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The RDMA property shall contain the RDMA characteristcs for this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="Endpoint.v1_0_0.Links">
+        <NavigationProperty Name="AssociatedEndpoints" Type="Collection(Endpoint.Endpoint)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="When an ACD model is present, an array of references to the endpoints associated with this network device function."/>
+          <Annotation Term="OData.LongDescription" String="The value of each property in this array property shall be a reference to the resources of type Endpoint associated with this network device function."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+
+      <ComplexType Name="RDMA">
+        <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describe the the RDMA protocol."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall describe the RDMA protocol used by the Endpoint."/>
+        </Property>
+      </ComplexType>
+
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Endpoint  v1.0.2-->
+<!--# Redfish Schema:  Endpoint  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -18,6 +18,7 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
@@ -28,11 +29,23 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
+    <edmx:Include Namespace="Storage"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
+    <edmx:Include Namespace="Drive"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Port_v1.xml">
     <edmx:Include Namespace="Port"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
+    <edmx:Include Namespace="Chassis.v1_0_0"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
     <edmx:Include Namespace="Storage.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkDeviceFunction_v1.xml">
+    <edmx:Include Namespace="NetworkDeviceFunction.v1_0_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -89,8 +102,6 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="MutuallyExclusiveEndpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that may not be used in zones if this endpoint is used in a zone."/>
@@ -107,20 +118,15 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The available actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Endpoint.v1_0_0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <ComplexType Name="ConnectedEntity">
         <Annotation Term="OData.Description" String="Represents a remote resource that is connected to the network accessible to this endpoint."/>
-        <Annotation Term="OData.LongDescription" String="This type shall represent a remote resource that is connected to a network accessible to an endpoint."/>
         <Property Name="EntityType" Type="Endpoint.v1_0_0.EntityType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the connected entity."/>
@@ -185,6 +191,10 @@
         <Member Name="Processor">
           <Annotation Term="OData.Description" String="The entity is a processor device."/>
         </Member>
+        <Member Name="Volume">
+          <Annotation Term="OData.Description" String="The entity is a volume. The EntityLink property (if present) should be a Volume.Volume entity."/>
+        </Member>
+
       </EnumType>
 
       <EnumType Name="EntityRole">
@@ -200,8 +210,6 @@
       </EnumType>
 
       <ComplexType Name="PciId">
-        <Annotation Term="OData.Description" String="A PCI ID."/>
-        <Annotation Term="OData.LongDescription" String="This type shall describe a PCI ID."/>
         <Property Name="DeviceId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Device ID of this PCIe function."/>
@@ -238,6 +246,132 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_1.Endpoint"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_0">
+      <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint">
+        <Property Name="UUID" Type="Resource.UUID" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UUID of the Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Endpoint which is unique within the Redfish service."/>
+        </Property>
+        <Property Name="Transports" Type="Collection(Endpoint.v1_1_0.EndpointTransport)" Nullable="false">
+          <Annotation Term="OData.Description" String="An array of references to the transport information."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type EndpointTransport associated with this endpoint."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="ConnectedEntity" BaseType="Endpoint.v1_0_0.ConnectedEntity">
+        <Annotation Term="OData.Description" String="Represents a remote resource that is connected to the network accessible to this endpoint."/>
+        <Property Name="EntityAccessMode" Type="Endpoint.v1_1_0.EntityAccessMode">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The allowed access mode of the entity."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate what operations are allowed on the entity: read/write or read only."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="Links" BaseType="Endpoint.v1_0_0.Links">
+        <Annotation Term="OData.Description" String="A description."/>
+        <Annotation Term="OData.LongDescription" String="A normative statement."/>
+        <NavigationProperty Name="NetworkDeviceFunction" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="When an ACD model is present, an array of references to the network device function that connect to this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this endpoint is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+      </ComplexType>
+
+      <ComplexType Name="EndpointTransport">
+        <Annotation Term="OData.Description" String="This is the schema definition for a EndpointTransport."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a EndpointTransport."/>
+
+        <Property Name="TransportType" Type="Endpoint.v1_1_0.TransportType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Specifies the medium type of EndpointTransport."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall describe the type of transport medium."/>
+        </Property>
+        <Property Name="TransportProtocol" Type="Endpoint.v1_1_0.TransportProtocol">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Specifies the transport protocol."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall describe protocol used by the Endpoint."/>
+        </Property>
+        <Property Name="TransportDetails" Type="Collection(Endpoint.v1_1_0.TransportDetails)" Nullable="false">
+          <Annotation Term="OData.Description" String="An array of references to the transport information."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type TransportDetails defining with this EndpointTransport."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="TransportDetails">
+        <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describe the the RDMA protocol."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall describe the RDMA protocol used by the Endpoint."/>
+        </Property>
+        <Property Name="IPv4Address" Type="IPAddresses.v1_0_0.IPv4Address" Nullable="false">
+          <Annotation Term="OData.Description" String="The IPv4 addresses assigned to the associated Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv4Address."/>
+        </Property>
+        <Property Name="IPv6Address" Type="IPAddresses.v1_0_0.IPv6Address" Nullable="false">
+          <Annotation Term="OData.Description" String="The IPv6 addresses assigned to the associated Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv6Address."/>
+        </Property>
+        <Property Name="Port" Type="Edm.Decimal" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property specifies the UDP or TCP port used by the associated Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an specify UDP or TCP port number used for communication with he associated Endpoint."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="65535"/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="EntityType">
+        <Member Name="System">
+          <Annotation Term="OData.Description" String="The entity is a system. The term is used in the Ethernet context. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity."/>
+        </Member>
+      </EnumType>
+
+      
+      <EnumType Name="TransportType">
+        <Member Name="Ethernet">
+          <Annotation Term="OData.Description" String="Ethernet transport."/>
+        </Member>
+        <Member Name="Omnipath">
+          <Annotation Term="OData.Description" String="Omnipath transport."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="TransportProtocol">
+        <Member Name="RDMA">
+          <Annotation Term="OData.Description" String="The Random Direct Memory Access transport protocol."/>
+        </Member>
+        <Member Name="iSCSI">
+          <Annotation Term="OData.Description" String="The iSCSI transport protocol."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="RdmaType">
+        <Member Name="iWARP">
+          <Annotation Term="OData.Description" String="The internet Wide RDMA Protocol."/>
+        </Member>
+        <Member Name="RoCE">
+          <Annotation Term="OData.Description" String="The RDMA over Converged Ether net protocol."/>
+        </Member>
+        <Member Name="RoCEv2">
+          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet version 2 protocol."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="EntityAccessMode">
+        <Member Name="ReadOnly">
+          <Annotation Term="OData.Description" String="The entity is read only."/>
+        </Member>
+        <Member Name="ReadWrite">
+          <Annotation Term="OData.Description" String="The entity is writeable."/>
+        </Member>
+      </EnumType>
+
     </Schema>
 
   </edmx:DataServices>

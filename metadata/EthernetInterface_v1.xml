@@ -317,5 +317,18 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_4_0">
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_3_0.EthernetInterface"/>
+      <ComplexType Name="Links" BaseType="EthernetInterface.v1_1_0.Links">
+         <NavigationProperty Name="AssociatedEndpoints" Type="Collection(Endpoint.Endpoint)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this Ethernet interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references to the Endpoint resources with which this Ethernet interface is associated."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+    </Schema>
+
+
   </edmx:DataServices>
 </edmx:Edmx>
