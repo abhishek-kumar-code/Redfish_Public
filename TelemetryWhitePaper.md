@@ -41,10 +41,10 @@ In developing the Telemetry mode, these are the general requirements for the des
 * Comprehends various type of telemetry sources
 * Models for capabilities beyond a telemetry reading
 
-The requirement to support telemetry and sensors within the existing Redfish models is driven by the fact that properties representing environmental sensors and digital meters are present throughout the current Redfish models. As show in Figure 1, these metric properties can be located anywhere in the Redfish model (as indicated by the yellow boxes).  A metric property can be present in a single resource as either as a simple JSON object or within a complex JSON object.  A metric property can be within a dedicated resource (e.g MemoryMetrics). With YANG models, the dedicated object (such as Statistics) is used often.
+The requirement to support telemetry and sensors within the existing models is driven by the fact that properties representing environmental sensors and digital meters are present throughout the current Redfish models. In this document, these properties will be reference to as _metric properties_. A metric property in a single resource, along with other properties, and can be a simple JSON object or within a complex JSON object.  A metric property can be within a resource dedicated to metrics (e.g MemoryMetrics). With YANG models, the dedicated object is used often.
 
 The Telemetry model should should work this diverse variation and continue to allow metric properties to be placed anywhere in the Redfish model.
-![Figure 1](images/Figure-MetricProperties.jpg "Figure 1")
+![Figure 1](TelemetryWhitePaper/Figure-MetricProperties.jpg "Figure 1")
 
 The requirement that the Telemetry model should be optional means that no part of the model is required to be implemented.  More specifically, that there is no dependency between the elements of the Telemetry model, so the service only implements that portion of the Telemetry model of interest. With the current Redfish models, the client can retrieve a resource and extract the metric of interest.  That should not change.  Only if the Redfish service wishes to expose the capabilities of the Telemetry model is that portion of the Telemetry model implemented.
 
@@ -67,7 +67,7 @@ The requirement to support higher level telemetry capabilities means supporting 
 # Telemetry Model
 The Telemetry model has a Telemetry Service with four subordinate collection resources for:
 
-* Metric definitions - From metric characteristics and other metadata
+* Metric definitions - for metric characteristics and other metadata
 * Metric report definitions - for requesting that metric reports be generated
 * Metric reports - for logging of metric reports, if requested
 * Metric triggers - for requesting that metrics be monitored against threshold triggers
@@ -146,11 +146,11 @@ The second option is used when no metric property exists for the result of a cal
 ## Telemetry Service
 
 The TelemetryService resource is the top level resource visible on ServiceRoot. 
-![Figure 1](images/Figure-TelemetryService.jpg "Figure 1")
+![Figure 1](TelemetryWhitePaper/Figure-TelemetryService.jpg "Figure 1")
 
 The TelemetryService contains links to collections of MetricDefinitions, MetricReportDefinitions, MetricReports, and Triggers.  MetricDefinitions are described in the [Metric Definitions](#metric-definitions) section; MetricReportDefintions and MetricReports are described in the [Metric Report Definitions](#metric-report-definitions) section;and, Triggers are described in the [Triggers](#triggers) section.
 
-The telemetry service model is constructed to minimize the impact to the current metric model where properties representing metrics (aka metric properties) can be  place in an singleton resource in the Redfish model.  The goal was to not require significant changes in existing metric properties, and allow the incremental addition of metric characteristics and capabilities.
+The telemetry service model is constructed to minimize the impact to the current metric model where metric properties can be  place anywhere in the Redfish model.  The goal was to not require significant changes in existing metric properties and allow metric characteristics and capabilities to be added incrementally.
 
 Hence, the TelemetryService is optional.  An implementation can decide for each metric property, whether the associated metric definition, metadata or characteristics are provided, and the amount of metadata available.
 
@@ -188,14 +188,14 @@ Example Telemetry Service Resource:
 
 ## Metric Definitions
 
-The MetricDefinitions collection resource contains contains MetricDefinition singleton resources.  Each MetricDefinition contains the definition, metadata, or characteristics for a metric.  In Figure 2, PowerConsumedWatts is MetricDefinition for the PowerConsumedWatts property in the Power resource.
-![Figure 2](images/Figure-MetricDefinitionRef.jpg "Figure 2")
+The MetricDefinitions collection resource contains MetricDefinition singleton resources.  Each MetricDefinition contains the definition, metadata, or characteristics for a metric.  In Figure 2, PowerConsumedWatts is MetricDefinition for the PowerConsumedWatts property in the Power resource.
+![Figure 2](TelemetryWhitePaper/Figure-MetricDefinitionRef.jpg "Figure 2")
 
 The MetricDefinition resource contains a MetricProperties object which references the metric properties to which the metric definition applies.  In Figure 2, the PowerConsumedWatts metric definition can reference each PowerConsumedWatts property in every Chassis, if that represents the implemented Redfish service.
 
 From the PowerConsumedWatts metric property in the Power resource, an annotation may  be insert to reference the MetricDefinition which applies to that metric property.
 
-The characteristics represented in the MetricDefinition resource can be grouped into four category: context, usage, reoccuring measurement and measurement.  
+The characteristics represented in the MetricDefinition resource can be grouped into four category: context, usage and measurement.  
 
 The context properties contains value which provide the context of the metric. The context properties are:
 
@@ -210,8 +210,6 @@ The usage properties provide guidance on how the metric can be used by a Redfish
 * IsLinear
 
 The reoccuring measurement property is the `Schedule` property.  The property specifies the interval of reoccuring measurement and lifetime of the recurring measuremnt.  The example below specifies a reoccurance of .001 seconds for 5 days.
-
-
 
 The remaining properties are measurement properties which characterizes the measurement, itself. The measurement properties contain properties obtained from the Energy Efficient HPC WG's PowerAPI specification.  In their description below, an excerpt for the PowerAPI specification is included. The PowerAPI properties are:
 
@@ -339,13 +337,13 @@ The following example is for a numeric sensor, PowerConsumedWatts properties, wh
 
 ## Metric Report Definitions
 
-The `MetricReportDefinition` resource specifies the metric report that the Redfish service will create.  The metric reports can be use to aggregate metric readings.  The metric reports can be use create periodically, when a reading value changes, or upon request.  The metric report can be transmitted using the Event Service and/or stored locally (as a member the ./MetricReports collection) and retrieved later.
-![Figure 3](images/Figure-MetricReportDefinition.jpg "Figure 3")
+The `MetricReportDefinition` resource specifies the metric report that the Redfish service will create.  The metric reports can be use to aggregate metric readings.  The metric reports can be create d periodically, when a reading value changes, or upon request.  The metric report can be transmitted using the Event Service and/or stored locally (as a member the ./MetricReports collection) and retrieved later.
+![Figure 3](TelemetryWhitePaper/Figure-MetricReportDefinition.jpg "Figure 3")
 
-The properties of MetricReportDefinition is described below.
+The properties of MetricReportDefinition are described below.
 
 ### MetricReportType
-The `MetricReportType` property specifies the when the report is created and can have the following values.
+The `MetricReportType` property specifies when the report is created and can have the following values.
 
 * **Periodic** - The metric report shall be updated periodically
 * **OnChange** - The metric report shall be updated when the values change 
@@ -361,7 +359,7 @@ The `ReportActions` array property specifies the action(s) to perform when a met
 The `MetricProperties` array property specifies metrics which are metrics are included in the metric report.  The `MetricProperties` may have wild cards.
 
 ### Example
-The following example is specifies a metric report with includes the AvgPowerConsumedWatts, MinPowerConsumedWatts and MaxPowerConsumedWatts, from the chassis, Tray_1, Tray_2 and Tray_3. The metric report is to generated periodically and transmit as a Informational Event and also logged as a member of the MetricReports collection resource.  When logging, the metric report should overwrite a previous metric report.
+The following example specifies a metric report with includes the AvgPowerConsumedWatts, MinPowerConsumedWatts and MaxPowerConsumedWatts, from the chassis, Tray_1, Tray_2 and Tray_3. The metric report is to generated periodically and transmit as a Informational Event and also logged as a member of the MetricReports collection resource.  When logging, the metric report should overwrite a previous metric report.
 
 ```json
 {
@@ -385,16 +383,17 @@ The following example is specifies a metric report with includes the AvgPowerCon
 		{ "TWild": ["Tray_1", "Tray_2", "Tray_3"] }
 	],
 	"MetricProperties": [
-		"/redfish/v1/Chassis/{TWild}/Power/PowerControl/{PWild}/AvgPowerConsumedWatts",
-        "/redfish/v1/Chassis/{TWild}/Power/PowerControl/{PWild}/MinPowerConsumedWatts",
-	    "/redfish/v1/Chassis/{TWild}/Power/PowerControl/{PWild}/MaxPowerConsumedWatts"
+		"/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/AvgPowerConsumedWatts",
+        "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/MinPowerConsumedWatts",
+	    "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/MaxPowerConsumedWatts"
 	]
 }
 ```
 ## Triggers
 
-The Triggers resource specifies the trigger threshold(s) that apply to numeric or discrete metrics. A trigger can result an alert being transmitted using the Event Service and/or logged in the service log.
-![Figure 4](images/Figure-Triggers.jpg "Figure 4")
+The Triggers resource specifies the trigger threshold(s) that apply to numeric or discrete metrics. A trigger can result in an alert being transmitted using the Event Service and/or logged in the service log.
+
+![Figure 4](TelemetryWhitePaper/Figure-Triggers.jpg "Figure 4")
 
 ### TriggerType
 The `TriggerType` property specifies the type of trigger and indicates other properties that should be present. The property can have the following values:
