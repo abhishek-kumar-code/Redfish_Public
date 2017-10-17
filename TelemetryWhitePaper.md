@@ -195,7 +195,7 @@ The MetricDefinition resource contains a MetricProperties object which reference
 
 From the PowerConsumedWatts metric property in the Power resource, an annotation may  be insert to reference the MetricDefinition which applies to that metric property.
 
-The characteristics represented in the MetricDefinition resource can be grouped into four category: context, usage and measurement.  
+The characteristics represented in the MetricDefinition resource can be grouped into four category: context, usage and measurement.
 
 The context properties contains value which provide the context of the metric. The context properties are:
 
@@ -303,6 +303,14 @@ The SampleRate property contains a value as specified by the Power API.
 The MeasureMethod property contains a value as specified by the Power API.
 
 >Denotes the measurement method: an actual measurement (returned value = 0) or a model based estimate (return value = 1). Other values > 1 may be used to denote multiple vendor specific models in the situation where multiple models may exist.
+
+### Wildcards
+
+The Wildcards property is used on conjunction with the MetricProperties property.  The MetricProperties property contains a list of each metric property described by the MetricDefinition.  This list could get very large.  In order to reduce the size of the list, the MetricProperties strings contain wildcards, delimited by curly braces "{}".
+
+The Wildcards property contains a list of the wildcards. Each wildcard contains a list the values that should be replace the wildcard.  A value of "*", would mean all values.
+
+The wild card mechanism is also used in other parts of the Telemetry model.
 
 ### Example
 The following example is for a numeric sensor, PowerConsumedWatts properties, which exists in the Power resources.
