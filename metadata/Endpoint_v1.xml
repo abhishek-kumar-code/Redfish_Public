@@ -271,8 +271,6 @@
       </ComplexType>
 
       <ComplexType Name="Links" BaseType="Endpoint.v1_0_0.Links">
-        <Annotation Term="OData.Description" String="A description."/>
-        <Annotation Term="OData.LongDescription" String="A normative statement."/>
         <NavigationProperty Name="NetworkDeviceFunction" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="When an ACD model is present, an array of references to the network device function that connect to this endpoint."/>
