@@ -9,13 +9,52 @@ released: true
 copyright: '2017'
 ---
 
-# Redfish Interoperability Profiles
+# Foreword
 
-## Introduction
+The Redfish Interoperability Profile specification was prepared by the Scalable Platforms Management Forum of the DMTF.
 
-Because the Redfish Schemas are designed to provide significant flexibility, and allow conforming implementations on a wide variety of products, very few properties within the Schemas are required by the Specification.  But consumers and software developers need a more rigidly defined set of required properties (features) in order to accomplish management tasks.  This set allows users to compare implementations, specify needs to vendors, and allows software to rely on the availability of data.  To provide that "common ground", a Redfish Interoperability Profile allows the definition of a set of schemas and property requirements, which meet the needs of a particular class of product or service.
+DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
+
+# Acknowledgments
+
+The DMTF acknowledges the following individuals for their contributions to this document:
+* Jeff Autor - Hewlett Packard Enterprise
+* George Ericson - Dell Inc.
+* Tomas Gonzalez - Majec Systems, Inc.
+* Jeff Hilland - Hewlett Packard Enterprise
+* John Leung - Intel Corporation
+* Michael Raineri - Dell Inc.
+* Paul Vancil - Dell Inc.
+
+## Abstract
+
+As Schema definitions for the Redfish Scalable Platforms Management API ("Redfish") are designed to provide significant flexibility, and allow conforming implementations on a wide variety of products, very few properties within the Schemas are required by the Redfish specification.  But consumers and software developers need a more rigidly defined set of required properties (features) in order to accomplish management tasks.  This set allows users to compare implementations, specify needs to vendors, and allows software to rely on the availability of data.  To provide that "common ground", a Redfish Interoperability Profile allows the definition of a set of schemas and property requirements, which meet the needs of a particular class of product or service.
 
 The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of ConditionalRequirements under which the requirement applies.
+
+## Normative references
+
+The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
+
+* <a id="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
+* <a id="Directives">ISO/IEC Directives</a>, Part 2, Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH")
+* <a id="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
+* <a id="JSONSchema-Core">JSON Schema, Core Definitions and Terminology, Draft 4</a>
+[http://tools.ietf.org/html/draft-zyp-json-schema-04.txt](http://tools.ietf.org/html/draft-zyp-json-schema-04.txt "http://tools.ietf.org/html/draft-zyp-json-schema-04.txt")
+* <a id="JSONSchema-Validation">JSON Schema, Interactive and Non-Interactive Validation, Draft 4</a>
+[http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt](http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt "http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt")
+* <a id="Redfish">DMTF Redfish Scalable Platforms Management API, DSP0266</a> [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf] (http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf")
+[http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt](http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt "http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt") 
+
+## Terms and definitions
+In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
+
+The terms "shall" ("required"), "shall not", "should" ("recommended"), "should not" ("not recommended"), "may", "need not" ("not required"), "can" and "cannot" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Annex H. The terms in parenthesis are alternatives for the preceding term, for use in exceptional cases when the preceding term cannot be used for linguistic reasons. Note that ISO/IEC Directives, Part 2, Annex H specifies additional alternatives. Occurrences of such additional alternatives shall be interpreted in their normal English meaning.
+
+The terms "clause", "subclause", "paragraph", and "annex" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 5.
+
+The terms "normative" and "informative" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 3. In this document, clauses, subclauses, or annexes labeled "(informative)" do not contain normative content. Notes and examples are always informative elements.
+
 
 ## Design Tenets
 
@@ -27,7 +66,7 @@ The JSON document structure is intended to align easily with JSON payloads retri
 
 Profile requirements do not allow for exclusions of data.  Implementations are able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.  This include both standard properties and OEM extensions.
    
-## Profile Definition
+## Profile Document Definition
 
 A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a JSON-schema form (RedfishInteroperabilityProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/profiles for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
 
@@ -62,7 +101,7 @@ The following is an example of the top-level properties in a Profile, with two R
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "Anchovy",
 	"ProfileVersion": "1.0.2",
-	"Author": "Pizza Box Consortium",
+	"OwningEntity": "Pizza Box Consortium",
 	"Purpose": "This is a sample Redfish Interoperability profile.",
 	"ContactInfo": "pizza@contoso.com",
 	"RequiredProfiles": {
@@ -70,8 +109,6 @@ The following is an example of the top-level properties in a Profile, with two R
 			"MinVersion": "1.0.0"
 		},
 		"ContosoPizza": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
 			"Repository": "contoso.com/profiles",
 			"MinVersion": "1.0.0"
 		}
@@ -208,10 +245,10 @@ The Comparison function uses the following enumerations to represent the various
 | AllOf | At least one instance of the property in this resource must be equal to each of the values listed. |
 | Equal | The value must be equal to the KeyValue. |
 | NotEqual | The value of the property must not be equal to the value(s) listed. |
-| GreaterThan | The value of the property must be greater than the Values. |
-| GreaterThanOrEqual | The value of the property must be greater than or equal to the Values. |
-| LessThan | The value of the property must be less than the Values. |
-| LessThanOrEqual | The value of the property must be less than or equal to the Values. |
+| GreaterThan | The value of the property must be greater than the Values. This comparison is only valid for properties of type 'number'. |
+| GreaterThanOrEqual | The value of the property must be greater than or equal to the Values. This comparison is only valid for properties of type 'number'.|
+| LessThan | The value of the property must be less than the Values. This comparison is only valid for properties of type 'number'.|
+| LessThanOrEqual | The value of the property must be less than or equal to the Values. This comparison is only valid for properties of type 'number'.|
 | Present | The property is present in this resource. |
 | LinkToResource | The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the un-versioned schema name (e.g. 'Thermal' or 'Memory').|
 
