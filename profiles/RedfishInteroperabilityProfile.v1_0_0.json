@@ -347,10 +347,10 @@
 				"AllOf": "At least one instance of the property in this resource must be equal to each of the values listed.",
 				"Equal": "The value of the property must be equal to the Values.",
 				"NotEqual": "The value of the property must not be equal to the Values.",
-				"GreaterThan": "The value of the property must be greater than the Values.",
-				"GreaterThanOrEqual": "The value of the property must be greater than or equal to the Values.",
-				"LessThan": "The value of the property must be less than the Values.",
-				"LessThanOrEqual": "The value of the property must be less than or equal to the Values.",
+				"GreaterThan": "The value of the property must be greater than the Values. This comparison is only valid for properties of type 'number'.",
+				"GreaterThanOrEqual": "The value of the property must be greater than or equal to the Values. This comparison is only valid for properties of type 'number'.",
+				"LessThan": "The value of the property must be less than the Values. This comparison is only valid for properties of type 'number'.",
+				"LessThanOrEqual": "The value of the property must be less than or equal to the Values. This comparison is only valid for properties of type 'number'.",
 				"Present": "The property is present in this resource.",
 				"LinkToResource": "The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the un-versioned schema name (e.g. 'Thermal' or 'Memory')."
 			}
@@ -358,7 +358,7 @@
 		"Values": {
 			"type": "array",
 			"items": {
-				"type": "string"
+				"type": [ "boolean", "number", "string" ]
 			},
 			"description": "The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison."
 		},
