@@ -1977,8 +1977,7 @@ Current Configuration resources represent the service's knowledge of the current
 
 A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
 
-The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values. The Messages property is a collection of Messages that represent the results of applying the Settings resource (at the indicated SettingsApplyTime). The ETag property contains the ETag of the Settings resource that was applied. The Time property indicate the time at which the Settings resource was applied.   
-
+The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful. The Messages property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. The ETag property contains the ETag of the Settings resource that was last applied. The Time property indicate the time at which the Settings resource was last applied.
 
 Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
 
