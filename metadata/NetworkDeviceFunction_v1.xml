@@ -457,7 +457,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_0">
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_0.NetworkDeviceFunction">
-       <Property Name="RDMA" Type="NetworkDeviceFunction.v1_2_0.RDMA" Nullable="false">
+        <Property Name="RDMA" Type="NetworkDeviceFunction.v1_2_0.RDMA" Nullable="false">
           <Annotation Term="OData.Description" String="The RDMA characteristics for this resource."/>
           <Annotation Term="OData.LongDescription" String="The RDMA property shall contain the RDMA characteristcs for this resource."/>
         </Property>
