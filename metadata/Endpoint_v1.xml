@@ -304,31 +304,33 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall describe protocol used by the Endpoint."/>
         </Property>
         <Property Name="TransportDetails" Type="Collection(Endpoint.v1_1_0.TransportDetails)" Nullable="false">
-          <Annotation Term="OData.Description" String="An array of references to the transport information."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type TransportDetails defining with this EndpointTransport."/>
+          <Annotation Term="OData.Description" String="References to transport information details."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type TransportDetails defining with this transport Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </Property>
       </ComplexType>
 
       <ComplexType Name="TransportDetails">
+        <Annotation Term="OData.Description" String="This type contains properties which specify the details of the transport endpoint."/>
+        <Annotation Term="OData.LongDescription" String="The type shall contain properties which specify the details of the transport endpoint."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Describe the the RDMA protocol."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall describe the RDMA protocol used by the Endpoint."/>
+          <Annotation Term="OData.Description" String="The type of RDMA protocol used by the Ednpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the type of RDMA protocol used by the Endpoint."/>
         </Property>
         <Property Name="IPv4Address" Type="IPAddresses.v1_0_0.IPv4Address" Nullable="false">
-          <Annotation Term="OData.Description" String="The IPv4 addresses assigned to the associated Endpoint."/>
+          <Annotation Term="OData.Description" String="The IPv4 addresses assigned to the Endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv4Address."/>
         </Property>
         <Property Name="IPv6Address" Type="IPAddresses.v1_0_0.IPv6Address" Nullable="false">
-          <Annotation Term="OData.Description" String="The IPv6 addresses assigned to the associated Endpoint."/>
+          <Annotation Term="OData.Description" String="The IPv6 addresses assigned to the Endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv6Address."/>
         </Property>
         <Property Name="Port" Type="Edm.Decimal" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property specifies the UDP or TCP port used by the associated Endpoint."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an specify UDP or TCP port number used for communication with he associated Endpoint."/>
+          <Annotation Term="OData.Description" String="The UDP or TCP port number used by the Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an specify UDP or TCP port number used for communication with the Endpoint."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="65535"/>
         </Property>
@@ -363,7 +365,7 @@
           <Annotation Term="OData.Description" String="The internet Wide RDMA Protocol."/>
         </Member>
         <Member Name="RoCE">
-          <Annotation Term="OData.Description" String="The RDMA over Converged Ether net protocol."/>
+          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet protocol."/>
         </Member>
         <Member Name="RoCEv2">
           <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet version 2 protocol."/>
