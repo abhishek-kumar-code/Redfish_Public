@@ -36,10 +36,12 @@
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction">
-      <EntityType Name="PCIeFunction" BaseType="Resource.v1_0_0.Resource">
+
+      <EntityType Name="PCIeFunction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_0">
