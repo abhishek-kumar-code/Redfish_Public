@@ -16,7 +16,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>  
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
@@ -328,6 +328,14 @@
           <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the IEEE-defined 64-bit Extended Unique Identifier as defined in the IEEE's Guidelines for 64-bit Global Identifier (EUI-64) Specification."/>
         </Member>
+        <Member Name="NQN">
+          <Annotation Term="OData.Description" String="NVMe Qualified Name."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be in the NVMe Qualified Name format as defined in the NVN Express over Fabric Specification."/>
+        </Member>
+        <Member Name="NSID">
+          <Annotation Term="OData.Description" String="NVM Namespace Identifier."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be in the NVM Namespace Identifier format as defined in the NVN Express Specification."/>
+        </Member>
       </EnumType>
 
       <EnumType Name="IndicatorLED">
@@ -521,7 +529,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A description of the type of place that is addressed."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PLC field as defined in RFC5139.  Examples include: office, residence,...)."/>
-        </Property>        
+        </Property>
  
         <Property Name="Community" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -653,7 +661,7 @@
         <Member Name="Socket">
           <Annotation Term="OData.Description" String="Defines a socket as the type of location."/>
           <Annotation Term="OData.LongDescription" String="Socket shall be used to indicate the type of PartLocation is of type socket."/>
-        </Member>        
+        </Member>
       </EnumType>
 
       <EnumType Name="Reference">
@@ -715,9 +723,9 @@
         <Member Name="RightToLeft">
           <Annotation Term="OData.Description" String="Defines the ordering for the LocationOrdinalValue is right to left."/>
           <Annotation Term="OData.LongDescription" String="This value shall be used to specify the ordering for LocationOrdinalValue is right to left."/>
-        </Member>       
+        </Member>
       </EnumType>
-      
+
       <ComplexType Name="PartLocation">
         <Annotation Term="OData.Description" String="The part location within the placement."/>
         <Annotation Term="OData.LongDescription" String="The value shall describe a location within a resource.  This representation shall be used to indicate the location within the Placement."/>
@@ -745,8 +753,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The orientation for the ordering of the slot enumeration used by the LocationOrdinalValue property."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a Orientation enumeration literal indicating the orientation for the ordering used by the LocationOrdinalValue property."/>
-        </Property>        
-      </ComplexType>      
+        </Property>
+      </ComplexType>
 
       <ComplexType Name="Location" BaseType="Resource.v1_3_0.Location">
         <Property Name="PartLocation" Type="Resource.v1_5_0.PartLocation">
@@ -755,10 +763,10 @@
         </Property>
       </ComplexType>
 
-    </Schema>    
+    </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
-      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location and enumerations for DurableNameFormat for NVMe fabric extension."/>
 
       <ComplexType Name="Location" BaseType="Resource.v1_5_0.Location">
         <Property Name="Longitude" Type="Edm.Decimal" DefaultValue="0">
@@ -779,25 +787,9 @@
           <Annotation Term="OData.LongDescription" String="The altitude of the resource in meters."/>
           <Annotation Term="Measures.Unit" String="m"/>
         </Property>
-      </ComplexType>      
+      </ComplexType>
 
-    </Schema> 
+    </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_7_0">
-      <Annotation Term="OData.Description" String="This version was created to add enumerations for DurableNameFormat for NVMe fabric extension."/>
-
-      <EnumType Name="DurableNameFormat">
-        <Member Name="NQN">
-          <Annotation Term="OData.Description" String="NVMe Qualified Name."/>
-          <Annotation Term="OData.LongDescription" String="This durable name shall be in the NVMe Qualified Name format as defined in the NVN Express over Fabric Specification."/>
-        </Member>
-        <Member Name="NSID">
-          <Annotation Term="OData.Description" String="NVM Namespace Identifier."/>
-          <Annotation Term="OData.LongDescription" String="This durable name shall be in the NVM Namespace Identifier format as defined in the NVN Express Specification."/>
-        </Member>
-      </EnumType>
-
-    </Schema>    
-   
   </edmx:DataServices>
 </edmx:Edmx>
