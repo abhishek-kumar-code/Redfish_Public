@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkDeviceFunction  v1.1.0-->
+<!--# Redfish Schema:  NetworkDeviceFunction  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -473,6 +473,7 @@
       </ComplexType>
 
       <ComplexType Name="RDMA">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Describe the the RDMA protocol."/>
