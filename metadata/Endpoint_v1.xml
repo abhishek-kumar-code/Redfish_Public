@@ -52,10 +52,11 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint">
 
-      <EntityType Name="Endpoint" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="Endpoint" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the Endpoint resource.  It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a fabric endpoint for a Redfish implementation."/>
       </EntityType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_0">
@@ -126,6 +127,7 @@
       </ComplexType>
 
       <ComplexType Name="ConnectedEntity">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="Represents a remote resource that is connected to the network accessible to this endpoint."/>
         <Property Name="EntityType" Type="Endpoint.v1_0_0.EntityType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -194,7 +196,6 @@
         <Member Name="Volume">
           <Annotation Term="OData.Description" String="The entity is a volume. The EntityLink property (if present) should be a Volume.Volume entity."/>
         </Member>
-
       </EnumType>
 
       <EnumType Name="EntityRole">
@@ -210,6 +211,9 @@
       </EnumType>
 
       <ComplexType Name="PciId">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="A PCI ID."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a PCI ID."/>
         <Property Name="DeviceId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Device ID of this PCIe function."/>
@@ -248,8 +252,13 @@
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_1.Endpoint"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions."/>
+      <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_0">
-      <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint">
+      <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_3.Endpoint">
         <Property Name="UUID" Type="Resource.UUID" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UUID of the Endpoint."/>
@@ -277,13 +286,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this endpoint is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-
       </ComplexType>
 
       <ComplexType Name="EndpointTransport">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This is the schema definition for a EndpointTransport."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a EndpointTransport."/>
-
         <Property Name="TransportType" Type="Endpoint.v1_1_0.TransportType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Specifies the medium type of EndpointTransport."/>
@@ -302,6 +310,7 @@
       </ComplexType>
 
       <ComplexType Name="TransportDetails">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Describe the the RDMA protocol."/>
@@ -330,7 +339,6 @@
         </Member>
       </EnumType>
 
-      
       <EnumType Name="TransportType">
         <Member Name="Ethernet">
           <Annotation Term="OData.Description" String="Ethernet transport."/>
@@ -369,7 +377,6 @@
           <Annotation Term="OData.Description" String="The entity is writeable."/>
         </Member>
       </EnumType>
-
     </Schema>
 
   </edmx:DataServices>

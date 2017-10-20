@@ -199,7 +199,7 @@ This example shows property-level requirements, including one of type 'object' c
 
 #### Comparison
 
-The Comparison function uses the following enumerations to represent the arithmetic comparisons available:
+The Comparison function uses the following enumerations to represent the various comparisons available:
 
 | value | description |
 | --- | --- |
@@ -213,7 +213,9 @@ The Comparison function uses the following enumerations to represent the arithme
 | LessThan | The value of the property must be less than the Values. |
 | LessThanOrEqual | The value of the property must be less than or equal to the Values. |
 | Present | The property is present in this resource. |
+| LinkToResource | The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the un-versioned schema name (e.g. 'Thermal' or 'Memory').|
 
+Many of these Comparison types are simple arithmetic, boolean or string value comparisons.  In addition, 'Absent' and 'Present' allow for comparisons concerning the existence or absence of a property.  The 'LinkToResource' comparison specifies that the object property contains an "odata.id" property to a resource whose schema name (Type) is listed in the 'Values' array. 
 
 #### ReadRequirement
 
