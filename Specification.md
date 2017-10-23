@@ -570,20 +570,19 @@ Clients create, modify, and delete resources by issuing the appropriate [Create]
 
 ##### Responses to modification requests
 
-For Create operations,  the response from the service after successful processing of the create request may be one of the following:
+For Create operations, the response from the service after successful processing of the create request may be one of the following:
 * HTTP Status code of [201](#status-201) with a body containing the JSON representation of the newly created resource after the request has been applied.
-* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource may be returned in response to request to the Task monitor Uri after processing completes.
-* HTTP Status code of [204](#status-204)  with empty payload in the event that service is unable to return a representation of the created resource.
+* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource may be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the created resource.
 
 For Update, Replace, or Delete operations, the response from the service after successful modification may be one of the following:
-* HTTP Status code of [200](#status-200)  with a body containing the JSON representation of the targeted resource after the modification has been applied, or in the case of Delete operation, a representation of the deleted resource.
-* HTTP Status code of [202](#status-202)  with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task monitor Uri after processing completes.
-* HTTP Status code of [204](#status-204)  with empty payload in the event that service is unable to return a representation of the modified or deleted resource.
+* HTTP Status code of [200](#status-200) with a body containing the JSON representation of the targeted resource after the modification has been applied, or in the case of Delete operation, a representation of the deleted resource.
+* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the modified or deleted resource.
 
-Services may return a HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. Otherwise, if a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates the service encountered an error and the resource shall not have been modified or created as a result of the operation.
+Services may return an HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. Otherwise, if a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
 For details on responses to Action requests, see [Action](#actions-post-).
-
 
 ##### Update (PATCH)
 
@@ -591,7 +590,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 
 * Services shall support the PATCH method to update properties within a resource.
 * If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
-* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, a HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
+* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, an HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
 * Services should return HTTP status code [405](#status-405) if the client specifies a PATCH request against a Resource Collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 * Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
