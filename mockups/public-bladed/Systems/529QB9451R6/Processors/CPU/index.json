@@ -11,7 +11,6 @@
     "TotalCores": 4,
     "TotalThreads": 8,
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },

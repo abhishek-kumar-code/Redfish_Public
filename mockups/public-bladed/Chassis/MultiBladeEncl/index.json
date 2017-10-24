@@ -12,12 +12,10 @@
     "PowerState": "On",
     "IndicatorLED": "Off",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Location": {
-        "@odata.type": "#Resource.v1_5_0.Location",
         "PostalAddress": {
             "Country": "US",
             "Territory": "OR",
@@ -41,7 +39,6 @@
         "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power"
     },
     "Links": {
-        "@odata.type": "#Chassis.v1_5_0.Links",
         "ManagedBy": [
             {
                 "@odata.id": "/redfish/v1/Managers/MultiBladeBMC"

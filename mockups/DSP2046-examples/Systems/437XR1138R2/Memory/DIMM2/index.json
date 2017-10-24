@@ -23,7 +23,6 @@
         "DRAM"
     ],
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },

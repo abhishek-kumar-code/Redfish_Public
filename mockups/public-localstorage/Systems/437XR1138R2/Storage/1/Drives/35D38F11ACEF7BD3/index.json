@@ -6,7 +6,6 @@
     "Model": "C123",
     "Revision": "100A",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -19,7 +18,6 @@
     "PartNumber": "C123-1111",
     "Identifiers": [
         {
-            "@odata.type": "#Resource.v1_1_0.Identifier",
             "DurableNameFormat": "NAA",
             "DurableName": "35D38F11ACEF7BD3"
         }
@@ -32,7 +30,6 @@
     "CapableSpeedGbs": 12,
     "NegotiatedSpeedGbs": 12,
     "Links": {
-        "@odata.type": "#Drive.v1_2_0.Links",
         "Volumes": [
             {
                 "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes/1"
@@ -40,7 +37,6 @@
         ]
     },
     "Actions": {
-        "@odata.type": "#Drive.v1_0_0.Actions",
         "#Drive.SecureErase": {
             "target": "/redfish/v1/Systems/437XR1138R2/Storage/1/Drives/35D38F11ACEF7BD3/Actions/Drive.SecureErase"
         }
