@@ -143,7 +143,9 @@ The structure of the resource and property requirements is:
 ~~~
 {
     <Schema Name>: {
-       "MinVersion": "<version>"
+       "MinVersion": <version>,
+	   "CreateResource": <boolean>,
+	   "DeleteResource": <boolean>,
 	   "PropertyRequirements": {
 		   <Property Name>: { 
 		      <Requirements for this property>
@@ -171,6 +173,8 @@ The following options are available at the schema level:
 | ReadRequirement | string | Resource-level requirement for this schema, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see [Conditional Requirements](#conditional-requirements) section. |
+| CreateResource | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  creation of instances of this resource type. |
+| DeleteResource | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  deletion of instances of this resource type. |
 
 #### Example
 

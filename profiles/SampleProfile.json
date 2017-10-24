@@ -122,10 +122,9 @@
 				}
 			}
 		},
-		"ManagerCollection": {
-			"Members": {
-				"MinCount": 1
-			}
+		"ManagerAccountCollection": {
+			"CreateResource": true,
+			"DeleteResource": true
 		},
 		"Thermal": {
 			"MinVersion": "1.1.0",
