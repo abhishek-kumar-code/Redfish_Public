@@ -417,8 +417,14 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the central processors for a system."/>
         <Property Name="Count" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The number of processors in the system."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the number of central processors in the system."/>
+          <Annotation Term="OData.Description" String="The number of physical processors in the system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the number of physical central processors in the system."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="LogicalProcessorCount" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The number of logical processors in the system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the number of logical central processors in the system."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Model" Type="Edm.String">
