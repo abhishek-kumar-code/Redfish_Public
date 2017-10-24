@@ -15,9 +15,8 @@
 			"ProductionDate": "2017-04-01T14:55:33+03:00",
 			"Producer": "Contoso Supply Co.",
 			"Version": "1.44B",
-			"AssetTag": "CHICAGO-33",
 			"EngineeringChangeLevel": "9",
-			"HexDumpURI": "/dumpster/434",
+			"BinaryDataURI": "/dumpster/434",
 			"Oem": {
 				"Contoso": {
 					"Region": "C",
@@ -32,7 +31,7 @@
 			"PartNumber": "3434-149",
 			"Vendor": "Contoso",
 			"Version": "1.44B",
-			"HexDumpURI": "/dumpster/422"
+			"BinaryDataURI": "/dumpster/422"
 		}
 	],
 	"Oem": {}

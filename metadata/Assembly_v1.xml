@@ -127,11 +127,6 @@
           <Annotation Term="OData.Description" String="Version of the Assembly."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of the assembly as determined by the vendor or supplier."/>
         </Property>	
-        <Property Name="AssetTag" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Asset Tag of the Assembly."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the assembly for inventory purposes."/>
-        </Property>	
         <Property Name="EngineeringChangeLevel" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Engineering change level of the Assembly."/>
@@ -139,7 +134,7 @@
         </Property>	
         <Property Name="BinaryDataURI" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="URI that provides the ability to download an image of the assembly information."/>
+          <Annotation Term="OData.Description" String="URI that provides the ability to access an image of the assembly information."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a URI at which the Service provides for the download of the OEM-specific binary image of the assembly data.  An HTTP GET from this URI shall return a response payload of MIME time application/octet-stream. An HTTP PUT to this URI, if supported by the Service, shall replace the binary image of the assembly."/>
           <Annotation Term="OData.IsURL"/>
         </Property>	
