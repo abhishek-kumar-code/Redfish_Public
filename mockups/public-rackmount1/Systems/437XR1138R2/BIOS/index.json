@@ -4,7 +4,6 @@
     "Name": "BIOS Configuration Current Settings",
     "AttributeRegistry": "BiosAttributeRegistryP89.v1_0_0",
     "Attributes": {
-        "@odata.type": "#Bios.v1_0_0.Attributes",
         "AdminPhone": "",
         "BootMode": "Uefi",
         "EmbeddedSata": "Raid",
@@ -21,7 +20,6 @@
         "ETag": "9234ac83b9700123cc32",
         "Messages": [
             {
-                "@odata.type": "#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.SettingsFailed",
                 "RelatedProperties": [
                     "#/Attributes/ProcTurboMode"
@@ -34,7 +32,6 @@
         "Time": "2016-03-07T14:44.30-05:00"
     },
     "Actions": {
-        "@odata.type": "#Bios.v1_0_0.Actions",
         "#Bios.ResetBios": {
             "target": "/redfish/v1/Systems/437XR1138R2/BIOS/Actions/Bios.ResetBios"
         },

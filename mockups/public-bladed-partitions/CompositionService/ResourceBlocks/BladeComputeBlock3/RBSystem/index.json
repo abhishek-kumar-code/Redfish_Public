@@ -9,7 +9,6 @@
     "PowerState": "On",
     "UUID": "00000000-0000-0000-0000-000000000000",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
@@ -23,7 +22,6 @@
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem/EthernetInterfaces"
     },
     "Links": {
-        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "Chassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/Blade6"

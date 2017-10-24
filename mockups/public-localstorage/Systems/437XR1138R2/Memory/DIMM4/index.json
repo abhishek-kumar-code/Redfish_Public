@@ -3,14 +3,12 @@
     "Id": "DIMM4",
     "Name": "DIMM Slot 4",
     "MemoryLocation": {
-        "@odata.type": "#Memory.v1_0_0.MemoryLocation",
         "Socket": 2,
         "MemoryController": 2,
         "Channel": 1,
         "Slot": 4
     },
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Absent"
     },
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
