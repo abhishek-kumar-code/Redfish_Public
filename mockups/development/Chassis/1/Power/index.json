@@ -126,7 +126,6 @@
               { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
             ],
             "Location": {
-              "@odata.type": "#Resource.v1_6_0.Location",
               "PartLocation": {
                 "ServiceLabel": "PSU 1",
                 "LocationType": "Bay",
@@ -182,7 +181,6 @@
                 { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
             ],
             "Location": {
-              "@odata.type": "#Resource.v1_6_0.Location",
               "PartLocation": {
                 "ServiceLabel": "PSU 2",
                 "LocationType": "Bay",
@@ -198,7 +196,6 @@
                 "State": "Absent"
             },
             "Location": {
-              "@odata.type": "#Resource.v1_6_0.Location",
               "PartLocation": {
                 "ServiceLabel": "PSU 3",
                 "LocationType": "Bay",

@@ -30,7 +30,6 @@
         "@odata.id": "/redfish/v1/Systems/1/Memory/1/Metrics"
     },
     "Location": {
-      "@odata.type": "#Resource.v1_6_0.Location",
       "PartLocation": {
         "ServiceLabel": "Socket 1_A",
         "LocationType": "Socket",

@@ -26,7 +26,6 @@
     "Health": "OK"
   },
   "Location": {
-    "@odata.type": "#Resource.v1_6_0.Location",
     "PartLocation": {
       "ServiceLabel": "Processor 1",
       "LocationType": "Socket",
