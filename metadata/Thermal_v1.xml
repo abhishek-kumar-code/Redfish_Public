@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Thermal  v1.3.1-->
+<!--# Redfish Schema:  Thermal  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -221,6 +221,36 @@
           <Annotation Term="OData.Description" String="Maximum value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
+        <Property Name="MaximumAllowableOperatingValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Maximum allowable operating value for Reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+        </Property>
+        <Property Name="MinimumAllowableOperatingValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Minimum allowable operating value for Reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+        </Property>
+        <Property Name="MaximumRecommendedOperatingValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Maximum recommended operating value for Reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum reocmmended operating value for Reading. The units shall be the same units as the related Reading property."/>
+        </Property>
+        <Property Name="MinimumRecommendedOperatingValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Minimum recommended operating value for Reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum reocmmended operating value for Reading. The units shall be the same units as the related Reading property."/>
+        </Property>
+        <Property Name="ScaledMaximumAllowableOperatingValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Scaled maximum allowable operating value for Reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the scaled maximum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+        </Property>
+        <Property Name="ScaledMinimumAllowableOperatingValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Scaled minimum allowable operating value for Reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the scaled minimum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+        </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>          
           <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan."/>
@@ -414,6 +444,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_3_1">
       <Annotation Term="OData.Description" String="This version was created to remove the AutoExpand annotation for the Redundancy property inside Fans."/>
       <EntityType Name="Thermal" BaseType="Thermal.v1_3_0.Thermal"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_4_0">
+      <Annotation Term="OData.Description" String="This version was created to add additional Temperatures properties."/>
+      <EntityType Name="Thermal" BaseType="Thermal.v1_3_1.Thermal"/>
     </Schema>
 
   </edmx:DataServices>
