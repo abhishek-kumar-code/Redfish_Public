@@ -4,7 +4,6 @@
     "Name": "Local Storage Controller",
     "Description": "Integrated RAID Controller",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK",
         "HealthRollup": "OK"
@@ -12,17 +11,14 @@
     "StorageControllers": [
         {
             "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1#/StorageControllers/0",
-            "@odata.type": "#Storage.v1_3_0.StorageController",
             "MemberId": "0",
             "Name": "Contoso Integrated RAID",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Identifiers": [
                 {
-                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "345C59DBD970859C"
                 }
@@ -59,11 +55,8 @@
     "Volumes": {
         "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes"
     },
-    "Links": {
-        "@odata.type": "#Storage.v1_0_0.Storage"
-    },
+    "Links": {},
     "Actions": {
-        "@odata.type": "#Storage.v1_0_0.Actions",
         "#Storage.SetEncryptionKey": {
             "target": "/redfish/v1/Systems/437XR1138R2/Storage/1/Actions/Storage.SetEncryptionKey"
         }

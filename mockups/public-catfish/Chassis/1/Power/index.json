@@ -5,19 +5,16 @@
     "PowerControl": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0",
-            "@odata.type": "#Power.v1_3_0.PowerControl",
             "MemberId": "0",
             "Name": "System Power Control",
             "PowerConsumedWatts": 224,
             "PowerCapacityWatts": 600,
             "PowerLimit": {
-                "@odata.type": "#Power.v1_0_0.PowerLimit",
                 "LimitInWatts": 450,
                 "LimitException": "LogEventOnly",
                 "CorrectionInMs": 1000
             },
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },

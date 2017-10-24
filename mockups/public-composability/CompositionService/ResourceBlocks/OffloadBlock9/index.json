@@ -6,12 +6,10 @@
         "Processor"
     ],
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "CompositionStatus": {
-        "@odata.type": "#ResourceBlock.v1_0_0.CompositionStatus",
         "Reserved": false,
         "CompositionState": "Unused"
     },
@@ -25,7 +23,6 @@
     "SimpleStorage": [],
     "EthernetInterfaces": [],
     "Links": {
-        "@odata.type": "#ResourceBlock.v1_0_0.Links",
         "ComputerSystems": [],
         "Chassis": [
             {
