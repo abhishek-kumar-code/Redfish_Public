@@ -379,6 +379,9 @@
         <Member Name="PipelinedNibble">
           <Annotation Term="OData.Description" String="Pipelined Nibble."/>
         </Member>
+        <Member Name="Logical">
+          <Annotation Term="OData.Description" String="Logical Non-volatile device."/>
+        </Member>
       </EnumType>
 
       <EnumType Name="BaseModuleType">
@@ -714,6 +717,30 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_4_0">
       <EntityType Name="Memory" BaseType="Memory.v1_3_0.Memory">
+        <Property Name="VolatileSizeMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Total size of the volitile portion memory in MiB."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the volatile portion memory in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>
+        </Property>
+        <Property Name="NonVolatileSizeMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Total size of the non-volatile portion memory in MiB."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the non-volatile portion memory in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>
+        </Property>
+        <Property Name="CacheSizeMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Total size of the cache portion memory in MiB."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the cache portion memory in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>
+        </Property>
+        <Property Name="LogicalSizeMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Total size of the logical memory in MiB."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the logical memory in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>
+        </Property>
         <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
       </EntityType>
     </Schema>
