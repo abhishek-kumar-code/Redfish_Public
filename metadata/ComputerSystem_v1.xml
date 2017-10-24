@@ -611,7 +611,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_5">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of Processor Coun."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_4.ComputerSystem"/>
     </Schema>
 
@@ -699,7 +699,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of Processor Coun."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_3.ComputerSystem"/>
     </Schema>
 
@@ -755,7 +755,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_3">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of Processor Count."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_2.ComputerSystem"/>
     </Schema>
 
@@ -787,7 +787,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_2">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of Processor Count."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_1.ComputerSystem"/>
     </Schema>
 
