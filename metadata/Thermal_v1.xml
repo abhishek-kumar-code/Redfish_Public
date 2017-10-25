@@ -429,15 +429,15 @@
           <Annotation Term="OData.Description" String="Minimum allowable operating value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
-        <Property Name="ScaledMaxAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="AdjustedMaxAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Scaled maximum allowable operating value for Reading."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the scaled maximum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.Description" String="Adjusted maximum allowable operating value for Reading based on environmental conditions present."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted maximum allowable operating value for Reading based on environmental conditions present. The units shall be the same units as the related Reading property."/>
         </Property>
-        <Property Name="ScaledMinAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="AdjustedMinAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Scaled minimum allowable operating value for Reading."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the scaled minimum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.Description" String="Adjusted minimum allowable operating value for Reading based on environmental conditions present."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted minimum allowable operating value for Reading based on environmental conditions present. The units shall be the same units as the related Reading property."/>
         </Property>
       </EntityType>
     </Schema>
