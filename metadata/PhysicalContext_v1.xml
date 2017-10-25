@@ -24,10 +24,10 @@
           <Annotation Term="OData.Description" String="The room."/>
         </Member>
         <Member Name="Intake">
-          <Annotation Term="OData.Description" String="The intake point of the chassis."/>
+          <Annotation Term="OData.Description" String="The air intake point of the chassis."/>
         </Member>
         <Member Name="Exhaust">
-          <Annotation Term="OData.Description" String="The exhaust point of the chassis."/>
+          <Annotation Term="OData.Description" String="The air exhaust point of the chassis."/>
         </Member>
         <Member Name="LiquidInlet">
           <Annotation Term="OData.Description" String="The liquid inlet point of the chassis."/>
