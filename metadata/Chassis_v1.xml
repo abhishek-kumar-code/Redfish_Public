@@ -573,12 +573,13 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_6_0">
       <Annotation Term="OData.Description" String="This version was created to add a link to an Assembly resource."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_5_1.Chassis">
-      <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-        <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this chassis."/>
-        <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
-        <Annotation Term="OData.AutoExpandReferences"/>
-      </NavigationProperty>
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
