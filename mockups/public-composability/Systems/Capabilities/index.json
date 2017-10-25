@@ -10,7 +10,6 @@
     "HostName@Redfish.UpdatableAfterCreate": true,
     "Boot@Redfish.OptionalOnCreate": true,
     "Boot": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
         "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
         "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
@@ -24,7 +23,6 @@
     },
     "Links@Redfish.RequiredOnCreate": true,
     "Links": {
-        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "ResourceBlocks@Redfish.RequiredOnCreate": true,
         "ResourceBlocks@Redfish.UpdatableAfterCreate": true
     },
