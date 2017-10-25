@@ -424,27 +424,27 @@
           <Annotation Term="OData.Description" String="Maximum allowable operating value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
-        <Property Name="MinimumAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="MinAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Minimum allowable operating value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
-        <Property Name="MaximumRecommendedOperatingValue" Type="Edm.Int64">
+        <Property Name="MaxRecommendedOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum recommended operating value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum reocmmended operating value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
-        <Property Name="MinimumRecommendedOperatingValue" Type="Edm.Int64">
+        <Property Name="MinRecommendedOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Minimum recommended operating value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum reocmmended operating value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
-        <Property Name="ScaledMaximumAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="ScaledMaxAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Scaled maximum allowable operating value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the scaled maximum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
-        <Property Name="ScaledMinimumAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="ScaledMinAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Scaled minimum allowable operating value for Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the scaled minimum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
