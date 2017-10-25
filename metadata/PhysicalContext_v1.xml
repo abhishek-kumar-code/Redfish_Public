@@ -115,6 +115,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PhysicalContext.v1_3_0">
       <Annotation Term="OData.Description" String="This version was created to show the PhysicalContext enumerated list was updated."/>
     </Schema>
-  
+
   </edmx:DataServices>
 </edmx:Edmx>
