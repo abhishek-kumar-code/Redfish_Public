@@ -62,7 +62,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
     <edmx:Include Namespace="Assembly"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
@@ -569,10 +569,10 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_5_0.Chassis"/>
     </Schema>
-	
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_6_0">
       <Annotation Term="OData.Description" String="This version was created to add a link to an Assembly resource."/>
-      <EntityType Name="Chassis" BaseType="Chassis.v1_5_1.Chassis"/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_5_1.Chassis">
       <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this chassis."/>
