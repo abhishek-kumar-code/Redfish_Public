@@ -422,16 +422,14 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_4_0">
       <EntityType Name="Thermal" BaseType="Thermal.v1_3_1.Thermal"/>
       <EntityType Name="Fan" BaseType="Thermal.v1_2_0.Fan">
-	    <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this fan."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-
     </Schema>
-	  
-	  
+
   </edmx:DataServices>
 </edmx:Edmx>
