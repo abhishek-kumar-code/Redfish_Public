@@ -675,7 +675,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_5_0">
       <EntityType Name="Power" BaseType="Power.v1_4_0.Power"/>
-	  
+
       <EntityType Name="PowerSupply" BaseType="Power.v1_2_0.PowerSupply">
         <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -685,6 +685,6 @@
         </NavigationProperty>
       </EntityType>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>
