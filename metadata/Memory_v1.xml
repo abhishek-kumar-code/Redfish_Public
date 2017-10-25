@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Memory  v1.5.0-->
+<!--# Redfish Schema:  Memory  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -744,12 +744,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the logical memory in MiB."/>
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
-      </EntityType>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_5_0">
-      <EntityType Name="Memory" BaseType="Memory.v1_4_0.Memory">
-	  	<NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
@@ -757,6 +752,6 @@
         </NavigationProperty>
       </EntityType>
     </Schema>
-	  
+
   </edmx:DataServices>
 </edmx:Edmx>
