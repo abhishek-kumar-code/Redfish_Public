@@ -1,0 +1,122 @@
+{
+    "@odata.type": "#Generator.v0_1_0.Generator",
+    "Id": "Generator1",
+    "Name": "Generator1",
+    "FirmwareRevision": "1.0.0",
+    "DateOfManufacture": "2017-01-11T08:00:00Z",
+    "Manufacturer": "Manufacturer",
+    "Model": "Model",
+    "SerialNumber": "SerialNum",
+    "PartNumber": "PartNum",
+    "AssetTag": "AssetTag",
+    "PhysicalLocation": "Location",
+    "EngineRunning": true,
+    "SummaryAlarmOn": false,
+    "EngineFailure": false,
+    "DayTankFuelLevel": 10,
+    "DayTankLowLevelPreAlarm": 5,
+    "DayTankLowLevelShutDown": 0,
+    "OverloadPreAlarm": 5,
+    "OverloadShutDown": 0,
+    "DayTankRupture": false,
+    "DayTankWaterInFuel": false,
+    "EmergencyOff": false,
+    "EngineOilPressure": 0,
+    "EngineLowOilPressurePreAlarm": 0,
+    "EngineLowOilPressureShutDown": 0,
+    "LowWaterTemperature": 2,
+    "Overspeed": "A",
+    "LowCoolantLevelPreAlarm": 0,
+    "LowCoolantLevelShutDown": 0,
+    "OvercrankShutDown": 0,
+    "AirDamperClosed": false,
+    "BatteryChargerFail": false,
+    "HighExhaustTemperatureLeft": 30,
+    "HighExhaustTemperatureRight": 30,
+    "BearingHighTemperatureFront": 30,
+    "BearingHighTemperatureRear": 30,
+    "GeneratorPrimaryBearingTemperature": 30,
+    "ProtectiveRelayTripped": false,
+    "AcOutput": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/0",
+            "MemberId": "0",
+            "PowerFactor": 0,
+            "OutputPower": 0,
+            "OutputReactivePower": 0,
+            "ProtectiveRelays": "A",
+            "Sensors": {
+                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors",
+                "@odata.type": "#SensorCollection.SensorCollection",
+                "Name": "SensorCollection",
+                "Members": [
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/Sensors/0",
+                        "Id": "0",
+                        "SensorNumber": 0,
+                        "Name": "AC Output - Frequency Sensor",
+                        "PhysicalContext": "AC Output",
+                        "AC_OutputFrequency": 12, 
+                        "AC_OutputFrequency@metricmetadata": "AC_OutputFrequency",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/Sensors/1",
+                        "Id": "1",
+                        "SensorNumber": 1,
+                        "Name": "AC Output - RMS Voltage (L-L) Sensor",
+                        "PhysicalContext": "AC Output",
+                        "AC_OutputVoltageLL": 12, 
+                        "AC_OutputVoltageLL@metricmetadata": "AC_OutputVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/Sensors/2",
+                        "Id": "2",
+                        "SensorNumber": 2,
+                        "Name": "AC Output - RMS Voltage (L-G) Sensor",
+                        "PhysicalContext": "AC Output",
+                        "AC_OutputVoltageLG": 12, 
+                        "AC_OutputVoltageLG@metricmetadata": "AC_OutputVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/Sensors/3",
+                        "Id": "3",
+                        "SensorNumber": 3,
+                        "Name": "AC Output - RMS Current Sensor",
+                        "PhysicalContext": "AC Output",
+                        "AC_OutputCurrent": 12, 
+                        "AC_OutputCurrent@metricmetadata": "AC_OutputCurrent",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/Sensors/4",
+                        "Id": "4",
+                        "SensorNumber": 4,
+                        "Name": "AC Output - Output Ground Curent Sensor",
+                        "PhysicalContext": "AC Output",
+                        "AC_OutputGroundCurrent": 12, 
+                        "AC_OutputGroundCurrent@metricmetadata": "AC_OutputGroundCurrent",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/Sensors/5",
+                        "Id": "5",
+                        "SensorNumber": 5,
+                        "Name": "AC Output - Battery Voltage Sensor",
+                        "PhysicalContext": "AC Output",
+                        "AC_OutputBatteryVoltage": 12, 
+                        "AC_OutputBatteryVoltage@metricmetadata": "AC_OutputBatteryVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    }
+                 ]
+            }
+        }
+    ],
+    "Oem": {},
+
+    "@odata.context": "/redfish/v1/$metadata#Generator.Generator",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

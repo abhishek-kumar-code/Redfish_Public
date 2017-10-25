@@ -1,0 +1,27 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#TelemetryService/MetricDefinitions/AverageConsumedWatts",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts",
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "Id": "AverageConsumedWatts",
+    "Name": "Average Consumed Watts Metric Definition",
+
+    "MetricType": "Numeric",
+	"SensorType": "PowerConsumption",
+	"Implementation": "Calculated",
+	"PhysicalContext": "PowerSupply",
+
+	"CalcApplied": "AverageOverInterval",
+ 	"CalcTimeWindowms": "20",
+
+	"AppliesTo": [
+	    {
+		    "SourceMetric": { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0/PowerConsumedWatts " },
+ 		    "ResultantMetrics": { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0/AverageConsumedWatts " }
+	    },
+	    {
+		    "SourceMetric": { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/1/PowerConsumedWatts " },
+ 		    "ResultantMetrics": { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/1/AverageConsumedWatts " }
+	    }
+    ]
+}

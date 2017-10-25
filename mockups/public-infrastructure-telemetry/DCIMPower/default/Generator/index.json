@@ -1,0 +1,13 @@
+{
+    "@odata.type": "#GeneratorCollection.GeneratorCollection",
+    "Name": "Generator Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#GeneratorCollection.GeneratorCollection",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

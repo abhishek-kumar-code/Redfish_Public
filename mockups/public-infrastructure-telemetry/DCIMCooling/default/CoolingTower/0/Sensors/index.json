@@ -1,0 +1,22 @@
+{
+    "@odata.type": "#SensorCollection.SensorCollection",
+    "Name": "Cooling Tower 0 Sensor Collection",
+    "Members@odata.count": 4,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature2"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature3"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
+    "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

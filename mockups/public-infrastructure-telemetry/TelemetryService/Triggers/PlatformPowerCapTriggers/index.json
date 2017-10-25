@@ -1,0 +1,40 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
+   	"@odata.type": "#Triggers.v1_0_0.Triggers",
+  	"@odata.id": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers",
+   	
+	"Id": "PlatformPowerCapTrigger",
+	"Name": "Triggers for platform power consumed",
+	"TriggersType": "Numeric",
+	"TriggerActions": ["Transmit"],
+	"PollingIntervalms": "1",
+
+  	"NumericTriggers": [
+			{
+                "Name": "UpperThresholdCritical",
+			    "Value": "50.0",
+			    "DirectionOfCrossing": "Increasing",
+			    "DwellTimems": "1",
+                "Severity": "Critical"
+			},
+			{
+                "Name": "UpperThresholdNonCritical",
+			    "Value": "48.1",
+			    "DirectionOfCrossing": "Increasing",
+			    "DwellTimems": "4",
+                "Severity": "Warning"
+			}
+    ],
+
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+
+	"AppliesTo": [
+        { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0/PowerConsumedWatts " },
+        { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/1/PowerConsumedWatts " }
+
+	]
+}

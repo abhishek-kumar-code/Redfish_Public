@@ -1,0 +1,30 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/Memory_CurrentPeriod_BlocksRead",
+    "Id": "Memory_CurrentPeriod_BlocksRead",
+    "Name": "Current Memory Blocks Read Metric Definition",
+
+	"MetricType": "Numeric",
+	"SensorType": "Memory",
+	"Implementation": "Value",
+
+	"SensingIntervalms": "1000",
+	"ReadingUnits": "Blocks",
+ 	"MinReadingRange": "0",
+	"MaxReadingRange": "1000000",
+
+	"Status": {
+        	"State": "Enabled",
+        	"DetailState": "Measuring",
+        	"Health": "OK"
+    },
+
+	"AppliesTo": [
+	    { "@odata.id": "/redfish/v1/Systems/1/Memory/1/MemoryMetric#/CurrentPeriod/BlocksRead" },
+	    { "@odata.id": "/redfish/v1/Systems/1/Memory/2/MemoryMetric#/CurrentPeriod/BlocksRead" },
+	    { "@odata.id": "/redfish/v1/Systems/1/Memory/3/MemoryMetric#/CurrentPeriod/BlocksRead" },
+	    { "@odata.id": "/redfish/v1/Systems/1/Memory/4/MemoryMetric#/CurrentPeriod/BlocksRead" }
+    ]
+}

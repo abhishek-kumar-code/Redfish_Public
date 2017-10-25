@@ -1,0 +1,127 @@
+{
+    "@odata.type": "#VFD.v0_1_0.VFD",
+    "Id": "VFD0",
+    "Name": "VFD0",
+    "FirmwareRevision": "1.0.0",
+    "DateOfManufacture": "2017-01-11T08:00:00Z",
+    "Manufacturer": "Manufacturer",
+    "Model": "Model",
+    "SerialNumber": "SerialNum",
+    "PartNumber": "PartNum",
+    "AssetTag": "AssetTag",
+    "PhysicalLocation": "Location",
+    "Speed": 0,
+    "RunTime": 6,
+    "KWHours": 10,
+    "LastFault": "A",
+    "SecondFault": "B",
+    "FirstFault": "C",
+    "DriveStatus": "Status",
+    "DriveFail": "Fail",
+    "DriveControl": "Control",
+    "DcUnderOverVolts": 12,
+    "FlyingStart": false,
+    "DriveAtSpeed": 5,
+    "DriveOverTemperature": 10,
+    "MotorOverTemperature": 10,
+    "ReverseDirection": false,
+    "CommunicationsError": false,
+    "Started": true,
+    "CommandSpeed": 50,
+    "AcInput": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcInput/0",
+            "MemberId": "0",
+            "PercentCurrent": "50",
+            "Sensors": {
+                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors",
+                "@odata.type": "#SensorCollection.SensorCollection",
+                "Name": "SensorCollection",
+                "Members": [
+                    {
+                        "Id": "0",
+                        "SensorNumber": 0,
+                        "Name": "AC Input - RMS Current Sensor",
+                        "AC_InputRMSCurrent": 12,
+                        "AC_InputRMSCurrent@metricmetadata": "AC_InputRMSCurrent",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "Id": "1",
+                        "SensorNumber": 1,
+                        "Name": "AC Input - RMS Voltage (L-L) Sensor",
+                        "AC_InputRMSVoltage": 12, 
+                        "AC_InputRMSVoltage@metricmetadata": "AC_InputRMSVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    }
+                ]
+            }
+        }
+    ],
+    "AcOutput": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcOutput/0",
+            "MemberId": "0",
+            "PercentRatedTorque": "50",
+            "PercentRatedPower": "50",
+            "kWHours": "10",
+            "Sensors": {
+                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors",
+                "@odata.type": "#SensorCollection.SensorCollection",
+                "Name": "SensorCollection",
+                "Members": [
+                    {
+                        "Id": "2",
+                        "SensorNumber": 2,
+                        "Name": "AC Output - Frequency Sensor",
+                        "AC_OutputFrequency": 12, 
+                        "AC_OutputFrequency@metricmetadata": "AC_OutputFrequency",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "Id": "3",
+                        "SensorNumber": 3,
+                        "Name": "AC Output - RMS Voltage (L-L) Sensor",
+                        "AC_OutputVoltage": 12, 
+                        "AC_OutputVoltage@metricmetadata": "AC_OutputVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "Id": "4",
+                        "SensorNumber": 4,
+                        "Name": "AC Output - RMS Current Sensor",
+                        "AC_OutputCurrent": 12, 
+                        "AC_OutputCurrent@metricmetadata": "AC_OutputCurrent",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    }
+                ]
+            }
+        }
+    ],
+    "DcBus": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/DcBus/0",
+            "MemberId": "0",
+            "UnderOverVolts": "StatusAlert",
+            "Sensors": {
+                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors",
+                "@odata.type": "#SensorCollection.SensorCollection",
+                "Name": "SensorCollection",
+                "Members": [
+                   {
+                        "Id": "5",
+                        "SensorNumber": 5,
+                        "Name": "DC Bus - RMS Voltage Sensor",
+                        "DC_BusVoltage": 12, 
+                        "DC_BusVoltagey@metricmetadata": "DC_BusVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    }
+                ]
+            }
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#VFD.VFD",
+    "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

@@ -1,0 +1,90 @@
+{
+    "@odata.type": "#Rectifier.v0_1_0.Rectifier",
+    "Id": "Rectifier0",
+    "Name": "Rectifier0",
+    "FirmwareRevision": "1.0.0",
+    "DateOfManufacture": "2017-01-11T08:00:00Z",
+    "Manufacturer": "Manufacturer",
+    "Model": "Model",
+    "SerialNumber": "SerialNum",
+    "PartNumber": "PartNum",
+    "AssetTag": "AssetTag",
+    "PhysicalLocation": "Location",
+    "RealPower": 10,
+    "Status": "Standby",
+    "TotalInputPower": 10,
+    "InputSourceStatus": 1,
+    "OutputSourceStatus": 2,
+    "AcInput": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0#/AcInput/0",
+            "MemberId": "0",
+            "RealPower": 0,
+            "Energy": 0,
+            "RmsUnderOverVoltage": 0,
+            "Sensors": {
+                "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/AcInputSensors",
+                "@odata.type": "#SensorCollection.SensorCollection",
+                "Name": "SensorCollection",
+                "Members": [
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/AcInput/Sensors/0",
+                        "Id": "0",
+                        "SensorNumber": 0,
+                        "Name": "AC Input 1 - RMS Voltage Sensor",
+                        "AC_InputVoltage": 12, 
+                        "AC_InputVoltagey@metricdefinition": "AC_InputVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/AcInput/Sensors/1",
+                        "Id": "1",
+                        "SensorNumber": 1,
+                        "Name": "AC Input 1 - RMS Current Sensor",
+                        "AC_InputCurrent": 12, 
+                        "AC_InputCurrent@metricdefinition": "AC_InputCurrent",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/AcInput/Sensors/2",
+                        "Id": "2",
+                        "SensorNumber": 2,
+                        "Name": "AC Input 1 - Frequency Sensor",
+                        "AC_InputFrequency": 12, 
+                        "AC_InputFrequency@metricdefinition": "AC_InputFrequency",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    }
+                ]
+            }
+        }
+    ],
+    "DcBus": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0#/DcBus/0",
+            "MemberId": "0",
+            "RealPower": 0,
+            "Energy": 0,
+            "RmsUnderOverVoltage": 0,
+            "Sensors": {
+                "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors",
+                "@odata.type": "#SensorCollection.SensorCollection",
+                "Name": "SensorCollection",
+                "Members": [
+                    {
+                        "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/DcBus/Sensors/3",
+                        "Id": "3",
+                        "SensorNumber": 3,
+                        "Name": "DC Bus - DC Voltage Sensor",
+                        "DC_BusDCVoltage": 12, 
+                        "DC_BusDCVoltage@metricdefinition": "DC_BusDCVoltage",
+                        "Status": { "State": "Enabled", "Health": "OK" }
+                    }
+                ]
+            }
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Rectifier.Rectifier",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

@@ -1,0 +1,27 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#TelemetryService",
+   	"@odata.type": "#TelemetryService.v1_0_0.TelemetryService",
+  	"@odata.id": "/redfish/v1/TelemetryService",
+   	
+	"Id": "TelemetryService",
+	"Name": "Telemetry Service",
+
+	"Status": {
+        	"State": "Enabled",
+        	"Health": "OK"
+    },
+
+	"MetrictDefinitions": {
+		"@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions"
+	},
+	"MetricReportDefinitions": {
+		"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions"
+	},
+	"MetricReports": {
+		"@odata.id": "/redfish/v1/TelemetryService/MetricReports"
+	},
+	"Triggers": {
+        "@odata.id": "/redfish/v1/TelemetryService/Triggers"
+    }
+}
