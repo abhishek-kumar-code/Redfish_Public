@@ -94,10 +94,9 @@
               <Annotation Term="OData.Description" String="One or more spare units are available to take over the function of a failed unit, but takeover is not automatic."/>
             </Record>
             <Record>
-			  <PropertyValue Property="Member" String="NotRedundant"/>
+              <PropertyValue Property="Member" String="NotRedundant"/>
               <Annotation Term="OData.Description" String="The subsystem is not configured in a redundancy mode, either due to configuration or the functionality has been disabled by the user."/>
             </Record>
-			  
           </Collection>
         </Annotation>
       </TypeDefinition>
@@ -170,6 +169,6 @@
       <Annotation Term="OData.Description" String="This version was created to add the 'NotRedundant' enumeration to Mode, enable read-write support for that property, and clarify its description."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_2_0.Redundancy"/>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>
