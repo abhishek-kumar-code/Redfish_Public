@@ -3,7 +3,6 @@
     "Id": "Block8Port1",
     "Name": "Ethernet Interface Port 1",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -16,7 +15,6 @@
     "MTUSize": 1500,
     "IPv4Addresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv4Address",
             "Address": null,
             "SubnetMask": null,
             "AddressOrigin": "DHCP",
@@ -24,7 +22,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#EthernetInterface.v1_3_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/ComposableModule5"
         }
