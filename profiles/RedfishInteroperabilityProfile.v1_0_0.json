@@ -94,6 +94,10 @@
 					"type": "boolean",
 					"description": "Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  deletion of instances of this resource type."
 				},
+				"UpdateResource": {
+					"type": "boolean",
+					"description": "Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply."
+				},
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"
 				},

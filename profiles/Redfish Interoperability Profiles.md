@@ -21,6 +21,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Jeff Autor - Hewlett Packard Enterprise
 * George Ericson - Dell Inc.
 * Tomas Gonzalez - Majec Systems, Inc.
+* Jon Hass - Dell Inc.
 * Jeff Hilland - Hewlett Packard Enterprise
 * John Leung - Intel Corporation
 * Michael Raineri - Dell Inc.
@@ -146,6 +147,7 @@ The structure of the resource and property requirements is:
        "MinVersion": <version>,
 	   "CreateResource": <boolean>,
 	   "DeleteResource": <boolean>,
+	   "UpdateResource": <boolean>,
 	   "PropertyRequirements": {
 		   <Property Name>: { 
 		      <Requirements for this property>
@@ -175,6 +177,7 @@ The following options are available at the schema level:
 | ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see [Conditional Requirements](#conditional-requirements) section. |
 | CreateResource | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  creation of instances of this resource type. |
 | DeleteResource | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  deletion of instances of this resource type. |
+| UpdateResource | boolean | Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply. |
 
 #### Example
 

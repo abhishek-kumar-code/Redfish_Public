@@ -124,7 +124,8 @@
 		},
 		"ManagerAccountCollection": {
 			"CreateResource": true,
-			"DeleteResource": true
+			"DeleteResource": true,
+			"UpdateResource": true
 		},
 		"Thermal": {
 			"MinVersion": "1.1.0",
