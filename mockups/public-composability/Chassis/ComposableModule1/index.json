@@ -12,12 +12,10 @@
     "PowerState": "On",
     "IndicatorLED": "Off",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Links": {
-        "@odata.type": "#Chassis.v1_5_0.Links",
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/ComposedSystem"
