@@ -5,7 +5,6 @@
     "Socket": "CPU 2",
     "ProcessorType": "CPU",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Absent"
     },
     "@odata.context": "/redfish/v1/$metadata#Processor.Processor",

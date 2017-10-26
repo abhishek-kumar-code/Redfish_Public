@@ -3,7 +3,6 @@
     "Id": "CompositionService",
     "Name": "Composition Service",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },

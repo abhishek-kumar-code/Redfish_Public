@@ -11,12 +11,10 @@
     "TotalCores": 10,
     "TotalThreads": 20,
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Links": {
-        "@odata.type": "#Processor.v1_1_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Blade3"
         }

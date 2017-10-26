@@ -8,7 +8,6 @@
     "MessageId": "Event.1.0.TempWayTooHot",
     "Message": "CPU temperature crossed Upper Non Critical Threshold",
     "Links": {
-        "@odata.type": "#LogEntry.v1_0_0.Links",
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/Blade3/Thermal"
         }
