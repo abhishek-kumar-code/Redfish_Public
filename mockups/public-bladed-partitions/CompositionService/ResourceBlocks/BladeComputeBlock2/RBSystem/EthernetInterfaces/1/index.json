@@ -4,7 +4,6 @@
     "Name": "network.2",
     "Description": "PartitionedServer NIC",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -19,7 +18,6 @@
     ],
     "IPv4Addresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv4Address",
             "Address": "192.168.0.10",
             "SubnetMask": "255.255.252.0",
             "AddressOrigin": "Static",
@@ -27,7 +25,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#EthernetInterface.v1_3_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Blade2"
         }

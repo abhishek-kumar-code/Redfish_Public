@@ -5,11 +5,9 @@
     "PowerSupplies": [
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/0",
-            "@odata.type": "#Power.v1_3_0.PowerSupply",
             "MemberId": "0",
             "Name": "Power Supply 0",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -19,7 +17,6 @@
             "PowerCapacityWatts": 1450,
             "InputRanges": [
                 {
-                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 185,
                     "MaximumVoltage": 250,
@@ -72,11 +69,9 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/1",
-            "@odata.type": "#Power.v1_3_0.PowerSupply",
             "MemberId": "1",
             "Name": "Power Supply 1",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -86,7 +81,6 @@
             "PowerCapacityWatts": 1450,
             "InputRanges": [
                 {
-                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 185,
                     "MaximumVoltage": 250,
@@ -141,7 +135,6 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/Redundancy/0",
-            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "0",
             "Name": "Power Supply Redundancy",
             "RedundancySet": [
@@ -154,7 +147,6 @@
             ],
             "Mode": "N+m",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },

@@ -5,49 +5,40 @@
     "Description": "System SATA",
     "UefiDevicePath": "Acpi(PNP0A03,0)/Pci(1F|1)/Ata(Primary,Master)/HD(Part3, Sig00110011)",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK",
         "HealthRollup": "Warning"
     },
     "Devices": [
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SATA Bay 1",
             "Manufacturer": "Contoso",
             "Model": "3000GT8",
             "CapacityBytes": 8000000000000,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SATA Bay 2",
             "Manufacturer": "Contoso",
             "Model": "3000GT7",
             "CapacityBytes": 4000000000000,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "Degraded"
             }
         },
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SATA Bay 3",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Absent"
             }
         },
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SATA Bay 4",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Absent"
             }
         }
