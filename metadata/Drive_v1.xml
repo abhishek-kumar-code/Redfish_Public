@@ -76,12 +76,24 @@
       <Action Name="Erase" IsBound="true">
         <Annotation Term="OData.Description" String="This action is used to erase the drive."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform an erase of the drive.  The EraseType parameter shall specify the type of erase to perform on the drive.  A value of Native shall use the drives native erase mechanism. A value of NonNative shall not use teh drives native erase mechanism.  A value of NativeFirst shall use the Native mechanism first and if the Native mechanism fails, the non-native mechanism shall be used."/>
-        <Parameter Name="Drive" Type="Drive.v1_2_0.Actions"/>
+        <Parameter Name="Drive" Type="Drive.v1_0_0.Actions"/>
         <Parameter Name="EraseType" Type="Drive.EraseTypeEnum">
           <Annotation Term="OData.Description" String="The type of erase to perform on the drive."/>
           <Annotation Term="OData.LongDescription" String="This value shall specify the type of erase to perform on the drive."/>
         </Parameter>
       </Action>
+
+      <EnumType Name="EraseTypeEnum">
+        <Member Name="Native">
+          <Annotation Term="OData.Description" String="The erase will use the drive's native erase mechanism."/>
+        </Member>
+        <Member Name="NonNative">
+          <Annotation Term="OData.Description" String="The erase wiil use a non-native erase mechanism."/>
+        </Member>
+        <Member Name="NativeFirst">
+          <Annotation Term="OData.Description" String="The erase will use the drive's native erase mechanism.  Upon failure, a non-native erase mechansim will be used."/>
+        </Member>
+      </EnumType>
 
     </Schema>
 
@@ -383,30 +395,8 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_3_0">
+      <Annotation Term="OData.Description" String="This version was created to add the Erase action."/>
       <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drive"/>
-
-      <Action Name="Erase" IsBound="true">
-        <Annotation Term="OData.Description" String="This action is used to erase the drive."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform an erase of the drive.  The EraseType parameter shall specify the type of erase to perform on the drive.  A value of Native shall use the drives native erase mechanism. A value of NonNative shall not use teh drives native erase mechanism.  A value of NativeFirst shall use the Native mechanism first and if the Native mechanism fails, the non-native mechanism shall be used."/>
-        <Parameter Name="Drive" Type="Drive.v1_2_0.Actions"/>
-        <Parameter Name="EraseType" Type="Drive.EraseTypeEnum">
-          <Annotation Term="OData.Description" String="The type of erase to perform on the drive."/>
-          <Annotation Term="OData.LongDescription" String="This value shall specify the type of erase to perform on the drive."/>
-        </Parameter>
-      </Action>
-
-      <EnumType Name="EraseTypeEnum">
-        <Member Name="Native">
-          <Annotation Term="OData.Description" String="The erase will use the drive's native erase mechanism."/>
-        </Member>
-        <Member Name="NonNative">
-          <Annotation Term="OData.Description" String="The erase wiil use a non-native erase mechanism."/>
-        </Member>
-        <Member Name="NativeFirst">
-          <Annotation Term="OData.Description" String="The erase will use the drive's native erase mechanism.  Upon failure, a non-native erase mechansim will be used."/>
-        </Member>
-      </EnumType>
-
     </Schema>
 
   </edmx:DataServices>
