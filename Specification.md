@@ -979,7 +979,13 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 ##### Structured properties
 
-Structured properties, defined as [complex types](#resource-type-definitions) or [expanded](#expanded-resources) [resource types](#resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in the Redfish Schema definition of the property containing the structured value.
+Structured properties, defined as [complex types](#structured-types) or [expanded](#expanded-resources) [resource types](#resource-type-definitions), are returned as JSON objects.  The type of the JSON object is specified in the Redfish Schema definition of the property containing the structured value.
+
+Since the definition of structured properties can evolve over time, clients need to be aware of the inheritance model used by the different structured property definitions.  For example, the "Location" definition found in Resource_v1.xml has gone through several iterations since the original introduction in the "Resource.v1_1_0" namespace, and each iteration inherits from the previous version so that existing references found in other schemas can leverage the new additions.  There are two types of structured property references that need to be resolved: local references and external references.
+
+A local reference is when a resource has a structured property within its own schema, such as "ProcessorSummary" in the "ComputerSystem" resource.  In these cases, the [type property](#type-property) for the resource is used as a starting point for resolving the structured property definition.  The [version of the resource](#type-identifiers) can be stepped backwards until the latest applicable version is found.  For example, if a service returns "#ComputerSystem.v1_4_0.ComputerSystem" as the resource type, a client can go backwards from "ComputerSystem.v1_4_0", to "ComputerSystem.v1_3_0", "ComputerSystem.v1_2_0", and so on, until the structured property definition of "ProcessorSummary" is found.
+
+An external reference is when a resource has a property that references a definition found in a different schema, such as "Location" in the "Chassis" resource.  In these cases, the latest version of the external schema file will be used as a starting point for resolving the structured property definition.  For example, if the latest version of Resource_v1.xml is 1.6.0, a client can go backwards from "Resource.v1_6_0", to "Resource.v1_5_0", "Resource.v1_4_0", and so on, until the structured property definition of "Location" is found.
 
 ##### Actions property
 
@@ -1977,18 +1983,27 @@ Current Configuration resources represent the service's knowledge of the current
 
 A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
 
-Below is an example body for a resource that supports a Settings resource.  A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful. The Messages property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. The ETag property contains the ETag of the Settings resource that was last applied. The Time property indicate the time at which the Settings resource was last applied.
+
+Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
 
 ~~~json
 {
     "@Redfish.Settings": {
         "@odata.type": "#Settings.v1_0_0.Settings",
         "SettingsObject": {
-            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
+            "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
         },
         "Time": "2017-05-03T23:12:37-05:00",
-        "ETag": "someetag",
-        "Messages": []
+        "ETag": "A89B031B62",
+        "Messages": [
+           {
+              "MessageId": "Base.1.0.PropertyNotWritable",
+              "RelatedProperties": [
+                 "#/Attributes/ProcTurboMode"
+              ]
+           }
+        ]
     },
     ...
 }
@@ -2008,6 +2023,7 @@ Below is an example request body that shows a client configuring when the values
     ...
 }
 ~~~
+
 
 #### Services
 

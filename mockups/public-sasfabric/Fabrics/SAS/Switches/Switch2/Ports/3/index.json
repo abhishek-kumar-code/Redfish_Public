@@ -4,7 +4,6 @@
     "Name": "SAS Port 3",
     "Description": "SAS Port 3",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -15,7 +14,6 @@
     "Width": 4,
     "MaxSpeedGbps": 48,
     "Actions": {
-        "@odata.type": "#Port.v1_0_0.Actions",
         "Oem": {}
     },
     "Oem": {},

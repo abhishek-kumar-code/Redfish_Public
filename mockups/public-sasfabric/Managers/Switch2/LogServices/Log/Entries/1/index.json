@@ -13,7 +13,6 @@
     "MessageId": "Event.1.0.LogClear",
     "MessageArgs": [],
     "Links": {
-        "@odata.type": "#LogEntry.v1_0_0.Links",
         "Oem": {}
     },
     "Oem": {},

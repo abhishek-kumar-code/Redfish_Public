@@ -3,16 +3,13 @@
     "Id": "Block7SASTray",
     "Name": "SAS Simple Storage",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Devices": [
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SAS Drive Bay 0",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -21,10 +18,8 @@
             "CapacityBytes": 1099511627776
         },
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SAS Drive Bay 1",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -33,10 +28,8 @@
             "CapacityBytes": 1099511627776
         },
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SAS Drive Bay 2",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -45,10 +38,8 @@
             "CapacityBytes": 1099511627776
         },
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SAS Drive Bay 3",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -58,7 +49,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#SimpleStorage.v1_2_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/ComposableModule4"
         }
