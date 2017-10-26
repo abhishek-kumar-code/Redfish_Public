@@ -73,6 +73,16 @@
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
 
+      <Action Name="Erase" IsBound="true">
+        <Annotation Term="OData.Description" String="This action is used to erase the drive."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform an erase of the drive.  The EraseType parameter shall specify the type of erase to perform on the drive.  A value of Native shall use the drives native erase mechanism. A value of NonNative shall not use teh drives native erase mechanism.  A value of NativeFirst shall use the Native mechanism first and if the Native mechanism fails, the non-native mechanism shall be used."/>
+        <Parameter Name="Drive" Type="Drive.v1_2_0.Actions"/>
+        <Parameter Name="EraseType" Type="Drive.EraseTypeEnum">
+          <Annotation Term="OData.Description" String="The type of erase to perform on the drive."/>
+          <Annotation Term="OData.LongDescription" String="This value shall specify the type of erase to perform on the drive."/>
+        </Parameter>
+      </Action>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_0">
