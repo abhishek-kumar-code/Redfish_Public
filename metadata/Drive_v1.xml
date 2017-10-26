@@ -85,13 +85,13 @@
 
       <EnumType Name="EraseTypeEnum">
         <Member Name="Native">
-          <Annotation Term="OData.Description" String="The erase will use the drive's native erase mechanism."/>
+          <Annotation Term="OData.Description" String="The erase will use the drive's native erase mechanism.  This mechanism is a set of commands available from the firmare on the drive."/>
         </Member>
         <Member Name="NonNative">
-          <Annotation Term="OData.Description" String="The erase wiil use a non-native erase mechanism."/>
+          <Annotation Term="OData.Description" String="The erase wiil not use the drive's native erase mechanism. This mechanism may involve overwrites of the media."/>
         </Member>
         <Member Name="NativeFirst">
-          <Annotation Term="OData.Description" String="The erase will use the drive's native erase mechanism.  Upon failure, a non-native erase mechansim will be used."/>
+          <Annotation Term="OData.Description" String="The erase will first use the drive's native erase mechanism.  Upon failure, a non-native erase mechansim will be used."/>
         </Member>
       </EnumType>
 
