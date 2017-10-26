@@ -68,7 +68,7 @@
                     "type": "string",
                     "readonly": false,
                     "description": "This property contains the Role for this account.",
-                    "longDescription": "The value of this property shall be the ID of the Role resource that configured for this account."
+                    "longDescription": "The value of this property shall be the ID of the Role resource that configured for this account.  The service shall reject POST, PATCH, or PUT operations that provide a RoleId that does not exist by returning HTTP 400 (Bad Request)."
                 },
                 "Locked": {
                     "type": "boolean",

@@ -12,12 +12,10 @@
     "OperatingSpeedMhz": 1600,
     "ErrorCorrection": "MultiBitECC",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Links": {
-        "@odata.type": "#Memory.v1_2_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Blade3"
         }

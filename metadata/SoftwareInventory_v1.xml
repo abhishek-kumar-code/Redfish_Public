@@ -22,10 +22,12 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory">
-      <EntityType Name="SoftwareInventory" BaseType="Resource.v1_0_0.Resource">
+
+      <EntityType Name="SoftwareInventory" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This schema defines an inventory of software components."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a single software component managed by this Redfish Service."/>
       </EntityType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_0_0">

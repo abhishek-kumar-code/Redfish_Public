@@ -44,7 +44,7 @@ const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ];
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
-const EntityTypesWithNoActions = [ 'ServiceRoot', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
+const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
 /************************************************************/
 
 const setupBatch = {
@@ -816,10 +816,30 @@ function validCSDLTypeInMockup(err, json) {
       }
     }
     else {
-      let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+      let typeLookup = CSDLProperty.Type
+      let namespaceIndex = typeLookup.indexOf('.');
+      if(namespaceIndex === -1) {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      let namespace = typeLookup.substring(0, namespaceIndex);
+      if(namespace === '') {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      if(namespace === 'Resource' || namespace === 'IPAddresses') {
+        let typeNameIndex = typeLookup.lastIndexOf('.');
+        if(typeNameIndex === -1) {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        let typeName = typeLookup.substring(typeNameIndex+1);
+        if(namespace === '') {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+      }
+      let propType = CSDL.findByType({_options: options}, typeLookup);
       let propValue = json[propName];
       if(propType === null || propType === undefined) {
-        throw new Error('Cannot locate property type '+CSDLProperty.Type+'.');
+        throw new Error('Cannot locate property type '+typeLookup+'.');
       }
       else if(typeof propType === 'string') {
         simpleTypeCheck(propType, propValue, CSDLProperty, propName);
@@ -855,6 +875,18 @@ function validCSDLTypeInMockup(err, json) {
       }
     }
   }
+}
+
+function getLatestTypeVersion(defaultType, namespace, type, majorVersion, minorVersion) {
+  if(minorVersion < 0) {
+    return defaultType
+  }
+  let typeName = namespace + '.v' + majorVersion.toString() + '_' +  minorVersion.toString() + '_0.' + type
+  let propType = CSDL.findByType({_options: options}, typeName)
+  if(propType === null || propType === undefined) {
+    return getLatestTypeVersion(defaultType, namespace, type, majorVersion, minorVersion - 1)
+  }
+  return typeName
 }
 
 function complexTypeCheck(propType, propValue, propName, type) {

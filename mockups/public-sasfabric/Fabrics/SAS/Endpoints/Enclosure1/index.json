@@ -6,12 +6,10 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "StorageExpander",
             "EntityRole": null,
             "Identifiers": [
                 {
-                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7BF"
                 }
@@ -19,12 +17,10 @@
             "Oem": {}
         },
         {
-            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [
                 {
-                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7C0"
                 }
@@ -32,12 +28,10 @@
             "Oem": {}
         },
         {
-            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [
                 {
-                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7C1"
                 }
@@ -45,14 +39,12 @@
             "Oem": {}
         },
         {
-            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [],
             "Oem": {}
         },
         {
-            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [],
@@ -60,7 +52,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#Endpoint.v1_0_0.Links",
         "Ports": [
             {
                 "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/7"

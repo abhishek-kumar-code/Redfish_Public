@@ -8,7 +8,6 @@
     "MessageId": "Event.1.0.FanWayTooSlow",
     "Message": "Fan 2 crossed Lower Fatal Threshold; fans are no longer redundant",
     "Links": {
-        "@odata.type": "#LogEntry.v1_0_0.Links",
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal"
         }
