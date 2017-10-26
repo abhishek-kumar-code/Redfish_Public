@@ -12,7 +12,6 @@
     "IndicatorLED": "Lit",
     "PowerState": "On",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -23,7 +22,6 @@
         "@odata.id": "/redfish/v1/Chassis/1/Power"
     },
     "Links": {
-        "@odata.type": "#Chassis.v1_5_0.Links",
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/1"

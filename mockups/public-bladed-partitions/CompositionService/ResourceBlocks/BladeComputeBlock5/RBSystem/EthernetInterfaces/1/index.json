@@ -4,12 +4,10 @@
     "Name": "network.5",
     "Description": "PartitionedServer NIC",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Absent",
         "Health": "OK"
     },
     "Links": {
-        "@odata.type": "#EthernetInterface.v1_3_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Blade5"
         }
