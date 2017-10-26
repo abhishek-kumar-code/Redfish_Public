@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Thermal  v1.3.1-->
+<!--# Redfish Schema:  Thermal  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -29,6 +29,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
     <edmx:Include Namespace="PhysicalContext.v1_0_0"/>
+    <edmx:Include Namespace="PhysicalContext.v1_3_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
@@ -154,7 +155,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Describes the area or device to which this temperature measurement applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this temperature measurement applies."/>
-        </Property>
+        </Property>        
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Describes the areas or devices to which this temperature measurement applies."/>
@@ -414,6 +415,23 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_3_1">
       <Annotation Term="OData.Description" String="This version was created to remove the AutoExpand annotation for the Redundancy property inside Fans."/>
       <EntityType Name="Thermal" BaseType="Thermal.v1_3_0.Thermal"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_4_0">
+      <EntityType Name="Thermal" BaseType="Thermal.v1_3_1.Thermal"/>
+      <EntityType Name="Temperature" BaseType="Thermal.v1_3_0.Temperature">
+        <Property Name="DeltaReadingCelsius" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Delta Temperature reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the delta of the values of the temperature readings across this sensor and the sensor at DeltaPhysicalContext."/>
+          <Annotation Term="Measures.Unit" String="Cel"/>
+        </Property>
+        <Property Name="DeltaPhysicalContext" Type="PhysicalContext.v1_3_0.PhysicalContext" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describes the area or device to which the DeltaReadingCelsius temperature measurement applies, relative to PhysicalContext."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which the DeltaReadingCelsius temperature measurement applies, relative to PhysicalContext."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
