@@ -1,6 +1,6 @@
 ---
 DocTitle: Redfish Telemetry White Paper
-DocNumber: '20xx'
+DocNumber: '2051'
 DocClass: Informative
 DocVersion: '1.0.0'
 modified: '2017-06-30'
