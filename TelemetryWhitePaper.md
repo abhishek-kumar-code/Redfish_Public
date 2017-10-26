@@ -3,7 +3,7 @@ DocTitle: Redfish Telemetry White Paper
 DocNumber: '2051'
 DocClass: Informative
 DocVersion: '1.0.0'
-modified: '2017-06-30'
+modified: '2017-10-26'
 status: Published
 released: true
 copyright: '2017'
@@ -26,37 +26,39 @@ The DMTF acknowledges the following individuals for their contributions to this 
 
 # Introduction
 
-Redfish is an evolving hardware management standard that is designed to be flexible, extensible, and interoperable. 
-The Telemetry model is proposed to support the ability for a Redfish client to determine the characteristics of metric, specify aggregates of metrics to report and request that a metric be monitored against one or more thresholds.
-.
-A the metric can comes from a variety of sources: environmental sensors, digital meters, discrete states or synthesized values, to name a few.
+Redfish is an evolving hardware management standard that is designed to be flexible, extensible, and inter-operable. 
 
-This document helps implementers of Redfish services and clients understand the Redfish Telemetry data model.
+The telemetry model is a proposal to support the ability for a Redfish service to expose:
+
+* The characteristics of metrics
+* The triggers to apply to a specific metric
+* The characteristics and contents of metric reports
 
 # Requirements of Telemetry Model
-In developing the Telemetry mode, these are the general requirements for the design.
+The telemetry model is design to fulfill the following requirements.
 
-* Support telemetry/sensors within the existing models
-* Telemetry model is optional - not required
-* Comprehends various type of telemetry sources
+* Support the telemetry/sensors properties within the existing models
+* The telemetry model shall be optional. The elements of the telemetry model are incremental to existing models
+* Comprehends various sources of metrics
 * Models for capabilities beyond a telemetry reading
 
-The requirement to support telemetry and sensors within the existing models is driven by the fact that properties representing environmental sensors and digital meters are present throughout the current Redfish models. In this document, these properties will be reference to as _metric properties_. A metric property in a single resource, along with other properties, and can be a simple JSON object or within a complex JSON object.  A metric property can be within a resource dedicated to metrics (e.g MemoryMetrics). With YANG models, the dedicated object is used often.
+The requirement to support telemetry and sensors within the existing models is driven by the fact that properties representing environmental sensors and digital meters are present throughout the current Redfish models. In this document, these properties will be referred to as _metric properties_.
 
-The Telemetry model should should work this diverse variation and continue to allow metric properties to be placed anywhere in the Redfish model.
+The metric properties in the current Redfish model can appear is a variety of ways. The presumption is that this variety will continue as models are extended or added. Metric properties can be a simple JSON object or within a complex JSON object within a resource (e.g. Thermal and Power resource). Metric properties can be in a dedicated resource (e.g. MemoryMetrics resource). With YANG models, the dedicated resource is used often (e.g. statistics resource).
 ![Figure 1](TelemetryWhitePaper/Figure-MetricProperties.jpg "Figure 1")
 
-The requirement that the Telemetry model should be optional means that no part of the model is required to be implemented.  More specifically, that there is no dependency between the elements of the Telemetry model, so the service only implements that portion of the Telemetry model of interest. With the current Redfish models, the client can retrieve a resource and extract the metric of interest.  That should not change.  Only if the Redfish service wishes to expose the capabilities of the Telemetry model is that portion of the Telemetry model implemented.
+The requirement that the telemetry model shall be optional means that no part of the model is required to be implemented.  More specifically, a Redfish service can implement none, one or all of the elements in the telemetry model.
+Only if the Redfish service desires to expose the capabilities of the telemetry model should that portion of the telemetry model implemented.
 
-The requirement that the Telemetry model comprehend various telemetry resources recognizes the that one can measure anything.  The Telemetry model should support the following types of metrics:
+The requirement that the Telemetry model comprehends various telemetry resources recognizes the that there many sources of metrics.  The telemetry model supports the following types of metrics:
 
-* **Environmental sensor** - which measures an element in the physical world (e.g. temperature)
-* **Digital meter** - which measures a value characterize digital behavior (e.g. cache hits)
-* **State sensor** - which reports on the state of an element or resource
-* **Discrete sensor** - who's measurement has specific discrete values (e.g. vertical, horizontal, inclined)
-* **Gauge sensor** - who's measurement are continuous within a range
-* **Statistical metric** - which is a computation on a metric over a time interval (e.g. min, max, average)
-* **Synthesized metric** - which is a computation of a metric from other metrics
+* **Environmental sensor** - measures an element in the physical world (e.g. temperature).  These metrics are characterize by a physical value and the measurement of that value. The sensitivity of the sensor determines the precision, accuracy and error characteristics of the measured value.
+* **Digital meter** - measures a value characterize digital behavior (e.g. cache hits).  A cache hit meter is an example of a digital meter.
+* **State sensor** - reports on the state of an element or resource
+* **Discrete sensor** - measures has specific discrete values.   The state sensor is an example of a discrete sensor (enabled, disabled). Another example is a inclination sensor (vertical, horizontal, inclined), which measures a physical aspect.
+* **Gauge sensor** - who's measurement are continuous within a range. A environmental sensor is an example of a gauge sensor.
+* **Statistical metric** - is a computation on a metric over a time interval (e.g. min, max, average)
+* **Synthesized metric** - is a computation of a metric from other metrics.  These metrics are calculated by applying a formula to one or more other metrics.  The precision, accuracy and error this metric is influenced by the precision, accuracy and error of its dependent metrics.
 
 The requirement to support higher level telemetry capabilities means supporting more than just metric readings. This includes:
 
@@ -65,24 +67,22 @@ The requirement to support higher level telemetry capabilities means supporting 
 * Ability to subscribe for alerts about threshold crossing
 
 # Telemetry Model
-The Telemetry model has a Telemetry Service with four subordinate collection resources for:
+The telemetry model has a Telemetry Service with four subordinate collection resources for:
 
-* Metric definitions - for metric characteristics and other metadata
-* Metric report definitions - for requesting that metric reports be generated
-* Metric reports - for logging of metric reports, if requested
-* Metric triggers - for requesting that metrics be monitored against threshold triggers
+* Metric Definitions - this contains the definition of metric properties (characteristics, metadata)
+* Metric Report Definitions - this contains definition of metric reports to be generated
+* Metric Reports - this contains metric reports, if logging of metric reports are requested
+* Metric Triggers - this contain threshold triggers and actions that apply to a metric property
 
 ## Modeling Options
-In this work-in-progress document, there are some areas where to models are present for the same capability.  These represent areas where the modeling options have benefits and disadvantages.  Feedback on the options present would be useful in guiding the DMTF on a selection. 
-
-There are a several aspect of the Telemetry where to preferred model.  In those cases, both models are present in the Telemetry model.  It is hope that feedback from the industry would inform the selection of a single model. There areas where two modeling options are:
+There are some areas of the Telemetry where more multiple modeling options are possible and where each modeling option have benefits and disadvantages.  In those cases, both models are present in the telemetry model and described in this document. It is hoped that feedback from the industry would inform the selection of a single model. There areas where modeling options exists:
 
 * Specifying re-occuring measurements
 * Specifying triggers
 * Specifying calculations
 
 ### Specifying Re-occurring Measurements
-There are two options for modeling re-occuring measures proposed in the Telemetry model.  The first is in the MetricDefinition resource. The second is in the MetricReportDefinition resource.
+There are two locations for specifying the re-occuring measurements.  The options are in the MetricDefinition resource or the MetricReportDefinition resource.
 
 ```
 	"Schedule": {
@@ -92,11 +92,11 @@ There are two options for modeling re-occuring measures proposed in the Telemetr
 ```
 
 ### Specifying Triggers
-There are two options for modeling triggers proposed the Telemetry model.  The first option is in the Triggers resource.  The second is in the MetricReportDefinition resource.
+There are two locations for specifying the triggers.  The options are in the Triggers resource or the MetricReportDefinition resource.
 
-The first option places the TriggerCondition in the Trigger singleton resource which is a member of the Triggers colleciton resource. This model is described in the [Triggers](#triggers) section.
+When specified in the Triggers resource, the TriggerCondition is place in a member of the Triggers collection resource. The Triggers resource model is described in the [Triggers](#triggers) section.
 
-The second option places a TriggerCondition property MetricReportDefinition.  The TriggerCondition property is placed within the list of Metrics for the report.
+When specified in the MetricReportDefinition resource, the TriggerCondition property is placed within the Metrics object.
 
 ```
 	"Metrics": [{
@@ -116,9 +116,9 @@ The second option places a TriggerCondition property MetricReportDefinition.  Th
 ```
 
 ### Specifying Calculations
-There are two options for modeling a calculate metrics proposed the Telemetry model.  The first option is in the MetricDefintion resource.  The second is in the MetricReportDefinition resource.
+There are two options for modeling a calculate metrics proposed the telemetry model.  The first option is in the MetricDefintion resource.  The second is in the MetricReportDefinition resource.
 
-The first option is used when a metric property exists for the result of calculation.  For example, the Power resource has the `AverageConsumedWatts` property whose value is the calculated value. In this example a MetricDefinition exists for `AverageConsumedWatts`. The MetricDefinition contains the calculation properties show.  The `CalculationParameters` property contains a references to the source and resultant metric properties.  Both of these metric properties can exist in a MetricReportDefinition.
+The first option can be used when a metric property already exists for the result of calculation.  For example, the Power resource has the `AverageConsumedWatts` property whose value is the calculated value. In this example a MetricDefinition exists for `AverageConsumedWatts`. The MetricDefinition contains the calculation properties.  The `CalculationParameters` property contains a references to the source and resultant metric properties.
 
 ```
     "CalculationAlgorithm": "AverageOverInterval",
@@ -131,7 +131,7 @@ The first option is used when a metric property exists for the result of calcula
 		...
 	]
 ```
-The second option is used when no metric property exists for the result of a calculation.  In the case, the calculation can be specified with the MetricReportDefinition directly.
+The second option can be used when no metric property exists for the result of a calculation.  In the case, the calculation can be specified within the MetricReportDefinition directly.
 ```
 	"Metrics": [
 		{
@@ -142,6 +142,7 @@ The second option is used when no metric property exists for the result of a cal
 		...
 	]
 ```
+Note: The calculations are specified by name (e.g AverageOverInterval). This works for finite set of commonly used formulas.  There is the possibility of adding a mechanism of describing general formulas.  This is not currently addressed in the telemetry model.
 
 ## Telemetry Service
 
@@ -155,8 +156,6 @@ The telemetry service model is constructed to minimize the impact to the current
 Hence, the TelemetryService is optional.  An implementation can decide for each metric property, whether the associated metric definition, metadata or characteristics are provided, and the amount of metadata available.
 
 Furthermore, subordinate resources (MetricDefinition, MetricReportDefinition and Triggers) are independent on each other.  So an implementation can support one or all of the subordinate resources and the capabilities represented by them.
-
-The TelemetryService resource, itself, contains the `Status` property.  This property is common to Redfish resources.  
 
 Example Telemetry Service Resource:
 ```json
@@ -476,5 +475,6 @@ The following is an example of a numeric trigger with two thresholds (Upper Thre
 
 ## References
 
-* <a id="PowerAPI Specification">PowerAPI Specification</a>  Energy Efficienct HPC Working Group, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt)
+* <a id="Redfish Telemetry Model Proposal">Redfish Telemetry Model Proposal</a>, Distributed Management Task Force, [http://www.dmtf.org/sites/default/files/standards/documents/DSP-IS0002_0.9a.zip](http://www.dmtf.org/sites/default/files/standards/documents/DSP-IS0002_0.9a.zip)
+* <a id="PowerAPI Specification">PowerAPI Specification</a>, Energy Efficienct HPC Working Group, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt)
 
