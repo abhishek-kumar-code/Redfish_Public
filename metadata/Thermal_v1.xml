@@ -419,7 +419,20 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_4_0">
       <EntityType Name="Thermal" BaseType="Thermal.v1_3_1.Thermal"/>
-      <EntityType Name="Fan" BaseType="Thermal.v1_3_1.Fan">
+      <EntityType Name="Temperature" BaseType="Thermal.v1_3_0.Temperature">
+        <Property Name="DeltaReadingCelsius" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Delta Temperature reading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the delta of the values of the temperature readings across this sensor and the sensor at DeltaPhysicalContext."/>
+          <Annotation Term="Measures.Unit" String="Cel"/>
+        </Property>
+        <Property Name="DeltaPhysicalContext" Type="PhysicalContext.v1_0_0.PhysicalContext" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describes the area or device to which the DeltaReadingCelsius temperature measurement applies, relative to PhysicalContext."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which the DeltaReadingCelsius temperature measurement applies, relative to PhysicalContext."/>
+        </Property>
+      </EntityType>
+      <EntityType Name="Fan" BaseType="Thermal.v1_3_0.Fan">
         <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>        
       </EntityType>      
     </Schema>
