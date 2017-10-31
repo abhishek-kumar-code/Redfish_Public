@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Endpoint  v1.0.4-->
+<!--# Redfish Schema:  Endpoint  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -243,13 +243,8 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions."/>
+      <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions, and to change references to Identifier to be its abstract base type, and Protocol to use the unversioned definition.."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint"/>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, and Protocol to use the unversioned definition."/>
-      <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_3.Endpoint"/>
     </Schema>
 
   </edmx:DataServices>
