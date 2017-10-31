@@ -26,6 +26,7 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
     <edmx:Include Namespace="Resource.v1_1_0"/>
+    <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
     <edmx:Include Namespace="PhysicalContext.v1_0_0"/>
@@ -431,6 +432,9 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which the DeltaReadingCelsius temperature measurement applies, relative to PhysicalContext."/>
         </Property>
       </EntityType>
+      <EntityType Name="Fan" BaseType="Thermal.v1_3_1.Fan">
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>        
+      </EntityType>      
     </Schema>
 
   </edmx:DataServices>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkAdapter  v1.0.1-->
+<!--# Redfish Schema:  NetworkAdapter  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -19,6 +19,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkPortCollection_v1.xml">
     <edmx:Include Namespace="NetworkPortCollection"/>
@@ -268,6 +269,14 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapter.v1_0_1">
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_0_0.NetworkAdapter"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapter.v1_1_0">
+      <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_0_1.NetworkAdapter"/>
+      
+      <ComplexType Name="Controllers" BaseType="NetworkAdapter.v1_0_0.Controllers">
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
