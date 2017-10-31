@@ -825,7 +825,7 @@ function validCSDLTypeInMockup(err, json) {
       if(namespace === '') {
         throw new Error('Cannot get namespace of "' + typeLookup + '"');
       }
-      if(namespace === 'Resource' || namespace === 'IPAddresses') {
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'Storage' || namespace === 'Volume' || namespace === 'VLanNetworkInterface') {
         let typeNameIndex = typeLookup.lastIndexOf('.');
         if(typeNameIndex === -1) {
           throw new Error('Cannot get type of "' + typeLookup + '"');
