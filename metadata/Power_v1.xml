@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Power  v1.4.0-->
+<!--# Redfish Schema:  Power  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -28,6 +28,7 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
     <edmx:Include Namespace="Resource.v1_1_0"/>
+    <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
     <edmx:Include Namespace="PhysicalContext.v1_0_0"/>
@@ -667,6 +668,13 @@
           <Annotation Term="OData.Description" String="Describes the area, device, or set of devices to which this power control applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device(s) or region within the chassis to which this power control applies."/>
         </Property>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_5_0">
+      <EntityType Name="Power" BaseType="Power.v1_4_0.Power"/>
+      <EntityType Name="PowerSupply" BaseType="Power.v1_4_0.PowerSupply">
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
       </EntityType>
     </Schema>
 
