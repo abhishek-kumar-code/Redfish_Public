@@ -82,6 +82,12 @@
         </Member>
       </EnumType>
 
+      <ComplexType Name="Operations" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="An operation currently running on this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a currently running operation on the resource."/>
+      </ComplexType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_0">
@@ -119,7 +125,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated volume."/>
           <Annotation Term="Measures.Unit" String="By"/>
         </Property>
-        <Property Name="Operations" Type="Collection(Volume.v1_0_0.Operations)" Nullable="false">
+        <Property Name="Operations" Type="Collection(Volume.Operations)" Nullable="false">
           <Annotation Term="OData.Description" String="The operations currently running on the Volume."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all currently running on the Volume."/>
         </Property>
@@ -163,9 +169,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
-      <ComplexType Name="Operations">
-        <Annotation Term="OData.Description" String="An operation currently running on this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall describe a currently running operation on the resource."/>
+      <ComplexType Name="Operations" BaseType="Volume.Operations">
         <Property Name="OperationName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the operation."/>
@@ -231,7 +235,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, and to add an abstract base type for Operations."/>
       <EntityType Name="Volume" BaseType="Volume.v1_0_3.Volume"/>
     </Schema>
 

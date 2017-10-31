@@ -31,7 +31,7 @@
     <edmx:Include Namespace="Port"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
-    <edmx:Include Namespace="Storage.v1_0_0"/>
+    <edmx:Include Namespace="Storage"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -51,7 +51,7 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Endpoint resource. It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a fabric endpoint for a Redfish implementation."/>
         <Property Name="Status" Type="Resource.Status"/>
-        <Property Name="EndpointProtocol" Type="Storage.v1_0_0.Protocol">
+        <Property Name="EndpointProtocol" Type="Storage.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol supported by this endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the protocol this endpoint uses to communicate with other endpoints on this fabric."/>
@@ -248,7 +248,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, and Protocol to use the unversioned definition."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_3.Endpoint"/>
     </Schema>
 

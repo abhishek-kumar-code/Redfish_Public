@@ -28,11 +28,10 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
-    <edmx:Include Namespace="Storage.v1_0_0"/>
+    <edmx:Include Namespace="Storage"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume_v1.xml">
     <edmx:Include Namespace="Volume"/>
-    <edmx:Include Namespace="Volume.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
@@ -82,7 +81,7 @@
           <Annotation Term="OData.Description" String="The state of the status indicator, used to communicate status information about this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the status indicator state for the status indicator associated with this drive. The valid values for this property are specified through the Redfish.AllowableValues annotation."/>
         </Property>
-        <Property Name="IndicatorLED" Type="Resource.v1_1_0.IndicatorLED">
+        <Property Name="IndicatorLED" Type="Resource.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the drive."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this drive."/>
@@ -109,7 +108,7 @@
           <Annotation Term="OData.Description" String="Is this drive currently predicting a failure in the near future."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain failure information as defined by the manufacturer for the associated drive."/>
         </Property>
-        <Property Name="Protocol" Type="Storage.v1_0_0.Protocol">
+        <Property Name="Protocol" Type="Storage.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol this drive is using to communicate to the storage controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol the associated drive is using to communicate to the storage controller for this system."/>
@@ -330,14 +329,14 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier and Location to be their abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier and Location to be their abstract base type, and IndicatorLED and Protocol to use the unversioned definition."/>
       <EntityType Name="Drive" BaseType="Drive.v1_0_3.Drive"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_0">
 
       <EntityType Name="Drive" BaseType="Drive.v1_0_1.Drive">
-        <Property Name="Operations" Type="Collection(Volume.v1_0_0.Operations)" Nullable="false">
+        <Property Name="Operations" Type="Collection(Volume.Operations)" Nullable="false">
           <Annotation Term="OData.Description" String="The operations currently running on the Drive."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all operations currently running on the Drive."/>
         </Property>
@@ -364,7 +363,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_3">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier and Location to be their abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier, Location, and Operations to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
       <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
     </Schema>
 
@@ -382,7 +381,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_1">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier and Location to be their abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier, Location, and Operations to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
       <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drive"/>
     </Schema>
 

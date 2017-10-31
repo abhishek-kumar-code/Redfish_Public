@@ -212,6 +212,36 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe the location of a resource."/>
       </ComplexType>
 
+      <EnumType Name="IndicatorLED">
+        <Member Name="Lit">
+          <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
+          <Annotation Term="OData.LongDescription" String="This value shall represent the Indicator LED is in a solid on state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."/>
+        </Member>
+        <Member Name="Blinking">
+          <Annotation Term="OData.Description" String="The Indicator LED is blinking."/>
+          <Annotation Term="OData.LongDescription" String="This value shall represent the Indicator LED is in a blinking state where the LED is being turned on and off in repetition.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The Indicator LED is off."/>
+          <Annotation Term="OData.LongDescription" String="This value shall represent the Indicator LED is in a solid off state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="PowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The state is powered On."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The state is powered Off."/>
+        </Member>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off."/>
+        </Member>
+      </EnumType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_0">
@@ -335,6 +365,7 @@
       </EnumType>
 
       <EnumType Name="IndicatorLED">
+        <Annotation Term="Redfish.Deprecated" String="String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time./>
         <Member Name="Lit">
           <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
           <Annotation Term="OData.LongDescription" String="This value shall represent the Indicator LED is in a solid on state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."/>
@@ -368,12 +399,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_5">
-      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
 
       <EnumType Name="PowerState">
+        <Annotation Term="Redfish.Deprecated" String="String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time./>
         <Member Name="On">
           <Annotation Term="OData.Description" String="The state is powered On."/>
         </Member>
@@ -403,7 +435,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_0">
@@ -636,7 +668,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_3">
-      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_0">
@@ -648,7 +680,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_2">
-      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_0">
@@ -777,7 +809,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_1">
-      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">

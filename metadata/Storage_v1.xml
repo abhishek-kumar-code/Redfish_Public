@@ -83,6 +83,89 @@
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
 
+      <EnumType Name="Protocol">
+        <Member Name="PCIe">
+          <Annotation Term="OData.Description" String="PCI Express (Vendor Proprietary)."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the PCI-SIG PCI Express Base Specification only beyond that is uses some vendor proprietary mechanism to communicate."/>
+        </Member>
+        <Member Name="AHCI">
+          <Annotation Term="OData.Description" String="Advanced Host Controller Interface."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Intel Advanced Host Controller Interface Specification."/>
+        </Member>
+        <Member Name="UHCI">
+          <Annotation Term="OData.Description" String="Universal Host Controller Interface."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Intel Universal Host Controller Interface Specification, Enhanced Host Controller Interface Specification, or the Extensible Host Controller Interface specification."/>
+        </Member>
+        <Member Name="SAS">
+          <Annotation Term="OData.Description" String="Serial Attached SCSI."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the T10 SAS Protocol Layer Specification."/>
+        </Member>
+        <Member Name="SATA">
+          <Annotation Term="OData.Description" String="Serial AT Attachment."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Serial ATA International Organization Serial ATA Specification."/>
+        </Member>
+        <Member Name="USB">
+          <Annotation Term="OData.Description" String="Universal Serial Bus."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the USB Implementers Forum Universal Serial Bus Specification."/>
+        </Member>
+        <Member Name="NVMe">
+          <Annotation Term="OData.Description" String="Non-Volatile Memory Express."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Non-Volatile Memory Host Controller Interface Specification Specification."/>
+        </Member>
+        <Member Name="FC">
+          <Annotation Term="OData.Description" String="Fibre Channel."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the T11 Fibre Channel Physical and Signaling Interface Specification."/>
+        </Member>
+        <Member Name="iSCSI">
+          <Annotation Term="OData.Description" String="Internet SCSI."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the IETF Internet Small Computer Systems Interface (iSCSI) Specification."/>
+        </Member>
+        <Member Name="FCoE">
+          <Annotation Term="OData.Description" String="Fibre Channel over Ethernet."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the T11 FC-BB-5 Specification."/>
+        </Member>
+        <Member Name="FCP">
+          <Annotation Term="OData.Description" String="Fibre Channel Protocol for SCSI."/>
+          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the INCITS 481: Information technology - Fibre Channel Protocol for SCSI.  The Fibre Channel SCSI Protocol."/>
+        </Member>
+        <Member Name="FICON">
+          <Annotation Term="OData.Description" String="FIbre CONnection (FICON)."/>
+          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol."/>
+        </Member>
+        <Member Name="NVMeOverFabrics">
+          <Annotation Term="OData.Description" String="NVMe over Fabrics."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the NVM Express over Fabrics Specification."/>
+        </Member>
+        <Member Name="SMB">
+          <Annotation Term="OData.Description" String="Server Message Block (aka CIFS Common Internet File System)."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Microsoft Server Message Block Protocol."/>
+        </Member>
+        <Member Name="NFSv3">
+          <Annotation Term="OData.Description" String="Network File System version 3."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Network File System protocol as defined by RFC 1813."/>
+        </Member>
+        <Member Name="NFSv4">
+          <Annotation Term="OData.Description" String="Network File System version 4."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Network File System protocol as defined by RFC 3010 or RFC 5661."/>
+        </Member>
+        <Member Name="HTTP">
+          <Annotation Term="OData.Description" String="Hypertext Transport Protocol."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Hypertext Transfer protocol as defined by RFC 2068 or RFC 2616."/>
+        </Member>
+        <Member Name="HTTPS">
+          <Annotation Term="OData.Description" String="Secure Hypertext Transport Protocol."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the Hypertext Transfer protocol as defined by RFC 2068 or RFC 2616 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176."/>
+        </Member>
+        <Member Name="FTP">
+          <Annotation Term="OData.Description" String="File Transfer Protocol."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114."/>
+        </Member>
+        <Member Name="SFTP">
+          <Annotation Term="OData.Description" String="Secure File Transfer Protocol."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176."/>
+        </Member>
+      </EnumType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_0">
@@ -191,12 +274,12 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this storage controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the storage controller for inventory purposes."/>
         </Property>
-        <Property Name="SupportedControllerProtocols" Type="Collection(Storage.v1_0_0.Protocol)" Nullable="false">
+        <Property Name="SupportedControllerProtocols" Type="Collection(Storage.Protocol)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This represents the protocols by which this storage controller can be communicated to."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this storage controller can be communicated to."/>
         </Property>
-        <Property Name="SupportedDeviceProtocols" Type="Collection(Storage.v1_0_0.Protocol)" Nullable="false">
+        <Property Name="SupportedDeviceProtocols" Type="Collection(Storage.Protocol)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This represents the protocols which the storage controller can use to communicate with attached devices."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this storage controller can use to communicate with attached devices."/>
@@ -208,6 +291,7 @@
       </EntityType>
 
       <EnumType Name="Protocol">
+        <Annotation Term="Redfish.Deprecated" String="String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time./>
         <Member Name="PCIe">
           <Annotation Term="OData.Description" String="PCI Express (Vendor Proprietary)."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the PCI-SIG PCI Express Base Specification only beyond that is uses some vendor proprietary mechanism to communicate."/>
@@ -307,7 +391,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition."/>
       <EntityType Name="Storage" BaseType="Storage.v1_0_3.Storage"/>
     </Schema>
 
@@ -342,7 +426,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_1_3">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition."/>
       <EntityType Name="Storage" BaseType="Storage.v1_1_2.Storage"/>
     </Schema>
 
@@ -370,7 +454,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_2_1">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition."/>
       <EntityType Name="Storage" BaseType="Storage.v1_2_0.Storage"/>
     </Schema>
 
@@ -386,7 +470,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_3_1">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition."/>
       <EntityType Name="Storage" BaseType="Storage.v1_3_0.Storage"/>
     </Schema>
 
