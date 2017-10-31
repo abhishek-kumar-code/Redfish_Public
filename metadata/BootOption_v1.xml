@@ -64,6 +64,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The unique boot option string that is referenced in the BootOrder."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string that corresponds to the bootable option or device. For UEFI systems, this string shall match the UEFI Boot Option variable name (e.g. Boot####). This value is referenced by the ComputerSystem BootOrder array."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="DisplayName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
