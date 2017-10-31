@@ -231,5 +231,19 @@
       <EntityType Name="Volume" BaseType="Volume.v1_0_2.Volume"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_1_0">
+      <EntityType Name="Volume" BaseType="Volume.v1_0_3.Volume"/>
+
+      <ComplexType Name="Links" BaseType="Volume.v1_0_0.Links">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this volume."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this volume is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+    </Schema>
+
+
   </edmx:DataServices>
 </edmx:Edmx>

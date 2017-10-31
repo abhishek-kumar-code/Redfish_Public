@@ -1,0 +1,46 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+	"@odata.id": "/redfish/v1/Fabrics/iSCSI/Endpoints/Initiator1",
+	"@odata.type": "#Endpoint.v1_1_0.Endpoint",
+	"Id": "Initiator1",
+	"Name": "iSCSI initiator 1",
+	"Description": "iSCSI initiator implemented by the computer system",
+    "EndpointProtocol": "iSCSI",
+    "Identifiers":  [
+        {
+            "DurableName": "host.corp.com:iscsi-subsys-sn-4635",
+            "DurableNameFormat": "iQN"
+        }
+    ],
+    "ConnectedEntities": [
+        {
+            "EntityType": "System",
+            "EntityRole": "Initiator",
+            "EntityLink": {
+                "@odata.id": "/redfish/v1/Systems/1"
+            }
+        }
+    ],
+    "Transports": [
+        {
+            "TransportType": "Ethernet",
+            "TransportProtocol": "iSCSI",
+            "TransportDetails": [
+                {
+                    "IPv4Address": {
+                        "Address": "10.3.5.131"
+                    },
+                    "Port": 13244
+                }
+            ]
+        }
+    ],
+    "Links": {
+        "Ports": [
+            {
+                "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1"
+            }
+        ]
+    }
+}
