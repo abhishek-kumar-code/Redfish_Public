@@ -365,7 +365,7 @@
       </EnumType>
 
       <EnumType Name="IndicatorLED">
-        <Annotation Term="Redfish.Deprecated" String="String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time./>
+        <Annotation Term="Redfish.Deprecated" String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time."/>
         <Member Name="Lit">
           <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
           <Annotation Term="OData.LongDescription" String="This value shall represent the Indicator LED is in a solid on state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."/>
@@ -405,7 +405,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
 
       <EnumType Name="PowerState">
-        <Annotation Term="Redfish.Deprecated" String="String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time./>
+        <Annotation Term="Redfish.Deprecated" String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time."/>
         <Member Name="On">
           <Annotation Term="OData.Description" String="The state is powered On."/>
         </Member>

@@ -291,7 +291,7 @@
       </EntityType>
 
       <EnumType Name="Protocol">
-        <Annotation Term="Redfish.Deprecated" String="String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time./>
+        <Annotation Term="Redfish.Deprecated" String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time."/>
         <Member Name="PCIe">
           <Annotation Term="OData.Description" String="PCI Express (Vendor Proprietary)."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the PCI-SIG PCI Express Base Specification only beyond that is uses some vendor proprietary mechanism to communicate."/>

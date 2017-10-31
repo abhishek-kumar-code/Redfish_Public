@@ -96,7 +96,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PhysicalContext.v1_0_0">
 
       <EnumType Name="PhysicalContext">
-        <Annotation Term="Redfish.Deprecated" String="String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time./>
+        <Annotation Term="Redfish.Deprecated" String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time."/>
         <Member Name="Room">
           <Annotation Term="OData.Description" String="The room."/>
         </Member>
