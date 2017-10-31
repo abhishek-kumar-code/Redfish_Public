@@ -35,6 +35,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
+    <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -667,7 +670,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The boundary which memory regions are allocated on, measured in MiB."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be thealignment boundary on which memory regions are allocated, measured in MiB."/>
-        </Property>        
+        </Property>
         <Property Name="Links" Type="Memory.v1_2_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
@@ -743,6 +746,12 @@
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this memory."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
     </Schema>
 

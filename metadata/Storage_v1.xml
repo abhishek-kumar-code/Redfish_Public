@@ -44,6 +44,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
+    <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -372,7 +375,13 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_4_0">
       <EntityType Name="Storage" BaseType="Storage.v1_3_0.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_3_0.StorageController">
-        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>      
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this Storage Controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
     </Schema>
 
