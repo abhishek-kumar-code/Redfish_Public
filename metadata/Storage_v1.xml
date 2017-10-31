@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Storage  v1.3.0-->
+<!--# Redfish Schema:  Storage  v1.3.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -26,7 +26,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -69,6 +68,11 @@
         </Annotation>
       </EntityType>
 
+      <EntityType Name="StorageController" BaseType="Resource.v1_0_0.ReferenceableMember" Abstract="true">
+        <Annotation Term="OData.Description" String="This schema defines a storage controller and its respective properties.  A storage controller represents a storage device (physical or virtual) that produces Volumes."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a resource that represents a storage controller in the Redfish specification."/>
+      </EntityType>
+
       <Action Name="SetEncryptionKey" IsBound="true">
         <Parameter Name="Storage" Type="Storage.v1_0_0.Actions"/>
         <Parameter Name="EncryptionKey" Type="Edm.String">
@@ -86,7 +90,7 @@
       <EntityType Name="Storage" BaseType="Storage.Storage">
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
-        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.v1_0_0.StorageController)">
+        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.StorageController)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The set of storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the storage controllers that this resource represents."/>
@@ -143,9 +147,7 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
-      <EntityType Name="StorageController" BaseType="Resource.v1_0_0.ReferenceableMember">
-        <Annotation Term="OData.Description" String="This schema defines a storage controller and its respective properties.  A storage controller represents a storage device (physical or virtual) that produces Volumes."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a resource that represents a storage controller in the Redfish specification."/>
+      <EntityType Name="StorageController" BaseType="Storage.StorageController">
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="SpeedGbps" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -199,7 +201,7 @@
           <Annotation Term="OData.Description" String="This represents the protocols which the storage controller can use to communicate with attached devices."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this storage controller can use to communicate with attached devices."/>
         </Property>
-        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)" Nullable="false">
+        <Property Name="Identifiers" Type="Collection(Resource.Identifier)" Nullable="false">
           <Annotation Term="OData.Description" String="The Durable names for the storage controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated storage controller."/>
         </Property>
@@ -304,6 +306,11 @@
       <EntityType Name="Storage" BaseType="Storage.v1_0_2.Storage"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <EntityType Name="Storage" BaseType="Storage.v1_0_3.Storage"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_1_0">
       <EntityType Name="Storage" BaseType="Storage.v1_0_1.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_0_0.StorageController">
@@ -334,6 +341,11 @@
       <EntityType Name="Storage" BaseType="Storage.v1_1_1.Storage"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_1_3">
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <EntityType Name="Storage" BaseType="Storage.v1_1_2.Storage"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_2_0">
       <EntityType Name="Storage" BaseType="Storage.v1_1_2.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_1_0.StorageController">
@@ -357,6 +369,11 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <EntityType Name="Storage" BaseType="Storage.v1_2_0.Storage"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_3_0">
       <EntityType Name="Storage" BaseType="Storage.v1_2_0.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_2_0.StorageController">
@@ -366,6 +383,11 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the Storage Controller."/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_3_1">
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type and to add an abstract definition of StorageController."/>
+      <EntityType Name="Storage" BaseType="Storage.v1_3_0.Storage"/>
     </Schema>
 
   </edmx:DataServices>

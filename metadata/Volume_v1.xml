@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--############################################################################## -->
-<!--# Redfish Schema:  Volume  v1.0.3-->
+<!--# Redfish Schema:  Volume  v1.0.4-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -23,7 +23,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
     <edmx:Include Namespace="Drive"/>
@@ -110,7 +109,7 @@
           <Annotation Term="OData.Description" String="The types of encryption used by this Volume."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the types of encryption used by this Volume."/>
         </Property>
-        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)" Nullable="false">
+        <Property Name="Identifiers" Type="Collection(Resource.Identifier)" Nullable="false">
           <Annotation Term="OData.Description" String="The Durable names for the volume."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated volume."/>
         </Property>
@@ -229,6 +228,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_3">
       <Annotation Term="OData.Description" String="This version was created to fix supported types and remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Volume" BaseType="Volume.v1_0_2.Volume"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type."/>
+      <EntityType Name="Volume" BaseType="Volume.v1_0_3.Volume"/>
     </Schema>
 
   </edmx:DataServices>

@@ -16,7 +16,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>  
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
@@ -200,6 +200,18 @@
         </Member>
       </EnumType>
 
+      <ComplexType Name="Identifier" Abstract="true">
+        <Annotation Term="OData.Description" String="This type describes any additional identifiers for a resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional identifiers of a resource."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </ComplexType>
+
+      <ComplexType Name="Location" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the location of a resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the location of a resource."/>
+      </ComplexType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_0">
@@ -270,11 +282,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_0">
 
-      <ComplexType Name="Identifier">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-        <Annotation Term="OData.Description" String="This type describes any additional identifiers for a resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional identifiers of a resource."/>
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      <ComplexType Name="Identifier" BaseType="Resource.Identifier">
         <Property Name="DurableName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the world wide, persistent name of the resource."/>
@@ -287,11 +295,7 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="Location">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This type describes the location of a resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall describe the location of a resource."/>
+      <ComplexType Name="Location" BaseType="Resource.Location">
         <Property Name="Info" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location."/>
@@ -363,6 +367,10 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_5">
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
 
       <EnumType Name="PowerState">
@@ -392,6 +400,10 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_3">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_4">
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_0">
@@ -623,12 +635,20 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_3">
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_0">
       <Annotation Term="OData.Description" String="This version was created to add PowerCycle enumeration to ResetType."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_2">
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_0">
@@ -652,7 +672,7 @@
         <Member Name="Socket">
           <Annotation Term="OData.Description" String="Defines a socket as the type of location."/>
           <Annotation Term="OData.LongDescription" String="Socket shall be used to indicate the type of PartLocation is of type socket."/>
-        </Member>        
+        </Member>
       </EnumType>
 
       <EnumType Name="Reference">
@@ -687,7 +707,7 @@
           <Annotation Term="OData.LongDescription" String="Top shall be used to specify the part location is in the middle of the unit."/>
         </Member>
       </EnumType>
-      
+
       <EnumType Name="Orientation">
         <Annotation Term="OData.Description" String="Defines a orientation for the ordering of the ordinal value of the part location."/>
         <Annotation Term="OData.LongDescription" String="Enumeration literals shall name the orientation for the location type ordering in determining the LocationOrdinalValue."/>
@@ -714,9 +734,9 @@
         <Member Name="RightToLeft">
           <Annotation Term="OData.Description" String="Defines the ordering for the LocationOrdinalValue is right to left."/>
           <Annotation Term="OData.LongDescription" String="This value shall be used to specify the ordering for LocationOrdinalValue is right to left."/>
-        </Member>       
+        </Member>
       </EnumType>
-      
+
       <ComplexType Name="PartLocation">
         <Annotation Term="OData.Description" String="The part location within the placement."/>
         <Annotation Term="OData.LongDescription" String="The value shall describe a location within a resource.  This representation shall be used to indicate the location within the Placement."/>
@@ -744,8 +764,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The orientation for the ordering of the slot enumeration used by the LocationOrdinalValue property."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a Orientation enumeration literal indicating the orientation for the ordering used by the LocationOrdinalValue property."/>
-        </Property>        
-      </ComplexType>      
+        </Property>
+      </ComplexType>
 
       <ComplexType Name="Location" BaseType="Resource.v1_3_0.Location">
         <Property Name="PartLocation" Type="Resource.v1_5_0.PartLocation">
@@ -754,7 +774,11 @@
         </Property>
       </ComplexType>
 
-    </Schema>    
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_1">
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location."/>
+    </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
       <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location."/>
@@ -778,9 +802,9 @@
           <Annotation Term="OData.LongDescription" String="The altitude of the resource in meters."/>
           <Annotation Term="Measures.Unit" String="m"/>
         </Property>
-      </ComplexType>      
+      </ComplexType>
 
-    </Schema>    
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
