@@ -24,6 +24,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
@@ -33,6 +34,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
+    <edmx:Include Namespace="Assembly"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -666,7 +670,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The boundary which memory regions are allocated on, measured in MiB."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be thealignment boundary on which memory regions are allocated, measured in MiB."/>
-        </Property>        
+        </Property>
         <Property Name="Links" Type="Memory.v1_2_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
@@ -741,6 +745,13 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the logical memory in MiB."/>
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
+        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this memory."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
     </Schema>
 

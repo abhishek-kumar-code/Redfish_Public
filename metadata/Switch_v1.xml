@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Switch  v1.0.3-->
+<!--# Redfish Schema:  Switch  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -38,7 +38,7 @@
   </edmx:Reference>
 
   <edmx:DataServices>
-  
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch">
 
       <EntityType Name="Switch" BaseType="Resource.v1_0_0.Resource" Abstract="true">
@@ -190,9 +190,16 @@
       <EntityType Name="Switch" BaseType="Switch.v1_0_1.Switch"/>
     </Schema>
 
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch.v1_0_3">
       <Annotation Term="OData.Description" String="This version was created to change references to IndicatorLED, PowerState, and Protocol to use the unversioned definition."/>
       <EntityType Name="Switch" BaseType="Switch.v1_0_2.Switch"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch.v1_1_0">
+      <EntityType Name="Switch" BaseType="Switch.v1_0_3.Switch">
+        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
