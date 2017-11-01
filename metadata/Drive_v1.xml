@@ -339,7 +339,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_0">
 
       <EntityType Name="Drive" BaseType="Drive.v1_0_1.Drive">
-        <Property Name="Operations" Type="Collection(Volume.Operations)" Nullable="false">
+        <Property Name="Operations" Type="Collection(Drive.v1_1_0.Operations)" Nullable="false">
           <Annotation Term="OData.Description" String="The operations currently running on the Drive."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all operations currently running on the Drive."/>
         </Property>
@@ -353,6 +353,25 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+
+      <ComplexType Name="Operations">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="An operation currently running on this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a currently running operation on the resource."/>
+        <Property Name="OperationName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The name of the operation."/>
+        </Property>
+        <Property Name="PercentageComplete" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The percentage of the operation that has been completed."/>
+        </Property>
+        <NavigationProperty Name="AssociatedTask" Type="Task.Task" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the task associated with the operation if any."/>
+        </NavigationProperty>
+      </ComplexType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_1">
@@ -366,7 +385,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_3">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier, Location, and Operations to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to migrate the Operations definition, to change references to Identifier and Location to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
       <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
     </Schema>
 
@@ -384,7 +403,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_1">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier, Location, and Operations to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to migrate the Operations definition, to change references to Identifier and Location to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
       <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drive"/>
     </Schema>
 
