@@ -16,7 +16,6 @@ The Redfish Telemetry White Paper was prepared by the Scalable Platforms Managem
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
-
 # Acknowledgments
 
 The DMTF acknowledges the following individuals for their contributions to this document:
@@ -75,11 +74,12 @@ The telemetry model has a Telemetry Service with four subordinate collection res
 * Metric Triggers - this contain threshold triggers and actions that apply to a metric property
 
 ## Modeling Options
-There are some areas of the Telemetry where more multiple modeling options are possible and where each modeling option have benefits and disadvantages.  In those cases, both models are present in the telemetry model and described in this document. It is hoped that feedback from the industry would inform the selection of a single model. There areas where modeling options exists:
+There are some areas of the Telemetry where more multiple modeling options are possible and where each modeling option have benefits and disadvantages.  In those cases, both models are present in the telemetry model and described in this document. It is hoped that feedback from the industry would inform and influence the selection of a single model. The areas where modeling options exists:
 
 * Specifying re-occuring measurements
 * Specifying triggers
 * Specifying calculations
+* Specifying durations
 
 ### Specifying Re-occurring Measurements
 There are two locations for specifying the re-occuring measurements.  The options are in the MetricDefinition resource or the MetricReportDefinition resource.
@@ -143,6 +143,33 @@ The second option can be used when no metric property exists for the result of a
 	]
 ```
 Note: The calculations are specified by name (e.g AverageOverInterval). This works for finite set of commonly used formulas.  There is the possibility of adding a mechanism of describing general formulas.  This is not currently addressed in the telemetry model.
+
+### Specifying Duration
+In Redfish, specifying points in time should conform to the ISO 8601 date-time format.
+
+In general, the Redfish convention appends units-of-measure to the name of a property (e.g. PowerConsumedWatts). The units-of-measure should conform to the Unified Code for Units of Measure (UCUM).
+
+For durations, the Redfish model uses various methods, as shown in the examples, below: 
+
+* Power#/PowerControl/PowerMetrics/IntervalInMin
+* Power#/PowerControl/PowerLimit/CorrectionInMs
+* EventService#/DeliveryRetryIntervalSeconds
+* Setting#/MaintenanceWindowDurationInSeconds
+* SessionService#/SessionTimeout
+
+The telemetry model specifies durations using the duration format specified in ISO 8601.
+
+	P[n]Y[n]M[n]DT[n]H[n]M[n]S
+
+* P is the duration designator (for period) placed at the start of the duration representation
+* Y is the year designator that follows the value for the number of years
+* M is the month designator that follows the value for the number of months
+* W is the week designator that follows the value for the number of weeks
+* D is the day designator that follows the value for the number of days
+* T is the time designator that precedes the time components of the representation
+	* H is the hour designator that follows the value for the number of hours
+	* M is the minute designator that follows the value for the number of minutes
+	* S is the second designator that follows the value for the number of seconds.  This value may have a decimal for values less than a second.
 
 ## Telemetry Service
 
@@ -477,4 +504,5 @@ The following is an example of a numeric trigger with two thresholds (Upper Thre
 
 * <a id="Redfish Telemetry Model Proposal">Redfish Telemetry Model Proposal</a>, Distributed Management Task Force, [http://www.dmtf.org/sites/default/files/standards/documents/DSP-IS0002_0.9a.zip](http://www.dmtf.org/sites/default/files/standards/documents/DSP-IS0002_0.9a.zip)
 * <a id="PowerAPI Specification">PowerAPI Specification</a>, Energy Efficienct HPC Working Group, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt)
-
+* <a id="The Unified Code for Units of Measure"> The Unified Code for Units of Measure</a>, Unified Code for Units of Measure (UCUM) Organization, [http://www.unitsofmeasure.org/ucum.html](http://www.unitsofmeasure.org/ucum.html)
+* <a id="Date and time format - ISO 8601"> Date and time format - ISO 8601</a>, International Organization for Standardization, [https://www.iso.org/standard/40874.html](https://www.iso.org/standard/40874.html)
