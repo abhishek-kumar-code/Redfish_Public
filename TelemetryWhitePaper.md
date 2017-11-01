@@ -4,7 +4,7 @@ DocNumber: '2051'
 DocClass: Informative
 DocVersion: '1.0.0'
 modified: '2017-10-26'
-status: Published
+status: published
 released: true
 copyright: '2017'
 ---
