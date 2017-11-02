@@ -437,23 +437,27 @@
         </Property>
         <Property Name="MaxAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Maximum allowable operating value for Reading."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.Description" String="Maximum allowable operating value for this Temperature sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum allowable operating value for this Temperature sensor, per specific standards guidelines."/>
+          <Annotation Term="Measures.Unit" String="Cel"/>
         </Property>
         <Property Name="MinAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Minimum allowable operating value for Reading."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum allowable operating value for Reading. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.Description" String="Minimum allowable operating value for this Temperature sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum allowable operating value for this Temperature sensor, per specific standards guidelines."/>
+          <Annotation Term="Measures.Unit" String="Cel"/>
         </Property>
         <Property Name="AdjustedMaxAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Adjusted maximum allowable operating value for Reading based on environmental conditions present."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted maximum allowable operating value for Reading based on environmental conditions present. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.Description" String="Adjusted maximum allowable operating value for this Temperature sensor based on environmental conditions present."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted maximum allowable operating value for this Temperature sensor, per specific standard guidelines, and asjusted based on environmental conditions present. For example, liquid inlet temperature may be adjusted based on the availale liquid pressure."/>
+          <Annotation Term="Measures.Unit" String="Cel"/>
         </Property>
         <Property Name="AdjustedMinAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Adjusted minimum allowable operating value for Reading based on environmental conditions present."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted minimum allowable operating value for Reading based on environmental conditions present. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.Description" String="Adjusted minimum allowable operating value for this Temperature sensor based on environmental conditions present."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted minimum allowable operating value for this Temperature sensor, per specific standard guidelines, and asjusted based on environmental conditions present. For example, liquid inlet temperature may be adjusted based on the availale liquid pressure."/>
+          <Annotation Term="Measures.Unit" String="Cel"/>
         </Property>
       </EntityType>
 
