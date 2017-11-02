@@ -166,7 +166,7 @@
       <ComplexType Name="LDAPSearchSettings">
         <Annotation Term="OData.Description" String="Contains settings for searching a generic LDAP service."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain all the required settings for searching a generic LDAP service."/>
-        <Property Name="BaseDistinguisedNames" Type="Collection(Edm.String)">
+        <Property Name="BaseDistinguishedNames" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The base distinguished names to use when searching the LDAP service."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a collection of base distinguished names to use when searching the LDAP service."/>
