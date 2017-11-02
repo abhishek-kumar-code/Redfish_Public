@@ -36,6 +36,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
     <edmx:Include Namespace="PCIeDevice"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
+    <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -272,8 +275,15 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapter.v1_1_0">
-      <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_0_1.NetworkAdapter"/>
-      
+      <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_0_1.NetworkAdapter">
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this adapter."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
       <ComplexType Name="Controllers" BaseType="NetworkAdapter.v1_0_0.Controllers">
         <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
       </ComplexType>

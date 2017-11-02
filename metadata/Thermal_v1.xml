@@ -34,6 +34,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
+    <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -223,7 +226,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>          
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that are being serviced by this fan."/>
           <Annotation Term="OData.AutoExpandReferences"/>
@@ -419,6 +422,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_4_0">
       <EntityType Name="Thermal" BaseType="Thermal.v1_3_1.Thermal"/>
+
       <EntityType Name="Temperature" BaseType="Thermal.v1_3_0.Temperature">
         <Property Name="DeltaReadingCelsius" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -452,9 +456,16 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted minimum allowable operating value for Reading based on environmental conditions present. The units shall be the same units as the related Reading property."/>
         </Property>
       </EntityType>
+
       <EntityType Name="Fan" BaseType="Thermal.v1_3_0.Fan">
-        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>        
-      </EntityType>      
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this fan."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
