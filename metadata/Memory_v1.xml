@@ -71,10 +71,12 @@
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="Passphrase" Type="Edm.String">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
       </Action>
 
@@ -85,10 +87,12 @@
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="Passphrase" Type="Edm.String">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this action."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
       </Action>
 
@@ -99,10 +103,12 @@
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="Passphrase" Type="Edm.String">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this action."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
       </Action>
 
@@ -113,10 +119,12 @@
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="Passphrase" Type="Edm.String">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this action."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
       </Action>
     </Schema>

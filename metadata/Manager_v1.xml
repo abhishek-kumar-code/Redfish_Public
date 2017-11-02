@@ -83,6 +83,7 @@
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
@@ -94,6 +95,7 @@
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
         <Parameter Name="NewManager" Type="Manager.Manager" Nullable="false">
           <Annotation Term="OData.Description" String="This Parameter specifies the Manager to fail over to.  In this case, a valid reference is supported."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
       </Action>
 

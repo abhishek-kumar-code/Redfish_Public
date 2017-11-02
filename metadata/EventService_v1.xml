@@ -62,6 +62,7 @@
         <Parameter Name="EventType" Type="Event.v1_0_0.EventType" Nullable="false">
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for which the following allowable values apply."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="EventId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the ID of event to be added."/>
@@ -82,6 +83,7 @@
         <Parameter Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the message ID of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageId property in the Event schema for Redfish."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Description" String="This is the array of message arguments of the event to be added."/>

@@ -61,14 +61,17 @@
         <Parameter Name="PasswordName" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The name of the BIOS password to change."/>
           <Annotation Term="OData.LongDescription" String="This defines the BIOS password name to change. For instance, this could be the AdminPassword or UserPassword."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="OldPassword" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The value of the existing password."/>
           <Annotation Term="OData.LongDescription" String="This defines the value of the existing BIOS password that is about to be changed."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="NewPassword" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The value of the new BIOS password."/>
           <Annotation Term="OData.LongDescription" String="This defines the value of the new BIOS password."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to change the BIOS passwords."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a change of the selected BIOS password."/>

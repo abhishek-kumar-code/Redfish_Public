@@ -78,6 +78,7 @@
         <Parameter Name="EncryptionKey" Type="Edm.String">
           <Annotation Term="OData.Description" String="The encryption key to set on the storage subsytem."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to set the encryption key for the storage subsystem."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>

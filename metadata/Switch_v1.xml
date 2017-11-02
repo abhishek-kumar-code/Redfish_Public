@@ -54,6 +54,7 @@
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="The type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset this switch."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>

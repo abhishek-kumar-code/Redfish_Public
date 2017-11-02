@@ -35,6 +35,9 @@
       <Term Name="RequiredOnCreate" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term specifies that a property is required to be specified in the body of a POST request to create the resource."/>
       </Term>
+      <Term Name="RequiredParameter" Type="Edm.Boolean" DefaultValue="true">
+        <Annotation Term="OData.Description" String="The term specifies that an action parameter is required to be provided by the client as part of the action request.  Parameters not annotated as required can be left out of the client's action request."/>
+      </Term>
       <Term Name="Settings" Type="Settings.Settings">
         <Annotation Term="OData.Description" String="Reference to the resource that represents the settings to be applied to this object."/>
       </Term>

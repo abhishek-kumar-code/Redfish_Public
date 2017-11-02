@@ -56,6 +56,7 @@
         <Parameter Name="ImageURI" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The URI of the software image to be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain a URI referencing a software image to be retreived by the UpdateService for the purpose of installing software contained within the image."/>
+          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Parameter Name="TransferProtocol" Type="UpdateService.v1_0_0.TransferProtocolType">
           <Annotation Term="OData.Description" String="The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme."/>
