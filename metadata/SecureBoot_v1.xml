@@ -17,9 +17,6 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
@@ -54,7 +51,6 @@
         <Parameter Name="ResetKeysType" Type="SecureBoot.v1_0_0.ResetKeysType">
           <Annotation Term="OData.Description" String="The type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
-          <Annotation Term="Redfish.RequiredParameter"/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the Secure Boot keys."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the Secure Boot key databases. The ResetAllKeysToDefault value shall reset the UEFI Secure Boot key databases to their default values. The DeleteAllKeys value shall delete the content of the UEFI Secure Boot key databases. The DeletePK value shall delete the content of the PK Secure boot key."/>
