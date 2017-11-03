@@ -627,6 +627,11 @@
       <EntityType Name="Memory" BaseType="Memory.v1_0_1.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to add requirements on the action parameters to show they are mandatory via Nullable=false."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_0_2.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_0">
       <EntityType Name="Memory" BaseType="Memory.v1_0_1.Memory">
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
@@ -636,6 +641,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Memory" BaseType="Memory.v1_1_0.Memory"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to add requirements on the action parameters to show they are mandatory via Nullable=false."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_1_1.Memory"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_2_0">
@@ -690,6 +700,11 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to add requirements on the action parameters to show they are mandatory via Nullable=false."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_2_0.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_3_0">
       <EntityType Name="Memory" BaseType="Memory.v1_2_0.Memory">
         <Property Name="ModuleManufacturerID" Type="Edm.String">
@@ -719,8 +734,13 @@
       </EntityType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_3_1">
+      <Annotation Term="OData.Description" String="This version was created to add requirements on the action parameters to show they are mandatory via Nullable=false."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_3_0.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_4_0">
-      <EntityType Name="Memory" BaseType="Memory.v1_3_0.Memory">
+      <EntityType Name="Memory" BaseType="Memory.v1_3_1.Memory">
         <Property Name="VolatileSizeMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Total size of the volitile portion memory in MiB."/>
