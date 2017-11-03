@@ -57,6 +57,7 @@
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "ProcessorSummary": {
         "Count": 8,
+        "LogicalProcessorCount":  256,
         "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
         "Status": {
             "State": "Enabled",

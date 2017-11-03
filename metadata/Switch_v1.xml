@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Switch  v1.0.2-->
+<!--# Redfish Schema:  Switch  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -19,6 +19,7 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
     <edmx:Include Namespace="Resource.v1_1_0"/>
     <edmx:Include Namespace="Resource.v1_2_0"/>
+    <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
     <edmx:Include Namespace="Storage.v1_0_0"/>
@@ -190,6 +191,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Switch" BaseType="Switch.v1_0_1.Switch"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch.v1_1_0">
+      <EntityType Name="Switch" BaseType="Switch.v1_0_2.Switch">
+        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>

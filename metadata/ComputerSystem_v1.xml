@@ -429,8 +429,8 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the central processors for a system."/>
         <Property Name="Count" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The number of processors in the system."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the number of central processors in the system."/>
+          <Annotation Term="OData.Description" String="The number of physical processors in the system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the number of physical central processors in the system."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Model" Type="Edm.String">
@@ -487,7 +487,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_7">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_6.ComputerSystem"/>
     </Schema>
 
@@ -617,7 +617,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_5">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_4.ComputerSystem"/>
     </Schema>
 
@@ -705,7 +705,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_3.ComputerSystem"/>
     </Schema>
 
@@ -761,7 +761,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_3">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_2.ComputerSystem"/>
     </Schema>
 
@@ -793,7 +793,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_2">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_1.ComputerSystem"/>
     </Schema>
 
@@ -816,6 +816,15 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Ordered array of BootOptionReference strings representing the persistent Boot Order associated with this computer system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of BootOptionReference strings representing the persistent Boot Order of this computer system. For UEFI systems, this is the UEFI BootOrder as defined by the UEFI Specification."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="ProcessorSummary" BaseType="ComputerSystem.v1_0_0.ProcessorSummary">
+        <Property Name="LogicalProcessorCount" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The number of logical processors in the system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the number of logical central processors in the system."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
       </ComplexType>
     </Schema>
