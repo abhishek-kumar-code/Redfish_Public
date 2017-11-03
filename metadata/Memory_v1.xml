@@ -68,11 +68,11 @@
         <Annotation Term="OData.Description" String="This defines the action for unlocking given regions."/>
         <Annotation Term="OData.LongDescription" String="This action shall apply the supplied passphrase to the supplied region for the purpose of unlocking the given regions."/>
         <Parameter Name="Memory" Type="Memory.v1_0_0.Actions"/>
-        <Parameter Name="RegionId" Type="Edm.String">
+        <Parameter Name="RegionId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
         </Parameter>
-        <Parameter Name="Passphrase" Type="Edm.String">
+        <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn."/>
         </Parameter>
@@ -82,11 +82,11 @@
         <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions."/>
         <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region."/>
         <Parameter Name="Memory" Type="Memory.v1_0_0.Actions"/>
-        <Parameter Name="RegionId" Type="Edm.String">
+        <Parameter Name="RegionId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
         </Parameter>
-        <Parameter Name="Passphrase" Type="Edm.String">
+        <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this action."/>
         </Parameter>
@@ -96,11 +96,11 @@
         <Annotation Term="OData.Description" String="Set passphrase for the given regions."/>
         <Annotation Term="OData.LongDescription" String="This action shall apply the supplied passphrase to the supplied region."/>
         <Parameter Name="Memory" Type="Memory.v1_0_0.Actions"/>
-        <Parameter Name="RegionId" Type="Edm.String">
+        <Parameter Name="RegionId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
         </Parameter>
-        <Parameter Name="Passphrase" Type="Edm.String">
+        <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this action."/>
         </Parameter>
@@ -110,11 +110,11 @@
         <Annotation Term="OData.Description" String="Disable passphrase for given regions."/>
         <Annotation Term="OData.LongDescription" String="This action shall disaple the need for passphrases on the supplied region provided the supplied passphrase matches that of the region."/>
         <Parameter Name="Memory" Type="Memory.v1_0_0.Actions"/>
-        <Parameter Name="RegionId" Type="Edm.String">
+        <Parameter Name="RegionId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory region ID for which this action to be applied."/>
         </Parameter>
-        <Parameter Name="Passphrase" Type="Edm.String">
+        <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Passphrase for doing the operation."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this action."/>
         </Parameter>

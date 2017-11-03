@@ -75,7 +75,7 @@
 
       <Action Name="SetEncryptionKey" IsBound="true">
         <Parameter Name="Storage" Type="Storage.v1_0_0.Actions"/>
-        <Parameter Name="EncryptionKey" Type="Edm.String">
+        <Parameter Name="EncryptionKey" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The encryption key to set on the storage subsytem."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
