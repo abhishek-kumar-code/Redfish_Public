@@ -17,7 +17,6 @@
         {
             "EntityType": "Volume",
             "EntityRole": "Target",
-            "EntityAccessMode": "Read",
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes/1"
             }
@@ -25,7 +24,6 @@
         {
             "EntityType": "Volume",
             "EntityRole": "Target",
-            "EntityAccessMode": "ReadWrite",
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes/2"
             }

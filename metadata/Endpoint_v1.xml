@@ -266,57 +266,48 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Endpoint which is unique within the Redfish service."/>
         </Property>
         <Property Name="Transports" Type="Collection(Endpoint.v1_1_0.EndpointTransport)" Nullable="false">
-          <Annotation Term="OData.Description" String="An array of references to the transport information."/>
+          <Annotation Term="OData.Description" String="An array of references to transport information that describes the connection from this endpoint to another endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type EndpointTransport associated with this endpoint."/>
         </Property>
       </EntityType>
 
-      <ComplexType Name="ConnectedEntity" BaseType="Endpoint.v1_0_0.ConnectedEntity">
-        <Annotation Term="OData.Description" String="Represents a remote resource that is connected to the network accessible to this endpoint."/>
-        <Property Name="EntityAccessMode" Type="Endpoint.v1_1_0.EntityAccessMode">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The allowed access mode of the entity."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate what operations are allowed on the entity: read/write or read only."/>
-        </Property>
-      </ComplexType>
-
       <ComplexType Name="Links" BaseType="Endpoint.v1_0_0.Links">
         <NavigationProperty Name="NetworkDeviceFunction" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="When an ACD model is present, an array of references to the network device function that connect to this endpoint."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this endpoint is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.Description" String="When NetworkDeviceFunction resources are present, this array contains references to the network device function that connect to this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a NetworkDeviceFunction resource, with which this endpoint is associated."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 
       <ComplexType Name="EndpointTransport">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This is the schema definition for a EndpointTransport."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a EndpointTransport."/>
+        <Annotation Term="OData.Description" String="This object contains information about a transport which the endpoint supports, including transport type and protocol."/>
+        <Annotation Term="OData.LongDescription" String="This object shall contain information that specifies a transport which the endpoint supports."/>
         <Property Name="TransportType" Type="Endpoint.v1_1_0.TransportType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Specifies the medium type of EndpointTransport."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall describe the type of transport medium."/>
+          <Annotation Term="OData.Description" String="Specifies the transport medium type of the endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the transport medium supported by the endpoint."/>
         </Property>
         <Property Name="TransportProtocol" Type="Endpoint.v1_1_0.TransportProtocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Specifies the transport protocol."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall describe protocol used by the Endpoint."/>
+          <Annotation Term="OData.Description" String="Specifies the transport protocol of the endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the transport protocol supported by the endpoint."/>
         </Property>
         <Property Name="TransportDetails" Type="Collection(Endpoint.v1_1_0.TransportDetails)" Nullable="false">
-          <Annotation Term="OData.Description" String="References to transport information details."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type TransportDetails defining with this transport Endpoint."/>
+          <Annotation Term="OData.Description" String="References to additional details about the transport supported by the endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more TransportDetails resources, for the transport protocl supported by the endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </Property>
       </ComplexType>
 
       <ComplexType Name="TransportDetails">
-        <Annotation Term="OData.Description" String="This type contains properties which specify the details of the transport endpoint."/>
-        <Annotation Term="OData.LongDescription" String="The type shall contain properties which specify the details of the transport endpoint."/>
+        <Annotation Term="OData.Description" String="This object contains properties which specify the details of the transport supported by the endpoint. The properties which are present, is dependemt on the type of transport supported by the endpoint."/>
+        <Annotation Term="OData.LongDescription" String="The type shall contain properties which specify the details of the transport supported by the endpoint."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of RDMA protocol used by the Ednpoint."/>
+          <Annotation Term="OData.Description" String="The type of RDMA protocol used by the Endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the type of RDMA protocol used by the Endpoint."/>
         </Property>
         <Property Name="IPv4Address" Type="IPAddresses.v1_0_0.IPv4Address" Nullable="false">
@@ -369,14 +360,6 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="EntityAccessMode">
-        <Member Name="ReadOnly">
-          <Annotation Term="OData.Description" String="The entity is read only."/>
-        </Member>
-        <Member Name="ReadWrite">
-          <Annotation Term="OData.Description" String="The entity is writable."/>
-        </Member>
-      </EnumType>
     </Schema>
 
   </edmx:DataServices>

@@ -17,7 +17,6 @@
         {
             "EntityType": "Drive",
             "EntityRole": "Target",
-            "EntityAccessMode": "ReadWrite",
             "EntityLink": {
                 "@odata.id":"/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.1"
             }
