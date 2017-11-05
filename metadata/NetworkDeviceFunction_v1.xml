@@ -465,7 +465,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="NetworkDeviceFunction.v1_0_0.Links">
-        <NavigationProperty Name="AssociatedEndpoints" Type="Collection(Endpoint.Endpoint)">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to endpoints associated with this network device function."/>
           <Annotation Term="OData.LongDescription" String="The type shall contain an array property who's members reference resources, of type Endpoint, which are associated with this network device function."/>
