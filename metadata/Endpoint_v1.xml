@@ -346,9 +346,6 @@
         <Member Name="Ethernet">
           <Annotation Term="OData.Description" String="Ethernet transport."/>
         </Member>
-        <Member Name="Omnipath">
-          <Annotation Term="OData.Description" String="Omnipath transport."/>
-        </Member>
       </EnumType>
 
       <EnumType Name="TransportProtocol">
