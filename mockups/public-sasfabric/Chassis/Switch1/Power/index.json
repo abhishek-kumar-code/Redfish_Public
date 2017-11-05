@@ -7,11 +7,9 @@
     "PowerSupplies": [
         {
             "@odata.id": "/redfish/v1/Chassis/Switch1/Power#/PowerSupplies/0",
-            "@odata.type": "#Power.v1_3_0.PowerSupply",
             "MemberId": "0",
             "Name": "Power Supply Bay",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -29,14 +27,12 @@
             "SparePartNumber": "0000001A3A",
             "InputRanges": [
                 {
-                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 100,
                     "MaximumVoltage": 120,
                     "OutputWattage": 800
                 },
                 {
-                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 200,
                     "MaximumVoltage": 240,

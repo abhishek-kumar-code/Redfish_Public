@@ -11,14 +11,11 @@
     "BiosVersion": "5.2.3",
     "UUID": "17690008-3175-05f4-0010-debfc4ec1881",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
     "ProcessorSummary": {
-        "@odata.type": "#ComputerSystem.v1_0_0.ProcessorSummary",
         "Status": {
-            "@odata.type": "#Resource.Status",
             "Health": "OK",
             "State": "Enabled"
         },
@@ -26,9 +23,7 @@
         "Model": "Intel(R) Xeon(R) processor"
     },
     "MemorySummary": {
-        "@odata.type": "#ComputerSystem.v1_4_0.MemorySummary",
         "Status": {
-            "@odata.type": "#Resource.Status",
             "Health": "OK",
             "State": "Enabled"
         },
@@ -44,7 +39,6 @@
         "@odata.id": "/redfish/v1/Systems/ComposedPartition1/EthernetInterfaces"
     },
     "Boot": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled": "Disabled",
         "BootSourceOverrideTarget": "None",
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
@@ -57,7 +51,6 @@
         "UefiTargetBootSourceOverride": ""
     },
     "Links": {
-        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "ResourceBlocks": [
             {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1"
@@ -73,7 +66,6 @@
         ]
     },
     "Actions": {
-        "@odata.type": "#ComputerSystem.v1_0_0.Actions",
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/ComposedPartition1/Actions/ComputerSystem.Reset",
             "ResetType@Redfish.AllowableValues": [

@@ -122,10 +122,10 @@
 				}
 			}
 		},
-		"ManagerCollection": {
-			"Members": {
-				"MinCount": 1
-			}
+		"ManagerAccountCollection": {
+			"CreateResource": true,
+			"DeleteResource": true,
+			"UpdateResource": true
 		},
 		"Thermal": {
 			"MinVersion": "1.1.0",
@@ -136,7 +136,10 @@
 						"Reading": {},
 						"ReadingUnits": {},
 						"Status": {},
-						"PhysicalContext": {}
+						"RelatedItem": {
+							"Comparison": "LinkToResource",
+							"Values": [ "Processor", "ComputerSystem", "Chassis", "Memory"]
+						}
 					}
 				},
 				"Temperatures": {
