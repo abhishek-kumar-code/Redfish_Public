@@ -532,16 +532,45 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query parameters
 
-When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
+Clients can add query parameters to request additional features from the service.  These features include pagination, expansion and filtering and are explained below.
 
 | Attribute | Description                                                                                                                                                     | Example                             |
 | ---       | ---                                                                                                                                                             | ---                                 |
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
+| $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
 
 * Services should support the $top and $skip query parameters.
+* Service may support the $expand and $filter query parameters. 
+* When the service supports query parameters, the service shall include the ProtocolFeatureSupport object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
+* Query parameters shall only be supported on GET operations. 
+
+####### Query parameters for Paging
+When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
+
+####### Query parameters for Expand
+The $expand parameter indicates to the implementation that it should not only include a link but also the contents of that link in the current response as if a GET had been performed and included inline with that link.  In CSDL terms, any Entries associated with an Entity or Collection of Entities through the use of NavigationProperty is capable of being expanded and thus included in the response body.  The $expand query parameter has a set of possible values which will determin which links (Navigation Properties) are to be expanded.
+
+The following table represents the Redfish allowable values that shall be supported for $expand if $expand is implemented:
+| value     | Description                                                                                                                                                     | Example                             |
+| ---       | ---                                                                                                                                                             | ---                                 |
+| * (asterisk)     | Indicates all links (Navigation Properties) shall be expanded if expand is supported. | `http://resourcecollection?$expand=*` |
+| . (period)      |  Indicates all subordinate links (Navigation Properties) shall be expanded if expand is supported. Subordinate links are those that are directly referenced (i.e. not in the 'Links' section of the resource). | `http://resourcecollection?$expand=.` |
+| ~ (tilde)   | Indicates all dependent links (Navigation Properties) shall be expanded if expand is supported. Dependent links are those that are not directly referenced (i.e. in the 'Links' section of the resource).  | -`http://resourcecollection?$expand=~` |
+| $levels   | Indicates how many levels the service should cascade the expand operation.  Thus a $levels=2 will not only expand the current resource (level=1) but also the expanded resource (level=2). | `http://resourcecollection?$expand=.($levels=2)`|
+
+Examples of the use of expand might be:
+* GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
+* GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
+* GET
+
+When performing $expand, Services may not include all of the properties of the referenced resource. 
+
+When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response and thus the use of the service of the [Next Link Property and partial results](#next-link-property-and-partial-results).
+
+Any other supported syntax for $expand is outside the scope of this specification. 
 
 ###### Retrieving Resource Collections
 
