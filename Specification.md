@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.3.0'
-modified: '2017-9-22'
-SupersedesVersion: '1.2.1'
+DocVersion: '1.X.Y'
+modified: '2017-11-XX'
+SupersedesVersion: '1.3.0'
 status: published
 released: true
 copyright: '2014-2017'
@@ -566,7 +566,7 @@ The HEAD method differs from the GET method in that it MUST NOT return message b
 
 #### Data modification requests
 
-Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post-), [Update](#update-patch-), [Replace](#replace-put-) or [Delete](#delete-delete-) operation, or by invoking an [Action](#actions-post-) on the resource.
+Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post), [Update](#update-patch), [Replace](#replace-put) or [Delete](#delete-delete) operation, or by invoking an [Action](#actions-post) on the resource.
 
 ##### Responses to modification requests
 
@@ -582,11 +582,11 @@ For Update, Replace, or Delete operations, the response from the service after s
 
 Services may return an HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. Otherwise, if a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
-For details on responses to Action requests, see [Action](#actions-post-).
+For details on responses to Action requests, see [Action](#actions-post).
 
 ##### Update (PATCH)
 
-The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response may contain a representation of the resource after the update was done as described in the section above. The implementation may reject the update operation on certain fields based on its own policies and in this case, not process any of the requested modifications.
+The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests). The implementation may reject the update operation on certain fields based on its own policies and in this case, not process any of the requested modifications.
 
 * Services shall support the PATCH method to update properties within a resource.
 * If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
@@ -601,36 +601,30 @@ OData markup ([resource identifiers](#resource-identifier-property), [type](#typ
 
 ##### Replace (PUT)
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource. When replace modification is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests).
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
-* When Replace is successful, Services may return a representation of the modified resource after any server-side transformations in the body of the response.
 * Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
 ##### Create (POST)
 
-The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong.
+The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When create is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
 
-Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
-
+* Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * Services shall support POST operations on a URL that references a Resource Collection instance.
-* Services shall support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post-)).
-* The POST operation shall not be idempotent.
-
-The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be [201](#status-201) (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
+* Services shall also support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post)).
+* The POST operation shall not be idempotent. 
 
 ##### Delete (DELETE)
 
-The DELETE method is used to remove a resource.
+The DELETE method is used to remove a resource. When delete modification is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests).
 
 * Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
-* Services may return a representation of the just deleted resource in the response body.
 * Services should return HTTP status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
-
-Services may return HTTP status code [404](#status-404) or a success code if the resource has already been deleted.
+* Services may return HTTP status code [404](#status-404) or a success code if the resource has already been deleted.
 
 ##### Actions (POST)
 
@@ -2797,6 +2791,7 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.X.X   | 2017-11-xx| Clarifications for http status and payload responses after successful processing of data modifcation requests. |
 | 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP status code [428](#status-428). |
 |         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
 | 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
