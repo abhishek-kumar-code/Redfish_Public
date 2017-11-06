@@ -568,7 +568,7 @@ The HEAD method differs from the GET method in that it MUST NOT return message b
 
 Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post), [Update](#update-patch), [Replace](#replace-put) or [Delete](#delete-delete) operation, or by invoking an [Action](#actions-post) on the resource.
 
-##### Responses to modification requests
+##### Success responses to modification requests
 
 For Create operations, the response from the service after successful processing of the create request may be one of the following:
 * HTTP Status code of [201](#status-201) with a body containing the JSON representation of the newly created resource after the request has been applied.
@@ -584,9 +584,9 @@ Services may return an HTTP status code [405](#status-405) if the specified reso
 
 For details on responses to Action requests, see [Action](#actions-post).
 
-##### Update (PATCH)
+##### Update (PATCH)<a id="update-patch"></a>
 
-The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests). The implementation may reject the update operation on certain fields based on its own policies and in this case, not process any of the requested modifications.
+The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The implementation may reject the update operation on certain fields based on its own policies and in this case, not process any of the requested modifications.
 
 * Services shall support the PATCH method to update properties within a resource.
 * If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
@@ -599,18 +599,18 @@ Services may have null entries for properties that are JSON arrays to show the n
 
 OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [Links Property](#links-property)) are ignored on Update.
 
-##### Replace (PUT)
+##### Replace (PUT)<a id="replace-put"></a>
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource. When replace modification is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests).
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource. When replace modification is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
 * Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
-##### Create (POST)
+##### Create (POST)<a id="create-post"></a>
 
-The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When create is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
+The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When create is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
 
 * Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
@@ -618,15 +618,15 @@ The POST method is used to create a new resource. The POST request is submitted 
 * Services shall also support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post)).
 * The POST operation shall not be idempotent. 
 
-##### Delete (DELETE)
+##### Delete (DELETE)<a id="delete-delete"></a>
 
-The DELETE method is used to remove a resource. When delete modification is successful, the response may contain a representation of the resource after the update was done as described in [Data modification requests](#data-modification-requests).
+The DELETE method is used to remove a resource. When delete modification is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
 
 * Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
 * Services should return HTTP status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
 * Services may return HTTP status code [404](#status-404) or a success code if the resource has already been deleted.
 
-##### Actions (POST)
+##### Actions (POST)<a id="actions-post"></a>
 
 The POST method is used to initiate operations on the object (such as Actions).
 
