@@ -67,9 +67,6 @@ The Redfish Interoperability Profile concept was created to simplify that proces
 
 All profile entries (at the Profile, Resource, or Property level) are "additive".  That is, each requirement can only apply more rigid requirements which override less rigid requirements.
 
-
-The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing. 
-
 Profile requirements do not allow for exclusions of data.  Implementations are able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.  This include both standard properties and OEM extensions.
    
 # Profile Tools
