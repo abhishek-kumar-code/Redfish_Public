@@ -8,7 +8,6 @@
     "TaskStatus": "OK",
     "Messages": [
         {
-            "@odata.type": "#Message.v1_0_0.Message",
             "MessageId": "Base.1.0.PropertyNotWriteable",
             "RelatedProperties": [
                 "SKU"

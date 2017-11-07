@@ -6,7 +6,6 @@
     "CompletedTaskOverWritePolicy": "Manual",
     "LifeCycleEventOnTaskStateChange": true,
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },

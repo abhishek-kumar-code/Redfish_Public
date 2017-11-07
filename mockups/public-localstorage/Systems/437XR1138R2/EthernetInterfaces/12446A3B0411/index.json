@@ -4,7 +4,6 @@
     "Name": "Ethernet Interface",
     "Description": "System NIC 1",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -21,7 +20,6 @@
     ],
     "IPv4Addresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv4Address",
             "Address": "192.168.0.10",
             "SubnetMask": "255.255.252.0",
             "AddressOrigin": "Static",
@@ -30,7 +28,6 @@
     ],
     "IPv6Addresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv6Address",
             "Address": "fe80::1ec1:deff:fe6f:1e24",
             "PrefixLength": 64,
             "AddressOrigin": "Static",

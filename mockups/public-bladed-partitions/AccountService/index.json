@@ -4,7 +4,6 @@
     "Name": "Account Service",
     "Description": "Account Service",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },

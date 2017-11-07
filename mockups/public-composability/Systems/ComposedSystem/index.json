@@ -8,7 +8,6 @@
     "HostName": "composed-system",
     "PowerState": "On",
     "Boot": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled": "Once",
         "BootSourceOverrideTarget": "Pxe",
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
@@ -31,7 +30,6 @@
         "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Storage"
     },
     "Links": {
-        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "ResourceBlocks": [
             {
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1"
