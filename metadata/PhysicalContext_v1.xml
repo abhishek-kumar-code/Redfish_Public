@@ -53,6 +53,9 @@
         <Member Name="GPU">
           <Annotation Term="OData.Description" String="A Graphics Processor (GPU)."/>
         </Member>
+        <Member Name="ASIC">
+          <Annotation Term="OData.Description" String="An ASIC device, such as an FPGA or a GPGPU."/>
+        </Member>
         <Member Name="Backplane">
           <Annotation Term="OData.Description" String="A backplane within the chassis."/>
         </Member>
