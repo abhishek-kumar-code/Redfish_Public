@@ -26,10 +26,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
     <edmx:Include Namespace="PCIeFunction"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
-    <edmx:Include Namespace="Endpoint"/>
-    <edmx:Include Namespace="Endpoint.v1_1_0"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -477,12 +473,25 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type contains the RDMA characteristics for this resource."/>
         <Annotation Term="OData.LongDescription" String="The type shall contain the RDMA characteristcs for this resource."/>
-        <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
+        <Property Name="RdmaType" Type="NetworkDeviceFunction.v1_2_0.RdmaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of RDMA protocol."/>
           <Annotation Term="OData.LongDescription" String="This property shall specify the type of RDMA protocol used by the Endpoint."/>
         </Property>
       </ComplexType>
+
+      <EnumType Name="RdmaType">
+        <Member Name="iWARP">
+          <Annotation Term="OData.Description" String="The internet Wide RDMA Protocol."/>
+        </Member>
+        <Member Name="RoCE">
+          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet protocol."/>
+        </Member>
+        <Member Name="RoCEv2">
+          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet version 2 protocol."/>
+        </Member>
+      </EnumType>
+
 
     </Schema>
 
