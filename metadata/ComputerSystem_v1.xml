@@ -768,7 +768,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="ComputerSystem.v1_4_0.Links">
-        <NavigationProperty Name="ClientComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+        <NavigationProperty Name="ConsumingComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
           <Annotation Term="OData.LongDescription" String="The value shall be an array of references to ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
