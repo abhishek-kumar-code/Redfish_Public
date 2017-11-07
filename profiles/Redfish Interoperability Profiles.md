@@ -31,7 +31,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 
 As Schema definitions for the Redfish Scalable Platforms Management API ("Redfish") are designed to provide significant flexibility, and allow conforming implementations on a wide variety of products, very few properties within the Schemas are required by the Redfish specification.  But consumers and software developers need a more rigidly defined set of required properties (features) in order to accomplish management tasks.  This set allows users to compare implementations, specify needs to vendors, and allows software to rely on the availability of data.  To provide that "common ground", a Redfish Interoperability Profile allows the definition of a set of schemas and property requirements, which meet the needs of a particular class of product or service.
 
-The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of ConditionalRequirements under which the requirement applies.
+The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of conditions under which the requirement applies.
 
 ## Normative references
 
@@ -58,19 +58,31 @@ The terms "normative" and "informative" in this document are to be interpreted a
 
 # Overview
 
+The Redfish Specification separates the definition of the protocol from the data model (schema), and in addition, allows each resource defined in the data model to be revised independently.  While this creates significant flexibility and extensibility, it can cause confusion when developers and end users attempt to answer the question "What version of Redfish does your product support?"  The answer is not a simple one, because fully describing a Redfish implementation would require listing each property supported in each schema implemented, as well as the protocol version and supported features.  That level of detail and version reporting would be extremely cumbersome to create or maintain, and difficult to use to compare implementations across products or vendors.  
+
+The Redfish Interoperability Profile concept was created to simplify that process, by providing a means to communicate the functionality provided with a single statement - that an implementation meets the requirements set forth in a Redfish Interoperability Profile.
+
+ 
 ## Design Tenets
 
 All profile entries (at the Profile, Resource, or Property level) are "additive".  That is, each requirement can only apply more rigid requirements which override less rigid requirements.
 
-The profile document is a JSON document designed to minimize the work necessary to define a profile, by defining default values that allow the majority of requirements to be stated with minimal effort.    
 
 The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing. 
 
 Profile requirements do not allow for exclusions of data.  Implementations are able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.  This include both standard properties and OEM extensions.
    
+# Profile Tools
+
+A free, open source utility has been created by the SPMF to verify that a Redfish Service implementation conforms to the requirements included in a Redfish Interoperability Profile.  The Redfish Interop Validator is available for download from the DMTF's organization on Github at https://github.com/DMTF/Redfish-Interop-Validator
+
+
 # Profile Document Definition
 
 A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a JSON-schema form (RedfishInteroperabilityProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/profiles for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
+
+The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing.  Many of the properties defined within this structure have assumed default values that correspond with the most common use case, so that those properties can be ommited from the document for brevity.
+
 
 ## Basic functions
 
