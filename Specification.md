@@ -224,7 +224,7 @@ There are several reasons to define a RESTful interface:
 
 With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications. While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there is no interoperability between them.
 
-OData defines a set of common RESTful conventions and markup which, if adopted, provides for interoperability between APIs.
+OData defines a set of common RESTful conventions and annotations which, if adopted, provides for interoperability between APIs.
 
 Adopting OData conventions for describing Redfish Schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish Services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
@@ -580,9 +580,11 @@ For Update, Replace, or Delete operations, the response from the service after s
 * HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task monitor Uri after processing completes.
 * HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the modified or deleted resource.
 
-Services may return an HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. Otherwise, if a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates the service encountered an error and the resource shall not have been modified or created as a result of the operation.
+For details on success responses to Action requests, see [Action](#actions-post).
 
-For details on responses to Action requests, see [Action](#actions-post).
+##### Failure responses to modification requests
+
+Services may return an HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. Otherwise, if a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
 ##### Update (PATCH)<a id="update-patch"></a>
 
@@ -597,15 +599,15 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
-OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [Links Property](#links-property)) are ignored on Update.
+OData annotations ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [Links Property](#links-property)) are ignored on Update.
 
 ##### Replace (PUT)<a id="replace-put"></a>
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource. When replace modification is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service, may be added by the Service to the resulting resource. When replace modification is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
 
-* Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
+* Services may support the PUT method to replace a resource in whole.  
+* If a service does not implement this method, or if the client specifies a PUT request against a Resource Collection, a status code [405](#status-405) shall be returned.
 * Services may reject requests which do not include properties required by the resource definition (schema).
-* Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
 ##### Create (POST)<a id="create-post"></a>
@@ -696,7 +698,7 @@ OData-Version: 4.0
 ~~~
 
 In cases where the processing of the Action may require extra time to complete, the service may respond with HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from service after processing an Action may return message with HTTP status code as follows:
-* Code [200](#status-200) indicating Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success.
+* Code [200](#status-200) indicating Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success and any additional relevant messages.
 * Code [204](#status-204) which also indicates success and is returned without a message body.
 * Or in the case of error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed. In the case of return of HTTP status code of 400 and above, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
 
