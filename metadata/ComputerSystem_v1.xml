@@ -852,7 +852,6 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
-
     </Schema>
 
   </edmx:DataServices>
