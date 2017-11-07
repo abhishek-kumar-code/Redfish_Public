@@ -30,7 +30,7 @@
         }
     ],
     "Links": {
-        "ClientComputerSystems": [
+        "ConsumingComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/Cluster"
             }
