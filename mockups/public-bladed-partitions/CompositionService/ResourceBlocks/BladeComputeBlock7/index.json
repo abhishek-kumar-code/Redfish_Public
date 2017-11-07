@@ -6,12 +6,10 @@
         "Compute"
     ],
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "CompositionStatus": {
-        "@odata.type": "#ResourceBlock.v1_0_0.CompositionStatus",
         "Reserved": false,
         "CompositionState": "Unused"
     },
@@ -21,7 +19,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#ResourceBlock.v1_0_0.Links",
         "ComputerSystems": [],
         "Chassis": [
             {
@@ -38,12 +35,10 @@
         "Contoso": {
             "@odata.type": "#Contoso.ComputeRB",
             "ProcessorSummary": {
-                "@odata.type": "#Contoso.ComputeRBProcSummary",
                 "Count": 2,
                 "Model": "Intel(R) Xeon(R) processor"
             },
             "MemorySummary": {
-                "@odata.type": "#Contoso.ComputeRBMemSummary",
                 "TotalSystemMemoryGiB": 128
             }
         }

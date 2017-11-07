@@ -6,11 +6,9 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityRole": "Target",
             "Identifiers": [
                 {
-                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7C4"
                 }
@@ -19,7 +17,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#Endpoint.v1_0_0.Links",
         "Ports": [
             {
                 "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/8"

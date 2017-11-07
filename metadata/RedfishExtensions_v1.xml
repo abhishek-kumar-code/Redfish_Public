@@ -39,9 +39,11 @@
         <Annotation Term="OData.Description" String="Reference to the resource that represents the settings to be applied to this object."/>
       </Term>
       <Term Name="AutoExpandReferences" Type="Edm.Boolean" DefaultValue="true">
+        <Annotation Term="RedfishExtensions.v1_0_0.Deprecated" String="This term has been deprecated in favor of OData.AutoExpandReferences."/>
         <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the related resource or collection of resources in responses."/>
       </Term>
       <Term Name="AutoExpand" Type="Edm.Boolean" DefaultValue="true">
+        <Annotation Term="RedfishExtensions.v1_0_0.Deprecated" String="This term has been deprecated in favor of OData.AutoExpand."/>
         <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related resource or collection of resources in responses."/>
       </Term>
       <Term Name="IPv6Format" Type="Edm.Boolean" DefaultValue="true">

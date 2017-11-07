@@ -20,7 +20,6 @@
         "@odata.id": "/redfish/v1/AccountService"
     },
     "Links": {
-        "@odata.type": "#ServiceRoot.v1_0_0.Links",
         "Sessions": {
             "@odata.id": "/redfish/v1/SessionService/Sessions"
         }
