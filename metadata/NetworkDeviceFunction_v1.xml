@@ -16,9 +16,6 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -216,8 +213,7 @@
         <Property Name="InitiatorName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The iSCSI initiator name."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the iSCSI boot initiator name."/>
-          <Annotation Term="Validation.Pattern" String="^$|^iqn\.[0-9]{4}-[0-9]{2}\.[^:]+(:.*)?$"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the iSCSI boot initiator name.  The value of this property should match formats defined in RFC3720 or RFC3721."/>
         </Property>
         <Property Name="InitiatorDefaultGateway" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -237,8 +233,7 @@
         <Property Name="PrimaryTargetName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The name of the iSCSI primary boot target."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the primary iSCSI boot target (iSCSI Qualified Name, IQN)."/>
-          <Annotation Term="Validation.Pattern" String="^$|^iqn\.[0-9]{4}-[0-9]{2}\.[^:]+(:.*)?$"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the primary iSCSI boot target.  The value of this property should match formats defined in RFC3720 or RFC3721."/>
         </Property>
         <Property Name="PrimaryTargetIPAddress" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -273,8 +268,7 @@
         <Property Name="SecondaryTargetName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The name of the iSCSI secondary boot target."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the secondary iSCSI boot target (iSCSI Qualified Name, IQN)."/>
-          <Annotation Term="Validation.Pattern" String="^$|^iqn\.[0-9]{4}-[0-9]{2}\.[^:]+(:.*)?$"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the secondary iSCSI boot target.  The value of this property should match formats defined in RFC3720 or RFC3721."/>
         </Property>
         <Property Name="SecondaryTargetIPAddress" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
