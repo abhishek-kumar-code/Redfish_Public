@@ -570,12 +570,12 @@ Clients create, modify, and delete resources by issuing the appropriate [Create]
 
 ##### Success responses to modification requests
 
-For Create operations, the response from the service after successful processing of the create request may be one of the following:
+For Create operations, the response from the service after successful processing of the create request should be one of the following:
 * HTTP Status code of [201](#status-201) with a body containing the JSON representation of the newly created resource after the request has been applied.
 * HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource may be returned in response to request to the Task monitor Uri after processing completes.
 * HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the created resource.
 
-For Update, Replace, or Delete operations, the response from the service after successful modification may be one of the following:
+For Update, Replace, or Delete operations, the response from the service after successful modification should be one of the following:
 * HTTP Status code of [200](#status-200) with a body containing the JSON representation of the targeted resource after the modification has been applied, or in the case of Delete operation, a representation of the deleted resource.
 * HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task monitor Uri after processing completes.
 * HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the modified or deleted resource.
