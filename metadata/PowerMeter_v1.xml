@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema: Power Meter v0.1.0                                               -->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file,                                      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+ 
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
+    <edmx:Include Namespace="SensorCollection"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerMeter">
+
+      <EntityType Name="PowerMeter" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the PowerMeter Metrics."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Power properties can be updated to change limits, exceptions and other writable properties."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerMeter.v0_1_0">
+
+      <EntityType Name="PowerMeter" BaseType="PowerMeter.PowerMeter">
+      	 
+        <!-- General Information -->   
+        <Property Name="ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual ID of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual ID of PowerMeter."/>
+        </Property>
+
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Name of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Name of PowerMeter."/>
+        </Property>
+
+        <Property Name="FirmwareRev" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Firmware Revision of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Firmware Revision of PowerMeter."/>
+        </Property>
+
+        <Property Name="HardwareRev" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Hardware Revision of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Hardware Revision of PowerMeter."/>
+        </Property>
+		 
+        <Property Name="DateOfManufacture" Type="Edm.Date">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The date of manufacture of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual date of manufacture of PowerMeter."/>
+        </Property>
+
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Manufacturer of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of PowerMeter."/>
+        </Property>
+		 
+	    <Property Name="Model" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Model Number of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of PowerMeter."/>
+        </Property>
+		 
+		<Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Serial Number of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of PowerMeter."/>
+        </Property>
+
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Part Number of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of PowerMeter."/>
+        </Property>
+
+        <Property Name="AssetTag" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Asset Tag of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of PowerMeter."/>
+        </Property>
+
+        <Property Name="PhysicalLocation" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Physical Location of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of PowerMeter."/>
+        </Property>
+
+        <!-- Equipment Sensors Collection-->
+	      <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this sensor collection."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty> 
+
+	    <NavigationProperty Name="Voltage" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of ID[s] of voltage sensors for this power meter."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the voltage sensors for this equipment."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+	    <NavigationProperty Name="Current" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of ID[s] of current sensors for this power meter."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the current sensors for this equipment."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        	   
+      </EntityType>
+      	   
+	</Schema>
+		
+  
+</edmx:DataServices>
+</edmx:Edmx>
