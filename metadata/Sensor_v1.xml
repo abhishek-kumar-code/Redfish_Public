@@ -215,6 +215,14 @@
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
+         <Member Name="Air Flow">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Liquid Flow">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
       </EnumType>
     </Schema>
 
