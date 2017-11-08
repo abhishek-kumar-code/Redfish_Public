@@ -57,10 +57,10 @@
         <Annotation Term="OData.Description" String="This schema defines a Sensor to be used in conjunction with data center equipment."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the sensor data."/>
 
-        <Property Name="SensorType" Type="Edm.String">
+        <Property Name="SensorType" Type="Sensor.v0_2_0.SensorType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The SensorType for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the SensorType information of this Sensor."/>
+          <Annotation Term="OData.Description" String="The kind of sensor being represented."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the type of the sensor being represented."/>
         </Property>
 
         <Property Name="SensorNumber" Type="Edm.Int64">
@@ -76,10 +76,10 @@
 
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
 
-        <Property Name="CurrentReading" Type="Edm.Decimal">
+        <Property Name="PresentReading" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The CurrentReading for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the CurrentReading information of this Sensor."/>
+          <Annotation Term="OData.Description" String="The present value for this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the present value of this Sensor at the time the information request occurred."/>
         </Property>
 
         <Property Name="SetPoint" Type="Edm.Decimal">
@@ -173,7 +173,49 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
-
+ 
+      <EnumType Name="SensorType">
+        <Member Name="Temperature">
+          <Annotation Term="OData.Description" String="Sensor type for measuring temperature."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Humidity">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="RMS Voltage">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="DC Voltage">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="RMS Current">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>        
+        <Member Name="DC Current">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Frequency">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Pressure">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Liquid Level">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="RPM Speed">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>
