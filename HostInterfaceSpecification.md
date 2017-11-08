@@ -248,7 +248,7 @@ The following table defines the protocol-specific data for the "Redfish Over IP"
 
 | Offset | Name                              | Length  | Value  | Description                                                                                                                 |
 | ---    | ---                               | ---     | ---    | ---                                                                                                                         |
-| X+0    | Service UUID                      | 16BYTEs | Varies | The same as Redfish Service UUID in Redfish Service Root resource                                                           |
+| X+0    | Service UUID                      | 16BYTEs | Varies | The same as Redfish Service UUID in Redfish Service Root resource; set to all 0s if the UUID is not supported or unknown    |
 | X+16   | Host IP Assignment Type           | BYTE    | Enum   | Unknown=00h, <br/> Static=01h, <br/> DHCP=02h, <br/> AutoConfigure=03h, <br/> HostSelected=04h, <br/> other values reserved |
 | X+17   | Host IP Address Format            | BYTE    | Enum   | Unknown=00h, <br/> IPv4=01h, <br/> IPv6=02h, <br/> other values reserved                                                    |
 | X+18   | Host IP Address                   | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
