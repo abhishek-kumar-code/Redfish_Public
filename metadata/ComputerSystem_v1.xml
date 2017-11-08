@@ -142,8 +142,8 @@
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The model number for this system."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about how the manufacturer references this system."/>
+          <Annotation Term="OData.Description" String="The product name for this system, without the manufacturer name."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about how the manufacturer references this system. This is typically the product name, without the manufacturer name."/>
         </Property>
         <Property Name="SKU" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
