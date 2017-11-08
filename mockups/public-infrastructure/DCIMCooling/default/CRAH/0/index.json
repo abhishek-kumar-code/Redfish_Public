@@ -96,7 +96,7 @@
         "Members": [
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/SystemTemperature0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "0",
                 "Name": "Supply Air Temperature Sensor",
                 "SensorType": "Temperature",
@@ -105,7 +105,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -119,7 +119,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature1",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "1",
                 "Name": "Return Air Temperature Sensor",
                 "SensorType": "Temperature",
@@ -128,7 +128,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -142,7 +142,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemHumidity0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "2",
                 "Name": "Relative Humidity Sensor",
                 "SensorType": "Humidity",
@@ -151,7 +151,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -165,7 +165,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature2",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "3",
                 "Name": "Supply Water Temperature Sensor",
                 "SensorType": "Temperature",
@@ -174,7 +174,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -188,7 +188,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature3",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "4",
                 "Name": "Return Water Temperature Sensor",
                 "SensorType": "Temperature",
@@ -197,7 +197,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -211,7 +211,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemPressure0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "5",
                 "Name": "Differential Water Pressure Sensor",
                 "SensorType": "Pressure",
@@ -220,7 +220,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -234,7 +234,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemHumidity1",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "6",
                 "Name": "Outside Air Humidity Sensor",
                 "SensorType": "Humidity",
@@ -243,7 +243,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -257,7 +257,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature4",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "7",
                 "Name": "Outside Air Temperature Sensor",
                 "SensorType": "Temperature",
@@ -266,7 +266,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,

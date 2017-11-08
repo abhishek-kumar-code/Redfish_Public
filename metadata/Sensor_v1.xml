@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Sensor  v0.1.0-->
+<!--# Redfish Schema:  Sensor  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -173,7 +173,7 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
- 
+
       <EnumType Name="SensorType">
         <Member Name="Temperature">
           <Annotation Term="OData.Description" String="Sensor type for measuring temperature."/>
@@ -215,7 +215,7 @@
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-         <Member Name="Air Flow">
+        <Member Name="Air Flow">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>

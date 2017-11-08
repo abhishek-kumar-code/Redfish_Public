@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Sensor.v0_1_0.Sensor",
+    "@odata.type": "#Sensor.v0_2_0.Sensor",
     "Id": "4",
     "Name": "AC Output - Output Ground Current Sensor",
     "SensorType": "Current",
@@ -8,7 +8,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "CurrentReading": 12,
+    "PresentReading": 12,
     "UpperThresholdNonCritical": 12.5,
     "UpperThresholdCritical": 13,
     "UpperThresholdFatal": 15,
