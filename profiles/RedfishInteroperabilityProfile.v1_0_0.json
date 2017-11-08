@@ -48,9 +48,33 @@
 					"$ref": "#/definitions/MinVersion",
 					"description": "The minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'."
 				},
-				"DiscoveryRequired": {
+				"Discovery": {
 					"type": "boolean",
-					"description": "Indicates that support of the Redfish SSDP Discovery protocol is required for this Profile. If this property is absent, the value shall be false."
+					"description": "Indicates support requirements for the Redfish SSDP Discovery protocol. If this property is absent, there is no requirement for SSDP.",
+					"enum": [
+						"Mandatory",
+						"Recommended",
+						"None"
+					],
+					"enumDescriptions": {
+						"Mandatory": "This protocol feature is required for this Profile.",
+						"Recommended": "It is recommended, but not required, that this protocol feature be supported.",
+						"None": "This feature is not required by this Profile.  It is listed here for clarity."
+					},
+				},
+				"HostInterface": {
+					"type": "boolean",
+					"description": "Indicates support requirements for the Redfish Host Interface. If this property is absent, there is no requirement for a Host Interface.",
+					"enum": [
+						"Mandatory",
+						"Recommended",
+						"None"
+					],
+					"enumDescriptions": {
+						"Mandatory": "This protocol feature is required for this Profile.",
+						"Recommended": "It is recommended, but not required, that this protocol feature be supported.",
+						"None": "This feature is not required by this Profile.  It is listed here for clarity."
+					},
 				}
 			}
 		},
