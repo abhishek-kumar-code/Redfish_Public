@@ -1,79 +1,13 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#PowerMeter.PowerMeter",
-    "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0",
-    "@odata.type": "#PowerMeter.v1_0_0.PowerMeter",
-
-    "ID": "PowerMeter0",
-    "Name": "PowerMeter0",
-    "FirmwareRevision": "1.0.0",
-    "DateOfManufacture": "01012017",
-    "Manufacturer": "Manufacturer",
-    "Model": "Model",
-    "SerialNumber": "SerialNum",
-    "PartNumber": "PartNum",
-    "AssetTag": "AssetTag",
-    "PhysicalLocation": "Location",
-
-    "Oem": {},
-
-	"Voltage": ["/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/0"],
-	"Current": ["/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/1"],
-	
-	"Sensors": {
-		"@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors",
-        "@odata.type": "SensorCollection.SensorCollection",
-        "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
-		"Name": "SensorCollection",
-		"Members": [
-			{
-				"@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/0",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-				"MemberId": "0",
-				"SensorType": "Voltage",
-				"Name": "AC Input - RMS Voltage Sensor",
-				"SensorNumber": 0,
-				"Status": {
-					"State": "Enabled",
-					"Health": "OK"
-				},
-				"SensorReading": 12,
-				"UpperThresholdNonCritical": 12.5,
-				"UpperThresholdCritical": 13,
-				"UpperThresholdFatal": 15,
-				"LowerThresholdNonCritical": 11.5,
-				"LowerThresholdCritical": 11,
-				"LowerThresholdFatal": 10,
-				"MinReadingRange": 0,
-				"MaxReadingRange": 20,
-				"PhysicalContext": "AC Input",
-				"Oem": {}
-			},
-			{
-				"@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/1",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
-                "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-				"MemberId": "1",
-				"SensorType": "Current",
-				"Name": "AC Input - RMS Current Sensor",
-				"SensorNumber": 1,
-				"Status": {
-					"State": "Enabled",
-					"Health": "OK"
-				},
-				"SensorReading": 12,
-				"UpperThresholdNonCritical": 12.5,
-				"UpperThresholdCritical": 13,
-				"UpperThresholdFatal": 15,
-				"LowerThresholdNonCritical": 11.5,
-				"LowerThresholdCritical": 11,
-				"LowerThresholdFatal": 10,
-				"MinReadingRange": 0,
-				"MaxReadingRange": 20,
-				"PhysicalContext": "AC Input",
-				"Oem": {}
-			},
-
-		]
-    },
+    "@odata.type": "#PowerMeterCollection.PowerMeterCollection",
+    "Name": "PowerMeter Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#PowerMeterCollection.PowerMeterCollection",
+    "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
