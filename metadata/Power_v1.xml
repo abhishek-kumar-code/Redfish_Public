@@ -685,6 +685,26 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <Property Name="PowerInputWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The input power of this Power Supply."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the input power, measured in Watts, of the associated power supply."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>        
+        <Property Name="PowerOutputWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The output power of this Power Supply."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the output power, measured in Watts, of the associated power supply."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="PowerEfficiencyPercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The power efficiency of this Power Supply."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the power efficiency, measured in percentage, of the associated power supply."/>
+          <Annotation Term="Measures.Unit" String="%"/>
+        </Property>       
       </EntityType>
     </Schema>
 
