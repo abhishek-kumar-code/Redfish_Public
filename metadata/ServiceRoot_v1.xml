@@ -17,9 +17,6 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -335,9 +332,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the maximum number value of the $levels qualifier in expand operations."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum value of the $levels qualifier supported by the service and shall only be included if the value of the Levels property is true."/>
-          <Annotation Term="Validation.Minimum" Int="30"/>
-          <Annotation Term="Validation.Maximum" Int="86400"/>
-          <Annotation Term="Measures.Unit" String="s"/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="Validation.Maximum" Int="6"/>
         </Property>
       </ComplexType>
 
