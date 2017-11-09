@@ -10,19 +10,16 @@
     "IndicatorLED": "Off",
     "PowerState": "On",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
     "Location": {
-        "@odata.type": "#Resource.v1_3_0.Location",
         "Info": "DCTexas-Row10-Rack1-20U-Bay6"
     },
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/Blade6/Thermal"
     },
     "Links": {
-        "@odata.type": "#Chassis.v1_5_0.Links",
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },

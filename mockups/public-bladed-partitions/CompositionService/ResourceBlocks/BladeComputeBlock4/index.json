@@ -6,12 +6,10 @@
         "Compute"
     ],
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "UnavailableOffline",
         "Health": "OK"
     },
     "CompositionStatus": {
-        "@odata.type": "#ResourceBlock.v1_0_0.CompositionStatus",
         "Reserved": false,
         "CompositionState": "Unused"
     },
@@ -21,7 +19,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#ResourceBlock.v1_0_0.Links",
         "ComputerSystems": [],
         "Zones": [
             {

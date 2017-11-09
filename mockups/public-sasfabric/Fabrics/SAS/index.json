@@ -5,7 +5,6 @@
     "FabricType": "SAS",
     "Description": "A SAS Fabric with redundant switches connected to two initiators",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -19,11 +18,9 @@
         "@odata.id": "/redfish/v1/Fabrics/SAS/Switches"
     },
     "Links": {
-        "@odata.type": "#Fabric.v1_0_0.Links",
         "Oem": {}
     },
     "Actions": {
-        "@odata.type": "#Fabric.v1_0_0.Actions",
         "Oem": {}
     },
     "Oem": {},

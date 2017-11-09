@@ -5,11 +5,9 @@
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/Blade4/Thermal#/Temperatures/0",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "Blade Temp",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -31,12 +29,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Blade4/Thermal#/Temperatures/1",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "1",
             "Name": "Blade Intake Temp",
             "SensorNumber": 44,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
