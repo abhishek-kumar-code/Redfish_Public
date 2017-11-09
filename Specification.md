@@ -934,7 +934,7 @@ where
 * *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
 * *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
 
-While both formats are allowable, services should use the *MetadataUrl*#*ResourceType* format for the @odata.context property values as there are additional constraints required by the [OData-Protocol](#OData-Protocol) when partial or expanded results are returned that pose an additional burden on services.
+While both formats are allowable, services should use the *MetadataUrl*#*ResourceType* format for the "@odata.context" property values as there are additional constraints required by the [OData-Protocol](#OData-Protocol) when partial or expanded results are returned that pose an additional burden on services.
 
 ##### Resource identifier property
 
