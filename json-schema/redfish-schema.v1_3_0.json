@@ -52,6 +52,10 @@
         "units": {
             "type": "string",
             "description": "This attribute shall contain the units of measure used by the value of the property."
+        },
+        "parameters": {
+            "type": "object",
+            "description": "This term shall contain parameter definitions for a given action."
         }
     },
     "properties": {
@@ -84,6 +88,9 @@
         },
         "units": {
             "$ref": "#/definitions/units"
+        },
+        "parameters": {
+            "$ref": "#/definitions/parameters"
         }
     }
 }
