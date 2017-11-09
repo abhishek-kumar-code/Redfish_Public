@@ -2179,7 +2179,7 @@ The client can continue to get information about the status by directly querying
   should contain a representation of the Task resource in JSON.
 * GET requests to either the Task Monitor or the Task resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
-* Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP PUT, PATCH, POST, and DELETE methods.
+* Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP GET, PUT, PATCH, POST, and DELETE methods.
 
 ### Resource tree stability
 
