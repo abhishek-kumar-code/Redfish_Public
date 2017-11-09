@@ -3,7 +3,7 @@ DocTitle: Redfish Interoperability Profiles
 DocNumber: '0272'
 DocClass: Normative
 DocVersion: '1.0.0'
-modified: '2017-8-25'
+modified: '2017-11-17'
 status: released
 released: true
 copyright: '2017'
@@ -15,7 +15,7 @@ The Redfish Interoperability Profile specification was prepared by the Scalable 
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
-# Acknowledgments
+## Acknowledgments
 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett Packard Enterprise
@@ -31,7 +31,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 
 As Schema definitions for the Redfish Scalable Platforms Management API ("Redfish") are designed to provide significant flexibility, and allow conforming implementations on a wide variety of products, very few properties within the Schemas are required by the Redfish specification.  But consumers and software developers need a more rigidly defined set of required properties (features) in order to accomplish management tasks.  This set allows users to compare implementations, specify needs to vendors, and allows software to rely on the availability of data.  To provide that "common ground", a Redfish Interoperability Profile allows the definition of a set of schemas and property requirements, which meet the needs of a particular class of product or service.
 
-The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of ConditionalRequirements under which the requirement applies.
+The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of conditions under which the requirement applies.
 
 ## Normative references
 
@@ -56,22 +56,32 @@ The terms "clause", "subclause", "paragraph", and "annex" in this document are t
 
 The terms "normative" and "informative" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 3. In this document, clauses, subclauses, or annexes labeled "(informative)" do not contain normative content. Notes and examples are always informative elements.
 
+# Overview
 
+The Redfish Specification separates the definition of the protocol from the data model (schema), and in addition, allows each resource defined in the data model to be revised independently.  While this creates significant flexibility and extensibility, it can cause confusion when developers and end users attempt to answer the question "What version of Redfish does your product support?"  The answer is not a simple one, because fully describing a Redfish implementation would require listing each property supported in each schema implemented, as well as the protocol version and supported features.  That level of detail and version reporting would be extremely cumbersome to create or maintain, and difficult to use to compare implementations across products or vendors.  
+
+The Redfish Interoperability Profile concept was created to simplify that process, by providing a means to communicate the functionality provided with a single statement - that an implementation meets the requirements set forth in a Redfish Interoperability Profile.
+
+ 
 ## Design Tenets
 
 All profile entries (at the Profile, Resource, or Property level) are "additive".  That is, each requirement can only apply more rigid requirements which override less rigid requirements.
 
-The profile document is a JSON document designed to minimize the work necessary to define a profile, by defining default values that allow the majority of requirements to be stated with minimal effort.    
-
-The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing. 
-
 Profile requirements do not allow for exclusions of data.  Implementations are able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.  This include both standard properties and OEM extensions.
    
-## Profile Document Definition
+# Profile Tools
+
+A free, open source utility has been created by the SPMF to verify that a Redfish Service implementation conforms to the requirements included in a Redfish Interoperability Profile.  The Redfish Interop Validator is available for download from the DMTF's organization on Github at https://github.com/DMTF/Redfish-Interop-Validator
+
+
+# Profile Document Definition
 
 A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a JSON-schema form (RedfishInteroperabilityProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/profiles for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
 
-### Basic functions
+The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing.  Many of the properties defined within this structure have assumed default values that correspond with the most common use case, so that those properties can be ommited from the document for brevity.
+
+
+## Basic functions
 
 At the top level of the JSON document are the basic properties which describe the profile, including authorship and contact information, versioning, and other profiles to include in order to build upon previous work.
 
@@ -85,7 +95,7 @@ At the top level of the JSON document are the basic properties which describe th
 | OwningEntity | string | Name of the owning entity that defined this Redfish Interoperability Profile. |
 | RequiredProfiles | object | A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
 
-#### Required Profiles
+### Required Profiles
 
 The RequiredProfiles object contains properties (of type object) that are named to match the name of the profile to be included.  Each of these sub-objects contains the properties listed below.
 
@@ -116,23 +126,34 @@ The following is an example of the top-level properties in a Profile, with two R
 	}
 ~~~
 
-### Protocol requirements
+## Protocol requirements
 
 An object named 'Protocol' contains properties which describe Redfish protocol functionality that is not related to the supported schemas or properties.  Therefore, these functions cannot be validated by comparing retrieved JSON payloads.
 
 | property | type | description | 
 | --- | --- | --- |
 | MinVersion | string |  The minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'. |
-| DiscoveryRequired | boolean | Indicates that support of the Redfish SSDP Discovery protocol is required for this Profile. If this property is absent, the value shall be false. |
+| Discovery | string | Indicates support requirements for the Redfish SSDP Discovery protocol. If this property is absent, there is no requirement for SSDP. See [Requirement](#requirement) section below. |
+| HostInterface | string | Indicates support requirements for the Redfish Host Interface. If this property is absent, there is no requirement for a Host Interface. See [Requirement values](#requirement-values) section below.|
 
 ### Example 
 
 ~~~
 	"Protocol": {
 		"MinVersion": "1.2",
-		"DiscoveryRequired": true
+		"Discovery": "Mandatory",
+		"HostInterface": "Recommended"
 	}
 ~~~
+
+### Requirement values
+
+| value | description |
+| --- | --- |
+| Mandatory | This protocol feature is required for this Profile. |
+| Recommended | It is recommended, but not required, that this protocol feature be supported. |
+| None | This feature is not required by this Profile.  It is listed here for clarity. |
+
 
 ## Resource (Schema) requirements
 
@@ -352,7 +373,7 @@ To accomplish this, there are three Profile properties related to this function:
 | CompareValues | array | Values of the CompareProperty used to test this condition. |
 
 
-##### Example
+###### Example
 
 This example shows a CompareProperty condition applied to the 'IndicatorLED' property, which has a base 'Recommended' requirement, but becomes 'Mandatory' if the 'SystemType' property has a value of 'Physical' or 'Composed'.
 
@@ -467,4 +488,5 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 
 | version | date | changes |
 | --- | --- | --- |
+| v1.0 | 11-17-17 | Initial release. |
 | v0.9 | 5-14-17 | Work In Progress release. |
