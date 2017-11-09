@@ -63,20 +63,14 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of the sensor being represented."/>
         </Property>
 
-        <Property Name="SensorNumber" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The SensorNumber for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the SensorNumber information of this Sensor."/>
-        </Property>
-
-        <Property Name="SensorLocation" Type="Resource.v1_5_0.PartLocation">
+        <Property Name="SensorLocation" Type="Resource.v1_5_0.Location">
           <Annotation Term="OData.Description" String="The location information for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
         </Property>
 
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
 
-        <Property Name="PresentReading" Type="Edm.Decimal">
+        <Property Name="Reading" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The present value for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the present value of this Sensor at the time the information request occurred."/>
@@ -88,6 +82,12 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Setpoint for the equipment based on this sensor reading."/>
         </Property>
 
+        <Property Name="DeadBand" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The band of values around the SetPoint where the control system does not respond to the SetPoint."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the band of values around the SetPoint where the control system does not respond to the SetPoint."/>
+        </Property>
+        
         <Property Name="UpperThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UpperThresholdNonCritical for this Sensor."/>
@@ -147,7 +147,14 @@
           <Annotation Term="OData.Description" String="Estimated percent error of measured vs. actual values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the percent error +/- of the measured vs. actual values."/>
         </Property>
-
+        
+        <Property Name="SensingIntervalms" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The time interval between reading the physical sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall the time interval between reading the physical sensor."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        
         <Property Name="PhysicalContext" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The PhysicalContext for this Sensor."/>
@@ -183,22 +190,18 @@
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-        <Member Name="RMS Voltage">
+        <Member Name="ACVoltage">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-        <Member Name="DC Voltage">
+        <Member Name="DCVoltage">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-        <Member Name="RMS Current">
+        <Member Name="Amperage">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>        
-        <Member Name="DC Current">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
-        </Member>
         <Member Name="Frequency">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -207,19 +210,27 @@
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-        <Member Name="Liquid Level">
+        <Member Name="LiquidLevel">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-        <Member Name="RPM Speed">
+        <Member Name="Rotational">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-        <Member Name="Air Flow">
+        <Member Name="AirFlow">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-        <Member Name="Liquid Flow">
+        <Member Name="LiquidFlow">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Barometric">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+           <Member Name="Altitude">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
