@@ -603,7 +603,7 @@ OData annotations ([resource identifiers](#resource-identifier-property), [type]
 
 ##### Replace (PUT)<a id="replace-put"></a>
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service, may be added by the Service to the resulting resource. When replace operation is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service, may be added by the Service to the resulting resource. When the replace operation is successful, the response may contain a representation of the resource after the replacement was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
 
 * Services may support the PUT method to replace a resource in whole.  
 * If a service does not implement this method, or if the client specifies a PUT request against a Resource Collection, a status code [405](#status-405) shall be returned.
