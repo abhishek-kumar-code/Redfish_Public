@@ -911,17 +911,13 @@ See also [Resource Collection responses](#resource-collection-responses).
 
 Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
 
-The context URL for a resource is of one of the following two forms:
+The context URL for a resource should be of the following form:
 
  *MetadataUrl*#*ResourceType*  
- or  
- *MetadataUrl*#*ResourcePath*/$entity
-
+ 
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *ResourceType* = the fully qualified name of the unversioned resource type
-* *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
-* *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
+* *ResourceType* = the fully qualified name of the unversioned resource type.  For many Redfish implementations, this is just the namespace for the resource type concatonated with a period followed by the resource type again. 
 
 For example, the following context URL specifies that the result contains a single ComputerSystem resource:
 
@@ -931,6 +927,18 @@ For example, the following context URL specifies that the result contains a sing
     ...
 }
 ~~~
+
+The context URL for a resource may be of the following form:
+ 
+ *MetadataUrl*#*ResourcePath*/$entity
+
+where
+* *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
+* *ResourceType* = the fully qualified name of the unversioned resource type
+* *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
+* *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
+
+While both formats are allowable, services should use the *MetadataUrl*#*ResourceType* format for the "@odata.context" property values as there are additional constraints required by the [OData-Protocol](#OData-Protocol) when partial or expanded results are returned that pose an additional burden on services.
 
 ##### Resource identifier property
 
