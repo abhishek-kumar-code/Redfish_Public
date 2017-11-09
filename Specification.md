@@ -547,13 +547,16 @@ Clients can add query parameters to request additional features from the service
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
 
-####### Query parameters for Paging
+***Query parameters for Paging***
+
 When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
 
-####### Query parameters for Expand
+***Query parameters for Expand***
+
 The $expand parameter indicates to the implementation that it should include a link as well as the contents of that link in the current response as if a GET had been performed and included inline with that link.  In CSDL terms, any Entries associated with an Entity or Collection of Entities through the use of NavigationProperty is capable of being expanded and thus included in the response body.  The $expand query parameter has a set of possible values which will determine which links (Navigation Properties) are to be expanded.
 
 The following table represents the Redfish allowable values that shall be supported for $expand if $expand is implemented:
+
 | value     | Description                                                                                                                                                     | Example                             |
 | ---       | ---                                                                                                                                                             | ---                                 |
 | * (asterisk)     | Indicates all links (Navigation Properties) shall be expanded if expand is supported. | `http://resourcecollection?$expand=*` |
