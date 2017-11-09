@@ -913,7 +913,7 @@ The context URL for a resource should be of the following form:
  
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *ResourceType* = the fully qualified name of the unversioned resource type.  For many Redfish implementations, this is just the name space for the resource type concatonated with a period followed by the resource type again. 
+* *ResourceType* = the fully qualified name of the unversioned resource type.  For many Redfish implementations, this is just the namespace for the resource type concatonated with a period followed by the resource type again. 
 
 For example, the following context URL specifies that the result contains a single ComputerSystem resource:
 
