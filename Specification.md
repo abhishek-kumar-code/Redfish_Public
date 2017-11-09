@@ -532,7 +532,7 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query parameters
 
-Clients can add query parameters to request additional features from the service.  These features include pagination, expansion and filtering and are explained below.
+Clients can add query parameters to request additional features from the service.  These features include pagination and expansion, and are explained below.
 
 | Attribute | Description                                                                                                                                                     | Example                             |
 | ---       | ---                                                                                                                                                             | ---                                 |
@@ -541,7 +541,7 @@ Clients can add query parameters to request additional features from the service
 | $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
 
 * Services should support the $top and $skip query parameters.
-* Service may support the $expand and $filter query parameters. 
+* Service may support the $expand query parameters. 
 * When the service supports query parameters, the service shall include the ProtocolFeatureSupport object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
