@@ -54,11 +54,9 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Linda Wu - Super Micro Computer, Inc.
 
 ## Abstract
-The Redfish Scalable Platforms Management API ("Redfish") is a standard that uses RESTful interface semantics to access data defined in model format to perform systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.  
+The Redfish Scalable Platforms Management API ("Redfish") is a standard that uses RESTful interface semantics to access data defined in model format to perform systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
-While the initial Redfish scope was targeted at servers, expansion of scope has grown both in the DMTF and through DMTF alliance partners to cover not only most of data center IT equipment but other solutions as well.  It also covers both in-band and out-of-band access methods.
-
-Combined with the Redfish and other industry standard Schema, along with work with industry alliance partners, the scope of the standard provides an ever increasing level of data center control.
+While the initial Redfish scope was targeted at servers, expansion of scope has grown both in the DMTF and through DMTF alliance partners to cover most data center IT equipment and other solutions as well.  It also covers both in-band and out-of-band access methods.
 
 Educational material is also increasing, both from the DMTF and other organizations that utilize Redfish as part of their industry standard or solution.
 
