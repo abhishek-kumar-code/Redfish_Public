@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Systems",
     "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
     "Name": "Computer System Collection",
-    "Members@odata.count": 6,
+    "Members@odata.count": 9,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Systems/1"
@@ -20,6 +20,15 @@
         },
         {
             "@odata.id": "/redfish/v1/Systems/5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/Node3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/Node4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/Cluster"
         },
         {
             "@odata.id": "/redfish/v1/Systems/ComposedSystem"

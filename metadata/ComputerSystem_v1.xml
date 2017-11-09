@@ -79,6 +79,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/BootOptionCollection_v1.xml">
     <edmx:Include Namespace="BootOptionCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
+    <edmx:Include Namespace="Redundancy"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -122,6 +125,54 @@
         <Annotation Term="OData.Description" String="This action is used to set the Boot Order to the default settings."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a set the BootOrder to the default values."/>
       </Action>
+
+      <EnumType Name="BootSource">
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="Boot from the normal boot device."/>
+        </Member>
+        <Member Name="Pxe">
+          <Annotation Term="OData.Description" String="Boot from the Pre-Boot EXecution (PXE) environment."/>
+        </Member>
+        <Member Name="Floppy">
+          <Annotation Term="OData.Description" String="Boot from the floppy disk drive."/>
+        </Member>
+        <Member Name="Cd">
+          <Annotation Term="OData.Description" String="Boot from the CD/DVD disc."/>
+        </Member>
+        <Member Name="Usb">
+          <Annotation Term="OData.Description" String="Boot from a USB device as specified by the system BIOS."/>
+        </Member>
+        <Member Name="Hdd">
+          <Annotation Term="OData.Description" String="Boot from a hard drive."/>
+        </Member>
+        <Member Name="BiosSetup">
+          <Annotation Term="OData.Description" String="Boot to the BIOS Setup Utility."/>
+        </Member>
+        <Member Name="Utilities">
+          <Annotation Term="OData.Description" String="Boot the manufacturer's Utilities program(s)."/>
+        </Member>
+        <Member Name="Diags">
+          <Annotation Term="OData.Description" String="Boot the manufacturer's Diagnostics program."/>
+        </Member>
+        <Member Name="UefiShell">
+          <Annotation Term="OData.Description" String="Boot to the UEFI Shell."/>
+        </Member>
+        <Member Name="UefiTarget">
+          <Annotation Term="OData.Description" String="Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property."/>
+        </Member>
+        <Member Name="SDCard">
+          <Annotation Term="OData.Description" String="Boot from an SD Card."/>
+        </Member>
+        <Member Name="UefiHttp">
+          <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location."/>
+        </Member>
+        <Member Name="RemoteDrive">
+          <Annotation Term="OData.Description" String="Boot from a remote drive (e.g. iSCSI)."/>
+        </Member>
+        <Member Name="UefiBootNext">
+          <Annotation Term="OData.Description" String="Boot to the UEFI Device specified in the BootNext property."/>
+        </Member>
+      </EnumType>
 
     </Schema>
 
@@ -346,7 +397,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object contains the boot information for the current resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe boot information for a system."/>
-        <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.v1_0_0.BootSource">
+        <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions. UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride. UefiBootNext indicates to boot from the UEFI BootOptionReference found in BootNext."/>
@@ -364,6 +415,7 @@
       </ComplexType>
 
       <EnumType Name="BootSource">
+        <Annotation Term="Redfish.Deprecated" String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time."/>
         <Member Name="None">
           <Annotation Term="OData.Description" String="Boot from the normal boot device."/>
         </Member>
@@ -798,7 +850,14 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_5_0">
-      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_1.ComputerSystem"/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_2.ComputerSystem">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of Redundancy entities that each name a set of computer systems that provide redundancy for this ComputerSystem."/>
+          <Annotation Term="OData.LongDescription" String="If present, each entry shall reference a redundancy entity that specifies a kind and level of redundancy and a collection (RedundancySet) of other ComputerSystems that provide the specified redundancy to this ComputerSystem."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+      </EntityType>
 
       <ComplexType Name="Boot" BaseType="ComputerSystem.v1_1_0.Boot">
         <NavigationProperty Name="BootOptions" Type="BootOptionCollection.BootOptionCollection" ContainsTarget="true" Nullable="false">
@@ -826,6 +885,21 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the number of logical central processors in the system."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
+      </ComplexType>
+
+      <ComplexType Name="Links" BaseType="ComputerSystem.v1_4_0.Links">
+        <NavigationProperty Name="ConsumingComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an array of references to ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="SupplyingComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to ComputerSystems that contribute, in whole or in part, to the implementation of this ComputerSystem."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an array of references to ComputerSystems that contribute, in whole or in part, to the implementation of this ComputerSystem."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </ComplexType>
     </Schema>
 
