@@ -81,7 +81,7 @@
           <Annotation Term="OData.Description" String="The UEFI device path used to access this UEFI Boot Option."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UEFI device path used to identify and locate the specific device for this UEFI Boot Option, as defined by the UEFI Specification."/>
         </Property>
-        <Property Name="Alias" Type="ComputerSystem.v1_0_0.BootSource">
+        <Property Name="Alias" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The alias of this Boot Source when described in the BootSourceOverrideTarget property in the Computersystem resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain an alias to the Boot Source that describes this Boot Option in the BootSourceOverrideTarget property in the ComputerSystem resource. The possible values of this property are specified through the Redfish.AllowableValues annotation on BootSourceOverrideTarget in the ComputerSystem resource."/>
