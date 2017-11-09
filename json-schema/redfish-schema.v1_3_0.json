@@ -87,7 +87,7 @@
         },
         "parameters": {
             "type": "object",
-            "description": "This term shall contain parameter definitions for a given action."
+            "description": "This term shall contain parameter definitions for a given action.",
             "additionalProperties": { "$ref": "#" },
             "default": {}
         }
