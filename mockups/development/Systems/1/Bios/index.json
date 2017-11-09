@@ -12,7 +12,7 @@
     "ETag": "someetag",
     "Messages": [
       {
-        "MessageId": "Base.1.0.SettingsFailed",
+        "MessageId": "Base.1.0.PropertyNotWritable",
         "RelatedProperties": [
           "#/Attributes/ProcTurboMode"
         ]

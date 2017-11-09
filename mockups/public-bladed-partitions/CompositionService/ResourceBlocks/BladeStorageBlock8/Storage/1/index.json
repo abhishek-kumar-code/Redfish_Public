@@ -4,7 +4,6 @@
     "Name": "Storage Blade",
     "Description": "Integrated Storage Blade with multiple drives; Direct Connect to Blades as JBOD",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK",
         "HealthRollup": "OK"
@@ -18,7 +17,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#Storage.v1_0_0.Links",
         "Enclosures": [
             {
                 "@odata.id": "/redfish/v1/Chassis/Blade8"

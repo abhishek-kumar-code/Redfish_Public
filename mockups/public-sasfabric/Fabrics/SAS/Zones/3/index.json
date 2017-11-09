@@ -4,12 +4,10 @@
     "Name": "SAS Zone 3",
     "Description": "SAS Zone 3",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Links": {
-        "@odata.type": "#Zone.v1_1_0.Links",
         "Endpoints": [
             {
                 "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"

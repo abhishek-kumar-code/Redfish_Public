@@ -12,12 +12,10 @@
     "AssetTag": "Writable",
     "PowerState": "On",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
     "Location": {
-        "@odata.type": "#Resource.v1_3_0.Location",
         "Info": "DCTexas-Row10-Rack1-20U"
     },
     "Power": {
@@ -27,7 +25,6 @@
         "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal"
     },
     "Links": {
-        "@odata.type": "#Chassis.v1_5_0.Links",
         "Contains": [
             {
                 "@odata.id": "/redfish/v1/Chassis/Blade1"
@@ -85,7 +82,6 @@
                     "PartNumber": "AH341-60401",
                     "SerialNumber": "MYJ2190789",
                     "Status": {
-                        "@odata.type": "#Resource.Status",
                         "Health": "OK",
                         "State": "Enabled"
                     }
@@ -96,7 +92,6 @@
                     "PartNumber": "AH341-60401",
                     "SerialNumber": "MYJ219079Y",
                     "Status": {
-                        "@odata.type": "#Resource.Status",
                         "Health": "OK",
                         "State": "Enabled"
                     }

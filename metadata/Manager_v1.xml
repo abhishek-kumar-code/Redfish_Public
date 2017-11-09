@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Manager  v1.3.2-->
+<!--# Redfish Schema:  Manager  v1.3.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -23,7 +23,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_2_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml">
     <edmx:Include Namespace="ComputerSystem"/>
@@ -401,7 +400,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_0">
       <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager">
-        <Property Name="PowerState" Type="Resource.v1_2_0.PowerState">
+        <Property Name="PowerState" Type="Resource.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the Manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the Manager."/>
@@ -424,6 +423,11 @@
       <EntityType Name="Manager" BaseType="Manager.v1_2_2.Manager"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_4">
+      <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_2_3.Manager"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_0">
       <EntityType Name="Manager" BaseType="Manager.v1_2_1.Manager">
         <NavigationProperty Name="HostInterfaces" Type="HostInterfaceCollection.HostInterfaceCollection" Nullable="false">
@@ -443,6 +447,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_2">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_3_1.Manager"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_3">
+      <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_3_2.Manager"/>
     </Schema>
 
   </edmx:DataServices>

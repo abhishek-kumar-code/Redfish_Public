@@ -16,9 +16,7 @@
     "DepthMm": 711,
     "WeightKg": 15.31,
     "Location": {
-        "@odata.type": "#Resource.v1_3_0.Location",
         "PostalAddress": {
-            "@odata.type": "#Resource.v1_3_0.PostalAddress",
             "Country": "US",
             "Territory": "OR",
             "City": "Portland",
@@ -28,7 +26,6 @@
             "PostalCode": "97204"
         },
         "Placement": {
-            "@odata.type": "#Resource.v1_3_0.Placement",
             "Row": "North",
             "Rack": "WEB43",
             "RackOffsetUnits": "EIA_310",
@@ -36,7 +33,6 @@
         }
     },
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -47,7 +43,6 @@
         "@odata.id": "/redfish/v1/Chassis/1U/Power"
     },
     "Links": {
-        "@odata.type": "#Chassis.v1_5_0.Links",
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/437XR1138R2"

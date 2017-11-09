@@ -3,7 +3,7 @@
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-#SPMF Github User Guide
+# SPMF Github User Guide
 
 This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the SPMF's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself. **
 
@@ -139,11 +139,31 @@ Issues follow the following general flow, using labels to indicate their current
 There are a number of Forum-defined custom Github labels.  See the "Label Usage" section below for an exhaustive list.
 
 
+## Release Branch Management Process
+
+### Release Branch Names
+
+Branches are created at major milestones, such as publishing a new version of the specification.  In order for work to continue in master while the new collateral is under review, branches are created so patches can be made if a mistake is found.  This also allows the group to maintain a release branch for errata publications.  The following branch names are used for the different publications produced by the group:
+- DSP0266-X.Y: Redfish Specification errata patches for a given major (X) and minor (Y) version of the specification
+- DSP8010-XXXX.Y: Redfish Schema bundle patches for a given year (XXXX) and release number (Y) of the bundle
+
+### Patching Process
+
+Pull requests are used to patch the individual branches, but since the fix must go back into master, a certain flow needs to be followed so that we don't have to duplicate changes, and avoid resynching a given branch with master.  The following steps are taken to accomplish this:
+- Checkout the branch that requires a fix (such as DSP0266-1.2): git checkout -b DSP0266-1.2 --track origin/<branch_name>
+- Checkout the branch in which you will do your patch work: git checkout -b My-Patches
+- Make your changes and commit the files: git add file; git commit -m "Fix!"
+- Push your branch: git push origin My-Patches
+- Make a pull request against the patch branch (such as DSP0266-1.2)
+- When the group reviews and merges the changes, do not delete your branch
+- Once your changes are merged, open another pull request against master, and follow the standard process for making changes into master
+
+
 ## How to Submit New Proposals or Schemas
 
 The Forum welcomes and encourages submissions of new schema(s), clarifications or additions to the Specification, mockups, tools and other relevant documentation to further the Forum's goals.  
 
-###Technology submission vs. Member or individual submission
+### Technology submission vs. Member or individual submission
 
 An DMTF Technology Submission (through the Feedback Portal) is needed when technology has been created by multiple members or non-member companies.  Proposals or submissions made solely by a single Member or individual can be made using a Branch and Pull Request directly in the repository.  
 
@@ -186,7 +206,9 @@ The following is a checklist for schema or specification release:
 
 A set of batch/script files are located in the root and release folder which will execute a series of tools to convert the Markdown documents to HTML.  Note that for Windows users, the node.js javascript environment used by these scripts may have issues locating the proper toolchain components of Visual Studio (C/C++).  This is a well-known issue, and following the steps documented here: https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245 can resolve that issue.  
 
-Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://github.com/cehoffman/dmtf-md2html
+Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://cehoffman.github.io/dmtf-md2html/
+
+Source code is kept in this repository: https://github.com/cehoffman/dmtf-md2html
 
 ##github.io
 

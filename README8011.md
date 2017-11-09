@@ -2,8 +2,8 @@
 DocTitle: Redfish Standard Registries
 DocNumber: '8011'
 DocClass: Normative
-DocVersion: '2017.1'
-modified: '2017-05-19'
+DocVersion: '2017.2'
+modified: '2017-09-22'
 status: published
 released: True
 copyright: '2015-2017'
@@ -24,6 +24,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| Base | 1.2.0 | 2017-08-18 | Added 'ResourceNotFound', 'ResourceExhaustion', 'StringValueTooLong' and 'EmptyJSON' messages. Clarified description for 'PropertyValueFormatError'.  Corrected parameters for 'ResourceAlreadyExists'. |
+| Redfish Privilege Registry | 1.0.2 | 2017-08-18 | Errata release.  Corrected 'ConfigureUsers' plurality privilege throughout. |
 | Base | 1.1.0 | 2017-05-19 | Added 'ResourceInStandby' message. |
 | Redfish Privilege Registry | 1.0.1 | 2017-05-19 | Initial release. |
 | Base | 1.0.0 | 2015-11-25 | Initial release. |
