@@ -568,11 +568,11 @@ Examples of the use of expand might be:
 * GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
 * GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
 
-When performing $expand, Services may omit some of the properties of the referenced resource. 
+When performing $expand, Services may omit some of the properties of the referenced resource.
 
-When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response and thus the use of the service of the [Next Link Property and partial results](#next-link-property-and-partial-results).
+When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response.  If a service is unable to return the payload due to its size, it shall return HTTP Status code [507](#status-507).
 
-Any other supported syntax for $expand is outside the scope of this specification. 
+Any other supported syntax for $expand is outside the scope of this specification.
 
 ###### Retrieving Resource Collections
 
@@ -810,6 +810,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
 | <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                  |
+| <a id="status-507"></a>507 Insufficient Storage   | The server is unable to build the response for the client due to the size of the response.                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 #### Metadata responses
 Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
