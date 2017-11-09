@@ -708,6 +708,28 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <Property Name="PowerInputWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The measured input power of this Power Supply."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the measured input power, in Watts, of the associated power supply."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="PowerOutputWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The measured output power of this Power Supply."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the measured output power, in Watts, of the associated power supply."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="EfficiencyPercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The measured efficiency of this Power Supply as a percentage."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the measured power efficiency, as a percentage, of the associated power supply."/>
+          <Annotation Term="Measures.Unit" String="%"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
+        </Property>
       </EntityType>
     </Schema>
 
