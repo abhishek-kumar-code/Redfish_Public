@@ -149,21 +149,20 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_1_0">
       <Annotation Term="OData.Description" String="This version was created to add LogPurpose and EntryType properties."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_4.LogService">
-
         <Property Name="LogEntryType" Type="LogService.v1_1_0.LogEntryTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The format of the Entries of this log."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the EntryType of all LogEntry resources contained in the Entries collection.  If a single EntryType for all LogEntry resources cannot be determined or guaranteed by the Service, the value of this property shall be 'Multiple'."/>
         </Property>
+      </EntityType>
 
-        <EnumType Name="LogEntryTypes">
-          <Member Name="Event"/>
-          <Member Name="SEL"/>
-	  	  <Member Name="Multiple"/>
-          <Member Name="OEM"/>
-        </EnumType>
-	  </EntityType>
+      <EnumType Name="LogEntryTypes">
+        <Member Name="Event"/>
+        <Member Name="SEL"/>
+        <Member Name="Multiple"/>
+        <Member Name="OEM"/>
+      </EnumType>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>
