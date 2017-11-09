@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  LogEntry  v1.2.1-->
+<!--# Redfish Schema:  LogEntry  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -319,6 +319,9 @@
             <Record>
               <PropertyValue Property="Member" String="D3 Power State"/>
             </Record>
+            <Record>
+              <PropertyValue Property="Member" String="OEM"/>
+            </Record>
           </Collection>
         </Annotation>
       </TypeDefinition>
@@ -455,6 +458,9 @@
             <Record>
               <PropertyValue Property="Member" String="FRUState"/>
             </Record>
+            <Record>
+              <PropertyValue Property="Member" String="OEM"/>
+            </Record>
           </Collection>
         </Annotation>
       </TypeDefinition>
@@ -532,10 +538,26 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
     </Schema>
-
+    
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_0.LogEntry"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_3_0">
+      <Annotation Term="OData.Description" String="This version was created to add OEM enumerations for legacy IPMI log implementations."/>
+      <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_1.LogEntry">
+        <Property Name="OemLogEntryCode" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="If the LogEntryCode type is OEM, this will contain the OEM-specific entry code."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OEM specific Log Entry Code type of the Entry.  This property shall only be present if the value of EntryType is SEL and the value of LogEntryCode is OEM."/>
+        </Property>
+        <Property Name="OemSensorType" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="If the Sensor Type is OEM, this will contain the OEM-specific sensor type."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OEM specific sensor type of the Entry.  This property shall only be used if the value of EntryType is SEL and the value of SensorType is OEM."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>

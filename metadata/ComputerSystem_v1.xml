@@ -202,8 +202,8 @@
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The model number for this system."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about how the manufacturer references this system."/>
+          <Annotation Term="OData.Description" String="The product name for this system, without the manufacturer name."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about how the manufacturer references this system. This is typically the product name, without the manufacturer name."/>
         </Property>
         <Property Name="SKU" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -539,7 +539,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_7">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_6.ComputerSystem"/>
     </Schema>
 
@@ -669,7 +669,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_5">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_4.ComputerSystem"/>
     </Schema>
 
@@ -757,7 +757,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_3.ComputerSystem"/>
     </Schema>
 
@@ -813,7 +813,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_3">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_2.ComputerSystem"/>
     </Schema>
 
@@ -845,7 +845,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_2">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType and to fix the description of ProcessorSummary Count."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_1.ComputerSystem"/>
     </Schema>
 
