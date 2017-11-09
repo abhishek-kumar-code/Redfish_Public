@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Manager  v1.3.2-->
+<!--# Redfish Schema:  Manager  v1.3.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -82,30 +82,36 @@
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
-          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the type of reset to be performed.  The service may accept a request without the parameter and perform an implementation specific default reset."/>
         </Parameter>
         <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the manager."/>
       </Action>
 
       <Action Name="ForceFailover" IsBound="true">
         <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
         <Parameter Name="NewManager" Type="Manager.Manager" Nullable="false">
-          <Annotation Term="OData.Description" String="This Parameter specifies the Manager to fail over to.  In this case, a valid reference is supported."/>
+          <Annotation Term="OData.Description" String="This parameter specifies the Manager in which to fail over.  In this case, a valid reference is supported."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Manager in which to fail over."/>
+          <Annotation Term="OData.IsURL"/>
         </Parameter>
       </Action>
 
       <Action Name="ModifyRedundancySet" IsBound="true">
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
+        <Annotation Term="OData.LongDescription" String="The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
         <Parameter Name="Add" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of URIs of the Managers to add to the redundancy set."/>
+          <Annotation Term="OData.IsURL"/>
         </Parameter>
         <Parameter Name="Remove" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of URIs of the Managers to remove from the redundancy set."/>
+          <Annotation Term="OData.IsURL"/>
         </Parameter>
       </Action>
 
@@ -372,6 +378,11 @@
       <EntityType Name="Manager" BaseType="Manager.v1_0_4.Manager"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_6">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_0_5.Manager"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_0">
       <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>
       <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
@@ -399,6 +410,11 @@
       <EntityType Name="Manager" BaseType="Manager.v1_1_2.Manager"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_4">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_1_3.Manager"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_0">
       <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager">
         <Property Name="PowerState" Type="Resource.v1_2_0.PowerState">
@@ -424,6 +440,11 @@
       <EntityType Name="Manager" BaseType="Manager.v1_2_2.Manager"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_4">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_2_3.Manager"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_0">
       <EntityType Name="Manager" BaseType="Manager.v1_2_1.Manager">
         <NavigationProperty Name="HostInterfaces" Type="HostInterfaceCollection.HostInterfaceCollection" Nullable="false">
@@ -443,6 +464,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_2">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_3_1.Manager"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_3">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_3_2.Manager"/>
     </Schema>
 
   </edmx:DataServices>
