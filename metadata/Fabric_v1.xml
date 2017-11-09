@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Fabric  v1.0.2-->
+<!--# Redfish Schema:  Fabric  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -28,7 +28,7 @@
     <edmx:Include Namespace="SwitchCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Protocol_v1.xml">
-    <edmx:Include Namespace="Protocol.v1_0_0"/>
+    <edmx:Include Namespace="Protocol"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -45,7 +45,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric.v1_0_0">
 
       <EntityType Name="Fabric" BaseType="Fabric.Fabric">
-        <Property Name="FabricType" Type="Protocol.v1_0_0.Protocol">
+        <Property Name="FabricType" Type="Protocol.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol being sent over this fabric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the type of fabric being represented by this simple fabric."/>
@@ -114,7 +114,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to move Protocol to its own CSDL file."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to FabricType to use the unversioned definition."/>
       <EntityType Name="Fabric" BaseType="Fabric.v1_0_2.Fabric"/>
     </Schema>
 

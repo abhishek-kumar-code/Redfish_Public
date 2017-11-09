@@ -23,7 +23,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
@@ -32,7 +31,7 @@
     <edmx:Include Namespace="Port"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Protocol_v1.xml">
-    <edmx:Include Namespace="Protocol.v1_0_0"/>
+    <edmx:Include Namespace="Protocol"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -52,7 +51,7 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Endpoint resource. It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a fabric endpoint for a Redfish implementation."/>
         <Property Name="Status" Type="Resource.Status"/>
-        <Property Name="EndpointProtocol" Type="Protocol.v1_0_0.Protocol">
+        <Property Name="EndpointProtocol" Type="Protocol.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol supported by this endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the protocol this endpoint uses to communicate with other endpoints on this fabric."/>
@@ -61,7 +60,7 @@
           <Annotation Term="OData.Description" String="All the entities connected to this endpoint."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain all the entities which this endpoint allows access to."/>
         </Property>
-        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)">
+        <Property Name="Identifiers" Type="Collection(Resource.Identifier)">
           <Annotation Term="OData.Description" String="Identifiers for this endpoint."/>
           <Annotation Term="OData.LongDescription" String="Identifiers for this endpoint shall be unique in the context of other endpoints that can reached over the connected network."/>
         </Property>
@@ -148,7 +147,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Class Code, Subclass code, and Programming Interface code of the PCIe device function."/>
           <Annotation Term="Validation.Pattern" String="^0[xX](([a-fA-F]|[0-9]){2}){3}$"/>
         </Property>
-        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)">
+        <Property Name="Identifiers" Type="Collection(Resource.Identifier)">
           <Annotation Term="OData.Description" String="Identifiers for the remote entity."/>
           <Annotation Term="OData.LongDescription" String="Identifiers for the remote entity shall be unique in the context of other resources that can reached over the connected network."/>
         </Property>
@@ -244,7 +243,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions."/>
+      <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions, and to change references to Identifier to be its abstract base type, and Protocol to use the unversioned definition.."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint"/>
     </Schema>
 
