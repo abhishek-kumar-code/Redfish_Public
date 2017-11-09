@@ -704,6 +704,8 @@
           <Annotation Term="OData.Description" String="The measured efficiency of this Power Supply as a percentage."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value of the measured power efficiency, as a percentage, of the associated power supply."/>
           <Annotation Term="Measures.Unit" String="%"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
       </EntityType>
     </Schema>
