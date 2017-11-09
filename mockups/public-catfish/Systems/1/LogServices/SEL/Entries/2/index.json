@@ -15,7 +15,6 @@
         "ArrayOfMessageArgs"
     ],
     "Links": {
-        "@odata.type": "#LogEntry.v1_0_0.Links",
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal"
         },

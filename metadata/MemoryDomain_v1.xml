@@ -28,7 +28,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain">
 
-      <EntityType Name="MemoryDomain" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="MemoryDomain" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition of a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent Memory Domains in a Redfish implementation."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>

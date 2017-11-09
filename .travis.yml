@@ -15,8 +15,9 @@ node_js:
 branches:
   only:
     - master
-    - /^TF-.*/
-    - /^TF_.*/
+<<<<<<< HEAD
+=======
+>>>>>>> master
 cache:
   bundler: true
   directories:

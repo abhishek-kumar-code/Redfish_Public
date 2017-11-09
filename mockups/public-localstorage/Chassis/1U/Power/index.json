@@ -5,7 +5,6 @@
     "PowerControl": [
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Power#/PowerControl/0",
-            "@odata.type": "#Power.v1_3_0.PowerControl",
             "MemberId": "0",
             "Name": "Server Power Control",
             "PowerConsumedWatts": 344,
@@ -14,14 +13,12 @@
             "PowerCapacityWatts": 800,
             "PowerAllocatedWatts": 800,
             "PowerMetrics": {
-                "@odata.type": "#Power.v1_0_0.PowerMetric",
                 "IntervalInMin": 30,
                 "MinConsumedWatts": 271,
                 "MaxConsumedWatts": 489,
                 "AverageConsumedWatts": 319
             },
             "PowerLimit": {
-                "@odata.type": "#Power.v1_0_0.PowerLimit",
                 "LimitInWatts": 500,
                 "LimitException": "LogEventOnly",
                 "CorrectionInMs": 50
@@ -35,7 +32,6 @@
                 }
             ],
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -45,12 +41,10 @@
     "Voltages": [
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Power#/Voltages/0",
-            "@odata.type": "#Power.v1_3_0.Voltage",
             "MemberId": "0",
             "Name": "VRM1 Voltage",
             "SensorNumber": 11,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -75,12 +69,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Power#/Voltages/1",
-            "@odata.type": "#Power.v1_3_0.Voltage",
             "MemberId": "1",
             "Name": "VRM2 Voltage",
             "SensorNumber": 12,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -105,11 +97,9 @@
     "PowerSupplies": [
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Power#/PowerSupplies/0",
-            "@odata.type": "#Power.v1_3_0.PowerSupply",
             "MemberId": "0",
             "Name": "Power Supply Bay",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "Warning"
             },
@@ -127,14 +117,12 @@
             "SparePartNumber": "0000001A3A",
             "InputRanges": [
                 {
-                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 100,
                     "MaximumVoltage": 120,
                     "OutputWattage": 800
                 },
                 {
-                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 200,
                     "MaximumVoltage": 240,

@@ -4,39 +4,32 @@
     "Name": "Manager Network Protocol",
     "Description": "Lists all Network Service Status supported by this platform",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "HostName": "encmgr2",
     "FQDN": "encmgr2.mydomain.com",
     "HTTPS": {
-        "@odata.type": "#ManagerNetworkProtocol.v1_0_0.Protocol",
         "ProtocolEnabled": true,
         "Port": 443
     },
     "IPMI": {
-        "@odata.type": "#ManagerNetworkProtocol.v1_0_0.Protocol",
         "ProtocolEnabled": true,
         "Port": 623
     },
     "SSH": {
-        "@odata.type": "#ManagerNetworkProtocol.v1_0_0.Protocol",
         "ProtocolEnabled": true,
         "Port": 22
     },
     "SNMP": {
-        "@odata.type": "#ManagerNetworkProtocol.v1_0_0.Protocol",
         "ProtocolEnabled": true,
         "Port": 161
     },
     "VirtualMedia": {
-        "@odata.type": "#ManagerNetworkProtocol.v1_0_0.Protocol",
         "ProtocolEnabled": true,
         "Port": 17988
     },
     "KVMIP": {
-        "@odata.type": "#ManagerNetworkProtocol.v1_0_0.Protocol",
         "ProtocolEnabled": true,
         "Port": 5288
     },

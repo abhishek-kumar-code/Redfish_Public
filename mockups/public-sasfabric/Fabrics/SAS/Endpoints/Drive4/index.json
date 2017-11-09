@@ -6,7 +6,6 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [],
@@ -14,7 +13,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#Endpoint.v1_0_0.Links",
         "MutuallyExclusiveEndpoints": [
             {
                 "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure2"

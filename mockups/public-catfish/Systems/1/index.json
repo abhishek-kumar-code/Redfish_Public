@@ -15,13 +15,11 @@
     "PowerState": "On",
     "BiosVersion": "X00.1.2.3.4(build-23)",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "IndicatorLED": "Off",
     "Boot": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled": "Once",
         "BootSourceOverrideMode": "UEFI",
         "UefiTargetBootSourceOverride": "uefiDevicePath",
@@ -40,7 +38,6 @@
         "@odata.id": "/redfish/v1/Systems/1/LogServices"
     },
     "Links": {
-        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "Chassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/1"
@@ -54,7 +51,6 @@
         "Oem": {}
     },
     "Actions": {
-        "@odata.type": "#ComputerSystem.v1_0_0.Actions",
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
             "ResetType@Redfish.AllowableValues": [
