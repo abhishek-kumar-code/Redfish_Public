@@ -698,10 +698,10 @@ OData-Version: 4.0
 }
 ~~~
 
-In cases where the processing of the Action may require extra time to complete, the service may respond with HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from service after processing an Action may return message with HTTP status code as follows:
-* Code [200](#status-200) indicating Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success and any additional relevant messages.
-* Code [204](#status-204) which also indicates success and is returned without a message body.
-* Or in the case of error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed. In the case of return of HTTP status code of 400 and above, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
+In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
+* HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
+* HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
+* In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
 
 ### Responses
 
