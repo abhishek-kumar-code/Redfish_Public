@@ -567,9 +567,8 @@ The following table represents the Redfish allowable values that shall be suppor
 Examples of the use of expand might be:
 * GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
 * GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
-* GET
 
-When performing $expand, Services may not include all of the properties of the referenced resource. 
+When performing $expand, Services may omit some of the properties of the referenced resource. 
 
 When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response and thus the use of the service of the [Next Link Property and partial results](#next-link-property-and-partial-results).
 
