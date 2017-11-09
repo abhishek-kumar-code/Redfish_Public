@@ -14,13 +14,11 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2#/Redundancy/0",
-            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "Redundancy",
             "Mode": "Sharing",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -35,7 +33,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#Switch.v1_0_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Switch2"
         },
@@ -50,7 +47,6 @@
         "Oem": {}
     },
     "Actions": {
-        "@odata.type": "#Switch.v1_0_0.Actions",
         "#Switch.Reset": {
             "target": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Actions/Switch.Reset",
             "ResetType@Redfish.AllowableValues": [

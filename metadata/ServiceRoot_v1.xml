@@ -308,6 +308,11 @@
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the DCIMPower schema."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+	  <Property Name="Product" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The product associated with this Redfish service."/>
+            <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the product represented by this Redfish service."/>
+          </Property>
       </EntityType>
 
     </Schema>

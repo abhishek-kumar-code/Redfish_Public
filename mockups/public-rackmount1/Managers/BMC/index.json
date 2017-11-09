@@ -10,13 +10,11 @@
     "DateTime": "2015-03-13T04:14:33+06:00",
     "DateTimeLocalOffset": "+06:00",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "PowerState": "On",
     "GraphicalConsole": {
-        "@odata.type": "#Manager.v1_0_0.GraphicalConsole",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 2,
         "ConnectTypesSupported": [
@@ -24,7 +22,6 @@
         ]
     },
     "SerialConsole": {
-        "@odata.type": "#Manager.v1_0_0.SerialConsole",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 1,
         "ConnectTypesSupported": [
@@ -34,7 +31,6 @@
         ]
     },
     "CommandShell": {
-        "@odata.type": "#Manager.v1_0_0.CommandShell",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 4,
         "ConnectTypesSupported": [
@@ -59,7 +55,6 @@
         "@odata.id": "/redfish/v1/Managers/BMC/VirtualMedia"
     },
     "Links": {
-        "@odata.type": "#Manager.v1_1_0.Links",
         "ManagerForServers": [
             {
                 "@odata.id": "/redfish/v1/Systems/437XR1138R2"
@@ -76,7 +71,6 @@
         "Oem": {}
     },
     "Actions": {
-        "@odata.type": "#Manager.v1_0_0.Actions",
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/BMC/Actions/Manager.Reset",
             "ResetType@Redfish.AllowableValues": [

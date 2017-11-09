@@ -17,6 +17,7 @@ branches:
     - master
     - /^TF-.*/
     - /^TF_.*/
+    - /^DSP*/
 cache:
   bundler: true
   directories:

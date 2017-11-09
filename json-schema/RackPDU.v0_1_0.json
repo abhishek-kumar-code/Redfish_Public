@@ -1,0 +1,660 @@
+{
+    "$ref": "#/definitions/RackPDU",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AcInput": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/AcInputActions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "MemberId": {
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "RealPower": {
+                    "description": "The RealPower for this AcInput.",
+                    "longDescription": "The value of this property shall represent the RealPower information of this AcInput.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "RmsUnderOverVoltage": {
+                    "description": "The RmsUnderOverVoltage for this AcInput.",
+                    "longDescription": "The value of this property shall represent the RmsUnderOverVoltage information of this AcInput.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Sensors": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SensorCollection.json#/definitions/SensorCollection",
+                    "description": "Contains the members of this collection of sensors.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "AcInputActions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/AcInputOemActions"
+                }
+            },
+            "type": "object"
+        },
+        "AcInputOemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions"
+                }
+            },
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "Outlets": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/OutletsActions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Command": {
+                    "description": "The OutletControlOutletCommand for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletControlOutletCommand information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ControlBank": {
+                    "description": "The OutletControlOutletBank for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletControlOutletBank information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Load": {
+                    "description": "The OutletStatusLoad for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletStatusLoad information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MemberId": {
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The OutletStatusOutletName for Outlet.",
+                    "longDescription": "This property shall indicate the OutletStatusOutletName information as provided by the manufacturer of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Number": {
+                    "description": "The StatusOutletNumber for Outlet.",
+                    "longDescription": "The value of this property shall represent the StatusOutletNumber information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Phase": {
+                    "description": "The OutletStatusOutletPhase for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletStatusOutletPhase information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PowerOffTime": {
+                    "description": "The OutletConfigPowerOffTime for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletConfigPowerOffTime information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PowerOnTime": {
+                    "description": "The OutletConfigPowerOnTime for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletConfigPowerOnTime information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "RebootDuration": {
+                    "description": "The OutletConfigRebootDuration for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletConfigRebootDuration information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "State": {
+                    "description": "The OutletStatusOutletState for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletStatusOutletState information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "StatusBank": {
+                    "description": "The OutletStatusOutletBank for Outlet.",
+                    "longDescription": "The value of this property shall represent the OutletStatusOutletBank information of Outlet.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "OutletsActions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OutletsOemActions"
+                }
+            },
+            "type": "object"
+        },
+        "OutletsOemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "RackPDU": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the RackPDU Metrics.  It represents the properties for RackPDU Power Consumption and Power Limiting.",
+            "longDescription": "This resource shall be used to represent a power metrics resource for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "AcInput": {
+                    "description": "This is the definition for AcInput.",
+                    "items": {
+                        "$ref": "#/definitions/AcInput"
+                    },
+                    "longDescription": "These properties shall be the definition for AcInput for a Redfish implementation.",
+                    "type": "array"
+                },
+                "AcInput@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "AssetTag": {
+                    "description": "The actual Asset Tag of RackPDU.",
+                    "longDescription": "This property shall indicate the actual Asset Tag of RackPDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BankNumber": {
+                    "description": "The actual Bank Number of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Bank Number of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "BreakerRating": {
+                    "description": "The actual Breaker Rating of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Breaker Rating of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DateOfManufacture": {
+                    "description": "The date of manufacture of RackPDU.",
+                    "format": "date-time",
+                    "longDescription": "This property shall indicate the actual date of manufacture of RackPDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "FirmwareRevision": {
+                    "description": "The actual Firmware Revision of RackPDU.",
+                    "longDescription": "This property shall indicate the actual Firmware Revision of RackPDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HardwareRevision": {
+                    "description": "The actual Hardware Revision of RackPDU.",
+                    "longDescription": "This property shall indicate the actual Hardware Revision of PDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LineToLineVoltage": {
+                    "description": "The actual Line Voltage of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Line Voltage of PDU.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "V"
+                },
+                "Load": {
+                    "description": "The actual Load of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Load of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "LoadState": {
+                    "description": "The actual Load State of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Load State of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Manufacturer": {
+                    "description": "The actual Manufacturer of RackPDU.",
+                    "longDescription": "This property shall indicate the actual Manufacturer of RackPDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MaxPhaseLoad": {
+                    "description": "The actual Max Phase Load of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual MaxPhaseLoad of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "W"
+                },
+                "Model": {
+                    "description": "The actual Model Number of PDU.",
+                    "longDescription": "This property shall indicate the actual Model Number of PDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "NearOverloadThreshold": {
+                    "description": "The actual Near Overload Threshold of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Near Overload Threshold of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "W"
+                },
+                "NumOutlets": {
+                    "description": "The actual maximum number of Outlets of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual maximum number of Outlets of RackPDU.",
+                    "minimum": 1,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "NumPhases": {
+                    "description": "The actual maximum number of Phases of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual maximum number of Phases of RackPDU.",
+                    "minimum": 1,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Orientation": {
+                    "description": "The actual Orientation of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Orientation of PDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Outlets": {
+                    "description": "This is the definition for Outlets.",
+                    "items": {
+                        "$ref": "#/definitions/Outlets"
+                    },
+                    "longDescription": "These properties shall be the definition for Outlets for a Redfish implementation.",
+                    "type": "array"
+                },
+                "Outlets@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "OverloadThreshold": {
+                    "description": "The actualOverload Threshold of RackPDU.",
+                    "longDescription": "The value of this property shall represent he actual Overload Threshold of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "W"
+                },
+                "PartNumber": {
+                    "description": "The actual Part Number of RackPDU.",
+                    "longDescription": "This property shall indicate the actual Part Number of RackPDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PhaseNumber": {
+                    "description": "The actual Phase Number of RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual Phase Number of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PhysicalLocation": {
+                    "description": "The actual Physical Location of RackPDU.",
+                    "longDescription": "This property shall indicate the actual Physical Location of RackPDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Rating": {
+                    "description": "The actual maximum Rating of this RackPDU.",
+                    "longDescription": "The value of this property shall represent the actual maximum percentage Rating of RackPDU.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Sensors": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SensorCollection.json#/definitions/SensorCollection",
+                    "description": "Contains the members of this collection of sensors.",
+                    "readonly": true
+                },
+                "SerialNumber": {
+                    "description": "The actual Serial Number of RackPDU.",
+                    "longDescription": "This property shall indicate the actual Serial Number of RackPDU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "title": "RackPDU.v0_1_0.RackPDU"
+}

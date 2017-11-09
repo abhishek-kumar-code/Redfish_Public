@@ -476,7 +476,7 @@
                 "LowerThresholdFatal": 10,
                 "MinReadingRange": 0,
                 "MaxReadingRange": 20,
-                "PhysicalContext": "AC Output",
+                "PhysicalContext                        "PhysicalContext": "AC Input 1",": "AC Output",
                 "Oem": {}
             },
             {

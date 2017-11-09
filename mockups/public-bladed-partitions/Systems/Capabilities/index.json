@@ -7,7 +7,6 @@
     "Name@Redfish.SetOnlyOnCreate": true,
     "Links@Redfish.RequiredOnCreate": true,
     "Links": {
-        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "ResourceBlocks@Redfish.RequiredOnCreate": true,
         "ResourceBlocks@Redfish.UpdatableAfterCreate": true
     },

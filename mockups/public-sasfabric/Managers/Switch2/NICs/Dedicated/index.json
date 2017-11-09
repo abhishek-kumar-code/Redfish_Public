@@ -4,7 +4,6 @@
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -19,13 +18,11 @@
     "FQDN": "switch2-manage.dmtf.org",
     "MaxIPv6StaticAddresses": 1,
     "VLAN": {
-        "@odata.type": "#VLanNetworkInterface.v1_0_0.VLAN",
         "VLANEnable": true,
         "VLANId": 101
     },
     "IPv4Addresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv4Address",
             "Address": "192.168.0.11",
             "SubnetMask": "255.255.252.0",
             "AddressOrigin": "DHCP",
@@ -35,7 +32,6 @@
     ],
     "IPv6AddressPolicyTable": [
         {
-            "@odata.type": "#EthernetInterface.v1_0_0.IPv6AddressPolicyEntry",
             "Prefix": "::1/128",
             "Precedence": 50,
             "Label": 0
@@ -43,7 +39,6 @@
     ],
     "IPv6StaticAddresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv6StaticAddress",
             "Address": "fe80::1fc1:deff:fe6f:1e24",
             "PrefixLength": 16
         }
@@ -51,7 +46,6 @@
     "IPv6DefaultGateway": "fe80::1fc1:deff:fe6f:1e24",
     "IPv6Addresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv6Address",
             "Address": "fe80::1fc1:deff:fe6f:1e24",
             "PrefixLength": 64,
             "AddressOrigin": "SLAAC",

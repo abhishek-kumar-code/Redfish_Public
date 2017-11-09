@@ -9,12 +9,10 @@
     "PowerState": "On",
     "UUID": "17690008-3175-05f4-0010-debfc4ec1886",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "UnavailableOffline"
     },
     "Links": {
-        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "Chassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/Blade4"

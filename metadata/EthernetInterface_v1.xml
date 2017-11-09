@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EthernetInterface  v1.3.0-->
+<!--# Redfish Schema:  EthernetInterface  v1.3.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -29,10 +29,10 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/IPAddresses_v1.xml">
-    <edmx:Include Namespace="IPAddresses.v1_0_0"/>
+    <edmx:Include Namespace="IPAddresses"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface_v1.xml">
-    <edmx:Include Namespace="VLanNetworkInterface.v1_0_0"/>
+    <edmx:Include Namespace="VLanNetworkInterface"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection_v1.xml">
     <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>
@@ -136,11 +136,11 @@
           <Annotation Term="OData.Description" String="This indicates the maximum number of Static IPv6 addresses that can be configured on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."/>
         </Property>
-        <Property Name="VLAN" Type="VLanNetworkInterface.v1_0_0.VLAN">
+        <Property Name="VLAN" Type="VLanNetworkInterface.VLAN">
           <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>
-        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.v1_0_0.IPv4Address)" Nullable="false">
+        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPv4Address)" Nullable="false">
           <Annotation Term="OData.Description" String="The IPv4 addresses assigned to this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
@@ -148,11 +148,11 @@
           <Annotation Term="OData.Description" String="An array representing the RFC 6724 Address Selection Policy Table."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC 6724."/>
         </Property>
-        <Property Name="IPv6Addresses" Type="Collection(IPAddresses.v1_0_0.IPv6Address)" Nullable="false">
+        <Property Name="IPv6Addresses" Type="Collection(IPAddresses.IPv6Address)" Nullable="false">
           <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."/>
         </Property>
-        <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.v1_0_0.IPv6StaticAddress)" Nullable="false">
+        <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.IPv6StaticAddress)" Nullable="false">
           <Annotation Term="OData.Description" String="This array of objects represents all of the IPv6 static addresses to be assigned on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."/>
         </Property>
@@ -221,6 +221,11 @@
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_3.EthernetInterface"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_5">
+      <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_4.EthernetInterface"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_1_0">
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_2.EthernetInterface">
         <Property Name="LinkStatus" Type="EthernetInterface.v1_1_0.LinkStatus">
@@ -268,6 +273,11 @@
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_1.EthernetInterface"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_1_3">
+      <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_2.EthernetInterface"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_2_0">
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_1.EthernetInterface"/>
 
@@ -284,6 +294,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_2_0.EthernetInterface"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_2_2">
+      <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_2_1.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_3_0">
@@ -315,6 +330,11 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_3_1">
+      <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_3_0.EthernetInterface"/>
     </Schema>
 
   </edmx:DataServices>

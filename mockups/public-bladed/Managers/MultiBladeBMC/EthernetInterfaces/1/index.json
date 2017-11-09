@@ -3,7 +3,6 @@
     "Id": "1",
     "Name": "Manager Ethernet Interface",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -11,7 +10,6 @@
     "PermanentMACAddress": "23:11:8A:38:C0:10",
     "IPv4Addresses": [
         {
-            "@odata.type": "#IPAddresses.v1_0_0.IPv4Address",
             "Address": "192.168.56.100",
             "SubnetMask": "255.255.255.0",
             "AddressOrigin": "DHCP",
