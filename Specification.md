@@ -1924,9 +1924,9 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 ~~~json
 {
     "Actions": {
-        "OEM": {
-            "Contoso.vx_x_x#Contoso.Ping": {
-                "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
+        "Oem": {
+            "#Contoso.Ping": {
+                "target":"/redfish/v1/Systems/1/Actions/Oem/Contoso.Ping"
             }
         }
     },
