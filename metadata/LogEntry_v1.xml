@@ -546,7 +546,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="If the Sensor Type is OEM, this will contain the OEM-specific sensor type."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OEM specific sensor type of the Entry.  This property shall only be used if the value of EntryType is SEL and the value of SensorType is OEM."/>
-        </Property>		
+        </Property>	
+      </EntityType>		
     </Schema>
 	
   </edmx:DataServices>
