@@ -6,12 +6,10 @@
         "Storage"
     ],
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "CompositionStatus": {
-        "@odata.type": "#ResourceBlock.v1_0_0.CompositionStatus",
         "Reserved": false,
         "CompositionState": "Composed"
     },
@@ -21,7 +19,6 @@
         }
     ],
     "Links": {
-        "@odata.type": "#ResourceBlock.v1_0_0.Links",
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/ComposedPartition3"

@@ -5,12 +5,10 @@
     "ManagerType": "BMC",
     "Description": "Contoso BMC",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "GraphicalConsole": {
-        "@odata.type": "#Manager.v1_0_0.GraphicalConsole",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 1,
         "ConnectTypesSupported": [
@@ -25,7 +23,6 @@
         "@odata.id": "/redfish/v1/Managers/Blade1BMC/LogServices"
     },
     "Links": {
-        "@odata.type": "#Manager.v1_1_0.Links",
         "ManagerForServers": [
             {
                 "@odata.id": "/redfish/v1/Systems/529QB9450R6"

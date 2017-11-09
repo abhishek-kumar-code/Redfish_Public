@@ -16,7 +16,8 @@
 	},
 	"Protocol": {
 		"MinVersion": "1.2",
-		"DiscoveryRequired": true
+		"Discovery": "Recommended",
+		"HostInterface": "Mandatory"
 	},
 	"Resources": {
 		"ChassisCollection": {
@@ -122,10 +123,10 @@
 				}
 			}
 		},
-		"ManagerCollection": {
-			"Members": {
-				"MinCount": 1
-			}
+		"ManagerAccountCollection": {
+			"CreateResource": true,
+			"DeleteResource": true,
+			"UpdateResource": true
 		},
 		"Thermal": {
 			"MinVersion": "1.1.0",
