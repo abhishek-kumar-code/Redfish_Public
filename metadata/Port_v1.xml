@@ -19,9 +19,6 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
     <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
-    <edmx:Include Namespace="Storage.v1_0_0"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
   </edmx:Reference>
@@ -30,6 +27,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Protocol_v1.xml">
+    <edmx:Include Namespace="Protocol.v1_0_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -62,7 +62,7 @@
           <Annotation Term="OData.Description" String="This is the label of this port on the physical switch package."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the switch port as indicated on the outside of the switch."/>
         </Property>
-        <Property Name="PortProtocol" Type="Storage.v1_0_0.Protocol">
+        <Property Name="PortProtocol" Type="Protocol.v1_0_0.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol being sent over this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the protocol being sent over this port."/>
@@ -165,6 +165,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Port.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Port" BaseType="Port.v1_0_1.Port"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Port.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to move Protocol to its own CSDL file."/>
+      <EntityType Name="Port" BaseType="Port.v1_0_2.Port"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Port.v1_1_0">

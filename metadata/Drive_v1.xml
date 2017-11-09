@@ -28,9 +28,6 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
-    <edmx:Include Namespace="Storage.v1_0_0"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume_v1.xml">
     <edmx:Include Namespace="Volume"/>
     <edmx:Include Namespace="Volume.v1_0_0"/>
@@ -43,6 +40,9 @@
   </edmx:Reference>
    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
     <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Protocol_v1.xml">
+    <edmx:Include Namespace="Protocol.v1_0_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -113,7 +113,7 @@
           <Annotation Term="OData.Description" String="Is this drive currently predicting a failure in the near future."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain failure information as defined by the manufacturer for the associated drive."/>
         </Property>
-        <Property Name="Protocol" Type="Storage.v1_0_0.Protocol">
+        <Property Name="Protocol" Type="Protocol.v1_0_0.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol this drive is using to communicate to the storage controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol the associated drive is using to communicate to the storage controller for this system."/>
@@ -333,6 +333,11 @@
       <EntityType Name="Drive" BaseType="Drive.v1_0_2.Drive"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to move Protocol to its own CSDL file."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_0_2.Drive"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_0">
 
       <EntityType Name="Drive" BaseType="Drive.v1_0_1.Drive">
@@ -362,6 +367,11 @@
       <EntityType Name="Drive" BaseType="Drive.v1_1_1.Drive"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_3">
+      <Annotation Term="OData.Description" String="This version was created to move Protocol to its own CSDL file."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_0">
       <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
 
@@ -373,6 +383,11 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to move Protocol to its own CSDL file."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drive"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_3_0">
