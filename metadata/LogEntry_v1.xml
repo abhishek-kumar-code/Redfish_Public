@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  LogEntry  v1.2.0-->
+<!--# Redfish Schema:  LogEntry  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -536,7 +536,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_3_0">
       <Annotation Term="OData.Description" String="This version was created to add OEM enumerations for legacy IPMI log implementations."/>
-      <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_0.LogEntry"/>
+      <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_0.LogEntry">
         <Property Name="OemLogEntryCode" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="If the LogEntryCode type is OEM, this will contain the OEM-specific entry code."/>
@@ -546,9 +546,9 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="If the Sensor Type is OEM, this will contain the OEM-specific sensor type."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OEM specific sensor type of the Entry.  This property shall only be used if the value of EntryType is SEL and the value of SensorType is OEM."/>
-        </Property>	
-      </EntityType>		
+        </Property>
+      </EntityType>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>
