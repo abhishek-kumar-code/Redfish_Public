@@ -606,8 +606,9 @@ OData annotations ([resource identifiers](#resource-identifier-property), [type]
 The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service, may be added by the Service to the resulting resource. When the replace operation is successful, the response may contain a representation of the resource after the replacement was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
 
 * Services may support the PUT method to replace a resource in whole.  
-* If a service does not implement this method, or if the client specifies a PUT request against a Resource Collection, a status code [405](#status-405) shall be returned.
+* If a service does not implement this method, a status code [405](#status-405) shall be returned.
 * Services may reject requests which do not include properties required by the resource definition (schema).
+* Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
 ##### Create (POST)<a id="create-post"></a>
