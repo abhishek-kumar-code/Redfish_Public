@@ -60,7 +60,7 @@
         <Annotation Term="OData.Description" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
         <Annotation Term="OData.LongDescription" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
         <Property Name="Status" Type="Resource.Status"/>
-        <Property Name="NetDevFuncType" Type="NetworkDeviceFunction.v1_0_0.NetworkDeviceTechology">
+        <Property Name="NetDevFuncType" Type="NetworkDeviceFunction.v1_0_0.NetworkDeviceTechnology">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The configured capability of this network device function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the configured capability of this network device function."/>
@@ -70,7 +70,7 @@
           <Annotation Term="OData.Description" String="Whether the network device function is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether the network device function is enabled.  Disabled network device functions shall not be enumerated or seen by the operating system."/>
         </Property>
-        <Property Name="NetDevFuncCapabilities" Type="Collection(NetworkDeviceFunction.v1_0_0.NetworkDeviceTechology)">
+        <Property Name="NetDevFuncCapabilities" Type="Collection(NetworkDeviceFunction.v1_0_0.NetworkDeviceTechnology)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Capabilities of this network device function."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain an array of capabilities of this network device function."/>
@@ -357,7 +357,7 @@
         </Property>
       </ComplexType>
 
-      <EnumType Name="NetworkDeviceTechology">
+      <EnumType Name="NetworkDeviceTechnology">
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="Neither enumerated nor visible to the operating system." />
         </Member>
