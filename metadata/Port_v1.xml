@@ -17,10 +17,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
-    <edmx:Include Namespace="Storage.v1_0_0"/>
+    <edmx:Include Namespace="Storage"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
@@ -62,7 +61,7 @@
           <Annotation Term="OData.Description" String="This is the label of this port on the physical switch package."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the switch port as indicated on the outside of the switch."/>
         </Property>
-        <Property Name="PortProtocol" Type="Storage.v1_0_0.Protocol">
+        <Property Name="PortProtocol" Type="Storage.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol being sent over this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the protocol being sent over this port."/>
@@ -167,9 +166,14 @@
       <EntityType Name="Port" BaseType="Port.v1_0_1.Port"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Port.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to change references to PrivilegeType to use the unversioned definition."/>
+      <EntityType Name="Port" BaseType="Port.v1_0_2.Port"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Port.v1_1_0">
-      <EntityType Name="Port" BaseType="Port.v1_0_2.Port">
-        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>        
+      <EntityType Name="Port" BaseType="Port.v1_0_3.Port">
+        <Property Name="Location" Type="Resource.Location" Nullable="false"/>        
       </EntityType>
     </Schema>
 
