@@ -16,7 +16,8 @@
 	},
 	"Protocol": {
 		"MinVersion": "1.2",
-		"DiscoveryRequired": true
+		"Discovery": "Recommended",
+		"HostInterface": "Mandatory"
 	},
 	"Resources": {
 		"ChassisCollection": {
