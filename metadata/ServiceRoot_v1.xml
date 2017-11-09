@@ -308,22 +308,22 @@
       <ComplexType Name="Expand">
         <Annotation Term="OData.Description" String="Contains information about the use of $expand in the service."/>
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain information about the support of the $expand query parameter by the service."/>
-        <Property Name="Links" Type="Edm.Boolean">
+        <Property Name="Links" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether the expand support of tilde (expand only entries in the Links section) is supported."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of tilde (expand only entries in the Links section) as a value for the expand query parameter as described by the specification."/>
         </Property>
-        <Property Name="NoLinks" Type="Edm.Boolean">
+        <Property Name="NoLinks" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether the expand support of period (expand only entries not in the Links section) is supported."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of period (expand only entries not in the Links section) as a value for the expand query parameter as described by the specification."/>
         </Property>
-        <Property Name="ExpandAll" Type="Edm.Boolean">
+        <Property Name="ExpandAll" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether the expand support of asterisk (expand all entries) is supported."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of asterisk (expand all entries) as a value for the expand query parameter as described by the specification."/>
         </Property>
-        <Property Name="Levels" Type="Edm.Boolean">
+        <Property Name="Levels" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether the expand support of the $levels qualifier is supported by the service."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of $levels as a value for the expand query parameter as described by the specification."/>
