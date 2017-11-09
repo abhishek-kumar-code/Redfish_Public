@@ -25,7 +25,7 @@
         "VLANId": 101
     },
     "DHCPv4Configuration": {
-        "Enabled": true,
+        "DHCPEnabled": true,
         "UseDNSServers": true,
         "UseGateway": true,
         "UseNTPServers": false,
@@ -54,11 +54,11 @@
             "Label": 0
         }
     ],
-    "IPv4StatelessAddressAutoConfiguration": {
-        "Enabled": false
+    "IPv4StatelessAddressAutoConfig": {
+        "AutoConfigEnabled": false
     },
-    "IPv6StatelessAddressAutoConfiguration": {
-        "Enabled": true
+    "IPv6StatelessAddressAutoConfig": {
+        "AutoConfigEnabled": true
     },
     "IPv6StaticAddresses": [
         {
