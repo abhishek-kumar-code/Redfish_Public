@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/1",
-    "@odata.type": "#Chassis.v1_4_0.Chassis",
+    "@odata.type": "#Chassis.v1_6_0.Chassis",
     "Id": "1",
     "Name": "Computer System Chassis",
     "ChassisType": "RackMount",
@@ -15,6 +15,7 @@
     "IndicatorLED": "Lit",
     "PowerState": "On",
     "Location" : {
+        "@odata.type": "#Resource.v1_3_0.Location",
         "PostalAddress": {
             "Country": "US",
             "Territory": "TX",
@@ -50,6 +51,9 @@
     "NetworkAdapters": {
         "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters"
     },
+	"Assembly": {
+		"@odata.id": "/redfish/v1/Chassis/1/Assembly"
+	},
     "Links": {
         "ComputerSystems": [
             {
