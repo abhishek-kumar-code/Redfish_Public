@@ -396,12 +396,12 @@
         </Property>
         <Property Name="StatelessModeEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Determines whether DHCPv6 stateless mode is enabled.  Always enabled by default whenever DHCPv6 stateful mode is also enabled.."/>
+          <Annotation Term="OData.Description" String="Determines whether DHCPv6 stateless mode is enabled.  Always enabled by default whenever DHCPv6 stateful mode is also enabled."/>
           <Annotation Term="OData.LongDescription" String="Controls whether DHCPv6 stateless mode on this interface or not.  DHCPv6 stateless mode allows configuring the interface using DHCP options but does not configure addresses. It is always enabled by default whenever DHCPv6 Stateful mode is also enabled."/>
         </Property>
         <Property Name="UseDNSServers" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="When enabled, DNS server addresses supplied through DHCPv6 stateless mode will be used"/>
+          <Annotation Term="OData.Description" String="When enabled, DNS server addresses supplied through DHCPv6 stateless mode will be used."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether the interface will use DHCPv6-supplied DNS servers."/>
         </Property>
         <Property Name="UseDomainName" Type="Edm.Boolean">
