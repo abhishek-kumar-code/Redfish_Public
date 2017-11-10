@@ -27,7 +27,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Thermal_v1.xml">
     <edmx:Include Namespace="Thermal"/>
@@ -444,7 +443,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis">
-        <Property Name="Location" Type="Resource.v1_1_0.Location" Nullable="false"/>
+        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
@@ -485,7 +484,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_3.Chassis"/>
     </Schema>
 
@@ -510,7 +509,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_4">
-      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_3.Chassis"/>
     </Schema>
 
@@ -573,7 +572,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_3">
-      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_2.Chassis"/>
     </Schema>
 
@@ -596,7 +595,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_5_2">
-      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_5_1.Chassis"/>
     </Schema>
 

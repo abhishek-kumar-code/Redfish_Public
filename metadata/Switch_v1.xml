@@ -17,12 +17,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
-    <edmx:Include Namespace="Resource.v1_2_0"/>
-    <edmx:Include Namespace="Resource.v1_6_0"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
-    <edmx:Include Namespace="Storage.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -39,9 +33,12 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogServiceCollection_v1.xml">
     <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Protocol_v1.xml">
+    <edmx:Include Namespace="Protocol"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
-  
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch">
 
       <EntityType Name="Switch" BaseType="Resource.v1_0_0.Resource" Abstract="true">
@@ -64,7 +61,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch.v1_0_0">
 
       <EntityType Name="Switch" BaseType="Switch.Switch">
-        <Property Name="SwitchType" Type="Storage.v1_0_0.Protocol">
+        <Property Name="SwitchType" Type="Protocol.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol being sent over this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the type of switch being represented by this simple switch."/>
@@ -115,12 +112,12 @@
           <Annotation Term="OData.Description" String="The total number of lanes, phys, or other physical transport links that this switch contains."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of physical transport lanes, phys, or other physical transport links that this switch contains. For PCIe, this shall be lane count."/>
         </Property>
-        <Property Name="IndicatorLED" Type="Resource.v1_1_0.IndicatorLED">
+        <Property Name="IndicatorLED" Type="Resource.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the switch."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this switch."/>
         </Property>
-        <Property Name="PowerState" Type="Resource.v1_2_0.PowerState">
+        <Property Name="PowerState" Type="Resource.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the switch."/>
@@ -194,13 +191,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to IndicatorLED, PowerState, and Protocol to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Switch" BaseType="Switch.v1_0_2.Switch"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switch.v1_1_0">
       <EntityType Name="Switch" BaseType="Switch.v1_0_3.Switch">
-        <Property Name="Location" Type="Resource.v1_6_0.Location" Nullable="false"/>
+        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
       </EntityType>
     </Schema>
 

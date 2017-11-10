@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.3.0'
-modified: '2017-9-22'
-SupersedesVersion: '1.2.1'
+DocVersion: '1.X.Y'
+modified: '2017-11-XX'
+SupersedesVersion: '1.3.0'
 status: published
 released: true
 copyright: '2014-2017'
@@ -20,6 +20,7 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett Packard Enterprise
+* Jeff Bobzin - Insyde Software Corp.
 * Patrick Boyd - Dell Inc.
 * David Brockhaus - Vertiv
 * Richard Brunner - VMware Inc.
@@ -54,9 +55,11 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Linda Wu - Super Micro Computer, Inc.
 
 ## Abstract
-The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
+The Redfish Scalable Platforms Management API ("Redfish") is a standard that uses RESTful interface semantics to access data defined in model format to perform systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
-There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center and cloud needs.
+While the initial Redfish scope was targeted at servers, expansion of scope has grown both in the DMTF and through DMTF alliance partners to cover most data center IT equipment and other solutions as well.  It also covers both in-band and out-of-band access methods.
+
+Educational material is also increasing, both from the DMTF and other organizations that utilize Redfish as part of their industry standard or solution.
 
 ## Normative references
 
@@ -223,7 +226,7 @@ There are several reasons to define a RESTful interface:
 
 With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications. While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there is no interoperability between them.
 
-OData defines a set of common RESTful conventions and markup which, if adopted, provides for interoperability between APIs.
+OData defines a set of common RESTful conventions and annotations which, if adopted, provides for interoperability between APIs.
 
 Adopting OData conventions for describing Redfish Schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish Services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
@@ -403,7 +406,7 @@ The ETag is generated and provided as part of the resource payload because the s
 
 This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.
 
-If a client [PUTs](#replace-put-) or [PATCHes](#update-patch-) a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.  If a service supports returning the ETag header on a resource, the service may respond with status code [428](#status-428) if the If-Match/If-None-Match header is missing from the PUT/PATCH request for the same resource, as specified in [RFC6585](#RFC6585).
+If a client [PUTs](#replace-put) or [PATCHes](#update-patch) a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.  If a service supports returning the ETag header on a resource, the service may respond with status code [428](#status-428) if the If-Match/If-None-Match header is missing from the PUT/PATCH request for the same resource, as specified in [RFC6585](#RFC6585).
 
 In addition to returning the ETag property on each resource,
 
@@ -569,57 +572,70 @@ The HEAD method differs from the GET method in that it MUST NOT return message b
 
 #### Data modification requests
 
-Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post-), [Update](#update-patch-), [Replace](#replace-put-) or [Delete](#delete-delete-) operation, or by invoking an [Action](#actions-post-) on the resource. Services return a status code [405](#status-405) if the specified resource exists but does not support the requested operation. If a client (4xx) or service (5xx) [status code](#status-codes) is returned, the resource shall not be modified as a result of the operation.
+Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post), [Update](#update-patch), [Replace](#replace-put) or [Delete](#delete-delete) operation, or by invoking an [Action](#actions-post) on the resource.
 
-##### Update (PATCH)
+##### Success responses to modification requests
 
-The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to the resource are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  The response is either empty or a representation of the resource after the update was done. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.
+For Create operations, the response from the service after successful processing of the create request should be one of the following:
+* HTTP Status code of [201](#status-201) with a body containing the JSON representation of the newly created resource after the request has been applied.
+* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource may be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the created resource.
 
-* Services shall support the PATCH method to update a resource. If the resource can never be updated, status code [405](#status-405) shall be returned.
-* Services may return a representation of the resource after any server-side transformations in the body of the response.
-* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
-* Services should return status code [405](#status-405) if the client specifies a PATCH request against a Resource Collection.
+For Update, Replace, or Delete operations, the response from the service after successful modification should be one of the following:
+* HTTP Status code of [200](#status-200) with a body containing the JSON representation of the targeted resource after the modification has been applied, or in the case of Delete operation, a representation of the deleted resource.
+* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the modified or deleted resource.
+
+For details on success responses to Action requests, see [Action](#actions-post).
+
+##### Failure responses to modification requests
+
+Services may return an HTTP status code [405](#status-405) if the specified resource exists but does not support the requested operation. Otherwise, if a client (4xx) or service (5xx) [status code](#status-codes) is returned, this indicates the service encountered an error and the resource shall not have been modified or created as a result of the operation.
+
+##### Update (PATCH)<a id="update-patch"></a>
+
+The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to one or more properties within the resource addressed by the request Uri are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  When modification is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The implementation may reject the update operation on certain fields based on its own policies and in this case, not process any of the requested modifications.
+
+* Services shall support the PATCH method to update properties within a resource.
+* If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
+* If the client specifies a PATCH request against a Resource Collection, HTTP status code [405](#status-405) should be returned.
+* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, an HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 * Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
-OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [Links Property](#links-property)) are ignored on Update.
+OData annotations ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [Links Property](#links-property)) are ignored on Update.
 
-##### Replace (PUT)
+##### Replace (PUT)<a id="replace-put"></a>
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service, may be added by the Service to the resulting resource. When the replace operation is successful, the response may contain a representation of the resource after the replacement was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
 
-* Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
-* Services may return a representation of the resource after any server-side transformations in the body of the response.
+* Services may support the PUT method to replace a resource in whole.  
+* If a service does not implement this method, a status code [405](#status-405) shall be returned.
 * Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
-##### Create (POST)
+##### Create (POST)<a id="create-post"></a>
 
-The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong.
+The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When the create operation is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., Id), forcing those attributes to be overridden by the service. Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
 
-Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
-
+* Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * Services shall support POST operations on a URL that references a Resource Collection instance.
-* Services shall support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post-)).
+* Services shall also support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post)).
 * The POST operation shall not be idempotent.
 
-The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be [201](#status-201) (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
+##### Delete (DELETE)<a id="delete-delete"></a>
 
-##### Delete (DELETE)
-
-The DELETE method is used to remove a resource.
+The DELETE method is used to remove a resource. When the delete operation is successful, the response may contain a representation of the resource after the deletion was done as described in [Success responses to modification requests](#success-responses-to-modification-requests).
 
 * Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
-* Services may return a representation of the just deleted resource in the response body.
-* Services should return status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
+* Services should return HTTP status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
+* Services may return HTTP status code [404](#status-404) or a success code if the resource has already been deleted.
 
-Services may return status code [404](#status-404) or a success code if the resource has already been deleted.
-
-##### Actions (POST)
+##### Actions (POST)<a id="actions-post"></a>
 
 The POST method is used to initiate operations on the object (such as Actions).
 
@@ -675,7 +691,7 @@ And a computer system resource contains an [Actions](#actions-property) property
 }
 ~~~
 
-Then the following would represent a possible request for the Action:
+Then the following would represent a possible valid request for the Action:
 
 ~~~http
 POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
@@ -687,6 +703,11 @@ OData-Version: 4.0
     "ResetType": "On"
 }
 ~~~
+
+In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
+* HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
+* HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
+* In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
 
 ### Responses
 
@@ -911,17 +932,13 @@ See also [Resource Collection responses](#resource-collection-responses).
 
 Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
 
-The context URL for a resource is of one of the following two forms:
+The context URL for a resource should be of the following form:
 
  *MetadataUrl*#*ResourceType*  
- or  
- *MetadataUrl*#*ResourcePath*/$entity
-
+ 
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *ResourceType* = the fully qualified name of the unversioned resource type
-* *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
-* *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
+* *ResourceType* = the fully qualified name of the unversioned resource type.  For many Redfish implementations, this is just the namespace for the resource type concatonated with a period followed by the resource type again. 
 
 For example, the following context URL specifies that the result contains a single ComputerSystem resource:
 
@@ -931,6 +948,18 @@ For example, the following context URL specifies that the result contains a sing
     ...
 }
 ~~~
+
+The context URL for a resource may be of the following form:
+ 
+ *MetadataUrl*#*ResourcePath*/$entity
+
+where
+* *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
+* *ResourceType* = the fully qualified name of the unversioned resource type
+* *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
+* *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
+
+While both formats are allowable, services should use the *MetadataUrl*#*ResourceType* format for the "@odata.context" property values as there are additional constraints required by the [OData-Protocol](#OData-Protocol) when partial or expanded results are returned that pose an additional burden on services.
 
 ##### Resource identifier property
 
@@ -1895,9 +1924,9 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 ~~~json
 {
     "Actions": {
-        "OEM": {
-            "Contoso.vx_x_x#Contoso.Ping": {
-                "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
+        "Oem": {
+            "#Contoso.Ping": {
+                "target":"/redfish/v1/Systems/1/Actions/Oem/Contoso.Ping"
             }
         }
     },
@@ -2152,7 +2181,7 @@ The client can continue to get information about the status by directly querying
   should contain a representation of the Task resource in JSON.
 * GET requests to either the Task Monitor or the Task resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
-* Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP PUT, PATCH, POST, and DELETE methods.
+* Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP GET, PUT, PATCH, POST, and DELETE methods.
 
 ### Resource tree stability
 
@@ -2779,6 +2808,7 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.X.X   | 2017-11-xx| Clarifications for http status and payload responses after successful processing of data modifcation requests. |
 | 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP status code [428](#status-428). |
 |         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
 | 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
@@ -2854,6 +2884,3 @@ OData-Version: 4.0
 |         |          | Clarified relative URI resolution rules. |
 |         |          | Clarified USN format.  |
 | 1.0.0   | 2015-8-4 | Initial release |
-
-
-
