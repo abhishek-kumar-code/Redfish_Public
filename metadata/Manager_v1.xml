@@ -94,8 +94,7 @@
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
         <Parameter Name="NewManager" Type="Manager.Manager" Nullable="false">
           <Annotation Term="OData.Description" String="This parameter specifies the Manager in which to fail over.  In this case, a valid reference is supported."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Manager in which to fail over."/>
-          <Annotation Term="OData.IsURL"/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a resource reference of the Manager in which to fail over."/>
         </Parameter>
       </Action>
 
@@ -103,15 +102,13 @@
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
         <Annotation Term="OData.LongDescription" String="The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
-        <Parameter Name="Add" Type="Collection(Manager.Manager)" Nullable="false">
+        <Parameter Name="Add" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Description" String="This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of URIs of the Managers to add to the redundancy set."/>
-          <Annotation Term="OData.IsURL"/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of resource references of the Managers to add to the redundancy set."/>
         </Parameter>
-        <Parameter Name="Remove" Type="Collection(Manager.Manager)" Nullable="false">
+        <Parameter Name="Remove" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Description" String="This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of URIs of the Managers to remove from the redundancy set."/>
-          <Annotation Term="OData.IsURL"/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of resource references of the Managers to remove from the redundancy set."/>
         </Parameter>
       </Action>
 
