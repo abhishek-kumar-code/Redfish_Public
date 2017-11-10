@@ -2389,7 +2389,7 @@ Only the client that executes the login will have the Session Auth Token.
 ##### X-Auth-Token HTTP header
 
 Implementations shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
-Therefore, the POST to create a new session shall only be supported with HTTPS, and all requests that use Basic Auth shall require HTTPS.
+Therefore, the POST to create a new session shall only be supported with HTTPS, and all requests that use Basic Auth shall require HTTPS.  A request via POST to create a new session using the HTTP port should redirect to the HTTPS port if both HTTP and HTTPS are enabled. 
 
 ##### Session lifetime
 
