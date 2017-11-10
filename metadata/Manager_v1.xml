@@ -154,7 +154,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type VirtualMediaCollection which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="ServiceEntryPointUUID" Type="Resource.UUID" Nullable="false">
+        <Property Name="ServiceEntryPointUUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UUID of the Redfish Service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Redfish Service provided by this manager.  Each Manager providing an Entry Point to the same Redfish Service shall report the same UUID value (even though the name of the property may imply otherwise).  This property shall not be present if this manager does not provide a Redfish Service Entry Point."/>
@@ -371,6 +371,11 @@
       <EntityType Name="Manager" BaseType="Manager.v1_0_4.Manager"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_6">
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable=false term on ServiceEntryPointUUID."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_0_5.Manager"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_0">
       <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>
       <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
@@ -396,6 +401,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_3">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_1_2.Manager"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_4">
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable=false term on ServiceEntryPointUUID."/>
+      <EntityType Name="Manager" BaseType="Manager.v1_1_3.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_0">
@@ -424,7 +434,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition.  It was also created to remove the Nullable=false term on ServiceEntryPointUUID."/>
       <EntityType Name="Manager" BaseType="Manager.v1_2_3.Manager"/>
     </Schema>
 
@@ -450,7 +460,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_3">
-      <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition.  It was also created to remove the Nullable=false term on ServiceEntryPointUUID."/>
       <EntityType Name="Manager" BaseType="Manager.v1_3_2.Manager"/>
     </Schema>
 
