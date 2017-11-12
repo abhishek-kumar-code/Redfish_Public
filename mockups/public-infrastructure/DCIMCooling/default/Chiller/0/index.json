@@ -74,7 +74,7 @@
                 "Members": [
                     {
                         "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Current0",
-                        "@odata.type": "#Sensor.v0_1_0.Sensor",
+                        "@odata.type": "#Sensor.v0_2_0.Sensor",
                         "Id": "23",
                         "Name": "AC Input - RMS Current Sensor",
                         "SensorType": "Current",
@@ -83,7 +83,7 @@
                             "State": "Enabled",
                             "Health": "OK"
                         },
-                        "CurrentReading": 12,
+                        "PresentReading": 12,
                         "UpperThresholdNonCritical": 12.5,
                         "UpperThresholdCritical": 13,
                         "UpperThresholdFatal": 15,
@@ -97,7 +97,7 @@
                     },
                     {
                         "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Voltage0",
-                        "@odata.type": "#Sensor.v0_1_0.Sensor",
+                        "@odata.type": "#Sensor.v0_2_0.Sensor",
                         "Id": "24",
                         "Name": "AC Input - RMS Voltage (L-L) Sensor",
                         "SensorType": "Voltage",
@@ -106,7 +106,7 @@
                             "State": "Enabled",
                             "Health": "OK"
                         },
-                        "CurrentReading": 12,
+                        "PresentReading": 12,
                         "UpperThresholdNonCritical": 12.5,
                         "UpperThresholdCritical": 13,
                         "UpperThresholdFatal": 15,
@@ -130,7 +130,7 @@
         "Members": [
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "0",
                 "Name": "Chilled Water Return Temperature Sensor",
                 "SensorType": "Temperature",
@@ -139,7 +139,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -153,7 +153,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature1",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "1",
                 "Name": "Chilled Water Supply Temperature Sensor",
                 "SensorType": "Temperature",
@@ -162,7 +162,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -176,7 +176,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature2",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "2",
                 "Name": "Cold Water Return from Chiller Temperature Sensor",
                 "SensorType": "Temperature",
@@ -185,7 +185,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -199,7 +199,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature3",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "3",
                 "Name": "Cold Water Supply to Chiller Temperature Sensor",
                 "SensorType": "Temperature",
@@ -208,7 +208,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -222,7 +222,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature4",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "4",
                 "Name": "Compressor Discharge Temperature Sensor",
                 "SensorType": "Temperature",
@@ -231,7 +231,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -245,7 +245,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "5",
                 "Name": "Compressor Discharge Pressure Sensor",
                 "SensorType": "Pressure",
@@ -254,7 +254,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -268,7 +268,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure1",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "6",
                 "Name": "Compressor Suction Pressure Sensor",
                 "SensorType": "Pressure",
@@ -277,7 +277,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -291,7 +291,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature5",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "7",
                 "Name": "Compressor Suction Temperature Sensor",
                 "SensorType": "Temperature",
@@ -300,7 +300,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -314,7 +314,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature6",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "8",
                 "Name": "Evaporator Entering Water Temperature Sensor",
                 "SensorType": "Temperature",
@@ -323,7 +323,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -337,7 +337,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature7",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "9",
                 "Name": "Evaporator Leaving Water Temperature Sensor",
                 "SensorType": "Temperature",
@@ -346,7 +346,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -360,7 +360,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature8",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "10",
                 "Name": "Evaporator Saturated Refrigerant Temperature Sensor",
                 "SensorType": "Temperature",
@@ -369,7 +369,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -383,7 +383,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure2",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "11",
                 "Name": "Evaporator Refrigerant Pressure Sensor",
                 "SensorType": "Pressure",
@@ -392,7 +392,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -406,7 +406,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature9",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "12",
                 "Name": "Condensor Saturated Refrigerant Temperature Sensor",
                 "SensorType": "Temperature",
@@ -415,7 +415,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -429,7 +429,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure3",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "13",
                 "Name": "Condensor Refrigerant Pressure Sensor",
                 "SensorType": "Pressure",
@@ -438,7 +438,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -452,7 +452,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature10",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "14",
                 "Name": "Evaporator Entering Water Temperature Sensor",
                 "SensorType": "Temperature",
@@ -461,7 +461,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -475,7 +475,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature11",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "15",
                 "Name": "Compressor Oil Temperature Sensor",
                 "SensorType": "Temperature",
@@ -484,7 +484,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -498,7 +498,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure4",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "16",
                 "Name": "Compressor Oil Pressure Sensor",
                 "SensorType": "Pressure",
@@ -507,7 +507,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -521,7 +521,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "17",
                 "Name": "Compressor Phase AB Voltage Sensor",
                 "SensorType": "Voltage",
@@ -530,7 +530,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -544,7 +544,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage1",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "18",
                 "Name": "Compressor Phase BC Voltage Sensor",
                 "SensorType": "Voltage",
@@ -553,7 +553,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -567,7 +567,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage2",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "19",
                 "Name": "Compressor Phase CA Voltage Sensor",
                 "SensorType": "Voltage",
@@ -576,7 +576,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -590,7 +590,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "20",
                 "Name": "Compressor Line 1 Current Sensor",
                 "SensorType": "Current",
@@ -599,7 +599,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -613,7 +613,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent1",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "21",
                 "Name": "Compressor Line 2 Current Sensor",
                 "SensorType": "Current",
@@ -622,7 +622,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -636,7 +636,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent2",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "22",
                 "Name": "Compressor Line 3 Current Sensor",
                 "SensorType": "Current",
@@ -645,7 +645,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -659,7 +659,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Current0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "23",
                 "Name": "AC Input - RMS Current Sensor",
                 "SensorType": "Current",
@@ -668,7 +668,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -682,7 +682,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Voltage0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "24",
                 "Name": "AC Input - RMS Voltage (L-L) Sensor",
                 "SensorType": "Voltage",
@@ -691,7 +691,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,

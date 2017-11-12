@@ -48,7 +48,7 @@
         "Members": [
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature0",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "0",
                 "Name": "Cold Water Supply Temperature Sensor",
                 "SensorType": "Temperature",
@@ -57,7 +57,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -71,7 +71,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature1",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "1",
                 "Name": "Cooling Tower Sump Temperature Sensor",
                 "SensorType": "Temperature",
@@ -80,7 +80,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -94,7 +94,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature2",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "2",
                 "Name": "Outside Air Relative Humidity Sensor",
                 "SensorType": "Humidity",
@@ -103,7 +103,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
@@ -117,7 +117,7 @@
             },
             {
                 "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature3",
-                "@odata.type": "#Sensor.v0_1_0.Sensor",
+                "@odata.type": "#Sensor.v0_2_0.Sensor",
                 "Id": "3",
                 "Name": "Outside Air Temperature Sensor",
                 "SensorType": "Temperature",
@@ -126,7 +126,7 @@
                     "State": "Enabled",
                     "Health": "OK"
                 },
-                "CurrentReading": 12,
+                "PresentReading": 12,
                 "UpperThresholdNonCritical": 12.5,
                 "UpperThresholdCritical": 13,
                 "UpperThresholdFatal": 15,
