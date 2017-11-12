@@ -22,6 +22,9 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
     <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
+    <edmx:Include Namespace="PhysicalContext"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -155,10 +158,10 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         
-        <Property Name="PhysicalContext" Type="Edm.String">
+        <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The PhysicalContext for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the PhysicalContext information of this Sensor."/>
+          <Annotation Term="OData.Description" String="Describes the area or device to which this sensor measurement applies.."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies."/>
         </Property>
 
         <Property Name="Actions" Type="Sensor.v0_2_0.Actions" Nullable="false">
