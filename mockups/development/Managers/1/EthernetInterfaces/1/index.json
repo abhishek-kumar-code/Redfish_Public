@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright":"Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1",
     "@odata.type": "#EthernetInterface.v1_4_0.EthernetInterface",
@@ -55,11 +55,9 @@
             "Label": 0
         }
     ],
-    "IPv4StatelessAddressAutoConfig": {
-        "AutoConfigEnabled": false
-    },
-    "IPv6StatelessAddressAutoConfig": {
-        "AutoConfigEnabled": true
+    "StatelessAddressAutoConfig": {
+        "IPv4AutoConfigEnabled": false,
+		"IPv6AutoConfigEnabled": true
     },
     "IPv6StaticAddresses": [
         {
@@ -67,10 +65,10 @@
             "PrefixLength": 64
         }
     ],
-    "IPv6StaticDefaultGateway": {
+    "IPv6StaticDefaultGateways": [{
 		"Address": "fe80::fe15:b4ff:fe97:90cd",
 		"PrefixLength": 64
-	},
+	}],
     "IPv6DefaultGateway": "fe80::214:c1ff:fe4c:5c4d",
     "IPv6Addresses": [
         {
