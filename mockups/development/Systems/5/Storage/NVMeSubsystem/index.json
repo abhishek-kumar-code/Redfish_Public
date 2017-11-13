@@ -12,15 +12,21 @@
         "HealthRollup": "OK"
     },
     "Drives": [
-        {"@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"},
-        {"@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.1"}
+        {
+            "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.1"
+        }
     ],
     "Volumes": {
         "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes"
     },
     "Links": { 
         "Enclosures": [
-            {"@odata.id": "/redfish/v1/Chassis/NVMeChassis"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis"
+            }
         ]
     },
     "Actions": {
