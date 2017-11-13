@@ -3,7 +3,6 @@
     "@odata.type": "#Sensor.v0_2_0.Sensor",
     "Name": "AC Input 1 - RMS Current Sensor",
     "SensorType": "Amperage",
-    "SensorNumber": 1,
     "Status": {
         "State": "Enabled",
         "Health": "OK"
