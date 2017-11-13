@@ -12,7 +12,7 @@
     "LowerThresholdFatal": 10,
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
-    "PhysicalContext": "AC Input 1",
+    "PhysicalContext": "ACInput1",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
