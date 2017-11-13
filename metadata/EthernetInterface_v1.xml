@@ -401,7 +401,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether the interface will use a DHCPv4-supplied static routes."/>
         </Property>
       </ComplexType>
-		
+
       <ComplexType Name="DHCPv6Configuration">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="DHCPv6 configuration for this interface."/>
@@ -436,18 +436,18 @@
       <EnumType Name="DHCPv6OperatingMode">
         <Member Name="Stateful">
           <Annotation Term="OData.Description" String="DHCPv6 stateful mode."/>
-		  <Annotation Term="OData.LongDescription" String="DHCPv6 shall operate in stateful mode on this interface. DHCPv6 stateful mode is used to configure addresses, and when it is enabled, stateless mode is also implicitly enabled."/>
+          <Annotation Term="OData.LongDescription" String="DHCPv6 shall operate in stateful mode on this interface. DHCPv6 stateful mode is used to configure addresses, and when it is enabled, stateless mode is also implicitly enabled."/>
         </Member>
         <Member Name="Stateless">
           <Annotation Term="OData.Description" String="DHCPv6 stateless mode."/>
-		  <Annotation Term="OData.LongDescription" String="DHCPv6 shall operate in  stateless mode on this interface.  DHCPv6 stateless mode allows configuring the interface using DHCP options but does not configure addresses. It is always enabled by default whenever DHCPv6 Stateful mode is also enabled."/>
+          <Annotation Term="OData.LongDescription" String="DHCPv6 shall operate in  stateless mode on this interface.  DHCPv6 stateless mode allows configuring the interface using DHCP options but does not configure addresses. It is always enabled by default whenever DHCPv6 Stateful mode is also enabled."/>
         </Member>
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="DHCPv6 is disabled."/>
           <Annotation Term="OData.LongDescription" String="DHCPv6 shall be disabled for this interface."/>
         </Member>
       </EnumType>
-	  
+
       <ComplexType Name="IPv4StatelessAddressAutoConfiguration">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="IPv4 Stateless Address Automatic Configuration parameters for this interface."/>
@@ -457,8 +457,8 @@
           <Annotation Term="OData.Description" String="Indicates whether IPv4 SLAAC is enabled for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether IPv4 Stateless Address Auto-Configuration (SLAAC) is enabled for this interface."/>
         </Property>
-	   </ComplexType>
-	
+      </ComplexType>
+
       <ComplexType Name="IPv6StatelessAddressAutoConfiguration">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="IPv6 Stateless Address Automatic Configuration parameters for this interface."/>
@@ -468,7 +468,7 @@
           <Annotation Term="OData.Description" String="Indicates whether IPv4 SLAAC is enabled for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether IPv4 Stateless Address Auto-Configuration (SLAAC) is enabled for this interface."/>
         </Property>
-	   </ComplexType>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
