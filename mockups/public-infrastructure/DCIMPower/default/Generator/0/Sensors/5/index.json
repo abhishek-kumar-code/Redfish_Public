@@ -8,9 +8,9 @@
         "Health": "OK"
     },
     "Reading": 12,
-    "UpperThresholdNonCritical": 12.5,
+    "UpperThresholdWarning": 12.5,
     "UpperThresholdCritical": 13,
-    "LowerThresholdNonCritical": 11.5,
+    "LowerThresholdWarning": 11.5,
     "LowerThresholdCritical": 11,
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
