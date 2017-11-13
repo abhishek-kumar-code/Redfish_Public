@@ -41,7 +41,7 @@
                     "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 1",
+                    "PhysicalContext": "ACInput1",
                     "Oem": {}
                 }
             ],
@@ -61,7 +61,7 @@
                     "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 1",
+                    "PhysicalContext": "ACInput1",
                     "Oem": {}   
                 }
             ],
@@ -81,7 +81,7 @@
                     "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 1",
+                    "PhysicalContext": "ACInput1",
                     "Oem": {}
                 }
             ],
@@ -109,7 +109,7 @@
                     "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 2",
+                    "PhysicalContext": "ACInput2",
                     "Oem": {}
                 }
             ],
@@ -129,7 +129,7 @@
                     "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 2",
+                    "PhysicalContext": "ACInput2",
                     "Oem": {}
                 }              
             ],
@@ -149,7 +149,7 @@
                     "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 2",
+                    "PhysicalContext": "ACInput2",
                     "Oem": {}
                 }
             ]
