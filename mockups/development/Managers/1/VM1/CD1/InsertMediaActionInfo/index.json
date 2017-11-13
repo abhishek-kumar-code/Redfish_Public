@@ -1,0 +1,22 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+	"@odata.id": "/redfish/v1/Managers/1/VM1/CD1/InsertMediaActionInfo",
+	"@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+	"Parameters": [{
+		  "Name": "Image",
+		  "Required": true,
+		  "DataType": "String"
+	  },
+    {
+		  "Name": "Inserted",
+		  "Required": false,
+		  "DataType": "Boolean"
+	  },
+    {
+		  "Name": "Writable",
+		  "Required": true,
+		  "DataType": "Boolean"
+	  }
+  ]
+}
