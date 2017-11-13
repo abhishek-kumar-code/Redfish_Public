@@ -55,11 +55,6 @@
 		"IPv4AutoConfigEnabled": false,
 		"IPv6AutoConfigEnabled": true
 	},
-	"IPv4StaticAddresses": [{
-		"Address": "192.168.220.55",
-		"SubnetMask": "255.255.0.0",
-		"Gateway": "192.168.0.1"
-	}],
 	"IPv6StaticAddresses": [{
 		"Address": "fc00:1234::a:b:c:d",
 		"PrefixLength": 64
