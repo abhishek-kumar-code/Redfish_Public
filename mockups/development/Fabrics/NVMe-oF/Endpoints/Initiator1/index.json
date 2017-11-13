@@ -15,33 +15,18 @@
     ],
     "ConnectedEntities": [
         {
-            "EntityType": "System",
+            "EntityType": "NetworkDeviceFunction",
             "EntityRole": "Initiator",
-            "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/1"
+			      "EntityLink": {
+                "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100"
             }
         }
     ],
-    "Transports": [
-        {
-            "TransportType": "Ethernet",
-            "TransportProtocol": "RDMA",
-            "TransportDetails": [
-                {
-                    "IPv4Address": {
-                        "Address": "10.3.5.131"
-                    },
-                    "Port": 13244,
-                    "RDMAtype": "RoCEv2"
-                }
-            ]
-        }
-    ],
-    "Links": {
-        "Ports": [
-            {
-                "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1"
-            }
-        ]
-    }
+    "IPTransportDetails": [
+      	{
+			      "TransportProtocol": "iWarp",
+            "IpAddress": "10.3.5.131",
+            "Port": 13244
+	 	    }
+    ]
 }

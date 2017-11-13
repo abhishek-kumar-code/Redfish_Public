@@ -15,32 +15,18 @@
     ],
     "ConnectedEntities": [
         {
-            "EntityType": "System",
+            "EntityType": "NetworkDeviceFunction",
             "EntityRole": "Initiator",
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/1"
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100"
             }
         }
     ],
-    "Transports": [
+	  "IPTransportDetails": [
         {
-            "TransportType": "Ethernet",
             "TransportProtocol": "iSCSI",
-            "TransportDetails": [
-                {
-                    "IPv4Address": {
-                        "Address": "10.3.5.131"
-                    },
+			      "IpAddress": "10.3.5.131",
                     "Port": 13244
                 }
             ]
-        }
-    ],
-    "Links": {
-        "Ports": [
-            {
-                "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1"
-            }
-        ]
-    }
 }

@@ -15,33 +15,19 @@
     ],
     "ConnectedEntities": [
         {
-            "EntityType": "Volume",
+            "EntityType": "NetworkDeviceFunction",
             "EntityRole": "Target",
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"
             }
         }
     ],
-    "Transports": [
+    "IPTransportDetails": [
         {
-            "TransportType": "Ethernet",
             "TransportProtocol": "iSCSI",
-            "TransportDetails": [
-                {
-                    "IPv4Address": {
-                        "Address": "10.3.5.132"
-                    },
+			      "IpAddress": "10.3.5.132",
                     "Port": 13244
                 }
             ]
-        }
-    ],
-    "Links": {
-        "Ports": [
-            {
-                "@odata.id": "/redfish/v1/Systems/3/EthernetInterfaces/1"
-            }
-        ]
-    }
 }
 

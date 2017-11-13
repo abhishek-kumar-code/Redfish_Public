@@ -264,9 +264,10 @@
           <Annotation Term="OData.Description" String="The UUID of the Endpoint."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Endpoint which is unique within the Redfish service."/>
         </Property>
-        <Property Name="Transports" Type="Collection(Endpoint.v1_1_0.EndpointTransport)" Nullable="false">
-          <Annotation Term="OData.Description" String="An array of references to transport information that describes the connection from this endpoint to another endpoint."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type EndpointTransport associated with this endpoint."/>
+        <Property Name="IPTransportDetails" Type="Collection(Endpoint.v1_1_0.IPTransportDetails)">
+          <Annotation Term="OData.Description" String="This array contains details for each IP transport supported by this endpoint. The array structure can be used to model multiple IP addresses for this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="This array shall contain the details for each IP transport supported by this endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </Property>
       </EntityType>
 
@@ -278,36 +279,14 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
-
-      <ComplexType Name="EndpointTransport">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This object contains information about a transport which the endpoint supports, including transport type and protocol."/>
-        <Annotation Term="OData.LongDescription" String="This object shall contain information that specifies a transport which the endpoint supports."/>
-        <Property Name="TransportType" Type="Endpoint.v1_1_0.TransportType" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Specifies the transport medium type of the endpoint."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the transport medium supported by the endpoint."/>
-        </Property>
-        <Property Name="TransportProtocol" Type="Endpoint.v1_1_0.TransportProtocol">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Specifies the transport protocol of the endpoint."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the transport protocol supported by the endpoint."/>
-        </Property>
-        <Property Name="TransportDetails" Type="Collection(Endpoint.v1_1_0.TransportDetails)" Nullable="false">
-          <Annotation Term="OData.Description" String="References to additional details about the transport supported by the endpoint."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more TransportDetails resources, for the transport protocl supported by the endpoint."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="TransportDetails">
+                <ComplexType Name="IPTransportDetails">
         <Annotation Term="OData.Description" String="This object contains properties which specify the details of the transport supported by the endpoint. The properties which are present, is dependemt on the type of transport supported by the endpoint."/>
         <Annotation Term="OData.LongDescription" String="The type shall contain properties which specify the details of the transport supported by the endpoint."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="RdmaType" Type="Endpoint.v1_1_0.RdmaType" Nullable="false">
+        <Property Name="TransportProtocol" Type="Protocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of RDMA protocol used by the Endpoint."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the type of RDMA protocol used by the Endpoint."/>
+          <Annotation Term="OData.Description" String="The protocol used by the connection entity."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the protocol used by the connection entity."/>
         </Property>
         <Property Name="IPv4Address" Type="IPAddresses.v1_0_0.IPv4Address" Nullable="false">
           <Annotation Term="OData.Description" String="The IPv4 addresses assigned to the Endpoint."/>
@@ -326,40 +305,7 @@
         </Property>
       </ComplexType>
 
-      <EnumType Name="EntityType">
-        <Member Name="System">
-          <Annotation Term="OData.Description" String="The entity is a system. The term is used in the Ethernet context. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity."/>
-        </Member>
-      </EnumType>
-
-      <EnumType Name="TransportType">
-        <Member Name="Ethernet">
-          <Annotation Term="OData.Description" String="Ethernet transport."/>
-        </Member>
-      </EnumType>
-
-      <EnumType Name="TransportProtocol">
-        <Member Name="RDMA">
-          <Annotation Term="OData.Description" String="The Random Direct Memory Access transport protocol."/>
-        </Member>
-        <Member Name="iSCSI">
-          <Annotation Term="OData.Description" String="The iSCSI transport protocol."/>
-        </Member>
-      </EnumType>
-
-      <EnumType Name="RdmaType">
-        <Member Name="iWARP">
-          <Annotation Term="OData.Description" String="The internet Wide RDMA Protocol."/>
-        </Member>
-        <Member Name="RoCE">
-          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet protocol."/>
-        </Member>
-        <Member Name="RoCEv2">
-          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet version 2 protocol."/>
-        </Member>
-      </EnumType>
-
-    </Schema>
+      </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>

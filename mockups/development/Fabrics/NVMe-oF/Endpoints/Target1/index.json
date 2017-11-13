@@ -1,11 +1,11 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1",
-	"@odata.type": "#Endpoint.v1_1_0.Endpoint",
-	"Id": "Target1",
-	"Name": "NVMe Drive 1 Volumes",
-	"Description": "Two volumes created within the NVMe Drive in NVMeChassis 1 Bay 0",
+	  "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+	  "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1",
+	  "@odata.type": "#Endpoint.v1_1_0.Endpoint",
+	  "Id": "Target1",
+	  "Name": "NVMe Drive 1 Volumes",
+	  "Description": "Two volumes created within the NVMe Drive in NVMeChassis 1 Bay 0",
     "EndpointProtocol": "NVMeOverFabrics",
     "Identifiers":  [
         {
@@ -14,6 +14,13 @@
         }
     ],
     "ConnectedEntities": [
+       {
+            "EntityType": "NetworkDeviceFunction",
+            "EntityRole": "Initiator",
+			      "EntityLink": {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100"
+            }
+        },
         {
             "EntityType": "Volume",
             "EntityRole": "Target",
@@ -29,27 +36,13 @@
             }
         }
     ],
-    "Transports": [
-        {
-            "TransportType": "Ethernet",
-            "TransportProtocol": "RDMA",
-            "TransportDetails": [
-                {
-                    "IPv4Address": {
-                        "Address": "10.3.5.132"
-                    },
-                    "Port": 13244,
-                    "RDMAType": "RoCEv2"
-                }
-            ]
+    "IPTransportDetails": [
+		    {
+            "TransportProtocol": "RoCEv2",
+            "IPv4Address": {
+                "Address": "10.3.5.132"
+            },
+            "Port": 13244
         }
-    ],
-    "Links": {
-        "Ports": [
-            {
-                "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces/1"
-            }
-        ]
-    }
+    ]
 }
-
