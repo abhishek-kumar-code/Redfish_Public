@@ -38,8 +38,12 @@
     ],
     "Links": {
         "Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1"},
-            {"@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target2"
+            }
         ]
     },
     "Oem": {}
