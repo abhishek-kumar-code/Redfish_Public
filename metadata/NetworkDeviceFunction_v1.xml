@@ -89,12 +89,13 @@
         </Property>
         <NavigationProperty Name="AssignablePhysicalPorts" Type="Collection(NetworkPort.NetworkPort)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.Description" String="The array of physical port references that this network device function may be assigned to."/>          
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of physical port references that this network device function may be assigned to."/>
         </NavigationProperty>
         <NavigationProperty Name="PhysicalPortAssignment" Type="NetworkPort.NetworkPort" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="The physical port that this network device function is currently assigned to."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the physical port that this network device function is currently assigned to. This value shall be one of the AssignablePhysicalPorts array members."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="BootMode" Type="NetworkDeviceFunction.v1_0_0.BootMode">
