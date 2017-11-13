@@ -6,7 +6,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    Reading": 12,
+    "Reading": 12,
     "SetPoint": 10,
     "Deadband": 2,
     "UpperThresholdCritical": 20,
