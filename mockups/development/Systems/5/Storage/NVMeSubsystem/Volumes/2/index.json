@@ -13,10 +13,14 @@
     "CapacityBytes": 104857600,
     "Links": {
         "Drives": [
-            {"@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"
+            }
         ],
         "Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/iSCSI/Endpoints/Target1"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/iSCSI/Endpoints/Target1"
+            }
         ]
     },
     "Actions": {
