@@ -67,12 +67,10 @@
             "PrefixLength": 64
         }
     ],
-    "IPv6StaticDefaultGateway": [ 
-		{
-			"Address": "fe80::fe15:b4ff:fe97:90cd",
-			"PrefixLength": 64
-		}
-	],
+    "IPv6StaticDefaultGateway": {
+		"Address": "fe80::fe15:b4ff:fe97:90cd",
+		"PrefixLength": 64
+	},
     "IPv6DefaultGateway": "fe80::214:c1ff:fe4c:5c4d",
     "IPv6Addresses": [
         {
