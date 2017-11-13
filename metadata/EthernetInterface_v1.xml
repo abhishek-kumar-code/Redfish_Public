@@ -347,19 +347,19 @@
           <Annotation Term="OData.Description" String="DHCPv6 configuration for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the configuration of DHCP v6."/>
         </Property>
-		<Property Name="IPv4StatelessAddressAutoConfig" Type="EthernetInterface.v1_4_0.IPv4StatelessAddressAutoConfiguration">
-		   <Annotation Term="OData.Description" String="IPv4 Stateless Address Automatic Configuration parameters for this interface."/>
-           <Annotation Term="OData.LongDescription" String="This type shall describe the IPv4 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
-		</Property>
-		<Property Name="IPv6StatelessAddressAutoConfig" Type="EthernetInterface.v1_4_0.IPv6StatelessAddressAutoConfiguration">
-		   <Annotation Term="OData.Description" String="IPv6 Stateless Address Automatic Configuration parameters for this interface."/>
-           <Annotation Term="OData.LongDescription" String="This type shall describe the IPv6 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
-		</Property>
+        <Property Name="IPv4StatelessAddressAutoConfig" Type="EthernetInterface.v1_4_0.IPv4StatelessAddressAutoConfiguration">
+          <Annotation Term="OData.Description" String="IPv4 Stateless Address Automatic Configuration parameters for this interface."/>
+          <Annotation Term="OData.LongDescription" String="This type shall describe the IPv4 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
+        </Property>
+        <Property Name="IPv6StatelessAddressAutoConfig" Type="EthernetInterface.v1_4_0.IPv6StatelessAddressAutoConfiguration">
+          <Annotation Term="OData.Description" String="IPv6 Stateless Address Automatic Configuration parameters for this interface."/>
+          <Annotation Term="OData.LongDescription" String="This type shall describe the IPv6 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
+        </Property>
         <Property Name="IPv6StaticDefaultGateway" Type="IPAddresses.IPv6StaticAddress" Nullable="false">
           <Annotation Term="OData.Description" String="The IPv6 static default gateway for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the IPv6 static default gateway address for this interface."/>
         </Property>
-		<Property Name="StaticNameServers" Type="Collection(Edm.String)" Nullable="false">
+        <Property Name="StaticNameServers" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A statically defined set of DNS server IP addresses (both IPv4 and IPv6)."/>
           <Annotation Term="OData.LongDescription" String="A statically defined set of DNS server IP addresses to be used when DHCP provisioning is not in enabled for name server configuration. As an implementation option they may also be used in addition to DHCP provided addresses, or in cases where the DHCP server provides no DNS assigments."/>
