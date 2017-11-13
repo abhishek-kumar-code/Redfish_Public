@@ -27,43 +27,43 @@
     "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"},
              
      "Temperature": [ 
-            {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/5",
-                    "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Name": "Cabinet Temperature Sensor",
-                    "SensorType": "Temperature",
-                    "Status": {
-                        "State": "Enabled",
-                        "Health": "OK"
-                    },
-                    "Reading": 12,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdFatal": 10,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "Cabinet",
-                    "Oem": {}
-                }
-            ],
-             "Humidity":[
-                {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/6",
-                    "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Name": "Cabinet Humidity Sensor",
-                    "SensorType": "Humidity",
-                    "Status": {
-                        "State": "Enabled",
-                        "Health": "OK"
-                    },
-                    "Reading": 12,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdFatal": 10,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "Cabinet",
-                    "Oem": {}
-                }
-            ],     
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/5",
+            "@odata.type": "#Sensor.v0_2_0.Sensor",
+            "Name": "Cabinet Temperature Sensor",
+            "SensorType": "Temperature",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 12,
+            "UpperThresholdCritical": 15,
+            "LowerThresholdCritical": 10,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 20,
+            "PhysicalContext": "Cabinet",
+            "Oem": {}
+        }
+    ],
+    "Humidity":[
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/6",
+            "@odata.type": "#Sensor.v0_2_0.Sensor",
+            "Name": "Cabinet Humidity Sensor",
+            "SensorType": "Humidity",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 12,
+            "UpperThresholdCritical": 15,
+            "LowerThresholdCritical": 10,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 20,
+            "PhysicalContext": "Cabinet",
+            "Oem": {}
+        }
+    ],     
                         
     "AcInput": [
         {
@@ -84,8 +84,8 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdFatal": 10,
+                    "UpperThresholdCritical": 15,
+                    "LowerThresholdCritical": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
                     "PhysicalContext": "ACInput",
@@ -101,8 +101,8 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdFatal": 10,
+                    "UpperThresholdCritical": 15,
+                    "LowerThresholdCritical": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
                     "PhysicalContext": "ACInput",
@@ -121,8 +121,8 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdFatal": 10,
+                    "UpperThresholdCritical": 15,
+                    "LowerThresholdCritical": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
                     "PhysicalContext": "ACInput",
@@ -138,8 +138,8 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdFatal": 10,
+                    "UpperThresholdCritical": 15,
+                    "LowerThresholdCritical": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
                     "PhysicalContext": "ACInput",
@@ -158,8 +158,8 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdFatal": 10,
+                    "UpperThresholdCritical": 15,
+                    "LowerThresholdCritical": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
                     "PhysicalContext": "ACInput",
