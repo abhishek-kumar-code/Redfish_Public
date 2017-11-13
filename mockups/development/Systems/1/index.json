@@ -86,6 +86,16 @@
            "InterfaceTypeSelection": "None"
         }
     ],
+	"HostWatchdogTimer": {
+		"FunctionEnabled": true,
+		"WarningAction": "DiagnosticInterrupt",
+		"WarningAction@Redfish.AllowableValues": [ "DiagnosticInterrupt", "SMI", "None" ],
+		"TimeoutAction": "SystemReset",
+		"TimeoutAction@Redfish.AllowableValues": [ "ResetSystem", "PowerCycle", "PowerDown", "None" ],
+		"Status": {
+			"State": "StandbyOffline"
+		}
+	},
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/1/Processors"
     },
