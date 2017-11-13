@@ -22,21 +22,17 @@
          {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/0",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "4",
             "Name": "System - DC Current Sensor",
-            "SensorType": "Current",
-            "SensorNumber": 4,
+            "SensorType": "Amperage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "PresentReading": 12,
+            "Reading": 12,
             "UpperThresholdNonCritical": 12.5,
             "UpperThresholdCritical": 13,
-            "UpperThresholdFatal": 15,
             "LowerThresholdNonCritical": 11.5,
             "LowerThresholdCritical": 11,
-            "LowerThresholdFatal": 10,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
             "PhysicalContext": "System",
@@ -47,21 +43,17 @@
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/1",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "5",
             "Name": "System - Temperature Sensor",
             "SensorType": "Temperature",
-            "SensorNumber": 5,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "PresentReading": 12,
+            "Reading": 12,
             "UpperThresholdNonCritical": 12.5,
             "UpperThresholdCritical": 13,
-            "UpperThresholdFatal": 15,
             "LowerThresholdNonCritical": 11.5,
             "LowerThresholdCritical": 11,
-            "LowerThresholdFatal": 10,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
             "PhysicalContext": "System",
@@ -82,24 +74,20 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/2",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "0",
                     "Name": "AC Input 1 - RMS Voltage Sensor",
-                    "SensorType": "Voltage",
-                    "SensorNumber": 0,
+                    "SensorType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdNonCritical": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
                     "LowerThresholdNonCritical": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 1",
+                    "PhysicalContext": "ACInput1",
                     "Oem": {}
                  }
             ],
@@ -107,24 +95,20 @@
                 {   
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/3",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "1",
                     "Name": "AC Input 1 - RMS Current Sensor",
                     "SensorType": "Amperage",
-                    "SensorNumber": 1,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdNonCritical": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
                     "LowerThresholdNonCritical": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 1",
+                    "PhysicalContext": "ACInput1",
                     "Oem": {}
                 }
             ],
@@ -132,24 +116,20 @@
                 {   
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/4",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "2",
                     "Name": "AC Input 1 - Frequency Sensor",
                     "SensorType": "Frequency",
-                    "SensorNumber": 2,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdNonCritical": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
                     "LowerThresholdNonCritical": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input 1",
+                    "PhysicalContext": "ACInput1",
                     "Oem": {}
                 }
             ]
@@ -168,24 +148,20 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/5",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "3",
                     "Name": "DC Bus - DC Voltage Sensor",
                     "SensorType": "ACVoltage",
-                    "SensorNumber": 3,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdNonCritical": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
                     "LowerThresholdNonCritical": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "DC Bus",
+                    "PhysicalContext": "DCBus",
                     "Oem": {}
                 }
             ]
