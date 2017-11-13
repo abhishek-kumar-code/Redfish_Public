@@ -29,7 +29,7 @@
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/IPAddresses_v1.xml">
-    <edmx:Include Namespace="IPAddresses.v1_0_0"/>
+    <edmx:Include Namespace="IPAddresses"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Port_v1.xml">
     <edmx:Include Namespace="Port"/>
@@ -164,8 +164,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall be a reference to an entity of the type specified by the description of the value of the EntityType property."/>
         </NavigationProperty>
 
-        <Property Name="Oem" Type="Resource.Oem">
-        </Property>
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <EnumType Name="EntityType">
@@ -279,7 +278,8 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
-                <ComplexType Name="IPTransportDetails">
+
+      <ComplexType Name="IPTransportDetails">
         <Annotation Term="OData.Description" String="This object contains properties which specify the details of the transport supported by the endpoint. The properties which are present, is dependemt on the type of transport supported by the endpoint."/>
         <Annotation Term="OData.LongDescription" String="The type shall contain properties which specify the details of the transport supported by the endpoint."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -288,11 +288,11 @@
           <Annotation Term="OData.Description" String="The protocol used by the connection entity."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the protocol used by the connection entity."/>
         </Property>
-        <Property Name="IPv4Address" Type="IPAddresses.v1_0_0.IPv4Address" Nullable="false">
+        <Property Name="IPv4Address" Type="IPAddresses.IPv4Address" Nullable="false">
           <Annotation Term="OData.Description" String="The IPv4 addresses assigned to the Endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv4Address."/>
         </Property>
-        <Property Name="IPv6Address" Type="IPAddresses.v1_0_0.IPv6Address" Nullable="false">
+        <Property Name="IPv6Address" Type="IPAddresses.IPv6Address" Nullable="false">
           <Annotation Term="OData.Description" String="The IPv6 addresses assigned to the Endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv6Address."/>
         </Property>
@@ -304,8 +304,7 @@
           <Annotation Term="Validation.Maximum" Int="65535"/>
         </Property>
       </ComplexType>
-
-      </Schema>
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
