@@ -24,14 +24,15 @@
         "VLANEnable": true,
         "VLANId": 101
     },
-    "DHCPv4Configuration": {
+    "DHCPv4": {
         "DHCPEnabled": true,
         "UseDNSServers": true,
         "UseGateway": true,
         "UseNTPServers": false,
+		"UseStaticRoutes": true,
         "UseDomainName": true
     },
-    "DHCPv6Configuration": {
+    "DHCPv6": {
         "OperatingMode": "Stateful",
         "UseDNSServers": true,
         "UseDomainName": false,
@@ -66,7 +67,12 @@
             "PrefixLength": 64
         }
     ],
-    "IPv6StaticDefaultGateway": "fe80::fe15:b4ff:fe97:90cd",
+    "IPv6StaticDefaultGateway": [ 
+		{
+			"Address": "fe80::fe15:b4ff:fe97:90cd",
+			"PrefixLength": 64
+		}
+	],
     "IPv6DefaultGateway": "fe80::214:c1ff:fe4c:5c4d",
     "IPv6Addresses": [
         {

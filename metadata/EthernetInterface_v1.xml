@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EthernetInterface  v1.3.1-->
+<!--# Redfish Schema:  EthernetInterface  v1.4.0 -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -339,17 +339,34 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_4_0">
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_3_1.EthernetInterface">
-        <Property Name="DHCPv4Configuration" Type="EthernetInterface.v1_4_0.DHCPv4">
+        <Property Name="DHCPv4" Type="EthernetInterface.v1_4_0.DHCPv4Configuration">
           <Annotation Term="OData.Description" String="DHCPv4 configuration for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the configuration of DHCP v4."/>
         </Property>
-        <Property Name="DHCPv6Configuration" Type="EthernetInterface.v1_4_0.DHCPv6">
+        <Property Name="DHCPv6" Type="EthernetInterface.v1_4_0.DHCPv6Configuration">
           <Annotation Term="OData.Description" String="DHCPv6 configuration for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the configuration of DHCP v6."/>
         </Property>
+		<Property Name="IPv4StatelessAddressAutoConfig" Type="EthernetInterface.v1_4_0.IPv4StatelessAddressAutoConfiguration">
+		   <Annotation Term="OData.Description" String="IPv4 Stateless Address Automatic Configuration parameters for this interface."/>
+           <Annotation Term="OData.LongDescription" String="This type shall describe the IPv4 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
+		</Property>
+		<Property Name="IPv6StatelessAddressAutoConfig" Type="EthernetInterface.v1_4_0.IPv6StatelessAddressAutoConfiguration">
+		   <Annotation Term="OData.Description" String="IPv6 Stateless Address Automatic Configuration parameters for this interface."/>
+           <Annotation Term="OData.LongDescription" String="This type shall describe the IPv6 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
+		</Property>
+        <Property Name="IPv6StaticDefaultGateway" Type="IPAddresses.IPv6StaticAddress" Nullable="false">
+          <Annotation Term="OData.Description" String="The IPv6 static default gateway for this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the IPv6 static default gateway address for this interface."/>
+        </Property>
+		<Property Name="StaticNameServers" Type="Collection(Edm.String)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A statically defined set of DNS server IP addresses (both IPv4 and IPv6)."/>
+          <Annotation Term="OData.LongDescription" String="A statically defined set of DNS server IP addresses to be used when DHCP provisioning is not in enabled for name server configuration. As an implementation option they may also be used in addition to DHCP provided addresses, or in cases where the DHCP server provides no DNS assigments."/>
+        </Property>
       </EntityType>
 
-      <ComplexType Name="DHCPv4">
+      <ComplexType Name="DHCPv4Configuration">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="DHCPv4 configuration for this interface."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe the configuration of DHCP v4."/>
@@ -385,7 +402,7 @@
         </Property>
       </ComplexType>
 		
-      <ComplexType Name="DHCPv6">
+      <ComplexType Name="DHCPv6Configuration">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="DHCPv6 configuration for this interface."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe the configuration of DHCP v6."/>
@@ -420,6 +437,28 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether the interface will use DHCPv6 rapid commit mode for stateful mode address assignments."/>
         </Property>
       </ComplexType>
+
+      <ComplexType Name="IPv4StatelessAddressAutoConfiguration">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="IPv4 Stateless Address Automatic Configuration parameters for this interface."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the IPv4 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
+        <Property Name="AutoConfigEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether IPv4 SLAAC is enabled for this interface."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether IPv4 Stateless Address Auto-Configuration (SLAAC) is enabled for this interface."/>
+        </Property>
+	   </ComplexType>
+	
+      <ComplexType Name="IPv6StatelessAddressAutoConfiguration">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="IPv6 Stateless Address Automatic Configuration parameters for this interface."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the IPv6 Stateless Address Automatic Configuration (SLAAC) for this interface."/>
+        <Property Name="AutoConfigEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether IPv4 SLAAC is enabled for this interface."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether IPv4 Stateless Address Auto-Configuration (SLAAC) is enabled for this interface."/>
+        </Property>
+	   </ComplexType>
     </Schema>
 
   </edmx:DataServices>
