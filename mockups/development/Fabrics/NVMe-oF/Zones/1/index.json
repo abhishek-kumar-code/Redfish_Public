@@ -1,20 +1,23 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-	"@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Zones/1",
-	"@odata.type": "#Zone.v1_0_0.Zone",
-	"Id": "1",
-	"Name": "NVMe-oF Zone 1",
-	"Description": "Manually configured NVMe-oF",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"Links": {
-		"Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Initiator1"},
-            {"@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1"}
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Zones/1",
+    "@odata.type": "#Zone.v1_0_0.Zone",
+    "Id": "1",
+    "Name": "NVMe-oF Zone 1",
+    "Description": "Manually configured NVMe-oF",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Initiator1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1"
+            }
         ]
-	},
-	"Oem": {}
+    },
+    "Oem": {}
 }
-
