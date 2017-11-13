@@ -1,0 +1,18 @@
+{
+    "@odata.type": "#Sensor.v0_1_0.Sensor",
+    "Name": "Generator Liquid Level Sensor",
+    "SensorType": "LiquidLevel",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    Reading": 12,
+    "SetPoint": 10,
+    "Deadband": 2,
+    "UpperThresholdCritical": 20,
+    "LowerThresholdCritical": 1,
+    "MinReadingRange": 10,
+    "MaxReadingRange": 50,
+    "PhysicalContext": "Chassis",
+    "Oem": {},
+}
