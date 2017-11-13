@@ -32,7 +32,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Input 1 - RMS Voltage Sensor",
                     "SensorType": "ACVoltage",
-                    "SensorNumber": 0,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -53,7 +52,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Input 1 - RMS Current Sensor",
                     "SensorType": "Amperage",
-                    "SensorNumber": 1,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -74,7 +72,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Input 1 - Frequency Sensor",
                     "SensorType": "Frequency",
-                    "SensorNumber": 2,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -103,7 +100,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Input 2 - RMS Voltage Sensor",
                     "SensorType": "ACVoltage",
-                    "SensorNumber": 3,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -124,7 +120,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Input 2 - RMS Current Sensor",
                     "SensorType": "Amperage",
-                    "SensorNumber": 4,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -145,7 +140,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Input 2 - Frequency Sensor",
                     "SensorType": "Frequency",
-                    "SensorNumber": 5,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -177,7 +171,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Output - RMS Voltage Sensor",
                     "SensorType": "ACVoltage",
-                    "SensorNumber": 6,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -198,7 +191,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Output - RMS Current Sensor",
                     "SensorType": "Amperage",
-                    "SensorNumber": 7,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -219,7 +211,6 @@
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Output - Frequency Sensor",
                     "SensorType": "Frequency",
-                    "SensorNumber": 8,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
