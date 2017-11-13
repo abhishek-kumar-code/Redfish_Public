@@ -1,4 +1,5 @@
 {
+    "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
     "@odata.type": "#Sensor.v0_1_0.Sensor",
     "Name": "Generator Liquid Level Sensor",
     "SensorType": "LiquidLevel",
