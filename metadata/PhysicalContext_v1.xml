@@ -178,6 +178,9 @@
         <Member Name="Fan">
           <Annotation Term="OData.Description" String="A fan."/>
         </Member>
+        <Member Name="Transformer">
+          <Annotation Term="OData.Description" String="A Transformer."/>
+        </Member>
       </EnumType>
 
     </Schema>
