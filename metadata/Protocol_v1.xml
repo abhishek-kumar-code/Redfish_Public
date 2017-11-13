@@ -100,15 +100,15 @@
           <Annotation Term="OData.Description" String="Secure File Transfer Protocol."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176."/>
         </Member>
-      <Member Name="iWARP">
+        <Member Name="iWARP">
           <Annotation Term="OData.Description" String="Internet Wide Area Remote Direct Memory Access Protocol."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the iWARP protocol as defined by RFC 5042 utilizing Transport Layer mechanisms as specified by RFC 5043 or RFC 5044."/>
         </Member>
-       <Member Name="RoCE">
+        <Member Name="RoCE">
           <Annotation Term="OData.Description" String="RDMA over Converged Ethernet Protocol."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the RDMA over Converged Ethernet protocol as defined by the Infiniband Architecture Specification."/>
         </Member>
-       <Member Name="RoCEv2">
+        <Member Name="RoCEv2">
           <Annotation Term="OData.Description" String="RDMA over Converged Ethernet Protocol Version 2."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the RDMA over Converged Ethernet version 2 protocol as defined by the Infiniband Architecture Specification."/>
         </Member>
