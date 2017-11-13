@@ -3,7 +3,6 @@
     "@odata.type": "#Sensor.v0_2_0.Sensor",
     "Name": "AC Input 1 - Frequency Sensor",
     "SensorType": "Frequency",
-    "SensorNumber": 2,
     "Status": {
         "State": "Enabled",
         "Health": "OK"
