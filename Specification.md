@@ -596,7 +596,7 @@ Any other supported syntax for $select is outside the scope of this specificatio
 
 ***Query parameters for Filter***
 
-The $filter parameter indicates to the implementation that it should include a subset of the members of a collection based on the expression specified as the value of the filter clause.  The $filter query parameter is a set of properties and literals with an operator.  The literal values can be strings enclosed in single quotes, numbers, or boolean values.  The service shall reject $filter requests if the literal value does not match the data type for the property specified by responding with HTTP Status code [400](#status-400).  The $filter section of the OData ABNF components specification contains the grammar for the allowable syntax of the $filter query parameter with the additional restriction that only built-in filter operations (expressed below) are supported. 
+The $filter parameter indicates to the implementation that it should include a subset of the members of a collection based on the expression specified as the value of the filter clause.  The $filter query parameter is a set of properties and literals with an operator.  The literal values can be strings enclosed in single quotes, numbers, or boolean values.  The service should reject $filter requests if the literal value does not match the data type for the property specified by responding with HTTP Status code [400](#status-400).  The $filter section of the OData ABNF components specification contains the grammar for the allowable syntax of the $filter query parameter with the additional restriction that only built-in filter operations (expressed below) are supported. 
 
 The following table represents the Redfish allowable operators that shall be supported for $filter if $filter is implemented:
 
@@ -613,7 +613,7 @@ The following table represents the Redfish allowable operators that shall be sup
 | not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
 | ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
 
-Any other supported syntax for $filter is outside the scope of this specification.
+Any other supported syntax for $filter is outside the scope of this specification.  If the service receives a $filter query that is not supported, it shall be rejected with HTTP Status code [501](#status-501).
 
 ###### Retrieving Resource Collections
 
