@@ -48,15 +48,16 @@
       <Action Name="InsertMedia" IsBound="true">
         <Annotation Term="OData.Description" String="This action is used to attach remote media to virtual media."/>
         <Annotation Term="OData.LongDescription" String="This action shall attach remote media to virtual media."/>
-        <Parameter Name="Image" Type="VirtualMedia.Image">
+        <Parameter Name="VirtualMedia" Type="VirtualMedia.v1_1_0.Actions"/>
+        <Parameter Name="Image" Type="Edm.String">
           <Annotation Term="OData.Description" String="The URI of the remote media to attach to the virtual media."/>
           <Annotation Term="OData.LongDescription" String="This value shall specify the URI of the remote media to be attached to the virtual media."/>
         </Parameter>
-        <Parameter Name="Inserted" Type="VirtualMedia.Inserted">
+        <Parameter Name="Inserted" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="Indicates if the image is to be treated as inserted upon completion of the action."/>
           <Annotation Term="OData.LongDescription" String="This value shall specify if the image is to be treated as inserted upon completion of the action."/>
         </Parameter>
-        <Parameter Name="WriteProtected" Type="VirtualMedia.WriteProtected">
+        <Parameter Name="WriteProtected" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="Indicates if the remote media is supposed to be treated as write protected."/>
           <Annotation Term="OData.LongDescription" String="This value shall specify if the remote media is supposed to be treated as write protected."/>
         </Parameter>
@@ -65,8 +66,9 @@
       <Action Name="EjectMedia" IsBound="true">
         <Annotation Term="OData.Description" String="This action is used to detach remote media from virtual media."/>
         <Annotation Term="OData.LongDescription" String="This action shall detach the remote media from the virtual media.  At the completion of the operation, inserted shall be set to false and the image name shall be cleared."/>
+        <Parameter Name="VirtualMedia" Type="VirtualMedia.v1_1_0.Actions"/>
       </Action>
-      
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_0_0">
@@ -170,9 +172,9 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_2_0">
-      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>      
+      <Annotation Term="OData.Description" String="This version was created to change the permissions of Image, Inserted, and WriteProtected and to add the InsertMedia and InjectMedia actions."/>
       <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_1_0.VirtualMedia"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
