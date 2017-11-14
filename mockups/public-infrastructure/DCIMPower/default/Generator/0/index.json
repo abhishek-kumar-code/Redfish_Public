@@ -1,5 +1,7 @@
 {
-    "@odata.type": "#Generator.v0_1_0.Generator",
+    "@odata.type": "#Generator.v0_1_0.Generator"
+    "@odata.context": "/redfish/v1/$metadata#Generator.Generator",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0",
     "Id": "Generator1",
     "Name": "Generator1",
     "FirmwareRevision": "1.0.0",
@@ -10,32 +12,16 @@
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
     "PhysicalLocation": "Location",
+	
     "EngineRunning": true,
-    "SummaryAlarmOn": false,
     "EngineFailure": false,
-    "DayTankFuelLevel": 10,
-    "DayTankLowLevelPreAlarm": 5,
-    "DayTankLowLevelShutDown": 0,
-    "OverloadPreAlarm": 5,
-    "OverloadShutDown": 0,
     "DayTankRupture": false,
     "DayTankWaterInFuel": false,
     "EmergencyOff": false,
-    "EngineOilPressure": 0,
-    "EngineLowOilPressurePreAlarm": 0,
-    "EngineLowOilPressureShutDown": 0,
-    "LowWaterTemperature": 2,
     "Overspeed": "A",
-    "LowCoolantLevelPreAlarm": 0,
-    "LowCoolantLevelShutDown": 0,
     "OvercrankShutDown": 0,
     "AirDamperClosed": false,
     "BatteryChargerFail": false,
-    "HighExhaustTemperatureLeft": 30,
-    "HighExhaustTemperatureRight": 30,
-    "BearingHighTemperatureFront": 30,
-    "BearingHighTemperatureRear": 30,
-    "GeneratorPrimaryBearingTemperature": 30,
     "ProtectiveRelayTripped": false,
     
     "Sensors": { "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors" },
@@ -44,7 +30,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/0",
             "@odata.type": "#Sensor.v0_1_0.Sensor",
-            "Name": "Generator Temperature Sensor",
+            "Name": "Generator Exhaust Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
                 "State": "Enabled",
@@ -57,16 +43,32 @@
             "LowerThresholdCritical": 10,
             "MinReadingRange": 20,
             "MaxReadingRange": 80,
+            "PhysicalContext": "Exhaust",
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/0",
+            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "Name": "Generator Primary Bearing Temperature Sensor",
+            "SensorType": "Temperature",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 55,
+            "UpperThresholdCritical": 100,
+            "LowerThresholdCritical": 10,
+            "MinReadingRange": 20,
+            "MaxReadingRange": 80,
             "PhysicalContext": "Chassis",
             "Oem": {}
-        }
-    ],
+        }   ],
     
-    "FuelLevel":[
+    "LiquidLevel":[
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
             "@odata.type": "#Sensor.v0_1_0.Sensor",
-            "Name": "Generator Liquid Level Sensor",
+            "Name": "Generator Fuel Level Sensor",
             "SensorType": "LiquidLevel",
             "Status": {
                 "State": "Enabled",
@@ -81,9 +83,47 @@
             "MaxReadingRange": 50,
             "PhysicalContext": "Chassis",
             "Oem": {}
-        }        
+        },
+	{
+	    "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
+            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "Name": "Generator Coolant Sensor",
+            "SensorType": "LiquidLevel",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 12,
+            "UpperThresholdCritical": 20,
+            "LowerThresholdCritical": 1,
+            "MinReadingRange": 10,
+            "MaxReadingRange": 50,
+            "PhysicalContext": "Chassis",
+            "Oem": {}
+        }
     ],
-    
+
+    "Pressure":[
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
+            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "Name": "Generator Oil Pressure Sensor",
+            "SensorType": "Pressure",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 20,
+            "UpperThresholdCritical": 40,
+            "UpperThresholdWarning" " 30,
+            "LowerThresholdCritical": 10,
+	    "LowerThresholdWarning": 15,
+            "MinReadingRange": 10,
+            "MaxReadingRange": 50,
+            "PhysicalContext": "Chassis",
+            "Oem": {}
+        }        
+    ],    
     
     "AcOutput": [
         {
@@ -220,21 +260,23 @@
             ]
         }
     ],
+	
     "Alarms": {"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms" },
+	
     "TriggeredAlarms" : [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/2",
             "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
             "@odata.type": "#Alarm.v0_1_0.Alarm",
             "Id": "2",
-            "Name": "Engine Low Oil Pressure Pre Alarm",
+            "Name": "Engine Low Oil Pressure Warning Alarm",
             "Severity": "Warning",
             "Created": "2012-03-07T14:45:00Z",
-            "Message": "Engine LowOil Pressure Pre Alarm",
-            "MessageID": "Alarm.1.0.EngineLowOilPressurePreAlarm",
+            "Message": "Engine LowOil Pressure Warning Alarm",
+            "MessageID": "Alarm.1.0.EngineLowOilPressureWarningAlarm",
             "MessageArgs": [],
             "AlarmStatus": "Triggered",
-            "Acknowledge": "true",
+            "Acknowledge": true,
             "Links": {
                 "RelatedSensor": {
 	                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/8"
@@ -242,7 +284,6 @@
             }
         }
     ],
-    "@odata.context": "/redfish/v1/$metadata#Generator.Generator",
-    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0",
+
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
