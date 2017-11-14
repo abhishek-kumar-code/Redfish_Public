@@ -613,7 +613,7 @@ The following table represents the Redfish allowable operators that shall be sup
 | not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
 | ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
 
-Any other supported syntax for $filter is outside the scope of this specification.  If the service receives a $filter query that is not supported, it shall be rejected with HTTP Status code [501](#status-501).
+Any other supported syntax for $filter is outside the scope of this specification.  If the service receives a $filter query parameter that is not supported, it shall reject the request and return HTTP Status code [501](#status-501).
 
 ###### Retrieving Resource Collections
 
