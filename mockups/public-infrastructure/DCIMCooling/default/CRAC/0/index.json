@@ -110,7 +110,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -130,7 +130,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -150,7 +150,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -170,7 +170,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -190,7 +190,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         }
     ],        
@@ -212,7 +212,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -232,7 +232,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         }
     ],
@@ -254,7 +254,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -274,7 +274,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         }
     ],
