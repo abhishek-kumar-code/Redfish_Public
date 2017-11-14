@@ -45,7 +45,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Utility Input",
+                    "PhysicalContext": "ACUtilityInput",
                     "Oem": {}
                 },
                 {
@@ -65,7 +65,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Utility Input",
+                    "PhysicalContext": "ACUtilityInput",
                     "Oem": {}
                 },
                 {
@@ -85,7 +85,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Utility Input",
+                    "PhysicalContext": "ACUtilityInput",
                     "Oem": {}
                 }
             ],
@@ -107,7 +107,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Utility Input",
+                    "PhysicalContext": "ACUtilityInput",
                     "Oem": {}
                 }
             ],
@@ -129,7 +129,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Utility Input",
+                    "PhysicalContext": "ACUtilityInput",
                     "Oem": {}
                 }
             ],
@@ -151,7 +151,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Utility Input",
+                    "PhysicalContext": "ACUtilityInput",
                     "Oem": {}
                 }
             ],
@@ -173,7 +173,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Utility Input",
+                    "PhysicalContext": "ACUtilityInput",
                     "Oem": {}
                 }
             ]
@@ -204,7 +204,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Static Bypass Input",
+                    "PhysicalContext": "ACStaticBypassInput",
                     "Oem": {}
                 },
                 {
@@ -224,7 +224,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Static Bypass Input",
+                    "PhysicalContext": "ACStaticBypassInput",
                     "Oem": {}
                 }
             ],
@@ -246,7 +246,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Static Bypass Input",
+                    "PhysicalContext": "ACStaticBypassInput",
                     "Oem": {}
                 }
             ],
@@ -268,7 +268,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Static Bypass Input",
+                    "PhysicalContext": "ACStaticBypassInput",
                     "Oem": {}
                 }
             ]
@@ -298,7 +298,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Maintenance Bypass Input",
+                    "PhysicalContext": "ACMaintenanceBypassInput",
                     "Oem": {}
                 },
                 {
@@ -318,7 +318,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Maintenance Bypass Input",
+                    "PhysicalContext": "ACMaintenanceBypassInput",
                     "Oem": {}
                 }
             ],
@@ -340,7 +340,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Maintenance Bypass Input",
+                    "PhysicalContext": "ACMaintenanceBypassInput",
                     "Oem": {}
                 }
             ],
@@ -362,7 +362,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Maintenance Bypass Input",
+                    "PhysicalContext": "ACMaintenanceBypassInput",
                     "Oem": {}
                 }
             ]
@@ -392,7 +392,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "DC Bus",
+                    "PhysicalContext": "DCBus",
                     "Oem": {}
                 }
             ],
@@ -414,7 +414,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "DC Bus",
+                    "PhysicalContext": "DCBus",
                     "Oem": {}
                 }
             ],
@@ -436,7 +436,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "DC Bus",
+                    "PhysicalContext": "DCBus",
                     "Oem": {}
                 }
             ]
@@ -472,7 +472,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Output",
+                    "PhysicalContext": "ACOutput",
                     "Oem": {}
                 },
                 {
@@ -492,7 +492,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Output",
+                    "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
             ],
@@ -514,7 +514,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Output",
+                    "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
             ],
@@ -536,7 +536,7 @@
                     "LowerThresholdCritical": 11,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Output",
+                    "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
             ]
