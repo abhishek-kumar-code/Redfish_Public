@@ -4,82 +4,82 @@
     "Members@odata.count": 25,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Current0"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/0"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/1"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature0"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/2"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature1"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/3"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature2"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/4"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature3"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/5"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature4"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/6"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure0"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/7"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure1"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/8"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature5"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/9"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature6"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/10"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature7"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/11"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature7"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/12"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature8"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/13"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure2"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/14"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature9"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/15"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure3"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/16"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature10"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/17"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature11"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/18"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure4"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/19"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage0"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/20"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage1"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/21"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage2"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/22"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent0"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/23"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent1"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/24"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent2"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/25"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
