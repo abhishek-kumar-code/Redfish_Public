@@ -24,15 +24,12 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Event_v1.xml">
-    <edmx:Include Namespace="Event"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Alarm">
 
-      <EntityType Name="LogEntry" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      <EntityType Name="Alarm" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This resource defines the data definition for an Alarm.  An Alarm is a property that has a latch type behavior.  It is designed to be used to persist sensor threshold crossing or to capture the momentary state of another property."/>
         <Annotation Term="OData.LongDescription" String="This resource shall represent an Alarm in a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
@@ -47,7 +44,7 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="falxe"/>
+            <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
       </EntityType>
@@ -64,7 +61,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the AlarmStatus enumeration of the Alarm."/>
         </Property>
         
-        <Property Name="Acknowledged" Type="Alarm.v0_2_0.AlarmAcknowledge">
+        <Property Name="Acknowledged" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the acknowledge state of the Alarm."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall initially be false when alarm is Armed and can be used by client to acknoledge the alarm without having to rearm the alarm."/>
@@ -121,23 +118,18 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an href that references the resource for which the alarm is associated."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="RelatedProperty" Type="Resource.Item" Nullable="false">
+        <Property Name="RelatedProperty" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the URI of the Property that the Alarm is triggered by."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an href that references the resource for which the alarm is associated."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
       </ComplexType>
         
       <EnumType Name="AlarmStates">
         <Member Name="Armed"/>
         <Member Name="Triggered"/>
         <Member Name="Disabled"/>
-      </EnumType>
-      
-       <EnumType Name="AlarmAcknowledge">
-        <Member Name="false"/>
-        <Member Name="true"/>
       </EnumType>
       
       <EnumType Name="AlarmSeverity">
