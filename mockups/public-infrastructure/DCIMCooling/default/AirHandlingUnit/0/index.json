@@ -87,7 +87,7 @@
     "SupplyAirSmokeDetectorAlarmOn": false,
     "ReturnAirSmokeDetectorAlarmOn": false,
     "Oem": {},
-    "Sensors": { "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors" },
+    "Sensors": { "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors" },
     "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/0",
