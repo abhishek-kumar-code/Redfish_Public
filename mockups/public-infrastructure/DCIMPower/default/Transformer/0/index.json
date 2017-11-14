@@ -231,7 +231,7 @@
             
             "Frequency":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/9,
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/9",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Name": "AC Output - Frequency Sensor",
                     "SensorType": "Frequency",
