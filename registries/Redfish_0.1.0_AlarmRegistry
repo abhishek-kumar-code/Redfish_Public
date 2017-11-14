@@ -1,6 +1,6 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.type": "#MessageRegistry.1.0.0.MessageRegistry",
+    "@Redfish.Copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.type": "#MessageRegistry.v1_0_0.MessageRegistry",
     "Id": "Alarm.0.1.0",
     "Name": "Alarm Registry",
     "Language": "en",
@@ -9,6 +9,21 @@
     "RegistryVersion":  "0.1.0",
     "OwningEntity": "DMTF",
     "Messages": {
+        "SummaryAlarm": {
+            "Message": "Summary Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
+        "OverloadWarningAlarm": {
+            "Message": "Overload Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
+        "EngineLowOilPressureWarningAlarm": {
+            "Message": "Engine Low Oil Pressure Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
         "CompressorDischargeTempAlarm": {
             "Message": "Compressor Discharge Temperature Alarm",
             "Severity": "Warning",
