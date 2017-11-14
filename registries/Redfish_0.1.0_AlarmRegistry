@@ -10,17 +10,62 @@
     "OwningEntity": "DMTF",
     "Messages": {
         "SummaryAlarm": {
+            "Description": "Generator Alarm",
             "Message": "Summary Alarm",
             "Severity": "Warning",
             "NumberOfArgs": 0,
         },
         "OverloadWarningAlarm": {
+            "Description": "Generator Alarm",
             "Message": "Overload Warning Alarm",
             "Severity": "Warning",
             "NumberOfArgs": 0,
         },
-        "EngineLowOilPressureWarningAlarm": {
+        "OverloadCriticalAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Overload Critical - Shutdown Alarm",
+            "Severity": "Critical",
+            "NumberOfArgs": 0,
+        }
+            "EngineLowOilPressureWarningAlarm": {
+            "Description": "Generator Alarm",
             "Message": "Engine Low Oil Pressure Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
+        "FuelLevelLowWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Fuel Level Low Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
+        "FuelLevelLowCriticalAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Fuel Level Low Critical Alarm",
+            "Severity": "Critical",
+            "NumberOfArgs": 0,
+        },
+        "CoolantLevelLowWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Coolant Level Low Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
+        "CoolantLevelLowCriticalAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Coolant Level Low Critical Alarm",
+            "Severity": "Critical",
+            "NumberOfArgs": 0,
+        },        
+        "CoolantTemperatureLowWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Coolant Temperature Low Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },        
+        "HighExhaustTemperature": {
+            "Description": "Generator Alarm",
+            "Message": "Exhaust Temperature High Warning Alarm",
             "Severity": "Warning",
             "NumberOfArgs": 0,
         },
