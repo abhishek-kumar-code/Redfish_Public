@@ -196,6 +196,9 @@
         <Member Name="ACOutput">
           <Annotation Term="OData.Description" String="An AC Output."/>
         </Member>
+        <Member Name="ACInput">
+          <Annotation Term="OData.Description" String="An AC Input."/>
+        </Member>
       </EnumType>
 
     </Schema>
