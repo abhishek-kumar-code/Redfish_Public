@@ -128,27 +128,15 @@
       </ComplexType>
 
       <EnumType Name="EventSeverity">
-        <Member Name="OK">
-          <Annotation Term="OData.Description" String="Normal."/>
-        </Member>
-        <Member Name="Warning">
-          <Annotation Term="OData.Description" String="This event requires attention."/>
-        </Member>
-        <Member Name="Critical">
-          <Annotation Term="OData.Description" String="This critical event requires immediate attention."/>
-        </Member>
+        <Member Name="OK"/>
+        <Member Name="Warning"/>
+        <Member Name="Critical"/>
       </EnumType>
 
       <EnumType Name="LogEntryType">
-        <Member Name="Event">
-          <Annotation Term="OData.Description" String="This entry type represents an Event Log entry."/>
-        </Member>
-        <Member Name="SEL">
-          <Annotation Term="OData.Description" String="This event type represents a SEL entry."/>
-        </Member>
-        <Member Name="Oem">
-          <Annotation Term="OData.Description" String="This event type represents an OEM defined entry."/>
-        </Member>
+        <Member Name="Event"/>
+        <Member Name="SEL"/>
+        <Member Name="Oem"/>
       </EnumType>
 
       <TypeDefinition Name="LogEntryCode" UnderlyingType="Edm.String">
