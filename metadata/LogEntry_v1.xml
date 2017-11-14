@@ -144,7 +144,7 @@
           <Annotation Term="OData.Description" String="Contains a Redfish-defined message (event)."/>
         </Member>
         <Member Name="SEL">
-          <Annotation Term="OData.Description" String="Contains an IPMI System Event Log (SEL) entry"/>
+          <Annotation Term="OData.Description" String="Contains an IPMI System Event Log (SEL) entry."/>
         </Member>
         <Member Name="Oem">
           <Annotation Term="OData.Description" String="Contains an entry in an OEM-defined format."/>
