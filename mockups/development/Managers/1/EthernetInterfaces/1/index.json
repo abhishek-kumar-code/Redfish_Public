@@ -50,7 +50,7 @@
     ],
     "IPv6AddressPolicyTable": [
         {
-            "Prefix": ":  :1/128",
+            "Prefix": "::1/128",
             "Precedence": 50,
             "Label": 0
         }
