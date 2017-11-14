@@ -18,7 +18,7 @@
     "OutputStatus": "1",
     "OutputPhase": "1",
     "SystemStatus": "1",
-    
+    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors"},
     "AcUtilityInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcUtilityInput/0",
