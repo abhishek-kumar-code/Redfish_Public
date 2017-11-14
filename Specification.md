@@ -539,16 +539,18 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query parameters
 
-Clients can add query parameters to request additional features from the service.  These features include pagination and expansion, and are explained below.
+Clients can add query parameters to request additional features from the service.  These features include pagination, selection, filtering and expansion, and are explained below.
 
 | Attribute | Description                                                                                                                                                     | Example                             |
 | ---       | ---                                                                                                                                                             | ---                                 |
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
 | $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
+| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                    | `http://resourcecollection?$select=SystemType,Status`|
+| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                            | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
 
 * Services should support the $top and $skip query parameters.
-* Service may support the $expand query parameters. 
+* Service may support the $expand, $filter and $select query parameters. 
 * When the service supports query parameters, the service shall include the ProtocolFeatureSupport object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
@@ -580,6 +582,38 @@ When performing $expand, Services may omit some of the properties of the referen
 When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response.  If a service is unable to return the payload due to its size, it shall return HTTP Status code [507](#status-507).
 
 Any other supported syntax for $expand is outside the scope of this specification.
+
+***Query parameters for Select***
+
+The $select parameter indicates to the implementation that it should return a subset of the properties of the resource based on the value of the select clause.  The $select clause shall not affect the resource itself. The value of the $select clause is a comma separated list of the properties to be returned in the body of the response. The syntax to represent properties in complex types shall be the property names concatonated with a slash ("/").  Note that the default behavior when the select option is not specified is to return all properties. 
+
+An example of the use of select might be:
+* GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
+
+When performing $select, Services shall return all of the requested properties of the referenced resource.
+
+Any other supported syntax for $select is outside the scope of this specification.
+
+***Query parameters for Filter***
+
+The $filter parameter indicates to the implementation that it should include a subset of the members of a collection based on the expression specified as the value of the filter clause.  The $filter query parameter is a set of properties and literals with an operator.  A literal value can be a string enclosed in single quotes, a number, or a boolean value.  The service should reject $filter requests if the literal value does not match the data type for the property specified by responding with HTTP Status code [400](#status-400).  The $filter section of the OData ABNF components specification contains the grammar for the allowable syntax of the $filter query parameter with the additional restriction that only built-in filter operations (expressed below) are supported. 
+
+The following table represents the Redfish allowable operators that shall be supported for $filter if $filter is implemented:
+
+| value     | Description                                     | Example                                                                          |
+| ---       | ---                                             | ---                                                                              |
+| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                      |
+| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                         |
+| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                      |
+| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                      |
+| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                         |
+| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                         |
+| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64         |
+| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                       |
+| not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
+| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
+
+Any other supported syntax for $filter is outside the scope of this specification.  If the service receives a $filter query parameter that is not supported, it shall reject the request and return HTTP Status code [501](#status-501).
 
 ###### Retrieving Resource Collections
 

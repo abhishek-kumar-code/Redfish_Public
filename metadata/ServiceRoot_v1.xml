@@ -299,10 +299,20 @@
       <ComplexType Name="ProtocolFeaturesSupported">
         <Annotation Term="OData.Description" String="Contains information about protocol features supported by the service."/>
         <Annotation Term="OData.LongDescription" String="This type contains information about protocol features supported by the service."/>
-        <Property Name="Expand" Type="ServiceRoot.v1_3_0.Expand" Nullable="false">
+        <Property Name="ExpandQuery" Type="ServiceRoot.v1_3_0.Expand" Nullable="false">
           <Annotation Term="OData.Description" String="Contains information about the use of $expand in the service."/>
           <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain information about the support of the $expand query parameter by the service."/>
         </Property>
+        <Property Name="FilterQuery" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the filter query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of th filter query parameter as described by the specification."/>
+        </Property>
+        <Property Name="SelectQuery" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the select query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of th select query parameter as described by the specification."/>
+        </Property>        
       </ComplexType>
 
       <ComplexType Name="Expand">
