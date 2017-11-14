@@ -136,7 +136,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/2",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "3",
+            "Id": "2",
             "Name": "Compressor Discharge Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -156,7 +156,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/3",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "6",
+            "Id": "3",
             "Name": "Compressor Suction Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -176,7 +176,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/4",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "8",
+            "Id": "4",
             "Name": "Outside Air Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -198,7 +198,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/5",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "2",
+            "Id": "5",
             "Name": "Relative Humidity Sensor",
             "SensorType": "Humidity",
             "Status": {
@@ -218,7 +218,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/6",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "7",
+            "Id": "6",
             "Name": "Outside Air Humidity Sensor",
             "SensorType": "Humidity",
             "Status": {
@@ -240,7 +240,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/7",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "4",
+            "Id": "7",
             "Name": "Compressor Discharge Pressure Sensor",
             "SensorType": "Pressure",
             "Status": {
@@ -260,7 +260,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CRAC/0/Sensors/8",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "5",
+            "Id": "8",
             "Name": "Compressor Suction Pressure Sensor",
             "SensorType": "Pressure",
             "Status": {
