@@ -13,7 +13,7 @@
     "LiquidLevel": "LiquidLevel",
     "PowerFactor": 1,
     
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"},
+    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors"},
              
     "Temperature": [
         {
