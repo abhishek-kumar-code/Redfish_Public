@@ -590,7 +590,7 @@ The $select parameter indicates to the implementation that it should return a su
 An example of the use of select might be:
 * GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
 
-When performing $select, Services shall not omit some of the properties of the referenced resource.
+When performing $select, Services shall return all of the requested properties of the referenced resource.
 
 Any other supported syntax for $select is outside the scope of this specification.
 
