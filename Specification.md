@@ -653,7 +653,7 @@ where
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
-Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource.
+Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource.  The resource may provide a separate ActionInfo resource to describe the parameters and values supported by a particular instance or implementation.
 
 For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
@@ -703,6 +703,47 @@ OData-Version: 4.0
     "ResetType": "On"
 }
 ~~~
+
+Using the same Reset example, a computer system resource may utilize an ActionInfo resource to convey the allowable values:
+
+~~~json
+{
+    "Actions": {
+        "#ComputerSystem.Reset": {
+            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
+        }
+    },
+    ...
+}
+~~~
+
+Then, the ResetActionInfo resource would contain a more detailed description of the parameters and the supported values.
+
+~~~json
+{
+	"@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+	"@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
+	"@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+	"Parameters": [{
+		"Name": "ResetType",
+		"Required": true,
+		"DataType": "String",
+		"AllowableValues": [
+			"On",
+			"ForceOff",
+			"GracefulShutdown",
+			"GracefulRestart",
+			"ForceRestart",
+			"Nmi",
+			"ForceOn",
+			"PushPowerButton"
+		]
+	}]
+}
+
+~~~
+
 
 In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
 * HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
