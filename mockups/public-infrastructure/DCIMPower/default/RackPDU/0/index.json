@@ -23,10 +23,8 @@
     "LoadState": 1,
     "PhaseNumber": 2,
     "BankNumber": 1,
-    
     "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"},
-             
-     "Temperature": [ 
+    "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/5",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
@@ -63,8 +61,7 @@
             "PhysicalContext": "Cabinet",
             "Oem": {}
         }
-    ],     
-                        
+    ],
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/AcInput/0",
@@ -109,7 +106,6 @@
                     "Oem": {}
                 }
             ],
-            
             "Amperage":[   
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/2",
@@ -146,7 +142,6 @@
                     "Oem": {}
                 }
             ],
-    
             "Frequency":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/4",
@@ -168,7 +163,6 @@
             ]
         }
     ],
-            
     "Outlets": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/0",
