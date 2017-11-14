@@ -26,6 +26,13 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmsCollection_v1.xml">
+    <edmx:Include Namespace="AlarmCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
+    <edmx:Include Namespace="Alarm"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -138,18 +145,26 @@
           <Annotation Term="OData.Description" String="Contains the array of 1 or more pressure sensors."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty> 
+ 
+         <!-- Alarm collection for equipment -->
+        <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <!-- Array of triggered alarms for equipment -->
+        <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
         
         <!-- Status - many of these will likely need units -->
         <Property Name="EngineRunning" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Engine Running status of Generator."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Running boolean value of Generator."/>
-        </Property>
-
-        <Property Name="SummaryAlarmOn" Type="Edm.Boolean">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Summary Alarm On status of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Summary Alarm On status (boolean value; true for OFF/false for ON) of Generator."/>
         </Property>
 
         <Property Name="EngineFailure" Type="Edm.Boolean">
@@ -174,12 +189,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Day Tank Low Level (Shut-Down) of Generator."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Day Tank Low Level (Shut-Down) of Generator."/>
-        </Property>
-
-        <Property Name="OverloadPreAlarm" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Overload (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Overload (Pre-Alarm) of Generator."/>
         </Property>
 
         <Property Name="OverloadShutDown" Type="Edm.Decimal">
@@ -210,12 +219,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Engine Oil Pressure of Generator."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Oil Pressure sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="EngineLowOilPressurePreAlarm" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Engine Low Oil Pressure (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Low Oil Pressure (Pre-Alarm) sensor reading value of Generator."/>
         </Property>
 
         <Property Name="EngineLowOilPressureShutDown" Type="Edm.Decimal">
