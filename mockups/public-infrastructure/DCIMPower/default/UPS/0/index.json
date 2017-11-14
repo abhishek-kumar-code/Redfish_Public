@@ -29,7 +29,7 @@
             
             "ACVoltage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/0",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "0",
                     "Name": "AC Utility Input - RMS Voltage (L-L) Phase A-B Sensor",
@@ -52,7 +52,7 @@
                     "Oem": {}
                 },
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage1",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/1",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "1",
                     "Name": "AC Utility Input - RMS Voltage (L-L) Phase B-C Sensor",
@@ -75,7 +75,7 @@
                     "Oem": {}
                 },
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage2",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/2",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "2",
                     "Name": "AC Utility Input - RMS Voltage (L-L) Phase C-A Sensor",
@@ -100,7 +100,7 @@
             ],
             "Amperage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Current0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/3",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "3",
                     "Name": "AC Utility Input - RMS Current Sensor",
@@ -125,7 +125,7 @@
             ],
             "Frequency": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Frequency0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/4",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "4",
                     "Name": "AC Utility Input - Frequency Sensor",
@@ -150,7 +150,7 @@
             ],
             "Temperature": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Temperature0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/5",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "5",
                     "Name": "AC Utility Input - Ambient Temperature Sensor",
@@ -175,7 +175,7 @@
             ],
             "Humidity": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Humidity0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/6",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "6",
                     "Name": "AC Utility Input - Humidity Sensor",
@@ -209,7 +209,7 @@
             "RmsUnderOverVoltage": 0,
             "ACVoltage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Voltage0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/7",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "7",
                     "Name": "AC Static Bypass Input - RMS Voltage (L-N) Sensor",
@@ -232,7 +232,7 @@
                     "Oem": {}
                 },
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Voltage1",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/8",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "8",
                     "Name": "AC Static Bypass Input - RMS Voltage (L-L) Sensor",
@@ -257,7 +257,7 @@
             ],
             "Amperage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Current0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/9",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "9",
                     "Name": "AC Static Bypass Input - RMS Current Sensor",
@@ -282,7 +282,7 @@
             ],
             "Frequency": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Frequency0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/10",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "10",
                     "Name": "AC Static Bypass Input - Frequency Sensor",
@@ -315,7 +315,7 @@
             
             "ACVoltage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Voltage0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/11",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "11",
                     "Name": "AC Maintenance Bypass Input - RMS Voltage (L-N) Sensor",
@@ -338,7 +338,7 @@
                     "Oem": {}
                 },
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Voltage1",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/12",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "12",
                     "Name": "AC Maintenance Bypass Input - RMS Voltage (L-L) Sensor",
@@ -363,7 +363,7 @@
             ],
             "Amperage":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Current0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/13",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "13",
                     "Name": "AC Maintenance Bypass Input - RMS Current Sensor",
@@ -388,7 +388,7 @@
             ],
             "Frequency": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Frequency0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/14",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "14",
                     "Name": "AC Maintenance Bypass Input - Frequency Sensor",
@@ -421,7 +421,7 @@
             "BatteryPowerRemaining": 0,
             "ACVoltage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Voltage0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/15",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "15",
                     "Name": "DC Bus - Voltage Sensor",
@@ -446,7 +446,7 @@
             ],
             "Amperage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Current0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/16",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "16",
                     "Name": "DC Bus - DC Current Sensor",
@@ -471,7 +471,7 @@
             ],
             "Temperature": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Temperature0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/17",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "17",
                     "Name": "DC Bus - Battery Cabinet Temperature Sensor",
@@ -510,7 +510,7 @@
             
             "ACVoltage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Voltage0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/18",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "18",
                     "Name": "AC Output - RMS Voltage (L-N) Sensor",
@@ -533,7 +533,7 @@
                     "Oem": {}
                 },
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Voltage1",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/19",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "19",
                     "Name": "AC Output - RMS Voltage (L-L) Sensor",
@@ -558,7 +558,7 @@
             ],
             "Amperage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Current0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/20",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "20",
                     "Name": "AC Output - RMS Current Sensor",
@@ -583,7 +583,7 @@
             ],
             "Frequency": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Frequency0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/21",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "21",
                     "Name": "AC Output - Frequency Sensor",
