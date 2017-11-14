@@ -481,6 +481,11 @@
       </EntityType>
 
       <EntityType Name="Fan" BaseType="Thermal.v1_3_0.Fan">
+	    <Property Name="HotPluggable" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates if this device can be inserted or removed while the equipment is in operation."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the device can be inserted or removed while the underlying equipment otherwise remains in its current operational state.  Devices indicated as hot-pluggable shall allow the device to become operable without altering the operational state of the underlying equipment. Devices that cannot be inserted or removed from equipment in operation, or devices that cannot become operable without affecting the operational state of that equipment, shall be indicated as not hot-pluggable."/>
+		</Property>
         <Property Name="Location" Type="Resource.Location" Nullable="false"/>
         <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
