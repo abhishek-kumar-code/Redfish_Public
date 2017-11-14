@@ -916,12 +916,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the host watchdog timer functionality has been enabled or not.  This property indicates only that the functionality is enabled or disabled by the user, and updates to this property shall not initiate a watchdog timer countdown."/>
         </Property>
         <Property Name="WarningAction" Type="ComputerSystem.v1_5_0.WatchdogWarningAction">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property indicates the action to perform when the Watchdog Timer is close (typically 3-10 seconds) to reaching its timeout value."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the action to perform prior to the expiration of the Watchdog Timer. This action typically occurs 3-10 seconds prior to the timeout value, but the exact timing is dependent on the implementation."/>
         </Property>
         <Property Name="TimeoutAction" Type="ComputerSystem.v1_5_0.WatchdogTimeoutAction">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property indicates the action to perform when the Watchdog Timer reaches its timeout value."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the action to perform upon the  expiration of the Watchdog Timer."/>
         </Property>
