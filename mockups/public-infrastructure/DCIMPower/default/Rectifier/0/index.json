@@ -16,7 +16,7 @@
     "InputSourceStatus": 1,
     "OutputSourceStatus": 2,
     
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"},
+    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors"},
     
     "Amperage": [ 
          {
