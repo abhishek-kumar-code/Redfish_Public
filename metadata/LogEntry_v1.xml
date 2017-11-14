@@ -128,15 +128,27 @@
       </ComplexType>
 
       <EnumType Name="EventSeverity">
-        <Member Name="OK"/>
-        <Member Name="Warning"/>
-        <Member Name="Critical"/>
+        <Member Name="OK">
+          <Annotation Term="OData.Description" String="Informational or operating normally."/>
+		</Member>
+        <Member Name="Warning">
+          <Annotation Term="OData.Description" String="A condition requiring attention."/>
+		</Member>
+        <Member Name="Critical">
+          <Annotation Term="OData.Description" String="A critical condition requiring immediate attention."/>
+		</Member>
       </EnumType>
 
       <EnumType Name="LogEntryType">
-        <Member Name="Event"/>
-        <Member Name="SEL"/>
-        <Member Name="Oem"/>
+        <Member Name="Event">
+          <Annotation Term="OData.Description" String="Contains a Redfish-defined message (event)."/>
+		</Member>
+        <Member Name="SEL">
+          <Annotation Term="OData.Description" String="Contains an IPMI System Event Log (SEL) entry"/>
+		</Member>
+        <Member Name="Oem">
+          <Annotation Term="OData.Description" String="Contains an entry in an OEM-defined format."/>
+		</Member>
       </EnumType>
 
       <TypeDefinition Name="LogEntryCode" UnderlyingType="Edm.String">
