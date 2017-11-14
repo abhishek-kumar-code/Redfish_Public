@@ -361,7 +361,6 @@
           <Annotation Term="OData.LongDescription" String="A statically defined set of DNS server IP addresses to be used when DHCP provisioning is not in enabled for name server configuration. As an implementation option they may also be used in addition to DHCP provided addresses, or in cases where the DHCP server provides no DNS assigments."/>
         </Property>
         <Property Name="IPv4StaticAddresses" Type="Collection(IPAddresses.IPv4Address)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 static addresses assigned to this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent all IPv4 static addresses assigned (but not necessarily in use) to this interface. Addresses in use by this interface shall also appear in the IPv4Addresses property."/>
         </Property>
