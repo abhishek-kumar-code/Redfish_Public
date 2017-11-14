@@ -220,6 +220,46 @@
             ]
         }
     ],
+    "Alarms": {"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms" }
+    "TriggeredAlarms" : [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/1",
+            "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+            "@odata.type": "#Alarm.v0_1_0.Alarm",
+            "Id": "1",
+            "Name": "Summary Alarm",
+            "Severity": "Warning",
+            "Created": "2012-03-07T14:44:00Z",
+            "Message": "SUmmary Alarm",
+            "MessageId": "Alarm.1.0.SummaryAlarm",
+            "Acknowledge": "false",
+            "AlarmStatus": "Armed",
+            "MessageArgs": [],
+            "Links": {
+                "RelatedProperty”: {
+	                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/#Status.HealthStatus"
+	            }
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/2",
+            "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+            "@odata.type": "#Alarm.v0_1_0.Alarm",
+            "Id": "2",
+            "Name": "Engine Low Oil Pressure Pre Alarm",
+            "Severity": "Warning",
+            "Created": "2012-03-07T14:45:00Z",
+            "Message": "Engine LowOil Pressure Pre Alarm",
+            "MessageID": "Alarm.1.0.EngineLowOilPressurePreAlarm",
+            "MessageArgs": [],
+            "AlarmStatus": "Triggered",
+            "Acknowledge": "true",
+            "Links": {
+                "RelatedSensor”: {
+	                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/8"
+                },
+            },
+        }
+    ]
     "@odata.context": "/redfish/v1/$metadata#Generator.Generator",
     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
