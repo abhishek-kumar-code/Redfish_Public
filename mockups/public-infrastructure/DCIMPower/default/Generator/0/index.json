@@ -220,26 +220,8 @@
             ]
         }
     ],
-    "Alarms": {"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms" }
+    "Alarms": {"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms" },
     "TriggeredAlarms" : [
-        {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/1",
-            "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
-            "@odata.type": "#Alarm.v0_1_0.Alarm",
-            "Id": "1",
-            "Name": "Summary Alarm",
-            "Severity": "Warning",
-            "Created": "2012-03-07T14:44:00Z",
-            "Message": "SUmmary Alarm",
-            "MessageId": "Alarm.1.0.SummaryAlarm",
-            "Acknowledge": "false",
-            "AlarmStatus": "Armed",
-            "MessageArgs": [],
-            "Links": {
-                "RelatedProperty”: {
-	                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/#Status.HealthStatus"
-	            }
-        },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/2",
             "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
@@ -254,10 +236,10 @@
             "AlarmStatus": "Triggered",
             "Acknowledge": "true",
             "Links": {
-                "RelatedSensor”: {
+                "RelatedSensor": {
 	                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/8"
-                },
-            },
+                } 
+            }
         }
     ]
     "@odata.context": "/redfish/v1/$metadata#Generator.Generator",
