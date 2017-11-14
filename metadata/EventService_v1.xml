@@ -61,35 +61,35 @@
         <Parameter Name="EventService" Type="EventService.v1_0_0.Actions"/>
         <Parameter Name="EventType" Type="Event.EventType" Nullable="false">
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This defines the property name for which the following allowable values apply."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the property name for which the following allowable values apply."/>
         </Parameter>
         <Parameter Name="EventId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the ID of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the EventId property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the EventId property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="EventTimestamp" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Description" String="This is the time stamp of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the EventId property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the EventTimestamp property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="Severity" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the Severity of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the Severity property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the Severity property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="Message" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the human readable message of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the Message property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the Message property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the message ID of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageId property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the MessageId property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Description" String="This is the array of message arguments of the event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageArgs property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the MessageArgs property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="OriginOfCondition" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the OriginOfCondition property of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the OriginOfCondition property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the OriginOfCondition property in the Event schema for Redfish."/>
         </Parameter>
       </Action>
 
@@ -168,9 +168,9 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_6">
-      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_5.EventService"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
