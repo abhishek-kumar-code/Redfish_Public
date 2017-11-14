@@ -115,7 +115,7 @@
             },
             "Reading": 20,
             "UpperThresholdCritical": 40,
-            "UpperThresholdWarning" " 30,
+            "UpperThresholdWarning": 30,
             "LowerThresholdCritical": 10,
 	    "LowerThresholdWarning": 15,
             "MinReadingRange": 10,
