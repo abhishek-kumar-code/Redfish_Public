@@ -33,59 +33,51 @@
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcInput/0",
             "MemberId": "0",
             "PercentCurrent": "50",
-            "Sensors": {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors",
-                "@odata.type": "#SensorCollection.SensorCollection",
-                "Name": "SensorCollection",
-                "Members": [
-                    {
-                        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcInput0Current0",
-                        "@odata.type": "#Sensor.v0_2_0.Sensor",
-                        "Id": "0",
-                        "Name": "AC Input - RMS Current Sensor",
-                        "SensorType": "Current",
-                        "SensorNumber": 0,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "PresentReading": 12, 
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "AC Input",
-                        "Oem": {}
+            
+            "Amperage": [
+                {
+                    "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/0",
+                    "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "0",
+                    "Name": "AC Input - RMS Current Sensor",
+                    "SensorType": "Amperage",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "OK"
                     },
-                    {
-                        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcInput0Voltage0",
-                        "@odata.type": "#Sensor.v0_2_0.Sensor",
-                        "Id": "1",
-                        "Name": "AC Input - RMS Voltage (L-L) Sensor",
-                        "SensorType": "Voltage",
-                        "SensorNumber": 1,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "PresentReading": 12, 
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "AC Input",
-                        "Oem": {}
-                    }
-                ]
-            }
+                    "Reading": 12, 
+                    "UpperThresholdWarning": 12.5,
+                    "UpperThresholdCritical": 13,
+                    "LowerThresholdWarning": 11.5,
+                    "LowerThresholdCritical": 11,
+                    "MinReadingRange": 0,
+                    "MaxReadingRange": 20,
+                    "PhysicalContext": "ACInput",
+                    "Oem": {}
+                }
+            ],
+            "ACVoltage": [
+                {
+                    "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/1",
+                    "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "1",
+                    "Name": "AC Input - RMS Voltage (L-L) Sensor",
+                    "SensorType": "ACVoltage",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "OK"
+                    },
+                    "Reading": 12, 
+                    "UpperThresholdWarning": 12.5,
+                    "UpperThresholdCritical": 13,
+                    "LowerThresholdWarning": 11.5,
+                    "LowerThresholdCritical": 11,
+                    "MinReadingRange": 0,
+                    "MaxReadingRange": 20,
+                    "PhysicalContext": "ACInput",
+                    "Oem": {}
+                }
+            ]
         }
     ],
     "AcOutput": [
@@ -95,82 +87,72 @@
             "PercentRatedTorque": "50",
             "PercentRatedPower": "50",
             "kWHours": "10",
-            "Sensors": {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors",
-                "@odata.type": "#SensorCollection.SensorCollection",
-                "Name": "SensorCollection",
-                "Members": [
-                    {
-                        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Frequency0",
-                        "@odata.type": "#Sensor.v0_2_0.Sensor",
-                        "Id": "2",
-                        "Name": "AC Output - Frequency Sensor",
-                        "SensorType": "Frequency",
-                        "SensorNumber": 2,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "PresentReading": 12, 
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "AC Output",
-                        "Oem": {}
+            "Frequency": [
+                {
+                    "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/2",
+                    "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "2",
+                    "Name": "AC Output - Frequency Sensor",
+                    "SensorType": "Frequency",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "OK"
                     },
-                    {
-                        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Voltage0",
-                        "@odata.type": "#Sensor.v0_2_0.Sensor",
-                        "Id": "3",
-                        "Name": "AC Output - RMS Voltage (L-L) Sensor",
-                        "SensorType": "Voltage",
-                        "SensorNumber": 3,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "PresentReading": 12, 
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "AC Output",
-                        "Oem": {}
+                    "Reading": 12, 
+                    "UpperThresholdWarning": 12.5,
+                    "UpperThresholdCritical": 13,
+                    "LowerThresholdWarning": 11.5,
+                    "LowerThresholdCritical": 11,
+                    "MinReadingRange": 0,
+                    "MaxReadingRange": 20,
+                    "PhysicalContext": "ACOutput",
+                    "Oem": {}
+                }
+            ],
+            "ACVoltage": [
+                {
+                    "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/3",
+                    "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "3",
+                    "Name": "AC Output - RMS Voltage (L-L) Sensor",
+                    "SensorType": "ACVoltage",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "OK"
                     },
-                    {
-                        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Current0",
-                        "@odata.type": "#Sensor.v0_2_0.Sensor",
-                        "Id": "4",
-                        "Name": "AC Output - RMS Current Sensor",
-                        "SensorType": "Current",
-                        "SensorNumber": 4,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "PresentReading": 12, 
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "AC Output",
-                        "Oem": {}
-                    }
-                ]
-            }
+                    "Reading": 12, 
+                    "UpperThresholdWarning": 12.5,
+                    "UpperThresholdCritical": 13,
+                    "LowerThresholdWarning": 11.5,
+                    "LowerThresholdCritical": 11,
+                    "MinReadingRange": 0,
+                    "MaxReadingRange": 20,
+                    "PhysicalContext": "ACOutput",
+                    "Oem": {}
+                }
+            ],
+            "Amperage":[
+                {
+                    "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/4",
+                    "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "4",
+                    "Name": "AC Output - RMS Current Sensor",
+                    "SensorType": "Amperage",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "OK"
+                    },
+                    "Reading": 12, 
+                    "UpperThresholdWarning": 12.5,
+                    "UpperThresholdCritical": 13,
+                    "LowerThresholdWarning": 11.5,
+                    "LowerThresholdCritical": 11,
+                    "MinReadingRange": 0,
+                    "MaxReadingRange": 20,
+                    "PhysicalContext": "ACOutput",
+                    "Oem": {}
+                }
+            ]
         }
     ],
     "DcBus": [
@@ -178,184 +160,30 @@
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/DcBus/0",
             "MemberId": "0",
             "UnderOverVolts": "StatusAlert",
-            "Sensors": {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors",
-                "@odata.type": "#SensorCollection.SensorCollection",
-                "Name": "SensorCollection",
-                "Members": [
-                    {
-                        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/DcBus0Voltage0",
-                        "@odata.type": "#Sensor.v0_2_0.Sensor",
-                        "Id": "5",
-                        "Name": "DC Bus - RMS Voltage Sensor",
-                        "SensorType": "Voltage",
-                        "SensorNumber": 5,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "PresentReading": 12, 
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "DC Bus",
-                        "Oem": {}
-                    }
-                ]
-            }
+            "ACVoltage": [
+                {
+                    "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/5",
+                    "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "5",
+                    "Name": "DC Bus - RMS Voltage Sensor",
+                    "SensorType": "ACVoltage",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "OK"
+                    },
+                    "Reading": 12, 
+                    "UpperThresholdWarning": 12.5,
+                    "UpperThresholdCritical": 13,
+                    "LowerThresholdWarning": 11.5,
+                    "LowerThresholdCritical": 11,
+                    "MinReadingRange": 0,
+                    "MaxReadingRange": 20,
+                    "PhysicalContext": "DCBus",
+                    "Oem": {}
+                }
+            ]
         }
     ],
-    "Oem": {},
-    "Sensors": {
-        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors",
-        "@odata.type": "#SensorCollection.SensorCollection",
-        "Name": "SensorCollection",
-        "Members": [
-            {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcInput0Current0",
-                "@odata.type": "#Sensor.v0_2_0.Sensor",
-                "Id": "0",
-                "Name": "AC Input - RMS Current Sensor",
-                "SensorType": "Current",
-                "SensorNumber": 0,
-                "Status": {
-                    "State": "Enabled",
-                    "Health": "OK"
-                },
-                "PresentReading": 12, 
-                "UpperThresholdNonCritical": 12.5,
-                "UpperThresholdCritical": 13,
-                "UpperThresholdFatal": 15,
-                "LowerThresholdNonCritical": 11.5,
-                "LowerThresholdCritical": 11,
-                "LowerThresholdFatal": 10,
-                "MinReadingRange": 0,
-                "MaxReadingRange": 20,
-                "PhysicalContext": "AC Input",
-                "Oem": {}
-            },
-            {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcInput0Voltage0",
-                "@odata.type": "#Sensor.v0_2_0.Sensor",
-                "Id": "1",
-                "Name": "AC Input - RMS Voltage (L-L) Sensor",
-                "SensorType": "Voltage",
-                "SensorNumber": 1,
-                "Status": {
-                    "State": "Enabled",
-                    "Health": "OK"
-                },
-                "PresentReading": 12, 
-                "UpperThresholdNonCritical": 12.5,
-                "UpperThresholdCritical": 13,
-                "UpperThresholdFatal": 15,
-                "LowerThresholdNonCritical": 11.5,
-                "LowerThresholdCritical": 11,
-                "LowerThresholdFatal": 10,
-                "MinReadingRange": 0,
-                "MaxReadingRange": 20,
-                "PhysicalContext": "AC Input",
-                "Oem": {}
-            },
-            {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Frequency0",
-                "@odata.type": "#Sensor.v0_2_0.Sensor",
-                "Id": "2",
-                "Name": "AC Output - Frequency Sensor",
-                "SensorType": "Frequency",
-                "SensorNumber": 2,
-                "Status": {
-                    "State": "Enabled",
-                    "Health": "OK"
-                },
-                "PresentReading": 12, 
-                "UpperThresholdNonCritical": 12.5,
-                "UpperThresholdCritical": 13,
-                "UpperThresholdFatal": 15,
-                "LowerThresholdNonCritical": 11.5,
-                "LowerThresholdCritical": 11,
-                "LowerThresholdFatal": 10,
-                "MinReadingRange": 0,
-                "MaxReadingRange": 20,
-                "PhysicalContext": "AC Output",
-                "Oem": {}
-            },
-            {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Voltage0",
-                "@odata.type": "#Sensor.v0_2_0.Sensor",
-                "Id": "3",
-                "Name": "AC Output - RMS Voltage (L-L) Sensor",
-                "SensorType": "Voltage",
-                "SensorNumber": 3,
-                "Status": {
-                    "State": "Enabled",
-                    "Health": "OK"
-                },
-                "PresentReading": 12, 
-                "UpperThresholdNonCritical": 12.5,
-                "UpperThresholdCritical": 13,
-                "UpperThresholdFatal": 15,
-                "LowerThresholdNonCritical": 11.5,
-                "LowerThresholdCritical": 11,
-                "LowerThresholdFatal": 10,
-                "MinReadingRange": 0,
-                "MaxReadingRange": 20,
-                "PhysicalContext": "AC Output",
-                "Oem": {}
-            },
-            {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Current0",
-                "@odata.type": "#Sensor.v0_2_0.Sensor",
-                "Id": "4",
-                "Name": "AC Output - RMS Current Sensor",
-                "SensorType": "Current",
-                "SensorNumber": 4,
-                "Status": {
-                    "State": "Enabled",
-                    "Health": "OK"
-                },
-                "PresentReading": 12, 
-                "UpperThresholdNonCritical": 12.5,
-                "UpperThresholdCritical": 13,
-                "UpperThresholdFatal": 15,
-                "LowerThresholdNonCritical": 11.5,
-                "LowerThresholdCritical": 11,
-                "LowerThresholdFatal": 10,
-                "MinReadingRange": 0,
-                "MaxReadingRange": 20,
-                "PhysicalContext": "AC Output",
-                "Oem": {}
-            },
-            {
-                "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/DcBus0Voltage0",
-                "@odata.type": "#Sensor.v0_2_0.Sensor",
-                "Id": "5",
-                "Name": "DC Bus - RMS Voltage Sensor",
-                "SensorType": "Voltage",
-                "SensorNumber": 5,
-                "Status": {
-                    "State": "Enabled",
-                    "Health": "OK"
-                },
-                "PresentReading": 12, 
-                "UpperThresholdNonCritical": 12.5,
-                "UpperThresholdCritical": 13,
-                "UpperThresholdFatal": 15,
-                "LowerThresholdNonCritical": 11.5,
-                "LowerThresholdCritical": 11,
-                "LowerThresholdFatal": 10,
-                "MinReadingRange": 0,
-                "MaxReadingRange": 20,
-                "PhysicalContext": "DC Bus",
-                "Oem": {}
-            }
-        ]
-    },
     "@odata.context": "/redfish/v1/$metadata#VFD.VFD",
     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
