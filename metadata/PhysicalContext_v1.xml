@@ -181,6 +181,21 @@
         <Member Name="Transformer">
           <Annotation Term="OData.Description" String="A Transformer."/>
         </Member>
+        <Member Name="ACUtilityInput">
+          <Annotation Term="OData.Description" String="An AC Utility Input."/>
+        </Member>
+        <Member Name="ACStaticBypassInput">
+          <Annotation Term="OData.Description" String="An AC Static Bypass Input."/>
+        </Member>
+        <Member Name="ACMaintenanceBypassInput">
+          <Annotation Term="OData.Description" String="An AC Maintenance Bypass Input."/>
+        </Member>
+        <Member Name="DCBus">
+          <Annotation Term="OData.Description" String="A DC Bus."/>
+        </Member>
+        <Member Name="ACOutput">
+          <Annotation Term="OData.Description" String="An AC Output."/>
+        </Member>
       </EnumType>
 
     </Schema>
