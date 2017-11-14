@@ -1,0 +1,19 @@
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/2",
+            "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+            "@odata.type": "#Alarm.v0_1_0.Alarm",
+            "Id": "2",
+            "Name": "Engine Low Oil Pressure Warning Alarm",
+            "Severity": "Warning",
+            "Created": "2012-03-07T14:45:00Z",
+            "Message": "Engine LowOil Pressure Warning Alarm",
+            "MessageID": "Alarm.1.0.EngineLowOilPressureWarningAlarm",
+            "MessageArgs": [],
+            "AlarmStatus": "Triggered",
+            "Acknowledge": true,
+            "Links": {
+                "RelatedSensor": {
+	                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/8"
+                } 
+            }
+        }
