@@ -90,7 +90,7 @@
 		"FunctionEnabled": true,
 		"WarningAction": "DiagnosticInterrupt",
 		"WarningAction@Redfish.AllowableValues": [ "DiagnosticInterrupt", "SMI", "None" ],
-		"TimeoutAction": "SystemReset",
+		"TimeoutAction": "ResetSystem",
 		"TimeoutAction@Redfish.AllowableValues": [ "ResetSystem", "PowerCycle", "PowerDown", "None" ],
 		"Status": {
 			"State": "StandbyOffline"
