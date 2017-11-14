@@ -77,9 +77,6 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/24"
-        },
-        {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/25"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
