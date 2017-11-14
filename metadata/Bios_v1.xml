@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Bios  v1.0.2 -->
+<!--# Redfish Schema:  Bios  v1.0.3 -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -60,15 +60,15 @@
         <Parameter Name="Bios" Type="Bios.v1_0_0.Actions"/>
         <Parameter Name="PasswordName" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The name of the BIOS password to change."/>
-          <Annotation Term="OData.LongDescription" String="This defines the BIOS password name to change. For instance, this could be the AdminPassword or UserPassword."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the BIOS password name to change. For instance, this could be the AdminPassword or UserPassword."/>
         </Parameter>
         <Parameter Name="OldPassword" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The value of the existing password."/>
-          <Annotation Term="OData.LongDescription" String="This defines the value of the existing BIOS password that is about to be changed."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the value of the existing BIOS password that is about to be changed."/>
         </Parameter>
         <Parameter Name="NewPassword" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The value of the new BIOS password."/>
-          <Annotation Term="OData.LongDescription" String="This defines the value of the new BIOS password."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the value of the new BIOS password."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to change the BIOS passwords."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a change of the selected BIOS password."/>
@@ -131,6 +131,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Bios" BaseType="Bios.v1_0_1.Bios"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="Bios" BaseType="Bios.v1_0_2.Bios"/>
     </Schema>
 
   </edmx:DataServices>
