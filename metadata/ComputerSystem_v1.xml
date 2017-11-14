@@ -926,10 +926,10 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the action to perform upon the  expiration of the Watchdog Timer."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>		
-	  </ComplexType>
-	  
-	  <EnumType Name="WatchdogWarningActions">
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+      </ComplexType>
+
+      <EnumType Name="WatchdogWarningActions">
         <Annotation Term="OData.Description" String="The enumerations of WatchdogWarningActions specify the choice of action to take when the Host Watchdog Timer is close (typically 3-10 seconds) to reaching its timeout value."/>
         <Member Name="None">
           <Annotation Term="OData.Description" String="No action taken."/>
@@ -945,7 +945,7 @@
         </Member>
       </EnumType>
 
-	  <EnumType Name="WatchdogTimeoutActions">
+      <EnumType Name="WatchdogTimeoutActions">
         <Annotation Term="OData.Description" String="The enumerations of WatchdogTimeoutActions specify the choice of action to take when the Host Watchdog Timer reaches its timeout value."/>
         <Member Name="None">
           <Annotation Term="OData.Description" String="No action taken."/>
