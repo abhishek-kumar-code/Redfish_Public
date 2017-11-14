@@ -78,7 +78,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -100,7 +100,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -122,7 +122,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -144,7 +144,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -166,7 +166,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -197,7 +197,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -217,7 +217,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -239,7 +239,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -261,7 +261,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -291,7 +291,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -311,7 +311,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -333,7 +333,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -355,7 +355,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -385,7 +385,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -407,7 +407,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -429,7 +429,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -465,7 +465,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -485,7 +485,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -507,7 +507,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -529,7 +529,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
