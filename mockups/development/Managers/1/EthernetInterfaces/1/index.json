@@ -10,7 +10,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "InterfaceEnabled":true,
+    "InterfaceEnabled": true,
     "PermanentMACAddress": "1E:C3:DE:6F:1E:24",
     "MACAddress": "1E:C3:DE:6F:1E:24",
     "SpeedMbps": 100,
