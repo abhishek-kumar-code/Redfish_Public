@@ -152,7 +152,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/3",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "5",
+            "Id": "3",
             "Name": "Supply Water Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -172,7 +172,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/4",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "6",
+            "Id": "4",
             "Name": "Return Water Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -192,7 +192,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/5",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "8",
+            "Id": "5",
             "Name": "Outside Air Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -212,7 +212,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/6",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "10",
+            "Id": "6",
             "Name": "Reheat Coil Discharge Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -234,7 +234,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/7",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "3",
+            "Id": "7",
             "Name": "Supply Air Relative Humidity Sensor",
             "SensorType": "Humidity",
             "Status": {
@@ -254,7 +254,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/8",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "4",
+            "Id": "8",
             "Name": "Return Air Relative Humidity Sensor",
             "SensorType": "Humidity",
             "Status": {
@@ -296,7 +296,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0/Sensors/10",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "7",
+            "Id": "10",
             "Name": "Differential Water Pressure Sensor",
             "SensorType": "Pressure",
             "Status": {
