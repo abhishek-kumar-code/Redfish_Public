@@ -1,0 +1,23 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.type": "#MessageRegistry.1.0.0.MessageRegistry",
+    "Id": "Alarm.0.1.0",
+    "Name": "Alarm Registry",
+    "Language": "en",
+    "Description": "This registry defines the base Alarms for Redfish",
+    "RegistryPrefix": "Base",
+    "RegistryVersion":  "0.1.0",
+    "OwningEntity": "DMTF",
+    "Messages": {
+        "CompressorDischargeTempAlarm": {
+            "Message": "Compressor Discharge Temperature Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
+        "CompressorHighPressureAlarm": {
+            "Message": "Compressor High Pressure Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+        },
+    }
+}
