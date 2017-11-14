@@ -13,29 +13,23 @@
     "LiquidLevel": "LiquidLevel",
     "PowerFactor": 1,
     
-    
-    
     "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"},
              
     "Temperature": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/SystemTemperature0",
+            "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/0",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "8",
             "Name": "System Temperature Sensor",
             "SensorType": "Temperature",
-            "SensorNumber": 8,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "PresentReading": 12,
-            "UpperThresholdNonCritical": 12.5,
+            "Reading": 12,
+            "UpperThresholdWarning": 12.5,
             "UpperThresholdCritical": 13,
-            "UpperThresholdFatal": 15,
-            "LowerThresholdNonCritical": 11.5,
+            "LowerThresholdWarning": 11.5,
             "LowerThresholdCritical": 11,
-            "LowerThresholdFatal": 10,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
             "PhysicalContext": "System",
@@ -45,23 +39,19 @@
     
     "Pressure":[
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/SystemPressure0",
+            "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/1",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-            "Id": "9",
             "Name": "System Pressure Sensor",
             "SensorType": "Pressure",
-            "SensorNumber": 9,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "PresentReading": 12,
-            "UpperThresholdNonCritical": 12.5,
+            "Reading": 12,
+            "UpperThresholdWarning": 12.5,
             "UpperThresholdCritical": 13,
-            "UpperThresholdFatal": 15,
-            "LowerThresholdNonCritical": 11.5,
+            "LowerThresholdWarning": 11.5,
             "LowerThresholdCritical": 11,
-            "LowerThresholdFatal": 10,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
             "PhysicalContext": "System",
@@ -78,129 +68,109 @@
     
             "ACVoltage":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcInput0Voltage0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/2",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "0",
                     "Name": "AC Input - RMS Voltage Sensor",
-                    "SensorType": "Voltage",
-                    "SensorNumber": 0,
+                    "SensorType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input",
+                    "PhysicalContext": "ACInput",
                     "Oem": {}
                  }
             ],
             "Amperage":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcInput0Current0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/3",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "1",
                     "Name": "AC Input - RMS Current Sensor",
-                    "SensorType": "Current",
-                    "SensorNumber": 1,
+                    "SensorType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input",
+                    "PhysicalContext": "ACInput",
                     "Oem": {}
                 }   
             ],
             
             "Frequency":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcInput0Frequency0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/4",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "2",
                     "Name": "AC Input - Frequency Sensor",
                     "SensorType": "Frequency",
-                    "SensorNumber": 2,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input",
+                    "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
             ],
             
             "Temperature":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcInput0Temperature0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/5",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "3",
                     "Name": "AC Input - Ambient Temperature Sensor",
                     "SensorType": "Temperature",
-                    "SensorNumber": 3,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input",
+                    "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
             ],
     
             "Humidity":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcInput0Humidity0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/6",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "4",
                     "Name": "AC Input - Humidity Sensor",
                     "SensorType": "Humidity",
-                    "SensorNumber": 4,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Input",
+                    "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
             ],
@@ -217,78 +187,66 @@
             
             "ACVoltage": [
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcOutput0Voltage0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/7",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "5",
                     "Name": "AC Output - RMS Voltage Sensor",
-                    "SensorType": "Voltage",
-                    "SensorNumber": 5,
+                    "SensorType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Output",
+                    "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
             ],
             
             "Amperage":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcOutput0Current0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/8",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "6",
                     "Name": "AC Output - RMS Current Sensor",
-                    "SensorType": "Current",
-                    "SensorNumber": 6,
+                    "SensorType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Output",
+                    "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
             ],
             
             "Frequency":[
                 {
-                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/AcOutput0Frequency0",
+                    "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/9,
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
-                    "Id": "7",
                     "Name": "AC Output - Frequency Sensor",
                     "SensorType": "Frequency",
-                    "SensorNumber": 7,
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "PresentReading": 12,
-                    "UpperThresholdNonCritical": 12.5,
+                    "Reading": 12,
+                    "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
-                    "UpperThresholdFatal": 15,
-                    "LowerThresholdNonCritical": 11.5,
+                    "LowerThresholdWarning": 11.5,
                     "LowerThresholdCritical": 11,
-                    "LowerThresholdFatal": 10,
                     "MinReadingRange": 0,
                     "MaxReadingRange": 20,
-                    "PhysicalContext": "AC Output",
+                    "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
             ],
