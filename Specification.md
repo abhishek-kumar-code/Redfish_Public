@@ -653,7 +653,7 @@ where
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
-Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource.  The resource may provide a separate ActionInfo resource to describe the parameters and values supported by a particular instance or implementation.
+Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource.  The resource may provide a separate ActionInfo resource to describe the parameters and values supported by a particular instance or implementation.  The ActionInfo resource is specified using the "@Redfish.ActionInfo" annotation, containing a URI to the ActionInfo resource for the action.
 
 For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
@@ -704,7 +704,7 @@ OData-Version: 4.0
 }
 ~~~
 
-Using the same Reset example, a computer system resource may utilize an ActionInfo resource to convey the allowable values:
+Using the same Reset example, a computer system resource may utilize an ActionInfo annotation and resource to convey the allowable values:
 
 ~~~json
 {
