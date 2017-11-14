@@ -55,7 +55,7 @@
     "PrimaryUtilityReclosureOpen": true,
     "AlternateUtilityReclosureOpen": false,
     
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"},
+    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/Sensors"},
     
     "Temperature": [ 
         {
