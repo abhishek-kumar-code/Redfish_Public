@@ -159,16 +159,16 @@
       <EnumType Name="LogEntryTypes">
         <Member Name="Event">
           <Annotation Term="OData.Description" String="The log contains Redfish-defined messages (events)."/>
-		</Member>
+        </Member>
         <Member Name="SEL">
           <Annotation Term="OData.Description" String="The log contains IPMI System Event Log (SEL) entries."/>
-		</Member>
+        </Member>
         <Member Name="Multiple">
           <Annotation Term="OData.Description" String="The log contains multiple Log Entry types or a single entry type cannot be guaranteed by the Log Service."/>
-		</Member>
+        </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="The log contains entries in an OEM-defined format."/>
-		</Member>
+        </Member>
       </EnumType>
     </Schema>
 
