@@ -547,7 +547,7 @@ Clients can add query parameters to request additional features from the service
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
 | $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
 | $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                    | `http://resourcecollection?$select=SystemType,Status`|
-| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                            | `http://resourcecollection?$filter=SystemType eq Physical`|
+| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                            | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
 
 * Services should support the $top and $skip query parameters.
 * Service may support the $expand, $filter and $select query parameters. 
