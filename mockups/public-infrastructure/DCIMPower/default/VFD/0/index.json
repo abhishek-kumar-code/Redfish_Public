@@ -28,6 +28,7 @@
     "CommunicationsError": false,
     "Started": true,
     "CommandSpeed": 50,
+    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors"},
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcInput/0",
