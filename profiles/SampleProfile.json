@@ -142,7 +142,7 @@
 						"Status": {},
 						"RelatedItem": {
 							"Comparison": "LinkToResource",
-							"Values": [ "Processor", "ComputerSystem", "Chassis", "Memory"]
+							"Values": ["Processor", "ComputerSystem", "Chassis", "Memory"]
 						}
 					}
 				},
@@ -171,10 +171,10 @@
 				"DestinationTime": {},
 				"IsGrandfatherAlive": {
 					"ReadRequirement": "Recommended"
-					},
+				},
 				"ParadoxDetected": {
 					"ReadRequirement": "IfImplemented"
-					}
+				}
 			}
 		}
 	},

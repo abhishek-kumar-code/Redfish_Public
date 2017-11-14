@@ -138,7 +138,7 @@
 										"PropertyRequirements": {
 											"type": "object",
 											"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
-											"patternProperties": {	
+											"patternProperties": {
 												"^.*$": {
 													"$ref": "#/definitions/PropertyProfile"
 												}
@@ -185,7 +185,7 @@
 				},
 				"Values": {
 					"$ref": "#/definitions/Values"
-				},				
+				},
 				"ConditionalRequirements": {
 					"type": "array",
 					"items": {
@@ -399,7 +399,7 @@
 		"Values": {
 			"type": "array",
 			"items": {
-				"type": [ "boolean", "number", "string" ]
+				"type": ["boolean", "number", "string"]
 			},
 			"description": "The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison."
 		},
