@@ -3,7 +3,7 @@
     "@odata.type": "#Sensor.v0_2_0.Sensor",
     "Id": "5",
     "Name": "DC Bus - DC Voltage Sensor",
-    "SensorType": "ACVoltage",
+    "SensorType": "DCVoltage",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
