@@ -47,7 +47,7 @@
             "Oem": {}
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/0",
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/10",
             "@odata.type": "#Sensor.v0_1_0.Sensor",
             "Name": "Generator Primary Bearing Temperature Sensor",
             "SensorType": "Temperature",
@@ -85,7 +85,7 @@
             "Oem": {}
         },
 	{
-	    "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
+	    "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/"9,
             "@odata.type": "#Sensor.v0_1_0.Sensor",
             "Name": "Generator Coolant Sensor",
             "SensorType": "LiquidLevel",
@@ -105,7 +105,7 @@
 
     "Pressure":[
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/8",
             "@odata.type": "#Sensor.v0_1_0.Sensor",
             "Name": "Generator Oil Pressure Sensor",
             "SensorType": "Pressure",
@@ -265,10 +265,10 @@
 	
     "TriggeredAlarms" : [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/2",
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/3",
             "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
             "@odata.type": "#Alarm.v0_1_0.Alarm",
-            "Id": "2",
+            "Id": "3",
             "Name": "Engine Low Oil Pressure Warning Alarm",
             "Severity": "Warning",
             "Created": "2012-03-07T14:45:00Z",
