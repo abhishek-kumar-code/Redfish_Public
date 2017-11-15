@@ -30,7 +30,7 @@
                     "Row": "North"
                 }
         },  
-"OperatingLevelSwitch": "A",
+    "OperatingLevelSwitch": "A",
     "ColdWaterFlowSetPoint": 40,
     "FanVFDModulation": 50,
     "CoolingTowerEnabled": true,
