@@ -80,7 +80,7 @@
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0#/AcInput/0",
-            "@odata.type": "#AcInput.v0_2_0.AcInput",
+            "@odata.type": "#Transformer.v0_2_0.AcInput",
             "MemberId": "0",
             "Energy": 0,
             "RmsUnderOverVoltage": 0,    
@@ -199,7 +199,7 @@
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0#/AcOutput/0",
-            "@odata.type": "#AcOutput.v0_2_0.AcOutput",
+            "@odata.type": "#Transformer.v0_2_0.AcOutput",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
