@@ -39,7 +39,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VFD">
@@ -74,7 +74,7 @@
           <Annotation Term="OData.Description" String="The actual Model Number of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Model Number of VFD."/>
         </Property>
-        
+
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Manufacturer of VFD."/>
@@ -92,7 +92,7 @@
           <Annotation Term="OData.Description" String="The actual Part Number of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Part Number of VFD."/>
         </Property>
-        
+
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of VFD."/>
@@ -122,28 +122,29 @@
           <Annotation Term="OData.Description" String="The actual Physical Location of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of VFD."/>
         </Property>
-        
+
         <!-- Sensors collection for this equipment -->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        
-         <!-- Array of rotational sensors for this component -->
-        <NavigationProperty Name="Rotational" Type="Collection(Sensor.Sensor)" Nullable="false">
+
+        <!-- Array of rotational sensors for this component -->
+        <NavigationProperty Name="Rotational" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more rotational sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Array of temperature sensors for this component -->
-        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
-         <!-- Alarm collection for this equipment -->
+
+        <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
@@ -156,7 +157,7 @@
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-          
+
         <!-- Status -->
         <Property Name="Speed" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -312,17 +313,17 @@
         </Property>
 
         <!-- Array of AC Voltage sensors for this component -->
-        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more AC voltage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
-        
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
         <!-- Array of amperage sensors for this component -->
-        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <Property Name="Actions" Type="VFD.v0_1_0.AcInputActions" Nullable="false">
@@ -359,24 +360,24 @@
         </Property>
 
         <!-- Array of AC Voltage sensors for this component -->
-        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more AC voltage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
-        
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
         <!-- Array of amperage sensors for this component -->
-        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Array of frequency sensors for this component -->
-        <NavigationProperty Name="Frequency" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Frequency" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more frequency sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <Property Name="Actions" Type="VFD.v0_1_0.AcOutputActions" Nullable="false">
@@ -397,10 +398,10 @@
         </Property>
 
         <!-- Array of DC Voltage sensors for this component -->
-        <NavigationProperty Name="DCVoltage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="DCVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more DC voltage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <Property Name="Actions" Type="VFD.v0_1_0.DcBusActions" Nullable="false">

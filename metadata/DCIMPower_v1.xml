@@ -158,20 +158,21 @@
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <!-- Array of temperature sensors for this domain -->
         <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-         <!-- Array of humidity sensors for this domain -->
+        <!-- Array of humidity sensors for this domain -->
         <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
          <!-- Alarm collection for this domain -->

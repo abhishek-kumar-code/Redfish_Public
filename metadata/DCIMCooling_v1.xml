@@ -98,30 +98,35 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a AirHandlingUnit collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a AirHandlingUnit collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="Chiller" Type="ChillerCollection.ChillerCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Chiller collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Chiller collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="CoolingTower" Type="CoolingTowerCollection.CoolingTowerCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a CoolingTower collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a CoolingTower collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="CRAC" Type="CRACCollection.CRACCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a CRAC collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a CRAC collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="CRAH" Type="CRAHCollection.CRAHCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a CRAH collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a CRAH collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <Property Name="Links" Type="DCIMCooling.v0_2_0.Links" Nullable="false">
@@ -138,20 +143,21 @@
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <!-- Array of temperature sensors for this domain -->
         <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- Array of humidity sensors for this domain -->
         <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
          <!-- Alarm collection for this domain -->
