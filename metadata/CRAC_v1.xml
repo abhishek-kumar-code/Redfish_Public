@@ -131,28 +131,28 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
-        <!-- Array of fanspeed sensors for equipment -->
+        <!-- Array of fanspeed sensors for the equipment -->
         <NavigationProperty Name="Fanspeed" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more fan speed rotational sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <!-- Array of temperature sensors for equipment -->
+        <!-- Array of temperature sensors for the equipment -->
         <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         
-        <!-- Array of fuel and coolant level sensors for equipment -->
+        <!-- Array of humidity sensors for the equipment -->
         <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>        
         
-        <!-- Array of oil pressure level sensors for equipment -->
+        <!-- Array of oil pressure level sensors for the equipment -->
         <NavigationProperty Name="Pressure" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more pressure sensors."/>
@@ -166,14 +166,14 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-         <!-- Alarm collection for equipment -->
+         <!-- Alarm collection for the equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
-        <!-- Array of triggered alarms for equipment -->
+        <!-- Array of triggered alarms for the equipment -->
         <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
