@@ -137,21 +137,21 @@
         </NavigationProperty>
 
         <!-- Array of temperature sensors for this equipment -->
-        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <!-- Array of humidity sensors for this equipment -->
-        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <!-- Array of pressure sensors for this equipment -->
-        <NavigationProperty Name="Pressure" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Pressure" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more pressure sensors."/>
           <Annotation Term="OData.AutoExpandReferences"/>
