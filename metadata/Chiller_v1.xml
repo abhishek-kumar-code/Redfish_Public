@@ -157,7 +157,21 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty> 
  
-         <!-- Alarm collection for this equipment -->
+         <!-- Array of ACVoltage sensors for this equipment -->
+        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more ACVoltage sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+        <!-- Array of amperage sensors for this equipment -->
+        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+        <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
