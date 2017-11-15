@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chiller.v0_1_0.Chiller",
+    "@odata.type": "#Chiller.v0_2_0.Chiller",
     "Id": "Chiller0",
     "Name": "Chiller0",
     "FirmwareRevision": "1.0.0",
