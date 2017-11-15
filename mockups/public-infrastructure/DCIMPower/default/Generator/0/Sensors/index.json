@@ -1,7 +1,7 @@
 {
     "@odata.type": "#SensorCollection.SensorCollection",
     "Name": "Generator 0 Sensor Collection",
-    "Members@odata.count": 8,
+    "Members@odata.count": 11,
     "Members": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/0"
