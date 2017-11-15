@@ -116,7 +116,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of UPS."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of UPS."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of UPS."/>
