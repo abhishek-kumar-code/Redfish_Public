@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Generator.v0_1_0.Generator",
+    "@odata.type": "#Generator.v0_2_0.Generator",
     "@odata.context": "/redfish/v1/$metadata#Generator.Generator",
     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0",
     "Id": "Generator1",
@@ -26,7 +26,7 @@
     "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/0",
-            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "@odata.type": "#Sensor.v0_2_0.Sensor",
 	    "Id": "0",
             "Name": "Generator Exhaust Temperature Sensor",
             "SensorType": "Temperature",
@@ -46,7 +46,7 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/10",
-            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "@odata.type": "#Sensor.v0_2_0.Sensor",
             "Id": "10",
             "Name": "Generator Primary Bearing Temperature Sensor",
             "SensorType": "Temperature",
@@ -66,7 +66,7 @@
     "LiquidLevel":[
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
-            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "@odata.type": "#Sensor.v0_2_0.Sensor",
 	    "Id": "1",
             "Name": "Generator Fuel Level Sensor",
             "SensorType": "LiquidLevel",
@@ -86,7 +86,7 @@
         },
 	{
 	    "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/"9,
-            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "@odata.type": "#Sensor.v0_2_0.Sensor",
 	    "Id": "9",
             "Name": "Generator Coolant Sensor",
             "SensorType": "LiquidLevel",
@@ -106,7 +106,7 @@
     "Pressure":[
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/8",
-            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "@odata.type": "#Sensor.v0_2_0.Sensor",
             "Id": "8",
 	    "Name": "Generator Oil Pressure Sensor",
             "SensorType": "Pressure",
