@@ -1,7 +1,7 @@
 {
     "@odata.type": "#SensorCollection.SensorCollection",
     "Name": "VFD 0 Sensor Collection",
-    "Members@odata.count": 6,
+    "Members@odata.count": 9,
     "Members": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/0"
