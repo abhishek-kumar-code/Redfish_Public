@@ -1,0 +1,83 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.type": "#MessageRegistry.v1_0_0.MessageRegistry",
+    "Id": "Alarm.0.1.0",
+    "Name": "Alarm Registry",
+    "Language": "en",
+    "Description": "This registry defines the base Alarms for Redfish",
+    "RegistryPrefix": "Base",
+    "RegistryVersion":  "0.1.0",
+    "OwningEntity": "DMTF",
+    "Messages": {
+        "SummaryAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Summary Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "OverloadWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Overload Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "OverloadCriticalAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Overload Critical - Shutdown Alarm",
+            "Severity": "Critical",
+            "NumberOfArgs": 0
+        },
+        "EngineLowOilPressureWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Engine Low Oil Pressure Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "FuelLevelLowWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Fuel Level Low Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "FuelLevelLowCriticalAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Fuel Level Low Critical Alarm",
+            "Severity": "Critical",
+            "NumberOfArgs": 0
+        },
+        "CoolantLevelLowWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Coolant Level Low Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "CoolantLevelLowCriticalAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Coolant Level Low Critical Alarm",
+            "Severity": "Critical",
+            "NumberOfArgs": 0
+        },
+        "CoolantTemperatureLowWarningAlarm": {
+            "Description": "Generator Alarm",
+            "Message": "Coolant Temperature Low Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "HighExhaustTemperature": {
+            "Description": "Generator Alarm",
+            "Message": "Exhaust Temperature High Warning Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "CompressorDischargeTempAlarm": {
+            "Message": "Compressor Discharge Temperature Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        },
+        "CompressorHighPressureAlarm": {
+            "Message": "Compressor High Pressure Alarm",
+            "Severity": "Warning",
+            "NumberOfArgs": 0
+        }
+    }
+}
