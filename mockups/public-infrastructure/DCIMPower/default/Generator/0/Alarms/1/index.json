@@ -1,0 +1,16 @@
+{
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/2",
+    "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+    "@odata.type": "#Alarm.v0_1_0.Alarm",
+    "Id": "2",
+    "Name": "Overload Warning Alarm",
+    "Severity": "Critical",
+    "Created": "2012-03-07T14:45:00Z",
+    "Message": "Overload Warning Alarm",
+    "MessageID": "Alarm.1.0.OverloadWarningAlarm",
+    "MessageArgs": [],
+    "AlarmStatus": "Armed",
+    "Acknowledge": false,
+    "Links": {} 
+    }
+}
