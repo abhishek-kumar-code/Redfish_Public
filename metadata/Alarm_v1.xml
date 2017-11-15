@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Alarm  v1.3.0-->
+<!--# Redfish Schema:  Alarm  v1.2.0                                                       -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -30,7 +30,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Alarm">
 
       <EntityType Name="Alarm" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This resource defines the data definition for an Alarm.  An Alarm is a property that has a latch type behavior.  It is designed to be used to persist sensor threshold crossing or to capture the momentary state of another property."/>
+        <Annotation Term="OData.Description" String="This resource defines the data definition for an Alarm.  An Alarm is an entity that has a latch type behavior.  It is designed to be used to persist sensor threshold crossing or to capture the momentary state of another property."/>
         <Annotation Term="OData.LongDescription" String="This resource shall represent an Alarm in a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
