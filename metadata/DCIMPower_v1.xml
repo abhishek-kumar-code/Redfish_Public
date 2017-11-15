@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  DCIMPower  v0.2.0                                                   -->
+<!--# Redfish Schema:  DCIMPower  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -68,7 +68,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMPower">
@@ -100,80 +100,80 @@
 
         <Property Name="Status" Type="Resource.Status"/>
 
-        <NavigationProperty Name="Generator" Type="GeneratorCollection.GeneratorCollection">
+        <NavigationProperty Name="Generator" Type="GeneratorCollection.GeneratorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Generator collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Generator collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="PDU" Type="PDUCollection.PDUCollection">
+        <NavigationProperty Name="PDU" Type="PDUCollection.PDUCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a PDU collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PDU collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="RackPDU" Type="RackPDUCollection.RackPDUCollection">
+        <NavigationProperty Name="RackPDU" Type="RackPDUCollection.RackPDUCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a RackPDU collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a RackPDU collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="Rectifier" Type="RectifierCollection.RectifierCollection">
+        <NavigationProperty Name="Rectifier" Type="RectifierCollection.RectifierCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Rectifier collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Rectifier collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="Switchgear" Type="SwitchgearCollection.SwitchgearCollection">
+        <NavigationProperty Name="Switchgear" Type="SwitchgearCollection.SwitchgearCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Switchgear collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Switchgear collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="TransferSwitch" Type="TransferSwitchCollection.TransferSwitchCollection">
+        <NavigationProperty Name="TransferSwitch" Type="TransferSwitchCollection.TransferSwitchCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a TransferSwitch collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a TransferSwitch collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="Transformer" Type="TransformerCollection.TransformerCollection">
+        <NavigationProperty Name="Transformer" Type="TransformerCollection.TransformerCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Transformer collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Transformer collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="UPS" Type="UPSCollection.UPSCollection">
+        <NavigationProperty Name="UPS" Type="UPSCollection.UPSCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a UPS collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a UPS collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <NavigationProperty Name="VFD" Type="VFDCollection.VFDCollection">
+        <NavigationProperty Name="VFD" Type="VFDCollection.VFDCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a VFD collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a VFD collection for a Redfish implementation."/>
         </NavigationProperty>
-        
+
         <!-- Standalone Sensors collection for this domain -->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
         </NavigationProperty>
-        
+
         <!-- Array of temperature sensors for this domain -->
-        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        
+
          <!-- Array of humidity sensors for this domain -->
-        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        
+
          <!-- Alarm collection for this domain -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -187,13 +187,13 @@
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
-        <Property Name="Links" Type="DCIMPower.v0_1_0.Links" Nullable="false">
+
+        <Property Name="Links" Type="DCIMPower.v0_2_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
 
-        <Property Name="Actions" Type="DCIMPower.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="DCIMPower.v0_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -224,14 +224,13 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this power zone is associated with and shall reference a resource of type ComputerSystem."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-
       </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="DCIMPower.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="DCIMPower.v0_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
