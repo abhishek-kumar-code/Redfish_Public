@@ -114,7 +114,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to change references to FabricType to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to FabricType to use the unversioned definition.  It was also created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="Fabric" BaseType="Fabric.v1_0_2.Fabric"/>
     </Schema>
 

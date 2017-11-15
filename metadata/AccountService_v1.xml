@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AccountService   v1.2.1-->
+<!--# Redfish Schema:  AccountService   v1.2.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -193,6 +193,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_2_0.AccountService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_2">
+      <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
+      <EntityType Name="AccountService" BaseType="AccountService.v1_2_1.AccountService"/>
     </Schema>
 
   </edmx:DataServices>
