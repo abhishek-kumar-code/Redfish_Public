@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#UPS.v0_1_0.UPS",
+    "@odata.type": "#UPS.v0_2_0.UPS",
     "Id": "UPS0",
     "Name": "UPS0",
     "FirmwareRevision": "1.0.0",
