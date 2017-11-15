@@ -44,8 +44,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AirHandlingUnit">
 
       <EntityType Name="AirHandlingUnit" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the AirHandlingUnit Metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a cooling metrics resource for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for an Air Handling Unit ."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -117,7 +116,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of AirHandlingUnit."/>
