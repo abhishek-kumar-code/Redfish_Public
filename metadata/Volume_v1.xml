@@ -37,7 +37,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume">
 
       <EntityType Name="Volume" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="The Volume schema contains properties that describe a volume, a virtual disk, a logical unit number (LUN) of a storage area network (SAN), or other logical storage entity of a system."/>
+        <Annotation Term="OData.Description" String="Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a volume, virtual disk, logical disk, LUN, or other logical storage for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
