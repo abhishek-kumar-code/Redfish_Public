@@ -42,7 +42,7 @@
     "AcUtilityInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcUtilityInput/0",
-            "@odata.type": "#AcUtilityInput.v0_2_0.AcUtilityInput",
+            "@odata.type": "#UPS.v0_2_0.AcUtilityInput",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
@@ -203,7 +203,7 @@
     "AcBypassInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcBypassInput/0",
-            "@odata.type": "#AcBypassInput.v0_2_0.AcBypassInput",
+            "@odata.type": "#UPS.v0_2_0.AcBypassInput",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
@@ -297,7 +297,7 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcBypassInput/1",
-            "@odata.type": "#AcBypassInput.v0_2_0.AcBypassInput",
+            "@odata.type": "#UPS.v0_2_0.AcBypassInput",
             "MemberId": "1",
             "RealPower": 0,
             "Energy": 0,
@@ -469,7 +469,7 @@
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcOutput/0",
-            "@odata.type": "#AcOutput.v0_2_0.AcOutput",
+            "@odata.type": "#UPS.v0_2_0.AcOutput",
             "MemberId": "0",
             "RealPower": 0,
             "ReactivePower": 0,
