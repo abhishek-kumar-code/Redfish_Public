@@ -11,9 +11,5 @@
     "MessageArgs": [],
     "AlarmStatus": "Armed",
     "Acknowledge": false,
-    "Links": {
-        "RelatedSensor": {
-	        "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/8"
-        } 
-    }
+    "Links": {} 
 }
