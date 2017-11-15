@@ -10,6 +10,6 @@
     "MessageID": "Alarm.1.0.OverloadCriticalAlarm",
     "MessageArgs": [],
     "AlarmStatus": "Armed",
-    "Acknowledge": false,
+    "Acknowledged": false,
     "Links": {} 
 }
