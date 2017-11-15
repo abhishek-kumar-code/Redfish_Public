@@ -9,8 +9,8 @@
             "Message": "Engine Low Oil Pressure Warning Alarm",
             "MessageID": "Alarm.1.0.EngineLowOilPressureWarningAlarm",
             "MessageArgs": [],
-            "AlarmStatus": "Armed",
-            "Acknowledge": false,
+            "AlarmStatus": "Triggered",
+            "Acknowledge": true,
             "Links": {
                 "RelatedSensor": {
 	                "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/8"
