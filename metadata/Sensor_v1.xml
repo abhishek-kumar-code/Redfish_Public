@@ -17,10 +17,12 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_6_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
     <edmx:Include Namespace="PhysicalContext"/>
@@ -66,7 +68,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of the sensor being represented."/>
         </Property>
 
-        <Property Name="SensorLocation" Type="Resource.v1_5_0.Location">
+        <Property Name="SensorLocation" Type="Resource.Location">
           <Annotation Term="OData.Description" String="The location information for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
         </Property>
@@ -91,10 +93,10 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the band of values around the SetPoint where the control system does not respond to the SetPoint."/>
         </Property>
         
-        <Property Name="UpperThresholdNonCritical" Type="Edm.Decimal">
+        <Property Name="UpperThresholdWarning" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The UpperThresholdNonCritical for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the UpperThresholdNonCritical information of this Sensor."/>
+          <Annotation Term="OData.Description" String="The Upper Threshold Warning for this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the Upper Threshold Warning information of this Sensor."/>
         </Property>
 
         <Property Name="UpperThresholdCritical" Type="Edm.Decimal">
@@ -103,16 +105,10 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the UpperThresholdCritical information of this Sensor."/>
         </Property>
 
-        <Property Name="UpperThresholdFatal" Type="Edm.Decimal">
+        <Property Name="LowerThresholdWarning" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The UpperThresholdFatal for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the UpperThresholdFatal information of this Sensor."/>
-        </Property>
-
-        <Property Name="LowerThresholdNonCritical" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The LowerThresholdNonCritical for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the LowerThresholdNonCritical information of this Sensor."/>
+          <Annotation Term="OData.Description" String="The Lower Threshold NonWarning for this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the Lower Threshold Warning information of this Sensor."/>
         </Property>
 
         <Property Name="LowerThresholdCritical" Type="Edm.Decimal">
@@ -121,22 +117,16 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the LowerThresholdCritical information of this Sensor."/>
         </Property>
 
-        <Property Name="LowerThresholdFatal" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The LowerThresholdFatal for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the LowerThresholdFatal information of this Sensor."/>
-        </Property>
-
         <Property Name="MaxReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The MaxReadingRange for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the MaxReadingRange information of this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the Max Reading Range information of this Sensor."/>
         </Property>
 
         <Property Name="MinReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The MinReadingRange for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the MinReadingRange information of this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the Min Reading Range information of this Sensor."/>
         </Property>
 
         <Property Name="Precision" Type="Edm.Decimal">
@@ -151,7 +141,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the percent error +/- of the measured vs. actual values."/>
         </Property>
         
-        <Property Name="SensingIntervalms" Type="Edm.Decimal">
+        <Property Name="SensingIntervals" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time interval between reading the physical sensor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the time interval between reading the physical sensor."/>
