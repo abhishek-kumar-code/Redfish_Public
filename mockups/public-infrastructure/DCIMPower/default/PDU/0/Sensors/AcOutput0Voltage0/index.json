@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Sensor.v0_1_0.Sensor",
+    "@odata.type": "#Sensor.v0_2_0.Sensor",
     "Id": "6",
     "Name": "AC Output - RMS Voltage Sensor",
     "SensorType": "Voltage",
@@ -8,7 +8,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "CurrentReading": 12,
+    "PresentReading": 12,
     "UpperThresholdNonCritical": 12.5,
     "UpperThresholdCritical": 13,
     "UpperThresholdFatal": 15,
