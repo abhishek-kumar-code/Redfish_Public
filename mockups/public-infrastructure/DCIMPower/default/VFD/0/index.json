@@ -34,7 +34,6 @@
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcInput/0",
             "MemberId": "0",
             "PercentCurrent": "50",
-            
             "Amperage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/0",
