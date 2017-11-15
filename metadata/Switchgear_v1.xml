@@ -440,13 +440,6 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <!-- Sensors -->
-        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-
         <Property Name="Actions" Type="Switchgear.v0_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
