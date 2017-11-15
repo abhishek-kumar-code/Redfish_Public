@@ -4,70 +4,70 @@
     "Members@odata.count": 22,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/0"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage1"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/1"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage2"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/2"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/3"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Frequency0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/4"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Temperature0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/5"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Humidity0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/6"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/7"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Voltage1"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/8"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/9"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Frequency0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/10"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/11"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Voltage1"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/12"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/13"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Frequency0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/14"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/15"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/16"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Temperature0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/17"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/18"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Voltage1"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/19"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/20"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Frequency0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/21"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#DeviceSensorCollection",
