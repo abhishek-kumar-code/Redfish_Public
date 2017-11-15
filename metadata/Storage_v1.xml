@@ -82,12 +82,12 @@
 
       <Action Name="SetEncryptionKey" IsBound="true">
         <Parameter Name="Storage" Type="Storage.v1_0_0.Actions"/>
-        <Parameter Name="EncryptionKey" Type="Edm.String">
+        <Parameter Name="EncryptionKey" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The encryption key to set on the storage subsytem."/>
-          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the encryption key to set on the storage subsystem."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to set the encryption key for the storage subsystem."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+        <Annotation Term="OData.LongDescription" String="This action shall set the encryption key for the storage subsystem."/>
       </Action>
 
     </Schema>
@@ -315,7 +315,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition.  It was also created to add requirements on the action parameters to show they are mandatory via Nullable=false.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Storage" BaseType="Storage.v1_0_3.Storage"/>
     </Schema>
 
@@ -350,7 +350,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_1_3">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition.  It was also created to add requirements on the action parameters to show they are mandatory via Nullable=false.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Storage" BaseType="Storage.v1_1_2.Storage"/>
     </Schema>
 
@@ -378,7 +378,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_2_1">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier to be its abstract base type, to add an abstract definition of StorageController, and to deprecate the versioned definition of Protocol to use an unversioned definition.  It was also created to add requirements on the action parameters to show they are mandatory via Nullable=false.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Storage" BaseType="Storage.v1_2_0.Storage"/>
     </Schema>
 
@@ -394,7 +394,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_3_1">
-      <Annotation Term="OData.Description" String="This version was created to move Protocols to its own CSDL file."/>
+      <Annotation Term="OData.Description" String="This version was created to move Protocols to its own CSDL file.  It was also created to add requirements on the action parameters to show they are mandatory via Nullable=false.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Storage" BaseType="Storage.v1_3_0.Storage"/>
     </Schema>
 

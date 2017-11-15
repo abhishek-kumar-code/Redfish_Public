@@ -91,10 +91,10 @@
         <Parameter Name="Chassis" Type="Chassis.v1_0_0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
-          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the type of reset to be performed.  The service may accept a request without the parameter and perform an implementation specific default reset."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the chassis. This action resets the chassis, not Systems or other contained resources, although side effects may occur which affect those resources."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+        <Annotation Term="OData.LongDescription" String="This action shall reset the chassis.  This action shall not reset Systems or other contained resource, although side effects may occur which affect those resources."/>
       </Action>
 
     </Schema>
@@ -359,6 +359,11 @@
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_4.Chassis"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_6">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_0_5.Chassis"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_0">
 
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_2.Chassis">
@@ -431,6 +436,11 @@
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_4.Chassis"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_6">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_1_5.Chassis"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis">
         <Property Name="Location" Type="Resource.Location" Nullable="false"/>
@@ -474,7 +484,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_3.Chassis"/>
     </Schema>
 
@@ -499,7 +509,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_3.Chassis"/>
     </Schema>
 
@@ -562,7 +572,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_3">
-      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_2.Chassis"/>
     </Schema>
 
@@ -585,13 +595,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_5_2">
-      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_5_1.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_6_0">
       <Annotation Term="OData.Description" String="This version was created to add a link to an Assembly resource."/>
-      <EntityType Name="Chassis" BaseType="Chassis.v1_5_1.Chassis">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_5_2.Chassis">
         <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this chassis."/>
