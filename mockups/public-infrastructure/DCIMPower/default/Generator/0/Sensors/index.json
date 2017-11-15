@@ -26,6 +26,15 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/7"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/8"  
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/9"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/10"      
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
