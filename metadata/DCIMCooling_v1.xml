@@ -148,7 +148,7 @@
         </NavigationProperty>
 
         <!-- Array of humidity sensors for this domain -->
-        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
+        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
           <Annotation Term="OData.AutoExpandReferences"/>
