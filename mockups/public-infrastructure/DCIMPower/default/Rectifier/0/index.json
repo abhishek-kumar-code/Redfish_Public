@@ -15,9 +15,7 @@
     "TotalInputPower": 10,
     "InputSourceStatus": 1,
     "OutputSourceStatus": 2,
-    
     "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors"},
-    
     "Amperage": [ 
          {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/0",
@@ -62,7 +60,6 @@
             "Oem": {}
         }
     ],
-    
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0#/AcInput/0",
@@ -140,7 +137,6 @@
             ]
         }
     ],
-    
     "DcBus": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0#/DcBus/0",
