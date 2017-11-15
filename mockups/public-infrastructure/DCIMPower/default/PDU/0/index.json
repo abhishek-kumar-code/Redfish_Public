@@ -60,7 +60,7 @@
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0#/AcInput/0",
-            "@odata.type": "#AcInput.v0_2_0.AcInput",
+            "@odata.type": "#PDU.v0_2_0.AcInput",
             "MemberId": "0",
             "RealPower": 10,
             "Energy": 10,
@@ -130,7 +130,7 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0#/AcInput/1",
-            "@odata.type": "#AcInput.v0_2_0.AcInput",
+            "@odata.type": "#PDU.v0_2_0.AcInput",
             "MemberId": "1",
             "RealPower": 10,
             "Energy": 10,
@@ -201,7 +201,7 @@
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0#/AcOutput/0",
-            "@odata.type": "#AcOutput.v0_2_0.AcOutput",
+            "@odata.type": "#PDU.v0_2_0.AcOutput",
             "MemberId": "0",
             "RealPower": 10,
             "Energy": 10,
