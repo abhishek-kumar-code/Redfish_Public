@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  DCIMPower  v0.1.0-->
+<!--# Redfish Schema:  DCIMPower  v0.2.0                                                   -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -19,7 +19,6 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/GeneratorCollection_v1.xml">
     <edmx:Include Namespace="GeneratorCollection"/>
@@ -57,14 +56,25 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Manager_v1.xml">
     <edmx:Include Namespace="Manager"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
+    <edmx:Include Namespace="SensorCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
+    <edmx:Include Namespace="Sensor"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
+    <edmx:Include Namespace="AlarmCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
+    <edmx:Include Namespace="Alarm"/>
+  </edmx:Reference>
+  
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMPower">
 
       <EntityType Name="DCIMPower" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the DCIM Power Zone Metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a DCIM Power Zone metrics resource for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the DCIM Power domain."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -73,27 +83,20 @@
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
             <PropertyValue Property="Updatable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Power properties can be updated to change limits, exceptions and other writable properties."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="false"/>
+            <PropertyValue Property="Deletable" Bool="false"/
           </Record>
         </Annotation>
       </EntityType>
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMPower.v0_1_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMPower.v0_2_0">
 
       <EntityType Name="DCIMPower" BaseType="DCIMPower.DCIMPower">
-
-        <Property Name="DCIMPowerType" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual DCIM Power Type of DCIMPower."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual DCIM Power Type of DCIMPower."/>
-        </Property>
 
         <Property Name="Status" Type="Resource.Status"/>
 
@@ -150,7 +153,41 @@
           <Annotation Term="OData.Description" String="This is the definition for a VFD collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a VFD collection for a Redfish implementation."/>
         </NavigationProperty>
+        
+        <!-- Standalone Sensors collection for this domain -->
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+        </NavigationProperty>
+        
+        <!-- Array of temperature sensors for this domain -->
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+         <!-- Array of humidity sensors for this domain -->
+        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+         <!-- Alarm collection for this domain -->
+        <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
 
+        <!-- Array of triggered alarms for domain -->
+        <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+        
         <Property Name="Links" Type="DCIMPower.v0_1_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
