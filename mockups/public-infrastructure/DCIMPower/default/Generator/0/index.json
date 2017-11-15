@@ -11,8 +11,7 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": "Location",
-	
+    "PhysicalLocation": "Location",	
     "EngineRunning": true,
     "EngineFailure": false,
     "DayTankRupture": false,
@@ -23,9 +22,7 @@
     "AirDamperClosed": false,
     "BatteryChargerFail": false,
     "ProtectiveRelayTripped": false,
-    
     "Sensors": { "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors" },
-    
     "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/0",
@@ -64,8 +61,8 @@
             "MaxReadingRange": 80,
             "PhysicalContext": "Chassis",
             "Oem": {}
-        }   ],
-    
+        }   
+    ],
     "LiquidLevel":[
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/1",
@@ -106,7 +103,6 @@
             "Oem": {}
         }
     ],
-
     "Pressure":[
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/8",
@@ -128,8 +124,7 @@
             "PhysicalContext": "Chassis",
             "Oem": {}
         }        
-    ],    
-    
+    ],
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0#/AcOutput/0",
@@ -161,8 +156,7 @@
                     "PhysicalContext": "ACOutlet",
                     "Oem": {}
                 }
-            ],
-                
+            ],  
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/3",
@@ -226,7 +220,6 @@
                     "Oem": {}
                 }
             ],
-            
             "Amperage": [                
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/6",
@@ -271,9 +264,7 @@
             ]
         }
     ],
-	
     "Alarms": {"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms" },
-	
     "TriggeredAlarms" : [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/3",
@@ -295,6 +286,5 @@
             }
         }
     ],
-
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
