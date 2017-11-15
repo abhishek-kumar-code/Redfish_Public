@@ -4,22 +4,22 @@
     "Members@odata.count": 6,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/AcInput0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/0"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/AcInput0Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/1"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/AcInput0Frequency0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/2"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/DcBus0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/3"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/SystemCurrent0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/4"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/SystemTemperature0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/5"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
