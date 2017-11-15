@@ -23,14 +23,22 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
+    <edmx:Include Namespace="Sensor"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
+    <edmx:Include Namespace="AlarmCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
+    <edmx:Include Namespace="Alarm"/>
+  </edmx:Reference>
+  
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerMeter">
 
       <EntityType Name="PowerMeter" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the PowerMeter Metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for a PowerMeter."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -39,7 +47,6 @@
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
             <PropertyValue Property="Updatable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Power properties can be updated to change limits, exceptions and other writable properties."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
@@ -55,6 +62,30 @@
 
       <EntityType Name="PowerMeter" BaseType="PowerMeter.PowerMeter">
 
+        <Property Name="Model" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Model Number of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of PowerMeter."/>
+        </Property>
+  
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Manufacturer of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of PowerMeter."/>
+        </Property>
+
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Serial Number of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of PowerMeter."/>
+        </Property>
+
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Part Number of PowerMeter."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of PowerMeter."/>
+        </Property> 
+        
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of PowerMeter."/>
@@ -73,37 +104,13 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual date of manufacture of PowerMeter."/>
         </Property>
 
-        <Property Name="Manufacturer" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Manufacturer of PowerMeter."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of PowerMeter."/>
-        </Property>
-
-        <Property Name="Model" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Model Number of PowerMeter."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of PowerMeter."/>
-        </Property>
-
-        <Property Name="SerialNumber" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Serial Number of PowerMeter."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of PowerMeter."/>
-        </Property>
-
-        <Property Name="PartNumber" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Part Number of PowerMeter."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of PowerMeter."/>
-        </Property>
-
         <Property Name="AssetTag" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Asset Tag of PowerMeter."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of PowerMeter."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of PowerMeter."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of PowerMeter."/>
