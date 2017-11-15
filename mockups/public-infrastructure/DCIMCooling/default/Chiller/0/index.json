@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chiller.v0_1_0.Chiller",
+    "@odata.type": "#Chiller.v0_2_0.Chiller",
     "Id": "Chiller0",
     "Name": "Chiller0",
     "FirmwareRevision": "1.0.0",
@@ -9,7 +9,27 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": "Location",
+    "PhysicalLocation": 
+        {
+            "Longitude": 45.52,
+            "Lattitude": 122.67,
+            "PostalAddress": 
+                {
+                    "Country": "US",
+                    "Territory": "OR",
+                    "City": "Portland",
+                    "Street": "1001 SW 5th Avenue",
+                    "Name": "Distributed Management Task Force, Inc.",
+                    "PostalCode": "97204",
+                    "Building": "3A",
+                    "Floor": "2",
+                    "Room": "213"
+                },
+            "Placement": 
+                {
+                    "Row": "North"
+                }
+        },  
     "StartCount": 1,
     "StartSwitch": "Off",
     "OperatingCode": "123",
@@ -66,7 +86,7 @@
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0#/AcInput/0",
-            "@odata.type": "#Chiller.v0_1_0.AcInput",
+            "@odata.type": "#Chiller.v0_2_0.AcInput",
             "MemberId": "0",
             "PercentCurrent": 50,
             "Amperage": [
