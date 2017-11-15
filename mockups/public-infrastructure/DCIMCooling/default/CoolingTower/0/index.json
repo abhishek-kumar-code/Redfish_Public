@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#CoolingTower.v0_1_0.CoolingTower",
+    "@odata.type": "#CoolingTower.v0_2_0.CoolingTower",
     "Id": "CoolingTower0",
     "Name": "CoolingTower0",
     "FirmwareRevision": "1.0.0",
