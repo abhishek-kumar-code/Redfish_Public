@@ -123,7 +123,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of CRAH."/>
         </Property>
 
-            <!-- Sensors collection for this equipment -->
+        <!-- Sensors collection for this equipment -->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
