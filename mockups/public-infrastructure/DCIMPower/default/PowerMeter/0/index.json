@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#PowerMeter.v0_1_0.PowerMeter",
+    "@odata.type": "#PowerMeter.v0_2_0.PowerMeter",
     "Id": "PowerMeter0",
     "Name": "PowerMeter0",
     "FirmwareRevision": "1.0.0",
