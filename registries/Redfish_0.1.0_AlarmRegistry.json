@@ -26,7 +26,7 @@
             "Message": "Overload Critical - Shutdown Alarm",
             "Severity": "Critical",
             "NumberOfArgs": 0
-        }
+        },
         "EngineLowOilPressureWarningAlarm": {
             "Description": "Generator Alarm",
             "Message": "Engine Low Oil Pressure Warning Alarm",
