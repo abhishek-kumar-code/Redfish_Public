@@ -1,6 +1,7 @@
 {
     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/8",
     "@odata.type": "#Sensor.v0_2_0.Sensor",
+    "Id": "8",
     "Name": "AC Output - RMS Current Sensor",
     "SensorType": "Amperage",
     "Status": {
