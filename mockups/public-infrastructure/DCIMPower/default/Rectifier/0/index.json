@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Rectifier.v0_1_0.Rectifier",
+    "@odata.type": "#Rectifier.v0_2_0.Rectifier",
     "Id": "Rectifier0",
     "Name": "Rectifier0",
     "FirmwareRevision": "1.0.0",
