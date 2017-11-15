@@ -4,7 +4,6 @@
     "Name": "SAS Port 2",
     "Description": "SAS Port 2",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -15,11 +14,9 @@
     "Width": 4,
     "MaxSpeedGbps": 48,
     "Actions": {
-        "@odata.type": "#Port.v1_0_0.Actions",
         "Oem": {}
     },
     "Links": {
-        "@odata.type": "#Port.v1_0_0.Links",
         "AssociatedEndpoints": [
             {
                 "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"

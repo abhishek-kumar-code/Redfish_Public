@@ -2,23 +2,22 @@
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "Anchovy",
 	"ProfileVersion": "1.0.2",
-	"Author": "Pizza Box Project",
 	"Purpose": "This is a sample Redfish Interoperability profile.",
+	"OwningEntity": "Contoso",
 	"ContactInfo": "pizza@contoso.com",
 	"RequiredProfiles": {
 		"DMTFBasic": {
 			"MinVersion": "1.0.0"
 		},
 		"ContosoPizza": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
 			"Repository": "contoso.com/profiles",
 			"MinVersion": "1.0.0"
 		}
 	},
 	"Protocol": {
 		"MinVersion": "1.2",
-		"DiscoveryRequired": true
+		"Discovery": "Recommended",
+		"HostInterface": "Mandatory"
 	},
 	"Resources": {
 		"ChassisCollection": {
@@ -124,10 +123,10 @@
 				}
 			}
 		},
-		"ManagerCollection": {
-			"Members": {
-				"MinCount": 1
-			}
+		"ManagerAccountCollection": {
+			"CreateResource": true,
+			"DeleteResource": true,
+			"UpdateResource": true
 		},
 		"Thermal": {
 			"MinVersion": "1.1.0",
@@ -138,7 +137,10 @@
 						"Reading": {},
 						"ReadingUnits": {},
 						"Status": {},
-						"PhysicalContext": {}
+						"RelatedItem": {
+							"Comparison": "LinkToResource",
+							"Values": [ "Processor", "ComputerSystem", "Chassis", "Memory"]
+						}
 					}
 				},
 				"Temperatures": {
@@ -160,8 +162,6 @@
 			}
 		},
 		"ContosoTimeMachine": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
 			"Repository": "www.contoso.com/schemas",
 			"PropertyRequirements": {
 				"CurrentTime": {},
@@ -187,8 +187,6 @@
 			}
 		},
 		"ContosoPizzaMessages": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
 			"Repository": "contoso.com/registries",
 			"ReadRequirement": "Mandatory"
 		}

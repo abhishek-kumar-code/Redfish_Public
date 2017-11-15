@@ -3,7 +3,6 @@
     "Id": "CompositionService",
     "Name": "MultiBlade Partitioning Composition Service",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
