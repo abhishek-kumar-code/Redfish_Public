@@ -10,7 +10,7 @@
    "MessageID": "Alarm.1.0.CoolantLevelLowCriticalAlarm",
    "MessageArgs": [],
    "AlarmStatus": "Armed",
-   "Acknowledge": false,
+   "Acknowledged": false,
    "Links": {
         "RelatedSensor": {
              "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/9"
