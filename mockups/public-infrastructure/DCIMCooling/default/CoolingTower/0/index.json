@@ -9,8 +9,28 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": "Location",
-    "OperatingLevelSwitch": "A",
+    "PhysicalLocation": 
+        {
+            "Longitude": 45.52,
+            "Lattitude": 122.67,
+            "PostalAddress": 
+                {
+                    "Country": "US",
+                    "Territory": "OR",
+                    "City": "Portland",
+                    "Street": "1001 SW 5th Avenue",
+                    "Name": "Distributed Management Task Force, Inc.",
+                    "PostalCode": "97204",
+                    "Building": "3A",
+                    "Floor": "2",
+                    "Room": "213"
+                },
+            "Placement": 
+                {
+                    "Row": "North"
+                }
+        },  
+"OperatingLevelSwitch": "A",
     "ColdWaterFlowSetPoint": 40,
     "FanVFDModulation": 50,
     "CoolingTowerEnabled": true,
