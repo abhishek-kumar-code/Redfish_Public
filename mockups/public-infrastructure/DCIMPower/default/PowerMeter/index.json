@@ -1,0 +1,13 @@
+{
+    "@odata.type": "#PowerMeterCollection.PowerMeterCollection",
+    "Name": "PowerMeter Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#PowerMeterCollection.PowerMeterCollection",
+    "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

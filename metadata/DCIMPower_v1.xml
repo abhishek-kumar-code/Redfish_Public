@@ -47,6 +47,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VFDCollection_v1.xml">
     <edmx:Include Namespace="VFDCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PowerMeterCollection_v1.xml">
+    <edmx:Include Namespace="PowerMeterCollection"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
@@ -161,6 +164,12 @@
           <Annotation Term="OData.Description" String="This is the definition for a VFD collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a VFD collection for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="PowerMeter" Type="PowerMeterCollection.PowerMeterCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a PowerMeter collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PowerMeter collection for a Redfish implementation."/>
         </NavigationProperty>
 
         <!-- Standalone Sensors collection for this domain -->

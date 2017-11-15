@@ -34,6 +34,9 @@
     "VFD": {
         "@odata.id": "/redfish/v1/DCIMPower/default/VFD"
     },
+    "PowerMeter": {
+        "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter"
+    },
     "Links": {
         "Chassis": [],
         "ManagedBy": [
