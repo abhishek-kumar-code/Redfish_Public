@@ -106,7 +106,7 @@
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcInput/0",
-	    "@odata.type": "#AcInput.v0_2_0.AcInput",
+	    "@odata.type": "#VFD.v0_2_0.AcInput",
             "MemberId": "0",
             "PercentCurrent": "50",
             "Amperage": [
@@ -158,7 +158,7 @@
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcOutput/0",
-	    "@odata.type": "#AcOutput.v0_2_0.AcOutput",
+	    "@odata.type": "#VFD.v0_2_0.AcOutput",
             "MemberId": "0",
             "PercentRatedTorque": "50",
             "PercentRatedPower": "50",
@@ -234,7 +234,7 @@
     "DcBus": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/DcBus/0",
-            "@odata.type": "#DcBus.v0_2_0.DcBus",
+            "@odata.type": "#VFD.v0_2_0.DcBus",
             "MemberId": "0",
             "UnderOverVolts": "StatusAlert",
             "DCVoltage": [
