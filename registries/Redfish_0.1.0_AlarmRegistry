@@ -27,7 +27,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 0,
         }
-            "EngineLowOilPressureWarningAlarm": {
+        "EngineLowOilPressureWarningAlarm": {
             "Description": "Generator Alarm",
             "Message": "Engine Low Oil Pressure Warning Alarm",
             "Severity": "Warning",
