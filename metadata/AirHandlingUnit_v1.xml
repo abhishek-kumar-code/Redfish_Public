@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AirHandlingUnit  v0.1.0-->
+<!--# Redfish Schema:  AirHandlingUnit  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -24,10 +24,20 @@
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
+    <edmx:Include Namespace="Sensor"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
+    <edmx:Include Namespace="AlarmCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
+    <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -35,8 +45,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AirHandlingUnit">
 
       <EntityType Name="AirHandlingUnit" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the AirHandlingUnit Metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a cooling metrics resource for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for an Air Handling Unit ."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -45,7 +54,6 @@
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
             <PropertyValue Property="Updatable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Cooling properties can be updated to change limits, exceptions and other writable properties."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
@@ -57,14 +65,33 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AirHandlingUnit.v0_1_0">
-
-      <EnumType Name="OnOff">
-        <Member Name="On"/>
-        <Member Name="Off"/>
-      </EnumType>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AirHandlingUnit.v0_2_0">
 
       <EntityType Name="AirHandlingUnit" BaseType="AirHandlingUnit.AirHandlingUnit">
+
+        <Property Name="Model" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Model Number of AirHandlingUnit."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of AirHandlingUnit."/>
+        </Property>
+
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Manufacturer of AirHandlingUnit."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of AirHandlingUnit."/>
+        </Property>
+
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Serial Number of AirHandlingUnit."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of AirHandlingUnit."/>
+        </Property>
+
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Part Number of AirHandlingUnit."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of AirHandlingUnit."/>
+        </Property>
 
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -84,40 +111,65 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual date of manufacture of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="Manufacturer" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Manufacturer of AirHandlingUnit."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of AirHandlingUnit."/>
-        </Property>
-
-        <Property Name="Model" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Model Number of AirHandlingUnit."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of AirHandlingUnit."/>
-        </Property>
-        <Property Name="SerialNumber" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Serial Number of AirHandlingUnit."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of AirHandlingUnit."/>
-        </Property>
-
-        <Property Name="PartNumber" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Part Number of AirHandlingUnit."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of AirHandlingUnit."/>
-        </Property>
-
         <Property Name="AssetTag" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Asset Tag of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of AirHandlingUnit."/>
         </Property>
+
+        <!-- Sensors collection for this equipment -->
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+        </NavigationProperty>
+
+        <!-- Setpoints -->
+        <NavigationProperty Name="Setpoints" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more sensors that have setpoints."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+        <!-- Array of temperature sensors for this equipment -->
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <!-- Array of humidity sensors for this equipment -->
+        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <!-- Array of pressure sensors for this equipment -->
+        <NavigationProperty Name="Pressure" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more pressure sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <!-- Alarm collection for this equipment -->
+        <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <!-- Array of triggered alarms for equipment -->
+        <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
 
         <!-- Supply -->
         <Property Name="FanStart" Type="Edm.String">
@@ -373,56 +425,56 @@
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
 
-        <!-- Status - most status values in schemas are booleans, but these were specified in spreadsheet as ON/OFF -Joe -->
-        <Property Name="UnitStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <!-- Status - most status values in schemas are booleans, but these were specified in spreadsheet as ON/OFF -->
+        <Property Name="UnitStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Unit Status [ON/OFF] of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="UnitOperationStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="UnitOperationStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Operation Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Operation Status [ON/OFF] of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="ExhaustFanStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="ExhaustFanStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Exhaust Fan Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Exhaust Fan Status [ON/OFF] of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="SupplyFanStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="SupplyFanStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Supply Fan Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Supply Fan Status [ON/OFF] of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="DehumidifyingStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="DehumidifyingStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Dehumidification Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Dehumidification Status [ON/OFF] of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="ElectricPreheatStageX" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="ElectricPreheatStageX" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Electric Preheat Stage X value of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Electric Preheat Stage X of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="HumidifyingStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="HumidifyingStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Humidification Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Humidification Status [ON/OFF] of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="UnitCoolingStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="UnitCoolingStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Cooling Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Cooling Status [ON/OFF] of AirHandlingUnit."/>
         </Property>
 
-        <Property Name="UnitHeatingStatus" Type="AirHandlingUnit.v0_1_0.OnOff">
+        <Property Name="UnitHeatingStatus" Type="AirHandlingUnit.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Heating Status [ON/OFF] of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Heating Status [ON/OFF] of AirHandlingUnit."/>
@@ -629,14 +681,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual  Alarm On boolean value of AirHandlingUnit."/>
         </Property>
 
-        <!-- Sensors -->
-        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-
-        <Property Name="Actions" Type="AirHandlingUnit.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="AirHandlingUnit.v0_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -647,7 +692,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="AirHandlingUnit.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="AirHandlingUnit.v0_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -655,6 +700,11 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
+ 
+      <EnumType Name="OnOff">
+        <Member Name="On"/>
+        <Member Name="Off"/>
+      </EnumType>
 
     </Schema>
 
