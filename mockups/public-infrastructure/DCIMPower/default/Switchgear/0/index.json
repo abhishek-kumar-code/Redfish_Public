@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Switchgear.v0_1_0.Switchgear",
+    "@odata.type": "#Switchgear.v0_2_0.Switchgear",
     "Id": "Switchgear0",
     "Name": "Switchgear0",
     "FirmwareRevision": "1.0.0",
