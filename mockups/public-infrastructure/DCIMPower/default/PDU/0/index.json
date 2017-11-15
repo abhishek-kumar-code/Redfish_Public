@@ -13,10 +13,8 @@
     "InputSourceStatus": 0,
     "OutputSourceStatus": 0,
     "AcInputSelectOverride": "A",
-    
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors"},
-    
-     "Temperature": [ 
+    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors"},    
+    "Temperature": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/9",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
@@ -39,7 +37,6 @@
             "Oem": {}
         }
     ],
-        
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0#/AcInput/0",
@@ -69,7 +66,6 @@
                     "Oem": {}
                 }
             ],
-            
             "Amperage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/1",
@@ -90,7 +86,6 @@
                     "Oem": {}   
                 }
             ],
-            
             "Frequency": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/2",
@@ -119,7 +114,6 @@
             "Energy": 10,
             "RMSUnderOverVoltage": 100,
             "Oem": {},
-            
             "ACVoltage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/3",
@@ -140,7 +134,6 @@
                     "Oem": {}
                 }
             ],
-            
             "Amperage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/4",
@@ -161,7 +154,6 @@
                     "Oem": {}
                 }              
             ],
-            
             "Frequency": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/5",
@@ -183,8 +175,7 @@
                 }
             ]
         }
-    ],
-       
+    ], 
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0#/AcOutput/0",
@@ -214,7 +205,6 @@
                     "Oem": {}
                 }
             ],
-
             "Amperage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/7",
@@ -235,7 +225,6 @@
                     "Oem": {}
                 }              
             ],
-
             "Frequency": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/8",
