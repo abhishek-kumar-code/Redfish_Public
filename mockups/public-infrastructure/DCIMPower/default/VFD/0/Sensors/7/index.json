@@ -1,7 +1,7 @@
 {
     "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/7",
     "@odata.type": "#Sensor.v0_2_0.Sensor",
-    "Id": "10",
+    "Id": "7",
     "Name": "Motor Temperature Sensor",
     "SensorType": "Temperature",
     "Status": {
