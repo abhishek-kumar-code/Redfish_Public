@@ -10,25 +10,79 @@
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
     "PhysicalLocation": "Location",
-    "Speed": 0,
     "RunTime": 6,
     "KWHours": 10,
-    "LastFault": "A",
-    "SecondFault": "B",
-    "FirstFault": "C",
     "DriveStatus": "Status",
     "DriveFail": "Fail",
     "DriveControl": "Control",
     "DcUnderOverVolts": 12,
     "FlyingStart": false,
     "DriveAtSpeed": 5,
-    "DriveOverTemperature": 10,
-    "MotorOverTemperature": 10,
     "ReverseDirection": false,
     "CommunicationsError": false,
     "Started": true,
     "CommandSpeed": 50,
     "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors"},
+    "Temperature": [ 
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/VFD/0/Sensors/6",
+            "@odata.type": "#Sensor.v0_1_0.Sensor",
+	        "Id": "6",
+            "Name": "Drive Temperature Sensor",
+            "SensorType": "Temperature",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 55,
+            "UpperThresholdCritical": 100,
+            "LowerThresholdCritical": 10,
+            "MinReadingRange": 20,
+            "MaxReadingRange": 80,
+            "PhysicalContext": "Drive",
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/7",
+            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "Id": "10",
+            "Name": "Motor Temperature Sensor",
+            "SensorType": "Temperature",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 55,
+            "UpperThresholdCritical": 100,
+            "LowerThresholdCritical": 10,
+            "MinReadingRange": 20,
+            "MaxReadingRange": 80,
+            "PhysicalContext": "Motor",
+            "Oem": {}
+        }   
+    ],
+    "Rotational":[
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/8",
+            "@odata.type": "#Sensor.v0_1_0.Sensor",
+            "Id": "8",
+    	    "Name": "Drive Speed Sensor",
+            "SensorType": "Rotational",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Reading": 20,
+            "UpperThresholdCritical": 40,
+            "UpperThresholdWarning": 30,
+            "LowerThresholdCritical": 10,
+	        "LowerThresholdWarning": 15,
+            "MinReadingRange": 10,
+            "MaxReadingRange": 50,
+            "PhysicalContext": "Drive",
+            "Oem": {}
+        }        
+    ],
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcInput/0",
@@ -160,13 +214,13 @@
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/DcBus/0",
             "MemberId": "0",
             "UnderOverVolts": "StatusAlert",
-            "ACVoltage": [
+            "DCVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/5",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
                     "Id": "5",
                     "Name": "DC Bus - RMS Voltage Sensor",
-                    "SensorType": "ACVoltage",
+                    "SensorType": "DCVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
