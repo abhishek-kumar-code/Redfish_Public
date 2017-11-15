@@ -1,6 +1,7 @@
 {
     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/3",
     "@odata.type": "#Sensor.v0_2_0.Sensor",
+    "Id": "3",
     "Name": "AC Input - Single Phase Current Sensor",
     "SensorType": "Amperage",
     "Status": {
