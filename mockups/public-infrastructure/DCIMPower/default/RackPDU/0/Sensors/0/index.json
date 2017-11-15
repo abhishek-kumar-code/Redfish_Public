@@ -1,6 +1,7 @@
 {
     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/0",
     "@odata.type": "#Sensor.v0_2_0.Sensor",
+    "Id": "0",
     "Name": "AC Input - RMS Voltage Sensor",
     "SensorType": "ACVoltage",
     "Status": {
