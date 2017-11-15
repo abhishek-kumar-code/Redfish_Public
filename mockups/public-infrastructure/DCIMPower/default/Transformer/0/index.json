@@ -11,14 +11,14 @@
     "AssetTag": "AssetTag",
     "PhysicalLocation": "Location",
     "LiquidLevel": "LiquidLevel",
-    "PowerFactor": 1,
-    
+    "PowerFactor": 1,    
     "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors"},
-             
     "Temperature": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/0",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
+            "Id": "0",
+            TransferSwitch
             "Name": "System Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -35,12 +35,12 @@
             "PhysicalContext": "Chassis",
             "Oem": {}
         }
-    ],
-    
+    ],    
     "Pressure":[
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/1",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
+            "Id": "1",
             "Name": "System Pressure Sensor",
             "SensorType": "Pressure",
             "Status": {
@@ -57,19 +57,18 @@
             "PhysicalContext": "Chassis",
             "Oem": {}
         }
-    ],
-    
+    ],    
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0#/AcInput/0",
             "MemberId": "0",
             "Energy": 0,
-            "RmsUnderOverVoltage": 0,
-    
+            "RmsUnderOverVoltage": 0,    
             "ACVoltage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/2",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "2",
                     "Name": "AC Input - RMS Voltage Sensor",
                     "SensorType": "ACVoltage",
                     "Status": {
@@ -91,6 +90,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/3",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "3",
                     "Name": "AC Input - RMS Current Sensor",
                     "SensorType": "Amperage",
                     "Status": {
@@ -107,12 +107,12 @@
                     "PhysicalContext": "ACInput",
                     "Oem": {}
                 }   
-            ],
-            
+            ],            
             "Frequency":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/4",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "4",
                     "Name": "AC Input - Frequency Sensor",
                     "SensorType": "Frequency",
                     "Status": {
@@ -129,12 +129,12 @@
                     "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
-            ],
-            
+            ],            
             "Temperature":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/5",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "5",
                     "Name": "AC Input - Ambient Temperature Sensor",
                     "SensorType": "Temperature",
                     "Status": {
@@ -151,12 +151,12 @@
                     "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
-            ],
-    
+            ],    
             "Humidity":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/6",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "6",
                     "Name": "AC Input - Humidity Sensor",
                     "SensorType": "Humidity",
                     "Status": {
@@ -175,20 +175,19 @@
                 }
             ],
         }
-    ],
-    
+    ],    
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0#/AcOutput/0",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
-            "Overload": 0,
-            
+            "Overload": 0,            
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/7",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "7",
                     "Name": "AC Output - RMS Voltage Sensor",
                     "SensorType": "ACVoltage",
                     "Status": {
@@ -205,12 +204,12 @@
                     "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
-            ],
-            
+            ],            
             "Amperage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/8",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "8",
                     "Name": "AC Output - RMS Current Sensor",
                     "SensorType": "Amperage",
                     "Status": {
@@ -227,12 +226,12 @@
                     "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
-            ],
-            
+            ],            
             "Frequency":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/9",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
+                    "Id": "9",
                     "Name": "AC Output - Frequency Sensor",
                     "SensorType": "Frequency",
                     "Status": {
