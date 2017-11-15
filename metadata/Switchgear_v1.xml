@@ -38,7 +38,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Switchgear">
 
       <EntityType Name="Switchgear" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Switchgear."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for a power Switchgear."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -110,7 +110,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Asset Tag of Switchgear."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of Switchgear."/>
