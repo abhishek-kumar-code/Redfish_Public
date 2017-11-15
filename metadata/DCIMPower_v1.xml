@@ -104,54 +104,63 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Generator collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Generator collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="PDU" Type="PDUCollection.PDUCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a PDU collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PDU collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="RackPDU" Type="RackPDUCollection.RackPDUCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a RackPDU collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a RackPDU collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="Rectifier" Type="RectifierCollection.RectifierCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Rectifier collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Rectifier collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="Switchgear" Type="SwitchgearCollection.SwitchgearCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Switchgear collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Switchgear collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="TransferSwitch" Type="TransferSwitchCollection.TransferSwitchCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a TransferSwitch collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a TransferSwitch collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="Transformer" Type="TransformerCollection.TransformerCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a Transformer collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Transformer collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="UPS" Type="UPSCollection.UPSCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a UPS collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a UPS collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="VFD" Type="VFDCollection.VFDCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a VFD collection."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a VFD collection for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <!-- Standalone Sensors collection for this domain -->
