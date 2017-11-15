@@ -11,6 +11,7 @@
     "MessageArgs": [],
     "AlarmStatus": "Armed",
     "Acknowledge": false,
-    "Links": {} 
+    "Links": {
+        "RelatedProperty": "/redfish/v1/DCIMPower/default/Generator/0/#Status.Health" 
     }
 }
