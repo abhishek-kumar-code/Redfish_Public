@@ -117,7 +117,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Asset Tag of VFD."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of VFD."/>
