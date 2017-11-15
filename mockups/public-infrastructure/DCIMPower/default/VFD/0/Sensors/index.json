@@ -1,25 +1,34 @@
 {
     "@odata.type": "#SensorCollection.SensorCollection",
     "Name": "VFD 0 Sensor Collection",
-    "Members@odata.count": 6,
+    "Members@odata.count": 9,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcInput0Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/0"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcInput0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/1"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Frequency0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/2"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/3"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/AcOutput0Current0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/4"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/DcBus0Voltage0"
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/5"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/6"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/7"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/8"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
