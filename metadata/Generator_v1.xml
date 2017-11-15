@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Generator  v0.1.0-->
+<!--# Redfish Schema:  Generator  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -26,14 +26,22 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
+    <edmx:Include Namespace="Sensor"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
+    <edmx:Include Namespace="AlarmCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
+    <edmx:Include Namespace="Alarm"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Generator">
 
       <EntityType Name="Generator" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Generator Metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a cooling metrics resource for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for a Generator."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -42,7 +50,6 @@
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
             <PropertyValue Property="Updatable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Cooling properties can be updated to change limits, exceptions and other writable properties."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
@@ -54,10 +61,34 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Generator.v0_1_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Generator.v0_2_0">
 
       <EntityType Name="Generator" BaseType="Generator.Generator">
 
+        <Property Name="Model" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Model Number of Generator."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of Generator."/>
+        </Property>
+ 
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Manufacturer of Generator."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of Generator."/>
+        </Property>
+
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Serial Number of Generator."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of Generator."/>
+        </Property>
+
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Part Number of Generator."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of Generator."/>
+        </Property>       
+  
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of Generator."/>
@@ -76,89 +107,70 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual date of manufacture of Generator."/>
         </Property>
 
-        <Property Name="Manufacturer" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Manufacturer of Generator."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Manufacturer of Generator."/>
-        </Property>
-
-        <Property Name="Model" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Model Number of Generator."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of Generator."/>
-        </Property>
-
-        <Property Name="SerialNumber" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Serial Number of Generator."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Serial Number of Generator."/>
-        </Property>
-
-        <Property Name="PartNumber" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Part Number of Generator."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of Generator."/>
-        </Property>
-
         <Property Name="AssetTag" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Asset Tag of Generator."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of Generator."/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The actual Asset Tag of the generator."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the Asset Tag of the generator."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Physical Location of Generator."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of Generator."/>
+          <Annotation Term="OData.Description" String="The location of the generator."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual geohysical location of the generator."/>
         </Property>
 
-        <!-- Status - many of these will likely need units -->
+        <!-- Sensors collection for this equipment -->
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+        </NavigationProperty>
+        
+        <!-- Array of temperature sensors for this equipment -->
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+        <!-- Array of fuel and coolant level sensors for this equipment -->
+        <NavigationProperty Name="LiquidLevel" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more liquid level sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>        
+        
+        <!-- Array of oil pressure level sensors for this equipment -->
+        <NavigationProperty Name="Pressure" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more pressure sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty> 
+ 
+         <!-- Alarm collection for this equipment -->
+        <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <!-- Array of triggered alarms for equipment -->
+        <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+        
+        <!-- The following properties are not scrubbed yet-->
         <Property Name="EngineRunning" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Engine Running status of Generator."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Running boolean value of Generator."/>
         </Property>
 
-        <Property Name="SummaryAlarmOn" Type="Edm.Boolean">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Summary Alarm On status of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Summary Alarm On status (boolean value; true for OFF/false for ON) of Generator."/>
-        </Property>
-
         <Property Name="EngineFailure" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Engine Failure status of Generator."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Failure boolean value of Generator."/>
-        </Property>
-
-        <Property Name="DayTankFuelLevel" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Day Tank Fuel Level of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Day Tank Fuel Level of Generator."/>
-        </Property>
-
-        <Property Name="DayTankLowLevelPreAlarm" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Day Tank Low Level (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Day Tank Low Level (Pre-Alarm) of Generator."/>
-        </Property>
-
-        <Property Name="DayTankLowLevelShutDown" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Day Tank Low Level (Shut-Down) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Day Tank Low Level (Shut-Down) of Generator."/>
-        </Property>
-
-        <Property Name="OverloadPreAlarm" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Overload (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Overload (Pre-Alarm) of Generator."/>
-        </Property>
-
-        <Property Name="OverloadShutDown" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Overload (Shut-Down) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Overlaod (Shut-Down) of Generator."/>
         </Property>
 
         <Property Name="DayTankRupture" Type="Edm.Boolean">
@@ -179,64 +191,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Emergency Off boolean value of Generator."/>
         </Property>
 
-        <Property Name="EngineOilPressure" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Engine Oil Pressure of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Oil Pressure sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="EngineLowOilPressurePreAlarm" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Engine Low Oil Pressure (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Low Oil Pressure (Pre-Alarm) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="EngineLowOilPressureShutDown" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Engine Low Oil Pressure (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Low Oil Pressure (Pre-Alarm) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="EngineCoolantTemperature" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Engine Coolant Temperature of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Coolant Temperature sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="EngineCoolantTemperaturePreAlarm" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Engine Coolant Temperature (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Coolant Temperature (Pre-Alarm) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="EngineCoolantTemperatureShutDown" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Engine Coolant Temperature (Shut-Down) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Engine Coolant Temperature (Shut-Down) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="LowWaterTemperature" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Low Water Temperature of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Low Water Temperature sensor reading value of Generator."/>
-        </Property>
-
         <Property Name="Overspeed" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Overspeed of Generator."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Overspeed of Generator."/>
-        </Property>
-
-        <Property Name="LowCoolantLevelPreAlarm" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Low Coolant Level (Pre-Alarm) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Low Coolant Level (Pre-Alarm) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="LowCoolantLevelShutDown" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Low Coolant Level (Shut-Down) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Low Coolant Level (Shut-Down) sensor reading value of Generator."/>
         </Property>
 
         <Property Name="OvercrankShutDown" Type="Edm.Decimal">
@@ -257,36 +215,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Battery Charger Fail boolean value of Generator."/>
         </Property>
 
-        <Property Name="HighExhaustTemperatureLeft" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual High Exhaust Temperature (Left) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual High Exhaust Temperature (Left) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="HighExhaustTemperatureRight" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual High Exhaust Temperature (Right) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual High Exhaust Temperature (Right) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="BearingHighTemperatureFront" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Bearing High Temperature (Front) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Bearing High Temperature (Front) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="BearingHighTemperatureRear" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Bearing High Temperature (Rear) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Bearing High Temperature (Rear) sensor reading value of Generator."/>
-        </Property>
-
-        <Property Name="GeneratorPrimaryBearingTemperature" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Bearing High Temperature (Front) of Generator."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Bearing High Temperature (Front) sensor reading value of Generator."/>
-        </Property>
-
         <Property Name="ProtectiveRelayTripped" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Protective Relay Tripped status of Generator."/>
@@ -298,13 +226,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Output."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AC Output for a Redfish implementation."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-
-        <!-- Sensors -->
-        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this sensor collection."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -343,13 +264,28 @@
           <Annotation Term="OData.Description" String="The Protective Relays for this AC Output."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Protective Relays of this AC Output."/>
         </Property>
-
-        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+        
+        <!-- Array of AC voltage sensors for sub-component -->
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this sensor collection."/>
-          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more AC voltage sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-
+        
+        <!-- Array frequency sensors for sub-component -->
+        <NavigationProperty Name="Frequency" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more frequency sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+        <!-- Array of amperage sensors for sub-component -->
+        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
         <Property Name="Actions" Type="Generator.v0_1_0.AcOutputActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

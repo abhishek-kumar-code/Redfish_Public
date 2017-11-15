@@ -1,0 +1,15 @@
+{
+   "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/8",
+   "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+   "@odata.type": "#Alarm.v0_1_0.Alarm",
+   "Id": "8",
+   "Name": "Coolant Temperature Low Warning Alarm",
+   "Severity": "Critical",
+   "Created": "2012-03-07T14:45:00Z",
+   "Message": "Coolant Temperature Low Warning Alarm",
+   "MessageID": "Alarm.1.0.CoolantTemperatureLowWarningAlarm",
+   "MessageArgs": [],
+   "AlarmStatus": "Armed",
+   "Acknowledged": false,
+   "Links": {} 
+}

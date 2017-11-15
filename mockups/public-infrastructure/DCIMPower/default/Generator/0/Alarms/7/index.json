@@ -1,0 +1,19 @@
+{
+   "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/7",
+   "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+   "@odata.type": "#Alarm.v0_1_0.Alarm",
+   "Id": "7",
+   "Name": "Coolant Level Low Critical Alarm",
+   "Severity": "Critical",
+   "Created": "2012-03-07T14:45:00Z",
+   "Message": "Coolant Level Low Critical Alarm",
+   "MessageID": "Alarm.1.0.CoolantLevelLowCriticalAlarm",
+   "MessageArgs": [],
+   "AlarmStatus": "Armed",
+   "Acknowledged": false,
+   "Links": {
+        "RelatedSensor": {
+             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/9"
+        } 
+    }
+}

@@ -1,25 +1,21 @@
 {
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/5",
     "@odata.type": "#Sensor.v0_2_0.Sensor",
-    "Id": "1",
-    "Name": "AC Output - RMS Voltage (L-L) Sensor",
-    "SensorType": "Voltage",
-    "SensorNumber": 1,
+    "Name": "ACOutlet - Battery Voltage Sensor",
+    "SensorType": "ACVoltage",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-    "PresentReading": 12,
-    "UpperThresholdNonCritical": 12.5,
+    "Reading": 12,
+    "UpperThresholdWarning": 12.5,
     "UpperThresholdCritical": 13,
-    "UpperThresholdFatal": 15,
-    "LowerThresholdNonCritical": 11.5,
+    "LowerThresholdWarning": 11.5,
     "LowerThresholdCritical": 11,
-    "LowerThresholdFatal": 10,
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
-    "PhysicalContext": "AC Output",
+    "PhysicalContext": "ACOutlet",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage0",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
