@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#CRAH.v0_1_0.CRAH",
+    "@odata.type": "#CRAH.v0_2_0.CRAH",
     "Id": "CRAH0",
     "Name": "CRAH0",
     "FirmwareRevision": "1.0.0",
