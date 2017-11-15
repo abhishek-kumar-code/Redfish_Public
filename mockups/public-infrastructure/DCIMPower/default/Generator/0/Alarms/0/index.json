@@ -1,0 +1,16 @@
+{
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/0",
+    "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+    "@odata.type": "#Alarm.v0_1_0.Alarm",
+    "Id": "0",
+    "Name": "Summary Alarm",
+    "Severity": "Critical",
+    "Created": "2012-03-07T14:45:00Z",
+    "Message": "Summary Alarm",
+    "MessageID": "Alarm.1.0.SummaryAlarm",
+    "MessageArgs": [],
+    "AlarmStatus": "Armed",
+    "Acknowledge": false,
+    "Links": {} 
+    }
+}
