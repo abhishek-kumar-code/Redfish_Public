@@ -4,16 +4,16 @@
     "Members@odata.count": 4,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature0"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/0"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature1"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/1"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature2"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/2"
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature3"
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/3"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
