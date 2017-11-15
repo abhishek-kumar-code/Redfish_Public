@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2017.2'
-modified: '2017-09-22'
+DocVersion: '2017.3'
+modified: '2017-11-17'
 status: published
 released: True
 copyright: '2015-2017'
@@ -14,15 +14,22 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 * DSP0226 - Redfish Specification - This file is the main Redfish Scalable Platforms Management API Specification.
 * DSP0270 - Redfish Host Interface Specification - This document specifies the "in-band" or "OS-based" Redfish Host Interface. 
+* DSP0272 - Redfish Interoperability Profile Specification - Specifies the structure and JSON document used to define and publish an interoperability profile used to check an implementation's conformance to a defined minimum set of functionality.
 * DSP2044 - Redfish Whitepaper - This is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish Service and understand common functions and tasks.
 * DSP2043 - Redfish Mockup - This is a mockup that can be used as sample of output from GETs from a Redfish Service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
 * DSP8010 - Redfish Schema - This contains the Redfish Schema definitions.  These files are normative in nature and are normatively referenced by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format, which is in XML) and JSON Schema.  These Schema definitions should be functionally equivalent, thus specifying the schema in two different languages.
+* DSP8011 - Refish Registries - This contains the Redfish Registry definitions.  This bundle of Redfish registries includes Message registries used for Redfish-defined messages (including events) and Privilege maps.
+* DSP8013 - Redfish Interoperability Profiles - A bundle of published Redfish Interoperability Profile documents as well as supporting schema and sample documents used for creating profiles.
 
 
 # Redfish Schema Change log
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| Assembly | 1.0.0 | 2017-11-17 | Initial release.  Contains manufacturing and assembly information for a piece of equipment. |
+| BootOption | 1.0.0 | 2017-11-17 | Initial release. Contains information about a single Boot Option contained within a system. |
+| BootOptionCollection | 1.0.0 | 2017-11-17 | Initial release. A collection of Boot Options. |
+
 | Memory | 1.3.0 | 2017-08-11 | Deprecated "FunctionClasses".  Added memory module-centric identification properties "ModuleManufacturerID", "ModuleProductID", "MemorySubsystemControllerManufacturerID", and "MemorySubsystemControllerProductID".  Deprecated the PCIe-centric identification properties "VendorID", "DeviceID", "SubsystemVendorID", and "SubsystemDeviceID". |
 | PhysicalContext | 1.2.0 | 2017-08-11 | Added "Chassis" and "Fan" as enumerations to "PhysicalContext". |
 | Power | 1.4.0 | 2017-08-11 | Added "PhysicalContext" to the "PowerControl" object. |
