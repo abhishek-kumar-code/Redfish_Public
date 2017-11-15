@@ -861,7 +861,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The sub-model for this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the sub-model (or config) of the system. This shall not include the model/product name or the manufacturer name."/>
-        </Property>        
+        </Property>
       </EntityType>
 
       <ComplexType Name="Boot" BaseType="ComputerSystem.v1_1_0.Boot">
