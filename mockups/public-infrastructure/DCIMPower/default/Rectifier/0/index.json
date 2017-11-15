@@ -83,7 +83,7 @@
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0#/AcInput/0",
-            "@odata.type": "#AcInput.v0_2_0.AcInput",
+            "@odata.type": "#Rectifier.v0_2_0.AcInput",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
@@ -161,7 +161,7 @@
     "DcBus": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0#/DcBus/0",
-            "@odata.type": "#DcBus.v0_2_0.DcBus",
+            "@odata.type": "#Rectifier.v0_2_0.DcBus",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
