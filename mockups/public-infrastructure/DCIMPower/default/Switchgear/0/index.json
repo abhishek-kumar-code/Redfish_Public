@@ -53,14 +53,13 @@
     "GeneratorXOnLine": true,
     "HoldMechanicalPlantStable": true,
     "PrimaryUtilityReclosureOpen": true,
-    "AlternateUtilityReclosureOpen": false,
-    
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/Sensors"},
-    
+    "AlternateUtilityReclosureOpen": false,    
+    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/Sensors"},   
     "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/Sensors/0",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
+            "Id": "0",
             "Name": "SwitchGear Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -72,8 +71,7 @@
             "PhysicalContext": "Transformer",
             "Oem": {}
         }
-    ],
-        
+    ],        
     "CriticalBoards": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0#/CriticalBoards/0",
@@ -86,8 +84,7 @@
             "LoadBankBreakerTripped": false,
             "CriticalBoardMetering": "Volts"
         }
-    ],
-    
+    ],    
     "Switchgear2": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0#/Switchgear2/0",
@@ -100,8 +97,7 @@
             "SummaryAlarm": "Off",
             "Switchgear2Metering": "kW"
         }
-    ],
-    
+    ],    
     "GeneratorParallelingSwitchgear": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0#/GeneratorParallelingSwitchgear/0",
@@ -113,10 +109,9 @@
             "SummaryAlarm": "Off",
             "GeneratorParallelingSwitchgearMetering": "Amps"
         }
-    ],
-    
+    ],    
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Switchgear.Switchgear",
-    "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
