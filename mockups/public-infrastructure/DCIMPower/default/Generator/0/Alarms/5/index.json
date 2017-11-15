@@ -4,7 +4,7 @@
    "@odata.type": "#Alarm.v0_1_0.Alarm",
    "Id": "5",
    "Name": "Fuel Level Low Critical Alarm",
-   "Severity": "Warning",
+   "Severity": "Critical",
    "Created": "2012-03-07T14:45:00Z",
    "Message": "Fuel Level Low Critical Alarm",
    "MessageID": "Alarm.1.0.FuelLevelLowCriticalAlarm",
