@@ -41,8 +41,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Generator">
 
       <EntityType Name="Generator" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Generator Metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a cooling metrics resource for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for a Generator."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
