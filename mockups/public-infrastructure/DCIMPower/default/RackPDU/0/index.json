@@ -9,7 +9,27 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": "Location",
+    "PhysicalLocation": 
+        {
+            "Longitude": 45.52,
+            "Lattitude": 122.67,
+            "PostalAddress": 
+                {
+                    "Country": "US",
+                    "Territory": "OR",
+                    "City": "Portland",
+                    "Street": "1001 SW 5th Avenue",
+                    "Name": "Distributed Management Task Force, Inc.",
+                    "PostalCode": "97204",
+                    "Building": "3A",
+                    "Floor": "2",
+                    "Room": "213"
+                },
+            "Placement": 
+                {
+                    "Row": "North"
+                }
+        },  
     "Rating": 1,
     "NumOutlets": 2,
     "NumPhases": 2,
@@ -67,6 +87,7 @@
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/AcInput/0",
+            "@odata.type": "#AcInput.v0_2_0.AcInput",
             "MemberId": "0",
             "RealPower": 10,
             "RmsUnderOverVoltage": 100,
@@ -173,6 +194,7 @@
     "Outlets": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/0",
+            "@odata.type": "#Outlets.v0_2_0.Outlets",
             "MemberId": "0",
             "Name": "Outlet0",
             "Phase": 0,
@@ -189,6 +211,7 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/1",
+            "@odata.type": "#Outlets.v0_2_0.Outlets",
             "Name": "Outlet1",
             "Phase": 0,
             "State": 1,
