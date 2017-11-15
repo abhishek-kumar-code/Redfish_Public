@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  CRAH  v0.2.0-->
+<!--# Redfish Schema:  CRAH  v0.2.0                                                        -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -44,8 +44,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CRAH">
 
       <EntityType Name="CRAH" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the CRAH Metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a cooling metrics resource for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for a Computer Room Air Handler - CRAH."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -117,7 +116,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Asset Tag of CRAH."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of CRAH."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of CRAH."/>
