@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  LogService  v1.0.4-->
+<!--# Redfish Schema:  LogService  v1.0.5-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -55,6 +55,8 @@
 
       <Action Name="ClearLog" IsBound="true">
         <Parameter Name="LogService" Type="LogService.v1_0_0.Actions"/>
+        <Annotation Term="OData.Description" String="This action is used to clear the log for this Log Service."/>
+        <Annotation Term="OData.LongDescription" String="This action shall delete all entries found in the Entries collection for this Log Service."/>
       </Action>
 
     </Schema>
@@ -144,6 +146,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_4">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_3.LogService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_5">
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <EntityType Name="LogService" BaseType="LogService.v1_0_4.LogService"/>
     </Schema>
 
   </edmx:DataServices>
