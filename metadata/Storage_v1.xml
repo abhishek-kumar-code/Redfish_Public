@@ -414,7 +414,7 @@
       </EntityType>
 
       <ComplexType Name="StorageControllerLinks" BaseType="Storage.v1_1_0.StorageControllerLinks">
-        <NavigationProperty Name="StorageServices" Type="Collection(StorageServices.StorageServices)">
+        <NavigationProperty Name="StorageServices" Type="Collection(StorageService.StorageService)">
           <Annotation Term="OData.Description" String="An array of references to the StorageServices that connect to this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this controller is associated with and shall reference a resource of type StorageService."/>
           <Annotation Term="OData.AutoExpandReferences"/>
