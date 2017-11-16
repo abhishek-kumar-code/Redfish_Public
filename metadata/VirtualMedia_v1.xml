@@ -49,17 +49,17 @@
         <Annotation Term="OData.Description" String="This action is used to attach remote media to virtual media."/>
         <Annotation Term="OData.LongDescription" String="This action shall attach remote media to virtual media."/>
         <Parameter Name="VirtualMedia" Type="VirtualMedia.v1_1_0.Actions"/>
-        <Parameter Name="Image" Type="Edm.String">
+        <Parameter Name="Image" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The URI of the remote media to attach to the virtual media."/>
           <Annotation Term="OData.LongDescription" String="This value shall specify the URI of the remote media to be attached to the virtual media."/>
         </Parameter>
         <Parameter Name="Inserted" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="Indicates if the image is to be treated as inserted upon completion of the action."/>
-          <Annotation Term="OData.LongDescription" String="This value shall specify if the image is to be treated as inserted upon completion of the action."/>
+          <Annotation Term="OData.LongDescription" String="This value shall specify if the image is to be treated as inserted upon completion of the action.  If this parameter is not provided by the client, the service shall default this value to be true."/>
         </Parameter>
         <Parameter Name="WriteProtected" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="Indicates if the remote media is supposed to be treated as write protected."/>
-          <Annotation Term="OData.LongDescription" String="This value shall specify if the remote media is supposed to be treated as write protected."/>
+          <Annotation Term="OData.LongDescription" String="This value shall specify if the remote media is supposed to be treated as write protected.  If this parameter is not provided by the client, the service shall default this value to be true."/>
         </Parameter>
       </Action>
 
