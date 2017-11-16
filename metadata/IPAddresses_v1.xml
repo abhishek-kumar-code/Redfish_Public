@@ -164,7 +164,7 @@
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
         <Property Name="PrefixLength" Type="IPAddresses.v1_0_0.PrefixLength">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The Prefix Length of this IPv6 address."/>
           <Annotation Term="OData.LongDescription" String="Provides the IPv6 network prefix length in bits for this address."/>
           <Annotation Term="Redfish.Required"/>
@@ -190,7 +190,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.v1_0_6">
-      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for IPv4Address, IPv6Address, and IPv6StaticAddress."/>
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for IPv4Address, IPv6Address, and IPv6StaticAddress.  It was also created to make PrefixLength in IPv6StaticAddress writable."/>
     </Schema>
 
   </edmx:DataServices>
