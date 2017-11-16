@@ -27,9 +27,9 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
 | Assembly | 1.0.0 | 2017-11-17 | Initial release.  Contains manufacturing and assembly information for a piece of equipment. |
-| BootOption | 1.0.0 | 2017-11-17 | Initial release. Contains information about a single Boot Option contained within a system. |
+| BootOption | 1.0.0 | 2017-11-17 | Initial release. Contains information about a Boot Option contained within a system. |
 | BootOptionCollection | 1.0.0 | 2017-11-17 | Initial release. A collection of Boot Options. |
-| Protocol | 1.0.0 | 2017-11-17 | Initial release. Supporting schema file to hold definitions of common "Protocol" properties. |
+| Protocol | 1.0.0 | 2017-11-17 | Initial release. Supporting schema file to hold definition of the common "Protocol" property. |
 | Chassis | 1.6.0 | 2017-11-17 | Added link to Assembly resource. |
 | ComputerSystem | 1.5.0 | 2017-11-17 | Added support for managing the boot order (Boot Options). Added Action for "SetDefaultBootOrder". Added "LogicalProcessorCount" to "ProcessorSummary".  Added links for "ConsumingComputerSystems" and "SupplyingComputerSystems". |
 | Drive | 1.3.0 | 2017-11-17 | Added "SecureErase" Action. Added link to Assembly resource. |
@@ -44,9 +44,12 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Port | 1.1.0 | 2017-11-17 | Added "Location" object. |
 | Power | 1.5.0 |  2017-11-17 | Added "PowerInputWatts", "PowerOutputWatts", and "EffciencyPercent" properties, "Location" object, and "Assembly" link to "PowerSupply" object. |
 | Processor | 1.2.0 | 2017-11-17 | Added "Assembly" link. |
-
-
-
+| Redundancy | 1.3.0 | 2017-11-17 | Added "NotRedundant" enumeration to "Mode".  Changed "Mode" to be writeable. Removed duplicate description text that appears in the enumeration definitions. |
+| Resource | 1.6.0 | 2017-11-17 | Added "Latitude", "Longitude" and "AltitudeMeters" to "Location" object. |
+| ServiceRoot | 1.3.0 | 2017-11-17 | Added "Product" property for general product identifcation. Added "ProtocolFeaturesSupported" object to allow for discovery of supported optional Redfish protocol features. |
+| Storage | 1.4.0 | 2017-11-17 | Added "Assembly" link. |
+| Switch | 1.1.0 | 2017-11-17 | Added "Location" object. |
+| Thermal | 1.4.0 | 2017-11-17 | Added "Assembly" links to "Fan" objects. Added "DeltaReadingCelsius", "DeltaPhysicalContext", "MaxAllowableOperatingValue", "MinAllowableOperatingValue", "AdjustedMaxAllowableOperatingValue", and "AdjustedMinAllowableOperatingValue" to "Temperatures" object. |
 | Bios | 1.0.3 | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
 | Chassis | 1.x.x | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
 | ComputerSystem | 1.x.x | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. Added descriptions for SystemType enumerations. |
@@ -69,8 +72,13 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Port | 1.0.3 | 2017-11-17 | Errata release. Changed internal schema location for "PortProtocol" definitions. Corrected parameter descriptions in Actions. |
 | Power | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "PhysicalContext" and "IndicatorLED" definitions. |
 | PrivilegeRegistry | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "PrivilegeType" definitions. |
-| PrivilegeRegistry | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for "PrivilegeType". |
-
+| Privileges | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for "PrivilegeType". |
+| Resource | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for numerous definitions. |
+| Role | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "PrivilegeType" definitions. |
+| SecureBoot | 1.0.3 | 2017-11-17 | Errata release. Corrected parameters in Actions to show they are mandatory. |
+| Storage | 1.x.x | 2017-11-17 | Errata release. Corrected parameters in Actions to show they are mandatory. Changed internal schema references to "Identifier" and "Protocol" definitions. |
+| Switch | 1.0.3 | 2017-11-17 | Errata release. Changed internal schema references to "IndicatorLED", "PowerState", and "Protocol" definitions. Corrected descriptions of Actions. |
+| VLanNetworkInterface | 1.x.x | 2017-11-17 | Errata release. Changed internal schema definition for "VLAN". |
 | Memory | 1.3.0 | 2017-08-11 | Deprecated "FunctionClasses".  Added memory module-centric identification properties "ModuleManufacturerID", "ModuleProductID", "MemorySubsystemControllerManufacturerID", and "MemorySubsystemControllerProductID".  Deprecated the PCIe-centric identification properties "VendorID", "DeviceID", "SubsystemVendorID", and "SubsystemDeviceID". |
 | PhysicalContext | 1.2.0 | 2017-08-11 | Added "Chassis" and "Fan" as enumerations to "PhysicalContext". |
 | Power | 1.4.0 | 2017-08-11 | Added "PhysicalContext" to the "PowerControl" object. |
