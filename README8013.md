@@ -59,4 +59,4 @@ Creates end user documentation by combining the Redfish Schemas with a Profile d
 | File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
 | RedfishInteroperabilityProfile | 1.0.0 | 2017-11-17 | Initial release.  JSON schema used to define a Redfish Interoperability Profile. |
-| SampleProfile.json | 1.0.0 | Initial release.  Sample document to show examples of the various profile features. |
+| SampleProfile.json | 1.0.0 | 2017-11-17 | Initial release.  Sample document to show examples of the various profile features. |
