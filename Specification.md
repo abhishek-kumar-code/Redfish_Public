@@ -2884,6 +2884,8 @@ OData-Version: 4.0
 |         |          | Clarified the usage and expected format of the Context property value. |
 |         |          | Added clause detailing how Structured properties can be revised and how to resolve their definitions in schema. |
 |         |          | Aded more descriptive definition for the Settings resource.  Added an example for the "SettingsObject".  Added description and example for using the "SettingsApplyTime" annotation. |
+|         |          | Added Action example using the ActionInfo resource in addition to the simple AllowableValues example. Updated example to show a proper subset of the available enumerations to reflect a real-world example. |
+|         |          | Added statement explaining the updates required to TaskState upon task completion. |
 | 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP status code [428](#status-428). |
 |         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
 | 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
