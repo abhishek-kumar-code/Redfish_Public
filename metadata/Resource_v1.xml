@@ -813,7 +813,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
-      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinates to Location."/>
 
       <ComplexType Name="Location" BaseType="Resource.v1_5_0.Location">
         <Property Name="Longitude" Type="Edm.Decimal" DefaultValue="0">

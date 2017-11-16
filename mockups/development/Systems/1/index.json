@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/1",
     "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
@@ -86,6 +86,16 @@
            "InterfaceTypeSelection": "None"
         }
     ],
+    "HostWatchdogTimer": {
+        "FunctionEnabled": true,
+	"WarningAction": "DiagnosticInterrupt",
+	"WarningAction@Redfish.AllowableValues": [ "DiagnosticInterrupt", "SMI", "None" ],
+	"TimeoutAction": "ResetSystem",
+	"TimeoutAction@Redfish.AllowableValues": [ "ResetSystem", "PowerCycle", "PowerDown", "None" ],
+	"Status": {
+	   "State": "StandbyOffline"
+	}
+    },
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/1/Processors"
     },

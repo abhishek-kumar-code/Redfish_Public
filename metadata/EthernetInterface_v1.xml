@@ -52,7 +52,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">
 
       <EntityType Name="EthernetInterface" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="Contains the properties needed to describe and configure a single, logical Ethernet Interface."/>
+        <Annotation Term="OData.Description" String="The EthernetInterface schema represents a single, logical ethernet interface or network interface controller (NIC)."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -77,7 +77,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_0">
 
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.EthernetInterface">
-        <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
+        <Annotation Term="OData.Description" String="The EthernetInterface schema represents a single, logical ethernet interface or network interface controller (NIC)."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
         <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -137,7 +137,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."/>
         </Property>
         <Property Name="VLAN" Type="VLanNetworkInterface.VLAN">
-          <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
+          <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>
         <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPv4Address)" Nullable="false">
@@ -149,11 +149,11 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC 6724."/>
         </Property>
         <Property Name="IPv6Addresses" Type="Collection(IPAddresses.IPv6Address)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
+          <Annotation Term="OData.Description" String="Enumerates in an array all of the currently assigned IPv6 addresses on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.IPv6StaticAddress)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array of objects represents all of the IPv6 static addresses to be assigned on this interface."/>
+          <Annotation Term="OData.Description" String="Represents in an array all of the IPv6 static addresses to be assigned on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6DefaultGateway" Type="Edm.String">
