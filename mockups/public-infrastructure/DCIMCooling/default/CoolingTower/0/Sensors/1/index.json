@@ -1,5 +1,4 @@
 {
-    "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/1",
     "@odata.type": "#Sensor.v0_2_0.Sensor",
     "Id": "1",
     "Name": "Cooling Tower Sump Temperature Sensor",
@@ -15,8 +14,9 @@
     "LowerThresholdCritical": 11,
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
-    "PhysicalContext": "System",
+    "PhysicalContext": "Chassis",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/1",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

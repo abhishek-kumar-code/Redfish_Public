@@ -90,7 +90,7 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="false"/
+            <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
       </EntityType>
@@ -193,7 +193,7 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-         <!-- Alarm collection for this domain -->
+        <!-- Alarm collection for this domain -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>

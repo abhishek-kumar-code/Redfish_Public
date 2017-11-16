@@ -9,27 +9,24 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": 
-        {
-            "Longitude": 45.52,
-            "Lattitude": 122.67,
-            "PostalAddress": 
-                {
-                    "Country": "US",
-                    "Territory": "OR",
-                    "City": "Portland",
-                    "Street": "1001 SW 5th Avenue",
-                    "Name": "Distributed Management Task Force, Inc.",
-                    "PostalCode": "97204",
-                    "Building": "3A",
-                    "Floor": "2",
-                    "Room": "213"
-                },
-            "Placement": 
-                {
-                    "Row": "North"
-                }
-        },  
+    "PhysicalLocation": {
+        "Longitude": 45.52,
+        "Latitude": 122.67,
+        "PostalAddress": {
+            "Country": "US",
+            "Territory": "OR",
+            "City": "Portland",
+            "Street": "1001 SW 5th Avenue",
+            "Name": "Distributed Management Task Force, Inc.",
+            "PostalCode": "97204",
+            "Building": "3A",
+            "Floor": "2",
+            "Room": "213"
+        },
+        "Placement": {
+            "Row": "North"
+        }
+    },
     "RunTime": 6,
     "KWHours": 10,
     "DriveStatus": "Status",
@@ -42,12 +39,14 @@
     "CommunicationsError": false,
     "Started": true,
     "CommandSpeed": 50,
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors"},
+    "Sensors": {
+        "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors"
+    },
     "Temperature": [ 
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/VFD/0/Sensors/6",
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/6",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
-	        "Id": "6",
+            "Id": "6",
             "Name": "Drive Temperature Sensor",
             "SensorType": "Temperature",
             "Status": {
@@ -63,7 +62,7 @@
             "Oem": {}
         },
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/7",
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/7",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
             "Id": "7",
             "Name": "Motor Temperature Sensor",
@@ -79,14 +78,14 @@
             "MaxReadingRange": 80,
             "PhysicalContext": "Motor",
             "Oem": {}
-        }   
+        }
     ],
     "Rotational":[
         {
-            "@odata.id": "/redfish/v1/DCIMCooling/default/Generator/0/Sensors/8",
+            "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/8",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
             "Id": "8",
-    	    "Name": "Drive Speed Sensor",
+            "Name": "Drive Speed Sensor",
             "SensorType": "Rotational",
             "Status": {
                 "State": "Enabled",
@@ -96,17 +95,16 @@
             "UpperThresholdCritical": 40,
             "UpperThresholdWarning": 30,
             "LowerThresholdCritical": 10,
-	        "LowerThresholdWarning": 15,
+                "LowerThresholdWarning": 15,
             "MinReadingRange": 10,
             "MaxReadingRange": 50,
             "PhysicalContext": "Drive",
             "Oem": {}
-        }        
+        }
     ],
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcInput/0",
-	    "@odata.type": "#VFD.v0_2_0.AcInput",
             "MemberId": "0",
             "PercentCurrent": "50",
             "Amperage": [
@@ -120,7 +118,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "Reading": 12, 
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -142,7 +140,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "Reading": 12, 
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -158,7 +156,6 @@
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/AcOutput/0",
-	    "@odata.type": "#VFD.v0_2_0.AcOutput",
             "MemberId": "0",
             "PercentRatedTorque": "50",
             "PercentRatedPower": "50",
@@ -174,7 +171,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "Reading": 12, 
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -196,7 +193,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "Reading": 12, 
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -218,7 +215,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "Reading": 12, 
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -234,7 +231,6 @@
     "DcBus": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0#/DcBus/0",
-            "@odata.type": "#VFD.v0_2_0.DcBus",
             "MemberId": "0",
             "UnderOverVolts": "StatusAlert",
             "DCVoltage": [
@@ -248,7 +244,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "Reading": 12, 
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,

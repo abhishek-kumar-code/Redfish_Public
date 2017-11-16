@@ -92,7 +92,7 @@
           <Annotation Term="OData.Description" String="The band of values around the SetPoint where the control system does not respond to the SetPoint."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the band of values around the SetPoint where the control system does not respond to the SetPoint."/>
         </Property>
-        
+
         <Property Name="UpperThresholdWarning" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Upper Threshold Warning for this Sensor."/>
@@ -140,14 +140,14 @@
           <Annotation Term="OData.Description" String="Estimated percent error of measured vs. actual values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the percent error +/- of the measured vs. actual values."/>
         </Property>
-        
+
         <Property Name="SensingIntervals" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time interval between reading the physical sensor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the time interval between reading the physical sensor."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        
+
         <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Describes the area or device to which this sensor measurement applies.."/>
@@ -194,7 +194,7 @@
         <Member Name="Amperage">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
-        </Member>        
+        </Member>
         <Member Name="Frequency">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -223,7 +223,7 @@
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-           <Member Name="Altitude">
+        <Member Name="Altitude">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>

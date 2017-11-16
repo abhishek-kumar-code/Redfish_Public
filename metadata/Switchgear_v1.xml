@@ -112,7 +112,6 @@
         </Property>
 
         <Property Name="PhysicalLocation" Type="Resource.Location">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of Switchgear."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of Switchgear."/>
         </Property>
@@ -121,16 +120,17 @@
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <!-- Array of temperature sensors for this equipment -->
         <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-         <!-- Alarm collection for this equipment -->
+        <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>

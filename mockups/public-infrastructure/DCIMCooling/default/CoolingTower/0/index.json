@@ -9,27 +9,24 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": 
-        {
-            "Longitude": 45.52,
-            "Lattitude": 122.67,
-            "PostalAddress": 
-                {
-                    "Country": "US",
-                    "Territory": "OR",
-                    "City": "Portland",
-                    "Street": "1001 SW 5th Avenue",
-                    "Name": "Distributed Management Task Force, Inc.",
-                    "PostalCode": "97204",
-                    "Building": "3A",
-                    "Floor": "2",
-                    "Room": "213"
-                },
-            "Placement": 
-                {
-                    "Row": "North"
-                }
-        },  
+    "PhysicalLocation": {
+        "Longitude": 45.52,
+        "Latitude": 122.67,
+        "PostalAddress": {
+            "Country": "US",
+            "Territory": "OR",
+            "City": "Portland",
+            "Street": "1001 SW 5th Avenue",
+            "Name": "Distributed Management Task Force, Inc.",
+            "PostalCode": "97204",
+            "Building": "3A",
+            "Floor": "2",
+            "Room": "213"
+        },
+        "Placement": {
+            "Row": "North"
+        }
+    },
     "OperatingLevelSwitch": "A",
     "ColdWaterFlowSetPoint": 40,
     "FanVFDModulation": 50,
@@ -61,7 +58,9 @@
     "SumpTankHighLevelAlarmOn": false,
     "VibrationSwitchAlarmOn": false,
     "Oem": {},
-    "Sensors": { "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors" },
+    "Sensors": {
+        "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors"
+    },
     "Temperature": [
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/0",
@@ -80,7 +79,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -100,7 +99,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         },
         {
@@ -120,7 +119,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         }
     ],
@@ -142,7 +141,7 @@
             "LowerThresholdCritical": 11,
             "MinReadingRange": 0,
             "MaxReadingRange": 20,
-            "PhysicalContext": "System",
+            "PhysicalContext": "Chassis",
             "Oem": {}
         }
     ],

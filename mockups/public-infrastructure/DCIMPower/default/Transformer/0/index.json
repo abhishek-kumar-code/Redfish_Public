@@ -9,30 +9,29 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": 
-        {
-            "Longitude": 45.52,
-            "Lattitude": 122.67,
-            "PostalAddress": 
-                {
-                    "Country": "US",
-                    "Territory": "OR",
-                    "City": "Portland",
-                    "Street": "1001 SW 5th Avenue",
-                    "Name": "Distributed Management Task Force, Inc.",
-                    "PostalCode": "97204",
-                    "Building": "3A",
-                    "Floor": "2",
-                    "Room": "213"
-                },
-            "Placement": 
-                {
-                    "Row": "North"
-                }
-        },  
+    "PhysicalLocation": {
+        "Longitude": 45.52,
+        "Latitude": 122.67,
+        "PostalAddress": {
+            "Country": "US",
+            "Territory": "OR",
+            "City": "Portland",
+            "Street": "1001 SW 5th Avenue",
+            "Name": "Distributed Management Task Force, Inc.",
+            "PostalCode": "97204",
+            "Building": "3A",
+            "Floor": "2",
+            "Room": "213"
+        },
+        "Placement": {
+            "Row": "North"
+        }
+    },
     "LiquidLevel": "LiquidLevel",
-    "PowerFactor": 1,    
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors"},
+    "PowerFactor": 1,
+    "Sensors": {
+        "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors"
+    },
     "Temperature": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/0",
@@ -54,7 +53,7 @@
             "PhysicalContext": "Chassis",
             "Oem": {}
         }
-    ],    
+    ],
     "Pressure":[
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/1",
@@ -76,14 +75,13 @@
             "PhysicalContext": "Chassis",
             "Oem": {}
         }
-    ],    
+    ],
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0#/AcInput/0",
-            "@odata.type": "#Transformer.v0_2_0.AcInput",
             "MemberId": "0",
             "Energy": 0,
-            "RmsUnderOverVoltage": 0,    
+            "RmsUnderOverVoltage": 0,
             "ACVoltage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/2",
@@ -126,8 +124,8 @@
                     "MaxReadingRange": 20,
                     "PhysicalContext": "ACInput",
                     "Oem": {}
-                }   
-            ],            
+                }
+            ],
             "Frequency":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/4",
@@ -149,7 +147,7 @@
                     "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
-            ],            
+            ],
             "Temperature":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/5",
@@ -171,7 +169,7 @@
                     "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
-            ],    
+            ],
             "Humidity":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/6",
@@ -193,17 +191,16 @@
                     "PhysicalContext": "ACInput",
                     "Oem": {}
                 }
-            ],
+            ]
         }
-    ],    
+    ],
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0#/AcOutput/0",
-            "@odata.type": "#Transformer.v0_2_0.AcOutput",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
-            "Overload": 0,            
+            "Overload": 0,
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/7",
@@ -225,7 +222,7 @@
                     "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
-            ],            
+            ],
             "Amperage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/8",
@@ -247,7 +244,7 @@
                     "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
-            ],            
+            ],
             "Frequency":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0/Sensors/9",
@@ -269,8 +266,8 @@
                     "PhysicalContext": "ACOutput",
                     "Oem": {}
                 }
-            ],
-        }       
+            ]
+        }
     ],
     "@odata.context": "/redfish/v1/$metadata#Transformer.Transformer",
     "@odata.id": "/redfish/v1/DCIMPower/default/Transformer/0",

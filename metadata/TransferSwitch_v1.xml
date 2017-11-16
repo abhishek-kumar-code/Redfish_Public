@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  TransferSwitch  v0.2.0                                              -->
+<!--# Redfish Schema:  TransferSwitch  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -18,13 +18,11 @@
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
-    <edmx:Include Namespace="Sensor"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
     <edmx:Include Namespace="AlarmCollection"/>
@@ -32,7 +30,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TransferSwitch">
@@ -67,7 +65,7 @@
           <Annotation Term="OData.Description" String="The actual Model Number of TransferSwitch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Model Number of TransferSwitch."/>
         </Property>
-        
+
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Manufacturer of TransferSwitch."/>
@@ -85,7 +83,7 @@
           <Annotation Term="OData.Description" String="The actual Part Number of TransferSwitch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Part Number of TransferSwitch."/>
         </Property>
-        
+
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of TransferSwitch."/>
@@ -110,19 +108,19 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Asset Tag of TransferSwitch."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="PhysicalLocation" Type="Resource.Location">
           <Annotation Term="OData.Description" String="The actual Physical Location of TransferSwitch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of TransferSwitch."/>
         </Property>
-        
+
         <!-- Sensors collection for this equipment -->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
-        </NavigationProperty> 
- 
-         <!-- Alarm collection for this equipment -->
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
@@ -135,15 +133,15 @@
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Unit -->
-        <Property Name="TransferSwitchType" Type="TransferSwitch.v0_1_0.TransferSwitchType">
+        <Property Name="TransferSwitchType" Type="TransferSwitch.v0_2_0.TransferSwitchType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Type of TransferSwitch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Type of TransferSwitch."/>
         </Property>
 
-        <Property Name="TransferSwitchMode" Type="TransferSwitch.v0_1_0.TransferSwitchMode">
+        <Property Name="TransferSwitchMode" Type="TransferSwitch.v0_2_0.TransferSwitchMode">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Mode of TransferSwitch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Mode of TransferSwitch."/>
@@ -174,7 +172,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Summary Alarm On boolean value of TransferSwitch."/>
         </Property>
 
-        <Property Name="Actions" Type="TransferSwitch.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="TransferSwitch.v0_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -185,7 +183,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="TransferSwitch.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="TransferSwitch.v0_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -193,7 +191,7 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
-      
+
       <EnumType Name="TransferSwitchType">
         <Member Name="Automatic"/>
         <Member Name="Manual"/>

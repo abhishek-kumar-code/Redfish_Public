@@ -9,27 +9,24 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": 
-        {
-            "Longitude": 45.52,
-            "Lattitude": 122.67,
-            "PostalAddress": 
-                {
-                    "Country": "US",
-                    "Territory": "OR",
-                    "City": "Portland",
-                    "Street": "1001 SW 5th Avenue",
-                    "Name": "Distributed Management Task Force, Inc.",
-                    "PostalCode": "97204",
-                    "Building": "3A",
-                    "Floor": "2",
-                    "Room": "213"
-                },
-            "Placement": 
-                {
-                    "Row": "North"
-                }
-        },  
+    "PhysicalLocation": {
+        "Longitude": 45.52,
+        "Latitude": 122.67,
+        "PostalAddress": {
+            "Country": "US",
+            "Territory": "OR",
+            "City": "Portland",
+            "Street": "1001 SW 5th Avenue",
+            "Name": "Distributed Management Task Force, Inc.",
+            "PostalCode": "97204",
+            "Building": "3A",
+            "Floor": "2",
+            "Room": "213"
+        },
+        "Placement": {
+            "Row": "North"
+        }
+    },
     "Rating": 1,
     "NumOutlets": 2,
     "NumPhases": 2,
@@ -43,8 +40,10 @@
     "LoadState": 1,
     "PhaseNumber": 2,
     "BankNumber": 1,
-    "Sensors": {"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"},
-    "Temperature": [ 
+    "Sensors": {
+        "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors"
+    },
+    "Temperature": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/5",
             "@odata.type": "#Sensor.v0_2_0.Sensor",
@@ -87,12 +86,10 @@
     "AcInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/AcInput/0",
-            "@odata.type": "#RackPDU.v0_2_0.AcInput",
             "MemberId": "0",
             "RealPower": 10,
             "RmsUnderOverVoltage": 100,
             "Oem": {},
-            
             "ACVoltage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/0",
@@ -131,7 +128,7 @@
                     "Oem": {}
                 }
             ],
-            "Amperage":[   
+            "Amperage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/2",
                     "@odata.type": "#Sensor.v0_2_0.Sensor",
@@ -194,7 +191,6 @@
     "Outlets": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/0",
-            "@odata.type": "#RackPDU.v0_2_0.Outlets",
             "MemberId": "0",
             "Name": "Outlet0",
             "Phase": 0,
@@ -211,7 +207,7 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/1",
-            "@odata.type": "#RackPDU.v0_2_0.Outlets",
+            "MemberId": "1",
             "Name": "Outlet1",
             "Phase": 0,
             "State": 1,

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  CRAC  v0.2.0                                                        -->
+<!--# Redfish Schema:  CRAC  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -24,6 +24,7 @@
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
@@ -32,13 +33,13 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
     <edmx:Include Namespace="Sensor"/>
   </edmx:Reference>
-    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmsCollection_v1.xml">
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
     <edmx:Include Namespace="AlarmCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CRAC">
@@ -72,8 +73,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Model Number of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Model Number of CRAC."/>
-        </Property
-  
+        </Property>
+
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Manufacturer of CRAC."/>
@@ -91,7 +92,7 @@
           <Annotation Term="OData.Description" String="The actual Part Number of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Part Number of CRAC."/>
         </Property>
-        
+
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of CRAC."/>
@@ -117,7 +118,6 @@
         </Property>
 
         <Property Name="PhysicalLocation" Type="Resource.Location">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual location of the CRAC unit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual geohysical location of CRAC."/>
         </Property>
@@ -142,21 +142,21 @@
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Array of humidity sensors for the equipment -->
         <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
           <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>        
-        
+        </NavigationProperty>
+
         <!-- Array of oil pressure level sensors for the equipment -->
         <NavigationProperty Name="Pressure" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more pressure sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Setpoints -->
         <NavigationProperty Name="Setpoints" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -164,7 +164,7 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-         <!-- Alarm collection for the equipment -->
+        <!-- Alarm collection for the equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
@@ -177,7 +177,7 @@
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- The following properties are not scrubbed yet- -->
         <Property Name="DehumidificationFanSpeed" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -325,43 +325,43 @@
         </Property>
 
         <!-- Status - most status values in schemas are booleans, but these were specified in spreadsheet as ON/OFF -Joe -->
-        <Property Name="UnitStatus" Type="CRAC.v0_1_0.OnOff">
+        <Property Name="UnitStatus" Type="CRAC.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="UnitOperationStatus" Type="CRAC.v0_1_0.OnOff">
+        <Property Name="UnitOperationStatus" Type="CRAC.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Operation Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Operation Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="FanStatus" Type="CRAC.v0_1_0.OnOff">
+        <Property Name="FanStatus" Type="CRAC.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Fan Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Fan Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="DehumidifyingStatus" Type="CRAC.v0_1_0.OnOff">
+        <Property Name="DehumidifyingStatus" Type="CRAC.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Dehumidification Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Dehumidification Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="HumidifyingStatus" Type="CRAC.v0_1_0.OnOff">
+        <Property Name="HumidifyingStatus" Type="CRAC.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Humidification Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Humidification Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="UnitCoolingStatus" Type="CRAC.v0_1_0.OnOff">
+        <Property Name="UnitCoolingStatus" Type="CRAC.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Cooling Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Cooling Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="UnitHeatingStatus" Type="CRAC.v0_1_0.OnOff">
+        <Property Name="UnitHeatingStatus" Type="CRAC.v0_2_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Heating Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Heating Status [ON/OFF] of CRAC."/>
@@ -651,7 +651,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Summary Alarm On boolean value of CRAC."/>
         </Property>
 
-        <Property Name="Actions" Type="CRAC.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="CRAC.v0_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -667,7 +667,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="CRAC.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="CRAC.v0_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

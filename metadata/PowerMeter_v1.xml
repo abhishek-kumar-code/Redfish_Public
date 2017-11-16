@@ -18,6 +18,7 @@
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
@@ -26,13 +27,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
     <edmx:Include Namespace="Sensor"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
-    <edmx:Include Namespace="AlarmCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
-    <edmx:Include Namespace="Alarm"/>
-  </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerMeter">
@@ -67,7 +62,7 @@
           <Annotation Term="OData.Description" String="The actual Model Number of PowerMeter."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Model Number of PowerMeter."/>
         </Property>
-  
+
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Manufacturer of PowerMeter."/>
@@ -84,8 +79,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Part Number of PowerMeter."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of PowerMeter."/>
-        </Property> 
-        
+        </Property>
+
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of PowerMeter."/>
@@ -111,7 +106,6 @@
         </Property>
 
         <Property Name="PhysicalLocation" Type="Resource.Location">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of PowerMeter."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of PowerMeter."/>
         </Property>
@@ -120,21 +114,21 @@
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this sensor collection."/>
-          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <NavigationProperty Name="Voltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of voltage sensors for this power meter."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the voltage sensors for this equipment."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <NavigationProperty Name="Current" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of current sensors for this power meter."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the current sensors for this equipment."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <Property Name="Actions" Type="PowerMeter.v0_2_0.Actions" Nullable="false">

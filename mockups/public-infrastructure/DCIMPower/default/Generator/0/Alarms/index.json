@@ -1,7 +1,7 @@
 {
     "@odata.type": "#AlarmCollection.AlarmCollection",
     "Name": "Generator 0 Alarm Collection",
-    "Members@odata.count": 6,
+    "Members@odata.count": 10,
     "Members": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/0"
@@ -20,9 +20,21 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/5"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/6"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/7"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/8"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/9"
         }
     ],
-    "@odata.context": "/redfish/v1/$AlarmCollection.AlatmCollection",
+    "@odata.context": "/redfish/v1/$metadata#AlarmCollection.AlarmCollection",
     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

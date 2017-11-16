@@ -9,27 +9,24 @@
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": 
-        {
-            "Longitude": 45.52,
-            "Lattitude": 122.67,
-            "PostalAddress": 
-                {
-                    "Country": "US",
-                    "Territory": "OR",
-                    "City": "Portland",
-                    "Street": "1001 SW 5th Avenue",
-                    "Name": "Distributed Management Task Force, Inc.",
-                    "PostalCode": "97204",
-                    "Building": "3A",
-                    "Floor": "2",
-                    "Room": "213"
-                },
-            "Placement": 
-                {
-                    "Row": "North"
-                }
-        },  
+    "PhysicalLocation": {
+        "Longitude": 45.52,
+        "Latitude": 122.67,
+        "PostalAddress": {
+            "Country": "US",
+            "Territory": "OR",
+            "City": "Portland",
+            "Street": "1001 SW 5th Avenue",
+            "Name": "Distributed Management Task Force, Inc.",
+            "PostalCode": "97204",
+            "Building": "3A",
+            "Floor": "2",
+            "Room": "213"
+        },
+        "Placement": {
+            "Row": "North"
+        }
+    },
     "InputOperatingMode": "EcoMode",
     "OutputOperatingMode": "Bypass",
     "Efficiency": 100,
@@ -42,12 +39,10 @@
     "AcUtilityInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcUtilityInput/0",
-            "@odata.type": "#UPS.v0_2_0.AcUtilityInput",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
             "RmsUnderOverVoltage": 0,
-            
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/0",
@@ -59,7 +54,7 @@
                         "State": "Enabled",
                         "Health": "OK"
                     },
-                    "Reading": 12, 
+                    "Reading": 12,
                     "UpperThresholdWarning": 12.5,
                     "UpperThresholdCritical": 13,
                     "LowerThresholdWarning": 11.5,
@@ -198,12 +193,11 @@
                     "Oem": {}
                 }
             ]
-        }      
+        }
     ],
     "AcBypassInput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcBypassInput/0",
-            "@odata.type": "#UPS.v0_2_0.AcBypassInput",
             "MemberId": "0",
             "RealPower": 0,
             "Energy": 0,
@@ -297,12 +291,10 @@
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcBypassInput/1",
-            "@odata.type": "#UPS.v0_2_0.AcBypassInput",
             "MemberId": "1",
             "RealPower": 0,
             "Energy": 0,
             "RmsUnderOverVoltage": 0,
-            
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/11",
@@ -394,7 +386,6 @@
     "DcBus": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/DcBus/0",
-            "@odata.type": "#DcBus.v0_2_0.DcBus",
             "MemberId": "0",
             "AveragePower": 0,
             "BatteryPowerRemaining": 0,
@@ -469,7 +460,6 @@
     "AcOutput": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0#/AcOutput/0",
-            "@odata.type": "#UPS.v0_2_0.AcOutput",
             "MemberId": "0",
             "RealPower": 0,
             "ReactivePower": 0,
@@ -478,7 +468,6 @@
             "Overload": 0,
             "PowerFactor": 0.5,
             "PercentOfLoad": 50,
-            
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/18",

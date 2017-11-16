@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Rectifier  v0.2.0                                                   -->
+<!--# Redfish Schema:  Rectifier  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -21,6 +21,7 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
@@ -35,7 +36,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Rectifier">
@@ -70,7 +71,7 @@
           <Annotation Term="OData.Description" String="The actual Model Number of Rectifier."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Model Number of Rectifier."/>
         </Property>
-        
+
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Manufacturer of Rectifier."/>
@@ -88,7 +89,7 @@
           <Annotation Term="OData.Description" String="The actual Part Number of Rectifier."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Part Number of Rectifier."/>
         </Property>
-        
+
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of Rectifier."/>
@@ -114,32 +115,32 @@
         </Property>
 
         <Property Name="PhysicalLocation" Type="Resource.Location">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of Rectifier."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of Rectifier."/>
         </Property>
-        
+
         <!-- Sensors collection for this equipment -->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        
+
         <!-- Array of amperage sensors for this equipment -->
-        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Array of temperature sensors for this equipment -->
-        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty> 
- 
-         <!-- Alarm collection for this equipment -->
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+        <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
@@ -152,7 +153,7 @@
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Rectifier 1-1 -->
         <Property Name="RealPower" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -161,7 +162,7 @@
           <Annotation Term="Measures.Unit" String="kW"/>
         </Property>
 
-        <Property Name="Status" Type="Rectifier.v0_1_0.Status">
+        <Property Name="Status" Type="Rectifier.v0_2_0.Status">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Status of Rectifier."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Status of Rectifier."/>
@@ -189,7 +190,7 @@
         </Property>
 
         <!-- AC Input -->
-        <NavigationProperty Name="AcInput" Type="Collection(Rectifier.v0_1_0.AcInput)">
+        <NavigationProperty Name="AcInput" Type="Collection(Rectifier.v0_2_0.AcInput)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Input."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AC Input for a Redfish implementation."/>
@@ -197,14 +198,14 @@
         </NavigationProperty>
 
         <!-- DC Bus -->
-        <NavigationProperty Name="DcBus" Type="Collection(Rectifier.v0_1_0.DcBus)">
+        <NavigationProperty Name="DcBus" Type="Collection(Rectifier.v0_2_0.DcBus)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for DC Bus."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for DC Bus for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="Rectifier.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Rectifier.v0_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -236,27 +237,27 @@
         </Property>
 
         <!-- Array of AC Voltage sensors for this equipment -->
-        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more AC voltage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
-        
-        <!-- Array of amperage sensors for this equipment -->
-        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        
-        <!-- Array of frequency sensors for this equipment -->
-        <NavigationProperty Name="Frequency" Type="Collection(Sensor.Sensor)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the array of 1 or more frequency sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="Rectifier.v0_1_0.AcInputActions" Nullable="false">
+        <!-- Array of amperage sensors for this equipment -->
+        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+        <!-- Array of frequency sensors for this equipment -->
+        <NavigationProperty Name="Frequency" Type="Collection(Sensor.Sensor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the array of 1 or more frequency sensors."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+        <Property Name="Actions" Type="Rectifier.v0_2_0.AcInputActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -273,13 +274,13 @@
         </Property>
 
         <!-- Array of DC Voltage sensors for this equipment -->
-        <NavigationProperty Name="DCVoltage" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="DCVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more DC voltage sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty> 
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
 
-        <Property Name="Actions" Type="Rectifier.v0_1_0.DcBusActions" Nullable="false">
+        <Property Name="Actions" Type="Rectifier.v0_2_0.DcBusActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -290,7 +291,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Rectifier.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Rectifier.v0_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -303,7 +304,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Rectifier.v0_1_0.AcInputOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Rectifier.v0_2_0.AcInputOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="AcInputOemActions">
@@ -316,7 +317,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Rectifier.v0_1_0.DcBusOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Rectifier.v0_2_0.DcBusOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="DcBusOemActions">
@@ -331,7 +332,7 @@
         <Member Name="Warning"/>
         <Member Name="Fault"/>
       </EnumType>
-      
+
     </Schema>
 
   </edmx:DataServices>

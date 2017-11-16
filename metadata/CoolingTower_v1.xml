@@ -24,6 +24,7 @@
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
@@ -38,7 +39,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CoolingTower">
@@ -66,7 +67,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CoolingTower.v0_2_0">
 
-      <EntityType Name="CoolingTower" BaseType="CoolingTower.CoolingTower"> 
+      <EntityType Name="CoolingTower" BaseType="CoolingTower.CoolingTower">
 
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -91,7 +92,7 @@
           <Annotation Term="OData.Description" String="The actual Part Number of CoolingTower."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Part Number of CoolingTower."/>
         </Property>
-        
+
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Firmware Revision of CoolingTower."/>
@@ -117,39 +118,39 @@
         </Property>
 
         <Property Name="PhysicalLocation" Type="Resource.Location">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of CoolingTower."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of CoolingTower."/>
         </Property>
-        
+
         <!-- Sensors collection for this equipment -->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-             
+
         <!-- Setpoints -->
         <NavigationProperty Name="Setpoints" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more sensors that have setpoints."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Array of temperature sensors for this equipment -->
-        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Array of humidity sensors for this equipment -->
-        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)" Nullable="false">
+        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
- 
-         <!-- Alarm collection for this equipment -->
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+        <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
@@ -162,7 +163,7 @@
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        
+
         <!-- Unspecified Measurement Location -->
         <Property Name="OperatingLevelSwitch" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -356,7 +357,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Fan Motor Vibration Switch Alarm On boolean value of CoolingTower."/>
         </Property>
 
-        <Property Name="Actions" Type="CoolingTower.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="CoolingTower.v0_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -367,7 +368,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="CoolingTower.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="CoolingTower.v0_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

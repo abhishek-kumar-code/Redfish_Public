@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  VFD - Variable Frequency Drive  v0.2.0                              -->
+<!--# Redfish Schema:  VFD - Variable Frequency Drive  v0.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -25,6 +25,7 @@
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
@@ -118,7 +119,6 @@
         </Property>
 
         <Property Name="PhysicalLocation" Type="Resource.Location">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Physical Location of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Physical Location of VFD."/>
         </Property>
@@ -271,7 +271,7 @@
         </Property>
 
         <!-- AC Input -->
-        <NavigationProperty Name="AcInput" Type="Collection(VFD.v0_1_0.AcInput)">
+        <NavigationProperty Name="AcInput" Type="Collection(VFD.v0_2_0.AcInput)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Input."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AC Input for a Redfish implementation."/>
@@ -279,7 +279,7 @@
         </NavigationProperty>
 
         <!-- AC Output -->
-        <NavigationProperty Name="AcOutput" Type="Collection(VFD.v0_1_0.AcOutput)">
+        <NavigationProperty Name="AcOutput" Type="Collection(VFD.v0_2_0.AcOutput)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for AC Output."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AC Output for a Redfish implementation."/>
@@ -287,14 +287,14 @@
         </NavigationProperty>
 
         <!-- DC Bus -->
-        <NavigationProperty Name="DcBus" Type="Collection(VFD.v0_1_0.DcBus)">
+        <NavigationProperty Name="DcBus" Type="Collection(VFD.v0_2_0.DcBus)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for DC Bus."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for DC Bus for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="VFD.v0_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="VFD.v0_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -326,7 +326,7 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="VFD.v0_1_0.AcInputActions" Nullable="false">
+        <Property Name="Actions" Type="VFD.v0_2_0.AcInputActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -380,7 +380,7 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="VFD.v0_1_0.AcOutputActions" Nullable="false">
+        <Property Name="Actions" Type="VFD.v0_2_0.AcOutputActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -404,7 +404,7 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="VFD.v0_1_0.DcBusActions" Nullable="false">
+        <Property Name="Actions" Type="VFD.v0_2_0.DcBusActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -415,7 +415,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -428,7 +428,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_1_0.AcInputOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.AcInputOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="AcInputOemActions">
@@ -441,7 +441,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_1_0.AcOutputOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.AcOutputOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="AcOutputOemActions">
@@ -454,7 +454,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_1_0.DcBusOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.DcBusOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="DcBusOemActions">

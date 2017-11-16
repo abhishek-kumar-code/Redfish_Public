@@ -1,19 +1,20 @@
 {
-   "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/4",
-   "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
-   "@odata.type": "#Alarm.v0_1_0.Alarm",
-   "Id": "4",
-   "Name": "Fuel Level Low Warning Alarmm",
-   "Severity": "Warning",
-   "Created": "2012-03-07T14:45:00Z",
-   "Message": "Fuel Level Low Warning Alarm",
-   "MessageID": "Alarm.1.0.FuelLevelLowWarningAlarm",
-   "MessageArgs": [],
-   "AlarmStatus": "Armed",
-   "Acknowledged": false,
-   "Links": {
+    "@odata.type": "#Alarm.v0_2_0.Alarm",
+    "Id": "4",
+    "Name": "Fuel Level Low Warning Alarmm",
+    "Severity": "Warning",
+    "TriggerTime": "2012-03-07T14:45:00Z",
+    "Message": "Fuel Level Low Warning Alarm",
+    "MessageId": "Alarm.1.0.FuelLevelLowWarningAlarm",
+    "MessageArgs": [],
+    "AlarmState": "Armed",
+    "Acknowledged": false,
+    "Links": {
         "RelatedSensor": {
-             "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/1"
-        } 
-    }
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/1"
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/4",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

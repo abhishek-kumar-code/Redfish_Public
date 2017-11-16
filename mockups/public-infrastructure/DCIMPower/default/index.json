@@ -2,7 +2,6 @@
     "@odata.type": "#DCIMPower.v0_2_0.DCIMPower",
     "Id": "default",
     "Name": "DCIMPower Default Domain",
-    "DCIMPowerType": "Domain",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

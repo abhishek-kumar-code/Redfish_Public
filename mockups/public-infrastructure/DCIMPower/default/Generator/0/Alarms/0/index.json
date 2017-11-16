@@ -1,17 +1,18 @@
 {
-    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/0",
-    "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
-    "@odata.type": "#Alarm.v0_1_0.Alarm",
+    "@odata.type": "#Alarm.v0_2_0.Alarm",
     "Id": "0",
     "Name": "Summary Alarm",
     "Severity": "Critical",
-    "Created": "2012-03-07T14:45:00Z",
+    "TriggerTime": "2012-03-07T14:45:00Z",
     "Message": "Summary Alarm",
-    "MessageID": "Alarm.1.0.SummaryAlarm",
+    "MessageId": "Alarm.1.0.SummaryAlarm",
     "MessageArgs": [],
-    "AlarmStatus": "Armed",
+    "AlarmState": "Armed",
     "Acknowledged": false,
     "Links": {
-        "RelatedProperty": "/redfish/v1/DCIMPower/default/Generator/0/#Status.Health" 
-    }
+        "RelatedProperty": "/redfish/v1/DCIMPower/default/Generator/0/#Status.Health"
+    },
+    "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Alarms/0",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
