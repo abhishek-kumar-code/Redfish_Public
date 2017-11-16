@@ -257,10 +257,6 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_0">
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_3.Endpoint">
-        <Property Name="Identifiers" Type="Collection(Resource.Identifier)">
-          <Annotation Term="OData.Description" String="Identifiers for this endpoint."/>
-          <Annotation Term="OData.LongDescription" String="Identifiers for this endpoint shall be unique in the context of other endpoints."/>
-        </Property>
         <Property Name="IPTransportDetails" Type="Collection(Endpoint.v1_1_0.IPTransportDetails)">
           <Annotation Term="OData.Description" String="This array contains details for each IP transport supported by this endpoint. The array structure can be used to model multiple IP addresses for this endpoint."/>
           <Annotation Term="OData.LongDescription" String="This array shall contain the details for each IP transport supported by this endpoint."/>
