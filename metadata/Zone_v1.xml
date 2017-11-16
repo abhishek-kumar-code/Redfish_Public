@@ -110,10 +110,9 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Zone.v1_2_0">
       <EntityType Name="Zone" BaseType="Zone.v1_1_0.Zone">
-        <Property Name="UUID" Type="Resource.UUID" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The UUID of the fabric zone."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Zone which is unique within the Redfish service."/>
+        <Property Name="Identifiers" Type="Collection(Resource.Identifier)">
+          <Annotation Term="OData.Description" String="Identifiers for this zone."/>
+          <Annotation Term="OData.LongDescription" String="Identifiers for this zone shall be unique in the context of other zones."/>
         </Property>
       </EntityType>
     </Schema>

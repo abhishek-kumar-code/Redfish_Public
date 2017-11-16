@@ -11,7 +11,12 @@
         {
             "DurableName": "nqn.corp.com:iscsi-subsys-sn-7642",
             "DurableNameFormat": "iQN"
+        },
+        {
+            "DurableName": "28D5E212-165B-4CA0-909B-C86B9CEE0112",
+            "DurableNameFormat": "UUID"
         }
+
     ],
     "ConnectedEntities": [
         {

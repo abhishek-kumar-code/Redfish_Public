@@ -463,12 +463,6 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_0">
-      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_1.NetworkDeviceFunction">
-        <Property Name="RDMA" Type="NetworkDeviceFunction.v1_2_0.RDMA" Nullable="false">
-          <Annotation Term="OData.Description" String="The RDMA characteristics for this resource."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the RDMA characteristcs for this resource."/>
-        </Property>
-      </EntityType>
 
       <ComplexType Name="Links" BaseType="NetworkDeviceFunction.v1_0_0.Links">
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
@@ -479,28 +473,6 @@
         </NavigationProperty>
       </ComplexType>
 
-      <ComplexType Name="RDMA">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This type contains the RDMA characteristics for this resource."/>
-        <Annotation Term="OData.LongDescription" String="The type shall contain the RDMA characteristcs for this resource."/>
-        <Property Name="RdmaType" Type="NetworkDeviceFunction.v1_2_0.RdmaType" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of RDMA protocol."/>
-          <Annotation Term="OData.LongDescription" String="This property shall specify the type of RDMA protocol used by the Endpoint."/>
-        </Property>
-      </ComplexType>
-
-      <EnumType Name="RdmaType">
-        <Member Name="iWARP">
-          <Annotation Term="OData.Description" String="The internet Wide RDMA Protocol."/>
-        </Member>
-        <Member Name="RoCE">
-          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet protocol."/>
-        </Member>
-        <Member Name="RoCEv2">
-          <Annotation Term="OData.Description" String="The RDMA over Converged Ethernet version 2 protocol."/>
-        </Member>
-      </EnumType>
     </Schema>
 
   </edmx:DataServices>

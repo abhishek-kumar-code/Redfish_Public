@@ -11,7 +11,12 @@
         {
             "DurableName": "nqn.corp.com:nvme:nvm-subsys-sn-5381",
             "DurableNameFormat": "NQN"
+        },
+        {
+            "DurableName": "68D5E212-165B-4CA0-909B-C86B9CEE0113",
+            "DurableNameFormat": "UUID"
         }
+
     ],
     "ConnectedEntities": [
         {
@@ -31,7 +36,7 @@
     ],
     "IPTransportDetails": [
         {
-            "TransportProtocol": "RoCEv2",
+            "TransportProtocol": "iWARP",
             "IPv4Address": {
                 "Address": "10.3.5.132"
             },

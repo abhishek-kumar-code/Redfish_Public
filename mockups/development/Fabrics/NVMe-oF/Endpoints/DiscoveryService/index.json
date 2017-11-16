@@ -11,6 +11,10 @@
         {
             "DurableName": "discovery.corp.com:nvme:nvm-subsys-sn-1932",
             "DurableNameFormat": "NQN"
+        },
+        {
+            "DurableName": "48D5E212-165B-4CA0-909B-C86B9CEE0114",
+            "DurableNameFormat": "UUID"
         }
     ],
     "ConnectedEntities": [
@@ -24,7 +28,7 @@
     ],
     "IPTransportDetails": [
         {
-            "TransportProtocol": "RoCEv2",
+            "TransportProtocol": "iWARP",
             "IPv4Address": {
                 "Address": "10.3.5.130"
             },
