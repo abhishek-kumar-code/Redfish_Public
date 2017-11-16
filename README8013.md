@@ -35,7 +35,7 @@ The root folder of this bundle contains tools useful for constructing a new Redf
 
 As Profiles are defined, approved and published, they will be added to folders in this bundle.  Each published profile is expected to include at least two files: the JSON document which conforms to the profile schema, and a Profile Guide to document the contents of the profile.
 
-For this release, there are no published profiles.
+As of this publication, there are no normative profiles (work-in-progress profiles are available separately).
 
 ## Utilities 
 
