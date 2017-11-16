@@ -88,7 +88,9 @@
       </EntityType>
 
       <EnumType Name="EventDestinationProtocol">
-        <Member Name="Redfish"/>
+        <Member Name="Redfish">
+          <Annotation Term="OData.Description" String="The destination follows the Redfish specification for event notifications."/>
+        </Member>
       </EnumType>
 
       <ComplexType Name="HttpHeaderProperty">
@@ -123,7 +125,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_5">
-      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_4.EventDestination"/>
     </Schema>
 
@@ -158,7 +160,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_3.EventDestination"/>
     </Schema>
 
@@ -190,7 +192,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_2_2">
-      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_2_1.EventDestination"/>
     </Schema>
 
