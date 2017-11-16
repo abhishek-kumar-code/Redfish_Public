@@ -144,11 +144,11 @@
           <Collection>
             <Record>
               <PropertyValue Property="Member" String="Assert"/>
-              <Annotation Term="OData.Description" String="The event has been asserted."/>
+              <Annotation Term="OData.Description" String="The condition has been asserted."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Deassert"/>
-              <Annotation Term="OData.Description" String="The event has been deasserted."/>
+              <Annotation Term="OData.Description" String="The condition has been deasserted."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Lower Non-critical - going low"/>
@@ -443,11 +443,11 @@
             </Record>
             <Record>
               <PropertyValue Property="Member" String="POST Memory Resize"/>
-              <Annotation Term="OData.Description" String="A sensor for POST memory resize events."/>
+              <Annotation Term="OData.Description" String="A sensor for a POST memory resize event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="System Firmware Progress"/>
-              <Annotation Term="OData.Description" String="A sensor for system firmware progress events."/>
+              <Annotation Term="OData.Description" String="A sensor for a system firmware progress event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Event Logging Disabled"/>
@@ -455,11 +455,11 @@
             </Record>
             <Record>
               <PropertyValue Property="Member" String="System Event"/>
-              <Annotation Term="OData.Description" String="A sensor for system events."/>
+              <Annotation Term="OData.Description" String="A sensor for a system event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Critical Interrupt"/>
-              <Annotation Term="OData.Description" String="A sensor for critical interrupt events."/>
+              <Annotation Term="OData.Description" String="A sensor for a critical interrupt event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Button/Switch"/>
@@ -499,19 +499,19 @@
             </Record>
             <Record>
               <PropertyValue Property="Member" String="SystemBoot/Restart"/>
-              <Annotation Term="OData.Description" String="A sensor for system boot or restart events."/>
+              <Annotation Term="OData.Description" String="A sensor for a system boot or restart event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Boot Error"/>
-              <Annotation Term="OData.Description" String="A sensor for boot error events."/>
+              <Annotation Term="OData.Description" String="A sensor for a boot error event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="BaseOSBoot/InstallationStatus"/>
-              <Annotation Term="OData.Description" String="A sensor for base OS boot or installation status events."/>
+              <Annotation Term="OData.Description" String="A sensor for a base OS boot or installation status event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="OS Stop/Shutdown"/>
-              <Annotation Term="OData.Description" String="A sensor for OS stop or shutdown events."/>
+              <Annotation Term="OData.Description" String="A sensor for an OS stop or shutdown event"/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Slot/Connector"/>
@@ -519,19 +519,19 @@
             </Record>
             <Record>
               <PropertyValue Property="Member" String="System ACPI PowerState"/>
-              <Annotation Term="OData.Description" String="A sensor for ACPI power state events."/>
+              <Annotation Term="OData.Description" String="A sensor for an ACPI power state event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Watchdog"/>
-              <Annotation Term="OData.Description" String="A sensor for watchdog events."/>
+              <Annotation Term="OData.Description" String="A sensor for a watchdog event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Platform Alert"/>
-              <Annotation Term="OData.Description" String="A sensor for platform alert events."/>
+              <Annotation Term="OData.Description" String="A sensor for a platform alert event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Entity Presence"/>
-              <Annotation Term="OData.Description" String="A sensor for entity presence events."/>
+              <Annotation Term="OData.Description" String="A sensor for an entity presence event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Monitor ASIC/IC"/>
@@ -543,7 +543,7 @@
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Management Subsystem Health"/>
-              <Annotation Term="OData.Description" String="A sensor for management subsystem health events."/>
+              <Annotation Term="OData.Description" String="A sensor for a management subsystem health event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Battery"/>
@@ -551,15 +551,15 @@
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Session Audit"/>
-              <Annotation Term="OData.Description" String="A sensor for session audit events."/>
+              <Annotation Term="OData.Description" String="A sensor for a session audit event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Version Change"/>
-              <Annotation Term="OData.Description" String="A sensor for version change events."/>
+              <Annotation Term="OData.Description" String="A sensor for a version change event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="FRUState"/>
-              <Annotation Term="OData.Description" String="A sensor for FRU state events."/>
+              <Annotation Term="OData.Description" String="A sensor for a FRU state event."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="OEM"/>
