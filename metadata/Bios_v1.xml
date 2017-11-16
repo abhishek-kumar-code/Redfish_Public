@@ -30,7 +30,7 @@
 
       <EntityType Name="Bios" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="Bios contains properties surrounding a BIOS Attribute Registry (where the system-specific BIOS attributes are described) and the Actions needed to perform changes to BIOS settings, which typically require a system reset to apply."/>
+        <Annotation Term="OData.Description" String="The Bios schema contains properties related to the BIOS Attribute Registry. The Attribute Registry describes the system-specific BIOS attributes and Actions for changing to BIOS settings. Changes to the BIOS typically require a system reset before they take effect."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent BIOS attributes for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -81,7 +81,7 @@
       <EntityType Name="Bios" BaseType="Bios.Bios">
         <Property Name="AttributeRegistry" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Resource ID of the Attribute Registry for the BIOS Attributes resource."/>
+          <Annotation Term="OData.Description" String="The Resource ID of the Attribute Registry that has the system-specific information about a BIOS resource."/>
           <Annotation Term="OData.LongDescription" String="The reference to the Attribute Registry that lists the metadata describing the BIOS attribute settings in this resource."/>
         </Property>
         <Property Name="Actions" Type="Bios.v1_0_0.Actions" Nullable="false">
@@ -89,7 +89,7 @@
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
         <Property Name="Attributes" Type="Bios.v1_0_0.Attributes" Nullable="false">
-          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific list of BIOS attributes."/>
+          <Annotation Term="OData.Description" String="The list of BIOS attributes specific to the manufacturer or provider."/>
           <Annotation Term="OData.LongDescription" String="BIOS Attribute settings appear as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."/>
         </Property>
       </EntityType>
@@ -109,7 +109,7 @@
 
       <ComplexType Name="Attributes">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The manufacturer/provider specific list of BIOS attributes."/>
+        <Annotation Term="OData.Description" String="The manufacturer/provider-specific list of BIOS attributes."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe BIOS Attribute settings as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
@@ -134,7 +134,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
+      <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions.  It was also created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="Bios" BaseType="Bios.v1_0_2.Bios"/>
     </Schema>
 
