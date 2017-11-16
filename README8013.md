@@ -2,11 +2,11 @@
 DocTitle: Redfish Interoperability Profile Bundle Readme
 DocNumber: '8013'
 DocClass: Normative
-DocVersion: '2017.3'
+DocVersion: '2017.1'
 modified: '2017-11-17'
 status: published
 released: True
-copyright: '2015-2017'
+copyright: '2017'
 ---
 # Foreword
 
