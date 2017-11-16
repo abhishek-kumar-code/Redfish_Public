@@ -540,16 +540,81 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query parameters
 
-When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
+Clients can add query parameters to request additional features from the service.  These features include pagination, selection, filtering and expansion, and are explained below.
 
 | Attribute | Description                                                                                                                                                     | Example                             |
 | ---       | ---                                                                                                                                                             | ---                                 |
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
+| $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
+| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                    | `http://resourcecollection?$select=SystemType,Status`|
+| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                            | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
 
 * Services should support the $top and $skip query parameters.
+* Service may support the $expand, $filter and $select query parameters. 
+* When the service supports query parameters, the service shall include the ProtocolFeatureSupport object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
+* Query parameters shall only be supported on GET operations. 
+
+***Query parameters for Paging***
+
+When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
+
+***Query parameters for Expand***
+
+The $expand parameter indicates to the implementation that it should include a link as well as the contents of that link in the current response as if a GET had been performed and included inline with that link.  In CSDL terms, any Entries associated with an Entity or Collection of Entities through the use of NavigationProperty is capable of being expanded and thus included in the response body.  The $expand query parameter has a set of possible values which will determine which links (Navigation Properties) are to be expanded.
+
+The following table represents the Redfish allowable values that shall be supported for $expand if $expand is implemented:
+
+| value     | Description                                                                                                                                                     | Example                             |
+| ---       | ---                                                                                                                                                             | ---                                 |
+| * (asterisk)     | Indicates all links (Navigation Properties) shall be expanded if expand is supported. | `http://resourcecollection?$expand=*` |
+| . (period)      |  Indicates all subordinate links (Navigation Properties) shall be expanded if expand is supported. Subordinate links are those that are directly referenced (i.e. not in the 'Links' section of the resource). | `http://resourcecollection?$expand=.` |
+| ~ (tilde)   | Indicates all dependent links (Navigation Properties) shall be expanded if expand is supported. Dependent links are those that are not directly referenced (i.e. in the 'Links' section of the resource).  | -`http://resourcecollection?$expand=~` |
+| $levels   | Indicates how many levels the service should cascade the expand operation.  Thus a $levels=2 will not only expand the current resource (level=1) but also the expanded resource (level=2). | `http://resourcecollection?$expand=.($levels=2)`|
+
+Examples of the use of expand might be:
+* GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
+* GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
+
+When performing $expand, Services may omit some of the properties of the referenced resource.
+
+When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response.  If a service is unable to return the payload due to its size, it shall return HTTP Status code [507](#status-507).
+
+Any other supported syntax for $expand is outside the scope of this specification.
+
+***Query parameters for Select***
+
+The $select parameter indicates to the implementation that it should return a subset of the properties of the resource based on the value of the select clause.  The $select clause shall not affect the resource itself. The value of the $select clause is a comma separated list of the properties to be returned in the body of the response. The syntax to represent properties in complex types shall be the property names concatonated with a slash ("/").  Note that the default behavior when the select option is not specified is to return all properties. 
+
+An example of the use of select might be:
+* GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
+
+When performing $select, Services shall return all of the requested properties of the referenced resource.
+
+Any other supported syntax for $select is outside the scope of this specification.
+
+***Query parameters for Filter***
+
+The $filter parameter indicates to the implementation that it should include a subset of the members of a collection based on the expression specified as the value of the filter clause.  The $filter query parameter is a set of properties and literals with an operator.  A literal value can be a string enclosed in single quotes, a number, or a boolean value.  The service should reject $filter requests if the literal value does not match the data type for the property specified by responding with HTTP Status code [400](#status-400).  The $filter section of the OData ABNF components specification contains the grammar for the allowable syntax of the $filter query parameter with the additional restriction that only built-in filter operations (expressed below) are supported. 
+
+The following table represents the Redfish allowable operators that shall be supported for $filter if $filter is implemented:
+
+| value     | Description                                     | Example                                                                          |
+| ---       | ---                                             | ---                                                                              |
+| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                      |
+| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                         |
+| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                      |
+| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                      |
+| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                         |
+| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                         |
+| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64         |
+| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                       |
+| not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
+| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
+
+Any other supported syntax for $filter is outside the scope of this specification.  If the service receives a $filter query parameter that is not supported, it shall reject the request and return HTTP Status code [501](#status-501).
 
 ###### Retrieving Resource Collections
 
@@ -805,6 +870,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
 | <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                  |
+| <a id="status-507"></a>507 Insufficient Storage   | The server is unable to build the response for the client due to the size of the response.                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 #### Metadata responses
 Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
@@ -2168,7 +2234,9 @@ The client may cancel the operation by performing a DELETE on the Task Monitor U
 
 The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object may invalidate the associated Task Monitor and subsequent GET on the Task Monitor URL returns either [410](#status-410) (Gone) or [404](#status-404) (Not Found).
 
-Once the operation has completed, the Task Monitor shall return a the appropriate status code ( OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+Once the operation has completed, the service shall update the TaskState with the appropriate value.  The values indicating that a task has completed are defined in the Task schema. 
+
+Once the operation has completed, the Task Monitor shall return a the appropriate status code ( OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses). 
 
 The service may return a status code of [410](#status-410) (Gone) or [404](#status-404) (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor.
 
@@ -2390,7 +2458,7 @@ Only the client that executes the login will have the Session Auth Token.
 ##### X-Auth-Token HTTP header
 
 Implementations shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
-Therefore, the POST to create a new session shall only be supported with HTTPS, and all requests that use Basic Auth shall require HTTPS.
+Therefore, the POST to create a new session shall only be supported with HTTPS, and all requests that use Basic Auth shall require HTTPS.  A request via POST to create a new session using the HTTP port should redirect to the HTTPS port if both HTTP and HTTPS are enabled. 
 
 ##### Session lifetime
 

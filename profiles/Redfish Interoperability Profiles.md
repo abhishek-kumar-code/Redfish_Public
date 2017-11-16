@@ -135,6 +135,9 @@ An object named 'Protocol' contains properties which describe Redfish protocol f
 | MinVersion | string |  The minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'. |
 | Discovery | string | Indicates support requirements for the Redfish SSDP Discovery protocol. If this property is absent, there is no requirement for SSDP. See [Requirement](#requirement) section below. |
 | HostInterface | string | Indicates support requirements for the Redfish Host Interface. If this property is absent, there is no requirement for a Host Interface. See [Requirement values](#requirement-values) section below.|
+| ExpandQuery | string | Indicates support requirements for the Expand query parameter. Additional Expand support requirements may be specified in the Resource entry for the 'ProtocolFeaturesSupported' object within 'ServiceRoot'. If this property is absent, there is no requirement for support of the Expand query parameter. See [Requirement](#requirement) section below. |
+| FilterQuery | string | Indicates support requirements for the Filter query parameter. If this property is absent, there is no requirement for support of the Filter query parameter. See [Requirement](#requirement) section below. |
+| SelectQuery | string | Indicates support requirements for the Select query parameter. If this property is absent, there is no requirement for support of the Select query parameter. See [Requirement](#requirement) section below. |
 
 ### Example 
 
@@ -142,7 +145,10 @@ An object named 'Protocol' contains properties which describe Redfish protocol f
 	"Protocol": {
 		"MinVersion": "1.2",
 		"Discovery": "Mandatory",
-		"HostInterface": "Recommended"
+		"HostInterface": "Recommended",
+		"ExpandQuery": "Mandatory",
+		"SelectQuery": "None",
+		"FilterQuery": "Recommended"
 	}
 ~~~
 
