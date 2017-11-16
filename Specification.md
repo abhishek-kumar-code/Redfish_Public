@@ -678,8 +678,6 @@ And a computer system resource contains an [Actions](#actions-property) property
             "ResetType@Redfish.AllowableValues": [
                 "On",
                 "ForceOff",
-                "GracefulRestart",
-                "GracefulShutdown",
                 "ForceRestart",
                 "Nmi",
                 "ForceOn",
@@ -733,8 +731,6 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
             "AllowableValues": [
                 "On",
                 "ForceOff",
-                "GracefulShutdown",
-                "GracefulRestart",
                 "ForceRestart",
                 "Nmi",
                 "ForceOn",
