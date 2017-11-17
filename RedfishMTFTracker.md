@@ -107,7 +107,7 @@ The Pub column will have the values pp, SB or N where:
 | D2 T1 S5 Manager Servers with Redfish       | Alliance  | pp   | ????  | Robert to find the source (ask JohnL) and moves to PP |
 | Redfish Overview 2015 (APTS)                | Overview  | N    | 81000 | Has old logo, don't link |
 | CNSM 2017 Keynote                           | Conf      | SB   | 86636 | Link once presented |
-| SDC 2017-Aug                                | Alliance  | pp   | 86195 | Publish as PP |
+| SDC 2017-Aug                                | Alliance  | pp   | 86195 | Publish as PP (has Mem, Fab(PCIe),Swordfish, Yang |
 | IETF-RTGWG Managing Network Dev via RF v10  | Alliance  | SB   | 85211 | Publish as SB |
 | Redfish 2017 R1 Overview                    | Release   | pp   | 85658 | Publish as PP |
 | Redfish 2016 R1 Overview                    | Release   | pp   | 83315 | Publish as PP |
