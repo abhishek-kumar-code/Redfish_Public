@@ -1,5 +1,5 @@
 ---
-DocTitle: Redfish Interoperability Profile Bundle Readme
+DocTitle: Redfish Interoperability Profiles Bundle
 DocNumber: '8013'
 DocClass: Normative
 DocVersion: '2017.1'
