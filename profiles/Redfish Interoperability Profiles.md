@@ -78,7 +78,7 @@ A free, open source utility has been created by the SPMF to verify that a Redfis
 
 A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a JSON-schema form (RedfishInteroperabilityProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/profiles for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
 
-The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing.  Many of the properties defined within this structure have assumed default values that correspond with the most common use case, so that those properties can be ommited from the document for brevity.
+The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing.  Many of the properties defined within this structure have assumed default values that correspond with the most common use case, so that those properties can be omitted from the document for brevity.
 
 
 ## Basic functions
@@ -324,7 +324,7 @@ The following options are available for each conditional requirement:
 | ReadRequirement | string | The requirement to apply to the resource or property if the condition is met.|
 | WriteRequirement | string | Property-level write (HTTP PATCH or PUT) requirement for this property, see [WriteRequirement] (#writerequirement) section. |
 | Purpose | string | Text describing the purpose of this conditional requirement. |
-| SubordinateToResource | array | An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
+| SubordinateToResource | array | An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) section.|
 | CompareValues | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section. |
 | Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'CompareValues'.  If the comparison is true, then this conditional requirement applies. See the [Compare Property](#compare-property) section. |
