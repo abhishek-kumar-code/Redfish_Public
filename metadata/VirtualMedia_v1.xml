@@ -26,7 +26,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia">
 
       <EntityType Name="VirtualMedia" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This resource allows monitoring and control of an instance of virtual media (e.g. a remote CD, DVD, or USB device) functionality provided by a Manager for a system or device."/>
+        <Annotation Term="OData.Description" String="The VirtualMedia schema contains properties related to monitoring and control of an instance of virtual media such as a remote CD, DVD, or USB device. Virtual media functionality is provided by a Manager for a system or device."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a virtual media service for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -171,9 +171,14 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
+      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_1_0.VirtualMedia"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_2_0">
       <Annotation Term="OData.Description" String="This version was created to change the permissions of Image, Inserted, and WriteProtected and to add the InsertMedia and InjectMedia actions."/>
-      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_1_0.VirtualMedia"/>
+      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_1_1.VirtualMedia"/>
     </Schema>
 
   </edmx:DataServices>
