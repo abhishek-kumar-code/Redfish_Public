@@ -3,7 +3,7 @@ DocTitle: Redfish Host Interface Specification
 DocNumber: '0270'
 DocClass: Normative
 DocVersion: '1.0.1'
-modified: '2017-8-04'
+modified: '2017-11-17'
 status: published
 released: true
 copyright: '2014-2017'
@@ -358,7 +358,12 @@ For convenience when identifying the auto-generated credentials when active and 
 
 ### Change log
 
-| Version | Date     | Description     |
-| ---     | ---      | ---             |
-| 1.0.1   | 2017-8-4 | Errata release. Numerous terminology clarifications and typographical corrections. Terminology for 'host', 'manager' and 'service' were edited for consistency. |
-| 1.0.0   | 2015-8-4 | Initial release |
+| Version | Date       | Description     |
+| ---     | ---        | ---             |
+| 1.0.1   | 2017-11-17 | Errata release. Numerous terminology clarifications and typographical corrections. |
+|         |            | Terminology for 'host', 'manager' and 'service' were edited for consistency. |
+|         |            | Added additional wording about the SMBIOS Type 42 structure to describe its purpose. |
+|         |            | Added references to the UEFI Specification. |
+|         |            | Clarified byte ordering of IPv4 and IPv6 addresses in the SMBIOS Type 42 structure. |
+|         |            | Added missing case for what to use for the UUID in the SMBIOS Type 42 structure if it is unknown or not supported. |
+| 1.0.0   | 2016-12-30 | Initial release |
