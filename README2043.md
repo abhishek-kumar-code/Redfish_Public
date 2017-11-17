@@ -2,12 +2,13 @@
 DocTitle: Scalable Platforms Management API Mockup Readme
 DocNumber: '2043'
 DocClass: Informative
-DocVersion: '1.1.0'
-modified: '2016-12-16'
-status: released
+DocVersion: '1.2.0'
+modified: '2017-11-17'
+status: published
 released: true
-copyright: '2015-2016'
+copyright: '2015-2017'
 ---
+
 # Foreword
 
 The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort:
@@ -26,17 +27,13 @@ This archive contains a number of mockups of various Redfish service implementat
 
 Many of these mockups are also used to populate the Redfish Resource Explorer, part of the Redfish Developer Hub located at: http://redfish.dmtf.org
 
-## DSP2043 Server (DSP2043-server)
-
-This mockup provides an example of a 1U or 2U rack-mounted server typically deployed in large scale data centers.  In addition, the mockup is intended to be used as a base for "Work in Progress" mockups to demonstrate new features, schemas or properties currently under development within the SPMF.    
-
-## Simple Rack-mounted server (public-rackmount)
+## Simple Rack-mounted server (public-rackmount1)
 
 This illustration of a Redfish service implementation shows a typical rack-mount server, as commonly used in scale-out data centers. It depicts the types of information that can be expected, but does not represent an actual implementation.
 
 ## Bladed Server (public-bladed)
 
-This example represents an enclosure of “blade servers” that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five “Chassis”), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.
+This example represents an enclosure of "blade servers" that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five "Chassis"), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.
 
 ## Local Storage (public-localstorage)
 
@@ -46,9 +43,17 @@ This example shows a server with an implementation of the Redfish storage schema
 
 This example shows a more complex storage implementation using a pair of SAS switches (fabric), storage enclosures and multiple storage devices.
 
-## Proposed OCP Redfish Profile (proposed-ocp-profile)
+## Proposed OCP Redfish Profile (public-catfish)
 
-This draft example, for ongoing development,  represents a proposed minimal Redfish data model "profile" that meets the needs of the Open Compute Project’s Hardware Management requirements. This draft profile is intended to help define a list of required properties so that essential management-related tasks, as defined by OCP, can be performed on any Redfish implementation. 
+This draft example, for ongoing development, represents a proposed minimal Redfish data model "profile" that meets the needs of the Open Compute Project's Hardware Management requirements. This draft profile is intended to help define a list of required properties so that essential management-related tasks, as defined by OCP, can be performed on any Redfish implementation. 
+
+## Composable Systems (public-composability)
+
+This example shows a service with various sets of disaggregated hardware as resources. It provides an example composed system utilizing some of the disaggregated hardware. It also shows how Resource Zones can provide information about binding restrictions.
+
+## Bladed Partitions (public-bladed-partitions)
+
+This example shows how Redfish Composability can be used to create composed Computer System instances from smaller sets of Computer Systems. A top level enclosure called "Enclosure" contains a set of blades, which are used to create the composed Computer Systems.
 
 ## Concepts ##
 
@@ -61,7 +66,7 @@ The section below works better if you are actually doing the GETs
 
 ### Starting ###
 
-All clients start at the base /redfish/v1 object.  Many items are broken down in arrays of references for scalable environments.  Links to other resources are in the "links" section.  You can see links to Systems, managers, the physical Chassis as well as services like Eventing, Tasks, Schema (meta data)). (Note – discovery of service endpoints will be done using UPNP’s SSDP but that’s not in the mockup).
+All clients start at the base /redfish/v1 object.  Many items are broken down in arrays of references for scalable environments.  Links to other resources are in the "links" section.  You can see links to Systems, managers, the physical Chassis as well as services like Eventing, Tasks, Schema (meta data)). (Note - discovery of service endpoints will be done using UPNP's SSDP but that's not in the mockup).
 
 ### Versioning ###
 
@@ -71,7 +76,7 @@ Each resource has a resource type definition. Resource types are defined in vers
 
 ### References ###
 
-When you see the links section, it will have a set of references to other resources in it.  URIs are either absolute or relative.  Absolute ones won’t have the IP address but will start with /redfish/v1.  If you have a plug in like the Chrome Advanced REST client, you can click on this to fill in the URI for your next GET.
+When you see the links section, it will have a set of references to other resources in it.  URIs are either absolute or relative.  Absolute ones won't have the IP address but will start with /redfish/v1.  If you have a plug in like the Chrome Advanced REST client, you can click on this to fill in the URI for your next GET.
 
 ### Main Objects ###
 
@@ -119,7 +124,7 @@ And like redundancy, the value of the "@odata.id" property doesn't have to be to
 
 ### ETags ###
 
-ETags are used by browsers to optimize IO (caching).  They do an If-Match and if it matches, they don’t bother dragging the data.  We use them to determine if an object has changed.  Thus every ETag will change if a PUT is done or if a tool (like BIOS configuration at the console) takes place.  Thus any race condition on PUTs between Redfish and non-Redfish clients (as well as other Redfish clients) are always noticed.
+ETags are used by browsers to optimize IO (caching).  They do an If-Match and if it matches, they don't bother dragging the data.  We use them to determine if an object has changed.  Thus every ETag will change if a PUT is done or if a tool (like BIOS configuration at the console) takes place.  Thus any race condition on PUTs between Redfish and non-Redfish clients (as well as other Redfish clients) are always noticed.
 
 The problem is that this is a mock-up and not a real web service so you can't see the ETags work.
 
