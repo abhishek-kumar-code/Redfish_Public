@@ -2,11 +2,11 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.X.Y'
-modified: '2017-11-XX'
+DocVersion: '1.3.1'
+modified: '2017-11-17'
 SupersedesVersion: '1.3.0'
 status: published
-released: true
+released: false
 copyright: '2014-2017'
 ---
 
@@ -2849,7 +2849,16 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
-| 1.X.X   | 2017-11-xx| Clarifications for http status and payload responses after successful processing of data modifcation requests. |
+| 1.3.1   | 2017-11-17| Clarified HTTP status and payload responses after successful processing of data modification requests. This includes POST operations for performing Actions, as well as other POST, PATCH, or PUT requests. |
+|         |          | Updated Abstract to reflect current state of the Specification. |
+|         |          | Added reference to RFC 6585 and clarified expected behavior when ETag support is used in conjunction with PUT or PATCH operations. |
+|         |          | Added definition for "Property" term and updated text to use term consistently. |
+|         |          | Added "Client Requirement" column and information for HTTP headers on requests. |
+|         |          | Clarified the usage and expected format of the Context property value. |
+|         |          | Added clause detailing how Structured properties can be revised and how to resolve their definitions in schema. |
+|         |          | Added more descriptive definition for the Settings resource.  Added an example for the "SettingsObject".  Added description and example for using the "SettingsApplyTime" annotation. |
+|         |          | Added Action example using the ActionInfo resource in addition to the simple AllowableValues example. Updated example to show a proper subset of the available enumerations to reflect a real-world example. |
+|         |          | Added statement explaining the updates required to TaskState upon task completion. |
 | 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP status code [428](#status-428). |
 |         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
 | 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
