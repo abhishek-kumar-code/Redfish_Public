@@ -85,7 +85,7 @@
 <p>A free, open source utility has been created by the SPMF to verify that a Redfish Service implementation conforms to the requirements included in a Redfish Interoperability Profile.  The Redfish Interop Validator is available for download from the DMTF's organization on Github at <a href="https://github.com/DMTF/Redfish-Interop-Validator">https://github.com/DMTF/Redfish-Interop-Validator</a></p>
 <h1 id="profile-document-definition">Profile Document Definition</h1>
 <p>A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a JSON-schema form (RedfishInteroperabilityProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at <a href="http://redfish.dmtf.org/profiles">http://redfish.dmtf.org/profiles</a> for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.</p>
-<p>The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing.  Many of the properties defined within this structure have assumed default values that correspond with the most common use case, so that those properties can be ommited from the document for brevity.</p>
+<p>The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing.  Many of the properties defined within this structure have assumed default values that correspond with the most common use case, so that those properties can be omitted from the document for brevity.</p>
 <h2 id="basic-functions">6. Basic functions</h2>
 <p>At the top level of the JSON document are the basic properties which describe the profile, including authorship and contact information, versioning, and other profiles to include in order to build upon previous work.</p>
 <table>
@@ -564,7 +564,7 @@
 <tr>
 <td>SubordinateToResource</td>
 <td>array</td>
-<td>An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See <a href="#parent-and-subordinate-resources">Parent and subordinate resources</a> section.</td>
+<td>An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See <a href="#parent-and-subordinate-resources">Parent and subordinate resources</a> section.</td>
 </tr>
 <tr>
 <td>CompareProperty</td>
