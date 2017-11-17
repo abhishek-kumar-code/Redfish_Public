@@ -2,12 +2,13 @@
 DocTitle: Scalable Platforms Management API Mockup Readme
 DocNumber: '2043'
 DocClass: Informative
-DocVersion: '1.1.0'
-modified: '2016-12-16'
+DocVersion: '1.2.0'
+modified: '2017-11-17'
 status: released
 released: true
-copyright: '2015-2016'
+copyright: '2015-2017'
 ---
+
 # Foreword
 
 The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort:
@@ -26,17 +27,13 @@ This archive contains a number of mockups of various Redfish service implementat
 
 Many of these mockups are also used to populate the Redfish Resource Explorer, part of the Redfish Developer Hub located at: http://redfish.dmtf.org
 
-## DSP2043 Server (DSP2043-server)
-
-This mockup provides an example of a 1U or 2U rack-mounted server typically deployed in large scale data centers.  In addition, the mockup is intended to be used as a base for "Work in Progress" mockups to demonstrate new features, schemas or properties currently under development within the SPMF.    
-
-## Simple Rack-mounted server (public-rackmount)
+## Simple Rack-mounted server (public-rackmount1)
 
 This illustration of a Redfish service implementation shows a typical rack-mount server, as commonly used in scale-out data centers. It depicts the types of information that can be expected, but does not represent an actual implementation.
 
 ## Bladed Server (public-bladed)
 
-This example represents an enclosure of “blade servers” that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five “Chassis”), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.
+This example represents an enclosure of "blade servers" that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five "Chassis"), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.
 
 ## Local Storage (public-localstorage)
 
@@ -46,9 +43,17 @@ This example shows a server with an implementation of the Redfish storage schema
 
 This example shows a more complex storage implementation using a pair of SAS switches (fabric), storage enclosures and multiple storage devices.
 
-## Proposed OCP Redfish Profile (proposed-ocp-profile)
+## Proposed OCP Redfish Profile (public-catfish)
 
-This draft example, for ongoing development,  represents a proposed minimal Redfish data model "profile" that meets the needs of the Open Compute Project’s Hardware Management requirements. This draft profile is intended to help define a list of required properties so that essential management-related tasks, as defined by OCP, can be performed on any Redfish implementation. 
+This draft example, for ongoing development, represents a proposed minimal Redfish data model "profile" that meets the needs of the Open Compute Project’s Hardware Management requirements. This draft profile is intended to help define a list of required properties so that essential management-related tasks, as defined by OCP, can be performed on any Redfish implementation. 
+
+## Composable Systems (public-composability)
+
+This example shows a service with various sets of disaggregated hardware as resources. It provides an example composed system utilizing some of the disaggregated hardware. It also shows how Resource Zones can provide information about binding restrictions.
+
+## Bladed Partitions (public-bladed-partitions)
+
+This example shows how Redfish Composability can be used to create composed Computer System instances from smaller sets of Computer Systems. A top level enclosure called "Enclosure" contains a set of blades, which are used to create the composed Computer Systems.
 
 ## Concepts ##
 
