@@ -73,7 +73,7 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 ### White Papers
 
 | Title               | Subject   | DSP No  | Ver    | Date    |
-| ---                 | ---       | ---     |        | ---     |
+| ---                 | ---       | ---     | ---    | ---     |
 | Redfish Mockups     | Zips      | DSP2044 | 1.1.0  | 2017-01 |
 | Redfish White Paper | Overview  | DSP2044 | 1.0.2  | 2017-06 |
 | Redfish FAQ         | Overview  | DSP2044 | 1.0.2  | 2015-08 |
