@@ -51,7 +51,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive">
 
       <EntityType Name="Drive" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes."/>
+        <Annotation Term="OData.Description" String="The Drive schema represents a single physical disk drive for a system, including links to associated Volumes."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a disk drive or other physical storage medium for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -74,7 +74,7 @@
       <Action Name="SecureErase" IsBound="true">
         <Parameter Name="Drive" Type="Drive.v1_0_0.Actions"/>
         <Annotation Term="OData.Description" String="This action is used to securely erase the contents of the drive."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a secure erase of the drive."/>
       </Action>
 
     </Schema>
@@ -335,7 +335,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to change references to Identifier and Location to be their abstract base type, and IndicatorLED and Protocol to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to Identifier and Location to be their abstract base type, and IndicatorLED and Protocol to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Drive" BaseType="Drive.v1_0_3.Drive"/>
     </Schema>
 
@@ -388,7 +388,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_3">
-      <Annotation Term="OData.Description" String="This version was created to migrate the Operations definition, to change references to Identifier and Location to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to migrate the Operations definition, to change references to Identifier and Location to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
     </Schema>
 
@@ -406,7 +406,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_1">
-      <Annotation Term="OData.Description" String="This version was created to migrate the Operations definition, to change references to Identifier and Location to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition."/>
+      <Annotation Term="OData.Description" String="This version was created to migrate the Operations definition, to change references to Identifier and Location to be their abstract base type, and IndicatorLED, Protocol, and Operations to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Drive" BaseType="Drive.v1_2_0.Drive"/>
     </Schema>
 

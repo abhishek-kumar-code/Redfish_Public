@@ -45,7 +45,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint">
 
       <EntityType Name="Endpoint" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Endpoint resource.  It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
+        <Annotation Term="OData.Description" String="The Endpoint schema defines the properties of an Endpoint resource.  It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a fabric endpoint for a Redfish implementation."/>
       </EntityType>
 

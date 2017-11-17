@@ -89,7 +89,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem">
 
       <EntityType Name="ComputerSystem" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A Computer System represents a general purpose machine or system (as opposed to an appliance) instance and the software-visible resources (items within the data plane) such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
+        <Annotation Term="OData.Description" String="The ComputerSystem schema represents a general purpose machine or system (as opposed to an appliance) instance and the software-visible resources (items within the data plane) such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system (as opposed to an appliance) in the Redfish specification."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -114,10 +114,10 @@
         <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="The type of reset to be performed."/>
-          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the type of reset to be performed.  The service may accept a request without the parameter and perform an implementation specific default reset."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the system."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the ComputerSystem.  For systems which implement APCI Power Button functionality, the PushPowerButton value shall perform or emulate an ACPI Power Button push.  The ForceOff value shall remove power from the system or perform an ACPI Power Button Override (commonly known as a 4-second hold of the Power Button).  The ForceRestart value shall perform a ForceOff action followed by a On action."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the ComputerSystem.  For systems which implement ACPI Power Button functionality, the PushPowerButton value shall perform or emulate an ACPI Power Button push.  The ForceOff value shall remove power from the system or perform an ACPI Power Button Override (commonly known as a 4-second hold of the Power Button).  The ForceRestart value shall perform a ForceOff action followed by a On action."/>
       </Action>
 
       <Action Name="SetDefaultBootOrder" IsBound="true">
@@ -539,7 +539,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_7">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_6.ComputerSystem"/>
     </Schema>
 
@@ -669,7 +669,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_5">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_4.ComputerSystem"/>
     </Schema>
 
@@ -757,7 +757,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_4">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_3.ComputerSystem"/>
     </Schema>
 
@@ -813,7 +813,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_3">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_2.ComputerSystem"/>
     </Schema>
 
@@ -845,7 +845,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_2">
-      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model."/>
+      <Annotation Term="OData.Description" String="This version was created to add non-normative LongDescriptions to the EnumType SystemType, and to fix the description of ProcessorSummary Count and Model.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_1.ComputerSystem"/>
     </Schema>
 
@@ -857,6 +857,15 @@
           <Annotation Term="OData.LongDescription" String="If present, each entry shall reference a redundancy entity that specifies a kind and level of redundancy and a collection (RedundancySet) of other ComputerSystems that provide the specified redundancy to this ComputerSystem."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
+        <Property Name="HostWatchdogTimer" Type="ComputerSystem.v1_5_0.WatchdogTimer" Nullable="false">
+          <Annotation Term="OData.Description" String="This object describes the Host Watchdog Timer functionality for this system."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the host watchdog timer functionality for this ComputerSystem."/>
+        </Property>
+        <Property Name="SubModel" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The sub-model for this system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the sub-model (or config) of the system. This shall not include the model/product name or the manufacturer name."/>
+        </Property>
       </EntityType>
 
       <ComplexType Name="Boot" BaseType="ComputerSystem.v1_1_0.Boot">
@@ -901,6 +910,72 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+
+      <ComplexType Name="WatchdogTimer">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the Host Watchdog Timer functionality for this system."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the host watchdog timer functionality for this ComputerSystem."/>
+        <Property Name="FunctionEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates if the Host Watchdog Timer functionality has been enabled. Additional host-based software is necessary to activate the timer function."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the host watchdog timer functionality has been enabled or not.  This property indicates only that the functionality is enabled or disabled by the user, and updates to this property shall not initiate a watchdog timer countdown."/>
+          <Annotation Term="Redfish.Required"/>
+        </Property>
+        <Property Name="WarningAction" Type="ComputerSystem.v1_5_0.WatchdogWarningActions">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This property indicates the action to perform when the Watchdog Timer is close (typically 3-10 seconds) to reaching its timeout value."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the action to perform prior to the expiration of the Watchdog Timer. This action typically occurs 3-10 seconds prior to the timeout value, but the exact timing is dependent on the implementation."/>
+        </Property>
+        <Property Name="TimeoutAction" Type="ComputerSystem.v1_5_0.WatchdogTimeoutActions">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This property indicates the action to perform when the Watchdog Timer reaches its timeout value."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the action to perform upon the  expiration of the Watchdog Timer."/>
+          <Annotation Term="Redfish.Required"/>
+        </Property>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+      </ComplexType>
+
+      <EnumType Name="WatchdogWarningActions">
+        <Annotation Term="OData.Description" String="The enumerations of WatchdogWarningActions specify the choice of action to take when the Host Watchdog Timer is close (typically 3-10 seconds) to reaching its timeout value."/>
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="No action taken."/>
+        </Member>
+        <Member Name="DiagnosticInterrupt">
+          <Annotation Term="OData.Description" String="Raise a (typically non-maskable) Diagnostic Interrupt."/>
+        </Member>
+        <Member Name="SMI">
+          <Annotation Term="OData.Description" String="Raise a Systems Management Interrupt (SMI)."/>
+        </Member>
+        <Member Name="MessagingInterrupt">
+          <Annotation Term="OData.Description" String="Raise a legacy IPMI messaging interrupt."/>
+        </Member>
+        <Member Name="SCI">
+          <Annotation Term="OData.Description" String="Raise an interrupt using the ACPI System Control Interrupt (SCI)."/>
+        </Member>
+        <Member Name="OEM">
+          <Annotation Term="OData.Description" String="Perform an OEM-defined action."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="WatchdogTimeoutActions">
+        <Annotation Term="OData.Description" String="The enumerations of WatchdogTimeoutActions specify the choice of action to take when the Host Watchdog Timer reaches its timeout value."/>
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="No action taken."/>
+        </Member>
+        <Member Name="ResetSystem">
+          <Annotation Term="OData.Description" String="Reset the system."/>
+        </Member>
+        <Member Name="PowerCycle">
+          <Annotation Term="OData.Description" String="Power cycle the system."/>
+        </Member>
+        <Member Name="PowerDown">
+          <Annotation Term="OData.Description" String="Power down the system."/>
+        </Member>
+        <Member Name="OEM">
+          <Annotation Term="OData.Description" String="Perform an OEM-defined action."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>

@@ -843,7 +843,6 @@
           <Annotation Term="Measures.Unit" String="m"/>
         </Property>
       </ComplexType>
-
     </Schema>
 
   </edmx:DataServices>
