@@ -45,7 +45,7 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | RF for Neworking    | Alliance  | DSP2046 | 0.1.0b | 2017-03 |
 | OCP HW Mgmt w/ RF   | Profile   | DSP2049 | 0.2.2b | 2017-06 |
 | Composability       | Schema    | DSP2050 | 1.1.0  | 2017-07 |
-| Telemetry           | Schema    | DSP???? | 1.1.0  | 2017-07 |
+| Telemetry           | Schema    | DSP2051 | 1.1.0  | 2017-07 |
 | Redfish Technote    | Technote  | NA      | NA     | 2016-08 |
 
 ## Educational Material
