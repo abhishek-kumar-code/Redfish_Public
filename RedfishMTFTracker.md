@@ -34,43 +34,7 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 
 (section for each bundle plan)
 
-## Educational Material
-
-### BrightTalk
-* Redfish Data Model Deep Dive, [Jul 15, 2015](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/163783/play) 
-* DMTF: Redfish Overview, [May 20, 2015](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/156709/play)
-* Redfish Modeling Guidelines, [Feb 23, 2016](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/192089/play) | 82375 |
-
-### Redfish School (Youtube)
-| Subject             | Presenter | Rec? | Pub? |  DocID |  
-| ---                 | ---       | ---  | ---  | ---    |
-| Why Redfish         | Jeff A    | Y    |    N | 84013  |
-| Architecture        | Jeff H    | Y    |    N | 84151  |
-| Common Prop         | Jeff H    | Y    |    N | 84152  |
-| Chassis             | Jeff H    | Y    |      | na  |
-| Managers            | Jeff H    | Y    |      | na  |
-| Systems             | Jeff H    | Y    |      | na  |
-| CSDL Intro          | Mike R    | Y    |    N | 84774  |
-| CSDL Usage          | Mike R    | Y    |    N | 84775  |
-| OData Client        | Mike R    | Y    |    N | 84776  |
-| Storage             | Mike R    | Y    |    N | 86144  |
-| Composability       | Mike R    |      |    N | 86073  |
-| Case for Redfish    | Jeff H    |      | Y    | 85771  |
-| Tasks               | Jeff H    |      | Y    | 86324  |
-| Adv Comm Device     | Jeff H    |      |    N | 86894  |
-| Eventing            | Jeff H    |      | Y    | 86372  |
-| Proc & Memory       | Jeff H    |      |      | (TGG)  |
-| Sessions            | Jeff H    |      |      |   |
-| Users & Priv        | Jon H     |      |      |   |
-| BIOS                | Samer     |      |      |   |
-| Switches            | John L    |      |      |   |
-| Telemetry           | John L    |      |      |   |
-| Host Interface      | Paul V    |      |      |   |
-| JSON Client         | Jeff A    |      |      |   |
-| Profiles            | Jeff A    |      |      |   |
-| FW Update           | Jeff A    |      |      |   |
-
-### White Papers
+## White Papers
 
 | Title               | Subject   | DSP No  | Ver    | Date    |
 | ---                 | ---       | ---     | ---    | ---     |
@@ -84,29 +48,75 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | Telemetry           | Schema    | DSP???? | 1.1.0  | 2017-07 |
 | Redfish Technote    | Technote  | NA      | NA     | 2016-08 |
 
-### Presentations
+## Educational Material
+For the DMTF Redfish Page (www.dmtf.org/standards/Redfish), the Tutorials/Education side bar will have links to all of the Redfish School plus recent stuff as indicated in the Presentations section below to indicate if it goes on the Side Bar or Previous Presentation section at the bottom of the page.  The Previous Presentations section should be at the bottom of the page. 
+The links in the Tutorials/Education side bar will be reflected on the developer hub Education Page (http://redfish.dmtf.org/education).  The Education Page will also have a link to the Previous Presentations section.
 
-| Title                                       | Subject   | Pub? | DocID |
-| ---                                         | ---       | ---  | ---   |
-| Redfish 2017 R2 Overview                    | Release   | Y    | 86477 |
-| Redfish Release History                     | Release   | Y    | 86478 |
-| Redfish Basic Server Interop Profile        | Alliance  | Y    | 86482 |
-| CNSM 2016 Keynote                           | Keynote   | Y    | 84369 |
-| Managing Network Infrastructure via Redfish | Alliance  | Y    | 84169 |
-| Redfish Host Interface                      | WIP       | Y    | 83086 |
-| Introduction to Redfish 5/16                | Overview  | Y    | 83340 |
-| D2 T1 S5 Manager Servers with Redfish       | Alliance  | Y    |  |
-| Redfish Overview 2015 (APTS)                | Overview  | Y    | 81000 |
-| CNSM 2017 Keynote                           | Conf      |   N  | 86636 |
-| SDC 2017-Aug                                | Alliance  |   N  | 86195 |
-| IETF-RTGWG Managing Network Dev via RF v10  | Alliance  |    N | 85211 |
-| Redfish 2017 R1 Overview                    | Release   |   N  | 85658 |
-| Redfish 2016 R1 Overview                    | Release   |   N  | 83315 |
-| Redfish Modeling Guidelines                 | Brightalk |   N  | 82375 |
-| Introduction to Redfish                     | Brightalk |   N  | 80334 |
-| PCIe Switch Model & Mockup                  | ?         |   N  | 83180 |
-| FW Update TF (WIP)                          | WIP       |   N  | 83105 |
-| Redfish Storage Modeling                    | Alliance  |   N  | 82793 |
+### BrightTalk
+* Redfish Data Model Deep Dive, [Jul 15, 2015](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/163783/play), live demo using the explorer and a mockup.
+* DMTF: Redfish Overview, [May 20, 2015](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/156709/play), DocID 83340
+* Redfish Modeling Guidelines, [Feb 23, 2016](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/192089/play), DocID 82375 
+
+### Redfish School (Youtube)
+Here the Pub column means has it been published yet.  The intent is to publish all of these presentations on the Tutorials/Education side bar of dmtf.org/standards/Redfish and reflected on the Developer Hub Education Page (http://redfish.dmtf.org/education) 
+| Subject             | Presenter | Rec? | Pub? |  DocID |  
+| ---                 | ---       | ---  | ---  | ---    |
+| Why Redfish         | Jeff A    | Y    |    N | 84013  |
+| Architecture        | Jeff H    | Y    |    N | 84151  |
+| Common Prop         | Jeff H    | Y    |    N | 84152  |
+| Chassis             | Jeff H    | Y    |      | na  |
+| Managers            | Jeff H    | Y    |      | na  |
+| Systems             | Jeff H    | Y    |      | na  |
+| CSDL Intro          | Mike R    | Y    |    N | 84774  |
+| CSDL Usage          | Mike R    | Y    |    N | 84775  |
+| OData Client        | Mike R    | Y    |    N | 84776  |
+| Storage             | Mike R    | Y    |    N | 86144  |
+| Composability       | Mike R    | Y    |    N | 86073  |
+| Case for Redfish    | Jeff H    |      | Y    | 85771  |
+| Tasks               | Jeff H    |      | Y    | 86324  |
+| Adv Comm Device     | Jeff H    |      |    N | 86894  |
+| Eventing            | Jeff H    |      | Y    | 86372  |
+| Proc & Memory       | Jeff H    |      |      |   |
+| Sessions            | Jeff H    |      |      |   |
+| Users & Priv        | Jon H     |      |      |   |
+| BIOS                | Samer     |      |      |   |
+| Switches            | John L    |      |      |   |
+| Telemetry           | John L    |      |      |   |
+| Host Interface      | Paul V    |      |      |   |
+| JSON Client         | Jeff A    |      |      |   |
+| Profiles            | Jeff A    |      |      |   |
+| FW Update           | Jeff A    |      |      |   |
+
+
+
+### Presentations
+The Pub column will have the values pp, SB or N where:
+* pp means it goes on the Previous Presentations section of dmtf.org/standards/Redfish
+* SB means it goes on the Tutorials/Education side bar of dmtf.org/standards/Redfish and reflected on the Developer Hub Education Page (http://redfish.dmtf.org/education)
+* N means it is not to be published.
+
+| Title                                       | Subject   | Pub? | DocID | Notes |
+| ---                                         | ---       | ---  | ---   | ---   |
+| Redfish 2017 R3 Overview                    | Release   | SB   |       | Needs to be created |
+| Redfish 2017 R2 Overview                    | Release   | pp   | 86477 | Pull down when Release History is updated |
+| Redfish Release History                     | Release   | SB   | 86478 | Needs to be updated for R2 and R3 |
+| Redfish Basic Server Interop Profile        | Alliance  | SB   | 86482 | Needs an update, changes from OCP to DMTF over time. |
+| CNSM 2016 Keynote                           | Keynote   | pp   | 84369 | Move to Previous Presentations |
+| Managing Network Infrastructure via Redfish | Alliance  | pp   | 84169 | Check with JohnL |
+| Redfish Host Interface                      | WIP       | SB   | 83086 | Move to PP when RF School is done |
+| Introduction to Redfish 5/16                | Overview  | SB   | 83340 | Needs a refresh |
+| D2 T1 S5 Manager Servers with Redfish       | Alliance  | pp   | ????  | Robert to find the source (ask JohnL) and moves to PP |
+| Redfish Overview 2015 (APTS)                | Overview  | N    | 81000 | Has old logo, don't link |
+| CNSM 2017 Keynote                           | Conf      | SB   | 86636 | Link once presented |
+| SDC 2017-Aug                                | Alliance  | pp   | 86195 | Publish as PP |
+| IETF-RTGWG Managing Network Dev via RF v10  | Alliance  | SB   | 85211 | Publish as SB |
+| Redfish 2017 R1 Overview                    | Release   | pp   | 85658 | Publish as PP |
+| Redfish 2016 R1 Overview                    | Release   | pp   | 83315 | Publish as PP |
+| Redfish Modeling Guidelines                 | Brightalk | SB   | 82375 | Publish as SB |
+| Introduction to Redfish                     | Brightalk | pp   | 80334 | Publish as PP |
+| PCIe Switch Model & Mockup                  | ?         | pp   | 83180 | Publish as PP |
+| FW Update TF (WIP)                          | WIP       | SB   | 83105 | Publish as PP |
+| Redfish Storage Modeling                    | Alliance  | pp   | 82793 | Publish as PP |
 
 
 ### Mockup Changes
