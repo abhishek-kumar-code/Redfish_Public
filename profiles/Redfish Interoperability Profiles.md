@@ -4,8 +4,8 @@ DocNumber: '0272'
 DocClass: Normative
 DocVersion: '1.0.0'
 modified: '2017-11-17'
-status: released
-released: true
+status: published
+released: True
 copyright: '2017'
 ---
 
