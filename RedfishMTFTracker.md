@@ -59,6 +59,7 @@ The links in the Tutorials/Education side bar will be reflected on the developer
 
 ### Redfish School (Youtube)
 Here the Pub column means has it been published yet.  The intent is to publish all of these presentations on the Tutorials/Education side bar of dmtf.org/standards/Redfish and reflected on the Developer Hub Education Page (http://redfish.dmtf.org/education) 
+
 | Subject             | Presenter | Rec? | Pub? |  DocID |  
 | ---                 | ---       | ---  | ---  | ---    |
 | Why Redfish         | Jeff A    | Y    |    N | 84013  |
@@ -86,8 +87,6 @@ Here the Pub column means has it been published yet.  The intent is to publish a
 | JSON Client         | Jeff A    |      |      |   |
 | Profiles            | Jeff A    |      |      |   |
 | FW Update           | Jeff A    |      |      |   |
-
-
 
 ### Presentations
 The Pub column will have the values pp, SB or N where:
