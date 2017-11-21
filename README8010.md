@@ -30,27 +30,30 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | BootOption | 1.0.0 | 2017-11-17 | Initial release. Contains information about a Boot Option contained within a system. |
 | BootOptionCollection | 1.0.0 | 2017-11-17 | Initial release. A collection of Boot Options. |
 | Protocol | 1.0.0 | 2017-11-17 | Initial release. Supporting schema file to hold definition of the common "Protocol" property. |
-| Chassis | 1.6.0 | 2017-11-17 | Added link to Assembly resource. |
+| Chassis | 1.6.0 | 2017-11-17 | Added link to Assembly resource. Added "StorageEnclosure" to "ChassisType". |
 | ComputerSystem | 1.5.0 | 2017-11-17 | Added support for managing the boot order (Boot Options). Added "SubModel" to describe product model variations. Added Action for "SetDefaultBootOrder". Added "LogicalProcessorCount" to "ProcessorSummary".  Added links for "ConsumingComputerSystems" and "SupplyingComputerSystems". |
 | Drive | 1.3.0 | 2017-11-17 | Added "SecureErase" Action. Added link to Assembly resource. |
+| Endpoint | 1.1.0 | 2017-11-17 | Added "IPTransportDetails" object. |
 | EthernetInterface | 1.4.0 | 2017-11-17 | Added multiple objects to allow for full configuration of DHCPv4 and DHCPv6. Added "IPv4StaticAddresses" to provide mechanism for specifying static IP addresses regardless of DHCP settings. Added "StaticNameServers" and "StatelessAddressAutoConfig" objects to support their configuration. |
 | LogEntry | 1.3.0 | 2017-11-17 | Added "OemLogEntryCode" and "OemSensorType" properties to allow for legacy IPMI OEM definitions. |
 | LogService | 1.1.0 | 2017-11-17 |  Added "LogEntryType" to describe the content type of a log. |
 | Memory | 1.4.0 | 2017-11-17 | Added "VolatileSizeMib", "NonVolatileSizeMiB", "CacheSizeMiB", "LogicalSizeMiB" properties. Added "Location" object. |
 | MemoryChunks | 1.2.0 | 2017-11-17 | Added "Status" object. |
 | NetworkAdapter | 1.1.0 | 2017-11-17 | Added "Assembly" link. Added "Location" object to "Controllers" object. |
-| PCieDevice | 1.2.0 | 2017-11-17 | Added "Assembly" link. |
+| NetworkDeviceFunction | 1.2.0 | 2017-11-17 | Added "Endpoints" to "Links" object. |
+| PCIeDevice | 1.2.0 | 2017-11-17 | Added "Assembly" link. |
 | PhysicalContext | 1.3.0 | 2017-11-17 | Added additional enumerations for "PhysicalContext". |
 | Port | 1.1.0 | 2017-11-17 | Added "Location" object. |
 | Power | 1.5.0 |  2017-11-17 | Added "PowerInputWatts", "PowerOutputWatts", and "EffciencyPercent" properties, "Location" object, and "Assembly" link to "PowerSupply" object. |
 | Processor | 1.2.0 | 2017-11-17 | Added "Assembly" link. |
 | Redundancy | 1.3.0 | 2017-11-17 | Added "NotRedundant" enumeration to "Mode".  Changed "Mode" to be writable. Removed duplicate description text that appears in the enumeration definitions. |
-| Resource | 1.6.0 | 2017-11-17 | Added "Latitude", "Longitude" and "AltitudeMeters" to "Location" object. |
+| Resource | 1.6.0 | 2017-11-17 | Added "Latitude", "Longitude" and "AltitudeMeters" to "Location" object. Added "NQN" and "NSID" to "DurableNameFormat". |
 | ServiceRoot | 1.3.0 | 2017-11-17 | Added "Product" property for general product identification. Added "ProtocolFeaturesSupported" object to allow for discovery of supported optional Redfish protocol features. |
 | Storage | 1.4.0 | 2017-11-17 | Added "Assembly" link. |
 | Switch | 1.1.0 | 2017-11-17 | Added "Location" object. |
 | Thermal | 1.4.0 | 2017-11-17 | Added "Assembly" links to "Fan" objects. Added "DeltaReadingCelsius", "DeltaPhysicalContext", "MaxAllowableOperatingValue", "MinAllowableOperatingValue", "AdjustedMaxAllowableOperatingValue", and "AdjustedMinAllowableOperatingValue" to "Temperatures" object. |
 | VirtualMedia | 1.2.0 | 2017-11-17 | Added "InsertMedia" and "EjectMedia" Actions to provide standardized means for using virtual media features. Changed "Image", "Inserted", and "WriteProtected" to be writable. |
+| Zone | 1.2.0 | 2017-11-17 | Added "Identifiers" property. |
 | Bios | 1.0.3 | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
 | Chassis | 1.x.x | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
 | ComputerSystem | 1.x.x | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. Added descriptions for SystemType enumerations. |
