@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Thermal.v1_0_2.Thermal",
     "$ref": "#/definitions/Thermal",
     "definitions": {
@@ -27,7 +27,6 @@
                 },
                 "MemberId": {
                     "type": "string",
-                    "readonly": true,
                     "description": "This is the identifier for the member within the collection.",
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
@@ -46,8 +45,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "A numerical identifier to represent the temperature sensor.",
-                    "longDescription": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource."
+                    "description": "A numerical identifier to represent the temperature sensor",
+                    "longDescription": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource. "
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -57,9 +56,8 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
-                    "description": "Temperature.",
+                    "description": "Temperature",
                     "longDescription": "The value of this property shall be the current value of the temperature sensor's reading."
                 },
                 "UpperThresholdNonCritical": {
@@ -67,9 +65,8 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
-                    "description": "Above normal range.",
+                    "description": "Above normal range",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "UpperThresholdCritical": {
@@ -77,7 +74,6 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
                     "description": "Above normal range but not yet fatal.",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
@@ -87,9 +83,8 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
-                    "description": "Above normal range and is fatal.",
+                    "description": "Above normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "LowerThresholdNonCritical": {
@@ -97,9 +92,8 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
-                    "description": "Below normal range.",
+                    "description": "Below normal range",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "LowerThresholdCritical": {
@@ -107,7 +101,6 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
                     "description": "Below normal range but not yet fatal.",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
@@ -117,9 +110,8 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
-                    "description": "Below normal range and is fatal.",
+                    "description": "Below normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "MinReadingRangeTemp": {
@@ -127,9 +119,8 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
-                    "description": "Minimum value for ReadingCelsius.",
+                    "description": "Minimum value for ReadingCelsius",
                     "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "MaxReadingRangeTemp": {
@@ -137,9 +128,8 @@
                         "number",
                         "null"
                     ],
-                    "units": "Cel",
                     "readonly": true,
-                    "description": "Maximum value for ReadingCelsius.",
+                    "description": "Maximum value for ReadingCelsius",
                     "longDescription": "The value of this property shall indicate the highest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "PhysicalContext": {
@@ -192,7 +182,6 @@
                 },
                 "MemberId": {
                     "type": "string",
-                    "readonly": true,
                     "description": "This is the identifier for the member within the collection.",
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
@@ -201,9 +190,8 @@
                         "string",
                         "null"
                     ],
-                    "deprecated": "This property has been Deprecated in favor of Thermal.v1_1_0.Thermal.Fan.Name",
                     "readonly": true,
-                    "description": "Name of the fan.",
+                    "description": "Name of the fan",
                     "longDescription": "The value of this property shall be the name of the fan."
                 },
                 "PhysicalContext": {
@@ -221,7 +209,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Current fan speed.",
+                    "description": "Current fan speed",
                     "longDescription": "The value of this property shall be the current value of the fan sensor's reading."
                 },
                 "UpperThresholdNonCritical": {
@@ -230,7 +218,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Above normal range.",
+                    "description": "Above normal range",
                     "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not critical. The units shall be the same units as the related Reading property."
                 },
                 "UpperThresholdCritical": {
@@ -239,7 +227,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Above normal range but not yet fatal.",
+                    "description": "Above normal range but not yet fatal",
                     "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not yet fatal. The units shall be the same units as the related Reading property."
                 },
                 "UpperThresholdFatal": {
@@ -248,7 +236,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Above normal range and is fatal.",
+                    "description": "Above normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the Reading is above the normal range and is fatal. The units shall be the same units as the related Reading property."
                 },
                 "LowerThresholdNonCritical": {
@@ -257,7 +245,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Below normal range.",
+                    "description": "Below normal range",
                     "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not critical. The units shall be the same units as the related Reading property."
                 },
                 "LowerThresholdCritical": {
@@ -266,7 +254,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Below normal range but not yet fatal.",
+                    "description": "Below normal range but not yet fatal",
                     "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not yet fatal. The units shall be the same units as the related Reading property."
                 },
                 "LowerThresholdFatal": {
@@ -275,7 +263,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Below normal range and is fatal.",
+                    "description": "Below normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the Reading is below the normal range and is fatal. The units shall be the same units as the related Reading property."
                 },
                 "MinReadingRange": {
@@ -284,7 +272,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Minimum value for Reading.",
+                    "description": "Minimum value for Reading",
                     "longDescription": "The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."
                 },
                 "MaxReadingRange": {
@@ -293,7 +281,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Maximum value for Reading.",
+                    "description": "Maximum value for Reading",
                     "longDescription": "The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property."
                 },
                 "RelatedItem@odata.count": {
@@ -308,8 +296,7 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
-                    "readonly": true,
-                    "description": "The ID(s) of the resources serviced with this fan.",
+                    "description": "The ID(s) of the resources serviced with this fan",
                     "longDescription": "The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that are being serviced by this fan."
                 },
                 "Redundancy@odata.count": {
@@ -324,6 +311,7 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
+                    "readonly": true,
                     "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
                     "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
                 },
@@ -383,19 +371,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -444,6 +429,7 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
+                    "readonly": true,
                     "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
                     "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
                 }
@@ -456,5 +442,5 @@
             "longDescription": "This resource shall be used to represent a thermal metrics resource for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

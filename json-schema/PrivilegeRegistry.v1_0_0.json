@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#PrivilegeRegistry.v1_0_0.PrivilegeRegistry",
     "$ref": "#/definitions/PrivilegeRegistry",
     "definitions": {
@@ -64,9 +64,7 @@
                     "description": "List mapping between HTTP method and privilege required for entity.",
                     "longDescription": "List mapping between HTTP method and privilege required for entity."
                 }
-            },
-            "description": "This type describes a mapping between an entity and the relevant privileges used to access it.",
-            "longDescription": "This type shall describe a mapping between an entity and the relevant privileges used to access it."
+            }
         },
         "OperationMap": {
             "type": "object",
@@ -134,8 +132,7 @@
                     "longDescription": "Indicates privilege required for HTTP DELETE operation."
                 }
             },
-            "description": "Used for describing the specific privileges for a set of HTTP operations.",
-            "longDescription": "This type shall describe the specific privileges required for a set of HTTP operations."
+            "description": "Used for describing the specific privileges for a set of HTTP operations."
         },
         "OperationPrivilege": {
             "type": "object",
@@ -164,8 +161,7 @@
                     "longDescription": "This array shall contain a set of strings that match 0 or more of the strings found in the PrivilegesUsed and OEMPrivilegesUsed properties."
                 }
             },
-            "description": "Used for describing the specific privileges for a given type of HTTP operation.",
-            "longDescription": "This type shall describe the specific privileges required for a given type of HTTP operation."
+            "description": "Used for describing the specific privileges for a given type of HTTP operation."
         },
         "PrivilegeRegistry": {
             "type": "object",
@@ -280,10 +276,8 @@
                     "description": "List mapping between HTTP operation and privilege needed to perform operation.",
                     "longDescription": "List mapping between HTTP operation and privilege needed to perform operation."
                 }
-            },
-            "description": "This type describes a mapping between one or more targets and the HTTP operations associated with them.",
-            "longDescription": "This type shall describe a mapping between one or more targets and the HTTP operations associated with them."
+            }
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
