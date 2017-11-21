@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/5/Storage/NVMeSubsystem/StorageControllers/Members/$entity",
     "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes/1",
-    "@odata.type": "#Volume.v1_1_0.Volume",
+    "@odata.type": "#Volume.v1_0_3.Volume",
     "Id": "1",
     "Name": "NVMe Bay 0",
     "Status": {
@@ -16,13 +16,7 @@
             {
                 "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"
             }
-        ],
-        "Endpoints": [
-            {
-                "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target1"
-            }
         ]
     },
-    "Actions": {
-    }
+    "Actions": {}
 }
