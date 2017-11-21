@@ -95,12 +95,6 @@
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
             },
-            "enumLongDescriptions": {
-                "Unknown": "This value shall represent the Indicator LED is in an unknown state.  The service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Lit": "This value shall represent the Indicator LED is in a solid on state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Blinking": "This value shall represent the Indicator LED is in a blinking state where the LED is being turned on and off in repetition.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Off": "This value shall represent the Indicator LED is in a solid off state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."
-            },
             "enumDeprecated": {
                 "Unknown": "This value has been Deprecated in favor of returning null if the state is unknown."
             }

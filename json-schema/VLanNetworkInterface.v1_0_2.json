@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#VLanNetworkInterface.v1_0_2.VLanNetworkInterface",
     "$ref": "#/definitions/VLanNetworkInterface",
     "definitions": {
@@ -25,7 +25,6 @@
                         "boolean",
                         "null"
                     ],
-                    "readonly": false,
                     "description": "This indicates if this VLAN is enabled.",
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
@@ -34,7 +33,6 @@
                         {"$ref": "#/definitions/VLANId"},
                         {"type": "null"}
                     ],
-                    "readonly": false,
                     "description": "This indicates the VLAN identifier for this VLAN.",
                     "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }
@@ -42,9 +40,7 @@
             "requiredOnCreate": [
                 "VLANEnable",
                 "VLANId"
-            ],
-            "description": "This type describes the attributes of a Virtual LAN.",
-            "longDescription": "This type shall contain any attributes of a Virtual LAN."
+            ]
         },
         "VLANId": {
             "type": "number",
@@ -83,26 +79,22 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "VLANEnable": {
                     "type": [
                         "boolean",
                         "null"
                     ],
-                    "readonly": false,
                     "description": "This indicates if this VLAN is enabled.",
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
@@ -111,7 +103,6 @@
                         {"$ref": "#/definitions/VLANId"},
                         {"type": "null"}
                     ],
-                    "readonly": false,
                     "description": "This indicates the VLAN identifier for this VLAN.",
                     "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }
@@ -124,9 +115,8 @@
                 "VLANEnable",
                 "VLANId"
             ],
-            "description": "This resource describes the attributes of a Virtual LAN.",
-            "longDescription": "This resource shall contain any attributes of a Virtual LAN."
+            "description": "This resource contains information for a Virtual LAN (VLAN) network instance available on a manager, system or other device."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

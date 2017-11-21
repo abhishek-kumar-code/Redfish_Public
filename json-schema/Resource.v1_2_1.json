@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Resource.v1_2_1",
     "definitions": {
         "ReferenceableMember": {
@@ -200,9 +200,7 @@
                     "longDescription": "This property shall represent the format of the DurableName property."
                 }
             },
-            "readonly": true,
-            "description": "This type describes any additional identifiers for a resource.",
-            "longDescription": "This type shall contain any additional identifiers of a resource."
+            "readonly": true
         },
         "IndicatorLED": {
             "type": "string",
@@ -215,11 +213,6 @@
                 "Lit": "The Indicator LED is lit.",
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
-            },
-            "enumLongDescriptions": {
-                "Lit": "This value shall represent the Indicator LED is in a solid on state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Blinking": "This value shall represent the Indicator LED is in a blinking state where the LED is being turned on and off in repetition.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Off": "This value shall represent the Indicator LED is in a solid off state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."
             }
         },
         "Location": {
@@ -244,7 +237,6 @@
                         "string",
                         "null"
                     ],
-                    "deprecated": "This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.",
                     "readonly": true,
                     "description": "This indicates the location of the resource.",
                     "longDescription": "This property shall represent the location of the resource."
@@ -254,7 +246,6 @@
                         "string",
                         "null"
                     ],
-                    "deprecated": "This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.",
                     "readonly": true,
                     "description": "This represents the format of the Info property.",
                     "longDescription": "This property shall represent the format of the Info property."
@@ -263,9 +254,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
                 }
             },
-            "readonly": true,
-            "description": "This type describes the location of a resource.",
-            "longDescription": "This type shall describe the location of a resource."
+            "readonly": true
         },
         "PowerState": {
             "type": "string",
@@ -283,5 +272,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

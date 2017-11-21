@@ -125,8 +125,8 @@
                         ]
                     },
                     "readonly": true,
-                    "description": "A list of MessageIds that the service will only send.  If this property is absent or the array is empty, then Events with any MessageId will be sent to the subscriber.",
-                    "longDescription": "The value of this property shall specify an array of MessageIds that are the only allowable values for the MessageId property within an EventRecord sent to the subscriber.  Events with MessageIds not contained in this array shall not be sent to the subscriber.  If this property is absent or the array is empty, the service shall send Events with any MessageId to the subscriber."
+                    "description": "A list of MessageIds that the service will only send.",
+                    "longDescription": "The value of this property shall specify an array of MessageIds that are the only allowable values for the MessageId property within an EventRecord sent to the subscriber.  Events with MessageIds not contained in this array shall not be sent to the subscriber."
                 },
                 "OriginResources@odata.count": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
@@ -141,8 +141,8 @@
                         "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     "readonly": true,
-                    "description": "A list of resources for which the service will only send related events.  If this property is absent or the array is empty, then Events originating from any resource will be sent to the subscriber.",
-                    "longDescription": "The value of this property shall specify an array of Resources, Resource Collections, or Referenceable Members that are the only allowable values for the OriginOfCondition property within an EventRecord sent to the subscriber.  Events originating from Resources, Resource Collections, or Referenceable Members not contained in this array shall not be sent to the subscriber.  If this property is absent or the array is empty, the service shall send Events originating from any Resource, Resource Collection, or Referenceable Member to the subscriber."
+                    "description": "A list of resources for which the service will only send related events.",
+                    "longDescription": "The value of this property shall specify an array of Referenceable Members that are the only allowable values for the OriginOfCondition property within an EventRecord sent to the subscriber.  Events originating from Referenceable Members not contained in this array shall not be sent to the subscriber."
                 }
             },
             "required": [
