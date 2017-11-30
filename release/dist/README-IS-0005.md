@@ -129,10 +129,6 @@ Array properties of specific sensor types are located:
 * As top level properties in equipment entity schema
 * Within sub-component definitions.
 
-
-## Power Equipment Sensor Types
-Sensors types for Redfish data model aligned power equipment schema.
-  
 SensorType enumeration values:
   
 * Temperature
@@ -149,8 +145,16 @@ SensorType enumeration values:
 * Barometric
 * Altitude
 
+# Typical Power and Cooling Equipment and Sub-Component Specific Sensors
+The following information are the types of sensors typically found on various types of power and cooling equipment.  All sensor types are accounted for in the common sensor model.  Standards based requirements for specific sensors for a particular type of equipment are expected to be defined in a subsequent equipment specific Interoperabilty Profile.  For more information on Interoperability Profiles see DMTF Redfish Publications DSP0272 (Redfish Interoperability Profile Specification) and DSP8013 ( Redfish Interoperability Profile Bundle).
+
+
+## Power Equipment Sensor Types
+Sensors types for Redfish data model aligned power equipment schema.
+
 ### Generator
-* LiquidLevel
+* Fuel Level
+* Oil Level
 * Temperature
 * AC Output Sub-Component Sensors
   * Frequency
@@ -317,8 +321,6 @@ Sensors types for Redfish data model aligned cooling equipment schema.
 * Unit Fan Speed
 * Supply Water Temperature
 * Return Water Temperature
-* Chilled Water Valve Opening
-* Cold Water Valve Opening
 * Differential Water Pressure
 * Outside Air Humidity
 * Outside Air Temperature
