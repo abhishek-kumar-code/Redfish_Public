@@ -14,7 +14,8 @@ IMPORTANT: These documents are not final. They do not necessarily reflect the vi
 
 The following files are part of the Redfish Data Center Equipment Schema development effort:
 
-* DataCenterEquipmentSchemaREADME.pdf - Redfish Data Center Equipment Schema Readme (Work in Progress release)
+* README-IS-0005.pdf - Redfish Data Center Equipment Schema Readme (for Work in Progress release)
+* Overview-IS-0005.pdf - Overview of Redfish DCIM modeling concepts (for Work in Progreess release)
 
 # Redfish Work in Progress Schemas
 
@@ -24,6 +25,9 @@ The following new schema files are released as Work In Progress documents.
 | ---         | ---     | ---       | ---             |
 | AirHandlingUnit_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
 | AirHandlingUnitCollection_v1 |  0.2.0a | 2017-12-01 | Work in Progress release.  |
+| Alarm_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
+| AlarmCollection_v1 |  0.2.0a | 2017-12-01 | Work in Progress release.  |
+| AlarmRegistry_v1 |  0.2.0a | 2017-12-01 | Work in Progress release.  |
 | CRAC_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
 | CRACCollection_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
 | CRAH_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
@@ -40,6 +44,8 @@ The following new schema files are released as Work In Progress documents.
 | GeneratorCollection_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
 | PDU_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
 | PDUCollection_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
+| PowerMeter_v1 |  0.2.0a | 2017-12-01 | Work in Progress release.  |
+| PowerMeterCollection_v1 |  0.2.0a | 2017-12-01 | Work in Progress release.  |
 | RackPDU_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
 | RackPDUCollection_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
 | Rectifier_v1 | 0.2.0a | 2017-12-01 | Work in Progress release.  |
@@ -147,7 +153,6 @@ SensorType enumeration values:
 
 # Typical Power and Cooling Equipment and Sub-Component Specific Sensors
 The following information are the types of sensors typically found on various types of power and cooling equipment.  All sensor types are accounted for in the common sensor model.  Standards based requirements for specific sensors for a particular type of equipment are expected to be defined in a subsequent equipment specific Interoperabilty Profile.  For more information on Interoperability Profiles see DMTF Redfish Publications DSP0272 (Redfish Interoperability Profile Specification) and DSP8013 ( Redfish Interoperability Profile Bundle).
-
 
 ## Power Equipment Sensor Types
 Sensors types for Redfish data model aligned power equipment schema.
