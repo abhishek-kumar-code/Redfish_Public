@@ -3,7 +3,7 @@ DocTitle: Data Center Equipment Schema Readme
 DocNumber: 'IS-0005'
 DocClass: Informative
 DocVersion: '0.2a'
-modified: '2017-08-22'
+modified: '2017-012-01'
 status: Work in Progress
 released: false
 copyright: '2017'
