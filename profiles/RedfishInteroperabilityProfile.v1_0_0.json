@@ -406,7 +406,7 @@
         "Repository": {
             "type": "string",
             "format": "uri",
-            "description": "A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files shall follow the Redfish Schema file naming conventions from the Redfish Specification. If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org ."
+            "description": "A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles)."
         }
     }
 }
