@@ -44,7 +44,7 @@ The following referenced documents are indispensable for the application of this
 [http://tools.ietf.org/html/draft-zyp-json-schema-04.txt](http://tools.ietf.org/html/draft-zyp-json-schema-04.txt "http://tools.ietf.org/html/draft-zyp-json-schema-04.txt")
 * <a id="JSONSchema-Validation">JSON Schema, Interactive and Non-Interactive Validation, Draft 4</a>
 [http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt](http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt "http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt")
-* <a id="Redfish">DMTF Redfish Scalable Platforms Management API, DSP0266</a> [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf")
+* <a id="Redfish">DMTF Redfish Scalable Platforms Management API, DSP0266</a> [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.4.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.4.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.4.0.pdf")
 
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
