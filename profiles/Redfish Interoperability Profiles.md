@@ -44,8 +44,7 @@ The following referenced documents are indispensable for the application of this
 [http://tools.ietf.org/html/draft-zyp-json-schema-04.txt](http://tools.ietf.org/html/draft-zyp-json-schema-04.txt "http://tools.ietf.org/html/draft-zyp-json-schema-04.txt")
 * <a id="JSONSchema-Validation">JSON Schema, Interactive and Non-Interactive Validation, Draft 4</a>
 [http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt](http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt "http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt")
-* <a id="Redfish">DMTF Redfish Scalable Platforms Management API, DSP0266</a> [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf] (http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf")
-[http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt](http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt "http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt") 
+* <a id="Redfish">DMTF Redfish Scalable Platforms Management API, DSP0266</a> [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.3.0.pdf")
 
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -63,23 +62,33 @@ The Redfish Specification separates the definition of the protocol from the data
 The Redfish Interoperability Profile concept was created to simplify that process, by providing a means to communicate the functionality provided with a single statement - that an implementation meets the requirements set forth in a Redfish Interoperability Profile.
 
  
-## Design Tenets
+## Design tenets
 
 All profile entries (at the Profile, Resource, or Property level) are "additive".  That is, each requirement can only apply more rigid requirements which override less rigid requirements.
 
 Profile requirements do not allow for exclusions of data.  Implementations are able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.  This include both standard properties and OEM extensions.
    
-# Profile Tools
+# Profile tools
 
-A free, open source utility has been created by the SPMF to verify that a Redfish Service implementation conforms to the requirements included in a Redfish Interoperability Profile.  The Redfish Interop Validator is available for download from the DMTF's organization on Github at https://github.com/DMTF/Redfish-Interop-Validator
+A free, open source utility has been created by the SPMF to verify that a Redfish Service implementation conforms to the requirements included in a Redfish Interoperability Profile.  The Redfish Interop Validator is available for download from the DMTF's organization on Github at: https://github.com/DMTF/Redfish-Interop-Validator
 
+# Profile repository
 
-# Profile Document Definition
+Redfish Interoperability Profiles published or re-distributed by the DMTF are available for download from the Redfish Profile Repository located at: http://redfish.dmtf.org/profiles 
+
+# Profile document definition
 
 A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a JSON-schema form (RedfishInteroperabilityProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/profiles for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
 
 The JSON document structure is intended to align easily with JSON payloads retrieved from Redfish Service implementations, to allow for easy comparisons and conformance testing.  Many of the properties defined within this structure have assumed default values that correspond with the most common use case, so that those properties can be omitted from the document for brevity.
 
+## Filename conventions
+
+The JSON document describing a Profile follows the Redfish Schema file naming conventions from the Redfish Specification. The filename format for Profiles shall be formatted as:
+
+  *ProfileName.vMajorVersion_MinorVersion_Errata.json*
+
+For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The format shall include the Profile name and Profile version matching those property values within the document.
 
 ## Basic functions
 
@@ -95,13 +104,13 @@ At the top level of the JSON document are the basic properties which describe th
 | OwningEntity | string | Name of the owning entity that defined this Redfish Interoperability Profile. |
 | RequiredProfiles | object | A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
 
-### Required Profiles
+### Required profiles
 
 The RequiredProfiles object contains properties (of type object) that are named to match the name of the profile to be included.  Each of these sub-objects contains the properties listed below.
 
 | property | type | description | 
 | --- | --- | --- |
-| Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
+| Repository | string | A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles). |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 
 ### Example
@@ -197,7 +206,7 @@ The following options are available at the schema level:
 
 | property | type | description | 
 | --- | --- | --- |
-| Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
+| Repository | string | A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles).  |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | ReadRequirement | string | Resource-level requirement for this schema, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
@@ -311,7 +320,7 @@ This function specifies the level of write support (HTTP PATCH or PUT) applied t
 | None | This property is not required to be writable by this profile.  It is listed here for clarity, and is the default value used if 'WriteRequirement' is not present. |
 
 
-#### Conditional Requirements
+#### Conditional requirements
 
 The most flexible aspect of the Redfish Profile definition is the ability to make resource or property-level requirements that are dependent on one or more ConditionalRequirements within the resource and the parent resource(s) in the resource tree.
 
@@ -366,7 +375,7 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 	}
 ~~~
 
-##### Compare Property
+##### Compare property
 
 A typical need for a conditional requirement is a dependency on the value of another property within the resource.  This type of dependency can be used when several different product variations share a common schema definition.  In that case, Redfish schemas normally define a type-specifying property with enumerations (for a variety of product categories) that can be used to differentiate Profile requirements by product category.
 
@@ -397,7 +406,7 @@ This example shows a CompareProperty condition applied to the 'IndicatorLED' pro
 	},
 ~~~
 
-### Action Requirements
+### Action requirements
 
 As several critical functions of a Redfish Service are implemented as 'Actions', the Profile may place requirements for support of these Actions.  The requirements can which Parameters must be supported, and may specify Allowable Values for those parameters.
 
@@ -447,7 +456,7 @@ The following functions are available to specify Registry-level requirements:
 
 | property | type | description | 
 | --- | --- | --- |
-| Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
+| Repository | string | A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles).  |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | ReadRequirement | string | Resource-level requirement for this Registry, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
@@ -490,7 +499,7 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 	}
 ~~~
 	
-# Change Log
+# Change log
 
 | version | date | changes |
 | --- | --- | --- |
