@@ -88,7 +88,7 @@ The JSON document describing a Profile follows the Redfish Schema file naming co
 
   *ProfileName.vMajorVersion_MinorVersion_Errata.json*
 
-For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The format shall include the Profile name and Profile version matching those property values within the document.
+For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The filename shall include the Profile name and Profile version matching those property values within the document.
 
 ## Basic functions
 
