@@ -297,7 +297,7 @@
                 "Endpoints": {
                     "description": "An array of references to endpoints associated with this network device function.",
                     "items": {
-                        "type": null
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Endpoint.json#/definitions/Endpoint"
                     },
                     "longDescription": "The type shall contain an array property who's members reference resources, of type Endpoint, which are associated with this network device function.",
                     "readonly": true,
