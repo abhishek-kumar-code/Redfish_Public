@@ -32,7 +32,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Protocol | 1.0.0 | 2017-11-17 | Initial release. Supporting schema file to hold definition of the common "Protocol" property. |
 | Chassis | 1.6.0 | 2017-11-17 | Added link to Assembly resource. Added "StorageEnclosure" to "ChassisType". |
 | ComputerSystem | 1.5.0 | 2017-11-17 | Added support for managing the boot order (Boot Options). Added "SubModel" to describe product model variations. Added Action for "SetDefaultBootOrder". Added "LogicalProcessorCount" to "ProcessorSummary".  Added links for "ConsumingComputerSystems" and "SupplyingComputerSystems". |
-| Drive | 1.3.0 | 2017-11-17 | Added "SecureErase" Action. Added link to Assembly resource. |
+| Drive | 1.3.0 | 2017-11-17 | Added link to Assembly resource. |
 | Endpoint | 1.1.0 | 2017-11-17 | Added "IPTransportDetails" object. |
 | EthernetInterface | 1.4.0 | 2017-11-17 | Added multiple objects to allow for full configuration of DHCPv4 and DHCPv6. Added "IPv4StaticAddresses" to provide mechanism for specifying static IP addresses regardless of DHCP settings. Added "StaticNameServers" and "StatelessAddressAutoConfig" objects to support their configuration. |
 | LogEntry | 1.3.0 | 2017-11-17 | Added "OemLogEntryCode" and "OemSensorType" properties to allow for legacy IPMI OEM definitions. |
