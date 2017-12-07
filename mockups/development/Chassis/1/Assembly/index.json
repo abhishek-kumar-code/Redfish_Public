@@ -1,5 +1,5 @@
 {
-	"@Redfish.Copyright": "Copyright 2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@Redfish.Copyright": "Copyright 2017-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#Assembly.Assembly",
 	"@odata.id": "/redfish/v1/Chassis/1/Assembly",
 	"@odata.type": "#Assembly.v1_0_0.Assembly",
@@ -30,8 +30,12 @@
 			"Model": "F58AS",
 			"PartNumber": "3434-149",
 			"Vendor": "Contoso",
-			"Version": "1.44B",
-			"BinaryDataURI": "/dumpster/422"
+			"Version": "2.4.481",
+			"BinaryDataURI": "/dumpster/422",
+			"Status": {
+				"State": "Enabled",
+				"Health": "Warning"
+			}
 		}
 	],
 	"Oem": {}
