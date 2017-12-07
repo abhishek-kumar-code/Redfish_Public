@@ -169,6 +169,6 @@
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
       </EntityType>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>
