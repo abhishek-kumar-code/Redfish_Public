@@ -129,7 +129,7 @@ The following is an example of the top-level properties in a Profile, with two R
 			"MinVersion": "1.0.0"
 		},
 		"ContosoPizza": {
-			"Repository": "contoso.com/profiles",
+			"Repository": "http://contoso.com/profiles",
 			"MinVersion": "1.0.0"
 		}
 	}
@@ -493,7 +493,7 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 		"ContosoPizzaMessages": {
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
-			"Repository": "contoso.com/registries",
+			"Repository": "http://contoso.com/registries",
 			"ReadRequirement": "Mandatory"
 		}
 	}
