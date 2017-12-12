@@ -321,7 +321,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-    </Schema>    
-    
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
