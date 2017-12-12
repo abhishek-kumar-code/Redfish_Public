@@ -14,9 +14,12 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | ---        | ---        | ---           | ---                 | ---                                          |
 | OCP Summit | March 2018 | San Jose, CA  | www.opencompute.org | Booth and workshop attendance / presentation |
 | LISA       | 10/29-11/2 | San Francisco |                     | Session?                                     |
-| SC17       | November   | Denver, CO    |                     | BoF session proposed                         |
+| SC18       | November 2018   | Denver, CO    |                     | Booth, propose session                       |
+| Japan IT   | May 2018   | Tokyo         | Kes Wold            | DMTF booth already planned                   |
+| Datacenter World |  March 2018 | San Antonio, TX  |            | Booth, propose session                      |
+| OCP Fall   | 3Q-4Q18    | TBD           |                     | Booth and workshop attendance / presentation |
 | UCC        | 12/5-8     | Austin, TX    | Alan Sill           | Session:  http://www.depts.ttu.edu/cac/conferences/ucc2017/tutorials.php#tutorial5 |
-
+| NOMS 2019  | April 2019 |               |                     | Submission deadline likely November 2018    |
 
 ## Specifications
 
