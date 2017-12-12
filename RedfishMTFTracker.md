@@ -26,12 +26,14 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 * DSP0266 - Core Redfish Spec
 * DSP0270 - Host Interface Spec
 * DSP0271 - Yang to Redfish Mapping Spec
+* DSP0272 - Redfish Interoperability Spec
 * DSP0218 - Redfish Device Enablement (PMCI WG)
 
 ## Schema & Registries
 
 * DSP8011 - Registries.  These get published and unzipped on redfish.dmtf.org/registries
-* DSP8020 - Schema Zip.  These get published and unzipped on redfish.dmtf.org/schemas
+* DSP8010 - Schema Zip.  These get published and unzipped on redfish.dmtf.org/schemas
+* DSP8013 - Profile ZIP.  These get published and unzipped on redfish.dmtf.org/profiles
 
 ## Informational Specification Bundles
 
