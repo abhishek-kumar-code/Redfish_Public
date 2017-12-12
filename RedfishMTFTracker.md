@@ -43,14 +43,14 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 
 | Title               | Subject   | DSP No  | Ver    | Date    |
 | ---                 | ---       | ---     | ---    | ---     |
-| Redfish Mockups     | Zips      | DSP2044 | 1.1.0  | 2017-01 |
+| Redfish Mockups     | Zips      | DSP2043 | 1.2.0  | 2017-12 |
 | Redfish White Paper | Overview  | DSP2044 | 1.0.2  | 2017-06 |
 | Redfish FAQ         | Overview  | DSP2044 | 1.0.2  | 2015-08 |
-| RF Schema Guide     | Schema    | DSP2046 | 2017.1 | 2017-05 |
+| RF Schema Guide     | Schema    | DSP2046 | 2017.3 | 2017-12 |
 | RF for Neworking    | Alliance  | DSP2046 | 0.1.0b | 2017-03 |
 | OCP HW Mgmt w/ RF   | Profile   | DSP2049 | 0.2.2b | 2017-06 |
-| Composability       | Schema    | DSP2050 | 1.1.0  | 2017-07 |
-| Telemetry           | Schema    | DSP2051 | 1.1.0  | 2017-07 |
+| Composability       | Schema    | DSP2050 | 1.0.0  | 2017-07 |
+| Telemetry           | Schema    | DSP2051 | 0.9.0  | N/A     |
 | Redfish Technote    | Technote  | NA      | NA     | 2016-08 |
 
 ## Educational Material
