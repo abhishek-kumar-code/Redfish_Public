@@ -12,6 +12,12 @@ copyright: '2017'
 
 # Foreword
 
+Redfish supports a wide variety of solutions, from servers to storage, networking to fabrics with power and cooling. As such, each management domain has models in which readings for important data are scattered throughout the model. The Redfish telemetry model makes it possible to describe the a since locations where the metadata for the readings/metrics, the definition of reports gathering readings from multiple locations in the model, and specifying triggers and trigger actions associated with a specific metric reading.
+
+
+
+
+
 The Redfish Telemetry White Paper was prepared by the Scalable Platforms Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
@@ -33,12 +39,14 @@ The telemetry model is a proposal to support the ability for a Redfish service t
 * The triggers to apply to a specific metric
 * The characteristics and contents of metric reports
 
-# Requirements of Telemetry Model
-The telemetry model is design to fulfill the following requirements.
+In specifying this work-in-progress telemetry model, there are some aspects of the telemetry model where two ways of modeling are possible and each option having benefits and disadvantages.  In those cases, both models are presented in the telemetry model and described in this document in section XXXXXX. Please provide feedback, if one or both modeling options are desired.
+This feedback from the industry would inform and influence the specification of an unified telemetry model. 
 
-* Support the telemetry/sensors properties within the existing models
-* The telemetry model shall be optional. The elements of the telemetry model are incremental to existing models
-* Comprehends various sources of metrics
+# Requirements of Telemetry Model
+The telemetry model is design to fulfill the following requirements. These requirements are expounded subsequently.
+
+* Support the metrics, sensor values and other reading within the existing models
+* Elements of the telemetry model are extension to the existing model
 * Models for capabilities beyond a telemetry reading
 
 The requirement to support telemetry and sensors within the existing models is driven by the fact that properties representing environmental sensors and digital meters are present throughout the current Redfish models. In this document, these properties will be referred to as _metric properties_.
@@ -46,8 +54,7 @@ The requirement to support telemetry and sensors within the existing models is d
 The metric properties in the current Redfish model can appear is a variety of ways. The presumption is that this variety will continue as models are extended or added. Metric properties can be a simple JSON object or within a complex JSON object within a resource (e.g. Thermal and Power resource). Metric properties can be in a dedicated resource (e.g. MemoryMetrics resource). With YANG models, the dedicated resource is used often (e.g. statistics resource).
 ![Figure 1](TelemetryWhitePaper/Figure-MetricProperties.jpg "Figure 1")
 
-The requirement that the telemetry model shall be optional means that no part of the model is required to be implemented.  More specifically, a Redfish service can implement none, one or all of the elements in the telemetry model.
-Only if the Redfish service desires to expose the capabilities of the telemetry model should that portion of the telemetry model implemented.
+The requirement that the telemetry model is an extension of the existing model, also means a Redfish service can implement one, two, or all of the elements in the telemetry model.
 
 The requirement that the Telemetry model comprehends various telemetry resources recognizes the that there many sources of metrics.  The telemetry model supports the following types of metrics:
 
@@ -74,7 +81,7 @@ The telemetry model has a Telemetry Service with four subordinate collection res
 * Metric Triggers - this contain threshold triggers and actions that apply to a metric property
 
 ## Modeling Options
-There are some areas of the Telemetry where more multiple modeling options are possible and where each modeling option have benefits and disadvantages.  In those cases, both models are present in the telemetry model and described in this document. It is hoped that feedback from the industry would inform and influence the selection of a single model. The areas where modeling options exists:
+There are some areas of the Telemetry for which two ways of modeling an aspect of telemetry are possible and each option has benefits and disadvantages.  In those cases, both models are presented in the telemetry model and described in this document. It is hoped that feedback from the industry would inform and influence the selection of a single model. The areas where modeling options exists:
 
 * Specifying re-occuring measurements
 * Specifying triggers
@@ -83,6 +90,15 @@ There are some areas of the Telemetry where more multiple modeling options are p
 
 ### Specifying Re-occurring Measurements
 There are two locations for specifying the re-occuring measurements.  The options are in the MetricDefinition resource or the MetricReportDefinition resource.
+
+
+When specified in the MetricDefinition resource, there is a single SensingInterval property.
+
+'''
+	"SensingInterval": "PT0.001S",
+'''
+
+When specified in the MetricReportDefinition resource, the re-occurence property is placed in the RecurranceInterval property within the Schedule object.  The Lifetime property specifies "the time after provisioning when the schedule as a whole expires." - it is one the Schedule object properties used to control a schedule (see Schedule_v1.xml)
 
 ```
 	"Schedule": {
@@ -145,7 +161,7 @@ The second option can be used when no metric property exists for the result of a
 Note: The calculations are specified by name (e.g AverageOverInterval). This works for finite set of commonly used formulas.  There is the possibility of adding a mechanism of describing general formulas.  This is not currently addressed in the telemetry model.
 
 ### Specifying Duration
-In Redfish, specifying points in time should conform to the ISO 8601 date-time format.
+In Redfish, the specification of points-in-time should conform to the ISO 8601 date-time format.
 
 In general, the Redfish convention appends units-of-measure to the name of a property (e.g. PowerConsumedWatts). The units-of-measure should conform to the Unified Code for Units of Measure (UCUM).
 
@@ -157,7 +173,7 @@ For durations, the Redfish model uses various methods, as shown in the examples,
 * Setting#/MaintenanceWindowDurationInSeconds
 * SessionService#/SessionTimeout
 
-The telemetry model specifies durations using the duration format specified in ISO 8601.
+The telemetry model specifies durations using the ISO 8601 duration format.
 
 	P[n]Y[n]M[n]DT[n]H[n]M[n]S
 
@@ -379,9 +395,9 @@ The properties of MetricReportDefinition are described below.
 ### MetricReportType
 The `MetricReportType` property specifies when the report is created and can have the following values.
 
-* **Periodic** - The metric report shall be updated periodically
-* **OnChange** - The metric report shall be updated when the values change 
-* **OnReport** - The metric report shall be updated each time a client reads it 
+* **Periodic** - The metric report is updated periodically
+* **OnChange** - The metric report is updated when the values change 
+* **OnReport** - The metric report is updated each time a client reads it 
 
 ### ReportActions
 The `ReportActions` array property specifies the action(s) to perform when a metric report is generated.
@@ -466,7 +482,7 @@ The `DiscreteTriggers` array property specifies the values of metric which will 
 The `MetricProperties` array property specifies metrics which are metrics to monitor against the triggers.  The `MetricProperties` property may have wildcards.
 
 ### Example
-The following is an example of a numeric trigger with two thresholds (Upper Threshold Critical and Non Critical). When the trigger occurs, an Alert Event shall be sent to the subscribers, and will include the corresponding severity.
+The following is an example of a numeric trigger with two thresholds (Upper Threshold Critical and Non Critical). When the trigger occurs, an Alert Event is sent to the subscribers, and will include the corresponding severity.
 
 ```json
 {
