@@ -553,7 +553,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_2">
       <Annotation Term="OData.Description" String="This version was created to perform editoral updates of validation patterns in this schema."/>
-      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_0.AttributeRegistry"/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_1.AttributeRegistry"/>
     </Schema>
     
   </edmx:DataServices>
