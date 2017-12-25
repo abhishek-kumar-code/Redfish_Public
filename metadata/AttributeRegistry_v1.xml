@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.1.1-->
+<!--# Redfish Schema:  AttributeRegistry  v1.1.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -167,7 +167,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A path that describes the menu hierarchy of this attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string indicating the menu hierarchy of this attribute, in the form of a path to the menu names."/>
-          <Annotation Term="Validation.Pattern" String="^[.]?[A-Za-z0-9//]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[.]?[A-Za-z0-9_//]+$"/>
         </Property>
         <Property Name="ReadOnly" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -238,7 +238,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The unique name string of this menu."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of this menu that is unique in this registry."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Z][A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="DisplayName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -264,7 +264,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A path that describes this menu hierarchy relative to other menus."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string indicating the menu hierarchy of this menu, in the form of a path to the menu names."/>
-          <Annotation Term="Validation.Pattern" String="^[.]?[A-Za-z0-9//]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[.]?[A-Za-z0-9_//]+$"/>
         </Property>
       </ComplexType>
 
@@ -279,7 +279,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The AttributeName of the attribute whose change triggers the evaluation of this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the AttributeName of the attribute whose change triggers the evaluation of this dependency expression."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Z][A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="Type" Type="AttributeRegistry.v1_0_0.DependencyType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -315,7 +315,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Name of the attribute that is affected by this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the AttributeName of the attribute that is affected by this dependency expression."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Z][A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="MapToProperty" Type="AttributeRegistry.v1_0_0.MapToProperty" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -336,7 +336,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The attribute that is used to evaluate this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the AttributeName of the attribute that is used in evaluating this dependency expression term."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Z][A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="MapFromProperty" Type="AttributeRegistry.v1_0_0.MapFromProperty" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -551,5 +551,10 @@
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_0.AttributeRegistry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to perform editoral updates of validation patterns in this schema."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_0.AttributeRegistry"/>
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
