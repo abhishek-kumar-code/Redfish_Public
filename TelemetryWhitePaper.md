@@ -12,12 +12,6 @@ copyright: '2017'
 
 # Foreword
 
-Redfish supports a wide variety of solutions, from servers to storage, networking to fabrics with power and cooling. As such, each management domain has models in which readings for important data are scattered throughout the model. The Redfish telemetry model makes it possible to describe the a since locations where the metadata for the readings/metrics, the definition of reports gathering readings from multiple locations in the model, and specifying triggers and trigger actions associated with a specific metric reading.
-
-
-
-
-
 The Redfish Telemetry White Paper was prepared by the Scalable Platforms Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
@@ -33,14 +27,17 @@ The DMTF acknowledges the following individuals for their contributions to this 
 
 Redfish is an evolving hardware management standard that is designed to be flexible, extensible, and inter-operable. 
 
+Redfish supports a wide variety of solutions, from servers to storage, networking to fabrics with power and cooling. As such, each management domain has models in which readings for important data are scattered throughout the model. The Redfish telemetry model makes it possible to describe the a since locations where the metadata for the readings/metrics, the definition of reports gathering readings from multiple locations in the model, and specifying triggers and trigger actions associated with a specific metric reading.
+
 The telemetry model is a proposal to support the ability for a Redfish service to expose:
 
 * The characteristics of metrics
 * The triggers to apply to a specific metric
 * The characteristics and contents of metric reports
 
-In specifying this work-in-progress telemetry model, there are some aspects of the telemetry model where two ways of modeling are possible and each option having benefits and disadvantages.  In those cases, both models are presented in the telemetry model and described in this document in section XXXXXX. Please provide feedback, if one or both modeling options are desired.
-This feedback from the industry would inform and influence the specification of an unified telemetry model. 
+In specifying this work-in-progress telemetry model, there are some aspects of the telemetry model where two models can be used to model an aspect of telemetry. Each model would have benefits and disadvantages.  The [Modeling Options](#modelingoptions) section describes where the modeling options which appear in this document.
+
+Feedback on the desirability of one or both modeling options are desired. Please provide feedback, since the feedback will inform and influence the specification of an unified telemetry model.
 
 # Requirements of Telemetry Model
 The telemetry model is design to fulfill the following requirements. These requirements are expounded subsequently.
@@ -81,7 +78,11 @@ The telemetry model has a Telemetry Service with four subordinate collection res
 * Metric Triggers - this contain threshold triggers and actions that apply to a metric property
 
 ## Modeling Options
-There are some areas of the Telemetry for which two ways of modeling an aspect of telemetry are possible and each option has benefits and disadvantages.  In those cases, both models are presented in the telemetry model and described in this document. It is hoped that feedback from the industry would inform and influence the selection of a single model. The areas where modeling options exists:
+There are some areas of the Telemetry for which two ways of modeling an aspect of telemetry are possible and each option has benefits and disadvantages.  In those cases, both models are presented in the telemetry model and described in this document.
+
+Feedback from the industry is requested so a decision on which model to retain in the Redfish standard.
+
+The areas where modeling options exists:
 
 * Specifying re-occuring measurements
 * Specifying triggers
@@ -91,14 +92,13 @@ There are some areas of the Telemetry for which two ways of modeling an aspect o
 ### Specifying Re-occurring Measurements
 There are two locations for specifying the re-occuring measurements.  The options are in the MetricDefinition resource or the MetricReportDefinition resource.
 
-
 When specified in the MetricDefinition resource, there is a single SensingInterval property.
 
 '''
 	"SensingInterval": "PT0.001S",
 '''
 
-When specified in the MetricReportDefinition resource, the re-occurence property is placed in the RecurranceInterval property within the Schedule object.  The Lifetime property specifies "the time after provisioning when the schedule as a whole expires." - it is one the Schedule object properties used to control a schedule (see Schedule_v1.xml)
+When specified in the MetricReportDefinition resource, the re-occurence property is placed in the RecurranceInterval property within the Schedule object.  The Lifetime property within the Schedule object is used to control a schedule. The property specifies "the time after provisioning when the schedule as a whole expires" (see Schedule_v1.xml).
 
 ```
 	"Schedule": {
