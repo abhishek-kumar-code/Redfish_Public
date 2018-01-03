@@ -2,11 +2,11 @@
 DocTitle: Redfish Telemetry White Paper
 DocNumber: '2051'
 DocClass: Informative
-DocVersion: '1.0.0'
-modified: '2017-10-26'
+DocVersion: '0.1.0'
+modified: '2018-01-03'
 status: published
 released: true
-copyright: '2017'
+copyright: '2018'
 ---
 
 
@@ -34,6 +34,8 @@ The telemetry model is a proposal to support the ability for a Redfish service t
 * The characteristics of metrics
 * The triggers to apply to a specific metric
 * The characteristics and contents of metric reports
+
+The mockup and schema for the telemetry model was released as work-in-progress v0.9a [Redfish Telemetry Model Proposal].  This whitepaper describes that model.
 
 In specifying this work-in-progress telemetry model, there are some aspects of the telemetry model where two models can be used to model an aspect of telemetry. Each model would have benefits and disadvantages.  The [Modeling Options](#modelingoptions) section describes where the modeling options which appear in this document.
 
