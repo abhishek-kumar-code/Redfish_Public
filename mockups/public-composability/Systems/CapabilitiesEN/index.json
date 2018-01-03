@@ -8,6 +8,8 @@
     "Description@Redfish.SetOnlyOnCreate": true,
     "HostName@Redfish.OptionalOnCreate": true,
     "HostName@Redfish.UpdatableAfterCreate": true,
+
+    "BIOSVersion@OptionalOnCreate": true,
     "Boot@Redfish.OptionalOnCreate": true,
     "Boot": {
         "@odata.type": "#ComputerSystem.v1_1_0.Boot",
@@ -22,37 +24,89 @@
             "Hdd"
         ]
     },
+    "SecureBoot@OptionalOnCreate": true,
+    "TrustedModules@OptionalOnCreate": true,
+    
+    "ProcessorSummary": {
+        "Count@Redfish.RequiredOnCreate": true,
+        "Model@Redfish.OptionalOnCreate": true,
+        "Status@Redfish.OptionalOnCreate": true
+    },
     "Processors": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Processor",
-        "TotalCores@Redfish.RequiredOnCreate": true,
-	"Model@Redfish.OptionalOnCreate": true,
-        "InstructionSet@Redfish.OptionalOnCreate": true,
-        "AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
+        "@odata.type": "#Processor.v1_1_0.Processor",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": {
+            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "ProcessorType@Redfish.RequiredOnCreate": true,
+            "TotalCores@Redfish.RequiredOnCreate": true,
+            "Model@Redfish.OptionalOnCreate": true,
+            "InstructionSet@Redfish.OptionalOnCreate": true,
+            "AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
+        }
+    },
+
+    "MemorySummary": {
+        "TotalSystemMemoryGiB@Redfish.RequiredOnCreate": true,
+        "MemoryMirroring@Redfish.OptionalOnCreate": true,
+        "Status@Redfish.OptionalOnCreate": true
     },
     "Memory": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Memory",
-        "CapacityMiB@Redfish.RequiredOnCreate": true,
-	"DimmDeviceType@Redfish.OptionalOnCreate": true,
-        "SpeedMHz@Redfish.OptionalOnCreate": true,
-        "DataWidthBits@Redfish.OptionalOnCreate": true
+        "@odata.type": "#Memory.v1_1_0.Memory",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": {
+            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "MemoryType@Redfish.RequiredOnCreate": true,
+            "MemoryDeviceType@Redfish.OptionalOnCreate": true,
+            "CapacityMiB@Redfish.RequiredOnCreate": true,
+            "SpeedMHz@Redfish.OptionalOnCreate": true,
+            "DataWidthBits@Redfish.OptionalOnCreate": true,
+            "BusWidthBits@Redfish.OptionalOnCreate": true
+       }
     },
-    "RemoteDrives": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Drives",
-        "CapacityGiB@Redfish.RequiredOnCreate": true,
-	"iSCSIAddress@Redfish.OptionalOnCreate": true
+
+    "SimpleStorage": {
+        "@odata.type": "#SimpleStorage.v1_1_0.SimpleStorage",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": {
+            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "Devices@RequiredOnCreate": true,
+            "Devices": {
+                "CapacityBytes@RequiredOnCreate": true
+            }
+        }
     },
-    "LocalDrives": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Drives",
-        "CapacityGiB@Redfish.RequiredOnCreate": true,
-	"Type@Redfish.OptionalOnCreate": true,
-	"MinRPM@Redfish.OptionalOnCreate": true,
-	"Interface@Redfish.OptionalOnCreate": true
+    "Storage": {
+        "@odata.type": "#Storage.v1_1_0.Storage",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": {
+            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "StorageControllers@Redfish.OptionalOnCreate": true,
+            "StorageControllers": {
+                "SupportedControllerProtocols@RequiredOnCreate": true
+            },
+            "Devices@RequiredOnCreae": true,
+            "Devices": {
+                "CapacityBytes@RequiredOnCreate": true
+            }
+        }
+    },
+
+    "EthernetInterfaces": {
+        "@odata.type": "#EthernetInterface.v1_1_0.EthernetInterface",
+        "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+        "SpeedMbps@Redfish.RequiredOnCreate": true,
+        "FullDuplex@OptionalOnCreate": true
     },
     "NetworkInterfaces": {
-        "@odata.type": "#ComputerSystem.v1_1_0.EthernetInterface",
-        "SpeedMbps@Redfish.RequiredOnCreate": true,
-	"PVID@Redfish.OptionalOnCreate": true,
-	"VLANs@Redfish.OptionalOnCreate": true
+        "@odata.type": "#NetworkInterface.v1_1_0.NetworktInterface",
+        "NetworkPorts@RequiredOnCreate": true,
+        "NetworkPorts": {
+            "ActiveLinkTechnology@RequiredOnCreate": true
+        },
+        "SupportedLinkCapabilities@OptionalOnCreate": true,
+        "SupportedLinkCapabilities": {
+            "LinkSpeedMbps@RequiredOnCreate": true
+        }
     },
 
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
