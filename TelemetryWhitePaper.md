@@ -40,25 +40,25 @@ In specifying this work-in-progress telemetry model, there are some aspects of t
 Feedback on the desirability of one or both modeling options are desired. Please provide feedback, since the feedback will inform and influence the specification of an unified telemetry model.
 
 # Requirements of Telemetry Model
-The telemetry model is design to fulfill the following requirements. These requirements are expounded subsequently.
+The telemetry model is designed to fulfill the following requirements. These requirements are expounded subsequently.
 
-* Support the metrics, sensor values and other reading within the existing models
-* Elements of the telemetry model are extension to the existing model
+* The telemetry model include optional extensions to the existing model
+* Support existing metric properties in the models
+* Support metrics from various type of sensors
 * Models for capabilities beyond a telemetry reading
 
-The requirement to support telemetry and sensors within the existing models is driven by the fact that properties representing environmental sensors and digital meters are present throughout the current Redfish models. In this document, these properties will be referred to as _metric properties_.
+The requirement that the telemetry model include optional extensions to the existing model means a Redfish service can implement one, two, or all of the capabilities of the telemetry model.
 
-The metric properties in the current Redfish model can appear is a variety of ways. The presumption is that this variety will continue as models are extended or added. Metric properties can be a simple JSON object or within a complex JSON object within a resource (e.g. Thermal and Power resource). Metric properties can be in a dedicated resource (e.g. MemoryMetrics resource). With YANG models, the dedicated resource is used often (e.g. statistics resource).
+The requirement to support existing properties within the models means that properties is driven by the fact that properties representing  metrics, metric metadata and sensor characteristics already exist is some resource definitions. In this document, these properties will be referred to collectively as _metric properties_.
+
+The metric properties in the Redfish model appear in a variety of ways. Figue 1 show where metric properties exist in the Redfish models. Metric properties can be a simple JSON object or within a complex JSON object within a resource (e.g. Thermal and Power resource). Metric properties can be in a dedicated resource (e.g. MemoryMetrics resource). With YANG models, the dedicated resource is used often (e.g. statistics resource). The presumption is that this variety will continue as models are extended or added. 
 ![Figure 1](TelemetryWhitePaper/Figure-MetricProperties.jpg "Figure 1")
 
-The requirement that the telemetry model is an extension of the existing model, also means a Redfish service can implement one, two, or all of the elements in the telemetry model.
-
-The requirement that the Telemetry model comprehends various telemetry resources recognizes the that there many sources of metrics.  The telemetry model supports the following types of metrics:
+The requirement that the telemetry model supports various telemetry resources recognizes that there many sources of metrics.  The telemetry model supports the following types of metrics:
 
 * **Environmental sensor** - measures an element in the physical world (e.g. temperature).  These metrics are characterize by a physical value and the measurement of that value. The sensitivity of the sensor determines the precision, accuracy and error characteristics of the measured value.
 * **Digital meter** - measures a value characterize digital behavior (e.g. cache hits).  A cache hit meter is an example of a digital meter.
-* **State sensor** - reports on the state of an element or resource
-* **Discrete sensor** - measures has specific discrete values.   The state sensor is an example of a discrete sensor (enabled, disabled). Another example is a inclination sensor (vertical, horizontal, inclined), which measures a physical aspect.
+* **Discrete sensor** - measures has specific discrete values. An inclination sensor which measures the orientation of a physical resource (vertical, horizontal, inclined) is an example of a discrete sensor.
 * **Gauge sensor** - who's measurement are continuous within a range. A environmental sensor is an example of a gauge sensor.
 * **Statistical metric** - is a computation on a metric over a time interval (e.g. min, max, average)
 * **Synthesized metric** - is a computation of a metric from other metrics.  These metrics are calculated by applying a formula to one or more other metrics.  The precision, accuracy and error this metric is influenced by the precision, accuracy and error of its dependent metrics.
@@ -458,11 +458,11 @@ The `TriggerActions` array property specifies the action(s) to perform when a tr
 * **Transmit** - Send the trigger as a Alert event
 
 ### NumericTriggers
-The `NumericTriggers` array property specifies the trigger thresholds, if the `TriggerType' is numeric.  The property is complex can has the following properties
+The `NumericTriggers` array property specifies the trigger thresholds, if the `TriggerType' is numeric.  The property is complex and has the following properties
 
 * `Value` - the value of the threshold
 * `DirectionOfCrossing` - the direction that the threshold is crossed to trip the trigger
-* `DwellTimems` - the duration in the triggering state before the trigger is invoked
+* `DwellTimems` - the duration that the trigger is tripped before the trigger action is invoked
 * `Severity` - the value of the `Severity` property within the alert Event Message
 
 ### DiscreteTriggerConditions
@@ -475,7 +475,7 @@ The `DiscreteTriggerCondition
 The `DiscreteTriggers` array property specifies the values of metric which will trip the trigger, if the `TriggerType` is discrete and `DiscreteTriggerCondition` is specified.
 
 * `Value` - the value of the threshold
-* `DwellTimems` - the duration in the triggering state before the trigger is invoked
+* `DwellTimems` - the duration that the trigger has tripped before the trigger action is invoked
 * `Severity` - The value of the `Severity` property within the alert Event Message
 
 ### MetricProperties
