@@ -261,7 +261,7 @@ This example shows property-level requirements, including one of type 'object' c
 				"PropertyRequirements": {
 					"Status": {},
 					"PowerSupplyType": {
-						"ReadRequirement": "AnyOf",
+						"Comparison": "AnyOf",
 						"Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
 						"Values": [ "AC", "DC" ]
 					},
