@@ -164,21 +164,21 @@
 </table>
 <h3 id="example">7.2. Example</h3>
 <p>The following is an example of the top-level properties in a Profile, with two Required profiles included.</p>
-<pre><code>    "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
-    "ProfileName": "Anchovy",
-    "ProfileVersion": "1.0.2",
-    "OwningEntity": "Pizza Box Consortium",
-    "Purpose": "This is a sample Redfish Interoperability profile.",
-    "ContactInfo": "pizza@contoso.com",
-    "RequiredProfiles": {
-        "DMTFBasic": {
-            "MinVersion": "1.0.0"
-        },
-        "ContosoPizza": {
-            "Repository": "http://contoso.com/profiles",
-            "MinVersion": "1.0.0"
-        }
-    }
+<pre><code>   "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+   "ProfileName": "Anchovy",
+   "ProfileVersion": "1.0.2",
+   "OwningEntity": "Pizza Box Consortium",
+   "Purpose": "This is a sample Redfish Interoperability profile.",
+   "ContactInfo": "pizza@contoso.com",
+   "RequiredProfiles": {
+      "DMTFBasic": {
+         "MinVersion": "1.0.0"
+      },
+      "ContosoPizza": {
+         "Repository": "http://contoso.com/profiles",
+         "MinVersion": "1.0.0"
+      }
+   }
 </code></pre><h2 id="protocol-requirements">8. Protocol requirements</h2>
 <p>An object named 'Protocol' contains properties which describe Redfish protocol functionality that is not related to the supported schemas or properties.  Therefore, these functions cannot be validated by comparing retrieved JSON payloads.</p>
 <table>
@@ -223,14 +223,14 @@
 </tbody>
 </table>
 <h3 id="example-1">8.1. Example</h3>
-<pre><code>    "Protocol": {
-        "MinVersion": "1.2",
-        "Discovery": "Mandatory",
-        "HostInterface": "Recommended",
-        "ExpandQuery": "Mandatory",
-        "SelectQuery": "None",
-        "FilterQuery": "Recommended"
-    }
+<pre><code>   "Protocol": {
+      "MinVersion": "1.2",
+      "Discovery": "Mandatory",
+      "HostInterface": "Recommended",
+      "ExpandQuery": "Mandatory",
+      "SelectQuery": "None",
+      "FilterQuery": "Recommended"
+   }
 </code></pre><h3 id="requirement-values">8.2. Requirement values</h3>
 <table>
 <thead>
@@ -260,23 +260,23 @@
 <p>The structure of the resource and property requirements is:</p>
 <pre><code>    &lt;Schema Name&gt;: {
        "MinVersion": &lt;version&gt;,
-       "CreateResource": &lt;boolean&gt;,
-       "DeleteResource": &lt;boolean&gt;,
-       "UpdateResource": &lt;boolean&gt;,
-       "PropertyRequirements": {
-           &lt;Property Name&gt;: { 
-              &lt;Requirements for this property&gt;
-           },
-           &lt;Property Name&gt;: {
-           }
-        },
-        "ActionRequirements": {
-           &lt;Action Name&gt;: {
-              &lt;Requirements for this action&gt;
-           }
-        }
+      "CreateResource": &lt;boolean&gt;,
+      "DeleteResource": &lt;boolean&gt;,
+      "UpdateResource": &lt;boolean&gt;,
+      "PropertyRequirements": {
+         &lt;Property Name&gt;: { 
+            &lt;Requirements for this property&gt;
+         },
+         &lt;Property Name&gt;: {
+         }
+      },
+      "ActionRequirements": {
+         &lt;Action Name&gt;: {
+            &lt;Requirements for this action&gt;
+         }
+      }
     },
-    &lt;Additional Schemas...&gt;
+   &lt;Additional Schemas...&gt;
 </code></pre><h3 id="schema-level-functions">9.1. Schema-level functions</h3>
 <p>The following options are available at the schema level:</p>
 <table>
@@ -332,15 +332,15 @@
 </table>
 <h4 id="example-2">9.1.1. Example</h4>
 <p>This example shows a simple required schema: </p>
-<pre><code>    "ComputerSystem": {
-        "MinVersion": "1.2.0",
-        "Purpose": "Every instance must have a logical-view ComputerSystem resource.",
-        "PropertyRequirements": {
-            "SerialNumber": {},
-            "Manufacturer": {},
-            "Model": {
-                "ReadRequirement": "Recommended"
-            },
+<pre><code>   "ComputerSystem": {
+      "MinVersion": "1.2.0",
+      "Purpose": "Every instance must have a logical-view ComputerSystem resource.",
+      "PropertyRequirements": {
+         "SerialNumber": {},
+         "Manufacturer": {},
+         "Model": {
+            "ReadRequirement": "Recommended"
+         },
 </code></pre><h3 id="property-level-functions">9.2. Property-level functions</h3>
 <p>Within the 'PropertyRequirements' object are additional objects that are named to match the property name in the parent object's schema definition.  This object then contains the property-level requirements, which account for the bulk of a Profile's definition.  One additional level of JSON objects may be embedded, essentially nesting a 'PropertyRequirements' object.</p>
 <p>The following options are available at the property level:</p>
@@ -402,28 +402,28 @@
 </table>
 <h4 id="example-3">9.2.1. Example</h4>
 <p>This example shows property-level requirements, including one of type 'object' containing further requirements on that object's properties.  For each 'Power' resource, the 'PowerSupplies' and 'Voltages' array properties are required.  'Voltages' has no further requirements (by default, this property is mandatory, and as an array type, must have at least one item in the array. The 'PowerSupplies' array must contain at least two (object) items.  Within the array, at least one item's 'PowerSupplyType' property must have a value of 'AC' or 'DC'.</p>
-<pre><code>    "Power": {
-        "PropertyRequirements": {
-            "PowerSupplies": {
-                "ReadRequirement": "Mandatory",
-                "MinCount": 2,
-                "PropertyRequirements": {
-                    "Status": {},
-                    "PowerSupplyType": {
-                        "Comparison": "AnyOf",
-                        "Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
-                        "Values": [ "AC", "DC" ]
-                    },
-                    "LineinputVoltage": {},
-                    "PowerCapacityWatts": {},
-                    "InputRanges": {
-                        "ReadRequirement": "Recommended"
-                    }
-                }
-            },
-            "Voltages": {}
-        }
-    },
+<pre><code>   "Power": {
+      "PropertyRequirements": {
+         "PowerSupplies": {
+            "ReadRequirement": "Mandatory",
+            "MinCount": 2,
+            "PropertyRequirements": {
+               "Status": {},
+               "PowerSupplyType": {
+                  "Comparison": "AnyOf",
+                  "Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
+                  "Values": [ "AC", "DC" ]
+               },
+               "LineinputVoltage": {},
+               "PowerCapacityWatts": {},
+               "InputRanges": {
+                  "ReadRequirement": "Recommended"
+               }
+            }
+         },
+         "Voltages": {}
+      }
+   },
 </code></pre><h4 id="comparison">9.2.2. Comparison</h4>
 <p>The Comparison function uses the following enumerations to represent the various comparisons available:</p>
 <table>
@@ -593,27 +593,27 @@
 <h6 id="example-4">9.2.5.1.1. Example</h6>
 <p>For the property 'HostName' in the 'EthernetInterface' schema, the example shows it as 'Recommended' property.  But if an instance of 'EthernetInterface' is linked from a 'ComputerSystem' resource, through the 'EthernetInterfaceCollection',  the 'Condition' is met, which changes the 'HostName' property requirement to 'Mandatory'.</p>
 <p>In the second part of the example, the 'IPv6Addresses' array property is required to have at least one item ('MinCount') in the array.  But if, as above, the instance is subordinate to a 'ComputerSystem' (and 'EthernetInterfaceCollection') resource,  at least two items are required in the array.</p>
-<pre><code>    "EthernetInterface": {
-        "PropertyRequirements": {
-            "HostName": {
-                "ReadRequirement": "Recommended",
-                "WriteRequirement": "Recommended",
-                "ConditionalRequirements": [{
-                    "SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-                    "ReadRequirement": "Mandatory",
-                    "Purpose": "Host Name is used to match this instance to other data sources.",
-                }]
-            },
-            "IPv6Addresses": {
-                "ReadRequirement": "Mandatory",
-                "MinCount": 1,
-                "ConditionalRequirements": [{
-                    "SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-                    "MinCount": 2
-                }]
-            }
-        }
-    }
+<pre><code>   "EthernetInterface": {
+      "PropertyRequirements": {
+         "HostName": {
+            "ReadRequirement": "Recommended",
+            "WriteRequirement": "Recommended",
+            "ConditionalRequirements": [{
+               "SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
+               "ReadRequirement": "Mandatory",
+               "Purpose": "Host Name is used to match this instance to other data sources.",
+            }]
+         },
+         "IPv6Addresses": {
+            "ReadRequirement": "Mandatory",
+            "MinCount": 1,
+            "ConditionalRequirements": [{
+               "SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
+               "MinCount": 2
+            }]
+         }
+      }
+   }
 </code></pre><h5 id="compare-property">9.2.5.2. Compare property</h5>
 <p>A typical need for a conditional requirement is a dependency on the value of another property within the resource.  This type of dependency can be used when several different product variations share a common schema definition.  In that case, Redfish schemas normally define a type-specifying property with enumerations (for a variety of product categories) that can be used to differentiate Profile requirements by product category.</p>
 <p>To accomplish this, there are three Profile properties related to this function:</p>
@@ -645,17 +645,17 @@
 </table>
 <h6 id="example-5">9.2.5.2.1. Example</h6>
 <p>This example shows a CompareProperty condition applied to the 'IndicatorLED' property, which has a base 'Recommended' requirement, but becomes 'Mandatory' if the 'SystemType' property has a value of 'Physical' or 'Composed'.</p>
-<pre><code>    "IndicatorLED": {
-        "ReadRequirement": "Recommended",
-        "ConditionalRequirements": [{
-            "Purpose": "Physical and composed Systems must have a writable Indicator LED",
-            "CompareProperty": "SystemType",
-            "Comparison": "AnyOf",
-            "CompareValues": ["Physical", "Composed"],
-            "ReadRequirement": "Mandatory",
-            "WriteRequirement": "Mandatory"
-        }]
-    },
+<pre><code>   "IndicatorLED": {
+      "ReadRequirement": "Recommended",
+      "ConditionalRequirements": [{
+         "Purpose": "Physical and composed Systems must have a writable Indicator LED",
+         "CompareProperty": "SystemType",
+         "Comparison": "AnyOf",
+         "CompareValues": ["Physical", "Composed"],
+         "ReadRequirement": "Mandatory",
+         "WriteRequirement": "Mandatory"
+      }]
+   },
 </code></pre><h3 id="action-requirements">9.3. Action requirements</h3>
 <p>Because several critical functions of a Redfish Service are implemented as 'Actions', the Profile may place requirements for support of these Actions.  The requirements can specify which Parameters must be supported, and may specify Allowable Values for those parameters.</p>
 <p>The following functions are available to specify requirements for an Action within a Resource requirement:</p>
@@ -715,19 +715,19 @@
 </table>
 <h4 id="example-6">9.3.2. Example</h4>
 <p>This example shows the 'Reset' action as required for this resource, along with the required parameter 'ResetType', which must support the values of 'ForceOff' and 'PowerCycle'.</p>
-<pre><code>    "ActionRequirements": {
-        "Reset": {
-            "ReadRequirement": "Mandatory",
-            "Purpose": "Ability to reset the unit is a core requirement of most users.",
-            "Parameters": {
-                "ResetType": {
-                    "ParameterValues": ["ForceOff", "PowerCycle", "On"],
-                    "RecommendedValues": ["GracefulShutdown", "GracefulRestart", "ForceRestart", "PushPowerButton"],
-                    "ReadRequirement": "Mandatory"
-                }
+<pre><code>   "ActionRequirements": {
+      "Reset": {
+         "ReadRequirement": "Mandatory",
+         "Purpose": "Ability to reset the unit is a core requirement of most users.",
+         "Parameters": {
+            "ResetType": {
+               "ParameterValues": ["ForceOff", "PowerCycle", "On"],
+               "RecommendedValues": ["GracefulShutdown", "GracefulRestart", "ForceRestart", "PushPowerButton"],
+               "ReadRequirement": "Mandatory"
             }
-        }
-    }
+         }
+      }
+   }
 </code></pre><h2 id="registry-level-requirements">10. Registry-level requirements</h2>
 <p>While not normally part of the JSON resources, the Redfish-defined Message Registries are important for interoperability, as they indicate what functionality has been implemented for Events, and are also a useful method for setting expectations on the use of Extended Info error messages when interacting with a Redfish Service implementation.</p>
 <p>The following functions are available to specify Registry-level requirements:</p>
@@ -789,23 +789,23 @@
 <h3 id="example-7">10.2. Example</h3>
 <p>This example shows requirements for two Message Registries, including one OEM-defined registry.  The 'Base' Registry is a DMTF standard Registry (by default since no 'OwningEntity' is listed) and therefore can be retrieved by default from the DMTF Repository. The 'Base' Registry lists only four Messages that are required. </p>
 <p>In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' requirement set at the Registry level specifies that all Messages defined in that Registry are required.</p>
-<pre><code>    "Registries": {
-        "Base": {
-            "MinVersion": "1.1.0",
-            "Messages": {
-                "Success": {},
-                "GeneralError": {},
-                "Created": {},
-                "PropertyDuplicate": {}
-            }
-        },
-        "ContosoPizzaMessages": {
-            "OwningEntity": "Other",
-            "OwningEntityName": "Contoso",
-            "Repository": "http://contoso.com/registries",
-            "ReadRequirement": "Mandatory"
-        }
-    }
+<pre><code>   "Registries": {
+      "Base": {
+         "MinVersion": "1.1.0",
+         "Messages": {
+            "Success": {},
+            "GeneralError": {},
+            "Created": {},
+            "PropertyDuplicate": {}
+         }
+      },
+      "ContosoPizzaMessages": {
+         "OwningEntity": "Other",
+         "OwningEntityName": "Contoso",
+         "Repository": "http://contoso.com/registries",
+         "ReadRequirement": "Mandatory"
+      }
+   }
 </code></pre><h1 id="change-log">Change log</h1>
 <table>
 <thead>
