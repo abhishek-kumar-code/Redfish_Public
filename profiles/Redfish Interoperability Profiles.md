@@ -117,21 +117,21 @@ The RequiredProfiles object contains properties (of type object) that are named 
 The following is an example of the top-level properties in a Profile, with two Required profiles included.
 
 ~~~
-	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
-	"ProfileName": "Anchovy",
-	"ProfileVersion": "1.0.2",
-	"OwningEntity": "Pizza Box Consortium",
-	"Purpose": "This is a sample Redfish Interoperability profile.",
-	"ContactInfo": "pizza@contoso.com",
-	"RequiredProfiles": {
-		"DMTFBasic": {
-			"MinVersion": "1.0.0"
-		},
-		"ContosoPizza": {
-			"Repository": "http://contoso.com/profiles",
-			"MinVersion": "1.0.0"
-		}
-	}
+   "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+   "ProfileName": "Anchovy",
+   "ProfileVersion": "1.0.2",
+   "OwningEntity": "Pizza Box Consortium",
+   "Purpose": "This is a sample Redfish Interoperability profile.",
+   "ContactInfo": "pizza@contoso.com",
+   "RequiredProfiles": {
+      "DMTFBasic": {
+         "MinVersion": "1.0.0"
+      },
+      "ContosoPizza": {
+         "Repository": "http://contoso.com/profiles",
+         "MinVersion": "1.0.0"
+      }
+   }
 ~~~
 
 ## Protocol requirements
@@ -150,14 +150,14 @@ An object named 'Protocol' contains properties which describe Redfish protocol f
 ### Example 
 
 ~~~
-	"Protocol": {
-		"MinVersion": "1.2",
-		"Discovery": "Mandatory",
-		"HostInterface": "Recommended",
-		"ExpandQuery": "Mandatory",
-		"SelectQuery": "None",
-		"FilterQuery": "Recommended"
-	}
+   "Protocol": {
+      "MinVersion": "1.2",
+      "Discovery": "Mandatory",
+      "HostInterface": "Recommended",
+      "ExpandQuery": "Mandatory",
+      "SelectQuery": "None",
+      "FilterQuery": "Recommended"
+   }
 ~~~
 
 ### Requirement values
@@ -179,23 +179,23 @@ The structure of the resource and property requirements is:
 ~~~
     <Schema Name>: {
        "MinVersion": <version>,
-	   "CreateResource": <boolean>,
-	   "DeleteResource": <boolean>,
-	   "UpdateResource": <boolean>,
-	   "PropertyRequirements": {
-		   <Property Name>: { 
-		      <Requirements for this property>
-		   },
-		   <Property Name>: {
-		   }
-		},
-		"ActionRequirements": {
-		   <Action Name>: {
-		      <Requirements for this action>
-		   }
-		}
+      "CreateResource": <boolean>,
+      "DeleteResource": <boolean>,
+      "UpdateResource": <boolean>,
+      "PropertyRequirements": {
+         <Property Name>: { 
+            <Requirements for this property>
+         },
+         <Property Name>: {
+         }
+      },
+      "ActionRequirements": {
+         <Action Name>: {
+            <Requirements for this action>
+         }
+      }
     },
-	<Additional Schemas...>
+   <Additional Schemas...>
 ~~~
 
 ### Schema-level functions
@@ -217,15 +217,15 @@ The following options are available at the schema level:
 
 This example shows a simple required schema: 
 ~~~
-	"ComputerSystem": {
-		"MinVersion": "1.2.0",
-		"Purpose": "Every instance must have a logical-view ComputerSystem resource.",
-		"PropertyRequirements": {
-			"SerialNumber": {},
-			"Manufacturer": {},
-			"Model": {
-				"ReadRequirement": "Recommended"
-			},
+   "ComputerSystem": {
+      "MinVersion": "1.2.0",
+      "Purpose": "Every instance must have a logical-view ComputerSystem resource.",
+      "PropertyRequirements": {
+         "SerialNumber": {},
+         "Manufacturer": {},
+         "Model": {
+            "ReadRequirement": "Recommended"
+         },
 ~~~
 
 ### Property-level functions
@@ -251,29 +251,29 @@ The following options are available at the property level:
 This example shows property-level requirements, including one of type 'object' containing further requirements on that object's properties.  For each 'Power' resource, the 'PowerSupplies' and 'Voltages' array properties are required.  'Voltages' has no further requirements (by default, this property is mandatory, and as an array type, must have at least one item in the array. The 'PowerSupplies' array must contain at least two (object) items.  Within the array, at least one item's 'PowerSupplyType' property must have a value of 'AC' or 'DC'.
 
 ~~~
-	"Power": {
-		"PropertyRequirements": {
-			"PowerSupplies": {
-				"ReadRequirement": "Mandatory",
-				"MinCount": 2,
-				"PropertyRequirements": {
-					"Status": {},
-					"PowerSupplyType": {
-						"Comparison": "AnyOf",
-						"Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
-						"Values": [ "AC", "DC" ]
-					},
-					"LineinputVoltage": {},
-					"PowerCapacityWatts": {},
-					"InputRanges": {
-						"ReadRequirement": "Recommended"
-					}
-				}
-			},
-			"Voltages": {}
-		}
-	},
-~~~		
+   "Power": {
+      "PropertyRequirements": {
+         "PowerSupplies": {
+            "ReadRequirement": "Mandatory",
+            "MinCount": 2,
+            "PropertyRequirements": {
+               "Status": {},
+               "PowerSupplyType": {
+                  "Comparison": "AnyOf",
+                  "Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
+                  "Values": [ "AC", "DC" ]
+               },
+               "LineinputVoltage": {},
+               "PowerCapacityWatts": {},
+               "InputRanges": {
+                  "ReadRequirement": "Recommended"
+               }
+            }
+         },
+         "Voltages": {}
+      }
+   },
+~~~      
 
 #### Comparison
 
@@ -350,27 +350,27 @@ For the property 'HostName' in the 'EthernetInterface' schema, the example shows
 In the second part of the example, the 'IPv6Addresses' array property is required to have at least one item ('MinCount') in the array.  But if, as above, the instance is subordinate to a 'ComputerSystem' (and 'EthernetInterfaceCollection') resource,  at least two items are required in the array.
 
 ~~~
-	"EthernetInterface": {
-		"PropertyRequirements": {
-			"HostName": {
-				"ReadRequirement": "Recommended",
-				"WriteRequirement": "Recommended",
-				"ConditionalRequirements": [{
-					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-					"ReadRequirement": "Mandatory",
-					"Purpose": "Host Name is used to match this instance to other data sources.",
-				}]
-			},
-			"IPv6Addresses": {
-				"ReadRequirement": "Mandatory",
-				"MinCount": 1,
-				"ConditionalRequirements": [{
-					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-					"MinCount": 2
-				}]
-			}
-		}
-	}
+   "EthernetInterface": {
+      "PropertyRequirements": {
+         "HostName": {
+            "ReadRequirement": "Recommended",
+            "WriteRequirement": "Recommended",
+            "ConditionalRequirements": [{
+               "SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
+               "ReadRequirement": "Mandatory",
+               "Purpose": "Host Name is used to match this instance to other data sources.",
+            }]
+         },
+         "IPv6Addresses": {
+            "ReadRequirement": "Mandatory",
+            "MinCount": 1,
+            "ConditionalRequirements": [{
+               "SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
+               "MinCount": 2
+            }]
+         }
+      }
+   }
 ~~~
 
 ##### Compare property
@@ -391,17 +391,17 @@ To accomplish this, there are three Profile properties related to this function:
 This example shows a CompareProperty condition applied to the 'IndicatorLED' property, which has a base 'Recommended' requirement, but becomes 'Mandatory' if the 'SystemType' property has a value of 'Physical' or 'Composed'.
 
 ~~~
-	"IndicatorLED": {
-		"ReadRequirement": "Recommended",
-		"ConditionalRequirements": [{
-			"Purpose": "Physical and composed Systems must have a writable Indicator LED",
-			"CompareProperty": "SystemType",
-			"Comparison": "AnyOf",
-			"CompareValues": ["Physical", "Composed"],
-			"ReadRequirement": "Mandatory",
-			"WriteRequirement": "Mandatory"
-		}]
-	},
+   "IndicatorLED": {
+      "ReadRequirement": "Recommended",
+      "ConditionalRequirements": [{
+         "Purpose": "Physical and composed Systems must have a writable Indicator LED",
+         "CompareProperty": "SystemType",
+         "Comparison": "AnyOf",
+         "CompareValues": ["Physical", "Composed"],
+         "ReadRequirement": "Mandatory",
+         "WriteRequirement": "Mandatory"
+      }]
+   },
 ~~~
 
 ### Action requirements
@@ -431,21 +431,21 @@ The following functions are available to specify requirements for a parameter on
 This example shows the 'Reset' action as required for this resource, along with the required parameter 'ResetType', which must support the values of 'ForceOff' and 'PowerCycle'.
 
 ~~~
-	"ActionRequirements": {
-		"Reset": {
-			"ReadRequirement": "Mandatory",
-			"Purpose": "Ability to reset the unit is a core requirement of most users.",
-			"Parameters": {
-				"ResetType": {
-					"ParameterValues": ["ForceOff", "PowerCycle", "On"],
-					"RecommendedValues": ["GracefulShutdown", "GracefulRestart", "ForceRestart", "PushPowerButton"],
-					"ReadRequirement": "Mandatory"
-				}
-			}
-		}
-	}
-~~~			
-			
+   "ActionRequirements": {
+      "Reset": {
+         "ReadRequirement": "Mandatory",
+         "Purpose": "Ability to reset the unit is a core requirement of most users.",
+         "Parameters": {
+            "ResetType": {
+               "ParameterValues": ["ForceOff", "PowerCycle", "On"],
+               "RecommendedValues": ["GracefulShutdown", "GracefulRestart", "ForceRestart", "PushPowerButton"],
+               "ReadRequirement": "Mandatory"
+            }
+         }
+      }
+   }
+~~~         
+         
 ## Registry-level requirements
 
 While not normally part of the JSON resources, the Redfish-defined Message Registries are important for interoperability, as they indicate what functionality has been implemented for Events, and are also a useful method for setting expectations on the use of Extended Info error messages when interacting with a Redfish Service implementation.
@@ -478,25 +478,25 @@ This example shows requirements for two Message Registries, including one OEM-de
 In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' requirement set at the Registry level specifies that all Messages defined in that Registry are required.
 
 ~~~
-	"Registries": {
-		"Base": {
-			"MinVersion": "1.1.0",
-			"Messages": {
-				"Success": {},
-				"GeneralError": {},
-				"Created": {},
-				"PropertyDuplicate": {}
-			}
-		},
-		"ContosoPizzaMessages": {
-			"OwningEntity": "Other",
-			"OwningEntityName": "Contoso",
-			"Repository": "http://contoso.com/registries",
-			"ReadRequirement": "Mandatory"
-		}
-	}
+   "Registries": {
+      "Base": {
+         "MinVersion": "1.1.0",
+         "Messages": {
+            "Success": {},
+            "GeneralError": {},
+            "Created": {},
+            "PropertyDuplicate": {}
+         }
+      },
+      "ContosoPizzaMessages": {
+         "OwningEntity": "Other",
+         "OwningEntityName": "Contoso",
+         "Repository": "http://contoso.com/registries",
+         "ReadRequirement": "Mandatory"
+      }
+   }
 ~~~
-	
+   
 # Change log
 
 | Version | Date | Description |
