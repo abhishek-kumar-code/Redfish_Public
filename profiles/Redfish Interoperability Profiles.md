@@ -128,7 +128,7 @@ The following is an example of the top-level properties in a Profile, with two R
 			"MinVersion": "1.0.0"
 		},
 		"ContosoPizza": {
-			"Repository": "contoso.com/profiles",
+			"Repository": "http://contoso.com/profiles",
 			"MinVersion": "1.0.0"
 		}
 	}
@@ -177,7 +177,6 @@ For each schema, an object is created in the JSON document, named to match the s
 
 The structure of the resource and property requirements is:
 ~~~
-{
     <Schema Name>: {
        "MinVersion": <version>,
 	   "CreateResource": <boolean>,
@@ -260,7 +259,7 @@ This example shows property-level requirements, including one of type 'object' c
 				"PropertyRequirements": {
 					"Status": {},
 					"PowerSupplyType": {
-						"ReadRequirement": "AnyOf",
+						"Comparison": "AnyOf",
 						"Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
 						"Values": [ "AC", "DC" ]
 					},
@@ -492,7 +491,7 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 		"ContosoPizzaMessages": {
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
-			"Repository": "contoso.com/registries",
+			"Repository": "http://contoso.com/registries",
 			"ReadRequirement": "Mandatory"
 		}
 	}
