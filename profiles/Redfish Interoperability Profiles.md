@@ -178,25 +178,24 @@ For each schema, an object is created in the JSON document, named to match the s
 
 The structure of the resource and property requirements is:
 ~~~
-{
-    <Schema Name>: {
-       "MinVersion": <version>,
-	   "CreateResource": <boolean>,
-	   "DeleteResource": <boolean>,
-	   "UpdateResource": <boolean>,
-	   "PropertyRequirements": {
-		   <Property Name>: { 
-		      <Requirements for this property>
-		   },
-		   <Property Name>: {
-		   }
+	<Schema Name>: {
+		"MinVersion": <version>,
+		"CreateResource": <boolean>,
+		"DeleteResource": <boolean>,
+		"UpdateResource": <boolean>,
+		"PropertyRequirements": {
+			<Property Name>: { 
+				<Requirements for this property>
+			},
+			<Property Name>: {
+			}
 		},
 		"ActionRequirements": {
-		   <Action Name>: {
-		      <Requirements for this action>
-		   }
+			<Action Name>: {
+				<Requirements for this action>
+			}
 		}
-    },
+	},
 	<Additional Schemas...>
 ~~~
 
@@ -261,7 +260,7 @@ This example shows property-level requirements, including one of type 'object' c
 				"PropertyRequirements": {
 					"Status": {},
 					"PowerSupplyType": {
-						"ReadRequirement": "AnyOf",
+						"Comparison": "AnyOf",
 						"Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
 						"Values": [ "AC", "DC" ]
 					},
