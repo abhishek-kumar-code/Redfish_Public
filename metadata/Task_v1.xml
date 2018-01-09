@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Task  v1.1.1-->
+<!--# Redfish Schema:  Task  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -171,5 +171,15 @@
       <EntityType Name="Task" BaseType="Task.v1_1_0.Task"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_2_0">
+      <EntityType Name="Task" BaseType="Task.v1_1_1.Task">
+        <Property Name="TaskMonitor" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The URI of the Task Monitor for this task."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI to Task Monitor as defined in the Redfish Specification."/>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
+      </EntityType>
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

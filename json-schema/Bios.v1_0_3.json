@@ -53,7 +53,8 @@
                     "type": [
                         "string",
                         "boolean",
-                        "number"
+                        "number",
+                        "null"
                     ]
                 }
             },
