@@ -25,9 +25,7 @@
                 "NetworkBay",
                 "ExpansionBay",
                 "PowerSupplyBay",
-                "Memory",
-                "Chassis",
-                "Fan"
+                "Memory"
             ],
             "enumDescriptions": {
                 "Room": "The room.",
@@ -50,9 +48,7 @@
                 "NetworkBay": "Within a networking bay.",
                 "ExpansionBay": "Within an expansion bay.",
                 "PowerSupplyBay": "Within a power supply bay.",
-                "Memory": "A memory device.",
-                "Chassis": "The entire chassis.",
-                "Fan": "A fan."
+                "Memory": "A memory device."
             }
         }
     },

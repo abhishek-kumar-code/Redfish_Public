@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Chassis.v1_2_1.Chassis",
     "$ref": "#/definitions/Chassis",
     "definitions": {
@@ -89,19 +89,10 @@
                 "Off"
             ],
             "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Unknown": "The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown.",
                 "Lit": "The Indicator LED is lit.",
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
-            },
-            "enumLongDescriptions": {
-                "Unknown": "This value shall represent the Indicator LED is in an unknown state.  The service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Lit": "This value shall represent the Indicator LED is in a solid on state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Blinking": "This value shall represent the Indicator LED is in a blinking state where the LED is being turned on and off in repetition.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
-                "Off": "This value shall represent the Indicator LED is in a solid off state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."
-            },
-            "enumDeprecated": {
-                "Unknown": "This value has been Deprecated in favor of returning null if the state is unknown."
             }
         },
         "PowerState": {
@@ -187,9 +178,7 @@
                     "description": "This indicates how the Normal state to be restored.",
                     "longDescription": "This property shall represent the method to set back to the Normal statue of this physical security sensor.  Manual indicates manual re-arm is needed.  Automatic indicates the state is restored automatically as no abnormal physical security conditions are detected."
                 }
-            },
-            "description": "The state of the physical security sensor.",
-            "longDescription": "This type shall describe the sensor state of the physical security."
+            }
         },
         "Chassis": {
             "type": "object",
@@ -499,9 +488,7 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         },
                         "#Chassis.Reset": {
                             "$ref": "#/definitions/Reset"
@@ -558,5 +545,5 @@
             "longDescription": "This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

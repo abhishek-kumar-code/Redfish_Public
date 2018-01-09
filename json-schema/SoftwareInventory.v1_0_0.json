@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#SoftwareInventory.v1_0_0.SoftwareInventory",
     "$ref": "#/definitions/SoftwareInventory",
     "definitions": {
@@ -35,19 +35,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Status": {
                     "anyOf": [
@@ -61,8 +58,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "A string representing the version of this software.",
-                    "longDescription": "The value of this property shall be a string representing the version of this software."
+                    "description": "A string representing the version of this firmware.",
+                    "longDescription": "The value of this property shall be a string representing the version of this firmware."
                 },
                 "Updateable": {
                     "type": [
@@ -70,8 +67,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Indicates whether this software can be updated by the update service.",
-                    "longDescription": "The value of this property shall be a boolean indicating whether this software can be updated by the update service. If false, this software is for reporting purpose only."
+                    "description": "Indicates whether this firmware can be updated by the update service.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this firmware can be updated by the update service. If false, this firmware is for reporting purpose only."
                 },
                 "Actions": {
                     "type": "object",
@@ -106,12 +103,10 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         }
                     },
-                    "longDescription": "This type shall contain the available actions for this resource.",
+                    "readonly": true,
                     "description": "The Actions object contains the available custom actions on this resource."
                 }
             },
@@ -123,5 +118,5 @@
             "longDescription": "This resource shall be used to represent a single software component managed by this Redfish Service."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

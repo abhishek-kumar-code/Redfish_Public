@@ -362,6 +362,14 @@
           <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the IEEE-defined 64-bit Extended Unique Identifier as defined in the IEEE's Guidelines for 64-bit Global Identifier (EUI-64) Specification."/>
         </Member>
+        <Member Name="NQN">
+          <Annotation Term="OData.Description" String="NVMe Qualified Name."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be in the NVMe Qualified Name format as defined in the NVN Express over Fabric Specification."/>
+        </Member>
+        <Member Name="NSID">
+          <Annotation Term="OData.Description" String="NVM Namespace Identifier."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be in the NVM Namespace Identifier format as defined in the NVN Express Specification."/>
+        </Member>
       </EnumType>
 
       <EnumType Name="IndicatorLED">
@@ -813,7 +821,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
-      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location."/>
+      <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location and enumerations for DurableNameFormat for NVMe fabric extension."/>
 
       <ComplexType Name="Location" BaseType="Resource.v1_5_0.Location">
         <Property Name="Longitude" Type="Edm.Decimal" DefaultValue="0">
@@ -835,7 +843,6 @@
           <Annotation Term="Measures.Unit" String="m"/>
         </Property>
       </ComplexType>
-
     </Schema>
 
   </edmx:DataServices>
