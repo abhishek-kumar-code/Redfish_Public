@@ -37,7 +37,7 @@ The telemetry model is a proposal to support the ability for a Redfish service t
 
 The mockup and schema for the telemetry model was released as work-in-progress v0.9a [Redfish Telemetry Model Proposal].  This whitepaper describes that model.
 
-In specifying this work-in-progress telemetry model, there are some aspects of the telemetry model where two models can be used to model an aspect of telemetry. Each model would have benefits and disadvantages.  The [Modeling Options](#modelingoptions) section describes where the modeling options which appear in this document.
+In specifying this work-in-progress telemetry model, there are some aspects of the telemetry model where two models can be used to model an aspect of telemetry. Each model would have benefits and disadvantages.  The [Modeling Options](#modeling-options) section describes where the modeling options which appear in this document.
 
 Feedback on the desirability of one or both modeling options are desired. Please provide feedback, since the feedback will inform and influence the specification of an unified telemetry model.
 
