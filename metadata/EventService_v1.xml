@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EventService  v1.0.6-->
+<!--# Redfish Schema:  EventService  v1.0.7-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -168,8 +168,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_6">
-      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions, and to change DeliveryRetryAttempts and DeliveryRetryIntervalSeconds properties to be writable."/>
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_5.EventService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_7">
+      <Annotation Term="OData.Description" String="This version was created to change DeliveryRetryAttempts and DeliveryRetryIntervalSeconds properties to be writable."/>
+      <EntityType Name="EventService" BaseType="EventService.v1_0_6.EventService"/>
     </Schema>
 
   </edmx:DataServices>
