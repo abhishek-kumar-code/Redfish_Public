@@ -9,7 +9,6 @@ released: true
 copyright: '2018'
 ---
 
-
 # Foreword
 
 The Redfish Telemetry White Paper was prepared by the Scalable Platforms Management Forum of the DMTF.
@@ -23,9 +22,9 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * George Ericson - Dell Inc.
 * John Leung - Intel Corporation
 
-# Introduction
+## Introduction
 
-Redfish is an evolving hardware management standard that is designed to be flexible, extensible, and inter-operable. 
+Redfish is an evolving hardware management standard that is designed to be flexible, extensible, and inter-operable.
 
 Redfish supports a wide variety of solutions, from servers to storage, networking to fabrics with power and cooling. As such, each management domain has models in which readings for important data are scattered throughout the model. The Redfish telemetry model makes it possible to describe the a since locations where the metadata for the readings/metrics, the definition of reports gathering readings from multiple locations in the model, and specifying triggers and trigger actions associated with a specific metric reading.
 
@@ -41,7 +40,8 @@ In specifying this work-in-progress telemetry model, there are some aspects of t
 
 Feedback on the desirability of one or both modeling options are desired. Please provide feedback, since the feedback will inform and influence the specification of an unified telemetry model.
 
-# Requirements of Telemetry Model
+## Requirements of Telemetry Model
+
 The telemetry model is designed to fulfill the following requirements. These requirements are expounded subsequently.
 
 * The telemetry model include optional extensions to the existing model
@@ -53,8 +53,11 @@ The requirement that the telemetry model include optional extensions to the exis
 
 The requirement to support existing properties within the models means that properties is driven by the fact that properties representing  metrics, metric metadata and sensor characteristics already exist is some resource definitions. In this document, these properties will be referred to collectively as _metric properties_.
 
-The metric properties in the Redfish model appear in a variety of ways. Figue 1 show where metric properties exist in the Redfish models. Metric properties can be a simple JSON object or within a complex JSON object within a resource (e.g. Thermal and Power resource). Metric properties can be in a dedicated resource (e.g. MemoryMetrics resource). With YANG models, the dedicated resource is used often (e.g. statistics resource). The presumption is that this variety will continue as models are extended or added. 
-![Figure 1](TelemetryWhitePaper/Figure-MetricProperties.jpg "Figure 1")
+The metric properties in the Redfish model appear in a variety of ways. Figure 1 shows where metric properties exist in the Redfish models. Metric properties can be a simple JSON object or within a complex JSON object within a resource (e.g. Thermal and Power resource). Metric properties can be in a dedicated resource (e.g. MemoryMetrics resource). With YANG models, the dedicated resource is used often (e.g. statistics resource). The presumption is that this variety will continue as models are extended or added.
+
+| ![Figure 1](TelemetryWhitePaper/Figure-MetricProperties.jpg "Figure 1") |
+| :--------: |
+| *Figure 1* |
 
 The requirement that the telemetry model supports various telemetry resources recognizes that there many sources of metrics.  The telemetry model supports the following types of metrics:
 
@@ -71,7 +74,8 @@ The requirement to support higher level telemetry capabilities means supporting 
 * Ability to specify thresholds against which a metric is monitored
 * Ability to subscribe for alerts about threshold crossing
 
-# Telemetry Model
+## Telemetry Model
+
 The telemetry model has a Telemetry Service with four subordinate collection resources for:
 
 * Metric Definitions - this contains the definition of metric properties (characteristics, metadata)
@@ -79,7 +83,8 @@ The telemetry model has a Telemetry Service with four subordinate collection res
 * Metric Reports - this contains metric reports, if logging of metric reports are requested
 * Metric Triggers - this contain threshold triggers and actions that apply to a metric property
 
-## Modeling Options
+### Modeling Options
+
 There are some areas of the Telemetry for which two ways of modeling an aspect of telemetry are possible and each option has benefits and disadvantages.  In those cases, both models are presented in the telemetry model and described in this document.
 
 Feedback from the industry is requested so a decision on which model to retain in the Redfish standard.
@@ -91,25 +96,27 @@ The areas where modeling options exists:
 * Specifying calculations
 * Specifying durations
 
-### Specifying Re-occurring Measurements
+#### Specifying Re-occurring Measurements
+
 There are two locations for specifying the re-occuring measurements.  The options are in the MetricDefinition resource or the MetricReportDefinition resource.
 
 When specified in the MetricDefinition resource, there is a single SensingInterval property.
 
-'''
-	"SensingInterval": "PT0.001S",
-'''
+```
+    "SensingInterval": "PT0.001S",
+```
 
 When specified in the MetricReportDefinition resource, the re-occurence property is placed in the RecurranceInterval property within the Schedule object.  The Lifetime property within the Schedule object is used to control a schedule. The property specifies "the time after provisioning when the schedule as a whole expires" (see Schedule_v1.xml).
 
 ```
-	"Schedule": {
-		"Lifetime": "P05D",
-		"RecurrenceInterval": "PT0.001S"
-	},
+    "Schedule": {
+        "Lifetime": "P05D",
+        "RecurrenceInterval": "PT0.001S"
+    },
 ```
 
-### Specifying Triggers
+#### Specifying Triggers
+
 There are two locations for specifying the triggers.  The options are in the Triggers resource or the MetricReportDefinition resource.
 
 When specified in the Triggers resource, the TriggerCondition is place in a member of the Triggers collection resource. The Triggers resource model is described in the [Triggers](#triggers) section.
@@ -117,57 +124,64 @@ When specified in the Triggers resource, the TriggerCondition is place in a memb
 When specified in the MetricReportDefinition resource, the TriggerCondition property is placed within the Metrics object.
 
 ```
-	"Metrics": [{
-		"MemberID": "PowerUsageReading",
-		"MetricProperties": ["/redfish/v1/Chassis/...PowerConsumedWatts"],
-		"CollectionDuration": "PT0.020S",
-		"TriggerCondition": {
-			"DwellInterval": "PT0.001S",
-			"TriggerType": "Numeric",
-			"NumericTriggerConditions": {
-				"Name": "UpperThresholdNonCritical",
-				"Value": "48.1",
-				"DirectionOfCrossing": "Increasing"
-			}
-		}
-	}],
+    "Metrics": [
+        {
+            "MemberID": "PowerUsageReading",
+            "MetricProperties": [ "/redfish/v1/Chassis/...PowerConsumedWatts" ],
+            "CollectionDuration": "PT0.020S",
+            "TriggerCondition": {
+                "DwellInterval": "PT0.001S",
+                "TriggerType": "Numeric",
+                "NumericTriggerConditions": {
+                    "Name": "UpperThresholdNonCritical",
+                    "Value": "48.1",
+                    "DirectionOfCrossing": "Increasing"
+                }
+            }
+        }
+    ],
 ```
 
-### Specifying Calculations
+#### Specifying Calculations
+
 There are two options for modeling a calculate metrics proposed the telemetry model.  The first option is in the MetricDefintion resource.  The second is in the MetricReportDefinition resource.
 
 The first option can be used when a metric property already exists for the result of calculation.  For example, the Power resource has the `AverageConsumedWatts` property whose value is the calculated value. In this example a MetricDefinition exists for `AverageConsumedWatts`. The MetricDefinition contains the calculation properties.  The `CalculationParameters` property contains a references to the source and resultant metric properties.
 
 ```
     "CalculationAlgorithm": "AverageOverInterval",
- 	"CalculationTimeInterval": "PT1S",
-	"CalculationParameters": [
-	    {
-		    "SourceMetric": "/redfish/v1/Chassis/...PowerConsumedWatts ",
- 		    "ResultMetric": "/redfish/v1/Chassis/...AverageConsumedWatts "
-	    },
-		...
-	]
+    "CalculationTimeInterval": "PT1S",
+    "CalculationParameters": [
+        {
+            "SourceMetric": "/redfish/v1/Chassis/...PowerConsumedWatts",
+            "ResultMetric": "/redfish/v1/Chassis/...AverageConsumedWatts"
+        },
+        ...
+    ]
 ```
+
 The second option can be used when no metric property exists for the result of a calculation.  In the case, the calculation can be specified within the MetricReportDefinition directly.
+
 ```
-	"Metrics": [
-		{
-			"MemberID": "AverageConsumedWatts",
-			"CollectionFunction": "Avg",
-			"MetricProperties": ["/redfish/v1/Chassis/...PowerConsumedWatts"]
-		},
-		...
-	]
+    "Metrics": [
+        {
+            "MemberID": "AverageConsumedWatts",
+            "CollectionFunction": "Avg",
+            "MetricProperties": [ "/redfish/v1/Chassis/...PowerConsumedWatts" ]
+        },
+        ...
+    ]
 ```
+
 Note: The calculations are specified by name (e.g AverageOverInterval). This works for finite set of commonly used formulas.  There is the possibility of adding a mechanism of describing general formulas.  This is not currently addressed in the telemetry model.
 
-### Specifying Duration
+#### Specifying Duration
+
 In Redfish, the specification of points-in-time should conform to the ISO 8601 date-time format.
 
 In general, the Redfish convention appends units-of-measure to the name of a property (e.g. PowerConsumedWatts). The units-of-measure should conform to the Unified Code for Units of Measure (UCUM).
 
-For durations, the Redfish model uses various methods, as shown in the examples, below: 
+For durations, the Redfish model uses various methods, as shown in the examples, below:
 
 * Power#/PowerControl/PowerMetrics/IntervalInMin
 * Power#/PowerControl/PowerLimit/CorrectionInMs
@@ -177,7 +191,9 @@ For durations, the Redfish model uses various methods, as shown in the examples,
 
 The telemetry model specifies durations using the ISO 8601 duration format.
 
-	P[n]Y[n]M[n]DT[n]H[n]M[n]S
+```
+    P[n]Y[n]M[n]DT[n]H[n]M[n]S
+```
 
 * P is the duration designator (for period) placed at the start of the duration representation
 * Y is the year designator that follows the value for the number of years
@@ -185,14 +201,17 @@ The telemetry model specifies durations using the ISO 8601 duration format.
 * W is the week designator that follows the value for the number of weeks
 * D is the day designator that follows the value for the number of days
 * T is the time designator that precedes the time components of the representation
-	* H is the hour designator that follows the value for the number of hours
-	* M is the minute designator that follows the value for the number of minutes
-	* S is the second designator that follows the value for the number of seconds.  This value may have a decimal for values less than a second.
+    * H is the hour designator that follows the value for the number of hours
+    * M is the minute designator that follows the value for the number of minutes
+    * S is the second designator that follows the value for the number of seconds.  This value may have a decimal for values less than a second.
 
-## Telemetry Service
+### Telemetry Service
 
-The TelemetryService resource is the top level resource visible on ServiceRoot. 
-![Figure 1](TelemetryWhitePaper/Figure-TelemetryService.jpg "Figure 1")
+The TelemetryService resource is the top level resource visible on ServiceRoot.
+
+| ![Figure 2](TelemetryWhitePaper/Figure-TelemetryService.jpg "Figure 2") |
+| :--------: |
+| *Figure 2* |
 
 The TelemetryService contains links to collections of MetricDefinitions, MetricReportDefinitions, MetricReports, and Triggers.  MetricDefinitions are described in the [Metric Definitions](#metric-definitions) section; MetricReportDefintions and MetricReports are described in the [Metric Report Definitions](#metric-report-definitions) section;and, Triggers are described in the [Triggers](#triggers) section.
 
@@ -203,39 +222,43 @@ Hence, the TelemetryService is optional.  An implementation can decide for each 
 Furthermore, subordinate resources (MetricDefinition, MetricReportDefinition and Triggers) are independent on each other.  So an implementation can support one or all of the subordinate resources and the capabilities represented by them.
 
 Example Telemetry Service Resource:
+
 ```json
 {
-	"@odata.context": "/redfish/v1/$metadata#TelemetryService",
-	"@odata.type": "#TelemetryService.v1_0_0.TelemetryService",
-	"@odata.id": "/redfish/v1/TelemetryService",
-	"Id": "TelemetryService",
-	"Name": "Telemetry Service",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"SupportedCollectionFunctions": ["Avg", "Min", "Max"],
-	"MetricDefinitions": {
-		"@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions"
-	}, 
-	"MetricReportDefinitions": {
-		"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions"
-	},
-	"MetricReports": {
-		"@odata.id": "/redfish/v1/TelemetryService/MetricReports"
-	},
-	"Triggers": {
-		"@odata.id": "/redfish/v1/TelemetryService/Triggers"
-	}
+    "@odata.context": "/redfish/v1/$metadata#TelemetryService",
+    "@odata.type": "#TelemetryService.v1_0_0.TelemetryService",
+    "@odata.id": "/redfish/v1/TelemetryService",
+    "Id": "TelemetryService",
+    "Name": "Telemetry Service",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "SupportedCollectionFunctions": ["Avg", "Min", "Max"],
+    "MetricDefinitions": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions"
+    }, 
+    "MetricReportDefinitions": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions"
+    },
+    "MetricReports": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports"
+    },
+    "Triggers": {
+        "@odata.id": "/redfish/v1/TelemetryService/Triggers"
+    }
 }
 ```
 
-## Metric Definitions
+### Metric Definitions
 
-The MetricDefinitions collection resource contains MetricDefinition singleton resources.  Each MetricDefinition contains the definition, metadata, or characteristics for a metric.  In Figure 2, PowerConsumedWatts is MetricDefinition for the PowerConsumedWatts property in the Power resource.
-![Figure 2](TelemetryWhitePaper/Figure-MetricDefinitionRef.jpg "Figure 2")
+The MetricDefinitions collection resource contains MetricDefinition singleton resources.  Each MetricDefinition contains the definition, metadata, or characteristics for a metric.  In Figure 3, PowerConsumedWatts is MetricDefinition for the PowerConsumedWatts property in the Power resource.
 
-The MetricDefinition resource contains a MetricProperties object which references the metric properties to which the metric definition applies.  In Figure 2, the PowerConsumedWatts metric definition can reference each PowerConsumedWatts property in every Chassis, if that represents the implemented Redfish service.
+| ![Figure 3](TelemetryWhitePaper/Figure-MetricDefinitionRef.jpg "Figure 3") |
+| :--------: |
+| *Figure 3* |
+
+The MetricDefinition resource contains a MetricProperties object which references the metric properties to which the metric definition applies.  In Figure 3, the PowerConsumedWatts metric definition can reference each PowerConsumedWatts property in every Chassis, if that represents the implemented Redfish service.
 
 From the PowerConsumedWatts metric property in the Power resource, an annotation may  be insert to reference the MetricDefinition which applies to that metric property.
 
@@ -265,8 +288,9 @@ The remaining properties are measurement properties which characterizes the meas
 * UpdateRate
 * SampleRate
 * MeasureMethod
-	
-### Metric Type
+
+#### Metric Type
+
 The MetricType property specifies the type of metric and can have the following values.
 
 * **Counter** - The metric is a monotonic counter
@@ -274,7 +298,7 @@ The MetricType property specifies the type of metric and can have the following 
 * **Numeric** - The metric is a counter metric
 * **Discrete** - The metric is a counter metric
 
-### ImplementationType
+#### ImplementationType
 
 The ImplementationType property specifies how the metric is obtained and can have the following values.
 
@@ -283,72 +307,71 @@ The ImplementationType property specifies how the metric is obtained and can hav
 * **Calculated** - A calculated metric is obtained by applying a calculation on other metrics
 * **Synthesized** - A synthesized metric is a calculated metric which represents physical sensor value
 
-### SensorType
+#### SensorType
 
 The SensorType property contains the value from the SensorType enumerated in LogEntry.xml
 
-### PhysicalContext
+#### PhysicalContext
 
 The PhysicalContext property contains the value from the SensorType enumerated in PhysicalContext.xml
 
-### Units
+#### Units
 
 The Units property is the units of the metric, as defined by Unified Code for Units of Measure (UCUM)
 
-### DiscreteValues
+#### DiscreteValues
 
 The DiscreteValues array property is a list of the discrete values that a Discrete metric value may take.
 
-### Precision
+#### Precision
 
 The Precision property contains a value as specified by the Power API.
 
 > Number of significant digits in values
 
-### Accuracy
+#### Accuracy
 
 The Accuracy property contains a value as specified by the Power API.
 
 >Estimated percent error +/- of measured vs. actual values.
 
-### TimeStampLatency
- 
+#### TimeStampLatency
+
 The TimeStampe property contains a value as specified by the Power API.
 
->Estimate of the time required to get or set an attribute. This is useful to estimate completion time for an operation a priori. A value of zero should be returned when the get/set is instantaneous.
+> Estimate of the time required to get or set an attribute. This is useful to estimate completion time for an operation a priori. A value of zero should be returned when the get/set is instantaneous.
 
-### TimeStampAccuracy
-
-The TimeStampAccuracy property contains a value as specified by the Power API.
-
->Estimated accuracy of returned timestamps, represented as +/- the PWR_Time value returned.
-
-### TimeWindow
+#### TimeStampAccuracy
 
 The TimeStampAccuracy property contains a value as specified by the Power API.
 
->The time window used to calculate the value returned or relevant to an attribute.
-For example, the “instantaneous” PWR_- ATTR_POWER values reported may actually be averaged over a short time window. Power caps are also enforced with respect to a target time window.
+> Estimated accuracy of returned timestamps, represented as +/- the PWR_Time value returned.
 
-### UpdateRate
+#### TimeWindow
+
+The TimeStampAccuracy property contains a value as specified by the Power API.
+
+> The time window used to calculate the value returned or relevant to an attribute.  For example, the "instantaneous" PWR\_ATTR\_POWER values reported may actually be averaged over a short time window. Power caps are also enforced with respect to a target time window.
+
+#### UpdateRate
 
 The UpdateRate property contains a value as specified by the Power API.
 
->Rate values become visible to user, in updates per second. Getting or setting a value at a rate higher than this is not useful.
+> Rate values become visible to user, in updates per second. Getting or setting a value at a rate higher than this is not useful.
 
-### SampleRate
+#### SampleRate
 
 The SampleRate property contains a value as specified by the Power API.
 
-> Rate of underlying sampling, in samples per second. This is only relevant for values derived over time (e.g., PWR_ATTR_- ENERGY)
+> Rate of underlying sampling, in samples per second. This is only relevant for values derived over time (e.g., PWR\_ATTR\_ENERGY)
 
-### MeasureMethod
+#### MeasureMethod
 
 The MeasureMethod property contains a value as specified by the Power API.
 
->Denotes the measurement method: an actual measurement (returned value = 0) or a model based estimate (return value = 1). Other values > 1 may be used to denote multiple vendor specific models in the situation where multiple models may exist.
+> Denotes the measurement method: an actual measurement (returned value = 0) or a model based estimate (return value = 1). Other values > 1 may be used to denote multiple vendor specific models in the situation where multiple models may exist.
 
-### Wildcards
+#### Wildcards
 
 The Wildcards property is used on conjunction with the MetricProperties property.  The MetricProperties property contains a list of each metric property described by the MetricDefinition.  This list could get very large.  In order to reduce the size of the list, the MetricProperties strings contain wildcards, delimited by curly braces "{}".
 
@@ -356,8 +379,10 @@ The Wildcards property contains a list of the wildcards. Each wildcard contains 
 
 The wild card mechanism is also used in other parts of the Telemetry model.
 
-### Example
+#### Example
+
 The following example is for a numeric sensor, PowerConsumedWatts properties, which exists in the Power resources.
+
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
@@ -366,100 +391,113 @@ The following example is for a numeric sensor, PowerConsumedWatts properties, wh
     "Id": "PowerConsumedWatts",
     "Name": "Metric Definition of Power Consumed",
     "MetricType": "Numeric",
-	"SensorType": "PowerConsumption",
-	"Implementation": "PhysicalSensor",
-	"PhysicalContext": "PowerSupply",
-	"SensingInterval": "1000",
-	"Units": "W",
-	"Precision": 4,
+    "SensorType": "PowerConsumption",
+    "Implementation": "PhysicalSensor",
+    "PhysicalContext": "PowerSupply",
+    "SensingInterval": "1000",
+    "Units": "W",
+    "Precision": 4,
     "Accuracy": 1.0,
-	"Calibration": 2,
-	"TimeStampAccuracy": "PT1S",
- 	"MinReadingRange": 0.0,
-	"MaxReadingRange": 50.0,
+    "Calibration": 2,
+    "TimeStampAccuracy": "PT1S",
+    "MinReadingRange": 0.0,
+    "MaxReadingRange": 50.0,
     "Wildcards": [
         { "Name": "ChassisID", "Values": [ "1", "2", "3" ] }
     ],
-	"MetricProperties": [
-        "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/PowerConsumedWatts ",
-        "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts "
+    "MetricProperties": [
+        "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/PowerConsumedWatts",
+        "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts"
     ]
 }
 ```
 
-## Metric Report Definitions
+### Metric Report Definitions
 
 The `MetricReportDefinition` resource specifies the metric report that the Redfish service will create.  The metric reports can be use to aggregate metric readings.  The metric reports can be create d periodically, when a reading value changes, or upon request.  The metric report can be transmitted using the Event Service and/or stored locally (as a member the ./MetricReports collection) and retrieved later.
-![Figure 3](TelemetryWhitePaper/Figure-MetricReportDefinition.jpg "Figure 3")
+
+| ![Figure 4](TelemetryWhitePaper/Figure-MetricReportDefinition.jpg "Figure 4") |
+| :--------: |
+| *Figure 4* |
 
 The properties of MetricReportDefinition are described below.
 
-### MetricReportType
+#### MetricReportType
+
 The `MetricReportType` property specifies when the report is created and can have the following values.
 
 * **Periodic** - The metric report is updated periodically
 * **OnChange** - The metric report is updated when the values change 
 * **OnReport** - The metric report is updated each time a client reads it 
 
-### ReportActions
+#### ReportActions
+
 The `ReportActions` array property specifies the action(s) to perform when a metric report is generated.
 
 * **Log** - Place the metric report in a location where the client can retrieve
 * **Transmit** - Send the metric report as a Metric event 
 
-### MetricProperties
+#### MetricProperties
+
 The `MetricProperties` array property specifies metrics which are metrics are included in the metric report.  The `MetricProperties` may have wild cards.
 
-### Example
+#### Example
+
 The following example specifies a metric report with includes the AvgPowerConsumedWatts, MinPowerConsumedWatts and MaxPowerConsumedWatts, from the chassis, Tray_1, Tray_2 and Tray_3. The metric report is to generated periodically and transmit as a Informational Event and also logged as a member of the MetricReports collection resource.  When logging, the metric report should overwrite a previous metric report.
 
 ```json
 {
-	"@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
-	"@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
-	"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/JL_PowerMetrics",
-	"Id": "JL_PowerMetrics",
-	"Name": "Power Metrics",
-	"MetricReportType": "Periodic",
-	"Schedule": {
-		"RecurrenceInterval": "PT0.1S"
-	},
-	"ReportActions": ["Transmit", "Log"],
-	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"},
-	"Volatile": true, 
-	"Status": {
-		"State": "Enabled"
-	},
-	"Wildcards": [
-		{ "PWild": ["0", "1"] },
-		{ "TWild": ["Tray_1", "Tray_2", "Tray_3"] }
-	],
-	"MetricProperties": [
-		"/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/AvgPowerConsumedWatts",
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/JL_PowerMetrics",
+    "Id": "JL_PowerMetrics",
+    "Name": "Power Metrics",
+    "MetricReportType": "Periodic",
+    "Schedule": {
+        "RecurrenceInterval": "PT0.1S"
+    },
+    "ReportActions": [ "Transmit", "Log" ],
+    "MetricReport": { "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics" },
+    "Volatile": true, 
+    "Status": {
+        "State": "Enabled"
+    },
+    "Wildcards": [
+        { "PWild": [ "0", "1" ] },
+        { "TWild": [ "Tray_1", "Tray_2", "Tray_3" ] }
+    ],
+    "MetricProperties": [
+        "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/AvgPowerConsumedWatts",
         "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/MinPowerConsumedWatts",
-	    "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/MaxPowerConsumedWatts"
-	]
+        "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/MaxPowerConsumedWatts"
+    ]
 }
 ```
-## Triggers
+
+### Triggers
 
 The Triggers resource specifies the trigger threshold(s) that apply to numeric or discrete metrics. A trigger can result in an alert being transmitted using the Event Service and/or logged in the service log.
 
-![Figure 4](TelemetryWhitePaper/Figure-Triggers.jpg "Figure 4")
+| ![Figure 5](TelemetryWhitePaper/Figure-Triggers.jpg "Figure 5") |
+| :--------: |
+| *Figure 5* |
 
-### TriggerType
+#### TriggerType
+
 The `TriggerType` property specifies the type of trigger and indicates other properties that should be present. The property can have the following values:
 
 * **Numeric** - The triggers are numeric.  See `NumericTriggers` property
 * **Discrete** - The triggers are discrete.  See DiscreteTriggerCondition property 
 
-### TriggerActions
+#### TriggerActions
+
 The `TriggerActions` array property specifies the action(s) to perform when a trigger is trip. The property can have the following values:
 
 * **Log** - Log the trigger into the Service Log 
 * **Transmit** - Send the trigger as a Alert event
 
-### NumericTriggers
+#### NumericTriggers
+
 The `NumericTriggers` array property specifies the trigger thresholds, if the `TriggerType' is numeric.  The property is complex and has the following properties
 
 * `Value` - the value of the threshold
@@ -467,54 +505,58 @@ The `NumericTriggers` array property specifies the trigger thresholds, if the `T
 * `DwellTimems` - the duration that the trigger is tripped before the trigger action is invoked
 * `Severity` - the value of the `Severity` property within the alert Event Message
 
-### DiscreteTriggerConditions
+#### DiscreteTriggerConditions
+
 The `DiscreteTriggerCondition
 
 * **Specified** - A trigger occurs when the value of the metric becomes one of the values listed in the `DiscreteTriggers` property
 * **Changes** - A trigger occurs whenever the value of the metric changes.
 
-### DiscreteTriggers
+#### DiscreteTriggers
+
 The `DiscreteTriggers` array property specifies the values of metric which will trip the trigger, if the `TriggerType` is discrete and `DiscreteTriggerCondition` is specified.
 
 * `Value` - the value of the threshold
 * `DwellTimems` - the duration that the trigger has tripped before the trigger action is invoked
 * `Severity` - The value of the `Severity` property within the alert Event Message
 
-### MetricProperties
+#### MetricProperties
+
 The `MetricProperties` array property specifies metrics which are metrics to monitor against the triggers.  The `MetricProperties` property may have wildcards.
 
-### Example
+#### Example
+
 The following is an example of a numeric trigger with two thresholds (Upper Threshold Critical and Non Critical). When the trigger occurs, an Alert Event is sent to the subscribers, and will include the corresponding severity.
 
 ```json
 {
-	"@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
-   	"@odata.type": "#Triggers.v1_0_0.Triggers",
-  	"@odata.id": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers",
-	"Id": "PlatformPowerCapTriggers",
-	"Name": "Triggers for platform power consumed",
-	"MetricType": "Numeric",
-	"TriggerActions": ["Transmit"],
-  	"NumericTriggers": [
-			{
-                "Name": "UpperThresholdCritical",
-			    "Value": "50.0",
-			    "DirectionOfCrossing": "Increasing",
-			    "DwellTimems": "1",
-                "Severity": "Critical"
-			},
-			{
-                "Name": "UpperThresholdNonCritical",
-			    "Value": "48.1",
-			    "DirectionOfCrossing": "Increasing",
-			    "DwellTimems": "4",
-                "Severity": "Warning"
-			}
+    "@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
+    "@odata.type": "#Triggers.v1_0_0.Triggers",
+    "@odata.id": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers",
+    "Id": "PlatformPowerCapTriggers",
+    "Name": "Triggers for platform power consumed",
+    "MetricType": "Numeric",
+    "TriggerActions": [ "Transmit" ],
+    "NumericTriggers": [
+        {
+            "Name": "UpperThresholdCritical",
+            "Value": "50.0",
+            "DirectionOfCrossing": "Increasing",
+            "DwellTimems": "1",
+            "Severity": "Critical"
+        },
+        {
+            "Name": "UpperThresholdNonCritical",
+            "Value": "48.1",
+            "DirectionOfCrossing": "Increasing",
+            "DwellTimems": "4",
+            "Severity": "Warning"
+        }
     ],
-	"MetricProperties": [
+    "MetricProperties": [
         "/redfish/v1/Chassis/1/Power#/PowerControl/0/PowerConsumedWatts",
         "/redfish/v1/Chassis/1/Power#/PowerControl/1/PowerConsumedWatts"
-	]
+    ]
 }
 ```
 
