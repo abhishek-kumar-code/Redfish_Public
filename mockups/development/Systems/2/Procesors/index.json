@@ -7,7 +7,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/1/Processors/1"
+            "@odata.id": "/redfish/v1/Systems/2/Processors/1"
         }
     ]
 }
