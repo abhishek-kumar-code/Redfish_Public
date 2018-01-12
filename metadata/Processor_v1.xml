@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Processor  v1.2.0-->
+<!--# Redfish Schema:  Processor  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -29,6 +29,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
     <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ProcessorCollection_v1.xml">
+    <edmx:Include Namespace="ProcessorCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -166,6 +169,12 @@
         <Member Name="Accelerator">
           <Annotation Term="OData.Description" String="An Accelerator."/>
         </Member>
+        <Member Name="Core">
+          <Annotation Term="OData.Description" String="A Core in a Processor."/>
+        </Member>
+        <Member Name="Thread">
+          <Annotation Term="OData.Description" String="A Thread in a Processor."/>
+        </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="An OEM-defined Processing Unit."/>
         </Member>
@@ -298,6 +307,17 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_3_0">
+      <EntityType Name="Processor" BaseType="Processor.v1_2_0.Processor">
+        <NavigationProperty Name="SubProcessors" Type="ProcessorCollection.ProcessorCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of Sub-Processors associated with this system, such as cores or threads that are part of a processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type ProcessorCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
