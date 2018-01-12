@@ -10,7 +10,7 @@
             "MinVersion": "1.0.0"
         },
         "ContosoPizza": {
-            "Repository": "contoso.com/profiles",
+            "Repository": "http://contoso.com/profiles",
             "MinVersion": "1.0.0"
         }
     },

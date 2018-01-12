@@ -328,7 +328,7 @@
                 },
                 "SubordinateToResource": {
                     "type": "array",
-                    "description": "An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list."
+                    "description": "An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list."
                 },
                 "Comparison": {
                     "$ref": "#/definitions/Comparison"
@@ -405,7 +405,8 @@
         },
         "Repository": {
             "type": "string",
-            "description": "A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org ."
+            "format": "uri",
+            "description": "A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles)."
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#SerialInterface.v1_0_3.SerialInterface",
     "$ref": "#/definitions/SerialInterface",
     "definitions": {
@@ -20,15 +20,15 @@
         "ConnectorType": {
             "type": "string",
             "enum": [
-                "RJ45",
-                "RJ11",
-                "DB9 Female",
-                "DB9 Male",
-                "DB25 Female",
-                "DB25 Male",
-                "USB",
-                "mUSB",
-                "uUSB"
+                "RJ45.",
+                "RJ11.",
+                "DB9 Female.",
+                "DB9 Male.",
+                "DB25 Female.",
+                "DB25 Male.",
+                "USB.",
+                "mUSB.",
+                "uUSB."
             ]
         },
         "DataBits": {
@@ -200,5 +200,5 @@
             "longDescription": "This resource shall be used to represent serial resources as part of the Redfish specification."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

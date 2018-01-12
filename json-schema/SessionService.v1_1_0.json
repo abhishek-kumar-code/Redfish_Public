@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#SessionService.v1_1_0.SessionService",
     "$ref": "#/definitions/SessionService",
     "definitions": {
@@ -35,19 +35,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -57,9 +54,8 @@
                         "boolean",
                         "null"
                     ],
-                    "readonly": false,
-                    "description": "This indicates whether this service is enabled.  If set to false, the Session Service is disabled and any attempt to access it will fail.  This means new sessions cannot be created, old sessions cannot be deleted though established sessions may continue operating.",
-                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled.  This means new sessions cannot be created, old sessions cannot be deleted though established sessions may continue operating."
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },
                 "SessionTimeout": {
                     "type": "number",
@@ -73,7 +69,7 @@
                 "Sessions": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SessionCollection.json#/definitions/SessionCollection",
                     "readonly": true,
-                    "description": "Link to a collection of Sessions.",
+                    "description": "Link to a collection of Sessions",
                     "longDescription": "This property shall contain the link to a collection of Sessions."
                 },
                 "Actions": {
@@ -112,12 +108,10 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         }
                     },
-                    "longDescription": "This type shall contain the available actions for this resource.",
+                    "readonly": true,
                     "description": "The Actions object contains the available custom actions on this resource."
                 }
             },
@@ -129,5 +123,5 @@
             "longDescription": "This resource shall be used to represent the Session Service Properties for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -2,8 +2,8 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.X.Y'
-modified: '2017-11-XX'
+DocVersion: '1.4.0'
+modified: '2017-11-17'
 SupersedesVersion: '1.3.0'
 status: published
 released: true
@@ -186,7 +186,7 @@ The following design tenets and technologies are used to help deliver the previo
 * Provide a RESTful interface using a JSON payload and an Entity Data Model
 * Separate protocol from data model, allowing them to be revised independently
 * Specify versioning rules for protocols and schema
-* Leverage strength of internet protocol standards where it meets architectural requirements, such as JSON, HTTP, OData, and the RFCs referenced by this document.
+* Leverage strength of Internet protocol standards where it meets architectural requirements, such as JSON, HTTP, OData, and the RFCs referenced by this document.
 * Focus on out-of-band access -- implementable on existing BMC and firmware products
 * Organize the schema to present value-add features alongside standardized items
 * Make data definitions as obvious in context as possible
@@ -1375,7 +1375,7 @@ The client can get the definition of the annotation from the [service metadata](
 
 HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of [400](#status-400) does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics.
 
-A Redfish Service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM defined errors or both depending on the implementation's ablity to convey the most useful information about the underlying error.
+A Redfish Service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM defined errors or both depending on the implementation's ability to convey the most useful information about the underlying error.
 
 Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
 
@@ -1487,7 +1487,7 @@ For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml"
 
 ##### JSON schema file naming
 
-Redfish JSON schema files shall be named using the [Type identfiers](#type-identifiers), following the format:
+Redfish JSON schema files shall be named using the [Type identifiers](#type-identifiers), following the format:
 
   *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
   
@@ -2268,7 +2268,7 @@ The client should not include the mime type application/http in the Accept Heade
 
 The response body of a [202](#status-202) (Accepted) should contain an instance of the Task resource describing the state of the task.
 
-As long as the operation is in process, the service shall continue to return a status code of [202](#status-202)(Accepted) when querying the Task Monitor returned in the location header.
+As long as the operation is in process, the service shall continue to return a status code of [202](#status-202)(Accepted) when querying the Task Monitor returned in the location header.  If a service supports cancelling a task, it shall have DELETE in the Allow header for the Task Monitor.
 
 The client may cancel the operation by performing a DELETE on the Task Monitor URL. The service determines when to delete the associated Task resource object.
 
@@ -2917,7 +2917,18 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
-| 1.X.X   | 2017-11-xx| Clarifications for http status and payload responses after successful processing of data modifcation requests. |
+| 1.4.0   | 2017-11-17| Added support for optional Query parameters ("$expand", "$filter", and "$select") on requests to allow for more efficient retrieval of resources or properties from a Redfish Service. |
+|         |          | Clarified HTTP status and payload responses after successful processing of data modification requests. This includes POST operations for performing Actions, as well as other POST, PATCH, or PUT requests. |
+|         |          | Added HTTP status code entries for 428 and 507 to clarify the proper response to certain error conditions. Added reference links to the HTTP status code table throughout. |
+|         |          | Updated Abstract to reflect current state of the Specification. |
+|         |          | Added reference to RFC 6585 and clarified expected behavior when ETag support is used in conjunction with PUT or PATCH operations. |
+|         |          | Added definition for "Property" term and updated text to use term consistently. |
+|         |          | Added "Client Requirement" column and information for HTTP headers on requests. |
+|         |          | Clarified the usage and expected format of the Context property value. |
+|         |          | Added clause detailing how Structured properties can be revised and how to resolve their definitions in schema. |
+|         |          | Added more descriptive definition for the Settings resource.  Added an example for the "SettingsObject".  Added description and example for using the "SettingsApplyTime" annotation. |
+|         |          | Added Action example using the ActionInfo resource in addition to the simple AllowableValues example. Updated example to show a proper subset of the available enumerations to reflect a real-world example. |
+|         |          | Added statement explaining the updates required to TaskState upon task completion. |
 | 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP status code [428](#status-428). |
 |         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
 | 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Endpoint  v1.0.3-->
+<!--# Redfish Schema:  Endpoint  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -27,11 +27,17 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/IPAddresses_v1.xml">
+    <edmx:Include Namespace="IPAddresses"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Port_v1.xml">
     <edmx:Include Namespace="Port"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Protocol_v1.xml">
     <edmx:Include Namespace="Protocol"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkDeviceFunction_v1.xml">
+    <edmx:Include Namespace="NetworkDeviceFunction"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -157,8 +163,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall be a reference to an entity of the type specified by the description of the value of the EntityType property."/>
         </NavigationProperty>
 
-        <Property Name="Oem" Type="Resource.Oem">
-        </Property>
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <EnumType Name="EntityType">
@@ -185,6 +190,9 @@
         </Member>
         <Member Name="Processor">
           <Annotation Term="OData.Description" String="The entity is a processor device."/>
+        </Member>
+        <Member Name="Volume">
+          <Annotation Term="OData.Description" String="The entity is a volume. The EntityLink property (if present) should be a Volume.Volume entity."/>
         </Member>
       </EnumType>
 
@@ -245,6 +253,51 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_3">
       <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions, and to change references to Identifier to be its abstract base type, and Protocol to use the unversioned definition.."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_0">
+      <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_3.Endpoint">
+        <Property Name="IPTransportDetails" Type="Collection(Endpoint.v1_1_0.IPTransportDetails)">
+          <Annotation Term="OData.Description" String="This array contains details for each IP transport supported by this endpoint. The array structure can be used to model multiple IP addresses for this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="This array shall contain the details for each IP transport supported by this endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="Endpoint.v1_0_0.Links">
+        <NavigationProperty Name="NetworkDeviceFunction" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="When NetworkDeviceFunction resources are present, this array contains references to the network device function that connect to this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a NetworkDeviceFunction resource, with which this endpoint is associated."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+
+      <ComplexType Name="IPTransportDetails">
+        <Annotation Term="OData.Description" String="This object contains properties which specify the details of the transport supported by the endpoint. The properties which are present, is dependemt on the type of transport supported by the endpoint."/>
+        <Annotation Term="OData.LongDescription" String="The type shall contain properties which specify the details of the transport supported by the endpoint."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="TransportProtocol" Type="Protocol.Protocol" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The protocol used by the connection entity."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the protocol used by the connection entity."/>
+        </Property>
+        <Property Name="IPv4Address" Type="IPAddresses.IPv4Address" Nullable="false">
+          <Annotation Term="OData.Description" String="The IPv4 addresses assigned to the Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv4Address."/>
+        </Property>
+        <Property Name="IPv6Address" Type="IPAddresses.IPv6Address" Nullable="false">
+          <Annotation Term="OData.Description" String="The IPv6 addresses assigned to the Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the IPv6Address."/>
+        </Property>
+        <Property Name="Port" Type="Edm.Decimal" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UDP or TCP port number used by the Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an specify UDP or TCP port number used for communication with the Endpoint."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="65535"/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

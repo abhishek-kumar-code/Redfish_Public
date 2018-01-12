@@ -284,6 +284,9 @@
         <Member Name="RackGroup">
           <Annotation Term="OData.Description" String="A group of racks which form a single entity or share infrastructure."/>
         </Member>
+        <Member Name="StorageEnclosure">
+          <Annotation Term="OData.Description" String="A chassis which encloses storage."/>
+        </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="A chassis that does not fit any of these definitions."/>
         </Member>
