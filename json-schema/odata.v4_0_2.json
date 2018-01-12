@@ -42,7 +42,7 @@
             "type": "string",
             "readonly": true,
             "description": "The current ETag of the resource.",
-            "longDescription": "The value of this property shall be an opaque string that is used to determine if the resource has changed since last retrieved."
+            "longDescription": "The value of this property shall be a string that is defined by the ETag HTTP header definition in RFC7232."
         }
     }
 }
