@@ -2,11 +2,11 @@
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "OCPBasicServer",
 	"ProfileVersion": "0.95",
-	"Author": "Open Compute Project",
 	"Purpose": "A baseline interoperability profile for typical scale-out 1P/2P servers",
-	"ContactInfo": "dmtf.org/feedback",
+	"OwningEntity": "Open Compute Project",
+	"ContactInfo": "redfish@opencompute.org",
 	"RequiredProfiles": {
-		"BaseManagedDevice": {
+		"OCPManagedDevice": {
 			"MinVersion": "1.0.0"
 		}
 	},

@@ -2,12 +2,13 @@
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "OCPManagedDevice",
 	"ProfileVersion": "0.95",
-	"Author": "A Work in Progress from SPMF",
 	"Purpose": "A baseline interoperability profile for a managed device.",
-	"ContactInfo": "dmtf.org/feedback",
+	"OwningEntity": "Open Compute Project",
+	"ContactInfo": "redfish@opencompute.org",
 	"Protocol": {
 		"MinVersion": "1.0",
-		"DiscoveryRequired": false
+		"Discovery": "Recommended",
+		"HostInterface": "Recommended"
 	},
 	"Resources": {
 		"AccountService": {
