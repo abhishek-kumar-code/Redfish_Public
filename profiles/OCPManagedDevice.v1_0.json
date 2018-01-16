@@ -43,13 +43,15 @@
 						"Health": {}
 					}
 				},
-				"Thermal": {},
-				"Power": {},
+				"Thermal": {
+					"ReadRequirement": "Recommended"
+				},
+				"Power": {
+					"ReadRequirement": "Recommended"
+				},
 				"Links": {
 					"PropertyRequirements": {
-						"ComputerSystems": {},
 						"ManagedBy": {}
-
 					}
 				}
 			}
@@ -78,6 +80,12 @@
 						"Health": {},
 						"State": {}
 					}
+				},
+				"DHCPv4:": {
+					"ReadRequirement": "Recommended"
+				},
+				"DHCPv6:": {
+					"ReadRequirement": "Recommended"
 				},
 				"HostName": {
 					"ReadRequirement": "Recommended",
@@ -117,21 +125,30 @@
 						"Gateway": {}
 					}
 				},
+				"IPv4StaticAddresses": {
+					"ReadRequirement": "Recommended"
+				},
 				"IPv6AddressPolicyTable": {
 					"ReadRequirement": "Recommended"
 				},
 				"IPv6StaticAddresses": {
 					"ReadRequirement": "Recommended"
 				},
+				"IPv6StaticDefaultGateways": {
+					"ReadRequirement": "Recommended"
+				},
 				"IPv6Addresses": {
-					"ReadRequirement": "Recommended",
+					"ReadRequirement": "IfImplemented",
 					"PropertyRequirements": {
 						"Address": {},
 						"PrefixLength": {},
 						"AddressOrigin": {},
 						"AddressState": {}
 					}
-				}
+				},
+				"StaticNameServers": {
+					"ReadRequirement": "Recommended"
+				},
 			}
 		},
 		"ManagerAccount": {},
@@ -250,7 +267,7 @@
 					}
 				},
 				"Temperatures": {
-					"ReadRequirement": "Recommended",
+					"ReadRequirement": "IfImplemented",
 					"PropertyRequirements": {
 						"ReadingCelsius": {},
 						"UpperThresholdFatal": {

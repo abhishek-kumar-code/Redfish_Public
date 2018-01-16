@@ -11,6 +11,18 @@
 		}
 	},
 	"Resources": {
+		"Chassis": {
+			"MinVersion": "1.0.0",
+			"PropertyRequirements": {
+				"Links:": {
+					"PropertyRequirements": {
+						"ComputerSystems": {}
+					}
+				},
+				"Thermal": {},
+				"Power": {}
+			}
+		},
 		"ComputerSystem": {
 			"MinVersion": "1.0.0",
 			"PropertyRequirements": {
