@@ -3,7 +3,6 @@
     "Id": "Block9GPU",
     "Name": "Processor",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -14,7 +13,6 @@
     "TotalCores": 1536,
     "TotalThreads": 1536,
     "Links": {
-        "@odata.type": "#Processor.v1_1_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/ComposableModule6"
         }

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#SecureBoot.v1_0_0.SecureBoot",
     "$ref": "#/definitions/SecureBoot",
     "definitions": {
@@ -78,26 +78,22 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "SecureBootEnable": {
                     "type": [
                         "boolean",
                         "null"
                     ],
-                    "readonly": false,
                     "description": "Enable or disable UEFI Secure Boot (takes effect on next boot).",
                     "longDescription": "Setting this property to true enables UEFI Secure Boot, and setting it to false disables it. This property can be enabled only in UEFI boot mode."
                 },
@@ -152,14 +148,13 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         },
                         "#SecureBoot.ResetKeys": {
                             "$ref": "#/definitions/ResetKeys"
                         }
                     },
+                    "readonly": true,
                     "description": "The available actions for this resource.",
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 }
@@ -198,5 +193,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

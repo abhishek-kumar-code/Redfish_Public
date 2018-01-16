@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/1",
-    "@odata.type": "#ComputerSystem.v1_3_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
     "Id": "1",
     "Name": "My Computer System",
     "SystemType": "Physical",
@@ -37,14 +37,27 @@
             "Utilities",
             "Diags",
             "UefiTarget",
-            "SDCard",            
-            "UefiHttp"
+            "SDCard",
+            "UefiHttp",
+            "UefiBootNext"
         ],
-        "UefiTargetBootSourceOverride": "uefi device path"
+        "UefiTargetBootSourceOverride": "",
+        "BootOptions": {
+            "@odata.id": "/redfish/v1/Systems/1/BootOptions"
+        },
+        "BootNext": "Boot0003",
+        "BootOrder": [
+            "Boot0001",
+            "Boot0000",
+            "Boot0002",
+            "Boot0004",
+            "Boot0003"
+        ]
     },
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "ProcessorSummary": {
         "Count": 8,
+        "LogicalProcessorCount":  256,
         "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
         "Status": {
             "State": "Enabled",
@@ -73,6 +86,16 @@
            "InterfaceTypeSelection": "None"
         }
     ],
+    "HostWatchdogTimer": {
+        "FunctionEnabled": true,
+	"WarningAction": "DiagnosticInterrupt",
+	"WarningAction@Redfish.AllowableValues": [ "DiagnosticInterrupt", "SMI", "None" ],
+	"TimeoutAction": "ResetSystem",
+	"TimeoutAction@Redfish.AllowableValues": [ "ResetSystem", "PowerCycle", "PowerDown", "None" ],
+	"Status": {
+	   "State": "StandbyOffline"
+	}
+    },
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/1/Processors"
     },
@@ -125,12 +148,16 @@
     "Actions": {
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-	    "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
+            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
+        },
+        "#ComputerSystem.SetDefaultBootOrder": {
+            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.SetDefaultBootOrder",
+            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/RSetDefaultBootOrderActionInfo"
         },
         "Oem": {
             "#Contoso.Reset": {
                 "target": "/redfish/v1/Systems/1/OEM/Contoso/Actions/Contoso.Reset",
-		"@Redfish.ActionInfo": "/redfish/v1/Systems/1/ContosoResetActionInfo"
+                "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ContosoResetActionInfo"
             }
         }
     },

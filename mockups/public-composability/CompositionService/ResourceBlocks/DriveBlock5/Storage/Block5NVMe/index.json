@@ -3,7 +3,6 @@
     "Id": "Block5NVMe",
     "Name": "NMVe Storage",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },

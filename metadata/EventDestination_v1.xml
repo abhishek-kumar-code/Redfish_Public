@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EventDestination  v1.2.1-->
+<!--# Redfish Schema:  EventDestination  v1.2.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -25,7 +25,7 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Event_v1.xml">
-    <edmx:Include Namespace="Event.v1_0_0"/>
+    <edmx:Include Namespace="Event"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -64,7 +64,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain a URI to the destination where the events will be sent."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
-        <Property Name="EventTypes" Type="Collection(Event.v1_0_0.EventType)" Nullable="false">
+        <Property Name="EventTypes" Type="Collection(Event.EventType)" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property shall contain the types of events that shall be sent to the desination."/>
@@ -88,7 +88,9 @@
       </EntityType>
 
       <EnumType Name="EventDestinationProtocol">
-        <Member Name="Redfish"/>
+        <Member Name="Redfish">
+          <Annotation Term="OData.Description" String="The destination follows the Redfish specification for event notifications."/>
+        </Member>
       </EnumType>
 
       <ComplexType Name="HttpHeaderProperty">
@@ -122,6 +124,11 @@
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_3.EventDestination"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_5">
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_4.EventDestination"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_0">
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_2.EventDestination">
         <NavigationProperty Name="OriginResources" Type="Collection(Resource.ItemOrCollection)">
@@ -152,6 +159,11 @@
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_2.EventDestination"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_4">
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_3.EventDestination"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_2_0">
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_2.EventDestination">
         <Property Name="Actions" Type="EventDestination.v1_2_0.Actions" Nullable="false">
@@ -177,6 +189,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_2_0.EventDestination"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_2_2">
+      <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_2_1.EventDestination"/>
     </Schema>
 
   </edmx:DataServices>

@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2017.2'
-modified: '2017-09-22'
+DocVersion: '2017.3'
+modified: '2017-11-17'
 status: published
 released: True
 copyright: '2015-2017'
@@ -14,15 +14,76 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 * DSP0226 - Redfish Specification - This file is the main Redfish Scalable Platforms Management API Specification.
 * DSP0270 - Redfish Host Interface Specification - This document specifies the "in-band" or "OS-based" Redfish Host Interface. 
+* DSP0272 - Redfish Interoperability Profile Specification - Specifies the structure and JSON document used to define and publish an interoperability profile used to check an implementation's conformance to a defined minimum set of functionality.
 * DSP2044 - Redfish Whitepaper - This is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish Service and understand common functions and tasks.
 * DSP2043 - Redfish Mockup - This is a mockup that can be used as sample of output from GETs from a Redfish Service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
 * DSP8010 - Redfish Schema - This contains the Redfish Schema definitions.  These files are normative in nature and are normatively referenced by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format, which is in XML) and JSON Schema.  These Schema definitions should be functionally equivalent, thus specifying the schema in two different languages.
+* DSP8011 - Redfish Standard Registries - This contains the Redfish Registry definitions.  This bundle of Redfish registries includes Message registries used for Redfish-defined messages (including events) and Privilege maps.
+* DSP8013 - Redfish Interoperability Profiles - A bundle of published Redfish Interoperability Profile documents as well as supporting schema and sample documents used for creating profiles.
 
 
 # Redfish Schema Change log
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| Assembly | 1.0.0 | 2017-11-17 | Initial release.  Contains manufacturing and assembly information for a piece of equipment. |
+| BootOption | 1.0.0 | 2017-11-17 | Initial release. Contains information about a Boot Option contained within a system. |
+| BootOptionCollection | 1.0.0 | 2017-11-17 | Initial release. A collection of Boot Options. |
+| Protocol | 1.0.0 | 2017-11-17 | Initial release. Supporting schema file to hold definition of the common "Protocol" property. |
+| Chassis | 1.6.0 | 2017-11-17 | Added link to Assembly resource. Added "StorageEnclosure" to "ChassisType". |
+| ComputerSystem | 1.5.0 | 2017-11-17 | Added support for managing the boot order (Boot Options). Added "SubModel" to describe product model variations. Added Action for "SetDefaultBootOrder". Added "LogicalProcessorCount" to "ProcessorSummary".  Added links for "ConsumingComputerSystems" and "SupplyingComputerSystems". |
+| Drive | 1.3.0 | 2017-11-17 | Added link to Assembly resource. |
+| Endpoint | 1.1.0 | 2017-11-17 | Added "IPTransportDetails" object. |
+| EthernetInterface | 1.4.0 | 2017-11-17 | Added multiple objects to allow for full configuration of DHCPv4 and DHCPv6. Added "IPv4StaticAddresses" to provide mechanism for specifying static IP addresses regardless of DHCP settings. Added "StaticNameServers" and "StatelessAddressAutoConfig" objects to support their configuration. |
+| LogEntry | 1.3.0 | 2017-11-17 | Added "OemLogEntryCode" and "OemSensorType" properties to allow for legacy IPMI OEM definitions. |
+| LogService | 1.1.0 | 2017-11-17 |  Added "LogEntryType" to describe the content type of a log. |
+| Memory | 1.4.0 | 2017-11-17 | Added "VolatileSizeMib", "NonVolatileSizeMiB", "CacheSizeMiB", "LogicalSizeMiB" properties. Added "Location" object. |
+| MemoryChunks | 1.2.0 | 2017-11-17 | Added "Status" object. |
+| NetworkAdapter | 1.1.0 | 2017-11-17 | Added "Assembly" link. Added "Location" object to "Controllers" object. |
+| NetworkDeviceFunction | 1.2.0 | 2017-11-17 | Added "Endpoints" to "Links" object. |
+| PCIeDevice | 1.2.0 | 2017-11-17 | Added "Assembly" link. |
+| PhysicalContext | 1.3.0 | 2017-11-17 | Added additional enumerations for "PhysicalContext". |
+| Port | 1.1.0 | 2017-11-17 | Added "Location" object. |
+| Power | 1.5.0 |  2017-11-17 | Added "PowerInputWatts", "PowerOutputWatts", and "EffciencyPercent" properties, "Location" object, and "Assembly" link to "PowerSupply" object. |
+| Processor | 1.2.0 | 2017-11-17 | Added "Assembly" link. |
+| Redundancy | 1.3.0 | 2017-11-17 | Added "NotRedundant" enumeration to "Mode".  Changed "Mode" to be writable. Removed duplicate description text that appears in the enumeration definitions. |
+| Resource | 1.6.0 | 2017-11-17 | Added "Latitude", "Longitude" and "AltitudeMeters" to "Location" object. Added "NQN" and "NSID" to "DurableNameFormat". |
+| ServiceRoot | 1.3.0 | 2017-11-17 | Added "Product" property for general product identification. Added "ProtocolFeaturesSupported" object to allow for discovery of supported optional Redfish protocol features. |
+| Storage | 1.4.0 | 2017-11-17 | Added "Assembly" link. |
+| Switch | 1.1.0 | 2017-11-17 | Added "Location" object. |
+| Thermal | 1.4.0 | 2017-11-17 | Added "Assembly" links to "Fan" objects. Added "DeltaReadingCelsius", "DeltaPhysicalContext", "MaxAllowableOperatingValue", "MinAllowableOperatingValue", "AdjustedMaxAllowableOperatingValue", and "AdjustedMinAllowableOperatingValue" to "Temperatures" object. |
+| VirtualMedia | 1.2.0 | 2017-11-17 | Added "InsertMedia" and "EjectMedia" Actions to provide standardized means for using virtual media features. Changed "Image", "Inserted", and "WriteProtected" to be writable. |
+| Zone | 1.2.0 | 2017-11-17 | Added "Identifiers" property. |
+| Bios | 1.0.3 | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
+| Chassis | 1.x.x | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
+| ComputerSystem | 1.x.x | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. Added descriptions for SystemType enumerations. |
+| Drive | 1.x.x | 2017-11-17 | Errata release. Migrated definition of "Operations" object to the Drive schema. Corrected parameter descriptions in Actions. |
+| Endpoint | 1.0.3 | 2017-11-17 | Errata release. Added schema annotations to prevent additional property definitions in "ConnectedEntity" and "PciId" definitions. |
+| EthernetInterface | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "IPAddresses" and "VLanNetworkInterface" to use abstract base types. |
+| Event | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for "EventType" definitions. |
+| EventDestination | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for "EventType" definitions. |
+| EventService | 1.0.6 | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
+| Fabric | 1.0.3 | 2017-11-17 | Errata release. Changed internal schema location for "FabricType" definitions. |
+| IPAddresses | 1.0.6 | 2017-11-17 | Errata release. Changed internal schema references for "IPAddresses" and "VLanNetworkInterface" to use abstract base types. Corrected "PrefixLength" in "IPv6StaticAddresses" to be a read-write property. |
+| LogEntry | 1.2.1 | 2017-11-17 | Errata release. Changed internal schema location for "EventType" definitions. Added descriptions to all enumerations. |
+| LogService | 1.0.5 | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
+| Manager | 1.x.x | 2017-11-17 | Errata release. Corrected parameter descriptions in Actions. |
+| Memory | 1.x.x. | 2017-11-17 | Errata release. Corrected description of "OperatingSpeedMHz" to reflect changes in memory device reporting (value may be in MHz or MT/s, but will match published specifications in either case). Corrected parameters in Actions to show they are mandatory. |
+| MemoryMetrics | 1.x.x | 2017-11-17 | Errata release. Corrected description of "AlarmTrips" regarding behavior upon system reset. |
+| NetworkDeviceFunction | 1.x.x | 2017-11-17 | Errata release. Clarified descriptions "InitiatorName", "PrimaryTargetName", and "SecondaryTargetName" properties in the "iSCSIBoot" object. |
+| PCIeFunction | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "StorageController" to use abstract base types. |
+| PhysicalContext | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for "PhysicalContext" definition. |
+| Port | 1.0.3 | 2017-11-17 | Errata release. Changed internal schema location for "PortProtocol" definitions. Corrected parameter descriptions in Actions. |
+| Power | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "PhysicalContext" and "IndicatorLED" definitions. |
+| PrivilegeRegistry | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "PrivilegeType" definitions. |
+| Privileges | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for "PrivilegeType". |
+| Resource | 1.x.x | 2017-11-17 | Errata release. Changed internal schema location for numerous definitions. |
+| Role | 1.x.x | 2017-11-17 | Errata release. Changed internal schema references to "PrivilegeType" definitions. |
+| SecureBoot | 1.0.3 | 2017-11-17 | Errata release. Corrected parameters in Actions to show they are mandatory. |
+| Storage | 1.x.x | 2017-11-17 | Errata release. Corrected parameters in Actions to show they are mandatory. Changed internal schema references to "Identifier" and "Protocol" definitions. |
+| Switch | 1.0.3 | 2017-11-17 | Errata release. Changed internal schema references to "IndicatorLED", "PowerState", and "Protocol" definitions. Corrected descriptions of Actions. |
+| TaskService | 1.x.x | 2017-11-17 | Errata release. Updated description of "LifeCycleEventOnTaskStateChange" to remove obsolete terminology. |
+| VLanNetworkInterface | 1.x.x | 2017-11-17 | Errata release. Changed internal schema definition for "VLAN". |
 | Memory | 1.3.0 | 2017-08-11 | Deprecated "FunctionClasses".  Added memory module-centric identification properties "ModuleManufacturerID", "ModuleProductID", "MemorySubsystemControllerManufacturerID", and "MemorySubsystemControllerProductID".  Deprecated the PCIe-centric identification properties "VendorID", "DeviceID", "SubsystemVendorID", and "SubsystemDeviceID". |
 | PhysicalContext | 1.2.0 | 2017-08-11 | Added "Chassis" and "Fan" as enumerations to "PhysicalContext". |
 | Power | 1.4.0 | 2017-08-11 | Added "PhysicalContext" to the "PowerControl" object. |
@@ -61,16 +122,16 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 |PCIeFunction | 1.0.2 | 2017-04-14 | Errata release.  Corrected validation pattern on PCI ID-related properties. | 
 | (many) | various | 2017-04-14 | Minor release.  Added Actions and OemActions objects to allow for OEM extensions. |
 | (many) | various | 2017-04-14 | Errata release.  Corrected integer type properties in CSDL schemas to Int64 (from Int16 or Int32) for consistency.  Added missing descriptions in Complex Type definitions.  Added Actions and OemActions objects to allow for OEM extensions. Corrected Links and "Members" properties (Collection schemas) in all schemas to be non-nullable. |
-| HostInterface | 1.0.0 | 2016-12-07 | Intial release. Contains properties for describing and configuring a Redfish Host Interface. |
+| HostInterface | 1.0.0 | 2016-12-07 | Initial release. Contains properties for describing and configuring a Redfish Host Interface. |
 | HostInterfaceCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Redfish Host Interfaces. |
-| NetworkAdapter | 1.0.0 | 2016-12-07 | Intial release. Describes general-purpose network adapters. |
-| NetworkAdapterCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Adapters. |
-| NetworkInterface | 1.0.0 | 2016-12-07 | Intial release. Provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances. |
-| NetworkInterfaceCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Interfaces. |
-| NetworkDeviceFunction | 1.0.0 | 2016-12-07 | Intial release. Describes a logical interface exposed by a Network Adapter. |
-| NetworkDeviceFunctionCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Device Functions. |
-| NetworkPort | 1.0.0 | 2016-12-07 | Intial release. Describes a discrete physical port capable of connecting to a network. |
-| NetworkPortCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Ports. |
+| NetworkAdapter | 1.0.0 | 2016-12-07 | Initial release. Describes general-purpose network adapters. |
+| NetworkAdapterCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Network Adapters. |
+| NetworkInterface | 1.0.0 | 2016-12-07 | Initial release. Provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances. |
+| NetworkInterfaceCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Network Interfaces. |
+| NetworkDeviceFunction | 1.0.0 | 2016-12-07 | Initial release. Describes a logical interface exposed by a Network Adapter. |
+| NetworkDeviceFunctionCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Network Device Functions. |
+| NetworkPort | 1.0.0 | 2016-12-07 | Initial release. Describes a discrete physical port capable of connecting to a network. |
+| NetworkPortCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Network Ports. |
 | PrivilegeRegistry | 1.0.0 | 2016-12-07 | Initial release. Schema for definition of HTTP Operation to Privilege mapping. |
 | AccountService | 1.1.0 | 2016-12-07 | Added link to "PrivilegeMap". |
 | Chassis | 1.4.0  | 2016-12-07 | Added "RackGroup" to "ChassisType" enumeration.  Added link to "NetworkAdapters" resource collection. Added "HeightMm", "WidthMm", "DepthMm", and "WeightKg" properties. Added Link to "PCIeDevices". |

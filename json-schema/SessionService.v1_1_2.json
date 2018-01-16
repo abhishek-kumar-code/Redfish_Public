@@ -58,8 +58,8 @@
                         "null"
                     ],
                     "readonly": false,
-                    "description": "This indicates whether this service is enabled.  If set to false, the Session Service is disabled and any attempt to access it will fail.  This means new sessions cannot be created, old sessions cannot be deleted though established sessions may continue operating.",
-                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled.  This means new sessions cannot be created, old sessions cannot be deleted though established sessions may continue operating."
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },
                 "SessionTimeout": {
                     "type": "number",

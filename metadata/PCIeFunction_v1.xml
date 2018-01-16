@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  PCIeFunction  v1.1.0-->
+<!--# Redfish Schema:  PCIeFunction  v1.1.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -31,15 +31,17 @@
     <edmx:Include Namespace="Drive"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
-    <edmx:Include Namespace="Storage.v1_0_0"/>
+    <edmx:Include Namespace="Storage"/>
   </edmx:Reference>
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction">
-      <EntityType Name="PCIeFunction" BaseType="Resource.v1_0_0.Resource">
+
+      <EntityType Name="PCIeFunction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_0">
@@ -121,7 +123,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Drive that represents the storage drives associated with this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.v1_0_0.StorageController)">
+        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.StorageController)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the storage controllers which the PCIe device produces."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type StorageController that represents the storage controllers associated with this resource."/>
@@ -228,6 +230,11 @@
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_1.PCIeFunction"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to change references to StorageController to be its abstract base type."/>
+      <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_2.PCIeFunction"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_1_0">
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_2.PCIeFunction">
         <Property Name="Actions" Type="PCIeFunction.v1_1_0.Actions" Nullable="false">
@@ -248,6 +255,11 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to change references to StorageController to be its abstract base type."/>
+      <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_1_0.PCIeFunction"/>
     </Schema>
 
   </edmx:DataServices>

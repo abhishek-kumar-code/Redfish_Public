@@ -5,11 +5,9 @@
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/Blade1/Thermal#/Temperatures/0",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "CPU Temp",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -30,12 +28,10 @@
     "Fans": [
         {
             "@odata.id": "/redfish/v1/Chassis/Blade1/Thermal#/Fans/0",
-            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "0",
             "Name": "CPU Fan",
             "PhysicalContext": "CPU",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
