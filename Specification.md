@@ -694,6 +694,7 @@ The POST method is used to create a new resource. The POST request is submitted 
 * Services shall support POST operations on a URL that references a Resource Collection instance.
 * Services shall also support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post)).
 * The POST operation shall not be idempotent.
+* Services may allow the "@Redfish.OperationApplyTime" property to be included in the body of the request.  See the [Operation Apply Time](#operation-apply-time) section for further information.
 
 ##### Delete (DELETE)<a id="delete-delete"></a>
 
@@ -702,13 +703,15 @@ The DELETE method is used to remove a resource. When the delete operation is suc
 * Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
 * Services should return HTTP status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
 * Services may return HTTP status code [404](#status-404) or a success code if the resource has already been deleted.
+* Services may allow the "@Redfish.OperationApplyTime" property to be included in the body of the request.  See the [Operation Apply Time](#operation-apply-time) section for further information.
 
 ##### Actions (POST)<a id="actions-post"></a>
 
 The POST method is used to initiate operations on the object (such as Actions).
 
- * Services shall support the POST method for sending actions.
- * The POST operation may not be idempotent.
+* Services shall support the POST method for sending actions.
+* The POST operation may not be idempotent.
+* Services may allow the "@Redfish.OperationApplyTime" property to be included in the body of the request.  See the [Operation Apply Time](#operation-apply-time) section for further information.
 
 Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. If the [actions property](#actions-property) within a resource does not specify a target property, then the URI of an action shall be of the form:
 
@@ -809,11 +812,98 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
 }
 ~~~
 
-
 In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
 * HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
 * HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
 * In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
+
+#### Operation apply time
+
+Services may accept the "@Redfish.OperationApplyTime" annotation in the body of a [Create](#create-post), [Delete](#delete-delete), or [Action](#actions-post) operation.  This is to give the client control as to when a particular operation is carried out.  For example, if the client wants to delete a particular Volume resource, but can only safely do so when a reset is taking place, the client can use this annotation to instruct the service to delete the Volume on the next reset.
+
+Services that support the "@Redfish.OperationApplyTime" annotation for create and delete operations on a particular Resource Collection shall include the "@Redfish.OperationApplyTimeSupport" response annotation for the given Resource Collection.  Below is an example response for a Resource Collection that supports the "@Redfish.OperationApplyTime" annotation in the request for create and delete operations.
+
+~~~json
+{
+    "@odata.context": "/redfish/v1/$metadata#VolumeCollection.VolumeCollection",
+    "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes",
+    "@odata.type": "#VolumeCollection.VolumeCollection",
+    "Name": "Storage Volume Collection",
+    "Description": "Storage Volume Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2"
+        }
+    ],
+    "@Redfish.OperationApplyTimeSupport": {
+        "SupportedValues": [ "Immediate", "OnReset" ]
+    }
+}
+~~~
+
+In the above example, a client is allowed to annotate their request body when performing a create operation on the VolumeCollection itself, or when performing a delete operation on the Volumes within the VolumeCollection.  Below is a sample request to delete a particular Volume on the next reset.
+
+~~~http
+DELETE /redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2 HTTP/1.1
+Content-Type: application/json;charset=utf-8
+Content-Length: <computed length>
+OData-Version: 4.0
+
+{
+    "@Redfish.OperationApplyTimeSupport": "OnReset"
+}
+~~~
+
+Services that support the "@Redfish.OperationApplyTime" annotation for a given action shall include the "@Redfish.OperationApplyTimeSupport" response annotation for the given action.  Below is an example response for a ComputerSystem resource that supports the "@Redfish.OperationApplyTime" annotation in the request for the reset action.
+
+~~~json
+{
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/1",
+    "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
+    "Actions": {
+        "#ComputerSystem.Reset": {
+            "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "On",
+                "ForceOff",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ],
+            "@Redfish.OperationApplyTimeSupport": {
+                "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
+                "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+                "MaintenanceWindowDurationInSeconds": 600
+            }
+        }
+    },
+    ...
+}
+~~~
+
+In the above example, a client is allowed to annotate their request body when performing a reset action operation on the ComputerSystem represented by the payload.  Below is a sample request to perform a reset at the start of the next maintenance window.
+
+~~~http
+POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
+Content-Type: application/json;charset=utf-8
+Content-Length: <computed length>
+OData-Version: 4.0
+
+{
+    "ResetType": "ForceRestart",
+    "@Redfish.OperationApplyTimeSupport": "OnReset"
+}
+~~~
+
+Services that support the "@Redfish.OperationApplyTime" for a given Resource Collection or action shall create a [Task](#asynchronous-operations) if the client's request body contains "@Redfish.OperationApplyTime" in the request.
+
+The structure of the "@Redfish.OperationApplyTimeSupport" object and the values "@Redfish.OperationApplyTime" annotation are defined in "Settings" Redfish Schema.
 
 ### Responses
 
