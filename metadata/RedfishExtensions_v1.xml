@@ -82,10 +82,10 @@
         <Annotation Term="OData.Description" String="Configuration settings for when the values in the settings object are applied to a given resource."/>
       </Term>
       <Term Name="OperationApplyTime" Type="Settings.OperationApplyTime">
-        <Annotation Term="OData.Description" String="The requested apply time from a client when performing a Create, Modify, or Action operation."/>
+        <Annotation Term="OData.Description" String="The requested apply time from a client when performing a Create, Delete, Modify, or Action operation."/>
       </Term>
       <Term Name="OperationApplyTimeSupport" Type="Settings.OperationApplyTimeSupport">
-        <Annotation Term="OData.Description" String="Indicates if a client is allowed to request for a specific apply time of a Create, Modify, or Action operation of a given resource via the OperationApplyTime term."/>
+        <Annotation Term="OData.Description" String="Indicates if a client is allowed to request for a specific apply time of a Create, Delete, Modify, or Action operation of a given resource via the OperationApplyTime term."/>
       </Term>
 
       <EnumType Name="ReleaseStatusType">
