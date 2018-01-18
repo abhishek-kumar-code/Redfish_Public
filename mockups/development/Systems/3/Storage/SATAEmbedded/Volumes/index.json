@@ -14,5 +14,8 @@
             "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2"
         }
     ],
+    "@Redfish.OperationApplyTimeSupport": {
+        "SupportedValues": [ "Immediate", "OnReset" ]
+    },
     "Oem": {}
 }

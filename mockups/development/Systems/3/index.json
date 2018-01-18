@@ -105,7 +105,12 @@
                 "GracefulRestart",
                 "ForceOn",
                 "PushPowerButton"
-            ]
+            ],
+            "@Redfish.OperationApplyTimeSupport": {
+                "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
+                "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+                "MaintenanceWindowDurationInSeconds": 600
+            }
         },
         "Oem": {
         }
