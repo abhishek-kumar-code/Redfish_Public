@@ -826,17 +826,17 @@ Services that support the "@Redfish.OperationApplyTime" annotation for create an
 ~~~json
 {
     "@odata.context": "/redfish/v1/$metadata#VolumeCollection.VolumeCollection",
-    "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes",
+    "@odata.id": "/redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes",
     "@odata.type": "#VolumeCollection.VolumeCollection",
     "Name": "Storage Volume Collection",
     "Description": "Storage Volume Collection",
     "Members@odata.count": 2,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"
+            "@odata.id": "/redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes/1"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2"
+            "@odata.id": "/redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes/2"
         }
     ],
     "@Redfish.OperationApplyTimeSupport": {
@@ -848,13 +848,13 @@ Services that support the "@Redfish.OperationApplyTime" annotation for create an
 In the above example, a client is allowed to annotate their request body when performing a create operation on the VolumeCollection itself, or when performing a delete operation on the Volumes within the VolumeCollection.  Below is a sample request to delete a particular Volume on the next reset.
 
 ~~~http
-DELETE /redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2 HTTP/1.1
+DELETE /redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes/2 HTTP/1.1
 Content-Type: application/json;charset=utf-8
 Content-Length: <computed length>
 OData-Version: 4.0
 
 {
-    "@Redfish.OperationApplyTimeSupport": "OnReset"
+    "@Redfish.OperationApplyTime": "OnReset"
 }
 ~~~
 
@@ -897,7 +897,7 @@ OData-Version: 4.0
 
 {
     "ResetType": "ForceRestart",
-    "@Redfish.OperationApplyTimeSupport": "OnReset"
+    "@Redfish.OperationApplyTime": "OnReset"
 }
 ~~~
 
