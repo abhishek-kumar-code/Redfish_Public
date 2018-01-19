@@ -9,7 +9,6 @@
     "RoleId": "Operator",
     "Locked": false,
     "Links": {
-        "@odata.type": "#ManagerAccount.v1_0_0.Links",
         "Role": {
             "@odata.id": "/redfish/v1/AccountService/Roles/Operator"
         }

@@ -5,12 +5,10 @@
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/0",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "Inlet Temp",
             "SensorNumber": 42,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -24,12 +22,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/1",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "1",
             "Name": "Board Temp",
             "SensorNumber": 43,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -43,12 +39,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/2",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "2",
             "Name": "CPU1 Temp",
             "SensorNumber": 44,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -61,12 +55,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/3",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "3",
             "Name": "CPU2 Temp",
             "SensorNumber": 45,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -81,12 +73,10 @@
     "Fans": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0",
-            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "0",
             "Name": "BaseBoard System Fan 1",
             "PhysicalContext": "Backplane",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -108,12 +98,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1",
-            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "1",
             "Name": "BaseBoard System Fan 2",
             "PhysicalContext": "Backplane",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -137,7 +125,6 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0",
-            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "0",
             "Name": "BaseBoard System Fans",
             "RedundancySet": [
@@ -150,7 +137,6 @@
             ],
             "Mode": "N+m",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },

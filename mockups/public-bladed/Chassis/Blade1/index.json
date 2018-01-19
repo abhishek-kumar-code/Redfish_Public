@@ -11,15 +11,22 @@
     "PowerState": "On",
     "IndicatorLED": "Off",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
+    },
+    "Location": {
+        "PartLocation": {
+            "ServiceLabel": "Blade 1",
+            "LocationType": "Slot",
+            "LocationOrdinalValue": 0,
+            "Reference": "Front",
+            "Orientation": "LeftToRight"
+        }
     },
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/Blade1/Thermal"
     },
     "Links": {
-        "@odata.type": "#Chassis.v1_5_0.Links",
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/529QB9450R6"

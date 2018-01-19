@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Zone  v1.1.0-->
+<!--# Redfish Schema:  Zone  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -29,11 +29,11 @@
   </edmx:Reference>
 
   <edmx:DataServices>
-  
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Zone">
 
       <EntityType Name="Zone" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="Switch contains properties describing a simple fabric zone."/>
+        <Annotation Term="OData.Description" String="The Zone schema represents a fabric zone."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a simple zone for a Redfish implementation."/>
       </EntityType>
 
@@ -54,13 +54,13 @@
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the endpoints that are contained in this zone."/>
+          <Annotation Term="OData.Description" String="Represents an array of references to the endpoints that are contained in this zone."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this zone is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="InvolvedSwitches" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the switchs that are utilized in this zone."/>
+          <Annotation Term="OData.Description" String="Represents an array of references to the switches in this zone."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this zone is associated with and shall reference a resource of type Switch."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
@@ -106,6 +106,20 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Zone.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
+      <EntityType Name="Zone" BaseType="Zone.v1_1_0.Zone"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Zone.v1_2_0">
+      <EntityType Name="Zone" BaseType="Zone.v1_1_1.Zone">
+        <Property Name="Identifiers" Type="Collection(Resource.Identifier)">
+          <Annotation Term="OData.Description" String="Identifiers for this zone."/>
+          <Annotation Term="OData.LongDescription" String="Identifiers for this zone shall be unique in the context of other zones."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>

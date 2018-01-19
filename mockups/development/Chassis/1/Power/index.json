@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.id": "/redfish/v1/Chassis/1/Power",
-    "@odata.type": "#Power.v1_4_0.Power",
+    "@odata.type": "#Power.v1_5_0.Power",
     "Id": "Power",
     "Name": "Power",
     "PowerControl": [
@@ -99,6 +99,7 @@
             },
             "Oem": {},
             "PowerSupplyType": "DC",
+            "HotPluggable": false,
             "LineInputVoltageType": "DCNeg48V",
             "LineInputVoltage": -48,
             "PowerCapacityWatts": 400,
@@ -124,7 +125,14 @@
             ],
             "Redundancy": [
               { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
-            ]
+            ],
+            "Location": {
+              "PartLocation": {
+                "ServiceLabel": "PSU 1",
+                "LocationType": "Bay",
+                "LocationOrdinalValue": 0
+              }
+            }        
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/1",
@@ -136,6 +144,7 @@
             },
             "Oem": {},
             "PowerSupplyType": "AC",
+            "HotPluggable": true,
             "LineInputVoltageType": "AC240V",
             "LineInputVoltage": 220,
             "PowerCapacityWatts": 400,
@@ -172,7 +181,14 @@
             ],
             "Redundancy": [
                 { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" }
-            ]
+            ],
+            "Location": {
+              "PartLocation": {
+                "ServiceLabel": "PSU 2",
+                "LocationType": "Bay",
+                "LocationOrdinalValue": 1
+              }
+            }                
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/2",
@@ -180,7 +196,14 @@
             "Name": "Power Supply Bay 3",
             "Status": {
                 "State": "Absent"
-            }
+            },
+            "Location": {
+              "PartLocation": {
+                "ServiceLabel": "PSU 3",
+                "LocationType": "Bay",
+                "LocationOrdinalValue": 2
+              }
+            }                
         }
     ],
     "Redundancy": [

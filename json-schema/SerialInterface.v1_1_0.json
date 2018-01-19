@@ -20,15 +20,15 @@
         "ConnectorType": {
             "type": "string",
             "enum": [
-                "RJ45",
-                "RJ11",
-                "DB9 Female",
-                "DB9 Male",
-                "DB25 Female",
-                "DB25 Male",
-                "USB",
-                "mUSB",
-                "uUSB"
+                "RJ45.",
+                "RJ11.",
+                "DB9 Female.",
+                "DB9 Male.",
+                "DB25 Female.",
+                "DB25 Male.",
+                "USB.",
+                "mUSB.",
+                "uUSB."
             ]
         },
         "DataBits": {

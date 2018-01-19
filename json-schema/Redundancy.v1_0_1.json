@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Redundancy.v1_0_1",
     "definitions": {
         "RedundancyMode": {
@@ -11,10 +11,10 @@
                 "Sparing"
             ],
             "enumDescriptions": {
-                "Failover": "Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set.",
-                "N+m": "Multiple units are available and active such that normal operation will continue if one or more units fail.",
-                "Sharing": "Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail.",
-                "Sparing": "One or more spare units are available to take over the function of a failed unit, but takeover is not automatic."
+                "Failover": "Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set",
+                "N+m": "Multiple units are available and active such that normal operation will continue if one or more units fail",
+                "Sharing": "Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail",
+                "Sparing": "One or more spare units are available to take over the function of a failed unit, but takeover is not automatic"
             }
         },
         "Redundancy": {
@@ -41,7 +41,6 @@
                 },
                 "MemberId": {
                     "type": "string",
-                    "readonly": true,
                     "description": "This is the identifier for the member within the collection.",
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
@@ -107,8 +106,8 @@
                 "RedundancySet"
             ],
             "description": "This is the redundancy definition to be used in other resource schemas.",
-            "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*."
+            "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

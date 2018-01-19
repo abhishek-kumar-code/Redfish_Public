@@ -8,12 +8,10 @@
     "DateTimeLocalOffset": "+06:00",
     "ServiceEnabled": true,
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Actions": {
-        "@odata.type": "#LogService.v1_0_0.Actions",
         "#LogService.ClearLog": {
             "target": "/redfish/v1/Managers/Blade4BMC/LogServices/Log/Actions/LogService.Reset"
         }
