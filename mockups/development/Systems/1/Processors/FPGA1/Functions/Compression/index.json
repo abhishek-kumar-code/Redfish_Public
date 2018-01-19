@@ -1,0 +1,22 @@
+{
+  "@odata.context": "/redfish/v1/$metadata#AccelerationFuntion.AccelerationFuntion",
+  "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions/Compression",
+  "@odata.type": "#AccelerationFunction.v1_0_0.AccelerationFuntion",
+  "Description": "Compression Acceleration Function",
+  "Name": "Compression Accelerator",
+  "Status": {
+    "State": "Enabled",
+    "Health": "OK",
+    "HealthRollup": null
+  },
+  "Id": "Compression",
+  "UUID": "00000000-0000-0000-0000-000000000000",
+  "AcceleratorFunctionalUnitSlots": [
+    "AFU0"
+  ],
+  "Type": "Compression",
+  "Manufacturer": "Intel (R) Corporation",
+  "Version": "Green Compression Type 1 v.1.00.86",
+  "PowerWatt": 15,
+  "Oem": {}
+}
