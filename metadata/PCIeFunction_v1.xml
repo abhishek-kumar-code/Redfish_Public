@@ -268,7 +268,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_2_0">
       <Annotation Term="OData.Description" String="This version was created to add NetworkDeviceFunctions to the Links section."/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_1_1.PCIeFunction"/>
-      <ComplexType Name="Links" BaseType="PCeFunction.v1_0_0.Links">
+      <ComplexType Name="Links" BaseType="PCIeFunction.v1_0_0.Links">
         <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="NetworkDeviceFunctions" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
