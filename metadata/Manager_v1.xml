@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Manager  v1.3.3-->
+<!--# Redfish Schema:  Manager  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -51,7 +51,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/HostInterfaceCollection_v1.xml">
     <edmx:Include Namespace="HostInterfaceCollection"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Switch_v1.xml">
+    <edmx:Include Namespace="Switch"/>
+  </edmx:Reference>
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager">
@@ -465,6 +467,18 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_3">
       <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions.  It was also created to remove the Nullable=false term on ServiceEntryPointUUID."/>
       <EntityType Name="Manager" BaseType="Manager.v1_3_2.Manager"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_4_0">
+      <EntityType Name="Manager" BaseType="Manager.v1_3_3.Manager"/>
+      <ComplexType Name="Links" BaseType="Manager.v1_1_0.Links">
+        <NavigationProperty Name="ManagerForSwitch" Type="Collection(Switch.Switch)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property is an array of references to the switch that this manager has control over."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Switch resources of which this Manager instance has control."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+       </ComplexType>
     </Schema>
 
   </edmx:DataServices>
