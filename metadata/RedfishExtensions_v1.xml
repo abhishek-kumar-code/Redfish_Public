@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  RedfishExtensions v1.0.1-->
+<!--# Redfish Schema:  RedfishExtensions v1.0.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -81,6 +81,10 @@
       <Term Name="SettingsApplyTime" Type="Settings.PreferredApplyTime">
         <Annotation Term="OData.Description" String="Configuration settings for when the values in the settings object are applied to a given resource."/>
       </Term>
+      <Term Name="OwningEntity" Type="Edm.String">
+        <Annotation Term="OData.Description" String="Indicates the name of the entity responsible for publication of a given schema.  Possible values include DMTF, SNIA or an Oem label such as is used in a Redfish OEM extension section."/>
+        <Annotation Term="OData.IsURL"/>
+      </Term>      
 
       <EnumType Name="ReleaseStatusType">
         <Member Name="Standard">
