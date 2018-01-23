@@ -617,8 +617,14 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_7_0">
-      <Annotation Term="OData.Description" String="This version was created to add a link to an Assembly resource."/>
-      <EntityType Name="Chassis" BaseType="Chassis.v1_6_0.Chassis"/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_6_0.Chassis">
+        <Property Name="UUID" Type="Resource.UUID">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Universal Unique Identifier (UUID) for this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the chassis."/>
+        </Property>
+      </EntityType>
+
       <ComplexType Name="Links" BaseType="Chassis.v1_5_0.Links">
         <NavigationProperty Name="Switches" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
