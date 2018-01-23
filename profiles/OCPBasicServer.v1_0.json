@@ -155,22 +155,6 @@
 						"AddressOrigin": {},
 						"Gateway": {}
 					}
-				},
-				"IPv6AddressPolicyTable": {
-					"ReadRequirement": "Recommended"
-				},
-				"IPv6StaticAddresses": {
-					"ReadRequirement": "Recommended",
-					"WriteRequirement": "Recommended"
-				},
-				"IPv6Addresses": {
-					"ReadRequirement": "IfImplemented",
-					"PropertyRequirements": {
-						"Address": {},
-						"PrefixLength": {},
-						"AddressOrigin": {},
-						"AddressState": {}
-					}
 				}
 			}
 		},
