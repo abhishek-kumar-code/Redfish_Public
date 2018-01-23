@@ -897,13 +897,13 @@ OData-Version: 4.0
 
 {
     "ResetType": "ForceRestart",
-    "@Redfish.OperationApplyTime": "OnReset"
+    "@Redfish.OperationApplyTime": "AtMaintenanceWindowStart"
 }
 ~~~
 
 Services that support the "@Redfish.OperationApplyTime" for a given Resource Collection or action shall create a [Task](#asynchronous-operations), and respond with an HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource, if the client's request body contains "@Redfish.OperationApplyTime" in the request.
 
-The structure of the "@Redfish.OperationApplyTimeSupport" object and the values "@Redfish.OperationApplyTime" annotation are defined in "Settings" Redfish Schema.
+The structure of the "@Redfish.OperationApplyTimeSupport" object and the values "@Redfish.OperationApplyTime" annotation are defined in the "Settings" Redfish Schema.
 
 ### Responses
 
