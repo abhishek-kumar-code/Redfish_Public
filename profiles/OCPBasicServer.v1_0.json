@@ -14,7 +14,7 @@
 		"Chassis": {
 			"MinVersion": "1.0.0",
 			"PropertyRequirements": {
-				"Links:": {
+				"Links": {
 					"PropertyRequirements": {
 						"ComputerSystems": {}
 					}
@@ -226,7 +226,7 @@
 				"Redundancy": {
 					"ReadRequirement": "IfImplemented",
 					"PropertyRequirements": {
-						"MemerId": {},
+						"MemberId": {},
 						"RedundancySet": {},
 						"Mode": {},
 						"Status": {},

@@ -148,7 +148,7 @@
 				},
 				"StaticNameServers": {
 					"ReadRequirement": "Recommended"
-				},
+				}
 			}
 		},
 		"ManagerAccount": {},
@@ -285,7 +285,7 @@
 				"Redundancy": {
 					"ReadRequirement": "IfImplemented",
 					"PropertyRequirements": {
-						"MemerId": {},
+						"MemberId": {},
 						"RedundancySet": {},
 						"Mode": {},
 						"Status": {},
