@@ -475,7 +475,7 @@
         <NavigationProperty Name="ManagerForSwitches" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the switches that this manager has control over."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Switches resources of which this Manager instance has control."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Switch resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
        </ComplexType>
