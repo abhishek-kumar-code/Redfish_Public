@@ -61,6 +61,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
     <edmx:Include Namespace="Assembly"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Switch_v1.xml">
+    <edmx:Include Namespace="Switch"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -622,6 +625,15 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the chassis."/>
         </Property>
       </EntityType>
+
+      <ComplexType Name="Links" BaseType="Chassis.v1_5_0.Links">
+        <NavigationProperty Name="Switches" Type="Collection(Switch.Switch)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the Switches located in this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Switch that are contained in this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
