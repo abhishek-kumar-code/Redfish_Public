@@ -82,10 +82,12 @@
 					}
 				},
 				"DHCPv4:": {
-					"ReadRequirement": "Recommended"
+					"ReadRequirement": "Recommended",
+					"WriteRequirement": "Recommended"
 				},
 				"DHCPv6:": {
-					"ReadRequirement": "Recommended"
+					"ReadRequirement": "Recommended",
+					"WriteRequirement": "Recommended"
 				},
 				"HostName": {
 					"ReadRequirement": "Recommended",
