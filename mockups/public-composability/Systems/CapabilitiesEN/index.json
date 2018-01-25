@@ -27,11 +27,6 @@
     "SecureBoot@OptionalOnCreate": true,
     "TrustedModules@OptionalOnCreate": true,
     
-    "ProcessorSummary": {
-        "Count@Redfish.RequiredOnCreate": true,
-        "Model@Redfish.OptionalOnCreate": true,
-        "Status@Redfish.OptionalOnCreate": true
-    },
     "Processors": {
         "@odata.type": "#Processor.v1_1_0.Processor",
         "Members@Redfish.RequiredOnCreate": true,
@@ -45,11 +40,6 @@
         }
     },
 
-    "MemorySummary": {
-        "TotalSystemMemoryGiB@Redfish.RequiredOnCreate": true,
-        "MemoryMirroring@Redfish.OptionalOnCreate": true,
-        "Status@Redfish.OptionalOnCreate": true
-    },
     "Memory": {
         "@odata.type": "#Memory.v1_1_0.Memory",
         "Members@Redfish.RequiredOnCreate": true,
