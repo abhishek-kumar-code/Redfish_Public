@@ -1,7 +1,7 @@
 {
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "OCPManagedDevice",
-	"ProfileVersion": "0.95",
+	"ProfileVersion": "0.95.0a",
 	"Purpose": "A baseline interoperability profile for a managed device.",
 	"OwningEntity": "Open Compute Project",
 	"ContactInfo": "redfish@opencompute.org",
