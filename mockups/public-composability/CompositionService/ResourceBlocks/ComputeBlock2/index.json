@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_1_0.ResourceBlock",
     "Id": "ComputeBlock2",
     "Name": "Compute Block 2",
     "ResourceBlockType": [
@@ -11,7 +11,10 @@
     },
     "CompositionStatus": {
         "Reserved": false,
-        "CompositionState": "Unused"
+        "CompositionState": "Unused",
+        "SharingCapable": false,
+        "MaxCompositions": 1,
+        "NumberOfCompositions": 0
     },
     "Processors": [
         {
@@ -53,5 +56,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
