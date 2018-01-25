@@ -31,7 +31,7 @@
         "@odata.type": "#Processor.v1_1_0.Processor",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": {
-            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "@Redfish.RequestedCountOptional": true,
             "ProcessorType@Redfish.RequiredOnCreate": true,
             "TotalCores@Redfish.RequiredOnCreate": true,
             "Model@Redfish.OptionalOnCreate": true,
@@ -44,7 +44,7 @@
         "@odata.type": "#Memory.v1_1_0.Memory",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": {
-            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "@Redfish.RequestedCountOptional": true,
             "MemoryType@Redfish.RequiredOnCreate": true,
             "MemoryDeviceType@Redfish.OptionalOnCreate": true,
             "CapacityMiB@Redfish.RequiredOnCreate": true,
@@ -58,7 +58,7 @@
         "@odata.type": "#SimpleStorage.v1_1_0.SimpleStorage",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": {
-            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "@Redfish.RequestedCountOptional": true,
             "Devices@RequiredOnCreate": true,
             "Devices": {
                 "CapacityBytes@RequiredOnCreate": true
@@ -69,7 +69,7 @@
         "@odata.type": "#Storage.v1_1_0.Storage",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": {
-            "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+            "@Redfish.RequestedCountOptional": true,
             "StorageControllers@Redfish.OptionalOnCreate": true,
             "StorageControllers": {
                 "SupportedControllerProtocols@RequiredOnCreate": true
@@ -83,7 +83,7 @@
 
     "EthernetInterfaces": {
         "@odata.type": "#EthernetInterface.v1_1_0.EthernetInterface",
-        "@Redfish.RequestedCount@Redfish.RequiredOnCreate": true,
+        "@Redfish.RequestedCountOptional": true,
         "SpeedMbps@Redfish.RequiredOnCreate": true,
         "FullDuplex@OptionalOnCreate": true
     },
