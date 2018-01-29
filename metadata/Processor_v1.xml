@@ -449,16 +449,13 @@
               <Annotation Term="OData.Description" String="Double data rate type five synchronous dynamic random-access memory."/>
             </Record>
             <Record>
-            <Record>
               <PropertyValue Property="Member" String="SDRAM"/>
               <Annotation Term="OData.Description" String="Synchronous dynamic random-access memory."/>
             </Record>
             <Record>
-            <Record>
               <PropertyValue Property="Member" String="SRAM"/>
               <Annotation Term="OData.Description" String="Static random-access memory."/>
             </Record>
-            <Record>
             <Record>
               <PropertyValue Property="Member" String="Flash"/>
               <Annotation Term="OData.Description" String="Flash memory."/>
