@@ -118,8 +118,8 @@
           <Annotation Term="OData.Description" String="Total last level cache occupancy in bytes "/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be total last level cache occupancy percentage of the Processor resource."/>
-          <Annotation Term="Validation.Minimum" Decimal="0.0"/>
-          <Annotation Term="Validation.Maximum" Decimal="100.0"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
         <Property Name="MblBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -138,16 +138,16 @@
           <Annotation Term="OData.Description" String="The percentage of time spend in system mode "/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be total percentage of time the processor spend in kernel mode."/>
-          <Annotation Term="Validation.Minimum" Decimal="0.0"/>
-          <Annotation Term="Validation.Maximum" Decimal="100.0"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
         <Property Name="UserPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The percentage of time spend in user mode "/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be total percentage of time the processor spend in user mode."/>
-          <Annotation Term="Validation.Minimum" Decimal="0.0"/>
-          <Annotation Term="Validation.Maximum" Decimal="100.0"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
         <Property Name="CoreMetrics" Type="Collection(ProcessorMetrics.v1_0_0.CoreMetrics)">
           <Annotation Term="OData.Description" String="Processor Core Metrics"/>
@@ -209,8 +209,8 @@
           <Annotation Term="OData.Description" String="The percentage of time that the whole package spends in this particular level of C-state"/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be the percentage of time that the whole package spends in this particular level of C-state"/>
-          <Annotation Term="Validation.Minimum" Decimal="0.0"/>
-          <Annotation Term="Validation.Maximum" Decimal="100.0"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
         <Annotation Term="OData.Description" String="C-state residency of the Processor."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the C-state residency of the Processor resource."/>
