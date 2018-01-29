@@ -967,28 +967,6 @@ The metadata document may reference additional schema documents describing OEM-s
   </edmx:Reference>
 ~~~
 
-###### Annotations
-The service can annotate sets, types, actions and parameters with Redfish-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive.
-
-~~~xml
-  <edmx:Reference Uri="http://service/metadata/Service.Annotations">
-    <edmx:IncludeAnnotations TermNamespace="Annotations.v1_0_0"/>
-  </edmx:Reference>
-~~~
-
-The annotation file itself specifies the Target Redfish Schema element being annotated, the Term being applied, and the value of the term:
-
-~~~xml
-  <Annotations Target="ComputerSystem.Reset/ResetType">
-    <Annotation Term="Annotation.AdditionalValues">
-      <Collection>
-        <String>Update and Restart</String>
-        <String>Update and PowerOff</String>
-      </Collection>
-    </Annotation>
-  </Annotations>
-~~~
-
 ##### OData Service Document
 The OData Service Document serves as a top-level entry point for generic OData clients.
 
@@ -1324,6 +1302,8 @@ where
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource or property of the resource.
 
+Services shall limit the annotation usage to the "odata", "Redfish", "Message", and "Privileges" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
+
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
 #### Resource Collection responses
@@ -1368,6 +1348,8 @@ where
 
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the Resource Collection.
+
+Services shall limit the annotation usage to the "odata", "Redfish", "Message", and "Privileges" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
@@ -2040,16 +2022,6 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
     ...
 }
 ~~~
-
-##### Custom annotations
-
-This specification defines a set of common annotations for extending the definition of resource types used by Redfish. In addition, services may define custom annotations.
-
-Services may apply annotations to resources in order to provide service-specific information about the type, such as whether the service supports modifications of particular properties.
-
-Services can apply annotations to existing resources where those resources don't already define a value for the annotation. Services cannot change the value of an annotation applied as part of the resource definition.
-
-Because [service annotations](#annotations) may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the [service metadata](#service-metadata).
 
 ### Common Redfish resource properties
 
