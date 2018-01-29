@@ -38,10 +38,11 @@
     "SidebandInterface": "I2C",
     "PCIeVirtualFunctions": 1,
     "ProgrammableFromHost": true,
-    "AcceleratorFunctionalUnitSlots": [
+    "ReconfigurationSlots": [
       {
         "SlotId": "AFU0",
-        "Size": 1000,
+        "UUID": "00000000-0000-0000-0000-000000000000",
+        "ProgrammableFromHost": true,
         "AccelerationFunctionLink": {
           "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions/Compression"
         }

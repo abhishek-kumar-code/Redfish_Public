@@ -11,10 +11,10 @@
   },
   "Id": "Compression",
   "UUID": "00000000-0000-0000-0000-000000000000",
-  "AcceleratorFunctionalUnitSlots": [
+  "ReconfigurationSlots": [
     "AFU0"
   ],
-  "Type": "Compression",
+  "AccelerationFunctionType": "Compression",
   "Manufacturer": "Intel (R) Corporation",
   "Version": "Green Compression Type 1 v.1.00.86",
   "PowerWatt": 15,
