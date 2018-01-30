@@ -5,11 +5,6 @@
   "Id": "Metrics",
   "Description": "Processor Metrics",
   "Name": "Processor Metrics",
-  "Status": {
-    "State": "Enabled",
-    "Health": "OK",
-    "HealthRollup": null
-  },
   "BandwidthPercent": 62,
   "AverageFrequencyMHz": 2400,
   "ThrottlingCelsius": 65,
