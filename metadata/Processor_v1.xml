@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Processor  v1.1.0-->
+<!--# Redfish Schema:  Processor  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -27,6 +27,12 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
+    <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ProcessorCollection_v1.xml">
+    <edmx:Include Namespace="ProcessorCollection"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ProcessorMetrics_v1.xml">
     <edmx:Include Namespace="ProcessorMetrics"/>
   </edmx:Reference>
@@ -39,7 +45,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccelerationFunctionCollection_v1.xml">
     <edmx:Include Namespace="AccelerationFunctionCollection"/>
   </edmx:Reference>
-
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor">
@@ -175,6 +180,12 @@
         <Member Name="Accelerator">
           <Annotation Term="OData.Description" String="An Accelerator."/>
         </Member>
+        <Member Name="Core">
+          <Annotation Term="OData.Description" String="A Core in a Processor."/>
+        </Member>
+        <Member Name="Thread">
+          <Annotation Term="OData.Description" String="A Thread in a Processor."/>
+        </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="An OEM-defined Processing Unit."/>
         </Member>
@@ -301,8 +312,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_2_0">
-      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Processor" BaseType="Processor.v1_1_0.Processor">
+        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_3_0">
+      <EntityType Name="Processor" BaseType="Processor.v1_2_0.Processor">
+        <NavigationProperty Name="SubProcessors" Type="ProcessorCollection.ProcessorCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of Sub-Processors associated with this system, such as cores or threads that are part of a processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type ProcessorCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor">
         <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Processor."/>
@@ -320,19 +354,19 @@
           <Annotation Term="OData.LongDescription" String="Maximum TDP in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
-        <Property Name="IntegratedMemory" Type="Collection(Processor.v1_2_0.IntegratedMemory)" Nullable="false">
+        <Property Name="IntegratedMemory" Type="Collection(Processor.v1_4_0.IntegratedMemory)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Memory integrated witin the Procesor"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory integrated witin this Processor."/>
         </Property>
-        <Property Name="FPGA" Type="Processor.v1_2_0.Fpga" Nullable="true">
+        <Property Name="FPGA" Type="Processor.v1_4_0.Fpga" Nullable="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
           <Annotation Term="OData.LongDescription" String="The properties of the FPGA device represented by this Processor."/>
         </Property>
       </EntityType>
 
-      <ComplexType Name="Links" BaseType="Processor.v1_1_0.Links">
+      <ComplexType Name="Links" BaseType="Processor.v1_3_0.Links">
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this processor."/>
@@ -351,7 +385,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes the memory integrated within a processor."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain information about memory integratied within a processor."/>
-        <Property Name="Type" Type="Processor.v1_2_0.IntegratedMemoryType">
+        <Property Name="Type" Type="Processor.v1_4_0.IntegratedMemoryType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the integrated memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the integrated memory type."/>
@@ -469,12 +503,12 @@
       </TypeDefinition>
 
       <ComplexType Name="FPGA">
-        <Property Name="FpgaType" Type="Processor.v1_2_0.FpgaType" Nullable="false">
+        <Property Name="FpgaType" Type="Processor.v1_4_0.FpgaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA type."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA device."/>
         </Property>
-        <Property Name="Model" Type="Processor.v1_2_0.FpgaModel" Nullable="false">
+        <Property Name="Model" Type="Processor.v1_4_0.FpgaModel" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA model."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a model of the FPGA device."/>
@@ -494,17 +528,17 @@
           <Annotation Term="OData.Description" String="The FPGA firmware version."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the FPGA firmware version."/>
         </Property>
-        <Property Name="HostInterface" Type="Processor.v1_2_0.FpgaInterface" Nullable="false">
+        <Property Name="HostInterface" Type="Processor.v1_4_0.FpgaInterface" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA interface to the host."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA interface to the host."/>
         </Property>
-        <Property Name="ExternalInterfaces" Type="Collection(Processor.v1_2_0.FpgaInterface)" Nullable="false">
+        <Property Name="ExternalInterfaces" Type="Collection(Processor.v1_4_0.FpgaInterface)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of the FPGA external interfaces."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the FPGA external interfaces."/>
         </Property>
-        <Property Name="SidebandInterface" Type="Processor.v1_2_0.FpgaInterface" Nullable="false">
+        <Property Name="SidebandInterface" Type="Processor.v1_4_0.FpgaInterface" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA sideband interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA sideband interface."/>
@@ -519,7 +553,7 @@
           <Annotation Term="OData.Description" String="This flag indicates if the FPGA FW can be reprogrammed from the host."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the FPGA FW can be reprogrammed from the host. If set to ‘false’ a FPGA FW can be programmed through the sideband interface only."/>
         </Property>
-        <Property Name="ReconfigurationSlots" Type="Collection(Processor.v1_2_0.FpgaReconfigurationSlot)" Nullable="false">
+        <Property Name="ReconfigurationSlots" Type="Collection(Processor.v1_4_0.FpgaReconfigurationSlot)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of the FPGA reconfiguration slots."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the structures describing the FPGA reconfiguration slots that can be programmed with the acceleration function code."/>
@@ -711,5 +745,6 @@
       </TypeDefinition>
 
     </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
