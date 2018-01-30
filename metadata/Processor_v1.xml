@@ -359,7 +359,7 @@
           <Annotation Term="OData.Description" String="Memory integrated witin the Procesor"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory integrated witin this Processor."/>
         </Property>
-        <Property Name="FPGA" Type="Processor.v1_4_0.Fpga" Nullable="true">
+        <Property Name="FPGA" Type="Processor.v1_4_0.FPGA" Nullable="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
           <Annotation Term="OData.LongDescription" String="The properties of the FPGA device represented by this Processor."/>

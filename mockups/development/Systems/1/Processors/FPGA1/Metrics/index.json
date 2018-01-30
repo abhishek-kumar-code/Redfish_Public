@@ -51,11 +51,5 @@
        ]
     }
   ],
-  "Actions": {
-    "#ProcessorMetrics.ClearCurrentPeriod": {
-      "target": "/redfish/v1/Systems/1/Processor/FPGA1/Actions/ProcessorMetrics.ClearCurrentPeriod"
-    },
-    "Oem": {}
-  },
   "Oem": {}
 }
