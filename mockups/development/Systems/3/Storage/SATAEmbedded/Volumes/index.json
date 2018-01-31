@@ -15,7 +15,10 @@
         }
     ],
     "@Redfish.OperationApplyTimeSupport": {
-        "SupportedValues": [ "Immediate", "OnReset" ]
+        "SupportedValues": [ "Immediate", "OnReset", "AtMaintenanceWindowStart" ],
+        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+        "MaintenanceWindowDurationInSeconds": 600,
+        "MaintenanceWindowOwner": "/redfish/v1/Systems/3#/Actions/#ComputerSystem.Reset/@Redfish.OperationApplyTimeSupport"
     },
     "Oem": {}
 }
