@@ -21,7 +21,7 @@
   "IntegratedMemory": [
     {
       "Type": "HBM2",
-      "CapacityMB": 512,
+      "CapacityMiB": 512,
       "SpeedMHz": 1066
     }
   ],

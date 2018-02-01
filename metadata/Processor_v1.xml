@@ -396,7 +396,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory capacity in MiB."/>
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
-        <Property Name="SpeedMhz" Type="Edm.Int64">
+        <Property Name="SpeedMHz" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Operating speed of Memory in MHz."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the operating speed of Memory in MHz."/>
