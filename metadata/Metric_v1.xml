@@ -39,106 +39,12 @@
           <Annotation Term="OData.Description" String="The value is the collection duration for each metric value."/>
           <Annotation Term="OData.LongDescription" String="This property shall not be present if  MetricDefinition.Timescope=Point or if MetricDefintion.Duration is present.  If present, the value  shall be an ISO 8601 duration of the interval over which this metric value shall be computed."/>
         </Property>
-		    <Property Name="TriggerCondition" Type="Metric.v1_0_0.TriggerCondition">
-			    <Annotation Term="OData.Description" String="A Triggering condition for the event."/>	
-			    <Annotation Term="OData.LongDescription" String="If present the values define conditions that shall be met before the event is triggered.  This trigger applies to all properties defined by the value of the MetricPropertyDeclaration property in the associated MetricDefinition and as constrained by the MetricScope property."/>
-        </Property>
         <Property Name="Actions" Type="Metric.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
 	  </EntityType>
 	  
-      <EnumType Name="TriggerType">
-        <Member Name="Discrete">
-          <Annotation Term="OData.Description" String="The trigger is for a discrete sensor."/>
-        </Member>
-        <Member Name="Filter">
-          <Annotation Term="OData.Description" String="The trigger is an OData Filter expression."/>
-        </Member>
-        <Member Name="Numeric">
-          <Annotation Term="OData.Description" String="The trigger is for numeric sensor."/>
-        </Member>
-      </EnumType>
-	  
-      <EnumType Name="DirectionOfCrossing">
-        <Member Name="WasLower">
-          <Annotation Term="OData.Description" String="The trigger is for a discrete sensor."/>
-        </Member>
-        <Member Name="WasHigher">
-          <Annotation Term="OData.Description" String="The trigger is an OData Filter expression."/>
-        </Member>
-      </EnumType>
-	  
-	  <ComplexType Name="NumericTriggerCondition">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="A numeric trigger condition."/>
-        <Annotation Term="OData.LongDescription" String="This struction shall be used to represent a numeric trigger condition."/>	
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The name of trigger."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a name for the trigger."/>
-        </Property>
-        <Property Name="Value" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the value of the trigger."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the trigger."/>
-        </Property>
-        <Property Name="DirectionOfCrossing" Type="Metric.v1_0_0.DirectionOfCrossing">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the direction that the previous value came from."/>
-          <Annotation Term="OData.LongDescription" String="If present, this property shall contain the direction of crossing. If not present, the direction is not relevant."/>
-        </Property>
-      </ComplexType>
-
-	  <ComplexType Name="DiscreteTriggerCondition">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="A discrete trigger condition."/>
-        <Annotation Term="OData.LongDescription" String="This struction shall be used to represent a discrete trigger condition."/>	
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The name of trigger."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a name for the trigger."/>
-        </Property>
-        <Property Name="TriggerValue" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the value that sets a trigger."/>
-          <Annotation Term="OData.LongDescription" String="If not null and PreviousValue is not null, the trigger shall only be set on a transition from PreviousValue to the TriggerValue.  If not null and PreviousValue is null, then the trigger shall be set on any transition to the TriggerValue.  If null and PreviousValue is not null, then the trigger is set on any transition away from the PreviousValue.  If both TriggerValue and PreviousValue are null, any transition to a new value will set the trigger."/>
-        </Property>
-        <Property Name="PreviousValue" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the previous value of the trigger."/>
-          <Annotation Term="OData.LongDescription" String="If present, this property shall contain a previous value that shall be used in evaluating the behavior of setting the trigger."/>
-        </Property>
-      </ComplexType>
-	  
-	  <ComplexType Name="TriggerCondition">
-        <Annotation Term="OData.Description" String="A trigger condition."/>
-        <Annotation Term="OData.LongDescription" String="This struction shall be used to represent a trigger condition."/>	
-        <Property Name="DwellInterval" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The time in the triggering state before the trigger is invoked."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be an ISO 8601 conformant interval during which the triggering state shall persist before the trigger is invoked."/>
-        </Property>			
-		    <Property Name="TriggerType" Type="Metric.v1_0_0.TriggerType" Nullable="false" >
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of trigger."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specific the type of trigger."/>
-        </Property>		
-		    <Property Name="DiscreteTriggerConditions" Type="Collection(Metric.v1_0_0.DiscreteTriggerCondition)">
-			    <Annotation Term="OData.Description" String="A Trigger condition based on TriggerDiscreteCondition."/>	
-			    <Annotation Term="OData.LongDescription" String="If present the values define conditions against properties specified by OriginResources that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Discrete. Multiple entries are 'ORd'."/>
-		    </Property>		
-		    <Property Name="FilterTriggerCondition" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A filter on the elements specified by OriginResources."/>
-          <Annotation Term="OData.LongDescription" String="If present the value shall be an OData conformant filter condition evaluated against the elements specified by OriginResources.  The filter defines conditions that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Filter."/>
-        </Property>
-		    <Property Name="NumericTriggerConditions" Type="Collection(Metric.v1_0_0.NumericTriggerCondition)">
-			    <Annotation Term="OData.Description" String="A Trigger condition based on TriggerNumericCondition."/>	
-			    <Annotation Term="OData.LongDescription" String="If present the values define conditions against properties specified by OriginResources that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Numeric. Multiple entries are 'ORd'."/>
-		    </Property>
-      </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>

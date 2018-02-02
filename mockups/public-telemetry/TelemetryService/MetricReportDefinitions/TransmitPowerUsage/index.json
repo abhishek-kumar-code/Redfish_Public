@@ -18,16 +18,7 @@
 	"Metrics": [{
 		"MemberID": "PowerUsageReading",
 		"MetricProperties": ["/redfish/v1/Chassis/Tray_1/Power/PowerControl/{Wild}/PowerConsumedWatts"],
-		"CollectionDuration": "PT0.020S",
-		"TriggerCondition": {
-			"DwellInterval": "PT0.001S",
-			"TriggerType": "Numeric",
-			"NumericTriggerConditions": {
-				"Name": "UpperThresholdNonCritical",
-				"Value": "48.1",
-				"DirectionOfCrossing": "Increasing"
-			}
-		}
+		"CollectionDuration": "PT0.020S"
 	}],
 	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/TransmitPowerUsage"}
 }
