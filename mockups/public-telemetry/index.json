@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ServiceRoot.v1_2_0.ServiceRoot",
+    "@odata.type": "#ServiceRoot.v1_3_1.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
     "RedfishVersion": "1.2.0",
@@ -18,9 +18,6 @@
     },
     "AccountService": {
         "@odata.id": "/redfish/v1/AccountService"
-    },
-    "CompositionService": {
-        "@odata.id": "/redfish/v1/CompositionService"
     },
     "TelemetryService": {
         "@odata.id": "/redfish/v1/TelemetryService"

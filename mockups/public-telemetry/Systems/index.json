@@ -10,18 +10,6 @@
             "@odata.id": "/redfish/v1/Systems/1"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/2"
-        },
-        {
-            "@odata.id": "/redfish/v1/Systems/3"
-        },
-        {
-            "@odata.id": "/redfish/v1/Systems/4"
-        },
-        {
-            "@odata.id": "/redfish/v1/Systems/5"
-        },
-        {
             "@odata.id": "/redfish/v1/Systems/Node3"
         },
         {
@@ -29,33 +17,6 @@
         },
         {
             "@odata.id": "/redfish/v1/Systems/Cluster"
-        },
-        {
-            "@odata.id": "/redfish/v1/Systems/ComposedSystem"
         }
-    ],
-    "@Redfish.CollectionCapabilities": {
-        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
-        "Capabilities": [
-            {
-                "CapabilitiesObject": {
-                    "@odata.id": "/redfish/v1/Systems/Capabilities"
-                },
-                "UseCase": "ComputerSystemComposition",
-                "Links": {
-                    "TargetCollection": {
-                        "@odata.id": "/redfish/v1/Systems"
-                    },
-                    "RelatedItem": [
-                        {
-                            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1"
-                        },
-                        {
-                            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2"
-                        }
-                    ]
-                }
-            }
-        ]
-    }
+    ]
 }

@@ -1,0 +1,27 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#LogEntry.LogEntry",
+    "@odata.id": "/redfish/v1/Managers/1/LogServices/Log1/Entries/1",
+    "@odata.type": "#LogEntry.v1_0_0.LogEntry",
+    "Id": "1",
+    "Name": "Log Entry 1",
+    "EntryType": "Event",
+    "OemRecordFormat": "HP",
+    "Severity": "Warning",
+    "Created": "2012-03-07T14:44",
+    "EntryCode": "Enum of Assert | Deassert | values from table 42-1 and 42-2.  Really only for SEL",
+    "SensorType": "For SEL.  Table 42-3 from IPMI Spec, same as in Metrics objects.  ",
+    "SensorNumber": 1,
+    "Message": "Message for Event, Description for SEL, OEM depends",
+    "MessageId": "Base.1.0.Success type for Event, EventData for SEL, OEM depends",
+    "MessageArgs": [
+        "ArrayOfMessageArgs"
+    ],
+    "Links": {
+        "OriginOfCondition": {
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
+}

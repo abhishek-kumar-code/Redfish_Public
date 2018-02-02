@@ -1,0 +1,77 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
+    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1",
+    "@odata.type": "#NetworkAdapter.v1_1_0.NetworkAdapter",
+    "Id": "9fa725a1",
+    "Name": "Network Adapter View",
+    "Manufacturer": "Globex",
+    "Model": "599TPS-T",
+    "SKU": "Globex TPS-Net 2-Port Base-T",
+    "SerialNumber": "003BFLRT00023234",
+    "PartNumber": "975421-B20",
+    "NetworkPorts": {
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts"
+    },
+    "NetworkDeviceFunctions": {
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions"
+    },
+    "Controllers": [
+        {
+            "FirmwarePackageVersion": "7.4.10",
+            "Links":  {
+                "PCIeDevices": [
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"
+                    }
+                ],
+                "NetworkPorts": [
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1"
+                    }
+                ],
+                "NetworkDeviceFunctions": [
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100"
+                    }
+                ]
+            },
+            "ControllerCapabilities": {
+                "NetworkPortCount": 2,
+                "NetworkDeviceFunctionCount": 8,
+                "DataCenterBridging": {
+                    "Capable": true
+                },
+                "VirtualizationOffload": {
+                    "VirtualFunction": {
+                        "DeviceMaxCount": 256,
+                        "NetworkPortMaxCount": 128,
+                        "MinAssignmentGroupSize": 4
+                    },
+                    "SRIOV": {
+                        "SRIOVVEPACapable": true
+                    }
+                },
+                "NPIV": {
+                    "MaxDeviceLogins": 4,
+                    "MaxPortLogins": 2
+                }
+            },
+            "Location": {
+              "PartLocation": {
+                "ServiceLabel": "Slot 1",
+                "LocationType": "Slot",
+                "LocationOrdinalValue": 0,
+                "Reference": "Rear",
+                "Orientation": "LeftToRight"
+              }
+            }
+        }
+    ],
+    "Actions": {
+        "#NetworkAdapter.ResetSettingsToDefault": {
+            "target": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/Actions/NetworkAdapter.ResetSettingsToDefault"
+        },
+        "Oem": {}
+    }
+}
