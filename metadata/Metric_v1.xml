@@ -6,19 +6,8 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MetricDefinition_v1.xml">
-    <edmx:Include Namespace="MetricDefinition"/>
+     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   
    <edmx:DataServices>
@@ -30,7 +19,7 @@
    </Schema>
    
    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Metric.v1_0_0">
-	  <EntityType Name="Metric" BaseType="Metric.Metric">
+	    <EntityType Name="Metric" BaseType="Metric.Metric">
         <Annotation Term="OData.Description" String="Defines the use of a set of properties as metrics."/>
         <Annotation Term="OData.LongDescription" String="Defines the use of a set of properties as metrics."/>
 		
@@ -50,10 +39,14 @@
           <Annotation Term="OData.Description" String="The value is the collection duration for each metric value."/>
           <Annotation Term="OData.LongDescription" String="This property shall not be present if  MetricDefinition.Timescope=Point or if MetricDefintion.Duration is present.  If present, the value  shall be an ISO 8601 duration of the interval over which this metric value shall be computed."/>
         </Property>
-		<Property Name="TriggerCondition" Type="Metric.v1_0_0.TriggerCondition">
-			<Annotation Term="OData.Description" String="A Triggering condition for the event."/>	
-			<Annotation Term="OData.LongDescription" String="If present the values define conditions that shall be met before the event is triggered.  This trigger applies to all properties defined by the value of the MetricPropertyDeclaration property in the associated MetricDefinition and as constrained by the MetricScope property."/>
-		</Property>
+		    <Property Name="TriggerCondition" Type="Metric.v1_0_0.TriggerCondition">
+			    <Annotation Term="OData.Description" String="A Triggering condition for the event."/>	
+			    <Annotation Term="OData.LongDescription" String="If present the values define conditions that shall be met before the event is triggered.  This trigger applies to all properties defined by the value of the MetricPropertyDeclaration property in the associated MetricDefinition and as constrained by the MetricScope property."/>
+        </Property>
+        <Property Name="Actions" Type="Metric.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 	  </EntityType>
 	  
       <EnumType Name="TriggerType">
@@ -79,6 +72,8 @@
 	  
 	  <ComplexType Name="NumericTriggerCondition">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="A numeric trigger condition."/>
+        <Annotation Term="OData.LongDescription" String="This struction shall be used to represent a numeric trigger condition."/>	
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of trigger."/>
@@ -98,6 +93,8 @@
 
 	  <ComplexType Name="DiscreteTriggerCondition">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="A discrete trigger condition."/>
+        <Annotation Term="OData.LongDescription" String="This struction shall be used to represent a discrete trigger condition."/>	
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of trigger."/>
@@ -123,25 +120,39 @@
           <Annotation Term="OData.Description" String="The time in the triggering state before the trigger is invoked."/>
           <Annotation Term="OData.LongDescription" String="The value shall be an ISO 8601 conformant interval during which the triggering state shall persist before the trigger is invoked."/>
         </Property>			
-		<Property Name="TriggerType" Type="Metric.v1_0_0.TriggerType" Nullable="false" >
+		    <Property Name="TriggerType" Type="Metric.v1_0_0.TriggerType" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of trigger."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specific the type of trigger."/>
         </Property>		
-		<Property Name="DiscreteTriggerConditions" Type="Collection(Metric.v1_0_0.DiscreteTriggerCondition)">
-			<Annotation Term="OData.Description" String="A Trigger condition based on TriggerDiscreteCondition."/>	
-			<Annotation Term="OData.LongDescription" String="If present the values define conditions against properties specified by OriginResources that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Discrete. Multiple entries are 'ORd'."/>
-		</Property>		
-		<Property Name="FilterTriggerCondition" Type="Edm.String">
+		    <Property Name="DiscreteTriggerConditions" Type="Collection(Metric.v1_0_0.DiscreteTriggerCondition)">
+			    <Annotation Term="OData.Description" String="A Trigger condition based on TriggerDiscreteCondition."/>	
+			    <Annotation Term="OData.LongDescription" String="If present the values define conditions against properties specified by OriginResources that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Discrete. Multiple entries are 'ORd'."/>
+		    </Property>		
+		    <Property Name="FilterTriggerCondition" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A filter on the elements specified by OriginResources."/>
           <Annotation Term="OData.LongDescription" String="If present the value shall be an OData conformant filter condition evaluated against the elements specified by OriginResources.  The filter defines conditions that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Filter."/>
         </Property>
-		<Property Name="NumericTriggerConditions" Type="Collection(Metric.v1_0_0.NumericTriggerCondition)">
-			<Annotation Term="OData.Description" String="A Trigger condition based on TriggerNumericCondition."/>	
-			<Annotation Term="OData.LongDescription" String="If present the values define conditions against properties specified by OriginResources that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Numeric. Multiple entries are 'ORd'."/>
-		</Property>
-	  </ComplexType>	  
+		    <Property Name="NumericTriggerConditions" Type="Collection(Metric.v1_0_0.NumericTriggerCondition)">
+			    <Annotation Term="OData.Description" String="A Trigger condition based on TriggerNumericCondition."/>	
+			    <Annotation Term="OData.LongDescription" String="If present the values define conditions against properties specified by OriginResources that shall be met before the event is triggered.  This property shall be NULL if TriggerType is not Numeric. Multiple entries are 'ORd'."/>
+		    </Property>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="Metric.v1_0_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
    </Schema> 
   </edmx:DataServices>
 </edmx:Edmx>

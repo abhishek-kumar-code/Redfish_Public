@@ -17,14 +17,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_2_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -101,9 +96,12 @@
           <Annotation Term="OData.LongDescription" String="Each value may contain one or more Wildcard names enclosed in curly braces.  Wildcard value entries shall be substituted for each Wildcard name found.  If two or more wild names are found, the same Wildcard index is used for each in one substitution pass.  After substituting the WildCard values entries, each value shall be a URI for a property in a resource that matches a property declaration in the corresponding MetricDefinition."/>
           <Annotation Term="OData.IsURL" String="After processing Wildcard replacement values, each value shall resolve to an OData conformant URI to a property in an entity."/>
         </Property>
+        <Property Name="Actions" Type="Triggers.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 
       </EntityType>
-
 
       <EnumType Name="MetricTypeEnum">
         <Annotation Term="OData.Description" String="Indicates how the corresponding metric values change over time."/>
@@ -138,6 +136,8 @@
 
       <ComplexType Name="NumericTrigger">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Specifies the characteristics of a trigger."/>
+        <Annotation Term="OData.LongDescription" String="This object shall specific the characteristics of a triggger."/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of trigger."/>
@@ -145,18 +145,18 @@
         </Property>
         <Property Name="Value" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the value of the trigger."/>
+          <Annotation Term="OData.Description" String="The value of the trigger."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value of the trigger."/>
         </Property>
         <Property Name="DirectionOfCrossing" Type="Triggers.v1_0_0.DirectionOfCrossingEnum">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the value of the trigger."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the trigger."/>
+          <Annotation Term="OData.Description" String="The direction in which the metric value shall cross the trigger value in order to constitute an excursion."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the direction in which the metric value shall cross the trigger value in order to constitue an excurion."/>
         </Property>
         <Property Name="DwellTimMsec" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This time the excursion persists before a trigger is determined."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the time that a excursion persist before the MetricAction is performed."/>
+          <Annotation Term="OData.Description" String="The duration that the excursion persists before a trigger event has occurred."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the duration that the excursion persists before the trigger event has occurred and the MetricAction(s) are performed."/>
         </Property>
       </ComplexType>
 
@@ -171,9 +171,11 @@
         </Member>
       </EnumType>
 
- 
+
       <ComplexType Name="DiscreteTrigger">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The characteristics of the discrete trigger."/>
+        <Annotation Term="OData.LongDescription" String=  "This object shall contain the characteristics of the discrete trigger."/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of trigger."/>
@@ -181,13 +183,13 @@
         </Property>
         <Property Name="Value" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the value of the trigger."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the trigger."/>
+          <Annotation Term="OData.Description" String="The value of the discrete metric that constitutes a trigger occurance."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value discrete metric that constitutes a trigger event. The DwellTimeMsec shall be measured from this point in time."/>
         </Property>
         <Property Name="DwellTimMsec" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This time the excursion persists before a trigger is determined."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the time that a excursion persist before the MetricAction is performed."/>
+          <Annotation Term="OData.Description" String="This time the trigger occurance persists before a trigger event has occurred."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the time that a trigger occurance persists before the MetricAction is performed."/>
         </Property>
         <Property Name="Severity" Type="Resource.Health">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -198,6 +200,8 @@
 
       <ComplexType Name="Wildcard">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Contains a list of wildcards and their substitution values."/>
+        <Annotation Term="OData.LongDescription" String="Each wildcard shall have a corresponding entry in this list element.  Each entry shall specified the wildcard and its substitution values."/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of Wildcard."/>
@@ -208,6 +212,19 @@
           <Annotation Term="OData.Description" String="An array of values to substitute for the wildcard."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain  then the server shall substitute.  Each not empty value shall be substituted for the wildcard."/>
         </Property>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="MetricReport.v1_0_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
     </Schema>

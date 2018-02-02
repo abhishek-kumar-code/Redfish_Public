@@ -14,21 +14,15 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MetricDefinitionCollection_v1.xml">
-    <edmx:Include Namespace="MetricDefintionCollection"/>
+    <edmx:Include Namespace="MetricDefinitionCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MetricReportDefinitionCollection_v1.xml">
     <edmx:Include Namespace="MetricReportDefinitionCollection"/>
@@ -113,18 +107,10 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Actions" Type="TelemetryService.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
       </EntityType>
-
-      <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="TelemetryService.v1_0_0.OemActions" Nullable="false"/>
-      </ComplexType>
-
-      <ComplexType Name="OemActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-      </ComplexType>
 
       <EnumType Name="CollectionFunction">
         <Annotation Term="OData.Description" String="An operation to perform over the sample."/>
@@ -134,6 +120,19 @@
         <Member Name="Min"/>
         <Member Name="Sum"/>
       </EnumType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="MetricReport.v1_0_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
 
     </Schema>
 

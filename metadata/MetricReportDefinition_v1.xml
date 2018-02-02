@@ -14,16 +14,10 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/Schedule_v1.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Schedule_v1.xml">
     <edmx:Include Namespace="Schedule.v1_1_0"/>
   </edmx:Reference>
    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Metric_v1.xml">
@@ -32,11 +26,8 @@
    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MetricReport_v1.xml">
     <edmx:Include Namespace="MetricReport.v1_0_0"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TelemetryService_v1.xml">
-    <edmx:Include Namespace="TelemetryService.v1_0_0"/>
-  </edmx:Reference>
 
-   <edmx:DataServices>
+  <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition">
       <EntityType Name="MetricReportDefinition" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A metric Value."/>
@@ -78,9 +69,7 @@
           <Annotation Term="OData.Description" String="Entries in the resulting metric value properties are reused on each scheduled interval."/>
           <Annotation Term="OData.LongDescription" String="If the Volatile property is true, the value in the Metric report is overwritten with the latest value.  If the Volatile property is false, metric values are appended to the metric value collection.  Them metric value collection shall have no more than the value of the Schedule.MaxOccurrences property. A managememt application may establish a time series by retrieving the metric value collection and sorting them according to their TimeStamp."/>
         </Property>
-
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-
         <Property Name="Wildcards" Type="Collection(MetricReportDefinition.v1_0_0.Wildcard)">
           <Annotation Term="OData.Description" String="Wildcards used to replace values in MetricProperties array property."/>
           <Annotation Term="OData.LongDescription" String="The property shall contain an array of wildcards and their replacements strings, which are to appliced to the MetricProperties array property."/>
@@ -101,10 +90,17 @@
           <Annotation Term="OData.Description" String="References the related MetricReport."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <Property Name="Actions" Type="MetricReportDefinition.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
       </EntityType>
 
       <ComplexType Name="Wildcard">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Contains a list of wildcards and their substitution values."/>
+        <Annotation Term="OData.LongDescription" String="Each wildcard shall have a corresponding entry in this list element.  Each entry shall specified the wildcard and its substitution values."/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of Wildcard."/>
@@ -153,6 +149,19 @@
           <Annotation Term="OData.Description" String="Upon a trigger send an Alert event."/>
         </Member>
       </EnumType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="MetricReportDefinition.v1_0_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
 
    </Schema>
   </edmx:DataServices>
