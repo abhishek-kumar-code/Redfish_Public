@@ -14,24 +14,11 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogEntry_v1.xml">
     <edmx:Include Namespace="LogEntry.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
     <edmx:Include Namespace="PhysicalContext.v1_0_0"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TelemetryService_v1.xml">
-    <edmx:Include Namespace="TelemetryService.v1_0_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -163,7 +150,7 @@
         </Property>
 
         <Property Name="CalculationParameters" Type="Collection(MetricDefinition.v1_0_0.CalculationParamsType)">
-           <Annotation Term="OData.Description" String="Specifies the resource properties (metric) which are characterized by this definition."/>
+          <Annotation Term="OData.Description" String="Specifies the resource properties (metric) which are characterized by this definition."/>
           <Annotation Term="OData.LongDescription" String="The value of each list element share be a reference to the resource property which is characterized by this definition."/>
         </Property>
 
@@ -228,10 +215,17 @@
           <Annotation Term="OData.Description" String="This property specifies the time interval over which a calculated metric algorithm is performed."/>
           <Annotation Term="OData.LongDescription" String="The value of the property shall specify the time interval over which a calculated metric algorithm is performed. The value shall be in the format specified in ISO 8601."/>
         </Property>
+        <Property Name="Actions" Type="MetricDefinition.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
       </EntityType>
 
       <ComplexType Name="CalculationParamsType">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Specifies the usage of the parameter in the calculation."/>
+        <Annotation Term="OData.LongDescription" String="The value of the list element shall be the usage of the parameter in the calculation ."/>
         <Property Name="SourceMetric" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The metric property used as the input into the calculation."/>
@@ -246,15 +240,17 @@
 
       <ComplexType Name="Wildcard">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Contains a list of wildcards and their substitution values."/>
+        <Annotation Term="OData.LongDescription" String="Each wildcard shall have a corresponding entry in this list element.  Each entry shall specified the wildcard and its substitution values."/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of Wildcard."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a name for a Wildcard."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the string used as a Wildcard."/>
         </Property>
         <Property Name="Values" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of values to substitute for the wildcard."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain  then the server shall substitute.  Each not empty value shall be substituted for the wildcard."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the list of values to substituted for the wildcard."/>
         </Property>
       </ComplexType>
 
@@ -272,6 +268,19 @@
           <Annotation Term="OData.Description" String="The metric shall be calculated as the minimum of a source metric over a sliding time interval. The time interval shall be the value of the CalculationTimeInterval property. The source metric shall be specified in the AppliesTo.SourceMetricProperty property."/>
         </Member>
       </EnumType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="MetricDefinition.v1_0_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
 
     </Schema>
   </edmx:DataServices>
