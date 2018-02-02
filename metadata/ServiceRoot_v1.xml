@@ -70,6 +70,10 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml">
     <edmx:Include Namespace="CompositionService"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TelemetryService_v1.xml">
+    <edmx:Include Namespace="TelemetryService"/>
+  </edmx:Reference>
+
 
   <edmx:DataServices>
 
