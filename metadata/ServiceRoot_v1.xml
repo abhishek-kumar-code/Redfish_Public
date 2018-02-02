@@ -349,5 +349,23 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_3_1">
+
+      <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_2_0.ServiceContainer">
+        <Singleton Name="TelemetryService" Type="TelemetryService.TelemetryService"/>
+      </EntityContainer>
+
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_0.ServiceRoot">
+        <NavigationProperty Name="TelemetryService" Type="TelemetryService.TelemetryService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the TelemetryService."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be a link to the TelemetryService."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+    </Schema>
+
+
   </edmx:DataServices>
 </edmx:Edmx>
