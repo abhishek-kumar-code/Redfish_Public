@@ -1,0 +1,36 @@
+{
+    "@Redfish.Copyright":"Copyright © 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/4/MemoryDomains/2/MemoryChunks/$entity",
+    "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/2/MemoryChunks/1",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
+    "Name": "Memory Chunk1 - Volatile",
+    "Id": "1",
+    "MemoryChunkSizeMiB": 8192,
+    "AddressRangeType": "Volatile",
+    "IsMirrorEnabled": false,
+    "IsSpare": false,
+    "InterleaveSets": [
+        {
+            "Memory" : { "@odata.id": "/redfish/v1/Systems/4/Memory/1"},
+            "RegionId": "1"
+        },
+        {
+            "Memory" : { "@odata.id": "/redfish/v1/Systems/4/Memory/2"},
+            "RegionId": "1"
+        }
+    ],
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/2/MemoryChunks/1/SD"
+        },
+        "Time": "2012-03-07T14:44.30-05:00",
+        "ETag": "someetag",
+        "Messages": [
+            {
+                "MessageId": "Base.1.0.Success"
+            }
+        ]
+    },
+    "Oem": {}
+}

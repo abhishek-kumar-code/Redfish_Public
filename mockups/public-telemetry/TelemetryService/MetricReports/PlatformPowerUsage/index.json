@@ -1,0 +1,28 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#MetricReport.MetricReport",
+	"@odata.type": "#MetricReport.v1_0_0.MetricReport",
+	"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PlatformPowerUsage",
+	"Id": "PlatformPowerUsage",
+
+	"Name": "PlatformPowerUsage",
+	"MetricReportDefinition": {"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage"},
+	"MetricValues": [
+        {
+		    "MemberID": "AverageConsumedWatts",
+		    "MetricValue": "100",
+		    "TimeStamp": "20161108T122500-0500",
+		    "MetricProperty": "/redfish/v1/Chassis/Tray_1.PlatformPowerUsage.Reading"
+	    }, {
+		    "MemberID": "AverageConsumedWatts",
+		    "MetricValue": "94",
+		    "TimeStamp": "20161108T132500-0500",
+		    "MetricProperty": "/redfish/v1/Chassis/Tray_1.PlatformPowerUsage.Reading"
+	    }, {
+		    "MemberID": "AverageConsumedWatts",
+		    "MetricValue": "100",
+		    "TimeStamp": "20161108T142500-0500",
+		    "MetricProperty": "/redfish/v1/Chassis/Tray_1.PlatformPowerUsage.Reading"
+	    }
+    ]
+}

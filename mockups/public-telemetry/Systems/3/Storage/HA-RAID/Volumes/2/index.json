@@ -1,0 +1,45 @@
+{
+    "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/HA-RAID/Volumes/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2",
+    "@odata.type": "#Volume.v1_0_0.Volume",
+    "Id": "2",
+    "Name": "Virtual Disk 2",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "VolumeType": "Mirrored",
+    "CapacityBytes": 104857600,
+    "Identifiers": [
+        {
+            "DurableNameFormat": "UUID",
+            "DurableName": "995dff70-48eb-4cd3-9ae1-0f8e3cdfe80e"
+        }
+    ],
+    "Operations": [
+        {
+            "OperationName": "Rebuilding",
+            "PercentageComplete": 80
+        }
+    ],
+    "Links": {
+        "Drives": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"}
+        ]
+    },
+    "Actions": {
+        "#Volume.CheckConsistency": {
+            "target": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2/Actions/Volume.CheckConsistency"
+        },
+        "#Volume.Initialize": {
+            "target": "/redfish/v1/3/Storage/HA-RAID/Volumes/2/Actions/Volume.Initialize",
+            "InitializeType@Redfish.AllowableValues": [
+                "Fast",
+                "Slow"
+            ]
+        }
+    }
+}

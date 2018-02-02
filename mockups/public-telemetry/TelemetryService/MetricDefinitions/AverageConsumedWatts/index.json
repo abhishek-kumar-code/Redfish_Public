@@ -1,0 +1,19 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinitions",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts",
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "Id": "AverageConsumedWatts",
+    "Name": "AverageConsumedWatts",
+    "Calculable": "NonSummable",
+    "Units": "W",
+    "CalculationTimeInterval": "PT0.020S",
+    "DataType": "Decimal",
+    "IsLinear": true,
+    "MetricType": "Counter",
+	"Wildcards": [ 
+		{ "Wild": ["0"] }
+    ],
+    "MetricProperties": [
+		"/redfish/v1/Chassis/Tray_1/Power/{Wild}/PowerControl/PowerConsumedWatts"]
+}

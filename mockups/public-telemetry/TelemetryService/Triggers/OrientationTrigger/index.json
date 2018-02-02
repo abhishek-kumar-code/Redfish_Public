@@ -1,0 +1,25 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
+   	"@odata.type": "#Triggers.v1_0_0.Triggers",
+  	"@odata.id": "/redfish/v1/TelemetryService/Triggers/OrientationTrigger",
+   	
+	"Id": "OrientationTrigger",
+	"Name": "Trigger when orientation becomes incline",
+	"MetricType": "Discrete",
+	"TriggerActions": ["Transmit"],
+
+	"DiscreteTriggerCondition": "Specified",
+	"DiscreteTriggers": [
+			{
+				"Value": "inclined",
+				"DwellTimems": "1",
+				"Severity": "Warning"
+			}
+    ],
+
+	"MetricProperties": [
+        "/redfish/v1/Chassis/1/Power#/PowerControl/0/PowerConsumedWatts",
+        "/redfish/v1/Chassis/1/Power#/PowerControl/1/PowerConsumedWatts"
+	]
+}

@@ -1,0 +1,18 @@
+{
+    "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/SATAEmbedded/Volumes/$entity",
+    "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes",
+    "@odata.type": "#VolumeCollection.VolumeCollection",
+    "Name": "Storage Volume Collection",
+    "Description": "Storage Volume Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2"
+        }
+    ],
+    "Oem": {}
+}

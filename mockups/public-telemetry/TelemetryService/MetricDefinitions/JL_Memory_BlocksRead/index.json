@@ -1,0 +1,26 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/JL_Memory_BlocksRead",
+    "Id": "JL_Memory_BlocksRead",
+    "Name": "Current Memory Blocks Read Metric Definition",
+
+	"MetricType": "Numeric",
+	"SensorType": "Memory",
+	"Implementation": "DigitalMeter",
+
+	"SensingInterval": "PT1S",
+	"Units": "Blocks",
+ 	"MinReadingRange": 0,
+	"MaxReadingRange": 1000000,
+
+    "Wildcards": [
+        { "Name": "SystemID", "Values": [ "1", "2", "3" ] },
+        { "Name": "MemoryID", "Values": [ "1", "2", "3", "4" ] }
+    ],
+
+	"MetricProperties": [
+        "/redfish/v1/Systems/(SystemID}/Memory/{MemoryID}/MemoryMetric#/CurrentPeriod/BlocksRead"
+     ]
+}

@@ -1,0 +1,21 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/MinimumReadingCelsius",
+    "Id": "MinimumReadingCelsius",
+
+    "Name": "MinimumReadingCelsius",
+    "Calculable": "NonSummable",
+    "Units": "Cel",
+ 	"CalculationTimeInterval": "PT1S",
+    "DataType": "Decimal",
+    "IsLinear": true,
+    "MetricType": "Counter",
+	"Wildcards": [ 
+		{ "Wild": ["0"] }
+    ],
+    "MetricProperties": [
+		"/redfish/v1/Chassis/Tray_1/Thermal/{Wild}/Temperatures/ReadingCelsius"
+    ]
+}

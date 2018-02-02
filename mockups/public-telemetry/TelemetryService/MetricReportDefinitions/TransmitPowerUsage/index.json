@@ -1,0 +1,33 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+	"@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+	"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/TransmitPowerUsage",
+	"Id": "TransmitPowerUsage",
+
+	"Name": "TransmitPowerUsage",
+	"Schedule": {
+		"RecurrenceInterval": "PT0.1S"
+	},
+	"MetricReportType":"OnChange",
+	"CollectionTimeScope": "Interval",
+	"Volatile": false,	
+	"Wildcards": [
+        { "Wild": ["0"] }
+    ],
+	"Metrics": [{
+		"MemberID": "PowerUsageReading",
+		"MetricProperties": ["/redfish/v1/Chassis/Tray_1/Power/PowerControl/{Wild}/PowerConsumedWatts"],
+		"CollectionDuration": "PT0.020S",
+		"TriggerCondition": {
+			"DwellInterval": "PT0.001S",
+			"TriggerType": "Numeric",
+			"NumericTriggerConditions": {
+				"Name": "UpperThresholdNonCritical",
+				"Value": "48.1",
+				"DirectionOfCrossing": "Increasing"
+			}
+		}
+	}],
+	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/TransmitPowerUsage"}
+}

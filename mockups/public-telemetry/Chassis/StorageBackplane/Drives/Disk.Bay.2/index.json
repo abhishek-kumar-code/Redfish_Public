@@ -1,0 +1,24 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2",
+    "@odata.type": "#Drive.v1_0_0.Drive",
+    "IndicatorLED": "Lit",
+    "StatusIndicator": "Fail",
+    "Model": "Drive Model string",
+    "Status": { "State": "Enabled", "Health": "Warning" },
+    "CapacityBytes": 899527000000,
+    "Protocol": "SATA",
+    "MediaType": "SSD",
+    "Manufacturer": "SuperDuperSSD",
+    "AssetTag": "",
+    "CapableSpeedGbs": 6,
+    "NegotiatedSpeedGbs": 6,
+    "PredictedMediaLifeLeftPercent": 80,
+    "Links": {
+        "Volumes": [
+            {"@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2"}
+        ]
+    },
+    "Actions": {
+    }
+}

@@ -1,0 +1,67 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated",
+    "@odata.type": "#Storage.v1_0_0.Storage",
+    "Id": "RAIDIntegrated",
+    "Name": "Integrated RAID Storage System",
+    "Description": "Contoso Internal RAID",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "StorageControllers": [
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/StorageControllers/0",
+            "@odata.type": "#Storage.v1_0_0.StorageController",
+            "Id": "0",
+            "Name": "Contoso Internal RAID",
+            "Description": "Contoso Internal RAID (Slot 5)",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Identifiers": [
+                {
+                    "DurableNameFormat": "NAA",
+                    "DurableName": "5782BCB07197C600"
+                }
+            ],
+            "Manufacturer": "ManufacturerName",
+            "Model": "ProductModelName",
+            "SKU": "",
+            "SerialNumber": "2M220100SL",
+            "PartNumber": "",
+            "AssetTag": "CustomerWritableThingy",
+            "SpeedGbps": 12,
+            "FirmwareVersion": "23.13.06.0006",
+            "SupportedControllerProtocols": [
+                "PCIe"
+            ],
+            "SupportedDeviceProtocols": [
+                "SAS",
+                "SATA"
+            ]
+        }
+    ],
+    "Drives": [
+        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"},
+        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
+        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"},
+        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
+    ],
+    "Volumes": {
+        "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes"
+    },
+    "Links": {
+        "Enclosures": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane"}
+        ]
+    },
+    "Actions": {
+        "#Storage.SetEncryptionKey": {
+            "target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Actions/Storage.SetEncryptionKey"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#TelemetryService/MetricDefinitions/MaxConsumedWatts",
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/JL_MaximumConsumedWatts",
+    "Id": "JL_MaximumConsumedWatts",
+    "Name": "Maximum Consumed Watts Metric Definition",
+
+    "MetricType": "Numeric",
+	"SensorType": "PowerConsumption",
+	"Implementation": "Calculated",
+	"PhysicalContext": "PowerSupply",
+
+    "Units": "W",
+
+	"CalculationAlgorithm": "MaximumDuringInterval",
+ 	"CalculationTimeInterval": "PT1S",
+
+    "Wildcards": [
+        { "ChassisID": [ "1", "2", "3" ] }
+    ],
+
+	"CalculationParameters": [
+	    {
+		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/PowerConsumedWatts ",
+ 		    "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/MaxConsumedWatts "
+	    },
+	    {
+		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts ",
+ 		    "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/MaxConsumedWatts "
+	    }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/JL_OrientationSensor",
+    "Id": "JL_OrientationSensor",
+    "Name": "Senses the orientation of the chassis",
+
+    "MetricType": "Discrete",
+	"SensorType": "Orientation",
+	"Implementation": "PhysicalSensor",
+	"PhysicalContext": "ComputeBay",
+
+	"SensingInterval": "PT1S",
+
+    "DiscreteValues": [ "Vertical", "Horizontal", "Inclined" ],
+
+    "Wildcards": [
+        { "Name": "ChassisID", "Values": [ "1", "2", "3" ] }
+    ],
+
+	"MetricProperties": [
+        "/redfish/v1/Chassis/{ChassisID}#/Orientation"
+    ]
+}

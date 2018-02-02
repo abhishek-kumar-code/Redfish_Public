@@ -1,0 +1,32 @@
+{
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "Name": "Memory Subsystem Example",
+    "SystemType": "Physical",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "PowerState": "On",	
+    "Memory": {
+        "@odata.id": "/redfish/v1/Systems/4/Memory"
+    },
+    "MemoryDomains": {
+        "@odata.id": "/redfish/v1/Systems/4/MemoryDomains"
+    },
+    "MemorySummary": {
+        "TotalSystemMemoryGiB": 24,
+        "TotalSystemPersistentMemoryGiB": 40,
+        "MemoryMirroring" : "Hybrid",		
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK",
+            "HealthRollup": "OK"
+        }
+    },    
+    "Oem": {},
+    "Id": "4",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/4"
+}
