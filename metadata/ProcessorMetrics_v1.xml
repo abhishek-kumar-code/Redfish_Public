@@ -75,65 +75,65 @@
         </Property>
         <Property Name="AverageFrequencyMHz" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Average frequency [MHz]"/>
+          <Annotation Term="OData.Description" String="Average frequency [MHz]."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be average frequency across all enabled cores in MHz."/>
           <Annotation Term="Measures.Unit" String="MHz"/>
         </Property>
         <Property Name="ThrottlingCelsius" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="CPU Margin to throttle (temperature offset in degree Celsius)"/>
+          <Annotation Term="OData.Description" String="CPU Margin to throttle (temperature offset in degree Celsius)."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be CPU margin to throttle based on an offset between max temperature resource can operate and its current temperature."/>
           <Annotation Term="Measures.Unit" String="Cel"/>
         </Property>
         <Property Name="TemperatureCelsius" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Temperature of the Processor resource"/>
+          <Annotation Term="OData.Description" String="Temperature of the Processor resource."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be temperature of the Processor resource in Celsius."/>
           <Annotation Term="Measures.Unit" String="Cel"/>
         </Property>
         <Property Name="ConsumedPowerWatt" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Power consumed by Processor resource"/>
+          <Annotation Term="OData.Description" String="Power consumed by Processor resource."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be power for specific CPU domain in Watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
         <Property Name="FrequencyRatio" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Frequency relative to nominal CPU frequency"/>
+          <Annotation Term="OData.Description" String="Frequency relative to nominal CPU frequency."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be Frequency relative to nominal CPU frequency of the Processor resource."/>
         </Property>
         <Property Name="L3Miss" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L3 cache line misses in millions"/>
+          <Annotation Term="OData.Description" String="L3 cache line misses in millions."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be L3 cache line misses of the Processor resource in millions."/>
         </Property>
         <Property Name="L3HitRatio" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L3 cache line hit ratio"/>
+          <Annotation Term="OData.Description" String="L3 cache line hit ratio."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be L3 cache hit ratio of the Processor resource."/>
         </Property>
         <Property Name="L3Mpi" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L3 cache misses per instruction"/>
+          <Annotation Term="OData.Description" String="L3 cache misses per instruction."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be L3 cache misses per instruction of the Processor resource."/>
         </Property>
         <Property Name="LlcOccupancyBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Total last level cache occupancy in bytes "/>
+          <Annotation Term="OData.Description" String="Total last level cache occupancy in bytes."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be total last level cache occupancy of the Processor resource in bytes."/>
         </Property>
         <Property Name="LlcOccupancyPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Total last level cache occupancy in bytes "/>
+          <Annotation Term="OData.Description" String="Total last level cache occupancy in bytes."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be total last level cache occupancy percentage of the Processor resource."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
@@ -141,19 +141,19 @@
         </Property>
         <Property Name="MblBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Local memory bandwidth usage in bytes "/>
+          <Annotation Term="OData.Description" String="Local memory bandwidth usage in bytes."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be local memory bandwidth usage of the Processor resource in bytes."/>
         </Property>
         <Property Name="MbrBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Remote memory bandwidth usage in bytes "/>
+          <Annotation Term="OData.Description" String="Remote memory bandwidth usage in bytes."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be remote memory bandwidth usage of the Processor resource in bytes."/>
         </Property>
         <Property Name="KernelPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The percentage of time spend in system mode "/>
+          <Annotation Term="OData.Description" String="The percentage of time spend in system mode."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be total percentage of time the processor spend in kernel mode."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
@@ -161,47 +161,51 @@
         </Property>
         <Property Name="UserPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The percentage of time spend in user mode "/>
+          <Annotation Term="OData.Description" String="The percentage of time spend in user mode."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be total percentage of time the processor spend in user mode."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
         <Property Name="CoreMetrics" Type="Collection(ProcessorMetrics.v1_0_0.CoreMetrics)">
-          <Annotation Term="OData.Description" String="Processor Core Metrics"/>
+          <Annotation Term="OData.Description" String="Processor Core Metrics."/>
           <Annotation Term="OData.LongDescription"
-                      String="This type shall contain properties that describe this Core of the Processor resource ."/>
+                      String="This type shall contain properties that describe this Core of the Processor resource."/>
+        </Property>
+        <Property Name="Actions" Type="ProcessorMetrics.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
       </EntityType>
       
       <ComplexType Name="CoreMetrics">
         <Property Name="CoreId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Processor resource Core Identifier"/>
+          <Annotation Term="OData.Description" String="Processor resource Core Identifier."/>
           <Annotation Term="OData.LongDescription"
                       String="This property shall be Processor resource Core Identifier."/>
         </Property>
         <Property Name="InstructionsPerCycle" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Instructions per clock cycle of each core"/>
+          <Annotation Term="OData.Description" String="Instructions per clock cycle of each core."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be instructions per clock cycle of each core in the Processor resource."/>
         </Property>
         <Property Name="L2Miss" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L2 cache line misses of each core in millions"/>
+          <Annotation Term="OData.Description" String="L2 cache line misses of each core in millions."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be L2 cache line misses of each core in the Processor resource in millions."/>
         </Property>
         <Property Name="L2HitRatio" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L2 cache line hit ratio of each core"/>
+          <Annotation Term="OData.Description" String="L2 cache line hit ratio of each core."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be L2 cache hit ratio of each core in the Processor resource."/>
         </Property>
         <Property Name="L2Mpi" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L2 cache misses per instruction of each core"/>
+          <Annotation Term="OData.Description" String="L2 cache misses per instruction of each core."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be L2 cache misses per instruction of each core in the Processor resource."/>
         </Property>
@@ -219,14 +223,14 @@
       <ComplexType Name="CstateResidency">
         <Property Name="Level" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The level of C-state, e.g. C0, C1, C2"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the level of C-state"/>
+          <Annotation Term="OData.Description" String="The level of C-state, e.g. C0, C1, C2."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the level of C-state."/>
         </Property>
         <Property Name="ResidencyPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The percentage of time that the whole package spends in this particular level of C-state"/>
+          <Annotation Term="OData.Description" String="The percentage of time that the whole package spends in this particular level of C-state."/>
           <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be the percentage of time that the whole package spends in this particular level of C-state"/>
+                      String="The value of this property shall be the percentage of time that the whole package spends in this particular level of C-state."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>

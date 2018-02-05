@@ -557,7 +557,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the FPGA FW can be reprogrammed from the host. If set to ‘false’ a FPGA FW can be programmed through the sideband interface only."/>
         </Property>
         <Property Name="ReconfigurationSlots" Type="Collection(Processor.v1_4_0.FpgaReconfigurationSlot)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of the FPGA reconfiguration slots."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the structures describing the FPGA reconfiguration slots that can be programmed with the acceleration function code."/>
         </Property>
@@ -571,7 +570,7 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="FpgaSlots">
+      <ComplexType Name="FpgaReconfiguraionSlot">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes the FPGA reconfiguration slot."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain information about FPGA reconfiguration slot."/>

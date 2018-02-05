@@ -90,6 +90,10 @@
           <Annotation Term="OData.LongDescription" String="The total acceleration function power consumtion in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
+        <Property Name="Actions" Type="AccelerationFunction.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
       </EntityType>
 
       <EnumType Name="AccelerationFunctionType">
