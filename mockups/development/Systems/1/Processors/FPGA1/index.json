@@ -28,7 +28,7 @@
   "FPGA": {
     "FpgaType": "Discrete",
     "Model": "Stratix10",
-    "FwId": "Blue v.1.00.86",
+    "FwId": "0x6400002fc614bb9",
     "FwManufacturer": "Intel(R) Corporation",
     "FwVersion": "Blue v.1.00.86",
     "HostInterface": "8xPCIe-4",
