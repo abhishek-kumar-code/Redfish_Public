@@ -620,8 +620,8 @@
               <Annotation Term="OData.Description" String="The Arria 10 FPGA device"/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="The Startix 10 FPGA device"/>
-              <Annotation Term="OData.Description" String="The discrete FPGA device."/>
+              <PropertyValue Property="Member" String="Stratix10"/>
+              <Annotation Term="OData.Description" String="The Stratix 10 FPGA device."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Stratix11"/>
