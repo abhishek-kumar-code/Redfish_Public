@@ -367,7 +367,9 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="Links" BaseType="Processor.v1_3_0.Links">
+      <ComplexType Name="Links" BaseType="Processor.v1_1_0.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this processor."/>
