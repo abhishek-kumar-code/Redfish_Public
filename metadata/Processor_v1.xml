@@ -404,7 +404,7 @@
         </Property>
       </ComplexType>
 
-      <EnumType Name="IntegratedMemoryType" UnderlyingType="Edm.String">
+      <TypeDefinition Name="IntegratedMemoryType" UnderlyingType="Edm.String">
         <Annotation Term="Redfish.Enumeration">
           <Collection>
             <Record>
@@ -501,7 +501,7 @@
             </Record>
           </Collection>
         </Annotation>
-      </EnumType>
+      </TypeDefinition>
 
       <ComplexType Name="FPGA">
         <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
@@ -598,7 +598,7 @@
         </NavigationProperty>
       </ComplexType>
 
-      <EnumType Name="FpgaType" UnderlyingType="Edm.String">
+      <TypeDefinition Name="FpgaType" UnderlyingType="Edm.String">
         <Annotation Term="Redfish.Enumeration">
           <Collection>
             <Record>
@@ -611,9 +611,9 @@
             </Record>
           </Collection>
         </Annotation>
-      </EnumType>
+      </TypeDefinition>
 
-      <EnumType Name="FpgaModel" UnderlyingType="Edm.String">
+      <TypeDefinition Name="FpgaModel" UnderlyingType="Edm.String">
         <Annotation Term="Redfish.Enumeration">
           <Collection>
             <Record>
@@ -634,9 +634,9 @@
             </Record>
           </Collection>
         </Annotation>
-      </EnumType>
+      </TypeDefinition>
 
-      <EnumType Name="FpgaInterface" UnderlyingType="Edm.String">
+      <TypeDefinition Name="FpgaInterface" UnderlyingType="Edm.String">
         <Annotation Term="Redfish.Enumeration">
           <Collection>
             <Record>
@@ -745,7 +745,7 @@
             </Record>
           </Collection>
         </Annotation>
-      </EnumType>
+      </TypeDefinition>
 
     </Schema>
     
