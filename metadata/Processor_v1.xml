@@ -17,6 +17,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -356,7 +359,7 @@
         </Property>
         <Property Name="IntegratedMemory" Type="Collection(Processor.v1_4_0.IntegratedMemory)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Memory integrated witin the Procesor"/>
+          <Annotation Term="OData.Description" String="Memory integrated witin the Procesor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory integrated witin this Processor."/>
         </Property>
         <Property Name="FPGA" Type="Processor.v1_4_0.FPGA" Nullable="true">
@@ -367,13 +370,13 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Processor.v1_3_0.Links">
-        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ConnectedPorcessors" Type="Collection(Processor.Processor)" Nullable="false">
+        <NavigationProperty Name="ConnectedPorcessors" Type="Collection(Processor.Processor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the processors directly connected to this processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor is directly connected and shall reference a resource of type Processor."/>
