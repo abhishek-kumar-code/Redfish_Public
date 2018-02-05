@@ -22,6 +22,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -66,7 +67,7 @@
         </Property>
         <Property Name="BandwidthPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="CPU Bandwidth in [%]"/>
+          <Annotation Term="OData.Description" String="CPU Bandwidth in [%]."/>
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be CPU Utilization on specific CPU in %."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
