@@ -84,7 +84,7 @@
           <Annotation Term="OData.Description" String="The acceleration function code version."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the acceleration function code version."/>
         </Property>
-        <Property Name="PowerWatts" Type="Edm.Int64">
+        <Property Name="PowerWatts" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The acceleration function power consumption."/>
           <Annotation Term="OData.LongDescription" String="The total acceleration function power consumtion in watts."/>

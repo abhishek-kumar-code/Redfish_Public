@@ -338,13 +338,12 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
-      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <Annotation Term="OData.Description" String="This version was created to add FPGA capabilities."/>
       <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor">
-        <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics" ContainsTarget="true" Nullable="false">
+        <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Processor."/>
           <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this Processor."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -367,7 +366,7 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="Links" BaseType="Processor.v1_1_0.Links">
+      <ComplexType Name="Links" BaseType="Processor.v1_3_0.Links">
         <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
@@ -572,7 +571,7 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="FpgaReconfiguraionSlot">
+      <ComplexType Name="FpgaReconfigurationSlot">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes the FPGA reconfiguration slot."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain information about FPGA reconfiguration slot."/>
@@ -595,7 +594,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to the Acceleration Function provided by the code programmed into a reconfiguration slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the acceleration function resources provided by the code programmed into a reconfiguration slot and shall reference a resource of type AccelerationFunction."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 
