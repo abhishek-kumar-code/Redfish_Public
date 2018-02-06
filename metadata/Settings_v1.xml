@@ -18,6 +18,7 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
@@ -33,6 +34,7 @@
       <ComplexType Name="Settings" Abstract="true"/>
       <ComplexType Name="PreferredApplyTime" Abstract="true"/>
       <ComplexType Name="OperationApplyTimeSupport" Abstract="true"/>
+      <ComplexType Name="MaintenanceWindow" Abstract="true"/>
 
       <EnumType Name="OperationApplyTime">
         <Member Name="Immediate">
@@ -161,24 +163,43 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property indicates the types of apply times the client is allowed request when performing a Create, Delete, or Action operation."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the types of apply times the client is allowed request when performing a Create, Delete, or Action operation."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
+        <Property Name="MaintenanceWindowStartTime" Type="Edm.DateTimeOffset" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The value of this property as specified by client to indicate the start time of a maintenance window."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the same as the MaintenanceWindowStartTime property found in the MaintenanceWindow structure on the MaintenanceWindowOwner.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
+        </Property>
+        <Property Name="MaintenanceWindowDurationInSeconds" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The value of this property as specified by client indicates the expiry time of maintenance window in seconds."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the same as the MaintenanceWindowDurationInSeconds property found in the MaintenanceWindow structure on the MaintenanceWindowOwner.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="s"/>
+        </Property>
+        <NavigationProperty Name="MaintenanceWindowOwner" Type="Resource.ItemOrCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The value of this property is used to indicate the location of the maintenance window settings."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a resource that contains the @Redfish.MaintenanceWindow property which governs this resource.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
+        </NavigationProperty>
+      </ComplexType>
+
+      <ComplexType Name="MaintenanceWindow" BaseType="Settings.MaintenanceWindow">
+        <Annotation Term="OData.Description" String="This object indicates if a given resource has a maintenance window assignment for applying settings or operations."/>
+        <Annotation Term="OData.LongDescription" String="This object shall indicate if a given resource has a maintenance window assignment for applying settings or operations.  Other resources may reference this object in order to convey a common control surface for the configuration of the maintenance window."/>
         <Property Name="MaintenanceWindowStartTime" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The value of this property as specified by client to indicate the start time of a maintenance window."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the date and time as to when the service is allowed to start applying the requested Create, Delete, or Action operation as part of a maintenance window.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the date and time as to when the service is allowed to start applying the requested settings or operation as part of a maintenance window."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="MaintenanceWindowDurationInSeconds" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The value of this property as specified by client indicates the expiry time of maintenance window in seconds."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the end of the maintenance window as the number of seconds after the time specified by the MaintenanceWindowStartTime property.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the end of the maintenance window as the number of seconds after the time specified by the MaintenanceWindowStartTime property."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="s"/>
-        </Property>
-        <Property Name="MaintenanceWindowOwner" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The value of this property is used to indicate the location of the maintenance window settings."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a URI with a JSON Fragment to identify where the maintenance window settings can be manipulated.  This URI shall reference a PreferredApplyTime object or OperationApplyTimeSupport object, and shall contain MaintenanceWindowStartTime and MaintenanceWindowDurationInSeconds properties."/>
-          <Annotation Term="OData.IsURL"/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
       </ComplexType>
     </Schema>

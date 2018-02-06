@@ -87,6 +87,9 @@
       <Term Name="OperationApplyTimeSupport" Type="Settings.OperationApplyTimeSupport">
         <Annotation Term="OData.Description" String="Indicates if a client is allowed to request for a specific apply time of a Create, Delete, or Action operation of a given resource via the OperationApplyTime term."/>
       </Term>
+      <Term Name="MaintenanceWindow" Type="Settings.MaintenanceWindow">
+        <Annotation Term="OData.Description" String="Maintenance window configuration of a resource for when to apply settings or operations."/>
+      </Term>
 
       <EnumType Name="ReleaseStatusType">
         <Member Name="Standard">
