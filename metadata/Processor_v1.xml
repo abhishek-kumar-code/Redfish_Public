@@ -340,7 +340,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
       <Annotation Term="OData.Description" String="This version was created to add FPGA capabilities."/>
       <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor">
-        <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics" Nullable="false">
+        <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Processor."/>
           <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this Processor."/>
@@ -505,6 +505,7 @@
       </TypeDefinition>
 
       <ComplexType Name="FPGA">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
         <Annotation Term="OData.LongDescription" String="The properties of the FPGA device represented by this Processor."/>
         <Property Name="FpgaType" Type="Processor.v1_4_0.FpgaType" Nullable="false">
