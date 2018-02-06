@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#AccelerationFunctionCollection.AccelerationFunctionCollection",
     "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions",
-    "@odata.type": "#AccelerationFunctionCollection.v1_0_0.AccelerationFunctionCollection",
+    "@odata.type": "#AccelerationFunctionCollection.AccelerationFunctionCollection",
     "Name": "Acceleration Function Collection",
     "Members@odata.count": 1,
     "Members": [

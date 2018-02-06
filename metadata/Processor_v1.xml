@@ -362,15 +362,13 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Processor.v1_1_0.Links">
-        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ConnectedPorcessors" Type="Collection(Processor.Processor)">
+        <NavigationProperty Name="ConnectedProcessors" Type="Collection(Processor.Processor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the processors directly connected to this processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor is directly connected and shall reference a resource of type Processor."/>
@@ -551,7 +549,7 @@
         <Property Name="ProgrammableFromHost" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This flag indicates if the FPGA FW can be reprogrammed from the host."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the FPGA FW can be reprogrammed from the host. If set to ‘false’ a FPGA FW can be programmed through the sideband interface only."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the FPGA FW can be reprogrammed from the host. If set to false, a FPGA FW can be programmed through the sideband interface only."/>
         </Property>
         <Property Name="ReconfigurationSlots" Type="Collection(Processor.v1_3_0.FpgaReconfigurationSlot)" Nullable="false">
           <Annotation Term="OData.Description" String="An array of the FPGA reconfiguration slots."/>
@@ -563,8 +561,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor uses and shall reference a resource of type AccelerationFunction."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem">
-        </Property>
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <ComplexType Name="FpgaReconfigurationSlot">

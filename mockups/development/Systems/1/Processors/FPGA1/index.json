@@ -1,5 +1,5 @@
 {
-  "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/Processors/Members/$entity",
+  "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
   "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1",
   "@odata.type": "#Processor.v1_3_0.Processor",
   "Name": "FPGA",
