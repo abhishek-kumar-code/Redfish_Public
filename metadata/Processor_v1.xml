@@ -382,7 +382,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes the memory integrated within a processor."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain information about memory integratied within a processor."/>
-        <Property Name="MemoryType" Type="Processor.v1_4_0.IntegratedMemoryType">
+        <Property Name="MemoryType" Type="Processor.v1_3_0.IntegratedMemoryType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the integrated memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the integrated memory type."/>
