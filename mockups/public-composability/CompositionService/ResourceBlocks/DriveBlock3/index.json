@@ -15,7 +15,7 @@
         "SharingCapable": true,
         "SharingEnabled": true,
         "MaxCompositions": 8,
-        "NumberOfCompositions": 1
+        "NumberOfCompositions": 2
     },
     "Processors": [],
     "Memory": [],
@@ -28,6 +28,9 @@
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/ComposedSystem"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedSystem2"
             }
         ],
         "Chassis": [

@@ -11,10 +11,10 @@
     },
     "CompositionStatus": {
         "Reserved": false,
-        "CompositionState": "Unused",
+        "CompositionState": "Composed",
         "SharingCapable": false,
         "MaxCompositions": 1,
-        "NumberOfCompositions": 0
+        "NumberOfCompositions": 1
     },
     "Processors": [],
     "Memory": [],
@@ -29,7 +29,11 @@
         }
     ],
     "Links": {
-        "ComputerSystems": [],
+        "ComputerSystems": [
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedSystem2"
+            }
+        ],
         "Chassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/ComposableModule5"
