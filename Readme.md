@@ -27,27 +27,31 @@ The Forum co-Chairs reserve the right to make typographical, syntax, formatting 
 
 ### Contents of the Repository
 
-In the root folder of the repository are the primary documents created by the SPMF.  Other files in the root folder are supporting files of the repository and are not normally accessed or referenced.
+In the root folder of the repository are the primary normative documents (specifications) created by the SPMF.  Other files in the root folder are supporting files of the repository and are not normally accessed or referenced.
 
 | Filename | Description |
 |----------|-------------|
 | Readme.md | This document - the SPMF Github User Guide |
 | Specification.md | The Redfish API Specification - DSP0266 |
-| WhitePaper.md | The Redfish White Paper - DSP2044 |
-| RedfishFAQ.md | The Redfish FAQ - DSP2045 |
-| SchemaSupplement.md | The Redfish Schema Supplemental material - DSPxxxx |
-| README8010.md | Readme file used with the schema release bundle - DSP8010 |
-| README2043.md | Readme file used with the mockup release bundle - DSP2043 |
+| HostInterfaceSpecification.md | The Redfish Host Interface Specification - DSP0270 |
+| RedfishInteroperabilityProfiles.md | The Redfish Interoperability Profiles Specification - DSP0272 |
+| RedfishMTFTracker.md | Redfish activities tracking document for the DMTF Marketing Task Force |
+| SchemaSupplement.md | Redfish Schema Supplement - DSP0268 |
 
 Off of the root are several folders which contain the schemas and mockups created by the Forum.
 
 | Folder  | Contents |
 |---------|----------|
+| docs | Informative documents (non-normative) in Markdown format |
+| docs/support | Supporting documents (mostly READMEs) or input files used by documentation generation tools
 | json-schema | Redfish Schema files in json-schema format |
 | metadata | Redfish Schema files in CSDL format |
 | mockups | Redfish Mockups including the "development" and published, public-facing mockups. |
+| profiles | Redfish Interoperability Profiles |
 | registries | Redfish Message Registries |
-| release | Supporting files and published documents in HTML and PDF formats |
+| release | Supporting files and tools for release and document processing |
+| release/dist | Individual released (published) documents in HTML and PDF formats |
+| submissions | Technology Submissions received via the DMTF Submission Portal |
 | test | Supporing files for managing the repository |
 
 
