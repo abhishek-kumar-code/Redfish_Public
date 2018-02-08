@@ -558,6 +558,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_2">
       <Annotation Term="OData.Description" String="This version was created to correct regex patterns for different attribute properties."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_1.AttributeRegistry"/>
 
       <ComplexType Name="Attributes" BaseType="AttributeRegistry.v1_1_1.Attributes">
         <Property Name="ResetRequired" Type="Edm.Boolean">
