@@ -102,12 +102,12 @@
         </Property>
         <Property Name="FirmwareAuthRoleId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This property contains the Role for firmware authentication on this interface."/>
+          <Annotation Term="OData.Description" String="The Role used for firmware authentication on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the ID of the Role resource that is configured for firmware authentication on this interface."/>
         </Property>
         <Property Name="FirmwareAuthEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This indicates whether this firmware authentication is enabled for this interface."/>
+          <Annotation Term="OData.Description" String="Indicates whether this firmware authentication is enabled for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether firmware authentication for this interface is enabled."/>
         </Property>
 
