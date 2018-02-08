@@ -255,7 +255,7 @@
         <Property Name="SharingEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Indicates if this Resource Block is allowed to participate in multiple compositions simultaneously."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this Resource Block is allowed to participate in multiple compositions simultaneously.  The service shall reject modifications of this property with HTTP 400 Bad Request if this Resource Block already being used as part of a composed resources.  If this property is set to false, the service shall not use the ComposedAndAvailable state for this Resource Block."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this Resource Block is allowed to participate in multiple compositions simultaneously.  The service shall reject modifications of this property with HTTP 400 Bad Request if this Resource Block already being used as part of a composed resource.  If this property is set to false, the service shall not use the ComposedAndAvailable state for this Resource Block."/>
         </Property>
         <Property Name="MaxCompositions" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -265,8 +265,8 @@
         </Property>
         <Property Name="NumberOfCompositions" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The number of compositions in which this Resource Block belongs is currently participating."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number of compositions in which this Resource Block belongs is currently participating."/>
+          <Annotation Term="OData.Description" String="The number of compositions in which this Resource Block is currently participating."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of compositions in which this Resource Block is currently participating."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
       </ComplexType>
