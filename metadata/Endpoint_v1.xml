@@ -75,7 +75,7 @@
           <Annotation Term="OData.Description" String="The PCI ID of the endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI ID of the endpoint."/>
         </Property>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
           <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>

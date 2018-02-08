@@ -54,7 +54,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Assembly.v1_0_0">
 
       <EntityType Name="Assembly" BaseType="Assembly.Assembly">
-        <NavigationProperty Name="Assemblies" Type="Collection(Assembly.v1_0_0.AssemblyData)">
+        <NavigationProperty Name="Assemblies" Type="Collection(Assembly.v1_0_0.AssemblyData)" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for an assembly information record."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for assembly records  for a Redfish implementation."/>
