@@ -561,6 +561,8 @@
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_1.AttributeRegistry"/>
 
       <ComplexType Name="Attributes" BaseType="AttributeRegistry.v1_1_1.Attributes">
+        <Annotation Term="OData.Description" String="An attribute and its possible values."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe an attribute and its possible values and other metadata."/>
         <Property Name="ResetRequired" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="True if changing the value of this attribute requires a system or device reset in order to take effect."/>
