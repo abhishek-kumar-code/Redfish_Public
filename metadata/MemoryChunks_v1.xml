@@ -36,7 +36,8 @@
       <EntityType Name="MemoryChunks" BaseType="MemoryChunks.MemoryChunks">
         <Property Name="MemoryChunkSizeMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Size of the memory chunk measured in mebibytes (MiB)."/>          <Annotation Term="OData.LongDescription" String="The value of this property shall be the size of the memory chunk in MiB."/>
+          <Annotation Term="OData.Description" String="Size of the memory chunk measured in mebibytes (MiB)."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the size of the memory chunk in MiB."/>
         </Property>
         <Property Name="AddressRangeType" Type="MemoryChunks.v1_0_0.AddressRangeType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
