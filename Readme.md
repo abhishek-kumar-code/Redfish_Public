@@ -40,19 +40,18 @@ In the root folder of the repository are the primary normative documents (specif
 
 Off of the root are several folders which contain the schemas and mockups created by the Forum.
 
-| Folder  | Contents |
-|---------|----------|
-| docs | Informative documents (non-normative) in Markdown format |
-| docs/support | Supporting documents (mostly READMEs) or input files used by documentation generation tools
-| json-schema | Redfish Schema files in json-schema format |
-| metadata | Redfish Schema files in CSDL format |
-| mockups | Redfish Mockups including the "development" and published, public-facing mockups. |
-| profiles | Redfish Interoperability Profiles |
-| registries | Redfish Message Registries |
-| release | Supporting files and tools for release and document processing |
-| release/dist | Individual released (published) documents in HTML and PDF formats |
-| submissions | Technology Submissions received via the DMTF Submission Portal |
-| test | Supporing files for managing the repository |
+| Folder       | Contents |
+|--------------|----------|
+| docs         | Informative documents (non-normative) in Markdown format |
+| docs/support | Supporting documents (mostly READMEs) or input files used by documentation generation tools |
+| json-schema  | Redfish Schema files in json-schema format |
+| metadata     | Redfish Schema files in CSDL format |
+| mockups      | Redfish Mockups including the "development" and published, public-facing mockups |
+| profiles     | Redfish Interoperability Profiles |
+| registries   | Redfish Message Registries |
+| release      | Individual released (published) documents in HTML and PDF formats |
+| submissions  | Technology Submissions received via the DMTF Submission Portal |
+| test         | Supporing files for managing the repository |
 
 
 ### Other Repositories
