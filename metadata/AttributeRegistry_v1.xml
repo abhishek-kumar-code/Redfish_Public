@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.1.2-->
+<!--# Redfish Schema:  AttributeRegistry  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -559,8 +559,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_2">
       <Annotation Term="OData.Description" String="This version was created to correct regex patterns for different attribute properties."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_1.AttributeRegistry"/>
+    </Schema>
 
-      <ComplexType Name="Attributes" BaseType="AttributeRegistry.v1_1_1.Attributes">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_2_0">
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
+
+      <ComplexType Name="Attributes" BaseType="AttributeRegistry.v1_0_0.Attributes">
         <Annotation Term="OData.Description" String="An attribute and its possible values."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe an attribute and its possible values and other metadata."/>
         <Property Name="ResetRequired" Type="Edm.Boolean">
@@ -583,7 +587,6 @@
           <Annotation Term="OData.Description" String="The UEFI NamespaceId of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration NamespaceId of this attribute, as defined in the UEFI Specification."/>
         </Property>
-
       </ComplexType>
     </Schema>
 
