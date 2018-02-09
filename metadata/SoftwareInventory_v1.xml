@@ -120,7 +120,7 @@
           <Annotation Term="OData.Description" String="Release date of this software."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the date of release or production for this software."/>
         </Property>
-      </EntityType>      
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
