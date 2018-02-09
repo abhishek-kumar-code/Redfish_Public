@@ -146,9 +146,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryChunks.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to update descriptions to match the editorial style used in other Redfish schemas."/>
-      <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_2_0.MemoryChunks">
-      </EntityType>
+      <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_2_0.MemoryChunks"/>
     </Schema>
-	 
+
   </edmx:DataServices>
 </edmx:Edmx>
