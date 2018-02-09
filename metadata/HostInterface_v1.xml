@@ -223,6 +223,6 @@
       <Annotation Term="OData.Description" String="This version was created to clarify the description of ExternallyAccessible and to update other descriptions to match the editorial style used in other Redfish schemas."/>
       <EntityType Name="HostInterface" BaseType="HostInterface.v1_1_1.HostInterface"/>
     </Schema>
-	 
+
   </edmx:DataServices>
 </edmx:Edmx>
