@@ -484,11 +484,11 @@ Property annotation example:
 
 Common property annotations in payloads:
 
-| Term                     | Usage |
-| ----                     | ----- |
-| @Redfish.AllowableValues | Indicates to the client the different string values the service accepts for a given action parameter |
-| @Message.ExtendedInfo    | Allows the service to provide a set of Message structures for a given property to indicate additional information; this can be useful when a property is `null` due to an error condition, and the service wants to convey why the property is `null` |
-| @odata.count             | Can be used on properties that are arrays in order to indicate their size so that a client does not need to count the array members |
+| Term                       | Usage |
+| ----                       | ----- |
+| `@Redfish.AllowableValues` | Indicates to the client the different string values the service accepts for a given action parameter |
+| `@Message.ExtendedInfo`    | Allows the service to provide a set of Message structures for a given property to indicate additional information; this can be useful when a property is `null` due to an error condition, and the service wants to convey why the property is `null` |
+| `@odata.count`             | Can be used on properties that are arrays in order to indicate their size so that a client does not need to count the array members |
 
 
 ### Annotating an object in a response
@@ -511,14 +511,14 @@ Object annotation example:
 
 Common object annotations in payloads:
 
-| Term                  | Usage |
-| ----                  | ----- |
-| @Redfish.Settings     | Gives the client a reference to the resource that represents the future property settings to be applied to this object |
-| @Redfish.ActionInfo   | Used on actions to provide the client a reference to an ActionInfo resource, which gives detailed information about a given action's parameters |
-| @Message.ExtendedInfo | Allows the service to provide a set of Message structures for a given object to indicate additional information; this can be useful when an error condition is reached, and the service wants to convey what error was encountered |
-| @odata.id             | Provides the unique URI for a given resource |
-| @odata.type           | Provides the type definition of the object in the format of `#Namespace.Type`, where `Namespace` is the Namespace in the CSDL file where the definition is found and `Type` is the name of the ComplexType or EntityType element found in the Namespace |
-| @odata.context        | Provides an OData client with a descriptor for the content of the payload; in Redfish, this is simply always going to be `/redfish/v1/$metadata#Namespace.Entity`, where `Namespace` is the unversioned Namespace in the CSDL file where the definition is found and `Entity` is the name of the EntityType element being used |
+| Term                    | Usage |
+| ----                    | ----- |
+| `@Redfish.Settings`     | Gives the client a reference to the resource that represents the future property settings to be applied to this object |
+| `@Redfish.ActionInfo`   | Used on actions to provide the client a reference to an ActionInfo resource, which gives detailed information about a given action's parameters |
+| `@Message.ExtendedInfo` | Allows the service to provide a set of Message structures for a given object to indicate additional information; this can be useful when an error condition is reached, and the service wants to convey what error was encountered |
+| `@odata.id`             | Provides the unique URI for a given resource |
+| `@odata.type`           | Provides the type definition of the object in the format of `#Namespace.Type`, where `Namespace` is the Namespace in the CSDL file where the definition is found and `Type` is the name of the ComplexType or EntityType element found in the Namespace |
+| `@odata.context`        | Provides an OData client with a descriptor for the content of the payload; in Redfish, this is simply always going to be `/redfish/v1/$metadata#Namespace.Entity`, where `Namespace` is the unversioned Namespace in the CSDL file where the definition is found and `Entity` is the name of the EntityType element being used |
 
 
 ## OData service document
