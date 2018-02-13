@@ -93,7 +93,7 @@
           <Annotation Term="OData.LongDescription" String="The value is property shall represent the offset from UTC time that the current value of DataTime property contains."/>
           <Annotation Term="Validation.Pattern" String="([-+][0-1][0-9]:[0-5][0-9])"/>
         </Property>
-        <NavigationProperty Name="Entries" Type="LogEntryCollection.LogEntryCollection" Nullable="false">
+        <NavigationProperty Name="Entries" Type="LogEntryCollection.LogEntryCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="References to the log entry collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of resources of type LogEntry."/>
