@@ -111,7 +111,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether firmware authentication for this interface is enabled."/>
         </Property>
 
-        <NavigationProperty Name="HostEthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection" Nullable="false">
+        <NavigationProperty Name="HostEthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Redfish link to the collection of network interface controllers or cards (NICs) that a Computer System uses to communicate with this Host Interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type EthernetInterfaceCollection that Computer Systems use as the Host Interface to this Manager."/>
