@@ -80,13 +80,13 @@
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
-        <NavigationProperty Name="FirmwareInventory" Type="SoftwareInventoryCollection.SoftwareInventoryCollection">
+        <NavigationProperty Name="FirmwareInventory" Type="SoftwareInventoryCollection.SoftwareInventoryCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An inventory of firmware."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SoftwareInventoryCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SoftwareInventory" Type="SoftwareInventoryCollection.SoftwareInventoryCollection">
+        <NavigationProperty Name="SoftwareInventory" Type="SoftwareInventoryCollection.SoftwareInventoryCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An inventory of software."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SoftwareInventoryCollection."/>
