@@ -212,9 +212,11 @@ In addition to the above items, the following also needs to be performed when re
 - New schemas supporting the WIP must use major version 0 to show that this is unreleased content and is likely to change when adopted as a standard (starting at v0_1_0 is a good idea).
 - If the WIP being released is a refresh of an existing WIP, the minor revision of the unreleased schema will be incremented, and the major revision will remain at 0.
 - Annotate new namespaces in the CSDL (for both new schemas and extensions to existing schemas) with the following term:
-    `<Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>`
+
+  `<Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>`
 - Annotate mockups with the following in their payloads:
-    `"@Redfish.ReleaseStatus": "WorkInProgress"`
+
+  `"@Redfish.ReleaseStatus": "WorkInProgress"`
 
 ### HTML document generation
 
