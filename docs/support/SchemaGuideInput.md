@@ -2,16 +2,16 @@
 DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
-DocVersion: '2017.0a'
-modified: '2017-05-19'
-status: work in progress
-released: false
-copyright: '2017'
+DocVersion: '2017.3'
+modified: '2018-2-16'
+status: published
+released: True
+copyright: '2017-2018'
 ---
 
 # Redfish Schemas - User Documentation
 
-This document contains details about specific properties contained within Schemas defined by the Redfish Specification. This information is used by a documentation generator to create the Redfish Resource and Schema Guide (DSP2046). Proper use of section headers allows for the generator to incorporate the additional information automatically.  
+This document contains details about schema properties defined by the Redfish Specification. This information is used by a documentation generator to create the Redfish Resource and Schema Guide (DSP2046). Proper use of section headers allows for the generator to incorporate the additional information automatically.  
 
 The Redfish Documentation Generator uses this file to create the Redfish Resource and Schema Guide. The tool uses Markdown section headers to locate and integrate text into the various portions of the document as follows:
 
@@ -32,6 +32,66 @@ A "Description" third-level section can be used to supplement the "Description" 
 
 A "JSONPayload" section can contain a JSON payload example for this schema.  This sample will be appended to the end of that schema's section, and will also populate the language-specific tab in the Slate documentation.
 
+# Schema URI Mapping
+
+Map schema URIs to local files. You may omit the protocol (e.g., https://) from the URI.
+The doc generator will use the local files when specified and otherwise
+follow the full URI, including data from remote files if possible.
+
+## Local-repo: redfish.dmtf.org/schemas/v1 ./json-schema
+
+# Keyword Configuration
+
+Keywords and their values as bullet points with name:value paris in the "Keyword Configuration" section, as shown here. Keywords are not case-sensitive.
+
+- omit_version_in_headers: false
+- add_toc: true
+
+Note: you can specify the location of the TOC, presumably in the Introduction section, by placing the text [add_toc] where you want the Table of Contents substituted in. By default, the TOC will be placed at the top of the HTML output.
+
+# Description Overrides
+
+Note: markdown is allowed in description overrides, but HTML markup is not; it will be escaped.
+
+* Status: See the [Status](#status) object definition in the [Common Properties](#common-properties) section.
+* Oem: See the [OEM](#oem) object definition in the [Common Properties](#common-properties) section.
+* Location: See the [Location](#location) object definition in the [Common Properties](#common-properties) section.
+
+# Units Translation
+
+String-replacement for "units" values. Case-sensitive. Any units not matched will be output as-is.
+
+| Value            | Replacement      |
+| ---------------- | ---------------- |
+| s                | seconds          |
+| Mb/s             | Mbits/second     |
+| By               | bytes            |
+| Cel              | Celsius          |
+| MiBy             | mebibytes        |
+| W                | Watts            |
+| V                | Volts            |
+| mW               | milliWatts       |
+| m                | meters           |
+
+# Manual Fix-ups required prior to Release
+
+A number of corner-case issues have been found in the schema definitions which can be addressed over time with additional special cases in the documentation generator.  Until those have been addressed, the following steps must be taken to correct the HTML output before publication:
+
+1) "Location" definition in JsonSchemaFile must be restored.  This property is unfortunately named the same as the common "Location" property.  The description for Location in JsonSchemaFile is:  Location information for a schema file.
+
+2) Remove reference to the Resource schema.  The contents of the Resource schema are documented in the Introduction section under "Common Properties".  The external references will generate an additional statement " See the Resource schema for details on this property." which is unnecessary and should be removed with a search (note that a simple text search will miss these as the HTML will contain a hyperlink).
+
+3) Definitions moved to unversioned namespaces.  Approximately 7 properties have had their definitions moved to the unversioned namespaces, and the "versioned" property was deprecated. The documentation generator sees this as a valid deprecation and flags it (incorrectly).  These invalid deprecations should be removed, and can be located in the HTML by searching for "unversioned namespace".  Both the description and the property name "(deprecated v1.x.x)" should be edited.
+
+4) Unit replacement errata - Unit replacements (see above) for many entries are not getting caught, likely due to units annotations or properties added after version 1.0 of a schema (speculation - this is a doc generator bug).  A search and replace can work using the "(unit)" search - e.g. "(W)" / "(Watts)"
+
+# Doc generator open enhancements list
+
+1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive
+
+2) Global description override - Add a tag in the schema section to suppress the global description replacements.  Useful for duplicate property names (Location is the example), or other cases where the global/common description may not be appropriate in certain instances.  
+
+3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed.
 
 
 
@@ -41,19 +101,15 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2017-05-19</p>
-<p align="right">Version: <span class="version">2017.0a</span></p>
+<p align="right">Date: 2017-12-7</p>
+<p align="right">Version: <span class="version">2017.3</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
-<b><p>Information for Work-in-Progress version:</p></b>
-<b>IMPORTANT: </b>This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
-<br>
 <br><br>
-<p>Provide any comments through the DMTF Feedback Portal: <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
 <br><br>
 <b><p>Document Class: Informative</p>
-<p>Document Status: <span class="status">Work in Progress</span></p>
+<p>Document Status: <span class="status">Published</span></p>
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
@@ -64,7 +120,11 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
   <p>For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit <a href="http://www.dmtf.org/about/policies/disclosures.php">http://www.dmtf.org/about/policies/disclosures.php</a>.</p>
   <p>This document's normative language is English. Translation into other languages is permitted.</p>
   <br>
-  
+
+# Contents
+[add_toc]
+
+
 # Overview
 
 The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
@@ -87,11 +147,11 @@ Using JSON also carries an advantage in embedded manageability environments beca
 
 Similarly, while JSON provides an easy-to read representation, the semantics of common properties, such as id, type, links, etc., are imposed through naming conventions that can vary from service to service.
 
-OData defines a set of common RESTful conventions, which provides for interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This uniformity not only encapsulates best practices for RESTful APIs that can be used in traditional and scalable environments, but also enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+The Open Data Protocol (OData) defines a set of common RESTful conventions, which provide interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This uniformity not only encapsulates best practices for RESTful APIs that can be used in traditional and scalable environments, but also enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
-**Example**
+**Example Of Parsing JSON Data**
 
-The following code fragment shows an example of a request that retrieves the serial number from a Redfish service:
+The following code fragment shows an example of a request that retrieves the serial number from a Redfish service. The data that is returned comes is in the JSON format. A Python library can be used to read the value of a specific property such as a 'SerialNumber':
 
 ```Python
 rawData = urllib.urlopen('https://192.168.1.135/redfish/v1/Systems/1')
@@ -99,7 +159,7 @@ jsonData = json.loads(rawData)
 print ('SN: ' + jsonData['SerialNumber'])
 ```
 
-A successful request that uses the code snippet above could produce output similar to the following example:
+A successful request that uses the code snippet above would produce output similar to the following example:
 
 ```bash
 SN: 1A87CA442K
@@ -122,7 +182,7 @@ A Redfish service is any product that implements the Redfish specification. It i
 
 Every Redfish service contains a base URI or URL that indicates the root of all resources.
 
-The root is the concatenation of: 
+The root is the concatenation of:
 
 - the IP address or server name of the Redfish service (For example: https://mgmt.vendor.com)
 - the path to the Redfish root (/redfish/v1/)
@@ -150,52 +210,28 @@ SPMF (Working group that maintains the Redfish standard)
 -  Companies involved, upcoming schedules and future work, charter, and information about joining:
   http://www.dmtf.org/standards/spmf
 
+# Data values
+
+## NULL values
+
+When a property contains a value of NULL, this means that the value is temporarily unavailable from the resource. For example, when a system is booting it is not possible to read the OS version.  
+
+NULL is not a placeholder for a property that is not supported or does not exist. For example, if a `Port` property of a `EthernetInterface` resource is NULL, that means that the value is temporarily not readable. It does not mean that the `Port` does not exist.
+
 
 # Common properties
 
-This section describes the properties (schema elements or data fields) common to all Redfish schema. Response payloads returned by a Redfish service will contain these properties.
+This section describes the properties (data fields) that share a common definition across many or all Redfish schema. 
 
-## Id
+## Properties defined for all Redfish schemas 
 
-The `Id` property is common to all Redfish schema.
+The following properties are included in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Resource Guide tables for each schema.
 
-The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id is unique within a Resource Collection.
-
-## Name
-
-The `Name` property exists in all Redfish schema.
-
-The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.
-
-## Description
-
-The `Description` property exists in all Redfish schema.
-
-The Description property is used to convey a human-readable description of the resource. The type of the Description property is string.
-
-
-## Status
-
-The `Status` property is common to many Redfish schema.
-
-#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status
-
+#include_fragment ./mockups/DSP2046-examples/CommonPropertySchema.json#/definitions/CommonProperties/properties
 
 ## Links
 
 The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource.
-
-
-## Members
-
-The Members property of a Resource Collection identifies the members of the collection.
-
-## RelatedItem
-
-The `RelatedItem` property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition. 
-
-This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the system and `Processors` in another area of the system. It could be that the relationship between the two is not obvious. The `RelatedItem` property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.
-
 
 ## Actions
 
@@ -205,23 +241,21 @@ The Actions property contains the actions supported by a resource.
 
 The OEM property is used for OEM extensions as defined in Schema Extensibility.
 
+## RelatedItem
 
-## @odata.context
+The `RelatedItem` property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.
 
-The @odata.context property is a URL to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
+This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the system and `Processors` in another area of the system. It could be that the relationship between the two is not obvious. The `RelatedItem` property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.
 
-Technically the metadata document only has to define, or reference, any of the types that it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document.  
+## Status
 
+The `Status` property is common to many Redfish schema.
 
-## @odata.type
+#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status
 
-Description of @odata.type
+## Location
 
-Because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with versionless namespace aliases, those aliases must also be defined through <references> in the referenced metadata document.
-
-## @odata.id
-
-Description of @odata.id
+#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Location
 
 
 # Working with Resource Collections
@@ -380,12 +414,12 @@ A Managers collection contains BMCs, Enclosure Managers or any other component m
 
 A Redfish service typically returns two types of error messages:  
 
-- HTTP response codes 
+- HTTP response codes
 - Error responses
 
 ## HTTP response codes
 
-The HTTP reponse codes are the standard codes returned by all HTTP servers. 
+The HTTP reponse codes are the standard codes returned by all HTTP servers.
 
 These include familiar HTTP codes such as HTTP response code `200 OK`, which means that the HTTP request succeeded.
 
@@ -444,6 +478,10 @@ The Excluded Properties section removes properties from the root level of any sc
 ## @odata.context
 ## @odata.type
 ## @odata.id
+## Name
+## Id
+## Description
+## Oem
 
 
 # Excluded Annotations
@@ -488,57 +526,11 @@ mockups/DSP2046-examples/Systems/437XR1138R2/index.json
 
 #### UUID
 
-The value of this property contains a universal unique identifier number for the system.  Clients should consider the value of the property to be opaque and should not interpret any subfields within the UUID, but comparisons between UUID representations should always be case-insensitive.
+The UUID property contains a value that represents the universal unique identifier number (UUID) of a system.  
 
-The format of the string follows the 35-character string format specified in RFC4122 of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" where each x represents a hex value 0-1,a-f.
+The UUID property is a string data type. The format of the string is the 35-character string format specified in RFC4122: "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx". Each x represents a hexadecimal digit (0-f).
 
-If the computer system supports SMBIOS,  the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This configuration allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the Redfish API.
-
-The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
-WMI and Linux dmidecode also follow the SMBIOS guidelines.
-
-The RFC4122 specification specifies that the canonical string value should follow network byte ordering. SMBIOS represents the UUID as five fields shown below:
-
-    {
-     DWORD    time_low,
-     WORD     time_mid,
-     WORD     time_hi_and_version,
-     BYTE     clock_seq_hi_and_reserved,
-     BYTE     clock_seq_low,
-     BYTE[6]  node
-    }
-    
-For the above reasons, for little-endian systems (including x86 systems), there is a little-endian to network-byte-order conversion required for the first three fields to convert the SMBIOS binary UUID to network byte order.
-
-As specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:
-
-    "00112233-4455-6677-8899-aabbccddeeff"
-
-then the corresponding raw representation in the SMBIOS UUID structure would be:
-
-    raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00,    0x55, 0x44,     0x77, 0x66,     0x88, 0x99,     0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
-
-The C code to convert the raw SMBIOS UUID struct in a little-endian system to the canonical string would be:
-
-    /* routine to convert raw little-endian smbios structure to canonical string */
-    sprintf(redfishUUID,"%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x")
-        raw_smbios_uuid[3], raw_smbios_uuid[2], raw_smbios_uuid[1],raw_smbios_uuid[0],
-        raw_smbios_uuid[5],raw_smbios_uuid[4],
-        raw_smbios_uuid[7],raw_smbios_uuid[6],
-        raw_smbios_uuid[8],raw_smbios_uuid[9],
-       raw_smbios_uuid[10],raw_smbios_uuid[11],raw_smbios_uuid[12],raw_smbios_uuid[13],raw_smbios_uuid[14],raw_smbios_uuid[15]
-        );
-
-This code snippet creates the same canonical formatted string as WMI and dmidecode for little-endian X86 systems.
-In the case that the computer architecture is not little-endian, the conversion and canonical representation should be the same as the OS APIs such as WMI and dmidecode.
-
-Note that as specified in RFC4122, the fields in the string should be zero-filled hex values, as shown in the conversion code above, so that the overall string length and format is of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx.
-
-Regarding the case of the hex values:  RFC4122 specifies that on output, the hex values should be lowercase characters, but that clients should use case-insensitive comparison on input.  Most modern scripting languages typically also represent hex values in lowercase characters following the RFC.
-
-However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output.
-
-Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lowercase hex values when converting from the SMBIOS raw binary data as shown in the code example above. However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive comparisons (as recommended by RFC4122).
+Regarding the case of the hex values, RFC4122 specifies that the hex values should be lowercase characters. Most modern scripting languages typically also represent hex values in lowercase characters following the RFC. However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output.
 
 ## EthernetInterface
 
@@ -679,11 +671,11 @@ mockups/DSP2046-examples/Managers/BMC/VirtualMedia/CD1/index.json
 
 # Postscript
 
-## ANNEX A
+# ANNEX A
 
-### Change log
+## Change log
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
+| 2017.3  | 2017-12-7 | Initial release. Built from Redfish schemas releaesd in DSP8010 version 2017.3 |
 | 2017.0a | 2017-5-19| Work in progress release to gather feedback on content and format. |
-
