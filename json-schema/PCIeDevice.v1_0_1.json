@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#PCIeDevice.v1_0_1.PCIeDevice",
     "$ref": "#/definitions/PCIeDevice",
     "definitions": {
@@ -192,7 +192,6 @@
                             "longDescription": "The value of this property shall be a reference to the resources that this device exposes and shall reference a resource of type PCIeFunction."
                         }
                     },
-                    "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
                     "description": "The links object contains the links to other resources that are related to this resource."
                 }
             },
@@ -203,5 +202,5 @@
             "description": "This is the schema definition for the PCIeDevice resource.  It represents the properties of a PCIeDevice attached to a System."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -1,7 +1,10 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
-    "title": "#Storage.v1_0_0.Storage",
-    "$ref": "#/definitions/Storage",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#Storage.v1_0_0",
+    "anyOf": [
+        { "$ref": "#/definitions/Storage" },
+        { "$ref": "#/definitions/StorageController" }
+    ],
     "definitions": {
         "SetEncryptionKey": {
             "patternProperties": {
@@ -46,8 +49,6 @@
                 "FC",
                 "iSCSI",
                 "FCoE",
-                "FCP",
-                "FICON",
                 "NVMeOverFabrics",
                 "SMB",
                 "NFSv3",
@@ -58,48 +59,24 @@
                 "SFTP"
             ],
             "enumDescriptions": {
-                "PCIe": "PCI Express (Vendor Proprietary).",
-                "AHCI": "Advanced Host Controller Interface.",
-                "UHCI": "Universal Host Controller Interface.",
-                "SAS": "Serial Attached SCSI.",
-                "SATA": "Serial AT Attachment.",
-                "USB": "Universal Serial Bus.",
-                "NVMe": "Non-Volatile Memory Express.",
-                "FC": "Fibre Channel.",
-                "iSCSI": "Internet SCSI.",
-                "FCoE": "Fibre Channel over Ethernet.",
-                "FCP": "Fibre Channel Protocol for SCSI.",
-                "FICON": "FIbre CONnection (FICON).",
-                "NVMeOverFabrics": "NVMe over Fabrics.",
-                "SMB": "Server Message Block (aka CIFS Common Internet File System).",
-                "NFSv3": "Network File System version 3.",
-                "NFSv4": "Network File System version 4.",
-                "HTTP": "Hypertext Transport Protocol.",
-                "HTTPS": "Secure Hypertext Transport Protocol.",
-                "FTP": "File Transfer Protocol.",
-                "SFTP": "Secure File Transfer Protocol."
-            },
-            "enumLongDescriptions": {
-                "PCIe": "This value shall mean that this device conforms to the PCI-SIG PCI Express Base Specification only beyond that is uses some vendor proprietary mechanism to communicate.",
-                "AHCI": "This value shall mean that this device conforms to the Intel Advanced Host Controller Interface Specification.",
-                "UHCI": "This value shall mean that this device conforms to the Intel Universal Host Controller Interface Specification, Enhanced Host Controller Interface Specification, or the Extensible Host Controller Interface specification.",
-                "SAS": "This value shall mean that this device conforms to the T10 SAS Protocol Layer Specification.",
-                "SATA": "This value shall mean that this device conforms to the Serial ATA International Organization Serial ATA Specification.",
-                "USB": "This value shall mean that this device conforms to the USB Implementers Forum Universal Serial Bus Specification.",
-                "NVMe": "This value shall mean that this device conforms to the Non-Volatile Memory Host Controller Interface Specification Specification.",
-                "FC": "This value shall mean that this device conforms to the T11 Fibre Channel Physical and Signaling Interface Specification.",
-                "iSCSI": "This value shall mean that this device conforms to the IETF Internet Small Computer Systems Interface (iSCSI) Specification.",
-                "FCoE": "This value shall mean that this device conforms to the T11 FC-BB-5 Specification.",
-                "FCP": "This enumeration literal shall indicate the INCITS 481: Information technology - Fibre Channel Protocol for SCSI.  The Fibre Channel SCSI Protocol.",
-                "FICON": "This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol.",
-                "NVMeOverFabrics": "This value shall mean that this device conforms to the NVM Express over Fabrics Specification.",
-                "SMB": "This value shall mean that this device conforms to the Microsoft Server Message Block Protocol.",
-                "NFSv3": "This value shall mean that this device conforms to the Network File System protocol as defined by RFC 1813.",
-                "NFSv4": "This value shall mean that this device conforms to the Network File System protocol as defined by RFC 3010 or RFC 5661.",
-                "HTTP": "This value shall mean that this device conforms to the Hypertext Transfer protocol as defined by RFC 2068 or RFC 2616.",
-                "HTTPS": "This value shall mean that this device conforms to the Hypertext Transfer protocol as defined by RFC 2068 or RFC 2616 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176.",
-                "FTP": "This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114.",
-                "SFTP": "This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176."
+                "PCIe": "PCI Express (Vendor Proprietary)",
+                "AHCI": "Advanced Host Controller Interface",
+                "UHCI": "Universal Host Controller Interface",
+                "SAS": "Serial Attached SCSI",
+                "SATA": "Serial AT Attachment",
+                "USB": "Universal Serial Bus",
+                "NVMe": "Non-Volatile Memory Express",
+                "FC": "Fibre Channel",
+                "iSCSI": "Internet SCSI",
+                "FCoE": "Fibre Channel over Ethernet",
+                "NVMeOverFabrics": "NVMe over Fabrics",
+                "SMB": "Server Message Block (aka CIFS Common Internet File System)",
+                "NFSv3": "Network File System version 3",
+                "NFSv4": "Network File System version 4",
+                "HTTP": "Hypertext Transport Protocol",
+                "HTTPS": "Secure Hypertext Transport Protocol",
+                "FTP": "File Transfer Protocol",
+                "SFTP": "Secure File Transfer Protocol"
             }
         },
         "Storage": {
@@ -134,19 +111,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Links": {
                     "type": "object",
@@ -183,10 +157,11 @@
                                 "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"
                             },
                             "readonly": true,
-                            "description": "An array of references to the chassis to which this storage subsystem is attached.",
+                            "description": "An array of references to the chassis to which this storage subsystem is attached",
                             "longDescription": "The value of this property shall reference a resource of type Chassis that represents the physical containers attached to this resource."
                         }
                     },
+                    "readonly": true,
                     "description": "Contains references to other resources that are related to this resource.",
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
@@ -223,14 +198,13 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         },
                         "#Storage.SetEncryptionKey": {
                             "$ref": "#/definitions/SetEncryptionKey"
                         }
                     },
+                    "readonly": true,
                     "description": "The available actions for this resource.",
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
@@ -269,8 +243,18 @@
                     "description": "The set of drives attached to the storage controllers represented by this resource.",
                     "longDescription": "A collection that indicates all the drives attached to the storage controllers that this resource represents."
                 },
+                "Volumes@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Volumes@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
                 "Volumes": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeCollection.json#/definitions/VolumeCollection",
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.json#/definitions/Volume"
+                    },
                     "readonly": true,
                     "description": "The set of volumes produced by the storage controllers represented by this resource.",
                     "longDescription": "A collection that indicates all the volumes produced by the storage controllers that this resource represents."
@@ -287,7 +271,8 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
-                    "description": "Redundancy information for the storage subsystem."
+                    "readonly": true,
+                    "description": "Redundancy information for the storage subsystem"
                 }
             },
             "required": [
@@ -298,140 +283,12 @@
             "longDescription": "This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."
         },
         "StorageController": {
-            "type": "object",
-            "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
-                    "type": [
-                        "array",
-                        "boolean",
-                        "number",
-                        "null",
-                        "object",
-                        "string"
-                    ],
-                    "description": "This property shall specify a valid odata or Redfish property."
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "MemberId": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "This is the identifier for the member within the collection.",
-                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
-                },
-                "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
-                },
-                "SpeedGbps": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "minimum": 0,
-                    "units": "Gbit/s",
-                    "readonly": true,
-                    "description": "The speed of the storage controller interface.",
-                    "longDescription": "The value of this property shall represent the speed of the Storage bus interface (in Gigabits per second)."
-                },
-                "FirmwareVersion": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The firmware version of this storage Controller.",
-                    "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the associated storage controller."
-                },
-                "Manufacturer": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "This is the manufacturer of this storage controller.",
-                    "longDescription": "The value of this property shall be the name of the organization responsible for producing the storage controller. This organization might be the entity from whom the storage controller is purchased, but this is not necessarily true."
-                },
-                "Model": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "This is the model number for the storage controller.",
-                    "longDescription": "The value of this property shall be the name by which the manufacturer generally refers to the storage controller."
-                },
-                "SKU": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "This is the SKU for this storage controller.",
-                    "longDescription": "The value of this property shall be the stock-keeping unit number for this storage storage controller."
-                },
-                "SerialNumber": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The serial number for this storage controller.",
-                    "longDescription": "The value of this property shall be a manufacturer-allocated number used to identify the storage controller."
-                },
-                "PartNumber": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The part number for this storage controller.",
-                    "longDescription": "The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the storage controller."
-                },
-                "AssetTag": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": false,
-                    "description": "The user assigned asset tag for this storage controller.",
-                    "longDescription": "The value of this property shall be an identifying string used to track the storage controller for inventory purposes."
-                },
-                "SupportedControllerProtocols": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Protocol"
-                    },
-                    "readonly": true,
-                    "description": "This represents the protocols by which this storage controller can be communicated to.",
-                    "longDescription": "The value of this property shall be the set of protocols this storage controller can be communicated to."
-                },
-                "SupportedDeviceProtocols": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Protocol"
-                    },
-                    "readonly": true,
-                    "description": "This represents the protocols which the storage controller can use to communicate with attached devices.",
-                    "longDescription": "The value of this property shall be the set of protocols this storage controller can use to communicate with attached devices."
-                },
-                "Identifiers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/Identifier"
-                    },
-                    "description": "The Durable names for the storage controller.",
-                    "longDescription": "This property shall contain a list of all known durable names for the associated storage controller."
-                }
-            },
-            "description": "This schema defines a storage controller and its respective properties.  A storage controller represents a storage device (physical or virtual) that produces Volumes.",
-            "longDescription": "This resource shall be used to represent a resource that represents a storage controller in the Redfish specification."
+            ]
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

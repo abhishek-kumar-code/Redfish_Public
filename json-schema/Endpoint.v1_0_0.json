@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Endpoint.v1_0_0.Endpoint",
     "$ref": "#/definitions/Endpoint",
     "definitions": {
@@ -43,6 +43,7 @@
                         {"$ref": "#/definitions/PciId"},
                         {"type": "null"}
                     ],
+                    "readonly": true,
                     "description": "The PCI ID of the connected entity.",
                     "longDescription": "The value of this property shall be the PCI ID of the connected PCIe entity."
                 },
@@ -60,10 +61,9 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){3}$",
-                    "readonly": true,
-                    "description": "The Class Code, Subclass code, and Programming Interface code of this PCIe function.",
-                    "longDescription": "The value of this property shall be the PCI Class Code, Subclass code, and Programming Interface code of the PCIe device function."
+                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
+                    "description": "The Class Code and Subclass code of this PCIe function.",
+                    "longDescription": "The value of this property shall be the PCI Class Code and Subclass code of the PCIe device function."
                 },
                 "Identifiers": {
                     "type": "array",
@@ -73,6 +73,7 @@
                             {"type": "null"}
                         ]
                     },
+                    "readonly": true,
                     "description": "Identifiers for the remote entity.",
                     "longDescription": "Identifiers for the remote entity shall be unique in the context of other resources that can reached over the connected network."
                 },
@@ -80,7 +81,8 @@
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "EntityLink": {
                     "anyOf": [
@@ -92,8 +94,7 @@
                     "longDescription": "This property shall be a reference to an entity of the type specified by the description of the value of the EntityType property."
                 }
             },
-            "description": "Represents a remote resource that is connected to the network accessible to this endpoint.",
-            "longDescription": "This type shall represent a remote resource that is connected to a network accessible to an endpoint."
+            "description": "Represents a remote resource that is connected to the network accessible to this endpoint."
         },
         "Endpoint": {
             "type": "object",
@@ -127,19 +128,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Status": {
                     "anyOf": [
@@ -164,6 +162,7 @@
                             {"type": "null"}
                         ]
                     },
+                    "readonly": true,
                     "description": "All the entities connected to this endpoint.",
                     "longDescription": "This value of this property shall contain all the entities which this endpoint allows access to."
                 },
@@ -175,7 +174,8 @@
                             {"type": "null"}
                         ]
                     },
-                    "description": "Identifiers for this endpoint.",
+                    "readonly": true,
+                    "description": "Identifiers for this endpoint",
                     "longDescription": "Identifiers for this endpoint shall be unique in the context of other endpoints that can reached over the connected network."
                 },
                 "PciId": {
@@ -183,6 +183,7 @@
                         {"$ref": "#/definitions/PciId"},
                         {"type": "null"}
                     ],
+                    "readonly": true,
                     "description": "The PCI ID of the endpoint.",
                     "longDescription": "The value of this property shall be the PCI ID of the endpoint."
                 },
@@ -251,7 +252,7 @@
                             "longDescription": "The value of this property shall be an array of references of type Port that are utilized by this endpoint."
                         }
                     },
-                    "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
+                    "readonly": true,
                     "description": "The links object contains the links to other resources that are related to this resource."
                 },
                 "Actions": {
@@ -290,12 +291,10 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         }
                     },
-                    "longDescription": "This type shall contain the available actions for this resource.",
+                    "readonly": true,
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "Redundancy@odata.count": {
@@ -310,7 +309,8 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
-                    "description": "Redundancy information for the lower level endpoints supporting this endpoint."
+                    "readonly": true,
+                    "description": "Redundancy information for the lower level endpoints supporting this endpoint"
                 }
             },
             "required": [
@@ -328,9 +328,9 @@
                 "Both"
             ],
             "enumDescriptions": {
-                "Initiator": "The entity is acting as an initiator.",
-                "Target": "The entity is acting as a target.",
-                "Both": "The entity is acting as both an initiator and a target."
+                "Initiator": "The entity is acting as an initiator",
+                "Target": "The entity is acting as a target",
+                "Both": "The entity is acting as both an initiator and a target"
             }
         },
         "EntityType": {
@@ -346,11 +346,11 @@
                 "Processor"
             ],
             "enumDescriptions": {
-                "StorageInitiator": "The entity is a storage initator. The EntityLink property (if present) should be a Storage.StorageController entity.",
-                "RootComplex": "The entity is a PCI(e) root complex. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity.",
-                "NetworkController": "The entity is a network controller. The EntityLink property (if present) should be an EthernetInterface.EthernetInterface entity.",
-                "Drive": "The entity is a disk drive. The EntityLink property (if present) should be a Drive.Drive entity.",
-                "StorageExpander": "The entity is a storage expander. The EntityLink property (if present) should be a Chassis.Chassis entity.",
+                "StorageInitiator": "The entity is a storage initator. The EntityLink property (if present) should be a Storage.StorageController entity",
+                "RootComplex": "The entity is a PCI(e) root complex. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity",
+                "NetworkController": "The entity is a network controller. The EntityLink property (if present) should be an EthernetInterface.EthernetInterface entity",
+                "Drive": "The entity is a disk drive. The EntityLink property (if present) should be a Drive.Drive entity",
+                "StorageExpander": "The entity is a storage expander. The EntityLink property (if present) should be a Chassis.Chassis entity",
                 "DisplayController": "The entity is a display controller.",
                 "Bridge": "The entity is a PCI(e) bridge.",
                 "Processor": "The entity is a processor device."
@@ -378,8 +378,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
-                    "readonly": true,
+                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
                     "description": "The Device ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Subsystem Vendor ID of the PCIe device function."
                 },
@@ -388,8 +387,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
-                    "readonly": true,
+                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
                     "description": "The Vendor ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Vendor ID of the PCIe device function."
                 },
@@ -398,8 +396,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
-                    "readonly": true,
+                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
                     "description": "The Subsystem ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Subsystem Vendor ID of the PCIe device function."
                 },
@@ -408,15 +405,12 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
-                    "readonly": true,
+                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
                     "description": "The Subsystem Vendor ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Subsystem Vendor ID of the PCIe device function."
                 }
-            },
-            "description": "A PCI ID.",
-            "longDescription": "This type shall describe a PCI ID."
+            }
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

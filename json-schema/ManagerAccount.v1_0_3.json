@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#ManagerAccount.v1_0_3.ManagerAccount",
     "$ref": "#/definitions/ManagerAccount",
     "definitions": {
@@ -68,7 +68,7 @@
                     "type": "string",
                     "readonly": false,
                     "description": "This property contains the Role for this account.",
-                    "longDescription": "The value of this property shall be the ID of the Role resource that configured for this account.  The service shall reject POST, PATCH, or PUT operations that provide a RoleId that does not exist by returning HTTP 400 (Bad Request)."
+                    "longDescription": "The value of this property shall be the ID of the Role resource that configured for this account."
                 },
                 "Locked": {
                     "type": "boolean",
@@ -128,5 +128,5 @@
             "longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
