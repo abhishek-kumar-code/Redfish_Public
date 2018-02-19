@@ -56,7 +56,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ExternalAccountProvider.v1_0_0">
 
       <EntityType Name="ExternalAccountProvider" BaseType="ExternalAccountProvider.ExternalAccountProvider">
-        <Property Name="AccountProviderType" Type="ExternalAccountProvider.v1_0_0.AccountProviderTypes">"
+        <Property Name="AccountProviderType" Type="ExternalAccountProvider.v1_0_0.AccountProviderTypes">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains the type of external account provider this resource references."/>
