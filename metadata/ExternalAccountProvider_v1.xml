@@ -135,7 +135,7 @@
           <Annotation Term="OData.Description" String="This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a base64 encoded version of the kerberos keytab for this account service.  The value shall be null for GET requests."/>
         </Property>
-        <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemAuth" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </ComplexType>
 
       <EnumType Name="AuthenticationTypes">
@@ -160,7 +160,7 @@
           <Annotation Term="OData.Description" String="This property contains the settings needed to search an external LDAP service."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the settings needed to search an external LDAP service."/>
         </Property>
-        <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemLDAP" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="LDAPSearchSettings">
@@ -206,7 +206,7 @@
           <Annotation Term="OData.Description" String="The name of the local role to map the remote user or group to."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the the local role to map the remote user or group to."/>
         </Property>
-        <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemRoleMapping" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -222,28 +222,10 @@
         <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
-      <ComplexType Name="OemAuth">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The available OEM specific authentication options for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM authentication options for this resource."/>
-      </ComplexType>
-
-      <ComplexType Name="OemLDAP">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The available OEM specific LDAP options for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM LDAP options for this resource."/>
-      </ComplexType>
-
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
-      </ComplexType>
-
-      <ComplexType Name="OemRoleMapping">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The available OEM specific Role Mapping options for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM Role Mapping options for this resource."/>
       </ComplexType>
     </Schema>
 
