@@ -6,7 +6,7 @@
     "Id": "ActiveDirectoryService",
     "Name": "Remote Active Directory Service",
     "Description": "Remote AD Service providing additional Accounts to this Redfish Service",
-    "Type": "ActiveDirectoryService",
+    "AccountProviderType": "ActiveDirectoryService",
     "ServiceAddresses": [
         "ad1.example.org",
         "ad2.example.org",

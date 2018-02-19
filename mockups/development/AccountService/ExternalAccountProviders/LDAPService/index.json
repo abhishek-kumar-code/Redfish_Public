@@ -6,7 +6,7 @@
     "Id": "LDAPService",
     "Name": "Remote LDAP Service",
     "Description": "Remote LDAP Service providing additional Accounts to this Redfish Service",
-    "Type": "LDAPService",
+    "AccountProviderType": "LDAPService",
     "ServiceAddresses": [
         "ldaps://ldap.example.org:636"
     ],

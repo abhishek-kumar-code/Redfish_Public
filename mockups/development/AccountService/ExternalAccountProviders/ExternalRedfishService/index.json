@@ -6,7 +6,7 @@
     "Id": "ExternalRedfishService",
     "Name": "Remote Redfish Service",
     "Description": "Remote Redfish Service providing additional Accounts to this Redfish Service",
-    "Type": "RedfishService",
+    "AccountProviderType": "RedfishService",
     "ServiceAddresses": [
         "http://redfish.dmtf.org/redfish/v1/AccountService"
     ],
