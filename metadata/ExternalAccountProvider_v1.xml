@@ -203,8 +203,8 @@
         </Property>
         <Property Name="LocalRole" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The name of the local role to map the remote user or group to."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the the local role to map the remote user or group to."/>
+          <Annotation Term="OData.Description" String="The name of the local role in which to map the remote user or group."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the value of the RoleId property within a Role resource on this Redfish service in which to map the remote user or group."/>
         </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </ComplexType>
