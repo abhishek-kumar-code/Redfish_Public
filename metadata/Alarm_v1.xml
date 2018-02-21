@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Alarm  v0.2.0-->
+<!--# Redfish Schema:  Alarm  v0.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -51,10 +51,10 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Alarm.v0_2_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Alarm.v0_3_0">
 
       <EntityType Name="Alarm" BaseType="Alarm.Alarm">
-        <Property Name="AlarmState" Type="Alarm.v0_2_0.AlarmStates">
+        <Property Name="AlarmState" Type="Alarm.v0_3_0.AlarmStates">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the Armed-Triggered-Disbled status of the Alarm."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the AlarmStatus enumeration of the Alarm."/>
@@ -66,7 +66,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall initially be false when alarm is Armed and can be used by client to acknoledge the alarm without having to rearm the alarm."/>
         </Property>
 
-        <Property Name="Severity" Type="Alarm.v0_2_0.AlarmSeverity">
+        <Property Name="Severity" Type="Alarm.v0_3_0.AlarmSeverity">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the Alarm."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the condition resulting in the Alarm."/>
@@ -78,6 +78,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the time at which the Alarm was triggered."/>
         </Property>
 
+        <Property Name="AutomaticReArm" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Identifies whether the Alarm will rearm automatically without requiring a Redfish client to change the AlarmState."/>
+          <Annotation Term="OData.LongDescription" String="The value of True shall indicate that the Alarm will be rearmed by the device or instrumentation, a value of False shall indicate that the Alarm must be rearmed by an API client."/>
+        </Property
+                  
         <Property Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property decodes from EntryType:  If it is Event then it is a message id.  Otherwise, it is SEL or Oem specific.  This value is only used for registries - for more information, see the specification."/>
@@ -96,12 +102,12 @@
           <Annotation Term="OData.LongDescription" String="This contains message arguments to be substituted into the message included or in the message looked up via a registry."/>
         </Property>
 
-        <Property Name="Links" Type="Alarm.v0_2_0.Links" Nullable="false">
+        <Property Name="Links" Type="Alarm.v0_3_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
 
-        <Property Name="Actions" Type="Alarm.v0_2_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Alarm.v0_3_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
