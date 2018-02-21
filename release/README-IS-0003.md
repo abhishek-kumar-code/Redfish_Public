@@ -2,11 +2,11 @@
 DocTitle: Redfish Interoperability Profile Readme
 DocNumber: 'IS-0003'
 DocClass: Informative
-DocVersion: '0.9a'
-modified: '2017-06-05'
+DocVersion: '0.95a'
+modified: '2018-01-23'
 status: Work in Progress
 released: false
-copyright: '2017'
+copyright: '2017-2018'
 ---
 # Foreword
 
@@ -14,17 +14,20 @@ IMPORTANT: These documents are not final. They do not necessarily reflect the vi
 
 The following files are part of the Redfish Interoperability Profile development effort:
 
-* DSP0272.pdf - Redfish Interoperability Profile Specification (Work in Progress release)
+* DSP0272.pdf - Redfish Interoperability Profile Specification 
+* RedfishInteroperabilityProfile.v1_0_0.json - Schema definition for the profile document
 * RedfishProfiles.pdf - Presentation describing the Redfish Interoperability Profile functionality 
 * SampleProfile.json - A mockup of a Profile showing usage of the various features.
 
-# Redfish Work in Progress Schemas
+# Redfish Work in Progress
 
-The following new schema files are released as Work In Progress documents. 
+The following profile files are released as Work In Progress documents. 
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
-| RedfishProfile | 0.9.0a | 2017-6-05 | Work in Progress release.  |
+| OCPManagedDevice | 0.95.0a | 2018-1-23 | Work in Progress release.  |
+| OCPBasicServer | 0.95.0a | 2018-1-23 | Work in Progress release.  |
+
 
 
 

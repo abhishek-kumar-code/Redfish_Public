@@ -56,19 +56,19 @@
           <Annotation Term="OData.Description" String="The value of this property shall contain the maximum number of zones the switch can currently configure."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of zones the switch can currently configure. This value can change based on changes in the logical or physical configuration of the system."/>
         </Property>
-        <NavigationProperty Name="Zones" Type="ZoneCollection.ZoneCollection" Nullable="false">
+        <NavigationProperty Name="Zones" Type="ZoneCollection.ZoneCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the zones contained in this fabric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this fabric uses and shall reference a resource of type Zone."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Endpoints" Type="EndpointCollection.EndpointCollection" Nullable="false">
+        <NavigationProperty Name="Endpoints" Type="EndpointCollection.EndpointCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the endpoints contained in this fabric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this fabric uses and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Switches" Type="SwitchCollection.SwitchCollection" Nullable="false">
+        <NavigationProperty Name="Switches" Type="SwitchCollection.SwitchCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the switches contained in this fabric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this fabric uses and shall reference a resource of type Switch."/>
