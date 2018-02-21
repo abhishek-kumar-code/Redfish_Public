@@ -82,7 +82,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Identifies whether the Alarm will rearm automatically without requiring a Redfish client to change the AlarmState."/>
           <Annotation Term="OData.LongDescription" String="The value of True shall indicate that the Alarm will be rearmed by the device or instrumentation, a value of False shall indicate that the Alarm must be rearmed by an API client."/>
-        </Property
+        </Property>
                   
         <Property Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -146,7 +146,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Alarm.v0_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Alarm.v0_3_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
