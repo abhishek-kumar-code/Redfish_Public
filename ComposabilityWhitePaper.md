@@ -6,7 +6,7 @@ DocVersion: '1.0.0'
 modified: '2017-06-30'
 status: Published
 released: true
-copyright: '2014-2017'
+copyright: '2014-2018'
 ---
 
 
@@ -209,6 +209,7 @@ The property `UseCase` is used to inform the client of the context of a particul
 | `UseCase` Value             | Composed Resource | Type of Composition               |
 | --------------------------- | ----------------- | --------------------------------- |
 | `ComputerSystemComposition` | `ComputerSystem`  | [Specific](#specific-composition) |
+| `ComputerSystemEnumeratedComposition` | `ComputerSystem`  | [Enumerated](#enumerated-composition) |
 
 The property `TargetCollection` inside the `Links` object contains the URI of the Resource Collection that accepts the given capability.  A client will be able to perform a create (POST) operation against this URI as described by the contents of the `CapabilitiesObject`.
 
@@ -223,6 +224,17 @@ Example Collection Capabilities Annotation:
                     "@odata.id": "/redfish/v1/Systems/Capabilities"
                 },
                 "UseCase": "ComputerSystemComposition",
+                "Links": {
+                    "TargetCollection": {
+                        "@odata.id": "/redfish/v1/Systems"
+                    }
+                }
+            },
+            {
+                "CapabilitiesObject": {
+                    "@odata.id": "/redfish/v1/Systems/CapabilitiesEN"
+                },
+                "UseCase": "ComputerSystemEnumeratedComposition",
                 "Links": {
                     "TargetCollection": {
                         "@odata.id": "/redfish/v1/Systems"
@@ -316,12 +328,22 @@ Example Create (POST) Body for a Specific Composition:
     }
 }
 ```
+## Enumerated Composition
 
+The Enumerated Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the ResourceBlocks is delegated by client to the Composition Service. In enumerated composition, the client does not need to comprehend Resource Zones.
+
+create and manage the life cycle of composed resources through pre-defined [Resource Blocks](#resource-blocks) and [Resource Zones](#resource-zones).  Since Resource Blocks are self contained entities within a Resource Zone, clients are able to pick and choose specific Resource Blocks for their composition request.
+
+An example of choosing a Resource Block according to the binding rules and providing details of specific Resource Blocks in the a create (POST) request can be found in the [Create a Composed Resource](#create-a-composed-resource) section.
+
+Another industry standard server design which fits into the example of Specific Composition is defined in the [Bladed Partitions Mockup](#references).  In this example, a Multi-Blade Enclosure consisting of a disaggregated hardware chassis can be bound together to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.
 
 # Appendix
 
 
-## General Workflow for a Client
+## Workflows for a Client making a Composition Request
+
+There are two workflows for a client make a compostion request, depending on whether the request is for a specific composition or an enumerated composition.
 
 Here are the few operations that a client is expected to use during creation and management of Composed Systems using the Redfish Composition models.  The examples below expect the client will have a valid Redfish session or Basic Authentication header.
 
@@ -341,8 +363,7 @@ Application code should always start at the root: `/redfish/v1/`
           |<--- { ..., "ServiceEnabled": true, ... } <---|
     ```
 
-
-### Read the List of Resources Available for Composition
+### Specific Composition Workflow
 
 The client needs to understand the composition model reported by the [Composition Service](#composition-service) by reading the [Resource Blocks](#resource-blocks) and [Resource Zones](#resource-zones) collections.  This relationship will be used to execute the reported `UseCase` supported by the Redfish service described later in the [Create a Composed Resource](#create-a-composed-resource) section.
 
@@ -430,6 +451,8 @@ The client needs to understand the composition model reported by the [Compositio
 4. Read Each Capabilities Object
     1. Perform a GET on the URI listed in the `CapabilitiesObject` property for each of the Capabilities
 
+	Specific Composition Capabilities
+
     ```json
     {
         "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
@@ -464,32 +487,31 @@ The client needs to understand the composition model reported by the [Compositio
     }
     ```
 
+5. Create a Composed Resource
 
-### Create a Composed Resource
+	The client builds a specific composition request, the client with the following steps.
 
-For building a composition request, the client can take the following steps.
-
-1. List all [Resource Blocks](#resource-blocks) that belong to a particular [Resource Zone](#resource-zones) by doing a GET on their collection URIs as described in [the above example](#read-the-list-of-resources-available-for-composition)
-    * When reading the Resource Blocks, take note of the `CompositionStatus` property
-    * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition
-2. (Optional) Reserve each Resource Block that has been identified for the composition request
-    * Perform a PATCH on each Resource Block with `Reserved` set to true
-    * This step should be done in scenarios where multiple clients may be making composition requests
-3. Identify the needs of a specific composition `UseCase`
-    1. Perform a GET on the desired Resource Zone
-    2. Find the matching `UseCase` value in the `@Redfish.CollectionCapabilities` annotation
+	1. List all [Resource Blocks](#resource-blocks) that belong to a particular [Resource Zone](#resource-zones) by doing a GET on their collection URIs as described in [the above example](#read-the-list-of-resources-available-for-composition)
+    	* When reading the Resource Blocks, take note of the `CompositionStatus` property
+    	* Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition
+	2. (Optional) Reserve each Resource Block that has been identified for the composition request
+    	* Perform a PATCH on each Resource Block with `Reserved` set to true
+    	* This step should be done in scenarios where multiple clients may be making composition requests
+	3. Identify the needs of a specific composition `UseCase`
+    	1. Perform a GET on the desired Resource Zone
+    	2. Find the matching `UseCase` value in the `@Redfish.CollectionCapabilities` annotation
         * For example, look for the value `ComputerSystemComposition` if trying to compose a new Computer System from a specific list of Resource Blocks
-    3. Perform a GET on the URI found in the property `CapabilitiesObject`
-    4. Mark down all of the properties annotated with `RequiredOnCreate`
+    	3. Perform a GET on the URI found in the property `CapabilitiesObject`
+    	4. Mark down all of the properties annotated with `RequiredOnCreate`
         * These are the properties which need to be passed as part of the composition request
-    5. Mark down the `TargetCollection` URI
+    	5. Mark down the `TargetCollection` URI
         * This is the where the create (POST) request for the new composition is made
-4. Using all the properties that were annotated with `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI
+	4. Using all the properties that were annotated with `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI
     * In step 4 of [the above example](#read-the-list-of-resources-available-for-composition), only `Name` and `ResourceBlocks` found in `Links` are required
     * The Redfish service may accept other properties as part of the request so they do not need to be updated later
-5. The `Location` HTTP header in the service response contains the URI of the composed resource
+	5. The `Location` HTTP header in the service response contains the URI of the composed resource
 
-General Flow Diagram:
+	General Flow Diagram:
 ```
 Client  |                                                                     | Redfish Service
         |---> GET /redfish/v1/CompositionService/ResourceZones/1 ------------>|
@@ -511,7 +533,7 @@ Client  |                                                                     | 
         |   { "CompositionStatus": { "Reserved": true } } ------------------->|
 ```
 
-Client Request Example:
+	Client Request Example:
 ```http
 POST /redfish/v1/Systems HTTP/1.1
 Content-Type: application/json; charset=utf-8
@@ -528,7 +550,7 @@ OData-Version: 4.0
 }
 ```
 
-Service Response Example:
+	Service Response Example:
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
@@ -536,8 +558,246 @@ Content-Length: <computed-length>
 Location: /redfish/v1/Systems/NewSystem
 ```
 
-The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is creating a new Computer System using the Resource Blocks `ComputeBlock0` and `DriveBlock2`.  In the above Service Response Example, the service responsed with a successful 201 response, and indicated that the new Computer System can be found at `/redfish/v1/Systems/NewSystem`.
+	The above Client Request Example shows a specific composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is creating a new Computer System using the Resource Blocks `ComputeBlock0` and `DriveBlock2`.  In the above Service Response Example, the service responsed with a successful 201 response, and indicated that the new Computer System can be found at `/redfish/v1/Systems/NewSystem`.
 
+### Enumerated Composition Workflow
+
+Here are the few operations that a client is expected to use during creation and management of Composed Systems using the Redfish Composition models.  The examples below expect the client will have a valid Redfish session or Basic Authentication header.
+
+
+1. Read the Capabilities Object
+    
+	Perform a GET on the URI listed in the `CapabilitiesObject` property whose "UseCase" property has the value "ComputerSystemEnumeratedComposition".
+
+
+	```json
+    {
+        "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+        "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+        "@odata.id": "/redfish/v1/Systems/Capabilities",
+        "Id": "Capabilities",
+        "Name": "Capabilities for the Zone",
+        "Name@Redfish.RequiredOnCreate": true,
+        "Name@Redfish.SetOnlyOnCreate": true,
+        "Description@Redfish.OptionalOnCreate": true,
+        "Description@Redfish.SetOnlyOnCreate": true,
+        "HostName@Redfish.OptionalOnCreate": true,
+        "HostName@Redfish.UpdatableAfterCreate": true,
+        "Boot@Redfish.OptionalOnCreate": true,
+        "Boot": {
+            "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
+            "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
+            "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
+            "BootSourceOverrideTarget@Redfish.UpdatableAfterCreate": true,
+            "BootSourceOverrideTarget@Redfish.AllowableValues": [
+                "None",
+                "Pxe",
+                "Usb",
+                "Hdd"
+            ]
+        },
+		"Processors": {
+        	"@odata.type": "#Processor.v1_1_0.Processor",
+        	"Members@Redfish.RequiredOnCreate": true,
+        	"Members": {
+            	"@Redfish.RequestedCountOptional": true,
+            	"ProcessorType@Redfish.RequiredOnCreate": true,
+            	"TotalCores@Redfish.RequiredOnCreate": true,
+            	"Model@Redfish.OptionalOnCreate": true,
+            	"InstructionSet@Redfish.OptionalOnCreate": true,
+            	"AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
+        	}
+    	},
+    	"Memory": {
+        	"@odata.type": "#Memory.v1_1_0.Memory",
+        	"Members@Redfish.RequiredOnCreate": true,
+        	"Members": {
+            	"@Redfish.RequestedCountOptional": true,
+            	"MemoryType@Redfish.RequiredOnCreate": true,
+            	"MemoryDeviceType@Redfish.OptionalOnCreate": true,
+            	"CapacityMiB@Redfish.RequiredOnCreate": true,
+            	"SpeedMHz@Redfish.OptionalOnCreate": true,
+            	"DataWidthBits@Redfish.OptionalOnCreate": true,
+            	"BusWidthBits@Redfish.OptionalOnCreate": true
+       		}
+    	},
+    	"SimpleStorage": {
+        	"@odata.type": "#SimpleStorage.v1_1_0.SimpleStorage",
+        	"Members@Redfish.RequiredOnCreate": true,
+        	"Members": {
+            	"@Redfish.RequestedCountOptional": true,
+            	"Devices@RequiredOnCreate": true,
+            	"Devices": {
+                	"CapacityBytes@RequiredOnCreate": true
+            	}
+        	}
+    	},
+    	"Storage": {
+        	"@odata.type": "#Storage.v1_1_0.Storage",
+        	"Members@Redfish.RequiredOnCreate": true,
+        	"Members": {
+            	"@Redfish.RequestedCountOptional": true,
+            	"StorageControllers@Redfish.OptionalOnCreate": true,
+            	"StorageControllers": {
+                	"SupportedControllerProtocols@RequiredOnCreate": true
+            	},
+            	"Devices@RequiredOnCreae": true,
+            	"Devices": {
+                	"CapacityBytes@RequiredOnCreate": true
+            	}
+        	}
+    	},
+    	"EthernetInterfaces": {
+        	"@odata.type": "#EthernetInterface.v1_1_0.EthernetInterface",
+        	"@Redfish.RequestedCountOptional": true,
+        	"SpeedMbps@Redfish.RequiredOnCreate": true,
+        	"FullDuplex@OptionalOnCreate": true
+    	},
+    	"NetworkInterfaces": {
+        	"@odata.type": "#NetworkInterface.v1_1_0.NetworktInterface",
+        	"NetworkPorts@RequiredOnCreate": true,
+        	"NetworkPorts": {
+            	"ActiveLinkTechnology@RequiredOnCreate": true
+        	},
+        	"SupportedLinkCapabilities@OptionalOnCreate": true,
+        	"SupportedLinkCapabilities": {
+            	"LinkSpeedMbps@RequiredOnCreate": true
+        	}
+    	}
+    }
+    ```
+
+2. Create the Composition Request
+
+	In the composition request, the following properties can contain an enumeration annotation,  **@Redfish.RequestedCount**.   For each property, their required sub-properties are listed.
+
+	* The Processors property
+		* ProcessorType and TotalCores are required
+	* The Memory property
+		* MemoryType, MemoryDeviceType and CapacityMiB are required
+	* Either the SimpleStorage or Storage property, or neither
+		* If present, CapacityBytes is required
+	* Either the EthernetInterfaces or NetworkInterfaces property, or neither
+		* If present, SpeedMbps or LinkSpeedMbps are required
+
+	The @Redfish.RequestedCount annotation specifies the amount of a resource being requested. For example, the following requests 4 CPUs and 2 FPGAs.  The other properties in the structure can further characterize the requested resource.
+
+	```json
+    "Processors": {
+       "Members": [
+        {
+          "@Redfish.RequestedCount": 4,
+          "ProcessorType": "CPU",
+			. . .
+        },
+        {
+          "@Redfish.RequestedCount": 4,
+          "ProcessorType": "FPGA",
+ 			. . . 
+        }
+      ]
+    }
+```
+
+3. Make the composition Request
+
+	POST the request to the `TargetCollection` URI
+
+	Client Request Example:
+
+	```http
+POST /redfish/v1/Systems HTTP/1.1
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
+OData-Version: 4.0
+{
+    "Id": "1",
+    "Name": "My Computer System",
+    "Description": "Description of server",
+    "PowerState": "On",
+    "BiosVersion": "P79 v1.00 (09/20/2013)",
+    "Processors": {
+       "Members": [
+        {
+          "@Redfish.RequestedCount": 4,
+          "ProcessorType": "CPU",
+          "ProcessorArchitecture": "x86",
+          "InstructionSet": "x86-64",
+          "MaxSpeedMHz": 3700,
+          "TotalCores": 8,
+          "TotalThreads": 16
+        },
+        {
+          "@Redfish.RequestedCount": 4,
+          "ProcessorType": "FPGA",
+          "ProcessorArchitecture": "x86",
+          "InstructionSet": "x86-64",
+          "MaxSpeedMHz": 3700,
+          "TotalCores": 16
+        }
+      ]
+    },
+    "Memory": {
+      "Members": [
+        {
+          "@Redfish.RequestedCount": 4,
+          "MaxTDPMilliWatts": [ 12000 ],
+          "CapacityMiB": 8192,
+          "DataWidthBits": 64,
+          "BusWidthBits": 72,
+          "ErrorCorrection": "MultiBitECC",
+          "MemoryType": "DRAM",
+          "MemoryDeviceType": "DDR4",
+          "BaseModuleType": "RDIMM",
+          "MemoryMedia": [ "DRAM" ]
+        }
+      ]
+    },
+    "SimpleStorage": {
+      "Members" : [
+        {
+          "@Redfish.RequestedCount": 6,
+          "Devices": [
+            {
+	           	"CapacityBytes": 322122547200
+            }
+          ]
+        }
+      ]
+    },
+    "EthernetInterfaces": {
+      "Members": [
+        {
+          "@Redfish.RequestedCount": 2,
+          "SpeedMbps": 1000,
+          "FullDuplex": true,
+          "NameServers": [
+            "names.redfishspecification.org"
+          ],
+          "IPv4Addresses": [
+            {
+              "SubnetMask": "255.255.252.0",
+              "AddressOrigin": "Dynamic",
+              "Gateway": "192.168.0.1"
+            }
+          ]
+        }
+      ]
+    }
+}
+```
+
+	Service Response Example:
+	```http
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
+Location: /redfish/v1/Systems/NewSystem2
+```
+
+	The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is creating a new Computer System using the Resource Blocks `ComputeBlock0` and `DriveBlock2`.
+
+	In the above Service Response Example, the service responsed with a successful 201 response, and indicated that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
 ### Update a Composed Resource
 
