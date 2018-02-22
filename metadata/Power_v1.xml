@@ -762,12 +762,12 @@
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the Power Source."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a descriptive name for the associated power source."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a descriptive name for the power source."/>
         </Property>
-        <Property Name="Id" Type="Edm.Guid">
+        <Property Name="UUID" Type="Edm.Guid">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The id of the power source."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the id of the associated power source."/>
+          <Annotation Term="OData.Description" String="The Universal Unique ID for the power source."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the Universal Unique ID for the power source."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="Actions" Type="Power.v1_6_0.PowerSourceActions" Nullable="false">
@@ -859,9 +859,19 @@
       <EntityType Name="PowerSupply" BaseType="Power.v1_5_0.PowerSupply">
 		    <Property Name="PowerSupplyType" Type="Power.v1_6_0.PowerSupplyType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Power Supply type (AC or DC or BatteryBackupUnit or BatteryBackupSystem)."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the input power type (AC or DC or BatteryBackupUnit or BatteryBackupSystem) of the associated power supply."/>
+          <Annotation Term="OData.Description" String="The Power Supply type (AC, DC, BatteryBackupUnit or BatteryBackupSystem)."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the input power type (AC, DC, BatteryBackupUnit or BatteryBackupSystem) of the power supply."/>
         </Property>
+        <Property Name="Battery" Type="Power.v1_6_0.Battery">
+          <Annotation Term="OData.Description" String="The object contains information about the battery."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain information about the battery."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Battery">
+        <Annotation Term="OData.Description" String="This object contains information about the battery."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain information about the battery."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="FullyChargedCapacitymAh" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The fully charged capacity of this battery backup unit or system, in milliamp hours."/>
@@ -904,25 +914,25 @@
           <Annotation Term="Measures.Unit" String="V"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="BatterySOHPercentage" Type="Edm.Decimal">
+        <Property Name="StateOfHealthPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The SOH(state of health) of this battery backup unit or system, in percentage."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the SOH(state of health) of this battery backup unit or system, in percentage."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>	
-        <Property Name="BatteryASOCPercentage" Type="Edm.Decimal">
+        <Property Name="AbsoluteStateOfChargePercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The absolute SOC(state of charge) of this battery backup unit or system, in percentage."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the absolute SOC(state of charge) of this battery backup unit or system, in percentage."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="BatteryRSOCPercentage" Type="Edm.Decimal">
+        <Property Name="RelativeStateOfChargePercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The relative SOC(state of charge) of this battery backup unit or system, in percentage."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the relative SOC(state of charge) of this battery backup unit or system, in percentage."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="BatteryCycleCount" Type="Edm.Decimal">
+        <Property Name="CycleCount" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The cycle count of this battery backup unit or system."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the cycle count of this battery backup unit or system."/>
@@ -933,7 +943,7 @@
           <Annotation Term="OData.Description" String="The discharge remain time of this battery backup unit or system."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the discharage remain time of this battery backup unit or system, using ISO 8601 as format, e.g. P900S indicates 900 seconds."/>
         </Property>
-      </EntityType>
+      </ComplexType>
 
       <EnumType Name="BatteryState">
         <Member Name="OnlineCharging">
