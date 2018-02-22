@@ -1,0 +1,49 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU",
+    "@odata.type": "#Chassis.v1_0_1.Chassis",
+    "Id": "Rack3WithBBU",
+    "Name": "Enclosure 1",
+    "Description": "Enclosure With Blades Example - This enclosure is in a rack and this enclosure has one blade.  It also is managed by a redundant pair of managers which also manage the blade.",
+    "ChassisType": "Enclosure",
+    "Manufacturer": "ManufacturerName",
+    "Model": "ProductModelName",
+    "SKU": "",
+    "SerialNumber": "2M220100SL",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+    "PowerState": "On",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Thermal": {
+        "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Thermal"
+    },
+    "Power": {
+        "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power"
+    },
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Rack1"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Managers/3"
+            }
+        ],
+        "Contains": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Blade1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Blade2"
+            }
+        ],
+        "Oem": {}
+    }
+}
