@@ -62,6 +62,11 @@
           <Annotation Term="OData.Description" String="This property contains the type of external account provider this resource references."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the type of external account provider referenced by this resource."/>
         </Property>
+        <Property Name="ServiceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
+        </Property>
         <Property Name="ServiceAddresses" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property contains the addresses of the user account providers this resource references. The format of this field depends on the Type."/>
