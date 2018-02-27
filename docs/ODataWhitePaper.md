@@ -95,7 +95,7 @@ JSON representation:
 
 #### The NavigationProperty element
 
-The `<NavigationProperty>` element is used to define a property inside of a JSON object that provides a link to another resource within the service.  It provides the name of the property and the data type of the resource it links.  In Redfish, these are how both Dependent and Referenced items are defined.
+The `<NavigationProperty>` element is used to define a property inside of a JSON object that provides a link to another resource within the service.  It provides the name of the property and the data type of the resource it links.
 
 In the CSDL sample shown below, a NavigationProperty named `Thermal` is defined, and the the data type of the resource it links will follow the `Thermal.Thermal` definition.
 
@@ -203,7 +203,7 @@ JSON representation:
 
 #### The EntityType element
 
-The `<EntityType>` element is used to define a JSON object while also defining a uniquely identifiable key for that object.  Inside of the ComplexType definition, there will be Property and NavigationProperty elements that describe the different properties that will be found inside of the JSON object.  Within Redfish, the EntityType definitions are used to define the Redfish resources such as members of collections, members of arrays or individual resources.
+The `<EntityType>` element is used to define a JSON object while also defining a uniquely identifiable key for that object.  Inside of the ComplexType definition, there will be Property and NavigationProperty elements that describe the different properties that will be found inside of the JSON object.
 
 In the CSDL sample shown below, an EntityType named `Processor` is defined.  Within the definition are four Property elements: `Id`, `Name`, `MaxSpeedMhz`, and `TotalCores`.  `Id` and `Name` are both strings, and `MaxSpeedMhz` and `TotalCores` are both 64 bit integers.  Using the `<Key>` element, the Property named `Id` is established to be the key.  This means that if there are a set of Processor instances, the `Id` property must be a unique value amongst the individual Processor instances.  
 
@@ -495,7 +495,7 @@ Session CSDL versioning:
 
 The DMTF publishes all Redfish schema files in two formats: CSDL and JSON Schema.  Both formats are functionally equivalent, and it's up to the client's design whether it uses one form versus the other.  Currently, the DMTF uses a tool to automatically generate all of the JSON Schema files based off the CSDL definitions.  Other than the language of the schema files themselves, the distinct difference between the two formats is CSDL has one file per resource type, whereas JSON Schema uses one file per version per resource type.  For example, the Session CSDL file shown in the [Schema versioning section](#schema-versioning) will generate five JSON Schema files: Session.json, Session.v1_0_0.json, Session.v1_0_2.json, Session.v1_0_3.json, and Session.v1_1_0.json.
 
-For those interested in CSDL to JSON Schema conversion process, please refer to the Redfish Tools repository link in the [References section](#references).  A released tool to convert from JSON Schema to CSDL has yet to be released.
+For those interested in CSDL to JSON Schema conversion process, please refer to the Redfish Tools repository link in the [References section](#references).  A tool to convert from JSON Schema to CSDL has yet to be released.
 
 
 ## Payload annotations
