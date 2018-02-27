@@ -26,19 +26,19 @@ The DMTF acknowledges the following individuals for their contributions to this 
 
 ## Introduction
 
-Redfish is a management standard using a data model representation inside of a hypermedia RESTful interface.  It leverages the OData v4 standard for defining schema and payload formats.  This was done in order to allow off-the-shelf OData clients interact natively with Redfish services.  While the Redfish Specification only calls out a minimal set of OData functionality, implementations are allowed to extend their capabilities into the full range of OData support.  This white paper will provide details about how the Redfish Specification uses OData, such as how schema files are constructed and how services can construct required OData resources.  For those interested in OData functionality that is outside the scope of Redfish, please refer to the OData documentation link in the [References section](#references).
+Redfish is a management standard using a data model representation inside of a hypermedia RESTful interface.  It adheres to the OData v4 standard for defining schema and payload formats.  This was done in order to allow off-the-shelf OData clients interact natively with Redfish services.  While the Redfish Specification only calls out a minimal set of OData functionality, implementations are allowed to extend their capabilities into the full range of OData support though doing so is outside the scope of Redfish and may provide interoperability challenges with non-OData clients.  This white paper will provide details about how the Redfish Specification conforms to OData, such as how schema files are constructed and how services can construct required OData resources.  For those interested in OData functionality that is outside the scope of Redfish, please refer to the OData documentation link in the [References section](#references).
 
 
 ## Schema files
 
-Redfish defines its payload definitions in the Common Schema Definition Language (CSDL) as defined by OData v4.  CSDL is designed to allow for clients to dynamically scan and adapt to a service's data model.  It also provides documentation for developers when writing purpose built clients.  CSDL files are written in XML, and the structures in the XML file define the JSON properties and objects that a service uses in its payloads.  Inline annotations are also used to provide clients and users with more detailed information about a given property or object.
+Redfish defines its payload definitions in the Common Schema Definition Language (CSDL) as defined by OData v4.  CSDL is designed to allow for clients to dynamically scan and adapt to a service's data model.  It also provides documentation for developers when writing purpose built clients.  Redfish CSDL files are written in XML, and the structures in the XML file define the JSON properties and objects that a service uses in its payloads.  Inline annotations are also used to provide clients and users with more detailed information about a given property or object.
 
 
 ### CSDL format
 
 The primary body of a schema file contains Namespace definitions; this is found between the `<edmx:DataServices>` tags.  A Namespace is a unique name for a set of type definitions being declared, which include things like enum definitions and JSON objects.  Multiple namespaces can be defined in a single file, and they can reference each other's definitions.  Type definitions are referenced as `Namespace.TypeDefinition`, where `Namespace` is the string name of the Namespace, and `TypeDefinition` is the name of the definition being referenced.
 
-If a schema file requires references to namespaces defined in other schema files, then a reference to the namespace must be included; this is typically done at the top of the document.  The reference includes the URI of the schema file being referenced in addition to which namespaces in the schema file to include.  Primitive types defined by OData, which begin with `Edm.`, do not need additional files to be included.
+If a schema file requires references to namespaces defined in other schema files, then a reference to the namespace must be included.  This is typically done at the top of the document within a `<edmx:Reference>` section using an `<edmx:Include>` statement.  The reference includes the URI of the schema file being referenced in addition to which namespaces in the schema file to include.  Primitive types defined by OData, which begin with `Edm.`, do not need additional files to be included.
 
 Below is a sample schema file showing the general format discussed above.  In the example blow, there are references to the external file "ExternalSchema.xml", which is calling out references to two Namespaces: `ExternalNamespace` and `Other.Namespace`.  In the DataServices section, one Namespace is defined: `MyNewNamespace`.  There is a single ComplexType definition called `MyDataType`, and it contains three properties: `MyProperty`, `MyProperty2`, and `MyProperty3`.  `MyProperty` and `MyProperty2` both reference external definitions found in the `ExternalNamespace` and `Other.Namespace` Namespaces.  Those definitions would be found by going into the ExternalSchema.xml file.  `MyProperty3` has the type set to `Edm.Int64`, which is simply a 64 bit integer.  The following sections will describe the different elements found in the Namespace definition in detail.
 
@@ -293,7 +293,7 @@ OData-Version: 4.0
 
 #### The Annotation element
 
-The `<Annotation>` element is used to provide inline documentation for anything defined in the schema file.  Annotation elements give guidance to developers, and can also express conformance rules for clients and services.  Annotation elements contain a `Term` to describe what type of annotation is being used, and sometimes contains data to go along with it.
+The `<Annotation>` element is used to provide inline documentation for anything defined in the schema file.  Annotation elements give guidance to developers, and can also express conformance rules for clients and services.  Annotation elements contain a `Term` to describe what type of annotation is being used, and sometimes contains data to go along with it.  Redfish only uses two types of annotations: those defined in OData and those defined by Redfish.  OEM annotations are not allowed.
 
 In the CSDL example below, the Property `UserName` contains three Annotations: `Redfish.RequiredOnCreate`, `OData.Permissions`, and `OData.Description`.  The first Annotation contains the term `Redfish.RequiredOnCreate`; it contains no data, but its presence indicates that a client is required to supply the `UserName` property when creating a new resource.  The second Annotation contains the term `OData.Permissions`, which has the enum value `OData.Permission/ReadWrite` to indicate that `UserName` can be read and written by a client.  The third Annotation contains the term `OData.Description`, which contains a string description of what this Property represents.
 
@@ -408,6 +408,45 @@ OEM example:
 }
 ```
 
+#### Defining arrays within resources
+
+Arrays in the Redfish CSDL schemas are defined as a Collection of ReferencableMember EntityType members (as opposed to Collections of NavigationProperty members).  AutoExpand is also included to ensure the properties of the resource are populated within the JSON body.
+
+CSDL sample:
+
+```xml
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_0_0">
+       <EntityType Name="Thermal" BaseType="Thermal.Thermal">
+        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.v1_0_0.Temperature)" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="Temperature" BaseType="Resource.v1_0_0.ReferenceableMember">
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Temperature sensor name."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the temperature sensor."/>
+        </Property>
+      </EntityType>  
+   </Schema>
+```
+
+JSON representation:
+
+```json
+{
+    "Temperatures": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/0",
+            "MemberId": "0",
+            "Name": "CPU1 Temp"
+        }
+    ]
+}
+```
 
 #### Schema versioning
 
@@ -415,7 +454,9 @@ As stated in the previous section, all resources are put into two categories: "R
 
 "Resource Collections" do not contain any version information.  This is because "Resource Collections" contain a single `Members` property, and the overall definition never grows over time.  The Namespace used in these definitions is always the same as the EntityType name.  For example, the ChassisCollection_v1.xml schema file contains a single Namespace called `ChassisCollection`, and within that namespace is a single EntityType definition also called `ChassisCollection`.
 
-"Resources" contain version information encoded in the name of the Namespaces used in the schema files.  The first Namespace for a "Resource" is unversioned, and is the same name of the "Resource" itself.  This Namespace also contains a single EntityType definition for the "Resource", and is defined to be abstract.  Subsequent Namespaces contain version information, and the definitions within each Namespace inherits from the previous versions.  Versioned Namespaces are in the format of `ResourceName.vX_Y_Z`, where `X` is the major version, `Y` is the minor version, and `Z` is the errata version.  When new functionality is added, such as adding a new Property, a new minor version of the "Resource" is created.  When an existing definition is corrected, such as fixing an Annotation term on a Property, a new errata version is created.  Major versions are reserved for definitions that break backwards compatibility with existing definitions.
+"Resources" contain version information encoded in the name of the Namespaces used in the schema files.  The first Namespace for a "Resource" is unversioned, and is the same name of the "Resource" itself.  This Namespace also contains a single EntityType definition for the "Resource", and is defined to be abstract.  Subsequent Namespaces contain version information, and the definitions within each Namespace inherits from the previous versions.  Versioned Namespaces are in the format of `ResourceName.vX_Y_Z`, where `X` is the major version, `Y` is the minor version, and `Z` is the errata version.
+
+When new functionality is added, such as adding a new Property, a new minor version of the "Resource" is created.  When an existing definition is corrected, such as fixing an Annotation term on a Property, a new errata version is created.  Major versions are reserved for definitions that break backwards compatibility with existing definitions.  For a complete definition of versioning, see the Redfish Specification.
 
 The CSDL below contains a collapsed definition of the Session resource to highlight the versioning.
 * The first Namespace is called `Session`, and contains a single EntityType definition also called `Session`.
@@ -452,9 +493,9 @@ Session CSDL versioning:
 
 ### CSDL vs JSON Schema
 
-The DMTF publishes all Redfish schema files in two formats: CSDL and JSON Schema.  Both formats are functionally equivalent, and it's up to the client's design whether it uses one form versus the other.  However, all development work to define the data model is done in CSDL.  The DMTF uses a tool to automatically generate all of the JSON Schema files based off the CSDL definitions.  Other than the language of the schema files themselves, the distinct difference between the two formats is CSDL has one file per resource type, whereas JSON Schema uses one file per version per resource type.  For example, the Session CSDL file shown in the [Schema versioning section](#schema-versioning) will generate five JSON Schema files: Session.json, Session.v1_0_0.json, Session.v1_0_2.json, Session.v1_0_3.json, and Session.v1_1_0.json.
+The DMTF publishes all Redfish schema files in two formats: CSDL and JSON Schema.  Both formats are functionally equivalent, and it's up to the client's design whether it uses one form versus the other.  Currently, the DMTF uses a tool to automatically generate all of the JSON Schema files based off the CSDL definitions.  Other than the language of the schema files themselves, the distinct difference between the two formats is CSDL has one file per resource type, whereas JSON Schema uses one file per version per resource type.  For example, the Session CSDL file shown in the [Schema versioning section](#schema-versioning) will generate five JSON Schema files: Session.json, Session.v1_0_0.json, Session.v1_0_2.json, Session.v1_0_3.json, and Session.v1_1_0.json.
 
-For those interested in CSDL to JSON Schema conversion process, please refer to the Redfish Tools repository link in the [References section](#references).
+For those interested in CSDL to JSON Schema conversion process, please refer to the Redfish Tools repository link in the [References section](#references).  A tool to convert from JSON Schema to CSDL has yet to be released.
 
 
 ## Payload annotations
