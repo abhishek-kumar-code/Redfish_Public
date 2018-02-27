@@ -204,13 +204,44 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_3_0">
-      <EntityType Name="AccountService" BaseType="AccountService.v1_2_2.AccountService">
-        <NavigationProperty Name="ExternalAccountProviders" Type="ExternalAccountProviderCollection.ExternalAccountProviderCollection" Nullable="false">
+     <EntityType Name="AccountService" BaseType="AccountService.v1_2_2.AccountService">
+        <Property Name="LocalAccountAuth" Type="AccountService.v1_3_0.LocalAccountAuth" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Controls when this service will use the accounts defined withing this AccountService as part of authentication."/>
+          <Annotation Term="OData.LongDescription" String="This property shall govern how the service uses the Accounts collection within this AccountService as part of authentication.  Details about each of the modes are found in the description of the enum values."/>
+        </Property>
+        <Property Name="LDAP" Type="ExternalAccountProvider.v1_0_0.ExternalAccountProvider" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The first LDAP external account provider this AccountService supports."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the first LDAP external account provider this AccountService supports. If the AccountService supports 1 or more LDAP services as an external account provider this entity must be populated by default. This entity shall not be present in the AdditionalExternalAccountProviders collection."/>
+        </Property>
+        <Property Name="ActiveDirectory" Type="ExternalAccountProvider.v1_0_0.ExternalAccountProvider" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The first ActiveDirectory external account provider this AccountService supports."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the first ActiveDirectory external account provider this AccountService supports. If the AccountService supports 1 or more ActiveDirectory services as an external account provider this entity must be populated by default. This entity shall not be present in the AdditionalExternalAccountProviders collection."/>
+        </Property>
+        <NavigationProperty Name="AdditionalExternalAccountProviders" Type="ExternalAccountProviderCollection.ExternalAccountProviderCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The external account providers this AccountService is using."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the external account providers this AccountService is using."/>
+          <Annotation Term="OData.Description" String="The additional external account providers this AccountService is using."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an additional external account providers this AccountService is using."/>
         </NavigationProperty>
       </EntityType>
+
+      <EnumType Name="LocalAccountAuth">
+        <Member Name="Enabled">
+          <Annotation Term="OData.Description" String="Authentication via accounts defined in this AccountService is enabled."/>
+          <Annotation Term="OData.LongDescription" String="This value shall be used to indicate that the service will authenticate users based on the Accounts collection within this AccountService."/>
+        </Member>
+        <Member Name="Disabled">
+          <Annotation Term="OData.Description" String="Authentication via accounts defined in this AccountService is disabled."/>
+          <Annotation Term="OData.LongDescription" String="This value shall be used to indicate that the service will never authenticate users based on the Accounts collection within this AccountService."/>
+        </Member>
+        <Member Name="Fallback">
+          <Annotation Term="OData.Description" String="Authentication via accounts defined in this AccountService is only used if there are external account providers that are currently unreachable."/>
+          <Annotation Term="OData.LongDescription" String="This value shall be used to indicate that the service will authenticate users based on the Accounts collection within this AccountService only if there are external account providers that are currently unreachable."/>
+        </Member>
+      </EnumType>
+
     </Schema>
 
   </edmx:DataServices>

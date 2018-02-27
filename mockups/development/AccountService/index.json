@@ -22,7 +22,89 @@
     "Roles": {
         "@odata.id": "/redfish/v1/AccountService/Roles"
     },
-    "ExternalAccountProviders": {
+    "LocalAccountAuth": "Enabled",
+    "LDAP": {
+        "@odata.id": "/redfish/v1/AccountService#/LDAP",
+        "@odata.type": "#ExternalAccountProvider.v1_0_0.ExternalAccountProvider",
+        "Id": "LDAP",
+        "Name": "Remote LDAP Service",
+        "Description": "Remote LDAP Service providing additional Accounts to this Redfish Service",
+        "AccountProviderType": "LDAPService",
+		  "ServiceEnabled": false,
+        "ServiceAddresses": [
+            "ldaps://ldap.example.org:636"
+        ],
+        "Authentication": {
+            "AuthenticationType": "UsernameAndPassword",
+            "Username": "cn=Manager,dc=example,dc=org",
+            "Password": null
+        },
+        "LDAPService": {
+            "SearchSettings": {
+                "BaseDistinguishedNames": [
+                    "dc=example,dc=org"
+                ],
+                "UsernameAttribute": "uid",
+                "GroupsAttribute": "memberof"
+            }
+        },
+        "RemoteRoleMapping": [
+            {
+                "RemoteUser": "cn=Manager,dc=example,dc=org",
+                "LocalRole": "Admin"
+            },
+            {
+                "RemoteGroup": "cn=Admins,ou=Groups,dc=example,dc=org",
+                "LocalRole": "Admin"
+            },
+            {
+                "RemoteGroup": "cn=PowerUsers,ou=Groups,dc=example,dc=org",
+                "LocalRole": "Operator"
+            },
+            {
+                "RemoteGroup": "(cn=*)",
+                "LocalRole": "ReadOnlyUser"
+            }
+        ]
+    },
+    "ActiveDirectory": {
+        "@odata.id": "/redfish/v1/AccountService#/ActiveDirectory",
+        "@odata.type": "#ExternalAccountProvider.v1_0_0.ExternalAccountProvider",
+        "Id": "ActiveDirectory",
+        "Name": "Remote Active Directory Service",
+        "Description": "Remote AD Service providing additional Accounts to this Redfish Service",
+        "AccountProviderType": "ActiveDirectoryService",
+		  "ServiceEnabled": true,
+        "ServiceAddresses": [
+            "ad1.example.org",
+            "ad2.example.org",
+            null,
+            null
+        ],
+        "Authentication": {
+            "AuthenticationType": "KerberosKeytab",
+            "KerberosKeytab": null
+        },
+        "RemoteRoleMapping": [
+            {
+                "RemoteGroup": "Administrators",
+                "LocalRole": "Admin"
+            },
+            {
+                "RemoteUser": "DOMAIN\\Bob",
+                "LocalRole": "Operator"
+            },
+            {
+                "RemoteGroup": "PowerUsers",
+                "LocalRole": "Operator"
+            },
+            {
+                "RemoteGroup": "Everybody",
+                "LocalRole": "ReadOnlyUser"
+            }
+        ]
+    },
+    "AdditionalExternalAccountProviders": {
         "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders"
     }
 }
