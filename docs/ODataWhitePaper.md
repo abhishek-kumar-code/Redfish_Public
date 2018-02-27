@@ -308,7 +308,7 @@ In the CSDL example below, the Property `UserName` contains three Annotations: `
 
 #### Inheritance
 
-EntityType and ComplexType elements are both allowed to use a `BaseType` in their definition.  The value for the BaseType is the name of the EntityType or ComplexType in which the new type is referencing.  It's not possible to mix EntityType or ComplexType references; the BaseType value in an EntityType must reference another EntityType, and likewise for a ComplexType definition.  All properties defined by the BaseType become available to the newly defined type.  
+EntityType and ComplexType elements are both allowed to use a `BaseType` in their definition.  The value for the BaseType is the name of the EntityType or ComplexType in which the new type is referencing.  It's not possible to mix EntityType or ComplexType references; the BaseType value in an EntityType must reference another EntityType, and likewise for a ComplexType definition.  All properties defined by the BaseType become available to the newly defined type.
 
 In the CSDL sample below, two ComplexType elements are defined: `Protocol` and `SSDProtocol`.  `Protocol` contains the Property elements `ProtocolEnabled` and `Port`, and `SSDProtocol` contains the Property elements `NotifyMulticastIntervalSeconds` and `NotifyTTL`.  `SSDProtocol` is defined with the BaseType set to `ManagerNetworkProtocol.v1_0_0.Protocol`.
 
@@ -434,8 +434,6 @@ CSDL sample:
    </Schema>
 ```
 
-Using the above CSDL definitions, the JSON representation of `SSDProtocol` is shown below.  Note that the JSON object contains the properties defined by both `SSDProtocol` and `Protocol`.
-
 JSON representation:
 
 ```json
@@ -456,7 +454,7 @@ As stated in the previous section, all resources are put into two categories: "R
 
 "Resource Collections" do not contain any version information.  This is because "Resource Collections" contain a single `Members` property, and the overall definition never grows over time.  The Namespace used in these definitions is always the same as the EntityType name.  For example, the ChassisCollection_v1.xml schema file contains a single Namespace called `ChassisCollection`, and within that namespace is a single EntityType definition also called `ChassisCollection`.
 
-"Resources" contain version information encoded in the name of the Namespaces used in the schema files.  The first Namespace for a "Resource" is unversioned, and is the same name of the "Resource" itself.  This Namespace also contains a single EntityType definition for the "Resource", and is defined to be abstract.  Subsequent Namespaces contain version information, and the definitions within each Namespace inherits from the previous versions.  Versioned Namespaces are in the format of `ResourceName.vX_Y_Z`, where `X` is the major version, `Y` is the minor version, and `Z` is the errata version.  
+"Resources" contain version information encoded in the name of the Namespaces used in the schema files.  The first Namespace for a "Resource" is unversioned, and is the same name of the "Resource" itself.  This Namespace also contains a single EntityType definition for the "Resource", and is defined to be abstract.  Subsequent Namespaces contain version information, and the definitions within each Namespace inherits from the previous versions.  Versioned Namespaces are in the format of `ResourceName.vX_Y_Z`, where `X` is the major version, `Y` is the minor version, and `Z` is the errata version.
 
 When new functionality is added, such as adding a new Property, a new minor version of the "Resource" is created.  When an existing definition is corrected, such as fixing an Annotation term on a Property, a new errata version is created.  Major versions are reserved for definitions that break backwards compatibility with existing definitions.  For a complete definition of versioning, see the Redfish Specification.
 
