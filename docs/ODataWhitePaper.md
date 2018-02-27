@@ -203,7 +203,7 @@ JSON representation:
 
 #### The EntityType element
 
-The `<EntityType>` element is used to define a JSON object while also defining a uniquely identifiable key for that object.  Inside of the ComplexType definition, there will be Property and NavigationProperty elements that describe the different properties that will be found inside of the JSON object.
+The `<EntityType>` element is used to define a JSON object while also defining a uniquely identifiable key for that object.  Inside of the ComplexType definition, there will be Property and NavigationProperty elements that describe the different properties that will be found inside of the JSON object.  Within Redfish, the EntityType definitions are used to define the Redfish resources.
 
 In the CSDL sample shown below, an EntityType named `Processor` is defined.  Within the definition are four Property elements: `Id`, `Name`, `MaxSpeedMhz`, and `TotalCores`.  `Id` and `Name` are both strings, and `MaxSpeedMhz` and `TotalCores` are both 64 bit integers.  Using the `<Key>` element, the Property named `Id` is established to be the key.  This means that if there are a set of Processor instances, the `Id` property must be a unique value amongst the individual Processor instances.  
 
