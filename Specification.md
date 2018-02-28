@@ -646,12 +646,12 @@ Clients create, modify, and delete resources by issuing the appropriate [Create]
 
 For Create operations, the response from the service after successful processing of the create request should be one of the following:
 * HTTP Status code of [201](#status-201) with a body containing the JSON representation of the newly created resource after the request has been applied.
-* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the request will require additional time to complete. In this case a response with the HTTP code 201 and the created resource may be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task Monitor when the processing of the request will require additional time to complete.  In this case a response with the HTTP code 201 and the created resource may be returned in response to request to the Task Monitor URI after processing completes.
 * HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the created resource.
 
 For Update, Replace, or Delete operations, the response from the service after successful modification should be one of the following:
 * HTTP Status code of [200](#status-200) with a body containing the JSON representation of the targeted resource after the modification has been applied, or in the case of Delete operation, a representation of the deleted resource.
-* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task resource when the processing of the modification will require additional time. In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task monitor Uri after processing completes.
+* HTTP Status code of [202](#status-202) with a location header set to the URI of a Task Monitor when the processing of the modification will require additional time.  In this case a response with the HTTP code 200 and the modified resource may be returned in response to request to the Task Monitor URI after processing completes.
 * HTTP Status code of [204](#status-204) with empty payload in the event that service is unable to return a representation of the modified or deleted resource.
 
 For details on success responses to Action requests, see [Action](#actions-post).
@@ -810,7 +810,7 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
 ~~~
 
 
-In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task resource. Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
+In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task Monitor.  Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
 * HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
 * HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
 * In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
@@ -890,7 +890,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | <a id="status-200"></a>200 OK                     | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                               |
 | <a id="status-201"></a>201 Created                | A request that created a new resource completed successfully.  The Location header shall be set to the canonical URI for the newly created resource.  A representation of the newly created resource may be included in the response body.                                                                                                                                                                                                                                                      |
-| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed.  The Location header shall be set to the URI of a Task resource that can later be queried to determine the status of the operation.  A representation of the Task resource may be included in the response body.                                                                                                                                                                                       |
+| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed.  The Location header shall be set to the URI of a Task Monitor that can later be queried to determine the status of the operation.  A representation of the Task resource may be included in the response body.                                                                                                                                                                                        |
 | <a id="status-204"></a>204 No Content             | The request succeeded, but no content is being returned in the body of the response.                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id="status-301"></a>301 Moved Permanently      | The requested resource resides under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | <a id="status-302"></a>302 Found                  | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -965,28 +965,6 @@ The metadata document may reference additional schema documents describing OEM-s
   <edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
     <edmx:Include Namespace="CustomTypes"/>
   </edmx:Reference>
-~~~
-
-###### Annotations
-The service can annotate sets, types, actions and parameters with Redfish-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive.
-
-~~~xml
-  <edmx:Reference Uri="http://service/metadata/Service.Annotations">
-    <edmx:IncludeAnnotations TermNamespace="Annotations.v1_0_0"/>
-  </edmx:Reference>
-~~~
-
-The annotation file itself specifies the Target Redfish Schema element being annotated, the Term being applied, and the value of the term:
-
-~~~xml
-  <Annotations Target="ComputerSystem.Reset/ResetType">
-    <Annotation Term="Annotation.AdditionalValues">
-      <Collection>
-        <String>Update and Restart</String>
-        <String>Update and PowerOff</String>
-      </Collection>
-    </Annotation>
-  </Annotations>
 ~~~
 
 ##### OData Service Document
@@ -1324,6 +1302,8 @@ where
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource or property of the resource.
 
+Services shall limit the annotation usage to the "odata", "Redfish", "Message", and "Privileges" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
+
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
 #### Resource Collection responses
@@ -1368,6 +1348,8 @@ where
 
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the Resource Collection.
+
+Services shall limit the annotation usage to the "odata", "Redfish", "Message", and "Privileges" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
@@ -2040,16 +2022,6 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
     ...
 }
 ~~~
-
-##### Custom annotations
-
-This specification defines a set of common annotations for extending the definition of resource types used by Redfish. In addition, services may define custom annotations.
-
-Services may apply annotations to resources in order to provide service-specific information about the type, such as whether the service supports modifications of particular properties.
-
-Services can apply annotations to existing resources where those resources don't already define a value for the annotation. Services cannot change the value of an annotation applied as part of the resource definition.
-
-Because [service annotations](#annotations) may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the [service metadata](#service-metadata).
 
 ### Common Redfish resource properties
 
