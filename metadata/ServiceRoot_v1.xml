@@ -5,7 +5,7 @@
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -75,6 +75,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/DCIMPowerCollection_v1.xml">
     <edmx:Include Namespace="DCIMPowerCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/FacilityCollection_v1.xml">
+    <edmx:Include Namespace="FacilityCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -360,19 +363,26 @@
       <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_2_0.ServiceContainer">
         <Singleton Name="DCIMCooling" Type="DCIMCoolingCollection.DCIMCoolingCollection"/>
         <Singleton Name="DCIMPower" Type="DCIMPowerCollection.DCIMPowerCollection"/>
+        <Singleton Name="Facilities" Type="FacilityCollection.FacilityCollection"/>
       </EntityContainer>
 
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_0.ServiceRoot">
-        <NavigationProperty Name="DCIMCooling" Type="DCIMCoolingCollection.DCIMCoolingCollection" Nullable="false">
+        <NavigationProperty Name="DCIMCooling" Type="DCIMCoolingCollection.DCIMCoolingCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of DCIMCooling domains."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the DCIMCooling schema."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="DCIMPower" Type="DCIMPowerCollection.DCIMPowerCollection" Nullable="false">
+        <NavigationProperty Name="DCIMPower" Type="DCIMPowerCollection.DCIMPowerCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of DCIMPower domains."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the DCIMPower schema."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Facilities" Type="FacilityCollection.FacilityCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to a collection of Facilities."/>
+          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all Facility instances."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
