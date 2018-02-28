@@ -16,6 +16,9 @@
     "DCIMCooling": {
         "@odata.id": "/redfish/v1/DCIMCooling"
     },
+    "Facilities": {
+        "@odata.id": "/redfish/v1/Facilities"
+    },
     "Managers": {
         "@odata.id": "/redfish/v1/Managers"
     },
@@ -39,5 +42,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
     "@odata.id": "/redfish/v1/",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
