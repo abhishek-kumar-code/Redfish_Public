@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Power  v1.5.0-->
+<!--# Redfish Schema:  Power  v1.6.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -736,6 +736,238 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the device can be inserted or removed while the underlying equipment otherwise remains in its current operational state.  Devices indicated as hot-pluggable shall allow the device to become operable without altering the operational state of the underlying equipment. Devices that cannot be inserted or removed from equipment in operation, or devices that cannot become operable without affecting the operational state of that equipment, shall be indicated as not hot-pluggable."/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_6_0">
+      <EntityType Name="Power" BaseType="Power.v1_5_0.Power">
+        <NavigationProperty Name="PowerSources" Type="Collection(Power.v1_6_0.PowerSource)">
+          <Annotation Term="OData.Description" String="Details of the power sources associated with this system or device."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain details of the power sources associated with this system or device."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+      </EntityType>
+
+      <ComplexType Name="PowerSourceOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="PowerSourceActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="Power.v1_6_0.PowerSourceOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <EntityType Name="PowerSource" BaseType="Resource.v1_0_0.ReferenceableMember">
+        <Annotation Term="OData.Description" String="Details of a power sources associated with this system or device."/>
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The name of the Power Source."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a descriptive name for the power source."/>
+        </Property>
+        <Property Name="UUID" Type="Edm.Guid">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Universal Unique ID for the power source."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the Universal Unique ID for the power source."/>
+        </Property>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Actions" Type="Power.v1_6_0.PowerSourceActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+          <Annotation Term="OData.Description" String="This structure is used to show redundancy for power sources.  The Component ids will reference the members of the redundancy groups."/>
+          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for power sources and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+      <EntityType Name="PowerControl" BaseType="Power.v1_4_0.PowerControl">
+        <Property Name="PowerMetrics" Type="Power.v1_6_0.PowerMetric" Nullable="false">
+          <Annotation Term="OData.Description" String="Power readings for this chassis."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain power metrics for power readings (interval, min/max/ave power consumption) for the chassis."/>
+        </Property>
+        <Property Name="PowerPrediction" Type="Power.v1_6_0.PowerPrediction" Nullable="false">
+          <Annotation Term="OData.Description" String="Power prediction metrics for this chassis."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain power metrics for predicted power consumptions (prediction interval, predicted instant/avereage power consumption) for the chassis."/>
+        </Property>
+        <Property Name="PowerLimit" Type="Power.v1_6_0.PowerLimit" Nullable="false">
+          <Annotation Term="OData.Description" String="Power limit status and configuration information for this chassis."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain power limit status and configuration information for this chassis."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="PowerMetric">
+        <Annotation Term="OData.Description" String="This type describe the power metrics for a resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain power metrics for power readings (interval, min/max/ave power consumption) for a resource."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Interval" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The time interval in which the PowerMetrics are measured over."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the time interval over which the metrics are calculate. The value shall adhere to the ISO 8601 duration format, e.g. P3S indicates 3 seconds."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="PowerPrediction">
+        <Annotation Term="OData.Description" String="Power prediction metrics for this chassis."/>
+        <Annotation Term="OData.LongDescription" String="This complex property shall contain power metrics for predicted power consumptions for the chassis."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="PredictionWindow" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The time interval (or window) in which the Power Consumption Metrics are predicted."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the time interval (or window), using ISO 8601 as format(e.g. P3S indicates 3 seconds), in which the Power Consumption Metrics properties are prdicted."/>
+        </Property>
+        <Property Name="PredictedInstantWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The predicted power consumption value in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the predicted power consumption value in watts."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+        <Property Name="PredictedAverageWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The predicted power consumption average value for next prdiction cycle in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the predicted power consumption average value for next prediction cycle in watts."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="PowerLimit" BaseType="Power.v1_0_0.PowerLimit">
+        <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
+        <Annotation Term="OData.LongDescription" String="This complex property shall contain power limit status and configuration information for this chassis."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="DynamicPeakCapacityWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The power to allocate from battery backup unit when the power demand exceeds the power supply unit's maximum capacity."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the power to allocate from battery backup unit when the power demand exceeds the power supply unit's maximum capacity."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="DynamicPeakCapacityDuration" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The time duration to allocate power from battery backup unit when power demand exceeds power supply units maximum capacity."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the time duration to allocate power from battery backup unit when power demand exceeds power supply unit's maximum capacity. The value shall adhere to the ISO 8601 duration format, e.g. P30S indicates 30 seconds."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="PowerSupplyType">
+        <Member Name="BatterBackupUnit">
+          <Annotation Term="OData.Description" String="The power supply is a Battery Backup Unit."/>
+          <Annotation Term="OData.Description" String="This value shall indicate that the power supply is a Battery Backup Unit."/>
+        </Member>
+        <Member Name="BatteryBackupSystem">
+          <Annotation Term="OData.Description" String="The power supply is a Battery Backup System."/>
+          <Annotation Term="OData.Description" String="This value shall indicate that the power supply is a Battery Backup System."/>
+        </Member>
+      </EnumType>
+
+      <EntityType Name="PowerSupply" BaseType="Power.v1_5_0.PowerSupply">
+        <Property Name="PowerSupplyType" Type="Power.v1_6_0.PowerSupplyType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Power Supply type (AC, DC, BatteryBackupUnit or BatteryBackupSystem)."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the input power type (AC, DC, BatteryBackupUnit or BatteryBackupSystem) of the power supply."/>
+        </Property>
+        <Property Name="Battery" Type="Power.v1_6_0.Battery">
+          <Annotation Term="OData.Description" String="The object contains information about the battery."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain information about the battery."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Battery">
+        <Annotation Term="OData.Description" String="This object contains information about the battery."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain information about the battery."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="FullyChargedCapacitymAh" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The fully charged capacity of this battery backup unit or system, in milliamp hours."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the fully charged capacity of this battery backup unit or system, in milliamp hours."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="RemainCapacitymAh" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The remain capacity of this battery backup unit or system, in milliamp hours."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the remain capacity of this battery backup unit or system, in milliamp hours."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="ChargingCurrent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The charging current of this battery backup unit or system, in Amps."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the charging current of this battery backup unit or system, in Amps."/>
+          <Annotation Term="Measures.Unit" String="A"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="DischargingCurrent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The discharging current of this battery backup unit or system, in Amps."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the discharging current of this battery backup unit or system, in Amps."/>
+          <Annotation Term="Measures.Unit" String="A"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="ChargingVoltage" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The charging voltage of this battery backup unit or system, in Volts."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the charging voltage of this battery backup unit or system, in Volts."/>
+          <Annotation Term="Measures.Unit" String="V"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="DischargingVoltage" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The discharging voltage of this battery backup unit or system, in Volts."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the discharging voltage of this battery backup unit or system, in Volts."/>
+          <Annotation Term="Measures.Unit" String="V"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="StateOfHealthPercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The SOH(state of health) of this battery backup unit or system, in percentage."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the SOH(state of health) of this battery backup unit or system, in percentage."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="AbsoluteStateOfChargePercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The absolute SOC(state of charge) of this battery backup unit or system, in percentage."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the absolute SOC(state of charge) of this battery backup unit or system, in percentage."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="RelativeStateOfChargePercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The relative SOC(state of charge) of this battery backup unit or system, in percentage."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the relative SOC(state of charge) of this battery backup unit or system, in percentage."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="CycleCount" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The cycle count of this battery backup unit or system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the cycle count of this battery backup unit or system."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="DischargeRemainTime" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The discharge remain time of this battery backup unit or system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the discharage remain time of this battery backup unit or system, using ISO 8601 as format, e.g. P900S indicates 900 seconds."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="BatteryState">
+        <Member Name="OnlineCharging">
+          <Annotation Term="OData.Description" String="This battery is online and charging."/>
+          <Annotation Term="OData.LongDescription" String="This state shall signify that the battert is online and charging."/>
+        </Member>
+        <Member Name="OnlineDischarging">
+          <Annotation Term="OData.Description" String="This battery is online and discharging."/>
+          <Annotation Term="OData.LongDescription" String="This state shall signify that the battery is online and discharging."/>
+        </Member>
+        <Member Name="Idle">
+          <Annotation Term="OData.Description" String="This battery is neither charging nor discharging."/>
+          <Annotation Term="OData.LongDescription" String="This state shall signify that the battery is neither charging nor discharging."/>
+        </Member>
+      </EnumType>
+
     </Schema>
 
   </edmx:DataServices>

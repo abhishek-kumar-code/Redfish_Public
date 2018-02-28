@@ -1,0 +1,431 @@
+{
+    "@odata.type": "#Power.v1_6_0.Power",
+    "Id": "Power",
+    "Name": "Power",
+    "PowerControl": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerControl/0",
+            "MemberId": "0",
+            "Name": "Server Power Control",
+            "PowerConsumedWatts": 7500,
+            "PowerRequestedWatts": 7500,
+            "PowerAvailableWatts": 1300,
+            "PowerCapacityWatts": 8800,
+            "PowerAllocatedWatts": 7800,
+            "PowerMetrics": {
+                "Interval": "P30S",
+                "MinConsumedWatts": 6500,
+                "MaxConsumedWatts": 7600,
+                "AverageConsumedWatts": 7200
+            },
+            "PowerPrediction": {
+                "PredictionWindow": "P120S",
+                "PredictedInstantWatts": 7300,
+                "PredictedAverageWatts": 7200
+            },
+            "PowerLimit": {
+                "LimitInWatts": 500,
+                "LimitException": "LogEventOnly",
+                "CorrectionInMs": 50,
+                "DynamicPeakCapacityWatts": 1000,
+                "DynamicPeakCapacityDuration": "P120S"
+            },
+            "RelatedItem": [],
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": {}
+        }
+    ],
+    "PowerSources": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSources/0",
+            "MemberId": "0",
+            "UUID": "f2fdde6b-49b5-45e2-9ab0-bee75b948726",
+            "Name": "Rack Power Source",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/3"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSources/1",
+            "MemberId": "1",
+            "UUID": "2478f3c8-16c5-4b8e-993d-35bafd446cce",
+            "Name": "Rack Power Source",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/3"
+                }
+            ]
+        }
+    ],
+    "PowerSupplies": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/0",
+            "MemberId": "0",
+            "Name": "Power Supply Bay",
+            "Status": {
+                "State": "Enabled",
+                "Health": "Warning"
+            },
+            "Oem": {},
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACWideRange",
+            "LineInputVoltage": 120,
+            "PowerCapacityWatts": 800,
+            "LastPowerOutputWatts": 325,
+            "Model": "499253-B21",
+            "Manufacturer": "ManufacturerName",
+            "FirmwareVersion": "1.00",
+            "SerialNumber": "1Z0000001",
+            "PartNumber": "0000001A3A",
+            "SparePartNumber": "0000001A3A",
+            "InputRanges": [
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 100,
+                    "MaximumVoltage": 120,
+                    "OutputWattage": 800
+                },
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 200,
+                    "MaximumVoltage": 240,
+                    "OutputWattage": 1300
+                }
+            ],
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/1",
+            "MemberId": "1",
+            "Name": "Power Supply Bay",
+            "Status": {
+                "State": "Enabled",
+                "Health": "Warning"
+            },
+            "Oem": {},
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACWideRange",
+            "LineInputVoltage": 120,
+            "PowerCapacityWatts": 800,
+            "LastPowerOutputWatts": 325,
+            "Model": "499253-B21",
+            "Manufacturer": "ManufacturerName",
+            "FirmwareVersion": "1.00",
+            "SerialNumber": "1Z0000001",
+            "PartNumber": "0000001A3A",
+            "SparePartNumber": "0000001A3A",
+            "InputRanges": [
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 100,
+                    "MaximumVoltage": 120,
+                    "OutputWattage": 800
+                },
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 200,
+                    "MaximumVoltage": 240,
+                    "OutputWattage": 1300
+                }
+            ],
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/2",
+            "MemberId": "2",
+            "Name": "Battery Backup Unit",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": {},
+            "PowerSupplyType": "BatteryBackupUnit",
+            "Battery": {
+                "BatteryState": "OnlineCharging",
+                "FullyChargedCapacityInMHA": 6800,
+                "RemainCapacityInMAH": 6000,
+                "ChargingCurrent": 2,
+                "ChargingVoltage": 2,
+                "DischargingCurrent": 2,
+                "DischargingVoltage": 2,
+                "StateOfHealthPercent": 90,
+                "AbsoluteStateOfChargePercent": 95,
+                "RelativeStateOfChargePercent": 95,
+                "CycleCount": 10,
+                "DischargeRemainTime": "P900S"
+            },
+            "Model": "499253-B21",
+            "Manufacturer": "ManufacturerName",
+            "FirmwareVersion": "1.00",
+            "SerialNumber": "1Z0000001",
+            "PartNumber": "0000001A3A",
+            "SparePartNumber": "0000001A3A",
+            "InputRanges": [
+                {
+                    "InputType": "DC",
+                    "MinimumVoltage": 12,
+                    "MaximumVoltage": 12,
+                    "OutputWattage": 1200
+                }
+            ],
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/4"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/3",
+            "MemberId": "3",
+            "Name": "Battery Backup Unit",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": { },
+            "PowerSupplyType": "BatteryBackupUnit",
+            "Battery": {
+                "BatteryState": "OnlineCharging",
+                "FullyChargedCapacityInMHA": 6800,
+                "RemainCapacityInMAH": 6000,
+                "ChargingCurrent": 2,
+                "ChargingVoltage": 2,
+                "DischargingCurrent": 2,
+                "DischargingVoltage": 2,
+                "StateOfHealthPercent": 90,
+                "AbsoluteStateOfChargePercent": 95,
+                "RelativeStateOfChargePercent": 95,
+                "CycleCount": 10,
+                "DischargeRemainTime": "P900S"
+            },
+            "Model": "499253-B21",
+            "Manufacturer": "ManufacturerName",
+            "FirmwareVersion": "1.00",
+            "SerialNumber": "1Z0000001",
+            "PartNumber": "0000001A3A",
+            "SparePartNumber": "0000001A3A",
+            "InputRanges": [
+                {
+                    "InputType": "DC",
+                    "MinimumVoltage": 12,
+                    "MaximumVoltage": 12,
+                    "OutputWattage": 4000
+                }
+            ],
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/4"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/3",
+            "MemberId": "3",
+            "Name": "Battery Backup Unit",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": {},
+            "PowerSupplyType": "BatteryBackupUnit",
+            "Battery": {
+                "BatteryState": "OnlineCharging",
+                "FullyChargedCapacityInMHA": 6800,
+                "RemainCapacityInMAH": 6000,
+                "ChargingCurrent": 2,
+                "ChargingVoltage": 2,
+                "DischargingCurrent": 2,
+                "DischargingVoltage": 2,
+                "StateOfHealthPercent": 90,
+                "AbsoluteStateOfChargePercent": 95,
+                "RelativeStateOfChargePercent": 95,
+                "CycleCount": 10,
+                "DischargeRemainTime": "P900S"
+            },
+            "Model": "499253-B21",
+            "Manufacturer": "ManufacturerName",
+            "FirmwareVersion": "1.00",
+            "SerialNumber": "1Z0000001",
+            "PartNumber": "0000001A3A",
+            "SparePartNumber": "0000001A3A",
+            "InputRanges": [
+                {
+                    "InputType": "DC",
+                    "MinimumVoltage": 12,
+                    "MaximumVoltage": 12,
+                    "OutputWattage": 1000
+                }
+            ],
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/4"
+                }
+            ]
+        }
+    ],
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/0",
+            "MemberId": "0",
+            "Name": "Rack Power Sources Redundancy Policy",
+            "Mode": "Failover",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "RedundancyEnabled": true,
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSources/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSources/1"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/1",
+            "MemberId": "1",
+            "Name": "Rack Power Supply Units Redundancy Policy",
+            "Mode": "Sharing",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "RedundancyEnabled": true,
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/1"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2",
+            "MemberId": "2",
+            "Name": "Redundancy policy for BBUs",
+            "Mode": "Sharing",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "RedundancyEnabled": true,
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/PowerSupplies/4"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/3",
+            "MemberId": "3",
+            "Name": "Redundancy policy for BBU and Power Sources",
+            "Mode": "Failover",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "RedundancyEnabled": true,
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/4",
+            "MemberId": "4",
+            "Name": "Redundancy policy for BBU and Power Supply Unit",
+            "Mode": "Sharing",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "RedundancyEnabled": true,
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power#/Redundancy/2"
+                }
+            ]
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Power.Power",
+    "@odata.id": "/redfish/v1/Chassis/Rack3WithBBU/Power",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
