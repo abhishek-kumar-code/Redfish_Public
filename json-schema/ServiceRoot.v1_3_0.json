@@ -1,8 +1,61 @@
 {
     "$ref": "#/definitions/ServiceRoot",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
     "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
+        "Expand": {
+            "additionalProperties": false,
+            "description": "Contains information about the use of $expand in the service.",
+            "longDescription": "This type, as described by the Redfish Specification, shall contain information about the support of the $expand query parameter by the service.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ExpandAll": {
+                    "description": "This indicates whether the expand support of asterisk (expand all entries) is supported.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of asterisk (expand all entries) as a value for the expand query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Levels": {
+                    "description": "This indicates whether the expand support of the $levels qualifier is supported by the service.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of $levels as a value for the expand query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Links": {
+                    "description": "This indicates whether the expand support of tilde (expand only entries in the Links section) is supported.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of tilde (expand only entries in the Links section) as a value for the expand query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "MaxLevels": {
+                    "description": "This indicates the maximum number value of the $levels qualifier in expand operations.",
+                    "longDescription": "The value of this property shall be the maximum value of the $levels qualifier supported by the service and shall only be included if the value of the Levels property is true.",
+                    "maximum": 6,
+                    "minimum": 1,
+                    "readonly": true,
+                    "type": "number"
+                },
+                "NoLinks": {
+                    "description": "This indicates whether the expand support of period (expand only entries not in the Links section) is supported.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of period (expand only entries not in the Links section) as a value for the expand query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Links": {
             "additionalProperties": false,
             "description": "Contains references to other resources that are related to this resource.",
@@ -35,6 +88,44 @@
             },
             "type": "object"
         },
+        "ProtocolFeaturesSupported": {
+            "additionalProperties": false,
+            "description": "Contains information about protocol features supported by the service.",
+            "longDescription": "This type contains information about protocol features supported by the service.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ExpandQuery": {
+                    "$ref": "#/definitions/Expand",
+                    "description": "Contains information about the use of $expand in the service.",
+                    "longDescription": "This type, as described by the Redfish Specification, shall contain information about the support of the $expand query parameter by the service."
+                },
+                "FilterQuery": {
+                    "description": "This indicates whether the filter query parameter is supported.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of th filter query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SelectQuery": {
+                    "description": "This indicates whether the select query parameter is supported.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of th select query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "ServiceRoot": {
             "additionalProperties": false,
             "description": "This object represents the root Redfish service.",
@@ -54,13 +145,13 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
                 },
                 "AccountService": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/AccountService.json#/definitions/AccountService",
@@ -78,18 +169,6 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/CompositionService.json#/definitions/CompositionService",
                     "description": "This is a link to the CompositionService.",
                     "longDescription": "The classes structure shall only contain a reference to a resource that complies to the CompositionService schema.",
-                    "readonly": true
-                },
-                "DCIMCooling": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/DCIMCoolingCollection.json#/definitions/DCIMCoolingCollection",
-                    "description": "This is a link to a collection of DCIMCooling domains.",
-                    "longDescription": "The classes structure shall only contain a reference to a resource that complies to the DCIMCooling schema.",
-                    "readonly": true
-                },
-                "DCIMPower": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/DCIMPowerCollection.json#/definitions/DCIMPowerCollection",
-                    "description": "This is a link to a collection of DCIMPower domains.",
-                    "longDescription": "The classes structure shall only contain a reference to a resource that complies to the DCIMPower schema.",
                     "readonly": true
                 },
                 "Description": {
@@ -144,6 +223,17 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Product": {
+                    "description": "The product associated with this Redfish service.",
+                    "longDescription": "The value of this string shall include the name of the product represented by this Redfish service.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ProtocolFeaturesSupported": {
+                    "$ref": "#/definitions/ProtocolFeaturesSupported",
+                    "description": "Contains information about protocol features supported by the service.",
+                    "longDescription": "This type contains information about protocol features supported by the service."
                 },
                 "RedfishVersion": {
                     "description": "The version of the Redfish service.",
@@ -216,5 +306,5 @@
             "type": "object"
         }
     },
-    "title": "ServiceRoot.v1_3_0.ServiceRoot"
+    "title": "#ServiceRoot.v1_3_0.ServiceRoot"
 }

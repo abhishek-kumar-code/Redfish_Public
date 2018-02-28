@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Task.v1_0_0.Task",
     "$ref": "#/definitions/Task",
     "definitions": {
@@ -35,25 +35,22 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "TaskState": {
                     "$ref": "#/definitions/TaskState",
                     "readonly": true,
                     "description": "The state of the task.",
-                    "longDescription": "The value of this property shall indicate the state of the task.  New shall be used to indicate that the task is a new task which has just been instantiated and is in the initial state and indicates it has never been started.  Starting shall be used to indicate that the task is moving from the New, Suspended, or Service states into the Running state.  Running shall be used to indicate that the Task is running.  Suspended shall be used to indicate  that the Task is stopped (e.g., by a user), but can be restarted in a seamless manner.  Interrupted shall be used to indicate  that the Task was interrupted (e.g., by a server crash) in the middle of processing, and the user should either re-run/restart the Task.  Pending shall be used to indicate  that the Task has been queued and will be scheduled for processing as soon as resources are available to handle the request.  Stopping shall be used to indicate that the Task is in the process of moving to a Completed, Killed, or Exception state.  Completed shall be used to indicate that the task has completed normally.  Killed shall be used to indicate  that the task has been stopped by a Kill state change request (non-graceful shutdown).  Exception shall be used to indicate  that the Task is in an abnormal state that might be indicative of an error condition.  Service shall be used to indicate that the Task is in a state that supports problem discovery, or resolution, or both.  This state is used when a corrective action is possible."
+                    "longDescription": "The value of this property shall indicate the state of the task.  New shall be used to indicate that the task is a new task which has just been instantiated and is in the initial state and indicates it has never been started.  Starting shall be used to indicate that the task is moving from the New, Suspended, or Service states into the Running state.  Running shall be used to indicate that the Task is running.  Suspended shall be used to indicate  that the Task is stopped (e.g., by a user), but can be restarted in a seamless manner.  Interrupted shall be used to indicate  that the Task was interrupted (e.g., by a server crash) in the middle of processing, and the user should either re-run/restart the Task.  Pending shall be used to indicate  that the Task has been queued and will be scheduled for processing as soon as resources are available to handle the request.  Stopping shall be used to indicate that the Task is in the process of moving to a Completed, Killed, or Exception state.  Completed shall be used to indicate that the task has completed normally.  Killed shall be used to indicate  that the task has been stopped by a Kill state change request (non-graceful shutdown).  Exception shall be used to indicate  that the Task is in an abnormal state that might be indicative of an error condition.  Service shall be used to indicate that the Task is in a state that supports problem discovery, or resolution, or both.  This state is used when a corrective action is possible. "
                 },
                 "StartTime": {
                     "type": "string",
@@ -80,6 +77,7 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Message.json#/definitions/Message"
                     },
+                    "readonly": true,
                     "description": "This is an array of messages associated with the task.",
                     "longDescription": "The value of this property shall be an array of messages associated with the task."
                 }
@@ -107,19 +105,19 @@
                 "Service"
             ],
             "enumDescriptions": {
-                "New": "A new task.",
-                "Starting": "Task is starting.",
-                "Running": "Task is running normally.",
-                "Suspended": "Task has been suspended.",
-                "Interrupted": "Task has been interrupted.",
-                "Pending": "Task is pending and has not started.",
-                "Stopping": "Task is in the process of stopping.",
-                "Completed": "Task has completed.",
-                "Killed": "Task was terminated.",
-                "Exception": "Task has stopped due to an exception condition.",
-                "Service": "Task is running as a service."
+                "New": "A new task",
+                "Starting": "Task is starting",
+                "Running": "Task is running normally",
+                "Suspended": "Task has been suspended",
+                "Interrupted": "Task has been interrupted",
+                "Pending": "Task is pending and has not started",
+                "Stopping": "Task is in the process of stopping",
+                "Completed": "Task has completed",
+                "Killed": "Task was terminated",
+                "Exception": "Task has stopped due to an exception condition",
+                "Service": "Task is running as a service"
             }
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

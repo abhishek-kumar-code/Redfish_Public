@@ -23,6 +23,9 @@
         "HealthRollup": "OK"
     },
     "Boot": {},
+    "Processors": {
+        "@odata.id": "/redfish/v1/Systems/2/Processors"
+    },
     "Memory": {
         "@odata.id": "/redfish/v1/Systems/2/Memory"
     },

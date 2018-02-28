@@ -1,12 +1,12 @@
 {
     "$ref": "#/definitions/ServiceRoot",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
     "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "ServiceRoot": {
             "anyOf": [
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/idRef"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_0_0.json#/definitions/ServiceRoot"
@@ -43,5 +43,5 @@
             "longDescription": "This object represents the root Redfish service.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
         }
     },
-    "title": "ServiceRoot.ServiceRoot"
+    "title": "#ServiceRoot.ServiceRoot"
 }
