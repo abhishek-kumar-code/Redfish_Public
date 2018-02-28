@@ -123,19 +123,19 @@
         <NavigationProperty Name="ContainsChassis" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to chassis instances that this facility has in it."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references the resources that represent the chassis that this facility contains and shall be of type Chassis.  Chassis instances that are within Facility instances represented in the Contains link shall not be included in this list.  This list shall only contain top level Chassis instances, meaning each Chassis instance does not have the ContainedBy link."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references to resources that represent the chassis that this facility contains and shall be of type Chassis.  Chassis instances that are within Facility instances represented in the Contains link should not be included in this list.  This list should only contain top level Chassis instances, meaning each Chassis instance does not have the ContainedBy link."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="PowerEquipment" Type="Collection(DCIMPower.DCIMPower)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to power equipment that this facility has in it."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references the resources that represent the power equipment that this facility contains and shall be of type DCIMPower.  DCIMPower instances that are within Facility instances represented in the Contains link shall not be included in this list."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references to resources that represent the power equipment that this facility contains and shall be of type DCIMPower."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="CoolingEquipment" Type="Collection(DCIMCooling.DCIMCooling)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to cooling equipment that this facility has in it."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references the resources that represent the cooling equipment that this facility contains and shall be of type DCIMCooling.  DCIMCooling instances that are within Facility instances represented in the Contains link shall not be included in this list."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references to resources that represent the cooling equipment that this facility contains and shall be of type DCIMCooling."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
