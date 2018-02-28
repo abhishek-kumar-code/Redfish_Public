@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#SimpleStorage.v1_1_0.SimpleStorage",
     "$ref": "#/definitions/SimpleStorage",
     "definitions": {
@@ -38,7 +38,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The name of the manufacturer of this device.",
+                    "description": "The name of the manufacturer of this device",
                     "longDescription": "This property shall indicate the name of the manufacturer of this storage device."
                 },
                 "Model": {
@@ -47,7 +47,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The product model number of this device.",
+                    "description": "The product model number of this device",
                     "longDescription": "This property shall indicate the model information as provided by the manufacturer of this storage device."
                 },
                 "CapacityBytes": {
@@ -56,7 +56,6 @@
                         "null"
                     ],
                     "minimum": 0,
-                    "units": "By",
                     "readonly": true,
                     "description": "The size of the storage device.",
                     "longDescription": "The value of this property shall represent the size (in bytes) of the Storage Device."
@@ -64,9 +63,7 @@
             },
             "required": [
                 "Name"
-            ],
-            "description": "A storage device such as a disk drive or optical media device.",
-            "longDescription": "This type shall describe a storage device visible to SimpleStorage."
+            ]
         },
         "SimpleStorage": {
             "type": "object",
@@ -100,19 +97,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "UefiDevicePath": {
                     "type": [
@@ -121,15 +115,16 @@
                     ],
                     "readonly": true,
                     "description": "The UEFI device path used to access this storage controller.",
-                    "longDescription": "This property shall contain the UEFI device path used to identify and locate the specific storage controller."
+                    "longDescription": "This property shall contain the UEFI device path used to identify and locate the specific storage controller"
                 },
                 "Devices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Device"
                     },
-                    "description": "The storage devices associated with this resource.",
-                    "longDescription": "This property shall contain a list of storage devices associated with this resource."
+                    "readonly": true,
+                    "description": "The storage devices associated with this resource",
+                    "longDescription": "This property shall contain a list of storage devices associated with this resource"
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -142,5 +137,5 @@
             "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

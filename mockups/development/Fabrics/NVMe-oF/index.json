@@ -1,0 +1,27 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
+    "@odata.id": "/redfish/v1/Fabrics/NVMe-oF",
+    "@odata.type": "#Fabric.v1_0_0.Fabric",
+    "Id": "NVMe-oF",
+    "Name": "NVMe-oF Fabric",
+    "FabricType": "NVMeOverFabrics",
+    "Description": "NVMe over Fabric",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Zones": {
+        "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Zones"
+    },
+    "Endpoints": {
+        "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints"
+    },
+    "Links": {
+        "Oem": {}
+    },
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
+}

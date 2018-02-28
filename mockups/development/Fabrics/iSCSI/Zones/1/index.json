@@ -1,0 +1,30 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/Fabrics/iSCSI/Zones/1",
+    "@odata.type": "#Zone.v1_2_0.Zone",
+    "Id": "1",
+    "Name": "iSCSI Zone 1",
+    "Description": "Manually configured iSCSI",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Identifiers":  [
+        {
+            "DurableName": "98D5E212-165B-4CA0-909B-C86B9CEE0119",
+            "DurableNameFormat": "UUID"
+        }
+    ],
+
+    "Links": {
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/iSCSI/Endpoints/Initiator1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/iSCSI/Endpoints/Target1"
+            }
+        ]
+    },
+    "Oem": {}
+}

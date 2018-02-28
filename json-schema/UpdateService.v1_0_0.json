@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#UpdateService.v1_0_0.UpdateService",
     "$ref": "#/definitions/UpdateService",
     "definitions": {
@@ -38,7 +38,6 @@
             "enum": [
                 "CIFS",
                 "FTP",
-                "SFTP",
                 "HTTP",
                 "HTTPS",
                 "NSF",
@@ -47,14 +46,13 @@
                 "OEM"
             ],
             "enumDescriptions": {
-                "CIFS": "Common Internet File System protocol.",
-                "FTP": "File Transfer Protocol.",
-                "SFTP": "Secure File Transfer Protocol.",
-                "HTTP": "Hypertext Transfer Protocol.",
-                "HTTPS": "HTTP Secure protocol.",
-                "NSF": "Network File System protocol.",
-                "SCP": "Secure File Copy protocol.",
-                "TFTP": "Trivial File Transfer Protocol.",
+                "CIFS": "Common Internet File System protocol",
+                "FTP": "File Transfer Protocol",
+                "HTTP": "Hypertext Transfer Protocol",
+                "HTTPS": "HTTP Secure protocol",
+                "NSF": "Network File System protocol",
+                "SCP": "Secure File Copy protocol",
+                "TFTP": "Trivial File Transfer Protocol",
                 "OEM": "A protocol defined by the manufacturer."
             }
         },
@@ -90,19 +88,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Status": {
                     "anyOf": [
@@ -152,15 +147,13 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         },
                         "#UpdateService.SimpleUpdate": {
                             "$ref": "#/definitions/SimpleUpdate"
                         }
                     },
-                    "longDescription": "This type shall contain the available actions for this resource.",
+                    "readonly": true,
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "FirmwareInventory": {
@@ -190,5 +183,5 @@
             "longDescription": "This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

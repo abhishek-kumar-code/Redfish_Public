@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#MessageRegistryFile.v1_0_0.MessageRegistryFile",
     "$ref": "#/definitions/MessageRegistryFile",
     "definitions": {
@@ -53,9 +53,7 @@
                     "description": "If the schema is hosted on the service in an archive file, this is the name of the file within the archive.",
                     "longDescription": "The value of this property shall be the file name of the individual schema file within the archive file specified by the ArchiveUri property. The file name shall conform to the syntax specified in the Redfish specification."
                 }
-            },
-            "description": "Location information for a schema file.",
-            "longDescription": "This type shall define Location information for a schema file."
+            }
         },
         "MessageRegistryFile": {
             "type": "object",
@@ -89,19 +87,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Languages": {
                     "type": "array",
@@ -123,6 +118,7 @@
                     "items": {
                         "$ref": "#/definitions/Location"
                     },
+                    "readonly": true,
                     "description": "Location information for this schema file."
                 }
             },
@@ -137,5 +133,5 @@
             "longDescription": "This resource shall be used to represent the Schema File locator resource for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -689,8 +689,7 @@
                 "FunctionClasses": {
                     "type": "array",
                     "items": {
-                        "type": "string",
-                        "deprecated": "This property has been Deprecated in favor of Memory.v1_0_0.Memory.OperatingMemoryModes or Memory.v1_0_0.Memory.RegionSet.MemoryClassification."
+                        "type": "string"
                     },
                     "readonly": true,
                     "description": "Function Classes by the Memory.",
@@ -701,7 +700,6 @@
                         "string",
                         "null"
                     ],
-                    "deprecated": "This property has been Deprecated in favor of Memory.v1_3_0.ModuleManufacturerID",
                     "readonly": true,
                     "description": "Vendor ID.",
                     "longDescription": "The value of this property shall be the vendor ID of the Memory."
@@ -711,7 +709,6 @@
                         "string",
                         "null"
                     ],
-                    "deprecated": "This property has been Deprecated in favor of Memory.v1_3_0.ModuleProductID",
                     "readonly": true,
                     "description": "Device ID.",
                     "longDescription": "The value of this property shall be the device ID of the Memory."
@@ -721,7 +718,6 @@
                         "string",
                         "null"
                     ],
-                    "deprecated": "This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerManufacturerID",
                     "readonly": true,
                     "description": "SubSystem Vendor ID.",
                     "longDescription": "The value of this property shall be the subsystem Vendor ID of the Memory."
@@ -731,7 +727,6 @@
                         "string",
                         "null"
                     ],
-                    "deprecated": "This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerProductID",
                     "readonly": true,
                     "description": "Subsystem Device ID.",
                     "longDescription": "The value of this property shall be the subsystem Device ID of the Memory."
