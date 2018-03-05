@@ -219,7 +219,7 @@
           <Annotation Term="OData.Description" String="The first ActiveDirectory external account provider this AccountService supports."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the first ActiveDirectory external account provider this AccountService supports. If the AccountService supports 1 or more ActiveDirectory services as an external account provider this entity must be populated by default. This entity shall not be present in the AdditionalExternalAccountProviders collection."/>
         </Property>
-        <NavigationProperty Name="AdditionalExternalAccountProviders" Type="ExternalAccountProviderCollection.ExternalAccountProviderCollection" Nullable="false">
+        <NavigationProperty Name="AdditionalExternalAccountProviders" Type="ExternalAccountProviderCollection.ExternalAccountProviderCollection" ContainsTarget="true"  Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The additional external account providers this AccountService is using."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an additional external account providers this AccountService is using."/>
