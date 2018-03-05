@@ -119,6 +119,34 @@ JSON representation:
 ```
 
 
+#### The Collection type
+
+When defining Property or NavigationProperty elements, the keyword `Collection` can be used to turn the Property or NavigationProperty element into an array.  This is done in the Type field using the format `Collection(TypeDefinition)`, where `TypeDefinition` is the underlying type of the instances in the array.
+
+In the CSDL sample shown below, a Property named `AllowedSpeedsMHz` is defined, and the type is `Collection(Edm.Int64)`.  This means that the value for the property `AllowedSpeedsMHz` in a JSON payload will be an array of 64 bit integers.
+
+CSDL sample:
+
+```xml
+  <Property Name="AllowedSpeedsMHz" Type="Collection(Edm.Int64)"/>
+```
+
+The JSON representation for the above CSDL sample is shown below.  It contains a JSON object with a property that has the name `AllowedSpeedsMHz` and its value is an array containing the numbers 2133, 2400, and 2667.
+
+JSON representation:
+
+```json
+{
+    "AllowedSpeedsMHz": [
+        2133,
+        2400,
+        2667
+    ],
+    ...
+}
+```
+
+
 #### The EnumType element
 
 The `<EnumType>` element is used to define a set of valid values for a given property.  Within the EnumType definition, a set of Members define the string values that are allowed when using the EnumType.  An EnumType definition is referenced by a Property definition using the Type field for the property.
@@ -408,45 +436,58 @@ OEM example:
 }
 ```
 
-#### Defining arrays within resources
 
-Arrays in the Redfish CSDL schemas are defined as a Collection of ReferencableMember EntityType members (as opposed to Collections of NavigationProperty members).  AutoExpand is also included to ensure the properties of the resource are populated within the JSON body.
+#### ReferenceableMembers
+
+In some cases, Redfish uses EntityType elements to define embedded objects within a given Resource.  These EntityType elements inherit from Resource.v1_0_0.ReferenceableMember, which is defined in the Resource_v1.xml schema file.  All "ReferenceableMembers" contain a "MemberId" property.  A client is not able to perform HTTP operations, such as GET, on these EntityType elements.  AutoExpand is also included to ensure the properties of the resource are populated within the JSON body.  The purpose of defining these embedded objects as EntityType elements as opposed to ComplexType elements is to leverage the `@odata.id` property in order to allow other portions of the Redfish data model to provide a URI to an individual structure, such as a RelatedItem link pointing to a single Temperature object.  The `@odata.id` property is structured as a URI with a JSON fragment identifier in these cases.
+
+In the CSDL sample below, the Resource "Thermal" is defined.  It contains a single NavigationProperty element, which is an array of "Thermal.v1_0_0.Temperature" elements.  This NavigationProperty also contains the `OData.AutoExpand` Annotation element, meaning that the properties defined by "Thermal.v1_0_0.Temperature" will be contained in the payload for "Thermal.v1_0_0.Thermal".
 
 CSDL sample:
 
 ```xml
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_0_0">
-       <EntityType Name="Thermal" BaseType="Thermal.Thermal">
-        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.v1_0_0.Temperature)" ContainsTarget="true">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
-          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-      </EntityType>
-      <EntityType Name="Temperature" BaseType="Resource.v1_0_0.ReferenceableMember">
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Temperature sensor name."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the temperature sensor."/>
-        </Property>
-      </EntityType>  
-   </Schema>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_0_0">
+    <EntityType Name="Thermal" BaseType="Thermal.Thermal">
+      <NavigationProperty Name="Temperatures" Type="Collection(Thermal.v1_0_0.Temperature)" ContainsTarget="true">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
+        <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
+        <Annotation Term="OData.AutoExpand"/>
+      </NavigationProperty>
+    </EntityType>
+    <EntityType Name="Temperature" BaseType="Resource.v1_0_0.ReferenceableMember">
+      <Property Name="Name" Type="Edm.String">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.Description" String="Temperature sensor name."/>
+        <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the temperature sensor."/>
+      </Property>
+    </EntityType>
+  </Schema>
 ```
+
+Using the above CSDL definitions, the JSON representation of "Thermal.v1_0_0.Temperature" is shown below.  It contains a property named "Temperatures", which contains an array of objects.  In this case, there are two instances, each of which contain the properties `@odata.id`, `MemberId`, and `Name`.  The `@odata.id` property in each of the Temperature objects contains the URI of the Thermal resource, and a JSON fragment identifier that identifies where in the JSON response the object resides.
 
 JSON representation:
 
 ```json
 {
+    "@odata.id": "/redfish/v1/Chassis/1/Thermal",
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/0",
             "MemberId": "0",
             "Name": "CPU1 Temp"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/1",
+            "MemberId": "1",
+            "Name": "Intake Temp"
         }
-    ]
+    ],
+    ...
 }
 ```
+
 
 #### Schema versioning
 
