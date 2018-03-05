@@ -437,9 +437,9 @@ OEM example:
 ```
 
 
-#### ReferenceableMembers
+#### Referenceable Members
 
-In some cases, Redfish uses EntityType elements to define embedded objects within a given Resource.  These EntityType elements inherit from Resource.v1_0_0.ReferenceableMember, which is defined in the Resource_v1.xml schema file.  All "ReferenceableMembers" contain a "MemberId" property.  A client is not able to perform HTTP operations, such as GET, on these EntityType elements.  AutoExpand is also included to ensure the properties of the resource are populated within the JSON body.  The purpose of defining these embedded objects as EntityType elements as opposed to ComplexType elements is to leverage the `@odata.id` property in order to allow other portions of the Redfish data model to provide a URI to an individual structure, such as a RelatedItem link pointing to a single Temperature object.  The `@odata.id` property is structured as a URI with a JSON fragment identifier in these cases.
+In some cases, Redfish uses EntityType elements to define embedded objects within a given Resource.  These EntityType elements inherit from Resource.v1_0_0.ReferenceableMember, which is defined in the Resource_v1.xml schema file.  All "Referenceable Members" contain a "MemberId" property.  A client is not able to perform HTTP operations, such as GET, on these EntityType elements.  AutoExpand is also included to ensure the properties of the resource are populated within the JSON body.  The purpose of defining these embedded objects as EntityType elements as opposed to ComplexType elements is to leverage the `@odata.id` property in order to allow other portions of the Redfish data model to provide a URI to an individual structure, such as a RelatedItem link pointing to a single Temperature object.  The `@odata.id` property is structured as a URI with a JSON fragment identifier in these cases.
 
 In the CSDL sample below, the Resource `Thermal` is defined.  It contains a single NavigationProperty element named `Temperatures`, which is an array of `Thermal.v1_0_0.Temperature` elements.  This NavigationProperty also contains the `OData.AutoExpand` Annotation element, meaning that the properties defined by `Thermal.v1_0_0.Temperature` will be contained in the payload for `Thermal.v1_0_0.Thermal`.
 
