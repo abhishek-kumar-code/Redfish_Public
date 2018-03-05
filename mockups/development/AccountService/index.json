@@ -24,13 +24,8 @@
     },
     "LocalAccountAuth": "Enabled",
     "LDAP": {
-        "@odata.id": "/redfish/v1/AccountService#/LDAP",
-        "@odata.type": "#ExternalAccountProvider.v1_0_0.ExternalAccountProvider",
-        "Id": "LDAP",
-        "Name": "Remote LDAP Service",
-        "Description": "Remote LDAP Service providing additional Accounts to this Redfish Service",
         "AccountProviderType": "LDAPService",
-		  "ServiceEnabled": false,
+        "ServiceEnabled": false,
         "ServiceAddresses": [
             "ldaps://ldap.example.org:636"
         ],
@@ -68,13 +63,8 @@
         ]
     },
     "ActiveDirectory": {
-        "@odata.id": "/redfish/v1/AccountService#/ActiveDirectory",
-        "@odata.type": "#ExternalAccountProvider.v1_0_0.ExternalAccountProvider",
-        "Id": "ActiveDirectory",
-        "Name": "Remote Active Directory Service",
-        "Description": "Remote AD Service providing additional Accounts to this Redfish Service",
         "AccountProviderType": "ActiveDirectoryService",
-		  "ServiceEnabled": true,
+        "ServiceEnabled": true,
         "ServiceAddresses": [
             "ad1.example.org",
             "ad2.example.org",
