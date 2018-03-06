@@ -1,10 +1,10 @@
 {
     "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-    "Id": "ComposedSystem",
+    "Id": "ComposedSystem2",
     "Name": "Sample Composed System",
     "SystemType": "Composed",
     "Description": "This shows an example of a composed system",
-    "UUID": "37596f04-b032-48ce-9bad-7d55a61fe574",
+    "UUID": "c799d9a4-f5e4-402c-a1b5-0cd9d5213891",
     "HostName": "composed-system",
     "PowerState": "On",
     "Boot": {
@@ -18,31 +18,31 @@
         ]
     },
     "Processors": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Processors"
+        "@odata.id" : "/redfish/v1/Systems/ComposedSystem2/Processors"
     },
     "Memory": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Memory"
+        "@odata.id" : "/redfish/v1/Systems/ComposedSystem2/Memory"
     },
     "EthernetInterfaces": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/EthernetInterfaces"
+        "@odata.id" : "/redfish/v1/Systems/ComposedSystem2/EthernetInterfaces"
     },
     "Storage": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Storage"
+        "@odata.id" : "/redfish/v1/Systems/ComposedSystem2/Storage"
     },
     "Links": {
         "ResourceBlocks": [
             {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1"
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2"
             },
             {
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3"
             },
             {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4"
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8"
             }
         ]
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/ComposedSystem",
+    "@odata.id": "/redfish/v1/Systems/ComposedSystem2",
     "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
