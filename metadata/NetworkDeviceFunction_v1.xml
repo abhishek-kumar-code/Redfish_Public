@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkDeviceFunction  v1.2.0-->
+<!--# Redfish Schema:  NetworkDeviceFunction  v1.2.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -16,6 +16,10 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -28,9 +32,6 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
     <edmx:Include Namespace="PCIeFunction"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkDeviceFunction_v1.xml">
-    <edmx:Include Namespace="VLanNetworkInterface.v1_0_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -95,9 +96,9 @@
         </Property>
         <NavigationProperty Name="AssignablePhysicalPorts" Type="Collection(NetworkPort.NetworkPort)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The array of physical port references that this network device function may be assigned to."/>          
+          <Annotation Term="OData.Description" String="The array of physical port references that this network device function may be assigned to."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of physical port references that this network device function may be assigned to."/>
-          <Annotation Term="OData.AutoExpandReferences"/>          
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="PhysicalPortAssignment" Type="NetworkPort.NetworkPort" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -154,20 +155,24 @@
           <Annotation Term="OData.Description" String="The configuration source of the WWNs for this connection (WWPN and WWNN)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration source of the World-Wide Names (WWNs) for this connection (WWPN and WWNN)."/>
         </Property>
-        <Property Name="FCoELocalVLANId" Type="VLanNetworkInterface.v1_0_0.VLANId">
+        <Property Name="FCoELocalVLANId" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The locally configured FCoE VLAN ID."/>
           <Annotation Term="OData.LongDescription" String="For FCoE connections, the value of this property shall be the VLAN ID configured locally by setting this property.  This value shall be used for FCoE traffic to this network device function during boot unless AllowFIPVLANDiscovery is true and a valid FCoE VLAN ID is found via the FIP VLAN Discovery Protocol."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="AllowFIPVLANDiscovery" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Whether the FCoE Initialization Protocol (FIP) is used for populating the FCoE VLAN Id."/>
           <Annotation Term="OData.LongDescription" String="For FCoE connections, the value of this property shall be a boolean indicating whether the FIP VLAN Discovery Protocol is used to determine the FCoE VLAN ID selected by the network device function for the FCoE connection.  If true, and the FIP VLAN Discovery succeeds, the FCoEActiveVLANId property shall reflect the FCoE VLAN ID to be used for all FCoE traffic.  If false, or if the FIP VLAN Discovery protocol fails, the FCoELocalVLANId shall be used for all FCoE traffic and the FCoEActiveVLANId shall reflect the FCoELocalVLANId."/>
         </Property>
-        <Property Name="FCoEActiveVLANId" Type="VLanNetworkInterface.v1_0_0.VLANId">
+        <Property Name="FCoEActiveVLANId" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The active FCoE VLAN ID."/>
           <Annotation Term="OData.LongDescription" String="For FCoE connections, the value of this property shall be null or a VLAN ID currently being used for FCoE traffic.  When the FCoE link is down this value shall be null.  When the FCoE link is up this value shall be either the FCoELocalVLANId property or a VLAN discovered via the FIP protocol."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="BootTargets" Type="Collection(NetworkDeviceFunction.v1_0_0.BootTargets)">
           <Annotation Term="OData.Description" String="An array of Fibre Channel boot targets configured for this network device function."/>
@@ -263,10 +268,12 @@
           <Annotation Term="OData.Description" String="This indicates if the primary VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for the primary iSCSI boot target."/>
         </Property>
-        <Property Name="PrimaryVLANId" Type="VLanNetworkInterface.v1_0_0.VLANId">
+        <Property Name="PrimaryVLANId" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The 802.1q VLAN ID to use for iSCSI boot from the primary target."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the 802.1q VLAN ID to use for iSCSI boot from the primary target.  This VLAN ID is only used if PrimaryVLANEnable is true."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="PrimaryDNS" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -298,10 +305,12 @@
           <Annotation Term="OData.Description" String="This indicates if the secondary VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for the secondary iSCSI boot target."/>
         </Property>
-        <Property Name="SecondaryVLANId" Type="VLanNetworkInterface.v1_0_0.VLANId">
+        <Property Name="SecondaryVLANId" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The 802.1q VLAN ID to use for iSCSI boot from the secondary target."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the 802.1q VLAN ID to use for iSCSI boot from the secondary target.  This VLAN ID is only used if SecondaryVLANEnable is true."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="SecondaryDNS" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -471,7 +480,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_0">
-
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_1.NetworkDeviceFunction"/>
       <ComplexType Name="Links" BaseType="NetworkDeviceFunction.v1_0_0.Links">
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -482,11 +491,10 @@
       </ComplexType>
 
     </Schema>
-        
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_1">
-      <Annotation Term="OData.Description" String="This version was created to use the VLANId type definition in place of EDM.64."/>
-      <ComplexType Name="FibreChannel" BaseType="NetworkDeviceFunction.v1_0_0.FibreChannel"/>
-      <ComplexType Name="iSCSIBoot" BaseType="NetworkDeviceFunction.v1_0_0.iSCSIBoot"/>
+      <Annotation Term="OData.Description" String="This version was created to add validation terms to the different VLANId properties."/>
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_2_0.NetworkDeviceFunction"/>
     </Schema>
 
   </edmx:DataServices>
