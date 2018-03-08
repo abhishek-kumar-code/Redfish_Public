@@ -97,7 +97,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CollectionCapabilities.v1_1_0">
       <Annotation Term="OData.Description" String="This version was created to add ComputerSystemConstrainedComposition to the UseCase enum."/>
-      <ComplexType Name="CollectionCapabilities" BaseType="CollectionCapabilities.v1_1_0.CollectionCapabilities"/>
+      <ComplexType Name="CollectionCapabilities" BaseType="CollectionCapabilities.v1_0_0.CollectionCapabilities"/>
     </Schema>
 
   </edmx:DataServices>
