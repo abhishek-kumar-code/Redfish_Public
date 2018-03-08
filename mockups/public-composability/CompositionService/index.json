@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#CompositionService.v1_0_0.CompositionService",
+    "@odata.type": "#CompositionService.v1_1_0.CompositionService",
     "Id": "CompositionService",
     "Name": "Composition Service",
     "Status": {
