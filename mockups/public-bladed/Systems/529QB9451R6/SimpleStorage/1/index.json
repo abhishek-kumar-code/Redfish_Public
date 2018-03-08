@@ -4,29 +4,24 @@
     "Name": "Simple Storage Controller",
     "Description": "System SATA",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Devices": [
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SATA Bay 1",
             "Manufacturer": "Contoso",
             "Model": "3000GT8",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
-            "@odata.type": "#SimpleStorage.v1_1_0.Device",
             "Name": "SATA Bay 2",
             "Manufacturer": "Contoso",
             "Model": "3000GT8",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }

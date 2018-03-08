@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1",
-    "@odata.type": "#EthernetInterface.v1_0_0.EthernetInterface",
+    "@odata.type": "#EthernetInterface.v1_4_0.EthernetInterface",
     "Id": "1",
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
@@ -11,8 +11,8 @@
         "Health": "OK"
     },
     "InterfaceEnabled": true,
-    "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
-    "MACAddress": "AA:BB:CC:DD:EE:FF",
+    "PermanentMACAddress": "1E:C3:DE:6F:1E:24",
+    "MACAddress": "1E:C3:DE:6F:1E:24",
     "SpeedMbps": 100,
     "AutoNeg": true,
     "FullDuplex": true,
@@ -23,6 +23,21 @@
     "VLAN": {
         "VLANEnable": true,
         "VLANId": 101
+    },
+    "DHCPv4": {
+        "DHCPEnabled": true,
+        "UseDNSServers": true,
+        "UseGateway": true,
+        "UseNTPServers": false,
+        "UseStaticRoutes": true,
+        "UseDomainName": true
+    },
+    "DHCPv6": {
+        "OperatingMode": "Stateful",
+        "UseDNSServers": true,
+        "UseDomainName": false,
+        "UseNTPServers": false,
+        "UseRapidCommit": false
     },
     "IPv4Addresses": [
         {
@@ -40,13 +55,30 @@
             "Label": 0
         }
     ],
-    "IPv6StaticAddresses": [
+    "StatelessAddressAutoConfig": {
+        "IPv4AutoConfigEnabled": false,
+        "IPv6AutoConfigEnabled": true
+    },
+    "IPv4StaticAddresses": [
         {
-            "Address": "fe80::1ec1:deff:fe6f:1e24",
-            "PrefixLength": 16
+            "Address": "192.168.88.130",
+            "SubnetMask": "255.255.0.0",
+            "Gateway": "192.168.0.1"
         }
     ],
-    "IPv6DefaultGateway": "fe80::1ec1:deff:fe6f:1e24",
+    "IPv6StaticAddresses": [
+        {
+            "Address": "fc00:1234::a:b:c:d",
+            "PrefixLength": 64
+        }
+    ],
+    "IPv6StaticDefaultGateways": [
+        {
+            "Address": "fe80::fe15:b4ff:fe97:90cd",
+            "PrefixLength": 64
+        }
+    ],
+    "IPv6DefaultGateway": "fe80::214:c1ff:fe4c:5c4d",
     "IPv6Addresses": [
         {
             "Address": "fe80::1ec1:deff:fe6f:1e24",
@@ -54,10 +86,38 @@
             "AddressOrigin": "SLAAC",
             "AddressState": "Preferred",
             "Oem": {}
+        },
+        {
+            "Address": "fc00:1234::a:b:c:d",
+            "PrefixLength": 64,
+            "AddressOrigin": "Static",
+            "AddressState": "Preferred",
+            "Oem": {}
+        },
+        {
+            "Address": "2001:1:3:5::100",
+            "PrefixLength": 64,
+            "AddressOrigin": "DHCPv6",
+            "AddressState": "Preferred",
+            "Oem": {}
+        },
+        {
+            "Address": "2002:2:5::1ec1:deff:fe6f:1e24",
+            "PrefixLength": 64,
+            "AddressOrigin": "SLAAC",
+            "AddressState": "Preferred",
+            "Oem": {}
         }
     ],
     "NameServers": [
-        "TheNameServer"
+        "192.168.200.10",
+        "192.168.150.1",
+        "fc00:1234:100::2500",
+        "fc00:1234:200:2500"
+    ],
+    "StaticNameServers": [
+        "192.168.150.1",
+        "fc00:1234:200:2500"
     ],
     "@Redfish.Settings": {
         "@odata.type": "#Settings.v1_0_0.Settings",

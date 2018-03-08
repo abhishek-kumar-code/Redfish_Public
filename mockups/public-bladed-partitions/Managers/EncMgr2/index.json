@@ -10,21 +10,18 @@
     "FirmwareVersion": "8.1.54",
     "DateTime": "2016-12-30T04:14:33+06:00",
     "Status": {
-        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy/0",
-            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "Redundancy",
             "Name": "Manager Redundancy",
             "Mode": "Failover",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -39,14 +36,12 @@
         }
     ],
     "GraphicalConsole": {
-        "@odata.type": "#Manager.v1_0_0.GraphicalConsole",
         "ServiceEnabled": true,
         "ConnectTypesSupported": [
             "KVMIP"
         ]
     },
     "SerialConsole": {
-        "@odata.type": "#Manager.v1_0_0.SerialConsole",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 1,
         "ConnectTypesSupported": [
@@ -55,7 +50,6 @@
         ]
     },
     "CommandShell": {
-        "@odata.type": "#Manager.v1_0_0.CommandShell",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 4,
         "ConnectTypesSupported": [
@@ -73,7 +67,6 @@
         "@odata.id": "/redfish/v1/Managers/EncMgr1/VM"
     },
     "Links": {
-        "@odata.type": "#Manager.v1_1_0.Links",
         "ManagerForServers": [
             {
                 "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
@@ -113,7 +106,6 @@
         ]
     },
     "Actions": {
-        "@odata.type": "#Manager.v1_0_0.Actions",
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/EncMgr1/Actions/Manager.Reset",
             "ResetType@Redfish.AllowableValues": [

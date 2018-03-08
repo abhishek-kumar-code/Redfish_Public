@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#EthernetInterface.v1_2_0.EthernetInterface",
     "$ref": "#/definitions/EthernetInterface",
     "definitions": {
@@ -51,9 +51,7 @@
                     "description": "The IPv6 Label (as defined in RFC 6724 section 2.1).",
                     "longDescription": "This property shall contain the IPv6 Label value for this table entry as defined in RFC 6724 section 2.1."
                 }
-            },
-            "description": "A entry in the RFC 6724 Address Selection Policy Table.",
-            "longDescription": "This type shall describe and entry in the Address Selection Policy Table as defined in RFC 6724."
+            }
         },
         "MACAddress": {
             "type": "string",
@@ -354,5 +352,5 @@
             "longDescription": "This resource shall be used to represent NIC resources as part of the Redfish specification."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

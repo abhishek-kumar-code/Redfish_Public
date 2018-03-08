@@ -62,7 +62,7 @@
             "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
         },
         "PropertyValueFormatError": {
-            "Description": "Indicates that a property was given the correct value type but the value of that property was not supported.  This includes value size/length exceeded.",
+            "Description": "Indicates that a property was given the correct value type but the value of that property was not supported.",
             "Message": "The value %1 for the property %2 is of a different format than the property can accept.",
             "Severity": "Warning",
             "NumberOfArgs": 2,
@@ -273,10 +273,26 @@
         },
         "ResourceAlreadyExists": {
             "Description": "Indicates that a resource change or creation was attempted but that the operation cannot proceed because the resource already exists.",
-            "Message": "The requested resource already exists.",
+            "Message": "The requested resource of type %1 with the property %2 with the value %3 already exists.",
             "Severity": "Critical",
-            "NumberOfArgs": 0,
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
             "Resolution": "Do not repeat the create operation as the resource has already been created."
+        },
+        "ResourceNotFound": {
+            "Description": "Indicates that the operation expected a resource identifier that corresponds to an existing resource but one was not found.",
+            "Message": "The requested resource of type %1 named %2 was not found.",
+            "Severity": "Critical",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Provide a valid resource identifier and resubmit the request."
         },
         "CreateFailedMissingReqProperties": {
             "Description": "Indicates that a create was attempted on a resource but that properties that are required for the create operation were missing from the request.",
@@ -474,6 +490,27 @@
             "Severity": "Critical",
             "NumberOfArgs": 0,
             "Resolution": "Ensure that the resource is in the correct power state and resubmit the request."
-        }      
+        },
+        "ResourceExhaustion": {
+            "Description": "Indicates that a resource could not satisfy the request due to some unavailability of resources.  An example is that available capacity has been allocated.",
+            "Message": "The resource %1 was unable to satisfy the request due to unavailability of resources.",
+            "Severity": "Critical",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Ensure that the resources are available and resubmit the request."
+        },
+        "StringValueTooLong": {
+            "Description": "Indicates that a string value passed to the given resource exceeded its length limit. An example is when a shorter limit is imposed by an implementation than that allowed by the specification.",
+            "Message": "The string %1 exceeds the length limit %2.",
+            "Severity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "Resolution": "Resubmit the request with an appropriate string length."
+        }
     }
 }

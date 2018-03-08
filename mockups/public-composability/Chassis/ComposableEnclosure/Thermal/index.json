@@ -5,11 +5,9 @@
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure/Thermal#/Temperatures/0",
-            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "Chassis Intake",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -48,12 +46,10 @@
     "Fans": [
         {
             "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure/Thermal#/Fans/0",
-            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "0",
             "Name": "System Fan 0",
             "PhysicalContext": "Front",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -93,12 +89,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure/Thermal#/Fans/1",
-            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "1",
             "Name": "System Fan 1",
             "PhysicalContext": "Front",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -138,12 +132,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure/Thermal#/Fans/2",
-            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "2",
             "Name": "System Fan 2",
             "PhysicalContext": "Front",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "Critical"
             },
@@ -183,12 +175,10 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure/Thermal#/Fans/3",
-            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "3",
             "Name": "System Fan 3",
             "PhysicalContext": "Front",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -230,7 +220,6 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure/Thermal#/Redundancy/0",
-            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "0",
             "Name": "System Fans",
             "RedundancySet": [
@@ -249,7 +238,6 @@
             ],
             "Mode": "N+m",
             "Status": {
-                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "Warning"
             },
@@ -259,5 +247,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure/Thermal",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
