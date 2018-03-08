@@ -51,7 +51,7 @@ Example Composition Service Resource:
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#CompositionService.CompositionService",
-    "@odata.type": "#CompositionService.v1_0_0.CompositionService",
+    "@odata.type": "#CompositionService.v1_1_0.CompositionService",
     "@odata.id": "/redfish/v1/CompositionService",
     "Id": "CompositionService",
     "Name": "Composition Service",
@@ -172,7 +172,7 @@ Example Resource Zone Resource:
         ]
     },
     "@Redfish.CollectionCapabilities": {
-        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "@odata.type": "#CollectionCapabilities.v1_1_0.CollectionCapabilities",
         "Capabilities": [
             {
                 "CapabilitiesObject": {
@@ -217,7 +217,7 @@ Example Collection Capabilities Annotation:
 ```json
 {
     "@Redfish.CollectionCapabilities": {
-        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "@odata.type": "#CollectionCapabilities.v1_1_0.CollectionCapabilities",
         "Capabilities": [
             {
                 "CapabilitiesObject": {
@@ -439,7 +439,7 @@ Resource Zone Capabilities Sample:
     "Status": {},
     "Links": {},
     "@Redfish.CollectionCapabilities": {
-        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "@odata.type": "#CollectionCapabilities.v1_1_0.CollectionCapabilities",
         "Capabilities": [
             {
                 "CapabilitiesObject": { "@odata.id": "/redfish/v1/Systems/Capabilities" },

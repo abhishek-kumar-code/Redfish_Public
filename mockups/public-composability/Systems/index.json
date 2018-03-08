@@ -11,7 +11,7 @@
         }
     ],
     "@Redfish.CollectionCapabilities": {
-        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "@odata.type": "#CollectionCapabilities.v1_1_0.CollectionCapabilities",
         "Capabilities": [
             {
                 "CapabilitiesObject": {
@@ -33,7 +33,6 @@
                 }
             },
             {
-                "@odata.type": "#CollectionCapabilities.v1_0_0.Capability",
                 "CapabilitiesObject": {
                     "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities"
                 },
@@ -41,9 +40,17 @@
                 "Links": {
                     "TargetCollection": {
                         "@odata.id": "/redfish/v1/Systems"
-                    }
+                    },
+                    "RelatedItem": [
+                        {
+                            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1"
+                        },
+                        {
+                            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2"
+                        }
+                    ]
                 }
-            }    
+            }
         ]
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
