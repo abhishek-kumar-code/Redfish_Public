@@ -206,9 +206,9 @@ The property `CapabilitiesObject` contains a URI to the underlying object instan
 
 The property `UseCase` is used to inform the client of the context of a particular create (POST) operation.  The table below shows the different values for `UseCase` as used by Composability.  Each value corresponds with a specific type of resource being composed in addition to a [type of composition](#types-of-compositions) for the request.
 
-| `UseCase` Value             | Composed Resource | Type of Composition               |
-| --------------------------- | ----------------- | --------------------------------- |
-| `ComputerSystemComposition` | `ComputerSystem`  | [Specific](#specific-composition) |
+| `UseCase` Value                        | Composed Resource | Type of Composition                     |
+| -------------------------------------- | ----------------- | --------------------------------------- |
+| `ComputerSystemComposition`            | `ComputerSystem`  | [Specific](#specific-composition)       |
 | `ComputerSystemConstrainedComposition` | `ComputerSystem`  | [Constrained](#constrained-composition) |
 
 The property `TargetCollection` inside the `Links` object contains the URI of the Resource Collection that accepts the given capability.  A client will be able to perform a create (POST) operation against this URI as described by the contents of the `CapabilitiesObject`.
@@ -232,7 +232,7 @@ Example Collection Capabilities Annotation:
             },
             {
                 "CapabilitiesObject": {
-                    "@odata.id": "/redfish/v1/Systems/CapabilitiesEN"
+                    "@odata.id": "/redfish/v1/Systems/CapabilitiesConstrained"
                 },
                 "UseCase": "ComputerSystemConstrainedComposition",
                 "Links": {
@@ -247,7 +247,7 @@ Example Collection Capabilities Annotation:
 }
 ```
 
-The above annotation contains a single capability.  From the `UseCase`, this capability describes how to form a create (POST) request to create a new Computer System from a set of specific Resource Blocks.  In addition, the `TargetCollection` property indicates that a client can make the request to the Resource Collection `/redfish/v1/Systems`; new instances of the resource created by the client will be found in that collection.
+The above annotation contain two capabilities.  In the first capability object, the `UseCase` property shows that this capability describes how to form a create (POST) request to create a new Computer System from a set of specific Resource Blocks.  In addition, the `TargetCollection` property indicates that a client can make the request to the Resource Collection `/redfish/v1/Systems`; new instances of the resource created by the client will be found in that collection.  In the second capability object, the `UseCase` property shows that this capability describes how to form a create (POST) request to create a new Computer System from a set of constraints.
 
 
 ### Collection Capabilities Object
@@ -328,6 +328,8 @@ Example Create (POST) Body for a Specific Composition:
     }
 }
 ```
+
+
 ## Constrained Composition
 
 The Constrained Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the ResourceBlocks is delegated by client to the Composition Service. In constrained composition, the client does not need to comprehend Resource Zones.
@@ -352,16 +354,18 @@ Application code should always start at the root: `/redfish/v1/`
     2. Perform a GET on the URI given by that property
     3. Look for the value of `ServiceEnabled` attribute to be true
 
-    ```
-    Client|                                              | Redfish Service
-          |---- GET /redfish/v1/CompositionService ----->|
-          |<--- { ..., "ServiceEnabled": true, ... } <---|
-    ```
+General Flow Diagram:
+```
+Client|                                              | Redfish Service
+      |---- GET /redfish/v1/CompositionService ----->|
+      |<--- { ..., "ServiceEnabled": true, ... } <---|
+```
 
 
 ### Specific Composition Workflow
 
 The client needs to understand the composition model reported by the [Composition Service](#composition-service) by reading the [Resource Blocks](#resource-blocks) and [Resource Zones](#resource-zones) collections.  This relationship will be used to execute the reported `UseCase` supported by the Redfish service described later in the [Create a Composed Resource](#create-a-composed-resource) section.
+
 
 #### Read the [Resource Blocks](#resource-blocks)
 
@@ -370,28 +374,29 @@ The client needs to understand the composition model reported by the [Compositio
 3. Perform a GET on that URI to get a list of all Resource Blocks
 4. For accessing details of a particular Resource Block, perform a GET on the associated URI listed for a given entry in the `Members` array
 5. The `CompositionStatus` property in each Resource Block will identify the availablity of the Resource Block in composition requests
-        * Clients should take note of this when making decisions on what Resource Blocks to use in a composition request
-        * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition
+    * Clients should take note of this when making decisions on what Resource Blocks to use in a composition request
+    * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition
 
-    ```json
-    {
-        "@odata.type": "#ResourceBlockCollection.ResourceBlockCollection",
-        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks",
-        "Name": "Resource Block Collection",
-        "Members@odata.count": 9,
-        "Members": [
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock6" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9" }
-        ]
-    }
-    ```
+Resource Block Collection Sample:
+```json
+{
+    "@odata.type": "#ResourceBlockCollection.ResourceBlockCollection",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks",
+    "Name": "Resource Block Collection",
+    "Members@odata.count": 9,
+    "Members": [
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock6" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9" }
+    ]
+}
+```
 
 
 #### Read the [Resource Zones](#resource-zones)
@@ -401,18 +406,19 @@ The client needs to understand the composition model reported by the [Compositio
 3. Perform a GET on that URI to get a list of all Resource Zones
 4. For accessing details of a particular Resource Zone, perform a GET on the associated URI listed for a given entry in the `Members` array
 
-    ```json
-    {
-        "@odata.type": "#ZoneCollection.ZoneCollection",
-        "@odata.id": "/redfish/v1/CompositionService/ResourceZones",
-        "Name": "Resource Zone Collection",
-        "Members@odata.count": 2,
-        "Members": [
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2" }
-        ]
-    }
-    ```
+Resource Zone Collection Sample:
+```json
+{
+    "@odata.type": "#ZoneCollection.ZoneCollection",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones",
+    "Name": "Resource Zone Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1" },
+        { "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2" }
+    ]
+}
+```
 
 
 #### Read the [Capabilities](#collection-capabilities) for Each Resource Zone
@@ -422,70 +428,73 @@ The client needs to understand the composition model reported by the [Compositio
     * The `UseCase` property will be used later when a client has determined what type of composition to create
     * The `TargetCollection` property will be used later for making the composition request
 
-    ```json
-    {
-        "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-        "@odata.type": "#Zone.v1_1_0.Zone",
-        "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1",
-        "Id": "1",
-        "Name": "Resource Zone 1",
-        "Status": {},
-        "Links": {},
-        "@Redfish.CollectionCapabilities": {
-            "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
-            "Capabilities": [
-                {
-                    "CapabilitiesObject": { "@odata.id": "/redfish/v1/Systems/Capabilities" },
-                    "UseCase":"ComputerSystemComposition",
-                    "Links": {
-                        "TargetCollection": { "@odata.id": "/redfish/v1/Systems" },
-                        "RelatedItem": [
-                            { "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1" }
-                        ]
-                    }
+Resource Zone Capabilities Sample:
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.type": "#Zone.v1_1_0.Zone",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1",
+    "Id": "1",
+    "Name": "Resource Zone 1",
+    "Status": {},
+    "Links": {},
+    "@Redfish.CollectionCapabilities": {
+        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "Capabilities": [
+            {
+                "CapabilitiesObject": { "@odata.id": "/redfish/v1/Systems/Capabilities" },
+                "UseCase":"ComputerSystemComposition",
+                "Links": {
+                    "TargetCollection": { "@odata.id": "/redfish/v1/Systems" },
+                    "RelatedItem": [
+                        { "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1" }
+                    ]
                 }
-            ]
-        }
+            }
+        ]
     }
-    ```
+}
+```
 
 
 #### Read Each Capabilities Object
+
 1. Perform a GET on the URI listed in the `CapabilitiesObject` property for each of the Capabilities
 
-    ```json
-    {
-        "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-        "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-        "@odata.id": "/redfish/v1/Systems/Capabilities",
-        "Id": "Capabilities",
-        "Name": "Capabilities for the Zone",
-        "Name@Redfish.RequiredOnCreate": true,
-        "Name@Redfish.SetOnlyOnCreate": true,
-        "Description@Redfish.OptionalOnCreate": true,
-        "Description@Redfish.SetOnlyOnCreate": true,
-        "HostName@Redfish.OptionalOnCreate": true,
-        "HostName@Redfish.UpdatableAfterCreate": true,
-        "Boot@Redfish.OptionalOnCreate": true,
-        "Boot": {
-            "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
-            "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
-            "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
-            "BootSourceOverrideTarget@Redfish.UpdatableAfterCreate": true,
-            "BootSourceOverrideTarget@Redfish.AllowableValues": [
-                "None",
-                "Pxe",
-                "Usb",
-                "Hdd"
-            ]
-        },
-        "Links@Redfish.RequiredOnCreate": true,
-        "Links": {
-            "ResourceBlocks@Redfish.RequiredOnCreate": true,
-            "ResourceBlocks@Redfish.UpdatableAfterCreate": true
-        }
+Capabilities Object Sample for a Specific Composition:
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/Capabilities",
+    "Id": "Capabilities",
+    "Name": "Capabilities for the Zone",
+    "Name@Redfish.RequiredOnCreate": true,
+    "Name@Redfish.SetOnlyOnCreate": true,
+    "Description@Redfish.OptionalOnCreate": true,
+    "Description@Redfish.SetOnlyOnCreate": true,
+    "HostName@Redfish.OptionalOnCreate": true,
+    "HostName@Redfish.UpdatableAfterCreate": true,
+    "Boot@Redfish.OptionalOnCreate": true,
+    "Boot": {
+        "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
+        "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
+        "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
+        "BootSourceOverrideTarget@Redfish.UpdatableAfterCreate": true,
+        "BootSourceOverrideTarget@Redfish.AllowableValues": [
+            "None",
+            "Pxe",
+            "Usb",
+            "Hdd"
+        ]
+    },
+    "Links@Redfish.RequiredOnCreate": true,
+    "Links": {
+        "ResourceBlocks@Redfish.RequiredOnCreate": true,
+        "ResourceBlocks@Redfish.UpdatableAfterCreate": true
     }
-    ```
+}
+```
 
 
 #### Create a Composed Resource
@@ -568,9 +577,10 @@ Here are the few operations that a client is expected to use during creation and
 
 
 #### Read the Capabilities Object
-    
+
 Perform a GET on the URI listed in the `CapabilitiesObject` property whose "UseCase" property has the value "ComputerSystemConstrainedComposition".
 
+Capabilities Object Sample for a Constrained Composition:
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
@@ -731,6 +741,7 @@ The `@Redfish.RequestedCount` annotation specifies the amount of a resource bein
 
 Note that the composition request should be kept simple to increase the probability of a successful composition.  Overly-constrained requests are less likely to be fulfilled.
 
+Sample Request Payload for Describing Sets of Processors:
 ```json
 {
     "Processors": {
@@ -754,7 +765,6 @@ Note that the composition request should be kept simple to increase the probabil
 POST the request to the `TargetCollection` URI
 
 Client Request Example:
-
 ```http
 POST /redfish/v1/Systems HTTP/1.1
 Content-Type: application/json; charset=utf-8
