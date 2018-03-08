@@ -333,7 +333,6 @@ Example Create (POST) Body for a Specific Composition:
 The Constrained Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the ResourceBlocks is delegated by client to the Composition Service. In constrained composition, the client does not need to comprehend Resource Zones.
 
 
-
 # Appendix
 
 
@@ -359,11 +358,13 @@ Application code should always start at the root: `/redfish/v1/`
           |<--- { ..., "ServiceEnabled": true, ... } <---|
     ```
 
+
 ### Specific Composition Workflow
 
 The client needs to understand the composition model reported by the [Composition Service](#composition-service) by reading the [Resource Blocks](#resource-blocks) and [Resource Zones](#resource-zones) collections.  This relationship will be used to execute the reported `UseCase` supported by the Redfish service described later in the [Create a Composed Resource](#create-a-composed-resource) section.
 
 #### Read the [Resource Blocks](#resource-blocks)
+
 1. Perform a GET on the Composition Service URI
 2. Look for the `ResourceBlocks` property
 3. Perform a GET on that URI to get a list of all Resource Blocks
@@ -392,7 +393,9 @@ The client needs to understand the composition model reported by the [Compositio
     }
     ```
 
+
 #### Read the [Resource Zones](#resource-zones)
+
 1. Perform a GET on the Composition Service URI
 2. Look for the `ResourceZones` property
 3. Perform a GET on that URI to get a list of all Resource Zones
@@ -411,12 +414,14 @@ The client needs to understand the composition model reported by the [Compositio
     }
     ```
 
+
 #### Read the [Capabilities](#collection-capabilities) for Each Resource Zone
+
 1. Perform a GET on each Resource Zone using the URI found in each entry of the `Members` array
 2. Look for the `@Redfish.CollectionCapabilities` annotation in each Resource Zone
-	* The `UseCase` property will be used later when a client has determined what type of composition to create
+    * The `UseCase` property will be used later when a client has determined what type of composition to create
     * The `TargetCollection` property will be used later for making the composition request
-    
+
     ```json
     {
         "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
@@ -444,10 +449,9 @@ The client needs to understand the composition model reported by the [Compositio
     }
     ```
 
+
 #### Read Each Capabilities Object
 1. Perform a GET on the URI listed in the `CapabilitiesObject` property for each of the Capabilities
-
-	Specific Composition Capabilities
 
     ```json
     {
@@ -483,6 +487,7 @@ The client needs to understand the composition model reported by the [Compositio
     }
     ```
 
+
 #### Create a Composed Resource
 
 The client builds a specific composition request, the client with the following steps.
@@ -505,9 +510,9 @@ The client builds a specific composition request, the client with the following 
 4. Using all the properties that were annotated with `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI
     * In step 4 of [the above example](#read-the-resource-blocks), only `Name` and `ResourceBlocks` found in `Links` are required
     * The Redfish service may accept other properties as part of the request so they do not need to be updated later
-	5. The `Location` HTTP header in the service response contains the URI of the composed resource
+5. The `Location` HTTP header in the service response contains the URI of the composed resource
 
-	General Flow Diagram:
+General Flow Diagram:
 ```
 Client  |                                                                     | Redfish Service
         |---> GET /redfish/v1/CompositionService/ResourceZones/1 ------------>|
@@ -529,7 +534,7 @@ Client  |                                                                     | 
         |   { "CompositionStatus": { "Reserved": true } } ------------------->|
 ```
 
-	Client Request Example:
+Client Request Example:
 ```http
 POST /redfish/v1/Systems HTTP/1.1
 Content-Type: application/json; charset=utf-8
@@ -546,7 +551,7 @@ OData-Version: 4.0
 }
 ```
 
-	Service Response Example:
+Service Response Example:
 ```http
 HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
@@ -555,6 +560,7 @@ Location: /redfish/v1/Systems/NewSystem
 ```
 
 The above Client Request Example shows a specific composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is creating a new Computer System using the Resource Blocks `ComputeBlock0` and `DriveBlock2`.  In the above Service Response Example, the service responsed with a successful 201 response, and indicated that the new Computer System can be found at `/redfish/v1/Systems/NewSystem`.
+
 
 ### Constrained Composition Workflow
 
@@ -565,137 +571,185 @@ Here are the few operations that a client is expected to use during creation and
     
 Perform a GET on the URI listed in the `CapabilitiesObject` property whose "UseCase" property has the value "ComputerSystemConstrainedComposition".
 
-
-	```json
-    {
-        "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-        "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-        "@odata.id": "/redfish/v1/Systems/Capabilities",
-        "Id": "Capabilities",
-        "Name": "Capabilities for the Zone",
-        "Name@Redfish.RequiredOnCreate": true,
-        "Name@Redfish.SetOnlyOnCreate": true,
-        "Description@Redfish.OptionalOnCreate": true,
-        "Description@Redfish.SetOnlyOnCreate": true,
-        "HostName@Redfish.OptionalOnCreate": true,
-        "HostName@Redfish.UpdatableAfterCreate": true,
-        "Boot@Redfish.OptionalOnCreate": true,
-        "Boot": {
-            "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
-            "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
-            "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
-            "BootSourceOverrideTarget@Redfish.UpdatableAfterCreate": true,
-            "BootSourceOverrideTarget@Redfish.AllowableValues": [
-                "None",
-                "Pxe",
-                "Usb",
-                "Hdd"
-            ]
-        },
-		"Processors": {
-        	"@odata.type": "#Processor.v1_1_0.Processor",
-        	"Members@Redfish.RequiredOnCreate": true,
-        	"Members": {
-            	"@Redfish.RequestedCountOptional": true,
-            	"ProcessorType@Redfish.RequiredOnCreate": true,
-            	"TotalCores@Redfish.RequiredOnCreate": true,
-            	"Model@Redfish.OptionalOnCreate": true,
-            	"InstructionSet@Redfish.OptionalOnCreate": true,
-            	"AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
-        	}
-    	},
-    	"Memory": {
-        	"@odata.type": "#Memory.v1_1_0.Memory",
-        	"Members@Redfish.RequiredOnCreate": true,
-        	"Members": {
-            	"@Redfish.RequestedCountOptional": true,
-            	"MemoryType@Redfish.RequiredOnCreate": true,
-            	"MemoryDeviceType@Redfish.OptionalOnCreate": true,
-            	"CapacityMiB@Redfish.RequiredOnCreate": true,
-            	"SpeedMHz@Redfish.OptionalOnCreate": true,
-            	"DataWidthBits@Redfish.OptionalOnCreate": true,
-            	"BusWidthBits@Redfish.OptionalOnCreate": true
-       		}
-    	},
-    	"SimpleStorage": {
-        	"@odata.type": "#SimpleStorage.v1_1_0.SimpleStorage",
-        	"Members@Redfish.RequiredOnCreate": true,
-        	"Members": {
-            	"@Redfish.RequestedCountOptional": true,
-            	"Devices@RequiredOnCreate": true,
-            	"Devices": {
-                	"CapacityBytes@RequiredOnCreate": true
-            	}
-        	}
-    	},
-    	"Storage": {
-        	"@odata.type": "#Storage.v1_1_0.Storage",
-        	"Members@Redfish.RequiredOnCreate": true,
-        	"Members": {
-            	"@Redfish.RequestedCountOptional": true,
-            	"StorageControllers@Redfish.OptionalOnCreate": true,
-            	"StorageControllers": {
-                	"SupportedControllerProtocols@RequiredOnCreate": true
-            	},
-            	"Devices@RequiredOnCreae": true,
-            	"Devices": {
-                	"CapacityBytes@RequiredOnCreate": true
-            	}
-        	}
-    	},
-    	"EthernetInterfaces": {
-        	"@odata.type": "#EthernetInterface.v1_1_0.EthernetInterface",
-        	"@Redfish.RequestedCountOptional": true,
-        	"SpeedMbps@Redfish.RequiredOnCreate": true,
-        	"FullDuplex@OptionalOnCreate": true
-    	},
-    	"NetworkInterfaces": {
-        	"@odata.type": "#NetworkInterface.v1_1_0.NetworktInterface",
-        	"NetworkPorts@RequiredOnCreate": true,
-        	"NetworkPorts": {
-            	"ActiveLinkTechnology@RequiredOnCreate": true
-        	},
-        	"SupportedLinkCapabilities@OptionalOnCreate": true,
-        	"SupportedLinkCapabilities": {
-            	"LinkSpeedMbps@RequiredOnCreate": true
-        	}
-    	}
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/Capabilities",
+    "Id": "Capabilities",
+    "Name": "Capabilities for the Zone",
+    "Name@Redfish.RequiredOnCreate": true,
+    "Name@Redfish.SetOnlyOnCreate": true,
+    "Description@Redfish.OptionalOnCreate": true,
+    "Description@Redfish.SetOnlyOnCreate": true,
+    "HostName@Redfish.OptionalOnCreate": true,
+    "HostName@Redfish.UpdatableAfterCreate": true,
+    "Boot@Redfish.OptionalOnCreate": true,
+    "Boot": {
+        "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
+        "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
+        "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
+        "BootSourceOverrideTarget@Redfish.UpdatableAfterCreate": true,
+        "BootSourceOverrideTarget@Redfish.AllowableValues": [
+            "None",
+            "Pxe",
+            "Usb",
+            "Hdd"
+        ]
+    },
+    "Processors@Redfish.RequiredOnCreate": true,
+    "Processors": {
+        "@odata.type": "#ProcessorCollection.ProcessorCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#Processor.v1_1_0.Processor",
+                "@Redfish.RequestedCountOptional": true,
+                "ProcessorType@Redfish.RequiredOnCreate": true,
+                "TotalCores@Redfish.RequiredOnCreate": true,
+                "Model@Redfish.OptionalOnCreate": true,
+                "InstructionSet@Redfish.OptionalOnCreate": true,
+                "AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
+            }
+        ]
+    },
+    "Memory@Redfish.RequiredOnCreate": true,
+    "Memory": {
+        "@odata.type": "#MemoryCollection.MemoryCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#Memory.v1_1_0.Memory",
+                "@Redfish.RequestedCountOptional": true,
+                "MemoryType@Redfish.RequiredOnCreate": true,
+                "MemoryDeviceType@Redfish.OptionalOnCreate": true,
+                "CapacityMiB@Redfish.RequiredOnCreate": true,
+                "SpeedMHz@Redfish.OptionalOnCreate": true,
+                "DataWidthBits@Redfish.OptionalOnCreate": true,
+                "BusWidthBits@Redfish.OptionalOnCreate": true
+            }
+        ]
+    },
+    "SimpleStorage@Redfish.OptionalOnCreate": true,
+    "SimpleStorage": {
+        "@odata.type": "#SimpleStorageCollection.SimpleStorageCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#SimpleStorage.v1_1_0.SimpleStorage",
+                "@Redfish.RequestedCountOptional": true,
+                "Devices@RequiredOnCreate": true,
+                "Devices": {
+                    "CapacityBytes@RequiredOnCreate": true
+                }
+            }
+        ]
+    },
+    "Storage@Redfish.OptionalOnCreate": true,
+    "Storage": {
+        "@odata.type": "#StorageCollection.StorageCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#Storage.v1_1_0.Storage",
+                "@Redfish.RequestedCountOptional": true,
+                "StorageControllers@Redfish.OptionalOnCreate": true,
+                "StorageControllers": [
+                    {
+                        "@Redfish.RequestedCountOptional": true,
+                        "SupportedControllerProtocols@RequiredOnCreate": true
+                    }
+                ],
+                "Devices@RequiredOnCreate": true,
+                "Drives": [
+                    {
+                        "@odata.type": "#Drive.v1_4_0.Drive",
+                        "@Redfish.RequestedCountOptional": true,
+                        "CapacityBytes@RequiredOnCreate": true
+                    }
+                ]
+            }
+        ]
+    },
+    "EthernetInterfaces@Redfish.OptionalOnCreate": true,
+    "EthernetInterfaces": {
+        "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#EthernetInterface.v1_1_0.EthernetInterface",
+                "@Redfish.RequestedCountOptional": true,
+                "SpeedMbps@Redfish.RequiredOnCreate": true,
+                "FullDuplex@OptionalOnCreate": true
+            }
+        ]
+    },
+    "NetworkInterfaces@Redfish.OptionalOnCreate": true,
+    "NetworkInterfaces": {
+        "@odata.type": "#NetworkInterfaceCollection.NetworkInterfaceCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#NetworkInterface.v1_1_0.NetworkInterface",
+                "@Redfish.RequestedCountOptional": true,
+                "NetworkPorts@RequiredOnCreate": true,
+                "NetworkPorts": {
+                    "@odata.type": "#NetworkPortCollection.NetworkPortCollection",
+                    "Members@Redfish.RequiredOnCreate": true,
+                    "Members": [
+                        {
+                            "@odata.type": "#NetworkPort.v1_1_0.NetworkPort",
+                            "@Redfish.RequestedCountOptional": true,
+                            "ActiveLinkTechnology@RequiredOnCreate": true,
+                            "SupportedLinkCapabilities@OptionalOnCreate": true,
+                            "SupportedLinkCapabilities": {
+                                "LinkSpeedMbps@RequiredOnCreate": true
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
     }
     ```
 
+
 #### Create the Composition Request
 
-In the composition request, the following properties can contain an enumeration annotation,  **@Redfish.RequestedCount**.   For each property, their required sub-properties are listed.
+In the composition request, the following properties can contain an enumeration annotation, `@Redfish.RequestedCount`.  For each property, their required sub-properties are listed.
 
 * The Processors property
-	* ProcessorType and TotalCores are required
+    * ProcessorType and TotalCores are required
 * The Memory property
-	* MemoryType, MemoryDeviceType and CapacityMiB are required
+    * MemoryType, MemoryDeviceType and CapacityMiB are required
 * Either the SimpleStorage or Storage property, or neither
-	* If present, CapacityBytes is required
+    * If present, CapacityBytes is required
 * Either the EthernetInterfaces or NetworkInterfaces property, or neither
-	* If present, SpeedMbps or LinkSpeedMbps are required
+    * If present, SpeedMbps or LinkSpeedMbps are required
 
-The @Redfish.RequestedCount annotation specifies the amount of a resource being requested. For example, the following requests 4 CPUs and 2 FPGAs.  The other properties in the structure can further characterize the requested resource.
+The `@Redfish.RequestedCount` annotation specifies the amount of a resource being requested.  For example, the following requests 4 CPUs and 2 FPGAs.  The other properties in the structure can further characterize the requested resource.
 
-Note that the composition request should be kept simple to increase the probability of a successful composition. Overly-constrained requests are less likely to be fulfilled.
+Note that the composition request should be kept simple to increase the probability of a successful composition.  Overly-constrained requests are less likely to be fulfilled.
 
-	```
+```json
+{
     "Processors": {
-      	"Members": [
-        	{
-          		"@Redfish.RequestedCount": 4,
-          		"ProcessorType": "CPU"
-        	},
-        	{
-          		"@Redfish.RequestedCount": 4,
-          		"ProcessorType": "FPGA"
-        	}
-      	]
+        "Members": [
+            {
+                "@Redfish.RequestedCount": 4,
+                "ProcessorType": "CPU"
+            },
+            {
+                "@Redfish.RequestedCount": 4,
+                "ProcessorType": "FPGA"
+            }
+        ]
     }
-	```
+}
+```
 
-#### Make the composition Request
+
+#### Make the composition request
 
 POST the request to the `TargetCollection` URI
 
@@ -713,78 +767,78 @@ OData-Version: 4.0
     "PowerState": "On",
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "Processors": {
-       "Members": [
-        {
-          "@Redfish.RequestedCount": 4,
-          "ProcessorType": "CPU",
-          "ProcessorArchitecture": "x86",
-          "InstructionSet": "x86-64",
-          "MaxSpeedMHz": 3700,
-          "TotalCores": 8,
-          "TotalThreads": 16
-        },
-        {
-          "@Redfish.RequestedCount": 4,
-          "ProcessorType": "FPGA",
-          "ProcessorArchitecture": "x86",
-          "InstructionSet": "x86-64",
-          "MaxSpeedMHz": 3700,
-          "TotalCores": 16
-        }
-      ]
+        "Members": [
+            {
+                "@Redfish.RequestedCount": 4,
+                "ProcessorType": "CPU",
+                "ProcessorArchitecture": "x86",
+                "InstructionSet": "x86-64",
+                "MaxSpeedMHz": 3700,
+                "TotalCores": 8,
+                "TotalThreads": 16
+            },
+            {
+                "@Redfish.RequestedCount": 4,
+                "ProcessorType": "FPGA",
+                "ProcessorArchitecture": "x86",
+                "InstructionSet": "x86-64",
+                "MaxSpeedMHz": 3700,
+                "TotalCores": 16
+            }
+        ]
     },
     "Memory": {
-      "Members": [
-        {
-          "@Redfish.RequestedCount": 4,
-          "MaxTDPMilliWatts": [ 12000 ],
-          "CapacityMiB": 8192,
-          "DataWidthBits": 64,
-          "BusWidthBits": 72,
-          "ErrorCorrection": "MultiBitECC",
-          "MemoryType": "DRAM",
-          "MemoryDeviceType": "DDR4",
-          "BaseModuleType": "RDIMM",
-          "MemoryMedia": [ "DRAM" ]
-        }
-      ]
+        "Members": [
+            {
+                "@Redfish.RequestedCount": 4,
+                "MaxTDPMilliWatts": [ 12000 ],
+                "CapacityMiB": 8192,
+                "DataWidthBits": 64,
+                "BusWidthBits": 72,
+                "ErrorCorrection": "MultiBitECC",
+                "MemoryType": "DRAM",
+                "MemoryDeviceType": "DDR4",
+                "BaseModuleType": "RDIMM",
+                "MemoryMedia": [ "DRAM" ]
+            }
+        ]
     },
     "SimpleStorage": {
-      "Members" : [
-        {
-          "@Redfish.RequestedCount": 6,
-          "Devices": [
+        "Members" : [
             {
-	           	"CapacityBytes": 322122547200
+                "@Redfish.RequestedCount": 6,
+                "Devices": [
+                    {
+                        "CapacityBytes": 322122547200
+                    }
+                ]
             }
-          ]
-        }
-      ]
+        ]
     },
     "EthernetInterfaces": {
-      "Members": [
-        {
-          "@Redfish.RequestedCount": 2,
-          "SpeedMbps": 1000,
-          "FullDuplex": true,
-          "NameServers": [
-            "names.redfishspecification.org"
-          ],
-          "IPv4Addresses": [
+        "Members": [
             {
-              "SubnetMask": "255.255.252.0",
-              "AddressOrigin": "Dynamic",
-              "Gateway": "192.168.0.1"
+                "@Redfish.RequestedCount": 2,
+                "SpeedMbps": 1000,
+                "FullDuplex": true,
+                "NameServers": [
+                    "names.redfishspecification.org"
+                ],
+                "IPv4Addresses": [
+                    {
+                        "SubnetMask": "255.255.252.0",
+                        "AddressOrigin": "Dynamic",
+                        "Gateway": "192.168.0.1"
+                    }
+                ]
             }
-          ]
-        }
-      ]
+        ]
     }
 }
 ```
 
 Service Response Example:
-	```http
+```http
 HTTP/1.1 201 Created
 Content-Type: application/json; charset=utf-8
 Content-Length: <computed-length>
@@ -794,6 +848,7 @@ Location: /redfish/v1/Systems/NewSystem2
 The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is creating a new Computer System using the Resource Blocks `ComputeBlock0` and `DriveBlock2`.
 
 In the above Service Response Example, the service response with a successful 201 response, and indicated that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
+
 
 ### Update a Composed Resource
 
