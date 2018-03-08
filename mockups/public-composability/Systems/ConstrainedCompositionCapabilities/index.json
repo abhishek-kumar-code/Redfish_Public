@@ -1,18 +1,15 @@
 {
     "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
     "Id": "ConstrainedCompositionCapabilities",
-    "Name": "Capabilities for a constrained composition request",
+    "Name": "Capabilities for the Zone",
     "Name@Redfish.RequiredOnCreate": true,
     "Name@Redfish.SetOnlyOnCreate": true,
     "Description@Redfish.OptionalOnCreate": true,
     "Description@Redfish.SetOnlyOnCreate": true,
     "HostName@Redfish.OptionalOnCreate": true,
     "HostName@Redfish.UpdatableAfterCreate": true,
-
-    "BiosVersion@Redfish.OptionalOnCreate": true,
     "Boot@Redfish.OptionalOnCreate": true,
     "Boot": {
-        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
         "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
         "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
@@ -24,82 +21,122 @@
             "Hdd"
         ]
     },
-    "SecureBoot@Redfish.OptionalOnCreate": true,
-    "TrustedModules@Redfish.OptionalOnCreate": true,
-    
+    "Processors@Redfish.RequiredOnCreate": true,
     "Processors": {
-        "@odata.type": "#Processor.v1_1_0.Processor",
+        "@odata.type": "#ProcessorCollection.ProcessorCollection",
         "Members@Redfish.RequiredOnCreate": true,
-        "Members": {
-            "@Redfish.RequestedCountOptional": true,
-            "ProcessorType@Redfish.RequiredOnCreate": true,
-            "TotalCores@Redfish.RequiredOnCreate": true,
-            "Model@Redfish.OptionalOnCreate": true,
-            "InstructionSet@Redfish.OptionalOnCreate": true,
-            "AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
-        }
+        "Members": [
+            {
+                "@odata.type": "#Processor.v1_1_0.Processor",
+                "@Redfish.RequestedCountOptional": true,
+                "ProcessorType@Redfish.RequiredOnCreate": true,
+                "TotalCores@Redfish.RequiredOnCreate": true,
+                "Model@Redfish.OptionalOnCreate": true,
+                "InstructionSet@Redfish.OptionalOnCreate": true,
+                "AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
+            }
+        ]
     },
-
+    "Memory@Redfish.RequiredOnCreate": true,
     "Memory": {
-        "@odata.type": "#Memory.v1_1_0.Memory",
+        "@odata.type": "#MemoryCollection.MemoryCollection",
         "Members@Redfish.RequiredOnCreate": true,
-        "Members": {
-            "@Redfish.RequestedCountOptional": true,
-            "MemoryType@Redfish.RequiredOnCreate": true,
-            "MemoryDeviceType@Redfish.OptionalOnCreate": true,
-            "CapacityMiB@Redfish.RequiredOnCreate": true,
-            "SpeedMHz@Redfish.OptionalOnCreate": true,
-            "DataWidthBits@Redfish.OptionalOnCreate": true,
-            "BusWidthBits@Redfish.OptionalOnCreate": true
-       }
+        "Members": [
+            {
+                "@odata.type": "#Memory.v1_1_0.Memory",
+                "@Redfish.RequestedCountOptional": true,
+                "MemoryType@Redfish.RequiredOnCreate": true,
+                "MemoryDeviceType@Redfish.OptionalOnCreate": true,
+                "CapacityMiB@Redfish.RequiredOnCreate": true,
+                "SpeedMHz@Redfish.OptionalOnCreate": true,
+                "DataWidthBits@Redfish.OptionalOnCreate": true,
+                "BusWidthBits@Redfish.OptionalOnCreate": true
+            }
+        ]
     },
-
+    "SimpleStorage@Redfish.OptionalOnCreate": true,
     "SimpleStorage": {
-        "@odata.type": "#SimpleStorage.v1_1_0.SimpleStorage",
+        "@odata.type": "#SimpleStorageCollection.SimpleStorageCollection",
         "Members@Redfish.RequiredOnCreate": true,
-        "Members": {
-            "@Redfish.RequestedCountOptional": true,
-            "Devices@RequiredOnCreate": true,
-            "Devices": {
-                "CapacityBytes@RequiredOnCreate": true
+        "Members": [
+            {
+                "@odata.type": "#SimpleStorage.v1_2_0.SimpleStorage",
+                "@Redfish.RequestedCountOptional": true,
+                "Devices@Redfish.RequiredOnCreate": true,
+                "Devices": {
+                    "@Redfish.RequestedCountOptional": true,
+                    "CapacityBytes@Redfish.RequiredOnCreate": true
+                }
             }
-        }
+        ]
     },
+    "Storage@Redfish.OptionalOnCreate": true,
     "Storage": {
-        "@odata.type": "#Storage.v1_1_0.Storage",
+        "@odata.type": "#StorageCollection.StorageCollection",
         "Members@Redfish.RequiredOnCreate": true,
-        "Members": {
-            "@Redfish.RequestedCountOptional": true,
-            "StorageControllers@Redfish.OptionalOnCreate": true,
-            "StorageControllers": {
-                "SupportedControllerProtocols@RequiredOnCreate": true
-            },
-            "Devices@RequiredOnCreae": true,
-            "Devices": {
-                "CapacityBytes@RequiredOnCreate": true
+        "Members": [
+            {
+                "@odata.type": "#Storage.v1_3_0.Storage",
+                "@Redfish.RequestedCountOptional": true,
+                "StorageControllers@Redfish.OptionalOnCreate": true,
+                "StorageControllers": [
+                    {
+                        "@Redfish.RequestedCountOptional": true,
+                        "SupportedControllerProtocols@Redfish.RequiredOnCreate": true
+                    }
+                ],
+                "Drives@Redfish.RequiredOnCreate": true,
+                "Drives": [
+                    {
+                        "@odata.type": "#Drive.v1_2_0.Drive",
+                        "@Redfish.RequestedCountOptional": true,
+                        "CapacityBytes@Redfish.RequiredOnCreate": true
+                    }
+                ]
             }
-        }
+        ]
     },
-
+    "EthernetInterfaces@Redfish.OptionalOnCreate": true,
     "EthernetInterfaces": {
-        "@odata.type": "#EthernetInterface.v1_1_0.EthernetInterface",
-        "@Redfish.RequestedCountOptional": true,
-        "SpeedMbps@Redfish.RequiredOnCreate": true,
-        "FullDuplex@OptionalOnCreate": true
+        "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
+                "@Redfish.RequestedCountOptional": true,
+                "SpeedMbps@Redfish.RequiredOnCreate": true,
+                "FullDuplex@Redfish.OptionalOnCreate": true
+            }
+        ]
     },
+    "NetworkInterfaces@Redfish.OptionalOnCreate": true,
     "NetworkInterfaces": {
-        "@odata.type": "#NetworkInterface.v1_1_0.NetworktInterface",
-        "NetworkPorts@RequiredOnCreate": true,
-        "NetworkPorts": {
-            "ActiveLinkTechnology@RequiredOnCreate": true
-        },
-        "SupportedLinkCapabilities@OptionalOnCreate": true,
-        "SupportedLinkCapabilities": {
-            "LinkSpeedMbps@RequiredOnCreate": true
-        }
+        "@odata.type": "#NetworkInterfaceCollection.NetworkInterfaceCollection",
+        "Members@Redfish.RequiredOnCreate": true,
+        "Members": [
+            {
+                "@odata.type": "#NetworkInterface.v1_1_0.NetworkInterface",
+                "@Redfish.RequestedCountOptional": true,
+                "NetworkPorts@Redfish.RequiredOnCreate": true,
+                "NetworkPorts": {
+                    "@odata.type": "#NetworkPortCollection.NetworkPortCollection",
+                    "Members@Redfish.RequiredOnCreate": true,
+                    "Members": [
+                        {
+                            "@odata.type": "#NetworkPort.v1_1_0.NetworkPort",
+                            "@Redfish.RequestedCountOptional": true,
+                            "ActiveLinkTechnology@Redfish.RequiredOnCreate": true,
+                            "SupportedLinkCapabilities@Redfish.OptionalOnCreate": true,
+                            "SupportedLinkCapabilities": {
+                                "LinkSpeedMbps@Redfish.RequiredOnCreate": true
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
     },
-
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

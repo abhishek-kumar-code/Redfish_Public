@@ -82,6 +82,20 @@
     <edmx:Include Namespace="Message"/>
     <edmx:Include Namespace="Message.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkInterface_v1.xml">
+    <edmx:Include Namespace="NetworkInterface"/>
+    <edmx:Include Namespace="NetworkInterface.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkInterfaceCollection_v1.xml">
+    <edmx:Include Namespace="NetworkInterfaceCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkPort_v1.xml">
+    <edmx:Include Namespace="NetworkPort"/>
+    <edmx:Include Namespace="NetworkPort.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkPortCollection_v1.xml">
+    <edmx:Include Namespace="NetworkPortCollection"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Power_v1.xml">
     <edmx:Include Namespace="Power"/>
     <edmx:Include Namespace="Power.v1_3_0"/>
