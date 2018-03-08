@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<<<<<<< HEAD
 <!--# Redfish Schema:  CompositionService   v1.1.0-->
-=======
-<!--# Redfish Schema:  CompositionService   v1.0.1-->
->>>>>>> master
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
