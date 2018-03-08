@@ -8,6 +8,7 @@
         "Health": "OK"
     },
     "ServiceEnabled": true,
+    "AllowOverprovisioning": true,
     "ResourceBlocks": {
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks"
     },

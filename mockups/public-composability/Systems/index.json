@@ -34,9 +34,9 @@
             {
                 "@odata.type": "#CollectionCapabilities.v1_0_0.Capability",
                 "CapabilitiesObject": {
-                    "@odata.id": "/redfish/v1/Systems/CapabilitiesEN"
+                    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities"
                 },
-                "UseCase": "ComputerSystemEnumeratedComposition",
+                "UseCase": "ComputerSystemConstrainedComposition",
                 "Links": {
                     "TargetCollection": {
                         "@odata.id": "/redfish/v1/Systems"

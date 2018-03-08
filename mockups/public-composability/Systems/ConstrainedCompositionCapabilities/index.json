@@ -1,7 +1,7 @@
 {
     "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-    "Id": "Capabilities",
-    "Name": "Capabilities for the Zone",
+    "Id": "ConstrainedCompositionCapabilities",
+    "Name": "Capabilities for a constrained composition request",
     "Name@Redfish.RequiredOnCreate": true,
     "Name@Redfish.SetOnlyOnCreate": true,
     "Description@Redfish.OptionalOnCreate": true,
@@ -9,7 +9,7 @@
     "HostName@Redfish.OptionalOnCreate": true,
     "HostName@Redfish.UpdatableAfterCreate": true,
 
-    "BIOSVersion@OptionalOnCreate": true,
+    "BiosVersion@Redfish.OptionalOnCreate": true,
     "Boot@Redfish.OptionalOnCreate": true,
     "Boot": {
         "@odata.type": "#ComputerSystem.v1_1_0.Boot",
@@ -24,8 +24,8 @@
             "Hdd"
         ]
     },
-    "SecureBoot@OptionalOnCreate": true,
-    "TrustedModules@OptionalOnCreate": true,
+    "SecureBoot@Redfish.OptionalOnCreate": true,
+    "TrustedModules@Redfish.OptionalOnCreate": true,
     
     "Processors": {
         "@odata.type": "#Processor.v1_1_0.Processor",
@@ -100,6 +100,6 @@
     },
 
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/CapabilitiesEN",
+    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities",
     "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
