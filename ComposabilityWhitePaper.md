@@ -721,7 +721,8 @@ Capabilities Object Sample for a Constrained Composition:
             }
         ]
     }
-    ```
+}
+```
 
 
 #### Create the Composition Request
