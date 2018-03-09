@@ -546,9 +546,9 @@ Clients can add query parameters to request additional features from the service
 | ---       | ---                                                                                                                                                             | ---                                 |
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
-| $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
-| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                    | `http://resourcecollection?$select=SystemType,Status`|
-| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                            | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
+| $expand   | Include data from hyperlinks in the resource inline within the current payload, depending on the value of the expand                                            | `http://resourcecollection?$expand=.($levels=1)`|
+| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                     | `http://resourcecollection?$select=SystemType,Status`|
+| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                       | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
 
 * Services should support the $top and $skip query parameters.
 * Service may support the $expand, $filter and $select query parameters. 
@@ -563,16 +563,16 @@ When the resource addressed is a Resource Collection, the client may use the fol
 
 ***Query parameters for Expand***
 
-The $expand parameter indicates to the implementation that it should include a link as well as the contents of that link in the current response as if a GET had been performed and included inline with that link.  In CSDL terms, any Entries associated with an Entity or Collection of Entities through the use of NavigationProperty is capable of being expanded and thus included in the response body.  The $expand query parameter has a set of possible values which will determine which links (Navigation Properties) are to be expanded.
+The $expand parameter indicates to the implementation that it should include a hyperlink as well as the contents of that hyperlink in the current response as if a GET had been performed and included inline with that hyperlink.  In CSDL terms, any Entries associated with an Entity or Collection of Entities through the use of NavigationProperty is capable of being expanded and thus included in the response body.  The $expand query parameter has a set of possible values which will determine which hyperlinks (Navigation Properties) are to be expanded.
 
 The following table represents the Redfish allowable values that shall be supported for $expand if $expand is implemented:
 
-| value     | Description                                                                                                                                                     | Example                             |
-| ---       | ---                                                                                                                                                             | ---                                 |
-| * (asterisk)     | Indicates all links (Navigation Properties) shall be expanded if expand is supported. | `http://resourcecollection?$expand=*` |
-| . (period)      |  Indicates all subordinate links (Navigation Properties) shall be expanded if expand is supported. Subordinate links are those that are directly referenced (i.e. not in the 'Links' section of the resource). | `http://resourcecollection?$expand=.` |
-| ~ (tilde)   | Indicates all dependent links (Navigation Properties) shall be expanded if expand is supported. Dependent links are those that are not directly referenced (i.e. in the 'Links' section of the resource).  | -`http://resourcecollection?$expand=~` |
-| $levels   | Indicates how many levels the service should cascade the expand operation.  Thus a $levels=2 will not only expand the current resource (level=1) but also the expanded resource (level=2). | `http://resourcecollection?$expand=.($levels=2)`|
+| Value        | Description                                                                                                                                                                                                                      | Example                               |
+| ---          | ---                                                                                                                                                                                                                              | ---                                   |
+| * (asterisk) | Indicates all hyperlinks (Navigation Properties) shall be expanded if expand is supported.                                                                                                                                       | `http://resourcecollection?$expand=*` |
+| . (period)   | Indicates all subordinate hyperlinks (Navigation Properties) shall be expanded if expand is supported. Subordinate hyperlinks are those that are directly referenced (i.e. not in the 'Links Property' section of the resource). | `http://resourcecollection?$expand=.` |
+| ~ (tilde)    | Indicates all dependent hyperlinks (Navigation Properties) shall be expanded if expand is supported. Dependent hyperlinks are those that are not directly referenced (i.e. in the 'Links Property' section of the resource).     | `http://resourcecollection?$expand=~` |
+| $levels      | Indicates how many levels the service should cascade the expand operation.  Thus a $levels=2 will not only expand the current resource (level=1) but also the expanded resource (level=2).                                       | `http://resourcecollection?$expand=.($levels=2)` |
 
 Examples of the use of expand might be:
 * GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
@@ -581,6 +581,8 @@ Examples of the use of expand might be:
 When performing $expand, Services may omit some of the properties of the referenced resource.
 
 When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response.  If a service is unable to return the payload due to its size, it shall return HTTP Status code [507](#status-507).
+
+It should be noted that Resources containing Referenceable Members that are already expanded using the `AutoExpand` annotation, such as the "Temperature" object found in the "Thermal" Resource, are considered part of the current Resource, and therefore are at the same level as that Resource being queried.
 
 Any other supported syntax for $expand is outside the scope of this specification.
 
