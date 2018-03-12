@@ -232,7 +232,7 @@ Example Collection Capabilities Annotation:
             },
             {
                 "CapabilitiesObject": {
-                    "@odata.id": "/redfish/v1/Systems/CapabilitiesConstrained"
+                    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities"
                 },
                 "UseCase": "ComputerSystemConstrainedComposition",
                 "Links": {
@@ -340,9 +340,9 @@ The Constrained Composition allows clients to request a composition by specifyin
 
 ## Workflows for a Client making a Composition Request
 
-There are two workflows for a client make a compostion request, depending on whether the request is for a specific composition or an constrained composition.
+There are two workflows for a client to make a compostion request: a specific composition workflow and a constrained composition workflow.
 
-Here are the few operations that a client is expected to use during creation and management of Composed Systems using the Redfish Composition models.  The examples below expect the client will have a valid Redfish session or Basic Authentication header.
+Here are the operations that a client is expected to use during the creation and management of Composed Systems using the Redfish Composition models.  The examples below expect the client will have a valid Redfish session or Basic Authentication header.
 
 
 ### Identify If Redfish Service Supports Composition
@@ -573,7 +573,7 @@ The above Client Request Example shows a specific composition request by the cli
 
 ### Constrained Composition Workflow
 
-Here are the few operations that a client is expected to use during creation and management of Composed Systems using the Redfish Composition models.  The examples below expect the client will have a valid Redfish session or Basic Authentication header.
+Here are the operations that a client is expected to use during the creation and management of Composed Systems using the Redfish Composition models.  The examples below expect the client will have a valid Redfish session or Basic Authentication header.
 
 
 #### Read the Capabilities Object
@@ -727,20 +727,28 @@ Capabilities Object Sample for a Constrained Composition:
 
 #### Create the Composition Request
 
-In the composition request, the following properties can contain an enumeration annotation, `@Redfish.RequestedCount`.  For each property, their required sub-properties are listed.
+In a constrained composition request, the request includes structures for the processors, memory, storage and network interfaces. Each structure includes the enumeration annotation, **@Redfish.RequestedCount**, which specifies the requested amount of a resource.
 
-* The Processors property
-    * ProcessorType and TotalCores are required
-* The Memory property
-    * MemoryType, MemoryDeviceType and CapacityMiB are required
-* Either the SimpleStorage or Storage property, or neither
-    * If present, CapacityBytes is required
-* Either the EthernetInterfaces or NetworkInterfaces property, or neither
-    * If present, SpeedMbps or LinkSpeedMbps are required
+The following structures can contain an enumeration annotation and may required sub-properties.
 
-The `@Redfish.RequestedCount` annotation specifies the amount of a resource being requested.  For example, the following requests 4 CPUs and 2 FPGAs.  The other properties in the structure can further characterize the requested resource.
+* The processors request
+	* The @Redfish.RequestedCount is required
+	* The ProcessorType and TotalCores properties are required
+* The memory request
+	* The @Redfish.RequestedCount is required
+	* The MemoryType, MemoryDeviceType and CapacityMiB properties are required
+* The storage request
+	* The @Redfish.RequestedCount is required
+	* Either the SimpleStorage or Storage property may be present, or neither
+	* If present, CapacityBytes property is required
+* The network interface request
+	* The @Redfish.RequestedCount is required
+	* Either EthernetInterfaces or NetworkInterfaces property may be present, or neither
+	* If present, SpeedMbps or LinkSpeedMbps properties are required
 
-Note that the composition request should be kept simple to increase the probability of a successful composition.  Overly-constrained requests are less likely to be fulfilled.
+For example, the following processor request requests 4 CPUs and 2 FPGAs.  Other properties in the request can further characterize the processor resource.
+
+Note that the composition request should be kept simple in order to increase the probability of a successful composition. Overly-constrained requests are less likely to be fulfilled.
 
 Sample Request Payload for Describing Sets of Processors:
 ```json
@@ -829,7 +837,7 @@ OData-Version: 4.0
     "EthernetInterfaces": {
         "Members": [
             {
-                "@Redfish.RequestedCount": 2,
+                "@Redfish.RequestedCount": 1,
                 "SpeedMbps": 1000,
                 "FullDuplex": true,
                 "NameServers": [
@@ -856,7 +864,7 @@ Content-Length: <computed-length>
 Location: /redfish/v1/Systems/NewSystem2
 ```
 
-The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is creating a new Computer System using the Resource Blocks `ComputeBlock0` and `DriveBlock2`.
+The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322 GB local drives, and a 1 GB Ethernet interface.
 
 In the above Service Response Example, the service response with a successful 201 response, and indicated that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
