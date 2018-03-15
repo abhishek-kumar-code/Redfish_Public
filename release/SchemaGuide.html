@@ -154,33 +154,14 @@ pre.code{
 <li><a href="#overview">Overview</a></li>
 <ul>
 <li><a href="#who-should-read-this-document">Who should read this document?</a></li>
-<li><a href="#why-rest-json-and-odata">Why REST, JSON and OData?</a></li>
-<li><a href="#schema-versus-resources-versus-services">Schema versus resources versus services</a></li>
-<li><a href="#locating-a-redfish-service">Locating a Redfish service</a></li>
 <li><a href="#where-can-i-find-more-information">Where can I find more information?</a></li>
-</ul>
-<li><a href="#data-values">Data values</a></li>
-<ul>
-<li><a href="#null-values">NULL values</a></li>
 </ul>
 <li><a href="#common-properties">Common properties</a></li>
 <ul>
 <li><a href="#properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</a></li>
-<li><a href="#links">Links</a></li>
-<li><a href="#actions">Actions</a></li>
-<li><a href="#oem">OEM</a></li>
-<li><a href="#relateditem">RelatedItem</a></li>
+<li><a href="#properties-frequently-used-in-redfish-schemas">Properties frequently used in Redfish schemas</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#location">Location</a></li>
-</ul>
-<li><a href="#working-with-resource-collections">Working with Resource Collections</a></li>
-<ul>
-<li><a href="#operations-related-to-resource-collections">Operations Related to Resource Collections</a></li>
-</ul>
-<li><a href="#error-messages">Error messages</a></li>
-<ul>
-<li><a href="#http-response-codes">HTTP response codes</a></li>
-<li><a href="#redfish-error-responses">Redfish error responses</a></li>
 </ul>
 <li><a href="#redfish-schema-details">Redfish Schema details</a></li>
 <ul>
@@ -256,45 +237,6 @@ pre.code{
 <p>With the above goals in mind, the Redfish protocol was designed as an open industry standard to meet scalability requirements in multivendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and using JSON and OData formats for data payloads.</p>
 <h2 id="who-should-read-this-document">Who should read this document?</h2>
 <p>This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API.</p>
-<h2 id="why-rest-json-and-odata">Why REST, JSON and OData?</h2>
-<p>One of the goals of the Redfish standard is to define an API that is equally usable by applications, client libraries, and scripts. Another goal is to define data objects that are schema-backed but human readable. The use of RESTful APIs, and JSON and OData formats supports these goals.</p>
-<p>JSON is a widely used data format for transporting data that is compatible with RESTful applications. It is inherently human readable, more concise than XML, and supported by many modern programming languages.</p>
-<p>Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and the management of a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser.</p>
-<p>Similarly, while JSON provides an easy-to read representation, the semantics of common properties, such as id, type, links, etc., are imposed through naming conventions that can vary from service to service.</p>
-<p>The Open Data Protocol (OData) defines a set of common RESTful conventions, which provide interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This uniformity not only encapsulates best practices for RESTful APIs that can be used in traditional and scalable environments, but also enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.</p>
-<p><strong>Example Of Parsing JSON Data</strong></p>
-<p>The following code fragment shows an example of a request that retrieves the serial number from a Redfish service. The data that is returned comes is in the JSON format. A Python library can be used to read the value of a specific property such as a 'SerialNumber':</p>
-<div class="codehilite"><pre><span></span><span class="n">rawData</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://192.168.1.135/redfish/v1/Systems/1&#39;</span><span class="p">)</span>
-<span class="n">jsonData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">rawData</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;SN: &#39;</span> <span class="o">+</span> <span class="n">jsonData</span><span class="p">[</span><span class="s1">&#39;SerialNumber&#39;</span><span class="p">])</span>
-</pre></div>
-
-
-<p>A successful request that uses the code snippet above would produce output similar to the following example:</p>
-<div class="codehilite"><pre><span></span>SN: 1A87CA442K
-</pre></div>
-
-
-<ul>
-<li>(This example uses a Redfish ComputerSystem resource; authentication is not shown.)</li>
-</ul>
-<h2 id="schema-versus-resources-versus-services">Schema versus resources versus services</h2>
-<p>A schema is a data model.  Redfish uses both the json-schema and OData CSDL formats to publish each schema. The model defines the relationship between objects in the system, and defines which objects can contain or be contained by other objects. Think of the schema as the data definitions.</p>
-<p>A resource is an actual object or component. In the terminology of RESTful APIs, a URI or URL is a pointer (or end point) that represents the resource. Think of the resource as an object in a system, whose values and rules for each of its properties are  contained in a specific Redfish JSON payload.</p>
-<p>A payload is the packet of data that contains the values associated with a specific resource. Redfish also defines OData 'annotations' that can be thought of as metadata delivered in a payload.</p>
-<p>A Redfish service is any product that implements the Redfish specification. It is the software or firmware that implements the specification, and serves up responses.  When a Refish service receives a properly formatted HTTP request, it returns an HTTP response that contains information about the requested resource.</p>
-<h2 id="locating-a-redfish-service">Locating a Redfish service</h2>
-<p>Every Redfish service contains a base URI or URL that indicates the root of all resources.</p>
-<p>The root is the concatenation of:</p>
-<ul>
-<li>the IP address or server name of the Redfish service (For example: https://mgmt.vendor.com)</li>
-<li>the path to the Redfish root (/redfish/v1/)</li>
-</ul>
-<p>For example:</p>
-<div class="codehilite"><pre><span></span>https://mgmt.vendor.com/redfish/v1
-</pre></div>
-
-
 <h2 id="where-can-i-find-more-information">Where can I find more information?</h2>
 <p>The following web sites provide more information about the Redfish standard:</p>
 <p>Redfish Standards
@@ -306,10 +248,6 @@ pre.code{
 <p>SPMF (Working group that maintains the Redfish standard)
 -  Companies involved, upcoming schedules and future work, charter, and information about joining:
   http://www.dmtf.org/standards/spmf</p>
-<h1 id="data-values">Data values</h1>
-<h2 id="null-values">NULL values</h2>
-<p>When a property contains a value of NULL, this means that the value is temporarily unavailable from the resource. For example, when a system is booting it is not possible to read the OS version.  </p>
-<p>NULL is not a placeholder for a property that is not supported or does not exist. For example, if a <code>Port</code> property of a <code>EthernetInterface</code> resource is NULL, that means that the value is temporarily not readable. It does not mean that the <code>Port</code> does not exist.</p>
 <h1 id="common-properties">Common properties</h1>
 <p>This section describes the properties (data fields) that share a common definition across many or all Redfish schema. </p>
 <h2 id="properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</h2>
@@ -325,17 +263,16 @@ pre.code{
 <tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.</td></tr>
 <tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
-<h2 id="links">Links</h2>
-<p>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource.</p>
-<h2 id="actions">Actions</h2>
-<p>The Actions property contains the actions supported by a resource.</p>
-<h2 id="oem">OEM</h2>
-<p>The OEM property is used for OEM extensions as defined in Schema Extensibility.</p>
-<h2 id="relateditem">RelatedItem</h2>
-<p>The <code>RelatedItem</code> property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.</p>
-<p>This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, <code>Fans</code> may be in one area of the system and <code>Processors</code> in another area of the system. It could be that the relationship between the two is not obvious. The <code>RelatedItem</code> property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</p>
+<h2 id="properties-frequently-used-in-redfish-schemas">Properties frequently used in Redfish schemas</h2>
+
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This object contains definitions for the Redfish Actions available for this resource.</td></tr>
+<tr><td><nobr><b>Links</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>RelatedItems</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
+</tbody></table>
 <h2 id="status">Status</h2>
-<p>The <code>Status</code> property is common to many Redfish schema.</p>
+<p>The <code>Status</code> object and its properties is common to many Redfish schema.</p>
 
 <table class="properties">
 <tbody>
@@ -508,186 +445,6 @@ pre.code{
 
 </div>
 </div>
-<h1 id="working-with-resource-collections">Working with Resource Collections</h1>
-<p>In the Redfish protocol a URI can represent a collection of similar resources. A Resource Collection can represent a group of Systems, Chassis, Managers, or a group of other kinds of resources. For example:</p>
-<ul>
-<li>/redfish/v1/Systems</li>
-<li>/redfish/v1/Chassis</li>
-<li>/redfish/v1/Managers</li>
-</ul>
-<p>The Members of a Resource Collection are returned as a JSON array, where each element of the array is a JSON object. The name of the property representing the members of the collection is <code>Members</code>.</p>
-<h2 id="operations-related-to-resource-collections">Operations Related to Resource Collections</h2>
-<p>Some of the common operations associated with collections are as follows:</p>
-<h3 id="a-get-request-for-a-resource-collection">A GET request for a Resource Collection</h3>
-<p>To read the contents of a Resource Collection, a client application sends an HTTP GET request to the URI of the collection. A client application typically discovers the URI of the collection by parsing the resource identifier from a previous request.  For example, the <code>Links</code> property of a previously returned resource can contain a URI that points to a collection. A client application could parse the information in the <code>Links</code> property to obtain the URI of the collection.</p>
-<p>The response includes properties of the Resource Collection including an array of its Members. If the Resource Collection is empty, the returned JSON object is an empty array (not null).</p>
-<p>To request a subset of Members of the Resource Collection, use the paging query options:</p>
-<ul>
-<li><code>$top</code></li>
-<li><code>$skip</code></li>
-</ul>
-<p>These paging query options apply specifically to the <code>Members</code> array property within a Resource Collection.</p>
-<h3 id="the-response-to-a-get-request-for-a-resource-collection">The response to a GET request for a Resource Collection</h3>
-<p>A Redfish service returns a Resource Collection as a JSON object in an HTTP response. The JSON object can include the following properties:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@odata.context</td>
-<td>Describes the source of the payload.</td>
-</tr>
-<tr>
-<td>@odata.count</td>
-<td>Displays the total number of Members in the Resource Collection</td>
-</tr>
-<tr>
-<td>@odata.members</td>
-<td>The array of the members in the collection</td>
-</tr>
-<tr>
-<td>@odata.nextLink</td>
-<td>Indicates the "nextLink" when the payload contains partial results</td>
-</tr>
-</tbody>
-</table>
-<p>When a response represents only a part of a Resource Collection, the response includes a next link property named <code>Members@odata.nextLink</code>. The value of the <code>@odata.nextlink</code> property is a URL to a resource with the same @odata.type that  contains the next set of partial members. The <code>@odata.nextlink</code> property is only present if the number of Members in the Resource Collection is greater than the number of members returned.</p>
-<h3 id="iterating-through-the-members-of-a-collection">Iterating through the members of a collection</h3>
-<p>A Resource Collection includes a count of the total number of entries in its "Members" array.</p>
-<p>The total number of resources (Members) available in a Resource Collection is represented in the count property. The count property is named <code>Members@odata.count</code>. The value of odata.count represents the total number of members available in the Resource Collection. This count is not affected by the <code>$top</code> or <code>$skip</code> query parameters.</p>
-<h3 id="additional-notations">Additional notations</h3>
-<p>A JSON object representing a Resource Collection may include additional annotations represented as properties whose name is of the form:</p>
-<p>@Namespace.TermName</p>
-<p>where</p>
-<ul>
-<li>Namespace = the name of the namespace where the annotation term is defined. This namespace is referenced by the metadata document specified in the context URL of the request.</li>
-<li>TermName = the name of the annotation term being applied to the Resource Collection.</li>
-</ul>
-<p>The client can get the definition of the annotation from the service metadata, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.</p>
-<h3 id="order-of-members">Order of Members</h3>
-<p>Collections are arrays of OData objects. The OData objects contain IDs of resources.</p>
-<p>The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, assuming that the members have not changed since the last request, the order in which memebrs are returned will be unchanged. The order of the members will not be sorted by any specific criteria.</p>
-<h3 id="examples-of-commonly-used-collections">Examples of commonly used collections</h3>
-<h4 id="collection-of-systems">Collection of Systems</h4>
-<p>A System represents the logical view of a computer system as seen from the operating system (OS) level.</p>
-<p>Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory, and other components. Each computer System can be contained as a member of a Systems collection.</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Computer System Collection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h4 id="collection-of-chassis">Collection of Chassis</h4>
-<p>The Chassis collection contains resources that represent the physical aspects of the infrastructure. Think of this collection as the properties needed to locate a physical unit, or to identify a physical unit, or to install or service a physical computer.</p>
-<p>A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans, and other components. Racks, enclosures, and blades are examples of Chassis resources included in the Chassis collection.</p>
-<p>The Redfish protocol allows the representation of a Chassis contained within another Chassis.</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ChassisCollection.ChassisCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chassis Collection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/MultiBladeEnclosure&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade2&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade3&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade4&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ChassisCollection.ChassisCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h4 id="collection-of-managers">Collection of Managers</h4>
-<p>A Managers collection contains BMCs, Enclosure Managers or any other component managing the infrastructure. Managers handle various management services and can also have their own components (such as NICs).</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ManagerCollection.ManagerCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager Collection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/EnclosureManager&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/Blade1BMC&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/Blade2BMC&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ManagerCollection.ManagerCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<h1 id="error-messages">Error messages</h1>
-<p>A Redfish service typically returns two types of error messages:  </p>
-<ul>
-<li>HTTP response codes</li>
-<li>Error responses</li>
-</ul>
-<h2 id="http-response-codes">HTTP response codes</h2>
-<p>The HTTP reponse codes are the standard codes returned by all HTTP servers.</p>
-<p>These include familiar HTTP codes such as HTTP response code <code>200 OK</code>, which means that the HTTP request succeeded.</p>
-<p>For more information about the meaning of these codes when returned from a Redfish service, see the latest Redfish specification at:</p>
-<ul>
-<li>http://www.dmtf.org/standards/redfish</li>
-</ul>
-<h2 id="redfish-error-responses">Redfish error responses</h2>
-<p>HTTP response status codes alone often do not provide enough information to determine the nature of an error. For example, if a client application sends a PATCH request and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not clearly indicate which values were in error.</p>
-<p>Redfish error responses provide more meaningful and deterministic error information.</p>
-<p>A Redfish service can provide multiple error responses in an HTTP response in order to provide as much information about the error situation as possible. Additionally, a Redfish service can provide Redfish-standardized errors, OEM-defined errors, or both, depending on what is available from a perticular service.</p>
-<p>Error responses are defined by an extended error resource, represented as a single JSON object.  The JSON object is part of a property named "error".</p>
-<h3 id="example-error-response">Example error response</h3>
-<p>The following snippet shows a fragment of an error response.</p>
-<div class="codehilite"><pre><span></span> <span class="p">{</span>
-   <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.GeneralError&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;A general error has occurred. See ExtendedInfo for more information.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;@Message.ExtendedInfo&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.type&quot;</span> <span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Message.v1_0_0.Message&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.PropertyValueNotInList&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;RelatedProperties&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;#/IndicatorLED&quot;</span>
-                <span class="p">],</span>
-                <span class="nt">&quot;Message&quot;</span><span class="p">:</span> <span class="s2">&quot;The value Red for the property IndicatorLED is not in the list of acceptable values&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;MessageArgs&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;RED&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;IndicatorLED&quot;</span>
-                <span class="p">],</span>
-                <span class="nt">&quot;Severity&quot;</span><span class="p">:</span> <span class="s2">&quot;Warning&quot;</span>
-            <span class="p">}]</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>The above snippet shows a JSON payload with error information. In this example, the <code>code</code> property shows that the error is of a type <code>Base.1.0.GeneralError</code>.  The property annotation <code>@Message.ExtendedInfo</code> provides more details about the nature of the error.</p>
 <h1 id="redfish-schema-details">Redfish Schema details</h1><h2 id="AccountService">AccountService 1.2.2</h2>
 <p>The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.</p>
 <table class="properties">
