@@ -23,6 +23,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TaskCollection_v1.xml">
     <edmx:Include Namespace="TaskCollection"/>
+  </edmx:Reference> 
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/WorkItemCollection_v1.xml">
+    <edmx:Include Namespace="WorkItemCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -138,6 +141,18 @@
       <Annotation Term="OData.Description" String="This version was created to correct the LongDescription for LifeCycleEventOnTaskStateChange."/>
       <EntityType Name="TaskService" BaseType="TaskService.v1_1_0.TaskService"/>
     </Schema>
+    
+     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to add WorkItems."/>
+      <EntityType Name="TaskService" BaseType="TaskService.v1_1_0.TaskService">
+        <NavigationProperty Name="WorkItems" Type="WorkItemCollection.WorkItemCollection" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A collection of currently defined WorkItems."/>
+          <Annotation Term="OData.LongDescription" String="A collection of currently defined WorkItems."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+    </Schema> 
 
   </edmx:DataServices>
 </edmx:Edmx>
