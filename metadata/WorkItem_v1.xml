@@ -64,7 +64,7 @@
           <Annotation Term="OData.Description" String="If present, the prerequisite requirement is only met if the task representing the prerequisite work completes with one of the listed status codes."/>
           <Annotation Term="OData.LongDescription" String="If present, the prerequisite requirement is only met if the task representing the prerequisite work completes with one of the listed status codes.  If not present, any completion of the task representing the prerequisite work is sufficient to meet the requirement."/>
         </Property>
-        <NavigationProperty Name="PrerequisiteWorkItem" Type="WorkItem.WorkItem">
+        <NavigationProperty Name="WorkItem" Type="WorkItem.WorkItem">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A WorkItem representing work that must be performed before this work item may be invoked."/>
           <Annotation Term="OData.LongDescription" String="A WorkItem representing work that must be performed before this work item may be invoked."/>
@@ -112,15 +112,15 @@
         </Property> 
         <Property Name="PrerequisiteWorkItems" Type="Collection(WorkItem.PrerequisiteWorkItem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="A collection of WorkItems representing work that must be performed before this work item may be invoked."/>
-          <Annotation Term="OData.LongDescription" String="A collection of WorkItems representing work that must be performed before this work item may be invoked."/>
+          <Annotation Term="OData.Description" String="A collection of WorkItems representing work to be performed before this work item may be invoked."/>
+          <Annotation Term="OData.LongDescription" String="A collection of WorkItems representing work that must complete with one of the values in the TriggerHttpStatuses array before this work item may be invoked."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </Property>
         <Property Name="Actions" Type="WorkItem.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>         
-        <Property Name="Links" Type="WorkItem.Links" Nullable="false">
+        <Property Name="Links" Type="WorkItem.V1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
@@ -130,21 +130,21 @@
         <NavigationProperty Name="Tasks" Type="Collection(Task.Task)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of tasks representing active invocations of this work."/>
-          <Annotation Term="OData.LongDescription" String="A collection of tasks representing active invocations of this work."/>
+          <Annotation Term="OData.LongDescription" String="A collection of tasks, each shall represent an active invocation of this work."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="ConcurrentWorkItems" Type="Collection(WorkItem.WorkItem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A collection of WorkItems representing additional work to be invoked concurrently with this work."/>
-          <Annotation Term="OData.LongDescription" String="A collection of WorkItems representing additional work to  be invoked in concurrently with this work."/>
+          <Annotation Term="OData.LongDescription" String="A collection of WorkItems, each representign additional work that shall be invoked when this work item is started."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="DependentWorkItems" Type="Collection(WorkItem.WorkItem)">
+        <NavigationProperty Name="DependentWorkItems" Type="Collection(WorkItem.PrerequisiteWorkItem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="A collection of WorkItems representing additional work that must be performed after this work item completes."/>
-          <Annotation Term="OData.LongDescription" String="A collection of WorkItems representing additional work that must be performed after this work item completes."/>
+          <Annotation Term="OData.Description" String="A collection of WorkItems representing additional work to be performed after this work item completes."/>
+          <Annotation Term="OData.LongDescription" String="A collection of WorkItems representing additional work that shall be started after this work completes if this work completes with one of the values in the TriggerHttpStatuses array."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>   
+        </NavigationProperty>
       </ComplexType>
     </Schema>
 
