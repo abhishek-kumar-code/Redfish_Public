@@ -62,7 +62,12 @@
         <Property Name="TriggerHttpStatuses" Type="Collection(Edm.Integer)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="If present, the prerequisite requirement is only met if the task representing the prerequisite work completes with one of the listed status codes."/>
-          <Annotation Term="OData.LongDescription" String="If present, the prerequisite requirement is only met if the task representing the prerequisite work completes with one of the listed status codes.  If not present, any completion of the task representing the prerequisite work is sufficient to meet the requirement."/>
+          <Annotation Term="OData.LongDescription" String="If present, the prerequisite requirement is only met if the task representing the prerequisite work completes with one of the listed status values.  If not present, any completion of the task representing the prerequisite work is sufficient to meet the requirement."/>
+        </Property>
+        <Property Name="TriggerInversion" Type="Edm.Boolean" DefaultValue="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="If true, the trigger event only occurs if the prerequisite work does not complete with any of the specified TriggerHttpStatus values."/>
+          <Annotation Term="OData.Description" String="If true, the trigger event shall only occur if the prerequisite work does not complete with any of the specified TriggerHttpStatus values."/>
         </Property>
         <NavigationProperty Name="WorkItem" Type="WorkItem.WorkItem">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
