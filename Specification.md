@@ -2520,7 +2520,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - A service may optionally define additional "Custom" roles.
   - A service may allow users to create custom roles by issuing a POST to the "Roles" Resource Collection.
   - A predefined role or a custom role shall be assigned to a user when a user is created.
-    - The client selects the predefined role or a custom role via the "RoleId" property when creating a new Manager Account
+    - The client shall provided the "RoleId" property when creating a new Manager Account in order to select the predefined role or a custom role.
 
 * Privileges:
   - A privilege is a permission to perform an operation (e.g., Read, Write) within a defined management domain (e.g., Configuring Users).
