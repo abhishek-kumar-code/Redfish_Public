@@ -123,6 +123,8 @@ JSON representation:
 
 When defining Property or NavigationProperty elements, the keyword `Collection` can be used to turn the Property or NavigationProperty element into an array.  This is done in the Type field using the format `Collection(TypeDefinition)`, where `TypeDefinition` is the underlying type of the instances in the array.
 
+It should be noted that a "CSDL Collection" should not be confused with a "Resource Collection".  In JSON terms, a "CSDL Collection" is a JSON array, and a "Resource Collection" is a JSON object that contains a set of links to "Resources" of a given type.  The [Defining Redfish resources section](#defining-redfish-resources) contains more information about "Resource Collections".
+
 In the CSDL sample shown below, a Property named `AllowedSpeedsMHz` is defined, and the type is `Collection(Edm.Int64)`.  This means that the value for the property `AllowedSpeedsMHz` in a JSON payload will be an array of 64 bit integers.
 
 CSDL sample:
