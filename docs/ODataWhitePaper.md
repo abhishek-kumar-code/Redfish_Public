@@ -439,6 +439,51 @@ OEM example:
 ```
 
 
+##### Resources in multiple Resource Collections
+
+There are certain cases where a single "Resource" might belong in multiple "Resource Collections".  The simple example with the `Systems` and `StorageSystems` properties found on the Service Root.  Both of these links go to resources of type ComputerSystemCollection.  While these "Resource Collections" have their own unique URIs, the intent of the data model is that all instances of ComputerSystems found in the "Resource Collection" found via the `StorageSystems` property will also be found in the "Resource Collection" found via the `Systems` property.  This type of practice is not common in generic OData implementations.
+
+The two payloads below show samples of "Resource Collections" for the `Systems` and `StorageSystems` links respectively.  Notice that the URIs in the `StorageSystems` payload are a subset of the URIs in the `Systems` payload.
+
+```json
+{
+    "@odata.id": "/redfish/v1/Systems",
+    "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+    "Name": "Systems Collection",
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4"
+        }
+    ]
+}
+```
+
+```json
+{
+    "@odata.id": "/redfish/v1/StorageSystems",
+    "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+    "Name": "Storage Systems Collection",
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4"
+        }
+    ]
+}
+```
+
+
 #### Referenceable Members
 
 In some cases, Redfish uses EntityType elements to define embedded objects within a given Resource.  These EntityType elements inherit from Resource.v1_0_0.ReferenceableMember, which is defined in the Resource_v1.xml schema file.  All "Referenceable Members" contain a "MemberId" property.  A client is not able to perform HTTP operations, such as GET, on these EntityType elements.  AutoExpand is also included to ensure the properties of the resource are populated within the JSON body.  The purpose of defining these embedded objects as EntityType elements as opposed to ComplexType elements is to leverage the `@odata.id` property in order to allow other portions of the Redfish data model to provide a URI to an individual structure, such as a RelatedItem link pointing to a single Temperature object.  The `@odata.id` property is structured as a URI with a JSON fragment identifier in these cases.
