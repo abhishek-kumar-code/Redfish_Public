@@ -710,7 +710,7 @@ The POST method is used to initiate operations on the object (such as Actions).
  * Services shall support the POST method for sending actions.
  * The POST operation may not be idempotent.
 
-Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. If the [actions property](#actions-property) within a resource does not specify a target property, then the URI of an action shall be of the form:
+Actions are requested on a resource by sending the HTTP POST method to the URI of the action.  The "target" property within the [actions property](#actions-property) of a resource should contain a URI of an action in the form of:
 
  *ResourceUri*/Actions/*QualifiedActionName*
 
