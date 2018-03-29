@@ -24,7 +24,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message_v1.xml">
     <edmx:Include Namespace="Message"/>
   </edmx:Reference>
-  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
 
@@ -54,91 +54,108 @@
       </EntityType>
       
       <ComplexType Name="HttpOperationRequest">
+          <Annotation Term="OData.Description" String="A type specifying HTTP request."/>
+          <Annotation Term="OData.LongDescription" String="A type specifying HTTP request."/>
         <Property Name="Method" Type="Task.HttpOperation">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="A string specifying HTTP operation."/>
+          <Annotation Term="OData.Description" String="A string specifying HTTP operation."/>
+          <Annotation Term="OData.LongDescription" String="A string specifying HTTP operation."/>
         </Property>
         <Property Name="RequestURI" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="URI to target resource, action, or function."/>
+          <Annotation Term="OData.Description" String="URI to target resource, action, or function."/>
+          <Annotation Term="OData.LongDescription" String="URI to target resource, action, or function."/>
         </Property>
         <Property Name="Version" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="A string defining requested HTTP version."/>
+          <Annotation Term="OData.Description" String="A string defining requested HTTP version."/>
+          <Annotation Term="OData.LongDescription" String="A string defining requested HTTP version."/>
         </Property>
         <Property Name="UserName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="A string defining user name."/>
+          <Annotation Term="OData.Description" String="A string defining user name."/>
+          <Annotation Term="OData.LongDescription" String="A string defining user name."/>
         </Property>
         <Property Name="UserCredentials" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Write"/>
-          <Annotation Term="Description" String="Input only string defining credentials."/>
+          <Annotation Term="OData.Description" String="Input only string defining credentials."/>
         </Property>
         <Property Name="GeneralHeaders" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="An array of strings defining HTTP general headers."/>
+          <Annotation Term="OData.Description" String="An array of strings defining HTTP general headers."/>
+          <Annotation Term="OData.LongDescription" String="An array of strings defining HTTP general headers."/>
         </Property>
         <Property Name="RequestHeaders" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="An array of strings defining headers that modify the HTTP request."/>
+          <Annotation Term="OData.Description" String="An array of strings defining headers that modify the HTTP request."/>
+          <Annotation Term="OData.LongDescription" String="An array of strings defining headers that modify the HTTP request."/>
         </Property>
         <Property Name="EntityHeaders" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="An array of strings defining HTTP headers that apply to the request body."/>
+          <Annotation Term="OData.Description" String="An array of strings defining HTTP headers that apply to the request body."/>
+          <Annotation Term="OData.LongDescription" String="An array of strings defining HTTP headers that apply to the request body."/>
         </Property>
         <Property Name="RequestBody" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="A representation of the HTTP request message body in the syntax defined by the accept header."/>
+          <Annotation Term="OData.Description" String="A representation of the HTTP request message body in the syntax defined by the accept header."/>
+          <Annotation Term="OData.LongDescription" String="A representation of the HTTP request message body in the syntax defined by the accept header."/>
         </Property>      
       </ComplexType>
       
       <ComplexType Name="HttpOperationResponse">
+          <Annotation Term="OData.Description" String="A type specifying HTTP response."/>
+          <Annotation Term="OData.LongDescription" String="A type specifying HTTP response."/>
         <Property Name="Status" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="A string containing an HTTP status line."/>
+          <Annotation Term="OData.Description" String="A string containing an HTTP status line."/>
+          <Annotation Term="OData.LongDescription" String="A string containing an HTTP status line."/>
         </Property>
         <Property Name="GeneralHeaders" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="An array of strings defining HTTP general headers."/>
+          <Annotation Term="OData.Description" String="An array of strings defining HTTP general headers."/>
+          <Annotation Term="OData.LongDescription" String="An array of strings defining HTTP general headers."/>
         </Property>
         <Property Name="ResponseHeaders" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="An array of strings defining headers that modify the HTTP request."/>
+          <Annotation Term="OData.Description" String="An array of strings defining headers that modify the HTTP request."/>
+          <Annotation Term="OData.LongDescription" String="An array of strings defining headers that modify the HTTP request."/>
         </Property>
         <Property Name="EntityHeaders" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="An array of strings defining HTTP headers that apply to the request body."/>
+          <Annotation Term="OData.Description" String="An array of strings defining HTTP headers that apply to the request body."/>
+          <Annotation Term="OData.LongDescription" String="An array of strings defining HTTP headers that apply to the request body."/>
         </Property>
         <Property Name="ResponseMessage" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="Description" String="A representation of the HTTP response message in the syntax defined by the accept header."/>
+          <Annotation Term="OData.Description" String="A representation of the HTTP response message in the syntax defined by the accept header."/>
+          <Annotation Term="OData.LongDescription" String="A representation of the HTTP response message in the syntax defined by the accept header."/>
         </Property>      
       </ComplexType>
             
       <EnumType Name="HttpOperation">
         <Member Name="GET">
-          <Annotation Term="Description" String="Request transfer of a current selected representation for the target resource."/>
+          <Annotation Term="OData.Description" String="Request transfer of a current selected representation for the target resource."/>
         </Member>
         <Member Name="HEAD">
-          <Annotation Term="Description" String="Identical to GET except that the server MUST NOT send a message body in the response (i.e., the response terminates at the end of the header section).  "/>
+          <Annotation Term="OData.Description" String="Identical to GET except that the server MUST NOT send a message body in the response (i.e., the response terminates at the end of the header section).  "/>
         </Member>
         <Member Name="POST">
-          <Annotation Term="Description" String="Requests the target resource process the representation enclosed in the request according to the resource's own specific semantics."/>
+          <Annotation Term="OData.Description" String="Requests the target resource process the representation enclosed in the request according to the resource's own specific semantics."/>
         </Member>
         <Member Name="PUT">
-          <Annotation Term="Description" String="Request that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload."/>
+          <Annotation Term="OData.Description" String="Request that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload."/>
         </Member>
         <Member Name="DELETE">
-          <Annotation Term="Description" String="Request that the origin server remove the association between the target resource and its current functionality. "/>
+          <Annotation Term="OData.Description" String="Request that the origin server remove the association between the target resource and its current functionality."/>
         </Member>
         <Member Name="CONNECT">
-          <Annotation Term="Description" String="Request that the recipient establish a tunnel to the destination origin server identified by the request-target and, if successful, thereafter restrict its behavior to blind forwarding of packets, in both directions, until the tunnel is closed."/>
+          <Annotation Term="OData.Description" String="Request that the recipient establish a tunnel to the destination origin server identified by the request-target and, if successful, thereafter restrict its behavior to blind forwarding of packets, in both directions, until the tunnel is closed."/>
         </Member>
         <Member Name="OPTIONS">
-          <Annotation Term="Description" String="Request information about the communication options available for the target resource, at either the origin server or an intervening intermediary."/>
+          <Annotation Term="OData.Description" String="Request information about the communication options available for the target resource, at either the origin server or an intervening intermediary."/>
         </Member>
         <Member Name="TRACE">
-          <Annotation Term="Description" String="Requests a remote, application-level loop-back of the request message."/>
+          <Annotation Term="OData.Description" String="Requests a remote, application-level loop-back of the request message."/>
         </Member>
       </EnumType> 
 
@@ -285,19 +302,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain a URI to Task Monitor as defined in the Redfish Specification."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
-      </EntityType>
-    </Schema>
-    
-     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_2_1">
-      <Annotation Term="OData.Description" String="This version was created to additional properties, HttpOperationRequest, HttpOperationResponse, TimeBeforeRemoval, RequestState, and TaskState."/>
-      <EntityType Name="Task" BaseType="Task.v1_2_0.Task">
         <Property Name="HttpOperationRequest" Type="Task.HttpOperationRequest">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="If present, defines the request that invoked this task."/>
           <Annotation Term="OData.LongDescription" String="If present, the values shall define the request that invoked this task."/>
         </Property>
         <Property Name="HttpOperationResponse" Type="Task.HttpOperationResponse">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="If present and if this task has completed, the result of executing this task."/>
           <Annotation Term="OData.LongDescription" String="If present and if this task has completed, the values shall specify the result of executing this task."/>
         </Property>       
@@ -315,9 +324,9 @@
         <Property Name="RequestState" Type="Task.RequestState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Provide control over the execution of this task."/>
-          <Annotation Term="OData.LongDescription" String="Provide control over the execution of this task."/>
+          <Annotation Term="OData.LongDescription" String="Provide control over the execution of this task."/>       
         </Property>
       </EntityType>
     </Schema>
-  </edmx:DataServices>
+   </edmx:DataServices>
 </edmx:Edmx>
