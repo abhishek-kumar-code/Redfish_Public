@@ -1,0 +1,36 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#WorkItemCollection.WorkItemCollection",
+    "@odata.type": "#WorkItemCollection.WorkItemCollection",
+    "Name": "WorkItems Collection",
+    "Members@odata.count": 9,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/RebootRack"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/Red"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/Orange"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/Yellow"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/Green"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/Blue"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/Indigo"
+        },
+        {
+            "@odata.id": "/redfish/v1/TaskService/WorkItems/Violet"
+        }
+    ]
+}

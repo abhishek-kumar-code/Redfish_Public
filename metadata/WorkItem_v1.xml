@@ -77,6 +77,22 @@
         </NavigationProperty>
       </ComplexType>
       
+      <ComplexType Name="SubWorkItem">
+        <Annotation Term="OData.Description" String="Describes a sub WorkItem."/>
+        <Annotation Term="OData.LongDescription" String="Describes a sub work item and any prerequisites that must be met before it can start."/>
+        <Property Name="Prerequisites" Type="Collection(WorkItem.PrerequisiteWorkItem)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Work items that must be run prior to starting this work item. ."/>
+          <Annotation Term="OData.LongDescription" String="Work items that must be run prior to starting this work item.  Each must complete as specified. "/>
+        </Property>
+        <NavigationProperty Name="WorkItem" Type="WorkItem.WorkItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A WorkItem representing work to be invoked."/>
+          <Annotation Term="OData.LongDescription" String="A WorkItem representing work to be invoked after the prerequisites have been met."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+      
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -92,7 +108,13 @@
       
       <ComplexType Name="Links" BaseType="Resource.Links">
         <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/> 
+        <NavigationProperty Name="Tasks" Type="Collection(Task.Task)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A collection of tasks representing active invocations of this work."/>
+          <Annotation Term="OData.LongDescription" String="A collection of tasks, each shall represent an active invocation of this work."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </ComplexType>
       
       <Action Name="Start" IsBound="true">
@@ -103,8 +125,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="WorkItem.v1_0_0">
 
-      <EntityType Name="WorkItem" BaseType="WorkItem.WorkItem">
-      
+      <EntityType Name="WorkItem" BaseType="WorkItem.WorkItem">   
         <Property Name="Schedule" Type="Schedule.Schedule">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Specifies when to invoke the specified work."/>
@@ -115,42 +136,22 @@
           <Annotation Term="OData.Description" String="If present, defines the request that invoked this task."/>
           <Annotation Term="OData.LongDescription" String="If present, the values shall define the request that invoked this task."/>
         </Property> 
-        <Property Name="PrerequisiteWorkItems" Type="Collection(WorkItem.PrerequisiteWorkItem)">
+        <Property Name="SubWorkItems" Type="Collection(WorkItem.SubWorkItem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="A collection of WorkItems representing work to be performed before this work item may be invoked."/>
-          <Annotation Term="OData.LongDescription" String="A collection of WorkItems representing work that must complete with one of the values in the TriggerHttpStatuses array before this work item may be invoked."/>
+          <Annotation Term="OData.Description" String="A collection of WorkItems representing additional work to be invoked concurrently with this work."/>
+          <Annotation Term="OData.LongDescription" String="A collection of WorkItems, each representing additional work that shall be invoked when this work item is started."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </Property>
-        <Property Name="Actions" Type="WorkItem.v1_1_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="WorkItem.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>         
-        <Property Name="Links" Type="WorkItem.V1_0_0.Links" Nullable="false">
+        <Property Name="Links" Type="WorkItem.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
       </EntityType>
         
-      <ComplexType Name="Links" BaseType="WorkItem.Links">        
-        <NavigationProperty Name="Tasks" Type="Collection(Task.Task)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A collection of tasks representing active invocations of this work."/>
-          <Annotation Term="OData.LongDescription" String="A collection of tasks, each shall represent an active invocation of this work."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="ConcurrentWorkItems" Type="Collection(WorkItem.WorkItem)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="A collection of WorkItems representing additional work to be invoked concurrently with this work."/>
-          <Annotation Term="OData.LongDescription" String="A collection of WorkItems, each representign additional work that shall be invoked when this work item is started."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="DependentWorkItems" Type="Collection(WorkItem.PrerequisiteWorkItem)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="A collection of WorkItems representing additional work to be performed after this work item completes."/>
-          <Annotation Term="OData.LongDescription" String="A collection of WorkItems representing additional work that shall be started after this work completes if this work completes with one of the values in the TriggerHttpStatuses array."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

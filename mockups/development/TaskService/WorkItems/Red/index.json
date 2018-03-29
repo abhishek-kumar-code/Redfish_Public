@@ -1,0 +1,23 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#WorkIem.WorkItem",
+    "@odata.id": "/redfish/v1/TaskService/WorkItems/Red",
+    "@odata.type": "#WorkItem.v1_1_0.WorkItem",
+    "Id": "Red",
+    "Name": "On Demand reboot of Red",
+    "HTTPOperationRequest": {
+      "Method":"Post",
+      "RequestURI": "/redfish/v1/Systems/...",
+      "Username": "angrydad",
+      "UserCredentials": null,
+      "GeneralHeaders": [],
+      "EntityHeaders": [],
+      "RequestBody": {},
+      "ResponseMonitorURI": "/Taskmonitor/834RJ4436"
+    },
+    "Links": {
+      "Tasks": [
+      ]
+    }
+	}
+}

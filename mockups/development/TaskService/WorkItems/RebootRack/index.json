@@ -1,0 +1,109 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#WorkItem.WorkItem",
+	"@odata.id": "/redfish/v1/TaskService/WorkItems/RebootRack",
+	"@odata.type": "#WorkItem.v1_0_0.WorkItem",
+	"Id": "RebootRack",
+	"Name": "Scheduled Nightly Reboot of the rack",
+	"Schedule": {
+		"InitialStartTime": "2018-04-01T00:01+6:00",
+		"RecurrenceInterval": "P1D"
+	},
+	"HTTPOperationRequest": {
+		"Method": "Post",
+		"RequestURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
+		"Username": "angrydad",
+		"UserCredentials": null,
+		"GeneralHeaders": [],
+		"EntityHeaders": [],
+		"RequestBody": {	
+		},
+		"ResponseMonitorURI": "/Taskmonitor/834RJ4436"
+	},
+	"Links": {
+		"Tasks": [],
+		"DependentWorkItems": [{
+			"TriggerHttpStatus": [200],
+			"TriggerInversion": "false",
+			"WorkItem": {
+				"@odata.id": "/redfish/v1/TaskService/WorkItems/Red"
+			}
+		}]
+	},
+	"SubWorkItems": [{
+		"WorkItem": {
+			"@odata.id": "/redfish/v1/TaskService/WorkItems/Red"
+		}
+	},
+	{
+		"Prerequisites": [{
+			"TriggerHTTPStatus": [200],
+			"TriggerInversion": "false",
+			"WorkItem": {
+				"@odata.id": "/redfish/v1/TaskService/WorkItems/Red"
+			}
+		}],
+		"WorkItem": {
+			"@odata.id": "/redfish/v1/TaskService/WorkItems/Orange"
+		}
+	},
+	{
+		"Prerequisites": [{
+			"TriggerHTTPStatus": [200],
+			"TriggerInversion": "false",
+			"WorkItem": {
+				"@odata.id": "/redfish/v1/TaskService/WorkItems/Orange"
+			}
+		}],
+		"WorkItem": {
+			"@odata.id": "/redfish/v1/TaskService/WorkItems/Yellow"
+		}
+	}{
+		"Prerequisites": [{
+			"TriggerHTTPStatus": [200],
+			"TriggerInversion": "false",
+			"WorkItem": {
+				"@odata.id": "/redfish/v1/TaskService/WorkItems/Yellow"
+			}
+		}],
+		"WorkItem": {
+			"@odata.id": "/redfish/v1/TaskService/WorkItems/Green"
+		}
+	},
+	{
+		"Prerequisites": [{
+			"TriggerHTTPStatus": [200],
+			"TriggerInversion": "false",
+			"WorkItem": {
+				"@odata.id": "/redfish/v1/TaskService/WorkItems/Green"
+			}
+		}],
+		"WorkItem": {
+			"@odata.id": "/redfish/v1/TaskService/WorkItems/Blue"
+		}
+	},
+	{
+		"Prerequisites": [{
+			"TriggerHTTPStatus": [200],
+			"TriggerInversion": "false",
+			"WorkItem": {
+				"@odata.id": "/redfish/v1/TaskService/WorkItems/Blue"
+			}
+		}],
+		"WorkItem": {
+			"@odata.id": "/redfish/v1/TaskService/WorkItems/Indigo"
+		}
+	},
+	{
+		"Prerequisites": [{
+			"TriggerHTTPStatus": [200],
+			"TriggerInversion": "false",
+			"WorkItem": {
+				"@odata.id": "/redfish/v1/TaskService/WorkItems/Indigo"
+			}
+		}],
+		"WorkItem": {
+			"@odata.id": "/redfish/v1/TaskService/WorkItems/Violet"
+		}
+	}]
+}

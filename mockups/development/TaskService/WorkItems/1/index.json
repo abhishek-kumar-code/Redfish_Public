@@ -1,0 +1,28 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#WorkIem.WorkItem",
+    "@odata.id": "/redfish/v1/TaskService/WorkItems/1",
+    "@odata.type": "#WorkItem.v1_1_0.WorkItem",
+    "Id": "1",
+    "Name": "Scheduled Nightly Reboot of PROBLEM_CHILD",
+    "Schedule": {
+      "InitialStartTime": "2018-04-01-07T00:01+6:00",
+      "RecurrenceInterval": "P24H"
+    },
+    "HTTPOperationRequest": {
+      "Method":"Post",
+      "RequestURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
+      "Username": "angrydad",
+      "UserCredentials": null,
+      "GeneralHeaders": [],
+      "EntityHeaders": [],
+      "RequestBody": {},
+      "ResponseMonitorURI": "/Taskmonitor/834RJ4436"
+    },
+    "Links": {
+      "Tasks": [
+        {"@odata.id": "/redfish/v1/TaskService/Tasks/PROBLEM_CHILD"}
+      ]
+    }
+	}
+}
