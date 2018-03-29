@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  UpdateService  v1.2.0-->
+<!--# Redfish Schema:  UpdateService  v1.2.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -152,6 +152,11 @@
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_1.UpdateService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to regenerate the JSON schema so that the action parameters are included."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_2.UpdateService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_0">
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_1.UpdateService">
         <Property Name="HttpPushUri" Type="Edm.String" Nullable="false">
@@ -168,6 +173,11 @@
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_0.UpdateService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to regenerate the JSON schema so that the action parameters are included."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_1.UpdateService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_0">
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_1.UpdateService">
         <Property Name="HttpPushUriTargets" Type="Collection(Edm.String)">
@@ -182,6 +192,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall be a boolean that is set by client when the HttpPushUriTargets property is being used by a client for firmware updates.  It shall provide multiple clients a way to negotiate its ownership.  This will help clients to know if a firmware update using HttpPushUriTargets is used by another client."/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to regenerate the JSON schema so that the action parameters are included."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_0.UpdateService"/>
     </Schema>
 
   </edmx:DataServices>
