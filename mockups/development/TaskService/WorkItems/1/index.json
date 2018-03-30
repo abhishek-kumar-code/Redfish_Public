@@ -6,7 +6,7 @@
 	"Id": "1",
 	"Name": "Scheduled Nightly Reboot of PROBLEM_CHILD",
 	"Schedule": {
-		"InitialStartTime": "2018-04-01-07T00:01+6:00",
+		"InitialStartTime": "2018-04-01T00:01+6:00",
 		"RecurrenceInterval": "P24H"
 	},
 	"HttpOperationRequest": {
