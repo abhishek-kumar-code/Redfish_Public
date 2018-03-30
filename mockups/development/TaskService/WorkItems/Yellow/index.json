@@ -10,7 +10,7 @@
 		"RecurrenceInterval": "P24H"
 	},
 	"HttpOperationRequest": {
-		"Method": "Post",
+		"Method": "POST",
 		"RequestURI": "/redfish/v1/Systems/...",
 		"Username": "angrydad",
 		"UserCredentials": null,

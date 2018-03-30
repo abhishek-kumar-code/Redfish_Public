@@ -6,7 +6,7 @@
 	"Id": "Violet",
 	"Name": "On Demand reboot of Violet",
 	"HttpOperationRequest": {
-		"Method": "Post",
+		"Method": "POST",
 		"RequestURI": "/redfish/v1/Systems/...",
 		"Username": "angrydad",
 		"UserCredentials": null,

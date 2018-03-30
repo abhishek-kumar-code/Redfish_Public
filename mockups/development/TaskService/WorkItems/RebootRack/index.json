@@ -10,7 +10,7 @@
 		"RecurrenceInterval": "P1D"
 	},
 	"HttpOperationRequest": {
-		"Method": "Post",
+		"Method": "POST",
 		"RequestURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
 		"Username": "angrydad",
 		"UserCredentials": null,
@@ -22,14 +22,7 @@
 		"ResponseMonitorURI": "/Taskmonitor/834RJ4436"
 	},
 	"Links": {
-		"Tasks": [],
-		"DependentWorkItems": [{
-			"TriggerHttpStatus": [200],
-			"TriggerInversion": "false",
-			"WorkItem": {
-				"@odata.id": "/redfish/v1/TaskService/WorkItems/Red"
-			}
-		}]
+		"Tasks": []
 	},
 	"SubWorkItems": [{
 		"WorkItem": {
