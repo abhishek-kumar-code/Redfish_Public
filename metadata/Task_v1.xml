@@ -137,7 +137,7 @@
           <Annotation Term="OData.Description" String="Request transfer of a current selected representation for the target resource."/>
         </Member>
         <Member Name="HEAD">
-          <Annotation Term="OData.Description" String="Identical to GET except that the server MUST NOT send a message body in the response (i.e., the response terminates at the end of the header section).  "/>
+          <Annotation Term="OData.Description" String="Identical to GET except that the server MUST NOT send a message body in the response (i.e., the response terminates at the end of the header section)."/>
         </Member>
         <Member Name="POST">
           <Annotation Term="OData.Description" String="Requests the target resource process the representation enclosed in the request according to the resource's own specific semantics."/>

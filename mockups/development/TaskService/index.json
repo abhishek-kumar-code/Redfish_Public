@@ -1,23 +1,25 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata/TaskService.TaskService",
-    "@odata.id": "/redfish/v1/TaskService",
-    "@odata.type": "#TaskService.v1_0_0.TaskService",
-    "Id": "TaskService",
-    "Name": "Tasks Service",
-    "DateTime": "2018-04-01-07T00:05+6:00",
-    "CompletedTaskOverWritePolicy": "Manual",
-    "LifeCycleEventOnTaskStateChange": true,
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
-    "ServiceEnabled": true,
-    "Tasks": {
-        "@odata.id": "/redfish/v1/TaskService/Tasks"
-    },
-    "WorkItems": {
-        "@odata.id": "/redfish/v1/TaskService/WorkItems"
-    },
-    "Oem": {}
+	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata/TaskService.TaskService",
+	"@odata.id": "/redfish/v1/TaskService",
+	"@odata.type": "#TaskService.v1_0_0.TaskService",
+	"Id": "TaskService",
+	"Name": "Tasks Service",
+	"DateTime": "2018-04-01T00:05+6:00",
+	"CompletedTaskOverWritePolicy": "Manual",
+	"LifeCycleEventOnTaskStateChange": true,
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"ServiceEnabled": true,
+	"Tasks": {
+		"@odata.id": "/redfish/v1/TaskService/Tasks"
+	},
+	"WorkItems": {
+		"@odata.id": "/redfish/v1/TaskService/WorkItems"
+	},
+	"Oem": {
+		
+	}
 }

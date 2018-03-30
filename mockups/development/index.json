@@ -1,53 +1,55 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
-    "@odata.id": "/redfish/v1/",
-    "@odata.type": "#ServiceRoot.v1_3_0.ServiceRoot",
-    "Id": "RootService",
-    "Name": "Root Service",
-    "Product": "Contoso WidgetDeluxe 8744",
-    "RedfishVersion": "1.0.0",
-    "UUID": "92384634-2938-2342-8820-489239905423",
-    "Systems": {
-        "@odata.id": "/redfish/v1/Systems"
-    },
-    "Chassis": {
-        "@odata.id": "/redfish/v1/Chassis"
-    },
-    "Managers": {
-        "@odata.id": "/redfish/v1/Managers"
-    },
-    "Fabrics": {
-        "@odata.id": "/redfish/v1/Fabrics"
-    },
-    "Tasks": {
-        "@odata.id": "/redfish/v1/TaskService"
-    },
-    "SessionService": {
-        "@odata.id": "/redfish/v1/SessionService"
-    },
-    "AccountService": {
-        "@odata.id": "/redfish/v1/AccountService"
-    },
-    "EventService": {
-        "@odata.id": "/redfish/v1/EventService"
-    },
-    "UpdateService": {
-        "@odata.id": "/redfish/v1/UpdateService"
-    },
-    "CompositionService": {
-        "@odata.id": "/redfish/v1/CompositionService"
-    },
-    "Registries": {
-        "@odata.id": "/redfish/v1/Registries"
-    },
-    "JsonSchemas": {
-        "@odata.id": "/redfish/v1/JsonSchemas"
-    },
-    "Links": {
-        "Sessions": {
-            "@odata.id": "/redfish/v1/SessionService/Sessions"
-        }
-    },
-    "Oem": {}
+	"@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
+	"@odata.id": "/redfish/v1/",
+	"@odata.type": "#ServiceRoot.v1_3_0.ServiceRoot",
+	"Id": "RootService",
+	"Name": "Root Service",
+	"Product": "Contoso WidgetDeluxe 8744",
+	"RedfishVersion": "1.0.0",
+	"UUID": "92384634-2938-2342-8820-489239905423",
+	"Systems": {
+		"@odata.id": "/redfish/v1/Systems"
+	},
+	"Chassis": {
+		"@odata.id": "/redfish/v1/Chassis"
+	},
+	"Managers": {
+		"@odata.id": "/redfish/v1/Managers"
+	},
+	"Fabrics": {
+		"@odata.id": "/redfish/v1/Fabrics"
+	},
+	"Tasks": {
+		"@odata.id": "/redfish/v1/TaskService"
+	},
+	"SessionService": {
+		"@odata.id": "/redfish/v1/SessionService"
+	},
+	"AccountService": {
+		"@odata.id": "/redfish/v1/AccountService"
+	},
+	"EventService": {
+		"@odata.id": "/redfish/v1/EventService"
+	},
+	"UpdateService": {
+		"@odata.id": "/redfish/v1/UpdateService"
+	},
+	"CompositionService": {
+		"@odata.id": "/redfish/v1/CompositionService"
+	},
+	"Registries": {
+		"@odata.id": "/redfish/v1/Registries"
+	},
+	"JsonSchemas": {
+		"@odata.id": "/redfish/v1/JsonSchemas"
+	},
+	"Links": {
+		"Sessions": {
+			"@odata.id": "/redfish/v1/SessionService/Sessions"
+		}
+	},
+	"Oem": {
+		
+	}
 }
