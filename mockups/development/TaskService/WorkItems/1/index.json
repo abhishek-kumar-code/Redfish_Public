@@ -16,9 +16,7 @@
 		"UserCredentials": null,
 		"GeneralHeaders": [],
 		"EntityHeaders": [],
-		"RequestBody": {
-			
-		},
+		"RequestBody": null,
 		"ResponseMonitorURI": "/Taskmonitor/834RJ4436"
 	},
 	"Links": {

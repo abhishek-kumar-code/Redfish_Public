@@ -11,11 +11,11 @@
   "HttpOperationRequest": {
     "Method":"POST",
     "RequestURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
-    "Username": "angrydad",
+    "UserName": "angrydad",
     "UserCredentials": null,
     "GeneralHeaders": [],
     "EntityHeaders": [],
-    "RequestBody": {},
+		"RequestBody": null,
     "ResponseMonitorURI": "/Taskmonitor/834RJ4436"
 	},
   "CompletionPercent": 50,
