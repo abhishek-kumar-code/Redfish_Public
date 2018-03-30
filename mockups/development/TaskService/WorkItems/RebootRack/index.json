@@ -59,7 +59,8 @@
 		"WorkItem": {
 			"@odata.id": "/redfish/v1/TaskService/WorkItems/Yellow"
 		}
-	}{
+	},
+  {
 		"Prerequisites": [{
 			"TriggerHTTPStatus": [200],
 			"TriggerInversion": "false",

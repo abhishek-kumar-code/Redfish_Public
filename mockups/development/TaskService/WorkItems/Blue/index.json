@@ -2,7 +2,7 @@
 	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#WorkIem.WorkItem",
 	"@odata.id": "/redfish/v1/TaskService/WorkItems/Blue",
-	"@odata.type": "#WorkItem.v1_1_0.WorkItem",
+	"@odata.type": "#WorkItem.v1_0_0.WorkItem",
 	"Id": "Blue",
 	"Name": "On Demand reboot of Blue",
 	"HTTPOperationRequest": {

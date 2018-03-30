@@ -28,7 +28,7 @@
     <edmx:Include Namespace="Task"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/Schedule_v1.xml">
-    <edmx:Include Namespace="Schedule"/>
+    <edmx:Include Namespace="Schedule.v1_0_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -81,8 +81,8 @@
         <Annotation Term="OData.Description" String="Describes a sub WorkItem."/>
         <Annotation Term="OData.LongDescription" String="Describes a sub work item and any prerequisites that must be met before it can start."/>
         <Property Name="Prerequisites" Type="Collection(WorkItem.PrerequisiteWorkItem)">
-          <Annotation Term="OData.Description" String="Work items that must be run prior to starting this work item. ."/>
-          <Annotation Term="OData.LongDescription" String="Work items that must be run prior to starting this work item.  Each must complete as specified. "/>
+          <Annotation Term="OData.Description" String="Work items that must be run prior to starting this work item."/>
+          <Annotation Term="OData.LongDescription" String="Work items that must be run prior to starting this work item.  Each must complete as specified."/>
         </Property>
         <NavigationProperty Name="WorkItem" Type="WorkItem.WorkItem">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -125,7 +125,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="WorkItem.v1_0_0">
 
       <EntityType Name="WorkItem" BaseType="WorkItem.WorkItem">   
-        <Property Name="Schedule" Type="Schedule.Schedule">
+        <Property Name="Schedule" Type="Schedule.v1_0_0.Schedule">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Specifies when to invoke the specified work."/>
           <Annotation Term="OData.LongDescription" String="The value shall specifies when this work is performed."/>
