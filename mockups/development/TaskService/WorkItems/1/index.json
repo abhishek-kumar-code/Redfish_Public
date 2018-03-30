@@ -9,7 +9,7 @@
 		"InitialStartTime": "2018-04-01-07T00:01+6:00",
 		"RecurrenceInterval": "P24H"
 	},
-	"HTTPOperationRequest": {
+	"HttpOperationRequest": {
 		"Method": "Post",
 		"RequestURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
 		"Username": "angrydad",

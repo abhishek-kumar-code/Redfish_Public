@@ -5,7 +5,7 @@
 	"@odata.type": "#WorkItem.v1_0_0.WorkItem",
 	"Id": "Green",
 	"Name": "On Demand reboot of Green",
-	"HTTPOperationRequest": {
+	"HttpOperationRequest": {
 		"Method": "Post",
 		"RequestURI": "/redfish/v1/Systems/...",
 		"Username": "angrydad",
