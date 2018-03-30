@@ -9,7 +9,7 @@
   "StartTime": "2018-04-01T00:01+6:00",
   "TaskStatus": "OK",
   "HttpOperationRequest": {
-    "Method":"Post",
+    "Method":"POST",
     "RequestURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
     "Username": "angrydad",
     "UserCredentials": null,

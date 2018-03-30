@@ -8,7 +8,7 @@
 	"HttpOperationRequest": {
 		"Method": "POST",
 		"RequestURI": "/redfish/v1/Systems/...",
-		"Username": "angrydad",
+		"UserName": "angrydad",
 		"UserCredentials": null,
 		"GeneralHeaders": [],
 		"EntityHeaders": [],
