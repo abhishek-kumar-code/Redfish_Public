@@ -7,11 +7,11 @@
     "Name": "Senses the orientation of the chassis",
 
     "MetricType": "Discrete",
-	"SensorType": "Orientation",
-	"Implementation": "PhysicalSensor",
-	"PhysicalContext": "ComputeBay",
+	  "SensorType": "Orientation",
+	  "Implementation": "PhysicalSensor",
+	  "PhysicalContext": "ComputeBay",
 
-	"SensingInterval": "PT1S",
+	  "SensingInterval": "T00:00:01",
 
     "DiscreteValues": [ "Vertical", "Horizontal", "Inclined" ],
 
@@ -19,7 +19,7 @@
         { "Name": "ChassisID", "Values": [ "1", "2", "3" ] }
     ],
 
-	"MetricProperties": [
+	  "MetricProperties": [
         "/redfish/v1/Chassis/{ChassisID}#/Orientation"
     ]
 }

@@ -7,9 +7,9 @@
     "Name": "Definition of Outlet Airflow Temperature",
 
     "MetricType": "Numeric",
-	"SensorType": "Temperature",
-	"Implementation": "Synthesized",
-	"PhysicalContext": "Exhaust",
+	  "Implementation": "Synthesized",
+	  "PhysicalContext": "Exhaust",
+	  "SensorType": "Temperature",
 
     "Units": "Cel",
 
@@ -17,12 +17,12 @@
         { "ChassisID": [ "1", "2", "3" ] }
     ],
 
-	"CalculationParameters": [
-	    {
-		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Thermal#/Temperatures/2/ReadingCelsius",
-		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Thermal#/Airflow/InletAirflowCFM",
-		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/PowerConsumedWatts",
- 		    "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/AverageConsumedWatts"
-	    }
+	  "CalculationParameters": [
+	      {
+		      "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Thermal#/Temperatures/2/ReadingCelsius",
+		      "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Thermal#/Airflow/InletAirflowCFM",
+		      "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/PowerConsumedWatts",
+ 		      "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/AverageConsumedWatts"
+	      }
     ]
 }

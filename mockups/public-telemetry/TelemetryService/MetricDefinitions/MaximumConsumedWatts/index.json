@@ -5,14 +5,17 @@
     "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
     "Id": "MaximumConsumedWatts",
     "Name": "MaximumConsumedWatts",
+    
+    "MetricType": "Counter",
     "Calculable": "NonSummable",
     "Units": "W",
     "DataType": "Decimal",
     "IsLinear": true,
-    "MetricType": "Counter",
-	"Wildcards": [ 
-		{ "Wild": ["0"] }
+
+    "Wildcards": [ 
+		    { "Wild": ["0"] }
     ],
     "MetricProperties": [
-		"/redfish/v1/Chassis/Tray_1/Power/{Wild}/PowerControl/PowerConsumedWatts"]
+		  "/redfish/v1/Chassis/Tray_1/Power/{Wild}/PowerControl/PowerConsumedWatts"
+    ]
 }

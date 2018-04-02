@@ -65,17 +65,17 @@
         <Property Name="MetricValue" Type="Edm.String">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
             <Annotation Term="OData.Description" String="The value identifies this resource."/>
-           <Annotation Term="OData.LongDescription" String="The value of the metric represented as a string. Its  data type is specified in including MetricResult.MetricDefinition."/>     
+           <Annotation Term="OData.LongDescription" String="The value of the metric represented as a string."/>     
         </Property>
         <Property Name="TimeStamp" Type="Edm.String">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="The time when the metric is computed."/>
-            <Annotation Term="OData.LongDescription" String="The value shall be an ISO 8601 date time for when the metric value was computed. Note that this may be different from the time when this instance is created. If Volatile is true for a given metric value instance, the TimeStamp changes whenever a new measurement snapshot is taken. A management application may establish a time series of metric data by retrieving the instances of metric value and sorting them according to their TimeStamp."/>
+            <Annotation Term="OData.Description" String="The time when the value of the metric is obtained."/>
+            <Annotation Term="OData.LongDescription" String="The value shall time when the metric value was obtained. The value shall conform to the ISO 8601 datetime with timezone format. Note that this may be different from the time when this instance is created. If Volatile is true for a given metric value instance, the TimeStamp changes whenever a new measurement snapshot is taken. A management application may establish a time series of metric data by retrieving the instances of metric value and sorting them according to their TimeStamp."/>
         </Property>
 		    <Property Name="MetricProperty" Type="Edm.String">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
             <Annotation Term="OData.Description" String="The URI for the property from which this metric is derived."/>
-            <Annotation Term="OData.LongDescription" String="The value shall be a URI of a property contained in the scope of the MetricScope."/>   
+            <Annotation Term="OData.LongDescription" String="The value shall be URI to the a property."/>   
 		        <Annotation Term="OData.IsURL" String="The value shall be an OData conformant URI to a property."/>
         </Property>
 		    <NavigationProperty Name="MetricDefinition" Type="MetricDefinition.MetricDefinition">

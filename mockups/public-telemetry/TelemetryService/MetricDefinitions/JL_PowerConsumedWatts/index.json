@@ -7,24 +7,24 @@
     "Name": "Power Consumed Watts Metric Definition",
 
     "MetricType": "Numeric",
-	"SensorType": "PowerConsumption",
-	"Implementation": "PhysicalSensor",
-	"PhysicalContext": "PowerSupply",
+	  "SensorType": "PowerConsumption",
+	  "Implementation": "PhysicalSensor",
+	  "PhysicalContext": "PowerSupply",
 
-	"SensingInterval": "1000",
-	"Units": "W",
-	"Precision": 4,
+	  "SensingInterval": "1000",
+	  "Units": "W",
+	  "Precision": 4,
     "Accuracy": 1.0,
-	"Calibration": 2,
-	"TimeStampAccuracy": "PT1S",
- 	"MinReadingRange": 0.0,
-	"MaxReadingRange": 50.0,
+	  "Calibration": 2,
+	  "TimeStampAccuracy": "T00:00:01",
+ 	  "MinReadingRange": 0.0,
+	  "MaxReadingRange": 50.0,
 
     "Wildcards": [
         { "Name": "ChassisID", "Values": [ "1", "2", "3" ] }
     ],
 
-	"MetricProperties": [
+	  "MetricProperties": [
         "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/PowerConsumedWatts ",
         "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts "
     ]
