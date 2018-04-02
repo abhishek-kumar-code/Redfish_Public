@@ -24,6 +24,9 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Event_v1.xml">
     <edmx:Include Namespace="Event"/>
   </edmx:Reference>
@@ -34,6 +37,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="EventService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Event Service resource contains properties for managing event subcriptions and generates the events sent to subscribers.  The resource has links to the actual collection of subscriptions (called Event Destinations)."/>
@@ -96,6 +100,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="EventService" BaseType="EventService.EventService">
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
@@ -148,31 +153,37 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_2">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_0.EventService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_3">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_2.EventService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_4">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_3.EventService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_5">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated.  In this case, DeliveryRetryAttempts description was updated."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_4.EventService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_6">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_5.EventService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_7">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change DeliveryRetryAttempts and DeliveryRetryIntervalSeconds properties to be writable."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_6.EventService"/>
     </Schema>

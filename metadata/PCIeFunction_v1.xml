@@ -21,6 +21,9 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EthernetInterface_v1.xml">
     <edmx:Include Namespace="EthernetInterface"/>
   </edmx:Reference>
@@ -36,6 +39,7 @@
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="PCIeFunction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System."/>
@@ -45,6 +49,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.PCIeFunction">
         <Annotation Term="OData.Description" String="This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -221,21 +226,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_0.PCIeFunction"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_2">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_1.PCIeFunction"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_3">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to StorageController to be its abstract base type."/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_2.PCIeFunction"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_1_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_2.PCIeFunction">
         <Property Name="Actions" Type="PCIeFunction.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -258,6 +267,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_1_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to StorageController to be its abstract base type."/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_1_0.PCIeFunction"/>
     </Schema>

@@ -19,10 +19,14 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>	
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml">
     <edmx:Include Namespace="ComputerSystem"/>
@@ -55,6 +59,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Manager" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="In Redfish, a Manager is a systems management entity which may implement or provide access to a Redfish service.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.  There may be multiple Managers in an implementation, and they may or may not be directly accessible via a Redfish-defined interface."/>
@@ -114,6 +119,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Manager" BaseType="Manager.Manager">
         <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
@@ -350,11 +356,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_0_0.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_2">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_0_1.Manager"/>
     </Schema>
@@ -365,21 +373,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_4">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Manager" BaseType="Manager.v1_0_3.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_5">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_0_4.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_6">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions.  It was also created to remove the Nullable=false term on ServiceEntryPointUUID."/>
       <EntityType Name="Manager" BaseType="Manager.v1_0_5.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>
       <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
         <NavigationProperty Name="ManagerInChassis" Type="Chassis.Chassis" Nullable="false">
@@ -392,26 +404,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_2">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Manager" BaseType="Manager.v1_1_1.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_3">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_1_2.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_4">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions.  It was also created to remove the Nullable=false term on ServiceEntryPointUUID."/>
       <EntityType Name="Manager" BaseType="Manager.v1_1_3.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager">
         <Property Name="PowerState" Type="Resource.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -422,26 +439,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_2_0.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_2">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Manager" BaseType="Manager.v1_2_1.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_3">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_2_2.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_4">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions.  It was also created to remove the Nullable=false term on ServiceEntryPointUUID."/>
       <EntityType Name="Manager" BaseType="Manager.v1_2_3.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Manager" BaseType="Manager.v1_2_1.Manager">
         <NavigationProperty Name="HostInterfaces" Type="HostInterfaceCollection.HostInterfaceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -453,16 +475,19 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Manager" BaseType="Manager.v1_3_0.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_2">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Manager" BaseType="Manager.v1_3_1.Manager"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_3_3">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to PowerState to use the unversioned definition.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions.  It was also created to remove the Nullable=false term on ServiceEntryPointUUID."/>
       <EntityType Name="Manager" BaseType="Manager.v1_3_2.Manager"/>
     </Schema>

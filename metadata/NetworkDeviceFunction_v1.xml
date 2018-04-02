@@ -20,6 +20,9 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
   </edmx:Reference>
@@ -33,6 +36,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="NetworkDeviceFunction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The NetworkDeviceFunction schema represents a logical interface exposed by the network adapter."/>
@@ -58,6 +62,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.NetworkDeviceFunction">
         <Annotation Term="OData.Description" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
@@ -431,16 +436,19 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_2">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add normative statements about the format of InitiatorName, PrimaryTargetName, and SecondaryTargetName properties in the iSCSIBoot structure.  It was also created to fix the descriptions for AssignablePhysicalPorts and PhysicalPortAssignment."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_0_1.NetworkDeviceFunction"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_1_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_0_1.NetworkDeviceFunction">
         <Property Name="Actions" Type="NetworkDeviceFunction.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -463,11 +471,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_1_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add normative statements about the format of InitiatorName, PrimaryTargetName, and SecondaryTargetName properties in the iSCSIBoot structure.  It was also created to fix the descriptions for AssignablePhysicalPorts and PhysicalPortAssignment."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_0.NetworkDeviceFunction"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <ComplexType Name="Links" BaseType="NetworkDeviceFunction.v1_0_0.Links">
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">

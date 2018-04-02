@@ -21,6 +21,9 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml">
     <edmx:Include Namespace="ComputerSystem"/>
   </edmx:Reference>
@@ -40,6 +43,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="HostInterface">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="HostInterface" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A HostInterface contains the properties needed to describe and configure a single Host Interface."/>
@@ -65,6 +69,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="HostInterface.v1_0_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="HostInterface" BaseType="HostInterface.HostInterface">
         <Annotation Term="OData.Description" String="The HostInterface schema represetns a single host interface."/>
@@ -183,11 +188,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="HostInterface.v1_0_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="HostInterface" BaseType="HostInterface.v1_0_0.HostInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="HostInterface.v1_1_0">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="HostInterface" BaseType="HostInterface.v1_0_1.HostInterface">
         <Property Name="Actions" Type="HostInterface.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -210,6 +217,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="HostInterface.v1_1_1">
+	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="HostInterface" BaseType="HostInterface.v1_1_0.HostInterface"/>
     </Schema>
