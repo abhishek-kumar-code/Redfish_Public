@@ -67,7 +67,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_0">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="AccountService" BaseType="AccountService.AccountService">
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
@@ -131,31 +131,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_2">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_0.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_3">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_2.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_4">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_3.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_5">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_4.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_0">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_3.AccountService">
         <NavigationProperty Name="PrivilegeMap" Type="PrivilegeRegistry.PrivilegeRegistry" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -167,19 +167,19 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_1">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_1_0.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_2">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_1_1.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_0">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_1_1.AccountService">
         <Property Name="Actions" Type="AccountService.v1_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -202,13 +202,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_1">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_2_0.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_2">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_2_1.AccountService"/>
     </Schema>
