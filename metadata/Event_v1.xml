@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Event  v1.2.1-->
+<!--# Redfish Schema:  Event  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -254,6 +254,16 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to deprecate the versioned definition of EventType to use an unversioned definition."/>
       <EntityType Name="Event" BaseType="Event.v1_2_0.Event"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_3_0">
+      <EntityType Name="Event" BaseType="Event.v1_2_1.Event">
+        <Property Name="SequenceId" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The assigned sequence identifier for this event in relation to a given subscription."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a number indicating the sequence identifier for this event.  The value for this property shall be 1 for the first event sent to a given subscriber.  The value shall increment by 1 for each subsequent event sent to a given subscriber."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
