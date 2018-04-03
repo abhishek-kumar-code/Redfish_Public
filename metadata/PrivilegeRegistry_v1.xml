@@ -30,7 +30,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="PrivilegeRegistry" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for Operation to Privilege mapping."/>
@@ -56,7 +56,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry.v1_0_0">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.PrivilegeRegistry">
         <Annotation Term="OData.Description" String="This is the schema definition for Operation to Privilege mapping."/>
@@ -156,19 +156,19 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry.v1_0_1">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.v1_0_0.PrivilegeRegistry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry.v1_0_2">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to PrivilegeType to use the unversioned definition."/>
       <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.v1_0_1.PrivilegeRegistry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry.v1_1_0">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.v1_0_1.PrivilegeRegistry">
         <Property Name="Actions" Type="PrivilegeRegistry.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -191,7 +191,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry.v1_1_1">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to PrivilegeType to use the unversioned definition."/>
       <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.v1_1_0.PrivilegeRegistry"/>
     </Schema>

@@ -27,7 +27,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SecureBoot">
-	  <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="SecureBoot" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This resource contains UEFI Secure Boot information. It represents properties for managing the UEFI Secure Boot functionality of a system."/>
