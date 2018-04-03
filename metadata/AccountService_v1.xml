@@ -44,7 +44,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 	  
       <EntityType Name="AccountService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-		<Annotation Term="OData.Description" String="The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles."/>
+        <Annotation Term="OData.Description" String="The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management account service for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
