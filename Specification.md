@@ -840,6 +840,7 @@ Services that support the "@Redfish.OperationApplyTime" annotation for create an
         }
     ],
     "@Redfish.OperationApplyTimeSupport": {
+        "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
         "SupportedValues": [ "Immediate", "OnReset" ]
     }
 }
@@ -877,6 +878,7 @@ Services that support the "@Redfish.OperationApplyTime" annotation for a given a
                 "PushPowerButton"
             ],
             "@Redfish.OperationApplyTimeSupport": {
+                "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
                 "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
                 "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
                 "MaintenanceWindowDurationInSeconds": 600
@@ -2246,7 +2248,8 @@ Below is an example request body that shows a client configuring when the values
 ~~~json
 {
     "@Redfish.SettingsApplyTime": {
-        "ApplyTime": "OnReset",   
+        "@odata.type": "#Settings.v1_1_0.PreferredApplyTime",
+        "ApplyTime": "OnReset",
         "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
         "MaintenanceWindowDurationInSeconds": 600
     },
