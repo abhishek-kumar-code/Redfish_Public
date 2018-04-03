@@ -115,6 +115,7 @@
           <Annotation Term="OData.LongDescription" String="This value shall represent that the operation is complete and completed sucessfully or with warnings."/>
         </Member>
         <Member Name="Killed">
+          <Annotation Term="Redfish.Deprecated" String="This value has been deprecated and is being replaced by the value Cancelled which has more determinate semantics."/>
           <Annotation Term="OData.Description" String="Task was terminated."/>
           <Annotation Term="OData.LongDescription" String="This value shall represent that the operation is complete because the task was killed by an operator."/>
         </Member>
@@ -125,6 +126,10 @@
         <Member Name="Service">
           <Annotation Term="OData.Description" String="Task is running as a service."/>
           <Annotation Term="OData.LongDescription" String="This value shall represent that the operation is now running as a service and expected to continue operation until stopped or killed."/>
+        </Member>
+        <Member Name="Cancelled">
+          <Annotation Term="OData.Description" String="Task has been cancelled by an operator or internal process."/>
+          <Annotation Term="OData.LongDescription" String="This value shall represent that the operation was cancelled either through a Delete on a Task Monitor or Task Resource or by an internal process."/>
         </Member>
       </EnumType>
     </Schema>
