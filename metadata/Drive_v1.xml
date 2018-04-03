@@ -436,6 +436,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Drive" BaseType="Drive.v1_3_0.Drive">
         <Property Name="PhysicalLocation" Type="Resource.Location" Nullable="false">
           <Annotation Term="OData.Description" String="The Location of the drive."/>

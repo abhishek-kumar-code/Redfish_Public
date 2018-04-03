@@ -161,6 +161,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to regenerate the JSON schema so that the action parameters are included."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_2.UpdateService"/>
     </Schema>
@@ -184,6 +185,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to regenerate the JSON schema so that the action parameters are included."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_1.UpdateService"/>
     </Schema>
@@ -206,6 +208,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to regenerate the JSON schema so that the action parameters are included."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_0.UpdateService"/>
     </Schema>

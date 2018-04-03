@@ -117,6 +117,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Manufacturer and ReleaseDate properties."/>
       <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.v1_1_1.SoftwareInventory">
         <Property Name="Manufacturer" Type="Edm.String">

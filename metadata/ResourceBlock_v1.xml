@@ -245,6 +245,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_0_0.ResourceBlock"/>
 
