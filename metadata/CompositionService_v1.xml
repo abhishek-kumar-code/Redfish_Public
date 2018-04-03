@@ -73,13 +73,13 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <NavigationProperty Name="ResourceBlocks" Type="ResourceBlockCollection.ResourceBlockCollection" Nullable="false">
+        <NavigationProperty Name="ResourceBlocks" Type="ResourceBlockCollection.ResourceBlockCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The resource blocks available on the service."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ResourceBlockCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ResourceZones" Type="ZoneCollection.ZoneCollection" Nullable="false">
+        <NavigationProperty Name="ResourceZones" Type="ZoneCollection.ZoneCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The resource zones available on the service."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ZoneCollection."/>

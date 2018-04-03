@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.1.2-->
+<!--# Redfish Schema:  AttributeRegistry  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -567,6 +567,35 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct regex patterns for different attribute properties."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_1.AttributeRegistry"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_2_0">
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
+
+      <ComplexType Name="Attributes" BaseType="AttributeRegistry.v1_0_0.Attributes">
+        <Annotation Term="OData.Description" String="An attribute and its possible values."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe an attribute and its possible values and other metadata."/>
+        <Property Name="ResetRequired" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="True if changing the value of this attribute requires a system or device reset in order to take effect."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the requirement for a system or device reset for this attribute value change to take effect."/>
+        </Property>
+        <Property Name="UefiDevicePath" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UEFI device path that qualifies this attribute."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the UEFI device path string used to qualify and locate the specific device for this Attribute, as defined by the UEFI Specification."/>
+        </Property>
+        <Property Name="UefiKeywordName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UEFI KeywordString of the attribute."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration KeywordString of this attribute, as defined in the UEFI Specification."/>
+        </Property>
+        <Property Name="UefiNamespaceId" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UEFI NamespaceId of the attribute."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration NamespaceId of this attribute, as defined in the UEFI Specification."/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

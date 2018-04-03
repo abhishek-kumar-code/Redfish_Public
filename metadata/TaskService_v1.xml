@@ -83,7 +83,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection" Nullable="false">
+        <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type TaskCollection."/>

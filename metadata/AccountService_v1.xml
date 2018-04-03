@@ -114,13 +114,13 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="s"/>
         </Property>
-        <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection" Nullable="false">
+        <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of Manager Accounts."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ManagerAccountCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection" Nullable="false">
+        <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of Roles."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type RoleCollection."/>
@@ -157,7 +157,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_3.AccountService">
-        <NavigationProperty Name="PrivilegeMap" Type="PrivilegeRegistry.PrivilegeRegistry" Nullable="false">
+        <NavigationProperty Name="PrivilegeMap" Type="PrivilegeRegistry.PrivilegeRegistry" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Privilege mapping that defines the privileges needed to perform a requested operation on a URI associated with this service."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type PrivilegeMappoing that defines the privileges a user context needs in order to perform a requested operation on a URI associated with this service."/>

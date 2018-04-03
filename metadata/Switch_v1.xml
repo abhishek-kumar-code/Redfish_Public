@@ -127,13 +127,13 @@
           <Annotation Term="OData.Description" String="This is the current power state of the switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the switch."/>
         </Property>
-        <NavigationProperty Name="Ports" Type="PortCollection.PortCollection" Nullable="false">
+        <NavigationProperty Name="Ports" Type="PortCollection.PortCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the ports for this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this switch contains and shall reference a resource of type Port."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
           <Annotation Term="OData.Description" String="Redundancy information for the switches."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
