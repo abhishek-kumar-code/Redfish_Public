@@ -1445,19 +1445,23 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 * Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
 
-### Schema repository
+### Schema and registry repository
 
-All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and JSON Schema formats.  The schema files are organized on the site in the following manner:
+All Redfish schemas and registries produced, approved and published by the SPMF are available from the DMTF website  http://redfish.dmtf.org/ for download.  Each schema folder in the Repository contains both CSDL and JSON Schema formats.  The files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
 | redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file. |
 | redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file. |
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
+| redfish.dmtf.org/registries | Current (most recent minor or errata) relase of each registry file. |
+| redfish.dmtf.org/registries/v1 | All v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
+| redfish.dmtf.org/registries/archive | Sub-folders contain registry files specific to a particular version release. |
 
-#### Schema file naming conventions
 
-Standard Redfish schema files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.
+#### Schema and registry file naming conventions
+
+Standard Redfish schema or registry files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.
 
 ##### CSDL (XML) schema file naming
 
@@ -1475,13 +1479,22 @@ Redfish JSON schema files shall be named using the [Type identifiers](#type-iden
   
 For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
 
+##### Registry file naming
+
+Redfish message or privilege registry files shall be named using the Registry name, following the format:
+
+  *RegistryName.MajorVersion.MinorVersion.Errata.json*
+  
+For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
+
 ##### OEM schema file naming
 
 To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
  
-#### Programmatic access to schema files
+#### Programmatic access to schema or registry files
 
-Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Registries may be accessed in the same manner from the redfish.dmtf.org/registries/v1 durable URL.  Programs incorporating schema or registry usage should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+
 
 
 
