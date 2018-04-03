@@ -1489,7 +1489,7 @@ Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 
 
 Types are identified by a *Type URI*. The URI for a type is of the form:
 
-  #*Namespace*.*TypeName*
+ `  #*Namespace*.*TypeName*`
 
 where
 
@@ -1498,7 +1498,7 @@ where
 
 The namespace for types defined by this specification is of the form:
 
-  *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*
+ ` *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*`
 
 where
 
@@ -1507,7 +1507,15 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "ComputerSystem.v1_0_0".
+An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an example of a corresponding Type URI would be "#ComputerSystem.v1_0_0.ComputerSystem".
+
+#### Type identifiers in JSON schema
+
+In JSON schema definitions for Redfish schema, the JSON schema-defined "title" property shall contain the Type URI used to identify the schema.
+
+For example, the "title" property for the ComputerSystem schema would be:
+
+ ` "title": "#ComputerSystem.v1_0_0.ComputerSystem"`
 
 #### Type identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced by, the [service metadata](#service-metadata).
