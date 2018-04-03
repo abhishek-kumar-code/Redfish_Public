@@ -22,7 +22,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Protocol">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-	  
+
       <Annotation Term="OData.Description" String="This enum describes all Protocols supported by devices in the Storage and Fabric models."/>
       <EnumType Name="Protocol">
         <Member Name="PCIe">
