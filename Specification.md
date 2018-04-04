@@ -547,7 +547,7 @@ Clients can add query parameters to request additional features from the service
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
 | $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
-| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                    | `http://resourcecollection?$select=SystemType,Status`|
+| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                    | `http://resource?$select=SystemType,Status`|
 | $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                            | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
 
 * Services should support the $top and $skip query parameters.
@@ -577,6 +577,7 @@ The following table represents the Redfish allowable values that shall be suppor
 Examples of the use of expand might be:
 * GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
 * GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
+* GET all of the UUIDs in the ComputerSystem collection.  This would be combining $select with $expand on the URI.  The syntax for this would be GET /redfish/v1/Systems?$select=UUID&$expand=.(levels=1)
 
 When performing $expand, Services may omit some of the properties of the referenced resource.
 
@@ -1363,7 +1364,7 @@ Error responses are defined by an extended error resource, represented as a sing
 
 | Property              | Description                                                                                                                                    |
 | ---                   | ---                                                                                                                                            |
-| code                  | A string indicating a specific MessageId from the message registry. "Base.1.0.GeneralError" should be used only if there is no better message. |
+| code                  | A string indicating a specific MessageId from the message registry.  |
 | message               | A human-readable error message corresponding to the message in the message registry.
 | @Message.ExtendedInfo | An array of [message objects](#message-object) describing one or more error message(s).
 
@@ -1438,6 +1439,7 @@ The client can use the MessageId to search the message registry for the correspo
 
 The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).
 
+"Base.1.0.GeneralError" should be used only in the code property of the error object if there is no better message or if there are multiple messages in the ExtendedInfo array.  The use of "Base.1.0.GeneralError" as a MessageId in ExtendedInfo is discouraged.  When used in ExtendedInfo, implementations are expected to include a Resolution property with this error to indicate how to resolve the problem.
 
 ## Data model and Schema
 
@@ -1489,7 +1491,7 @@ Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 
 
 Types are identified by a *Type URI*. The URI for a type is of the form:
 
-  #*Namespace*.*TypeName*
+ `  #*Namespace*.*TypeName*`
 
 where
 
@@ -1498,7 +1500,7 @@ where
 
 The namespace for types defined by this specification is of the form:
 
-  *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*
+ ` *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*`
 
 where
 
@@ -1507,7 +1509,15 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "ComputerSystem.v1_0_0".
+An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an example of a corresponding Type URI would be "#ComputerSystem.v1_0_0.ComputerSystem".
+
+#### Type identifiers in JSON schema
+
+In JSON schema definitions for Redfish schema, the JSON schema-defined "title" property shall contain the Type URI used to identify the schema.
+
+For example, the "title" property for the ComputerSystem schema would be:
+
+ ` "title": "#ComputerSystem.v1_0_0.ComputerSystem"`
 
 #### Type identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced by, the [service metadata](#service-metadata).
@@ -2246,9 +2256,11 @@ The client may cancel the operation by performing a DELETE on the Task Monitor U
 
 The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object may invalidate the associated Task Monitor and subsequent GET on the Task Monitor URL returns either [410](#status-410) (Gone) or [404](#status-404) (Not Found).
 
-Once the operation has completed, the service shall update the TaskState with the appropriate value.  The values indicating that a task has completed are defined in the Task schema. 
+In the unlikely event that a [202](#status-202) (Accepted) is returned on the DELETE of the Task Monitor or Task Resource, an additional Task shall not be started and instead the existing Task Resource may be monitored for status of the cancellation request.  When the Task has finally completed cancellation, operations to either the Task Monitor and Task Resource shall return a [404](#status-404) (Not Found).
 
-Once the operation has completed, the Task Monitor shall return a the appropriate status code ( OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses). 
+Once the operation has completed, the service shall update the TaskState with the appropriate value.  The values indicating that a task has completed are defined in the Task schema.
+
+Once the operation has completed, the Task Monitor shall return a the appropriate status code ( OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
 
 The service may return a status code of [410](#status-410) (Gone) or [404](#status-404) (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor.
 
@@ -2298,7 +2310,7 @@ The managed device shall provide clients with the AL header pointing to the Redf
 
 For UPnP compatibility, the managed device should provide clients with the LOCATION header pointing to the UPnP XML descriptor.
 
-An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
+An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  A service may provide additional headers for UPnP compatibility.  Fields in brackets are placeholders for device-specific values.
 
 ~~~http
 HTTP/1.1 200 OK
