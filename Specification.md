@@ -2298,7 +2298,7 @@ The managed device shall provide clients with the AL header pointing to the Redf
 
 For UPnP compatibility, the managed device should provide clients with the LOCATION header pointing to the UPnP XML descriptor.
 
-An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
+An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  A service may provide additional headers for UPnP compatibility.  Fields in brackets are placeholders for device-specific values.
 
 ~~~http
 HTTP/1.1 200 OK
@@ -2505,10 +2505,9 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 The Authorization subsystem uses Roles and Privileges to control which users have what access to resources.
 
 * Roles:
-  - A Role is a defined set of Privileges.   Therefore, two roles with the same privileges shall behave equivalently.
+  - A Role is a defined set of Privileges.  Therefore, two roles with the same privileges shall behave equivalently.
   - All users are assigned exactly one role.
-  - This specification defines a set of predefined roles, one of which shall be assigned to a user when a user is created.
-  - The predefined roles shall be created as follows (where Role Name is the value of the Id property for the role resource):
+  - This specification defines a set of predefined roles.  The predefined roles shall be created as follows (where Role Name is the value of the Id property for the role resource):
     - Role Name  = "Administrator"
       - AssignedPrivileges = Login, ConfigureManager, ConfigureUsers, ConfigureComponents, ConfigureSelf
     - Role Name = "Operator"
@@ -2520,6 +2519,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - The privilege array defined for the predefined roles shall not be modifiable.
   - A service may optionally define additional "Custom" roles.
   - A service may allow users to create custom roles by issuing a POST to the "Roles" Resource Collection.
+  - A predefined role or a custom role shall be assigned to a user when a user is created.
+    - The client shall provided the "RoleId" property when creating a new Manager Account in order to select the predefined role or a custom role.
 
 * Privileges:
   - A privilege is a permission to perform an operation (e.g., Read, Write) within a defined management domain (e.g., Configuring Users).
