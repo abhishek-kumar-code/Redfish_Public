@@ -2300,7 +2300,7 @@ The managed device shall provide clients with the AL header pointing to the Redf
 
 For UPnP compatibility, the managed device should provide clients with the LOCATION header pointing to the UPnP XML descriptor.
 
-An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
+An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  A service may provide additional headers for UPnP compatibility.  Fields in brackets are placeholders for device-specific values.
 
 ~~~http
 HTTP/1.1 200 OK
