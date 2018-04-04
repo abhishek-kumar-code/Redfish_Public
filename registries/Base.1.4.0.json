@@ -17,7 +17,7 @@
             "Resolution": "None"
         },
         "GeneralError": {
-            "Description": "Indicates that a general error has occurred.  Use in ExtendedInfor is discouraged.  When used in ExtendedInfo, implementations are expected to include a Resolution property with this error to indicate how to resolve the problem.",
+            "Description": "Indicates that a general error has occurred.  Use in ExtendedInfo is discouraged.  When used in ExtendedInfo, implementations are expected to include a Resolution property with this error to indicate how to resolve the problem.",
             "Message": "A general error has occurred. See Resolution for information on how to resolve the error.",
             "Severity": "Critical",
             "NumberOfArgs": 0,
