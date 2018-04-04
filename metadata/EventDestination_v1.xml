@@ -201,15 +201,15 @@
         <Property Name="SubscriptionType" Type="EventDestination.v1_3_0.SubscriptionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates the subscription type for events."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of subscription for events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of subscription for events.  If this property is not provided by the service, the SubscriptionType shall be assumed to be RedfishEvent."/>
         </Property>
       </EntityType>
 
       <EnumType Name="SubscriptionType">
-        <Member Name="RedfishEventSubscription">
+        <Member Name="RedfishEvent">
           <Annotation Term="OData.Description" String="The subscription follows the Redfish specification for event notifications, which is done by a service sending an HTTP POST to the subscriber's destination URI."/>
         </Member>
-        <Member Name="SSESubscription">
+        <Member Name="SSE">
           <Annotation Term="OData.Description" String="The subscription follows the HTML5 Server-Sent Event definition for event notifications."/>
         </Member>
       </EnumType>
