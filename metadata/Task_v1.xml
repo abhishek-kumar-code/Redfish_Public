@@ -5,7 +5,7 @@
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -20,6 +20,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message_v1.xml">
     <edmx:Include Namespace="Message"/>
@@ -115,6 +118,7 @@
           <Annotation Term="OData.LongDescription" String="This value shall represent that the operation is complete and completed sucessfully or with warnings."/>
         </Member>
         <Member Name="Killed">
+          <Annotation Term="Redfish.Deprecated" String="This value has been deprecated and is being replaced by the value Cancelled which has more determinate semantics."/>
           <Annotation Term="OData.Description" String="Task was terminated."/>
           <Annotation Term="OData.LongDescription" String="This value shall represent that the operation is complete because the task was killed by an operator."/>
         </Member>
@@ -125,6 +129,14 @@
         <Member Name="Service">
           <Annotation Term="OData.Description" String="Task is running as a service."/>
           <Annotation Term="OData.LongDescription" String="This value shall represent that the operation is now running as a service and expected to continue operation until stopped or killed."/>
+        </Member>
+        <Member Name="Cancelling">
+          <Annotation Term="OData.Description" String="Task is in the process of being cancelled."/>
+          <Annotation Term="OData.LongDescription" String="This value shall represent that the operation is in the process of being cancelled."/>
+        </Member>
+        <Member Name="Cancelled">
+          <Annotation Term="OData.Description" String="Task has been cancelled by an operator or internal process."/>
+          <Annotation Term="OData.LongDescription" String="This value shall represent that the operation was cancelled either through a Delete on a Task Monitor or Task Resource or by an internal process."/>
         </Member>
       </EnumType>
     </Schema>
@@ -172,6 +184,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_2_0">
+      <Annotation Term="OData.Description" String="This version was created to add the TaskMonitor property.  This version was also created to add the Cancelled and Cancelling to TaskState, and to deprecate Killed."/>
       <EntityType Name="Task" BaseType="Task.v1_1_1.Task">
         <Property Name="TaskMonitor" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -181,5 +194,6 @@
         </Property>
       </EntityType>
     </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
