@@ -2337,7 +2337,6 @@ data:    "@odata.context": "/redfish/v1/$metadata#Event.Event",
 data:    "@odata.type": "#Event.v1_1_0.Event",
 data:    "Id": "1",
 data:    "Name": "Event Array",
-data:    "SequenceId": 1,
 data:    "Context": "ABCDEFGH",
 data:    "Events": [
 data:        {
