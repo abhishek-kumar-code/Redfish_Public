@@ -717,7 +717,7 @@ Actions are requested on a resource by sending the HTTP POST method to the URI o
 where
 * *ResourceUri* is the URI of the resource which supports invoking the action.
 * "Actions" is the name of the property containing the actions for a resource, as defined by this specification.
-* *QualifiedActionName* is the namespace of the action.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
@@ -2031,7 +2031,7 @@ where
 * *ResourceUri* is the URI of the resource which supports invoking the action.
 * "Actions" is the name of the property containing the actions for a resource.
 * "Oem" is the name of the OEM property within the Actions property.
-* *QualifiedActionName* is the namespace of the action.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 ### Common Redfish resource properties
 
