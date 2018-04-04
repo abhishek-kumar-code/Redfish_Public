@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#AccountService.AccountService",
     "@odata.id": "/redfish/v1/AccountService",
-    "@odata.type": "#AccountService.v1_0_0.AccountService",
+    "@odata.type": "#AccountService.v1_3_0.AccountService",
     "Id": "AccountService",
     "Name": "Account Service",
     "Description": "Account Service",
@@ -21,5 +21,80 @@
     },
     "Roles": {
         "@odata.id": "/redfish/v1/AccountService/Roles"
+    },
+    "LocalAccountAuth": "Enabled",
+    "LDAP": {
+        "AccountProviderType": "LDAPService",
+        "ServiceEnabled": false,
+        "ServiceAddresses": [
+            "ldaps://ldap.example.org:636"
+        ],
+        "Authentication": {
+            "AuthenticationType": "UsernameAndPassword",
+            "Username": "cn=Manager,dc=example,dc=org",
+            "Password": null
+        },
+        "LDAPService": {
+            "SearchSettings": {
+                "BaseDistinguishedNames": [
+                    "dc=example,dc=org"
+                ],
+                "UsernameAttribute": "uid",
+                "GroupsAttribute": "memberof"
+            }
+        },
+        "RemoteRoleMapping": [
+            {
+                "RemoteUser": "cn=Manager,dc=example,dc=org",
+                "LocalRole": "Admin"
+            },
+            {
+                "RemoteGroup": "cn=Admins,ou=Groups,dc=example,dc=org",
+                "LocalRole": "Admin"
+            },
+            {
+                "RemoteGroup": "cn=PowerUsers,ou=Groups,dc=example,dc=org",
+                "LocalRole": "Operator"
+            },
+            {
+                "RemoteGroup": "(cn=*)",
+                "LocalRole": "ReadOnlyUser"
+            }
+        ]
+    },
+    "ActiveDirectory": {
+        "AccountProviderType": "ActiveDirectoryService",
+        "ServiceEnabled": true,
+        "ServiceAddresses": [
+            "ad1.example.org",
+            "ad2.example.org",
+            null,
+            null
+        ],
+        "Authentication": {
+            "AuthenticationType": "KerberosKeytab",
+            "KerberosKeytab": null
+        },
+        "RemoteRoleMapping": [
+            {
+                "RemoteGroup": "Administrators",
+                "LocalRole": "Admin"
+            },
+            {
+                "RemoteUser": "DOMAIN\\Bob",
+                "LocalRole": "Operator"
+            },
+            {
+                "RemoteGroup": "PowerUsers",
+                "LocalRole": "Operator"
+            },
+            {
+                "RemoteGroup": "Everybody",
+                "LocalRole": "ReadOnlyUser"
+            }
+        ]
+    },
+    "AdditionalExternalAccountProviders": {
+        "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders"
     }
 }
