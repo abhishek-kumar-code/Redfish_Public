@@ -1,12 +1,12 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2015, 2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.type": "#MessageRegistry.v1_0_0.MessageRegistry",
-    "Id": "Base.1.3.1",
+    "Id": "Base.1.4.0",
     "Name": "Base Message Registry",
     "Language": "en",
     "Description": "This registry defines the base messages for Redfish",
     "RegistryPrefix": "Base",
-    "RegistryVersion":  "1.3.1",
+    "RegistryVersion":  "1.4.0",
     "OwningEntity": "DMTF",
     "Messages": {
         "Success": {
@@ -528,7 +528,7 @@
                 "string",
                 "string"
             ],
-            "Resolution": "Resubmit the request with an appropriate @odata.type and corresponding properties."
+            "Resolution": "Resubmit the request with a payload compatible with the resource's schema."
         }
     }
 }
