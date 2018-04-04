@@ -13,7 +13,7 @@
     },
     "Actions": {
         "#LogService.ClearLog": {
-            "target": "/redfish/v1/Managers/Blade2BMC/LogServices/Log/Actions/LogService.Reset"
+            "target": "/redfish/v1/Managers/Blade2BMC/LogServices/Log/Actions/LogService.ClearLog"
         }
     },
     "Entries": {
