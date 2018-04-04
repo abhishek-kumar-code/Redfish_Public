@@ -2360,7 +2360,7 @@ data:    ]
 data:}
 ```
 
-When a client opens an SSE stream for the EventService, the service shall create an EventDestination instance in the Subscriptions collection for the EventService to represent the connection.  The service shall delete the corresponding EventDestination instance when the connection is closed.  The service shall close the connection if a client successfully deletes the corresponding EventDestination instance.
+When a client opens an SSE stream for the EventService, the service shall create an EventDestination instance in the Subscriptions collection for the EventService to represent the connection.  The service shall delete the corresponding EventDestination instance when the connection is closed.  The service shall close the connection if the corresponding EventDestination is deleted.
 
 
 ## Security
