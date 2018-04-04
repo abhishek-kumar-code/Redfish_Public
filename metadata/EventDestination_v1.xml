@@ -201,7 +201,7 @@
         <Property Name="SubscriptionType" Type="EventDestination.v1_3_0.SubscriptionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates the subscription type for events."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of subscription for events.  If this property is not provided by the service, the SubscriptionType shall be assumed to be RedfishEvent."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of subscription for events.  If this property is not present, the SubscriptionType shall be assumed to be RedfishEvent."/>
         </Property>
       </EntityType>
 
