@@ -1,19 +1,36 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinitions",
-    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
     "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
-    "Id": "AverageConsumedWatts",
-    "Name": "AverageConsumedWatts",
-    "Calculable": "NonSummable",
-    "Units": "W",
-    "CalculationTimeInterval": "PT0.020S",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/JL_AverageConsumedWatts",
+    "Id": "JL_AverageConsumedWatts",
+    "Name": "Average Consumed Watts Metric Definition",
+
+    "MetricType": "Numeric",
+    "SensorType": "PowerConsumption",
+	  "Implementation": "Calculated",
+	  "PhysicalContext": "PowerSupply",
+
     "DataType": "Decimal",
+	  "Units": "W",
+    "CalculationAlgorithm": "AverageOverInterval",
+ 	  "CalculationTimeInterval": "T00:00:01",
+
     "IsLinear": true,
-    "MetricType": "Counter",
-	"Wildcards": [ 
-		{ "Wild": ["0"] }
+    "Calculable": "NonSummable",
+
+    "Wildcards": [
+        { "ChassisID": [ "1", "2", "3" ] }
     ],
-    "MetricProperties": [
-		"/redfish/v1/Chassis/Tray_1/Power/{Wild}/PowerControl/PowerConsumedWatts"]
+
+	  "CalculationParameters": [
+	    {
+		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/PowerConsumedWatts ",
+ 		    "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/AverageConsumedWatts "
+	    },
+	    {
+		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts ",
+ 		    "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/AverageConsumedWatts "
+	    }
+    ]
 }

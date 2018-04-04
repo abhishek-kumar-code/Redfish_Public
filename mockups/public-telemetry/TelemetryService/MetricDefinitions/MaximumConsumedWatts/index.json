@@ -1,21 +1,36 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
-    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/MaximumConsumedWatts",
     "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/MaximumConsumedWatts",
     "Id": "MaximumConsumedWatts",
-    "Name": "MaximumConsumedWatts",
+    "Name": "Maximum Consumed Watts",
     
-    "MetricType": "Counter",
-    "Calculable": "NonSummable",
-    "Units": "W",
+    "MetricType": "Numeric",
+	  "SensorType": "PowerConsumption",
+	  "Implementation": "Calculated",
+	  "PhysicalContext": "PowerSupply",
+
     "DataType": "Decimal",
+    "Units": "W",
+
+	  "CalculationAlgorithm": "MaximumDuringInterval",
+ 	  "CalculationTimeInterval": "T00:00:01",
+
+    "Calculable": "NonSummable",
     "IsLinear": true,
 
-    "Wildcards": [ 
-		    { "Wild": ["0"] }
+    "Wildcards": [
+        { "ChassisID": [ "1", "2", "3" ] }
     ],
-    "MetricProperties": [
-		  "/redfish/v1/Chassis/Tray_1/Power/{Wild}/PowerControl/PowerConsumedWatts"
+	  "CalculationParameters": [
+	      {
+		      "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/PowerConsumedWatts",
+ 		      "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/MaxConsumedWatts"
+	      },
+	      {
+		      "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts",
+ 		      "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/MaxConsumedWatts"
+	      }
     ]
 }

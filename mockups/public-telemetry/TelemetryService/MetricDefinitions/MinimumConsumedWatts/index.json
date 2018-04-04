@@ -4,17 +4,32 @@
     "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
     "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/MinimumConsumedWatts",
     "Id": "MinimumConsumedWatts",
+    "Name": "Minimum Consumed Watts Metric Definition",
 
-    "Name": "MinimumConsumedWatts",
-    "Calculable": "NonSummable",
-    "Units": "W",
+    "MetricType": "Numeric",
+	  "SensorType": "PowerConsumption",
+	  "Implementation": "Calculated",
+	  "PhysicalContext": "PowerSupply",
     "DataType": "Decimal",
+    "Units": "W",
+
+	  "CalculationAlgorithm": "MinimumDuringInterval",
+ 	  "CalculationTimeInterval": "T00:00:01",
+
+    "Calculable": "NonSummable",
     "IsLinear": true,
-    "MetricType": "Counter",
-	"Wildcards": [ 
-		{ "Wild": ["0"] }
+
+    "Wildcards": [
+        { "ChassisID": [ "1", "2", "3" ] }
     ],
-    "MetricProperties": [
-		"/redfish/v1/#metadata/Chassis/Tray_1/Power/{Wild}/PowerControl/PowerConsumedWatts"
+	  "CalculationParameters": [
+	      {
+		      "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/PowerConsumedWatts ",
+ 		      "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/MinConsumedWatts "
+	      },
+	      {
+		      "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts ",
+ 		      "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/MinConsumedWatts "
+	      }
     ]
 }
