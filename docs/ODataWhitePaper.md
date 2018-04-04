@@ -21,6 +21,7 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 
 The DMTF acknowledges the following individuals for their contributions to this document:
 
+* Jeff Hilland - Hewlett Packard Enterprise
 * Michael Raineri - Dell Inc.
 
 
