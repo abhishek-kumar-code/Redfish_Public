@@ -260,6 +260,9 @@
         <Member Name="AuxiliaryController">
           <Annotation Term="OData.Description" String="A controller which provides management functions for a particular subsystem or group of devices."/>
         </Member>
+        <Member Name="Service">
+          <Annotation Term="OData.Description" String="A software-based service which provides management functions."/>
+        </Member>
       </EnumType>
 
       <ComplexType Name="ManagerService" Abstract="true">
