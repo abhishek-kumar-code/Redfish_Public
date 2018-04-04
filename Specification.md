@@ -265,7 +265,7 @@ Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic ope
 
 In Redfish, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
 
-The Redfish Schema defines certain standard actions associated with common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the Redfish [schema](#resource-extensibility), including defining [actions](#custom-actions) for existing resources.
+The Redfish Schema defines certain standard actions associated with common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the Redfish [schema](#resource-extensibility), including defining [actions](#oem-actions) for existing resources.
 
 #### Service entry point discovery
 
@@ -713,14 +713,14 @@ The POST method is used to initiate operations on the object (such as Actions).
  * Services shall support the POST method for sending actions.
  * The POST operation may not be idempotent.
 
-Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. If the [actions property](#actions-property) within a resource does not specify a target property, then the URI of an action shall be of the form:
+Actions are requested on a resource by sending the HTTP POST method to the URI of the action.  The "target" property within the [actions property](#actions-property) of a resource shall contain the URI of the action.  The URI of the action should be in the form of:
 
- *ResourceUri*/Actions/*QualifiedActionName*
+` *ResourceUri*/Actions/*QualifiedActionName*`
 
 where
 * *ResourceUri* is the URI of the resource which supports invoking the action.
 * "Actions" is the name of the property containing the actions for a resource, as defined by this specification.
-* *QualifiedActionName* is the namespace or alias qualified name of the action.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
@@ -1921,7 +1921,7 @@ The first parameter is called the "binding parameter" and specifies the resource
 
 #### Resource extensibility
 
-Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#custom-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
+Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
@@ -2010,7 +2010,7 @@ The following fragment presents some examples of naming and use of the Oem prope
 }
 ~~~
 
-##### Custom actions
+##### OEM actions
 
 OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#resource-actions) property type.
 
@@ -2034,6 +2034,16 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
     ...
 }
 ~~~
+
+The URI of the OEM action in the "target" property should be in the form of:
+
+` *ResourceUri*/Actions/Oem/*QualifiedActionName*`
+
+where
+* *ResourceUri* is the URI of the resource which supports invoking the action.
+* "Actions" is the name of the property containing the actions for a resource.
+* "Oem" is the name of the OEM property within the Actions property.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 ### Common Redfish resource properties
 
