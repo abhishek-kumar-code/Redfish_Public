@@ -590,7 +590,7 @@ For those interested in CSDL to JSON Schema conversion process, please refer to 
 
 Payload annotations are a mechanism in which a service can provide additional information about a given property or object within a response.  The definitions for these annotations are the same as annotations used in the CSDL files; an Annotation element in a given Namespace can be used to define payload annotations.
 
-Redfish limits the scope of these to only core terms defined by OData, as well as Annotation elements defined in the `Redfish`, `Message`, and `Privileges` Namespaces.  The `Redfish` Namespace is an alias for the `RedfishExtensions.v1_0_0` Namespace found in RedfishExtensions_v1.xml.  The `Message` and `Privileges` Namespaces are found in Message_v1.xml and Privileges_v1.xml respectively.
+Redfish limits the scope of these to only core terms defined by OData, as well as Annotation elements defined in the `Redfish` and `Message` Namespaces.  The `Redfish` Namespace is an alias for the `RedfishExtensions.v1_0_0` Namespace found in RedfishExtensions_v1.xml.  The `Message` Namespace is found in Message_v1.xml.
 
 
 ### Annotating a single property in a response
@@ -683,7 +683,7 @@ The metadata document does not need to include every Namespace ever defined by R
 * Include the Namespaces referenced by the `@odata.context` properties returned by the service
     * Example: if the service can return the `@odata.context` property with the value `/redfish/v1/$metadata#ComputerSystem.ComputerSystem`, it must include the Namespace `ComputerSystem` in the metadata document
 * Include the Namespaces referenced by [payload annotations](#payload-annotations) returned by the service
-    * This is limited to the `Redfish`, `Message`, and `Privileges` Namespaces
+    * This is limited to the `Redfish` and `Message` Namespaces
     * The `Redfish` Namespace is an alias for the `RedfishExtensions.v1_0_0` Namespace; the alias must be defined in the metadata document
 * Do not forget to include Namespaces referenced by error responses
     * Typically this is limited to the `Message` Namespace and one of the versioned Namespaces inside Message_v1.xml, such as `Message.v1_0_0.Message`
