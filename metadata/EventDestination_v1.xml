@@ -198,12 +198,21 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_3_0">
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_2_2.EventDestination">
-        <Property Name="IsSSESubscription" Type="Edm.Boolean">
+        <Property Name="SubscriptionType" Type="EventDestination.v1_3_0.SubscriptionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates if the subscription is representing a Server-Sent Event (SSE) connection."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be true if the subscription represents an HTML5 Server-Sent Event connection."/>
+          <Annotation Term="OData.Description" String="Indicates the subscription type for events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of subscription for events."/>
         </Property>
       </EntityType>
+
+      <EnumType Name="SubscriptionType">
+        <Member Name="RedfishEventSubscription">
+          <Annotation Term="OData.Description" String="The subscription follows the Redfish specification for event notifications, which is done by a service sending an HTTP POST to the subscriber's destination URI."/>
+        </Member>
+        <Member Name="SSESubscription">
+          <Annotation Term="OData.Description" String="The subscription follows the HTML5 Server-Sent Event definition for event notifications."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>
