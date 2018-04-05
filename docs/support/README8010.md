@@ -2,11 +2,11 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2017.3'
-modified: '2017-11-17'
+DocVersion: '2018.1'
+modified: '2017-04-05'
 status: published
 released: True
-copyright: '2015-2017'
+copyright: '2015-2018'
 ---
 # Foreword
 
@@ -23,6 +23,36 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 
 # Redfish Schema Release History
+
+## Release 2018.1 (April 2018)
+
+| Schema Name | Version | Description     |
+| ---         | ---     | ---             |
+| ExternalAccountProvider | 1.0.0 | Initial release.  Contains additional external account provider information for Managers. |
+| ExternalAccountProviderCollection | 1.0.0 | Initial release. Collection of external account providers. |
+| AccountService | 1.3.0 | Added support for LDAP and Active Directory external account providers. Added "ExternalAccountProviders" collection to support additional providers or multiple LDAP/AD instances. |
+| Assembly  |1.1.0 | Added "Status" to "AssemblyData". |
+| AttributeRegistry | 1.2.0 | Added "ResetRequired", "UefiDevicePath", "UefiKeywordName", and "UefiNamespaceId" attributes. |
+| Chassis | 1.7.0 | Added "UUID" property and "Switches" links. |
+| Drive | 1.4.0 | Deprecated "Location" array in favor of singular "PhysicalLocation" property. |
+| EventDestination | 1.3.0 | Added "SubscriptionType" to allow for SSE support. |
+| EventService | 1.1.0 | Added "ServerSentEventUri" to support Server-Sent Eventing (SSE). |
+| Manager | 1.4.0 | Added "AutoDSTEnabled" property and "Switches" links. |
+| Memory | 1.5.0 | Deprecated poorly-named "PassphraseState" in "Regions" object and added "PassphraseEnabled" to replace it. | 
+| PCIeFunction | 1.2.0 |  Added "NetworkDeviceFunctions" links. |
+| Processor | 1.3.0 |  Added "SubProcessors" collection; added "Core" and "Thread" processor types. |
+| Protocol |  Added "OEM" protocol type. |
+| ResourceBlock | 1.1.0 |  Added properties to support sharing capabilities. |
+| Settings | 1.2.0 | Added "OperationApplyTimeSupport" and "MaintenanceWindow" objects to provide more deterministic behavior for the application of Settings-based data. |
+| SoftwareInventory | 1.2.0 |  Added "Manufacturer" and "ReleaseDate" properties. |
+| Task | 1.2.0 |  Added "TaskMonitor" property. |
+| AttributeRegistry | 1.0.3, 1.1.2| Fixed regex patterns for various properties. |
+| EventService | 1.0.7 | Fixed permissions on "DeliveryRetryAttempts" and "DeliveryRetryIntervalSeconds" properties. |
+| HostInterface | 1.0.2, 1.1.2 | Description clarifications. |
+| ManagerAccount | 1.0.6, 1.1.2 | Clarified the "RoleId" property description by stating its relation to "RoleId" in the Role resource. |
+| MemoryChunks 1.2.1 |  Description clarifications. |
+| Memory | 1.4.1 |  Description clarifications. |
+| UpdateService | 1.0.3, 1.1.2, 1.2.1 |  Regenerated JSON schema to pick up action parameters added in previous release. |
 
 ## Release 2017.3 (November 2017)
 
