@@ -31,6 +31,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="BootOption">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="BootOption" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The BootOption resource reports information about a single BootOption contained within a system."/>
@@ -56,6 +57,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="BootOption.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="BootOption" BaseType="BootOption.BootOption">
         <Annotation Term="OData.Description" String="This is the schema definition for the BootOption resource. It represents the properties of a bootable device available in the System."/>

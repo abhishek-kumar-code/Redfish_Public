@@ -14,7 +14,7 @@
     "Oem": {},
     "Actions": {
         "#LogService.ClearLog": {
-            "target": "/redfish/v1/Systems/1/LogServices/SEL/Actions/LogService.Reset"
+            "target": "/redfish/v1/Systems/1/LogServices/SEL/Actions/LogService.ClearLog"
         },
         "Oem": {}
     },
