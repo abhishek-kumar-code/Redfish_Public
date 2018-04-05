@@ -50,6 +50,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="EthernetInterface" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The EthernetInterface schema represents a single, logical ethernet interface or network interface controller (NIC)."/>
@@ -75,6 +76,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.EthernetInterface">
         <Annotation Term="OData.Description" String="The EthernetInterface schema represents a single, logical ethernet interface or network interface controller (NIC)."/>
@@ -167,7 +169,7 @@
           <Annotation Term="OData.Description" String="This represents DNS name servers that are currently in use on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers used on this interface."/>
         </Property>
-        <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection" Nullable="false">
+        <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources. If this property is used, the VLANEnabled and VLANId property shall not be used."/>
@@ -207,26 +209,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_0.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_2.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_3.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_4.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_2.EthernetInterface">
         <Property Name="LinkStatus" Type="EthernetInterface.v1_1_0.LinkStatus">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -264,21 +271,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_1_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_0.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_1.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_2.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_1.EthernetInterface"/>
 
       <ComplexType Name="Links" BaseType="EthernetInterface.v1_1_0.Links">
@@ -292,16 +303,19 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_2_0.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_2_1.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_2_1.EthernetInterface">
         <Property Name="Actions" Type="EthernetInterface.v1_3_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -333,11 +347,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_3_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to structures in IPAddresses and VLanNetworkInterface to be their abstract base type."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_3_0.EthernetInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_3_1.EthernetInterface">
         <Property Name="DHCPv4" Type="EthernetInterface.v1_4_0.DHCPv4Configuration">
           <Annotation Term="OData.Description" String="DHCPv4 configuration for this interface."/>

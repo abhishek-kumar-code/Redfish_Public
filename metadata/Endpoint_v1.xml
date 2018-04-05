@@ -24,6 +24,9 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
@@ -43,6 +46,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Endpoint" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Endpoint schema defines the properties of an Endpoint resource.  It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
@@ -52,6 +56,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Endpoint" BaseType="Endpoint.Endpoint">
         <Annotation Term="OData.Description" String="This is the schema definition for the Endpoint resource. It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
@@ -75,7 +80,7 @@
           <Annotation Term="OData.Description" String="The PCI ID of the endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI ID of the endpoint."/>
         </Property>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
           <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
@@ -241,21 +246,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_0.Endpoint"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_1.Endpoint"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add the OData.AdditionalProperties annotation to the ConnectedEntity and PciId definitions, and to change references to Identifier to be its abstract base type, and Protocol to use the unversioned definition.."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_2.Endpoint"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_3.Endpoint">
         <Property Name="IPTransportDetails" Type="Collection(Endpoint.v1_1_0.IPTransportDetails)">
           <Annotation Term="OData.Description" String="This array contains details for each IP transport supported by this endpoint. The array structure can be used to model multiple IP addresses for this endpoint."/>
