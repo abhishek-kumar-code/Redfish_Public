@@ -229,6 +229,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add a missing Redfish.Required term to the Sessions link."/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_5.ServiceRoot"/>
     </Schema>
@@ -281,6 +282,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add a missing Redfish.Required term to the Sessions link."/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_1_2.ServiceRoot"/>
     </Schema>
@@ -304,6 +306,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add a missing Redfish.Required term to the Sessions link."/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_2_0.ServiceRoot"/>
     </Schema>
@@ -377,6 +380,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_3_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add a missing Redfish.Required term to the Sessions link."/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_0.ServiceRoot"/>
     </Schema>

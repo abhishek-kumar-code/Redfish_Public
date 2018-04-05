@@ -28,6 +28,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ExternalAccountProvider">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="ExternalAccountProvider" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A remote service that can provide accounts for this manager to utilize for authentication."/>
@@ -54,6 +55,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ExternalAccountProvider.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="ExternalAccountProvider" BaseType="ExternalAccountProvider.ExternalAccountProvider">
         <Property Name="AccountProviderType" Type="ExternalAccountProvider.v1_0_0.AccountProviderTypes">
