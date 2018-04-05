@@ -1467,7 +1467,7 @@ All Redfish schemas, registries, and profiles published or re-published by the D
 
 #### Schema, registry, and profile file naming conventions
 
-Standard Redfish schema, registry, and profile files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.
+Standard Redfish schema, registry, and profile files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
 
 ##### CSDL (XML) schema file naming
 
