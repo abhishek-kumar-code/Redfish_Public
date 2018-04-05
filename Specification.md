@@ -1451,7 +1451,7 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 ### Schema, registry and profile repository
 
-All Redfish schemas, registries, and profiles published or re-published by the DMTF''s Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
+All Redfish schemas, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
