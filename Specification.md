@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.4.1'
+DocVersion: '1.5.0'
 modified: '2018-04-05'
-SupersedesVersion: '1.4.0'
+SupersedesVersion: '1.4.1'
 status: published
 released: true
 copyright: '2014-2018'
@@ -2988,6 +2988,8 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.5.0   | 2018-4-5 | Added support for Server-Sent Eventing for streaming events to web-based GUIs or other clients. |
+|         |          | Added "OperationApplyTime" annotation to provide a mechanism for specifying deterministic behavior for the application of Create, Delete or Action (POST) operations. |
 | 1.4.1   | 2018-4-5 | Updated name of the DMTF Forum from 'SPMF' to 'Redfish Forum'. |
 |         |           | Changed terminology for consistent usage of 'hyperlink'. |
 |         |           | Added example to clarify usage of $select query parameter with $expand, and clarified expected results when using 'AutoExpand'. Corrected order of precedence for $filter parameter options. |
