@@ -111,7 +111,7 @@
                 "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
                 "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
                 "MaintenanceWindowDurationInSeconds": 600,
-                "MaintenanceWindowOwner": {
+                "MaintenanceWindowResource": {
                     "@odata.id": "/redfish/v1/Systems/3"
                 }
             }
