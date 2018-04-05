@@ -58,7 +58,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
-| Assembly | 1.0.0 | Initial release.  Contains manufacturing and assembly information for a piece of equipment. |
+| Assembly | 1.0.0 | Initial release. Contains manufacturing and assembly information for a piece of equipment. |
 | BootOption | 1.0.0 | Initial release. Contains information about a Boot Option contained within a system. |
 | BootOptionCollection | 1.0.0 | Initial release. A collection of Boot Options. |
 | Protocol | 1.0.0 | Initial release. Supporting schema file to hold definition of the common "Protocol" property. |
