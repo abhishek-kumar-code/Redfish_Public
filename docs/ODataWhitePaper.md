@@ -12,7 +12,7 @@ copyright: '2018'
 
 # Foreword
 
-The Redfish and OData White Paper was prepared by the Scalable Platforms Management Forum of the DMTF.
+The Redfish and OData White Paper was prepared by the Redfish Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
