@@ -819,7 +819,7 @@ In cases where the processing of the Action may require extra time to complete, 
 
 #### Operation apply time
 
-Services may accept the "@Redfish.OperationApplyTime" annotation in the body of a [Create](#create-post), [Delete](#delete-delete), or [Action](#actions-post) operation.  This is to give the client control as to when a particular operation is carried out.  For example, if the client wants to delete a particular Volume resource, but can only safely do so when a reset is taking place, the client can use this annotation to instruct the service to delete the Volume on the next reset.
+Services may accept the "@Redfish.OperationApplyTime" annotation in the body of a [Create](#create-post), [Delete](#delete-delete), or [Action](#actions-post) operation.  This is to give the client control as to when a particular operation is carried out.  For example, if the client wants to delete a particular Volume resource, but can only safely do so when a reset is taking place, the client can use this annotation to instruct the service to delete the Volume on the next reset.  If multiple operations are pending, the service shall process them in the order in which they were received.
 
 Services that support the "@Redfish.OperationApplyTime" annotation for create and delete operations on a particular Resource Collection shall include the "@Redfish.OperationApplyTimeSupport" response annotation for the given Resource Collection.  Below is an example response for a Resource Collection that supports the "@Redfish.OperationApplyTime" annotation in the request for create and delete operations.
 
@@ -881,7 +881,10 @@ Services that support the "@Redfish.OperationApplyTime" annotation for a given a
                 "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
                 "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
                 "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
-                "MaintenanceWindowDurationInSeconds": 600
+                "MaintenanceWindowDurationInSeconds": 600,
+                "MaintenanceWindowResource": {
+                    "@odata.id": "/redfish/v1/Systems/1"
+                }
             }
         }
     },
