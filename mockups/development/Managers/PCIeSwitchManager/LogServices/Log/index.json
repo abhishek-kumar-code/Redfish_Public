@@ -17,7 +17,7 @@
     "Oem": {},
     "Actions": {
         "#LogService.ClearLog": {
-            "target": "/redfish/v1/Managers/PCIeSwitchManager/LogServices/Log/Actions/LogService.Reset"
+            "target": "/redfish/v1/Managers/PCIeSwitchManager/LogServices/Log/Actions/LogService.ClearLog"
         },
         "Oem": {}
     },

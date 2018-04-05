@@ -2,17 +2,17 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.4.0'
-modified: '2017-11-17'
-SupersedesVersion: '1.3.0'
+DocVersion: '1.4.1'
+modified: '2018-04-05'
+SupersedesVersion: '1.4.0'
 status: published
 released: true
-copyright: '2014-2017'
+copyright: '2014-2018'
 ---
 
 # Foreword
 
-The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.
+The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Redfish Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
@@ -266,7 +266,7 @@ Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic ope
 
 In Redfish, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
 
-The Redfish Schema defines certain standard actions associated with common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the Redfish [schema](#resource-extensibility), including defining [actions](#custom-actions) for existing resources.
+The Redfish Schema defines certain standard actions associated with common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the Redfish [schema](#resource-extensibility), including defining [actions](#oem-actions) for existing resources.
 
 #### Service entry point discovery
 
@@ -548,9 +548,9 @@ Clients can add query parameters to request additional features from the service
 | ---       | ---                                                                                                                                                             | ---                                 |
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
-| $expand   | Include data from links in the resource inline within the current payload, depending on the value of the expand                                                      | `http://resourcecollection?$expand=.($levels=1)`|
-| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                    | `http://resourcecollection?$select=SystemType,Status`|
-| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                            | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
+| $expand   | Include data from hyperlinks in the resource inline within the current payload, depending on the value of the expand                                            | `http://resourcecollection?$expand=.($levels=1)`|
+| $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                     | `http://resource?$select=SystemType,Status`|
+| $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                       | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
 
 * Services should support the $top and $skip query parameters.
 * Service may support the $expand, $filter and $select query parameters. 
@@ -565,24 +565,27 @@ When the resource addressed is a Resource Collection, the client may use the fol
 
 ***Query parameters for Expand***
 
-The $expand parameter indicates to the implementation that it should include a link as well as the contents of that link in the current response as if a GET had been performed and included inline with that link.  In CSDL terms, any Entries associated with an Entity or Collection of Entities through the use of NavigationProperty is capable of being expanded and thus included in the response body.  The $expand query parameter has a set of possible values which will determine which links (Navigation Properties) are to be expanded.
+The $expand parameter indicates to the implementation that it should include a hyperlink as well as the contents of that hyperlink in the current response as if a GET had been performed and included inline with that hyperlink.  In CSDL terms, any Entries associated with an Entity or Collection of Entities through the use of NavigationProperty is capable of being expanded and thus included in the response body.  The $expand query parameter has a set of possible values which will determine which hyperlinks (Navigation Properties) are to be expanded.
 
 The following table represents the Redfish allowable values that shall be supported for $expand if $expand is implemented:
 
-| value     | Description                                                                                                                                                     | Example                             |
-| ---       | ---                                                                                                                                                             | ---                                 |
-| * (asterisk)     | Indicates all links (Navigation Properties) shall be expanded if expand is supported. | `http://resourcecollection?$expand=*` |
-| . (period)      |  Indicates all subordinate links (Navigation Properties) shall be expanded if expand is supported. Subordinate links are those that are directly referenced (i.e. not in the 'Links' section of the resource). | `http://resourcecollection?$expand=.` |
-| ~ (tilde)   | Indicates all dependent links (Navigation Properties) shall be expanded if expand is supported. Dependent links are those that are not directly referenced (i.e. in the 'Links' section of the resource).  | -`http://resourcecollection?$expand=~` |
-| $levels   | Indicates how many levels the service should cascade the expand operation.  Thus a $levels=2 will not only expand the current resource (level=1) but also the expanded resource (level=2). | `http://resourcecollection?$expand=.($levels=2)`|
+| Value        | Description                                                                                                                                                                                                                                       | Example                               |
+| ---          | ---                                                                                                                                                                                                                                               | ---                                   |
+| * (asterisk) | Indicates all hyperlinks (Navigation Properties) shall be expanded if expand is supported.                                                                                                                                                        | `http://resourcecollection?$expand=*` |
+| . (period)   | Indicates all subordinate hyperlinks (Navigation Properties) shall be expanded if expand is supported. Subordinate hyperlinks are those that are directly referenced (i.e. not in the [Links Property](#links-property) section of the resource). | `http://resourcecollection?$expand=.` |
+| ~ (tilde)    | Indicates all dependent hyperlinks (Navigation Properties) shall be expanded if expand is supported. Dependent hyperlinks are those that are not directly referenced (i.e. in the [Links Property](#links-property) section of the resource).     | `http://resourcecollection?$expand=~` |
+| $levels      | Indicates how many levels the service should cascade the expand operation.  Thus a $levels=2 will not only expand the current resource (level=1) but also the expanded resource (level=2).                                                        | `http://resourcecollection?$expand=.($levels=2)` |
 
 Examples of the use of expand might be:
 * GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
 * GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
+* GET all of the UUIDs in the ComputerSystem collection.  This would be combining $select with $expand on the URI.  The syntax for this would be GET /redfish/v1/Systems?$select=UUID&$expand=.(levels=1)
 
 When performing $expand, Services may omit some of the properties of the referenced resource.
 
 When using expand, clients should be aware that the payload may increase beyond what can be sent in a single response.  If a service is unable to return the payload due to its size, it shall return HTTP Status code [507](#status-507).
+
+It should be noted that Resources containing Referenceable Members that are already expanded using the `AutoExpand` annotation, such as the "Temperature" object found in the "Thermal" Resource, are considered part of the current Resource, and therefore are at the same level as that Resource being queried.
 
 Any other supported syntax for $expand is outside the scope of this specification.
 
@@ -616,7 +619,7 @@ The following table represents the Redfish allowable operators that shall be sup
 | not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
 | ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
 
-Services shall use the following operator precedence when evaluating expressions: grouping, logical negation, logical comparison (eq, ne, gt, ge, lt, le which all have equal precedence), logical and, then logical or.
+Services shall use the following operator precedence when evaluating expressions: grouping, logical negation, relational comparison (gt, ge, lt, le which all have equal precedence), equality comparison (eq, ne which both have equal precedence), logical and, then logical or.
 
 Any other supported syntax for $filter is outside the scope of this specification.  If the service receives a $filter query parameter that is not supported, it shall reject the request and return HTTP Status code [501](#status-501).
 
@@ -712,14 +715,14 @@ The POST method is used to initiate operations on the object (such as Actions).
  * Services shall support the POST method for sending actions.
  * The POST operation may not be idempotent.
 
-Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. If the [actions property](#actions-property) within a resource does not specify a target property, then the URI of an action shall be of the form:
+Actions are requested on a resource by sending the HTTP POST method to the URI of the action.  The "target" property within the [actions property](#actions-property) of a resource shall contain the URI of the action.  The URI of the action should be in the form of:
 
- *ResourceUri*/Actions/*QualifiedActionName*
+` *ResourceUri*/Actions/*QualifiedActionName*`
 
 where
 * *ResourceUri* is the URI of the resource which supports invoking the action.
 * "Actions" is the name of the property containing the actions for a resource, as defined by this specification.
-* *QualifiedActionName* is the namespace or alias qualified name of the action.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
@@ -1304,7 +1307,7 @@ where
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource or property of the resource.
 
-Services shall limit the annotation usage to the "odata", "Redfish", "Message", and "Privileges" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
+Services shall limit the annotation usage to the "odata", "Redfish", and "Message" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
@@ -1351,7 +1354,7 @@ where
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the Resource Collection.
 
-Services shall limit the annotation usage to the "odata", "Redfish", "Message", and "Privileges" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
+Services shall limit the annotation usage to the "odata", "Redfish", and "Message" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
@@ -1365,7 +1368,7 @@ Error responses are defined by an extended error resource, represented as a sing
 
 | Property              | Description                                                                                                                                    |
 | ---                   | ---                                                                                                                                            |
-| code                  | A string indicating a specific MessageId from the message registry. "Base.1.0.GeneralError" should be used only if there is no better message. |
+| code                  | A string indicating a specific MessageId from the message registry.  |
 | message               | A human-readable error message corresponding to the message in the message registry.
 | @Message.ExtendedInfo | An array of [message objects](#message-object) describing one or more error message(s).
 
@@ -1440,6 +1443,7 @@ The client can use the MessageId to search the message registry for the correspo
 
 The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).
 
+"Base.1.0.GeneralError" should be used only in the code property of the error object if there is no better message or if there are multiple messages in the ExtendedInfo array.  The use of "Base.1.0.GeneralError" as a MessageId in ExtendedInfo is discouraged.  When used in ExtendedInfo, implementations are expected to include a Resolution property with this error to indicate how to resolve the problem.
 
 ## Data model and Schema
 
@@ -1447,19 +1451,25 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 * Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
 
-### Schema repository
+### Schema, registry and profile repository
 
-All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and JSON Schema formats.  The schema files are organized on the site in the following manner:
+All Redfish schemas, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
-| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file. |
-| redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file. |
+| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL and/or JSON Schema formats. |
+| redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL and/or JSON Schema formats. |
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
+| redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
+| redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
+| redfish.dmtf.org/registries/archive | Sub-folders contain registry files specific to a particular version release. |
+| redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
+| redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
+| redfish.dmtf.org/profiles/archive | Sub-folders contain profile files specific to a particular profile version or release. |
 
-#### Schema file naming conventions
+#### Schema, registry, and profile file naming conventions
 
-Standard Redfish schema files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.
+Standard Redfish schema, registry, and profile files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
 
 ##### CSDL (XML) schema file naming
 
@@ -1477,13 +1487,30 @@ Redfish JSON schema files shall be named using the [Type identifiers](#type-iden
   
 For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
 
+##### Registry file naming
+
+Redfish message or privilege registry files shall be named using the Registry name, following the format:
+
+  *RegistryName.MajorVersion.MinorVersion.Errata.json*
+  
+For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
+
+##### Profile file naming
+
+The JSON document describing a Profile follows the Redfish Schema file naming conventions. The filename format for Profiles shall be formatted as:
+
+  *ProfileName.vMajorVersion_MinorVersion_Errata.json*
+
+For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The filename shall include the Profile name and Profile version matching those property values within the document.
+
 ##### OEM schema file naming
 
 To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
  
-#### Programmatic access to schema files
+#### Programmatic access to schema, registry, or profile files
 
-Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+
 
 
 
@@ -1491,7 +1518,7 @@ Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 
 
 Types are identified by a *Type URI*. The URI for a type is of the form:
 
-  #*Namespace*.*TypeName*
+ `  #*Namespace*.*TypeName*`
 
 where
 
@@ -1500,7 +1527,7 @@ where
 
 The namespace for types defined by this specification is of the form:
 
-  *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*
+ ` *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*`
 
 where
 
@@ -1509,7 +1536,15 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "ComputerSystem.v1_0_0".
+An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an example of a corresponding Type URI would be "#ComputerSystem.v1_0_0.ComputerSystem".
+
+#### Type identifiers in JSON schema
+
+In JSON schema definitions for Redfish schema, the JSON schema-defined "title" property shall contain the Type URI used to identify the schema.
+
+For example, the "title" property for the ComputerSystem schema would be:
+
+ ` "title": "#ComputerSystem.v1_0_0.ComputerSystem"`
 
 #### Type identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced by, the [service metadata](#service-metadata).
@@ -1911,7 +1946,7 @@ The first parameter is called the "binding parameter" and specifies the resource
 
 #### Resource extensibility
 
-Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#custom-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
+Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
@@ -2000,7 +2035,7 @@ The following fragment presents some examples of naming and use of the Oem prope
 }
 ~~~
 
-##### Custom actions
+##### OEM actions
 
 OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#resource-actions) property type.
 
@@ -2024,6 +2059,16 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
     ...
 }
 ~~~
+
+The URI of the OEM action in the "target" property should be in the form of:
+
+` *ResourceUri*/Actions/Oem/*QualifiedActionName*`
+
+where
+* *ResourceUri* is the URI of the resource which supports invoking the action.
+* "Actions" is the name of the property containing the actions for a resource.
+* "Oem" is the name of the OEM property within the Actions property.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 ### Common Redfish resource properties
 
@@ -2248,9 +2293,11 @@ The client may cancel the operation by performing a DELETE on the Task Monitor U
 
 The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object may invalidate the associated Task Monitor and subsequent GET on the Task Monitor URL returns either [410](#status-410) (Gone) or [404](#status-404) (Not Found).
 
-Once the operation has completed, the service shall update the TaskState with the appropriate value.  The values indicating that a task has completed are defined in the Task schema. 
+In the unlikely event that a [202](#status-202) (Accepted) is returned on the DELETE of the Task Monitor or Task Resource, an additional Task shall not be started and instead the existing Task Resource may be monitored for status of the cancellation request.  When the Task has finally completed cancellation, operations to either the Task Monitor and Task Resource shall return a [404](#status-404) (Not Found).
 
-Once the operation has completed, the Task Monitor shall return a the appropriate status code ( OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses). 
+Once the operation has completed, the service shall update the TaskState with the appropriate value.  The values indicating that a task has completed are defined in the Task schema.
+
+Once the operation has completed, the Task Monitor shall return a the appropriate status code ( OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
 
 The service may return a status code of [410](#status-410) (Gone) or [404](#status-404) (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor.
 
@@ -2300,7 +2347,7 @@ The managed device shall provide clients with the AL header pointing to the Redf
 
 For UPnP compatibility, the managed device should provide clients with the LOCATION header pointing to the UPnP XML descriptor.
 
-An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
+An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  A service may provide additional headers for UPnP compatibility.  Fields in brackets are placeholders for device-specific values.
 
 ~~~http
 HTTP/1.1 200 OK
@@ -2556,10 +2603,9 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 The Authorization subsystem uses Roles and Privileges to control which users have what access to resources.
 
 * Roles:
-  - A Role is a defined set of Privileges.   Therefore, two roles with the same privileges shall behave equivalently.
+  - A Role is a defined set of Privileges.  Therefore, two roles with the same privileges shall behave equivalently.
   - All users are assigned exactly one role.
-  - This specification defines a set of predefined roles, one of which shall be assigned to a user when a user is created.
-  - The predefined roles shall be created as follows (where Role Name is the value of the Id property for the role resource):
+  - This specification defines a set of predefined roles.  The predefined roles shall be created as follows (where Role Name is the value of the Id property for the role resource):
     - Role Name  = "Administrator"
       - AssignedPrivileges = Login, ConfigureManager, ConfigureUsers, ConfigureComponents, ConfigureSelf
     - Role Name = "Operator"
@@ -2571,6 +2617,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - The privilege array defined for the predefined roles shall not be modifiable.
   - A service may optionally define additional "Custom" roles.
   - A service may allow users to create custom roles by issuing a POST to the "Roles" Resource Collection.
+  - A predefined role or a custom role shall be assigned to a user when a user is created.
+    - The client shall provided the "RoleId" property when creating a new Manager Account in order to select the predefined role or a custom role.
 
 * Privileges:
   - A privilege is a permission to perform an operation (e.g., Read, Write) within a defined management domain (e.g., Configuring Users).
@@ -2602,7 +2650,7 @@ several Privilege labels but did not normatively define what these privileges me
 be specified or represented in a normative fashion. The lack of a methodology to define what privilege(s) are required to perform a specific
 requested operation against the URI specified in the request puts at risk the interoperability between Redfish service implementations that
 Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specifying 
-and representing the operation to privilege mapping prevents the SPMF or other governing organization to normatively define privilege requirements for a service.
+and representing the operation to privilege mapping prevents the Redfish Forum or other governing organization to normatively define privilege requirements for a service.
 
 ##### Representing Operation to Privilege Mappings
 
@@ -2614,7 +2662,7 @@ implements for the applicable schema.  There are several situations where specif
 operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
 entity level operation to privilege mappings and related overrides are defined in the PrivilegeRegistry schema.
 
-If a Redfish service provides a Privilege Registry document, the service shall use the SPMF Redfish Privilege Mapping Registry definition
+If a Redfish service provides a Privilege Registry document, the service shall use the Redfish Forum's Redfish Privilege Mapping Registry definition
 as a base operation to privilege mapping definition for operations that the service supports in order to promote interoperability for Redfish clients.
 
 ##### OperationMap Syntax
@@ -2940,6 +2988,16 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.4.1   | 2018-4-5 | Updated name of the DMTF Forum from 'SPMF' to 'Redfish Forum'. |
+|         |           | Changed terminology for consistent usage of 'hyperlink'. |
+|         |           | Added example to clarify usage of $select query parameter with $expand, and clarified expected results when using 'AutoExpand'. Corrected order of precedence for $filter parameter options. |
+|         |           | Corrected terminology for OEM-defined actions removing 'custom' in favor of OEM, and clarified that the Action 'target' property is always required for an Action, along with its usage. |
+|         |           | Corrected location header values for responses to Data modification requests which create a Task (Task resource vs. Task Monitor). Clarified error handling of DELETE operations on Task resources. |
+|         |           | Removed references to obsolete and un-used 'Privilege' annotation namespace. |
+|         |           | Clarified usage of the 'Base.1.0.GeneralError' message in the Base Message Registry. |
+|         |           | Added missing durable URIs for Registries and Profiles, clarified intended usage for each folder in the Repository. Added missing file naming conventions for Registries and Profiles, and clarified file naming for Schemas. |
+|         |           | Added statement to clarify that additional headers may be added to M-SEARCH responses for SSDP to allow for UPnP compatibility. |
+|         |           | Clarified assignment requirements for predefined or custom roles when new Manager Account instances are created, using the 'RoleId' property. |
 | 1.4.0   | 2017-11-17| Added support for optional Query parameters ("$expand", "$filter", and "$select") on requests to allow for more efficient retrieval of resources or properties from a Redfish Service. |
 |         |          | Clarified HTTP status and payload responses after successful processing of data modification requests. This includes POST operations for performing Actions, as well as other POST, PATCH, or PUT requests. |
 |         |          | Added HTTP status code entries for 428 and 507 to clarify the proper response to certain error conditions. Added reference links to the HTTP status code table throughout. |
