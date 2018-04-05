@@ -2,12 +2,12 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.4.0'
-modified: '2017-11-17'
-SupersedesVersion: '1.3.0'
+DocVersion: '1.4.1'
+modified: '2018-04-05'
+SupersedesVersion: '1.4.0'
 status: published
 released: true
-copyright: '2014-2017'
+copyright: '2014-2018'
 ---
 
 # Foreword
@@ -2937,6 +2937,16 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.4.1   | 2018-4-5 | Updated name of the DMTF Forum from 'SPMF' to 'Redfish Forum'. |
+|         |           | Changed terminology for consistent usage of 'hyperlink'. |
+|         |           | Added example to clarify usage of $select query parameter with $expand, and clarified expected results when using 'AutoExpand'. Corrected order of precedence for $filter parameter options. |
+|         |           | Corrected terminology for OEM-defined actions removing 'custom' in favor of OEM, and clarified that the Action 'target' property is always required for an Action, along with its usage. |
+|         |           | Corrected location header values for responses to Data modification requests which create a Task (Task resource vs. Task Monitor). Clarified error handling of DELETE operations on Task resources. |
+|         |           | Removed references to obsolete and un-used 'Privilege' annotation namespace. |
+|         |           | Clarified usage of the 'Base.1.0.GeneralError' message in the Base Message Registry. |
+|         |           | Added missing durable URIs for Registries and Profiles, clarified intended usage for each folder in the Repository. Added missing file naming conventions for Registries and Profiles, and clarified file naming for Schemas. |
+|         |           | Added statement to clarify that additional headers may be added to M-SEARCH responses for SSDP to allow for UPnP compatibility. |
+|         |           | Clarified assignment requirements for predefined or custom roles when new Manager Account instances are created, using the 'RoleId' property. |
 | 1.4.0   | 2017-11-17| Added support for optional Query parameters ("$expand", "$filter", and "$select") on requests to allow for more efficient retrieval of resources or properties from a Redfish Service. |
 |         |          | Clarified HTTP status and payload responses after successful processing of data modification requests. This includes POST operations for performing Actions, as well as other POST, PATCH, or PUT requests. |
 |         |          | Added HTTP status code entries for 428 and 507 to clarify the proper response to certain error conditions. Added reference links to the HTTP status code table throughout. |
