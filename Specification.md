@@ -12,7 +12,7 @@ copyright: '2014-2017'
 
 # Foreword
 
-The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.
+The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Redfish Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
@@ -2599,7 +2599,7 @@ several Privilege labels but did not normatively define what these privileges me
 be specified or represented in a normative fashion. The lack of a methodology to define what privilege(s) are required to perform a specific
 requested operation against the URI specified in the request puts at risk the interoperability between Redfish service implementations that
 Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specifying 
-and representing the operation to privilege mapping prevents the SPMF or other governing organization to normatively define privilege requirements for a service.
+and representing the operation to privilege mapping prevents the Redfish Forum or other governing organization to normatively define privilege requirements for a service.
 
 ##### Representing Operation to Privilege Mappings
 
@@ -2611,7 +2611,7 @@ implements for the applicable schema.  There are several situations where specif
 operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
 entity level operation to privilege mappings and related overrides are defined in the PrivilegeRegistry schema.
 
-If a Redfish service provides a Privilege Registry document, the service shall use the SPMF Redfish Privilege Mapping Registry definition
+If a Redfish service provides a Privilege Registry document, the service shall use the Redfish Forum's Redfish Privilege Mapping Registry definition
 as a base operation to privilege mapping definition for operations that the service supports in order to promote interoperability for Redfish clients.
 
 ##### OperationMap Syntax
