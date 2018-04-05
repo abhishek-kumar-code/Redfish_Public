@@ -1456,13 +1456,13 @@ All Redfish schemas, registries, and profiles published or re-published by the D
 | URL | Folder contents |
 |-----|-----------------|
 | redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL and/or JSON Schema formats. |
-| redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL and/or JSON Schema formats. |
+| redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL and/or JSON Schema formats. |
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
 | redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
-| redfish.dmtf.org/registries/v1 | All v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
+| redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
 | redfish.dmtf.org/registries/archive | Sub-folders contain registry files specific to a particular version release. |
 | redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
-| redfish.dmtf.org/profiles/v1 | All v1.xx Redfish Interoperability Profile (.json) files for programmatic access. |
+| redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
 | redfish.dmtf.org/profiles/archive | Sub-folders contain profile files specific to a particular profile version or release. |
 
 #### Schema, registry, and profile file naming conventions
@@ -1499,7 +1499,7 @@ To avoid namespace collisions with current or future standard Redfish schema fil
  
 #### Programmatic access to schema, registry, or profile files
 
-Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Registries may be accessed in the same manner from the redfish.dmtf.org/registries/v1 durable URL.  Profiles   Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
 
 
 
