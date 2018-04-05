@@ -1493,6 +1493,14 @@ Redfish message or privilege registry files shall be named using the Registry na
   
 For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
 
+##### Profile file naming
+
+The JSON document describing a Profile follows the Redfish Schema file naming conventions from the Redfish Specification. The filename format for Profiles shall be formatted as:
+
+  *ProfileName.vMajorVersion_MinorVersion_Errata.json*
+
+For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The filename shall include the Profile name and Profile version matching those property values within the document.
+
 ##### OEM schema file naming
 
 To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
