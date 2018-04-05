@@ -154,7 +154,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_2_0">
       <ComplexType Name="Settings" BaseType="Settings.v1_1_0.Settings">
-        <NavigationProperty Name="MaintenanceWindowOwner" Type="Resource.ItemOrCollection" Nullable="false">
+        <NavigationProperty Name="MaintenanceWindowResource" Type="Resource.ItemOrCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value of this property is used to indicate the location of the maintenance window settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a resource that contains the @Redfish.MaintenanceWindow property which governs this resource.  This property should be supported if the SupportedApplyTimes property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
@@ -175,16 +175,16 @@
         <Property Name="MaintenanceWindowStartTime" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value of this property as specified by client to indicate the start time of a maintenance window."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the same as the MaintenanceWindowStartTime property found in the MaintenanceWindow structure on the MaintenanceWindowOwner.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the same as the MaintenanceWindowStartTime property found in the MaintenanceWindow structure on the MaintenanceWindowResource.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
         </Property>
         <Property Name="MaintenanceWindowDurationInSeconds" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value of this property as specified by client indicates the expiry time of maintenance window in seconds."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the same as the MaintenanceWindowDurationInSeconds property found in the MaintenanceWindow structure on the MaintenanceWindowOwner.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the same as the MaintenanceWindowDurationInSeconds property found in the MaintenanceWindow structure on the MaintenanceWindowResource.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="s"/>
         </Property>
-        <NavigationProperty Name="MaintenanceWindowOwner" Type="Resource.ItemOrCollection" Nullable="false">
+        <NavigationProperty Name="MaintenanceWindowResource" Type="Resource.ItemOrCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value of this property is used to indicate the location of the maintenance window settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a resource that contains the @Redfish.MaintenanceWindow property which governs this resource.  This property shall be required if the SupportedValues property contains AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
