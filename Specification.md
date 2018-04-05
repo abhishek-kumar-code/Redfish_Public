@@ -1495,7 +1495,7 @@ For example, version 1.0.2 of the Base message registry would be named "Base.1.0
 
 ##### Profile file naming
 
-The JSON document describing a Profile follows the Redfish Schema file naming conventions from the Redfish Specification. The filename format for Profiles shall be formatted as:
+The JSON document describing a Profile follows the Redfish Schema file naming conventions. The filename format for Profiles shall be formatted as:
 
   *ProfileName.vMajorVersion_MinorVersion_Errata.json*
 
