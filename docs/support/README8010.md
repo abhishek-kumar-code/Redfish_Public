@@ -41,18 +41,18 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Memory | 1.5.0 | Deprecated poorly-named "PassphraseState" in "Regions" object and added "PassphraseEnabled" to replace it. | 
 | PCIeFunction | 1.2.0 |  Added "NetworkDeviceFunctions" links. |
 | Processor | 1.3.0 |  Added "SubProcessors" collection; added "Core" and "Thread" processor types. |
-| Protocol |  Added "OEM" protocol type. |
+| Protocol | N/A | Added "OEM" protocol type. |
 | ResourceBlock | 1.1.0 |  Added properties to support sharing capabilities. |
 | Settings | 1.2.0 | Added "OperationApplyTimeSupport" and "MaintenanceWindow" objects to provide more deterministic behavior for the application of Settings-based data. |
 | SoftwareInventory | 1.2.0 |  Added "Manufacturer" and "ReleaseDate" properties. |
 | Task | 1.2.0 |  Added "TaskMonitor" property. |
-| AttributeRegistry | 1.0.3, 1.1.2| Fixed regex patterns for various properties. |
-| EventService | 1.0.7 | Fixed permissions on "DeliveryRetryAttempts" and "DeliveryRetryIntervalSeconds" properties. |
-| HostInterface | 1.0.2, 1.1.2 | Description clarifications. |
-| ManagerAccount | 1.0.6, 1.1.2 | Clarified the "RoleId" property description by stating its relation to "RoleId" in the Role resource. |
-| MemoryChunks 1.2.1 |  Description clarifications. |
-| Memory | 1.4.1 |  Description clarifications. |
-| UpdateService | 1.0.3, 1.1.2, 1.2.1 |  Regenerated JSON schema to pick up action parameters added in previous release. |
+| AttributeRegistry | 1.0.3, 1.1.2| Errata release. Fixed regex patterns for various properties. |
+| EventService | 1.0.7 | Errata release. Fixed permissions on "DeliveryRetryAttempts" and "DeliveryRetryIntervalSeconds" properties. |
+| HostInterface | 1.0.2, 1.1.2 | Errata release. Description clarifications. |
+| ManagerAccount | 1.0.6, 1.1.2 | Errata release. Clarified the "RoleId" property description by stating its relation to "RoleId" in the Role resource. |
+| MemoryChunks | 1.2.1 |  Errata release. Description clarifications. |
+| Memory | 1.4.1 |  Errata release. Description clarifications. |
+| UpdateService | 1.0.3, 1.1.2, 1.2.1 |  Errata release. Regenerated JSON schema to pick up action parameters added in previous release. |
 
 ## Release 2017.3 (November 2017)
 
