@@ -20,6 +20,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
@@ -31,6 +32,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <ComplexType Name="Settings" Abstract="true"/>
       <ComplexType Name="PreferredApplyTime" Abstract="true"/>
       <ComplexType Name="OperationApplyTimeSupport" Abstract="true"/>
@@ -57,6 +59,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <ComplexType Name="Settings" BaseType="Settings.Settings">
         <Annotation Term="OData.Description" String="This type describes the settings of a resouce."/>
@@ -87,21 +90,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <ComplexType Name="Settings" BaseType="Settings.v1_0_0.Settings"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <ComplexType Name="Settings" BaseType="Settings.v1_0_2.Settings"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <ComplexType Name="Settings" BaseType="Settings.v1_0_3.Settings"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <ComplexType Name="Settings" BaseType="Settings.v1_0_4.Settings">
         <Property Name="SupportedApplyTimes" Type="Collection(Settings.v1_1_0.ApplyTime)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

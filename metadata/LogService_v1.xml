@@ -19,6 +19,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
@@ -31,6 +32,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="LogService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This resource contains properties for monitoring and configuring an event log service for the resource or service to which it is associated."/>
@@ -62,6 +64,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="LogService" BaseType="LogService.LogService">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
@@ -93,7 +96,7 @@
           <Annotation Term="OData.LongDescription" String="The value is property shall represent the offset from UTC time that the current value of DataTime property contains."/>
           <Annotation Term="Validation.Pattern" String="([-+][0-1][0-9]:[0-5][0-9])"/>
         </Property>
-        <NavigationProperty Name="Entries" Type="LogEntryCollection.LogEntryCollection" Nullable="false">
+        <NavigationProperty Name="Entries" Type="LogEntryCollection.LogEntryCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="References to the log entry collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of resources of type LogEntry."/>
@@ -134,26 +137,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_0.LogService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_2.LogService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_3.LogService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_4.LogService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add LogPurpose and EntryType properties."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_5.LogService">
         <Property Name="LogEntryType" Type="LogService.v1_1_0.LogEntryTypes">

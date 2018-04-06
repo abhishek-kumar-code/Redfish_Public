@@ -18,6 +18,9 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ZoneCollection_v1.xml">
     <edmx:Include Namespace="ZoneCollection"/>
   </edmx:Reference>
@@ -34,6 +37,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Fabric" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Fabric schema represents a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones."/>
@@ -43,6 +47,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Fabric" BaseType="Fabric.Fabric">
         <Property Name="FabricType" Type="Protocol.Protocol">
@@ -56,19 +61,19 @@
           <Annotation Term="OData.Description" String="The value of this property shall contain the maximum number of zones the switch can currently configure."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of zones the switch can currently configure. This value can change based on changes in the logical or physical configuration of the system."/>
         </Property>
-        <NavigationProperty Name="Zones" Type="ZoneCollection.ZoneCollection" Nullable="false">
+        <NavigationProperty Name="Zones" Type="ZoneCollection.ZoneCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the zones contained in this fabric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this fabric uses and shall reference a resource of type Zone."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Endpoints" Type="EndpointCollection.EndpointCollection" Nullable="false">
+        <NavigationProperty Name="Endpoints" Type="EndpointCollection.EndpointCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the endpoints contained in this fabric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this fabric uses and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Switches" Type="SwitchCollection.SwitchCollection" Nullable="false">
+        <NavigationProperty Name="Switches" Type="SwitchCollection.SwitchCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the switches contained in this fabric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this fabric uses and shall reference a resource of type Switch."/>
@@ -104,16 +109,19 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Fabric" BaseType="Fabric.v1_0_0.Fabric"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Fabric" BaseType="Fabric.v1_0_1.Fabric"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Fabric.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to FabricType to use the unversioned definition.  It was also created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="Fabric" BaseType="Fabric.v1_0_2.Fabric"/>
     </Schema>

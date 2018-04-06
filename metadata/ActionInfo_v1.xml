@@ -27,6 +27,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ActionInfo">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="ActionInfo" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The ActionInfo schema describes the parameters and other information necessary to perform a Redfish Action on a particular Action target. Parameter support can differ between vendors and even between instances of a resource. This data can be used to ensure Action requests from applications contain supported parameters."/>
@@ -51,6 +52,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ActionInfo.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="ActionInfo" BaseType="ActionInfo.ActionInfo">
         <Property Name="Parameters" Type="Collection(ActionInfo.v1_0_0.Parameters)" Nullable="false">
@@ -118,16 +120,19 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ActionInfo.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="ActionInfo" BaseType="ActionInfo.v1_0_0.ActionInfo"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ActionInfo.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ActionInfo" BaseType="ActionInfo.v1_0_1.ActionInfo"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ActionInfo.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="ActionInfo" BaseType="ActionInfo.v1_0_2.ActionInfo"/>
     </Schema>

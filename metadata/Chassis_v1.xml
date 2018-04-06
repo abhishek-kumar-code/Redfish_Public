@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Chassis  v1.6.0-->
+<!--# Redfish Schema:  Chassis  v1.7.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -61,10 +61,14 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
     <edmx:Include Namespace="Assembly"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Switch_v1.xml">
+    <edmx:Include Namespace="Switch"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Chassis schema represents the physical components of a system.  This resource represents the sheet-metal confined spaces and logical zones such as racks, enclosures, chassis and all other containers. Subsystems (like sensors) that operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
@@ -100,6 +104,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Chassis" BaseType="Chassis.Chassis">
         <Property Name="ChassisType" Nullable="false" Type="Chassis.v1_0_0.ChassisType">
@@ -152,7 +157,7 @@
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" Nullable="false">
+        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
@@ -316,6 +321,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_0.Chassis">
         <Property Name="PowerState" Type="Chassis.v1_0_1.PowerState">
@@ -343,31 +349,37 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_1.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_2.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_3.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_4.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_5.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_2.Chassis">
         <Property Name="PhysicalSecurity" Type="Chassis.v1_1_0.PhysicalSecurity" Nullable="false">
@@ -420,31 +432,37 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_0.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_3.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_4.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_5.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis">
         <Property Name="Location" Type="Resource.Location" Nullable="false"/>
       </EntityType>
@@ -472,51 +490,61 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_0.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_1.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_2.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_3.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show the ChassisType enumerated list was updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_0.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_0.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_1.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_2.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_3.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_1.Chassis">
         <Property Name="HeightMm" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -565,21 +593,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_0.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_1.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_2.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_1.Chassis"/>
 
       <ComplexType Name="Links" BaseType="Chassis.v1_4_0.Links">
@@ -593,25 +625,48 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_5_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_5_0.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_5_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to Location to be its abstract base type.  It was also created to correct the Descriptions and LongDescriptions used in the defined Actions."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_5_1.Chassis"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_6_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add a link to an Assembly resource."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_5_2.Chassis">
-        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
+        <NavigationProperty Name="Assembly" Type="Assembly.Assembly" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Assembly."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_7_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_6_0.Chassis">
+        <Property Name="UUID" Type="Resource.UUID">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Universal Unique Identifier (UUID) for this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the chassis."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="Chassis.v1_5_0.Links">
+        <NavigationProperty Name="Switches" Type="Collection(Switch.Switch)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the Switches located in this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Switch that are contained in this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

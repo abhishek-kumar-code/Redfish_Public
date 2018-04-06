@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  RedfishExtensions v1.0.1-->
+<!--# Redfish Schema:  RedfishExtensions v1.0.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -25,6 +25,7 @@
 
     <!--These terms extend the schema language for Redfish-specific information-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="RedfishExtensions.v1_0_0">
+      <Annotation Term="RedfishExtensions.v1_0_0.OwningEntity" String="DMTF"/>
 
       <Term Name="AllowableValues" Type="Collection(Edm.String)" Nullable="false">
         <Annotation Term="OData.Description" String="The set of allowable values for a parameter."/>
@@ -90,6 +91,9 @@
       <Term Name="MaintenanceWindow" Type="Settings.MaintenanceWindow">
         <Annotation Term="OData.Description" String="Maintenance window configuration of a resource for when to apply settings or operations."/>
       </Term>
+      <Term Name="OwningEntity" Type="Edm.String">
+        <Annotation Term="OData.Description" String="Indicates the name of the entity responsible for development, publication and maintenance of a given schema.  Possible values include DMTF, SNIA or an OEM label such as is used in a Redfish OEM extension section."/>
+      </Term>      
 
       <EnumType Name="ReleaseStatusType">
         <Member Name="Standard">
@@ -133,6 +137,7 @@
 
     <!--These terms are used for validating a property value-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="Validation.v1_0_0">
+      <Annotation Term="RedfishExtensions.v1_0_0.OwningEntity" String="DMTF"/>
 
       <Term Name="Pattern" Type="Edm.String">
         <Annotation Term="OData.Description" String="The pattern that a string property or parameter must match."/>
