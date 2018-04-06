@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.4.1'
+DocVersion: '1.5.0'
 modified: '2018-04-05'
-SupersedesVersion: '1.4.0'
+SupersedesVersion: '1.4.1'
 status: published
 released: true
 copyright: '2014-2018'
@@ -94,6 +94,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")
 * <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [http://www.snia.org/tls/](http://www.snia.org/tls/ "http://www.snia.org/tls/")
 * <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
+* <a id="HTML5-Spec-SSE">HTML5 Specification: Server-Sent Events</a> [https://html.spec.whatwg.org/multipage/server-sent-events.html](https://html.spec.whatwg.org/multipage/server-sent-events.html "https://html.spec.whatwg.org/multipage/server-sent-events.html")
 
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -496,8 +497,9 @@ HTTP defines headers that can be used in request messages. The following table d
 | Origin           | Yes                 | No                 | [W3C CORS](#W3C-CORS), Section 5.7 | Used to allow web applications to consume Redfish Service while preventing CSRF attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Via              | No                  | No                 | [RFC 7230](#RFC7230)               | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Max-Forwards     | No                  | No                 | [RFC 7231](#RFC7231)               | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| If-Match         | Conditional         | No                 | [RFC 7232](#RFC7232)               | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state. While not required for clients, it is highly recommended for PUT and PATCH operations.                                                                                                                                                                                                                                                       |
+| If-Match         | Conditional         | No                 | [RFC 7232](#RFC7232)               | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state. While not required for clients, it is highly recommended for PUT and PATCH operations.                                                                                                                                                                                                                                                            |
 | If-None-Match    | No                  | No                 | [RFC 7232](#RFC7232)               | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).                                                                                                                                                                                                         |
+| Last-Event-ID    | No                  | No                 | [HTML5 SSE](#HTML5-Spec-SSE)       | Used by the client to request history event data.  See the [Server-Sent Events section](#server-sent-events) for more information.                                                                                                                                                                                                                                                                                                                                                                                         |
 
 * Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
@@ -2360,7 +2362,7 @@ where
 
 To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
-These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service’s behavior.
+These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service's behavior.
 
 ### Asynchronous operations
 
@@ -2456,6 +2458,55 @@ EXT:
 #### Notify, alive, and shutdown messages
 
 Redfish devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, must allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.
+
+
+### Server-Sent Events
+
+Server-Sent Events (SSE), as defined by the Web Hypertext Application Technology Working Group, allows for a client to open a connection with a web service, and the web service can continuously push data to the client as needed.  Resource responses for SSE shall have a Content-Type header set as "text/event-stream;charset=UTF-8".  A service may occasionally send a comment within a stream to keep the connection alive.  The following sections describe how this is used by Redfish in different contexts of the Redfish data model.  Details about SSE can be found in the [HTML5 Specification](#HTML5-Spec-SSE).
+
+
+#### EventService
+
+A service's implementation of the "EventService" resource may contain a property called "ServerSentEventUri".  If a client performs a GET on the URI specified by the "ServerSentEventUri", the service shall keep the connection open and conform to the [HTML5 Specification](#HTML5-Spec-SSE) until the client closes the socket.  Events generated by the service shall be sent to the client using the open connection.
+
+The service shall use the "id" field in the SSE stream to uniquely indicate an event.  The value of the "id" field shall be the same as the "Id" property in the event payload.  The value of the "Id" property should be a positive integer value and should be generated in a sequential manner.  A service should accept the "Last-Event-ID" header from the client in order to allow a client to restart the event stream in case the connection is interrupted.
+
+The service shall use the "data" field in the SSE stream to include the JSON representation of the Event object as defined in the [Event message objects section](#event-message-objects).
+
+The example payload below shows a stream containing a single event with the "id" field set to 1, and the "data" field containing a single Event object.
+
+```
+id: 1
+data:{
+data:    "@odata.context": "/redfish/v1/$metadata#Event.Event",
+data:    "@odata.type": "#Event.v1_1_0.Event",
+data:    "Id": "1",
+data:    "Name": "Event Array",
+data:    "Context": "ABCDEFGH",
+data:    "Events": [
+data:        {
+data:            "MemberId": "1",
+data:            "EventType": "Alert",
+data:            "EventId": "ABC132489713478812346",
+data:            "Severity": "Warning",
+data:            "EventTimestamp": "2017-11-23T17:17:42-0600",
+data:            "Message": "The LAN has been disconnected",
+data:            "MessageId": "Alert.1.0.LanDisconnect",
+data:            "MessageArgs": [
+data:                "EthernetInterface 1",
+data:                "/redfish/v1/Systems/1"
+data:            ],
+data:            "OriginOfCondition": {
+data:                "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1"
+data:            },
+data:            "Context": "ABCDEFGH"
+data:        }
+data:    ]
+data:}
+```
+
+When a client opens an SSE stream for the EventService, the service shall create an EventDestination instance in the Subscriptions collection for the EventService to represent the connection.  The service shall delete the corresponding EventDestination instance when the connection is closed.  The service shall close the connection if the corresponding EventDestination is deleted.
+
 
 ## Security
 
@@ -3034,6 +3085,8 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.5.0   | 2018-4-5 | Added support for Server-Sent Eventing for streaming events to web-based GUIs or other clients. |
+|         |          | Added "OperationApplyTime" annotation to provide a mechanism for specifying deterministic behavior for the application of Create, Delete or Action (POST) operations. |
 | 1.4.1   | 2018-4-5 | Updated name of the DMTF Forum from 'SPMF' to 'Redfish Forum'. |
 |         |           | Changed terminology for consistent usage of 'hyperlink'. |
 |         |           | Added example to clarify usage of $select query parameter with $expand, and clarified expected results when using 'AutoExpand'. Corrected order of precedence for $filter parameter options. |
