@@ -82,6 +82,15 @@
       <Term Name="SettingsApplyTime" Type="Settings.PreferredApplyTime">
         <Annotation Term="OData.Description" String="Configuration settings for when the values in the settings object are applied to a given resource."/>
       </Term>
+      <Term Name="OperationApplyTime" Type="Settings.OperationApplyTime">
+        <Annotation Term="OData.Description" String="The requested apply time from a client when performing a Create, Delete, or Action operation."/>
+      </Term>
+      <Term Name="OperationApplyTimeSupport" Type="Settings.OperationApplyTimeSupport">
+        <Annotation Term="OData.Description" String="Indicates if a client is allowed to request for a specific apply time of a Create, Delete, or Action operation of a given resource via the OperationApplyTime term."/>
+      </Term>
+      <Term Name="MaintenanceWindow" Type="Settings.MaintenanceWindow">
+        <Annotation Term="OData.Description" String="Maintenance window configuration of a resource for when to apply settings or operations."/>
+      </Term>
       <Term Name="OwningEntity" Type="Edm.String">
         <Annotation Term="OData.Description" String="Indicates the name of the entity responsible for development, publication and maintenance of a given schema.  Possible values include DMTF, SNIA or an OEM label such as is used in a Redfish OEM extension section."/>
       </Term>      
