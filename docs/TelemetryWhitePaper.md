@@ -55,7 +55,7 @@ The requirement to support existing properties within the models means that prop
 
 The metric properties in the Redfish model appear in a variety of ways. Figure 1 shows where metric properties exist in the Redfish models. Metric properties can be a simple JSON object or within a complex JSON object within a resource (e.g. Thermal and Power resource). Metric properties can be in a dedicated resource (e.g. MemoryMetrics resource). With YANG models, the dedicated resource is used often (e.g. statistics resource). The presumption is that this variety will continue as models are extended or added.
 
-| ![Figure 1](TelemetryWhitePaper/Figure-MetricProperties.jpg "Figure 1") |
+| ![Figure 1](TelemetryWhitePaper_files/Figure-MetricProperties.jpg "Figure 1") |
 | :--------: |
 | *Figure 1* |
 
@@ -209,7 +209,7 @@ The telemetry model specifies durations using the ISO 8601 duration format.
 
 The TelemetryService resource is the top level resource visible on ServiceRoot.
 
-| ![Figure 2](TelemetryWhitePaper/Figure-TelemetryService.jpg "Figure 2") |
+| ![Figure 2](TelemetryWhitePaper_files/Figure-TelemetryService.jpg "Figure 2") |
 | :--------: |
 | *Figure 2* |
 
@@ -254,7 +254,7 @@ Example Telemetry Service Resource:
 
 The MetricDefinitions collection resource contains MetricDefinition singleton resources.  Each MetricDefinition contains the definition, metadata, or characteristics for a metric.  In Figure 3, PowerConsumedWatts is MetricDefinition for the PowerConsumedWatts property in the Power resource.
 
-| ![Figure 3](TelemetryWhitePaper/Figure-MetricDefinitionRef.jpg "Figure 3") |
+| ![Figure 3](TelemetryWhitePaper_files/Figure-MetricDefinitionRef.jpg "Figure 3") |
 | :--------: |
 | *Figure 3* |
 
@@ -416,7 +416,7 @@ The following example is for a numeric sensor, PowerConsumedWatts properties, wh
 
 The `MetricReportDefinition` resource specifies the metric report that the Redfish service will create.  The metric reports can be use to aggregate metric readings.  The metric reports can be create d periodically, when a reading value changes, or upon request.  The metric report can be transmitted using the Event Service and/or stored locally (as a member the ./MetricReports collection) and retrieved later.
 
-| ![Figure 4](TelemetryWhitePaper/Figure-MetricReportDefinition.jpg "Figure 4") |
+| ![Figure 4](TelemetryWhitePaper_files/Figure-MetricReportDefinition.jpg "Figure 4") |
 | :--------: |
 | *Figure 4* |
 
@@ -478,7 +478,7 @@ The following example specifies a metric report with includes the AvgPowerConsum
 
 The Triggers resource specifies the trigger threshold(s) that apply to numeric or discrete metrics. A trigger can result in an alert being transmitted using the Event Service and/or logged in the service log.
 
-| ![Figure 5](TelemetryWhitePaper/Figure-Triggers.jpg "Figure 5") |
+| ![Figure 5](TelemetryWhitePaper_files/Figure-Triggers.jpg "Figure 5") |
 | :--------: |
 | *Figure 5* |
 
