@@ -202,8 +202,17 @@ The Travis Continuous Integration suite of tools are used for verifying syntax a
 
 The following is a checklist for schema or specification release:
 
--  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
--  New schemas: The $metadata example must be updated to include the new schema file(s).
+- Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
+- New schemas: The $metadata example must be updated to include the new schema file(s).
+
+### WIP release process
+
+In addition to the above items, the following also needs to be performed when releasing a WIP package:
+
+- New schemas supporting the WIP must use major version 0 to show that this is unreleased content and is likely to change when adopted as a standard (starting at v0_1_0 is a good idea).
+- If the WIP being released is a refresh of an existing WIP, the minor revision of the unreleased schema will be incremented, and the major revision will remain at 0.
+- Annotate new namespaces in the CSDL (for both new schemas and extensions to existing schemas) with the following term: `<Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>`
+- Annotate mockups with the following in their payloads: `"@Redfish.ReleaseStatus": "WorkInProgress"`
 
 ### HTML document generation
 
@@ -213,6 +222,6 @@ Chris Hoffman has an MD to HTML converter currently in development.  It is avail
 
 Source code is kept in this repository: https://github.com/cehoffman/dmtf-md2html
 
-##github.io
+## github.io
 
 Information regarding the SPMF Viewer application TODO here...
