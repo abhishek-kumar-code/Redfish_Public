@@ -240,7 +240,12 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 ## AccountService
 
 ### Mockup
-mockups/DSP2046-examples/AccountService/index.json
+mockups/DSP2046-examples/AccountService.1.3.0.json
+
+## Assembly
+
+### Mockup
+mockups/DSP2046-examples/Assembly.1.1.0.json
 
 ## Bios
 
@@ -250,12 +255,12 @@ mockups/DSP2046-examples/Systems/437XR1138R2/BIOS/index.json
 ## Chassis
 
 ### Mockup
-mockups/DSP2046-examples/Chassis/1U/index.json
+mockups/DSP2046-examples/Chassis.1.6.0.json
 
 ## ComputerSystem
 
 ### Mockup
-mockups/DSP2046-examples/Systems/437XR1138R2/index.json
+mockups/DSP2046-examples/ComputerSystem.1.5.0.json
 
 ### Property Details
 
@@ -270,139 +275,117 @@ Regarding the case of the hex values, RFC4122 specifies that the hex values shou
 ## EthernetInterface
 
 ### Mockup
-mockups/DSP2046-examples/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/index.json
+mockups/DSP2046-examples/EthernetInterface.1.4.0.json
 
 ## EventService
 
 ### Mockup
-mockups/DSP2046-examples/EventService/index.json
+mockups/DSP2046-examples/EventService.1.0.0.json
 
 ## EventDestination
 
 ### Mockup
-mockups/DSP2046-examples/EventService/Subscriptions/1/index.json
+mockups/DSP2046-examples/EventDestination.1.3.0.json
+
+## ExternalAccountProvider
+
+### Mockup
+mockups/DSP2046-examples/ExternalAccountProvider.1.0.0.json
 
 ## LogEntry
 
 ### Mockup
-mockups/DSP2046-examples/Managers/BMC/LogServices/Log/Entries/1/index.json
+mockups/DSP2046-examples/LogEntry.1.3.0.json
 
 ## LogService
 
 ### Mockup
-mockups/DSP2046-examples/Managers/BMC/LogServices/Log/index.json
+mockups/DSP2046-examples/LogService.1.1.0.json
 
 ## Manager
 
 ### Mockup
-mockups/DSP2046-examples/Managers/BMC/index.json
+mockups/DSP2046-examples/Manager.1.4.0.json
 
 ## ManagerAccount
 
 ### Mockup
-mockups/DSP2046-examples/AccountService/Accounts/1/index.json
+mockups/DSP2046-examples/ManagerAccount.1.1.0.json
 
 ## ManagerNetworkProtocol
 
 ### Mockup
-mockups/DSP2046-examples/Managers/BMC/NetworkProtocol/index.json
+mockups/DSP2046-examples/ManagerNetworkProtocol.1.2.0.json
 
 ## Memory
 
 ### Mockup
-mockups/DSP2046-examples/Systems/437XR1138R2/Memory/DIMM1/index.json
+mockups/DSP2046-examples/Memory.1.5.0.json
 
 ## Power
 
 ### Mockup
-mockups/DSP2046-examples/Chassis/1U/Power/index.json
+mockups/DSP2046-examples/Power.1.5.0.json
 
 ## Processor
 
 ### Mockup
-mockups/DSP2046-examples/Systems/437XR1138R2/Processors/CPU1/index.json
-
-### Property Details
-
-#### ProcessorId
-
-This object's properties contain values that depend on the value of the ProcessorArchitecture property, as listed in the sections below:
-
-#### VendorId
-
-This property contains a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.
-
-#### IdentificationRegisters
-
-This property contains the register contents resulting from the execution of the CPUID instruction.
-
-#### EffectiveFamily
-
-This property contains a value derived from register values resulting from the execution of the CPUID instruction.  
-
-#### EffectiveModel
-
-This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:
-~~~
-((cpuid.1.eax & 0x000f0000) >> 12) + ((cpuid.1.eax & 0x000000f0) >> 4)
-~~~
-
-#### Step
-
-This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:
-~~~
-(cpuid->eax & 0xf)
-~~~
-
-#### MicrocodeInfo
-
-This property contains the 64-bit value contained in MSR 0x8B.
-
+mockups/DSP2046-examples/Processor.1.2.0.json
 
 ## Role
 
 ### Mockup
-mockups/DSP2046-examples/AccountService/Roles/Admin/index.json
+mockups/DSP2046-examples/Role.1.0.0.json
 
 ## ServiceRoot
 
 ### Mockup
-mockups/DSP2046-examples/index.json
+mockups/DSP2046-examples/ServiceRoot.1.3.0.json
 
 ## SessionService
 
 ### Mockup
-mockups/DSP2046-examples/SessionService/index.json
+mockups/DSP2046-examples/SessionService.1.1.2.json
 
-## Sessions
-
-### Mockup
-mockups/DSP2046-examples/SessionService/Sessions/1234567890ABCDEF/index.json
-
-## SessionService
+## Session
 
 ### Mockup
-mockups/DSP2046-examples/SessionService/index.json
+mockups/DSP2046-examples/Session.1.1.0.json
+
+## SerialInterface
+
+### Mockup
+mockups/DSP2046-examples/SerialInterface.1.1.1.json
 
 ## SimpleStorage
 
 ### Mockup
-mockups/DSP2046-examples/Systems/437XR1138R2/SimpleStorage/1/index.json
+mockups/DSP2046-examples/SimpleStorage.1.0.0.json
+
+## Task
+
+### Mockup
+mockups/DSP2046-examples/Task.1.2.0.json
+
+## TaskService
+
+### Mockup
+mockups/DSP2046-examples/TaskService.1.1.0.json
 
 ## Thermal
 
 ### Mockup
-mockups/DSP2046-examples/Chassis/1U/Thermal/index.json
+mockups/DSP2046-examples/Thermal.1.3.0.json
 
 ## VLanNetworkInterface
 
 ### Mockup
-mockups/DSP2046-examples/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/VLANs/1/index.json
+mockups/DSP2046-examples/VLanNetworkInterface.1.1.0.json
 
 ## VirtualMedia
 
 ### Mockup
-mockups/DSP2046-examples/Managers/BMC/VirtualMedia/CD1/index.json
+mockups/DSP2046-examples/VirtualMedia.1.1.0.json
 
 # Postscript
 

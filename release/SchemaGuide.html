@@ -577,10 +577,10 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#AccountService.v1_2_0.AccountService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#AccountService.v1_3_0.AccountService&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;AccountService&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Account Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Account Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Local Manager Account Service&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
@@ -597,9 +597,83 @@ pre.code{
     <span class="nt">&quot;Roles&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Roles&quot;</span>
     <span class="p">},</span>
+    <span class="nt">&quot;LocalAccountAuth&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LDAP&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;AccountProviderType&quot;</span><span class="p">:</span> <span class="s2">&quot;LDAPService&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;ServiceAddresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;ldaps://ldap.example.org:636&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;Authentication&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;AuthenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;UsernameAndPassword&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Username&quot;</span><span class="p">:</span> <span class="s2">&quot;cn=Manager,dc=example,dc=org&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Password&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;LDAPService&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;SearchSettings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;BaseDistinguishedNames&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;dc=example,dc=org&quot;</span>
+                <span class="p">],</span>
+                <span class="nt">&quot;UsernameAttribute&quot;</span><span class="p">:</span> <span class="s2">&quot;uid&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;GroupsAttribute&quot;</span><span class="p">:</span> <span class="s2">&quot;memberof&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;RemoteRoleMapping&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteUser&quot;</span><span class="p">:</span> <span class="s2">&quot;cn=Manager,dc=example,dc=org&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;cn=Admins,ou=Groups,dc=example,dc=org&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;cn=PowerUsers,ou=Groups,dc=example,dc=org&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Operator&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;(cn=*)&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;ReadOnlyUser&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ActiveDirectory&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;AccountProviderType&quot;</span><span class="p">:</span> <span class="s2">&quot;ActiveDirectoryService&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;ServiceAddresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;ad1.example.org&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ad2.example.org&quot;</span><span class="p">,</span>
+            <span class="kc">null</span><span class="p">,</span>
+            <span class="kc">null</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;Authentication&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;AuthenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;KerberosKeytab&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;KerberosKeytab&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;RemoteRoleMapping&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;Administrators&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteUser&quot;</span><span class="p">:</span> <span class="s2">&quot;DOMAIN\\Bob&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Operator&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;PowerUsers&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Operator&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;Everybody&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;ReadOnlyUser&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;AdditionalExternalAccountProviders&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/ExternalAccountProviders&quot;</span>
+    <span class="p">},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#AccountService.AccountService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="ActionInfo">ActionInfo 1.0.3</h2>
@@ -660,6 +734,48 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Version</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Version of the Assembly.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Assembly.v1_1_0.Assembly&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Assemblies&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;System Board&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;PCA System Board&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;345TTT&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;PartNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;923943&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;SparePartNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;55-434&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;SKU&quot;</span><span class="p">:</span> <span class="s2">&quot;55ZZATR&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;SerialNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;345394834&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ProductionDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-04-01T14:55:33+03:00&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Producer&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso Supply Co.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.44B&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;EngineeringChangeLevel&quot;</span><span class="p">:</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;BinaryDataURI&quot;</span><span class="p">:</span> <span class="s2">&quot;/dumpster/434&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;Contoso&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;Region&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;Packaging&quot;</span><span class="p">:</span> <span class="s2">&quot;Retail&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Fan Controller&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;PCA Fan Controller&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;F58AS&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;PartNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;3434-149&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.4.481&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;BinaryDataURI&quot;</span><span class="p">:</span> <span class="s2">&quot;/dumpster/422&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;Warning&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Assembly.Assembly&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1/Assembly&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="AttributeRegistry">AttributeRegistry 1.2.0</h2>
 <p>The AttributeRegistry schema contains a set of key-value pairs that represents the structure of a Registry. It includes mechanisms for building user interfaces (menus), allowing consistent navigation of the contents. The Attribute Registry is specific to a particular implementation or product. The attributes and property names are not standardized.</p>
 <table class="properties">
@@ -845,53 +961,6 @@ pre.code{
 <p>(This action takes no parameters.)</p>
 </div>
 </div>
-<h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Bios.v1_0_2.Bios&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;BIOS&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;BIOS Configuration Current Settings&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;AttributeRegistry&quot;</span><span class="p">:</span> <span class="s2">&quot;BiosAttributeRegistryP89.v1_0_0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;AdminPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;BootMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Uefi&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;EmbeddedSata&quot;</span><span class="p">:</span> <span class="s2">&quot;Raid&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;NicBoot1&quot;</span><span class="p">:</span> <span class="s2">&quot;NetworkBoot&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;NicBoot2&quot;</span><span class="p">:</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PowerProfile&quot;</span><span class="p">:</span> <span class="s2">&quot;MaxPerf&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ProcCoreDisable&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;ProcHyperthreading&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ProcTurboMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;UsbControl&quot;</span><span class="p">:</span> <span class="s2">&quot;UsbEnabled&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@Redfish.Settings&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Settings.v1_0_0.Settings&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ETag&quot;</span><span class="p">:</span> <span class="s2">&quot;9234ac83b9700123cc32&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Messages&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.SettingsFailed&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;RelatedProperties&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;#/Attributes/ProcTurboMode&quot;</span>
-                <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;SettingsObject&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS/Settings&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-03-07T14:44.30-05:00&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;#Bios.ResetBios&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS/Actions/Bios.ResetBios&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;#Bios.ChangePassword&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS/Actions/Bios.ChangePassword&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Bios.Bios&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
 <h2 id="BootOption">BootOption 1.0.0</h2>
 <p>This is the schema definition for the BootOption resource. It represents the properties of a bootable device available in the System.</p>
 <table class="properties">
@@ -1127,7 +1196,7 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Chassis.v1_5_0.Chassis&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Chassis.v1_6_0.Chassis&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1U&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Computer System Chassis&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ChassisType&quot;</span><span class="p">:</span> <span class="s2">&quot;RackMount&quot;</span><span class="p">,</span>
@@ -1170,6 +1239,9 @@ pre.code{
     <span class="nt">&quot;Power&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power&quot;</span>
     <span class="p">},</span>
+    <span class="nt">&quot;Assembly&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Assembly&quot;</span>
+    <span class="p">},</span>
     <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;ComputerSystems&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="p">{</span>
@@ -1188,8 +1260,7 @@ pre.code{
         <span class="p">]</span>
     <span class="p">},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Chassis.Chassis&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="CompositionService">CompositionService 1.0.1</h2>
@@ -2089,10 +2160,10 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EthernetInterface.v1_3_0.EthernetInterface&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EthernetInterface.v1_4_0.EthernetInterface&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ethernet Interface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;System NIC 1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager NIC 1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
@@ -2101,35 +2172,98 @@ pre.code{
     <span class="nt">&quot;PermanentMACAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;12:44:6A:3B:04:11&quot;</span><span class="p">,</span>
     <span class="nt">&quot;MACAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;12:44:6A:3B:04:11&quot;</span><span class="p">,</span>
     <span class="nt">&quot;SpeedMbps&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="nt">&quot;AutoNeg&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;FullDuplex&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;MTUSize&quot;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
     <span class="nt">&quot;HostName&quot;</span><span class="p">:</span> <span class="s2">&quot;web483&quot;</span><span class="p">,</span>
     <span class="nt">&quot;FQDN&quot;</span><span class="p">:</span> <span class="s2">&quot;web483.contoso.com&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;IPv6DefaultGateway&quot;</span><span class="p">:</span> <span class="s2">&quot;fe80::3ed9:2bff:fe34:600&quot;</span><span class="p">,</span>
     <span class="nt">&quot;NameServers&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;names.contoso.com&quot;</span>
     <span class="p">],</span>
-    <span class="nt">&quot;IPv4Addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SubnetMask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.252.0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;Static&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.1&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;IPv6Addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
+    <span class="nt">&quot;IPv4Addresses&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SubnetMask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.252.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;DHCP&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.1&quot;</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;DHCPv4&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;DHCPEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;UseDNSServers&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;UseGateway&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;UseNTPServers&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;UseStaticRoutes&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;UseDomainName&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;DHCPv6&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;OperatingMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Stateful&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;UseDNSServers&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;UseDomainName&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;UseNTPServers&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;UseRapidCommit&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;StatelessAddressAutoConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;IPv4AutoConfigEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;IPv6AutoConfigEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;IPv4StaticAddresses&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.88.130&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SubnetMask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.0.0&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.1&quot;</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;IPv6AddressPolicyTable&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">&quot;Prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;::1/128&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Precedence&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;Label&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;MaxIPv6StaticAddresses&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;IPv6StaticAddresses&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;fc00:1234::a:b:c:d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;PrefixLength&quot;</span><span class="p">:</span> <span class="mi">64</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;IPv6StaticDefaultGateways&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;fe80::fe15:b4ff:fe97:90cd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;PrefixLength&quot;</span><span class="p">:</span> <span class="mi">64</span>
+    <span class="p">}],</span>
+    <span class="nt">&quot;IPv6DefaultGateway&quot;</span><span class="p">:</span> <span class="s2">&quot;fe80::214:c1ff:fe4c:5c4d&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;IPv6Addresses&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;fe80::1ec1:deff:fe6f:1e24&quot;</span><span class="p">,</span>
             <span class="nt">&quot;PrefixLength&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+            <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;SLAAC&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;AddressState&quot;</span><span class="p">:</span> <span class="s2">&quot;Preferred&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;fc00:1234::a:b:c:d&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;PrefixLength&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
             <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;Static&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;AddressState&quot;</span><span class="p">:</span> <span class="s2">&quot;Preferred&quot;</span>
+            <span class="nt">&quot;AddressState&quot;</span><span class="p">:</span> <span class="s2">&quot;Preferred&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;2001:1:3:5::100&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;PrefixLength&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+            <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;DHCPv6&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;AddressState&quot;</span><span class="p">:</span> <span class="s2">&quot;Preferred&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;2002:2:5::1ec1:deff:fe6f:1e24&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;PrefixLength&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+            <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;SLAAC&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;AddressState&quot;</span><span class="p">:</span> <span class="s2">&quot;Preferred&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="nt">&quot;VLANs&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/VLANs&quot;</span>
+    <span class="nt">&quot;StaticNameServers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;192.168.150.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;fc00:1234:200:2500&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;VLAN&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;VLANEnable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;VLANId&quot;</span><span class="p">:</span> <span class="mi">101</span>
     <span class="p">},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#EthernetInterface.EthernetInterface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="Event">Event 1.2.1</h2>
@@ -2232,18 +2366,18 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EventDestination.v1_2_0.EventDestination&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EventDestination.v1_3_0.EventDestination&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;EventSubscription 1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Destination&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.dnsname.com/Destination1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;SubscriptionType&quot;</span><span class="p">:</span> <span class="s2">&quot;RedfishEvent&quot;</span><span class="p">,</span>
     <span class="nt">&quot;EventTypes&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;Alert&quot;</span>
     <span class="p">],</span>
     <span class="nt">&quot;Context&quot;</span><span class="p">:</span> <span class="s2">&quot;WebUser3&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;Redfish&quot;</span><span class="p">,</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#EventDestination.EventDestination&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService/Subscriptions/1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService/Subscriptions/1&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="EventService">EventService 1.1.0</h2>
@@ -2317,7 +2451,7 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EventService.v1_0_4.EventService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EventService.v1_1_0.EventService&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;EventService&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Event Service&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2327,6 +2461,7 @@ pre.code{
     <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;DeliveryRetryAttempts&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
     <span class="nt">&quot;DeliveryRetryIntervalSeconds&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="nt">&quot;ServerSentEventUri&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService/SSE&quot;</span><span class="p">,</span>
     <span class="nt">&quot;EventTypesForSubscription&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="s2">&quot;StatusChange&quot;</span><span class="p">,</span>
         <span class="s2">&quot;ResourceUpdated&quot;</span><span class="p">,</span>
@@ -2352,8 +2487,7 @@ pre.code{
     <span class="p">},</span>
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#EventService.EventService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="ExternalAccountProvider">ExternalAccountProvider 1.0.0</h2>
@@ -2419,6 +2553,39 @@ pre.code{
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span><span class="s2">&quot;Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ExternalAccountProvider.ExternalAccountProvider&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/ExternalAccountProviders/ExternalRedfishService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ExternalAccountProvider.v1_0_0.ExternalAccountProvider&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;ExternalRedfishService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Remote Redfish Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Remote Redfish Service providing additional Accounts to this Redfish Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;AccountProviderType&quot;</span><span class="p">:</span> <span class="s2">&quot;RedfishService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ServiceAddresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;http://redfish.dmtf.org/redfish/v1/AccountService&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;Authentication&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;AuthenticationType&quot;</span><span class="p">:</span> <span class="s2">&quot;Token&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Token&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;RemoteRoleMapping&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;Operator&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;Operator&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;RemoteGroup&quot;</span><span class="p">:</span> <span class="s2">&quot;ReadOnlyUser&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;LocalRole&quot;</span><span class="p">:</span> <span class="s2">&quot;ReadOnlyUser&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="Fabric">Fabric 1.0.3</h2>
 <p>The Fabric schema represents a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones.</p>
 <table class="properties">
@@ -2740,7 +2907,7 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#LogEntry.v1_2_0.LogEntry&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#LogEntry.v1_3_0.LogEntry&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Log Entry 1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;EntryType&quot;</span><span class="p">:</span> <span class="s2">&quot;SEL&quot;</span><span class="p">,</span>
@@ -2750,10 +2917,10 @@ pre.code{
     <span class="nt">&quot;EntryCode&quot;</span><span class="p">:</span> <span class="s2">&quot;Assert&quot;</span><span class="p">,</span>
     <span class="nt">&quot;SensorType&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
     <span class="nt">&quot;SensorNumber&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;Message&quot;</span><span class="p">:</span> <span class="s2">&quot;System May be Melting&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Event.1.0.TempWayTooHot&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Message&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature threshold exceeded&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso.1.0.TempAssert&quot;</span><span class="p">,</span>
     <span class="nt">&quot;MessageArgs&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;88&quot;</span>
+        <span class="s2">&quot;42&quot;</span>
     <span class="p">],</span>
     <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;OriginOfCondition&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2763,8 +2930,7 @@ pre.code{
     <span class="p">},</span>
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#LogEntry.LogEntry&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Entries/1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/LogServices/Log1/Entries/1&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="LogService">LogService 1.1.0</h2>
@@ -2823,14 +2989,17 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#LogService.v1_0_4.LogService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Log&quot;</span><span class="p">,</span>
+
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#LogService.v1_1_0.LogService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Log1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;System Log Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;This log contains entries related to the operation of the host Computer System.&quot;</span><span class="p">,</span>
     <span class="nt">&quot;MaxNumberOfRecords&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
     <span class="nt">&quot;OverWritePolicy&quot;</span><span class="p">:</span> <span class="s2">&quot;WrapsWhenFull&quot;</span><span class="p">,</span>
     <span class="nt">&quot;DateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-03-13T04:14:33+06:00&quot;</span><span class="p">,</span>
     <span class="nt">&quot;DateTimeLocalOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;+06:00&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;LogEntryType&quot;</span><span class="p">:</span> <span class="s2">&quot;Event&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
         <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
@@ -2838,16 +3007,15 @@ pre.code{
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;#LogService.ClearLog&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Actions/LogService.ClearLog&quot;</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/1/LogServices/Log1/Actions/LogService.ClearLog&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
     <span class="nt">&quot;Entries&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Entries&quot;</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/1/LogServices/Log1/Entries&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#LogService.LogService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/1/LogServices/Log1&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="Manager">Manager 1.4.0</h2>
@@ -3011,7 +3179,7 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Manager.v1_3_1.Manager&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Manager.v1_4_0.Manager&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;BMC&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ManagerType&quot;</span><span class="p">:</span> <span class="s2">&quot;BMC&quot;</span><span class="p">,</span>
@@ -3019,6 +3187,7 @@ pre.code{
     <span class="nt">&quot;ServiceEntryPointUUID&quot;</span><span class="p">:</span> <span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
     <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;58893887-8974-2487-2389-841168418919&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;Joo Janta 200&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;FirmwareVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;4.4.6521&quot;</span><span class="p">,</span>
     <span class="nt">&quot;DateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-03-13T04:14:33+06:00&quot;</span><span class="p">,</span>
     <span class="nt">&quot;DateTimeLocalOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;+06:00&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -3050,7 +3219,9 @@ pre.code{
             <span class="s2">&quot;SSH&quot;</span>
         <span class="p">]</span>
     <span class="p">},</span>
-    <span class="nt">&quot;FirmwareVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;HostInterfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/9/HostInterfaces&quot;</span>
+    <span class="p">},</span>
     <span class="nt">&quot;NetworkProtocol&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NetworkProtocol&quot;</span>
     <span class="p">},</span>
@@ -3094,8 +3265,7 @@ pre.code{
     <span class="p">},</span>
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Manager.Manager&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="ManagerAccount">ManagerAccount 1.1.2</h2>
@@ -3131,8 +3301,7 @@ pre.code{
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ManagerAccount.ManagerAccount&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Accounts/1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Accounts/1&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="ManagerNetworkProtocol">ManagerNetworkProtocol 1.2.0</h2>
@@ -3249,10 +3418,8 @@ pre.code{
         <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">5288</span>
     <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ManagerNetworkProtocol.ManagerNetworkProtocol&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NetworkProtocol&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NetworkProtocol&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="Memory">Memory 1.5.0</h2>
@@ -3514,7 +3681,7 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Memory.v1_2_0.Memory&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Memory.v1_5_0.Memory&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;DIMM1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;DIMM Slot 1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;RankCount&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -3542,8 +3709,7 @@ pre.code{
         <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
     <span class="p">},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Memory.Memory&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Memory/DIMM1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Memory/DIMM1&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="MemoryChunks">MemoryChunks 1.2.1</h2>
@@ -4434,7 +4600,7 @@ pre.code{
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Power.v1_3_0.Power&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Power.v1_5_0.Power&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Power&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Power&quot;</span><span class="p">,</span>
     <span class="nt">&quot;PowerControl&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -4573,8 +4739,7 @@ pre.code{
     <span class="p">],</span>
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Power.Power&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="PrivilegeRegistry">PrivilegeRegistry 1.1.1</h2>
@@ -4710,13 +4875,13 @@ pre.code{
 <tr><td><nobr><b>MaxSpeedMHz</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The maximum clock speed of the processor.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product model number of this device.</td></tr>
 <tr><td><nobr><b>ProcessorArchitecture</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The architecture of the processor.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorArchitecture">ProcessorArchitecture</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>ProcessorId</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Identification information for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EffectiveFamily</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The effective Family for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EffectiveModel</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The effective Model for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IdentificationRegisters</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The contents of the Identification Registers (CPUID) for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MicrocodeInfo</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Microcode Information for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Step</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Step value for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VendorId</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor Identification for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><nobr><b>ProcessorId</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Identification information for this processor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EffectiveFamily</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The effective Family for this processor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EffectiveModel</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The effective Model for this processor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IdentificationRegisters</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The contents of the Identification Registers (CPUID) for this processor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MicrocodeInfo</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Microcode Information for this processor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Step</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Step value for this processor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VendorId</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor Identification for this processor.</td></tr>
 <tr><td><nobr><b>ProcessorType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of processor.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorType">ProcessorType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Socket</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The socket or location of the processor.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
@@ -4728,20 +4893,6 @@ pre.code{
 <div class="property-details">
 <h3>Property Details</h3>
 <div class="property-details-content">
-<h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|EffectiveFamily">EffectiveFamily:</h4>
-<p>The effective Family for this processor.</p>
-<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  </p>
-
-<h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|EffectiveModel">EffectiveModel:</h4>
-<p>The effective Model for this processor.</p>
-<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:</p>
-<div class="codehilite"><pre><span></span>((cpuid.1.eax &amp; 0x000f0000) &gt;&gt; 12) + ((cpuid.1.eax &amp; 0x000000f0) &gt;&gt; 4)
-</pre></div>
-
-<h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|IdentificationRegisters">IdentificationRegisters:</h4>
-<p>The contents of the Identification Registers (CPUID) for this processor.</p>
-<p>This property contains the register contents resulting from the execution of the CPUID instruction.</p>
-
 <h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|InstructionSet">InstructionSet:</h4>
 <p>The instruction set of the processor.</p>
 <table class="enum enum-details">
@@ -4759,10 +4910,6 @@ pre.code{
 <tr><td>x86-64</td><td>x86 64-bit.</td></tr>
 </tbody></table>
 
-<h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|MicrocodeInfo">MicrocodeInfo:</h4>
-<p>The Microcode Information for this processor.</p>
-<p>This property contains the 64-bit value contained in MSR 0x8B.</p>
-
 <h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorArchitecture">ProcessorArchitecture:</h4>
 <p>The architecture of the processor.</p>
 <table class="enum enum-details">
@@ -4776,10 +4923,6 @@ pre.code{
 <tr><td>OEM</td><td>OEM-defined.</td></tr>
 <tr><td>x86</td><td>x86 or x86-64.</td></tr>
 </tbody></table>
-
-<h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorId">ProcessorId:</h4>
-<p>Identification information for this processor.</p>
-<p>This object's properties contain values that depend on the value of the ProcessorArchitecture property, as listed in the sections below:</p>
 
 <h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorType">ProcessorType:</h4>
 <p>The type of processor.</p>
@@ -4798,21 +4941,11 @@ pre.code{
 <tr><td>Thread <i>(v1.3+)</i></td><td>A Thread in a Processor.</td></tr>
 </tbody></table>
 
-<h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|Step">Step:</h4>
-<p>The Step value for this processor.</p>
-<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:</p>
-<div class="codehilite"><pre><span></span>(cpuid-&gt;eax &amp; 0xf)
-</pre></div>
-
-<h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|VendorId">VendorId:</h4>
-<p>The Vendor Identification for this processor.</p>
-<p>This property contains a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.</p>
-
 </div>
 </div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Processor.v1_1_0.Processor&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Processor.v1_2_0.Processor&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processor&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Socket&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU 1&quot;</span><span class="p">,</span>
@@ -4838,7 +4971,6 @@ pre.code{
     <span class="p">},</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Processor.Processor&quot;</span><span class="p">,</span>
     <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Processors/CPU1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
 <h2 id="ResourceBlock">ResourceBlock 1.1.0</h2>
@@ -5168,6 +5300,26 @@ pre.code{
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#SerialInterface.v1_1_1.SerialInterface&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;TTY0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager Serial Interface 1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Management for Serial Interface&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;InterfaceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;SignalType&quot;</span><span class="p">:</span> <span class="s2">&quot;Rs232&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;BitRate&quot;</span><span class="p">:</span> <span class="s2">&quot;115200&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Parity&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;DataBits&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;StopBits&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;FlowControl&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ConnectorType&quot;</span><span class="p">:</span> <span class="s2">&quot;RJ45&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;PinOut&quot;</span><span class="p">:</span> <span class="s2">&quot;Cyclades&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#SerialInterface.SerialInterface&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/SerialInterfaces/TTY0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="ServiceRoot">ServiceRoot 1.3.1</h2>
 <p>This object represents the root Redfish service.</p>
 <table class="properties">
@@ -5216,45 +5368,6 @@ pre.code{
 <tr><td><nobr><b>UpdateService</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to the UpdateService. See the <a href="#UpdateService">UpdateService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a UpdateService resource. See the Links section and the <a href="#UpdateService">UpdateService</a> schema for details.</td></tr>
 </tbody></table>
-<h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ServiceRoot.v1_2_0.ServiceRoot&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;RootService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Root Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;RedfishVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Chassis&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Managers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Tasks&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/TaskService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SessionService&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;AccountService&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;EventService&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Sessions&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService/Sessions&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ServiceRoot.ServiceRoot&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
 <h2 id="Session">Session 1.1.0</h2>
 <p>The Session resource describes a single connection (session) between a client and a Redfish service instance.</p>
 <table class="properties">
@@ -5263,6 +5376,19 @@ pre.code{
 <tr><td><nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This property is used in a POST to specify a password when creating a new session.  This property is null on a GET.</td></tr>
 <tr><td><nobr><b>UserName</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UserName for the account for this session.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Session.v1_1_0.Session&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890ABCDEF&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;User Session&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager User Session&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;UserName&quot;</span><span class="p">:</span> <span class="s2">&quot;Administrator&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Session.Session&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService/Sessions/1234567890ABCDEF&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="SessionService">SessionService 1.1.3</h2>
 <p>This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.</p>
 <table class="properties">
@@ -5274,26 +5400,6 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Session">Session</a>. See the Session schema for details.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
-<h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#SessionService.v1_1_2.SessionService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;SessionService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Session Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Session Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;SessionTimeout&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="nt">&quot;Sessions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService/Sessions&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#SessionService.SessionService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
 <h2 id="SimpleStorage">SimpleStorage 1.2.0</h2>
 <p>This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices.</p>
 <table class="properties">
@@ -5698,6 +5804,33 @@ pre.code{
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Task.v1_2_0.Task&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;545&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Task 545&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;TaskMonitor&quot;</span><span class="p">:</span> <span class="s2">&quot;/taskmon/545&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;TaskState&quot;</span><span class="p">:</span> <span class="s2">&quot;Completed&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;StartTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-03-07T14:44+06:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;EndTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-03-07T14:45+06:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;TaskStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.PropertyNotWriteable&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;RelatedProperties&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;SKU&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;Message&quot;</span><span class="p">:</span> <span class="s2">&quot;The property SKU is a read only property and cannot be assigned a value&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;MessageArgs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;SKU&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;Severity&quot;</span><span class="p">:</span> <span class="s2">&quot;Warning&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Task.Task&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/TaskService/Tasks/545&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="TaskService">TaskService 1.1.1</h2>
 <p>This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.</p>
 <table class="properties">
@@ -5727,6 +5860,27 @@ pre.code{
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#TaskService.v1_1_0.TaskService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;TaskService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tasks Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;DateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-03-13T04:14:33+06:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CompletedTaskOverWritePolicy&quot;</span><span class="p">:</span> <span class="s2">&quot;Manual&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;LifeCycleEventOnTaskStateChange&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;Tasks&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/TaskService/Tasks&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#TaskService.TaskService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/TaskService&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="Thermal">Thermal 1.4.0</h2>
 <p>This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling.</p>
 <table class="properties">
