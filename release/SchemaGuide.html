@@ -127,9 +127,9 @@ pre.code{
 
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
 
-<p align="right">Date: 2017-12-7</p>
+<p align="right">Date: 2018-4-6</p>
 
-<p align="right">Version: <span class="version">2017.3</span></p>
+<p align="right">Version: <span class="version">2018.1</span></p>
 
 <p><br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
@@ -141,7 +141,7 @@ pre.code{
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
-    <p>Copyright &copy; 2016-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+    <p>Copyright &copy; 2016-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
 <br><br>
   <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
   <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -158,67 +158,68 @@ pre.code{
 </ul>
 <li><a href="#common-properties">Common properties</a></li>
 <ul>
-<li><a href="#properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</a></li>
-<li><a href="#properties-frequently-used-in-redfish-schemas">Properties frequently used in Redfish schemas</a></li>
+<li><a href="#properties-defined-across-all-redfish-schemas">Properties defined across all Redfish schemas</a></li>
+<li><a href="#frequently-used-properties">Frequently used properties</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#location">Location</a></li>
 </ul>
-<li><a href="#redfish-schema-details">Redfish Schema details</a></li>
+<li><a href="#redfish-schema-reference-guide">Redfish Schema Reference Guide</a></li>
 <ul>
-<li><a href="#AccountService">AccountService 1.2.2</a></li>
+<li><a href="#AccountService">AccountService 1.3.0</a></li>
 <li><a href="#ActionInfo">ActionInfo 1.0.3</a></li>
-<li><a href="#Assembly">Assembly 1.0.0</a></li>
-<li><a href="#AttributeRegistry">AttributeRegistry 1.1.1</a></li>
+<li><a href="#Assembly">Assembly 1.1.0</a></li>
+<li><a href="#AttributeRegistry">AttributeRegistry 1.2.0</a></li>
 <li><a href="#Bios">Bios 1.0.3</a></li>
 <li><a href="#BootOption">BootOption 1.0.0</a></li>
-<li><a href="#Chassis">Chassis 1.6.0</a></li>
+<li><a href="#Chassis">Chassis 1.7.0</a></li>
 <li><a href="#CompositionService">CompositionService 1.0.1</a></li>
 <li><a href="#ComputerSystem">ComputerSystem 1.5.0</a></li>
-<li><a href="#Drive">Drive 1.3.0</a></li>
+<li><a href="#Drive">Drive 1.4.0</a></li>
 <li><a href="#Endpoint">Endpoint 1.1.0</a></li>
 <li><a href="#EthernetInterface">EthernetInterface 1.4.0</a></li>
 <li><a href="#Event">Event 1.2.1</a></li>
-<li><a href="#EventDestination">EventDestination 1.2.2</a></li>
-<li><a href="#EventService">EventService 1.0.6</a></li>
+<li><a href="#EventDestination">EventDestination 1.3.0</a></li>
+<li><a href="#EventService">EventService 1.1.0</a></li>
+<li><a href="#ExternalAccountProvider">ExternalAccountProvider 1.0.0</a></li>
 <li><a href="#Fabric">Fabric 1.0.3</a></li>
-<li><a href="#HostInterface">HostInterface 1.1.1</a></li>
+<li><a href="#HostInterface">HostInterface 1.1.2</a></li>
 <li><a href="#JsonSchemaFile">JsonSchemaFile 1.1.0</a></li>
 <li><a href="#LogEntry">LogEntry 1.3.0</a></li>
 <li><a href="#LogService">LogService 1.1.0</a></li>
-<li><a href="#Manager">Manager 1.3.3</a></li>
-<li><a href="#ManagerAccount">ManagerAccount 1.1.1</a></li>
+<li><a href="#Manager">Manager 1.4.0</a></li>
+<li><a href="#ManagerAccount">ManagerAccount 1.1.2</a></li>
 <li><a href="#ManagerNetworkProtocol">ManagerNetworkProtocol 1.2.0</a></li>
-<li><a href="#Memory">Memory 1.4.0</a></li>
-<li><a href="#MemoryChunks">MemoryChunks 1.2.0</a></li>
+<li><a href="#Memory">Memory 1.5.0</a></li>
+<li><a href="#MemoryChunks">MemoryChunks 1.2.1</a></li>
 <li><a href="#MemoryDomain">MemoryDomain 1.2.0</a></li>
 <li><a href="#MemoryMetrics">MemoryMetrics 1.1.3</a></li>
 <li><a href="#MessageRegistry">MessageRegistry 1.1.1</a></li>
 <li><a href="#MessageRegistryFile">MessageRegistryFile 1.1.0</a></li>
 <li><a href="#NetworkAdapter">NetworkAdapter 1.1.0</a></li>
-<li><a href="#NetworkDeviceFunction">NetworkDeviceFunction 1.2.0</a></li>
+<li><a href="#NetworkDeviceFunction">NetworkDeviceFunction 1.2.1</a></li>
 <li><a href="#NetworkInterface">NetworkInterface 1.1.0</a></li>
 <li><a href="#NetworkPort">NetworkPort 1.1.0</a></li>
 <li><a href="#PCIeDevice">PCIeDevice 1.2.0</a></li>
-<li><a href="#PCIeFunction">PCIeFunction 1.1.1</a></li>
+<li><a href="#PCIeFunction">PCIeFunction 1.2.0</a></li>
 <li><a href="#Port">Port 1.1.0</a></li>
 <li><a href="#Power">Power 1.5.0</a></li>
 <li><a href="#PrivilegeRegistry">PrivilegeRegistry 1.1.1</a></li>
-<li><a href="#Processor">Processor 1.2.0</a></li>
-<li><a href="#ResourceBlock">ResourceBlock 1.0.0</a></li>
+<li><a href="#Processor">Processor 1.3.0</a></li>
+<li><a href="#ResourceBlock">ResourceBlock 1.1.0</a></li>
 <li><a href="#Role">Role 1.2.1</a></li>
 <li><a href="#SecureBoot">SecureBoot 1.0.3</a></li>
 <li><a href="#SerialInterface">SerialInterface 1.1.2</a></li>
-<li><a href="#ServiceRoot">ServiceRoot 1.3.0</a></li>
+<li><a href="#ServiceRoot">ServiceRoot 1.3.1</a></li>
 <li><a href="#Session">Session 1.1.0</a></li>
 <li><a href="#SessionService">SessionService 1.1.3</a></li>
 <li><a href="#SimpleStorage">SimpleStorage 1.2.0</a></li>
-<li><a href="#SoftwareInventory">SoftwareInventory 1.1.1</a></li>
+<li><a href="#SoftwareInventory">SoftwareInventory 1.2.0</a></li>
 <li><a href="#Storage">Storage 1.4.0</a></li>
 <li><a href="#Switch">Switch 1.1.0</a></li>
-<li><a href="#Task">Task 1.1.1</a></li>
+<li><a href="#Task">Task 1.2.0</a></li>
 <li><a href="#TaskService">TaskService 1.1.1</a></li>
 <li><a href="#Thermal">Thermal 1.4.0</a></li>
-<li><a href="#UpdateService">UpdateService 1.2.0</a></li>
+<li><a href="#UpdateService">UpdateService 1.2.1</a></li>
 <li><a href="#VLanNetworkInterface">VLanNetworkInterface 1.1.1</a></li>
 <li><a href="#VirtualMedia">VirtualMedia 1.2.0</a></li>
 <li><a href="#Volume">Volume 1.0.3</a></li>
@@ -245,32 +246,17 @@ pre.code{
 <p>Redfish Developer Hub
 -  Redfish interactive explorer, hosted schema and other links:
   http://redfish.dmtf.org</p>
-<p>SPMF (Working group that maintains the Redfish standard)
+<p>DMTF Redfish Forum (Working group that maintains the Redfish standard)
 -  Companies involved, upcoming schedules and future work, charter, and information about joining:
   http://www.dmtf.org/standards/spmf</p>
 <h1 id="common-properties">Common properties</h1>
 <p>This section describes the properties (data fields) that share a common definition across many or all Redfish schema. </p>
-<h2 id="properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</h2>
+<h2 id="properties-defined-across-all-redfish-schemas">Properties defined across all Redfish schemas</h2>
 <p>The following properties are included in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Resource Guide tables for each schema.</p>
 
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>@odata.context</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The @odata.context property is a URL to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection). Technically the metadata document only has to define, or reference, any of the types that it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document.</td></tr>
-<tr><td><nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The @odata.id property is a string that indicates the unique identifier of a resource.</td></tr>
-<tr><td><nobr><b>@odata.type</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The @odata.type property is a URL fragment that indicates the type of the resource.</td></tr>
-<tr><td><nobr><b>Description</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Description property is used to convey a human-readable description of the resource.</td></tr>
-<tr><td><nobr><b>Id</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id is unique within a Resource Collection.</td></tr>
-<tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.</td></tr>
-<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-</tbody></table>
-<h2 id="properties-frequently-used-in-redfish-schemas">Properties frequently used in Redfish schemas</h2>
+<h2 id="frequently-used-properties">Frequently used properties</h2>
+<p>The following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.</p>
 
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This object contains definitions for the Redfish Actions available for this resource.</td></tr>
-<tr><td><nobr><b>Links</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>RelatedItems</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
-</tbody></table>
 <h2 id="status">Status</h2>
 <p>The <code>Status</code> object and its properties is common to many Redfish schema.</p>
 
@@ -331,6 +317,7 @@ pre.code{
 </div>
 </div>
 <h2 id="location">Location</h2>
+<p>The 'Location' object and its properties is common to many Redfish schema.</p>
 
 <table class="properties">
 <tbody>
@@ -445,17 +432,97 @@ pre.code{
 
 </div>
 </div>
-<h1 id="redfish-schema-details">Redfish Schema details</h1><h2 id="AccountService">AccountService 1.2.2</h2>
+<h1 id="redfish-schema-reference-guide">Redfish Schema Reference Guide</h1>
+<p>The following sections detail the definition for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions for the schema, and an example payload for a resource using the schema.</p>
+<p>The schema details include:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Property Name</td>
+<td>The name of the JSON property as it will appear (case-sensitive) in the JSON payload.</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used.</td>
+</tr>
+<tr>
+<td>Attributes</td>
+<td>Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>The description of the property, as copied directly from the schema 'Description' definition.</td>
+</tr>
+</tbody>
+</table><h2 id="AccountService">AccountService 1.3.0</h2>
 <p>The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>AccountLockoutCounterResetAfter</b></nobr></td><td>number<br>(seconds)</td><td><nobr>read-write</nobr></td><td>The interval of time in seconds between the last failed login attempt and reset of the lockout threshold counter. This value must be less than or equal to AccountLockoutDuration. Reset sets the counter to zero.</td></tr>
 <tr><td><nobr><b>AccountLockoutDuration</b></nobr></td><td>number<br>(seconds)</td><td><nobr>read-write</nobr> (null)</td><td>The time in seconds an account is locked out. The value must be greater than or equal to the value of the AccountLockoutCounterResetAfter property. If set to 0, no lockout occurs.</td></tr>
 <tr><td><nobr><b>AccountLockoutThreshold</b></nobr></td><td>number</td><td><nobr>read-write</nobr> (null)</td><td>The number of failed login attempts allowed before a user account is locked for a specified duration. A value of 0 means it is never locked.</td></tr>
 <tr><td><nobr><b>Accounts</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A link to a collection of Manager Accounts. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ManagerAccount">ManagerAccount</a>. See the ManagerAccount schema for details.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.2.2+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
+<tr><td><nobr><b>ActiveDirectory</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The first ActiveDirectory external account provider this AccountService supports.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AccountProviderType</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the type of external account provider this resource references.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AccountProviderType">AccountProviderType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Authentication</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the type of authentication used to connect to the external account provider.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AuthenticationType">AuthenticationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KerberosKeytab</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account service.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Token</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Username</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the user name for the account service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LDAPService</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SearchSettings</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BaseDistinguishedNames</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The base distinguished names to use when searching the LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupNameAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the name of the Group.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupsAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Groups for a user.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UsernameAttribute</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Username.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteRoleMapping</b> <i>(v1.3+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocalRole</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The name of the local role in which to map the remote user or group.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteGroup</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote group (or in the case of a Redfish Service, remote role) that will be mapped to the local role referenced by this entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceAddresses</b> <i>(v1.3+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>This property contains the addresses of the user account providers this resource references. The format of this field depends on the Type.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b> <i>(v1.3+)</i></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
+<tr><td><nobr><b>AdditionalExternalAccountProviders</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The additional external account providers this AccountService is using. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ExternalAccountProvider">ExternalAccountProvider</a>. See the ExternalAccountProvider schema for details.</td></tr>
 <tr><td><nobr><b>AuthFailureLoggingThreshold</b></nobr></td><td>number</td><td><nobr>read-write</nobr></td><td>The number of authorization failures allowed before the failure attempt is logged to the manager log.</td></tr>
+<tr><td><nobr><b>LDAP</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The first LDAP external account provider this AccountService supports.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AccountProviderType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the type of external account provider this resource references.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AccountProviderType">AccountProviderType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Authentication</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the type of authentication used to connect to the external account provider.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AuthenticationType">AuthenticationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KerberosKeytab</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account service.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Token</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Username</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the user name for the account service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LDAPService</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SearchSettings</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BaseDistinguishedNames</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The base distinguished names to use when searching the LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupNameAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the name of the Group.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupsAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Groups for a user.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UsernameAttribute</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Username.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteRoleMapping</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocalRole</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The name of the local role in which to map the remote user or group.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteGroup</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote group (or in the case of a Redfish Service, remote role) that will be mapped to the local role referenced by this entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceAddresses</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>This property contains the addresses of the user account providers this resource references. The format of this field depends on the Type.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
+<tr><td><nobr><b>LocalAccountAuth</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>Controls when this service will use the accounts defined withing this AccountService as part of authentication.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|LocalAccountAuth">LocalAccountAuth</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>MaxPasswordLength</b></nobr></td><td>number</td><td><nobr>read-only</nobr></td><td>The maximum password length for this service.</td></tr>
 <tr><td><nobr><b>MinPasswordLength</b></nobr></td><td>number</td><td><nobr>read-only</nobr></td><td>The minimum password length for this service.</td></tr>
 <tr><td><nobr><b>PrivilegeMap</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Privilege mapping that defines the privileges needed to perform a requested operation on a URI associated with this service. See the <a href="#PrivilegeRegistry">PrivilegeRegistry</a> schema for details on this property.</td></tr>
@@ -465,6 +532,49 @@ pre.code{
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this service is enabled.  If set to false, the AccountService is disabled.  This means no users can be created, deleted or modified.  Any service attempting to access the AccountService resource (for example, the Session Service) will fail.  New sessions cannot be started when the service is disabled. However, established sessions may still continue operating. This does not affect Basic AUTH connections.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/AccountService.json|details|AccountProviderType">AccountProviderType:</h4>
+<p>This property contains the type of external account provider this resource references.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>ActiveDirectoryService</td><td>An external Active Directory Service.</td></tr>
+<tr><td>LDAPService</td><td>A generic external LDAP Service.</td></tr>
+<tr><td>Oem</td><td>An OEM specific external authentication or directory service.</td></tr>
+<tr><td>RedfishService</td><td>An external Redfish Service.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/AccountService.json|details|AuthenticationType">AuthenticationType:</h4>
+<p>This property contains the type of authentication used to connect to the external account provider.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>KerberosKeytab</td><td>A kerberos keytab.</td></tr>
+<tr><td>Oem</td><td>An OEM specific authentication mechanism.</td></tr>
+<tr><td>Token</td><td>An opaque authentication token.</td></tr>
+<tr><td>UsernameAndPassword</td><td>Username and password combination.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/AccountService.json|details|LocalAccountAuth">LocalAccountAuth:</h4>
+<p>Controls when this service will use the accounts defined withing this AccountService as part of authentication.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Disabled</td><td>Authentication via accounts defined in this AccountService is disabled.</td></tr>
+<tr><td>Enabled</td><td>Authentication via accounts defined in this AccountService is enabled.</td></tr>
+<tr><td>Fallback</td><td>Authentication via accounts defined in this AccountService is only used if there are external account providers that are currently unreachable.</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#AccountService.v1_2_0.AccountService&quot;</span><span class="p">,</span>
@@ -525,10 +635,11 @@ pre.code{
 
 </div>
 </div>
-<h2 id="Assembly">Assembly 1.0.0</h2>
+<h2 id="Assembly">Assembly 1.1.0</h2>
 <p>This is the schema definition for the Assembly properties.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>Assemblies</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the definition for an assembly information record.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
@@ -544,14 +655,16 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ProductionDate</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Production date of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>SKU of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Spare part number of the Assembly.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Vendor</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Vendor of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Version</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Version of the Assembly.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 </tbody></table>
-<h2 id="AttributeRegistry">AttributeRegistry 1.1.1</h2>
+<h2 id="AttributeRegistry">AttributeRegistry 1.2.0</h2>
 <p>The AttributeRegistry schema contains a set of key-value pairs that represents the structure of a Registry. It includes mechanisms for building user interfaces (menus), allowing consistent navigation of the contents. The Attribute Registry is specific to a particular implementation or product. The attributes and property names are not standardized.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>Language</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the RFC 5646 compliant language code for the registry.</td></tr>
 <tr><td><nobr><b>OwningEntity</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the organization or company that publishes this registry.</td></tr>
@@ -572,8 +685,12 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MenuPath</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>A path that describes the menu hierarchy of this attribute.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MinLength</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The minimum character length of the value of an attribute of type 'String'.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ReadOnly</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>The read-only state of this attribute.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ResetRequired</b> <i>(v1.2+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>True if changing the value of this attribute requires a system or device reset in order to take effect.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ScalarIncrement</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The amount to increment or decrement the value of an attribute of type 'Integer' each time a user requests a value change.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Type</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The type of the attribute.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AttributeRegistry.json|details|Type">Type</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UefiDevicePath</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UEFI device path that qualifies this attribute.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UefiKeywordName</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The UEFI KeywordString of the attribute.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UefiNamespaceId</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The UEFI NamespaceId of the attribute.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperBound</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The upper limit of the value of an attribute of type 'Integer'.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Value</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>The array containing possible values for attributes of type 'Enumeration'.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ValueDisplayName</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>A user-readable display string of the value of the attribute in the defined 'Language'.</td></tr>
@@ -818,10 +935,11 @@ pre.code{
 
 </div>
 </div>
-<h2 id="Chassis">Chassis 1.6.0</h2>
+<h2 id="Chassis">Chassis 1.7.0</h2>
 <p>The Chassis schema represents the physical components of a system.  This resource represents the sheet-metal confined spaces and logical zones such as racks, enclosures, chassis and all other containers. Subsystems (like sensors) that operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.0.6+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Chassis.Reset</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>This action is used to reset the chassis. This action resets the chassis, not Systems or other contained resources, although side effects may occur which affect those resources.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Chassis.json|action_details|#Chassis.Reset">Action Details</a> section below.</i></td></tr>
 <tr><td><nobr><b>Assembly</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Assembly resource associated with this chassis. See the <a href="#Assembly">Assembly</a> schema for details on this property.</td></tr>
@@ -864,6 +982,9 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Storage</b> <i>(v1.2.4+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the storage subsystems connected to or inside this Chassis.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Storage resource. See the Links section and the <a href="#Storage">Storage</a> schema for details.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Switches</b> <i>(v1.7+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Switches located in this Chassis.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Switch resource. See the Links section and the <a href="#Switch">Switch</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>Location</b></nobr></td><td></td><td><nobr>read-write</nobr></td><td>See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location</a> schema for details.</td></tr>
 <tr><td><nobr><b>LogServices</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the logs for this chassis. Contains a link to a resource.</td></tr>
@@ -885,6 +1006,7 @@ pre.code{
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Thermal</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the thermal properties (fans, cooling, sensors) of this chassis. See the <a href="#Thermal">Thermal</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Thermal resource. See the Links section and the <a href="#Thermal">Thermal</a> schema for details.</td></tr>
+<tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Universal Unique Identifier (UUID) for this Chassis.</td></tr>
 <tr><td><nobr><b>WeightKg</b> <i>(v1.4+)</i></nobr></td><td>number<br>(kg)</td><td><nobr>read-only</nobr> (null)</td><td>The weight of the chassis.</td></tr>
 <tr><td><nobr><b>WidthMm</b> <i>(v1.4+)</i></nobr></td><td>number<br>(mm)</td><td><nobr>read-only</nobr> (null)</td><td>The width of the chassis.</td></tr>
 </tbody></table>
@@ -1549,10 +1671,11 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="Drive">Drive 1.3.0</h2>
+<h2 id="Drive">Drive 1.4.0</h2>
 <p>The Drive schema represents a single physical disk drive for a system, including links to associated Volumes.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.0.4+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Drive.SecureErase</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>This action is used to securely erase the contents of the drive.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Drive.json|action_details|#Drive.SecureErase">Action Details</a> section below.</i></td></tr>
 <tr><td><nobr><b>Assembly</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Assembly resource associated with this drive. See the <a href="#Assembly">Assembly</a> schema for details on this property.</td></tr>
@@ -1589,6 +1712,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PercentageComplete</b> <i>(v1.1.3+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The percentage of the operation that has been completed.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The part number for this drive.</td></tr>
+<tr><td><nobr><b>PhysicalLocation</b></nobr></td><td></td><td><nobr>read-write</nobr></td><td>See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location</a> schema for details.</td></tr>
 <tr><td><nobr><b>PredictedMediaLifeLeftPercent</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The percentage of reads and writes that are predicted to still be available for the media.</td></tr>
 <tr><td><nobr><b>Protocol</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol this drive is using to communicate to the storage controller.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|Protocol">Protocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Revision</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The revision of this Drive. This is typically the firmware/hardware version of the drive.</td></tr>
@@ -1691,6 +1815,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -1793,6 +1918,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -1855,6 +1981,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -2046,10 +2173,11 @@ pre.code{
 
 </div>
 </div>
-<h2 id="EventDestination">EventDestination 1.2.2</h2>
+<h2 id="EventDestination">EventDestination 1.3.0</h2>
 <p>An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.2.2+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>Context</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>A client-supplied string that is stored with the event destination subscription.</td></tr>
 <tr><td><nobr><b>Destination</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The URI of the destination Event Service.</td></tr>
@@ -2060,6 +2188,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>Protocol</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The protocol type of the event connection.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventDestination.json|details|Protocol">Protocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>SubscriptionType</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>Indicates the subscription type for events.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventDestination.json|details|SubscriptionType">SubscriptionType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -2088,6 +2217,17 @@ pre.code{
 <tr><td>Redfish</td><td>The destination follows the Redfish specification for event notifications.</td></tr>
 </tbody></table>
 
+<h4 id="redfish.dmtf.org/schemas/v1/EventDestination.json|details|SubscriptionType">SubscriptionType:</h4>
+<p>Indicates the subscription type for events.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>RedfishEvent</td><td>The subscription follows the Redfish specification for event notifications, which is done by a service sending an HTTP POST to the subscriber's destination URI.</td></tr>
+<tr><td>SSE</td><td>The subscription follows the HTML5 Server-Sent Event definition for event notifications.</td></tr>
+</tbody></table>
+
 </div>
 </div>
 <h3>Example Response</h3>
@@ -2106,15 +2246,17 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="EventService">EventService 1.0.6</h2>
+<h2 id="EventService">EventService 1.1.0</h2>
 <p>The Event Service resource contains properties for managing event subcriptions and generates the events sent to subscribers.  The resource has links to the actual collection of subscriptions (called Event Destinations).</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.0.6+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#EventService.SubmitTestEvent</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>This action is used to generate a test event.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/EventService.json|action_details|#EventService.SubmitTestEvent">Action Details</a> section below.</i></td></tr>
-<tr><td><nobr><b>DeliveryRetryAttempts</b></nobr></td><td>number</td><td><nobr>read-only</nobr></td><td>This is the number of attempts an event posting is retried before the subscription is terminated.  This retry is at the service level, meaning the HTTP POST to the Event Destination was returned by the HTTP operation as unsuccessful (4xx or 5xx return code) or an HTTP timeout occurred this many times before the Event Destination subscription is terminated.</td></tr>
-<tr><td><nobr><b>DeliveryRetryIntervalSeconds</b></nobr></td><td>number<br>(seconds)</td><td><nobr>read-only</nobr></td><td>This represents the number of seconds between retry attempts for sending any given Event.</td></tr>
+<tr><td><nobr><b>DeliveryRetryAttempts</b></nobr></td><td>number</td><td><nobr>read-write</nobr></td><td>This is the number of attempts an event posting is retried before the subscription is terminated.  This retry is at the service level, meaning the HTTP POST to the Event Destination was returned by the HTTP operation as unsuccessful (4xx or 5xx return code) or an HTTP timeout occurred this many times before the Event Destination subscription is terminated.</td></tr>
+<tr><td><nobr><b>DeliveryRetryIntervalSeconds</b></nobr></td><td>number<br>(seconds)</td><td><nobr>read-write</nobr></td><td>This represents the number of seconds between retry attempts for sending any given Event.</td></tr>
 <tr><td><nobr><b>EventTypesForSubscription</b> <i>(deprecated v1.0.6)</i> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This is the types of Events that can be subscribed to.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventService.json|details|EventTypesForSubscription">EventTypesForSubscription</a> in Property Details, below, for the possible values of this property.</i> <i>Deprecated v1.0.6+. This definition has been moved to the unversioned namespace so that external references can pick up changes over time.</i></td></tr>
+<tr><td><nobr><b>ServerSentEventUri</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a URI for receiving Sever Sent Event representations of the events generated by this service.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Subscriptions</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a reference to a collection of Event Destination resources. Contains a link to a resource.</td></tr>
@@ -2214,6 +2356,69 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
+<h2 id="ExternalAccountProvider">ExternalAccountProvider 1.0.0</h2>
+<p>A remote service that can provide accounts for this manager to utilize for authentication.</p>
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
+<tr><td><nobr><b>AccountProviderType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the type of external account provider this resource references.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ExternalAccountProvider.json|details|AccountProviderType">AccountProviderType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
+<tr><td><nobr><b>Authentication</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the type of authentication used to connect to the external account provider.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ExternalAccountProvider.json|details|AuthenticationType">AuthenticationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KerberosKeytab</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account service.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Token</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Username</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the user name for the account service.</td></tr>
+<tr><td><nobr><b>LDAPService</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SearchSettings</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BaseDistinguishedNames</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The base distinguished names to use when searching the LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupNameAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the name of the Group.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupsAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Groups for a user.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UsernameAttribute</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Username.</td></tr>
+<tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>RemoteRoleMapping</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocalRole</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The name of the local role in which to map the remote user or group.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteGroup</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote group (or in the case of a Redfish Service, remote role) that will be mapped to the local role referenced by this entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><nobr><b>ServiceAddresses</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>This property contains the addresses of the user account providers this resource references. The format of this field depends on the Type.</td></tr>
+<tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/ExternalAccountProvider.json|details|AccountProviderType">AccountProviderType:</h4>
+<p>This property contains the type of external account provider this resource references.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>ActiveDirectoryService</td><td>An external Active Directory Service.</td></tr>
+<tr><td>LDAPService</td><td>A generic external LDAP Service.</td></tr>
+<tr><td>Oem</td><td>An OEM specific external authentication or directory service.</td></tr>
+<tr><td>RedfishService</td><td>An external Redfish Service.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/ExternalAccountProvider.json|details|AuthenticationType">AuthenticationType:</h4>
+<p>This property contains the type of authentication used to connect to the external account provider.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>KerberosKeytab</td><td>A kerberos keytab.</td></tr>
+<tr><td>Oem</td><td>An OEM specific authentication mechanism.</td></tr>
+<tr><td>Token</td><td>An opaque authentication token.</td></tr>
+<tr><td>UsernameAndPassword</td><td>Username and password combination.</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h2 id="Fabric">Fabric 1.0.3</h2>
 <p>The Fabric schema represents a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones.</p>
 <table class="properties">
@@ -2253,6 +2458,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -2268,33 +2474,34 @@ pre.code{
 
 </div>
 </div>
-<h2 id="HostInterface">HostInterface 1.1.1</h2>
-<p>The HostInterface schema represetns a single host interface.</p>
+<h2 id="HostInterface">HostInterface 1.1.2</h2>
+<p>This schema defines a single Host Interface resource.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
-<tr><td><nobr><b>AuthenticationModes</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-write</nobr></td><td>This indicates the authentication modes available on this interface.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/HostInterface.json|details|AuthenticationModes">AuthenticationModes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>ExternallyAccessible</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>This indicates whether this interface is accessible by external entities.</td></tr>
-<tr><td><nobr><b>FirmwareAuthEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this firmware authentication is enabled for this interface.</td></tr>
-<tr><td><nobr><b>FirmwareAuthRoleId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the Role for firmware authentication on this interface.</td></tr>
-<tr><td><nobr><b>HostEthernetInterfaces</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a reference to a collection of NICs that Computer Systems use for network communication with this Host Interface. Contains a link to a resource.</td></tr>
+<tr><td><nobr><b>AuthenticationModes</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-write</nobr></td><td>Indicates the authentication modes available on this interface.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/HostInterface.json|details|AuthenticationModes">AuthenticationModes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>ExternallyAccessible</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates whether this interface is accessible by external entities.</td></tr>
+<tr><td><nobr><b>FirmwareAuthEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this firmware authentication is enabled for this interface.</td></tr>
+<tr><td><nobr><b>FirmwareAuthRoleId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Role used for firmware authentication on this interface.</td></tr>
+<tr><td><nobr><b>HostEthernetInterfaces</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The Redfish link to the collection of network interface controllers or cards (NICs) that a Computer System uses to communicate with this Host Interface. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EthernetInterface">EthernetInterface</a>. See the EthernetInterface schema for details.</td></tr>
-<tr><td><nobr><b>HostInterfaceType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the Host Interface type for this interface.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/HostInterface.json|details|HostInterfaceType">HostInterfaceType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>InterfaceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this interface is enabled.</td></tr>
-<tr><td><nobr><b>KernelAuthEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this kernel authentication is enabled for this interface.</td></tr>
-<tr><td><nobr><b>KernelAuthRoleId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the Role for kernel authentication on this interface.</td></tr>
-<tr><td><nobr><b>Links</b> <i>(v1.1.1+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td><nobr><b>HostInterfaceType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>Indicates the Host Interface type for this interface.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/HostInterface.json|details|HostInterfaceType">HostInterfaceType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>InterfaceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this interface is enabled.</td></tr>
+<tr><td><nobr><b>KernelAuthEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this kernel authentication is enabled for this interface.</td></tr>
+<tr><td><nobr><b>KernelAuthRoleId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Role used for kernel authentication on this interface.</td></tr>
+<tr><td><nobr><b>Links</b> <i>(v1.0.2+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ComputerSystems</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Computer Systems connected to this Host Interface.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ComputerSystem resource. See the Links section and the <a href="#ComputerSystem">ComputerSystem</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareAuthRole</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Role object defining Privileges for this Host Interface when using firmware authentication. See the <a href="#Role">Role</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareAuthRole</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Role that has firmware authentication privileges on this Host Interface. See the <a href="#Role">Role</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Role resource. See the Links section and the <a href="#Role">Role</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KernelAuthRole</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Role object defining Privileges for this Host Interface when using kernel authentication. See the <a href="#Role">Role</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Role resource. See the Links section and the <a href="#Role">Role</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>ManagerEthernetInterface</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a reference to a single NIC that this Manager uses for network communication with this Host Interface. See the <a href="#EthernetInterface">EthernetInterface</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>ManagerEthernetInterface</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The Redfish link to a single network interface controllers or cards (NIC) that this Manager uses for network communication with this Host Interface. See the <a href="#EthernetInterface">EthernetInterface</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a EthernetInterface resource. See the Links section and the <a href="#EthernetInterface">EthernetInterface</a> schema for details.</td></tr>
-<tr><td><nobr><b>NetworkProtocol</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a reference to the network services and their settings that the Manager controls.  It is here that clients will find network configuration options as well as network services. See the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>NetworkProtocol</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The Redfish link to the network services and their settings that the Manager controls.  It is here that clients will find network configuration options as well as network services. See the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ManagerNetworkProtocol resource. See the Links section and the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
@@ -2302,7 +2509,7 @@ pre.code{
 <h3>Property Details</h3>
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/HostInterface.json|details|AuthenticationModes">AuthenticationModes:</h4>
-<p>This indicates the authentication modes available on this interface.</p>
+<p>Indicates the authentication modes available on this interface.</p>
 <table class="enum enum-details">
 <thead>
 <tr><th>string</th><th>Description</th></tr>
@@ -2315,7 +2522,7 @@ pre.code{
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/HostInterface.json|details|HostInterfaceType">HostInterfaceType:</h4>
-<p>This indicates the Host Interface type for this interface.</p>
+<p>Indicates the Host Interface type for this interface.</p>
 <table class="enum enum-details">
 <thead>
 <tr><th>string</th><th>Description</th></tr>
@@ -2631,7 +2838,7 @@ pre.code{
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
     <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;#LogService.ClearLog&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Actions/LogService.Reset&quot;</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Actions/LogService.ClearLog&quot;</span>
         <span class="p">},</span>
         <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
     <span class="p">},</span>
@@ -2643,14 +2850,16 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="Manager">Manager 1.3.3</h2>
+<h2 id="Manager">Manager 1.4.0</h2>
 <p>This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.0.6+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Manager.ForceFailover</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The ForceFailover action forces a failover of this manager to the manager used in the parameter.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Manager.json|action_details|#Manager.ForceFailover">Action Details</a> section below.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Manager.ModifyRedundancySet</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Manager.json|action_details|#Manager.ModifyRedundancySet">Action Details</a> section below.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Manager.Reset</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>The reset action resets/reboots the manager.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Manager.json|action_details|#Manager.Reset">Action Details</a> section below.</i></td></tr>
+<tr><td><nobr><b>AutoDSTEnabled</b> <i>(v1.4+)</i></nobr></td><td>boolean</td><td><nobr>read-write</nobr></td><td>Indicates whether the manager is configured for automatic DST adjustment.</td></tr>
 <tr><td><nobr><b>CommandShell</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Information about the Command Shell service provided by this manager.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ConnectTypesSupported</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This object is used to enumerate the Command Shell connection types allowed by the implementation.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Manager.json|details|ConnectTypesSupported">ConnectTypesSupported</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxConcurrentSessions</b></nobr></td><td>number</td><td><nobr>read-only</nobr></td><td>Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.</td></tr>
@@ -2672,6 +2881,9 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagerForServers</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>This property is an array of references to the systems that this manager has control over.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ComputerSystem resource. See the Links section and the <a href="#ComputerSystem">ComputerSystem</a> schema for details.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagerForSwitches</b> <i>(v1.4+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>This property is an array of references to the switches that this manager has control over.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Switch resource. See the Links section and the <a href="#Switch">Switch</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagerInChassis</b> <i>(v1.1.4+)</i> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This property is a reference to the chassis that this manager is located in. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
@@ -2761,6 +2973,7 @@ pre.code{
 <tr><td>EnclosureManager</td><td>A controller which provides management functions for a chassis or group of devices or systems.</td></tr>
 <tr><td>ManagementController</td><td>A controller used primarily to monitor or manage the operation of a device or system.</td></tr>
 <tr><td>RackManager</td><td>A controller which provides management functions for a whole or part of a rack.</td></tr>
+<tr><td>Service <i>(v1.4+)</i></td><td>A software-based service which provides management functions.</td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/Manager.json|details|PowerState">PowerState:</h4>
@@ -2885,15 +3098,16 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="ManagerAccount">ManagerAccount 1.1.1</h2>
+<h2 id="ManagerAccount">ManagerAccount 1.1.2</h2>
 <p>The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service.</p>
 <table class="properties">
 <tbody>
-<tr><td><nobr><b>Actions</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
+<tr><td><nobr><b>Actions</b> <i>(v1.1.2+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>Enabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr></td><td>This property is used by a User Administrator to disable an account w/o having to delet the user information.  When set to true, the user can login.  When set to false, the account is administratively disabled and the user cannot login.</td></tr>
-<tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Role</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId. See the <a href="#Role">Role</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Links</b> <i>(v1.0.6+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.0.6+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Role</b> <i>(v1.0.6+)</i> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId. See the <a href="#Role">Role</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Role resource. See the Links section and the <a href="#Role">Role</a> schema for details.</td></tr>
 <tr><td><nobr><b>Locked</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr></td><td>This property indicates that the account has been auto-locked by the account service because the lockout threshold has been exceeded.  When set to true, the account is locked. A user admin can write the property to false to manually unlock, or the account service will unlock it once the lockout duration period has passed.</td></tr>
 <tr><td><nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET.</td></tr>
@@ -3041,24 +3255,25 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="Memory">Memory 1.4.0</h2>
+<h2 id="Memory">Memory 1.5.0</h2>
 <p>This is the schema definition for definition of a Memory and its configuration.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.0.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Memory.DisablePassphrase</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Disable passphrase for given regions.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.DisablePassphrase">Action Details</a> section below.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Memory.SecureEraseUnit</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This defines the action for securely erasing given regions.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.SecureEraseUnit">Action Details</a> section below.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Memory.SetPassphrase</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Set passphrase for the given regions.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.SetPassphrase">Action Details</a> section below.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#Memory.UnlockUnit</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>This defines the action for unlocking given regions.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.UnlockUnit">Action Details</a> section below.</i></td></tr>
-<tr><td><nobr><b>AllocationAlignmentMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The boundary which memory regions are allocated on, measured in MiB.</td></tr>
-<tr><td><nobr><b>AllocationIncrementMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The size of the smallest unit of allocation for a memory region, thus it is the multiple in which regions are actually reserved.</td></tr>
+<tr><td><nobr><b>AllocationAlignmentMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The boundary which memory regions are allocated on, measured in mebibytes (MiB).</td></tr>
+<tr><td><nobr><b>AllocationIncrementMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The size of the smallest unit of allocation for a memory region in mebibytes (MiB).</td></tr>
 <tr><td><nobr><b>AllowedSpeedsMHz</b> [ ] </nobr></td><td>array<br>(number)</td><td><nobr>read-only</nobr></td><td>Speed bins supported by this Memory.</td></tr>
 <tr><td><nobr><b>Assembly</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Assembly resource associated with this memory. See the <a href="#Assembly">Assembly</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Assembly resource. See the Links section and the <a href="#Assembly">Assembly</a> schema for details.</td></tr>
 <tr><td><nobr><b>BaseModuleType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The base module type of Memory.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Memory.json|details|BaseModuleType">BaseModuleType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>BusWidthBits</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Bus Width in bits.</td></tr>
 <tr><td><nobr><b>CacheSizeMiB</b> <i>(v1.4+)</i></nobr></td><td>number<br>(mebibytes)</td><td><nobr>read-only</nobr> (null)</td><td>Total size of the cache portion memory in MiB.</td></tr>
-<tr><td><nobr><b>CapacityMiB</b></nobr></td><td>number<br>(mebibytes)</td><td><nobr>read-only</nobr> (null)</td><td>Memory Capacity in MiB.</td></tr>
+<tr><td><nobr><b>CapacityMiB</b></nobr></td><td>number<br>(mebibytes)</td><td><nobr>read-only</nobr> (null)</td><td>Memory Capacity in mebibytes (MiB).</td></tr>
 <tr><td><nobr><b>DataWidthBits</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Data Width in bits.</td></tr>
 <tr><td><nobr><b>DeviceID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Device ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.ModuleProductID</i></td></tr>
 <tr><td><nobr><b>DeviceLocator</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Location of the Memory in the platform.</td></tr>
@@ -3095,8 +3310,8 @@ pre.code{
 <tr><td><nobr><b>OperatingSpeedMhz</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Operating speed of Memory in MHz or MT/s as appropriate.</td></tr>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product part number of this device.</td></tr>
 <tr><td><nobr><b>PersistentRegionNumberLimit</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Total number of persistent regions this Memory can support.</td></tr>
-<tr><td><nobr><b>PersistentRegionSizeLimitMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Total size of persistent regions in MiB.</td></tr>
-<tr><td><nobr><b>PersistentRegionSizeMaxMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Maximum size of a single persistent region in MiB.</td></tr>
+<tr><td><nobr><b>PersistentRegionSizeLimitMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Total size of persistent regions in mebibytes (MiB).</td></tr>
+<tr><td><nobr><b>PersistentRegionSizeMaxMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Maximum size of a single persistent region in mebibytes (MiB).</td></tr>
 <tr><td><nobr><b>PowerManagementPolicy</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Power management policy information.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AveragePowerBudgetMilliWatts</b></nobr></td><td>number<br>(mW)</td><td><nobr>read-only</nobr> (null)</td><td>Average power budget in milli watts.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxTDPMilliWatts</b></nobr></td><td>number<br>(mW)</td><td><nobr>read-only</nobr> (null)</td><td>Maximum TDP in milli watts.</td></tr>
@@ -3105,10 +3320,11 @@ pre.code{
 <tr><td><nobr><b>RankCount</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Number of ranks available in the Memory.</td></tr>
 <tr><td><nobr><b>Regions</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Memory regions information within the Memory.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemoryClassification</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>Classification of memory occupied by the given memory region.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Memory.json|details|MemoryClassification">MemoryClassification</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OffsetMiB</b></nobr></td><td>number<br>(MiBy)</td><td><nobr>read-only</nobr> (null)</td><td>Offset with in the Memory that corresponds to the starting of this memory region in MiB.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PassphraseState</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>State of the passphrase for this region.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OffsetMiB</b></nobr></td><td>number<br>(MiBy)</td><td><nobr>read-only</nobr> (null)</td><td>Offset with in the Memory that corresponds to the starting of this memory region in mebibytes (MiB).</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PassphraseEnabled</b> <i>(v1.5+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates if the passphrase is enabled for this region.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PassphraseState</b> <i>(deprecated v1.4.1)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>State of the passphrase for this region. <i>Deprecated v1.4.1+. This property has been Deprecated in favor of Memory.v1_5_0.Memory.RegionSet.PassphraseEnabled.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Unique region ID representing a specific region within the Memory.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SizeMiB</b></nobr></td><td>number<br>(MiBy)</td><td><nobr>read-only</nobr> (null)</td><td>Size of this memory region in MiB.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SizeMiB</b></nobr></td><td>number<br>(MiBy)</td><td><nobr>read-only</nobr> (null)</td><td>Size of this memory region in mebibytes (MiB).</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>SecurityCapabilities</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This object contains security capabilities of the Memory.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxPassphraseCount</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Maximum number of passphrases supported for this Memory.</td></tr>
@@ -3121,8 +3337,8 @@ pre.code{
 <tr><td><nobr><b>SubsystemVendorID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>SubSystem Vendor ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerManufacturerID</i></td></tr>
 <tr><td><nobr><b>VendorID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Vendor ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.ModuleManufacturerID</i></td></tr>
 <tr><td><nobr><b>VolatileRegionNumberLimit</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Total number of volatile regions this Memory can support.</td></tr>
-<tr><td><nobr><b>VolatileRegionSizeLimitMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Total size of volatile regions in MiB.</td></tr>
-<tr><td><nobr><b>VolatileRegionSizeMaxMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Maximum size of a single volatile region in MiB.</td></tr>
+<tr><td><nobr><b>VolatileRegionSizeLimitMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Total size of volatile regions in mebibytes (MiB).</td></tr>
+<tr><td><nobr><b>VolatileRegionSizeMaxMiB</b> <i>(v1.2+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Maximum size of a single volatile region in mebibytes (MiB).</td></tr>
 <tr><td><nobr><b>VolatileSizeMiB</b> <i>(v1.4+)</i></nobr></td><td>number<br>(mebibytes)</td><td><nobr>read-only</nobr> (null)</td><td>Total size of the volitile portion memory in MiB.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -3330,23 +3546,24 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="MemoryChunks">MemoryChunks 1.2.0</h2>
+<h2 id="MemoryChunks">MemoryChunks 1.2.1</h2>
 <p>This is the schema definition of a Memory Chunk and its configuration.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>AddressRangeType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>Memory type of this memory chunk.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/MemoryChunks.json|details|AddressRangeType">AddressRangeType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>InterleaveSets</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the interleave sets for the memory chunk.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Memory</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>Describes a memory device of the interleave set.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemoryLevel</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Level of the interleave set for multi-level tiered memory.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OffsetMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Offset within the DIMM that corresponds to the start of this memory region, with units in MiB.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OffsetMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Offset within the DIMM that corresponds to the start of this memory region, measured in mebibytes (MiB).</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>DIMM region identifier.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SizeMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Size of this memory region in MiB.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SizeMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Size of this memory region measured in mebibytes (MiB).</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>IsMirrorEnabled</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Mirror Enabled status.</td></tr>
 <tr><td><nobr><b>IsSpare</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Spare enabled status.</td></tr>
-<tr><td><nobr><b>MemoryChunkSizeMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Size of the memory chunk in MiB.</td></tr>
+<tr><td><nobr><b>MemoryChunkSizeMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Size of the memory chunk measured in mebibytes (MiB).</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -3500,10 +3717,11 @@ pre.code{
 <p>(This action takes no parameters.)</p>
 </div>
 </div>
-<h2 id="NetworkDeviceFunction">NetworkDeviceFunction 1.2.0</h2>
+<h2 id="NetworkDeviceFunction">NetworkDeviceFunction 1.2.1</h2>
 <p>A Network Device Function represents a logical interface exposed by the network adapter.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>AssignablePhysicalPorts</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The array of physical port references that this network device function may be assigned to.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a NetworkPort resource. See the Links section and the <a href="#NetworkPort">NetworkPort</a> schema for details.</td></tr>
@@ -3817,10 +4035,11 @@ pre.code{
 
 </div>
 </div>
-<h2 id="PCIeFunction">PCIeFunction 1.1.1</h2>
+<h2 id="PCIeFunction">PCIeFunction 1.2.0</h2>
 <p>This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>ClassCode</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Class Code of this PCIe function.</td></tr>
 <tr><td><nobr><b>DeviceClass</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The class for this PCIe Function.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/PCIeFunction.json|details|DeviceClass">DeviceClass</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -3833,6 +4052,9 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EthernetInterfaces</b> <i>(v1.0.3+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the ethernet interfaces which the PCIe device produces.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a EthernetInterface resource. See the Links section and the <a href="#EthernetInterface">EthernetInterface</a> schema for details.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>NetworkDeviceFunctions</b> <i>(v1.2+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Network Device Functions which the PCIe device produces.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a NetworkDeviceFunction resource. See the Links section and the <a href="#NetworkDeviceFunction">NetworkDeviceFunction</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.0.3+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PCIeDevice</b> <i>(v1.0.3+)</i> {</nobr></td><td>object</td><td><nobr>read-only</nobr> (null)</td><td>A reference to the PCIeDevice on which this function resides. See the <a href="#PCIeDevice">PCIeDevice</a> schema for details on this property.</td></tr>
@@ -3955,6 +4177,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -4469,10 +4692,11 @@ pre.code{
 
 </div>
 </div>
-<h2 id="Processor">Processor 1.2.0</h2>
+<h2 id="Processor">Processor 1.3.0</h2>
 <p>This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>Assembly</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Assembly resource associated with this processor. See the <a href="#Assembly">Assembly</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Assembly resource. See the Links section and the <a href="#Assembly">Assembly</a> schema for details.</td></tr>
@@ -4496,6 +4720,8 @@ pre.code{
 <tr><td><nobr><b>ProcessorType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of processor.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorType">ProcessorType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Socket</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The socket or location of the processor.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>SubProcessors</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the collection of Sub-Processors associated with this system, such as cores or threads that are part of a processor. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Processor">Processor</a>. See the Processor schema for details.</td></tr>
 <tr><td><nobr><b>TotalCores</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The total number of cores contained in this processor.</td></tr>
 <tr><td><nobr><b>TotalThreads</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The total number of execution threads supported by this processor.</td></tr>
 </tbody></table>
@@ -4564,10 +4790,12 @@ pre.code{
 <tbody>
 <tr><td>Accelerator</td><td>An Accelerator.</td></tr>
 <tr><td>CPU</td><td>A Central Processing Unit.</td></tr>
+<tr><td>Core <i>(v1.3+)</i></td><td>A Core in a Processor.</td></tr>
 <tr><td>DSP</td><td>A Digital Signal Processor.</td></tr>
 <tr><td>FPGA</td><td>A Field Programmable Gate Array.</td></tr>
 <tr><td>GPU</td><td>A Graphics Processing Unit.</td></tr>
 <tr><td>OEM</td><td>An OEM-defined Processing Unit.</td></tr>
+<tr><td>Thread <i>(v1.3+)</i></td><td>A Thread in a Processor.</td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/Processor.json|details|Step">Step:</h4>
@@ -4613,21 +4841,26 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="ResourceBlock">ResourceBlock 1.0.0</h2>
+<h2 id="ResourceBlock">ResourceBlock 1.1.0</h2>
 <p>This schema defines a Resource Block resource.</p>
 <table class="properties">
 <tbody>
-<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
+<tr><td><nobr><b>Actions</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>CompositionStatus</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This property describes the composition status details for this Resource Block.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CompositionState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property represents the current state of the Resource Block from a composition perspective.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ResourceBlock.json|details|CompositionState">CompositionState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Reserved</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This represents if the Resource Block is reserved by any client.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxCompositions</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The maximum number of compositions in which this Resource Block is capable of participating simultaneously.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>NumberOfCompositions</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The number of compositions in which this Resource Block is currently participating.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Reserved</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This represents if the Resource Block is reserved by any client.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SharingCapable</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates if this Resource Block is capable of participating in multiple compositions simultaneously.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SharingEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates if this Resource Block is allowed to participate in multiple compositions simultaneously.</td></tr>
 <tr><td><nobr><b>ComputerSystems</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Computer Systems available in this Resource Block.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ComputerSystem resource. See the Links section and the <a href="#ComputerSystem">ComputerSystem</a> schema for details.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>EthernetInterfaces</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Ethernet Interfaces available in this Resource Block.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a EthernetInterface resource. See the Links section and the <a href="#EthernetInterface">EthernetInterface</a> schema for details.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td><nobr><b>Links</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Chassis</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Chassis in which this Resource Block is contained.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
@@ -4667,8 +4900,9 @@ pre.code{
 </thead>
 <tbody>
 <tr><td>Composed</td><td>Final successful state of a Resource Block which has participated in composition.</td></tr>
+<tr><td>ComposedAndAvailable <i>(v1.1+)</i></td><td>Indicates the Resource Block is currently participating in one or more compositions, and is available to be used in more compositions.</td></tr>
 <tr><td>Composing</td><td>Intermediate state indicating composition is in progress.</td></tr>
-<tr><td>Failed</td><td>The final composition resulted in failure and manual intervention is required to fix it.</td></tr>
+<tr><td>Failed</td><td>The final composition resulted in failure and manual intervention may be required to fix it.</td></tr>
 <tr><td>Unused</td><td>Indicates the Resource Block is free and can participate in composition.</td></tr>
 </tbody></table>
 
@@ -4934,10 +5168,11 @@ pre.code{
 
 </div>
 </div>
-<h2 id="ServiceRoot">ServiceRoot 1.3.0</h2>
+<h2 id="ServiceRoot">ServiceRoot 1.3.1</h2>
 <p>This object represents the root Redfish service.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>AccountService</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to the Account Service. See the <a href="#AccountService">AccountService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a AccountService resource. See the Links section and the <a href="#AccountService">AccountService</a> schema for details.</td></tr>
 <tr><td><nobr><b>Chassis</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to a collection of Chassis. Contains a link to a resource.</td></tr>
@@ -4950,7 +5185,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Fabric">Fabric</a>. See the Fabric schema for details.</td></tr>
 <tr><td><nobr><b>JsonSchemas</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to a collection of Json-Schema files. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#JsonSchemaFile">JsonSchemaFile</a>. See the JsonSchemaFile schema for details.</td></tr>
-<tr><td><nobr><b>Links</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td><nobr><b>Links</b> <i>(v1.0.6+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Sessions</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>Link to a collection of Sessions. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Session">Session</a>. See the Session schema for details.</td></tr>
@@ -5130,15 +5365,18 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="SoftwareInventory">SoftwareInventory 1.1.1</h2>
+<h2 id="SoftwareInventory">SoftwareInventory 1.2.0</h2>
 <p>This schema defines an inventory of software components.</p>
 <table class="properties">
 <tbody>
-<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Actions object contains the available custom actions on this resource.</td></tr>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
+<tr><td><nobr><b>Actions</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Actions object contains the available custom actions on this resource.</td></tr>
 <tr><td><nobr><b>LowestSupportedVersion</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>A string representing the lowest supported version of this software.</td></tr>
+<tr><td><nobr><b>Manufacturer</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>A string representing the manufacturer/producer of this software.</td></tr>
 <tr><td><nobr><b>RelatedItem</b> <i>(v1.1+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The ID(s) of the resources associated with this software inventory item.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><nobr><b>ReleaseDate</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Release date of this software.</td></tr>
 <tr><td><nobr><b>SoftwareId</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>A string representing the implementation-specific ID for identifying this software.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>UefiDevicePaths</b> <i>(v1.1+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>A list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item.</td></tr>
@@ -5230,6 +5468,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -5262,6 +5501,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -5390,6 +5630,7 @@ pre.code{
 <tr><td>NFSv4</td><td>Network File System version 4.</td></tr>
 <tr><td>NVMe</td><td>Non-Volatile Memory Express.</td></tr>
 <tr><td>NVMeOverFabrics</td><td>NVMe over Fabrics.</td></tr>
+<tr><td>OEM</td><td>OEM specific.</td></tr>
 <tr><td>PCIe</td><td>PCI Express (Vendor Proprietary).</td></tr>
 <tr><td>RoCE</td><td>RDMA over Converged Ethernet Protocol.</td></tr>
 <tr><td>RoCEv2</td><td>RDMA over Converged Ethernet Protocol Version 2.</td></tr>
@@ -5405,14 +5646,16 @@ pre.code{
 
 </div>
 </div>
-<h2 id="Task">Task 1.1.1</h2>
+<h2 id="Task">Task 1.2.0</h2>
 <p>This resource contains information about a specific Task scheduled by or being executed by a Redfish service's Task Service.</p>
 <table class="properties">
 <tbody>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>EndTime</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The date-time stamp that the task was last completed.</td></tr>
 <tr><td><nobr><b>Messages</b> { } [ ] </nobr></td><td>array (object)</td><td><nobr>read-write</nobr></td><td>This is an array of messages associated with the task. This type describes a Message returned by the Redfish service. See the <a href="http://redfish.dmtf.org/schemas/v1/Message.json" target="_blank">Message</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>StartTime</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The date-time stamp that the task was last started.</td></tr>
+<tr><td><nobr><b>TaskMonitor</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The URI of the Task Monitor for this task.</td></tr>
 <tr><td><nobr><b>TaskState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The state of the task.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Task.json|details|TaskState">TaskState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>TaskStatus</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>This is the completion status of the task.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Task.json|details|TaskStatus">TaskStatus</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
@@ -5426,6 +5669,8 @@ pre.code{
 <tr><th>string</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td>Cancelled <i>(v1.2+)</i></td><td>Task has been cancelled by an operator or internal process.</td></tr>
+<tr><td>Cancelling <i>(v1.2+)</i></td><td>Task is in the process of being cancelled.</td></tr>
 <tr><td>Completed</td><td>Task has completed.</td></tr>
 <tr><td>Exception</td><td>Task has stopped due to an exception condition.</td></tr>
 <tr><td>Interrupted</td><td>Task has been interrupted.</td></tr>
@@ -5814,11 +6059,12 @@ pre.code{
     <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.&quot;</span>
 <span class="p">}</span>
 </pre></div></div>
-<h2 id="UpdateService">UpdateService 1.2.0</h2>
+<h2 id="UpdateService">UpdateService 1.2.1</h2>
 <p>This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.</p>
 <table class="properties">
 <tbody>
-<tr><td><nobr><b>Actions</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Actions object contains the available custom actions on this resource.</td></tr>
+<tr><td><nobr><b>@odata.etag</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The current ETag of the resource.</td></tr>
+<tr><td><nobr><b>Actions</b> <i>(v1.0.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Actions object contains the available custom actions on this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#UpdateService.SimpleUpdate</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>This action is used to update software components.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/UpdateService.json|action_details|#UpdateService.SimpleUpdate">Action Details</a> section below.</i></td></tr>
 <tr><td><nobr><b>FirmwareInventory</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr> (null)</td><td>An inventory of firmware. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SoftwareInventory">SoftwareInventory</a>. See the SoftwareInventory schema for details.</td></tr>
@@ -5835,7 +6081,37 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/UpdateService.json|action_details|#UpdateService.SimpleUpdate">SimpleUpdate</h4>
 <p>This action is used to update software components.</p>
-<p>(This action takes no parameters.)</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<table>
+<tbody>
+<tr><td>{</td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ImageURI</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The URI of the software image to be installed.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Targets</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-write</nobr></td><td>The array of URIs indicating where the update image is to be applied.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TransferProtocol</b></nobr><br>}</td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/UpdateService.json|details|TransferProtocol">TransferProtocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+</tbody></table>
+</div>
+</div>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/UpdateService.json|details|TransferProtocol">TransferProtocol:</h4>
+<p>The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>CIFS</td><td>Common Internet File System protocol.</td></tr>
+<tr><td>FTP</td><td>File Transfer Protocol.</td></tr>
+<tr><td>HTTP</td><td>Hypertext Transfer Protocol.</td></tr>
+<tr><td>HTTPS</td><td>HTTP Secure protocol.</td></tr>
+<tr><td>NSF</td><td>Network File System protocol.</td></tr>
+<tr><td>OEM</td><td>A protocol defined by the manufacturer.</td></tr>
+<tr><td>SCP</td><td>Secure File Copy protocol.</td></tr>
+<tr><td>SFTP <i>(v1.0.1+)</i></td><td>Secure File Transfer Protocol.</td></tr>
+<tr><td>TFTP</td><td>Trivial File Transfer Protocol.</td></tr>
+</tbody></table>
+
 </div>
 </div>
 <h2 id="VLanNetworkInterface">VLanNetworkInterface 1.1.1</h2>

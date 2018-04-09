@@ -47,7 +47,7 @@
 					"properties": {
 					   "target": {
 						   "type": "string",
-							"description": "TBD"
+							"description": "**** TBD ****"
 						}
 					}
 				},

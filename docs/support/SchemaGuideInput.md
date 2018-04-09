@@ -101,8 +101,8 @@ A number of corner-case issues have been found in the schema definitions which c
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2017-12-7</p>
-<p align="right">Version: <span class="version">2017.3</span></p>
+<p align="right">Date: 2018-4-6</p>
+<p align="right">Version: <span class="version">2018.1</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
@@ -113,7 +113,7 @@ A number of corner-case issues have been found in the schema definitions which c
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
-    <p>Copyright &copy; 2016-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+    <p>Copyright &copy; 2016-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
 <br><br>
   <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
   <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -151,7 +151,7 @@ Redfish Developer Hub
 -  Redfish interactive explorer, hosted schema and other links:
   http://redfish.dmtf.org
 
-SPMF (Working group that maintains the Redfish standard)
+DMTF Redfish Forum (Working group that maintains the Redfish standard)
 -  Companies involved, upcoming schedules and future work, charter, and information about joining:
   http://www.dmtf.org/standards/spmf
 
@@ -161,13 +161,16 @@ SPMF (Working group that maintains the Redfish standard)
 
 This section describes the properties (data fields) that share a common definition across many or all Redfish schema. 
 
-## Properties defined for all Redfish schemas 
+## Properties defined across all Redfish schemas 
 
 The following properties are included in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Resource Guide tables for each schema.
 
 #include_fragment ./mockups/DSP2046-examples/CommonPropertySchema.json#/definitions/CommonProperties/properties
 
-## Properties frequently used in Redfish schemas
+
+## Frequently used properties
+
+The following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.
 
 #include_fragment ./mockups/DSP2046-examples/CommonPropertySchema.json#/definitions/FrequentProperties/properties
 
@@ -178,7 +181,10 @@ The `Status` object and its properties is common to many Redfish schema.
 
 #include_fragment http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status
 
+
 ## Location
+
+The 'Location' object and its properties is common to many Redfish schema.
 
 #include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Location
 
@@ -186,7 +192,19 @@ The `Status` object and its properties is common to many Redfish schema.
 
 
 
-# Redfish Schema details
+# Redfish Schema Reference Guide
+
+The following sections detail the definition for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions for the schema, and an example payload for a resource using the schema.
+
+The schema details include:
+
+| Column | Purpose |
+|--------|---------|
+| Property Name | The name of the JSON property as it will appear (case-sensitive) in the JSON payload. |
+| Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used. |
+| Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
+| Description | The description of the property, as copied directly from the schema 'Description' definition. |
+
 
 # Excluded Properties
 
