@@ -442,7 +442,7 @@ OEM example:
 
 ##### Resources in multiple Resource Collections
 
-There are certain cases where a single "Resource" might belong in multiple "Resource Collections".  The simple example is with the `Systems` and `StorageSystems` properties found on the Service Root.  Both of these links go to resources of type ComputerSystemCollection.  While these "Resource Collections" have their own unique URIs, the intent of the data model is that all instances of ComputerSystems found in the "Resource Collection" found via the `StorageSystems` property will also be found in the "Resource Collection" found via the `Systems` property.  This type of practice is not common in generic OData implementations.
+There are certain cases where a single "Resource" might belong in multiple "Resource Collections".  The simple example is with the `Systems` and `StorageSystems` properties found on the Service Root.  Both of these links go to resources that contain a collection of ComputerSystems.  While these "Resource Collections" have their own unique URIs, the intent of the data model is that all instances of ComputerSystems found in the "Resource Collection" found via the `StorageSystems` property will also be found in the "Resource Collection" found via the `Systems` property.  This type of practice is not common in generic OData implementations.
 
 The two payloads below show samples of "Resource Collections" for the `Systems` and `StorageSystems` links respectively.  Notice that the URIs in the `StorageSystems` payload are a subset of the URIs in the `Systems` payload.
 
@@ -471,7 +471,7 @@ The two payloads below show samples of "Resource Collections" for the `Systems` 
 ```json
 {
     "@odata.id": "/redfish/v1/StorageSystems",
-    "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+    "@odata.type": "#StorageSystemCollection.StorageSystemCollection",
     "Name": "Storage Systems Collection",
     "Members": [
         {
