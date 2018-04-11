@@ -165,14 +165,14 @@ This section describes the properties (data fields) that share a common definiti
 
 The following properties are included in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Resource Guide tables for each schema.
 
-#include_fragment ./mockups/DSP2046-examples/CommonPropertySchema.json#/definitions/CommonProperties/properties
+#include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/CommonProperties/properties
 
 
 ## Frequently used properties
 
 The following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.
 
-#include_fragment ./mockups/DSP2046-examples/CommonPropertySchema.json#/definitions/FrequentProperties/properties
+#include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/FrequentProperties/properties
 
 
 ## Status
@@ -188,15 +188,53 @@ The 'Location' object and its properties is common to many Redfish schema.
 
 #include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Location
 
+## IP addresses
 
+IP address objects appear in several areas of the data model.
+### IPv4 address
 
+#include_fragment ./json-schema/IPAddresses.v1_0_6.json#/definitions/IPv4Address
 
+### IPv6 address
+
+#include_fragment http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json#/definitions/IPv6Address
+
+# Resource collections
+
+INTRO TO COLLECTIONS
+
+#include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/Collection/properties
+
+~~~json
+{
+    "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+    "Name": "Computer System Collection",
+    "Members@odata.count": 4,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/529QB9450R6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/529QB9451R6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/529QB9452R6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/529QB9453R6"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
+    "@odata.id": "/redfish/v1/Systems",
+}
+
+~~~
 
 # Redfish Schema Reference Guide
 
 The following sections detail the definition for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions for the schema, and an example payload for a resource using the schema.
 
-The schema details include:
+The property-level details include:
 
 | Column | Purpose |
 |--------|---------|
@@ -204,6 +242,8 @@ The schema details include:
 | Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used. |
 | Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
 | Description | The description of the property, as copied directly from the schema 'Description' definition. |
+
+
 
 
 # Excluded Properties
@@ -231,6 +271,9 @@ These annotations are removed from the schema details in all cases.  If the excl
 Some schemas are excluded from the documentation for clarity.  Since all Redfish collections are based on the same structure, this is documented in the Introduction section to reduce repetition in the document.
 
 ## *Collection
+## HostedStorageServices
+## StorageService
+## StorageSystem
 
 
 
@@ -250,7 +293,7 @@ mockups/DSP2046-examples/Assembly.1.1.0.json
 ## Bios
 
 ### Mockup
-mockups/DSP2046-examples/Systems/437XR1138R2/BIOS/index.json
+mockups/DSP2046-examples/Bios.1.0.0.json
 
 ## Chassis
 

@@ -162,7 +162,9 @@ pre.code{
 <li><a href="#frequently-used-properties">Frequently used properties</a></li>
 <li><a href="#status">Status</a></li>
 <li><a href="#location">Location</a></li>
+<li><a href="#ip-addresses">IP addresses</a></li>
 </ul>
+<li><a href="#resource-collections">Resource collections</a></li>
 <li><a href="#redfish-schema-reference-guide">Redfish Schema Reference Guide</a></li>
 <ul>
 <li><a href="#AccountService">AccountService 1.3.0</a></li>
@@ -254,9 +256,25 @@ pre.code{
 <h2 id="properties-defined-across-all-redfish-schemas">Properties defined across all Redfish schemas</h2>
 <p>The following properties are included in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Resource Guide tables for each schema.</p>
 
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>@odata.context</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The @odata.context property is a URL to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection). Technically the metadata document only has to define, or reference, any of the types that it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document.</td></tr>
+<tr><td><nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The @odata.id property is a string that indicates the unique identifier of a resource.</td></tr>
+<tr><td><nobr><b>@odata.type</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The @odata.type property is a URL fragment that indicates the type of the resource.</td></tr>
+<tr><td><nobr><b>Description</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Description property is used to convey a human-readable description of the resource.</td></tr>
+<tr><td><nobr><b>Id</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id is unique within a Resource Collection.</td></tr>
+<tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.</td></tr>
+<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+</tbody></table>
 <h2 id="frequently-used-properties">Frequently used properties</h2>
 <p>The following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.</p>
 
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This object contains definitions for the Redfish Actions available for this resource.</td></tr>
+<tr><td><nobr><b>Links</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>RelatedItems</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
+</tbody></table>
 <h2 id="status">Status</h2>
 <p>The <code>Status</code> object and its properties is common to many Redfish schema.</p>
 
@@ -432,9 +450,121 @@ pre.code{
 
 </div>
 </div>
+<h2 id="ip-addresses">IP addresses</h2>
+<p>IP address objects appear in several areas of the data model.</p>
+<h3 id="ipv4-address">IPv4 address</h3>
+
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>Address</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 Address.</td></tr>
+<tr><td><nobr><b>AddressOrigin</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates how the address was determined.<br><i>See <a href="#./json-schema/IPAddresses.v1_0_6.json|details|AddressOrigin">AddressOrigin</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>Gateway</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 gateway for this address.</td></tr>
+<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>SubnetMask</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 Subnet mask.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="./json-schema/IPAddresses.v1_0_6.json|details|AddressOrigin">AddressOrigin:</h4>
+<p>This indicates how the address was determined.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>BOOTP</td><td>Address is provided by a BOOTP service.</td></tr>
+<tr><td>DHCP</td><td>Address is provided by a DHCPv4 service.</td></tr>
+<tr><td>IPv4LinkLocal</td><td>Address is valid only for this network segment (link).</td></tr>
+<tr><td>Static</td><td>A static address as configured by the user.</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<h3 id="ipv6-address">IPv6 address</h3>
+
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>Address</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv6 Address.</td></tr>
+<tr><td><nobr><b>AddressOrigin</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates how the address was determined.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json|details|AddressOrigin">AddressOrigin</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>AddressState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The current state of this address as defined in RFC 4862.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json|details|AddressState">AddressState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>PrefixLength</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>This is the IPv6 Address Prefix Length.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json|details|AddressOrigin">AddressOrigin:</h4>
+<p>This indicates how the address was determined.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>DHCPv6</td><td>Address is provided by a DHCPv6 service.</td></tr>
+<tr><td>LinkLocal</td><td>Address is valid only for this network segment (link).</td></tr>
+<tr><td>SLAAC</td><td>Address is provided by a Stateless Address AutoConfiguration (SLAAC) service.</td></tr>
+<tr><td>Static</td><td>A static address as configured by the user.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json|details|AddressState">AddressState:</h4>
+<p>The current state of this address as defined in RFC 4862.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Deprecated</td><td>This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.</td></tr>
+<tr><td>Failed</td><td>This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use.</td></tr>
+<tr><td>Preferred</td><td>This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.</td></tr>
+<tr><td>Tentative</td><td>This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<h1 id="resource-collections">Resource collections</h1>
+<p>INTRO TO COLLECTIONS</p>
+
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>@odata.context</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The OData description of a payload.</td></tr>
+<tr><td><nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>@odata.type</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The type of a resource.</td></tr>
+<tr><td><nobr><b>Description</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><nobr><b>Members</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>A link to a resource instance which is a member of this collection.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><nobr><b>Members@odata.count</b></nobr></td><td>number</td><td><nobr>read-only</nobr></td><td>The number of items in a collection.</td></tr>
+<tr><td><nobr><b>Members@odata.navigationLink</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td></td></tr>
+<tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The name of the resource or array element.</td></tr>
+<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+</tbody></table>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Computer System Collection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/529QB9450R6&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/529QB9451R6&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/529QB9452R6&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/529QB9453R6&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
 <h1 id="redfish-schema-reference-guide">Redfish Schema Reference Guide</h1>
 <p>The following sections detail the definition for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions for the schema, and an example payload for a resource using the schema.</p>
-<p>The schema details include:</p>
+<p>The property-level details include:</p>
 <table>
 <thead>
 <tr>
@@ -5368,6 +5498,62 @@ pre.code{
 <tr><td><nobr><b>UpdateService</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to the UpdateService. See the <a href="#UpdateService">UpdateService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a UpdateService resource. See the Links section and the <a href="#UpdateService">UpdateService</a> schema for details.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ServiceRoot.v1_3_0.ServiceRoot&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;RootService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Root Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;RedfishVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso 1U Server&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ProtocolFeaturesSupported&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;ExpandQuery&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;ExpandAll&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;Levels&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;MaxLevels&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;NoLinks&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;SelectQuery&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;FilterQuery&quot;</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Chassis&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Managers&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;UpdateService&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/UpdateService&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;CompositionService&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CompositionService&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Tasks&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/TaskService&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;SessionService&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;AccountService&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;EventService&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Sessions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService/Sessions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ServiceRoot.ServiceRoot&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="Session">Session 1.1.0</h2>
 <p>The Session resource describes a single connection (session) between a client and a Redfish service instance.</p>
 <table class="properties">
@@ -5400,6 +5586,25 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Session">Session</a>. See the Session schema for details.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#SessionService.v1_1_2.SessionService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;SessionService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Session Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Session Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;SessionTimeout&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="nt">&quot;Sessions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService/Sessions&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#SessionService.SessionService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="SimpleStorage">SimpleStorage 1.2.0</h2>
 <p>This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices.</p>
 <table class="properties">
