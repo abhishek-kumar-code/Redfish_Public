@@ -5,24 +5,6 @@
 	"@odata.id": "/redfish/v1/TelemetryService/MetricReports/TransmitPowerUsage",
 	"Id": "TransmitPowerUsage",
 
-	"Name": "TransmitPowerUsage",
-	"MetricReportDefinition": {"@odata.id":"/redfish/v1/TelemetryService/MetricReportDefinitions/TransmitPowerUsageOnChange"},
-	"MetricValues": [
-        {
-		    "MemberID": "PowerUsageReading",
-		    "MetricValue": "100",
-		    "TimeStamp": "20161108T122500-0500",
-		    "MetricProperty": "/redfish/v1/Chassis/Tray_1/PlatformPowerUsage/Reading"
-	    }, {
-		    "MemberID": "PowerUsageReading",
-		    "MetricValue": "94",
-		    "TimeStamp": "20161108T132500-0500",
-		    "MetricProperty": "/redfish/v1/Chassis/Tray_1/PlatformPowerUsage/Reading"
-	    }, {
-		    "MemberID": "PowerUsageReading",
-		    "MetricValue": "100",
-		    "TimeStamp": "20161108T142500-0500",
-		    "MetricProperty": "/redfish/v1/Chassis/Tray_1/PlatformPowerUsage/Reading"
-	    }
-    ]
+	"Name": "Transmit Power Usage - no log",
+	"MetricReportDefinition": {"@odata.id":"/redfish/v1/TelemetryService/MetricReportDefinitions/TransmitPowerUsageOnChange"}
 }
