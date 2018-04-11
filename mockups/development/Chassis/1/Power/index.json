@@ -9,7 +9,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0",
             "MemberId": "0",
-            "Name": "System Power Control",
+            "Name": "Chassis Power Control",
             "PhysicalContext": "Chassis",
             "PowerConsumedWatts": 8000,
             "PowerRequestedWatts": 8500,
@@ -28,10 +28,37 @@
                 "CorrectionInMs": 42
             },
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1" },
-                { "@odata.id": "/redfish/v1/Chassis/1" },
-                { "@odata.id": "/redfish/v1/Systems/1/Processors/1" },
-                { "@odata.id": "/redfish/v1/Systems/1/Processors/2" }
+                { "@odata.id": "/redfish/v1/Chassis/1" }
+            ],
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/1",
+            "MemberId": "1",
+            "Name": "System Power Control",
+            "PhysicalContext": "SystemBoard",
+            "PowerConsumedWatts": 7000,
+            "PowerRequestedWatts": 7500,
+            "PowerAvailableWatts": 7500,
+            "PowerCapacityWatts": 9000,
+            "PowerAllocatedWatts": 7500,
+            "PowerMetrics": {
+                "IntervalInMin": 30,
+                "MinConsumedWatts": 6500,
+                "MaxConsumedWatts": 7200,
+                "AverageConsumedWatts": 7000
+            },
+            "PowerLimit": {
+                "LimitInWatts": 8000,
+                "LimitException": "LogEventOnly",
+                "CorrectionInMs": 42
+            },
+            "RelatedItem": [
+                { "@odata.id": "/redfish/v1/Systems/1" }
             ],
             "Status": {
                 "State": "Enabled",
