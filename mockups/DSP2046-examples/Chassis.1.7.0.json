@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chassis.v1_6_0.Chassis",
+    "@odata.type": "#Chassis.v1_7_0.Chassis",
     "Id": "1U",
     "Name": "Computer System Chassis",
     "ChassisType": "RackMount",

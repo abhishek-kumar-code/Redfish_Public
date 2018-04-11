@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Thermal.v1_3_0.Thermal",
+    "@odata.type": "#Thermal.v1_4_0.Thermal",
     "Id": "Thermal",
     "Name": "Thermal",
     "Temperatures": [

@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#VLanNetworkInterface.v1_1_0.VLanNetworkInterface",
+    "@odata.type": "#VLanNetworkInterface.v1_1_1.VLanNetworkInterface",
     "Id": "1",
     "Name": "VLAN Network Interface",
     "Description": "System NIC 1 VLAN",
