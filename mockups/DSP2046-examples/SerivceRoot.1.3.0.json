@@ -4,18 +4,18 @@
     "Name": "Root Service",
     "RedfishVersion": "1.5.0",
     "UUID": "92384634-2938-2342-8820-489239905423",
-	"Product": "Contoso 1U Server",
-	"ProtocolFeaturesSupported": {
-		"ExpandQuery": {
-			"ExpandAll": true,
-			"Levels": true,
-			"MaxLevels": 2,
-			"Links": true,
-			"NoLinks": true
-		},
-		"SelectQuery": false,
-		"FilterQuery": false
-	},
+    "Product": "Contoso 1U Server",
+    "ProtocolFeaturesSupported": {
+        "ExpandQuery": {
+            "ExpandAll": true,
+            "Levels": true,
+            "MaxLevels": 2,
+            "Links": true,
+            "NoLinks": true
+        },
+        "SelectQuery": false,
+        "FilterQuery": false
+    },
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"
     },
