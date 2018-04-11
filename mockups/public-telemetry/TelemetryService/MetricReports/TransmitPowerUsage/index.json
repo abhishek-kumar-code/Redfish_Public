@@ -6,7 +6,7 @@
 	"Id": "TransmitPowerUsage",
 
 	"Name": "TransmitPowerUsage",
-	"MetricReportDefinition": {"@odata.id":"/redfish/v1/TelemetryService/MetricReportDefinitions/TransmitPowerUsage"},
+	"MetricReportDefinition": {"@odata.id":"/redfish/v1/TelemetryService/MetricReportDefinitions/TransmitPowerUsageOnChange"},
 	"MetricValues": [
         {
 		    "MemberID": "PowerUsageReading",

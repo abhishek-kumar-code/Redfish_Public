@@ -1,34 +1,29 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@Redfish.Copyright": "Copyright 2017-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
 	"@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
-	"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics",
+	"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics",
 	"Id": "PowerMetrics",
 
-	"Name": "PowerMetrics",
+	"Name": "Transmit and Log Power Metrics",
+	"MetricReportType": "Periodic",
 	"Schedule": {
-		"Lifetime": "P05D",
-		"RecurrenceInterval": "PT0.001S"
+		"RecurrenceInterval": "T00:00:00.1"
 	},
+	"ReportActions": ["Transmit", "Log"],
+  "ReportUpdates": "Overwrite",
+	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"},
+	"Status": {
+		"State": "Enabled"
+	},
+
 	"Wildcards": [
 		{ "PWild": ["0", "1"] },
 		{ "TWild": ["Tray_1", "Tray_2", "Tray_3"] }
 	],
-	"Volatile": true, 
-	"Metrics": [
-		{
-			"MemberID": "AverageConsumedWatts",
-			"CollectionFunction": "Avg",
-			"MetricProperties": ["/redfish/v1/Chassis/{TWild}/Power/PowerControl/{PWild}/PowerConsumedWatts"]
-		}, {
-			"MemberID": "MaximumConsumedWatts",
-			"CollectionFunction": "Max",
-			"MetricProperties": ["/redfish/v1/Chassis/{TWild}/Power/PowerControl/{PWild}/PowerConsumedWatts"]
-		}, {
-			"MemberID": "MinimumConsumedWatts",
-			"CollectionFunction": "Min",
-			"MetricProperties": ["/redfish/v1/Chassis/{TWild}/Power/PowerControl/{PWild}/PowerConsumedWatts"]
-		}
-	],
-	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"}
+	"MetricProperties": [
+		"/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/AvgPowerConsumedWatts",
+    "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/MinPowerConsumedWatts",
+	  "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/MaxPowerConsumedWatts"
+	]
 }

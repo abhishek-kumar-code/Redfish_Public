@@ -254,17 +254,17 @@
       </ComplexType>
 
       <EnumType Name="CalculationAlgorithmEnum">
-        <Member Name="AverageOverInterval">
+        <Member Name="Average">
           <Annotation Term="OData.Description" String="The metric is calculated as the average of a metric reading over a sliding time interval."/>
           <Annotation Term="OData.LongDescription" String="The metric shall be calculated as the average of a metric reading over a sliding time interval. The time interval shall be the value of the CalculationTimeInterval property."/>
         </Member>
-        <Member Name="MaximumDuringInterval">
+        <Member Name="Maximum">
           <Annotation Term="OData.Description" String="The metric is calculated as the maximum value of a metric reading over during a time interval."/>
           <Annotation Term="OData.LongDescription" String="The metric shall be calculated as the maximum of a metric reading over a sliding time interval. The time interval shall be the value of the CalculationTimeInterval property."/>
         </Member>
-        <Member Name="MinimumDuringInterval">
-          <Annotation Term="OData.Description" String="The metric is calculated as the minimum value of a metric reading over during a time interval."/>
-          <Annotation Term="OData.Description" String="The metric shall be calculated as the minimum of a  metric reading over a sliding time interval. The time interval shall be the value of the CalculationTimeInterval property."/>
+        <Member Name="Minimum">
+          <Annotation Term="OData.Description" String="The metric is calculated as the minimum value of a metric reading over a sliding time interval."/>
+          <Annotation Term="OData.LongDescription" String="The metric shall be calculated as the minimum of a  metric reading over a sliding time interval. The time interval shall be the value of the CalculationTimeInterval property."/>
         </Member>
       </EnumType>
 

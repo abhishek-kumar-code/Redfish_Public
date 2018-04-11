@@ -3,26 +3,29 @@
 	"@odata.context": "/redfish/v1/$metadata#MetricReport.MetricReport",
 	"@odata.type": "#MetricReport.v1_0_0.MetricReport",
 	"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PlatformPowerUsage",
-	"Id": "PlatformPowerUsage",
+	"Id": "JL_PlatformPowerUsage",
 
 	"Name": "PlatformPowerUsage",
-	"MetricReportDefinition": {"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage"},
+    "MetricReportDefinition": { "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage" },
+
 	"MetricValues": [
         {
-		    "MemberID": "AverageConsumedWatts",
 		    "MetricValue": "100",
-		    "TimeStamp": "20161108T122500-0500",
-		    "MetricProperty": "/redfish/v1/Chassis/Tray_1.PlatformPowerUsage.Reading"
-	    }, {
-		    "MemberID": "AverageConsumedWatts",
-		    "MetricValue": "94",
+	    	"TimeStamp": "20161108T122500-0500",
+  		    "MetricProperty": "/redfish/v1/Chassis/1/Power#/PowerControl/0/AverageConsumedWatts",
+		    "MetricDefinition": { "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts" }
+	    },
+        {
+		    "MetricValue": "103",
 		    "TimeStamp": "20161108T132500-0500",
-		    "MetricProperty": "/redfish/v1/Chassis/Tray_1.PlatformPowerUsage.Reading"
-	    }, {
-		    "MemberID": "AverageConsumedWatts",
-		    "MetricValue": "100",
+  		    "MetricProperty": "/redfish/v1/Chassis/1/Power#/PowerControl/0/AverageConsumedWatts",
+		    "MetricDefinition": { "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts" }
+	    },
+        {
+		    "MetricValue": "107",
 		    "TimeStamp": "20161108T142500-0500",
-		    "MetricProperty": "/redfish/v1/Chassis/Tray_1.PlatformPowerUsage.Reading"
+  		    "MetricProperty": "/redfish/v1/Chassis/1/Power#/PowerControl/0/AverageConsumedWatts",
+		    "MetricDefinition": { "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts" }
 	    }
     ]
 }

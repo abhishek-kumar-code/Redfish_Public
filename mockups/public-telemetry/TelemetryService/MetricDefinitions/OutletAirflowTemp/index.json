@@ -2,8 +2,8 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#MetricDefinitions.MetricDefinition",
     "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
-    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/JL_OutletAirflowTemp",
-    "Id": "JL_OutletAirflowTemp",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/OutletAirflowTemp",
+    "Id": "OutletAirflowTemp",
     "Name": "Definition of Outlet Airflow Temperature",
 
     "MetricType": "Numeric",
