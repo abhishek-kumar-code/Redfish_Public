@@ -49,10 +49,9 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
+	    </EntityType>
 
-	  </EntityType>
-
-	  <ComplexType Name="MetricValue">
+	    <ComplexType Name="MetricValue">
         <Annotation Term="OData.Description" String="A metric Value."/>
         <Annotation Term="OData.LongDescription" String="A metric value in the context of a Metric."/>
 		
