@@ -42,21 +42,6 @@
             "Name": "System Power Control",
             "PhysicalContext": "SystemBoard",
             "PowerConsumedWatts": 7000,
-            "PowerRequestedWatts": 7500,
-            "PowerAvailableWatts": 7500,
-            "PowerCapacityWatts": 9000,
-            "PowerAllocatedWatts": 7500,
-            "PowerMetrics": {
-                "IntervalInMin": 30,
-                "MinConsumedWatts": 6500,
-                "MaxConsumedWatts": 7200,
-                "AverageConsumedWatts": 7000
-            },
-            "PowerLimit": {
-                "LimitInWatts": 8000,
-                "LimitException": "LogEventOnly",
-                "CorrectionInMs": 42
-            },
             "RelatedItem": [
                 { "@odata.id": "/redfish/v1/Systems/1" }
             ],
