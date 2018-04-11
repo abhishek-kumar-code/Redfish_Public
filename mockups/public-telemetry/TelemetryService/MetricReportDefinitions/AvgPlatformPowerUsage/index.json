@@ -1,0 +1,32 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+	"@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+	"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/AvgPlatformPowerUsage",
+	"Id": "AvgPlatformPowerUsage",
+
+	"Name": "Average Platform Power Usage",
+	"MetricReportDefinitionType": "Periodic",
+	"Schedule": {
+		"RecurrenceInterval": "T00:00:00.010"
+	},
+	"ReportActions": ["Transmit", "Log"],
+	"ReportUpdates": "Overwrite",
+	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/AvgPlatformPowerUsage"},
+
+  "Status": {
+		"State": "Enabled"
+	},
+
+  "Wildcards": [ 
+		{ "Wild": ["0"] }
+  ],
+	"Metrics": [{
+			"MemberID": "AverageConsumedWatts",
+			"MetricProperties": ["/redfish/v1/Chassis/Tray_1/Power#/PowerControl/{Wild}/PowerConsumedWatts"],
+			"CollectionFunction": "Average",
+	    "CollectionTimeScope": "Interval",
+			"CollectionDuration": "T00:00:00.020"
+		}
+	]
+}
