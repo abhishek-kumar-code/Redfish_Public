@@ -585,8 +585,8 @@ Capabilities Object Sample for a Constrained Composition:
 {
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/Capabilities",
-    "Id": "Capabilities",
+    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities",
+    "Id": "ConstrainedCompositionCapabilities",
     "Name": "Capabilities for the Zone",
     "Name@Redfish.RequiredOnCreate": true,
     "Name@Redfish.SetOnlyOnCreate": true,
@@ -646,11 +646,12 @@ Capabilities Object Sample for a Constrained Composition:
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.type": "#SimpleStorage.v1_1_0.SimpleStorage",
+                "@odata.type": "#SimpleStorage.v1_2_0.SimpleStorage",
                 "@Redfish.RequestedCountOptional": true,
-                "Devices@RequiredOnCreate": true,
+                "Devices@Redfish.RequiredOnCreate": true,
                 "Devices": {
-                    "CapacityBytes@RequiredOnCreate": true
+                    "@Redfish.RequestedCountOptional": true,
+                    "CapacityBytes@Redfish.RequiredOnCreate": true
                 }
             }
         ]
@@ -661,21 +662,21 @@ Capabilities Object Sample for a Constrained Composition:
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.type": "#Storage.v1_1_0.Storage",
+                "@odata.type": "#Storage.v1_3_0.Storage",
                 "@Redfish.RequestedCountOptional": true,
                 "StorageControllers@Redfish.OptionalOnCreate": true,
                 "StorageControllers": [
                     {
                         "@Redfish.RequestedCountOptional": true,
-                        "SupportedControllerProtocols@RequiredOnCreate": true
+                        "SupportedControllerProtocols@Redfish.RequiredOnCreate": true
                     }
                 ],
-                "Devices@RequiredOnCreate": true,
+                "Drives@Redfish.RequiredOnCreate": true,
                 "Drives": [
                     {
-                        "@odata.type": "#Drive.v1_4_0.Drive",
+                        "@odata.type": "#Drive.v1_2_0.Drive",
                         "@Redfish.RequestedCountOptional": true,
-                        "CapacityBytes@RequiredOnCreate": true
+                        "CapacityBytes@Redfish.RequiredOnCreate": true
                     }
                 ]
             }
@@ -687,10 +688,10 @@ Capabilities Object Sample for a Constrained Composition:
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.type": "#EthernetInterface.v1_1_0.EthernetInterface",
+                "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
                 "@Redfish.RequestedCountOptional": true,
                 "SpeedMbps@Redfish.RequiredOnCreate": true,
-                "FullDuplex@OptionalOnCreate": true
+                "FullDuplex@Redfish.OptionalOnCreate": true
             }
         ]
     },
@@ -702,7 +703,7 @@ Capabilities Object Sample for a Constrained Composition:
             {
                 "@odata.type": "#NetworkInterface.v1_1_0.NetworkInterface",
                 "@Redfish.RequestedCountOptional": true,
-                "NetworkPorts@RequiredOnCreate": true,
+                "NetworkPorts@Redfish.RequiredOnCreate": true,
                 "NetworkPorts": {
                     "@odata.type": "#NetworkPortCollection.NetworkPortCollection",
                     "Members@Redfish.RequiredOnCreate": true,
@@ -710,10 +711,10 @@ Capabilities Object Sample for a Constrained Composition:
                         {
                             "@odata.type": "#NetworkPort.v1_1_0.NetworkPort",
                             "@Redfish.RequestedCountOptional": true,
-                            "ActiveLinkTechnology@RequiredOnCreate": true,
-                            "SupportedLinkCapabilities@OptionalOnCreate": true,
+                            "ActiveLinkTechnology@Redfish.RequiredOnCreate": true,
+                            "SupportedLinkCapabilities@Redfish.OptionalOnCreate": true,
                             "SupportedLinkCapabilities": {
-                                "LinkSpeedMbps@RequiredOnCreate": true
+                                "LinkSpeedMbps@Redfish.RequiredOnCreate": true
                             }
                         }
                     ]
