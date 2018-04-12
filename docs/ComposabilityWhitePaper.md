@@ -2,8 +2,8 @@
 DocTitle: Redfish Composability White Paper
 DocNumber: '2050'
 DocClass: Informative
-DocVersion: '1.0.0'
-modified: '2017-06-30'
+DocVersion: '1.1.0'
+modified: '2018-04-11'
 status: Published
 released: true
 copyright: '2014-2018'
@@ -12,7 +12,7 @@ copyright: '2014-2018'
 
 # Foreword
 
-The Redfish Composability White Paper was prepared by the Scalable Platforms Management Forum of the DMTF.
+The Redfish Composability White Paper was prepared by the Redfish Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
@@ -748,7 +748,7 @@ The following structures can contain an enumeration annotation and may required 
 
 For example, the following processor request requests 4 CPUs and 2 FPGAs.  Other properties in the request can further characterize the processor resource.
 
-Note that the composition request should be kept simple in order to increase the probability of a successful composition. Overly-constrained requests are less likely to be fulfilled.
+The composition request should be kept simple in order to increase the probability of a successful composition. Overly-constrained requests are less likely to be fulfilled.
 
 Sample Request Payload for Describing Sets of Processors:
 ```json
@@ -760,7 +760,7 @@ Sample Request Payload for Describing Sets of Processors:
                 "ProcessorType": "CPU"
             },
             {
-                "@Redfish.RequestedCount": 4,
+                "@Redfish.RequestedCount": 2,
                 "ProcessorType": "FPGA"
             }
         ]
@@ -866,31 +866,7 @@ Location: /redfish/v1/Systems/NewSystem2
 
 The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322 GB local drives, and a 1 GB Ethernet interface.
 
-In the above Service Response Example, the service response with a successful 201 response, and indicated that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
-
-
-### Update a Composed Resource
-
-If the Redfish service supports updating an existing composition, the client can update an already created composition through PUT/PATCH.  This can be done by updating the `ResourceBlocks` array found in the composed resource.  When using PATCH, the same array semantics apply as described in the Redfish Specification.
-
-Client Request Example:
-```http
-PATCH /redfish/v1/Systems/NewSystem HTTP/1.1
-Content-Type: application/json; charset=utf-8
-Content-Length: <computed-length>
-OData-Version: 4.0
-{
-    "Links": {
-        "ResourceBlocks": [
-            {},
-            {},
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8" }
-        ]
-    }
-}
-```
-
-The above example will preserve the existing Resource Blocks in the composed resource for array elements 0 and 1, and it will add a the `NetworkBlock8` Resource Block to array element 2.
+In the above Service Response Example, the service responds with a successful 201 response, and indicates that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
 
 ### Delete a Composed Resource
@@ -902,7 +878,7 @@ Client Request Example:
 DELETE /redfish/v1/Systems/NewSystem HTTP/1.1
 ```
 
-The above example will request that the composed system called `NewSystem` be retired.  When this happens, this will free the Resource Blocks being used by the system so that they can be used in future compositions.  However, the `Reserved` flag found in the `CompositionStatus` for each Resource Block will remain in the same state; if a client is done using the Resource Blocks, it should set the `Reserved` flag to false.
+The above example will request that the composed system called `NewSystem` be retired.  When this happens, this will free the Resource Blocks being used by the system so that they can be used in future compositions.
 
 
 ## References
