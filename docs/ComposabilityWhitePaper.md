@@ -45,7 +45,11 @@ If a Redfish service supports Composability, the Service Root resource will cont
 
 ## Composition Service
 
-The Composition Service is the top level resource for all things related to Composability.  It contains status and control indicator properties such as `Status` and `ServiceEnabled`.  These are common properties found on various Redfish service instances.  It also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
+The Composition Service is the top level resource for all things related to Composability.  It contains status and control indicator properties such as `Status` and `ServiceEnabled`.  These are common properties found on various Redfish service instances.
+
+The Composition Service contains the `AllowOverprovisioning` which indicates whether during Constrained Composition, the client can allow the service to provide more resources that those requested, in the composition request.
+
+The Composition Service also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
 
 Example Composition Service Resource:
 ```json
@@ -60,6 +64,7 @@ Example Composition Service Resource:
         "Health": "OK"
     },
     "ServiceEnabled": true,
+	"AllowOverprovisioning": true,
     "ResourceBlocks": {
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks"
     },
@@ -772,7 +777,7 @@ Sample Request Payload for Describing Sets of Processors:
 
 #### Make the composition request
 
-POST the request to the `TargetCollection` URI
+POST the request to the `TargetCollection` URI.
 
 Client Request Example:
 ```http
@@ -786,7 +791,8 @@ OData-Version: 4.0
     "Description": "Description of server",
     "PowerState": "On",
     "BiosVersion": "P79 v1.00 (09/20/2013)",
-    "Processors": {
+    "@Redfish.AllowOverprovisioning": true,
+	"Processors": {
         "Members": [
             {
                 "@Redfish.RequestedCount": 4,
@@ -865,7 +871,7 @@ Content-Length: <computed-length>
 Location: /redfish/v1/Systems/NewSystem2
 ```
 
-The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322 GB local drives, and a 1 GB Ethernet interface.
+The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322 GB local drives, and a 1 GB Ethernet interface.  The setting of the annotation, @Redfish.AllowOverprovisioning, permits the Redfish server to supply more resources that what was requested.
 
 In the above Service Response Example, the service responds with a successful 201 response, and indicates that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
