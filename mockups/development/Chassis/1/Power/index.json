@@ -46,9 +46,111 @@
                 { "@odata.id": "/redfish/v1/Systems/1" }
             ],
             "Status": {
-                "State": "Enabled",
-                "Health": "OK"
+              "State": "Enabled",
+              "Health": "OK"
+            }
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/2",
+            "MemberId": "2",
+            "Name": "CPU Sub-system Power",
+            "PhysicalContext": "CPUSubSystem",
+            "PowerConsumedWatts": 275,
+            "RelatedItem": [
+                { "@odata.id": "/redfish/v1/Systems/1/Processors" }
+            ],
+            "Status": {
+              "State": "Enabled",
+              "Health": "OK"
             },
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/3",
+            "MemberId": "3",
+            "Name": "CPU 1 Power",
+            "PhysicalContext": "CPU",
+            "PowerConsumedWatts": 150,
+            "RelatedItem": [
+                { "@odata.id": "/redfish/v1/Systems/1/Processors/1" }
+            ],
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/4",
+            "MemberId": "4",
+            "Name": "CPU 2 Power",
+            "PhysicalContext": "CPU",
+            "PowerConsumedWatts": 125,
+            "RelatedItem": [
+                { "@odata.id": "/redfish/v1/Systems/1/Processors/2" }
+            ],
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/5",
+            "MemberId": "5",
+            "Name": "Memory Sub-System Power",
+            "PhysicalContext": "MemorySubsystem",
+            "PowerConsumedWatts": 10,
+            "RelatedItem": [
+                { "@odata.id": "/redfish/v1/Systems/1/Memory" }
+            ],
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/6",
+            "MemberId": "6",
+            "Name": "DIMM 1 Power",
+            "PhysicalContext": "Memory",
+            "PowerConsumedWatts": 5,
+            "RelatedItem": [
+                { "@odata.id": "/redfish/v1/Systems/1/Memory/1" }
+            ],
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/7",
+            "MemberId": "7",
+            "Name": "DIMM 2 Power",
+            "PhysicalContext": "Memory",
+            "PowerConsumedWatts": 5,
+            "RelatedItem": [
+                { "@odata.id": "/redfish/v1/Systems/1/Memory/2" }
+            ],
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/8",
+            "MemberId": "8",
+            "Name": "Cooling Sub-System Power",
+            "PhysicalContext": "CoolingSubsystem",
+            "PowerConsumedWatts": 20,
+            "RelatedItem": [
+              { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans" }
+            ],
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/9",
+            "MemberId": "9",
+            "Name": "BaseBoard System Fan Power #1",
+            "PhysicalContext": "Fan",
+            "PowerConsumedWatts": 20,
+            "RelatedItem": [
+              { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0" }
+            ],
+            "Oem": {}
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/10",
+            "MemberId": "10",
+            "Name": "BaseBoard System Fan Power #2",
+            "PhysicalContext": "Fan",
+            "PowerConsumedWatts": 20,
+            "RelatedItem": [
+              { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1" }
+            ],
             "Oem": {}
         }
     ],
