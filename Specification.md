@@ -799,6 +799,8 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
     "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
     "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
     "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+    "Id": "ResetActionInfo",
+    "Name": "Reset Action Info",
     "Parameters": [
         {
             "Name": "ResetType",
