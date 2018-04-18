@@ -54,7 +54,7 @@
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/2",
             "MemberId": "2",
             "Name": "CPU Sub-system Power",
-            "PhysicalContext": "CPUSubSystem",
+            "PhysicalContext": "CPUSubsystem",
             "PowerConsumedWatts": 275,
             "RelatedItem": [
                 { "@odata.id": "/redfish/v1/Systems/1/Processors" }
