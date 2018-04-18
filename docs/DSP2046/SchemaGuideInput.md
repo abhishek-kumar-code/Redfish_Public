@@ -201,9 +201,13 @@ IP address objects appear in several areas of the data model.
 
 # Resource collections
 
-INTRO TO COLLECTIONS
+A frequently used concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).
+
+The properties of a Resource Collection are as follows:
 
 #include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/Collection/properties
+
+As shown in the example below, a Redfish Service may provide management functionality for several Computer Systems, and therefore a ComputerSystemCollection resource is provided.  This example shows a Service with four ComputerSystem instances ("Members").
 
 ~~~json
 {
@@ -293,7 +297,7 @@ mockups/DSP2046-examples/Assembly.1.1.0.json
 ## Bios
 
 ### Mockup
-mockups/DSP2046-examples/Bios.1.0.0.json
+mockups/DSP2046-examples/Bios.1.0.3.json
 
 ## Chassis
 
@@ -405,6 +409,11 @@ mockups/DSP2046-examples/SerialInterface.1.1.1.json
 ### Mockup
 mockups/DSP2046-examples/SimpleStorage.1.0.0.json
 
+## SoftwareInventory
+
+### Mockup
+mockups/DSP2046-examples/SoftwareInventory.1.2.0.json
+
 ## Task
 
 ### Mockup
@@ -419,6 +428,11 @@ mockups/DSP2046-examples/TaskService.1.1.0.json
 
 ### Mockup
 mockups/DSP2046-examples/Thermal.1.3.0.json
+
+## UpdateService
+
+### Mockup
+mockups/DSP2046-examples/UpdateService.1.2.0.json
 
 ## VLanNetworkInterface
 
