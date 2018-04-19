@@ -289,6 +289,11 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 ### Mockup
 mockups/DSP2046-examples/AccountService.1.3.0.json
 
+## ActionInfo
+
+### Mockup
+mockups/DSP2046-examples/ActionInfo.1.0.3.json
+
 ## Assembly
 
 ### Mockup
@@ -303,6 +308,11 @@ mockups/DSP2046-examples/Bios.1.0.3.json
 
 ### Mockup
 mockups/DSP2046-examples/Chassis.1.6.0.json
+
+## CompositionService
+
+### Mockup
+mockups/DSP2046-examples/CompositionService.1.0.1.json
 
 ## ComputerSystem
 
@@ -319,6 +329,16 @@ The UUID property is a string data type. The format of the string is the 35-char
 
 Regarding the case of the hex values, RFC4122 specifies that the hex values should be lowercase characters. Most modern scripting languages typically also represent hex values in lowercase characters following the RFC. However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output.
 
+## Drive
+
+### Mockup
+mockups/DSP2046-examples/Drive.1.4.0.json
+
+## Endpoint
+
+### Mockup
+mockups/DSP2046-examples/Endpoint.1.1.0.json
+
 ## EthernetInterface
 
 ### Mockup
@@ -327,7 +347,7 @@ mockups/DSP2046-examples/EthernetInterface.1.4.0.json
 ## EventService
 
 ### Mockup
-mockups/DSP2046-examples/EventService.1.0.0.json
+mockups/DSP2046-examples/EventService.1.1.0.json
 
 ## EventDestination
 
@@ -338,6 +358,11 @@ mockups/DSP2046-examples/EventDestination.1.3.0.json
 
 ### Mockup
 mockups/DSP2046-examples/ExternalAccountProvider.1.0.0.json
+
+## Fabric
+
+### Mockup
+mockups/DSP2046-examples/Fabric.1.0.3.json
 
 ## LogEntry
 
@@ -357,7 +382,7 @@ mockups/DSP2046-examples/Manager.1.4.0.json
 ## ManagerAccount
 
 ### Mockup
-mockups/DSP2046-examples/ManagerAccount.1.1.0.json
+mockups/DSP2046-examples/ManagerAccount.1.1.2.json
 
 ## ManagerNetworkProtocol
 
@@ -369,6 +394,11 @@ mockups/DSP2046-examples/ManagerNetworkProtocol.1.2.0.json
 ### Mockup
 mockups/DSP2046-examples/Memory.1.5.0.json
 
+## Port
+
+### Mockup
+mockups/DSP2046-examples/Port.1.1.0.json
+
 ## Power
 
 ### Mockup
@@ -377,42 +407,57 @@ mockups/DSP2046-examples/Power.1.5.0.json
 ## Processor
 
 ### Mockup
-mockups/DSP2046-examples/Processor.1.2.0.json
+mockups/DSP2046-examples/Processor.1.3.0.json
+
+## ResourceBlock
+
+### Mockup
+mockups/DSP2046-examples/ResourceBlock.1.1.0.json
 
 ## Role
 
 ### Mockup
-mockups/DSP2046-examples/Role.1.0.0.json
-
-## ServiceRoot
-
-### Mockup
-mockups/DSP2046-examples/ServiceRoot.1.3.0.json
-
-## SessionService
-
-### Mockup
-mockups/DSP2046-examples/SessionService.1.1.2.json
-
-## Session
-
-### Mockup
-mockups/DSP2046-examples/Session.1.1.0.json
+mockups/DSP2046-examples/Role.1.2.1.json
 
 ## SerialInterface
 
 ### Mockup
 mockups/DSP2046-examples/SerialInterface.1.1.1.json
 
+## ServiceRoot
+
+### Mockup
+mockups/DSP2046-examples/ServiceRoot.1.3.1.json
+
+## SessionService
+
+### Mockup
+mockups/DSP2046-examples/SessionService.1.1.3.json
+
+## Session
+
+### Mockup
+mockups/DSP2046-examples/Session.1.1.0.json
+
 ## SimpleStorage
 
 ### Mockup
-mockups/DSP2046-examples/SimpleStorage.1.0.0.json
+mockups/DSP2046-examples/SimpleStorage.1.2.0.json
 
 ## SoftwareInventory
 
 ### Mockup
 mockups/DSP2046-examples/SoftwareInventory.1.2.0.json
+
+## Storage
+
+### Mockup
+mockups/DSP2046-examples/Storage.1.4.0.json
+
+## Switch
+
+### Mockup
+mockups/DSP2046-examples/Switch.1.1.0.json
 
 ## Task
 
@@ -422,12 +467,12 @@ mockups/DSP2046-examples/Task.1.2.0.json
 ## TaskService
 
 ### Mockup
-mockups/DSP2046-examples/TaskService.1.1.0.json
+mockups/DSP2046-examples/TaskService.1.1.1.json
 
 ## Thermal
 
 ### Mockup
-mockups/DSP2046-examples/Thermal.1.3.0.json
+mockups/DSP2046-examples/Thermal.1.4.0.json
 
 ## UpdateService
 
@@ -437,12 +482,23 @@ mockups/DSP2046-examples/UpdateService.1.2.0.json
 ## VLanNetworkInterface
 
 ### Mockup
-mockups/DSP2046-examples/VLanNetworkInterface.1.1.0.json
+mockups/DSP2046-examples/VLanNetworkInterface.1.1.1.json
 
 ## VirtualMedia
 
 ### Mockup
-mockups/DSP2046-examples/VirtualMedia.1.1.0.json
+mockups/DSP2046-examples/VirtualMedia.1.2.0.json
+
+## Volume
+
+### Mockup
+mockups/DSP2046-example/Volume.1.0.3.json
+
+## Zone
+
+### Mockup
+mockups/DSP2046-example/Zone.1.2.0.json
+
 
 # Postscript
 
