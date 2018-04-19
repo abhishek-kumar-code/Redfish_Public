@@ -307,7 +307,7 @@ mockups/DSP2046-examples/Bios.1.0.3.json
 ## Chassis
 
 ### Mockup
-mockups/DSP2046-examples/Chassis.1.6.0.json
+mockups/DSP2046-examples/Chassis.1.7.0.json
 
 ## CompositionService
 
@@ -422,7 +422,7 @@ mockups/DSP2046-examples/Role.1.2.1.json
 ## SerialInterface
 
 ### Mockup
-mockups/DSP2046-examples/SerialInterface.1.1.1.json
+mockups/DSP2046-examples/SerialInterface.1.1.2.json
 
 ## ServiceRoot
 
@@ -492,12 +492,12 @@ mockups/DSP2046-examples/VirtualMedia.1.2.0.json
 ## Volume
 
 ### Mockup
-mockups/DSP2046-example/Volume.1.0.3.json
+mockups/DSP2046-examples/Volume.1.0.3.json
 
 ## Zone
 
 ### Mockup
-mockups/DSP2046-example/Zone.1.2.0.json
+mockups/DSP2046-examples/Zone.1.2.0.json
 
 
 # Postscript
