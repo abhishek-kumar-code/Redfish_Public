@@ -3,7 +3,7 @@ DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
 DocVersion: '2018.1'
-modified: '2018-4-6'
+modified: '2018-5-1'
 status: published
 released: True
 copyright: '2017-2018'
@@ -101,7 +101,7 @@ A number of corner-case issues have been found in the schema definitions which c
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2018-4-6</p>
+<p align="right">Date: 2018-5-1</p>
 <p align="right">Version: <span class="version">2018.1</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
@@ -137,24 +137,15 @@ With the above goals in mind, the Redfish protocol was designed as an open indus
 
 This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API.
 
-
-
 ## Where can I find more information?
 
 The following web sites provide more information about the Redfish standard:
 
-Redfish Standards
--  Schemas, specs, mockups, white papers, FAQ, educational material and more:
-  http://www.dmtf.org/standards/redfish
-
-Redfish Developer Hub
--  Redfish interactive explorer, hosted schema and other links:
-  http://redfish.dmtf.org
-
-DMTF Redfish Forum (Working group that maintains the Redfish standard)
--  Companies involved, upcoming schedules and future work, charter, and information about joining:
-  http://www.dmtf.org/standards/spmf
-
+* **Redfish Developer Hub:**  <a href="http://redfish.dmtf.org">http://redfish.dmtf.org</a> Resources for developers building applications using Redfish.  Contains an interactive schema explorer, hosted schema and other links. 
+* **Redfish User Forum:**  <a href="http://www.redfishforum.com">http://www.redfishforum.com</a> User forum monitored by DMTF Redfish personnel to answer questions about any Redfish-related topics: 
+* **DMTF Github Repositories:**  <a href="http://www.github.com/DMTF">http://www.github.com/DMTF</a> Open source tools and libraries for working with the Redfish API.
+* **Redfish Standards:**  <a href="http://www.dmtf.org/standards/redfish">http://www.dmtf.org/standards/redfish</a>  Schemas, specs, mockups, white papers, FAQ, educational material and more.
+* **DMTF Redfish Forum** (Working group that maintains the Redfish standard):  <a href="http://www.dmtf.org/standards/spmf">http://www.dmtf.org/standards/spmf</a> Companies involved, upcoming schedules and future work, charter, and information about joining.
 
 
 # Common properties
@@ -508,5 +499,5 @@ mockups/DSP2046-examples/Zone.1.2.0.json
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
-| 2017.3  | 2017-12-7 | Initial release. Built from Redfish schemas releaesd in DSP8010 version 2017.3 |
+| 2018.1  | 2018-5-1 | Initial release. Built from Redfish schemas released in DSP8010 version 2018.1 |
 | 2017.0a | 2017-5-19| Work in progress release to gather feedback on content and format. |
