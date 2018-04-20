@@ -25,5 +25,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
     "@odata.id": "/redfish/v1/UpdateService/SimpleUpdateActionInfo",
-    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
