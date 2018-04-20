@@ -6,17 +6,7 @@
         {
             "Name": "ImageURI",
             "Required": true,
-            "DataType": "String",
-            "AllowableValues": [
-                "On",
-                "ForceOff",
-                "GracefulShutdown",
-                "GracefulRestart",
-                "ForceRestart",
-                "Nmi",
-                "ForceOn",
-                "PushPowerButton"
-            ]
+            "DataType": "String"
         },
         {
             "Name": "TransferProtocol",
