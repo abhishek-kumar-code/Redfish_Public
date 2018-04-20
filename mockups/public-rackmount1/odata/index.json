@@ -41,6 +41,11 @@
             "url": "/redfish/v1/EventService"
         },
         {
+            "name": "UpdateService",
+            "kind": "Singleton",
+            "url": "/redfish/v1/UpdateService"
+        },
+        {
             "name": "Sessions",
             "kind": "Singleton",
             "url": "/redfish/v1/SessionService/Sessions"

@@ -64,7 +64,7 @@
             "Style": "Executive"
         }
     },
-    "BiosVersion": "P79 v1.33 (02/28/2015)",
+    "BiosVersion": "P79 v1.45 (12/06/2017)",
     "ProcessorSummary": {
         "Count": 2,
         "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",

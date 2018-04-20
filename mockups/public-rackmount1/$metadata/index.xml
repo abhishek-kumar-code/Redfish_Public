@@ -143,6 +143,13 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SimpleStorageCollection_v1.xml">
     <edmx:Include Namespace="SimpleStorageCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SoftwareInventoryCollection_v1.xml">
+    <edmx:Include Namespace="SoftwareInventoryCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SoftwareInventory_v1.xml">
+    <edmx:Include Namespace="SoftwareInventory"/>
+    <edmx:Include Namespace="SoftwareInventory.v1_2_0"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Task_v1.xml">
     <edmx:Include Namespace="Task"/>
     <edmx:Include Namespace="Task.v1_1_0"/>
@@ -157,6 +164,10 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Thermal_v1.xml">
     <edmx:Include Namespace="Thermal"/>
     <edmx:Include Namespace="Thermal.v1_3_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UpdateService_v1.xml">
+    <edmx:Include Namespace="UpdateService"/>
+    <edmx:Include Namespace="UpdateService.v1_2_1"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
     <edmx:Include Namespace="VirtualMedia"/>

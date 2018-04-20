@@ -38,7 +38,7 @@
             "SSH"
         ]
     },
-    "FirmwareVersion": "1.00",
+    "FirmwareVersion": "1.45.455b66-rev4",
     "NetworkProtocol": {
         "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol"
     },
