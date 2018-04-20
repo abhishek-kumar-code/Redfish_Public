@@ -1,6 +1,6 @@
 ---
 DocTitle: Redfish and OData White Paper
-DocNumber: '???'
+DocNumber: '2050'
 DocClass: Informative
 DocVersion: '1.0.0'
 modified: '2018-04-05'
