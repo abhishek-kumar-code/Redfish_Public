@@ -135,7 +135,7 @@ With the above goals in mind, the Redfish protocol was designed as an open indus
 
 ## Who should read this document?
 
-This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API.
+This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API. 
 
 ## Where can I find more information?
 
@@ -146,7 +146,6 @@ The following web sites provide more information about the Redfish standard:
 * **DMTF Github Repositories:**  <a href="http://www.github.com/DMTF">http://www.github.com/DMTF</a> Open source tools and libraries for working with the Redfish API.
 * **Redfish Standards:**  <a href="http://www.dmtf.org/standards/redfish">http://www.dmtf.org/standards/redfish</a>  Schemas, specs, mockups, white papers, FAQ, educational material and more.
 * **DMTF Redfish Forum** (Working group that maintains the Redfish standard):  <a href="http://www.dmtf.org/standards/spmf">http://www.dmtf.org/standards/spmf</a> Companies involved, upcoming schedules and future work, charter, and information about joining.
-
 
 # Common properties
 
@@ -248,6 +247,7 @@ The Excluded Properties section removes properties from the root level of any sc
 ## @odata.context
 ## @odata.type
 ## @odata.id
+## @odata.etag
 ## Name
 ## Id
 ## Description
@@ -468,7 +468,7 @@ mockups/DSP2046-examples/Thermal.1.4.0.json
 ## UpdateService
 
 ### Mockup
-mockups/DSP2046-examples/UpdateService.1.2.0.json
+mockups/DSP2046-examples/UpdateService.1.2.1.json
 
 ## VLanNetworkInterface
 
@@ -492,6 +492,10 @@ mockups/DSP2046-examples/Zone.1.2.0.json
 
 
 # Postscript
+
+# Redfish documentation generator
+
+This document was created using the Redfish Documentation Generator utility, which uses the contents of the Redfish schema files (in JSON schema format) to automatically generate the bulk of the text.  The source code for the utility is available for download at the DMTF's Github repository located at <a href="http://www.github.com/DMTF/Redfish-Tools">http://www.github.com/DMTF/Redfish-Tools</a>.
 
 # ANNEX A
 

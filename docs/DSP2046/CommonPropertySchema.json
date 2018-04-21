@@ -8,16 +8,21 @@
 			"additionalProperties": false,
 			"properties": {
 				"@odata.context": {
-					"$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context",
+					"$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context",
 					"description": "The @odata.context property is a URL to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection). Technically the metadata document only has to define, or reference, any of the types that it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document."
 				},
+				"@odata.etag": {
+					"$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/etag",
+					"type": "string",
+					"readonly": true,
+					"description": "The current ETag for the resource."
+				},
 				"@odata.id": {
-					"$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id",
+					"$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id",
 					"description": "The @odata.id property is a string that indicates the unique identifier of a resource."
 				},
 				"@odata.type": {
-					"$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type",
-					"description": "The @odata.type property is a URL fragment that indicates the type of the resource."
+					"$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
 				},
 				"Description": {
 					"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description",
