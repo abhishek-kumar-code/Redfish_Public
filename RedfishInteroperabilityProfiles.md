@@ -401,7 +401,7 @@ Simple dependencies can be expressed using the conditional requirement and a com
          "CompareType": "NotEqual",
          "CompareValues": ["Cheese"],
          "ReadRequirement": "Mandatory",
-			"Comparison": "Equal",
+         "Comparison": "Equal",
          "Values": [ true ]
       }]
    },
