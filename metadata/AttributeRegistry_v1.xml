@@ -531,7 +531,7 @@
       <Annotation Term="OData.Description" String="This version was created to correct typographical errors in descriptions."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_3.AttributeRegistry"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_2.AttributeRegistry">
@@ -580,7 +580,7 @@
       <Annotation Term="OData.Description" String="This version was created to correct typographical errors in descriptions."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
@@ -616,6 +616,6 @@
       <Annotation Term="OData.Description" String="This version was created to correct typographical errors in descriptions."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_2_0.AttributeRegistry"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
