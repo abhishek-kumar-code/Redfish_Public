@@ -27,7 +27,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 
 ## Introduction
 
-Redfish is a management standard using a data model representation inside of a hypermedia RESTful interface.  It adheres to the OData v4 standard for defining schema and payload formats.  This was done in order to allow off-the-shelf OData clients interact natively with Redfish services.  While the Redfish Specification only calls out a minimal set of OData functionality, implementations are allowed to extend their capabilities into the full range of OData support though doing so is outside the scope of Redfish and may provide interoperability challenges with non-OData clients.  This white paper will provide details about how the Redfish Specification conforms to OData, such as how schema files are constructed and how services can construct required OData resources.  For those interested in OData functionality that is outside the scope of Redfish, please refer to the OData documentation link in the [References section](#references).
+Redfish is a management standard using a data model representation inside of a hypermedia RESTful interface.  It adheres to the OData v4 standard for defining schema and payload formats.  This was done in order to allow off-the-shelf OData clients to interact natively with Redfish services.  While the Redfish Specification only calls out a minimal set of OData functionality, implementations are allowed to extend their capabilities into the full range of OData support though doing so is outside the scope of Redfish and may provide interoperability challenges with non-OData clients.  This white paper will provide details about how the Redfish Specification conforms to OData, such as how schema files are constructed and how services can construct required OData resources.  For those interested in OData functionality that is outside the scope of Redfish, refer to the OData documentation link in the [References section](#references).
 
 
 ## Schema files
@@ -37,11 +37,11 @@ Redfish defines its payload definitions in the Common Schema Definition Language
 
 ### CSDL format
 
-The primary body of a schema file contains Namespace definitions; this is found between the `<edmx:DataServices>` tags.  A Namespace is a unique name for a set of type definitions being declared, which include things like enum definitions and JSON objects.  Multiple namespaces can be defined in a single file, and they can reference each other's definitions.  Type definitions are referenced as `Namespace.TypeDefinition`, where `Namespace` is the string name of the Namespace, and `TypeDefinition` is the name of the definition being referenced.
+The primary body of a schema file contains namespace definitions; this is found between the `<edmx:DataServices>` tags.  A namespace is a unique name for a set of type definitions being declared, which include things like enum definitions and JSON objects.  Multiple namespaces can be defined in a single file, and they can reference each other's definitions.  Type definitions are referenced as `Namespace.TypeDefinition`, where `Namespace` is the string name of the namespace, and `TypeDefinition` is the name of the definition being referenced.
 
-If a schema file requires references to namespaces defined in other schema files, then a reference to the namespace must be included.  This is typically done at the top of the document within a `<edmx:Reference>` section using an `<edmx:Include>` statement.  The reference includes the URI of the schema file being referenced in addition to which namespaces in the schema file to include.  Primitive types defined by OData, which begin with `Edm.`, do not need additional files to be included.
+If a schema file requires references to namespaces defined in other schema files, a reference to the namespace must be included.  This is typically done at the top of the document within a `<edmx:Reference>` section using an `<edmx:Include>` statement.  The reference includes the URI of the schema file being referenced in addition to which namespaces in the schema file to include.  Primitive types defined by OData, which begin with `Edm.`, do not need additional files to be included.
 
-Below is a sample schema file showing the general format discussed above.  In the example blow, there are references to the external file "ExternalSchema.xml", which is calling out references to two Namespaces: `ExternalNamespace` and `Other.Namespace`.  In the DataServices section, one Namespace is defined: `MyNewNamespace`.  There is a single ComplexType definition called `MyDataType`, and it contains three properties: `MyProperty`, `MyProperty2`, and `MyProperty3`.  `MyProperty` and `MyProperty2` both reference external definitions found in the `ExternalNamespace` and `Other.Namespace` Namespaces.  Those definitions would be found by going into the ExternalSchema.xml file.  `MyProperty3` has the type set to `Edm.Int64`, which is simply a 64 bit integer.  The following sections will describe the different elements found in the Namespace definition in detail.
+Below is a sample schema file showing the general format discussed above.  In the example below, there are references to the external file "ExternalSchema.xml", which is calling out references to two Namespaces: `ExternalNamespace` and `Other.Namespace`.  In the DataServices section, one Namespace is defined: `MyNewNamespace`.  There is a single ComplexType definition called `MyDataType`, and it contains three properties: `MyProperty`, `MyProperty2`, and `MyProperty3`.  `MyProperty` and `MyProperty2` both reference external definitions found in the `ExternalNamespace` and `Other.Namespace` namespaces.  Those definitions would be found by going into the ExternalSchema.xml file.  `MyProperty3` has the type set to `Edm.Int64`, which is simply a 64-bit integer.  The following sections will describe the different elements found in the namespace definition in detail.
 
 ```xml
 <edmx:Edmx xmlns:edms="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -98,7 +98,7 @@ JSON representation:
 
 The `<NavigationProperty>` element is used to define a property inside of a JSON object that provides a link to another resource within the service.  It provides the name of the property and the data type of the resource it links.
 
-In the CSDL sample shown below, a NavigationProperty named `Thermal` is defined, and the the data type of the resource it links will follow the `Thermal.Thermal` definition.
+In the CSDL sample shown below, a NavigationProperty named `Thermal` is defined, and  the data type of the resource it links will follow the `Thermal.Thermal` definition.
 
 CSDL sample:
 
@@ -126,7 +126,7 @@ When defining Property or NavigationProperty elements, the keyword `Collection` 
 
 It should be noted that a "CSDL Collection" should not be confused with a "Resource Collection".  In JSON terms, a "CSDL Collection" is a JSON array, and a "Resource Collection" is a JSON object that contains a set of links to "Resources" of a given type.  The [Defining Redfish resources section](#defining-redfish-resources) contains more information about "Resource Collections".
 
-In the CSDL sample shown below, a Property named `AllowedSpeedsMHz` is defined, and the type is `Collection(Edm.Int64)`.  This means that the value for the property `AllowedSpeedsMHz` in a JSON payload will be an array of 64 bit integers.
+In the CSDL sample shown below, a Property named `AllowedSpeedsMHz` is defined, and the type is `Collection(Edm.Int64)`.  This means that the value for the property `AllowedSpeedsMHz` in a JSON payload will be an array of 64-bit integers.
 
 CSDL sample:
 
@@ -154,7 +154,7 @@ JSON representation:
 
 The `<EnumType>` element is used to define a set of valid values for a given property.  Within the EnumType definition, a set of Members define the string values that are allowed when using the EnumType.  An EnumType definition is referenced by a Property definition using the Type field for the property.
 
-In the first sample shown below, an EnumType called `IndicatorLED` is defined as part of the Namespace called `Resource.v1_1_0`.  Within that definition are three Members: `Lit`, `Blinking`, and `Off`.  Those three Members are the three string values that a service is allowed to use for that EnumType.  The second sample shows how to use that EnumType with a Property.  In this case, we have a Property defined called `IndicatorLED`, and it's referencing the `IndicatorLED` definition found in the `Resource.v1_1_0` Namespace via the Type field.
+In the first sample shown below, an EnumType called `IndicatorLED` is defined as part of the namespace called `Resource.v1_1_0`.  Within that definition are three Members: `Lit`, `Blinking`, and `Off`.  Those three Members are the three string values that a service is allowed to use for that EnumType.  The second sample shows how to use that EnumType with a Property.  In this case, we have a Property defined called `IndicatorLED`, and it's referencing the `IndicatorLED` definition found in the `Resource.v1_1_0` Namespace via the Type field.
 
 CSDL sample:
 
@@ -236,7 +236,7 @@ JSON representation:
 
 The `<EntityType>` element is used to define a JSON object while also defining a uniquely identifiable key for that object.  Inside of the EntityType definition, there will be Property and NavigationProperty elements that describe the different properties that will be found inside of the JSON object.  Within Redfish, the EntityType definitions are used to define the Redfish resources.
 
-In the CSDL sample shown below, an EntityType named `Processor` is defined.  Within the definition are four Property elements: `Id`, `Name`, `MaxSpeedMhz`, and `TotalCores`.  `Id` and `Name` are both strings, and `MaxSpeedMhz` and `TotalCores` are both 64 bit integers.  Using the `<Key>` element, the Property named `Id` is established to be the key.  This means that if there are a set of Processor instances, the `Id` property must be a unique value amongst the individual Processor instances.  
+In the CSDL sample shown below, an EntityType named `Processor` is defined.  Within the definition are four Property elements: `Id`, `Name`, `MaxSpeedMhz`, and `TotalCores`.  `Id` and `Name` are both strings, and `MaxSpeedMhz` and `TotalCores` are both 64-bit integers.  Using the `<Key>` element, the Property named `Id` is established to be the key.  This means that if there are a set of Processor instances, the `Id` property must be a unique value amongst the individual Processor instances.  
 
 CSDL sample:
 
@@ -283,7 +283,7 @@ CSDL sample:
   </Schema>
 ```
 
-When a client performs a GET on the Manager instance with the Action, the service responds with the Action representation in the `Actions` object, which is shown below.  The Action itself is represented as a JSON object with the name in the format `#Namespace.ActionName`, where `Namespace` is the string name of the Namespace where the Action is defined, and `ActionName` is the name of the Action.  In this case, since the CSDL definition shows the Action is named `Reset` and is within the `Manager` Namespace, the property name used is `#Manager.Reset`.  Inside of the object a property named `target`, which shows the URI the client uses in the POST request to perform the Action; in this case the URI is `/redfish/v1/Managers/1/Actions/Manager.Reset`.  The object also contains payload annotations to help the client identify constraints on the parameters; in this case, it shows the client is allowed to submit requests with the `ResetType` parameter set to `On`, `ForceOff`, `GracefulShutdown`, `GracefulRestart`, `ForceRestart`, or `ForceOn`.  These annotations are discussed further in the [Payload annotations section](#payload-annotations).
+When a client performs a GET on the Manager instance with the Action, the service responds with the Action representation in the `Actions` object, which is shown below.  The Action itself is represented as a JSON object with the name in the format `#Namespace.ActionName`, where `Namespace` is the string name of the Namespace where the Action is defined, and `ActionName` is the name of the Action.  In this case, because the CSDL definition shows the Action is named `Reset` and is within the `Manager` Namespace, the property name used is `#Manager.Reset`.  Inside of the object a property named `target`, which shows the URI the client uses in the POST request to perform the Action; in this case the URI is `/redfish/v1/Managers/1/Actions/Manager.Reset`.  The object also contains payload annotations to help the client identify constraints on the parameters; in this case, it shows the client is allowed to submit requests with the `ResetType` parameter set to `On`, `ForceOff`, `GracefulShutdown`, `GracefulRestart`, `ForceRestart`, or `ForceOn`.  These annotations are discussed further in the [Payload annotations section](#payload-annotations).
 
 JSON representation:
 
@@ -324,7 +324,7 @@ OData-Version: 4.0
 
 #### The Annotation element
 
-The `<Annotation>` element is used to provide inline documentation for anything defined in the schema file.  Annotation elements give guidance to developers, and can also express conformance rules for clients and services.  Annotation elements contain a `Term` to describe what type of annotation is being used, and sometimes contains data to go along with it.  Redfish only uses two types of annotations: those defined in OData and those defined by Redfish.  OEM annotations are not allowed.
+The `<Annotation>` element is used to provide inline documentation for anything defined in the schema file.  Annotation elements give guidance to developers, and can also express conformance rules for clients and services.  Annotation elements contain a `Term` to describe what type of annotation is being used, and sometimes contains data to go along with it.  Redfish uses only two types of annotations: those defined in OData and those defined by Redfish.  OEM annotations are not allowed.
 
 In the CSDL example below, the Property `UserName` contains three Annotations: `Redfish.RequiredOnCreate`, `OData.Permissions`, and `OData.Description`.  The first Annotation contains the term `Redfish.RequiredOnCreate`; it contains no data, but its presence indicates that a client is required to supply the `UserName` property when creating a new resource.  The second Annotation contains the term `OData.Permissions`, which has the enum value `OData.Permission/ReadWrite` to indicate that `UserName` can be read and written by a client.  The third Annotation contains the term `OData.Description`, which contains a string description of what this Property represents.
 
@@ -373,7 +373,7 @@ JSON representation:
 ```
 
 
-### Redfish modelling practices
+### Redfish modeling practices
 
 #### Core Redfish definitions
 
@@ -393,12 +393,12 @@ The Resource_v1.xml schema file contains the base definitions for all Redfish re
     * Location: Contains information relating to how a user can find the physical equipment
     * Common enumerated lists such as IndicatorLED, PowerState, and ResetType 
 
-The RedfishExtensions_v1.xml scheme file contains Annotation elements to further enhance documentation and rules regarding payloads.  See the ("Schema annotations used in Redfish")[schema-annotations-used-in-redfish] in the Appendix for a list of terms defined by Redfish.
+The RedfishExtensions_v1.xml scheme file contains Annotation elements to further enhance documentation and rules regarding payloads.  See the [Schema annotations used in Redfish](#schema-annotations-used-in-redfish) in the Appendix for a list of terms defined by Redfish.
 
 
 #### Defining Redfish resources
 
-As a matter of convention, Redfish creates a single CSDL file per resource type, and the file is named after the resource.  For example, The CSDL for the `ComputerSystem` resource can be found in the file ComputerSystem_v1.xml.
+As a matter of convention, Redfish creates a single CSDL file per resource type, and the file is named after the resource.  For example, the CSDL for the `ComputerSystem` resource can be found in the file ComputerSystem_v1.xml.
 
 All resources are put into two categories: "Resources" or "Resource Collections".
 
@@ -406,7 +406,7 @@ A "Resource" represents a single resource, such as the `Thermal` EntityType defi
 
 "Resource Collections" represent a set of "Resources", such as the `ComputerSystemCollection` EntityType defined in the ComputerSystemCollection_v1.xml schema file.  All "Resource Collections" inhert from Resource.v1_0_0.ResourceCollection.  The `Name` property is defined as the key property in the EntityType definition.  All "Resource Collections" contain a single NavigationProperty called `Members`, which is an array of references to the underlying "Resources" in the collection.  For example, the `ComputerSystemCollection` will have an array of references to `ComputerSystem` resources.
 
-"Resources" typically contain a `Links` property.  `Links` is a JSON object that contains different types of NavigationProperty elements to show how different resources in data model relate to one another.  For example, in the ComputerSystem definition there is a NavigationProperty called `ManagedBy` that is of type `Collection(Manager.Manager)`.  This allows a ComputerSystem instance to reference a set of Managers in a different portion of the service in order to show which Managers are used to manage the given ComputerSystem.  The CSDL for this is shown below.
+"Resources" typically contain a `Links` property.  `Links` is a JSON object that contains different types of NavigationProperty elements to show how different resources in data model relate to one another.  For example, in the ComputerSystem definition, there is a NavigationProperty called `ManagedBy` that is of type `Collection(Manager.Manager)`.  This allows a ComputerSystem instance to reference a set of Managers in a different portion of the service in order to show which Managers are used to manage the given ComputerSystem.  The CSDL for this is shown below.
 
 Links CSDL sample:
 
@@ -545,7 +545,7 @@ As stated in the previous section, all resources are put into two categories: "R
 
 "Resources" contain version information encoded in the name of the Namespaces used in the schema files.  The first Namespace for a "Resource" is unversioned, and is the same name of the "Resource" itself.  This Namespace also contains a single EntityType definition for the "Resource", and is defined to be abstract.  Subsequent Namespaces contain version information, and the definitions within each Namespace inherits from the previous versions.  Versioned Namespaces are in the format of `ResourceName.vX_Y_Z`, where `X` is the major version, `Y` is the minor version, and `Z` is the errata version.
 
-When new functionality is added, such as adding a new Property, a new minor version of the "Resource" is created.  When an existing definition is corrected, such as fixing an Annotation term on a Property, a new errata version is created.  Major versions are reserved for definitions that break backwards compatibility with existing definitions.  For a complete definition of versioning, see the Redfish Specification.
+When new functionality is added, such as adding a new Property, a new minor version of the "Resource" is created.  When an existing definition is corrected, such as fixing an Annotation term on a Property, a new errata version is created.  Major versions are reserved for definitions that break backward compatibility with existing definitions.  For a complete definition of versioning, see the Redfish Specification.
 
 The CSDL below contains a collapsed definition of the Session resource to highlight the versioning.
 * The first Namespace is called `Session`, and contains a single EntityType definition also called `Session`.
@@ -580,11 +580,11 @@ Session CSDL versioning:
 ```
 
 
-### CSDL vs JSON Schema
+### CSDL vs. JSON Schema
 
 The DMTF publishes all Redfish schema files in two formats: CSDL and JSON Schema.  Both formats are functionally equivalent, and it's up to the client's design whether it uses one form versus the other.  Currently, the DMTF uses a tool to automatically generate all of the JSON Schema files based off the CSDL definitions.  Other than the language of the schema files themselves, the distinct difference between the two formats is CSDL has one file per resource type, whereas JSON Schema uses one file per version per resource type.  For example, the Session CSDL file shown in the [Schema versioning section](#schema-versioning) will generate five JSON Schema files: Session.json, Session.v1_0_0.json, Session.v1_0_2.json, Session.v1_0_3.json, and Session.v1_1_0.json.
 
-For those interested in CSDL to JSON Schema conversion process, please refer to the Redfish Tools repository link in the [References section](#references).  A tool to convert from JSON Schema to CSDL has yet to be released.
+For those interested in CSDL to JSON Schema conversion process,  refer to the Redfish Tools repository link in the [References section](#references).  A tool to convert from JSON Schema to CSDL has yet to be released.
 
 
 ## Payload annotations
@@ -655,7 +655,7 @@ Common object annotations in payloads:
 
 All services must provide the OData service document at the URI `/redfish/v1/odata`.  This document is not a Redfish resource, but rather is the entry point to the service for OData clients.  The OData service document is a JSON object and contains two properties: `value` and `@odata.context`.  The `value` property consists of an array of the top level entry points to the service, and the `@odata.context` property contains the URI to the [metadata document](#metadata-document).  A sample OData service document can be found in the [Appendix](#sample-odata-service-document).
 
-The CSDL definition for what is defined in the OData service document is found in the EntityContainer element.  Within Redfish, this is defined in the ServiceRoot_v1.xml file, and is given the name `ServiceContainer`.  As a general rule, any of the NavigationProperty elements defined in the ServiceRoot EntityType definition are also put into the EntityContainer definition.  Redfish also only uses Singletons.  Similar to how the BaseType term can be used to extend the definition of an existing ComplexType or EntityType element, the Extends term can be used in and EntityContainer element to add new definitions to an existing EntityContainer.  Whenever new NavigationProperty elements are added to the ServiceRoot resource, the `ServiceContainer` definition is also expanded accordingly.
+The CSDL definition for what is defined in the OData service document is found in the EntityContainer element.  Within Redfish, this is defined in the ServiceRoot_v1.xml file, and is given the name `ServiceContainer`.  As a general rule, any of the NavigationProperty elements defined in the ServiceRoot EntityType definition are also put into the EntityContainer definition.  Redfish also only uses Singletons.  Similar to how the BaseType term can be used to extend the definition of an existing ComplexType or EntityType element, the Extends term can be used in an EntityContainer element to add new definitions to an existing EntityContainer.  Whenever new NavigationProperty elements are added to the ServiceRoot resource, the `ServiceContainer` definition is also expanded accordingly.
 
 The OData service document for a given service must match the ServiceRoot resource for that same service.  For example, if a service supports the AccountService resource, it must be in both the OData service document as well as the ServiceRoot resource.
 
@@ -716,27 +716,27 @@ A sample metadata document can be found in the [Appendix](#sample-metadata-docum
 
 | Term                              | Usage |
 | ----                              | ----- |
-| `OData.Description`               | Provides a human readable string to describe what a Property, NavigationProperty, ComplexType, or other definition is. |
+| `OData.Description`               | Provides a human-readable string to describe what a Property, NavigationProperty, ComplexType, or other definition is. |
 | `OData.LongDescription`           | Provides a string containing normative language about a Property, NavigationProperty, ComplexType, or other definition. |
-| `OData.Permissions`               | Dictates if a give Property is writable or read only. |
-| `OData.AdditionalProperties`      | Shows if a given ComplexType or EntityType is allowed to have more properties than what's defined in the schema. |
-| `OData.AutoExpandReferences`      | Shows if a given NavigationProperty contains its reference (`@odata.id` property). |
-| `OData.AutoExpand`                | Shows if the service will expand the properties found in the NavigationProperty in the current payload. |
+| `OData.Permissions`               | Dictates whether a given Property is writable or read only. |
+| `OData.AdditionalProperties`      | Shows whether a given ComplexType or EntityType is allowed to have more properties than what is defined in the schema. |
+| `OData.AutoExpandReferences`      | Shows whether a given NavigationProperty contains its reference (`@odata.id` property). |
+| `OData.AutoExpand`                | Shows whether the service will expand the properties found in the NavigationProperty in the current payload. |
 | `Measures.Unit`                   | Documents the units of measurement for a value; the Unified Code for Units of Measure (UCUM) notation used. |
-| `Capabilities.InsertRestrictions` | Shows if a client is allowed to add new members for a given "Resource Collection". |
-| `Capabilities.UpdateRestrictions` | Shows if a client is allowed to modify the resource. |
-| `Capabilities.DeleteRestrictions` | Shows if a client is allowed to delete a given resource. |
+| `Capabilities.InsertRestrictions` | Shows whether a client is allowed to add new members for a given "Resource Collection". |
+| `Capabilities.UpdateRestrictions` | Shows whether a client is allowed to modify the resource. |
+| `Capabilities.DeleteRestrictions` | Shows whether a client is allowed to delete a given resource. |
 
 
 #### Redfish annotations defined in RedfishExtensions_v1.xml
 
 | Term                              | Usage |
 | ----                              | ----- |
-| `Redfish.Required`                | Indicates if a Property or NavigationProperty is required to be implemented by the service. |
-| `Redfish.RequiredOnCreate`        | Indicates if a Property or NavigationProperty is required to be provided by the client as part of a create request. |
-| `Redfish.IPv6Format`              | Indicates if a Property follows IPv6 addressing or formatting rules. |
-| `Redfish.Deprecated`              | Indicates if a Property, NavigationProperty, or other definition should no longer be used; also provides guidance on what should be done instead. |
-| `Redfish.DynamicPropertyPatterns` | Indicates if a service can add addition properties that conform to the patterns specified by the schema file. |
+| `Redfish.Required`                | Indicates whether a Property or NavigationProperty is required to be implemented by the service. |
+| `Redfish.RequiredOnCreate`        | Indicates whether a Property or NavigationProperty is required to be provided by the client as part of a create request. |
+| `Redfish.IPv6Format`              | Indicates whether a Property follows IPv6 addressing or formatting rules. |
+| `Redfish.Deprecated`              | Indicates whether a Property, NavigationProperty, or other definition should no longer be used; also provides guidance on what should be done instead. |
+| `Redfish.DynamicPropertyPatterns` | Indicates whether a service can add additional properties that conform to the patterns specified by the schema file. |
 | `Validation.Pattern`              | Gives a regex string to show proper formatting for a string property. |
 | `Validation.Minimum`              | Gives a minimum value a numeric property is allowed to return. |
 | `Validation.Maximum`              | Gives a maximum value a numeric property is allowed to return. |
