@@ -799,6 +799,8 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
     "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
     "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
     "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+    "Id": "ResetActionInfo",
+    "Name": "Reset Action Info",
     "Parameters": [
         {
             "Name": "ResetType",
@@ -1222,7 +1224,7 @@ where
 
 The client may use this fragment to identify the [action definition](#resource-actions) within the [referenced](#referencing-other-schemas) Redfish Schema document associated with the specified namespace.
 
-The value of the property shall be a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.  The "target" property is defined in the [OData JSON Format](#OData-JSON) specification.
+The value of the property shall be a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.  The JSON object for the action may contain a property named "title" whose value is a string containing the action's name.  The "target" and "title" properties are defined in the [OData JSON Format](#OData-JSON) specification.
 
 The property representing the available action may be annotated with the [AllowableValues](#allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
 
@@ -1231,7 +1233,8 @@ For example, the following property represents the Reset action, defined in the 
 ~~~json
 {
     "#ComputerSystem.Reset": {
-        "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "title": "Computer System Reset",
         "ResetType@Redfish.AllowableValues": [
             "On",
             "ForceOff",
