@@ -156,16 +156,15 @@ pre.code{
 <li><a href="#who-should-read-this-document">Who should read this document?</a></li>
 <li><a href="#where-can-i-find-more-information">Where can I find more information?</a></li>
 </ul>
-<li><a href="#common-properties">Common properties</a></li>
+<li><a href="#using-this-guide">Using this guide</a></li>
 <ul>
-<li><a href="#properties-defined-across-all-redfish-schemas">Properties defined across all Redfish schemas</a></li>
-<li><a href="#frequently-used-properties">Frequently used properties</a></li>
-<li><a href="#status">Status</a></li>
-<li><a href="#location">Location</a></li>
-<li><a href="#ip-addresses">IP addresses</a></li>
-</ul>
+<li><a href="#common-properties">Common properties</a></li>
+<li><a href="#status-object">Status object</a></li>
+<li><a href="#location-object">Location object</a></li>
+<li><a href="#ip-address-objects">IP address objects</a></li>
 <li><a href="#resource-collections">Resource collections</a></li>
-<li><a href="#redfish-schema-reference-guide">Redfish Schema Reference Guide</a></li>
+</ul>
+<li><a href="#reference-guide">Reference Guide</a></li>
 <ul>
 <li><a href="#AccountService">AccountService 1.3.0</a></li>
 <li><a href="#ActionInfo">ActionInfo 1.0.3</a></li>
@@ -250,10 +249,37 @@ pre.code{
 <li><strong>Redfish Standards:</strong>  <a href="http://www.dmtf.org/standards/redfish">http://www.dmtf.org/standards/redfish</a>  Schemas, specs, mockups, white papers, FAQ, educational material and more.</li>
 <li><strong>DMTF Redfish Forum</strong> (Working group that maintains the Redfish standard):  <a href="http://www.dmtf.org/standards/spmf">http://www.dmtf.org/standards/spmf</a> Companies involved, upcoming schedules and future work, charter, and information about joining.</li>
 </ul>
-<h1 id="common-properties">Common properties</h1>
-<p>This section describes the properties (data fields) that share a common definition across many or all Redfish schema. </p>
-<h2 id="properties-defined-across-all-redfish-schemas">Properties defined across all Redfish schemas</h2>
-<p>The following properties are included in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Resource Guide tables for each schema.</p>
+<h1 id="using-this-guide">Using this guide</h1>
+<p>Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions defined for the schema, and an example payload for a resource using the schema.</p>
+<p>The property-level details include:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Property Name</td>
+<td>The name of the JSON property as it will appear (case-sensitive) in the JSON payload.</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used.</td>
+</tr>
+<tr>
+<td>Attributes</td>
+<td>Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable.</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>The description of the property, as copied directly from the schema 'Description' definition.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-properties">Common properties</h2>
+<p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.</p>
 
 <table class="properties">
 <tbody>
@@ -266,8 +292,7 @@ pre.code{
 <tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.</td></tr>
 <tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
-<h2 id="frequently-used-properties">Frequently used properties</h2>
-<p>The following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.</p>
+<p>In addition, the following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.</p>
 
 <table class="properties">
 <tbody>
@@ -275,8 +300,8 @@ pre.code{
 <tr><td><nobr><b>Links</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>RelatedItems</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
 </tbody></table>
-<h2 id="status">Status</h2>
-<p>The <code>Status</code> object and its properties is common to many Redfish schema.</p>
+<h2 id="status-object">Status object</h2>
+<p>The 'Status' object and its properties is common to many Redfish schema.</p>
 
 <table class="properties">
 <tbody>
@@ -334,7 +359,7 @@ pre.code{
 
 </div>
 </div>
-<h2 id="location">Location</h2>
+<h2 id="location-object">Location object</h2>
 <p>The 'Location' object and its properties is common to many Redfish schema.</p>
 
 <table class="properties">
@@ -450,9 +475,9 @@ pre.code{
 
 </div>
 </div>
-<h2 id="ip-addresses">IP addresses</h2>
+<h2 id="ip-address-objects">IP address objects</h2>
 <p>IP address objects appear in several areas of the data model.</p>
-<h3 id="ipv4-address">IPv4 address</h3>
+<h3 id="ipv4-addresses">IPv4 addresses</h3>
 
 <table class="properties">
 <tbody>
@@ -480,7 +505,7 @@ pre.code{
 
 </div>
 </div>
-<h3 id="ipv6-address">IPv6 address</h3>
+<h3 id="ipv6-addresses">IPv6 addresses</h3>
 
 <table class="properties">
 <tbody>
@@ -521,8 +546,8 @@ pre.code{
 
 </div>
 </div>
-<h1 id="resource-collections">Resource collections</h1>
-<p>A frequently used concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).</p>
+<h2 id="resource-collections">Resource collections</h2>
+<p>A core concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).</p>
 <p>The properties of a Resource Collection are as follows:</p>
 
 <table class="properties">
@@ -564,35 +589,8 @@ pre.code{
 </pre></div>
 
 
-<h1 id="redfish-schema-reference-guide">Redfish Schema Reference Guide</h1>
-<p>The following sections detail the definition for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions for the schema, and an example payload for a resource using the schema.</p>
-<p>The property-level details include:</p>
-<table>
-<thead>
-<tr>
-<th>Column</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Property Name</td>
-<td>The name of the JSON property as it will appear (case-sensitive) in the JSON payload.</td>
-</tr>
-<tr>
-<td>Type</td>
-<td>The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used.</td>
-</tr>
-<tr>
-<td>Attributes</td>
-<td>Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable.</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>The description of the property, as copied directly from the schema 'Description' definition.</td>
-</tr>
-</tbody>
-</table><h2 id="AccountService">AccountService 1.3.0</h2>
+<h1 id="reference-guide">Reference Guide</h1>
+<p>This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.1 and merged with supplemental text using the DMTF's <a href="#redfish-documentation-generator">Redfish Documentation Generator</a>.  </p><h2 id="AccountService">AccountService 1.3.0</h2>
 <p>The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.</p>
 <table class="properties">
 <tbody>
@@ -607,12 +605,12 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Authentication</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the type of authentication used to connect to the external account provider.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AuthenticationType">AuthenticationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KerberosKeytab</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account service.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Token</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Username</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the user name for the account service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LDAPService</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SearchSettings</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BaseDistinguishedNames</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The base distinguished names to use when searching the LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupNameAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the name of the Group.</td></tr>
@@ -620,7 +618,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UsernameAttribute</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Username.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteRoleMapping</b> <i>(v1.3+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocalRole</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The name of the local role in which to map the remote user or group.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteGroup</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote group (or in the case of a Redfish Service, remote role) that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
@@ -634,12 +632,12 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Authentication</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the type of authentication used to connect to the external account provider.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AuthenticationType">AuthenticationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KerberosKeytab</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account service.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Token</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Username</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the user name for the account service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LDAPService</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SearchSettings</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BaseDistinguishedNames</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The base distinguished names to use when searching the LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupNameAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the name of the Group.</td></tr>
@@ -647,7 +645,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UsernameAttribute</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Username.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteRoleMapping</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocalRole</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The name of the local role in which to map the remote user or group.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteGroup</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote group (or in the case of a Redfish Service, remote role) that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
@@ -661,7 +659,7 @@ pre.code{
 <tr><td><nobr><b>Roles</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A link to a collection of Roles. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Role">Role</a>. See the Role schema for details.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this service is enabled.  If set to false, the AccountService is disabled.  This means no users can be created, deleted or modified.  Any service attempting to access the AccountService resource (for example, the Session Service) will fail.  New sessions cannot be started when the service is disabled. However, established sessions may still continue operating. This does not affect Basic AUTH connections.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -886,7 +884,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ProductionDate</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Production date of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>SKU of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Spare part number of the Assembly.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Vendor</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Vendor of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Version</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Version of the Assembly.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
@@ -1274,7 +1272,7 @@ pre.code{
 <tr><td><nobr><b>PowerState</b> <i>(v1.0.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The current power state of the chassis.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Chassis.json|details|PowerState">PowerState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The SKU of the chassis.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number of the chassis.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Thermal</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the thermal properties (fans, cooling, sensors) of this chassis. See the <a href="#Thermal">Thermal</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Thermal resource. See the Links section and the <a href="#Thermal">Thermal</a> schema for details.</td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Universal Unique Identifier (UUID) for this Chassis.</td></tr>
@@ -1475,7 +1473,7 @@ pre.code{
 <tr><td><nobr><b>ResourceZones</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The resource zones available on the service. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Zone">Zone</a>. See the Zone schema for details.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -1523,13 +1521,14 @@ pre.code{
 <tr><td><nobr><b>HostName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The DNS Host Name, without any domain information.</td></tr>
 <tr><td><nobr><b>HostWatchdogTimer</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This object describes the Host Watchdog Timer functionality for this system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FunctionEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates if the Host Watchdog Timer functionality has been enabled. Additional host-based software is necessary to activate the timer function.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TimeoutAction</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property indicates the action to perform when the Watchdog Timer reaches its timeout value.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|TimeoutAction">TimeoutAction</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>WarningAction</b></nobr><br>}</td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property indicates the action to perform when the Watchdog Timer is close (typically 3-10 seconds) to reaching its timeout value.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|WarningAction">WarningAction</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>HostedServices</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The services that this computer system supports.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b></nobr><br>}</td><td></td><td><nobr>read-only</nobr></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>HostingRoles</b> <i>(v1.2+)</i> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>The hosing roles that this computer system supports. The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|HostingRoles">HostingRoles</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>IndicatorLED</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The state of the indicator LED, used to identify the system.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|IndicatorLED">IndicatorLED</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Links</b> <i>(v1.0.7+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
@@ -1567,7 +1566,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MemoryDomain">MemoryDomain</a>. See the MemoryDomain schema for details.</td></tr>
 <tr><td><nobr><b>MemorySummary</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This object describes the central memory of the system in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemoryMirroring</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The ability and type of memory mirroring supported by this system.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|MemoryMirroring">MemoryMirroring</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TotalSystemMemoryGiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The total configured operating system-accessible memory (RAM), measured in GiB.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TotalSystemPersistentMemoryGiB</b> <i>(v1.4+)</i></nobr><br>}</td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The total configured, system-accessible persistent memory, measured in GiB.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product name for this system, without the manufacturer name.</td></tr>
@@ -1585,7 +1584,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Count</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The number of physical processors in the system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LogicalProcessorCount</b> <i>(v1.5+)</i></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The number of logical processors in the system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The processor model for the primary or majority of processors in this system.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Processors</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the collection of Processors associated with this system. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Processor">Processor</a>. See the Processor schema for details.</td></tr>
 <tr><td><nobr><b>Redundancy</b> <i>(v1.5+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>A reference to a collection of Redundancy entities that each name a set of computer systems that provide redundancy for this ComputerSystem.</td></tr>
@@ -1597,7 +1596,7 @@ pre.code{
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this system.</td></tr>
 <tr><td><nobr><b>SimpleStorage</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the collection of storage devices associated with this system. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SimpleStorage">SimpleStorage</a>. See the SimpleStorage schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Storage</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the collection of storage devices associated with this system. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Storage">Storage</a>. See the Storage schema for details.</td></tr>
 <tr><td><nobr><b>SubModel</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The sub-model for this system.</td></tr>
@@ -1607,8 +1606,8 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareVersion2</b> <i>(v1.3+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The 2nd firmware version of this Trusted Module, if applicable.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceType</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property indicates the interface type of the Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceType">InterfaceType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceTypeSelection</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The Interface Type selection supported by this Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceTypeSelection">InterfaceTypeSelection</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The universal unique identifier (UUID) for this system.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 </tbody></table>
@@ -1992,7 +1991,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Volumes</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Volume resource. See the Links section and the <a href="#Volume">Volume</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Location</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr></td><td>See the <a href="#location">Location</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location</a> schema for details.</td></tr>
+<tr><td><nobr><b>Location</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location</a> schema for details.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this drive.</td></tr>
 <tr><td><nobr><b>MediaType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of media contained in this drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|MediaType">MediaType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the model number for the drive.</td></tr>
@@ -2011,7 +2010,7 @@ pre.code{
 <tr><td><nobr><b>RotationSpeedRPM</b></nobr></td><td>number<br>(RPM)</td><td><nobr>read-only</nobr> (null)</td><td>The rotation speed of this Drive in Revolutions per Minute (RPM).</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this drive.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this drive.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>StatusIndicator</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The state of the status indicator, used to communicate status information about this drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|StatusIndicator">StatusIndicator</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -2205,7 +2204,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EntityRole</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The role of the connected entity.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Endpoint.json|details|EntityRole">EntityRole</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EntityType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of the connected entity.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Endpoint.json|details|EntityType">EntityType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Identifiers</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr> (null)</td><td>Identifiers for the remote entity. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Identifier" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Identifier</a> schema for details.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PciClassCode</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Class Code, Subclass code, and Programming Interface code of this PCIe function.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PciFunctionNumber</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The PCI ID of the connected entity.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
@@ -2237,7 +2236,7 @@ pre.code{
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the lower level endpoints supporting this endpoint.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -2435,7 +2434,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IPv4AutoConfigEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether IPv4 SLAAC is enabled for this interface.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IPv6AutoConfigEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether IPv6 SLAAC is enabled for this interface.</td></tr>
 <tr><td><nobr><b>StaticNameServers</b> <i>(v1.4+)</i> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-write</nobr></td><td>A statically defined set of DNS server IP addresses (both IPv4 and IPv6).</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>UefiDevicePath</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UEFI device path for this interface.</td></tr>
 <tr><td><nobr><b>VLAN</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource. See the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a VLAN resource. See the Links section and the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details.</td></tr>
@@ -2714,7 +2713,7 @@ pre.code{
 <tr><td><nobr><b>EventTypesForSubscription</b> <i>(deprecated v1.0.6)</i> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This is the types of Events that can be subscribed to.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventService.json|details|EventTypesForSubscription">EventTypesForSubscription</a> in Property Details, below, for the possible values of this property.</i> <i>Deprecated v1.0.6+. This definition has been moved to the unversioned namespace so that external references can pick up changes over time.</i></td></tr>
 <tr><td><nobr><b>ServerSentEventUri</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a URI for receiving Sever Sent Event representations of the events generated by this service.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Subscriptions</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a reference to a collection of Event Destination resources. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EventDestination">EventDestination</a>. See the EventDestination schema for details.</td></tr>
 </tbody></table>
@@ -2821,12 +2820,12 @@ pre.code{
 <tr><td><nobr><b>Authentication</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the type of authentication used to connect to the external account provider.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ExternalAccountProvider.json|details|AuthenticationType">AuthenticationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KerberosKeytab</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account service.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Token</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Username</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the user name for the account service.</td></tr>
 <tr><td><nobr><b>LDAPService</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SearchSettings</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BaseDistinguishedNames</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The base distinguished names to use when searching the LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupNameAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the name of the Group.</td></tr>
@@ -2836,7 +2835,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>RemoteRoleMapping</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocalRole</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The name of the local role in which to map the remote user or group.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteGroup</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote group (or in the case of a Redfish Service, remote role) that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
@@ -2917,7 +2916,7 @@ pre.code{
 <tr><td><nobr><b>Links</b> <i>(v1.0.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>MaxZones</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The value of this property shall contain the maximum number of zones the switch can currently configure.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Switches</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A collection of references to the switches contained in this fabric. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Switch">Switch</a>. See the Switch schema for details.</td></tr>
 <tr><td><nobr><b>Zones</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A collection of references to the zones contained in this fabric. Contains a link to a resource.</td></tr>
@@ -3020,7 +3019,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a EthernetInterface resource. See the Links section and the <a href="#EthernetInterface">EthernetInterface</a> schema for details.</td></tr>
 <tr><td><nobr><b>NetworkProtocol</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The Redfish link to the network services and their settings that the Manager controls.  It is here that clients will find network configuration options as well as network services. See the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ManagerNetworkProtocol resource. See the Links section and the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -3056,7 +3055,7 @@ pre.code{
 <tbody>
 <tr><td><nobr><b>Actions</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>Languages</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-only</nobr></td><td>Language codes for the schemas available.</td></tr>
-<tr><td><nobr><b>Location</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>See the <a href="#location">Location</a> object definition in the <a href="#common-properties">Common Properties</a> section.</td></tr>
+<tr><td><nobr><b>Location</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ArchiveFile</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>If the schema is hosted on the service in an archive file, this is the name of the file within the archive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ArchiveUri</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>If the schema is hosted on the service in an archive file, this is the link to the archive file.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Language</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The language code for the file the schema is in.</td></tr>
@@ -3297,7 +3296,7 @@ pre.code{
 <tr><td><nobr><b>MaxNumberOfRecords</b></nobr></td><td>number</td><td><nobr>read-only</nobr></td><td>The maximum number of log entries this service can have.</td></tr>
 <tr><td><nobr><b>OverWritePolicy</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The overwrite policy for this service that takes place when the log is full.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/LogService.json|details|OverWritePolicy">OverWritePolicy</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -3421,7 +3420,7 @@ pre.code{
 <tr><td><nobr><b>SerialInterfaces</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SerialInterface">SerialInterface</a>. See the SerialInterface schema for details.</td></tr>
 <tr><td><nobr><b>ServiceEntryPointUUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UUID of the Redfish Service provided by this manager.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Universal Unique Identifier (UUID) for this Manager.</td></tr>
 <tr><td><nobr><b>VirtualMedia</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a reference to the Virtual Media services for this particular manager. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#VirtualMedia">VirtualMedia</a>. See the VirtualMedia schema for details.</td></tr>
@@ -3689,7 +3688,7 @@ pre.code{
 <tr><td><nobr><b>SSH</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Settings for this Manager's SSH (Secure Shell) protocol support.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Port</b></nobr></td><td>number</td><td><nobr>read-write</nobr> (null)</td><td>Indicates the protocol port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ProtocolEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates if the protocol is enabled or disabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Telnet</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Settings for this Manager's Telnet protocol support.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Port</b></nobr></td><td>number</td><td><nobr>read-write</nobr> (null)</td><td>Indicates the protocol port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ProtocolEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates if the protocol is enabled or disabled.</td></tr>
@@ -3845,7 +3844,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SecurityStates</b> [ ] </nobr><br>}</td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>Security states supported by the Memory.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Memory.json|details|SecurityStates">SecurityStates</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product serial number of this device.</td></tr>
 <tr><td><nobr><b>SpareDeviceCount</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Number of unused spare devices available in the Memory.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>SubsystemDeviceID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Subsystem Device ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerProductID</i></td></tr>
 <tr><td><nobr><b>SubsystemVendorID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>SubSystem Vendor ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerManufacturerID</i></td></tr>
 <tr><td><nobr><b>VendorID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Vendor ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.ModuleManufacturerID</i></td></tr>
@@ -4075,7 +4074,7 @@ pre.code{
 <tr><td><nobr><b>IsMirrorEnabled</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Mirror Enabled status.</td></tr>
 <tr><td><nobr><b>IsSpare</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Spare enabled status.</td></tr>
 <tr><td><nobr><b>MemoryChunkSizeMiB</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Size of the memory chunk measured in mebibytes (MiB).</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -4162,7 +4161,7 @@ pre.code{
 <tbody>
 <tr><td><nobr><b>Actions</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>Languages</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-only</nobr></td><td>Language codes for the schemas available.</td></tr>
-<tr><td><nobr><b>Location</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>See the <a href="#location">Location</a> object definition in the <a href="#common-properties">Common Properties</a> section.</td></tr>
+<tr><td><nobr><b>Location</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ArchiveFile</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>If the schema is hosted on the service in an archive file, this is the name of the file within the archive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ArchiveUri</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>If the schema is hosted on the service in an archive file, this is the link to the archive file.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Language</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The language code for the file the schema is in.</td></tr>
@@ -4218,7 +4217,7 @@ pre.code{
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Part number for this network adapter.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer SKU for this network adapter.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this network adapter.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -4267,7 +4266,7 @@ pre.code{
 <tr><td><nobr><b>NetDevFuncType</b> <i>(v1.0.2+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The configured capability of this network device function.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/NetworkDeviceFunction.json|details|NetDevFuncType">NetDevFuncType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>PhysicalPortAssignment</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The physical port that this network device function is currently assigned to. See the <a href="#NetworkPort">NetworkPort</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a NetworkPort resource. See the Links section and the <a href="#NetworkPort">NetworkPort</a> schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>VirtualFunctionsEnabled</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Whether Single Root I/O Virtualization (SR-IOV) Virual Functions (VFs) are enabled for this Network Device Function.</td></tr>
 <tr><td><nobr><b>iSCSIBoot</b> {</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>iSCSI Boot.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationMethod</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The iSCSI boot authentication method for this network device function.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/NetworkDeviceFunction.json|details|AuthenticationMethod">AuthenticationMethod</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -4392,7 +4391,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkDeviceFunction">NetworkDeviceFunction</a>. See the NetworkDeviceFunction schema for details.</td></tr>
 <tr><td><nobr><b>NetworkPorts</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>Contains the members of this collection. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkPort">NetworkPort</a>. See the NetworkPort schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <h2 id="NetworkPort">NetworkPort 1.1.0</h2>
 <p>A Network Port represents a discrete physical port capable of connecting to a network.</p>
@@ -4418,7 +4417,7 @@ pre.code{
 <tr><td><nobr><b>PhysicalPortNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The physical port number label for this port.</td></tr>
 <tr><td><nobr><b>PortMaximumMTU</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The largest maximum transmission unit (MTU) that can be configured for this network port.</td></tr>
 <tr><td><nobr><b>SignalDetected</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Whether or not the port has detected enough signal on enough lanes to establish link.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>SupportedEthernetCapabilities</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr> (null)</td><td>The set of Ethernet capabilities that this port supports.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/NetworkPort.json|details|SupportedEthernetCapabilities">SupportedEthernetCapabilities</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SupportedLinkCapabilities</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>The self-described link capabilities of this port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LinkNetworkTechnology</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The self-described link network technology capabilities of this port.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/NetworkPort.json|details|LinkNetworkTechnology">LinkNetworkTechnology</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -4526,7 +4525,7 @@ pre.code{
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The part number for this PCIe device.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this PCIe device.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this PCIe device.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -4572,7 +4571,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a StorageController resource. See the Links section and the <a href="#Storage">Storage</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>RevisionId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Revision ID of this PCIe function.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>SubsystemId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Subsystem ID of this PCIe function.</td></tr>
 <tr><td><nobr><b>SubsystemVendorId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Subsystem Vendor ID of this PCIe function.</td></tr>
 <tr><td><nobr><b>VendorId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor ID of this PCIe function.</td></tr>
@@ -4648,7 +4647,7 @@ pre.code{
 <tr><td><nobr><b>PortId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the label of this port on the physical switch package.</td></tr>
 <tr><td><nobr><b>PortProtocol</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol being sent over this port.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Port.json|details|PortProtocol">PortProtocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>PortType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the type of this port.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Port.json|details|PortType">PortType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Width</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The number of lanes, phys, or other physical transport links that this port contains.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -4794,7 +4793,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The ID(s) of the resources associated with this Power Limit.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>PowerSupplies</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Details of the power supplies associated with this system or device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
@@ -4810,7 +4809,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaximumVoltage</b> <i>(v1.1+)</i></nobr></td><td>number<br>(V)</td><td><nobr>read-only</nobr> (null)</td><td>The maximum line input voltage at which this power supply input range is effective.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MinimumFrequencyHz</b> <i>(v1.1+)</i></nobr></td><td>number<br>(Hz)</td><td><nobr>read-only</nobr> (null)</td><td>The minimum line input frequency at which this power supply input range is effective.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MinimumVoltage</b> <i>(v1.1+)</i></nobr></td><td>number<br>(V)</td><td><nobr>read-only</nobr> (null)</td><td>The minimum line input voltage at which this power supply input range is effective.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OutputWattage</b> <i>(v1.1+)</i></nobr></td><td>number<br>(W)</td><td><nobr>read-only</nobr> (null)</td><td>The maximum capacity of this Power Supply when operating in this input range.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LastPowerOutputWatts</b></nobr></td><td>number<br>(W)</td><td><nobr>read-only</nobr> (null)</td><td>The average power output of this Power Supply.</td></tr>
@@ -4835,7 +4834,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this Power Supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The spare part number for this Power Supply.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the power subsystem of this system or device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
@@ -4856,7 +4855,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SensorNumber</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>A numerical identifier to represent the voltage sensor.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdCritical</b></nobr></td><td>number<br>(V)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdFatal</b></nobr></td><td>number<br>(V)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdNonCritical</b></nobr></td><td>number<br>(V)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range.</td></tr>
@@ -5257,7 +5256,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VendorId</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor Identification for this processor.</td></tr>
 <tr><td><nobr><b>ProcessorType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of processor.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorType">ProcessorType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Socket</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The socket or location of the processor.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>SubProcessors</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the collection of Sub-Processors associated with this system, such as cores or threads that are part of a processor. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Processor">Processor</a>. See the Processor schema for details.</td></tr>
 <tr><td><nobr><b>TotalCores</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The total number of cores contained in this processor.</td></tr>
@@ -5388,7 +5387,7 @@ pre.code{
 <tr><td><nobr><b>SimpleStorage</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Simple Storage available in this Resource Block.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SimpleStorage resource. See the Links section and the <a href="#SimpleStorage">SimpleStorage</a> schema for details.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Storage</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Storage available in this Resource Block.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Storage resource. See the Links section and the <a href="#Storage">Storage</a> schema for details.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
@@ -5798,8 +5797,10 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MessageRegistryFile">MessageRegistryFile</a>. See the MessageRegistryFile schema for details.</td></tr>
 <tr><td><nobr><b>SessionService</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to the Sessions Service. See the <a href="#SessionService">SessionService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SessionService resource. See the Links section and the <a href="#SessionService">SessionService</a> schema for details.</td></tr>
-<tr><td><nobr><b>StorageServices</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>A link to a collection of all storage service entities.</td></tr>
-<tr><td><nobr><b>StorageSystems</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This is a link to a collection of storage systems.</td></tr>
+<tr><td><nobr><b>StorageServices</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A link to a collection of all storage service entities.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>StorageSystems</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to a collection of storage systems.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>Systems</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to a collection of Systems. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ComputerSystem">ComputerSystem</a>. See the ComputerSystem schema for details.</td></tr>
 <tr><td><nobr><b>Tasks</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This is a link to the Task Service. See the <a href="#TaskService">TaskService</a> schema for details on this property.</td></tr>
@@ -5893,7 +5894,7 @@ pre.code{
 <tr><td><nobr><b>SessionTimeout</b></nobr></td><td>number<br>(seconds)</td><td><nobr>read-write</nobr></td><td>This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.</td></tr>
 <tr><td><nobr><b>Sessions</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>Link to a collection of Sessions. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Session">Session</a>. See the Session schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -5924,14 +5925,14 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The name of the manufacturer of this device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product model number of this device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The name of the resource or array element.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#oem">OEM</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>Links</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Chassis</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Chassis which contains this Simple Storage. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>UefiDevicePath</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UEFI device path used to access this storage controller.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
@@ -5996,7 +5997,7 @@ pre.code{
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>ReleaseDate</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Release date of this software.</td></tr>
 <tr><td><nobr><b>SoftwareId</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>A string representing the implementation-specific ID for identifying this software.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>UefiDevicePaths</b> <i>(v1.1+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>A list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item.</td></tr>
 <tr><td><nobr><b>Updateable</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates whether this software can be updated by the update service.</td></tr>
 <tr><td><nobr><b>Version</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>A string representing the version of this software.</td></tr>
@@ -6049,7 +6050,7 @@ pre.code{
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the storage subsystem.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>StorageControllers</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The set of storage controllers represented by this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Assembly</b> <i>(v1.4+)</i> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Assembly resource associated with this Storage Controller. See the <a href="#Assembly">Assembly</a> schema for details on this property.</td></tr>
@@ -6063,7 +6064,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1.3+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> <i>(v1.4+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>An array of references to the StorageServices that connect to this controller.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr></td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.4+)</i></nobr></td><td></td><td><nobr>read-write</nobr></td><td>See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Manufacturer</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this storage controller.</td></tr>
@@ -6075,7 +6076,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SKU</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SpeedGbps</b> <i>(v1.0.1+)</i></nobr></td><td>number<br>(Gbit/s)</td><td><nobr>read-only</nobr> (null)</td><td>The speed of the storage controller interface.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.0.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.0.1+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedControllerProtocols</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols by which this storage controller can be communicated to.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedControllerProtocols">SupportedControllerProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedDeviceProtocols</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols which the storage controller can use to communicate with attached devices.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedDeviceProtocols">SupportedDeviceProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
@@ -6265,7 +6266,7 @@ pre.code{
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this switch.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this switch.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>SwitchType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol being sent over this switch.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Switch.json|details|SwitchType">SwitchType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>TotalSwitchWidth</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The total number of lanes, phys, or other physical transport links that this switch contains.</td></tr>
 </tbody></table>
@@ -6514,7 +6515,7 @@ pre.code{
 <tr><td><nobr><b>DateTime</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The current DateTime (with offset) setting that the task service is using.</td></tr>
 <tr><td><nobr><b>LifeCycleEventOnTaskStateChange</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>Send an Event upon Task State Change.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Tasks</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>References to the Tasks collection. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Task">Task</a>. See the Task schema for details.</td></tr>
 </tbody></table>
@@ -6590,7 +6591,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this Fan.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The spare part number for this Fan.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdCritical</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdFatal</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdNonCritical</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range.</td></tr>
@@ -6598,7 +6599,7 @@ pre.code{
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>Temperatures</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the definition for temperature sensors.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AdjustedMaxAllowableOperatingValue</b> <i>(v1.4+)</i></nobr></td><td>number<br>(Cel)</td><td><nobr>read-only</nobr> (null)</td><td>Adjusted maximum allowable operating temperature for this equipment based on the current environmental conditions present.</td></tr>
@@ -6621,7 +6622,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SensorNumber</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>A numerical identifier to represent the temperature sensor.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdCritical</b></nobr></td><td>number<br>(Cel)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdFatal</b></nobr></td><td>number<br>(Cel)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdNonCritical</b></nobr></td><td>number<br>(Cel)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range.</td></tr>
@@ -6900,7 +6901,7 @@ pre.code{
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>SoftwareInventory</b> {</nobr></td><td>object</td><td><nobr>read-only</nobr> (null)</td><td>An inventory of software. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SoftwareInventory">SoftwareInventory</a>. See the SoftwareInventory schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr> (null)</td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -7094,7 +7095,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PercentageComplete</b></nobr></td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The percentage of the operation that has been completed.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><nobr><b>OptimumIOSizeBytes</b></nobr></td><td>number<br>(bytes)</td><td><nobr>read-only</nobr> (null)</td><td>The size in bytes of this Volume's optimum IO size.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 <tr><td><nobr><b>VolumeType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of this volume.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Volume.json|details|VolumeType">VolumeType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -7192,7 +7193,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ResourceBlocks</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Resource Blocks that are used in this Zone.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ResourceBlock resource. See the Links section and the <a href="#ResourceBlock">ResourceBlock</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status">Status</a> object definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>

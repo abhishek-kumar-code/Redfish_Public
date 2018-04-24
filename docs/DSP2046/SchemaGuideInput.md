@@ -53,9 +53,9 @@ Note: you can specify the location of the TOC, presumably in the Introduction se
 
 Note: markdown is allowed in description overrides, but HTML markup is not; it will be escaped.
 
-* Status: See the [Status](#status) object definition in the [Common Properties](#common-properties) section.
-* Oem: See the [OEM](#oem) object definition in the [Common Properties](#common-properties) section.
-* Location: See the [Location](#location) object definition in the [Common Properties](#common-properties) section.
+* Status: See the [Status object](#status-object) definition in the [Using this guide](#using-this-guide) section.
+* Oem: See the OEM object definition in the [Using this guide](#using-this-guide) section.
+* Location: See the [Location object](#location-object) definition in the [Common Properties](#common-properties) section.
 
 # Units Translation
 
@@ -147,51 +147,58 @@ The following web sites provide more information about the Redfish standard:
 * **Redfish Standards:**  <a href="http://www.dmtf.org/standards/redfish">http://www.dmtf.org/standards/redfish</a>  Schemas, specs, mockups, white papers, FAQ, educational material and more.
 * **DMTF Redfish Forum** (Working group that maintains the Redfish standard):  <a href="http://www.dmtf.org/standards/spmf">http://www.dmtf.org/standards/spmf</a> Companies involved, upcoming schedules and future work, charter, and information about joining.
 
-# Common properties
+# Using this guide
 
-This section describes the properties (data fields) that share a common definition across many or all Redfish schema. 
+Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions defined for the schema, and an example payload for a resource using the schema.
 
-## Properties defined across all Redfish schemas 
+The property-level details include:
 
-The following properties are included in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Resource Guide tables for each schema.
+| Column | Purpose |
+|--------|---------|
+| Property Name | The name of the JSON property as it will appear (case-sensitive) in the JSON payload. |
+| Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used. |
+| Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
+| Description | The description of the property, as copied directly from the schema 'Description' definition. |
+
+
+## Common properties
+
+The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.
 
 #include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/CommonProperties/properties
 
-
-## Frequently used properties
-
-The following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.
+In addition, the following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.
 
 #include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/FrequentProperties/properties
 
 
-## Status
+## Status object
 
-The `Status` object and its properties is common to many Redfish schema.
+The 'Status' object and its properties is common to many Redfish schema.
 
 #include_fragment http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status
 
 
-## Location
+## Location object
 
 The 'Location' object and its properties is common to many Redfish schema.
 
 #include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Location
 
-## IP addresses
+## IP address objects
 
 IP address objects appear in several areas of the data model.
-### IPv4 address
+### IPv4 addresses 
 
 #include_fragment ./json-schema/IPAddresses.v1_0_6.json#/definitions/IPv4Address
 
-### IPv6 address
+### IPv6 addresses
 
 #include_fragment http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json#/definitions/IPv6Address
 
-# Resource collections
+## Resource collections
 
-A frequently used concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).
+A core concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).
 
 The properties of a Resource Collection are as follows:
 
@@ -224,20 +231,9 @@ As shown in the example below, a Redfish Service may provide management function
 
 ~~~
 
-# Redfish Schema Reference Guide
+# Reference Guide
 
-The following sections detail the definition for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions for the schema, and an example payload for a resource using the schema.
-
-The property-level details include:
-
-| Column | Purpose |
-|--------|---------|
-| Property Name | The name of the JSON property as it will appear (case-sensitive) in the JSON payload. |
-| Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used. |
-| Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
-| Description | The description of the property, as copied directly from the schema 'Description' definition. |
-
-
+This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.1 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
 
 
 # Excluded Properties
