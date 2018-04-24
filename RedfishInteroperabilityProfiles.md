@@ -3,6 +3,7 @@ DocTitle: Redfish Interoperability Profiles
 DocNumber: '0272'
 DocClass: Normative
 DocVersion: '1.0.1'
+SupersedesVersion: '1.0.0'
 modified: '2018-04-18'
 status: published
 released: True

@@ -4,6 +4,7 @@ DocNumber: '8013'
 DocClass: Normative
 DocVersion: '2018.1'
 modified: '2018-5-1'
+SupersedesVersion: '1.0.0'
 status: published
 released: True
 copyright: '2017-2018'
