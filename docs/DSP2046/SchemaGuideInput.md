@@ -15,10 +15,10 @@ This document contains details about schema properties defined by the Redfish Sp
 
 The Redfish Documentation Generator uses this file to create the Redfish Resource and Schema Guide. The tool uses Markdown section headers to locate and integrate text into the various portions of the document as follows:
 
- - Introduction - All text in the Introduction section until the next major header is included as the head of the document.
+- Introduction - All text in the Introduction section until the next major header is included as the head of the document.
 - Postscript - All text in the Postscript section until the next major header is appended to the end of the document.
- - Schema Supplement: This section contains all the schema-specific information, property details, and sample payloads.  
-	 - Second-level headers in this section indicate the name of the Schema.  The section must be named "Schema_<major version>" for integration, for example "Processor_1".
+- Schema Supplement: This section contains all the schema-specific information, property details, and sample payloads.  
+    - Second-level headers in this section indicate the name of the Schema.  The section must be named "Schema_<major version>" for integration, for example "Processor_1".
 
 ### Property descriptions
 
@@ -226,7 +226,7 @@ As shown in the example below, a Redfish Service may provide management function
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
-    "@odata.id": "/redfish/v1/Systems",
+    "@odata.id": "/redfish/v1/Systems"
 }
 
 ~~~

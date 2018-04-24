@@ -289,9 +289,8 @@ Error responses are defined by an extended error resource, represented as a sing
 The following snippet shows a fragment of an error response.
 
 ```JSON
-
- {
-   "error": {
+{
+    "error": {
         "code": "Base.1.0.GeneralError",
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
@@ -307,8 +306,9 @@ The following snippet shows a fragment of an error response.
                     "IndicatorLED"
                 ],
                 "Severity": "Warning"
-            }]
-   }
+            }
+        ]
+    }
 }
 
 ```
