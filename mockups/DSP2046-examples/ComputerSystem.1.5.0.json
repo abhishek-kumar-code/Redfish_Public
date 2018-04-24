@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
     "Id": "437XR1138R2",
     "Name": "WebFrontEnd483",
     "SystemType": "Physical",
@@ -134,6 +134,5 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/437XR1138R2",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@odata.id": "/redfish/v1/Systems/437XR1138R2"
 }
