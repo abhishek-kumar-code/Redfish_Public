@@ -28,7 +28,7 @@
         "Members": [
             {
                 "@odata.type": "#Processor.v1_1_0.Processor",
-                "@Redfish.RequestedCountOptional": true,
+                "@Redfish.RequestedCountRequired": true,
                 "ProcessorType@Redfish.RequiredOnCreate": true,
                 "TotalCores@Redfish.RequiredOnCreate": true,
                 "Model@Redfish.OptionalOnCreate": true,
@@ -44,7 +44,7 @@
         "Members": [
             {
                 "@odata.type": "#Memory.v1_1_0.Memory",
-                "@Redfish.RequestedCountOptional": true,
+                "@Redfish.RequestedCountRequired": true,
                 "MemoryType@Redfish.RequiredOnCreate": true,
                 "MemoryDeviceType@Redfish.OptionalOnCreate": true,
                 "CapacityMiB@Redfish.RequiredOnCreate": true,
@@ -61,10 +61,10 @@
         "Members": [
             {
                 "@odata.type": "#SimpleStorage.v1_2_0.SimpleStorage",
-                "@Redfish.RequestedCountOptional": true,
+                "@Redfish.RequestedCountRequired": true,
                 "Devices@Redfish.RequiredOnCreate": true,
                 "Devices": {
-                    "@Redfish.RequestedCountOptional": true,
+                    "@Redfish.RequestedCountRequired": true,
                     "CapacityBytes@Redfish.RequiredOnCreate": true
                 }
             }
@@ -77,11 +77,11 @@
         "Members": [
             {
                 "@odata.type": "#Storage.v1_3_0.Storage",
-                "@Redfish.RequestedCountOptional": true,
+                "@Redfish.RequestedCountRequired": true,
                 "StorageControllers@Redfish.OptionalOnCreate": true,
                 "StorageControllers": [
                     {
-                        "@Redfish.RequestedCountOptional": true,
+                        "@Redfish.RequestedCountRequired": true,
                         "SupportedControllerProtocols@Redfish.RequiredOnCreate": true
                     }
                 ],
@@ -89,7 +89,7 @@
                 "Drives": [
                     {
                         "@odata.type": "#Drive.v1_2_0.Drive",
-                        "@Redfish.RequestedCountOptional": true,
+                        "@Redfish.RequestedCountRequired": true,
                         "CapacityBytes@Redfish.RequiredOnCreate": true
                     }
                 ]
@@ -103,7 +103,7 @@
         "Members": [
             {
                 "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
-                "@Redfish.RequestedCountOptional": true,
+                "@Redfish.RequestedCountRequired": true,
                 "SpeedMbps@Redfish.RequiredOnCreate": true,
                 "FullDuplex@Redfish.OptionalOnCreate": true
             }
@@ -116,7 +116,7 @@
         "Members": [
             {
                 "@odata.type": "#NetworkInterface.v1_1_0.NetworkInterface",
-                "@Redfish.RequestedCountOptional": true,
+                "@Redfish.RequestedCountRequired": true,
                 "NetworkPorts@Redfish.RequiredOnCreate": true,
                 "NetworkPorts": {
                     "@odata.type": "#NetworkPortCollection.NetworkPortCollection",
@@ -124,7 +124,7 @@
                     "Members": [
                         {
                             "@odata.type": "#NetworkPort.v1_1_0.NetworkPort",
-                            "@Redfish.RequestedCountOptional": true,
+                            "@Redfish.RequestedCountRequired": true,
                             "ActiveLinkTechnology@Redfish.RequiredOnCreate": true,
                             "SupportedLinkCapabilities@Redfish.OptionalOnCreate": true,
                             "SupportedLinkCapabilities": {
