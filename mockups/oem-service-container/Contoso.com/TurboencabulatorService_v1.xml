@@ -12,6 +12,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -20,6 +23,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TurboencabulatorService">
+      <Annotation Term="Redfish.OwningEntity" String="Contoso"/>
 
       <EntityType Name="TurboencabulatorService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the Turboencabulator Service."/>
@@ -29,6 +33,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TurboencabulatorService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Chipwise"/>
 
       <EntityType Name="TurboencabulatorService" BaseType="TurboencabulatorService.TurboencabulatorService">
         <Annotation Term="OData.Description" String="This is the schema definition for the Turboencabulator Service."/>

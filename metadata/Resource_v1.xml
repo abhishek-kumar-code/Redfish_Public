@@ -22,7 +22,9 @@
   </edmx:Reference>
 
   <edmx:DataServices>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <!--Type Definitions-->
       <TypeDefinition Name="Id" UnderlyingType="Edm.String">
@@ -245,6 +247,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <!--Base entity type for array members-->
       <EntityType Name="ReferenceableMember" BaseType="Resource.ReferenceableMember" Abstract="true">
@@ -299,18 +302,22 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <ComplexType Name="Identifier" BaseType="Resource.Identifier">
         <Property Name="DurableName" Type="Edm.String">
@@ -391,26 +398,32 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EnumType Name="PowerState">
         <Annotation Term="Redfish.Deprecated" String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time."/>
@@ -431,22 +444,27 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EnumType Name="RackUnits">
         <Annotation Term="OData.Description" String="Defines a rack unit."/>
@@ -668,30 +686,37 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add PowerCycle enumeration to ResetType."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add PartLocation to Location."/>
 
       <EnumType Name="LocationType">
@@ -817,10 +842,12 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add an abstract base type for Identifier and Location, and to deprecate the versioned definition of IndicatorLED and PowerState to use an unversioned definition."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location and enumerations for DurableNameFormat for NVMe fabric extension."/>
 
       <ComplexType Name="Location" BaseType="Resource.v1_5_0.Location">

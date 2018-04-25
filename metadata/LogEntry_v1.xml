@@ -31,6 +31,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="LogEntry" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This resource defines the record format for a log.  It is designed to be used for SEL logs (from IPMI) as well as Event Logs and OEM-specific log formats.  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType."/>
@@ -56,6 +57,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="LogEntry" BaseType="LogEntry.LogEntry">
         <Property Name="Severity" Type="LogEntry.v1_0_0.EventSeverity">
@@ -584,26 +586,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_0.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_2.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_0_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_3.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add descriptions to various enum values."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_4.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_2.LogEntry">
         <Property Name="EventType" Type="Event.EventType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -624,21 +631,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_1_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_1_0.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_1_1.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_1_2.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_1_2.LogEntry">
         <Property Name="Actions" Type="LogEntry.v1_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -661,11 +672,13 @@
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change references to EventType to use the unversioned definition.  It was also created to add descriptions to various enum values."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_0.LogEntry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add OEM enumerations for legacy IPMI log implementations."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_1.LogEntry">
         <Property Name="OemLogEntryCode" Type="Edm.String">
