@@ -100,6 +100,9 @@
       <Term Name="RequestedCountRequired" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term specifies that a client is required to provide the @Redfish.RequestedCount term as part of the payload in order to specify a quantity of items."/>
       </Term>
+      <Term Name="AllowOverprovisioning" Type="Edm.Boolean" DefaultValue="true">
+        <Annotation Term="OData.Description" String="The term specifies that a client is allowing the service to provide more resources than what was requested, which includes, but is not limited to, more quantity of items, large capacity, and faster devices."/>
+      </Term>
 
       <EnumType Name="ReleaseStatusType">
         <Member Name="Standard">
