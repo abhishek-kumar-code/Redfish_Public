@@ -3,7 +3,7 @@ DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
 DocVersion: '2018.1'
-modified: '2018-5-1'
+modified: '2018-05-01'
 status: published
 released: True
 copyright: '2017-2018'
@@ -24,7 +24,7 @@ The Redfish Documentation Generator uses this file to create the Redfish Resourc
 
 Individual property documentation can be added by using a third-level header in this section.  The header must match the property name within a schema.  This includes properties in embedded objects within a resource.
 
-### Replacement Description
+### Replacement description
 
 A "Description" third-level section can be used to supplement the "Description" text from the schema file.  The text here is appended to the schema description.
 
@@ -42,7 +42,7 @@ follow the full URI, including data from remote files if possible.
 
 # Keyword Configuration
 
-Keywords and their values as bullet points with name:value paris in the "Keyword Configuration" section, as shown here. Keywords are not case-sensitive.
+Keywords and their values as bullet points with name:value pairs in the "Keyword Configuration" section, as shown here. Keywords are not case-sensitive.
 
 - omit_version_in_headers: false
 - add_toc: true
@@ -155,8 +155,8 @@ The property-level details include:
 
 | Column | Purpose |
 |--------|---------|
-| Property Name | The name of the JSON property as it will appear (case-sensitive) in the JSON payload. |
-| Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used. |
+| Property Name | The name of the JSON property as it will appear (case sensitive) in the JSON payload. |
+| Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types that use defined enumerations will state "(enum)".  Number types will state their units where used. |
 | Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
 | Description | The description of the property, as copied directly from the schema 'Description' definition. |
 
@@ -238,7 +238,7 @@ This guide was produced using the contents of the schema files from DMTF Redfish
 
 # Excluded Properties
 
-The Excluded Properties section removes properties from the root level of any schema section.  Instances of the property within embedded objects are retained.  If the excluded properties require documentation, include it in the Introduction section of this document.
+The Excluded properties clause removes properties from the root level of any schema section.  Instances of the property within embedded objects are retained.  If the excluded properties require documentation, include it in the Introduction clause of this document.
 
 ## @odata.context
 ## @odata.type
@@ -252,14 +252,14 @@ The Excluded Properties section removes properties from the root level of any sc
 
 # Excluded Annotations
 
-These annotations are removed from the schema details in all cases.  If the excluded annotations require documentation, include it in the Introduction section of this document.
+These annotations are removed from the schema details in all cases.  If the excluded annotations require documentation, include them in the Introduction clause of this document.
 
 ## *@odata.count
 ## *@odata.navigationLink
 
 # Excluded Schemas
 
-Some schemas are excluded from the documentation for clarity.  Since all Redfish collections are based on the same structure, this is documented in the Introduction section to reduce repetition in the document.
+Some schemas are excluded from the documentation for clarity.  Since all Redfish collections are based on the same structure, this is documented in the Introduction clause to reduce repetition in the document.
 
 ## *Collection
 ## HostedStorageServices
@@ -499,5 +499,5 @@ This document was created using the Redfish Documentation Generator utility, whi
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
-| 2018.1  | 2018-5-1 | Initial release. Built from Redfish schemas released in DSP8010 version 2018.1 |
-| 2017.0a | 2017-5-19| Work in progress release to gather feedback on content and format. |
+| 2018.1  | 2018-05-01 | Initial release. Built from Redfish schemas released in DSP8010 version 2018.1 |
+| 2017.0a | 2017-05-19| Work in progress release to gather feedback on content and format. |
