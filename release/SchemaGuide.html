@@ -262,11 +262,11 @@ pre.code{
 <tbody>
 <tr>
 <td>Property Name</td>
-<td>The name of the JSON property as it will appear (case-sensitive) in the JSON payload.</td>
+<td>The name of the JSON property as it will appear (case sensitive) in the JSON payload.</td>
 </tr>
 <tr>
 <td>Type</td>
-<td>The JSON data type(s) for the property.  This can include boolean, number, string or object. String types which use defined enumerations will state "(enum)".  Number types will state their units where used.</td>
+<td>The JSON data type(s) for the property.  This can include boolean, number, string or object. String types that use defined enumerations will state "(enum)".  Number types will state their units where used.</td>
 </tr>
 <tr>
 <td>Attributes</td>
@@ -296,9 +296,9 @@ pre.code{
 
 <table class="properties">
 <tbody>
-<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>This object contains definitions for the Redfish Actions available for this resource.</td></tr>
-<tr><td><nobr><b>Links</b> { }</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
+<tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>This object contains definitions for the Redfish Actions available for this resource.</td></tr>
+<tr><td><nobr><b>Links</b> { }</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>RelatedItems</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 </tbody></table>
@@ -586,7 +586,7 @@ pre.code{
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -1105,7 +1105,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/Bios.json|action_details|#Bios.ChangePassword">ChangePassword</h4>
 <p>This action is used to change the BIOS passwords.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -1286,7 +1286,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/Chassis.json|action_details|#Chassis.Reset">Reset</h4>
 <p>This action is used to reset the chassis. This action resets the chassis, not Systems or other contained resources, although side effects may occur which affect those resources.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -1617,7 +1617,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|action_details|#ComputerSystem.Reset">Reset</h4>
 <p>This action is used to reset the system.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -2723,7 +2723,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/EventService.json|action_details|#EventService.SubmitTestEvent">SubmitTestEvent</h4>
 <p>This action is used to generate a test event.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -3431,7 +3431,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/Manager.json|action_details|#Manager.ForceFailover">ForceFailover</h4>
 <p>The ForceFailover action forces a failover of this manager to the manager used in the parameter.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -3440,7 +3440,7 @@ pre.code{
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Manager.json|action_details|#Manager.ModifyRedundancySet">ModifyRedundancySet</h4>
 <p>The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -3453,7 +3453,7 @@ pre.code{
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Manager.json|action_details|#Manager.Reset">Reset</h4>
 <p>The reset action resets/reboots the manager.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -3859,7 +3859,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.DisablePassphrase">DisablePassphrase</h4>
 <p>Disable passphrase for given regions.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -3868,7 +3868,7 @@ pre.code{
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.SecureEraseUnit">SecureEraseUnit</h4>
 <p>This defines the action for securely erasing given regions.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -3877,7 +3877,7 @@ pre.code{
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.SetPassphrase">SetPassphrase</h4>
 <p>Set passphrase for the given regions.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -3886,7 +3886,7 @@ pre.code{
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.UnlockUnit">UnlockUnit</h4>
 <p>This defines the action for unlocking given regions.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -4656,7 +4656,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/Port.json|action_details|#Port.Reset">Reset</h4>
 <p>This action is used to reset this port.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -5564,7 +5564,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/SecureBoot.json|action_details|#SecureBoot.ResetKeys">ResetKeys</h4>
 <p>This action is used to reset the Secure Boot keys.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -6087,7 +6087,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/Storage.json|action_details|#Storage.SetEncryptionKey">SetEncryptionKey</h4>
 <p>This action is used to set the encryption key for the storage subsystem.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -6274,7 +6274,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/Switch.json|action_details|#Switch.Reset">Reset</h4>
 <p>This action is used to reset this switch.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -6907,7 +6907,7 @@ pre.code{
 <div class="property-details-content">
 <h4 id="redfish.dmtf.org/schemas/v1/UpdateService.json|action_details|#UpdateService.SimpleUpdate">SimpleUpdate</h4>
 <p>This action is used to update software components.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -7012,7 +7012,7 @@ pre.code{
 <p>(This action takes no parameters.)</p>
 <h4 id="redfish.dmtf.org/schemas/v1/VirtualMedia.json|action_details|#VirtualMedia.InsertMedia">InsertMedia</h4>
 <p>This action is used to attach remote media to virtual media.</p>
-<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "Target" property of the Action.</p>
+<p>The following table shows the parameters for the action which are included in the POST body to the URI shown in the "target" property of the Action.</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
@@ -7239,12 +7239,12 @@ pre.code{
 <tbody>
 <tr>
 <td>2018.1</td>
-<td>2018-5-1</td>
+<td>2018-05-01</td>
 <td>Initial release. Built from Redfish schemas released in DSP8010 version 2018.1</td>
 </tr>
 <tr>
 <td>2017.0a</td>
-<td>2017-5-19</td>
+<td>2017-05-19</td>
 <td>Work in progress release to gather feedback on content and format.</td>
 </tr>
 </tbody>
