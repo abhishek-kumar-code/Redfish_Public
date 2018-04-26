@@ -24,7 +24,7 @@ The Redfish Documentation Generator uses this file to create the Redfish Resourc
 
 Individual property documentation can be added by using a third-level header in this section.  The header must match the property name within a schema.  This includes properties in embedded objects within a resource.
 
-### Replacement Description
+### Replacement description
 
 A "Description" third-level section can be used to supplement the "Description" text from the schema file.  The text here is appended to the schema description.
 
@@ -236,7 +236,7 @@ As shown in the example below, a Redfish Service may provide management function
 This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.1 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
 
 
-# Excluded properties
+# Excluded Properties
 
 The Excluded properties clause removes properties from the root level of any schema section.  Instances of the property within embedded objects are retained.  If the excluded properties require documentation, include it in the Introduction clause of this document.
 
@@ -250,14 +250,14 @@ The Excluded properties clause removes properties from the root level of any sch
 ## Oem
 
 
-# Excluded annotations
+# Excluded Annotations
 
 These annotations are removed from the schema details in all cases.  If the excluded annotations require documentation, include them in the Introduction clause of this document.
 
 ## *@odata.count
 ## *@odata.navigationLink
 
-# Excluded schemas
+# Excluded Schemas
 
 Some schemas are excluded from the documentation for clarity.  Since all Redfish collections are based on the same structure, this is documented in the Introduction clause to reduce repetition in the document.
 
@@ -269,7 +269,7 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 
 
 
-# Schema supplement
+# Schema Supplement
 
 ## AccountService
 
