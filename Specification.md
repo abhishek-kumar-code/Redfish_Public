@@ -956,7 +956,7 @@ HTTP defines headers that can be used in response messages.  The following table
 
 ##### Link Header
 
-The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  Link Headers contain information about the resource, such as hyperlinks from the resource, and JSON Schemas that describe the resource.
+The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can describe things such as hyperlinks from the resource and JSON Schemas that describe the resource.
 
 Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.
 - The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
