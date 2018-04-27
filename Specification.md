@@ -956,7 +956,7 @@ HTTP defines headers that can be used in response messages.  The following table
 
 ##### Link Header
 
-The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation. In addition to hyperlinks from the resource, the URL of the JSON Schema for the resource shall be returned with a `rel=describedby`.  URLs of the JSON Schema for an annotation should be returned without a `rel=describedby`. If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the @odata.id property returned in this resource.
+The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  Links Headers contain information about the resource, such as hyperlinks from the resource, and JSON Schemas that describe the resource.
 
 Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.  
 - The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification. 
@@ -970,7 +970,10 @@ Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ~~~
 
-Link Header(s) shall be returned on HEAD and a Link Header satisfying `rel=describedby` shall be returned on GET and HEAD and a Link Header satisfying Annotations should be returned on GET and HEAD.
+A Link Header containing `rel=describedby` shall be returned on GET and HEAD requests.  If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the "@odata.type" property returned in this resource.
+
+A Link Header satisfying Annotations should be returned on GET and HEAD.
+
 
 #### Status codes
 
