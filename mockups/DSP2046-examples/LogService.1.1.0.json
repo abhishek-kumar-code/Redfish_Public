@@ -1,5 +1,4 @@
 {
-
     "@odata.type": "#LogService.v1_1_0.LogService",
     "Id": "Log1",
     "Name": "System Log Service",

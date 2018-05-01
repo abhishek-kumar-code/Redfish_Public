@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#TaskService.v1_1_0.TaskService",
+    "@odata.type": "#TaskService.v1_1_1.TaskService",
     "Id": "TaskService",
     "Name": "Tasks Service",
     "DateTime": "2015-03-13T04:14:33+06:00",
