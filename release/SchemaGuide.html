@@ -161,6 +161,7 @@ pre.code{
 <li><a href="#common-properties">Common properties</a></li>
 <li><a href="#status-object">Status object</a></li>
 <li><a href="#location-object">Location object</a></li>
+<li><a href="#identifier-object">Identifier object</a></li>
 <li><a href="#ip-address-objects">IP address objects</a></li>
 <li><a href="#resource-collections">Resource collections</a></li>
 </ul>
@@ -262,7 +263,7 @@ pre.code{
 <tbody>
 <tr>
 <td>Property Name</td>
-<td>The name of the JSON property as it will appear (case sensitive) in the JSON payload.</td>
+<td>The name of the JSON property as it will appear (case sensitive) in the JSON payload.  For properties added to the schema after the initial release (v1.0.0), the version that the property was added will be shown in parenthesis.  Properties that have been deprecated will also be indicated (along with the version where the deprecation occurred).</td>
 </tr>
 <tr>
 <td>Type</td>
@@ -473,6 +474,35 @@ pre.code{
 <tr><td>Rear</td><td>Defines the part as being in the rear of the unit.</td></tr>
 <tr><td>Right</td><td>Defines the part as being in the right of the unit.</td></tr>
 <tr><td>Top</td><td>Defines the part as being in the top of the unit.</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<h2 id="identifier-object">Identifier object</h2>
+<p>Properties used to identify a particular instance of a device.</p>
+
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>DurableName</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the world wide, persistent name of the resource.</td></tr>
+<tr><td><nobr><b>DurableNameFormat</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the DurableName property.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json|details|DurableNameFormat">DurableNameFormat</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json|details|DurableNameFormat">DurableNameFormat:</h4>
+<p>This represents the format of the DurableName property.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>EUI</td><td>IEEE-defined 64-bit Extended Unique Identifier.</td></tr>
+<tr><td>FC_WWN</td><td>Fibre Channel World Wide Name.</td></tr>
+<tr><td>NAA</td><td>Name Address Authority Format.</td></tr>
+<tr><td>NQN</td><td>NVMe Qualified Name.</td></tr>
+<tr><td>NSID</td><td>NVM Namespace Identifier.</td></tr>
+<tr><td>UUID</td><td>Universally Unique Identifier.</td></tr>
+<tr><td>iQN</td><td>iSCSI Qualified Name.</td></tr>
 </tbody></table>
 
 </div>
@@ -1980,7 +2010,7 @@ pre.code{
 <tr><td><nobr><b>EncryptionStatus</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The status of the encrytion of this drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|EncryptionStatus">EncryptionStatus</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>FailurePredicted</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Is this drive currently predicting a failure in the near future.</td></tr>
 <tr><td><nobr><b>HotspareType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of hotspare this drive is currently serving as.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|HotspareType">HotspareType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Identifiers</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr></td><td>The Durable names for the drive. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Identifier" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Identifier</a> schema for details.</td></tr>
+<tr><td><nobr><b>Identifiers</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr></td><td>The Durable names for the drive. See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. </td></tr>
 <tr><td><nobr><b>IndicatorLED</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The state of the indicator LED, used to identify the drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|IndicatorLED">IndicatorLED</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Links</b> <i>(v1.0.4+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Chassis</b> <i>(v1.2.1+)</i> {</nobr></td><td>object</td><td><nobr>read-only</nobr></td><td>A reference to the Chassis which contains this Drive. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
@@ -2217,7 +2247,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Port</b></nobr></td><td>number</td><td><nobr>read-only</nobr></td><td>The UDP or TCP port number used by the Endpoint.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TransportProtocol</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The protocol used by the connection entity.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Endpoint.json|details|TransportProtocol">TransportProtocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><nobr><b>Identifiers</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr> (null)</td><td>Identifiers for this endpoint. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Identifier" target="_blank">http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Identifier</a> schema for details.</td></tr>
+<tr><td><nobr><b>Identifiers</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr> (null)</td><td>Identifiers for this endpoint. See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. </td></tr>
 <tr><td><nobr><b>Links</b> <i>(v1.0.3+)</i> {</nobr></td><td>object</td><td><nobr>read-write</nobr></td><td>The links object contains the links to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MutuallyExclusiveEndpoints</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the endpoints that may not be used in zones if this endpoint is used in a zone.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to another Endpoint resource.</td></tr>

@@ -56,6 +56,10 @@ Note: markdown is allowed in description overrides, but HTML markup is not; it w
 * Status: See the [Status object](#status-object) definition in the [Using this guide](#using-this-guide) section.
 * Oem: See the OEM object definition in the [Using this guide](#using-this-guide) section.
 * Location: See the [Location object](#location-object) definition in the [Common Properties](#common-properties) section.
+* Identifier: See the [Identifier object](#identifier-object) definition in the [Common Properties](#common-properties) section.
+* Identifiers: See the [Identifier object](#identifier-object) definition in the [Common Properties](#common-properties) section.
+* IPv4Addresses: See the [IP Address objects](#ip-address-objects) definition in the [Common Properties](#common-properties) section.
+* IPv6Addresses: See the [IP Address objects](#ip-address-objects) definition in the [Common Properties](#common-properties) section.
 
 # Units Translation
 
@@ -155,7 +159,7 @@ The property-level details include:
 
 | Column | Purpose |
 |--------|---------|
-| Property Name | The name of the JSON property as it will appear (case sensitive) in the JSON payload. |
+| Property Name | The name of the JSON property as it will appear (case sensitive) in the JSON payload.  For properties added to the schema after the initial release (v1.0.0), the version that the property was added will be shown in parenthesis.  Properties that have been deprecated will also be indicated (along with the version where the deprecation occurred). |
 | Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types that use defined enumerations will state "(enum)".  Number types will state their units where used. |
 | Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
 | Description | The description of the property, as copied directly from the schema 'Description' definition. |
@@ -184,6 +188,12 @@ The 'Status' object and its properties is common to many Redfish schema.
 The 'Location' object and its properties is common to many Redfish schema.
 
 #include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Location
+
+## Identifier object
+
+Properties used to identify a particular instance of a device.
+
+#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Identifier
 
 ## IP address objects
 
