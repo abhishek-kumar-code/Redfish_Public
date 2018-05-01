@@ -8,12 +8,12 @@
                 "RedfishService",
                 "ActiveDirectoryService",
                 "LDAPService",
-                "Oem"
+                "OEM"
             ],
             "enumDescriptions": {
                 "ActiveDirectoryService": "An external Active Directory Service.",
                 "LDAPService": "A generic external LDAP Service.",
-                "Oem": "An OEM specific external authentication or directory service.",
+                "OEM": "An OEM specific external authentication or directory service.",
                 "RedfishService": "An external Redfish Service."
             },
             "enumLongDescriptions": {
@@ -122,11 +122,11 @@
                 "Token",
                 "KerberosKeytab",
                 "UsernameAndPassword",
-                "Oem"
+                "OEM"
             ],
             "enumDescriptions": {
                 "KerberosKeytab": "A kerberos keytab.",
-                "Oem": "An OEM specific authentication mechanism.",
+                "OEM": "An OEM specific authentication mechanism.",
                 "Token": "An opaque authentication token.",
                 "UsernameAndPassword": "Username and password combination."
             },
