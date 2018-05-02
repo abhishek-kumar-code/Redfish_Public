@@ -63,7 +63,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Links",
                     "description": "The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource."
                 },
-                "RelatedItems": {
+                "RelatedItem": {
                     "items": {
                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/idRef"
                     },
