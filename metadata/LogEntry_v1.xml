@@ -73,7 +73,7 @@
         <Property Name="EntryType" Type="LogEntry.v1_0_0.LogEntryType" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="his is the type of log entry."/>
+          <Annotation Term="OData.Description" String="This is the type of log entry."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the type of LogEntry.  If the resource represents an IPMI SEL log entry, the value shall be SEL.  If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
