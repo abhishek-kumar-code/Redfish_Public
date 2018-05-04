@@ -57,7 +57,7 @@
                     "MaxPortLogins": 2
                 },
                 "NPAR": {
-                    "NparCapable":, true,
+                    "NparCapable": true,
                     "NparEnable": false
                 }
             },
