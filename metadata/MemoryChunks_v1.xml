@@ -85,7 +85,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Offset within the DIMM that corresponds to the start of this memory region, measured in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the offset within the DIMM that corresponds to the start of this memory region, with units in MiB."/>
-			 <Annotation Term="Measures.Unit" String="MiBy"/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="SizeMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
