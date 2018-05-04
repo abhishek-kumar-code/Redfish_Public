@@ -143,6 +143,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed of the link in Mbps when this link network technology is active."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of the link in megabits per second (Mbps) for this port when this link network technology is active."/>
+          <Annotation Term="Measures.Unit" String="Mbit/s"/>			 
         </Property>
       </ComplexType>
 

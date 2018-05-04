@@ -504,6 +504,7 @@
           <Annotation Term="OData.Description" String="The total configured operating system-accessible memory (RAM), measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of configured system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="GiBy"/>			 
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
       </ComplexType>
@@ -851,6 +852,7 @@
           <Annotation Term="OData.Description" String="The total configured, system-accessible persistent memory, measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the total amount of configured persistent memory available to the system as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="GiBy"/>			 
         </Property>
       </ComplexType>
 

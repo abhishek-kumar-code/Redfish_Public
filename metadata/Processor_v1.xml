@@ -106,6 +106,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum clock speed of the processor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the maximum rated clock speed of the processor in MHz."/>
+          <Annotation Term="Measures.Unit" String="MHz"/>			 
         </Property>
         <Property Name="TotalCores" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

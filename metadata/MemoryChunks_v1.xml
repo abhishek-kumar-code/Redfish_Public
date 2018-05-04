@@ -43,6 +43,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Size of the memory chunk measured in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the size of the memory chunk in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>			 
         </Property>
         <Property Name="AddressRangeType" Type="MemoryChunks.v1_0_0.AddressRangeType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -84,11 +85,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Offset within the DIMM that corresponds to the start of this memory region, measured in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the offset within the DIMM that corresponds to the start of this memory region, with units in MiB."/>
+			 <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="SizeMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Size of this memory region measured in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the size of this memory region, with units in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>			 
         </Property>
         <Property Name="MemoryLevel" Type="Edm.Int64" DefaultValue="1">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

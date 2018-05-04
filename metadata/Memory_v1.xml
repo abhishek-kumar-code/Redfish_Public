@@ -183,6 +183,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Speed bins supported by this Memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed supported by this Memory."/>
+          <Annotation Term="Measures.Unit" String="MHz"/>			 
         </Property>
         <Property Name="FirmwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -228,6 +229,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum TDPs in milli Watts."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum power budgets supported by the Memory in milli Watts."/>
+          <Annotation Term="Measures.Unit" String="mW"/>				 
         </Property>
         <Property Name="SecurityCapabilities" Type="Memory.v1_0_0.SecurityCapabilities" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains security capabilities of the Memory."/>
@@ -261,16 +263,19 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Operating speed of Memory in MHz or MT/s as appropriate."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the operating speed of Memory in MHz or MT/s (mega-transfers per second) as reported by the memory device. Memory devices which operate at their bus speed shall report the operating speed in MHz (bus speed), while memory device which transfer data faster than their bus speed (e.g. DDR memory) shall report the operating speed in MT/s (mega-transfers/second). In any case, the reported value shall match the conventionally reported values for the technology utilized by the memory device."/>
+          <Annotation Term="Measures.Unit" String="MHz"/>			 
         </Property>
         <Property Name="VolatileRegionSizeLimitMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Total size of volatile regions in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of volatile regions in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>			 
         </Property>
         <Property Name="PersistentRegionSizeLimitMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Total size of persistent regions in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of persistent regions in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>			 
         </Property>
         <Property Name="Regions" Type="Collection(Memory.v1_0_0.RegionSet)" Nullable="false">
           <Annotation Term="OData.Description" String="Memory regions information within the Memory."/>
@@ -673,21 +678,25 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum size of a single volatile region in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum size of a single volatile regions in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>				 
         </Property>
         <Property Name="PersistentRegionSizeMaxMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum size of a single persistent region in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum size of a single persistent regions in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>				 
         </Property>
         <Property Name="AllocationIncrementMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size of the smallest unit of allocation for a memory region in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the allocation increment for regions, measured in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>			 
         </Property>
         <Property Name="AllocationAlignmentMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The boundary which memory regions are allocated on, measured in mebibytes (MiB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be thealignment boundary on which memory regions are allocated, measured in MiB."/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>				 
         </Property>
         <Property Name="Links" Type="Memory.v1_2_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
@@ -774,7 +783,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Total size of the logical memory in MiB."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the logical memory in MiB."/>
-          <Annotation Term="Measures.Unit" String="MiBy"/>
+          <Annotation Term="Measures.Unit" String="MiBy"/>			 
         </Property>
         <Property Name="Location" Type="Resource.Location" Nullable="false"/>
         <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
