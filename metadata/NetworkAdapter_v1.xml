@@ -314,7 +314,7 @@
           <Annotation Term="OData.Description" String="Indicates whether or not NIC function partitioning is supported by a controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the ability of a controller to support NIC function partitioning."/>
         </Property>
-        <Property Name="NparEnable" Type="Edm.Boolean">
+        <Property Name="NparEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="When true, NIC function partitioning is active on this controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether or not NIC function partitioning is active on this controller."/>
