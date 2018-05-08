@@ -58,7 +58,7 @@
                 },
                 "NPAR": {
                     "NparCapable": true,
-                    "NparEnable": false
+                    "NparEnabled": false
                 }
             },
             "Location": {
