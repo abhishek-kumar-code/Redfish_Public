@@ -554,7 +554,7 @@ Clients can add query parameters to request additional features from the service
 
 * Services should support the $top and $skip query parameters.
 * Service may support the $expand, $filter and $select query parameters. 
-* When the service supports query parameters, the service shall include the ProtocolFeatureSupport object in the service root.
+* When the service supports query parameters, the service shall include the ProtocolFeaturesSupported object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
