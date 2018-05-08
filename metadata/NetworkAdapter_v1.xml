@@ -297,17 +297,16 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapter.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_1_0.NetworkAdapter">
-	  
+      <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_1_0.NetworkAdapter"/>
+
       <ComplexType Name="ControllerCapabilities" BaseType="NetworkAdapter.v1_0_0.ControllerCapabilites">
         <Property Name="NPAR" Type="NetworkAdapter.v1_2_0.NicPartitioning">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="NIC Partitioning (NPAR) capabilities for this controller."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain capability, status, and configuration values related to NIC partitioning for this controller."/>
         </Property>
-	  </ComplexType>
-	  
-    <ComplexType Name="NicPartitioning">
+      </ComplexType>
+
+      <ComplexType Name="NicPartitioning">
         <Annotation Term="OData.Description" String="NIC Partitioning capability, status, and configuration for a controller."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the capability, status, and configuration values for a controller."/>
         <Property Name="NparCapable" Type="Edm.Boolean">
@@ -320,8 +319,8 @@
           <Annotation Term="OData.Description" String="When true, NIC function partitioning is active on this controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether or not NIC function partitioning is active on this controller."/>
         </Property>
-	  </ComplexType>
+      </ComplexType>
     </Schema>
-      
+
   </edmx:DataServices>
 </edmx:Edmx>
