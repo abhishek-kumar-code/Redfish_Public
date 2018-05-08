@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  LogEntry  v1.3.0-->
+<!--# Redfish Schema:  LogEntry  v1.3.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -73,7 +73,7 @@
         <Property Name="EntryType" Type="LogEntry.v1_0_0.LogEntryType" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="his is the type of log entry."/>
+          <Annotation Term="OData.Description" String="This is the type of log entry."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the type of LogEntry.  If the resource represents an IPMI SEL log entry, the value shall be SEL.  If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
@@ -609,6 +609,12 @@
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_4.LogEntry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct the Description for EntryType."/>
+      <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_5.LogEntry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_2.LogEntry">
@@ -648,6 +654,12 @@
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_1_2.LogEntry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct the Description for EntryType."/>
+      <EntityType Name="LogEntry" BaseType="LogEntry.v1_1_3.LogEntry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_1_2.LogEntry">
@@ -677,6 +689,12 @@
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_0.LogEntry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct the Description for EntryType."/>
+      <EntityType Name="LogEntry" BaseType="LogEntry.v1_2_1.LogEntry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add OEM enumerations for legacy IPMI log implementations."/>
@@ -692,6 +710,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OEM specific sensor type of the Entry.  This property shall only be used if the value of EntryType is SEL and the value of SensorType is OEM."/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_3_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct the Description for EntryType."/>
+      <EntityType Name="LogEntry" BaseType="LogEntry.v1_3_0.LogEntry"/>
     </Schema>
 
   </edmx:DataServices>
