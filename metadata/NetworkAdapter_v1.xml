@@ -299,7 +299,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_1_0.NetworkAdapter"/>
 
-      <ComplexType Name="ControllerCapabilities" BaseType="NetworkAdapter.v1_0_0.ControllerCapabilites">
+      <ComplexType Name="ControllerCapabilities" BaseType="NetworkAdapter.v1_0_0.ControllerCapabilities">
         <Property Name="NPAR" Type="NetworkAdapter.v1_2_0.NicPartitioning">
           <Annotation Term="OData.Description" String="NIC Partitioning (NPAR) capabilities for this controller."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain capability, status, and configuration values related to NIC partitioning for this controller."/>
