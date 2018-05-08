@@ -1,5 +1,5 @@
 {
-  "name": "spmf",
+  "name": "Redfish",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cehoffman/spmf.git"
+    "url": "https://github.com/DMTF/Redfish.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cehoffman/spmf/issues"
+    "url": "https://github.com/DMTF/Redfish/issues"
   },
-  "homepage": "https://github.com/cehoffman/spmf",
+  "homepage": "https://github.com/DMTF/Redfish",
   "dependencies": {
     "cheerio": "^0.20.0",
     "fuzzy": "^0.1.1",
