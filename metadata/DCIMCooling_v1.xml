@@ -17,6 +17,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
   </edmx:Reference>
@@ -60,6 +63,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMCooling">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="DCIMCooling" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the DCIM Cooling Zone."/>
@@ -83,6 +87,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMCooling.v0_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="DCIMCooling" BaseType="DCIMCooling.DCIMCooling">
 

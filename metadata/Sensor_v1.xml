@@ -18,6 +18,7 @@
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
@@ -31,6 +32,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Sensor" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the Sensor.  It represents the properties for Sensor."/>
@@ -56,6 +58,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v0_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Sensor" BaseType="Sensor.Sensor">
 

@@ -21,6 +21,7 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
@@ -43,6 +44,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chiller">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Chiller" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for a Chiller."/>
@@ -66,6 +68,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chiller.v0_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Chiller" BaseType="Chiller.Chiller">
 

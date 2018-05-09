@@ -40,6 +40,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Facility">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Facility" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Facility schema represents the physical location containing equipment, such as a room, building, or campus."/>
@@ -64,6 +65,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Facility.v0_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Facility" BaseType="Facility.Facility">
         <Property Name="FacilityType" Nullable="false" Type="Facility.v0_2_0.FacilityType">

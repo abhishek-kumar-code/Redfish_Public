@@ -763,6 +763,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_6_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Power" BaseType="Power.v1_5_0.Power">
         <NavigationProperty Name="PowerSources" Type="Collection(Power.v1_6_0.PowerSource)">
           <Annotation Term="OData.Description" String="Details of the power sources associated with this system or device."/>
