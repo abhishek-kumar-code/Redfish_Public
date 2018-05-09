@@ -24,6 +24,14 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 # Redfish Schema Release History
 
+## Release 2018.2 (TBD)
+
+| Schema Name   | Version | Description |
+| ---           | ---     | ---         |
+| UpdateService | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
+| LogEntry      | 1.x.x   | Errata release.  Fixed typo in EntryType description. |
+| Resource      | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
+
 ## Release 2018.1 (April 2018)
 
 | Schema Name | Version | Description     |
@@ -159,9 +167,9 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ServiceRoot | 1.2.0 | Added link to CompositionService. |
 | Storage | 1.2.0 | Added "FCP" and "FICON" as enumeration values for "Protocol". |
 | UpdateService | 1.2.0 | Added "HttpPushUriTargets" and "HttpPushUriTargetsBusy" properties and "Targets" optional parameter (for "SimpleUpdate") to allow selection of a particular target device or devices. |
-|Endpoint | 1.0.2 | Errata release.  Corrected validation pattern on PCI ID-related properties.  Removed unnecessary schema reference inclusions from CSDL schema. |
+| Endpoint | 1.0.2 | Errata release.  Corrected validation pattern on PCI ID-related properties.  Removed unnecessary schema reference inclusions from CSDL schema. |
 | EventDestination | 1.1.3, 1.0.4 | Marked "Context" property as Required instead of RequiredOnCreate.  Service is required to provide the "Context" (may be NULL), but clients are not required to specify a context when creating a new Event Destination. |
-|PCIeFunction | 1.0.2 | Errata release.  Corrected validation pattern on PCI ID-related properties. | 
+| PCIeFunction | 1.0.2 | Errata release.  Corrected validation pattern on PCI ID-related properties. | 
 | (many) | various | Minor release.  Added Actions and OemActions objects to allow for OEM extensions. |
 | (many) | various | Errata release.  Corrected integer type properties in CSDL schemas to Int64 (from Int16 or Int32) for consistency.  Added missing descriptions in Complex Type definitions.  Added Actions and OemActions objects to allow for OEM extensions. Corrected Links and "Members" properties (Collection schemas) in all schemas to be non-nullable. |
 
