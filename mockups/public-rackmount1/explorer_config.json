@@ -57,6 +57,10 @@
                     "target" : "Subscriptions"
                 }
             ]
+        },
+        {
+            "target" : "UpdateService",
+            "text" : "Update Service"
         }
     ]
 }
