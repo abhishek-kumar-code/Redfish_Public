@@ -57,15 +57,15 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v1_0_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v0_8_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-		
+
       <EntityType Name="Sensor" BaseType="Sensor.Sensor">
 
         <Annotation Term="OData.Description" String="This schema defines a Sensor to be used in conjunction with data center equipment."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the sensor data."/>
 
-        <Property Name="ReadingType" Type="Sensor.v1_0_0.ReadingType">
+        <Property Name="ReadingType" Type="Sensor.v0_8_0.ReadingType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The kind of sensor being represented."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of the sensor being represented."/>
@@ -129,8 +129,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The power factor for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall identify the quotient of PowerRealWatts and PowerApparentVA for a circuit. PowerFactor is expressed in unit-less 1/100ths. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Validation.Minimum" Decimal="0"/>
-          <Annotation Term="Validation.Maximum" Decimal="1"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="1"/>
 			 <Annotation Term="Redfish.Essential" String="Sensor.ReadingType/Power"/>
         </Property>
         <Property Name="EnergykWh" Type="Edm.Decimal">
@@ -188,10 +188,9 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time interval between reading the physical sensor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the time interval between reading the physical sensor."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
 
-        <Property Name="Actions" Type="Sensor.v0_2_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Sensor.v0_8_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -244,7 +243,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Sensor.v0_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Sensor.v0_8_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
