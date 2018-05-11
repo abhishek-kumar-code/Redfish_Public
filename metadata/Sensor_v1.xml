@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Sensor  v0.2.0-->
+<!--# Redfish Schema:  Sensor  v0.8.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -57,37 +57,99 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v0_2_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-
+		
       <EntityType Name="Sensor" BaseType="Sensor.Sensor">
 
         <Annotation Term="OData.Description" String="This schema defines a Sensor to be used in conjunction with data center equipment."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the sensor data."/>
 
-        <Property Name="SensorType" Type="Sensor.v0_2_0.SensorType">
+        <Property Name="ReadingType" Type="Sensor.v1_0_0.ReadingType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The kind of sensor being represented."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of the sensor being represented."/>
         </Property>
-
-        <Property Name="SensorLocation" Type="Resource.Location">
-          <Annotation Term="OData.Description" String="The location information for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
+		  <Property Name="DataSourceUri" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A link to the resource that provides the data for this object."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI to the resource that provides the source of the Essential subset of properties contained within this Essential Copy."/>
+			 <Annotation Term="IsURL"/>
+			 <Annotation Term="Redfish.EssentialCopyOnly"/>
         </Property>
-
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-
+		  
+		  <!-- Essential properties for a sensor -->
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+			 <Annotation Term="Redfish.Essential"/>
+		  </Property>
         <Property Name="Reading" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The present value for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the present value of this Sensor at the time the information request occurred."/>
+			 <Annotation Term="Redfish.Essential"/>
         </Property>
-
+        <Property Name="ReadingUnits" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Units in which the reading and thresholds are measured."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the units in which the sensor's reading and thresholds are measured."/>
+			 <Annotation Term="Redfish.Essential"/>
+        </Property>
         <Property Name="SetPoint" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The equipment Setpoint for the environmental characteristic instrumented by this sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Setpoint for the equipment based on this sensor reading."/>
+        </Property>		  
+        <Property Name="DiscreteReading" Type="Sensor.DiscreteReadings">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The present value for this discrete Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the present discrete value of this Sensor at the time the information request occurred."/>
+			 <Annotation Term="Redfish.Essential"/>
+        </Property>  
+        <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describes the area or device to which this sensor measurement applies.."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies."/>
+			 <Annotation Term="Redfish.Essential"/>
+        </Property>
+		  
+		  <!-- essential properties specific to power reading type -->
+        <Property Name="ApparentVA" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The product of Voltage and Current for an AC circuit, in Volt-Amperes units."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the product of VoltageRMS multiplied by CurrentRMS for a circuit. PowerApparentVA is expressed in Volt-Amperes units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
+			 <Annotation Term="Redfish.Essential" String="Sensor.ReadingType/Power"/>
+        </Property>
+        <Property Name="ReactiveVAR" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The square root of the difference term of squared ApparentVA and squared Power (Reading) for a circuit, expressed in VAR units."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the arithmetic mean of product terms of instantaneous voltage and quadrature current measurements calculated over an integer number of line cycles for a circuit. PowerReactiveVAR is expressed in VAR units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
+			 <Annotation Term="Redfish.Essential" String="Sensor.ReadingType/Power"/>
+        </Property>
+        <Property Name="PowerFactor" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The power factor for this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall identify the quotient of PowerRealWatts and PowerApparentVA for a circuit. PowerFactor is expressed in unit-less 1/100ths. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
+          <Annotation Term="Validation.Minimum" Decimal="0"/>
+          <Annotation Term="Validation.Maximum" Decimal="1"/>
+			 <Annotation Term="Redfish.Essential" String="Sensor.ReadingType/Power"/>
+        </Property>
+        <Property Name="EnergykWh" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
+			 <Annotation Term="Redfish.Essential" String="Sensor.ReadingType/Power"/>
+        </Property>	
+        <Property Name="LoadPercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The power load utilization for this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the present value of this Sensor at the time the information request occurred. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
+			 <Annotation Term="Redfish.Essential" String="Sensor.ReadingType/Power"/>
+        </Property>
+		  <!-- end of essential properties -->
+
+        <Property Name="Location" Type="Resource.Location">
+          <Annotation Term="OData.Description" String="The location information for this Sensor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
         </Property>
 
         <Property Name="DeadBand" Type="Edm.Decimal">
@@ -96,65 +158,37 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the band of values around the SetPoint where the control system does not respond to the SetPoint."/>
         </Property>
 
-        <Property Name="UpperThresholdWarning" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Upper Threshold Warning for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the Upper Threshold Warning information of this Sensor."/>
+        <Property Name="Thresholds" Type="Sensor.Thresholds">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The set of thresholds defined for this sensor."/>
+          <Annotation Term="OData.LongDescription" String=" "/>
         </Property>
 
-        <Property Name="UpperThresholdCritical" Type="Edm.Decimal">
+        <Property Name="ReadingRangeMax" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The UpperThresholdCritical for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the UpperThresholdCritical information of this Sensor."/>
-        </Property>
-
-        <Property Name="LowerThresholdWarning" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Lower Threshold NonWarning for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the Lower Threshold Warning information of this Sensor."/>
-        </Property>
-
-        <Property Name="LowerThresholdCritical" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The LowerThresholdCritical for this Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the LowerThresholdCritical information of this Sensor."/>
-        </Property>
-
-        <Property Name="MaxReadingRange" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The MaxReadingRange for this Sensor."/>
+          <Annotation Term="OData.Description" String="The maximum value of Reading possible for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Max Reading Range information of this Sensor."/>
         </Property>
-
-        <Property Name="MinReadingRange" Type="Edm.Decimal">
+        <Property Name="ReadingRangeMin" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The MinReadingRange for this Sensor."/>
+          <Annotation Term="OData.Description" String="The minimum value of Reading possible for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Min Reading Range information of this Sensor."/>
         </Property>
-
         <Property Name="Precision" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Number of significant digits in the Reading."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the number of significant digits in the Reading."/>
         </Property>
-
         <Property Name="Accuracy" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Estimated percent error of measured vs. actual values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the percent error +/- of the measured vs. actual values."/>
         </Property>
-
         <Property Name="SensingIntervals" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time interval between reading the physical sensor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the time interval between reading the physical sensor."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Describes the area or device to which this sensor measurement applies.."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies."/>
         </Property>
 
         <Property Name="Actions" Type="Sensor.v0_2_0.Actions" Nullable="false">
@@ -164,6 +198,48 @@
 
       </EntityType>
 
+      <ComplexType Name="Thresholds">	
+        <Property Name="UpperCaution" Type="Sensor.Threshold"/>
+          <Annotation Term="OData.Description" String="Above normal range."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range. The units shall be the same units as the Reading."/>			  
+        <Property Name="UpperCritical" Type="Sensor.Threshold"/>
+          <Annotation Term="OData.Description" String="Above normal range but not yet fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range and but is not yet fatal. The units shall be the same units as the Reading."/>
+		  <Property Name="UpperFatal" Type="Sensor.Threshold"/>
+          <Annotation Term="OData.Description" String="Above normal range and fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range and is fatal. The units shall be the same units as the Reading."/>	  
+        <Property Name="LowerCaution" Type="Sensor.Threshold"/>
+          <Annotation Term="OData.Description" String="Below normal range."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range. The units shall be the same units as the Reading."/>			  
+        <Property Name="LowerCritical" Type="Sensor.Threshold"/>
+          <Annotation Term="OData.Description" String="Below normal range but not yet fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range and but is not yet fatal. The units shall be the same units as the Reading."/>		  
+        <Property Name="LowerFatal" Type="Sensor.Threshold"/>	
+          <Annotation Term="OData.Description" String="Below normal range and fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range and is fatal. The units shall be the same units as the Reading."/>			  
+      </ComplexType>
+		  
+      <ComplexType Name="Threshold">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="A threshold definition for a sensor."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the properties for an individual threshold for this sensor."/>
+        <Property Name="Reading" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The threshold value."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the Reading value of this Sensor that triggers the threshold. The units of this property shall follow the Reading and ReadingUnits of this sensor."/>
+        </Property>
+        <Property Name="Activation" Type="Sensor.ThresholdActivation">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The direction of crossing that activates this threshold."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the direction of crossing of the Reading value for this Sensor that triggers the threshold."/>
+        </Property>		  
+		  <Property Name="DwellTime" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated."/>
+          <Annotation Term="OData.LongDescription" String=" "/>
+        </Property>
+      </ComplexType>
+		
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -177,7 +253,22 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
-      <EnumType Name="SensorType">
+		<EnumType Name="ThresholdActivation">
+		  <Member Name="Increasing">
+          <Annotation Term="OData.Description" String="Value increases above the threshold."/>
+          <Annotation Term="OData.LongDescription" String="This threshold is activated when the value of Reading changes from a value lower than the threshold to a value higher than the threshold."/>
+        </Member>
+		  <Member Name="Decreasing">
+          <Annotation Term="OData.Description" String="Value decreases below the threshold."/>
+          <Annotation Term="OData.LongDescription" String="This threshold is activated when the value of Reading changes from a value higher than the threshold to a value lower than the threshold."/>
+        </Member>
+		  <Member Name="Either">
+          <Annotation Term="OData.Description" String="Value crosses the threshold in either direction."/>
+          <Annotation Term="OData.LongDescription" String="This threshold is activated when either the Increasing or Decreasing conditions are met."/>
+        </Member>
+      </EnumType>	
+		
+      <EnumType Name="ReadingType">
         <Member Name="Temperature">
           <Annotation Term="OData.Description" String="Sensor type for measuring temperature."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -186,17 +277,21 @@
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
+        <Member Name="Power">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'."/>
+        </Member>
         <Member Name="ACVoltage">
           <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous voltage measurements calculated over an integer number of line cycles for a circuit.  Voltage is expressed in Volts units."/>
         </Member>
         <Member Name="DCVoltage">
           <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the instantaneous voltage measurement for a circuit.  Voltage is expressed in Volts units."/>
         </Member>
-        <Member Name="Amperage">
+        <Member Name="Current">
           <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous current measurements calculated over an integer number of line cycles for a circuit. Current is expressed in Amperes units."/>
         </Member>
         <Member Name="Frequency">
           <Annotation Term="OData.Description" String="."/>
@@ -230,8 +325,31 @@
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
+        <Member Name="ContactClosure">
+          <Annotation Term="OData.Description" String="A discrete sensor with open and closed values."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>		  
       </EnumType>
     </Schema>
 
+      <EnumType Name="DiscreteReadings">
+        <Member Name="Open">
+          <Annotation Term="OData.Description" String="The sensor is open."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Closed">
+          <Annotation Term="OData.Description" String="The sensor is closed."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>	
+        <Member Name="Active">
+          <Annotation Term="OData.Description" String="The sensor is active."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Inactive">
+          <Annotation Term="OData.Description" String="The sensor is inactive."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>		  
+		</EnumType>
+		  
   </edmx:DataServices>
 </edmx:Edmx>
