@@ -99,7 +99,7 @@
           <Annotation Term="OData.Description" String="The equipment Setpoint for the environmental characteristic instrumented by this sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Setpoint for the equipment based on this sensor reading."/>
         </Property>		  
-        <Property Name="DiscreteReading" Type="Sensor.DiscreteReadings">
+        <Property Name="DiscreteReading" Type="Sensor.v0_8_0.DiscreteReadings">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The present value for this discrete Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the present discrete value of this Sensor at the time the information request occurred."/>
@@ -329,7 +329,6 @@
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>		  
       </EnumType>
-    </Schema>
 
       <EnumType Name="DiscreteReadings">
         <Member Name="Open">
@@ -349,6 +348,7 @@
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>		  
 		</EnumType>
-		  
+
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
