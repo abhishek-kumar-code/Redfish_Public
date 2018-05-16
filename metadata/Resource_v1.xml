@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.6.1-->
+<!--# Redfish Schema:  Resource  v1.7.0 -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -103,6 +103,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes the status and health of a resource and its children."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any status or health properties of a resource."/>
+        <Annotation Term="Redfish.Essential"/>		  
         <Property Name="State" Type="Resource.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>
@@ -278,6 +279,7 @@
         <Property Name="Name" Type="Resource.Name" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
+          <Annotation Term="Redfish.Essential"/>	
         </Property>
       </EntityType>
 
@@ -877,5 +879,9 @@
       <Annotation Term="OData.Description" String="This version was created to correct the permissions for Longitude, Latitude, and AltitudeMeters inside the Location object."/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_7_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add the Redfish Essential annotation to Name and Status properties."/>
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
