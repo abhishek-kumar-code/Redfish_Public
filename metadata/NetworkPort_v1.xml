@@ -5,7 +5,7 @@
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -147,7 +147,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed of the link in Mbps when this link network technology is active."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of the link in megabits per second (Mbps) for this port when this link network technology is active."/>
-          <Annotation Term="Measures.Unit" String="Mbit/s"/>			 
+          <Annotation Term="Measures.Unit" String="Mbit/s"/>
         </Property>
       </ComplexType>
 
@@ -236,7 +236,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_0_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add Units annotations on the LinkSpeedMbps property."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on the LinkSpeedMbps property.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_0_1.NetworkPort"/>
     </Schema>
 
@@ -246,7 +246,7 @@
         <Property Name="Actions" Type="NetworkPort.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
-        </Property> 
+        </Property>
       </EntityType>
 
       <ComplexType Name="Actions">
@@ -265,7 +265,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_1_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add Units annotations on the LinkSpeedMbps property."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on the LinkSpeedMbps property.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_0.NetworkPort"/>
     </Schema>
 
