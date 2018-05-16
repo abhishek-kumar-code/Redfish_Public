@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ManagerAccount.v1_1_0.ManagerAccount",
+    "@odata.type": "#ManagerAccount.v1_1_2.ManagerAccount",
     "Id": "1",
     "Name": "User Account",
     "Description": "User Account",

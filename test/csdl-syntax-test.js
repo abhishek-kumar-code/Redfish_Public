@@ -1125,7 +1125,7 @@ function schemaOwningEntityCheck(err, csdl) {
     return;
   }
 
-  if(this.context.name.includes('index.xml') || this.context.name.includes('$metadata.xml')) {
+  if(this.context.name.includes('index.xml')) {
     // Ignore the $metadata resource in mockups
     return;
   }
