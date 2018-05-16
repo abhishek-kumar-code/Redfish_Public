@@ -23,6 +23,7 @@
         }
     ],
     "HotspareType": "Global",
+    "HotspareReplacementMode": "Revertible",
     "EncryptionAbility": "SelfEncryptingDrive",
     "EncryptionStatus": "Unlocked",
     "RotationSpeedRPM": 15000,
