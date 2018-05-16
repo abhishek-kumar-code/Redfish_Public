@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1",
-    "@odata.type": "#NetworkAdapter.v1_1_0.NetworkAdapter",
+    "@odata.type": "#NetworkAdapter.v1_2_0.NetworkAdapter",
     "Id": "9fa725a1",
     "Name": "Network Adapter View",
     "Manufacturer": "Globex",
@@ -55,6 +55,10 @@
                 "NPIV": {
                     "MaxDeviceLogins": 4,
                     "MaxPortLogins": 2
+                },
+                "NPAR": {
+                    "NparCapable": true,
+                    "NparEnabled": false
                 }
             },
             "Location": {
