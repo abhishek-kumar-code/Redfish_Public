@@ -17,6 +17,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
@@ -504,6 +507,7 @@
           <Annotation Term="OData.Description" String="The total configured operating system-accessible memory (RAM), measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of configured system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="GiBy"/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
       </ComplexType>
@@ -554,7 +558,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_8">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_7.ComputerSystem"/>
     </Schema>
 
@@ -696,7 +700,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_5.ComputerSystem"/>
     </Schema>
 
@@ -795,7 +799,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_5">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_4.ComputerSystem"/>
     </Schema>
 
@@ -861,7 +865,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_3.ComputerSystem"/>
     </Schema>
 
@@ -875,6 +879,7 @@
           <Annotation Term="OData.Description" String="The total configured, system-accessible persistent memory, measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the total amount of configured persistent memory available to the system as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="GiBy"/>
         </Property>
       </ComplexType>
 
@@ -902,7 +907,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_3">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_2.ComputerSystem"/>
     </Schema>
 
@@ -1038,7 +1043,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_5_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_0.ComputerSystem"/>
     </Schema>
 
