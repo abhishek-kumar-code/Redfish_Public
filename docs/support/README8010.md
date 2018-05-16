@@ -26,11 +26,19 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 ## Release 2018.2 (TBD)
 
-| Schema Name   | Version | Description |
-| ---           | ---     | ---         |
-| UpdateService | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
-| LogEntry      | 1.x.x   | Errata release.  Fixed typo in EntryType description. |
-| Resource      | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
+| Schema Name       | Version | Description |
+| ---               | ---     | ---         |
+| NetworkAdapter    | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
+| UpdateService     | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
+| AttributeRegistry | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
+| ComputerSystem    | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB". |
+| LogEntry          | 1.x.x   | Errata release.  Fixed typo in the description for "EntryType". |
+| Memory            | 1.x.x   | Errata release.  Added missing Units annotation to many properties in the schema. |
+| MemoryChunks      | 1.x.x   | Errata release.  Added missing Units annotation to "MemoryChunkSizeMiB", "OffsetMiB", and "SizeMiB". |
+| NetworkPort       | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps". |
+| Processor         | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
+| Resource          | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
+| (all files)       | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema. |
 
 ## Release 2018.1 (April 2018)
 
