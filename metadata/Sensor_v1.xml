@@ -79,7 +79,9 @@
         </Property>
 
         <!-- Essential properties for a sensor -->
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="Redfish.Essential"/>
+        </Property>
 
         <Property Name="Reading" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
