@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Drive  v1.4.1-->
+<!--# Redfish Schema:  Drive  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -484,16 +484,16 @@
           <Annotation Term="OData.LongDescription" String="This property specifies if a commissioned hotspare will continue to serve as a hotspare once the failed drive is replaced."/>
         </Property>
       </EntityType>
-      
+
       <EnumType Name="HotspareReplacementModeType">
         <Member Name="Revertible">
-            <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will revert to being a hotspare once the failed drive is replaced and rebuilt."/>
+          <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will revert to being a hotspare once the failed drive is replaced and rebuilt."/>
         </Member>
         <Member Name="NonRevertible">
-            <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will remain as a data drive and will not to a hotspare even if the failed drive is replaced."/>
+          <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will remain as a data drive and will not to a hotspare even if the failed drive is replaced."/>
         </Member>
       </EnumType>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
