@@ -93,17 +93,17 @@
       </Term>
       <Term Name="OwningEntity" Type="Edm.String">
         <Annotation Term="OData.Description" String="Indicates the name of the entity responsible for development, publication and maintenance of a given schema.  Possible values include DMTF, SNIA or an OEM label such as is used in a Redfish OEM extension section."/>
-      </Term>      
+      </Term>
       <Term Name="Essential" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term specifies that the property is an essential data element that shall appear in objects marked as Essential References when the value of the term matches the type of Essential Reference. If the value of the term is unspecified, the property shall appear in all Essential References."/>
       </Term>
       <Term Name="EssentialCopy" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term specifies that the object or property definition is a copy of essential data from a data source, and that only properties marked as Essential in that referenced definition shall be included. The value of the term shall contain the name and value of a key property used to construct the Essential subset of properties from the referenced definition."/>
-      </Term>			
+      </Term>
       <Term Name="EssentialCopyOnly" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term specifies that the property is an essential data element that shall appear only in objects marked as an Essential Copy, and shall not appear in the referenced (original data source) resource."/>
       </Term>
-		
+
       <EnumType Name="ReleaseStatusType">
         <Member Name="Standard">
           <Annotation Term="OData.Description" String="Released as normative standard or specification."/>
