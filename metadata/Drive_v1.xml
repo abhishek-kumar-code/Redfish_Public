@@ -490,7 +490,7 @@
           <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will revert to being a hotspare once the failed drive is replaced and rebuilt."/>
         </Member>
         <Member Name="NonRevertible">
-          <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will remain as a data drive and will not to a hotspare even if the failed drive is replaced."/>
+          <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will remain as a data drive and will not revert to a hotspare if the failed drive is replaced."/>
         </Member>
       </EnumType>
     </Schema>
