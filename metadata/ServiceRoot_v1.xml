@@ -393,8 +393,8 @@
       <ComplexType Name="ProtocolFeaturesSupported" BaseType="ServiceRoot.v1_2_0.ProtocolFeaturesSupported">
         <Property Name="OnlyMemberQuery" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the $only query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the $only query parameter as described by the specification."/>
+          <Annotation Term="OData.Description" String="This indicates whether the 'only' query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the 'only' query parameter as described by the specification."/>
         </Property> 	  
     </Schema>
 
