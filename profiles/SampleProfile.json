@@ -1,12 +1,12 @@
 {
     "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
     "ProfileName": "Anchovy",
-    "ProfileVersion": "1.0.2",
+    "ProfileVersion": "1.0.3",
     "Purpose": "This is a sample Redfish Interoperability profile.",
     "OwningEntity": "Contoso",
     "ContactInfo": "pizza@contoso.com",
     "RequiredProfiles": {
-        "DMTFBasic": {
+        "PizzaBox": {
             "MinVersion": "1.0.0"
         },
         "ContosoPizza": {
@@ -53,7 +53,7 @@
                     "ConditionalRequirements": [{
                         "Purpose": "Either PartNumber or SKU must be supported.",
                         "CompareProperty": "PartNumber",
-                        "Comparison": "Absent",
+                        "CompareType": "Absent",
                         "ReadRequirement": "Mandatory"
                     }]
                 },
@@ -62,7 +62,7 @@
                     "ConditionalRequirements": [{
                         "Purpose": "Either PartNumber or SKU must be supported.",
                         "CompareProperty": "SKU",
-                        "Comparison": "Absent",
+                        "CompareType": "Absent",
                         "ReadRequirement": "Mandatory"
                     }]
                 },
@@ -71,7 +71,7 @@
                     "ConditionalRequirements": [{
                         "Purpose": "Physical and composed Systems must have a writable Indicator LED",
                         "CompareProperty": "SystemType",
-                        "Comparison": "AnyOf",
+                        "CompareType": "AnyOf",
                         "CompareValues": ["Physical", "Composed"],
                         "ReadRequirement": "Mandatory",
                         "WriteRequirement": "Mandatory"
@@ -173,7 +173,15 @@
                     "ReadRequirement": "Recommended"
                 },
                 "ParadoxDetected": {
-                    "ReadRequirement": "IfImplemented"
+                    "ReadRequirement": "IfImplemented",
+                    "ConditionalRequirements": [{
+                        "CompareProperty": "TimeMachineModel",
+                        "CompareType": "Equal",
+                        "CompareValue": "Delorean",
+                        "ReadRequirement": "Mandatory",
+                        "Comparison": "AnyOf",
+                        "Values": ["None", "Recoverable", "Improbable"]
+                    }]
                 }
             }
         }

@@ -2,8 +2,9 @@
 DocTitle: Redfish Interoperability Profiles
 DocNumber: '0272'
 DocClass: Normative
-DocVersion: '1.0.0'
-modified: '2018-01-02'
+DocVersion: '1.0.1'
+SupersedesVersion: '1.0.0'
+modified: '2018-05-15'
 status: published
 released: True
 copyright: '2017-2018'
@@ -332,9 +333,11 @@ The following options are available for each conditional requirement:
 | WriteRequirement | string | Property-level write (HTTP PATCH or PUT) requirement for this property; see [WriteRequirement](#writerequirement) clause. |
 | Purpose | string | Text describing the purpose of this conditional requirement. |
 | SubordinateToResource | array | An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) clause. |
+| Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) clause. |
+| Values | array | The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison. |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) clause.|
 | CompareValues | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) clause. |
-| Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'CompareValues'.  If the comparison is true,  this conditional requirement applies. See the [Compare Property](#compare-property) clause. |
+| CompareType | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'CompareValues'.  If the comparison is true, this conditional requirement applies. See the [Compare Property](#compare-property) clause. |
 
 
 ###### Parent and subordinate resources
@@ -382,11 +385,28 @@ To accomplish this, there are three Profile properties related to this function:
 | Property | Type | Description | 
 | --- | --- | --- |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
-| Comparison | string |The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true,  this conditional requirement applies.|
+| CompareType | string |The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true,  this conditional requirement applies.|
 | CompareValues | array | Values of the CompareProperty used to test this condition. |
 
 
-###### Example
+###### Examples
+
+Simple dependencies can be expressed using the conditional requirement and a comparison.  This example shows a CompareProperty condition applied to the 'Pepperoni' property.  If the 'PizzaType' property is not equal to 'Cheese', then the 'Pepperoni' property becomes both mandatory and must have a value of 'true'.
+
+~~~
+   "Pepperoni": {
+      "ReadRequirement": "Recommended",
+      "ConditionalRequirements": [{
+         "Purpose": "Pepperoni is required on all pizza types except Cheese.",
+         "CompareProperty": "PizzaType",
+         "CompareType": "NotEqual",
+         "CompareValues": ["Cheese"],
+         "ReadRequirement": "Mandatory",
+         "Comparison": "Equal",
+         "Values": [ true ]
+      }]
+   },
+~~~
 
 This example shows a CompareProperty condition applied to the 'IndicatorLED' property, which has a base 'Recommended' requirement, but becomes 'Mandatory' if the 'SystemType' property has a value of 'Physical' or 'Composed'.
 
@@ -396,7 +416,7 @@ This example shows a CompareProperty condition applied to the 'IndicatorLED' pro
       "ConditionalRequirements": [{
          "Purpose": "Physical and composed Systems must have a writable Indicator LED",
          "CompareProperty": "SystemType",
-         "Comparison": "AnyOf",
+         "CompareType": "AnyOf",
          "CompareValues": ["Physical", "Composed"],
          "ReadRequirement": "Mandatory",
          "WriteRequirement": "Mandatory"
@@ -501,5 +521,6 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 
 | Version | Date | Description |
 | --- | --- | --- |
-| 1.0.0 | 2018-01-02 |  |
+| 1.0.1 | 2018-05-15 |  Errata release.  Corrected definition of 'Comparison' for Conditional Requirements to match the schema usage (and consistent with other usage).  Added missing 'Values' property for Conditional Requirements and added new 'CompareType' property to replace the inconsisent usage of 'Comparison'.  Added example for a Conditional Requirement that uses the 'Values' array. |
+| 1.0.0 | 2018-01-02 |  Initial release. |
 |   |   |   |
