@@ -432,7 +432,7 @@ Resource Zone Collection Sample:
 ```
 
 
-##### Read the [Capabilities](#collection-capabilities) for Each Resource Zone
+##### Read the Capabilities for Each Resource Zone
 
 1. Perform a GET on each Resource Zone using the URI found in each entry of the `Members` array
 2. Look for the `@Redfish.CollectionCapabilities` annotation in each Resource Zone
