@@ -794,7 +794,6 @@ Content-Type: application/json; charset=utf-8
 Content-Length: <computed-length>
 OData-Version: 4.0
 {
-    "Id": "1",
     "Name": "My Computer System",
     "Description": "Description of server",
     "PowerState": "On",
