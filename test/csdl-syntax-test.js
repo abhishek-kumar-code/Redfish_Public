@@ -779,7 +779,7 @@ function validCSDLTypeInMockup(err, json) {
   if(err) {
     return;
   }
-  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp')) {
+  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp') || this.context.name.includes('/ConstrainedCompositionCapabilities')) {
     //Ignore the paging file and the external error example
     return;
   }
