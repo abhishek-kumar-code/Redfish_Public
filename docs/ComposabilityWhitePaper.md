@@ -736,6 +736,8 @@ Capabilities Object Sample for a Constrained Composition:
 }
 ```
 
+In the above example, it should be noted that the general structure of the capabilities object for a constrained composition is an expanded object that represents the resource the client can compose.  In this case, the properties `Processors` and `Memory` are expanded, and showing Processor Collection and Memory Collection representations respectively.  These expanded objects do not contain extraneous information required under normal circumstances, such as `@odata.id`, in order to reduce the information to only what the client requires to form the composition request.
+
 
 ##### Create the Composition Request
 
