@@ -23,16 +23,11 @@
     },
     "Processors@Redfish.RequiredOnCreate": true,
     "Processors": {
-        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Processors",
         "@odata.type": "#ProcessorCollection.ProcessorCollection",
-        "Name": "Capabilities for Processors",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Processors/Members/0",
                 "@odata.type": "#Processor.v1_1_0.Processor",
-                "Id": "Processor",
-                "Name": "Capabilities for Processors",
                 "@Redfish.RequestedCountRequired": true,
                 "ProcessorType@Redfish.RequiredOnCreate": true,
                 "TotalCores@Redfish.RequiredOnCreate": true,
@@ -44,16 +39,11 @@
     },
     "Memory@Redfish.RequiredOnCreate": true,
     "Memory": {
-        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Memory",
         "@odata.type": "#MemoryCollection.MemoryCollection",
-        "Name": "Capabilities for Memory",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Memory/Members/0",
                 "@odata.type": "#Memory.v1_1_0.Memory",
-                "Id": "Memory",
-                "Name": "Capabilities for Memory",
                 "@Redfish.RequestedCountRequired": true,
                 "MemoryType@Redfish.RequiredOnCreate": true,
                 "MemoryDeviceType@Redfish.OptionalOnCreate": true,
@@ -66,16 +56,11 @@
     },
     "SimpleStorage@Redfish.OptionalOnCreate": true,
     "SimpleStorage": {
-        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/SimpleStorage",
         "@odata.type": "#SimpleStorageCollection.SimpleStorageCollection",
-        "Name": "Capabilities for SimpleStorage",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/SimpleStorage/Members/0",
                 "@odata.type": "#SimpleStorage.v1_2_0.SimpleStorage",
-                "Id": "SimpleStorage",
-                "Name": "Capabilities for SimpleStorage",
                 "@Redfish.RequestedCountRequired": true,
                 "Devices@Redfish.RequiredOnCreate": true,
                 "Devices": {
@@ -88,22 +73,15 @@
     },
     "Storage@Redfish.OptionalOnCreate": true,
     "Storage": {
-        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Storage",
         "@odata.type": "#StorageCollection.StorageCollection",
-        "Name": "Capabilities for Storage",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Storage/Members/0",
                 "@odata.type": "#Storage.v1_3_0.Storage",
-                "Id": "Storage",
-                "Name": "Capabilities for Storage",
                 "@Redfish.RequestedCountRequired": true,
                 "StorageControllers@Redfish.OptionalOnCreate": true,
                 "StorageControllers": [
                     {
-                        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Storage/Members/0/StorageControllers/0",
-                        "MemberId": "0",
                         "@Redfish.RequestedCountRequired": true,
                         "SupportedControllerProtocols@Redfish.RequiredOnCreate": true
                     }
@@ -111,10 +89,7 @@
                 "Drives@Redfish.RequiredOnCreate": true,
                 "Drives": [
                     {
-                        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/Storage/Members/0/Drives/0",
                         "@odata.type": "#Drive.v1_2_0.Drive",
-                        "Id": "Drive",
-                        "Name": "Capabilities for Drives",
                         "@Redfish.RequestedCountRequired": true,
                         "CapacityBytes@Redfish.RequiredOnCreate": true
                     }
@@ -124,16 +99,11 @@
     },
     "EthernetInterfaces@Redfish.OptionalOnCreate": true,
     "EthernetInterfaces": {
-        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/EthernetInterfaces",
         "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
-        "Name": "Capabilities for EthernetInterfaces",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/EthernetInterfaces/Members/0",
                 "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
-                "Id": "EthernetInterface",
-                "Name": "Capabilities for EthernetInterface",
                 "@Redfish.RequestedCountRequired": true,
                 "SpeedMbps@Redfish.RequiredOnCreate": true,
                 "FullDuplex@Redfish.OptionalOnCreate": true
@@ -142,29 +112,19 @@
     },
     "NetworkInterfaces@Redfish.OptionalOnCreate": true,
     "NetworkInterfaces": {
-        "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/NetworkInterfaces",
         "@odata.type": "#NetworkInterfaceCollection.NetworkInterfaceCollection",
-        "Name": "Capabilities for NetworkInterfaces",
         "Members@Redfish.RequiredOnCreate": true,
         "Members": [
             {
-                "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/NetworkInterfaces/Members/0",
                 "@odata.type": "#NetworkInterface.v1_1_0.NetworkInterface",
-                "Id": "NetworkInterface",
-                "Name": "Capabilities for NetworkInterface",
                 "@Redfish.RequestedCountRequired": true,
                 "NetworkPorts@Redfish.RequiredOnCreate": true,
                 "NetworkPorts": {
-                    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/NetworkInterfaces/Members/0/NetworkPorts",
                     "@odata.type": "#NetworkPortCollection.NetworkPortCollection",
-                    "Name": "Capabilities for NetworkPorts",
                     "Members@Redfish.RequiredOnCreate": true,
                     "Members": [
                         {
-                            "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities#/NetworkInterfaces/Members/0/NetworkPorts/Members/0",
                             "@odata.type": "#NetworkPort.v1_1_0.NetworkPort",
-                            "Id": "NetworkPort",
-                            "Name": "Capabilities for NetworkPort",
                             "@Redfish.RequestedCountRequired": true,
                             "ActiveLinkTechnology@Redfish.RequiredOnCreate": true,
                             "SupportedLinkCapabilities@Redfish.OptionalOnCreate": true,
