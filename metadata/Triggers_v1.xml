@@ -21,10 +21,14 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Triggers">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Triggers" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A Triggers is an entity which senses or measures another resource."/>
@@ -50,6 +54,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Triggers.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Triggers" BaseType="Triggers.Triggers">
         <Annotation Term="OData.Description" String="This is the schema definition for a Triggers."/>
@@ -81,7 +86,7 @@
         </Property>
         <Property Name="DiscreteTriggers" Type="Collection(Triggers.v1_0_0.DiscreteTrigger)" Nullable="false">
           <Annotation Term="OData.Description" String="List of discrete triggers."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contains a list of value to which a sensor reading will be compared. This property shall be present when the DiscreteTriggerCondition property has a value of 'Specified'."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contains a list of value to which a sensor reading will be compared.  This property shall be present when the DiscreteTriggerCondition property has a value of 'Specified'."/>
         </Property>
 
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
@@ -127,7 +132,7 @@
         <Annotation Term="OData.Description" String="Indicates how the corresponding metric values change over time."/>
         <Annotation Term="OData.LongDescription" String=  "The value shall indicate how the corresponding metric."/>
         <Member Name="Specified">
-          <Annotation Term="OData.Description" String="A discrete trigger occurs when the value of the metric becomes one of the values listed in the DiscreteTRTiggers property."/>
+          <Annotation Term="OData.Description" String="A discrete trigger occurs when the value of the metric becomes one of the values listed in the DiscreteTriggers property."/>
         </Member>
         <Member Name="Changed">
           <Annotation Term="OData.Description" String="A discrete trigger occures whenever the value of the metric changes."/>
@@ -184,7 +189,7 @@
         <Property Name="Value" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value of the discrete metric that constitutes a trigger occurance."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the value discrete metric that constitutes a trigger event. The DwellTimeMsec shall be measured from this point in time."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value discrete metric that constitutes a trigger event.  The DwellTimeMsec shall be measured from this point in time."/>
         </Property>
         <Property Name="DwellTimMsec" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

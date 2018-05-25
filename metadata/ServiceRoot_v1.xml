@@ -414,6 +414,8 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+
       <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_1_1.ServiceContainer">
         <Singleton Name="TelemetryService" Type="TelemetryService.TelemetryService"/>
       </EntityContainer>

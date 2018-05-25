@@ -1,73 +1,73 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#MetricReport.MetricReport",
-	"@odata.type": "#MetricReport.v1_0_0.MetricReport",
-	"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PlatformPowerUsage",
-	"Id": "PlatformPowerUsage",
-
-	"Name": "PlatformPowerUsage",
-  "MetricReportDefinition": { "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage" },
-
-	"MetricValues": [
-      {
-	    	"TimeStamp": "20161108T122500-0500",
-		    "MetricValue": "103",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PlatformConsumedWatts"
-	    },
-      {
-	    	"TimeStamp": "20161108T122500-0500",
-		    "MetricValue": "103",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PlatformConsumedWatts"
-	    },
-      {
-	    	"TimeStamp": "20161108T122500-0500",
-		    "MetricValue": "103",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PlatformConsumedWatts"
-	    },
-      {
-	    	"TimeStamp": "20161108T122500-0500",
-		    "MetricValue": "103",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T132500-0500",
-		    "MetricValue": "106",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T132500-0500",
-		    "MetricValue": "106",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T132500-0500",
-		    "MetricValue": "106",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T132500-0500",
-		    "MetricValue": "106",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T142500-0500",
-		    "MetricValue": "107",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T142500-0500",
-		    "MetricValue": "107",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T142500-0500",
-		    "MetricValue": "107",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PlatformConsumedWatts"
-	    },
-      {
-		    "TimeStamp": "20161108T142500-0500",
-		    "MetricValue": "107",
-  		  "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PlatformConsumedWatts"
-	    }
-  ]
+    "@odata.type": "#MetricReport.v1_0_0.MetricReport",
+    "Id": "PlatformPowerUsage",
+    "Name": "PlatformPowerUsage",
+    "MetricReportDefinition": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage"
+    },
+    "MetricValues": [
+        {
+            "TimeStamp": "20161108T122500-0500",
+            "MetricValue": "103",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T122500-0500",
+            "MetricValue": "103",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T122500-0500",
+            "MetricValue": "103",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T122500-0500",
+            "MetricValue": "103",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T132500-0500",
+            "MetricValue": "106",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T132500-0500",
+            "MetricValue": "106",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T132500-0500",
+            "MetricValue": "106",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T132500-0500",
+            "MetricValue": "106",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T142500-0500",
+            "MetricValue": "107",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T142500-0500",
+            "MetricValue": "107",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T142500-0500",
+            "MetricValue": "107",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PlatformConsumedWatts"
+        },
+        {
+            "TimeStamp": "20161108T142500-0500",
+            "MetricValue": "107",
+            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PlatformConsumedWatts"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricReport.MetricReport",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PlatformPowerUsage",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,33 +1,32 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
-   	"@odata.type": "#Triggers.v1_0_0.Triggers",
-  	"@odata.id": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers",
-   	
-	"Id": "PlatformPowerCapTriggers",
-	"Name": "Triggers for platform power consumed",
-	"MetricType": "Numeric",
-	"TriggerActions": ["Transmit"],
-
-  	"NumericTriggers": [
-			{
-                "Name": "UpperThresholdCritical",
-			    "Value": "50.0",
-			    "DirectionOfCrossing": "Increasing",
-			    "DwellTimems": "1",
-                "Severity": "Critical"
-			},
-			{
-                "Name": "UpperThresholdNonCritical",
-			    "Value": "48.1",
-			    "DirectionOfCrossing": "Increasing",
-			    "DwellTimems": "4",
-                "Severity": "Warning"
-			}
+    "@odata.type": "#Triggers.v1_0_0.Triggers",
+    "Id": "PlatformPowerCapTriggers",
+    "Name": "Triggers for platform power consumed",
+    "MetricType": "Numeric",
+    "TriggerActions": [
+        "Transmit"
     ],
-
-	"MetricProperties": [
+    "NumericTriggers": [
+        {
+            "Name": "UpperThresholdCritical",
+            "Value": "50.0",
+            "DirectionOfCrossing": "Increasing",
+            "DwellTimems": "1",
+            "Severity": "Critical"
+        },
+        {
+            "Name": "UpperThresholdNonCritical",
+            "Value": "48.1",
+            "DirectionOfCrossing": "Increasing",
+            "DwellTimems": "4",
+            "Severity": "Warning"
+        }
+    ],
+    "MetricProperties": [
         "/redfish/v1/Chassis/1/Power#/PowerControl/0/PowerConsumedWatts",
         "/redfish/v1/Chassis/1/Power#/PowerControl/1/PowerConsumedWatts"
-	]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
+    "@odata.id": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

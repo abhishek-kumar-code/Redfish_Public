@@ -1,28 +1,41 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
-	"@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
-	"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage",
-	"Id": "PlatformPowerUsage",
-
-	"Name": "Transmit and Log Platform Power Usage",
-	"MetricReportDefinitionType": "Periodic",
-	"Schedule": {
-		"RecurrenceInterval": "T00:00:01"
-	},
-	"ReportActions": ["Transmit", "Log"],
-	"ReportUpdates": "NewReport",
-	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"},
-
-	"Status": {
-		"State": "Enabled"
-	},
-
-	"Wildcards": [
-		{ "PWild": ["0", "1"] },
-		{ "TWild": ["Tray_1", "Tray_2"] }
-	],
-	"MetricProperties": [
-		"/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerConsumedWatts"
-	]
+    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "Id": "PlatformPowerUsage",
+    "Name": "Transmit and Log Platform Power Usage",
+    "MetricReportDefinitionType": "Periodic",
+    "Schedule": {
+        "RecurrenceInterval": "T00:00:01"
+    },
+    "ReportActions": [
+        "Transmit", "Log"
+    ],
+    "ReportUpdates": "NewReport",
+    "MetricReport": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"
+    },
+    "Status": {
+        "State": "Enabled"
+    },
+    "Wildcards": [
+        {
+            "Name": "PWild",
+            "Values": [
+                "0",
+                "1"
+            ]
+        },
+        {
+            "Name": "TWild",
+            "Values": [
+                "Tray_1",
+                "Tray_2"
+            ]
+        }
+    ],
+    "MetricProperties": [
+        "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerConsumedWatts"
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

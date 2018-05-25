@@ -1,29 +1,29 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#TelemetryService",
-	"@odata.type": "#TelemetryService.v1_0_0.TelemetryService",
-	"@odata.id": "/redfish/v1/TelemetryService",
-
-	"Id": "TelemetryService",
-	"Name": "Telemetry Service",
-
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	
-	"SupportedCollectionFunctions": ["Avg", "Min", "Max"],
-
-	"MetricDefinitions": {
-		"@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions"
-	}, 
-	"MetricReportDefinitions": {
-		"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions"
-	},
-	"MetricReports": {
-		"@odata.id": "/redfish/v1/TelemetryService/MetricReports"
-	},
-	"Triggers": {
-		"@odata.id": "/redfish/v1/TelemetryService/Triggers"
-	}
+    "@odata.type": "#TelemetryService.v1_0_0.TelemetryService",
+    "Id": "TelemetryService",
+    "Name": "Telemetry Service",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "SupportedCollectionFunctions": [
+        "Avg",
+        "Min",
+        "Max"
+    ],
+    "MetricDefinitions": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions"
+    }, 
+    "MetricReportDefinitions": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions"
+    },
+    "MetricReports": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports"
+    },
+    "Triggers": {
+        "@odata.id": "/redfish/v1/TelemetryService/Triggers"
+    },
+    "@odata.context": "/redfish/v1/$metadata#TelemetryService",
+    "@odata.id": "/redfish/v1/TelemetryService",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

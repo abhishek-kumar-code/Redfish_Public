@@ -1,28 +1,38 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
     "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
-    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/Memory_BlocksRead",
     "Id": "Memory_BlocksRead",
     "Name": "Current Memory Blocks Read Metric Definition",
-
-	  "MetricType": "Numeric",
-	  "SensorType": "Memory",
-	  "Implementation": "DigitalMeter",
-
+    "MetricType": "Numeric",
+    "SensorType": "Memory",
+    "Implementation": "DigitalMeter",
     "DataType": "Decimal",
-	  "Units": "Blocks",
- 	  "MinReadingRange": 0,
-	  "MaxReadingRange": 1000000,
-
+    "Units": "Blocks",
+    "MinReadingRange": 0,
+    "MaxReadingRange": 1000000,
     "SensingInterval": "T00:00:01",
-
     "Wildcards": [
-        { "Name": "SystemID", "Values": [ "1", "2", "3" ] },
-        { "Name": "MemoryID", "Values": [ "1", "2", "3", "4" ] }
+        {
+            "Name": "SystemID",
+            "Values": [
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        {
+            "Name": "MemoryID",
+            "Values": [
+                "1",
+                "2",
+                "3",
+                "4"
+            ]
+        }
     ],
-
-	  "MetricProperties": [
+    "MetricProperties": [
         "/redfish/v1/Systems/(SystemID}/Memory/{MemoryID}/MemoryMetric#/CurrentPeriod/BlocksRead"
-     ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/Memory_BlocksRead",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

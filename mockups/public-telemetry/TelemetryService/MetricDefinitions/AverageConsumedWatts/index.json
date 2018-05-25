@@ -1,36 +1,38 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
     "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
-    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts",
     "Id": "AverageConsumedWatts",
-
     "Name": "Average Consumed Watts Metric Definition",
     "MetricType": "Numeric",
     "SensorType": "PowerConsumption",
-	  "Implementation": "Calculated",
-	  "PhysicalContext": "PowerSupply",
-
+    "Implementation": "Calculated",
+    "PhysicalContext": "PowerSupply",
     "DataType": "Decimal",
-	  "Units": "W",
-    "CalculationAlgorithm": "AverageOverInterval",
- 	  "CalculationTimeInterval": "T00:00:01",
-
+    "Units": "W",
+    "CalculationAlgorithm": "Average",
+    "CalculationTimeInterval": "T00:00:01",
     "IsLinear": true,
     "Calculable": "NonSummable",
-
     "Wildcards": [
-        { "ChassisID": [ "1", "2", "3" ] }
+        {
+            "Name": "ChassisID",
+            "Values": [
+                "1",
+                "2",
+                "3"
+            ]
+        }
     ],
-
-	  "CalculationParameters": [
-	    {
-		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/PowerConsumedWatts ",
- 		    "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power/PowerControl/0/AverageConsumedWatts "
-	    },
-	    {
-		    "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts ",
- 		    "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/AverageConsumedWatts "
-	    }
-    ]
+    "CalculationParameters": [
+        {
+            "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/PowerConsumedWatts",
+            "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/0/AverageConsumedWatts"
+        },
+        {
+            "SourceMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/PowerConsumedWatts",
+            "ResultMetric": "/redfish/v1/Chassis/{ChassisID}/Power#/PowerControl/1/AverageConsumedWatts"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

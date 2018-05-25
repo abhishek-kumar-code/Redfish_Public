@@ -1,29 +1,44 @@
 {
-	"@Redfish.Copyright": "Copyright 2017-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
-	"@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
-	"@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics",
-	"Id": "PowerMetrics",
-
-	"Name": "Transmit and Log Power Metrics",
-	"MetricReportType": "Periodic",
-	"Schedule": {
-		"RecurrenceInterval": "T00:00:00.1"
-	},
-	"ReportActions": ["Transmit", "Log"],
-  "ReportUpdates": "Overwrite",
-	"MetricReport": {"@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"},
-	"Status": {
-		"State": "Enabled"
-	},
-
-	"Wildcards": [
-		{ "PWild": ["0", "1"] },
-		{ "TWild": ["Tray_1", "Tray_2"] }
-	],
-	"MetricProperties": [
-		"/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerMetrics/AverageConsumedWatts",
-    "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerMetrics/MinConsumedWatts",
-	  "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerMetrics/MaxConsumedWatts"
-	]
+    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "Id": "PowerMetrics",
+    "Name": "Transmit and Log Power Metrics",
+    "MetricReportDefinitionType": "Periodic",
+    "Schedule": {
+        "RecurrenceInterval": "T00:00:00.1"
+    },
+    "ReportActions": [
+        "Transmit",
+        "Log"
+    ],
+    "ReportUpdates": "Overwrite",
+    "MetricReport": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"
+    },
+    "Status": {
+        "State": "Enabled"
+    },
+    "Wildcards": [
+        {
+            "Name": "PWild",
+            "Values": [
+                "0",
+                "1"
+            ]
+        },
+        {
+            "Name": "TWild",
+            "Values": [
+                "Tray_1",
+                "Tray_2"
+            ]
+        }
+    ],
+    "MetricProperties": [
+        "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerMetrics/AverageConsumedWatts",
+        "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerMetrics/MinConsumedWatts",
+        "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerMetrics/MaxConsumedWatts"
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
