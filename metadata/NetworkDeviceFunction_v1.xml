@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkDeviceFunction  v1.2.0-->
+<!--# Redfish Schema:  NetworkDeviceFunction  v1.2.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
@@ -33,6 +40,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="NetworkDeviceFunction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The NetworkDeviceFunction schema represents a logical interface exposed by the network adapter."/>
@@ -58,6 +66,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.NetworkDeviceFunction">
         <Annotation Term="OData.Description" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
@@ -92,9 +101,9 @@
         </Property>
         <NavigationProperty Name="AssignablePhysicalPorts" Type="Collection(NetworkPort.NetworkPort)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The array of physical port references that this network device function may be assigned to."/>          
+          <Annotation Term="OData.Description" String="The array of physical port references that this network device function may be assigned to."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of physical port references that this network device function may be assigned to."/>
-          <Annotation Term="OData.AutoExpandReferences"/>          
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="PhysicalPortAssignment" Type="NetworkPort.NetworkPort" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -155,6 +164,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The locally configured FCoE VLAN ID."/>
           <Annotation Term="OData.LongDescription" String="For FCoE connections, the value of this property shall be the VLAN ID configured locally by setting this property.  This value shall be used for FCoE traffic to this network device function during boot unless AllowFIPVLANDiscovery is true and a valid FCoE VLAN ID is found via the FIP VLAN Discovery Protocol."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="AllowFIPVLANDiscovery" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -165,6 +176,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The active FCoE VLAN ID."/>
           <Annotation Term="OData.LongDescription" String="For FCoE connections, the value of this property shall be null or a VLAN ID currently being used for FCoE traffic.  When the FCoE link is down this value shall be null.  When the FCoE link is up this value shall be either the FCoELocalVLANId property or a VLAN discovered via the FIP protocol."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="BootTargets" Type="Collection(NetworkDeviceFunction.v1_0_0.BootTargets)">
           <Annotation Term="OData.Description" String="An array of Fibre Channel boot targets configured for this network device function."/>
@@ -264,6 +277,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The 802.1q VLAN ID to use for iSCSI boot from the primary target."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the 802.1q VLAN ID to use for iSCSI boot from the primary target.  This VLAN ID is only used if PrimaryVLANEnable is true."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="PrimaryDNS" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -299,6 +314,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The 802.1q VLAN ID to use for iSCSI boot from the secondary target."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the 802.1q VLAN ID to use for iSCSI boot from the secondary target.  This VLAN ID is only used if SecondaryVLANEnable is true."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="4094"/>
         </Property>
         <Property Name="SecondaryDNS" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -431,16 +448,25 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add normative statements about the format of InitiatorName, PrimaryTargetName, and SecondaryTargetName properties in the iSCSIBoot structure.  It was also created to fix the descriptions for AssignablePhysicalPorts and PhysicalPortAssignment."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_0_1.NetworkDeviceFunction"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_0_2.NetworkDeviceFunction"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_0_1.NetworkDeviceFunction">
         <Property Name="Actions" Type="NetworkDeviceFunction.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -463,12 +489,20 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_1_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add normative statements about the format of InitiatorName, PrimaryTargetName, and SecondaryTargetName properties in the iSCSIBoot structure.  It was also created to fix the descriptions for AssignablePhysicalPorts and PhysicalPortAssignment."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_0.NetworkDeviceFunction"/>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_1.NetworkDeviceFunction"/>
+    </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_1_1.NetworkDeviceFunction"/>
       <ComplexType Name="Links" BaseType="NetworkDeviceFunction.v1_0_0.Links">
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -477,7 +511,18 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+    </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add validation terms to the different VLANId properties."/>
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_2_0.NetworkDeviceFunction"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_2_1.NetworkDeviceFunction"/>
     </Schema>
 
   </edmx:DataServices>

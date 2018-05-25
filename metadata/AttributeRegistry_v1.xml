@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.1.2-->
+<!--# Redfish Schema:  AttributeRegistry  v1.2.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -28,6 +28,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="AttributeRegistry" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The AttributeRegistry schema contains a set of key-value pairs that represents the structure of a Registry. It includes mechanisms for building user interfaces (menus), allowing consistent navigation of the contents. The Attribute Registry is specific to a particular implementation or product. The attributes and property names are not standardized."/>
@@ -52,6 +53,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.AttributeRegistry">
         <Property Name="Language" Type="Edm.String" Nullable="false">
@@ -182,7 +184,7 @@
         <Property Name="GrayOut" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The gray-out state of this attribute."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the gray-out state of this attribute. When set to true, a grayed-out attribute should be grayed out in user interfaces. But, unlike ReadOnly, the value of grayed-out attributes might still be be modified. The grayout state of an attribute might be affected by the results of evaluating the 'Dependencies' array."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the gray-out state of this attribute. When set to true, a grayed-out attribute should be grayed out in user interfaces. But, unlike ReadOnly, the value of grayed-out attributes might still be modified. The grayout state of an attribute might be affected by the results of evaluating the 'Dependencies' array."/>
         </Property>
         <Property Name="Hidden" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -507,21 +509,31 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_0.AttributeRegistry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated, and to remove the duplicate ProductName property in the SupportedSystems object."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_1.AttributeRegistry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct regex patterns for different attribute properties."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_2.AttributeRegistry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct typographical errors in descriptions.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_3.AttributeRegistry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_2.AttributeRegistry">
         <Property Name="Actions" Type="AttributeRegistry.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -552,13 +564,57 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_0.AttributeRegistry"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct regex patterns for different attribute properties."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_1.AttributeRegistry"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct typographical errors in descriptions.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
+
+      <ComplexType Name="Attributes" BaseType="AttributeRegistry.v1_0_0.Attributes">
+        <Annotation Term="OData.Description" String="An attribute and its possible values."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe an attribute and its possible values and other metadata."/>
+        <Property Name="ResetRequired" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="True if changing the value of this attribute requires a system or device reset in order to take effect."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the requirement for a system or device reset for this attribute value change to take effect."/>
+        </Property>
+        <Property Name="UefiDevicePath" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UEFI device path that qualifies this attribute."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the UEFI device path string used to qualify and locate the specific device for this Attribute, as defined by the UEFI Specification."/>
+        </Property>
+        <Property Name="UefiKeywordName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UEFI KeywordString of the attribute."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration KeywordString of this attribute, as defined in the UEFI Specification."/>
+        </Property>
+        <Property Name="UefiNamespaceId" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UEFI NamespaceId of the attribute."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration NamespaceId of this attribute, as defined in the UEFI Specification."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct typographical errors in descriptions.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_2_0.AttributeRegistry"/>
     </Schema>
 
   </edmx:DataServices>

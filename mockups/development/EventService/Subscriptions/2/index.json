@@ -1,0 +1,11 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#EventDestination.EventDestination",
+    "@odata.id": "/redfish/v1/EventService/Subscriptions/2",
+    "@odata.type": "#EventDestination.v1_3_0.EventDestination",
+    "Id": "2",
+    "Name": "EventSubscription 2",
+    "Context": "SSE Stream for client at <someip>",
+    "Protocol": "Redfish",
+    "SubscriptionType": "SSE"
+}

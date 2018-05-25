@@ -1,11 +1,11 @@
-[![Build Status](https://magnum.travis-ci.com/DMTF/spmf.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/spmf)
+[![Build Status](https://magnum.travis-ci.com/DMTF/Redfish.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/Redfish)
 <p align="center">
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-# SPMF Github User Guide
+# Redfish Forum Github User Guide
 
-This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the SPMF's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself. **
+This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself.**
 
 New Forum members are urged to read this document before performing any action on the Github repository to avoid running afoul of Forum Policies and Procedures.
 
@@ -13,47 +13,50 @@ All members are encouraged to create a local clone (not a fork) of the repositor
 
 ## Obtaining Access
 
-Only SPMF Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and SPMF Policy.  All SPMF members by default have read-only access to the repository which allows issues to be entered, cloning or forking of the repository, or pull requests (from the repository or a clone) to be made.  Forum members which require read-write access may request it from their company's Primary or Alternate representative, who will determine the need and request access from the co-Chair.  All requests for "Author" (read-write) access received by the co-Chair will be approved.  
+Only Redfish Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and Redfish Forum Policy.  All Redfish Forum members by default have read-only access to the repository which allows issues to be entered, cloning or forking of the repository, or pull requests (from the repository or a clone) to be made.  Forum members which require read-write access may request it from their company's Primary or Alternate representative, who will determine the need and request access from the co-Chair.  All requests for "Author" (read-write) access received by the co-Chair will be approved.  
 
-## Contents of the SPMF Repository
+## Contents of the Redfish Repository
 
-The "spmf" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the SPMF: https://members.dmtf.org/apps/org/workgroup/spmf/  
+The "Redfish" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the Redfish Forum: https://members.dmtf.org/apps/org/workgroup/redfish/
 
 ### Master Branch
 
-The 'Master' (or main) branch of the repository contains deliverables that have been approved by the Forum.  No submissions, edits or merge of pull requests are allowed into the Master branch without the express approval by Forum members - usually during an SPMF meeting or conference call.
+The 'Master' (or main) branch of the repository contains deliverables that have been approved by the Forum.  No submissions, edits or merge of pull requests are allowed into the Master branch without the express approval by Forum members - usually during a Redfish Forum meeting or conference call.
 
 The Forum co-Chairs reserve the right to make typographical, syntax, formatting or other editorial corrections to items in the Master branch in order to complete release processes, correct issues with Forum deliverable, or otherwise resolve issues impeding Forum business.
 
 ### Contents of the Repository
 
-In the root folder of the repository are the primary documents created by the SPMF.  Other files in the root folder are supporting files of the repository and are not normally accessed or referenced.
+In the root folder of the repository are the primary normative documents (specifications) created by the Redfish Forum.  Other files in the root folder are supporting files of the repository and are not normally accessed or referenced.
 
 | Filename | Description |
 |----------|-------------|
-| Readme.md | This document - the SPMF Github User Guide |
+| Readme.md | This document - the Redfish Forum Github User Guide |
 | Specification.md | The Redfish API Specification - DSP0266 |
-| WhitePaper.md | The Redfish White Paper - DSP2044 |
-| RedfishFAQ.md | The Redfish FAQ - DSP2045 |
-| SchemaSupplement.md | The Redfish Schema Supplemental material - DSPxxxx |
-| README8010.md | Readme file used with the schema release bundle - DSP8010 |
-| README2043.md | Readme file used with the mockup release bundle - DSP2043 |
+| HostInterfaceSpecification.md | The Redfish Host Interface Specification - DSP0270 |
+| RedfishInteroperabilityProfiles.md | The Redfish Interoperability Profiles Specification - DSP0272 |
+| RedfishMTFTracker.md | Redfish activities tracking document for the DMTF Marketing Task Force |
+| SchemaSupplement.md | Redfish Schema Supplement - DSP0268 |
 
 Off of the root are several folders which contain the schemas and mockups created by the Forum.
 
-| Folder  | Contents |
-|---------|----------|
-| json-schema | Redfish Schema files in json-schema format |
-| metadata | Redfish Schema files in CSDL format |
-| mockups | Redfish Mockups including the "development" and published, public-facing mockups. |
-| registries | Redfish Message Registries |
-| release | Supporting files and published documents in HTML and PDF formats |
-| test | Supporing files for managing the repository |
+| Folder       | Contents |
+|--------------|----------|
+| docs         | Informative documents (non-normative) in Markdown format |
+| docs/support | Supporting documents (mostly READMEs) or input files used by documentation generation tools |
+| json-schema  | Redfish Schema files in json-schema format |
+| metadata     | Redfish Schema files in CSDL format |
+| mockups      | Redfish Mockups including the "development" and published, public-facing mockups |
+| profiles     | Redfish Interoperability Profiles |
+| registries   | Redfish Message Registries |
+| release      | Individual released (published) documents in HTML and PDF formats |
+| submissions  | Technology Submissions received via the DMTF Submission Portal |
+| test         | Supporing files for managing the repository |
 
 
 ### Other Repositories
 
-The SPMF maintains several other repositories on Github within the DMTF organization.  See the README document in each of these repositories for more information.
+The Redfish Forum maintains several other repositories on Github within the DMTF organization.  See the README document in each of these repositories for more information.
   
 #### Redfish-tools
 
@@ -72,18 +75,10 @@ This is the Private repository for both internal tools (not intended for public 
 
 [https://github.com/DMTF/redfish-samples](https://github.com/DMTF/redfish-samples "https://github.com/DMTF/redfish-samples")
 
-This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the SPMF tools to emulate the implementation's JSON payload responses.  
+This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the Redfish tools to emulate the implementation's JSON payload responses.  
 
  
 ## Using the Github Repository  
-
-### SPMF Viewer
-
-[https://dmtf.github.io/spmf](https://dmtf.github.io/spmf "http://dmtf.github.io/spmf")
-
-This application provides an easy method for browsing the Redfish mockups using normal browser controls, with clickable links to navigate between resources within the mockup. 
-
-
 
 ### Entering Issues
 
@@ -111,7 +106,7 @@ Fixes for issues can be proposed prior to an agreed Approved solution, this is e
 
 ### Triage
 
-During SPMF meetings, triage is performed on new issues, with discussion, categorization and assignment of an owner.  The issue creator is welcome and encouraged to self-assign ownership and propose a solution to the issue (going as far as generating a pull request) prior to triage.   
+During Redfish Forum meetings, triage is performed on new issues, with discussion, categorization and assignment of an owner.  The issue creator is welcome and encouraged to self-assign ownership and propose a solution to the issue (going as far as generating a pull request) prior to triage.   
 
 ### Review Issue and Assign Owner
 
@@ -185,7 +180,7 @@ In addition to the normal Github labels, the following custom labels have been c
 | Schema | This issue involves one or more Redfish schema definitions, either a structural issue with the schema, or an issue with the underlying data model definition. |
 | Security | This issue pertains to security-related topics such as authentication, privileges or encryption. |
 | Specification | This issue is directed at the Redfish Specification document itself. |
-| TF_<name> | This issue is directed at work being performed and currently owned by one of the SPMF Task Forces.  Task Force issues are addressed in Task Force meetings, where issues are resolved and merges are allowed into the Task Force branch - but not Master. |
+| TF_<name> | This issue is directed at work being performed and currently owned by one of the Redfish Forum Task Forces.  Task Force issues are addressed in Task Force meetings, where issues are resolved and merges are allowed into the Task Force branch - but not Master. |
 | TF_A_Master | This issue is directed at the Specification or Schema, and is to be addressed by the Forum.  This label is used to allow easy filtering of all Task Force-related issues or Pull Requests |
 | Vote to Merge | This label indicates that an issue or pull request is ready for review, and the issue owner has requested voting members to approve the solution.  This is a method to streamline Forum meetings by indicating members have completed their review of a solution to an issue. |
 
@@ -199,8 +194,17 @@ The Travis Continuous Integration suite of tools are used for verifying syntax a
 
 The following is a checklist for schema or specification release:
 
--  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
--  New schemas: The $metadata example must be updated to include the new schema file(s).
+- Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
+- New schemas: The $metadata example must be updated to include the new schema file(s).
+
+### WIP release process
+
+In addition to the above items, the following also needs to be performed when releasing a WIP package:
+
+- New schemas supporting the WIP must use major version 0 to show that this is unreleased content and is likely to change when adopted as a standard (starting at v0_1_0 is a good idea).
+- If the WIP being released is a refresh of an existing WIP, the minor revision of the unreleased schema will be incremented, and the major revision will remain at 0.
+- Annotate new namespaces in the CSDL (for both new schemas and extensions to existing schemas) with the following term: `<Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>`
+- Annotate mockups with the following in their payloads: `"@Redfish.ReleaseStatus": "WorkInProgress"`
 
 ### HTML document generation
 
@@ -209,7 +213,3 @@ A set of batch/script files are located in the root and release folder which wil
 Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://cehoffman.github.io/dmtf-md2html/
 
 Source code is kept in this repository: https://github.com/cehoffman/dmtf-md2html
-
-##github.io
-
-Information regarding the SPMF Viewer application TODO here...

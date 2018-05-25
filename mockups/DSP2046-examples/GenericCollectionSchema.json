@@ -60,15 +60,15 @@
                         "Members": {
                             "type": "array",
                             "items": {
-								"type": "object",
-								"properties": {
-									"@odata.id": {
-										"type": "string",
-										"format": "uri",
-										"readonly": true,
-										"description": "A link to a resource instance which is a member of this collection."
-									}
-                				}
+                                "type": "object",
+                                "properties": {
+                                    "@odata.id": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "readonly": true,
+                                        "description": "A link to a resource instance which is a member of this collection."
+                                    }
+                                }
                             },
                             "readonly": true,
                             "description": "Contains the members of this collection."
