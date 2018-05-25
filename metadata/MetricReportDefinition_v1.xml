@@ -60,11 +60,6 @@
       <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.MetricReportDefinition">
         <Annotation Term="OData.Description" String="A set of metrics that are collected periodically."/>
         <Annotation Term="OData.LongDescription" String="This resource specifies a set of metrics that shall be collected into a metric report."/>
-        <Property Name="Name" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Metric report name."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of this metric report."/>
-        </Property>
         <Property Name="MetricReportDefinitionType" Type="MetricReportDefinition.v1_0_0.MetricReportDefinitionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The collection type for the corresponding metric values."/>
