@@ -481,7 +481,7 @@
         <Property Name="HotspareReplacementMode" Type="Drive.v1_5_0.HotspareReplacementModeType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The replacement mode for the hotspare drive."/>
-          <Annotation Term="OData.LongDescription" String="This property specifies if a commissioned hotspare will continue to serve as a hotspare once the failed drive is replaced."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify if a commissioned hotspare will continue to serve as a hotspare once the failed drive is replaced."/>
         </Property>
       </EntityType>
 
