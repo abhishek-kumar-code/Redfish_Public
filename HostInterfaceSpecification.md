@@ -231,6 +231,13 @@ The following table defines the specific Device Descriptor data (referenced in T
 | 03h                    | PCI/PCIe Network Interface | 8-Bytes | Varies | Device Descriptors for PCI/PCIe Device Type: <br/> -VendorID(2-Bytes), <br/> -DeviceID(2-Bytes), <br/> -Subsystem_Vendor_ID(2-bytes), <br/> -Subsystem_ID(2-bytes)                                           |
 | 80h-FFh                | OEM                        | Varies  | Varies | Device Descriptors for OEM  Device Type: <br/> -vendor_IANA(4-bytes), <br/> -OEM defined data                                                                                                                |
 
+For USB devices:
+* idVendor, idProduct, and iSerialNumber originate from the USB descriptor for the device.
+* Within iSerialNumber, bDescriptorType is always 0x03 and bString is a Unicode string without a NULL terminator.
+
+For PCI/PCIe devices:
+* VendorID, DeviceID, Subsystem_Vendor_ID, and Subsystem_ID originate from the PCI configuration space for the device.
+
 
 ### Table-4: Protocol Records data format:
 
@@ -249,7 +256,7 @@ The following table defines the protocol-specific data for the "Redfish Over IP"
 
 | Offset | Name                              | Length  | Value  | Description                                                                                                                 |
 | ---    | ---                               | ---     | ---    | ---                                                                                                                         |
-| X+0    | Service UUID                      | 16BYTEs | Varies | Same as Redfish Service UUID in Redfish Service Root resource; set to all 0s if the UUID is not supported or unknown.    |
+| X+0    | Service UUID                      | 16BYTEs | Varies | Same as Redfish Service UUID in Redfish Service Root resource; set to all 0s if the UUID is not supported or unknown.       |
 | X+16   | Host IP Assignment Type           | BYTE    | Enum   | Unknown=00h, <br/> Static=01h, <br/> DHCP=02h, <br/> AutoConfigure=03h, <br/> HostSelected=04h, <br/> other values reserved |
 | X+17   | Host IP Address Format            | BYTE    | Enum   | Unknown=00h, <br/> IPv4=01h, <br/> IPv6=02h, <br/> other values reserved                                                    |
 | X+18   | Host IP Address                   | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
@@ -260,8 +267,8 @@ The following table defines the protocol-specific data for the "Redfish Over IP"
 | X+68   | Redfish Service IP Mask           | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
 | X+84   | Redfish Service IP Port           | WORD    | Varies | Used for Static and AutoConfigure.                                                                                          |
 | X+86   | Redfish Service VLAN ID           | DWORD   | Varies | Used for Static and AutoConfigure.                                                                                          |
-| X+90   | Redfish Service Hostname Length   | BYTE    | Varies | Length of the following hostname string.                                                                                 |
-| X+91   | Redfish Service Hostname          | varies  | Varies | Hostname of Redfish Service.                                                                                             |
+| X+90   | Redfish Service Hostname Length   | BYTE    | Varies | The length in bytes of the "Redfish Service Hostname" field, including any NULL characters in the field                     |
+| X+91   | Redfish Service Hostname          | varies  | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.                                         |
 
 In the above table, the fields "Host IP Address", "Host IP Mask", "Redfish Service IP Address", and "Redfish Service IP Mask" shall be stored in network byte order.
 * IPv4 Example: 10.12.110.57 will be stored, from lowest offset first, as `0x0A 0x0C 0x6E 0x39 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`
