@@ -53,6 +53,11 @@
             <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/AccountService/Accounts/{AccountId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>
