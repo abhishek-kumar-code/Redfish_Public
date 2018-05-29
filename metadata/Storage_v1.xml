@@ -481,7 +481,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object describes the cache memory of the storage controller in general detail."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the cache memory for a storage controller."/>
-        <Property Name="TotalCacheSizeMiB" Type="Edm.Decimal">
+        <Property Name="TotalCacheSizeMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total configured cache memory, measured in MiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of configured cache memory as measured in mebibytes."/>
@@ -489,7 +489,7 @@
           <Annotation Term="Measures.Unit" String="MiBy"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="PersistentCacheSizeMiB" Type="Edm.Decimal">
+        <Property Name="PersistentCacheSizeMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The portion of the cache memory that is persistent, measured in MiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of cache memory that is persistent as measured in mebibytes. This size shall be less than or equal to the TotalCacheSizeMib."/>
