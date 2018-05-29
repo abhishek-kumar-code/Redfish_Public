@@ -28,7 +28,9 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema Name       | Version | Description |
 | ---               | ---     | ---         |
+| Drive             | 1.2.0   | Added "HotspareReplacementMode" property. |
 | NetworkAdapter    | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
+| Storage           | 1.5.0   | Added "CacheSummary" object to "StorageController". |
 | UpdateService     | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
 | AttributeRegistry | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
 | ComputerSystem    | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB". |
@@ -38,6 +40,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | NetworkPort       | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps". |
 | Processor         | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
 | Resource          | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
+| SessionService    | 1.x.x   | Errata release.  Clarified the Long Description of "ServiceEnabled". |
 | (all files)       | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema. |
 
 ## Release 2018.1 (April 2018)
