@@ -104,6 +104,10 @@ Here the Pub column means has it been published yet.  The intent is to publish a
 | Fabrics             | Jeff H    |      |      |   |
 | Ethernet Switching  | Joe White |      |      |   |
 | Jobs                | Jeff A    |      |      |   |
+| Boot model / option | Samer     |      |      |   |
+| PCI device and slot |           |      |      |   |    
+| OEM Extensions      |           |      |      |   |
+| How to Model in Redfish | Jeff A |     |      |   |           
 
 ### Presentations
 The Pub column will have the values pp, SB or N where:
