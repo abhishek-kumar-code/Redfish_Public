@@ -3,7 +3,7 @@
 
 All SPMF activities with expected public output should be listed in this document, with planned or expected release dates.  
 
-This document is used by the Marketing Task Force to coordinate outbound messaging activies around the Forum's output. 
+This document is used by the Marketing Task Force to coordinate outbound messaging activities around the Forum's output. 
 
 For details on any item listed, contact: spmf-chair@dmtf.org 
  
@@ -12,14 +12,14 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 
 | Event Name | Dates      | Location      | Contact             | Presence                                     |
 | ---        | ---        | ---           | ---                 | ---                                          |
-| OCP Summit | March 2018 | San Jose, CA  | www.opencompute.org | Booth and workshop attendance / presentation |
 | LISA       | 10/29-11/2 | San Francisco |                     | Session?                                     |
-| SC18       | November 2018   | Denver, CO    |                     | Booth, propose session                       |
-| Japan IT   | May 2018   | Tokyo         | Kes Wold            | DMTF booth already planned                   |
-| Datacenter World |  March 2018 | San Antonio, TX  |            | Booth, propose session                      |
+| SC18       | November 12-15, 2018   | Denver, CO    |                     | Booth, propose session                       |
 | OCP Fall   | 3Q-4Q18    | TBD           |                     | Booth and workshop attendance / presentation |
-| UCC        | 12/5-8     | Austin, TX    | Alan Sill           | Session:  http://www.depts.ttu.edu/cac/conferences/ucc2017/tutorials.php#tutorial5 |
+| SDC | September 24-27, 2018 | Santa Clara, CA | Jeff Hilland, Richelle Ahlvers | Propose session |
 | NOMS 2019  | April 2019 |               |                     | Submission deadline likely November 2018    |
+| OCP Summit | March 2019 | TBD  | www.opencompute.org | Booth and workshop attendance / presentation |
+
+
 
 ## Specifications
 
@@ -39,19 +39,20 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 
 (section for each bundle plan)
 
-## White Papers
+## White Papers / Informational 
 
 | Title               | Subject   | DSP No  | Ver    | Date    |
 | ---                 | ---       | ---     | ---    | ---     |
 | Redfish Mockups     | Zips      | DSP2043 | 1.2.0  | 2017-12 |
 | Redfish White Paper | Overview  | DSP2044 | 1.0.2  | 2017-06 |
 | Redfish FAQ         | Overview  | DSP2044 | 1.0.2  | 2015-08 |
-| RF Schema Guide     | Schema    | DSP2046 | 2017.3 | 2017-12 |
+| RF Schema Guide     | Schema    | DSP2046 | 2018.1 | 2018-05 |
 | RF for Neworking    | Alliance  | DSP2046 | 0.1.0b | 2017-03 |
 | OCP HW Mgmt w/ RF   | Profile   | DSP2049 | 0.2.2b | 2017-06 |
 | Composability       | Schema    | DSP2050 | 1.0.0  | 2017-07 |
 | Telemetry           | Schema    | DSP2051 | 0.9.0  | N/A     |
 | Redfish Technote    | Technote  | NA      | NA     | 2016-08 |
+| Redfish Exec Brief  | Technote  | NA      | NA     | 2018-05 |
 
 ## Educational Material
 For the DMTF Redfish Page (www.dmtf.org/standards/Redfish), the Tutorials/Education side bar will have links to all of the Redfish School plus recent stuff as indicated in the Presentations section below to indicate if it goes on the Side Bar or Previous Presentation section at the bottom of the page.  The Previous Presentations section should be at the bottom of the page. 
@@ -89,9 +90,20 @@ Here the Pub column means has it been published yet.  The intent is to publish a
 | Switches            | John L    |      |      |   |
 | Telemetry           | John L    |      |      |   |
 | Host Interface      | Paul V    |      |      |   |
-| JSON Client         | Jeff A    |      |      |   |
 | Profiles            | Jeff A    |      |      |   |
 | FW Update           | Jeff A    |      |      |   |
+| Service Validator   | Jeff A    |      |      |   |
+| Conformance Check   |           |      |      |   |
+| Mockup Server       |           |      |      |   |
+| Redfishtool         | Paul V    |      |      |   |
+| DCIM WIP v.8        | Jon H     |      |      |   |
+| OpenAPI             | Mike R    |      |      |   | 
+| Sensor Model        | Jeff A    |      |      |   |
+| Alarms              | John L    |      |      |   |
+| SSE                 | Mike R    |      |      |   |
+| Fabrics             | Jeff H    |      |      |   |
+| Ethernet Switching  | Joe White |      |      |   |
+| Jobs                | Jeff A    |      |      |   |
 
 ### Presentations
 The Pub column will have the values pp, SB or N where:
