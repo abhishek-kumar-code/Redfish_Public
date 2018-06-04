@@ -139,7 +139,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkInterface.v1_1_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="Add VlanNetworkInterfaceCollection."/>
-      <EntityType Name="NetworkInterface" BaseType="NetworkInterface.v1_1_0.NetworkInterface">
+      <EntityType Name="NetworkInterface" BaseType="NetworkInterface.v1_1_1.NetworkInterface">
         <NavigationProperty Name="VLANs" Type="VlanNetworkInterfaceCollectionCollection.VlanNetworkInterfaceCollectionCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Members of this collection reference Ethernet VlanNetworkInterfaces."/>

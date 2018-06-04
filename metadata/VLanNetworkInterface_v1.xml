@@ -175,7 +175,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_1_3">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="Add areference to related NetworkDevice functions."/>
-      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_1_1.VLanNetworkInterface">    
+      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_1_2.VLanNetworkInterface">    
         <NavigationProperty Name="NetworkDeviceFunctions" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This collection references NetworkDeviceFunctions that support this VLAN."/>
