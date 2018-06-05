@@ -172,7 +172,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the descriptions for Targets and HttpPushUriTargets."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the descriptions Targets, HttpPushUriTargets, and HttpPushUriTargetsBusy."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_3.UpdateService"/>
     </Schema>
 
@@ -202,7 +202,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_3">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the descriptions for Targets and HttpPushUriTargets."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the descriptions for Targets, HttpPushUriTargets, and HttpPushUriTargetsBusy."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_2.UpdateService"/>
     </Schema>
 
@@ -218,7 +218,7 @@
         <Property Name="HttpPushUriTargetsBusy" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This represents if the HttpPushUriTargets property is reserved by any client."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be a boolean that is set by client when the HttpPushUriTargets property is being used by a client for firmware updates.  It shall provide multiple clients a way to negotiate its ownership.  This will help clients to know if a firmware update using HttpPushUriTargets is used by another client."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a boolean that is set by client to True when the HttpPushUriTargets property is being used by a client for firmware updates, and set to False when the the firmware updates are completed. It shall provide multiple clients a way to negotiate its ownership. This will help clients to know if a firmware update using HttpPushUriTargets is used by another client. Clients can attempt releasing a busy update by setting this property to False, but the Service may reject the PATCH if an existing firmware update is in progress."/>
         </Property>
       </EntityType>
     </Schema>
@@ -231,7 +231,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the descriptions for Targets and HttpPushUriTargets."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the descriptions for Targets, HttpPushUriTargets, and HttpPushUriTargetsBusy."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_1.UpdateService"/>
     </Schema>
 
