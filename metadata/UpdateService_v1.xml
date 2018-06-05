@@ -218,7 +218,7 @@
         <Property Name="HttpPushUriTargetsBusy" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This represents if the HttpPushUriTargets property is reserved by any client."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be a boolean that is set by client to True when the HttpPushUriTargets property is being used by a client for firmware updates, and set to False when the the firmware updates are completed. It shall provide multiple clients a way to negotiate its ownership. This will help clients to know if a firmware update using HttpPushUriTargets is used by another client. Clients can attempt releasing a busy update by setting this property to False, but the Service may reject the PATCH if an existing firmware update is in progress."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a boolean that determines when the HttpPushUriTargets property is being used by a client for firmware updates. A client should set this property to True when it is using HttpPushUriTargets for firmware update, and should set it to False when it is no longer using HttpPushUriTargets for updates. The property can provide multiple clients a way to negotiate ownership of HttpPushUriTargets. This will help clients to know if a firmware update using HttpPushUriTargets is used by another client. This property has no functional requirements for the Service."/>
         </Property>
       </EntityType>
     </Schema>
