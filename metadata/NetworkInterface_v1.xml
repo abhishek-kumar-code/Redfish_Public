@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkInterface  v1.1.1-->
+<!--# Redfish Schema:  NetworkInterface  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -133,7 +133,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkInterface.v1_1_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
-      <EntityType Name="NetworkInterface" BaseType="NetworkInterface.v1_1_0.NetworkInterface">
+      <EntityType Name="NetworkInterface" BaseType="NetworkInterface.v1_1_0.NetworkInterface"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkInterface.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="NetworkInterface" BaseType="NetworkInterface.v1_1_1.NetworkInterface">
         <NavigationProperty Name="VLANs" Type="VlanNetworkInterfaceCollectionCollection.VlanNetworkInterfaceCollectionCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Members of this collection reference Ethernet VlanNetworkInterfaces."/>
@@ -142,7 +147,6 @@
         </NavigationProperty>
       </EntityType>
     </Schema>
-
 
   </edmx:DataServices>
 </edmx:Edmx>
