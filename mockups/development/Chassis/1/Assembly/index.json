@@ -6,6 +6,7 @@
 	"Assemblies": [{
 			"Name": "System Board",
 			"Description": "PCA System Board",
+			"PhysicalContext": "SystemBoard",
 			"Model": "345TTT",
 			"PartNumber": "923943",
 			"SparePartNumber": "55-434",
@@ -27,6 +28,7 @@
 		{
 			"Name": "Fan Controller",
 			"Description": "PCA Fan Controller",
+			"PhysicalContext": "ComputeBay",
 			"Model": "F58AS",
 			"PartNumber": "3434-149",
 			"Vendor": "Contoso",
