@@ -38,7 +38,9 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Memory            | 1.x.x   | Errata release.  Added missing Units annotation to many properties in the schema. |
 | MemoryChunks      | 1.x.x   | Errata release.  Added missing Units annotation to "MemoryChunkSizeMiB", "OffsetMiB", and "SizeMiB". |
 | NetworkPort       | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps". |
+| PrivilegeRegistry | 1.x.x   | Errata release.  Fixed permissions term on "PrivilegesUsed", "OEMPrivilegesUsed", "Entity", "Targets", and "Privilege". |
 | Processor         | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
+| Resource          | 1.x.x   | Errata release.  Added missing Required term on "Name" in ResourceCollection. |
 | Resource          | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
 | SessionService    | 1.x.x   | Errata release.  Clarified the Long Description of "ServiceEnabled". |
 | (all files)       | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema. |
