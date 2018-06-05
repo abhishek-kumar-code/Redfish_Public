@@ -24,6 +24,9 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
+    <edmx:Include Namespace="PhysicalContext"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -184,6 +187,25 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Assembly" BaseType="Assembly.v1_1_0.Assembly"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Assembly.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add SerialNumber and PhysicalContext properties."/>
+      <EntityType Name="Assembly" BaseType="Assembly.v1_1_1.Assembly"/>
+		
+      <EntityType Name="AssemblyData" BaseType="Assembly.v1_1_0.AssemblyData">
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The serial number of this assembly."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a manufacturer-allocated number used to identify the assembly."/>
+        </Property>
+        <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describes the area or device to which this assembly data applies."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the physical context for this assembly data."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
