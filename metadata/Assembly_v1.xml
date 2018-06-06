@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Assembly  v1.1.1-->
+<!--# Redfish Schema:  Assembly  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -193,7 +193,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add SerialNumber and PhysicalContext properties."/>
       <EntityType Name="Assembly" BaseType="Assembly.v1_1_1.Assembly"/>
-		
+
       <EntityType Name="AssemblyData" BaseType="Assembly.v1_1_0.AssemblyData">
         <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
