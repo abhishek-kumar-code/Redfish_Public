@@ -1119,6 +1119,8 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).
 
+Responses that represent a single resource shall contain the ["Id" property](#id-property) and the ["Name" property](#name-property).  Responses that represent a single resource may contain the ["Description" property](#description-property).
+
 See also [Resource Collection responses](#resource-collection-responses). 
 
 ##### Context property
@@ -1419,8 +1421,10 @@ The client can get the definition of the annotation from the [service metadata](
 
 Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [Next Link Property](#next-link-property-and-partial-results) for partial results.
 
+Responses for Resource Collections shall contain the ["Name" property](#name-property).  Responses for Resource Collections may contain the ["Description" property](#description-property).
 
 ##### Context property
+
 Responses shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the Resource Collection according to [OData-Protocol](#OData-Protocol).
 
 The context URL for a Resource Collection is of one of the following two forms:
@@ -2180,15 +2184,15 @@ This clause contains a set of common properties across all Redfish resources. Th
 
 Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema Representations, this is in Resource_v1.xml and for JSON Schema Representations, this is in Resource.v1_0_0.json.
 
-#### Id
+#### Id<a id="id-property"></a>
 
 The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
 
-#### Name
+#### Name<a id="name-property"></a>
 
 The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.
 
-#### Description
+#### Description<a id="description-property"></a>
 
 The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
 
