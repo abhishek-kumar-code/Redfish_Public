@@ -73,27 +73,27 @@
         <Property Name="DataSourceUri" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to the resource that provides the data for this object."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a URI to the resource that provides the source of the basic subset of properties contained within this copy."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI to the resource that provides the source of the schema Excerpt contained within this copy."/>
           <Annotation Term="IsURL"/>
-          <Annotation Term="Redfish.BasicCopyOnly"/>
+          <Annotation Term="Redfish.ExcerptCopyOnly"/>
         </Property>
 
-        <!-- Basic properties for a sensor -->
+        <!-- Excerpt properties for a sensor -->
         <Property Name="Status" Type="Resource.Status" Nullable="false">
-          <Annotation Term="Redfish.Basic"/>
+          <Annotation Term="Redfish.Excerpt"/>
         </Property>
 
         <Property Name="Reading" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The present value for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the present value of this Sensor at the time the information request occurred."/>
-          <Annotation Term="Redfish.Basic"/>
+          <Annotation Term="Redfish.Excerpt"/>
         </Property>
         <Property Name="ReadingUnits" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Units in which the reading and thresholds are measured."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the units in which the sensor's reading and thresholds are measured."/>
-          <Annotation Term="Redfish.Basic"/>
+          <Annotation Term="Redfish.Excerpt"/>
         </Property>
         <Property Name="SetPoint" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -104,27 +104,27 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The present value for this discrete Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the present discrete value of this Sensor at the time the information request occurred."/>
-          <Annotation Term="Redfish.Basic"/>
+          <Annotation Term="Redfish.Excerpt"/>
         </Property>
         <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Describes the area or device to which this sensor measurement applies.."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies."/>
-          <Annotation Term="Redfish.Basic"/>
+          <Annotation Term="Redfish.Excerpt"/>
         </Property>
 
-        <!-- Basic properties specific to power reading type -->
+        <!-- Excerpt properties specific to power reading type -->
         <Property Name="ApparentVA" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The product of Voltage and Current for an AC circuit, in Volt-Amperes units."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the product of VoltageRMS multiplied by CurrentRMS for a circuit. PowerApparentVA is expressed in Volt-Amperes units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Basic" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
         </Property>
         <Property Name="ReactiveVAR" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The square root of the difference term of squared ApparentVA and squared Power (Reading) for a circuit, expressed in VAR units."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the arithmetic mean of product terms of instantaneous voltage and quadrature current measurements calculated over an integer number of line cycles for a circuit. PowerReactiveVAR is expressed in VAR units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Basic" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
         </Property>
         <Property Name="PowerFactor" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -132,21 +132,21 @@
           <Annotation Term="OData.LongDescription" String="This property shall identify the quotient of PowerRealWatts and PowerApparentVA for a circuit. PowerFactor is expressed in unit-less 1/100ths. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="1"/>
-          <Annotation Term="Redfish.Basic" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
         </Property>
         <Property Name="EnergykWh" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Basic" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
         </Property>
         <Property Name="LoadPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The power load utilization for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the present value of this Sensor at the time the information request occurred. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Basic" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
         </Property>
-        <!-- end of Basic properties -->
+        <!-- end of Excerpt properties -->
 
         <Property Name="Location" Type="Resource.Location">
           <Annotation Term="OData.Description" String="The location information for this Sensor."/>
