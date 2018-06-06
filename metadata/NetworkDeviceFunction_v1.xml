@@ -535,7 +535,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="Add support for VLAN to Ethernet"/>
       
-      <ComplexType Name="Ethernet  BaseType="NetworkDeviceFunction.v1_0_0.Ethernet">
+      <ComplexType Name="Ethernet"  BaseType="NetworkDeviceFunction.v1_0_0.Ethernet">
      
         <Property Name="VLAN" Type="VLanNetworkInterface.VLAN">
           <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource."/>
