@@ -169,14 +169,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_1_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
-      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_1_1.VLanNetworkInterface">    
-        <NavigationProperty Name="NetworkDeviceFunctions" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This collection references NetworkDeviceFunctions that support this VLAN."/>
-          <Annotation Term="OData.Description" String="This collection references NetworkDeviceFunctions that support this VLAN."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </EntityType>
+      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_1_1.VLanNetworkInterface"/>
     </Schema>
 
   </edmx:DataServices>

@@ -36,6 +36,12 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
     <edmx:Include Namespace="PCIeFunction"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface_v1.xml">
+    <edmx:Include Namespace="VLanNetworkInterface"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection_v1.xml">
+    <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -523,6 +529,26 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_2_1.NetworkDeviceFunction"/>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="Add support for VLAN to Ethernet"/>
+      
+      <ComplexType Name="Ethernet  BaseType="NetworkDeviceFunction.v1_0_0.Ethernet">
+     
+        <Property Name="VLAN" Type="VLanNetworkInterface.VLAN">
+          <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
+        </Property>
+        <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources. If this property is used, the VLANEnabled and VLANId property shall not be used."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
