@@ -800,11 +800,11 @@ OData-Version: 4.0
     "Description": "Description of server",
     "PowerState": "On",
     "BiosVersion": "P79 v1.00 (09/20/2013)",
-    "@Redfish.AllowOverprovisioning": true,
     "Processors": {
         "Members": [
             {
                 "@Redfish.RequestedCount": 4,
+                "@Redfish.AllowOverprovisioning": true,
                 "ProcessorType": "CPU",
                 "ProcessorArchitecture": "x86",
                 "InstructionSet": "x86-64",
@@ -814,6 +814,7 @@ OData-Version: 4.0
             },
             {
                 "@Redfish.RequestedCount": 4,
+                "@Redfish.AllowOverprovisioning": false,
                 "ProcessorType": "FPGA",
                 "ProcessorArchitecture": "x86",
                 "InstructionSet": "x86-64",
