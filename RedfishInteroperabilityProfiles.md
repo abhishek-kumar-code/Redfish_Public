@@ -4,7 +4,7 @@ DocNumber: '0272'
 DocClass: Normative
 DocVersion: '1.0.1'
 SupersedesVersion: '1.0.0'
-modified: '2018-04-18'
+modified: '2018-05-15'
 status: published
 released: True
 copyright: '2017-2018'
@@ -521,6 +521,6 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 
 | Version | Date | Description |
 | --- | --- | --- |
-| 1.0.1 | 2018-04-17 |  Errata release.  Corrected definition of 'Comparison' for Conditional Requirements to match the schema usage (and consistent with other usage).  Added missing 'Values' property for Conditional Requirements and added new 'CompareType' property to replace the inconsisent usage of 'Comparison'.  Added example for a Conditional Requirement that uses the 'Values' array. |
+| 1.0.1 | 2018-05-15 |  Errata release.  Corrected definition of 'Comparison' for Conditional Requirements to match the schema usage (and consistent with other usage).  Added missing 'Values' property for Conditional Requirements and added new 'CompareType' property to replace the inconsisent usage of 'Comparison'.  Added example for a Conditional Requirement that uses the 'Values' array. |
 | 1.0.0 | 2018-01-02 |  Initial release. |
 |   |   |   |
