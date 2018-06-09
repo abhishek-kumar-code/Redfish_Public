@@ -414,7 +414,7 @@
       <Annotation Term="OData.Description" String="This version was created to add the $only query parameter support to ProtocolFeaturesSupported."/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_2.ServiceRoot"/>
 
-      <ComplexType Name="ProtocolFeaturesSupported" BaseType="ServiceRoot.v1_2_0.ProtocolFeaturesSupported">
+      <ComplexType Name="ProtocolFeaturesSupported" BaseType="ServiceRoot.v1_3_0.ProtocolFeaturesSupported">
         <Property Name="OnlyMemberQuery" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether the 'only' query parameter is supported."/>
