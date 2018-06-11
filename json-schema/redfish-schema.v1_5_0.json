@@ -1,14 +1,9 @@
 {
     "id": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_5_0",
     "type": "object",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_5_0",
+    "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Redfish Schema Extension",
     "description": "The properties defined in this schema shall adhere to the requirements of the Redfish Specification and the semantics of the descriptions in this file.",
-    "allOf": [
-        {
-            "$ref": "http://json-schema.org/draft-04/schema"
-        }
-    ],
     "definitions": {
         "readonly": {
             "type": "boolean",
