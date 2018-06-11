@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
-    "title": "#RedfishInteroperabilityProfile.v1_0_1.RedfishInteroperabilityProfile",
+    "title": "#RedfishInteroperabilityProfile.v1_0_2.RedfishInteroperabilityProfile",
     "copyright": "Copyright 2017-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "type": "object",
     "additionalProperties": false,
@@ -226,9 +226,9 @@
                                         "type": "string"
                                     },
                                     "description": "For Mandatory parameters, the set of enumerations, in addition to those listed in ParameterValues, that are recommended to be supported."
-                                },
-                                "additionalProperties": false
-                            }
+                                }
+									 },
+                            "additionalProperties": false
                         }
                     }
                 }
