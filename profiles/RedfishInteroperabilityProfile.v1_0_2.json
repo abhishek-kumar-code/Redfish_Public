@@ -227,7 +227,7 @@
                                     },
                                     "description": "For Mandatory parameters, the set of enumerations, in addition to those listed in ParameterValues, that are recommended to be supported."
                                 }
-									 },
+                            },
                             "additionalProperties": false
                         }
                     }
