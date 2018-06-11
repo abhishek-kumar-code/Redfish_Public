@@ -126,28 +126,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -173,28 +173,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -220,28 +220,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -291,28 +291,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -527,28 +527,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -574,28 +574,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -671,28 +671,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -721,28 +721,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -819,28 +819,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -868,28 +868,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -969,28 +969,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -1021,28 +1021,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -1121,28 +1121,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -1172,28 +1172,28 @@
                         "PATCH": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "PUT": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "DELETE": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ],
                         "POST": [
                             {
                                 "Privilege": [
-                                    "ConfigureComponent"
+                                    "ConfigureComponents"
                                 ]
                             }
                         ]
@@ -1268,7 +1268,7 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
@@ -1315,7 +1315,7 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
@@ -2067,28 +2067,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2114,28 +2114,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2302,28 +2302,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2349,28 +2349,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2443,28 +2443,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2490,28 +2490,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2537,28 +2537,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2584,28 +2584,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2631,28 +2631,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2678,28 +2678,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2725,28 +2725,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2772,28 +2772,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2819,28 +2819,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2866,28 +2866,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2913,28 +2913,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -2960,28 +2960,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3007,28 +3007,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3054,28 +3054,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3101,28 +3101,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3148,28 +3148,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3195,28 +3195,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3242,28 +3242,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3289,28 +3289,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3336,28 +3336,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3383,28 +3383,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3430,28 +3430,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3477,28 +3477,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3524,28 +3524,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3571,28 +3571,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -3947,28 +3947,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -4041,28 +4041,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
@@ -4088,28 +4088,28 @@
                 "PATCH": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "POST": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "PUT": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ],
                 "DELETE": [
                     {
                         "Privilege": [
-                            "ConfigureComponent"
+                            "ConfigureComponents"
                         ]
                     }
                 ]
