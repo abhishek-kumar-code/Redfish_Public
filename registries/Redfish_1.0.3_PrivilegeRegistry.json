@@ -2048,7 +2048,7 @@
             }
         },
         {
-            "Entity": "BIOS",
+            "Entity": "Bios",
             "OperationMap": {
                 "GET": [
                     {
@@ -3599,7 +3599,7 @@
             }
         },
         {
-            "Entity": "JSONSchemaFile",
+            "Entity": "JsonSchemaFile",
             "OperationMap": {
                 "GET": [
                     {
@@ -3646,7 +3646,7 @@
             }
         },
         {
-            "Entity": "JSONSchemaFileCollection",
+            "Entity": "JsonSchemaFileCollection",
             "OperationMap": {
                 "GET": [
                     {
