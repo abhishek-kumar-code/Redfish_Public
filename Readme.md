@@ -1,11 +1,11 @@
-[![Build Status](https://magnum.travis-ci.com/DMTF/Redfish.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/Redfish)
+[![Build Status](https://magnum.travis-ci.com/DMTF/spmf.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/spmf)
 <p align="center">
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-# Redfish Forum Github User Guide
+# DMTF Redfish Forum - Github User Guide
 
-This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself.**
+This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself. **
 
 New Forum members are urged to read this document before performing any action on the Github repository to avoid running afoul of Forum Policies and Procedures.
 
@@ -17,13 +17,13 @@ Only Redfish Forum members shall have access to the repository.  Forum Alliance 
 
 ## Contents of the Redfish Repository
 
-The "Redfish" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the Redfish Forum: https://members.dmtf.org/apps/org/workgroup/redfish/
+The "Redfish" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the Redfish Forum: https://members.dmtf.org/apps/org/workgroup/redfish-forum/  
 
 ### Master Branch
 
-The 'Master' (or main) branch of the repository contains deliverables that have been approved by the Forum.  No submissions, edits or merge of pull requests are allowed into the Master branch without the express approval by Forum members - usually during a Redfish Forum meeting or conference call.
+The 'Master' (or main) branch of the repository contains deliverables that have been approved by the Forum.  No submissions, edits or merge of pull requests are allowed into the Master branch without the express approval by Forum members - usually during an Redfish Forum meeting or conference call.
 
-The Forum co-Chairs reserve the right to make typographical, syntax, formatting or other editorial corrections to items in the Master branch in order to complete release processes, correct issues with Forum deliverable, or otherwise resolve issues impeding Forum business.
+The Forum co-Chairs reserve the right to make typographical, syntax, formatting or other editorial corrections to items in the Master branch in order to complete release processes, correct issues with Forum deliverables, or otherwise resolve issues impeding Forum business.
 
 ### Contents of the Repository
 
@@ -75,16 +75,16 @@ This is the Private repository for both internal tools (not intended for public 
 
 [https://github.com/DMTF/redfish-samples](https://github.com/DMTF/redfish-samples "https://github.com/DMTF/redfish-samples")
 
-This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the Redfish tools to emulate the implementation's JSON payload responses.  
+This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the Redfish Forum tools to emulate the implementation's JSON payload responses.  
 
  
 ## Using the Github Repository  
 
 ### Entering Issues
 
-Forum members are encouraged to enter issues against any of the Forum deliverables.  This includes questions about the specification or schema where something is not clear or obvious.  
+Forum members are encouraged to enter issues against any of the Forum deliverables.  This includes questions about the specification or schema where something is not clear or obvious.  Requests for new functionality in the specifications or schema are also made by creating a new issue, which will be marked as an enhancement request. 
 
-Create a new issue using Github's "New Issue" button.  It is helpful to label the issue to indicate the area or deliverable that the issue pertains to, if known.  Labels including "Schema", "Specification", "Protocol" or FAQ or White Paper" are commonly used for this purpose.
+Create a new issue using Github's "New Issue" button.  It is helpful to label the issue to indicate the area or deliverable that the issue pertains to, if known.  Labels including "Schema", "Specification", "Protocol" or "FAQ or White Paper" are commonly used for this purpose.
 
 ### Working in Branches
 
@@ -94,13 +94,13 @@ Note: Make sure you create (and select) a branch before starting any work to avo
 
 Any unapproved changes to the Master branch may be reverted by the co-Chair without notice.
 
-
 ### Pull Requests
 
-When work on a proposed fix or addition to the deliverables has been completed, the  author makes a Pull Request to signal that this work is ready for review by the Forum for merging into the Master branch.  
+When work on a proposed fix or addition to the deliverables has been completed, the author makes a Pull Request to signal that this work is ready for review by the Forum for merging into the Master branch.  
 
-Fixes for issues can be proposed prior to an agreed Approved solution, this is encouraged for obvious errors or other straightforward changes.  It is not uncommon for the Forum to review a Pull Request which addresses a new issue (going through triage during a meeting).  
+Fixes for issues can be proposed prior to an agreed Approved solution, this is encouraged for obvious errors or other straightforward changes or enhancements.  It is not uncommon for the Forum to review a Pull Request which addresses a new issue (going through triage during a meeting).
 
+Pull Requests for non-trivial enhancement requests should not be created until a presentation has been made to the Forum, or the enhancement request has been discussed during issue triage.  As Pull Requests are the most visible aspect of the Github process, material that has not been reviewed prior to the creation of the Pull Request causes confusion among members.  The co-Chair reserves the right to close Pull Requests that do not address an Approved issue for this reason.
 
 ## Issue Management Process
 
@@ -119,7 +119,7 @@ and label the issue with "Ready for Review" so that the solution can be reviewed
 
 ### Approval, Merging and Automatic Checks
 
-Once all comments have been reviewed and the Forum has agreed to the changes, the co-Chair will call to Merge the changes into the Master branch.  The Travis CI processes will be allowed to execute to check for any syntax errors or other technical issues with the changes before the merge is completed.  Unless otherwise requested, merged branches will be deleted from the repository.
+Once all comments have been reviewed and the Forum has agreed to the changes, the co-Chair will call to Merge the changes into the Master branch.  The Travis CI processes will be allowed to execute to check for any syntax errors or other technical issues with the changes before the merge is completed.  Unless otherwise requested, merged branches will be deleted from the repository.  The co-Chair will merge approved pull requests upon completion of the Travis CI checks as they complete (which likely occurs after Redfish Forum meetings have adjorned).
 
 ### Label Flow
 
@@ -194,17 +194,8 @@ The Travis Continuous Integration suite of tools are used for verifying syntax a
 
 The following is a checklist for schema or specification release:
 
-- Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
-- New schemas: The $metadata example must be updated to include the new schema file(s).
-
-### WIP release process
-
-In addition to the above items, the following also needs to be performed when releasing a WIP package:
-
-- New schemas supporting the WIP must use major version 0 to show that this is unreleased content and is likely to change when adopted as a standard (starting at v0_1_0 is a good idea).
-- If the WIP being released is a refresh of an existing WIP, the minor revision of the unreleased schema will be incremented, and the major revision will remain at 0.
-- Annotate new namespaces in the CSDL (for both new schemas and extensions to existing schemas) with the following term: `<Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>`
-- Annotate mockups with the following in their payloads: `"@Redfish.ReleaseStatus": "WorkInProgress"`
+-  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
+-  New schemas: The $metadata example must be updated to include the new schema file(s).
 
 ### HTML document generation
 
@@ -213,3 +204,7 @@ A set of batch/script files are located in the root and release folder which wil
 Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://cehoffman.github.io/dmtf-md2html/
 
 Source code is kept in this repository: https://github.com/cehoffman/dmtf-md2html
+
+##github.io
+
+Information regarding the Redfish Forum Viewer application TODO here...
