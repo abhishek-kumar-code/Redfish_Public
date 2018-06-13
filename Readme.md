@@ -5,7 +5,7 @@
 
 # Redfish Forum Github User Guide
 
-This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself. **
+This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself.**
 
 New Forum members are urged to read this document before performing any action on the Github repository to avoid running afoul of Forum Policies and Procedures.
 
@@ -17,7 +17,7 @@ Only Redfish Forum members shall have access to the repository.  Forum Alliance 
 
 ## Contents of the Redfish Repository
 
-The "Redfish" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the Redfish Forum: https://members.dmtf.org/apps/org/workgroup/redfish/  
+The "Redfish" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the Redfish Forum: https://members.dmtf.org/apps/org/workgroup/redfish/
 
 ### Master Branch
 
@@ -194,8 +194,8 @@ The Travis Continuous Integration suite of tools are used for verifying syntax a
 
 The following is a checklist for schema or specification release:
 
--  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
--  New schemas: The $metadata example must be updated to include the new schema file(s).
+- Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
+- New schemas: The $metadata example must be updated to include the new schema file(s).
 
 ### WIP release process
 
