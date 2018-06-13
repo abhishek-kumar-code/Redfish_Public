@@ -13,7 +13,7 @@ All members are encouraged to create a local clone (not a fork) of the repositor
 
 ## Obtaining Access
 
-Only Redfish Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and Redfish Forum Policy.  All Redfish Forum members by default have read-only access to the repository which allows issues to be entered, cloning or forking of the repository, or pull requests (from the repository or a clone) to be made.  Forum members which require read-write access may request it from their company's Primary or Alternate representative, who will determine the need and request access from the co-Chair.  All requests for "Author" (read-write) access received by the co-Chair will be approved.  
+Only Redfish Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and Redfish Forum Policy.  All Redfish Forum members by default have read-only access to the repository which allows issues to be entered, cloning or forking of the repository, or pull requests (from the repository or a clone) to be made.  Forum members which require read-write access may request it from their company's Primary or Alternate representative, who will determine the need and request access from the co-Chair.  All requests for "Author" (read-write) access received by the co-Chair will be approved.
 
 ## Contents of the Redfish Repository
 
@@ -75,20 +75,20 @@ This is the Private repository for both internal tools (not intended for public 
 
 [https://github.com/DMTF/redfish-samples](https://github.com/DMTF/redfish-samples "https://github.com/DMTF/redfish-samples")
 
-This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the Redfish tools to emulate the implementation's JSON payload responses.  
+This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the Redfish tools to emulate the implementation's JSON payload responses.
 
- 
-## Using the Github Repository  
+
+## Using the Github Repository
 
 ### Entering Issues
 
-Forum members are encouraged to enter issues against any of the Forum deliverables.  This includes questions about the specification or schema where something is not clear or obvious.  Requests for new functionality in the specifications or schema are also made by creating a new issue, which will be marked as an enhancement request. 
+Forum members are encouraged to enter issues against any of the Forum deliverables.  This includes questions about the specification or schema where something is not clear or obvious.  Requests for new functionality in the specifications or schema are also made by creating a new issue, which will be marked as an enhancement request.
 
 Create a new issue using Github's "New Issue" button.  It is helpful to label the issue to indicate the area or deliverable that the issue pertains to, if known.  Labels including "Schema", "Specification", "Protocol" or "FAQ or White Paper" are commonly used for this purpose.
 
 ### Working in Branches
 
-Any proposed change, fix, addition or enhancement to the Forum deliverables must be approved before the change is merged into the Master branch.  For that reason, all work must occur in a branch off of Master so that the work can be reviewed in its entirety via a Pull Request.  By creating a branch, you can make changes or additions to numerous files in the repository and have them all reviewed together.  This is typical of Forum business, as an addition to a Schema may require changes to a number of schema files, the mockups, and perhaps the Specification itself.  
+Any proposed change, fix, addition or enhancement to the Forum deliverables must be approved before the change is merged into the Master branch.  For that reason, all work must occur in a branch off of Master so that the work can be reviewed in its entirety via a Pull Request.  By creating a branch, you can make changes or additions to numerous files in the repository and have them all reviewed together.  This is typical of Forum business, as an addition to a Schema may require changes to a number of schema files, the mockups, and perhaps the Specification itself.
 
 Note: Make sure you create (and select) a branch before starting any work to avoid losing changes or inadvertently saving unapproved changes directly to the Master branch.
 
@@ -96,7 +96,7 @@ Any unapproved changes to the Master branch may be reverted by the co-Chair with
 
 ### Pull Requests
 
-When work on a proposed fix or addition to the deliverables has been completed, the author makes a Pull Request to signal that this work is ready for review by the Forum for merging into the Master branch.  
+When work on a proposed fix or addition to the deliverables has been completed, the author makes a Pull Request to signal that this work is ready for review by the Forum for merging into the Master branch.
 
 Fixes for issues can be proposed prior to an agreed Approved solution, this is encouraged for obvious errors or other straightforward changes or enhancements.  It is not uncommon for the Forum to review a Pull Request which addresses a new issue (going through triage during a meeting).
 
@@ -106,16 +106,15 @@ Pull Requests for non-trivial enhancement requests should not be created until a
 
 ### Triage
 
-During Redfish Forum meetings, triage is performed on new issues, with discussion, categorization and assignment of an owner.  The issue creator is welcome and encouraged to self-assign ownership and propose a solution to the issue (going as far as generating a pull request) prior to triage.   
+During Redfish Forum meetings, triage is performed on new issues, with discussion, categorization and assignment of an owner.  The issue creator is welcome and encouraged to self-assign ownership and propose a solution to the issue (going as far as generating a pull request) prior to triage.
 
 ### Review Issue and Assign Owner
 
-Once a solution and disposition for the issue been decided by the Forum, that solution is documented in an issue comment, and the issue is labeled with "Approved".  The assigned owner is then tasked with completing the work to resolve the issue.  
+Once a solution and disposition for the issue been decided by the Forum, that solution is documented in an issue comment, and the issue is labeled with "Approved".  The assigned owner is then tasked with completing the work to resolve the issue.
 
 ### Create Branch and Pull Request
 
-The assigned owner shall create a branch from Master to perform the work needed to address the issue.  Once work has been completed, the owner shall create a Pull Request 
-and label the issue with "Ready for Review" so that the solution can be reviewed by the Forum.  The Pull Request should list the Issue Number (using "#<issue>") in the comment to tie the Pull to the open Issue (which allows the issue to be closed automatically when the branch is merged into Master).
+The assigned owner shall create a branch from Master to perform the work needed to address the issue.  Once work has been completed, the owner shall create a Pull Request and label the issue with "Ready for Review" so that the solution can be reviewed by the Forum.  The Pull Request should list the Issue Number (using "#<issue>") in the comment to tie the Pull to the open Issue (which allows the issue to be closed automatically when the branch is merged into Master).
 
 ### Approval, Merging and Automatic Checks
 
@@ -156,11 +155,11 @@ Pull requests are used to patch the individual branches, but since the fix must 
 
 ## How to Submit New Proposals or Schemas
 
-The Forum welcomes and encourages submissions of new schema(s), clarifications or additions to the Specification, mockups, tools and other relevant documentation to further the Forum's goals.  
+The Forum welcomes and encourages submissions of new schema(s), clarifications or additions to the Specification, mockups, tools and other relevant documentation to further the Forum's goals.
 
 ### Technology submission vs. Member or individual submission
 
-An DMTF Technology Submission (through the Feedback Portal) is needed when technology has been created by multiple members or non-member companies.  Proposals or submissions made solely by a single Member or individual can be made using a Branch and Pull Request directly in the repository.  
+An DMTF Technology Submission (through the Feedback Portal) is needed when technology has been created by multiple members or non-member companies.  Proposals or submissions made solely by a single Member or individual can be made using a Branch and Pull Request directly in the repository.
 
 ## Label Usage
 
@@ -208,7 +207,7 @@ In addition to the above items, the following also needs to be performed when re
 
 ### HTML document generation
 
-A set of batch/script files are located in the root and release folder which will execute a series of tools to convert the Markdown documents to HTML.  Note that for Windows users, the node.js javascript environment used by these scripts may have issues locating the proper toolchain components of Visual Studio (C/C++).  This is a well-known issue, and following the steps documented here: https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245 can resolve that issue.  
+A set of batch/script files are located in the root and release folder which will execute a series of tools to convert the Markdown documents to HTML.  Note that for Windows users, the node.js javascript environment used by these scripts may have issues locating the proper toolchain components of Visual Studio (C/C++).  This is a well-known issue, and following the steps documented here: https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245 can resolve that issue.
 
 Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://cehoffman.github.io/dmtf-md2html/
 
