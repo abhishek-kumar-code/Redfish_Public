@@ -1,9 +1,9 @@
-[![Build Status](https://magnum.travis-ci.com/DMTF/spmf.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/spmf)
+[![Build Status](https://magnum.travis-ci.com/DMTF/Redfish.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/Redfish)
 <p align="center">
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-# DMTF Redfish Forum - Github User Guide
+# Redfish Forum Github User Guide
 
 This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself. **
 
@@ -17,11 +17,11 @@ Only Redfish Forum members shall have access to the repository.  Forum Alliance 
 
 ## Contents of the Redfish Repository
 
-The "Redfish" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the Redfish Forum: https://members.dmtf.org/apps/org/workgroup/redfish-forum/  
+The "Redfish" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the Redfish Forum: https://members.dmtf.org/apps/org/workgroup/redfish/  
 
 ### Master Branch
 
-The 'Master' (or main) branch of the repository contains deliverables that have been approved by the Forum.  No submissions, edits or merge of pull requests are allowed into the Master branch without the express approval by Forum members - usually during an Redfish Forum meeting or conference call.
+The 'Master' (or main) branch of the repository contains deliverables that have been approved by the Forum.  No submissions, edits or merge of pull requests are allowed into the Master branch without the express approval by Forum members - usually during a Redfish Forum meeting or conference call.
 
 The Forum co-Chairs reserve the right to make typographical, syntax, formatting or other editorial corrections to items in the Master branch in order to complete release processes, correct issues with Forum deliverables, or otherwise resolve issues impeding Forum business.
 
@@ -75,7 +75,7 @@ This is the Private repository for both internal tools (not intended for public 
 
 [https://github.com/DMTF/redfish-samples](https://github.com/DMTF/redfish-samples "https://github.com/DMTF/redfish-samples")
 
-This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the Redfish Forum tools to emulate the implementation's JSON payload responses.  
+This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the Redfish tools to emulate the implementation's JSON payload responses.  
 
  
 ## Using the Github Repository  
@@ -197,6 +197,15 @@ The following is a checklist for schema or specification release:
 -  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
 -  New schemas: The $metadata example must be updated to include the new schema file(s).
 
+### WIP release process
+
+In addition to the above items, the following also needs to be performed when releasing a WIP package:
+
+- New schemas supporting the WIP must use major version 0 to show that this is unreleased content and is likely to change when adopted as a standard (starting at v0_1_0 is a good idea).
+- If the WIP being released is a refresh of an existing WIP, the minor revision of the unreleased schema will be incremented, and the major revision will remain at 0.
+- Annotate new namespaces in the CSDL (for both new schemas and extensions to existing schemas) with the following term: `<Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>`
+- Annotate mockups with the following in their payloads: `"@Redfish.ReleaseStatus": "WorkInProgress"`
+
 ### HTML document generation
 
 A set of batch/script files are located in the root and release folder which will execute a series of tools to convert the Markdown documents to HTML.  Note that for Windows users, the node.js javascript environment used by these scripts may have issues locating the proper toolchain components of Visual Studio (C/C++).  This is a well-known issue, and following the steps documented here: https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245 can resolve that issue.  
@@ -204,7 +213,3 @@ A set of batch/script files are located in the root and release folder which wil
 Chris Hoffman has an MD to HTML converter currently in development.  It is available here: https://cehoffman.github.io/dmtf-md2html/
 
 Source code is kept in this repository: https://github.com/cehoffman/dmtf-md2html
-
-##github.io
-
-Information regarding the Redfish Forum Viewer application TODO here...
