@@ -96,7 +96,7 @@ Any unapproved changes to the Master branch may be reverted by the co-Chair with
 
 ### Pull Requests
 
-When work on a proposed fix or addition to the deliverables has been completed, the author makes a Pull Request to signal that this work is ready for review by the Forum for merging into the Master branch.
+When work on a proposed fix or addition to the deliverables has been completed, the author makes a Pull Request to signal that this work is ready for review by the Forum for merging into the Master branch. The related issue should be mentioned in the comment for the Pull Request, using the "Fix #nnn" notation, which will allow Github to tie the pull to the issue, and automatically close the issue once the pull has been merged.  This notation also provides a link in the issue and pull request so that reviewers can easily find the proposed solution or vice versa.
 
 Fixes for issues can be proposed prior to an agreed Approved solution, this is encouraged for obvious errors or other straightforward changes or enhancements.  It is not uncommon for the Forum to review a Pull Request which addresses a new issue (going through triage during a meeting).
 
