@@ -61,6 +61,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Job.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Job" BaseType="Job.Job">
+        <Property Name="JobStatus" Type="Resource.Health" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The status of the job."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the health status of the job."/>
+        </Property>		  
         <Property Name="JobState" Type="Job.v1_0_0.JobState" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The state of the job."/>
