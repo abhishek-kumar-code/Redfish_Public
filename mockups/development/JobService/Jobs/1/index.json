@@ -1,0 +1,31 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Job.Job",
+	"@odata.id": "/redfish/v1/JobService/Jobs/1",
+	"@odata.type": "#Job.v1_0_0.Job",
+	"Id": "1",
+	"Status": {
+	   "Health": "Ok",
+		"State": "Enabled"
+	},
+	"Name": "Scheduled Nightly Reboot of PROBLEM_CHILD",
+	"JobState": "New",
+	"StartTime": "2018-03-07T14:44+06:00",
+	"EndTime": "2018-03-07T14:45+06:00",
+	"PercentComplete": 85,
+	"CreatedBy": "Dr. Smith",
+	"Schedule": {
+	   "Lifetime": "4Y",
+		"InitialStartTime": "2018-01-01T01:00+06:00",
+		"RecurrenceInterval": "1D",
+		"EnabledDaysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+	},
+	"Payload": {
+		"TargetURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
+		"HTTPHeaders": [],
+		"Username": "angrydad",
+		"Password": null,
+		"JSONBody": {},
+		"ResponseMonitorURI": "/jobmonitor/834RJ4436"
+	}
+}

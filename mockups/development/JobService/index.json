@@ -1,0 +1,36 @@
+{
+	"@odata.id": "/redfish/v1/JobService",
+	"@odata.type": "#JobService.v1_0_0.JobService",
+	"Id": "JobService",
+	"Name": "Job Service",
+   "DateTime": "2018-06-13T04:14+06:00",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"ServiceEnabled": true,
+	"ServiceCapabilites": {
+		"MaxJobs": 100,
+		"MaxSteps": 50,
+		"MaxStepLevels": 1,
+		"Scheduling": ["Job", "Step"],
+		"ScheduleTypes": ["Recurring"]
+	},
+	"Jobs": {
+		"@odata.id": "/redfish/v1/JobService/Jobs"
+	},
+   "LogService": {
+	   "@odata.id": "/redfish/v1/JobService/LogService"
+	},
+	"Actions": {
+		"Oem": {
+			"#Contoso.EasyButton": {
+				"target": "/redfish/v1/JobService/Contoso.EasyButton",
+				"@Redfish.ActionInfo": "/redfish/v1/JobService/EasyButtonActionInfo"
+			}
+		}
+	},
+	"Oem": {},
+	"@odata.context": "/redfish/v1/$metadata/JobService.JobService",
+	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

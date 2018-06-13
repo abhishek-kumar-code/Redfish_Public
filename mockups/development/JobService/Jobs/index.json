@@ -1,0 +1,15 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#JobsCollection.JobsCollection",
+    "@odata.type": "#JobsCollection.JobsCollection",
+    "Name": "Jobs Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack"
+        }
+    ]
+}

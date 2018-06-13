@@ -1,0 +1,24 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Job.Job",
+	"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack",
+	"@odata.type": "#Job.v1_0_0.Job",
+	"Id": "RebootRack",
+	"Name": "Scheduled Nightly Reboot of the rack",
+	"JobStatus": "Ok",	
+	"JobState": "New",
+	"StartTime": "2018-04-01T00:01+6:00",
+	"EndTime": null,
+	"JobStatus": "Running",
+	"PercentComplete": 24,
+	"Schedule": {
+	   "Lifetime": "4Y",
+		"InitialStartTime": "2018-01-01T01:00+06:00",
+		"RecurrenceInterval": "1D",
+		"EnabledDaysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+	},
+	"Steps": {
+		"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps"
+	},
+	"StepOrder": ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"]
+}
