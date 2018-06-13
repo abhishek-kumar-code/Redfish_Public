@@ -119,7 +119,7 @@ and label the issue with "Ready for Review" so that the solution can be reviewed
 
 ### Approval, Merging and Automatic Checks
 
-Once all comments have been reviewed and the Forum has agreed to the changes, the co-Chair will call to Merge the changes into the Master branch.  The Travis CI processes will be allowed to execute to check for any syntax errors or other technical issues with the changes before the merge is completed.  Unless otherwise requested, merged branches will be deleted from the repository.  The co-Chair will merge approved pull requests upon completion of the Travis CI checks as they complete (which likely occurs after Redfish Forum meetings have adjorned).
+Once all comments have been reviewed and the Forum has agreed to the changes, the co-Chair will call to Merge the changes into the Master branch.  The Travis CI processes will be allowed to execute to check for any syntax errors or other technical issues with the changes before the merge is completed.  Unless otherwise requested, merged branches will be deleted from the repository.  The co-Chair or an appointed repository maintainer will merge approved pull requests upon completion of the Travis CI checks as they complete (which likely occurs after Redfish Forum meetings have adjorned).
 
 ### Label Flow
 
