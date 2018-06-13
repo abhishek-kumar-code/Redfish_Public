@@ -27,6 +27,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/JobCollection_v1.xml">
     <edmx:Include Namespace="JobCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService_v1.xml">
+    <edmx:Include Namespace="LogService"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -78,6 +81,12 @@
         </Property>
         <Property Name="ServiceCapabilities" Type="JobService.v1_0_0.ServiceCapabilities" Nullable="false"/>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <NavigationProperty Name="LogService" Type="LogService.LogService" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a reference to a Log Service used by the Job Service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a LogService for the use by this JobService."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
         <NavigationProperty Name="Jobs" Type="JobCollection.JobCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="References to the Jobs collection."/>

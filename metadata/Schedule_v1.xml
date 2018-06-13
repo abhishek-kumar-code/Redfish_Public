@@ -23,6 +23,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <ComplexType Name="Schedule" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
