@@ -194,8 +194,8 @@ The Travis Continuous Integration suite of tools are used for verifying syntax a
 
 The following is a checklist for schema or specification release:
 
--  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
--  New schemas: The $metadata example must be updated to include the new schema file(s).
+- Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
+- New schemas: The $metadata example must be updated to include the new schema file(s).
 
 ### WIP release process
 
