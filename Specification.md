@@ -2829,7 +2829,7 @@ property in the ManagerAccount resource requires the "ConfigureSelf" or the "Con
 to the "ConfigureUsers" privilege required for the rest of the properties in ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
-(ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
+(ConfigureManager is required) or ComputerSystem (ConfigureComponents is required) resources.
 * Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
 The overrides are defined in the context of the operation-to-privilege mapping for an entity.
 
@@ -2904,7 +2904,7 @@ required for the rest of the properties on ManagerAccount resources.
 
 ##### Subordinate override
 
-The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponent" privilege.
+The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponents" privilege.
 ~~~json
 {
     "Entity": "EthernetInterface",
@@ -2921,22 +2921,22 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
@@ -2982,22 +2982,22 @@ In the following example, use of the ResourceURI Override syntax for representin
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
