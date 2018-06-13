@@ -56,7 +56,7 @@
         "@odata.id": "/redfish/v1/JsonSchemas"
     },
     "JobService": {
-        "odata.id": "/redfish/v1/JobService"
+        "@odata.id": "/redfish/v1/JobService"
     },		  
     "Links": {
         "Sessions": {

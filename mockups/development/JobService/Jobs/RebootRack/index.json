@@ -6,10 +6,9 @@
 	"Id": "RebootRack",
 	"Name": "Scheduled Nightly Reboot of the rack",
 	"JobStatus": "Ok",	
-	"JobState": "New",
+	"JobState": "Running",
 	"StartTime": "2018-04-01T00:01+6:00",
 	"EndTime": null,
-	"JobStatus": "Running",
 	"PercentComplete": 24,
 	"Schedule": {
 	   "Lifetime": "4Y",
