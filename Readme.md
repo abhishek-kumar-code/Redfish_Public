@@ -5,7 +5,7 @@
 
 # Redfish Forum Github User Guide
 
-This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself. **
+This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the Redfish Forum's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself.**
 
 New Forum members are urged to read this document before performing any action on the Github repository to avoid running afoul of Forum Policies and Procedures.
 
