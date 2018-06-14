@@ -101,6 +101,10 @@
           <Annotation Term="OData.Description" String="The Schedule Settings for this Job."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the scheduling for this job and the re-occurrence frequency for future instances of this job."/>
         </Property>
+        <Property Name="Payload" Type="Job.v1_0_0.Payload" Nullable="false">
+          <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this job."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the HTTP and JSON payload information for executing this job."/>
+        </Property>		  
         <NavigationProperty Name="Steps" Type="JobCollection.JobCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of Steps for this Job."/>
@@ -171,6 +175,18 @@
           <Annotation Term="OData.LongDescription" String="This value shall represent that the operation has been resumed from a paused condition and should return to a Running state."/>
         </Member>
       </EnumType>
+
+      <ComplexType Name="Payload">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this job resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the HTTP and JSON payload details used to execute the job described by this resource."/>
+        <Property Name="TargetUri" Type="" Nullable="false"/>
+        <Property Name="HTTPHeaders" Type="" Nullable="false"/>
+        <Property Name="Username" Type="" Nullable="false"/>
+        <Property Name="Password" Type="" Nullable="false"/>
+        <Property Name="JSONBody" Type="" Nullable="false"/>
+        <Property Name="ResponseMonitorUri" Type="" Nullable="false"/>
+      </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
