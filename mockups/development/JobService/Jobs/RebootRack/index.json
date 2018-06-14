@@ -5,7 +5,7 @@
 	"@odata.type": "#Job.v1_0_0.Job",
 	"Id": "RebootRack",
 	"Name": "Scheduled Nightly Reboot of the rack",
-	"JobStatus": "Ok",	
+	"JobStatus": "OK",	
 	"JobState": "Running",
 	"StartTime": "2018-04-01T00:01+6:00",
 	"EndTime": null,

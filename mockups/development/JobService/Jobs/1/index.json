@@ -4,11 +4,8 @@
 	"@odata.id": "/redfish/v1/JobService/Jobs/1",
 	"@odata.type": "#Job.v1_0_0.Job",
 	"Id": "1",
-	"Status": {
-	   "Health": "Ok",
-		"State": "Enabled"
-	},
 	"Name": "Scheduled Nightly Reboot of PROBLEM_CHILD",
+	"JobStatus": "OK",	
 	"JobState": "New",
 	"StartTime": "2018-03-07T14:44+06:00",
 	"EndTime": "2018-03-07T14:45+06:00",
