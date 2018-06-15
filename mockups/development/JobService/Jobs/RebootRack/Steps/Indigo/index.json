@@ -11,7 +11,7 @@
 	"Payload": {
 		"TargetUri": "/redfish/v1/Systems/PDX_Indigo/Actions#Reset",
 		"HTTPHeaders": [],
-		"Username": "fred",
+		"UserName": "fred",
 		"Password": null,
 		"JSONBody": {},
 		"ResponseMonitorUri": "/tasks/583402"
