@@ -180,12 +180,43 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this job resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the HTTP and JSON payload details used to execute the job described by this resource."/>
-        <Property Name="TargetUri" Type="" Nullable="false"/>
-        <Property Name="HTTPHeaders" Type="" Nullable="false"/>
-        <Property Name="Username" Type="" Nullable="false"/>
-        <Property Name="Password" Type="" Nullable="false"/>
-        <Property Name="JSONBody" Type="" Nullable="false"/>
-        <Property Name="ResponseMonitorUri" Type="" Nullable="false"/>
+        <Property Name="TargetUri" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The URI of the target for this job."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI referencing a location to be used as the target for a POST or PATCH."/>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
+        <Property Name="HTTPOpertion" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The HTTP operation to perform to execute this job."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the HTTP operation to execute for this job."/>
+        </Property>
+        <Property Name="HTTPHeaders" Type="Collection(Edm.String)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This represents the HTTP headers used in the operation of this job."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of HTTP headers used in the execution of this job."/>
+        </Property>
+        <Property Name="UserName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property contains the user name for use with this job."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name for this job."/>
+        </Property>
+        <Property Name="Password" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property is used with a POST write the password for use in the job.  This property is null on a GET."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the password used for this job.  The value shall be null for GET requests."/>
+        </Property>
+        <Property Name="JSONBody" Type="Edm.String" Nullable="false"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property contains the JSON payload to use in the execution of this Job.  This property is null on a GET."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be JSON formatted payload used for this job.  The value shall be null for GET requests."/>
+        </Property>
+        <Property Name="ResponseMonitorUri" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The URI of the Response Monitor to use for this Job."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI to a Task Monitor as defined in the Redfish Specification."/>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="Actions">

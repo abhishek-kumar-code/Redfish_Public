@@ -3,13 +3,13 @@
 	"@odata.type": "#JobService.v1_0_0.JobService",
 	"Id": "JobService",
 	"Name": "Job Service",
-   "DateTime": "2018-06-13T04:14+06:00",
+	"DateTime": "2018-06-13T04:14+06:00",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK"
 	},
 	"ServiceEnabled": true,
-   "LifeCycleEventOnJobStateChange": true,
+	"LifeCycleEventOnJobStateChange": true,
 	"ServiceCapabilites": {
 		"MaxJobs": 100,
 		"MaxSteps": 50,
@@ -18,8 +18,8 @@
 	"Jobs": {
 		"@odata.id": "/redfish/v1/JobService/Jobs"
 	},
-   "LogService": {
-	   "@odata.id": "/redfish/v1/JobService/LogService"
+	"Log": {
+		"@odata.id": "/redfish/v1/JobService/Log"
 	},
 	"Actions": {
 		"Oem": {

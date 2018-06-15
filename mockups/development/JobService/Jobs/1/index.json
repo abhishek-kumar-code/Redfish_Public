@@ -19,6 +19,7 @@
 	},
 	"Payload": {
 		"TargetURI": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
+		"HTTPOperation": "POST",
 		"HTTPHeaders": [],
 		"Username": "angrydad",
 		"Password": null,
