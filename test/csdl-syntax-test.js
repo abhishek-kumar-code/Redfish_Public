@@ -101,7 +101,8 @@ function constructTest(file) {
     'All EntityType defintions have Actions': entityTypesHaveActions,
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
-    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations
+    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations,
+    'All namespaces have OwningEntity': schemaOwningEntityCheck
   }
 }
 
@@ -1117,6 +1118,28 @@ function validateActions(actions) {
      throw new Error('Action "'+propName+'" has invalid property "Target"');
    }
  } 
+}
+
+function schemaOwningEntityCheck(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  if(this.context.name.includes('index.xml')) {
+    // Ignore the $metadata resource in mockups
+    return;
+  }
+
+  let schemas = CSDL.search(csdl, 'Schema');
+  for(let i = 0; i < schemas.length; i++) {
+    let owningEntity = CSDL.search(schemas[i], 'Annotation', 'Redfish.OwningEntity');
+    if(owningEntity.length === 0) {
+      let owningEntity = CSDL.search(schemas[i], 'Annotation', 'RedfishExtensions.v1_0_0.OwningEntity');
+      if(owningEntity.length === 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks OwningEntity!');
+      }
+    }
+  }
 }
 
 process.on('unhandledRejection', (reason, promise) => {
