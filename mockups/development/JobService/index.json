@@ -10,7 +10,7 @@
 	},
 	"ServiceEnabled": true,
 	"LifeCycleEventOnJobStateChange": true,
-	"ServiceCapabilites": {
+	"ServiceCapabilities": {
 		"MaxJobs": 100,
 		"MaxSteps": 50,
 		"Scheduling": true
