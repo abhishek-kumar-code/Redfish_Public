@@ -13,7 +13,7 @@
 		"HTTPHeaders": [],
 		"UserName": "fred",
 		"Password": null,
-		"JSONBody": {},
+		"JSONBody": "{}",
 		"ResponseMonitorUri": "/tasks/583401"
 	},
 	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
