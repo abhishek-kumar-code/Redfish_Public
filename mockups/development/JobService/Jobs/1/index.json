@@ -23,7 +23,7 @@
 		"HTTPHeaders": [],
 		"UserName": "angrydad",
 		"Password": null,
-		"JSONBody": {},
+		"JSONBody": "{}",
 		"ResponseMonitorUri": "/jobmonitor/834RJ4436"
 	}
 }

@@ -111,6 +111,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type Job."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <Property Name="StepOrder" Type="Collection(Edm.String)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This represents the order of the Job Steps to be executed."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of Ids for the Job Steps in order that they should be executed. Each step shall be completed prior to the execution of the next step in array order."/>
+        </Property>
         <Property Name="Messages" Type="Collection(Message.Message)" Nullable="false">
           <Annotation Term="OData.Description" String="This is an array of messages associated with the job."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of messages associated with the job."/>
