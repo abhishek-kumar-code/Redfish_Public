@@ -9,12 +9,12 @@
 	"StartTime": "2018-04-01T01:44+06:00",
 	"EndTime": "2018-04-01T01:49+06:00",
 	"Payload": {
-		"TargetURI": "/redfish/v1/Systems/PDX_Indigo/Actions#Reset",
+		"TargetUri": "/redfish/v1/Systems/PDX_Indigo/Actions#Reset",
 		"HTTPHeaders": [],
 		"Username": "fred",
 		"Password": null,
 		"JSONBody": {},
-		"ResponseMonitorURI": "/tasks/583402"
+		"ResponseMonitorUri": "/tasks/583402"
 	},
 	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

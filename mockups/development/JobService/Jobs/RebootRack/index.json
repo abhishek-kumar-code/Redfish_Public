@@ -5,13 +5,13 @@
 	"@odata.type": "#Job.v1_0_0.Job",
 	"Id": "RebootRack",
 	"Name": "Scheduled Nightly Reboot of the rack",
-	"JobStatus": "OK",	
+	"JobStatus": "OK",
 	"JobState": "Running",
 	"StartTime": "2018-04-01T00:01+6:00",
 	"EndTime": null,
 	"PercentComplete": 24,
 	"Schedule": {
-	   "Lifetime": "4Y",
+		"Lifetime": "4Y",
 		"InitialStartTime": "2018-01-01T01:00+06:00",
 		"RecurrenceInterval": "1D",
 		"EnabledDaysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
