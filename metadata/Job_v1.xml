@@ -206,7 +206,7 @@
           <Annotation Term="OData.Description" String="This property is used with a POST write the password for use in the job.  This property is null on a GET."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the password used for this job.  The value shall be null for GET requests."/>
         </Property>
-        <Property Name="JSONBody" Type="Edm.String" Nullable="false"/>
+        <Property Name="JSONBody" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains the JSON payload to use in the execution of this Job.  This property is null on a GET."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be JSON formatted payload used for this job.  The value shall be null for GET requests."/>
