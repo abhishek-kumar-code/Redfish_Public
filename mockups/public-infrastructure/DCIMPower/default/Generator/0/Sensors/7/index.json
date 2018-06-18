@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Sensor.v0_2_0.Sensor",
+    "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Name": "ACOutlet - Output Ground Current Sensor",
     "SensorType": "Amperage",
     "Status": {
