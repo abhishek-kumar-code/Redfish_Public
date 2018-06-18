@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "2",
     "Name": "AC Input 1 - RMS Voltage Sensor",
-    "SensorType": "ACVoltage",
+    "ReadingType": "ACVoltage",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

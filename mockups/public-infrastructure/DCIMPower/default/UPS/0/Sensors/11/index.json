@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "11",
     "Name": "AC Maintenance Bypass Input - RMS Voltage (L-N) Sensor",
-    "SensorType": "ACVoltage",
+    "ReadingType": "ACVoltage",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

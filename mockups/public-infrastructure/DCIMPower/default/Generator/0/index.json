@@ -46,7 +46,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "0",
             "Name": "Generator Exhaust Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -66,7 +66,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "10",
             "Name": "Generator Primary Bearing Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -86,7 +86,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "1",
             "Name": "Generator Fuel Level Sensor",
-            "SensorType": "LiquidLevel",
+            "ReadingType": "LiquidLevel",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -106,7 +106,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "9",
             "Name": "Generator Coolant Sensor",
-            "SensorType": "LiquidLevel",
+            "ReadingType": "LiquidLevel",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -126,7 +126,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "8",
             "Name": "Generator Oil Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -158,7 +158,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "2",
                     "Name": "ACOutlet - Frequency Sensor",
-                    "SensorType": "Frequency",
+                    "ReadingType": "Frequency",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -180,7 +180,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "3",
                     "Name": "ACOutlet - RMS Voltage (L-L) Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -200,7 +200,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "4",
                     "Name": "ACOutlet - RMS Voltage (L-G) Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "SensorNumber": 2,
                     "Status": {
                         "State": "Enabled",
@@ -221,7 +221,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "5",
                     "Name": "ACOutlet - Battery Voltage Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -243,7 +243,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "6",
                     "Name": "ACOutlet - RMS Current Sensor",
-                    "SensorType": "Amperage",
+                    "ReadingType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -263,7 +263,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "7",
                     "Name": "ACOutlet - Output Ground Current Sensor",
-                    "SensorType": "Amperage",
+                    "ReadingType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"

@@ -115,7 +115,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "0",
             "Name": "Supply Air Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -135,7 +135,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "1",
             "Name": "Return Air Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -155,7 +155,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "2",
             "Name": "Supply Water Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -175,7 +175,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "3",
             "Name": "Return Water Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -195,7 +195,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "4",
             "Name": "Outside Air Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -217,7 +217,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "5",
             "Name": "Relative Humidity Sensor",
-            "SensorType": "Humidity",
+            "ReadingType": "Humidity",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -237,7 +237,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "6",
             "Name": "Outside Air Humidity Sensor",
-            "SensorType": "Humidity",
+            "ReadingType": "Humidity",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -259,7 +259,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "7",
             "Name": "Differential Water Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"

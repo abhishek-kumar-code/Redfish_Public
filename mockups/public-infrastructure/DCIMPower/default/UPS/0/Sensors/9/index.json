@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "9",
     "Name": "AC Static Bypass Input - RMS Amperage Sensor",
-    "SensorType": "Amperage",
+    "ReadingType": "Amperage",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

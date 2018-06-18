@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "4",
     "Name": "Cold Water Return from Chiller Temperature Sensor",
-    "SensorType": "Temperature",
+    "ReadingType": "Temperature",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

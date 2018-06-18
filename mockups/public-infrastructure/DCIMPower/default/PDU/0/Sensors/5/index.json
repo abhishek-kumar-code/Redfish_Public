@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "5",
     "Name": "AC Input 2 - Frequency Sensor",
-    "SensorType": "Frequency",
+    "ReadingType": "Frequency",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

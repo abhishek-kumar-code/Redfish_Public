@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "7",
     "Name": "Compressor Suction Temperature Sensor",
-    "SensorType": "Temperature",
+    "ReadingType": "Temperature",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

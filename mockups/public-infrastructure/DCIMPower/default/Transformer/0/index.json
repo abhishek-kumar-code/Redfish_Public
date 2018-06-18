@@ -38,7 +38,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "0",
             "Name": "System Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -60,7 +60,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "1",
             "Name": "System Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -88,7 +88,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "2",
                     "Name": "AC Input - RMS Voltage Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -110,7 +110,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "3",
                     "Name": "AC Input - RMS Current Sensor",
-                    "SensorType": "Amperage",
+                    "ReadingType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -132,7 +132,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "4",
                     "Name": "AC Input - Frequency Sensor",
-                    "SensorType": "Frequency",
+                    "ReadingType": "Frequency",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -154,7 +154,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "5",
                     "Name": "AC Input - Ambient Temperature Sensor",
-                    "SensorType": "Temperature",
+                    "ReadingType": "Temperature",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -176,7 +176,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "6",
                     "Name": "AC Input - Humidity Sensor",
-                    "SensorType": "Humidity",
+                    "ReadingType": "Humidity",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -207,7 +207,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "7",
                     "Name": "AC Output - RMS Voltage Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -229,7 +229,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "8",
                     "Name": "AC Output - RMS Current Sensor",
-                    "SensorType": "Amperage",
+                    "ReadingType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -251,7 +251,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "9",
                     "Name": "AC Output - Frequency Sensor",
-                    "SensorType": "Frequency",
+                    "ReadingType": "Frequency",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"

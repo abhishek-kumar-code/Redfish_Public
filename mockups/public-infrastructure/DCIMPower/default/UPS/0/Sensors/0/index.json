@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "0",
     "Name": "AC Utility Input - RMS Voltage (L-L) Phase A-B Sensor",
-    "SensorType": "ACVoltage",
+    "ReadingType": "ACVoltage",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

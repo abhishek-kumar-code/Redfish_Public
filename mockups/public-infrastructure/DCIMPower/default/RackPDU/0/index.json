@@ -49,7 +49,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "5",
             "Name": "Cabinet Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -69,7 +69,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "6",
             "Name": "Cabinet Humidity Sensor",
-            "SensorType": "Humidity",
+            "ReadingType": "Humidity",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -96,7 +96,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "0",
                     "Name": "AC Input - RMS Voltage Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -114,7 +114,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "1",
                     "Name": "AC Input - Single Phase Bank Voltage Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -134,7 +134,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "2",
                     "Name": "AC Input - RMS Current Sensor",
-                    "SensorType": "Amperage",
+                    "ReadingType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -152,7 +152,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "3",
                     "Name": "AC Input - Single Phase Current Sensor",
-                    "SensorType": "Amperage",
+                    "ReadingType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -172,7 +172,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "4",
                     "Name": "AC Input - Frequency Sensor",
-                    "SensorType": "Frequency",
+                    "ReadingType": "Frequency",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"

@@ -2,7 +2,7 @@
     "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "10",
     "Name": "Evaporator Saturated Refrigerant Temperature Sensor",
-    "SensorType": "Temperature",
+    "ReadingType": "Temperature",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

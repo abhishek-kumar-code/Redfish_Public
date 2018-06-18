@@ -93,7 +93,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "0",
                     "Name": "AC Input - RMS Current Sensor",
-                    "SensorType": "Amperage",
+                    "ReadingType": "Amperage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -115,7 +115,7 @@
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Id": "1",
                     "Name": "AC Input - RMS Voltage (L-L) Sensor",
-                    "SensorType": "ACVoltage",
+                    "ReadingType": "ACVoltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -139,7 +139,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "2",
             "Name": "Chilled Water Return Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -159,7 +159,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "3",
             "Name": "Chilled Water Supply Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -179,7 +179,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "4",
             "Name": "Cold Water Return from Chiller Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -199,7 +199,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "5",
             "Name": "Cold Water Supply to Chiller Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -219,7 +219,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "6",
             "Name": "Compressor Discharge Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -239,7 +239,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "7",
             "Name": "Compressor Suction Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -259,7 +259,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "8",
             "Name": "Evaporator Entering Water Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -279,7 +279,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "9",
             "Name": "Evaporator Leaving Water Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -299,7 +299,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "10",
             "Name": "Evaporator Saturated Refrigerant Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -319,7 +319,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "11",
             "Name": "Condensor Saturated Refrigerant Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -339,7 +339,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "12",
             "Name": "Evaporator Entering Water Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -359,7 +359,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "13",
             "Name": "Compressor Oil Temperature Sensor",
-            "SensorType": "Temperature",
+            "ReadingType": "Temperature",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -381,7 +381,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "14",
             "Name": "Compressor Discharge Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -401,7 +401,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "15",
             "Name": "Compressor Suction Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -421,7 +421,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "16",
             "Name": "Evaporator Refrigerant Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -441,7 +441,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "17",
             "Name": "Condensor Refrigerant Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -461,7 +461,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "18",
             "Name": "Compressor Oil Pressure Sensor",
-            "SensorType": "Pressure",
+            "ReadingType": "Pressure",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -483,7 +483,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "19",
             "Name": "Compressor Phase AB Voltage Sensor",
-            "SensorType": "ACVoltage",
+            "ReadingType": "ACVoltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -503,7 +503,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "20",
             "Name": "Compressor Phase BC Voltage Sensor",
-            "SensorType": "ACVoltage",
+            "ReadingType": "ACVoltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -523,7 +523,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "21",
             "Name": "Compressor Phase CA Voltage Sensor",
-            "SensorType": "ACVoltage",
+            "ReadingType": "ACVoltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -545,7 +545,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "22",
             "Name": "Compressor Line 1 Current Sensor",
-            "SensorType": "Amperage",
+            "ReadingType": "Amperage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -565,7 +565,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "23",
             "Name": "Compressor Line 2 Current Sensor",
-            "SensorType": "Amperage",
+            "ReadingType": "Amperage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -585,7 +585,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "24",
             "Name": "Compressor Line 3 Current Sensor",
-            "SensorType": "Amperage",
+            "ReadingType": "Amperage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"

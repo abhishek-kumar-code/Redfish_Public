@@ -34,7 +34,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "0",
             "Name": "AC Input - RMS Voltage Sensor",
-            "SensorType": "ACVoltage",
+            "ReadingType": "ACVoltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -56,7 +56,7 @@
             "@odata.type": "#Sensor.v0_8_0.Sensor",
             "Id": "1",
             "Name": "AC Input - RMS Current Sensor",
-            "SensorType": "Amperage",
+            "ReadingType": "Amperage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
