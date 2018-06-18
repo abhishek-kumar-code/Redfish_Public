@@ -6,17 +6,13 @@
     "Id": "2",
     "Name": "Log Entry 2",
     "EntryType": "SEL",
-    "OemRecordFormat": "CompanyX",
     "Severity": "Critical",
-    "Created": "2012-03-07T14:45",
-    "EntryCode": "Assert",
+    "Created": "2012-03-07T14:45:00Z",
+    "EntryCode": "Upper Critical - going high",
     "SensorType": "Temperature",
     "SensorNumber": 2,
-    "Message": "Message for Event, Description for SEL, OEM depends",
-    "MessageId": "Event.1.0.TempAssert",
-    "MessageArgs": [
-        "ArrayOfMessageArgs"
-    ],
+    "Message": "Temperature threshold exceeded",
+    "MessageId": "592E28",
     "Links": {
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal"
