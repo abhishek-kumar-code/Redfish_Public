@@ -104,7 +104,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes the status and health of a resource and its children."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any status or health properties of a resource."/>
-        <Annotation Term="Redfish.Essential"/>
+        <Annotation Term="Redfish.Excerpt"/>
         <Property Name="State" Type="Resource.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>
@@ -280,7 +280,7 @@
         <Property Name="Name" Type="Resource.Name" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
-          <Annotation Term="Redfish.Essential"/>
+          <Annotation Term="Redfish.Excerpt"/>
         </Property>
       </EntityType>
 
