@@ -579,7 +579,7 @@ The following table represents the Redfish allowable values that shall be suppor
 Examples of the use of expand might be:
 * GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
 * GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
-* GET all of the UUIDs in the ComputerSystem collection.  This would be combining $select with $expand on the URI.  The syntax for this would be GET /redfish/v1/Systems?$select=UUID&$expand=.(levels=1)
+* GET all of the UUIDs in the ComputerSystem collection.  This would be combining $select with $expand on the URI.  The syntax for this would be GET /redfish/v1/Systems?$select=UUID&$expand=.($levels=1)
 
 When performing $expand, Services may omit some of the properties of the referenced resource.
 
@@ -1119,6 +1119,8 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).
 
+Responses that represent a single resource shall contain the ["Id" property](#id-property) and the ["Name" property](#name-property).  Responses that represent a single resource may contain the ["Description" property](#description-property).
+
 See also [Resource Collection responses](#resource-collection-responses). 
 
 ##### Context property
@@ -1419,8 +1421,10 @@ The client can get the definition of the annotation from the [service metadata](
 
 Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [Next Link Property](#next-link-property-and-partial-results) for partial results.
 
+Responses for Resource Collections shall contain the ["Name" property](#name-property).  Responses for Resource Collections may contain the ["Description" property](#description-property).
 
 ##### Context property
+
 Responses shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the Resource Collection according to [OData-Protocol](#OData-Protocol).
 
 The context URL for a Resource Collection is of one of the following two forms:
@@ -2180,15 +2184,15 @@ This clause contains a set of common properties across all Redfish resources. Th
 
 Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema Representations, this is in Resource_v1.xml and for JSON Schema Representations, this is in Resource.v1_0_0.json.
 
-#### Id
+#### Id<a id="id-property"></a>
 
 The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
 
-#### Name
+#### Name<a id="name-property"></a>
 
 The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.
 
-#### Description
+#### Description<a id="description-property"></a>
 
 The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
 
@@ -2825,7 +2829,7 @@ property in the ManagerAccount resource requires the "ConfigureSelf" or the "Con
 to the "ConfigureUsers" privilege required for the rest of the properties in ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
-(ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
+(ConfigureManager is required) or ComputerSystem (ConfigureComponents is required) resources.
 * Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
 The overrides are defined in the context of the operation-to-privilege mapping for an entity.
 
@@ -2900,7 +2904,7 @@ required for the rest of the properties on ManagerAccount resources.
 
 ##### Subordinate override
 
-The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponent" privilege.
+The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponents" privilege.
 ~~~json
 {
     "Entity": "EthernetInterface",
@@ -2917,22 +2921,22 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
@@ -2978,22 +2982,22 @@ In the following example, use of the ResourceURI Override syntax for representin
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
