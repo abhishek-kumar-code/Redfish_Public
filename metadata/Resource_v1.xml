@@ -882,7 +882,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_7_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add the Redfish Essential annotation to Name and Status properties."/>
+      <Annotation Term="OData.Description" String="This version was created to add the Redfish Excerpt annotation to Name and Status properties."/>
     </Schema>
 
   </edmx:DataServices>
