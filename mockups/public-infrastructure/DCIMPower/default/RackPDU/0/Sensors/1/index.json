@@ -8,8 +8,8 @@
         "Health": "OK"
     },
     "Reading": 12,
-    "UpperThresholdCritical": 15,
-    "LowerThresholdCritical": 10,
+    "UpperCritical": 15,
+    "LowerCritical": 10,
     "MinReadingRange": 0,
     "MaxReadingRange": 20,
     "PhysicalContext": "ACInput",

@@ -8,8 +8,8 @@
         "Health": "OK"
     },
     "Reading": 55,
-    "UpperThresholdCritical": 100,
-    "LowerThresholdCritical": 10,
+    "UpperCritical": 100,
+    "LowerCritical": 10,
     "MinReadingRange": 20,
     "MaxReadingRange": 80,
     "PhysicalContext": "Drive",

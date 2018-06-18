@@ -86,7 +86,7 @@
                 "Health": "OK"
             },
             "Reading": 83,
-            "UpperThresholdWarning": 100,
+            "UpperCaution": 100,
             "PhysicalContext": "Transformer",
             "Oem": {}
         }
