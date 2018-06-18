@@ -1,5 +1,6 @@
 {
     "@odata.type": "#Sensor.v0_8_0.Sensor",
+    "Id": "1",
     "Name": "Generator Liquid Level Sensor",
     "ReadingType": "LiquidLevel",
     "Status": {
@@ -9,10 +10,16 @@
     "Reading": 12,
     "SetPoint": 10,
     "DeadBand": 2,
-    "UpperCritical": 20,
-    "LowerCritical": 1,
-    "MinReadingRange": 10,
-    "MaxReadingRange": 50,
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 20
+        },
+        "LowerCritical": {
+            "Reading": 1
+        }
+    },
+    "ReadingRangeMin": 10,
+    "ReadingRangeMax": 50,
     "PhysicalContext": "Chassis",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",

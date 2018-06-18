@@ -46,8 +46,6 @@
     "Temperature": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/5",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "5",
             "Name": "Cabinet Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -55,19 +53,12 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCritical": 15,
-            "LowerCritical": 10,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Cabinet",
-            "Oem": {}
+            "PhysicalContext": "Cabinet"
         }
     ],
     "Humidity":[
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/6",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "6",
             "Name": "Cabinet Humidity Sensor",
             "ReadingType": "Humidity",
             "Status": {
@@ -75,12 +66,7 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCritical": 15,
-            "LowerCritical": 10,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Cabinet",
-            "Oem": {}
+            "PhysicalContext": "Cabinet"
         }
     ],
     "AcInput": [
@@ -93,8 +79,6 @@
             "ACVoltage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/0",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "0",
                     "Name": "AC Input - RMS Voltage Sensor",
                     "ReadingType": "ACVoltage",
                     "Status": {
@@ -102,17 +86,10 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCritical": 15,
-                    "LowerCritical": 10,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 },
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/1",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "1",
                     "Name": "AC Input - Single Phase Bank Voltage Sensor",
                     "ReadingType": "ACVoltage",
                     "Status": {
@@ -120,57 +97,36 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCritical": 15,
-                    "LowerCritical": 10,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ],
             "Amperage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/2",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "2",
                     "Name": "AC Input - RMS Current Sensor",
-                    "ReadingType": "Amperage",
+                    "ReadingType": "Current",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCritical": 15,
-                    "LowerCritical": 10,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 },
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/3",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "3",
                     "Name": "AC Input - Single Phase Current Sensor",
-                    "ReadingType": "Amperage",
+                    "ReadingType": "Current",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCritical": 15,
-                    "LowerCritical": 10,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ],
             "Frequency":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/4",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "4",
                     "Name": "AC Input - Frequency Sensor",
                     "ReadingType": "Frequency",
                     "Status": {
@@ -178,12 +134,7 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCritical": 15,
-                    "LowerCritical": 10,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ]
         }

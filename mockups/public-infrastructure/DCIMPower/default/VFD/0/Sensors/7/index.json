@@ -8,10 +8,16 @@
         "Health": "OK"
     },
     "Reading": 55,
-    "UpperCritical": 100,
-    "LowerCritical": 10,
-    "MinReadingRange": 20,
-    "MaxReadingRange": 80,
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 100
+        },
+        "LowerCritical": {
+            "Reading": 10
+        }
+    },
+    "ReadingRangeMin": 20,
+    "ReadingRangeMax": 80,
     "PhysicalContext": "Motor",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",

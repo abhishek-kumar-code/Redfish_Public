@@ -90,30 +90,19 @@
             "Amperage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/0",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "0",
                     "Name": "AC Input - RMS Current Sensor",
-                    "ReadingType": "Amperage",
+                    "ReadingType": "Current",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ],
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/1",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "1",
                     "Name": "AC Input - RMS Voltage (L-L) Sensor",
                     "ReadingType": "ACVoltage",
                     "Status": {
@@ -121,14 +110,7 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ]
         }
@@ -136,8 +118,6 @@
     "Temperature": [
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/2",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "2",
             "Name": "Chilled Water Return Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -145,19 +125,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/3",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "3",
             "Name": "Chilled Water Supply Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -165,19 +136,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/4",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "4",
             "Name": "Cold Water Return from Chiller Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -185,19 +147,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/5",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "5",
             "Name": "Cold Water Supply to Chiller Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -205,19 +158,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/6",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "6",
             "Name": "Compressor Discharge Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -225,19 +169,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/7",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "7",
             "Name": "Compressor Suction Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -245,19 +180,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/8",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "8",
             "Name": "Evaporator Entering Water Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -265,19 +191,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/9",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "9",
             "Name": "Evaporator Leaving Water Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -285,19 +202,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/10",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "10",
             "Name": "Evaporator Saturated Refrigerant Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -305,19 +213,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/11",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "11",
             "Name": "Condensor Saturated Refrigerant Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -325,19 +224,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/12",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "12",
             "Name": "Evaporator Entering Water Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -345,19 +235,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/13",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "13",
             "Name": "Compressor Oil Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -365,21 +246,12 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         }
     ],
     "Pressure": [
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/14",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "14",
             "Name": "Compressor Discharge Pressure Sensor",
             "ReadingType": "Pressure",
             "Status": {
@@ -387,19 +259,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/15",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "15",
             "Name": "Compressor Suction Pressure Sensor",
             "ReadingType": "Pressure",
             "Status": {
@@ -407,19 +270,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/16",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "16",
             "Name": "Evaporator Refrigerant Pressure Sensor",
             "ReadingType": "Pressure",
             "Status": {
@@ -427,19 +281,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/17",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "17",
             "Name": "Condensor Refrigerant Pressure Sensor",
             "ReadingType": "Pressure",
             "Status": {
@@ -447,19 +292,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/18",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "18",
             "Name": "Compressor Oil Pressure Sensor",
             "ReadingType": "Pressure",
             "Status": {
@@ -467,21 +303,12 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         }
     ],
     "ACVoltage": [
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/19",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "19",
             "Name": "Compressor Phase AB Voltage Sensor",
             "ReadingType": "ACVoltage",
             "Status": {
@@ -489,19 +316,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/20",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "20",
             "Name": "Compressor Phase BC Voltage Sensor",
             "ReadingType": "ACVoltage",
             "Status": {
@@ -509,19 +327,10 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/21",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "21",
             "Name": "Compressor Phase CA Voltage Sensor",
             "ReadingType": "ACVoltage",
             "Status": {
@@ -529,76 +338,42 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         }
     ],
     "Amperage": [
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/22",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "22",
             "Name": "Compressor Line 1 Current Sensor",
-            "ReadingType": "Amperage",
+            "ReadingType": "Current",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/23",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "23",
             "Name": "Compressor Line 2 Current Sensor",
-            "ReadingType": "Amperage",
+            "ReadingType": "Current",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         },
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/24",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "24",
             "Name": "Compressor Line 3 Current Sensor",
-            "ReadingType": "Amperage",
+            "ReadingType": "Current",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#Chiller.Chiller",

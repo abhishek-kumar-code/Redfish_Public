@@ -45,8 +45,6 @@
     "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/6",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "6",
             "Name": "Drive Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -54,17 +52,10 @@
                 "Health": "OK"
             },
             "Reading": 55,
-            "UpperCritical": 100,
-            "LowerCritical": 10,
-            "MinReadingRange": 20,
-            "MaxReadingRange": 80,
-            "PhysicalContext": "Drive",
-            "Oem": {}
+            "PhysicalContext": "Drive"
         },
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/7",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "7",
             "Name": "Motor Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -72,19 +63,12 @@
                 "Health": "OK"
             },
             "Reading": 55,
-            "UpperCritical": 100,
-            "LowerCritical": 10,
-            "MinReadingRange": 20,
-            "MaxReadingRange": 80,
-            "PhysicalContext": "Motor",
-            "Oem": {}
+            "PhysicalContext": "Motor"
         }
     ],
     "Rotational":[
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/8",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "8",
             "Name": "Drive Speed Sensor",
             "ReadingType": "Rotational",
             "Status": {
@@ -92,14 +76,7 @@
                 "Health": "OK"
             },
             "Reading": 20,
-            "UpperCritical": 40,
-            "UpperCaution": 30,
-            "LowerCritical": 10,
-                "LowerCaution": 15,
-            "MinReadingRange": 10,
-            "MaxReadingRange": 50,
-            "PhysicalContext": "Drive",
-            "Oem": {}
+            "PhysicalContext": "Drive"
         }
     ],
     "AcInput": [
@@ -110,30 +87,19 @@
             "Amperage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/0",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "0",
                     "Name": "AC Input - RMS Current Sensor",
-                    "ReadingType": "Amperage",
+                    "ReadingType": "Current",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ],
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/1",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "1",
                     "Name": "AC Input - RMS Voltage (L-L) Sensor",
                     "ReadingType": "ACVoltage",
                     "Status": {
@@ -141,14 +107,7 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ]
         }
@@ -163,8 +122,6 @@
             "Frequency": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/2",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "2",
                     "Name": "AC Output - Frequency Sensor",
                     "ReadingType": "Frequency",
                     "Status": {
@@ -172,21 +129,13 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACOutput",
-                    "Oem": {}
+                    "PhysicalContext": "ACOutput"
                 }
             ],
             "ACVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/3",
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "3",
                     "Name": "AC Output - RMS Voltage (L-L) Sensor",
                     "ReadingType": "ACVoltage",
                     "Status": {
@@ -194,36 +143,20 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACOutput",
-                    "Oem": {}
+                    "PhysicalContext": "ACOutput"
                 }
             ],
             "Amperage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/4",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "4",
                     "Name": "AC Output - RMS Current Sensor",
-                    "ReadingType": "Amperage",
+                    "ReadingType": "Current",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACOutput",
-                    "Oem": {}
+                    "PhysicalContext": "ACOutput"
                 }
             ]
         }
@@ -236,8 +169,6 @@
             "DCVoltage": [
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/5",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "5",
                     "Name": "DC Bus - RMS Voltage Sensor",
                     "ReadingType": "DCVoltage",
                     "Status": {
@@ -245,14 +176,7 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "DCBus",
-                    "Oem": {}
+                    "PhysicalContext": "DCBus"
                 }
             ]
         }

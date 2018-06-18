@@ -1,5 +1,6 @@
 {
     "@odata.type": "#Sensor.v0_8_0.Sensor",
+    "Id": "3",
     "Name": "ACOutlet - RMS Voltage (L-L) Sensor",
     "ReadingType": "ACVoltage",
     "Status": {
@@ -7,12 +8,22 @@
         "Health": "OK"
     },
     "Reading": 12,
-    "UpperCaution": 12.5,
-    "UpperCritical": 13,
-    "LowerCaution": 11.5,
-    "LowerCritical": 11,
-    "MinReadingRange": 0,
-    "MaxReadingRange": 20,
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 13
+        },
+        "UpperCaution": {
+            "Reading": 12.5
+        },
+        "LowerCritical": {
+            "Reading": 11
+        },
+        "LowerCaution": {
+            "Reading": 11.5
+        }
+    },
+    "ReadingRangeMin": 0,
+    "ReadingRangeMax": 20,
     "PhysicalContext": "ACOutput",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",

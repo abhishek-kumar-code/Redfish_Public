@@ -1,5 +1,6 @@
 {
     "@odata.type": "#Sensor.v0_8_0.Sensor",
+    "Id": "0",
     "Name": "Generator Temperature Sensor",
     "ReadingType": "Temperature",
     "Status": {
@@ -9,10 +10,16 @@
     "Reading": 55,
     "SetPoint": 50,
     "DeadBand": 5,
-    "UpperCritical": 100,
-    "LowerCritical": 10,
-    "MinReadingRange": 20,
-    "MaxReadingRange": 80,
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 100
+        },
+        "LowerCritical": {
+            "Reading": 10
+        }
+    },
+    "ReadingRangeMin": 20,
+    "ReadingRangeMax": 80,
     "PhysicalContext": "Chassis",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",

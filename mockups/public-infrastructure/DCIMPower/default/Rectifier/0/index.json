@@ -38,30 +38,19 @@
     "Amperage": [ 
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/0",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "0",
             "Name": "System - DC Current Sensor",
-            "ReadingType": "Amperage",
+            "ReadingType": "Current",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         }
     ],
     "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/1",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "1",
             "Name": "System - Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -69,14 +58,7 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "Chassis",
-            "Oem": {}
+            "PhysicalContext": "Chassis"
         }
     ],
     "AcInput": [
@@ -90,8 +72,6 @@
             "ACVoltage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/2",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "2",
                     "Name": "AC Input 1 - RMS Voltage Sensor",
                     "ReadingType": "ACVoltage",
                     "Status": {
@@ -99,43 +79,25 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ],
             "Amperage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/3",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "3",
                     "Name": "AC Input 1 - RMS Current Sensor",
-                    "ReadingType": "Amperage",
+                    "ReadingType": "Current",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ],
             "Frequency":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/4",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "4",
                     "Name": "AC Input 1 - Frequency Sensor",
                     "ReadingType": "Frequency",
                     "Status": {
@@ -143,14 +105,7 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "ACInput",
-                    "Oem": {}
+                    "PhysicalContext": "ACInput"
                 }
             ]
         }
@@ -165,8 +120,6 @@
             "DCVoltage":[
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/5",
-                    "@odata.type": "#Sensor.v0_8_0.Sensor",
-                    "Id": "5",
                     "Name": "DC Bus - DC Voltage Sensor",
                     "ReadingType": "DCVoltage",
                     "Status": {
@@ -174,14 +127,7 @@
                         "Health": "OK"
                     },
                     "Reading": 12,
-                    "UpperCaution": 12.5,
-                    "UpperCritical": 13,
-                    "LowerCaution": 11.5,
-                    "LowerCritical": 11,
-                    "MinReadingRange": 0,
-                    "MaxReadingRange": 20,
-                    "PhysicalContext": "DCBus",
-                    "Oem": {}
+                    "PhysicalContext": "DCBus"
                 }
             ]
         }

@@ -77,8 +77,6 @@
     "Temperature": [ 
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/Sensors/0",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "0",
             "Name": "SwitchGear Temperature Sensor",
             "ReadingType": "Temperature",
             "Status": {
@@ -86,7 +84,6 @@
                 "Health": "OK"
             },
             "Reading": 83,
-            "UpperCaution": 100,
             "PhysicalContext": "Transformer",
             "Oem": {}
         }

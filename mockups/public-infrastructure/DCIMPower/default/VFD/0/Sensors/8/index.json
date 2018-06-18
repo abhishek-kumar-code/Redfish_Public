@@ -8,12 +8,22 @@
       "Health": "OK"
     },
     "Reading": 20,
-    "UpperCritical": 40,
-    "UpperCaution": 30,
-    "LowerCritical": 10,
-    "LowerCaution": 15,
-    "MinReadingRange": 10,
-    "MaxReadingRange": 50,
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 40
+        },
+        "UpperCaution": {
+            "Reading": 30
+        },
+        "LowerCritical": {
+            "Reading": 10
+        },
+        "LowerCaution": {
+            "Reading": 15
+        }
+    },
+    "ReadingRangeMin": 10,
+    "ReadingRangeMax": 50,
     "PhysicalContext": "Drive",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",

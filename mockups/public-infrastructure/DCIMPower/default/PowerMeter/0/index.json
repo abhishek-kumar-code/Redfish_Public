@@ -31,8 +31,6 @@
     "Voltage": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/0",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "0",
             "Name": "AC Input - RMS Voltage Sensor",
             "ReadingType": "ACVoltage",
             "Status": {
@@ -40,36 +38,20 @@
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "ACInput",
-            "Oem": {}
+            "PhysicalContext": "ACInput"
         }
     ],
     "Current": [
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/1",
-            "@odata.type": "#Sensor.v0_8_0.Sensor",
-            "Id": "1",
             "Name": "AC Input - RMS Current Sensor",
-            "ReadingType": "Amperage",
+            "ReadingType": "Current",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Reading": 12,
-            "UpperCaution": 12.5,
-            "UpperCritical": 13,
-            "LowerCaution": 11.5,
-            "LowerCritical": 11,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 20,
-            "PhysicalContext": "ACInput",
-            "Oem": {}
+            "PhysicalContext": "ACInput"
         }
     ],
     "Sensors": {
