@@ -735,7 +735,7 @@ Clients can query a resource directly to determine the [actions](#actions-proper
 For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
 ~~~xml
-  <Schema Name="ComputerSystem">
+  <Schema Namespace="ComputerSystem">
     ...
     <Action Name="Reset" IsBound="true">
       <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions"/>
@@ -2065,7 +2065,7 @@ In the context of this clause, the term OEM refers to any company, manufacturer,
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
 ~~~xml
-  <Schema Name="Contoso.v1_2_0">
+  <Schema Namespace="Contoso.v1_2_0">
     ...
     <ComplexType Name="AnvilType1">
       <Property Name="slogan" Type="Edm.String"/>
