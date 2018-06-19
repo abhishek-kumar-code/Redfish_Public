@@ -179,7 +179,7 @@
         <Property Name="PercentageComplete" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The percentage of the operation that has been completed."/>
-          <Annotation Term="Measures.Unit" String="%"/>			 
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
         <NavigationProperty Name="AssociatedTask" Type="Task.Task" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
