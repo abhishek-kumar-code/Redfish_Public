@@ -163,7 +163,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The minimum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the minimum bandwidth percentage allocation for the associated network device function.  The sum total of all minimum percentages shall not exceed 100."/>
-          <Annotation Term="Measures.Unit" String="%"/>			 
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
       </ComplexType>
 
@@ -179,7 +179,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The maximum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum bandwidth percentage allocation for the associated network device function."/>
-          <Annotation Term="Measures.Unit" String="%"/>			 
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
       </ComplexType>
 
