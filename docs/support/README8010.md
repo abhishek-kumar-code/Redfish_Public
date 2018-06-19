@@ -33,12 +33,15 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | NetworkAdapter    | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
 | Storage           | 1.5.0   | Added "CacheSummary" object to "StorageController". |
 | UpdateService     | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
+| Resource          | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo". |
 | AttributeRegistry | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
 | ComputerSystem    | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB". |
-| LogEntry          | 1.x.x   | Errata release.  Fixed typo in the description for "EntryType". |
+| Drive             | 1.x.x   | Errata release.  Added missing Units annotation to "PredictedMediaLifeLeftPercent" and "PercentageComplete". |
+| LogEntry          | 1.x.x   | Errata release.  Fixed typo in the description for "EntryType".  Clarified Description and Long Description in several properties. |
 | Memory            | 1.x.x   | Errata release.  Added missing Units annotation to many properties in the schema. |
 | MemoryChunks      | 1.x.x   | Errata release.  Added missing Units annotation to "MemoryChunkSizeMiB", "OffsetMiB", and "SizeMiB". |
-| NetworkPort       | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps". |
+| MemoryMetrics     | 1.x.x   | Errata release.  Added missing Units annotation to "HealthData" and "PredictedMediaLifeLeftPercent". |
+| NetworkPort       | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps", "MinBWAllocPercent", and "MaxBWAllocPercent". |
 | PrivilegeRegistry | 1.x.x   | Errata release.  Fixed permissions term on "PrivilegesUsed", "OEMPrivilegesUsed", "Entity", "Targets", and "Privilege". |
 | Processor         | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
 | Resource          | 1.x.x   | Errata release.  Added missing Required term on "Name" in ResourceCollection. |
