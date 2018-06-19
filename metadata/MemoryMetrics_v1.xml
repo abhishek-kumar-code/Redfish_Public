@@ -129,7 +129,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Remaining spare blocks in percentage."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the remaining spare blocks in percentage."/>
-          <Annotation Term="Measures.Unit" String="%"/>			 
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
         <Property Name="LastShutdownSuccess" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
