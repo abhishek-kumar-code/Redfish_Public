@@ -13,7 +13,7 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | Event Name | Dates      | Location      | Contact             | Presence                                     |
 | ---        | ---        | ---           | ---                 | ---                                          |
 | LISA       | 10/29-11/2 | San Francisco |                     | Session?                                     |
-| SC18       | November 12-15, 2018   | Denver, CO    |                     | Booth, propose session                       |
+| SC18       | November 12-15, 2018   | Dallas, TX   |                     | Booth, propose session                       |
 | OCP Fall   | 3Q-4Q18    | TBD           |                     | Booth and workshop attendance / presentation |
 | SDC | September 24-27, 2018 | Santa Clara, CA | Jeff Hilland, Richelle Ahlvers | Propose session |
 | NOMS 2019  | April 2019 |               |                     | Submission deadline likely November 2018    |
