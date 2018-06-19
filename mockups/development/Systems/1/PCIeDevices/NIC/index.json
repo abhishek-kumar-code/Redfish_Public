@@ -1,0 +1,36 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#PCIeDevice.PCIeDevice",
+    "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC",
+    "@odata.type": "#PCIeDevice.v1_0_0.PCIeDevice",
+    "Id": "NIC",
+    "Name": "Simple Two-Port NIC",
+    "Description": "Simple Two-Port NIC PCIe Device",
+    "AssetTag": "free form asset tag",
+    "Manufacturer": "Contoso",
+    "Model": "Model Name",
+    "SKU": "",
+    "SerialNumber": "2M220100SL",
+    "PartNumber": "",
+    "DeviceType": "MultiFunction",
+    "FirmwareVersion": "12.342-343",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "Links": {
+        "Chassis": [{
+            "@odata.id": "/redfish/v1/Chassis/1"
+        }],
+        "PCIeFunctions": [
+            {
+                "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/Functions/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/Functions/2"
+            }
+        ],
+        "Oem": {}
+    },
+    "Oem": {}
+}
