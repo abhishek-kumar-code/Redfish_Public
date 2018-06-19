@@ -1447,7 +1447,7 @@ The Members of the Resource Collection of resources are returned as a JSON array
 
 ##### Next Link Property and partial results
 
-Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a Next Link Property named "Members@odata.nextLink". The value of the Next Link Property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The Next Link Property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
+Responses may contain a subset of the members of the full Resource Collection.  For partial Resource Collections the response includes a Next Link Property named "Members@odata.nextLink".  The value of the Next Link Property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members.  The Next Link Property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned, and if the payload does not represent the end of the requested Resource Collection.
 
 The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
