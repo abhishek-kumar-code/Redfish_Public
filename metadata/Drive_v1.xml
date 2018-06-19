@@ -203,6 +203,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The percentage of reads and writes that are predicted to still be available for the media."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an indicator of the percentage of life remaining in the Drive's media."/>
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
         <Property Name="Links" Type="Drive.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
@@ -382,6 +383,7 @@
         <Property Name="PercentageComplete" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The percentage of the operation that has been completed."/>
+          <Annotation Term="Measures.Unit" String="%"/>			 
         </Property>
         <NavigationProperty Name="AssociatedTask" Type="Task.Task" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -495,5 +497,11 @@
       </EnumType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_5_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add missing percent units onto existing properties."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_5_0.Drive"/>
+    </Schema>
+	
   </edmx:DataServices>
 </edmx:Edmx>

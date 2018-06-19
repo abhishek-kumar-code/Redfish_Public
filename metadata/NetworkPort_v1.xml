@@ -163,6 +163,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The minimum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the minimum bandwidth percentage allocation for the associated network device function.  The sum total of all minimum percentages shall not exceed 100."/>
+          <Annotation Term="Measures.Unit" String="%"/>			 
         </Property>
       </ComplexType>
 
@@ -178,6 +179,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The maximum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum bandwidth percentage allocation for the associated network device function."/>
+          <Annotation Term="Measures.Unit" String="%"/>			 
         </Property>
       </ComplexType>
 
@@ -269,5 +271,11 @@
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_0.NetworkPort"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add missing percent units onto existing properties."/>
+      <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_1.NetworkPort"/>
+    </Schema>
+	 
   </edmx:DataServices>
 </edmx:Edmx>
