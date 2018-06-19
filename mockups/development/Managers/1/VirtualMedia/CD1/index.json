@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright":"Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
-    "@odata.id": "/redfish/v1/Managers/1/VM1/CD1",
+    "@odata.id": "/redfish/v1/Managers/1/VirtualMedia/CD1",
     "@odata.type": "#VirtualMedia.v1_2_0.VirtualMedia",
     "Id": "CD1",
     "Name": "Virtual CD",
@@ -16,11 +16,11 @@
     "WriteProtected": false,
     "Actions": {
         "#VirtualMedia.InsertMedia": {
-            "target": "/redfish/v1/Managers/1/VM1/CD1/Actions/VM.InsertMedia",
-            "@Redfish.ActionInfo": "/redfish/v1/Managers/1/VM1/CD1/InsertMediaActionInfo"
+            "target": "/redfish/v1/Managers/1/VirtualMedia/CD1/Actions/VirtualMedia.InsertMedia",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/1/VirtualMedia/CD1/InsertMediaActionInfo"
         },
         "#VirtualMedia.EjectMedia": {
-            "target": "/redfish/v1/Managers/1/VM1/CD1/Actions/VM.EjectMedia"
+            "target": "/redfish/v1/Managers/1/VirtualMedia/CD1/Actions/VirtualMedia.EjectMedia"
         }
     }    
 }
