@@ -13,7 +13,10 @@
     "Ethernet": {
         "PermanentMACAddress": "00:0C:29:9A:98:01",
         "MACAddress": "00:0C:29:9A:98:01",
-        "MTUSize": 1500
+        "MTUSize": 1500,
+        "VLANs": {
+            "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1/VLANs"
+        }
     },
     "iSCSIBoot": {
         "IPAddressType": "IPv4",
