@@ -3,7 +3,7 @@
     "Id": "AverageReadingCelsius",
     "Name": "AverageReadingCelsius",
     "MetricType": "Counter",
-    "SensorType": "Temperature",
+    "ReadingType": "Temperature",
     "DataType": "Decimal",
     "Units": "Cel",
     "CalculationAlgorithm": "Average",

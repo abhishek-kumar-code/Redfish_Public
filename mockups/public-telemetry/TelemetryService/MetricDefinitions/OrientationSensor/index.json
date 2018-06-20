@@ -3,7 +3,7 @@
     "Id": "OrientationSensor",
     "Name": "Senses the orientation of the chassis",
     "MetricType": "Discrete",
-    "SensorType": "Orientation",
+    "ReadingType": "Rotational",
     "Implementation": "PhysicalSensor",
     "PhysicalContext": "ComputeBay",
     "SensingInterval": "T00:00:01",

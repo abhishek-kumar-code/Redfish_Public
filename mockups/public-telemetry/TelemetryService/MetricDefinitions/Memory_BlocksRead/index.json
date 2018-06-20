@@ -3,7 +3,6 @@
     "Id": "Memory_BlocksRead",
     "Name": "Current Memory Blocks Read Metric Definition",
     "MetricType": "Numeric",
-    "SensorType": "Memory",
     "Implementation": "DigitalMeter",
     "DataType": "Decimal",
     "Units": "Blocks",

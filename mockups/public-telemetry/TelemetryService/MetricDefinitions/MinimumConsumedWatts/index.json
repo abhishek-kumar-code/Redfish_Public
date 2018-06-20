@@ -3,7 +3,7 @@
     "Id": "MinimumConsumedWatts",
     "Name": "Minimum Consumed Watts Metric Definition",
     "MetricType": "Numeric",
-    "SensorType": "PowerConsumption",
+    "ReadingType": "Power",
     "Implementation": "Calculated",
     "PhysicalContext": "PowerSupply",
     "DataType": "Decimal",

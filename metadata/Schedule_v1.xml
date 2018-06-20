@@ -9,10 +9,14 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource.v1_0_0" Alias="Resource"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <ComplexType  Name="Schedule" Abstract="true">
         <Annotation Term="OData.Description" String="Schedule a series of occurrences."/>
@@ -22,6 +26,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <ComplexType  Name="Schedule" BaseType="Schedule.Schedule">
         <Annotation Term="OData.Description" String="Schedule a series of occurrences."/>
@@ -31,7 +36,7 @@
           <Annotation Term="OData.Description" String="The Schedule name."/>
           <Annotation Term="OData.LongDescription" String="The name of the Schedule. It should be constructed as OrgID:ScheduleName. Examples: ACME:Daily, ACME:Weekly, ACME:FirstTuesday."/>
         </Property>
-        <Property Name="Lifetime" Type="Edm.String">
+        <Property Name="Lifetime" Type="Resource.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The duration after provisioning when the schedul,e as a whole, expires."/>
           <Annotation Term="OData.LongDescription" String="The value shall be duration after provisioning when the schedule, as a whole, expires. The format of the value shall conform to the Redfish Duration format."/>
@@ -46,7 +51,7 @@
           <Annotation Term="OData.Description" String="Time at which the schedule commences."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the time at which the schedule commences.  The value shall conform to the ISO 8601  datetime with timezone format."/>
         </Property>
-        <Property Name="RecurrenceInterval" Type="Edm.String">
+        <Property Name="RecurrenceInterval" Type="Resource.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Time interval which elapses before the next occurrences."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the time interval which elapses before the next occurrence. The format of the value shall conform to the Redfish Duration format."/>
@@ -140,6 +145,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
     
       <ComplexType  Name="Schedule" BaseType="Schedule.v1_0_0.Schedule">
         <Property Name="EnabledIntervals" Type="Collection(Edm.String)">

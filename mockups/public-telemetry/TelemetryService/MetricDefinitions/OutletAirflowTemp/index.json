@@ -5,7 +5,7 @@
     "MetricType": "Numeric",
     "Implementation": "Synthesized",
     "PhysicalContext": "Exhaust",
-    "SensorType": "Temperature",
+    "ReadingType": "Temperature",
     "Units": "Cel",
     "Wildcards": [
         {

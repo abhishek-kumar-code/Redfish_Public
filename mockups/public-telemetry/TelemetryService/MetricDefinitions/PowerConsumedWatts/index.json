@@ -3,7 +3,7 @@
     "Id": "PowerConsumedWatts",
     "Name": "Power Consumed Watts Metric Definition",
     "MetricType": "Numeric",
-    "SensorType": "PowerConsumption",
+    "ReadingType": "Power",
     "Implementation": "PhysicalSensor",
     "PhysicalContext": "PowerSupply",
     "DataType": "Decimal",

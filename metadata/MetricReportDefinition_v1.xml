@@ -74,7 +74,7 @@
           <Annotation Term="OData.Description" String="This property specifies what action is perform when a metric report resource is generated."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the actions to perform when the metric report resource is generated.  The options are transmit an event or create a metric report resource."/>
         </Property>
-        <Property Name="ReportUpdates" Type="Collection(MetricReportDefinition.v1_0_0.ReportUpdatesEnum)" Nullable="false">
+        <Property Name="ReportUpdates" Type="MetricReportDefinition.v1_0_0.ReportUpdatesEnum" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property specifies what action is perform when a metric report resource is updated.  Namely, overwrite, append, or create new report resource)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the action to perform when the metric report resource is updated and the ReportActions contains a value of 'Log'."/>
@@ -94,10 +94,11 @@
           <Annotation Term="OData.Description" String="Specifies a list of metrics to include in the metric report.  The metrics may include metric properties or calculations applied to a metric property."/>
           <Annotation Term="OData.LongDescription" String="The property shall specify a list of metrics to include in the metric report.  The metrics may include metric properties or calculations applied to a metric property."/>
         </Property>
-        <NavigationProperty Name="MetricReport" Type="MetricReport.MetricReport" ContainsTarget="true" Nullable="false" Partner="MetricReportDefinition">
+        <NavigationProperty Name="MetricReport" Type="MetricReport.MetricReport" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="References the related MetricReport."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.Description" String="Reference location where the resultant Metric Report is placed."/>
+          <Annotation Term="OData.LongDescription" String="The resultant metric report shall be placed in the referenced location, if the ReportAction property contains the value, Log."/>
+         <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <Property Name="Actions" Type="MetricReportDefinition.v1_0_0.Actions" Nullable="false">
@@ -128,6 +129,11 @@
         <Annotation Term="OData.Description" String="Defines the use of a set of properties as metrics."/>
         <Annotation Term="OData.LongDescription" String="Defines the use of a set of properties as metrics."/>
 
+        <Property Name="MemberID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Label for the metric which is derived by applying the CollectionFunction to the metric property."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a label for use in the metric report for the metric which is derived by applying the CollectionFunction to the metric property."/>
+        </Property>
         <Property Name="MetricProperties" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A collection of URI for the properties on which this metric is collected."/>
