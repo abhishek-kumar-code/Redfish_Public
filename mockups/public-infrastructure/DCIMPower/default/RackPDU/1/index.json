@@ -1,0 +1,86 @@
+{
+	"@odata.type": "#RackPDU.v0_8_0.RackPDU",
+	"Id": "1",
+	"Name": "RackPDU1",
+	"FirmwareRevision": "4.3.0",
+	"DateOfManufacture": "2017-01-11T08:00:00Z",
+	"Manufacturer": "Contoso",
+	"Model": "ZAP4000",
+	"SerialNumber": "29347ZT536",
+	"PartNumber": "AA-23",
+	"AssetTag": "PDX-92381",
+	"PhysicalLocation": {
+		"Longitude": 45.52,
+		"Latitude": 122.67,
+		"PostalAddress": {
+			"Country": "US",
+			"Territory": "OR",
+			"City": "Portland",
+			"Street": "1001 SW 5th Avenue",
+			"Name": "Distributed Management Task Force, Inc.",
+			"PostalCode": "97204",
+			"Building": "3A",
+			"Floor": "2",
+			"Room": "213"
+		},
+		"Placement": {
+			"Row": "North"
+		}
+	},
+	"Rating": 1,
+	"NumOutlets": 2,
+	"NumPhases": 2,
+	"BreakerRating": 3,
+	"Orientation": "A",
+	"LineToLineVoltage": 1000,
+	"MaxPhaseLoad": 50,
+	"NearOverloadThreshold": 50,
+	"OverloadThreshold": 70,
+	"Load": 10,
+	"LoadState": 1,
+	"PhaseNumber": 2,
+	"BankNumber": 1,
+
+	"Temperatures": [{
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CabTemp",
+		"Name": "Cabinet Temperature Sensor",
+		"Status": {
+			"Health": "OK"
+		},
+		"Reading": 12,
+		"ReadingUnits": "C",
+		"PhysicalContext": "Cabinet"
+	}],
+	"Humidity": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/Humidity",
+		"Name": "Cabinet Humidity Sensor",
+		"Status": {
+			"Health": "OK"
+		},
+		"Reading": 12,
+		"ReadingUnits": "%",
+		"PhysicalContext": "Cabinet"
+	},
+	"Mains": {
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Mains"
+	},
+	"Branches": {
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches"
+	},
+	"Outlets": {
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets"
+	},
+	"OutletGroups": {
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/OutletGroups"
+	},
+	"Alarms": {
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Alarms"
+	},
+	"Sensors": {
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors"
+	},
+
+	"@odata.context": "/redfish/v1/$metadata#RackPDU.RackPDU",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0",
+	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
