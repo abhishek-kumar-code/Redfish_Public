@@ -441,6 +441,22 @@
               <Annotation Term="OData.Description" String="L3 cache."/>
             </Record>
             <Record>
+              <PropertyValue Property="Member" String="L4Cache"/>
+              <Annotation Term="OData.Description" String="L4 cache."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="L5Cache"/>
+              <Annotation Term="OData.Description" String="L5 cache."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="L6Cache"/>
+              <Annotation Term="OData.Description" String="L6 cache."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="L7Cache"/>
+              <Annotation Term="OData.Description" String="L7 cache."/>
+            </Record>
+            <Record>
               <PropertyValue Property="Member" String="HBM1"/>
               <Annotation Term="OData.Description" String="High Bandwidth Memory"/>
             </Record>

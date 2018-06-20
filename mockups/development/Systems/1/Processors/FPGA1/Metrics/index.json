@@ -11,11 +11,16 @@
   "TemperatureCelsius": 41,
   "ConsumedPowerWatt": 82,
   "FrequencyRatio": 0.00432,
-  "L3Miss": 0.12,
-  "L3HitRatio": 0.719,
-  "L3Mpi": 0.00088,
-  "LlcOccupancyBytes": 33030144,
-  "LlcOccupancyPercent": 90.1,
+  "Cache":[
+    {
+      "Level": 3,
+      "CacheMiss": 0.12,
+      "CahceHitRatio": 0.719,
+      "CacheMpi": 0.00088,
+      "OccupancyBytes": 3030144,
+      "OccupancyPercent": 90.1
+    }
+  ],
   "MblBytes": 18253611008,
   "MbrBytes": 81788928,
   "KernelPercent": 2.3,
@@ -24,9 +29,19 @@
     {
       "CoreId": "core0",
       "InstructionsPerCycle": 1.16,
-      "L2Miss": 0.472,
-      "L2HitRatio": 0.57,
-      "L2Mpi": 0.00346,
+      "UnhaltedCycles": 6254383746,
+      "MemStallCount" 58372,
+      "IoStallCount": 2634872,
+      "CoreCache":[
+        {
+          "Level": 2,
+          "CacheMiss": 0.472,
+          "CahceHitRatio": 0.57,
+          "CacheMpi": 0.00346,
+          "OccupancyBytes": 198231,
+          "OccupancyPercent": 77.4
+        }
+      ],
       "CstateResidency": [
         {
           "Level": "C0",

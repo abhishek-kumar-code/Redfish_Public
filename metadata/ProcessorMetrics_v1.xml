@@ -109,37 +109,10 @@
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be Frequency relative to nominal CPU frequency of the Processor resource."/>
         </Property>
-        <Property Name="L3Miss" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L3 cache line misses in millions."/>
+        <Property Name="Cache" Type="Collection(ProcessorMetrics.v1_0_0.CacheMetrics)">
+          <Annotation Term="OData.Description" String="Processor Cache Metrics."/>
           <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be L3 cache line misses of the Processor resource in millions."/>
-        </Property>
-        <Property Name="L3HitRatio" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L3 cache line hit ratio."/>
-          <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be L3 cache hit ratio of the Processor resource."/>
-        </Property>
-        <Property Name="L3Mpi" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L3 cache misses per instruction."/>
-          <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be L3 cache misses per instruction of the Processor resource."/>
-        </Property>
-        <Property Name="LlcOccupancyBytes" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Total last level cache occupancy in bytes."/>
-          <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be total last level cache occupancy of the Processor resource in bytes."/>
-        </Property>
-        <Property Name="LlcOccupancyPercent" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Total last level cache occupancy in bytes."/>
-          <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be total last level cache occupancy percentage of the Processor resource."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="Validation.Maximum" Int="100"/>
+                      String="This type shall contain properties that describe this Core of the Processor resource."/>
         </Property>
         <Property Name="MblBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -196,28 +169,77 @@
           <Annotation Term="OData.LongDescription"
                       String="The value of this property shall be instructions per clock cycle of each core in the Processor resource."/>
         </Property>
-        <Property Name="L2Miss" Type="Edm.Decimal">
+        <Property Name="UnhaltedCycles" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L2 cache line misses of each core in millions."/>
+          <Annotation Term="OData.Description" String="Unhalted cycles count of each core."/>
           <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be L2 cache line misses of each core in the Processor resource in millions."/>
+                      String="The value of this property shall be number of unhalted cycles of each core in the Processor resource."/>
         </Property>
-        <Property Name="L2HitRatio" Type="Edm.Decimal">
+        <Property Name="MemStallCount" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L2 cache line hit ratio of each core."/>
+          <Annotation Term="OData.Description" String="Stalled cycles due to memory."/>
           <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be L2 cache hit ratio of each core in the Processor resource."/>
+                      String="The value of this property shall be number of stalled cycles due to memory operation of each core in the Processor resource."/>
         </Property>
-        <Property Name="L2Mpi" Type="Edm.Decimal">
+        <Property Name="IoStallCount" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="L2 cache misses per instruction of each core."/>
+          <Annotation Term="OData.Description" String="Stalled cycles due to IO."/>
           <Annotation Term="OData.LongDescription"
-                      String="The value of this property shall be L2 cache misses per instruction of each core in the Processor resource."/>
+                      String="The value of this property shall be number of stalled cycles due to IO operation of each core in the Processor resource."/>
+        </Property>
+        <Property Name="CoreCache" Type="Collection(ProcessorMetrics.v1_0_0.CacheMetrics)">
+          <Annotation Term="OData.Description" String="Cache metrics of each core in the Processor."/>
+          <Annotation Term="OData.LongDescription" 
+                      String="This object shall contain properties which describe the cache metrics of each core in the Processor resource."/>
         </Property>
         <Property Name="CstateResidency" Type="Collection(ProcessorMetrics.v1_0_0.CstateResidency)">
           <Annotation Term="OData.Description" String="C-state residency of each core in the Processor."/>
           <Annotation Term="OData.LongDescription" 
                       String="This object shall contain properties which describe the C-state residency of each core in the Processor resource."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="CacheMetrics">
+          <Annotation Term="OData.Description" String="Processor Core Metrics."/>
+          <Annotation Term="OData.LongDescription"
+                      String="This type shall contain properties that describe cache (global or core) metrics of the Processor resource."/>
+        <Property Name="Level" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Cache level."/>
+          <Annotation Term="OData.LongDescription"
+                      String="This property shall be level of the cache in the Processor resource."/>
+        </Property>
+        <Property Name="CacheMiss" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Cache line misses in millions."/>
+          <Annotation Term="OData.LongDescription"
+                      String="The value of this property shall be cache line misses of the Processor resource in millions."/>
+        </Property>
+        <Property Name="HitRatio" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Cache line hit ratio."/>
+          <Annotation Term="OData.LongDescription"
+                      String="The value of this property shall be cache hit ratio of the Processor resource."/>
+        </Property>
+        <Property Name="CacheMpi" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Cache misses per instruction."/>
+          <Annotation Term="OData.LongDescription"
+                      String="The value of this property shall be cache misses per instruction of the Processor resource."/>
+        </Property>
+        <Property Name="OccupancyBytes" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Total cache level occupancy in bytes."/>
+          <Annotation Term="OData.LongDescription"
+                      String="The value of this property shall be total cache occupancy of the Processor resource in bytes."/>
+        </Property>
+        <Property Name="OccupancyPercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Total cache occupancy in bytes."/>
+          <Annotation Term="OData.LongDescription"
+                      String="The value of this property shall be total cache occupancy percentage of the Processor resource."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
       </ComplexType>
 
