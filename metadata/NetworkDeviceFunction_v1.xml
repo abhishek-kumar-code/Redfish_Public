@@ -139,6 +139,7 @@
       </EntityType>
 
       <ComplexType Name="FibreChannel">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes Fibre Channel capabilities, status, and configuration of a network device function."/>
         <Annotation Term="OData.LongDescription" String="This object shall describe the Fibre Channel capabilities, status, and configuration values for a network device function."/>
         <Property Name="PermanentWWPN" Type="Edm.String">
@@ -192,6 +193,7 @@
       </ComplexType>
 
       <ComplexType Name="Ethernet">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes Ethernet capabilities, status, and configuration of a network device function."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe the Ethernet capabilities, status, and configuration values for a network device function."/>
         <Property Name="PermanentMACAddress" Type="Edm.String">
@@ -222,6 +224,7 @@
       </ComplexType>
 
       <ComplexType Name="iSCSIBoot">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes iSCSI boot capabilities, status, and configuration of a network device function."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe the iSCSI boot capabilities, status, and configuration values for a network device function."/>
         <Property Name="IPAddressType" Type="NetworkDeviceFunction.v1_0_0.IPAddressType">
@@ -366,6 +369,7 @@
       </ComplexType>
 
       <ComplexType Name="BootTargets">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="A Fibre Channel boot target configured for a network device function."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe a Fibre Channel boot target configured for a network device function."/>
         <Property Name="WWPN" Type="Edm.String">
@@ -536,7 +540,7 @@
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  Also adds support for VLAN to Ethernet."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_2_2.NetworkDeviceFunction"/>
 
-      <ComplexType Name="Ethernet"  BaseType="NetworkDeviceFunction.v1_0_0.Ethernet">
+      <ComplexType Name="Ethernet" BaseType="NetworkDeviceFunction.v1_0_0.Ethernet">
         <Property Name="VLAN" Type="VLanNetworkInterface.VLAN">
           <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
