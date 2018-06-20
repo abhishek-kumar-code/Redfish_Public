@@ -1,22 +1,32 @@
 {
-    "@odata.type": "#Sensor.v0_2_0.Sensor",
+    "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "1",
     "Name": "AC Input - RMS Current Sensor",
-    "SensorType": "Amperage",
+    "ReadingType": "Current",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
     "Reading": 12,
-    "UpperThresholdWarning": 12.5,
-    "UpperThresholdCritical": 13,
-    "LowerThresholdWarning": 11.5,
-    "LowerThresholdCritical": 11,
-    "MinReadingRange": 0,
-    "MaxReadingRange": 20,
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 13
+        },
+        "UpperCaution": {
+            "Reading": 12.5
+        },
+        "LowerCritical": {
+            "Reading": 11
+        },
+        "LowerCaution": {
+            "Reading": 11.5
+        }
+    },
+    "ReadingRangeMin": 0,
+    "ReadingRangeMax": 20,
     "PhysicalContext": "ACInput",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
     "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/1",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

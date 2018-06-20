@@ -1,20 +1,26 @@
 {
-    "@odata.type": "#Sensor.v0_2_0.Sensor",
+    "@odata.type": "#Sensor.v0_8_0.Sensor",
     "Id": "9",
     "Name": "Generator Coolant Sensor",
-    "SensorType": "LiquidLevel",
+    "ReadingType": "LiquidLevel",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
     "Reading": 12,
-    "UpperThresholdCritical": 20,
-    "LowerThresholdCritical": 1,
-    "MinReadingRange": 10,
-    "MaxReadingRange": 50,
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 20
+        },
+        "LowerCritical": {
+            "Reading": 1
+        }
+    },
+    "ReadingRangeMin": 10,
+    "ReadingRangeMax": 50,
     "PhysicalContext": "Chassis",
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/9",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

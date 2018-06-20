@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.6.1-->
+<!--# Redfish Schema:  Resource  v1.7.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -40,6 +40,7 @@
       <TypeDefinition Name="Name" UnderlyingType="Edm.String">
         <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
+        <Annotation Term="Redfish.Excerpt"/>		  
       </TypeDefinition>
 
       <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
@@ -103,6 +104,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This type describes the status and health of a resource and its children."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any status or health properties of a resource."/>
+        <Annotation Term="Redfish.Excerpt"/>
         <Property Name="State" Type="Resource.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>
@@ -278,6 +280,7 @@
         <Property Name="Name" Type="Resource.Name" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
+          <Annotation Term="Redfish.Excerpt"/>
         </Property>
       </EntityType>
 
@@ -906,6 +909,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to correct the permissions for Longitude, Latitude, and AltitudeMeters inside the Location object.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_7_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add the Redfish Excerpt annotation to Name and Status properties."/>
     </Schema>
 
   </edmx:DataServices>
