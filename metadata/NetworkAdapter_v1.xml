@@ -342,7 +342,7 @@
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_2_0.NetworkAdapter">
         <Annotation Term="OData.Description" String="This version was created to add a pointer to PCIeFunction to ControllerLinks for FC Adapters."/>
 
-        <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunctions.PCIeFunctions)">
+        <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
