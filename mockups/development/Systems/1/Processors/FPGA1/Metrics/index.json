@@ -30,7 +30,7 @@
       "CoreId": "core0",
       "InstructionsPerCycle": 1.16,
       "UnhaltedCycles": 6254383746,
-      "MemStallCount" 58372,
+      "MemStallCount": 58372,
       "IoStallCount": 2634872,
       "CoreCache":[
         {
