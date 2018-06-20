@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AccountService   v1.3.0-->
+<!--# Redfish Schema:  AccountService   v1.3.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -157,6 +157,12 @@
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_4.AccountService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="AccountService" BaseType="AccountService.v1_0_5.AccountService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_3.AccountService">
@@ -179,6 +185,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_1_1.AccountService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="AccountService" BaseType="AccountService.v1_1_2.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_0">
@@ -214,6 +226,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to perform editoral updates of descriptions defined in this schema."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_2_1.AccountService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="AccountService" BaseType="AccountService.v1_2_2.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_3_0">
@@ -300,7 +318,7 @@
           <Annotation Term="OData.Description" String="A generic external LDAP Service."/>
           <Annotation Term="OData.LongDescription" String="The external account provider shall be a service conforming to RFC4511. The format of ServiceAddresses shall be a collection of FQDNs that references the set of LDAP servers for the service."/>
         </Member>
-        <Member Name="Oem">
+        <Member Name="OEM">
           <Annotation Term="OData.Description" String="An OEM specific external authentication or directory service."/>
         </Member>
       </EnumType>
@@ -346,7 +364,7 @@
         <Member Name="UsernameAndPassword">
           <Annotation Term="OData.Description" String="Username and password combination."/>
         </Member>
-        <Member Name="Oem">
+        <Member Name="OEM">
           <Annotation Term="OData.Description" String="An OEM specific authentication mechanism."/>
         </Member>
       </EnumType>
@@ -407,6 +425,12 @@
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </ComplexType>
 
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_3_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <EntityType Name="AccountService" BaseType="AccountService.v1_3_0.AccountService"/>
     </Schema>
 
   </edmx:DataServices>

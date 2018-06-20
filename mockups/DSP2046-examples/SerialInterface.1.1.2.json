@@ -1,0 +1,17 @@
+{
+    "@odata.type": "#SerialInterface.v1_1_2.SerialInterface",
+    "Id": "TTY0",
+    "Name": "Manager Serial Interface 1",
+    "Description": "Management for Serial Interface",
+    "InterfaceEnabled": true,
+    "SignalType": "Rs232",
+    "BitRate": "115200",
+    "Parity": "None",
+    "DataBits": "8",
+    "StopBits": "1",
+    "FlowControl": "None",
+    "ConnectorType": "RJ45",
+    "PinOut": "Cyclades",
+    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
+    "@odata.id": "/redfish/v1/Managers/BMC/SerialInterfaces/TTY0"
+}

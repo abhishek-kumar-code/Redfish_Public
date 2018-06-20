@@ -1,5 +1,7 @@
 {
     "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+    "Id": "SimpleUpdateActionInfo",
+    "Name": "Simple Update Action Info",
     "Parameters": [
         {
             "Name": "ImageURI",
