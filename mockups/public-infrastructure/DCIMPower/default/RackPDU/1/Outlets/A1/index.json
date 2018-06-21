@@ -1,30 +1,12 @@
 {
-	"@odata.type": "#Circuit.v0_8_0.Circuit",
-	"Id": "1",
-	"Name": "Circuit 1",
+	"@odata.type": "#PowerOutlet.v0_8_0.PowerOutlet",
+	"Id": "A1",
+	"Name": "Outlet A1, Branch Circuit A",
 	"Status": {},
-
-	"CircuitType": "Branch",
-	"SourceType": "enum",
-
-	"Rating": 1,
-	"NumOutlets": 2,
-	"NumPhases": 2,
-	"BreakerRating": 3,
-	"Orientation": "A",
-	"LineToLineVoltage": 1000,
-	"MaxPhaseLoad": 50,
-	"NearOverloadThreshold": 50,
-	"OverloadThreshold": 70,
-	"Load": 10,
-	"LoadState": 1,
-	"PhaseNumber": 2,
-	"BankNumber": 1,
 
 	"Temperature": {
 		"DataSourceURI": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/5",
 		"Status": {
-
 			"Health": "OK"
 		},
 		"Reading": 12,
@@ -32,33 +14,26 @@
 		"PhysicalContext": "Cabinet"
 	},
 
-
-	"Voltages": [{
+	"Voltage": {
 		"VoltageExcerpts": true
-	}],
-	"Currents": [{
+	},
+	"Currents": {
 		"CurrentExcerpts": true
-	}],
-	"PowerReadings": [{
+	},
+	"PowerReading": {
 		"PowerExcerpts": true
-	}],
-
-	"Frequencies": [{
+	},
+	"Frequency": {
 		"FreqExcerpts": true
-	}],
-
-	"Outlets": [
-	   {
-		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/0"
-		},
-	   {
-		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/0"
-		},
-	   {
-		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0#/Outlets/0"
+	},
+	
+   "Links": {
+	   "BranchCircuit": {
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A"
 		}
+
    ],		
-	"@odata.context": "/redfish/v1/$metadata#RackPDU.RackPDU",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0",
-	"@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+	"@odata.context": "/redfish/v1/$metadata#PowerOutlet.PowerOutlet",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1",
+	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

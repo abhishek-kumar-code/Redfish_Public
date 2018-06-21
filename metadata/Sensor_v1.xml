@@ -112,6 +112,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies."/>
           <Annotation Term="Redfish.Excerpt"/>
         </Property>
+        <Property Name="ElectricalSourceType" Type="Sensor.ElecticalSourceType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The type of electrical circuit measurement within a circuit."/>
+          <Annotation Term="OData.LongDescription" String="TBD"/>
+          <Annotation Term="Redfish.Excerpt"/>
+        </Property>
 
         <!-- Excerpt properties specific to power reading type -->
         <Property Name="ApparentVA" Type="Edm.Decimal">
@@ -357,6 +363,85 @@
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
       </EnumType>
+
+		<EnumType Name="PhaseWiringType">
+        <Member Name="Single">
+          <Annotation Term="OData.Description" String="1-Phase, 3-Wire."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="TwoPhase3Wire">
+          <Annotation Term="OData.Description" String="2-Phase / 3-Wire (Line1, Line2, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="TwoPhase4Wire">
+          <Annotation Term="OData.Description" String="2-Phase / 4-Wire (Line1, Line2, Neutral, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>		  
+        <Member Name="ThreePhase4Wire">
+          <Annotation Term="OData.Description" String="3-Phase / 4-Wire (Line1, Line2, Line3, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="ThreePhase5Wire">
+          <Annotation Term="OData.Description" String="3-Phase / 5-Wire (Line1, Line2, Line3, Neutral, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+      </EnumType>
+		
+      <EnumType Name="ElectricalSourceType">
+        <Member Name="LineToLine">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line1ToLine2">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line2ToLine3">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line3ToLine1">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="LineToNeutral">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line1ToNeutral">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line2ToNeutral">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line3ToNeutral">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+         <Member Name="Line1ToNeutralAndL1L2">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line2ToNeutralAndL1L2">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line2ToNeutralAndL2L3">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line3ToNeutralAndL3L1">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Total">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+      </EnumType>
+		
     </Schema>
 
   </edmx:DataServices>
