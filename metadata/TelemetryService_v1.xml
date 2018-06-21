@@ -63,6 +63,20 @@
         </Annotation>
       </EntityType>
 
+      <Action Name="SubmitTestMetricReport" IsBound="true">
+        <Annotation Term="OData.Description" String="This action is used to generate a metric report."/>
+        <Annotation Term="OData.LongDescription" String="This action shall cause the event service to immediately generate the metric report, as an Alert Event. This message should then be sent to any appropriate ListenerDestination targets."/>
+        <Parameter Name="TelemetryService" Type="TelemetryService.v1_0_0.Actions"/>
+        <Parameter Name="MetricReportName" Type="Edm.String" Nullable="false">             
+          <Annotation Term="OData.Description" String="The Name property of the metric report in generated metric report."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be the value of the Name property in the generated metric report."/>
+        </Parameter>
+        <Parameter Name="MetricReportValues" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The content of MetricReportValues array in generated metric report."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the contents of the MetricReportValues array property in the generated metric report."/>
+        </Parameter>
+      </Action>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TelemetryService.v1_0_0">
