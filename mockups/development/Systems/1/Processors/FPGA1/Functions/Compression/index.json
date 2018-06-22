@@ -18,5 +18,8 @@
   "Manufacturer": "Intel (R) Corporation",
   "Version": "Green Compression Type 1 v.1.00.86",
   "PowerWatts": 15,
+  "Links": {
+    "Endpoints": []
+  },
   "Oem": {}
 }

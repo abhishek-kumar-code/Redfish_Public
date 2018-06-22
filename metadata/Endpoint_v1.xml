@@ -199,6 +199,9 @@
         <Member Name="Volume">
           <Annotation Term="OData.Description" String="The entity is a volume. The EntityLink property (if present) should be a Volume.Volume entity."/>
         </Member>
+        <Member Name="AccelerationFunction">
+          <Annotation Term="OData.Description" String="The entity is an acceleration function realized through e.g. FPGA. The EntityLink property (if present) should be a AccelerationFunction.AccelerationFunction entity."/>
+        </Member>
       </EnumType>
 
       <EnumType Name="EntityRole">
@@ -319,6 +322,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_1_0.Endpoint"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add new endpoint types necessary for the FPGA modelling."/>
+      <EntityType Name="Endpoint" BaseType="Endpoint.v1_1_1.Endpoint"/>
     </Schema>
 
   </edmx:DataServices>
