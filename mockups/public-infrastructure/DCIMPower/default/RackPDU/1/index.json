@@ -2,13 +2,28 @@
 	"@odata.type": "#RackPDU.v0_8_0.RackPDU",
 	"Id": "1",
 	"Name": "RackPDU1",
-	"FirmwareRevision": "4.3.0",
+	"FirmwareVersion": "4.3.0",
 	"DateOfManufacture": "2017-01-11T08:00:00Z",
 	"Manufacturer": "Contoso",
 	"Model": "ZAP4000",
 	"SerialNumber": "29347ZT536",
 	"PartNumber": "AA-23",
+   "UUID": "32354641-4135-4332-4A35-313735303734",
 	"AssetTag": "PDX-92381",
+
+	"NameplateRatings": {
+        "FormFactor": "0U",
+        "PlugType": "NEMA L21-30P",
+        "PhaseWiringType": "3Phase-5Wire",
+        "AmperageMax": 30,
+        "AmperageDerated": 24,
+        "VoltageMax": 240,
+        "VoltageMin": 100,
+        "FrequencyNominal": 60,
+        "TemperatureMinCelsius": 5,
+        "TemperatureMaxCelsius": 60
+    },
+	 
 	"PhysicalLocation": {
 		"Longitude": 45.52,
 		"Latitude": 122.67,

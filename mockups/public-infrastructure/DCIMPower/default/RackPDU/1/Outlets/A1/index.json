@@ -1,34 +1,39 @@
 {
 	"@odata.type": "#PowerOutlet.v0_8_0.PowerOutlet",
 	"Id": "A1",
-	"Name": "Outlet A1, Branch Circuit A",
-	"Status": {},
+	"Name": "Outlet A1, Branch PowerOutlet A",
+	"Status": { "Health": "OK", "State": "Enabled"},
 
-	"Temperature": {
-		"DataSourceURI": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/5",
-		"Status": {
-			"Health": "OK"
-		},
-		"Reading": 12,
-		"ReadingUnits": "C",
-		"PhysicalContext": "Cabinet"
-	},
-
+	"IECPlugType": "B",
+	"NEMAOutletType": 5,
+	"RatedCurrentAmps": 20,
+	"NominalVoltage": 120,
+	
+	"PowerState": "On",
+	
 	"Voltage": {
-		"VoltageExcerpts": true
+	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
+		"Reading": 120,
+		"ReadingUnits": "V",
 	},
-	"Currents": {
-		"CurrentExcerpts": true
+	"Current": {
+	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
+		"Reading": 3.4,
+		"ReadingUnits": "A",
 	},
 	"PowerReading": {
-		"PowerExcerpts": true
+	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
+		"Reading": 412.36,
+		"ReadingUnits": "W",
 	},
 	"Frequency": {
-		"FreqExcerpts": true
+	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
+		"Reading": 60.0,
+		"ReadingUnits": "Hz",
 	},
-	
+
    "Links": {
-	   "BranchCircuit": {
+	   "BranchPowerOutlet": {
 		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A"
 		}
 

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  PowerOutlet  v0.8.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2018 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
+    <edmx:Include Namespace="PhysicalContext"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
+    <edmx:Include Namespace="Redundancy"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
+    <edmx:Include Namespace="Assembly"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerOutlet">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+
+      <EntityType Name="PowerOutlet" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for power outlet (receptacle)."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an electrical outlet or receptacle for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Power outlet properties can be updated to change limits, exceptions and other writable properties."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerOutlet.v0_8_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+
+      <EntityType Name="PowerOutlet" BaseType="PowerOutlet.PowerOutlet">
+
+      </EntityType>
+
+		<EnumType Name="PlugType">
+        <Member Name="A">
+          <Annotation Term="OData.Description" String="NEMA 1-15, U.S. 2-pin."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="B">
+          <Annotation Term="OData.Description" String="NEMA 5-15, U.S. 3-pin."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>		  
+        <Member Name="C">
+          <Annotation Term="OData.Description" String="CEE 7/16 Europlug."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="D">
+          <Annotation Term="OData.Description" String="BS 546, 5A."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="E">
+          <Annotation Term="OData.Description" String="CEE 7/5, 16A."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="F">
+          <Annotation Term="OData.Description" String="CEE 7/3, 16A Schuko."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>		  
+        <Member Name="G">
+          <Annotation Term="OData.Description" String="BS1363, UK."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="H">
+          <Annotation Term="OData.Description" String="SI 32, Israel."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="I">
+          <Annotation Term="OData.Description" String="AS/NZS 2112, Australia."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="J">
+          <Annotation Term="OData.Description" String="SEV-1011, 10A, Switzerland."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="K">
+          <Annotation Term="OData.Description" String="SRAF 1962/DB, Denmark."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="L">
+          <Annotation Term="OData.Description" String="CEI 23-50."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="M">
+          <Annotation Term="OData.Description" String="BS 546, 15A."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="N">
+          <Annotation Term="OData.Description" String="NBR 14136, Brazil."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="O">
+          <Annotation Term="OData.Description" String="TIS 166-2549, Thailand."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+		</EnumType>
+		
+		
+		
+		
+		<EnumType Name="PhaseWiringType">
+        <Member Name="Single">
+          <Annotation Term="OData.Description" String="1-Phase, 3-Wire."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="TwoPhase3Wire">
+          <Annotation Term="OData.Description" String="2-Phase / 3-Wire (Line1, Line2, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="TwoPhase4Wire">
+          <Annotation Term="OData.Description" String="2-Phase / 4-Wire (Line1, Line2, Neutral, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>		  
+        <Member Name="ThreePhase4Wire">
+          <Annotation Term="OData.Description" String="3-Phase / 4-Wire (Line1, Line2, Line3, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="ThreePhase5Wire">
+          <Annotation Term="OData.Description" String="3-Phase / 5-Wire (Line1, Line2, Line3, Neutral, Protective Earth)."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+      </EnumType>		
+
+      <EnumType Name="OutputVoltageType">
+        <Member Name="DCNeg48V">
+          <Annotation Term="OData.Description" String="-48V DC output."/>
+        </Member>
+        <Member Name="DC380V">
+          <Annotation Term="OData.Description" String="High Voltage DC input (380V)."/>
+        </Member>
+        <Member Name="AC120V">
+          <Annotation Term="OData.Description" String="AC 120V nominal output."/>
+        </Member>
+        <Member Name="AC240V">
+          <Annotation Term="OData.Description" String="AC 240V nominal output."/>
+        </Member>
+        <Member Name="AC277V">
+          <Annotation Term="OData.Description" String="AC 277V nominal output."/>
+        </Member>
+        <Member Name="ACandDCWideRange">
+          <Annotation Term="OData.Description" String="Wide range AC or DC output."/>
+        </Member>
+        <Member Name="ACWideRange">
+          <Annotation Term="OData.Description" String="Wide range AC output."/>
+        </Member>
+        <Member Name="DC240V">
+          <Annotation Term="OData.Description" String="DC 240V nominal output."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="InputType">
+        <Member Name="AC">
+          <Annotation Term="OData.Description" String="Alternating Current (AC) input range."/>
+        </Member>
+        <Member Name="DC">
+          <Annotation Term="OData.Description" String="Direct Current (DC) input range."/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -388,6 +388,22 @@
       </EnumType>
 		
       <EnumType Name="ElectricalSourceType">
+        <Member Name="Line1">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line2">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Line3">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
+        <Member Name="Neutral">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
+        </Member>
         <Member Name="LineToLine">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
