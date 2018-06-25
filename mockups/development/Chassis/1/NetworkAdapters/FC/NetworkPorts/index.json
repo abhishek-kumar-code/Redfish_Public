@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts",
     "@odata.type": "#NetworkPortCollection.NetworkPortCollection",
     "Name": "Network Port Collection",
-    "Members@odata.count": "2",
+    "Members@odata.count": "1",
     "Members": [
         {
             "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts/1"
