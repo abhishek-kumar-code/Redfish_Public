@@ -2,42 +2,44 @@
 	"@odata.type": "#PowerOutlet.v0_8_0.PowerOutlet",
 	"Id": "A1",
 	"Name": "Outlet A1, Branch PowerOutlet A",
-	"Status": { "Health": "OK", "State": "Enabled"},
+	"Status": {
+		"Health": "OK",
+		"State": "Enabled"
+	},
 
 	"IECPlugType": "B",
 	"NEMAOutletType": 5,
 	"RatedCurrentAmps": 20,
 	"NominalVoltage": 120,
-	
+
 	"PowerState": "On",
-	
+
 	"Voltage": {
-	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
 		"Reading": 120,
-		"ReadingUnits": "V",
+		"ReadingUnits": "V"
 	},
 	"Current": {
-	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
 		"Reading": 3.4,
-		"ReadingUnits": "A",
+		"ReadingUnits": "A"
 	},
 	"PowerReading": {
-	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
 		"Reading": 412.36,
-		"ReadingUnits": "W",
+		"ReadingUnits": "W"
 	},
 	"Frequency": {
-	   "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
 		"Reading": 60.0,
-		"ReadingUnits": "Hz",
+		"ReadingUnits": "Hz"
 	},
 
-   "Links": {
-	   "BranchPowerOutlet": {
-		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A"
+	"Links": {
+		"BranchCircuit": {
+			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A"
 		}
-
-   ],		
+	},
 	"@odata.context": "/redfish/v1/$metadata#PowerOutlet.PowerOutlet",
 	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1",
 	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
