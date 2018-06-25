@@ -1,0 +1,44 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDeviceFunction.NetworkDeviceFunction",
+    "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkDeviceFunctions/1",
+    "@odata.type": "#NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction",
+    "Id": "1",
+    "Name": "Network Device Function for FC Adapter",
+    "NetDevFuncType": "FibreChannel",
+    "DeviceEnabled": true,
+    "NetDevFuncCapabilities": [
+        "FibreChannel"
+    ],
+    "FibreChannel": {
+        "PermanentWWPN": "10:00:B0:5A:DD:BB:74:E0",
+        "PermanentWWNN": "10:00:B0:5A:DD:BB:A1:B3",
+        "WWPN": "10:00:B0:5A:DD:BB:74:E0",
+        "WWNN": "10:00:B0:5A:DD:C4:D3:BB",
+        "WWNSource": "ConfiguredLocally",
+        "BootTargets": [
+            {
+                "WWPN": "10:00:B0:5A:DD:BB:74:FA",
+                "LUNID": "3",
+                "BootPriority": 0
+            }
+        ]
+    },
+    "AssignablePhysicalPorts": [
+        {
+            "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts/2"
+        }
+    ],
+    "PhysicalPortAssignment": {
+        "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts/1"
+    },
+    "BootMode": "FibreChannel",
+    "Links": {
+        "PCIeFunction": {
+            "@odata.id": "/redfish/v1/.../PCIeDevices/FC/Functions/1"
+        }
+    }
+}
