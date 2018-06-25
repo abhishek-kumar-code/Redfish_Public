@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkPort  v1.1.1-->
+<!--# Redfish Schema:  NetworkPort  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -272,8 +272,9 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add FibreChannel properties."/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_1.NetworkPort">
-        <Annotation Term="OData.Description" String="This version was created to add FibreChannel properties."/>
         <Property Name="PortConnectionType" Type="NetworkPort.v1_2_0.PortConnectionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the connection type of this port."/>
@@ -310,45 +311,44 @@
           <Annotation Term="OData.Description" String="Network Port Current Link Speed."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current configured link speed of this port."/>
         </Property>
-
-        <EnumType Name="PortConnectionType">
-          <Member Name="None">
-            <Annotation Term="OData.Description" String="This port is not connected."/>
-          </Member>
-          <Member Name="NPort">
-            <Annotation Term="OData.Description" String="This port connects via an N-Port to a switch."/>
-          </Member>
-          <Member Name="PointToPoint">
-            <Annotation Term="OData.Description" String="This port connects in a Point-to-point configuration."/>
-          </Member>
-          <Member Name="PrivateLoop">
-            <Annotation Term="OData.Description" String="This port connects in a private loop configuration."/>
-          </Member>
-          <Member Name="PublicLoop">
-            <Annotation Term="OData.Description" String="This port connects in a public configuration."/>
-          </Member>
-          <Member Name="UPort">
-            <Annotation Term="OData.Description" String="This port connection type is unknown."/>
-          </Member>
-          <Member Name="GPort">
-            <Annotation Term="OData.Description" String="This port connection type is a generic fabric port."/>
-          </Member>
-          <Member Name="EPort">
-            <Annotation Term="OData.Description" String="This port connection type is an extender fabric port."/>
-          </Member>
-        </EnumType>
       </EntityType>
 
-      <ComplexType Name="SupportedLinkCapabilities" BaseType="NetworkPort.v1_0_0.SupportedLinkCapabilities" >
-          <Annotation Term="OData.Description" String="The self-described link capabilities of an associated port."/>
-          <Property Name="LinkSpeedMbps" Type="Collection(Edm.Int64)">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="The self-described link network speed capabilities of this port. Note: Should this be a new enumerated type of link speeds?"/>
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be all of the possible network link speed capabilities of this port."/>
-          </Property>
-        </ComplexType>
+      <EnumType Name="PortConnectionType">
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="This port is not connected."/>
+        </Member>
+        <Member Name="NPort">
+          <Annotation Term="OData.Description" String="This port connects via an N-Port to a switch."/>
+        </Member>
+        <Member Name="PointToPoint">
+          <Annotation Term="OData.Description" String="This port connects in a Point-to-point configuration."/>
+        </Member>
+        <Member Name="PrivateLoop">
+          <Annotation Term="OData.Description" String="This port connects in a private loop configuration."/>
+        </Member>
+        <Member Name="PublicLoop">
+          <Annotation Term="OData.Description" String="This port connects in a public configuration."/>
+        </Member>
+        <Member Name="UPort">
+          <Annotation Term="OData.Description" String="This port connection type is unknown."/>
+        </Member>
+        <Member Name="GPort">
+          <Annotation Term="OData.Description" String="This port connection type is a generic fabric port."/>
+        </Member>
+        <Member Name="EPort">
+          <Annotation Term="OData.Description" String="This port connection type is an extender fabric port."/>
+        </Member>
+      </EnumType>
 
+      <ComplexType Name="SupportedLinkCapabilities" BaseType="NetworkPort.v1_0_0.SupportedLinkCapabilities">
+        <Annotation Term="OData.Description" String="The self-described link capabilities of an associated port."/>
+        <Property Name="CapableLinkSpeedMbps" Type="Collection(Edm.Int64)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The self-described link network speed capabilities of this port. Note: Should this be a new enumerated type of link speeds?."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be all of the possible network link speed capabilities of this port."/>
+        </Property>
+      </ComplexType>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -1,9 +1,9 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkDeviceFunction.NetworkDeviceFunction",
-    "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkDeviceFunctions/1",
+    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkDeviceFunctions/111111111100",
     "@odata.type": "#NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction",
-    "Id": "1",
+    "Id": "111111111100",
     "Name": "Network Device Function for FC Adapter",
     "NetDevFuncType": "FibreChannel",
     "DeviceEnabled": true,
@@ -26,19 +26,16 @@
     },
     "AssignablePhysicalPorts": [
         {
-            "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts/1"
-        },
-        {
-            "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts/2"
+            "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/1"
         }
     ],
     "PhysicalPortAssignment": {
-        "@odata.id": "/redfish/v1/.../NetworkAdapters/FC/NetworkPorts/1"
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/1"
     },
     "BootMode": "FibreChannel",
     "Links": {
         "PCIeFunction": {
-            "@odata.id": "/redfish/v1/.../PCIeDevices/FC/Functions/1"
+            "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/FC/Functions/1"
         }
     }
 }

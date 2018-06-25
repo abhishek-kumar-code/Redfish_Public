@@ -336,18 +336,14 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate whether or not NIC function partitioning is active on this controller."/>
         </Property>
       </ComplexType>
-    </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapter.v1_3_0">
-      <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_2_0.NetworkAdapter">
-        <Annotation Term="OData.Description" String="This version was created to add a pointer to PCIeFunction to ControllerLinks for FC Adapters."/>
-
+      <ComplexType Name="ControllerLinks" BaseType="NetworkAdapter.v1_0_0.ControllerLinks">
         <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </EntityType>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
