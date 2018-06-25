@@ -3,12 +3,13 @@
 	"Id": "1",
 	"Name": "RackPDU1",
 	"FirmwareVersion": "4.3.0",
+	"HardwareRevision": "1.03b",
 	"DateOfManufacture": "2017-01-11T08:00:00Z",
 	"Manufacturer": "Contoso",
 	"Model": "ZAP4000",
 	"SerialNumber": "29347ZT536",
 	"PartNumber": "AA-23",
-   "UUID": "32354641-4135-4332-4A35-313735303734",
+	"UUID": "32354641-4135-4332-4A35-313735303734",
 	"AssetTag": "PDX-92381",
 
 	"NameplateRatings": {
@@ -42,19 +43,23 @@
 			"Row": "North"
 		}
 	},
-	"Rating": 1,
-	"NumOutlets": 2,
-	"NumPhases": 2,
-	"BreakerRating": 3,
-	"Orientation": "A",
+	
+	"CircuitSummary": {
+		"TotalOutlets": 16,
+		"MonitoredOutlets": 12,
+		"ControlledOutlets": 8,
+		"Phases": 3,
+		"MonitoredPhases": 3,
+		"BranchCircuits": 4,
+		"MonitoredBranchCircuits": 4
+	},
+
 	"LineToLineVoltage": 1000,
 	"MaxPhaseLoad": 50,
 	"NearOverloadThreshold": 50,
 	"OverloadThreshold": 70,
 	"Load": 10,
 	"LoadState": 1,
-	"PhaseNumber": 2,
-	"BankNumber": 1,
 
 	"Temperatures": [{
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CabTemp",
@@ -66,6 +71,7 @@
 		"ReadingUnits": "C",
 		"PhysicalContext": "Cabinet"
 	}],
+
 	"Humidity": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/Humidity",
 		"Name": "Cabinet Humidity Sensor",
@@ -76,6 +82,17 @@
 		"ReadingUnits": "%",
 		"PhysicalContext": "Cabinet"
 	},
+
+	"PowerReading": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PDUPower",
+		"Reading": 6438,
+		"ReadingUnits": "W",
+		"ApparentVA": 6300,
+		"ReactiveVAR": 100,
+		"PowerFactor": 0.93,
+		"LoadPercent": 62
+	},
+	
 	"Mains": {
 		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Mains"
 	},

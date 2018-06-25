@@ -1,0 +1,42 @@
+{
+	"@odata.type": "#Sensor.v0_8_0.Sensor",
+	"Id": "FrequencyA1",
+	"Name": "Frequency reading for outlet A1",
+	"ReadingType": "Frequency",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Reading": 60.1,
+	"ReadingUnits": "Hz",
+	"ReadingRangeMin": 0,
+	"ReadingRangeMax": 160,
+	"Accuracy": 0.02,
+	"Precision": 2,
+	"SensingInterval": 0.125,
+	"PhysicalContext": "Chassis",
+
+	"Thresholds": {
+		"UpperCritical": {
+			"Reading": 60.37,
+			"Activation": "Increasing",
+			"DwellTime": "00:01:00"
+		},
+		"UpperWarning": {
+			"Reading": 60.2,
+			"DwellTime": "00:10:00"
+		},
+		"LowerWarning": {
+			"Reading": 59.5,
+			"DwellTime": "00:05:00"
+		},
+		"LowerCritical": {
+			"Reading": 58.75,
+			"DwellTime": "00:01:00"
+		}
+	},
+	"Oem": {},
+	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
+	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

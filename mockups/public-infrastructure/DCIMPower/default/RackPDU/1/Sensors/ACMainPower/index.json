@@ -1,0 +1,34 @@
+{
+	"@odata.type": "#Sensor.v0_8_0.Sensor",
+	"Id": "ACMainPower",
+	"Name": "AC Main Power",
+	"ReadingType": "Power",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Reading": 28783,
+	"ReadingUnits": "W",
+	"ReadingRangeMin": 0,
+	"ReadingRangeMax": 50000,
+	"Accuracy": 1,
+	"Precision": 1,
+	"SensingInterval": 0.1,
+	"PhysicalContext": "Chassis",
+
+	"Thresholds": {
+		"UpperCritical": {
+			"Reading": 36000,
+			"Activation": "Increasing",
+			"DwellTime": "00:01:00"
+		},
+		"UpperWarning": {
+			"Reading": 32000,
+			"DwellTime": "00:10:00"
+		}
+	},
+	"Oem": {},
+	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/ACMainPower",
+	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

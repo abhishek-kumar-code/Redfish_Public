@@ -55,6 +55,12 @@
         </Annotation>
       </EntityType>
 
+      <Action Name="ResetStatistics" IsBound="true">
+        <Parameter Name="Sensor" Type="Sensor.v0_8_0.Actions"/>
+        <Annotation Term="OData.Description" String="This action is used to reset statistics related to this sensor."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of any time intervals or counted values for this sensor."/>
+      </Action>
+	  
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v0_8_0">
@@ -293,6 +299,10 @@
         </Member>
         <Member Name="Power">
           <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'."/>
+        </Member>
+        <Member Name="Energy">
+          <Annotation Term="OData.Description" String="Energy consumption (Watt-hours)."/>
           <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'."/>
         </Member>
         <Member Name="ACVoltage">

@@ -68,6 +68,11 @@
                <Annotation Term="OData.Description" String="The type of circuit." />
                <Annotation Term="OData.LongDescription" String="." />
             </Property>
+            <Property Name="PhaseWiringType" Type="Circuit.PhaseWiringType">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+               <Annotation Term="OData.Description" String="The phase wiring of the circuit." />
+               <Annotation Term="OData.LongDescription" String="." />
+            </Property>
             <Property Name="IECReceptacleType" Type="Circuit.IECType">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
                <Annotation Term="OData.Description" String="The IEC Receptacle type." />
@@ -89,6 +94,16 @@
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
                <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the circuit." />
                <Annotation Term="OData.LongDescription" String="The value of this property shall contain the indicator light state for the indicator light associated with this circuit." />
+            </Property>
+            <Property Name="PowerOnDelaySeconds" Type="Edm.Decimal">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
+               <Annotation Term="OData.Description" String="The number of seconds to delay power up after a power cycle or a PowerControl request. Zero seconds indicates no delay to power up." />
+               <Annotation Term="OData.LongDescription" String="TBD." />
+            </Property>
+            <Property Name="PowerOffDelaySeconds" Type="Edm.Decimal">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
+               <Annotation Term="OData.Description" String="The number of seconds to delay power off after a PowerControl request. Zero seconds indicates no delay to power off." />
+               <Annotation Term="OData.LongDescription" String="TBD." />
             </Property>
             <Property Name="Powered" Type="Edm.Boolean">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
@@ -122,6 +137,12 @@
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
                <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power" />
                <Annotation Term="OData.Description" String="The power reading for this circuit." />
+               <Annotation Term="OData.LongDescription" String="TBD." />
+            </Property>
+            <Property Name="Energy" Type="Sensor.Sensor">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+               <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy" />
+               <Annotation Term="OData.Description" String="The energy consumption of this circuit, in Watt-hours." />
                <Annotation Term="OData.LongDescription" String="TBD." />
             </Property>
             <Property Name="Voltages" Type="Collection(Sensor.Sensor)">
