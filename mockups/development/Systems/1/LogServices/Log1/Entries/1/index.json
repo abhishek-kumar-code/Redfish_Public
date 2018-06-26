@@ -12,7 +12,7 @@
     "SensorType": "Temperature",
     "SensorNumber": 1,
     "Message": "Temperature threshold exceeded",
-    "MessageId": "592A28",
+    "MessageId": "0x592A28",
     "Links": {
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal"
