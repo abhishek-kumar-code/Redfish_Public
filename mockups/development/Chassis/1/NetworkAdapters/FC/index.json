@@ -35,7 +35,7 @@
                 ],
                 "NetworkDeviceFunctions": [
                     {
-                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkDeviceFunctions/1"
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkDeviceFunctions/111111111100"
                     }
                 ]
             },
