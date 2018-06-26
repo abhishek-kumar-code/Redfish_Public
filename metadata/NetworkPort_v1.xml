@@ -275,7 +275,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add FibreChannel properties."/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_1.NetworkPort">
-        <Property Name="PortConnectionType" Type="NetworkPort.v1_2_0.PortConnectionType">
+        <Property Name="FCPortConnectionType" Type="NetworkPort.v1_2_0.PortConnectionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the connection type of this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the connection type for this port."/>
@@ -300,7 +300,7 @@
           <Annotation Term="OData.Description" String="The Fibre Channel Id assigned by the switch for this port."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Fibre Channel Id assigned by the switch for this port."/>
         </Property>
-        <Property Name="FabricName" Type="Edm.String">
+        <Property Name="FCFabricName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FC Fabric Name provided by the switch."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the FC Fabric Name provided by the switch."/>
@@ -314,7 +314,7 @@
       </EntityType>
 
       <EnumType Name="PortConnectionType">
-        <Member Name="None">
+        <Member Name="NotConnected">
           <Annotation Term="OData.Description" String="This port is not connected."/>
         </Member>
         <Member Name="NPort">
@@ -329,13 +329,13 @@
         <Member Name="PublicLoop">
           <Annotation Term="OData.Description" String="This port connects in a public configuration."/>
         </Member>
-        <Member Name="UPort">
+        <Member Name="Unknown">
           <Annotation Term="OData.Description" String="This port connection type is unknown."/>
         </Member>
-        <Member Name="GPort">
+        <Member Name="Generic">
           <Annotation Term="OData.Description" String="This port connection type is a generic fabric port."/>
         </Member>
-        <Member Name="EPort">
+        <Member Name="ExtenderFabric">
           <Annotation Term="OData.Description" String="This port connection type is an extender fabric port."/>
         </Member>
       </EnumType>

@@ -3,11 +3,15 @@
     "@odata.context": "/redfish/v1/$metadata#NetworkPort.NetworkPort",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/1",
     "@odata.type": "#NetworkPort.v1_2_0.NetworkPort",
-    "Id": "1",
+    "Id": "2",
     "Name": "Network Port for FC",
-    "PhysicalPortNumber": "1",
+    "PhysicalPortNumber": "2",
     "LinkStatus": "Up",
+    "FibreChannelId": "XXXXX",
+    "FCFabricName": "Fabric",
+    "VendorId" : "BestBigServerVendor",
     "CurrentLinkSpeedMbps": 32000,
+    "FCPortConnectionType": "PublicLoop",
     "SupportedLinkCapabilities": [
         {
             "LinkNetworkTechnology": "FibreChannel",
@@ -15,9 +19,8 @@
         }
     ],
     "ActiveLinkTechnology": "FibreChannel",
-    "FCPortConnectionType": "PublicLoop",
     "AssociatedNetworkAddresses": [
-        "10:00:B0:5A:DD:BB:74:E0"
+        "10:00:B0:5A:DD:BB:74:E2"
     ],
     "SignalDetected": true
 }
