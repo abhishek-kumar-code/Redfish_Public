@@ -31,8 +31,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Triggers" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A Triggers is an entity which senses or measures another resource."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a sensor."/>
+        <Annotation Term="OData.Description" String="Specifie a trigger, which applies to metrics."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall specify a trigger, which applies to metrics."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -41,7 +41,7 @@
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
             <PropertyValue Property="Updatable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Triggerss can be updated to change the date and time settings and other writable properties."/>
+            <Annotation Term="OData.Description" String="Triggers can be updated to config the triggers."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
@@ -57,8 +57,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Triggers" BaseType="Triggers.Triggers">
-        <Annotation Term="OData.Description" String="This is the schema definition for a Triggers."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a sensor."/>
+        <Annotation Term="OData.Description" String="Triggers which applies to a list of metrics."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall specify triggers, which applies a list of metrics."/>
 
         <Property Name="MetricType" Type="Triggers.v1_0_0.MetricTypeEnum">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -67,25 +67,25 @@
         </Property>
         <Property Name="TriggerActions" Type="Collection(Triggers.v1_0_0.TriggerActionEnum)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property specifies what action is perform when the MetricTrigger occurs."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the action to perform when the MetricTrigger occurs."/>
+          <Annotation Term="OData.Description" String="This property specifies the actions to perform when the trigger occurs."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the actions to perform when the trigger occurs."/>
         </Property>
         <Property Name="NumericTriggers" Type="Collection(Triggers.v1_0_0.NumericTrigger)" Nullable="false">
           <Annotation Term="OData.Description" String="List of numeric triggers."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain list of triggers to which a sensor reading will be compared."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain list of triggers to which a metric value shall be compared."/>
         </Property>
         <Property Name="Thresholds" Type="Triggers.v1_0_0.Thresholds">
           <Annotation Term="OData.Description" String="The set of thresholds defined for this sensor."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain list of thresholds to which a metric value shall be compared.."/>
         </Property>
         <Property Name="DiscreteTriggerCondition" Type="Triggers.v1_0_0.DiscreteTriggerConditionEnum">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of trigger."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specific the type of trigger."/>
+          <Annotation Term="OData.Description" String="Specifies the conditions when a discrete metric triggers."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property specifies the conditions when a discrete metric triggers."/>
         </Property>
         <Property Name="DiscreteTriggers" Type="Collection(Triggers.v1_0_0.DiscreteTrigger)" Nullable="false">
           <Annotation Term="OData.Description" String="List of discrete triggers."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contains a list of value to which a sensor reading will be compared.  This property shall be present when the DiscreteTriggerCondition property has a value of 'Specified'."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contains a list of value to which a metric reading will be compared.  This property shall be present when the DiscreteTriggerCondition property has a value of 'Specified'."/>
         </Property>
 
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
@@ -108,8 +108,8 @@
       </EntityType>
 
       <EnumType Name="MetricTypeEnum">
-        <Annotation Term="OData.Description" String="Indicates how the corresponding metric values change over time."/>
-        <Annotation Term="OData.LongDescription" String=  "The value shall indicate how the corresponding metric."/>
+        <Annotation Term="OData.Description" String="Specifies the type of metric for which the trigger is configured."/>
+        <Annotation Term="OData.LongDescription" String=  "The value shall specify the type of metric for which the trigger is configured."/>
         <Member Name="Numeric">
           <Annotation Term="OData.Description" String="The trigger is for numeric sensor."/>
         </Member>
@@ -119,6 +119,8 @@
       </EnumType>
 
       <EnumType Name="TriggerActionEnum">
+        <Annotation Term="OData.Description" String="Specifies the actions to perform when a trigger occurs."/>
+        <Annotation Term="OData.LongDescription" String=  "The value shall specify the actions to perform when a trigger occurs."/>
         <Member Name="Log">
           <Annotation Term="OData.Description" String="Upon a trigger, record in a log."/>
         </Member>
@@ -128,8 +130,8 @@
       </EnumType>
 
       <EnumType Name="DiscreteTriggerConditionEnum">
-        <Annotation Term="OData.Description" String="Indicates how the corresponding metric values change over time."/>
-        <Annotation Term="OData.LongDescription" String=  "The value shall indicate how the corresponding metric."/>
+        <Annotation Term="OData.Description" String="Specifies the condition, in relationship to the discrete trigger values, which constitutes a trigger."/>
+        <Annotation Term="OData.LongDescription" String=  "The value shall specify the condition, in relationship to the discrete trigger values, which constitutes a trigger."/>
         <Member Name="Specified">
           <Annotation Term="OData.Description" String="A discrete trigger occurs when the value of the metric becomes one of the values listed in the DiscreteTriggers property."/>
         </Member>

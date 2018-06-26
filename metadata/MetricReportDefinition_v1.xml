@@ -58,36 +58,36 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.MetricReportDefinition">
-        <Annotation Term="OData.Description" String="A set of metrics that are collected periodically."/>
+        <Annotation Term="OData.Description" String="A set of metrics that are collected into a metric report."/>
         <Annotation Term="OData.LongDescription" String="This resource specifies a set of metrics that shall be collected into a metric report."/>
         <Property Name="MetricReportDefinitionType" Type="MetricReportDefinition.v1_0_0.MetricReportDefinitionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The collection type for the corresponding metric values."/>
-          <Annotation Term="OData.LongDescription" String="The value shall specify the collection type for the corresponding metric values."/>
+          <Annotation Term="OData.Description" String="Specifies when the metric report is generated."/>
+          <Annotation Term="OData.LongDescription" String="The value shall specify when the metric report is generated.  If the value of the property is 'Periodic', then the Schedule property shall be present."/>
         </Property>
         <Property Name="Schedule" Type="Schedule.Schedule">
-          <Annotation Term="OData.Description" String="A schedule for collecting metric values."/>
-          <Annotation Term="OData.LongDescription" String="If present, A metric values collected starting at each scheduled interval and for the time specified by Duration.  No more than Schedule.MaxOccurrences values shall be collected for this metric.  If not present, the corresponding metric values shall be collected when the related metric report is retrieved."/>
+          <Annotation Term="OData.Description" String="Specifies the schedule for generating the metric report."/>
+          <Annotation Term="OData.LongDescription" String="If the schedule present, the metric report is generated at an interval specified by Schedule.Duration property.  If Schedule.MaxOccurrences is specified, the metric report will no longer be generated after the specified number of occurances."/>
         </Property>
         <Property Name="ReportActions" Type="Collection(MetricReportDefinition.v1_0_0.ReportActionsEnum)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property specifies what action is perform when a metric report resource is generated."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the actions to perform when the metric report resource is generated.  The options are transmit an event or create a metric report resource."/>
+          <Annotation Term="OData.Description" String="Specifies the actions to perform when a metric report is generated."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the actions to perform when the metric report is generated.  The options are transmit an event or create a metric report resource."/>
         </Property>
         <Property Name="ReportUpdates" Type="MetricReportDefinition.v1_0_0.ReportUpdatesEnum" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property specifies what action is perform when a metric report resource is updated.  Namely, overwrite, append, or create new report resource)."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the action to perform when the metric report resource is updated and the ReportActions contains a value of 'Log'."/>
+          <Annotation Term="OData.Description" String="When logging metric reports, specifies how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition.  Namely, whether to overwrite, append, or create new report resource)."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition. The property shall be present when ReportActions contains a value of 'Log'."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="Wildcards" Type="Collection(MetricReportDefinition.v1_0_0.Wildcard)">
-          <Annotation Term="OData.Description" String="Wildcards used to replace values in MetricProperties array property."/>
-          <Annotation Term="OData.LongDescription" String="The property shall contain an array of wildcards and their replacements strings, which are to appliced to the MetricProperties array property."/>
+          <Annotation Term="OData.Description" String="Specifies the strings used to replace wildcards in the paths in MetricProperties array property."/>
+          <Annotation Term="OData.LongDescription" String="The property shall specify an array of strings used to replace wildcards in the paths in the MetricProperties array property."/>
         </Property>
         <Property Name="MetricProperties" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Specifies a list of metric properties to include in the metric report."/>
-          <Annotation Term="OData.LongDescription" String="This property shall list the metric properties to include in the metric report.  Each entry is URI with wildcards.  The wildcards are enclosed by curly braces.  The full list of metric properties to include in the metric report shall constructed by replacing wildcards with the value in the Wildcard property."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the metric properties to include in the metric report.  Each entry is URI with wildcards.  The wildcards are enclosed by curly braces.  The list of metric properties to include shall be constructed by replacing wildcards with the value in the Wildcard property."/>
           <Annotation Term="OData.IsURL" String="After processing Wildcard replacement values, each value shall resolve to an OData conformant URI to a property in an entity."/>
         </Property>
         <Property Name="Metrics" Type="Collection(MetricReportDefinition.v1_0_0.Metric)">
@@ -96,8 +96,8 @@
         </Property>
         <NavigationProperty Name="MetricReport" Type="MetricReport.MetricReport" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Reference location where the resultant Metric Report is placed."/>
-          <Annotation Term="OData.LongDescription" String="The resultant metric report shall be placed in the referenced location, if the ReportAction property contains the value, Log."/>
+          <Annotation Term="OData.Description" String="Specifies the location where the resultant metric report is placed."/>
+          <Annotation Term="OData.LongDescription" String="When the ReportAction property contains the value, 'Log', this property shall specify the location where the resultant metric report is placed."/>
          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -126,13 +126,13 @@
 
       <ComplexType Name="Metric">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="Defines the use of a set of properties as metrics."/>
-        <Annotation Term="OData.LongDescription" String="Defines the use of a set of properties as metrics."/>
+        <Annotation Term="OData.Description" String="Specifies a metric to include in the metric report. The metrics are derived by applying a calculation on each of the listed metric properties."/>
+        <Annotation Term="OData.LongDescription" String="The properties shall specify a metric to include in the metric report. The metrics shall be derived by applying the algorithm specified in CollectionnFunction property to each of the metric properties listed in the MetricProperties property."/>
 
         <Property Name="MemberID" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Label for the metric which is derived by applying the CollectionFunction to the metric property."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a label for use in the metric report for the metric which is derived by applying the CollectionFunction to the metric property."/>
+          <Annotation Term="OData.Description" String="Specifies the label for the metric which is derived by applying the CollectionFunction to the metric property."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a label for use in the metric report for the metric which is derived metricsby applying the CollectionFunction to the metric property."/>
         </Property>
         <Property Name="MetricProperties" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -142,18 +142,18 @@
         </Property>
         <Property Name="CollectionFunction" Type="MetricReportDefinition.v1_0_0.CalculationAlgorithmEnum">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Function to perform over each sample."/>
-          <Annotation Term="OData.LongDescription" String="If present, the value shall define the function to apply over the collection duration."/>
+          <Annotation Term="OData.Description" String="Specified the function to perform on each of the metric properties listed in the MetricProperties property."/>
+          <Annotation Term="OData.LongDescription" String="The property shall specify the function to perform on each of the metric properties listed in the MetricProperties property."/>
         </Property>
         <Property Name="CollectionDuration" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The duration of the collection for each metric value."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be the interval over which this metric value is be computed.  The value shall conform to the Redfish Duration format."/>
+          <Annotation Term="OData.Description" String="Specifies the duration over which the function is computed."/>
+          <Annotation Term="OData.LongDescription" String="The value shall specify the duration over which the function is computed.  The value shall conform to the Redfish Duration format."/>
         </Property>
         <Property Name="CollectionTimeScope" Type="MetricReportDefinition.v1_0_0.CollectionTimeScope">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Time scope for collecting the corresponding metric values."/>
-          <Annotation Term="OData.LongDescription" String="The value shall specify the time scope for collecting the corresponding metric values."/>
+          <Annotation Term="OData.Description" String="Specifies the scope of time scope over which the function is applied."/>
+          <Annotation Term="OData.LongDescription" String="The value shall specify the scope of time over which the function is applied."/>
         </Property>
       </ComplexType>
 
@@ -172,6 +172,8 @@
       </EnumType>
 
       <EnumType Name="ReportActionsEnum">
+        <Annotation Term="OData.Description" String="Actions to perform when a metric report is generated."/>
+        <Annotation Term="OData.LongDescription" String="The value shall specify the actions to perform when a metric report is generated."/>
         <Member Name="Log">
           <Annotation Term="OData.Description" String="Upon a trigger, record in a log."/>
         </Member>
@@ -181,6 +183,8 @@
       </EnumType>
 
       <EnumType Name="ReportUpdatesEnum">
+        <Annotation Term="OData.Description" String="How to what to do with subsequent metric reports when a metric report already exists."/>
+        <Annotation Term="OData.LongDescription" String="The value shall specify what to do with subsequent metric reports when a metric report already exists."/>
         <Member Name="Overwrite">
           <Annotation Term="OData.Description" String="When a metric report is updated, overwrite the specified metric report resource."/>
         </Member>
@@ -193,6 +197,8 @@
       </EnumType>
 
       <EnumType Name="CalculationAlgorithmEnum">
+        <Annotation Term="OData.Description" String="Specifies the function to apply to the list of metric properties."/>
+        <Annotation Term="OData.LongDescription" String="The value shall specify the function to apply to the list of metric properties."/>
         <Member Name="Average">
           <Annotation Term="OData.Description" String="The metric is calculated as the average of a metric reading over a sliding time interval."/>
           <Annotation Term="OData.LongDescription" String="The metric shall be calculated as the average of a metric reading over a sliding time interval.  The time interval shall be the value of the CalculationTimeInterval property."/>
@@ -213,15 +219,15 @@
 
       <EnumType Name="CollectionTimeScope">
         <Annotation Term="OData.Description" String="The time scope of the related metric values."/>
-        <Annotation Term="OData.LongDescription" String="The time scope of the corresponding metric values.  If not present, the time scope was not qualified by the metric designer, or is unknown to the provider."/>
+        <Annotation Term="OData.LongDescription" String="The value of the property shall specify the time scope of the corresponding metric values."/>
         <Member Name="Point">
-          <Annotation Term="OData.Description" String="The corresponding metric values apply to a point in time.  On the corresponding metric value instances, TimeStamp shall specify the point in time and Duration shall not be present."/>
+          <Annotation Term="OData.Description" String="The corresponding metric values apply to a point in time.  On the corresponding metric value instances, the value of TimeStamp shall specify the point in time."/>
         </Member>
         <Member Name="Interval">
-          <Annotation Term="OData.Description" String="The corresponding metric values apply to a time interval.  On the corresponding metric value instances, TimeStamp shall specify the end of the time interval and Duration shall specify its duration."/>
+          <Annotation Term="OData.Description" String="The corresponding metric values apply to a time interval.  On the corresponding metric value instances, the value of TimeStamp shall specify the end of the time interval and Duration shall specify its duration."/>
         </Member>
         <Member Name="StartupInterval">
-          <Annotation Term="OData.Description" String="The corresponding metric values apply to a time interval that began at the startup of the measured resource (i.e. the Resources associated by Links.MetricDefinitionForResources).  On the corresponding metric value instances, TimeStamp shall specify the end of the time interval.  If Duration is not present the startup time of the measured resource is unknown.  Otherwise, Duration shall specifies the duration between startup of the resource and TimeStamp."/>
+          <Annotation Term="OData.Description" String="The corresponding metric values apply to a time interval that began at the startup of the measured resource (i.e. the Resources associated by Links.MetricDefinitionForResources).  On the corresponding metric value instances, the value of TimeStamp shall specify the end of the time interval.  The value of Duration shall specifies the duration between startup of the resource and TimeStamp."/>
         </Member>
       </EnumType>
 

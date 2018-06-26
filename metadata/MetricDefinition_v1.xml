@@ -36,8 +36,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="MetricDefinition" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A metric definition."/>
-        <Annotation Term="OData.LongDescription" String="Abstract metric definition."/>
+        <Annotation Term="OData.Description" String="The metadata information about a metric."/>
+        <Annotation Term="OData.LongDescription" String="Shall define the metadata information about a metric."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -62,7 +62,7 @@
 
       <EnumType Name="MetricType">
         <Annotation Term="OData.Description" String="Specifies the type of metric provided.  The property provides information to the client on how the metric can be handled."/>
-        <Annotation Term="OData.LongDescription" String="The value of this property shall designate the type of metric."/>
+        <Annotation Term="OData.LongDescription" String="The value of this property shall specify the type of metric."/>
         <Member Name="Numeric">
           <Annotation Term="OData.Description" String="The metric is a numeric metric.  The metric value is any real number."/>
         </Member>
@@ -131,8 +131,8 @@
       </EnumType>
 
       <EntityType Name="MetricDefinition" BaseType="MetricDefinition.MetricDefinition">
-        <Annotation Term="OData.Description" String="A definition of a metric."/>
-        <Annotation Term="OData.LongDescription" String="A programatic definition for a metric, i.e., a definition template containing meta data about a new metric.  Values of the defined metric shall be represented as metric values."/>
+        <Annotation Term="OData.Description" String="The metadata information about a metric."/>
+        <Annotation Term="OData.LongDescription" String="Shall define the metadata information about a metric."/>
 
         <Property Name="MetricType" Type="MetricDefinition.v1_0_0.MetricType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
