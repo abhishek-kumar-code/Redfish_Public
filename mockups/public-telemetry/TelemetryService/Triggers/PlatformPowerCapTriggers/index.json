@@ -6,6 +6,20 @@
     "TriggerActions": [
         "Transmit"
     ],
+
+	  "Thresholds": {
+		  "UpperCritical": {
+			  "Reading": 50,
+			  "Activation": "Increasing",
+			  "DwellTime": "00:00:01"
+		  },
+		  "UpperCaution": {
+			  "Reading": 48.1,
+			  "Activation": "Increasing",
+			  "DwellTime": "00:00:04"
+		  }
+	  },
+
     "NumericTriggers": [
         {
             "Name": "UpperThresholdCritical",
