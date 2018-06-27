@@ -85,6 +85,7 @@
         </Property>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
           <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show how this endpoint is grouped with other endpoints for form redundancy sets."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <Property Name="HostReservationMemoryBytes" Type="Edm.Int64">

@@ -216,6 +216,7 @@
         </Property>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
           <Annotation Term="OData.Description" String="Redundancy information for the managers of this system."/>
+          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show how this manager is grouped with other managers for form redundancy sets."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
       </EntityType>

@@ -35,6 +35,7 @@
         <NavigationProperty Name="Members" Type="Collection(Port.Port)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
           <Annotation Term="Redfish.Required"/>
         </NavigationProperty>

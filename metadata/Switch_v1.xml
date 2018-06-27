@@ -138,6 +138,7 @@
         </NavigationProperty>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
           <Annotation Term="OData.Description" String="Redundancy information for the switches."/>
+          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show how this switch is grouped with other switches for form redundancy sets."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <Property Name="Links" Type="Switch.v1_0_0.Links" Nullable="false">

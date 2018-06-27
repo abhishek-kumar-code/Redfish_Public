@@ -88,12 +88,14 @@
         </Property>
         <NavigationProperty Name="NetworkPorts" Type="NetworkPortCollection.NetworkPortCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the collection of NetworkPorts associated with this NetworkAdapter."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type NetworkPortCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkDeviceFunctions" Type="NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the collection of NetworkDeviceFunctions associated with this NetworkAdapter."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type NetworkDeviceFunctionCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Manufacturer" Type="Edm.String">
@@ -227,17 +229,20 @@
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="An array of references to the PCIeDevices associated with this Network Controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeDevice that represent the PCI-e Devices associated with this Network Controller."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkPorts" Type="Collection(NetworkPort.NetworkPort)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="An array of references to the NetworkPorts associated with this Network Controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type NetworkPort that represent the Network Ports associated with this Network Controller."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkDeviceFunctions" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="An array of references to the NetworkDeviceFunctions associated with this Network Controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type NetworkDeviceFunction that represent the Network Device Functions associated with this Network Controller."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>

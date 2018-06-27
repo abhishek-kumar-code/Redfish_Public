@@ -87,6 +87,7 @@
         </NavigationProperty>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
           <Annotation Term="OData.Description" String="Redundancy information for the power subsystem of this system or device."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain redundancy information for the power subsystem of this system or device."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
       </EntityType>

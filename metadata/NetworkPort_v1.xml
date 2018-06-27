@@ -159,7 +159,8 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe a minimum bandwidth percentage allocation for a network device function associated with a port."/>
         <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the NetworkDeviceFunction associated with this bandwidth setting of this Network Port."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference of type NetworkDeviceFunction that represents the Network Device Function associated with this bandwidth setting of this Network Port."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="MinBWAllocPercent" Type="Edm.Int64">
@@ -175,7 +176,8 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe a maximum bandwidth percentage allocation for a network device function associated with a port."/>
         <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the NetworkDeviceFunction associated with this bandwidth setting of this Network Port."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference of type NetworkDeviceFunction that represents the Network Device Function associated with this bandwidth setting of this Network Port."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="MaxBWAllocPercent" Type="Edm.Int64">

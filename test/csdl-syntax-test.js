@@ -773,6 +773,13 @@ function definitionsHaveAnnotations(err, csdl) {
     typeOrBaseTypesHaveAnnotations(property, ['OData.Description', 'OData.LongDescription'], property.Name, 'Property');
   }
 
+  let navProperties = CSDL.search(csdl, 'NavigationProperty');
+  for(let i = 0; i < navProperties.length; i++) {
+    let navProperty = navProperties[i];
+
+    typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty');
+  }
+
   let complexTypes = CSDL.search(csdl, 'ComplexType');
   for(let i = 0; i < complexTypes.length; i++) {
     let complexType = complexTypes[i];
