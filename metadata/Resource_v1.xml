@@ -118,7 +118,10 @@
           <Annotation Term="OData.Description" String="This represents the health state of this resource in the absence of its dependent resources."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource without considering its dependent resources. The values shall conform to those defined in the Redfish specification."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <!--This indicates the known state of the resource, such as if it is enabled.-->
@@ -351,7 +354,10 @@
           <Annotation Term="OData.Description" String="This represents the format of the Info property."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the Info property."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="DurableNameFormat">

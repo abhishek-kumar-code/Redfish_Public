@@ -762,6 +762,17 @@ function definitionsHaveAnnotations(err, csdl) {
     typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType');
   }
 
+  let properties = CSDL.search(csdl, 'Property');
+  for(let i = 0; i < properties.length; i++) {
+    let property = properties[i];
+    if(property.Name === "Id" || property.Name === "Name" || property.Name === "Description") {
+      // Special case for properties that reference TypeDefinitions; annotations get carried over in these cases, and these ones already have descriptions
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(property, ['OData.Description', 'OData.LongDescription'], property.Name, 'Property');
+  }
+
   let complexTypes = CSDL.search(csdl, 'ComplexType');
   for(let i = 0; i < complexTypes.length; i++) {
     let complexType = complexTypes[i];

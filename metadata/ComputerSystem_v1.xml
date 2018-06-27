@@ -290,7 +290,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -326,7 +329,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="ComputerSystem.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="ComputerSystem.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -495,7 +501,10 @@
           <Annotation Term="OData.Description" String="The processor model for the primary or majority of processors in this system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in the Processor Information - Processor Family section of the SMBIOS Specification DSP0134 2.8 or later."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="MemorySummary">
@@ -509,7 +518,10 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="GiBy"/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
       </ComplexType>
 
     </Schema>
@@ -650,8 +662,14 @@
           <Annotation Term="OData.Description" String="This property indicates the interface type of the Trusted Module."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the interface type of the installed Trusted Module."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="InterfaceType">
@@ -747,7 +765,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type HostedStorageServices."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="HostingRole">
@@ -995,8 +1016,14 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the action to perform upon the  expiration of the Watchdog Timer."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="WatchdogWarningActions">

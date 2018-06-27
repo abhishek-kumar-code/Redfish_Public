@@ -66,7 +66,10 @@
       <EntityType Name="NetworkInterface" BaseType="NetworkInterface.NetworkInterface">
         <Annotation Term="OData.Description" String="A NetworkInterface contains references linking NetworkAdapter, NetworkPort, and NetworkDeviceFunction resources and represents the functionality available to the containing system."/>
         <Annotation Term="OData.LongDescription" String="A NetworkInterface contains references linking NetworkAdapter, NetworkPort, and NetworkDeviceFunction resources and represents the functionality available to the containing system."/>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
         <Property Name="Links" Type="NetworkInterface.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Links."/>
           <Annotation Term="OData.LongDescription" String="Links for this controller."/>
@@ -120,7 +123,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="NetworkInterface.v1_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="NetworkInterface.v1_1_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
