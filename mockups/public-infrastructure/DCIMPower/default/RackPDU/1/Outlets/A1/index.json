@@ -1,16 +1,18 @@
 {
 	"@odata.type": "#Circuit.v0_8_0.Circuit",
 	"Id": "A1",
-	"Name": "Outlet A1, Branch PowerOutlet A",
+	"Name": "Outlet A1, Branch Circuit A",
 	"Status": {
 		"Health": "OK",
 		"State": "Enabled"
 	},
 
 	"CircuitType": "Outlet",
-	"PhaseWiringType": "Line1ToNeutral", 
+	"PhaseWiringType": "Line1ToNeutral",
+	"VoltageType": "AC",
 	"IECReceptacleType": "B",
 	"NEMAReceptacleType": 5,
+	"LockingReceptacle": false,
 	"RatedCurrentAmps": 20,
 	"NominalVoltage": 120,
 
@@ -20,24 +22,32 @@
 
 	"PowerState": "On",
 	"BreakerState": "Normal",
-	
+
 	"PowerEnabled": true,
 	"BreakerTripped": false,
 
 	"Voltage": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
-		"Reading": 120,
-		"ReadingUnits": "V"
+		"Line1ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
+			"Reading": 120,
+			"ReadingUnits": "V"
+		}
 	},
 	"Current": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
-		"Reading": 3.4,
-		"ReadingUnits": "A"
+		"Line1": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
+			"Reading": 3.4,
+			"PeakReading": 6.8,
+			"ReadingUnits": "A"
+		}
 	},
 	"PowerReading": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
-		"Reading": 412.36,
-		"ReadingUnits": "W"
+		"Line1ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
+			"Reading": 412.36,
+			"PeakReading": 1037.1,
+			"ReadingUnits": "W"
+		}
 	},
 	"Frequency": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
@@ -45,21 +55,23 @@
 		"ReadingUnits": "Hz"
 	},
 	"Energy": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
-		"Reading": 26880,
-		"ReadingUnits": "W"
-	},	
+		"Line1": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
+			"Reading": 26880,
+			"ReadingUnits": "W"
+		}
+	},
 
-    "Actions": {
-        "#Circuit.PowerControl": {
-            "target": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/Circuit.PowerControl",
-            "@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1/PowerControlActionInfo"
-        },
-        "#Circuit.ResetBreaker": {
-            "target": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1/Circuit.ResetBreaker",
-            "@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1/ResetBreakerActionInfo"
-        }
-    },
+	"Actions": {
+		"#Circuit.PowerControl": {
+			"target": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/Circuit.PowerControl",
+			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1/PowerControlActionInfo"
+		},
+		"#Circuit.ResetBreaker": {
+			"target": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1/Circuit.ResetBreaker",
+			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A1/ResetBreakerActionInfo"
+		}
+	},
 
 	"Links": {
 		"BranchCircuit": {

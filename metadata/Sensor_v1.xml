@@ -118,10 +118,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies."/>
           <Annotation Term="Redfish.Excerpt"/>
         </Property>
-        <Property Name="ElectricalSourceType" Type="Sensor.ElecticalSourceType">
+        <Property Name="PeakReading" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of electrical circuit measurement within a circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD"/>
+          <Annotation Term="OData.Description" String="The peak reading value for this sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the peak value of the Reading for this sensor during the last interval."/>
           <Annotation Term="Redfish.Excerpt"/>
         </Property>
 
@@ -164,12 +164,17 @@
           <Annotation Term="OData.Description" String="The location information for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
         </Property>
-
+        <Property Name="ElectricalSourceType" Type="Sensor.ElecticalSourceType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The type of electrical circuit measurement within a circuit."/>
+          <Annotation Term="OData.LongDescription" String="TBD"/>
+        </Property>
         <Property Name="DeadBand" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The band of values around the SetPoint where the control system does not respond to the SetPoint."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the band of values around the SetPoint where the control system does not respond to the SetPoint."/>
         </Property>
+
 
         <Property Name="Thresholds" Type="Sensor.v0_8_0.Thresholds">
           <Annotation Term="OData.Description" String="The set of thresholds defined for this sensor."/>
@@ -196,10 +201,20 @@
           <Annotation Term="OData.Description" String="Estimated percent error of measured vs. actual values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the percent error +/- of the measured vs. actual values."/>
         </Property>
-        <Property Name="SensingIntervals" Type="Edm.Decimal">
+        <Property Name="SensingFrequency" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The time interval between reading the physical sensor."/>
+          <Annotation Term="OData.Description" String="The time interval between readings of the physical sensor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the time interval between reading the physical sensor."/>
+        </Property>
+        <Property Name="PeakReadingTime" Type="Edm.Time">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The time at which the Peak Reading value occurred."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall the timestamp when the Peak Reading value was observed."/>
+        </Property>
+        <Property Name="SensorResetTime" Type="Edm.Time">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The time at which the time-based properties were last reset."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the timestamp when the time-based property values were last reset by the user or the service."/>
         </Property>
 
         <Property Name="Actions" Type="Sensor.v0_8_0.Actions" Nullable="false">
@@ -266,7 +281,7 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Sensor.v0_8_0.OemActions" Nullable="false"/>
       </ComplexType>
-
+	  
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
@@ -305,14 +320,10 @@
           <Annotation Term="OData.Description" String="Energy consumption (Watt-hours)."/>
           <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'."/>
         </Member>
-        <Member Name="ACVoltage">
-          <Annotation Term="OData.Description" String="."/>
+        <Member Name="Voltage">
+          <Annotation Term="OData.Description" String="Voltage (AC or DC)."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous voltage measurements calculated over an integer number of line cycles for a circuit.  Voltage is expressed in Volts units."/>
-        </Member>
-        <Member Name="DCVoltage">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the instantaneous voltage measurement for a circuit.  Voltage is expressed in Volts units."/>
-        </Member>
+        </Member>>
         <Member Name="Current">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous current measurements calculated over an integer number of line cycles for a circuit. Current is expressed in Amperes units."/>
