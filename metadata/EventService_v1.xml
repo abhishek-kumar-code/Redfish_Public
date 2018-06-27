@@ -92,8 +92,9 @@
           <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the MessageArgs property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="OriginOfCondition" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="This is the OriginOfCondition property of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the OriginOfCondition property in the Event schema for Redfish."/>
+          <Annotation Term="OData.Description" String="This is the string of the URL within the OriginOfCondition property of the event to be added.  It is not a reference object."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a string that represents the URL contained by the OriginOfCondition property in the Event schema for Redfish."/>
+          <Annotation Term="OData.IsURL"/>
         </Parameter>
       </Action>
 
