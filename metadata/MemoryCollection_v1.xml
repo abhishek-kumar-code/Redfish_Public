@@ -33,6 +33,7 @@
 
       <EntityType Name="MemoryCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of Memory resource instances."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Resource Collection of Memory instances for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>

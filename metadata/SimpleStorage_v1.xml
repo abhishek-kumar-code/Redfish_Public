@@ -39,6 +39,7 @@
 
       <EntityType Name="SimpleStorage" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a storage controller and its directly-attached devices."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -63,6 +64,7 @@
 
       <EntityType Name="SimpleStorage" BaseType="SimpleStorage.SimpleStorage">
         <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a storage controller and its directly-attached devices."/>
         <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UEFI device path used to access this storage controller."/>

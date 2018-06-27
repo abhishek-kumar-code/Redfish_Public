@@ -30,6 +30,7 @@
 
       <EntityType Name="FabricCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of Fabric resource instances."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Resource Collection of Fabric instances for a Redfish implementation."/>
         <NavigationProperty Name="Members" Type="Collection(Fabric.Fabric)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>

@@ -30,6 +30,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="SoftwareInventoryCollection" BaseType="Resource.v1_0_0.ResourceCollection">
+        <Annotation Term="OData.Description" String="A Collection of SoftwareInventory resource instances."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Resource Collection of SoftwareInventory instances for a Redfish implementation."/>
         <NavigationProperty Name="Members" Type="Collection(SoftwareInventory.SoftwareInventory)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>

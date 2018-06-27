@@ -101,7 +101,7 @@ function constructTest(file) {
     'All EntityType defintions have Actions': entityTypesHaveActions,
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
-    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations,
+    'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
     'All namespaces have OwningEntity': schemaOwningEntityCheck
   }
 }
@@ -741,7 +741,7 @@ function checkVersionInPublishedList(version, publishedList, schemaName) {
   }
 }
 
-function complexTypesHaveAnnotations(err, csdl) {
+function definitionsHaveAnnotations(err, csdl) {
   if(err) {
     return;
   }
@@ -750,6 +750,16 @@ function complexTypesHaveAnnotations(err, csdl) {
   if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml') {
     //Ignore OEM extensions and metadata files
     return;
+  }
+
+  let entityTypes = CSDL.search(csdl, 'EntityType');
+  for(let i = 0; i < entityTypes.length; i++) {
+    let entityType = entityTypes[i];
+    if(entityType.Abstract === true) {
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType');
   }
 
   let complexTypes = CSDL.search(csdl, 'ComplexType');

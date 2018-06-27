@@ -44,6 +44,7 @@
 
       <EntityType Name="Processor" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Processor resource reports information about a single processor contained within a system.  This includes both performance characteristics (clock speed, architecture, core count, etc.) and compatibility (e.g. CPU ID instruction results)."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a single processor contained within a system."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -69,6 +70,7 @@
 
       <EntityType Name="Processor" BaseType="Processor.Processor">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a single processor contained within a system."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Socket" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

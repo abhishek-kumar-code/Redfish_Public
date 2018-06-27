@@ -35,6 +35,7 @@
 
       <EntityType Name="EventDestination" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
