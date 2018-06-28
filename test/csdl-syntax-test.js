@@ -762,6 +762,23 @@ function definitionsHaveAnnotations(err, csdl) {
     typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType');
   }
 
+  let complexTypes = CSDL.search(csdl, 'ComplexType');
+  for(let i = 0; i < complexTypes.length; i++) {
+    let complexType = complexTypes[i];
+    if(complexType.Abstract === true) {
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
+  }
+
+  //let enumTypes = CSDL.search(csdl, 'EnumType');
+  //for(let i = 0; i < enumTypes.length; i++) {
+  //  let enumType = enumTypes[i];
+
+  //  typeOrBaseTypesHaveAnnotations(enumType, ['OData.Description', 'OData.LongDescription'], enumType.Name, 'EnumType');
+  //}
+
   let properties = CSDL.search(csdl, 'Property');
   for(let i = 0; i < properties.length; i++) {
     let property = properties[i];
@@ -778,16 +795,6 @@ function definitionsHaveAnnotations(err, csdl) {
     let navProperty = navProperties[i];
 
     typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty');
-  }
-
-  let complexTypes = CSDL.search(csdl, 'ComplexType');
-  for(let i = 0; i < complexTypes.length; i++) {
-    let complexType = complexTypes[i];
-    if(complexType.Abstract === true) {
-      continue;
-    }
-
-    typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
   }
 }
 
