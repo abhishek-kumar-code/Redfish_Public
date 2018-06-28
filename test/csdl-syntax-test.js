@@ -796,6 +796,24 @@ function definitionsHaveAnnotations(err, csdl) {
 
     typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty');
   }
+
+  let actions = CSDL.search(csdl, 'Action');
+  for(let i = 0; i < actions.length; i++) {
+    let action = actions[i];
+
+    typeOrBaseTypesHaveAnnotations(action, ['OData.Description', 'OData.LongDescription'], action.Name, 'Action');
+  }
+
+  let parameters = CSDL.search(csdl, 'Parameter');
+  for(let i = 0; i < parameters.length; i++) {
+    let parameter = parameters[i];
+    if(parameter.Type.endsWith('.Actions')) {
+      // This is the binding parameter; no descriptions needed since it's not part of the client's payload
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(parameter, ['OData.Description', 'OData.LongDescription'], parameter.Name, 'Parameter');
+  }
 }
 
 function typeOrBaseTypesHaveAnnotations(type, annotations, typeName, typeType) {
