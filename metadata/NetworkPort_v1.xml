@@ -295,22 +295,20 @@
           <Annotation Term="OData.Description" String="The Vendor Identification for this port."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Vendor Identification string information as provided by the manufacturer of this port."/>
         </Property>
-        <Property Name="FibreChannelId" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Fibre Channel Id assigned by the switch for this port."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the Fibre Channel Id assigned by the switch for this port."/>
-        </Property>
         <Property Name="FCFabricName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FC Fabric Name provided by the switch."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the FC Fabric Name provided by the switch."/>
         </Property>
-
         <Property Name="CurrentLinkSpeedMbps" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Network Port Current Link Speed."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current configured link speed of this port."/>
         </Property>
+        <Property Name="AutoSpeedNegotiation" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates whether the port has the capability to auto negotiate speed."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be indicate whether the port is capable of auto-negotiating speed."/>
       </EntityType>
 
       <EnumType Name="PortConnectionType">
@@ -328,9 +326,6 @@
         </Member>
         <Member Name="PublicLoop">
           <Annotation Term="OData.Description" String="This port connects in a public configuration."/>
-        </Member>
-        <Member Name="Unknown">
-          <Annotation Term="OData.Description" String="This port connection type is unknown."/>
         </Member>
         <Member Name="Generic">
           <Annotation Term="OData.Description" String="This port connection type is a generic fabric port."/>

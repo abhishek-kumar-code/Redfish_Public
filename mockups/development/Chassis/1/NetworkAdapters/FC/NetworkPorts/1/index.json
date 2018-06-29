@@ -11,7 +11,8 @@
     "SupportedLinkCapabilities": [
         {
             "LinkNetworkTechnology": "FibreChannel",
-            "CapableLinkSpeedMbps": [16000, 32000]
+            "CapableLinkSpeedMbps": [16000, 32000],
+            "AutoSpeedNegotiation": "true"
         }
     ],
     "ActiveLinkTechnology": "FibreChannel",

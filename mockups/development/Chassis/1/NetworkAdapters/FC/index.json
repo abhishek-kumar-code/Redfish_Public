@@ -31,6 +31,9 @@
                 "NetworkPorts": [
                     {
                         "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/1"
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/2"
                     }
                 ],
                 "NetworkDeviceFunctions": [
