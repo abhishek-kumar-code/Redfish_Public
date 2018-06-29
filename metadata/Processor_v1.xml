@@ -384,9 +384,9 @@
           <Annotation Term="OData.LongDescription" String="Maximum TDP in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
-        <Property Name="IntegratedMemory" Type="Collection(Processor.v1_3_0.IntegratedMemory)" Nullable="false">
-          <Annotation Term="OData.Description" String="Memory integrated witin the Procesor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory integrated witin this Processor."/>
+        <Property Name="ProcessorMemory" Type="Collection(Processor.v1_3_0.ProcessorMemory)" Nullable="false">
+          <Annotation Term="OData.Description" String="Memory directly attached or integrated witin the Procesor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory directly attached or integrated witin this Processor."/>
         </Property>
         <Property Name="FPGA" Type="Processor.v1_3_0.FPGA" Nullable="true">
           <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
@@ -409,14 +409,19 @@
         </NavigationProperty>
       </ComplexType>
 
-      <ComplexType Name="IntegratedMemory">
+      <ComplexType Name="ProcessorMemory">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This type describes the memory integrated within a processor."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain information about memory integratied within a processor."/>
+        <Annotation Term="OData.Description" String="This type describes the memory directly attached or integrated within a processor."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain information about memory directly attached or integratied within a processor."/>
+        <Property Name="IntegratedMemory" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether this memory is integrated within the Processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this memory is integrated within the Porcessor. Otherwise it is discrete memory attached to the Processor."/>
+        </Property>
         <Property Name="MemoryType" Type="Processor.v1_3_0.IntegratedMemoryType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the integrated memory."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the integrated memory type."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the processor memory type."/>
         </Property>
         <Property Name="CapacityMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -431,7 +436,7 @@
         </Property>
       </ComplexType>
 
-      <TypeDefinition Name="IntegratedMemoryType" UnderlyingType="Edm.String">
+      <TypeDefinition Name="ProcessorMemoryType" UnderlyingType="Edm.String">
         <Annotation Term="Redfish.Enumeration">
           <Collection>
             <Record>

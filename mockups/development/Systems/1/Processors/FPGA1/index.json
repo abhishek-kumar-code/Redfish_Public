@@ -19,8 +19,9 @@
   },
   "TDPWatts": 120,
   "MaxTDPWatts": 150,
-  "IntegratedMemory": [
+  "ProcessorMemory": [
     {
+      "IntegratedMemory": true,
       "MemoryType": "HBM2",
       "CapacityMiB": 512,
       "SpeedMHz": 1066
@@ -32,9 +33,9 @@
     "FwId": "0x6400002fc614bb9",
     "FwManufacturer": "Intel(R) Corporation",
     "FwVersion": "Blue v.1.00.86",
-    "HostInterface": "8xPCIe-4",
+    "HostInterface": "PCIeGen4x8",
     "ExternalInterfaces": [
-      "4x10G"
+      "Eth10Gx4"
     ],
     "SidebandInterface": "I2C",
     "PCIeVirtualFunctions": 1,
