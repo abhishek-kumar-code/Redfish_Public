@@ -309,6 +309,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates whether the port has the capability to auto negotiate speed."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be indicate whether the port is capable of auto-negotiating speed."/>
+        </Property>
       </EntityType>
 
       <EnumType Name="PortConnectionType">
