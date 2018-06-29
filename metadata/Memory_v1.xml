@@ -79,8 +79,8 @@
       </Action>
 
       <Action Name="SecureEraseUnit" IsBound="true">
-        <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions using the NIST SP800-88 Purge: Overwrite."/>
-        <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region using the NIST SP800-88 Purge: Overwrite. Use the SecureEraseUnit method to perform NIST SP800-88 Purge: Cryptographic Erase."/>
+        <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions using the NIST SP800-88 Purge: Cryptograhic Erase."/>
+        <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region using the NIST SP800-88 Purge: Cryptographic Erase. Use the OverwriteUnit method to perform NIST SP800-88 Purge: Overwrite."/>
         <Parameter Name="Memory" Type="Memory.v1_0_0.Actions"/>
         <Parameter Name="RegionId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
@@ -93,8 +93,8 @@
       </Action>
 
       <Action Name="OverwriteUnit" IsBound="true">
-        <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions using the NIST SP800-88 Purge: Cryptographic Erase."/>
-        <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region using the NIST SP800-88 Purge: Cryptographic Erase. Use the OverwriteUnit method to perform NIST SP800-88 Purge: Overwrite."/>
+        <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions using the NIST SP800-88 Purge: Overwrite."/>
+        <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region using the NIST SP800-88 Purge: Overwrite. Use the SecureEraseUnit method to perform NIST SP800-88 Purge: Cryptographic Erase."/>
         <Parameter Name="Memory" Type="Memory.v1_0_0.Actions"/>
         <Parameter Name="RegionId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
