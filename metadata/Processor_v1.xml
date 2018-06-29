@@ -683,84 +683,244 @@
               <Annotation Term="OData.Description" String="The Intel UltraPath Interconnect."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="2xPCIe-4"/>
+              <PropertyValue Property="Member" String="PCIeGen3"/>
+              <Annotation Term="OData.Description" String="The PCIe version three."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen3x1"/>
+              <Annotation Term="OData.Description" String="The one line PCIe version three."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen3x2"/>
+              <Annotation Term="OData.Description" String="The two lines PCIe version three."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen3x4"/>
+              <Annotation Term="OData.Description" String="The four lines PCIe version three."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen3x8"/>
+              <Annotation Term="OData.Description" String="The eight lines PCIe version three."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen3x16"/>
+              <Annotation Term="OData.Description" String="The sixteen lines PCIe version three."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen4"/>
+              <Annotation Term="OData.Description" String="The PCIe version four."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen4x1"/>
+              <Annotation Term="OData.Description" String="The one line PCIe version four."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen4x2"/>
               <Annotation Term="OData.Description" String="The two lines PCIe version four."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="4xPCIe-4"/>
+              <PropertyValue Property="Member" String="PCIeGen4x4"/>
               <Annotation Term="OData.Description" String="The four lines PCIe version four."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="8xPCIe-4"/>
+              <PropertyValue Property="Member" String="PCIeGen4x8"/>
               <Annotation Term="OData.Description" String="The eight lines PCIe version four."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="16xPCIe-4"/>
+              <PropertyValue Property="Member" String="PCIeGen4x16"/>
               <Annotation Term="OData.Description" String="The sixteen lines PCIe version four."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="2xPCIe-5"/>
+              <PropertyValue Property="Member" String="PCIeGen5"/>
+              <Annotation Term="OData.Description" String="The PCIe version five."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen5x1"/>
+              <Annotation Term="OData.Description" String="The one line PCIe version five."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PCIeGen5x2"/>
               <Annotation Term="OData.Description" String="The two lines PCIe version five."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="4xPCIe-5"/>
+              <PropertyValue Property="Member" String="PCIeGen5x4"/>
               <Annotation Term="OData.Description" String="The four lines PCIe version five."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="8xPCIe-5"/>
+              <PropertyValue Property="Member" String="PCIeGen5x8"/>
               <Annotation Term="OData.Description" String="The eight lines PCIe version five."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="16xPCIe-5"/>
+              <PropertyValue Property="Member" String="PCIeGen5x16"/>
               <Annotation Term="OData.Description" String="The sixteen lines PCIe version five."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="1x10G"/>
+              <PropertyValue Property="Member" String="Eth10G"/>
+              <Annotation Term="OData.Description" String="The 10G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth10Gx1"/>
               <Annotation Term="OData.Description" String="The single 10G Ethernet interface."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="2x10G"/>
+              <PropertyValue Property="Member" String="Eth10Gx2"/>
               <Annotation Term="OData.Description" String="The two 10G Ethernet interfaces."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="4x10G"/>
+              <PropertyValue Property="Member" String="Ethe10Gx4"/>
               <Annotation Term="OData.Description" String="The four 10G Ethernet interfaces."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="10x10G"/>
+              <PropertyValue Property="Member" String="Ethe10Gx8"/>
+              <Annotation Term="OData.Description" String="The eight 10G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth10Gx10"/>
               <Annotation Term="OData.Description" String="The ten 10G Ethernet interfaces."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="1x25G"/>
+              <PropertyValue Property="Member" String="Eth25G"/>
+              <Annotation Term="OData.Description" String="The 25G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth25Gx1"/>
               <Annotation Term="OData.Description" String="The single 25G Ethernet interface."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="2x25G"/>
+              <PropertyValue Property="Member" String="Eth25Gx2"/>
               <Annotation Term="OData.Description" String="The two 25G Ethernet interfaces."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="4x25G"/>
+              <PropertyValue Property="Member" String="Eth25Gx4"/>
               <Annotation Term="OData.Description" String="The four 25G Ethernet interfaces."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="1x40G"/>
+              <PropertyValue Property="Member" String="Ethe25Gx8"/>
+              <Annotation Term="OData.Description" String="The eight 25G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth25Gx10"/>
+              <Annotation Term="OData.Description" String="The ten 25G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth40G"/>
+              <Annotation Term="OData.Description" String="The 40G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth40Gx1"/>
               <Annotation Term="OData.Description" String="The single 40G Ethernet interface."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="2x40G"/>
+              <PropertyValue Property="Member" String="Eth40Gx2"/>
               <Annotation Term="OData.Description" String="The two 40G Ethernet interfaces."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="1x50G"/>
+              <PropertyValue Property="Member" String="Eth40Gx4"/>
+              <Annotation Term="OData.Description" String="The four 40G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Ethe40Gx8"/>
+              <Annotation Term="OData.Description" String="The eight 40G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth40Gx10"/>
+              <Annotation Term="OData.Description" String="The ten 40G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth50G"/>
+              <Annotation Term="OData.Description" String="The 50G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth50Gx1"/>
               <Annotation Term="OData.Description" String="The single 50G Ethernet interface."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="2x50G"/>
+              <PropertyValue Property="Member" String="Eth50Gx2"/>
               <Annotation Term="OData.Description" String="The two 50G Ethernet interfaces."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="1x100G"/>
+              <PropertyValue Property="Member" String="Eth50Gx4"/>
+              <Annotation Term="OData.Description" String="The four 50G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Ethe50Gx8"/>
+              <Annotation Term="OData.Description" String="The eight 50G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth50Gx10"/>
+              <Annotation Term="OData.Description" String="The ten 50G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth100G"/>
+              <Annotation Term="OData.Description" String="The 100G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth100Gx1"/>
               <Annotation Term="OData.Description" String="The single 100G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth100Gx2"/>
+              <Annotation Term="OData.Description" String="The two 100G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth100Gx4"/>
+              <Annotation Term="OData.Description" String="The four 100G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Ethe100Gx8"/>
+              <Annotation Term="OData.Description" String="The eight 100G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth100Gx10"/>
+              <Annotation Term="OData.Description" String="The ten 100G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth200G"/>
+              <Annotation Term="OData.Description" String="The 200G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth200Gx1"/>
+              <Annotation Term="OData.Description" String="The single 200G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth200Gx2"/>
+              <Annotation Term="OData.Description" String="The two 200G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth200Gx4"/>
+              <Annotation Term="OData.Description" String="The four 200G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Ethe200Gx8"/>
+              <Annotation Term="OData.Description" String="The eight 200G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth200Gx10"/>
+              <Annotation Term="OData.Description" String="The ten 200G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth400G"/>
+              <Annotation Term="OData.Description" String="The 400G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth400Gx1"/>
+              <Annotation Term="OData.Description" String="The single 400G Ethernet interface."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth400Gx2"/>
+              <Annotation Term="OData.Description" String="The two 400G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth400Gx4"/>
+              <Annotation Term="OData.Description" String="The four 400G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Ethe400Gx8"/>
+              <Annotation Term="OData.Description" String="The eight 400G Ethernet interfaces."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Eth400Gx10"/>
+              <Annotation Term="OData.Description" String="The ten 400G Ethernet interfaces."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="SPI"/>
@@ -772,7 +932,11 @@
             </Record>
             <Record>
               <PropertyValue Property="Member" String="I2C"/>
-              <Annotation Term="OData.Description" String="The I2C Bus."/>
+              <Annotation Term="OData.Description" String="The Inter-Integrated Circuit Bus."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="I3C"/>
+              <Annotation Term="OData.Description" String="The Improved Inter-Integrated Circuit Bus."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="OEM"/>
