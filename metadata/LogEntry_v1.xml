@@ -105,7 +105,7 @@
         <Property Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property decodes from EntryType.  If the EntryType is Event, then it is a message id.  If the EntryType is SEL, then it contains the Event Data.  Otherwise, it is OEM specific.  This value is only used for registries - for more information, see the specification."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall the MessageId property of the event if the EntryType is Event, the three IPMI Event Data bytes if the EntryType is SEL, and OEM Specific if the EntryType is Oem.  The format of this property shall be as defined in the Redfish specification.  If representing the three IPMI Event Data bytes, the format should follow the pattern '^0[xX](([a-fA-F]|[0-9]){2}){3}$'."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall the MessageId property of the event if the EntryType is Event, the three IPMI Event Data bytes if the EntryType is SEL, and OEM Specific if the EntryType is Oem.  The format of this property shall be as defined in the Redfish specification.  If representing the three IPMI Event Data bytes, the format should follow the pattern '^0[xX](([a-fA-F]|[0-9]){2}){3}$', where Event Data 1 is the first byte in the string, Event Data 2 is the second byte in the string, and Event Data 3 is the third byte in the string."/>
         </Property>
         <Property Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
