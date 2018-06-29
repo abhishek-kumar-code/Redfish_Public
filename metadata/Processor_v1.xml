@@ -418,7 +418,7 @@
           <Annotation Term="OData.Description" String="This indicates whether this memory is integrated within the Processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this memory is integrated within the Porcessor. Otherwise it is discrete memory attached to the Processor."/>
         </Property>
-        <Property Name="MemoryType" Type="Processor.v1_3_0.IntegratedMemoryType">
+        <Property Name="MemoryType" Type="Processor.v1_3_0.ProcessorMemoryType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the integrated memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the processor memory type."/>
