@@ -560,7 +560,7 @@
           <Annotation Term="OData.Description" String="The FPGA type."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA device."/>
         </Property>
-        <Property Name="Model" Type="Processor.v1_3_0.FpgaModel" Nullable="false">
+        <Property Name="Model" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA model."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a model of the FPGA device."/>
@@ -654,29 +654,6 @@
             <Record>
               <PropertyValue Property="Member" String="Discrete"/>
               <Annotation Term="OData.Description" String="The discrete FPGA device."/>
-            </Record>
-          </Collection>
-        </Annotation>
-      </TypeDefinition>
-
-      <TypeDefinition Name="FpgaModel" UnderlyingType="Edm.String">
-        <Annotation Term="Redfish.Enumeration">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Member" String="Arria10"/>
-              <Annotation Term="OData.Description" String="The Arria 10 FPGA device"/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="Stratix10"/>
-              <Annotation Term="OData.Description" String="The Stratix 10 FPGA device."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="Stratix11"/>
-              <Annotation Term="OData.Description" String="The Startix 11 FPGA device"/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="OEM"/>
-              <Annotation Term="OData.Description" String="OEM-defined."/>
             </Record>
           </Collection>
         </Annotation>
