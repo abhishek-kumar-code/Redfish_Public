@@ -1,6 +1,6 @@
 {
     "@odata.context": "/redfish/v1/$metadata#PCIeFunction.PCIeFunction",
-    "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/FC/Functions/1",
+    "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/FC/Functions/2",
     "@odata.type": "#PCIeFunction.v1_0_0.PCIeFunction",
     "Id": "2",
     "Name": "FC Port 2",
