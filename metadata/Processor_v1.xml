@@ -372,6 +372,12 @@
           <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the processor. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID."/>
         </Property>
+        <Property Name="TDPWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Nominal TDP in watts."/>
+          <Annotation Term="OData.LongDescription" String="Nominal TDP in watts."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
         <Property Name="MaxTDPWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum TDP in watts."/>
