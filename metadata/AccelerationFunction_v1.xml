@@ -129,44 +129,32 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
-      <TypeDefinition Name="AccelerationFunctionType" UnderlyingType="Edm.String">
-        <Annotation Term="Redfish.Enumeration">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Member" String="Encryption"/>
-              <Annotation Term="OData.Description" String="The Intel QuickPath Interconnect."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="Compression"/>
-              <Annotation Term="OData.Description" String="A compression function."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="PacketInspection"/>
-              <Annotation Term="OData.Description" String="A packet inspection function."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="PacketSwitch"/>
-              <Annotation Term="OData.Description" String="A packet switch function."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="Scheduler"/>
-              <Annotation Term="OData.Description" String="An scheduler function."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="AudioProcessing"/>
-              <Annotation Term="OData.Description" String="An audio processing function."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="VideoProcessing"/>
-              <Annotation Term="OData.Description" String="An video processing function."/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Member" String="OEM"/>
-              <Annotation Term="OData.Description" String="An OEM-defined Processing Unit."/>
-            </Record>
-          </Collection>
-        </Annotation>
-      </TypeDefinition>
+      <EnumType Name="AccelerationFunctionType">
+        <Member Name"Encryption">
+          <Annotation Term="OData.Description" String="The Intel QuickPath Interconnect."/>
+        </Member>
+        <Member Name="Compression">
+          <Annotation Term="OData.Description" String="A compression function."/>
+        </Member>
+        <Member Name="PacketInspection">
+          <Annotation Term="OData.Description" String="A packet inspection function."/>
+        </Member>
+        <Member Name="PacketSwitch">
+          <Annotation Term="OData.Description" String="A packet switch function."/>
+        </Member>
+        <Member Name="Scheduler">
+          <Annotation Term="OData.Description" String="An scheduler function."/>
+        </Member>
+        <Member Name="AudioProcessing">
+          <Annotation Term="OData.Description" String="An audio processing function."/>
+        </Member>
+        <Member Name="VideoProcessing">
+          <Annotation Term="OData.Description" String="An video processing function."/>
+        </Member>
+        <Member String="OEM">
+          <Annotation Term="OData.Description" String="An OEM-defined Processing Unit."/>
+        </Member>
+      </EnumType>
 
     </Schema>
   </edmx:DataServices>
