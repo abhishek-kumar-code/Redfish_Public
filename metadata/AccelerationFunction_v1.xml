@@ -130,7 +130,7 @@
       </ComplexType>
 
       <EnumType Name="AccelerationFunctionType">
-        <Member Name"Encryption">
+        <Member Name="Encryption">
           <Annotation Term="OData.Description" String="The Intel QuickPath Interconnect."/>
         </Member>
         <Member Name="Compression">

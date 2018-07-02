@@ -459,7 +459,7 @@
           <Annotation Term="OData.Description" String="L7 cache."/>
         </Member>
         <Member Name="HBM1">
-          <Annotation Term="OData.Description" String="High Bandwidth Memory"/>
+          <Annotation Term="OData.Description" String="High Bandwidth Memory."/>
         </Member>
         <Member Name="HBM2">
           <Annotation Term="OData.Description" String="The second generation of High Bandwidth Memory."/>
