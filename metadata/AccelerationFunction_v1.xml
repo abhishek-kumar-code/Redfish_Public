@@ -151,7 +151,7 @@
         <Member Name="VideoProcessing">
           <Annotation Term="OData.Description" String="An video processing function."/>
         </Member>
-        <Member String="OEM">
+        <Member Name="OEM">
           <Annotation Term="OData.Description" String="An OEM-defined Processing Unit."/>
         </Member>
       </EnumType>
