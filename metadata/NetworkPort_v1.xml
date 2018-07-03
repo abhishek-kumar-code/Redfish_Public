@@ -308,11 +308,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current configured link speed of this port."/>
           <Annotation Term="Measures.Unit" String="Mbit/s"/>
         </Property>
-        <Property Name="AutoSpeedNegotiation" Type="Edm.Boolean">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates whether the port has the capability to auto negotiate speed."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be indicate whether the port is capable of auto-negotiating speed."/>
-        </Property>
       </EntityType>
 
       <EnumType Name="PortConnectionType">
@@ -345,6 +340,11 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The self-described link network speed capabilities of this port. Note: Should this be a new enumerated type of link speeds?."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be all of the possible network link speed capabilities of this port."/>
+        </Property>
+        <Property Name="AutoSpeedNegotiation" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates whether the port has the capability to auto negotiate speed."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be indicate whether the port is capable of auto-negotiating speed."/>
         </Property>
       </ComplexType>
     </Schema>
