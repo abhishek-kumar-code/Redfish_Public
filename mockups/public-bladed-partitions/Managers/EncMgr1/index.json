@@ -64,7 +64,7 @@
         "@odata.id": "/redfish/v1/Managers/EncMgr1/EthernetInterfaces"
     },
     "VirtualMedia": {
-        "@odata.id": "/redfish/v1/Managers/EncMgr1/VM"
+        "@odata.id": "/redfish/v1/Managers/EncMgr1/VirtualMedia"
     },
     "Links": {
         "ManagerForServers": [

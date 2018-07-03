@@ -78,7 +78,7 @@
     "MaxVirtualFunctions": 16,
     "Links": {
         "PCIeFunction": {
-            "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC/Functions/1"
+            "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/Functions/1"
         }
     }
 }

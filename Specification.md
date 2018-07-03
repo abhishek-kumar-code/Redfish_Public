@@ -286,8 +286,6 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 The Redfish Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#OData-Protocol), JSON payloads, as defined in [OData-JSON](#OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#OData-CSDL). The OData Schema representations include annotations to enable direct translation to JSON Schema representations for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
 
-Redfish follows the OData minimal conformance level for clients consuming minimal metadata.
-
 Throughout this document, we refer to Redfish as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the Redfish protocol.
 
 The Redfish protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.
@@ -484,7 +482,7 @@ HTTP defines headers that can be used in request messages. The following table d
 
 | Header           | Service Requirement | Client Requirement | Supported Values                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | --------         | ---                 | ---                | -----------------                  | ------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Accept           | Yes                 | Yes                | [RFC 7231](#RFC7231)               | Indicates to the server what media type(s) this client is prepared to accept.  Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`.  Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`.  Services shall support requests for all resources with an Accept header including `application/*`, `application/*;charset=utf-8`, `*/*`, or `*/*;charset=utf-8`. |
+| Accept           | Yes                 | No                 | [RFC 7231](#RFC7231)               | Indicates to the server what media type(s) this client is prepared to accept.  Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`.  Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`.  Services shall support requests for all resources with an Accept header including `application/*`, `application/*;charset=utf-8`, `*/*`, or `*/*;charset=utf-8`. |
 | Accept-Encoding  | No                  | No                 | [RFC 7231](#RFC7231)               | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                      |
 | Accept-Language  | No                  | No                 | [RFC 7231](#RFC7231)               | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                                                                                                                                                                                                                     |
 | Content-Type     | Conditional         | Conditional        | [RFC 7231](#RFC7231)               | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`. It is recommended that Clients use these values in requests since other values may result in an error.                                                                                                                                                                         |
@@ -510,7 +508,7 @@ HTTP defines headers that can be used in request messages. The following table d
 
 #### Read requests (GET)
 
-The GET method is used to retrieve a representation of a resource. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types clause [Media Types](#media-types). If the Accept header is not present, the service will return the resources representations as application/json.
+The GET method is used to retrieve a representation of a resource.  The service shall return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types clause [Media Types](#media-types).  If the Accept header is not present, the service shall return the resource's representation as application/json.
 
 * The HTTP GET method shall be used to retrieve a resource without causing any side effects.
 * The service shall ignore the content of the body on a GET.
@@ -735,7 +733,7 @@ Clients can query a resource directly to determine the [actions](#actions-proper
 For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
 ~~~xml
-  <Schema Name="ComputerSystem">
+  <Schema Namespace="ComputerSystem">
     ...
     <Action Name="Reset" IsBound="true">
       <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions"/>
@@ -1447,7 +1445,7 @@ The Members of the Resource Collection of resources are returned as a JSON array
 
 ##### Next Link Property and partial results
 
-Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a Next Link Property named "Members@odata.nextLink". The value of the Next Link Property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The Next Link Property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
+Responses may contain a subset of the members of the full Resource Collection.  For partial Resource Collections the response includes a Next Link Property named "Members@odata.nextLink".  The value of the Next Link Property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members.  The Next Link Property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned, and if the payload does not represent the end of the requested Resource Collection.
 
 The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
@@ -2033,10 +2031,10 @@ The type of the Actions property is a [structured type](#structured-types) with 
 
 ~~~xml
   <ComplexType Name="Actions">
-    <Property Name="OEM" Type="MyType.OEMActions"/>
+    <Property Name="Oem" Type="MyType.OemActions"/>
   </ComplexType>
 
-  <ComplexType Name="OEMActions"/>
+  <ComplexType Name="OemActions"/>
 ~~~
 
 Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
@@ -2065,7 +2063,7 @@ In the context of this clause, the term OEM refers to any company, manufacturer,
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
 ~~~xml
-  <Schema Name="Contoso.v1_2_0">
+  <Schema Namespace="Contoso.v1_2_0">
     ...
     <ComplexType Name="AnvilType1">
       <Property Name="slogan" Type="Edm.String"/>
@@ -2145,11 +2143,11 @@ The following fragment presents some examples of naming and use of the Oem prope
 
 ##### OEM actions
 
-OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#resource-actions) property type.
+OEM-specific actions can be defined by defining actions bound to the Oem property of the [resource's Actions](#resource-actions) property type.
 
 ~~~xml
   <Action Name="Ping" IsBound="true">
-    <Parameter Name="ContosoType" Type="MyType.OEMActions"/>
+    <Parameter Name="ContosoType" Type="MyType.OemActions"/>
   </Action>
 ~~~
 
@@ -2219,7 +2217,7 @@ The [Actions](#actions-property) property contains the actions supported by a re
 
 #### OEM
 
-The [OEM](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
 
 ### Redfish resources
 
@@ -2829,7 +2827,7 @@ property in the ManagerAccount resource requires the "ConfigureSelf" or the "Con
 to the "ConfigureUsers" privilege required for the rest of the properties in ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
-(ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
+(ConfigureManager is required) or ComputerSystem (ConfigureComponents is required) resources.
 * Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
 The overrides are defined in the context of the operation-to-privilege mapping for an entity.
 
@@ -2904,7 +2902,7 @@ required for the rest of the properties on ManagerAccount resources.
 
 ##### Subordinate override
 
-The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponent" privilege.
+The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponents" privilege.
 ~~~json
 {
     "Entity": "EthernetInterface",
@@ -2921,22 +2919,22 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
@@ -2982,22 +2980,22 @@ In the following example, use of the ResourceURI Override syntax for representin
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
