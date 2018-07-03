@@ -147,6 +147,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed of the link in Mbps when this link network technology is active."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of the link in megabits per second (Mbps) for this port when this link network technology is active."/>
+          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of the CapableLinkSpeedMbps collection found in NetworkPort.v1_2_0."/>
           <Annotation Term="Measures.Unit" String="Mbit/s"/>
         </Property>
       </ComplexType>
@@ -280,15 +281,16 @@
           <Annotation Term="OData.Description" String="This is the connection type of this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the connection type for this port."/>
         </Property>
-        <Property Name="NumberDiscoveredPorts" Type="Edm.Int64">
+        <Property Name="NumberDiscoveredRemotePorts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The number of ports that this port can see."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of ports that this port can see."/>
+          <Annotation Term="OData.Description" String="The number of ports not on this adapter that this port has discovered."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of ports not on this adapter that this port has discovered."/>
         </Property>
         <Property Name="MaxFrameSize" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum frame size supported by the port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum frame size supported by the port."/>
+          <Annotation Term="Measures.Unit" String="By"/>
         </Property>
         <Property Name="VendorId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -304,6 +306,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Network Port Current Link Speed."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current configured link speed of this port."/>
+          <Annotation Term="Measures.Unit" String="Mbit/s"/>
         </Property>
         <Property Name="AutoSpeedNegotiation" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
