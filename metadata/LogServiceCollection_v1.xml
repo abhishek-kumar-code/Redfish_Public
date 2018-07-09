@@ -49,6 +49,13 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/{ManagerId}/LogServices</String>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/LogServices</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/LogServices</String>
+          </Collection>
+        </Annotation>
         <NavigationProperty Name="Members" Type="Collection(LogService.LogService)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>

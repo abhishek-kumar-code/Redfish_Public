@@ -62,6 +62,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Chassis/{ChassisId}/Power</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

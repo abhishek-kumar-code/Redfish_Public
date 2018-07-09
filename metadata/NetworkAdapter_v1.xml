@@ -66,6 +66,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="ResetSettingsToDefault" IsBound="true">
