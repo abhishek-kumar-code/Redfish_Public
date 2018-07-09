@@ -2031,10 +2031,10 @@ The type of the Actions property is a [structured type](#structured-types) with 
 
 ~~~xml
   <ComplexType Name="Actions">
-    <Property Name="OEM" Type="MyType.OEMActions"/>
+    <Property Name="Oem" Type="MyType.OemActions"/>
   </ComplexType>
 
-  <ComplexType Name="OEMActions"/>
+  <ComplexType Name="OemActions"/>
 ~~~
 
 Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
@@ -2143,11 +2143,11 @@ The following fragment presents some examples of naming and use of the Oem prope
 
 ##### OEM actions
 
-OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#resource-actions) property type.
+OEM-specific actions can be defined by defining actions bound to the Oem property of the [resource's Actions](#resource-actions) property type.
 
 ~~~xml
   <Action Name="Ping" IsBound="true">
-    <Parameter Name="ContosoType" Type="MyType.OEMActions"/>
+    <Parameter Name="ContosoType" Type="MyType.OemActions"/>
   </Action>
 ~~~
 
@@ -2217,7 +2217,7 @@ The [Actions](#actions-property) property contains the actions supported by a re
 
 #### OEM
 
-The [OEM](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
 
 ### Redfish resources
 
