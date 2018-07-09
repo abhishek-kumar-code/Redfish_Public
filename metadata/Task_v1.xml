@@ -52,6 +52,11 @@
             <Annotation Term="OData.Description" String="Tasks can be removed with a Delete operation."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/TaskService/Tasks/{TaskId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>
