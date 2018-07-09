@@ -93,10 +93,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Volume" BaseType="Volume.Volume">
-        <Property Name="Status" Type="Resource.Status" Nullable="false">
-          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
-        </Property>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="CapacityBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size in bytes of this Volume."/>
@@ -163,10 +160,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Volume.v1_0_0.OemActions" Nullable="false">
-          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
-        </Property>
+        <Property Name="Oem" Type="Volume.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -181,17 +175,14 @@
         <Property Name="OperationName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the operation."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be a string of the name of the operation."/>
         </Property>
         <Property Name="PercentageComplete" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The percentage of the operation that has been completed."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be an interger of the percentage of the operation that has been completed."/>
         </Property>
         <NavigationProperty Name="AssociatedTask" Type="Task.Task" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the task associated with the operation if any."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a resource of type Task that represents the task associated with the operation."/>
         </NavigationProperty>
       </ComplexType>
 

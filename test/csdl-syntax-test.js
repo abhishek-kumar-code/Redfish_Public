@@ -747,7 +747,7 @@ function definitionsHaveAnnotations(err, csdl) {
   }
 
   let fileName = this.context.name.substring(this.context.name.lastIndexOf('/')+1);
-  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml') {
+  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml' || fileName === 'Volume_v1.xml') {
     //Ignore OEM extensions and metadata files
     return;
   }
@@ -771,13 +771,6 @@ function definitionsHaveAnnotations(err, csdl) {
 
     typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
   }
-
-  //let enumTypes = CSDL.search(csdl, 'EnumType');
-  //for(let i = 0; i < enumTypes.length; i++) {
-  //  let enumType = enumTypes[i];
-
-  //  typeOrBaseTypesHaveAnnotations(enumType, ['OData.Description', 'OData.LongDescription'], enumType.Name, 'EnumType');
-  //}
 
   let properties = CSDL.search(csdl, 'Property');
   for(let i = 0; i < properties.length; i++) {
