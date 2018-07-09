@@ -92,8 +92,9 @@
           <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the MessageArgs property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="OriginOfCondition" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="This is the OriginOfCondition property of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall have the same semantics as the OriginOfCondition property in the Event schema for Redfish."/>
+          <Annotation Term="OData.Description" String="This is the string of the URL within the OriginOfCondition property of the event to be added.  It is not a reference object."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a string that represents the URL contained by the OriginOfCondition property in the Event schema for Redfish."/>
+          <Annotation Term="OData.IsURL"/>
         </Parameter>
       </Action>
 
@@ -190,7 +191,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_8">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify the OriginOfCondition parameter in the SubmitTestEvent action."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_7.EventService"/>
     </Schema>
 
@@ -208,7 +209,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_1_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify the OriginOfCondition parameter in the SubmitTestEvent action."/>
       <EntityType Name="EventService" BaseType="EventService.v1_1_0.EventService"/>
     </Schema>
 

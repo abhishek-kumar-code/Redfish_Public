@@ -10,16 +10,12 @@
         {
             "@odata.id": "/redfish/v1/Systems/3/LogServices/Log1/Entries/1",
             "@odata.type": "#LogEntry.v1_0_0.LogEntry",
-            "Id": "2",
-            "Name": "Log Entry 2",
-            "EntryType": "SEL",
-            "OEMRecordFormat": "CompanyX",
-            "RecordId": 2,
+            "Id": "1",
+            "Name": "Log Entry 1",
+            "EntryType": "Event",
             "Severity": "Critical",
             "Created": "2012-03-07T14:45",
-            "EntryCode": "Transition to Degraded",
-            "SensorType": "Storage",
-            "Number": 2,
+            "SensorNumber": 2,
             "Message": "Volume 2 has become degraded",
             "MessageId": "Event.1.0.VolumeDegraded",
             "MessageArgs": [
@@ -33,6 +29,5 @@
             },
             "Oem": {}
         }
-    ],
-    "@odata.nextLink": "/redfish/v1/Systems/1/LogServices/Log1/Entries?$skiptoken=1"
+    ]
 }
