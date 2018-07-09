@@ -51,6 +51,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/EventService/Subscriptions/{EventDestinationId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

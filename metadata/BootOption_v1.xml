@@ -52,6 +52,12 @@
             <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual Boot Option Entries."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

@@ -49,6 +49,12 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/Bios</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Bios</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="ResetBios" IsBound="true">

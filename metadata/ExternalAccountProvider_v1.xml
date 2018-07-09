@@ -50,6 +50,11 @@
             <Annotation Term="OData.Description" String="External Account Providers are removed with a Delete operation."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/AccountService/ExternalAccountProviders/{ExternalAccountProviderId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

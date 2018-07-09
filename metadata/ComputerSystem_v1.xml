@@ -112,6 +112,12 @@
             <Annotation Term="OData.Description" String="A Composed Computer System can be deleted when a client would like to retire it."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="Reset" IsBound="true">
