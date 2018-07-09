@@ -117,6 +117,10 @@
           <Annotation Term="OData.Description" String="RDMA over Converged Ethernet Protocol Version 2."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the RDMA over Converged Ethernet version 2 protocol as defined by the Infiniband Architecture Specification."/>
         </Member>
+        <Member Name="I2C">
+          <Annotation Term="OData.Description" String="Inter-Integrated Circuit Bus."/>
+          <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the NXP Semiconductors I2C-bus Specification."/>
+        </Member>        
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="OEM specific."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to an OEM specific architecture and additional information may be included in the OEM section."/>
