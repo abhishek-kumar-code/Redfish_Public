@@ -120,7 +120,7 @@
         <Member Name="I2C">
           <Annotation Term="OData.Description" String="Inter-Integrated Circuit Bus."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the NXP Semiconductors I2C-bus Specification."/>
-        </Member>        
+        </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="OEM specific."/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to an OEM specific architecture and additional information may be included in the OEM section."/>
