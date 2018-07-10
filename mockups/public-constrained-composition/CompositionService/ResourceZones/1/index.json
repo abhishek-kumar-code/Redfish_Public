@@ -1,7 +1,7 @@
 {
     "@odata.type": "#Zone.v1_1_0.Zone",
-    "Id": "2",
-    "Name": "Resource Zone 2",
+    "Id": "1",
+    "Name": "Resource Zone 1",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
@@ -9,7 +9,7 @@
     "Links": {
         "ResourceBlocks": [
             {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2"
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1"
             },
             {
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3"
@@ -25,12 +25,6 @@
             },
             {
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7"
-            },
-            {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8"
-            },
-            {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9"
             }
         ]
     },
@@ -39,9 +33,9 @@
         "Capabilities": [
             {
                 "CapabilitiesObject": {
-                    "@odata.id": "/redfish/v1/Systems/Capabilities"
+                    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities"
                 },
-                "UseCase": "ComputerSystemComposition",
+                "UseCase": "ComputerSystemConstrainedComposition",
                 "Links": {
                     "TargetCollection": {
                         "@odata.id": "/redfish/v1/Systems"
@@ -51,6 +45,6 @@
         ]
     },
     "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1",
     "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

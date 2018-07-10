@@ -41,17 +41,6 @@
                         "@odata.id": "/redfish/v1/Systems"
                     }
                 }
-            },
-            {
-                "CapabilitiesObject": {
-                    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities"
-                },
-                "UseCase": "ComputerSystemConstrainedComposition",
-                "Links": {
-                    "TargetCollection": {
-                        "@odata.id": "/redfish/v1/Systems"
-                    }
-                }
             }
         ]
     },

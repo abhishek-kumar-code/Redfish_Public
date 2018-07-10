@@ -15,9 +15,9 @@
         "Capabilities": [
             {
                 "CapabilitiesObject": {
-                    "@odata.id": "/redfish/v1/Systems/Capabilities"
+                    "@odata.id": "/redfish/v1/Systems/ConstrainedCompositionCapabilities"
                 },
-                "UseCase": "ComputerSystemComposition",
+                "UseCase": "ComputerSystemConstrainedComposition",
                 "Links": {
                     "TargetCollection": {
                         "@odata.id": "/redfish/v1/Systems"
