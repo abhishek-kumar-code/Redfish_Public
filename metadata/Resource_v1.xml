@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.8.0-->
+<!--# Redfish Schema:  Resource  v1.7.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -920,11 +920,6 @@
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LOC field as defined in RFC5139.  It is used to provide additional information."/>
         </Property>
       </ComplexType>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_8_0">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add AdditionalInfo within Placement."/>
 
       <ComplexType Name="Placement" BaseType="Resource.v1_3_0.Placement">
         <Property Name="AdditionalInfo" Type="Edm.String">
