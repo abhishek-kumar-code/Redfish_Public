@@ -38,10 +38,10 @@
         "State": "Enabled",
         "Health": "OK"
     },
-	"HeightMm": 44.45,
-	"WidthMm": 431.8,
-	"DepthMm": 711,
-	"WeightKg": 15.31,
+    "HeightMm": 44.45,
+    "WidthMm": 431.8,
+    "DepthMm": 711,
+    "WeightKg": 15.31,
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/1/Thermal"
     },
@@ -51,9 +51,9 @@
     "NetworkAdapters": {
         "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters"
     },
-	"Assembly": {
-		"@odata.id": "/redfish/v1/Chassis/1/Assembly"
-	},
+    "Assembly": {
+        "@odata.id": "/redfish/v1/Chassis/1/Assembly"
+    },
     "Links": {
         "ComputerSystems": [
             {
@@ -74,7 +74,9 @@
             }
         ],
         "PCIeDevices": [
-            {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}
+            {
+                "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC"
+            }
         ],
         "Oem": {}
     },

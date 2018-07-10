@@ -3,17 +3,13 @@
     "Id": "1",
     "Name": "Log Entry 1",
     "EntryType": "SEL",
-    "OemRecordFormat": "Contoso",
     "Severity": "Critical",
     "Created": "2012-03-07T14:44:00Z",
-    "EntryCode": "Assert",
+    "EntryCode": "Upper Critical - going high",
     "SensorType": "Temperature",
     "SensorNumber": 1,
     "Message": "Temperature threshold exceeded",
-    "MessageId": "Contoso.1.0.TempAssert",
-    "MessageArgs": [
-        "42"
-    ],
+    "MessageId": "0x592A28",
     "Links": {
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/1U/Thermal"

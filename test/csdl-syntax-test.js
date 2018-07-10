@@ -1067,7 +1067,27 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
     //TODO do a check for each entry in the array...
   }
   else {
-    let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+    let typeLookup = CSDLProperty.Type
+    let namespaceIndex = typeLookup.indexOf('.');
+    if(namespaceIndex === -1) {
+      throw new Error('Cannot get namespace of "' + typeLookup + '"');
+    }
+    let namespace = typeLookup.substring(0, namespaceIndex);
+    if(namespace === '') {
+      throw new Error('Cannot get namespace of "' + typeLookup + '"');
+    }
+    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+      let typeNameIndex = typeLookup.lastIndexOf('.');
+      if(typeNameIndex === -1) {
+        throw new Error('Cannot get type of "' + typeLookup + '"');
+      }
+      let typeName = typeLookup.substring(typeNameIndex+1);
+      if(namespace === '') {
+        throw new Error('Cannot get type of "' + typeLookup + '"');
+      }
+      typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+    }
+    let propType = CSDL.findByType({_options: options}, typeLookup);
     if(typeof propType === 'string') {
       simpleTypeCheck(propType, propValue, CSDLProperty, propName);
     }
