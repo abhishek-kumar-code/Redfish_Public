@@ -19,7 +19,7 @@ if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
 const syntaxBatch = {};
 const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
-                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com')],
+                          path.normalize(__dirname+'/../mockups/public-oem-examples/Contoso.com')],
                useNetwork: true};
 
 //Setup a global cache for speed
