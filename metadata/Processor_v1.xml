@@ -396,11 +396,11 @@
           <Annotation Term="OData.LongDescription" String="Maximum TDP in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
-        <Property Name="ProcessorMemory" Type="Collection(Processor.v1_3_0.ProcessorMemory)" Nullable="false">
+        <Property Name="ProcessorMemory" Type="Collection(Processor.v1_4_0.ProcessorMemory)" Nullable="false">
           <Annotation Term="OData.Description" String="Memory directly attached or integrated witin the Procesor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory directly attached or integrated witin this Processor."/>
         </Property>
-        <Property Name="FPGA" Type="Processor.v1_3_0.FPGA" Nullable="true">
+        <Property Name="FPGA" Type="Processor.v1_4_0.FPGA" Nullable="true">
           <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
           <Annotation Term="OData.LongDescription" String="The properties of the FPGA device represented by this Processor."/>
         </Property>
@@ -430,7 +430,7 @@
           <Annotation Term="OData.Description" String="This indicates whether this memory is integrated within the Processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this memory is integrated within the Porcessor. Otherwise it is discrete memory attached to the Processor."/>
         </Property>
-        <Property Name="MemoryType" Type="Processor.v1_3_0.ProcessorMemoryType">
+        <Property Name="MemoryType" Type="Processor.v1_4_0.ProcessorMemoryType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the integrated memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the processor memory type."/>
@@ -536,7 +536,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
         <Annotation Term="OData.LongDescription" String="The properties of the FPGA device represented by this Processor."/>
-        <Property Name="FpgaType" Type="Processor.v1_3_0.FpgaType" Nullable="false">
+        <Property Name="FpgaType" Type="Processor.v1_4_0.FpgaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA type."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA device."/>
@@ -561,17 +561,17 @@
           <Annotation Term="OData.Description" String="The FPGA firmware version."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the FPGA firmware version."/>
         </Property>
-        <Property Name="HostInterface" Type="Processor.v1_3_0.FpgaInterface" Nullable="false">
+        <Property Name="HostInterface" Type="Processor.v1_4_0.FpgaInterface" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA interface to the host."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA interface to the host."/>
         </Property>
-        <Property Name="ExternalInterfaces" Type="Collection(Processor.v1_3_0.FpgaInterface)" Nullable="false">
+        <Property Name="ExternalInterfaces" Type="Collection(Processor.v1_4_0.FpgaInterface)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of the FPGA external interfaces."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the FPGA external interfaces."/>
         </Property>
-        <Property Name="SidebandInterface" Type="Processor.v1_3_0.FpgaInterface" Nullable="false">
+        <Property Name="SidebandInterface" Type="Processor.v1_4_0.FpgaInterface" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA sideband interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA sideband interface."/>
@@ -586,7 +586,7 @@
           <Annotation Term="OData.Description" String="This flag indicates if the FPGA FW can be reprogrammed from the host."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the FPGA FW can be reprogrammed from the host. If set to false, a FPGA FW can be programmed through the sideband interface only."/>
         </Property>
-        <Property Name="ReconfigurationSlots" Type="Collection(Processor.v1_3_0.FpgaReconfigurationSlot)" Nullable="false">
+        <Property Name="ReconfigurationSlots" Type="Collection(Processor.v1_4_0.FpgaReconfigurationSlot)" Nullable="false">
           <Annotation Term="OData.Description" String="An array of the FPGA reconfiguration slots."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the structures describing the FPGA reconfiguration slots that can be programmed with the acceleration function code."/>
         </Property>
