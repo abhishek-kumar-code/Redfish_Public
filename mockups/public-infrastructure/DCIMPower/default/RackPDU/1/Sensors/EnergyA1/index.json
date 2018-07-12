@@ -3,6 +3,7 @@
 	"Id": "EnergyA1",
 	"Name": "Energy for outlet A1",
 	"ReadingType": "Energy",
+	"ElectricalSourceType": "Total",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK"

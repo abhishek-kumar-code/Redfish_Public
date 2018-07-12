@@ -3,6 +3,7 @@
 	"Id": "PowerA1",
 	"Name": "Power reading for outlet A1",
 	"ReadingType": "Power",
+	"ElectricalSourceType": "Line1ToNeutral",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK"

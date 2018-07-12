@@ -78,20 +78,20 @@
                <Annotation Term="OData.Description" String="The type of voltage output on the circuit." />
                <Annotation Term="OData.LongDescription" String="." />
             </Property>
-            <Property Name="IECReceptacleType" Type="Circuit.IECType">
+            <Property Name="IECOutletType" Type="Circuit.IECType">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-               <Annotation Term="OData.Description" String="The IEC Receptacle type." />
+               <Annotation Term="OData.Description" String="The IEC outlet type." />
                <Annotation Term="OData.LongDescription" String="." />
             </Property>
-            <Property Name="NEMAReceptacleType" Type="Edm.Integer">
+            <Property Name="NEMAOutletType" Type="Edm.Integer">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-               <Annotation Term="OData.Description" String="The NEMA receptacle type." />
+               <Annotation Term="OData.Description" String="The NEMA outlet type." />
                <Annotation Term="OData.LongDescription" String="." />
             </Property>
-            <Property Name="LockingReceptacle" Type="Edm.Boolean">
+            <Property Name="LockingOutlet" Type="Edm.Boolean">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-               <Annotation Term="OData.Description" String="Designates if the receptacle is a locking type." />
-               <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the receptacle includes a locking design. The value shall be true if the receptacle is a locking type, and false if the receptacle is a non-locking type." />
+               <Annotation Term="OData.Description" String="Designates if the outlet is a locking type." />
+               <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the outlet includes a locking design. The value shall be true if the outlet is a locking type, and false if the outlet is a non-locking type." />
             </Property>
             <Property Name="RatedCurrentAmps" Type="Edm.Decimal">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -126,25 +126,29 @@
                <Annotation Term="OData.LongDescription" String="The value of this property shall contain the breaker state of the circuit." />
             </Property>
 
-            <Property Name="Voltage" Type="Circuit.Voltages">
+            <Property Name="Voltage" Type="Sensor.Sensor">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-               <Annotation Term="OData.Description" String="The voltage sensors for this circuit." />
-               <Annotation Term="OData.LongDescription" String="TBD." />
+               <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage" />
+               <Annotation Term="OData.Description" String="The voltage sensor for this single phase circuit." />
+               <Annotation Term="OData.LongDescription" String="This object shall contain the voltage, measured in Volts, for this single phase circuit. This object shall not appear in resource instances representing poly-phase circuits." />
             </Property>
-            <Property Name="Current" Type="Circuit.Currents">
+            <Property Name="Current" Type="Sensor.Sensor">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-               <Annotation Term="OData.Description" String="The current sensors for this circuit." />
-               <Annotation Term="OData.LongDescription" String="TBD." />
+               <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Current" />
+               <Annotation Term="OData.Description" String="The current sensor for this circuit." />
+               <Annotation Term="OData.LongDescription" String="This object shall contain the current, measured in Amperes, for this single phase circuit. This object shall not appear in resource instances representing poly-phase circuits." />
             </Property>
-            <Property Name="PowerReading" Type="Circuit.PowerReadings">
+            <Property Name="PowerReading" Type="Sensor.Sensor">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-               <Annotation Term="OData.Description" String="The power sensors for this circuit." />
-               <Annotation Term="OData.LongDescription" String="TBD." />
+               <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power" />
+               <Annotation Term="OData.Description" String="The power sensor for this circuit." />
+               <Annotation Term="OData.LongDescription" String="This object shall contain the total power, measured in Watts, for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple power sensors exist for this circuit." />
             </Property>
-            <Property Name="Energy" Type="Circuit.EnergyReadings">
+            <Property Name="EnergyReading" Type="Sensor.Sensor">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-               <Annotation Term="OData.Description" String="The energy sensors for this circuit." />
-               <Annotation Term="OData.LongDescription" String="TBD." />
+               <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy" />
+               <Annotation Term="OData.Description" String="The energy sensor for this circuit." />
+               <Annotation Term="OData.LongDescription" String="This object shall contain the total energy, measured in Watt-hours (units of Watts), for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple energy sensors exist for this circuit." />
             </Property>
             <Property Name="Frequency" Type="Sensor.Sensor">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
@@ -152,12 +156,34 @@
                <Annotation Term="OData.Description" String="The frequency sensor for this circuit." />
                <Annotation Term="OData.LongDescription" String="TBD." />
             </Property>
+				
+            <Property Name="PolyPhaseVoltages" Type="Circuit.Voltages">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+               <Annotation Term="OData.Description" String="The voltage sensors for this circuit." />
+				   <Annotation Term="OData.LongDescription" String="This object shall contain the voltage sensor(s) for this circuit. For single phase circuits this object will contain a duplicate copy of the voltage sensor referenced in the 'Voltage' object. For poly-phase circuits this object may contain multiple voltage sensor readings used to fully describe the circuit." />
+            </Property>
+            <Property Name="PolyPhaseCurrents" Type="Circuit.Currents">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+               <Annotation Term="OData.Description" String="The current sensors for this circuit." />
+               <Annotation Term="OData.LongDescription" String="TBD." />
+            </Property>
+            <Property Name="PolyPhasePowerReadings" Type="Circuit.PowerReadings">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+               <Annotation Term="OData.Description" String="The power sensors for this circuit." />
+               <Annotation Term="OData.LongDescription" String="TBD." />
+            </Property>
+            <Property Name="PolyPhaseEnergyReadings" Type="Circuit.EnergyReadings">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+               <Annotation Term="OData.Description" String="The energy sensors for this circuit." />
+               <Annotation Term="OData.LongDescription" String="TBD." />
+            </Property>
+
          </EntityType>
 		 
          <ComplexType Name="Voltages">
             <Annotation Term="OData.AdditionalProperties" Bool="false" />
             <Annotation Term="OData.Description" String="This object contains the voltages." />
-            <Annotation Term="OData.LongDescription" String="." />
+            <Annotation Term="OData.LongDescription" String="This object shall contain the voltage sensor(s) for this circuit. For single phase circuits this object will contain a duplicate copy of the voltage sensor referenced in the 'Voltage' object. For poly-phase circuits this object may contain multiple voltage sensor readings used to fully describe the circuit." />
             <Property Name="Line1ToLine2" Type="Sensor.Sensor">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
                <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage" />

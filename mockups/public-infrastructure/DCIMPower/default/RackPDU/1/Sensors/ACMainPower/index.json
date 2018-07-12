@@ -7,6 +7,7 @@
 		"State": "Enabled",
 		"Health": "OK"
 	},
+	"ElectricalSourceType": "Total",
 	"Reading": 28783,
 	"ReadingUnits": "W",
 	"ReadingRangeMin": 0,

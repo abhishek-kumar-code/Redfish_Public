@@ -3,6 +3,7 @@
 	"Id": "CurrentA1",
 	"Name": "Current for outlet A1",
 	"ReadingType": "Current",
+	"ElectricalSourceType": "Line1",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK"
