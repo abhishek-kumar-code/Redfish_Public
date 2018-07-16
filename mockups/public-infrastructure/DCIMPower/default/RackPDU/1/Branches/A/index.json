@@ -9,6 +9,8 @@
 
 	"CircuitType": "Branch",
 	"PhaseWiringType": "TwoPhase3Wire",
+	"BreakerState": "Normal",
+	"BreakerTripped": false,
 
 	"PolyPhaseVoltages": {
 		"Line1ToNeutral": {

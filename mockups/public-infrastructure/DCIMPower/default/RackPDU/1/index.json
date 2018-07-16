@@ -38,10 +38,10 @@
 		"TotalOutlets": 16,
 		"MonitoredOutlets": 12,
 		"ControlledOutlets": 8,
-		"Phases": 3,
+		"TotalPhases": 3,
 		"MonitoredPhases": 3,
-		"BranchCircuits": 4,
-		"MonitoredBranchCircuits": 4
+		"TotalBranches": 4,
+		"MonitoredBranches": 4
 	},
 
 	"Temperatures": [{
@@ -55,7 +55,7 @@
 		"PhysicalContext": "Cabinet"
 	}],
 
-	"Humidity": {
+	"Humidity": [{
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/Humidity",
 		"Name": "Cabinet Humidity Sensor",
 		"Status": {
@@ -64,7 +64,7 @@
 		"Reading": 12,
 		"ReadingUnits": "%",
 		"PhysicalContext": "Cabinet"
-	},
+	}],
 
 	"PowerReading": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PDUPower",
@@ -80,6 +80,10 @@
 		"Reading": 56438,
 		"ReadingUnits": "W"
 	},
+	
+	"TriggeredAlarms": [{
+	   alarm...
+	}],
 	
 	"Mains": {
 		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Mains"

@@ -95,34 +95,33 @@
           <Annotation Term="OData.Description" String="The actual Part Number of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Part Number of RackPDU."/>
         </Property>
-        
         <Property Name="HardwareRevision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Hardware Revision of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Hardware Revision of PDU."/>
         </Property>
-
         <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Firmware Version of this Rack PDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Firmware Version of RackPDU."/>
         </Property>
-
         <Property Name="DateOfManufacture" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date of manufacture of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual date of manufacture of RackPDU."/>
         </Property>
-
         <Property Name="AssetTag" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Asset Tag of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of RackPDU."/>
         </Property>
-
         <Property Name="Location" Type="Resource.Location">
           <Annotation Term="OData.Description" String="The actual Physical Location of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of RackPDU."/>
+        </Property>
+        <Property Name="CircuitSummary" Type="RackPDU.CircuitSummary">
+          <Annotation Term="OData.Description" String="Contains summary information about the circuits of this PDU."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the circuit summary information for this RackPDU."/>
         </Property>
 
         <Property Name="PowerReading" Type="Sensor.Sensor">
@@ -153,17 +152,18 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <!-- Humidity sensor for this equipment -->
-        <NavigationProperty Name="Humidity" Type="Sensor.Sensor">
+        <!-- Array of Humidity sensors for this equipment -->
+        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Humidity"/>
-          <Annotation Term="OData.Description" String="Contains the humidity sensor."/>
+          <Annotation Term="OData.Description" String="Contains the humidity sensors."/>
+          <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
         <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the naivigation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.Description" String="Contains the navigation pointer to the equipment Alarm collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -171,103 +171,9 @@
         <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.AlarmState/Triggered"/>
+          <Annotation Term="OData.LongDescription" String="This array shall contain the set of Members of the Alarm Collection which have an 'AlarmStatus' of 'Triggered'."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-
-        <!-- System -->
-        <Property Name="Rating" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual maximum Rating of this RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum percentage Rating of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="NumOutlets" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual maximum number of Outlets of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Outlets of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="1"/>
-        </Property>
-
-        <Property Name="NumPhases" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual maximum number of Phases of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Phases of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="1"/>
-        </Property>
-
-        <Property Name="BreakerRating" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Breaker Rating of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Breaker Rating of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="Orientation" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Orientation of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Orientation of PDU."/>
-        </Property>
-
-        <Property Name="LineToLineVoltage" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Line Voltage of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Line Voltage of PDU."/>
-          <Annotation Term="Measures.Unit" String="V"/>
-        </Property>
-
-        <Property Name="MaxPhaseLoad" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Max Phase Load of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual MaxPhaseLoad of RackPDU."/>
-          <Annotation Term="Measures.Unit" String="W"/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="NearOverloadThreshold" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Near Overload Threshold of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Near Overload Threshold of RackPDU."/>
-          <Annotation Term="Measures.Unit" String="W"/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="OverloadThreshold" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actualOverload Threshold of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent he actual Overload Threshold of RackPDU."/>
-          <Annotation Term="Measures.Unit" String="W"/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="Load" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Load of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Load of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="LoadState" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Load State of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Load State of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="PhaseNumber" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Phase Number of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Phase Number of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
-
-        <Property Name="BankNumber" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Bank Number of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Bank Number of RackPDU."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
 
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
 
@@ -293,8 +199,50 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-      </EntityType>
+		</EntityType>
 
+      <ComplexType Name="CircuitSummary">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The summary of circuit information for this PDU."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the summary information regarding circuits for this resource."/>
+        <Property Name="TotalOutlets" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The total number of Outlets included in this Rack PDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Outlets of RackPDU."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MonitoredOutlets" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The number of monitored Outlets included in this Rack PDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of monitored Outlets of RackPDU."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="ControlledOutlets" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The number of controlled Outlets included in this Rack PDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of controlled Outlets of RackPDU."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="TotalPhases" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum number of Phases of RackPDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Phases of RackPDU."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MonitoredPhases" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The number of monitored Phases supported by this Rack PDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Phases of RackPDU."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="TotalBranches" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum number of Branch Circuits supported by the Rack PDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Branch Circuits for this RackPDU."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+      </ComplexType>
+	  
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
