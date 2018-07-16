@@ -73,7 +73,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/2",
                     "Name": "AC Input 1 - RMS Voltage Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -121,7 +121,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/5",
                     "Name": "DC Bus - DC Voltage Sensor",
-                    "ReadingType": "DCVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"

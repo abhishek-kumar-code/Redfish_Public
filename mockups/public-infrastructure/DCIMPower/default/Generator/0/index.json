@@ -128,7 +128,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/3",
                     "Name": "ACOutlet - RMS Voltage (L-L) Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -139,7 +139,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/4",
                     "Name": "ACOutlet - RMS Voltage (L-G) Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -150,7 +150,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/5",
                     "Name": "ACOutlet - Battery Voltage Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
