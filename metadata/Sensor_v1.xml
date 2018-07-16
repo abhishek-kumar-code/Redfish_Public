@@ -164,10 +164,10 @@
           <Annotation Term="OData.Description" String="The location information for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
         </Property>
-        <Property Name="ElectricalSourceType" Type="Sensor.ElecticalSourceType">
+        <Property Name="ElectricalSourceType" Type="Sensor.v0_8_0.ElectricalSourceType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of electrical circuit measurement within a circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD"/>
+          <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
         <Property Name="DeadBand" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
