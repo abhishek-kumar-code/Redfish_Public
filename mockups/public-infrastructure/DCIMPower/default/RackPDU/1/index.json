@@ -33,7 +33,7 @@
 			"Row": "North"
 		}
 	},
-	
+
 	"CircuitSummary": {
 		"TotalOutlets": 16,
 		"MonitoredOutlets": 12,
@@ -80,11 +80,32 @@
 		"Reading": 56438,
 		"ReadingUnits": "W"
 	},
-	
+
 	"TriggeredAlarms": [{
-	   alarm...
+		"@odata.type": "#Alarm.v0_8_0.Alarm",
+		"Id": "Overload",
+		"Name": "PDU Unit Overload",
+		"AlarmState": "Triggered",
+		"Acknowledged": false,
+		"Severity": "Critical",
+		"TriggerTime": "2018-08-07T14:44:00Z",
+		"AutomaticReArm": true,
+		"Message": "Rack PDU Overload Condition",
+		"MessageId": "DCIM.0.1.0.Overload",
+		"MessageArgs": [
+			"58703"
+		],
+		"Links": {
+			"RelatedSensor": {
+				"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/ACMainPower"
+			},
+			"Oem": {}
+		},
+		"Oem": {},
+		"@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+		"@odata.id": "redfish/v1/DCIMPower/default/RackPDU/Alarms/Overload"
 	}],
-	
+
 	"Mains": {
 		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Mains"
 	},
