@@ -60,7 +60,7 @@
         <Annotation Term="OData.Description" String="This action is used to reset statistics related to this sensor."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a reset of any time intervals or counted values for this sensor."/>
       </Action>
-	  
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v0_8_0">
@@ -281,7 +281,7 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Sensor.v0_8_0.OemActions" Nullable="false"/>
       </ComplexType>
-	  
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
@@ -323,7 +323,7 @@
         <Member Name="Voltage">
           <Annotation Term="OData.Description" String="Voltage (AC or DC)."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous voltage measurements calculated over an integer number of line cycles for a circuit.  Voltage is expressed in Volts units."/>
-        </Member>>
+        </Member>
         <Member Name="Current">
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous current measurements calculated over an integer number of line cycles for a circuit. Current is expressed in Amperes units."/>
@@ -385,7 +385,7 @@
         </Member>
       </EnumType>
 
-		<EnumType Name="PhaseWiringType">
+      <EnumType Name="PhaseWiringType">
         <Member Name="Single">
           <Annotation Term="OData.Description" String="1-Phase, 3-Wire."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -397,7 +397,7 @@
         <Member Name="TwoPhase4Wire">
           <Annotation Term="OData.Description" String="2-Phase / 4-Wire (Line1, Line2, Neutral, Protective Earth)."/>
           <Annotation Term="OData.LongDescription" String="."/>
-        </Member>		  
+        </Member>
         <Member Name="ThreePhase4Wire">
           <Annotation Term="OData.Description" String="3-Phase / 4-Wire (Line1, Line2, Line3, Protective Earth)."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -407,7 +407,7 @@
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
       </EnumType>
-		
+
       <EnumType Name="ElectricalSourceType">
         <Member Name="Line1">
           <Annotation Term="OData.Description" String="."/>
@@ -478,7 +478,7 @@
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
       </EnumType>
-		
+
     </Schema>
 
   </edmx:DataServices>
