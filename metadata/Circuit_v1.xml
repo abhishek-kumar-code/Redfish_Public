@@ -28,20 +28,32 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
-    <edmx:Include Namespace="PhysicalContext"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
-    <edmx:Include Namespace="Redundancy"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
-    <edmx:Include Namespace="Assembly"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Circuit">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+
+      <Action Name="PowerControl" IsBound="true">
+        <Parameter Name="Circuit" Type="Circuit.v0_8_0.Actions"/>
+        <Parameter Name="PowerState" Type="Circuit.PowerState">
+          <Annotation Term="OData.Description" String="The desired power state of the circuit."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the desired power state of the circuit."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to turn the circuit on or off."/>
+        <Annotation Term="OData.LongDescription" String="TBD."/>
+      </Action>
+
+      <Action Name="ResetBreaker" IsBound="true">
+        <Parameter Name="Circuit" Type="Circuit.v0_8_0.Actions"/>
+        <Parameter Name="PowerState" Type="Circuit.PowerState">
+          <Annotation Term="OData.Description" String="The desired power state of the circuit if the breaker is reset successfully."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall define the desired power state of the circuit."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to attempt to reset the circuit breaker."/>
+        <Annotation Term="OData.LongDescription" String="TBD."/>
+      </Action>
+
       <EntityType Name="Circuit" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for an electrical circuit."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an electrical circuit for a Redfish implementation."/>
@@ -68,22 +80,22 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Circuit" BaseType="Circuit.Circuit">
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="CircuitType" Type="Circuit.CircuitType">
+        <Property Name="CircuitType" Type="Circuit.v0_8_0.CircuitType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of circuit."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Property>
-        <Property Name="PhaseWiringType" Type="Circuit.PhaseWiringType">
+        <Property Name="PhaseWiringType" Type="Circuit.v0_8_0.PhaseWiringType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The phase wiring of the circuit."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Property>
-        <Property Name="VoltageType" Type="Circuit.VoltageType">
+        <Property Name="VoltageType" Type="Circuit.v0_8_0.VoltageType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of voltage output on the circuit."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Property>
-        <Property Name="IECOutletType" Type="Circuit.IECType">
+        <Property Name="IECOutletType" Type="Circuit.v0_8_0.IECType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IEC outlet type."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -162,27 +174,41 @@
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
 
-        <Property Name="PolyPhaseVoltages" Type="Circuit.Voltages">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="PolyPhaseVoltages" Type="Circuit.v0_8_0.Voltages">
           <Annotation Term="OData.Description" String="The voltage sensors for this circuit."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the voltage sensor(s) for this circuit. For single phase circuits this object will contain a duplicate copy of the voltage sensor referenced in the 'Voltage' object. For poly-phase circuits this object may contain multiple voltage sensor readings used to fully describe the circuit."/>
         </Property>
-        <Property Name="PolyPhaseCurrents" Type="Circuit.Currents">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="PolyPhaseCurrents" Type="Circuit.v0_8_0.Currents">
           <Annotation Term="OData.Description" String="The current sensors for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
-        <Property Name="PolyPhasePowerReadings" Type="Circuit.PowerReadings">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="PolyPhasePowerReadings" Type="Circuit.v0_8_0.PowerReadings">
           <Annotation Term="OData.Description" String="The power sensors for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
-        <Property Name="PolyPhaseEnergyReadings" Type="Circuit.EnergyReadings">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="PolyPhaseEnergyReadings" Type="Circuit.v0_8_0.EnergyReadings">
           <Annotation Term="OData.Description" String="The energy sensors for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
+
+        <Property Name="Actions" Type="Circuit.v0_8_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
       </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="Circuit.v0_8_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
 
       <ComplexType Name="Voltages">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -339,26 +365,6 @@
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
       </ComplexType>
-
-      <Action Name="PowerControl" IsBound="true">
-        <Parameter Name="Circuit" Type="Circuit.v0_8_0.Actions"/>
-        <Parameter Name="PowerState" Type="Circuit.PowerState">
-          <Annotation Term="OData.Description" String="The desired power state of the circuit"/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall define the desired power state of the circuit."/>
-        </Parameter>
-        <Annotation Term="OData.Description" String="This action is used to turn the circuit on or off."/>
-        <Annotation Term="OData.LongDescription" String="TBD."/>
-      </Action>
-
-      <Action Name="ResetBreaker" IsBound="true">
-        <Parameter Name="Circuit" Type="Circuit.v0_8_0.Actions"/>
-        <Parameter Name="PowerState" Type="Circuit.PowerState">
-          <Annotation Term="OData.Description" String="The desired power state of the circuit if the breaker is reset successfully."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall define the desired power state of the circuit."/>
-        </Parameter>
-        <Annotation Term="OData.Description" String="This action is used to attempt to reset the circuit breaker."/>
-        <Annotation Term="OData.LongDescription" String="TBD."/>
-      </Action>
 
       <EnumType Name="CircuitType">
         <Member Name="Mains">
