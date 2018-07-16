@@ -570,6 +570,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Room designation or other additional info."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LOC field as defined in RFC5139.  It is used to provide additional information."/>
+          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of the property AdditionalInfo found in the 1.7.0 definition of PostalAddress."/>
         </Property>
         <Property Name="Floor" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -913,7 +914,15 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_7_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add the Redfish Excerpt annotation to Name and Status properties."/>
+      <Annotation Term="OData.Description" String="This version was created to deprecate Location within PostalAddress in favor of AdditionalInfo.  It was also created to add the Redfish Excerpt annotation to Name and Status properties."/>
+
+      <ComplexType Name="PostalAddress" BaseType="Resource.v1_3_0.PostalAddress">
+        <Property Name="AdditionalInfo" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Room designation or other additional info."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LOC field as defined in RFC5139.  It is used to provide additional information."/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

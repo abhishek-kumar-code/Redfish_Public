@@ -101,7 +101,14 @@
             ],
             "Passphrase@Redfish.AllowableValues": "string"
         },
-        "#Memory.SetPassphrase": {
+        "#Memory.OverwriteUnit": {
+            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.OverwriteUnit",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+	"#Memory.SetPassphrase": {
             "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.SetPassphrase",
             "RegionId@Redfish.AllowableValues": [
                 "1"
