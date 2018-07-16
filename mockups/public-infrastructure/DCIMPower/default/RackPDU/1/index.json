@@ -56,7 +56,7 @@
 	}],
 
 	"Humidity": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/Humidity",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/Humidity",
 		"Name": "Cabinet Humidity Sensor",
 		"Status": {
 			"Health": "OK"
