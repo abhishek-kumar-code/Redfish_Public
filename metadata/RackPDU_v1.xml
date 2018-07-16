@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  RackPDU  v0.2.0-->
+<!--# Redfish Schema:  RackPDU  v0.8.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -102,10 +102,10 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Hardware Revision of PDU."/>
         </Property>
 
-        <Property Name="FirmwareRevision" Type="Edm.String">
+        <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Firmware Revision of RackPDU."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Firmware Revision of RackPDU."/>
+          <Annotation Term="OData.Description" String="The Firmware Version of this Rack PDU."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Firmware Version of RackPDU."/>
         </Property>
 
         <Property Name="DateOfManufacture" Type="Edm.DateTimeOffset">
@@ -120,9 +120,22 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of RackPDU."/>
         </Property>
 
-        <Property Name="PhysicalLocation" Type="Resource.Location">
+        <Property Name="Location" Type="Resource.Location">
           <Annotation Term="OData.Description" String="The actual Physical Location of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of RackPDU."/>
+        </Property>
+
+        <Property Name="PowerReading" Type="Sensor.Sensor">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power" />
+          <Annotation Term="OData.Description" String="The power sensor for this circuit." />
+          <Annotation Term="OData.LongDescription" String="This object shall contain the total power, measured in Watts, for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple power sensors exist for this circuit." />
+            </Property>
+        <Property Name="EnergyReading" Type="Sensor.Sensor">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy" />
+          <Annotation Term="OData.Description" String="The energy sensor for this PDU." />
+          <Annotation Term="OData.LongDescription" String="This object shall contain the total energy, measured in Watt-hours (units of Watts), for this PDU, which represents the 'Total' ElectricalSourceType sensor when multiple energy sensors exist for this PDU." />
         </Property>
 
         <!-- Sensors collection for this equipment -->
@@ -133,23 +146,24 @@
         </NavigationProperty>
 
         <!-- Array of temperature sensors for this equipment -->
-        <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
+        <NavigationProperty Name="Temperatures" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Temperature" />
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <!-- Array of humidity sensors for this equipment -->
-        <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
+        <!-- Humidity sensor for this equipment -->
+        <NavigationProperty Name="Humidity" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
-          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Humidity" />
+          <Annotation Term="OData.Description" String="Contains the humidity sensor."/>
         </NavigationProperty>
 
         <!-- Alarm collection for this equipment -->
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.Description" String="Contains the naivigation pointer to the equipment Alarm collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -157,6 +171,7 @@
         <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
+          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.AlarmState/Triggered" />
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -256,178 +271,38 @@
 
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
 
-        <NavigationProperty Name="AcInput" Type="Collection(RackPDU.v0_2_0.AcInput)">
+        <NavigationProperty Name="Mains" Type="Collection(Circuit.v0_8_0.Circuit)">
           <Annotation Term="OData.Description" String="This is the definition for AcInput."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AcInput for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <NavigationProperty Name="Outlets" Type="Collection(RackPDU.v0_2_0.Outlets)">
+        <NavigationProperty Name="Branches" Type="Collection(Circuit.v0_8_0.Circuit)">
+          <Annotation Term="OData.Description" String="This is the definition for Branch Circuits."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for Branch Circuits for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="Outlets" Type="Collection(Circuit.v0_8_0.Circuit)">
           <Annotation Term="OData.Description" String="This is the definition for Outlets."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for Outlets for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
-        <Property Name="Actions" Type="RackPDU.v0_2_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="RackPDU.v0_8_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-
-      </EntityType>
-
-      <EntityType Name="AcInput" BaseType="Resource.v1_0_0.ReferenceableMember">
-
-        <Property Name="RealPower" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The RealPower for this AcInput."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the RealPower information of this AcInput."/>
-        </Property>
-
-        <Property Name="RmsUnderOverVoltage" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The RmsUnderOverVoltage for this AcInput."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the RmsUnderOverVoltage information of this AcInput."/>
-        </Property>
-
-        <!-- Array of AC Voltage sensors for this equipment -->
-        <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the array of 1 or more AC voltage sensors."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-
-        <!-- Array of amperage sensors for this equipment -->
-        <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-
-        <!-- Array of frequency sensors for this equipment -->
-        <NavigationProperty Name="Frequency" Type="Collection(Sensor.Sensor)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the array of 1 or more frequency sensors."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-
-        <Property Name="Actions" Type="RackPDU.v0_2_0.AcInputActions" Nullable="false">
-          <Annotation Term="OData.Description" String="The available actions for this resource."/>
-          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
-        </Property>
-
-      </EntityType>
-
-      <EntityType Name="Outlets" BaseType="Resource.v1_0_0.ReferenceableMember">
-
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletStatusOutletName for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the OutletStatusOutletName information as provided by the manufacturer of Outlet."/>
-        </Property>
-
-        <Property Name="Phase" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletStatusOutletPhase for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusOutletPhase information of Outlet."/>
-        </Property>
-
-        <Property Name="State" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletStatusOutletState for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusOutletState information of Outlet."/>
-        </Property>
-
-        <Property Name="StatusBank" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletStatusOutletBank for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusOutletBank information of Outlet."/>
-        </Property>
-
-        <Property Name="Load" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletStatusLoad for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletStatusLoad information of Outlet."/>
-        </Property>
-
-        <Property Name="Number" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The StatusOutletNumber for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the StatusOutletNumber information of Outlet."/>
-        </Property>
-
-        <Property Name="Command" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletControlOutletCommand for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletControlOutletCommand information of Outlet."/>
-        </Property>
-
-        <Property Name="ControlBank" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletControlOutletBank for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletControlOutletBank information of Outlet."/>
-        </Property>
-
-        <Property Name="PowerOnTime" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletConfigPowerOnTime for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletConfigPowerOnTime information of Outlet."/>
-        </Property>
-
-        <Property Name="PowerOffTime" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletConfigPowerOffTime for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletConfigPowerOffTime information of Outlet."/>
-        </Property>
-
-        <Property Name="RebootDuration" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The OutletConfigRebootDuration for Outlet."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OutletConfigRebootDuration information of Outlet."/>
-        </Property>
-
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-
-        <Property Name="Actions" Type="RackPDU.v0_2_0.OutletsActions" Nullable="false">
-          <Annotation Term="OData.Description" String="The available actions for this resource."/>
-          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
-        </Property>
-
       </EntityType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="RackPDU.v0_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="RackPDU.v0_8_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
-      </ComplexType>
-
-      <ComplexType Name="AcInputActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The available actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="RackPDU.v0_2_0.AcInputOemActions" Nullable="false"/>
-      </ComplexType>
-
-      <ComplexType Name="AcInputOemActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
-      </ComplexType>
-
-      <ComplexType Name="OutletsActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The available actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="RackPDU.v0_2_0.OutletsOemActions" Nullable="false"/>
-      </ComplexType>
-
-      <ComplexType Name="OutletsOemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>

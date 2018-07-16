@@ -11,21 +11,11 @@
 	"PartNumber": "AA-23",
 	"UUID": "32354641-4135-4332-4A35-313735303734",
 	"AssetTag": "PDX-92381",
-
-	"NameplateRatings": {
-        "FormFactor": "0U",
-        "PlugType": "NEMA L21-30P",
-        "PhaseWiringType": "3Phase-5Wire",
-        "AmperageMax": 30,
-        "AmperageDerated": 24,
-        "VoltageMax": 240,
-        "VoltageMin": 100,
-        "FrequencyNominal": 60,
-        "TemperatureMinCelsius": 5,
-        "TemperatureMaxCelsius": 60
-    },
-	 
-	"PhysicalLocation": {
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Location": {
 		"Longitude": 45.52,
 		"Latitude": 122.67,
 		"PostalAddress": {
@@ -53,13 +43,6 @@
 		"BranchCircuits": 4,
 		"MonitoredBranchCircuits": 4
 	},
-
-	"LineToLineVoltage": 1000,
-	"MaxPhaseLoad": 50,
-	"NearOverloadThreshold": 50,
-	"OverloadThreshold": 70,
-	"Load": 10,
-	"LoadState": 1,
 
 	"Temperatures": [{
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CabTemp",
@@ -92,6 +75,11 @@
 		"PowerFactor": 0.93,
 		"LoadPercent": 62
 	},
+	"EnergyReading": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PDUEnergy",
+		"Reading": 56438,
+		"ReadingUnits": "W"
+	},
 	
 	"Mains": {
 		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Mains"
@@ -113,6 +101,6 @@
 	},
 
 	"@odata.context": "/redfish/v1/$metadata#RackPDU.RackPDU",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1",
 	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
