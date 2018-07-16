@@ -8,7 +8,7 @@
 		"State": "Enabled",
 		"Health": "OK"
 	},
-	"Reading": 427.3
+	"Reading": 427.3,
 	"ReadingUnits": "W",
 	"ReadingRangeMin": 0,
 	"ReadingRangeMax": 1200,
