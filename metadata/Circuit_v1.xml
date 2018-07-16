@@ -132,10 +132,15 @@
           <Annotation Term="OData.Description" String="The number of seconds to delay power off after a PowerControl request. Zero seconds indicates no delay to power off."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
-        <Property Name="Powered" Type="Edm.Boolean">
+        <Property Name="PowerState" Type="Resource.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The power state of the circuit or outlet."/>
+          <Annotation Term="OData.Description" String="The power state of the circuit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the circuit."/>
+        </Property>
+        <Property Name="PowerEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates if the circuit can be powered."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power enable state of the circuit.  True shall indicate that the circuit may be powered on, and false shall indicate that the circuit cannot be powered."/>
         </Property>
         <Property Name="BreakerTripped" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -197,6 +202,23 @@
         </Property>
       </EntityType>
 
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        <NavigationProperty Name="Outlets" Type="Collection(Circuit.Circuit)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the outlets contained by this circuit."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this circuit is associated with and shall reference a resource of type Circuit."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+		</NavigationProperty>
+        <NavigationProperty Name="BranchCurcuit" Type="Circuit.Circuit">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the branch circuit related to this circuit."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the branch circuit resource that this circuit is associated with and shall reference a resource of type Circuit."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+		</NavigationProperty>
+	  </ComplexType>
+		
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
