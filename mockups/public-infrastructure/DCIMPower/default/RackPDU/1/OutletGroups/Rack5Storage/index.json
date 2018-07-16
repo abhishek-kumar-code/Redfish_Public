@@ -8,11 +8,10 @@
 	},
 
 	"CreatedBy": "Bob",
-	"IndicatorLED": "Lit",
 	"PowerOnDelaySeconds": 4,
 	"PowerOffDelaySeconds": 0,
-
 	"PowerState": "On",
+	"PowerEnabled": true,
 
 	"Outlets": [{
 			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1"
