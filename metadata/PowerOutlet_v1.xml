@@ -17,25 +17,11 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
-    <edmx:Include Namespace="PhysicalContext"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
-    <edmx:Include Namespace="Redundancy"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Assembly_v1.xml">
-    <edmx:Include Namespace="Assembly"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -63,17 +49,32 @@
           </Record>
         </Annotation>
       </EntityType>
-
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerOutlet.v0_8_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="PowerOutlet" BaseType="PowerOutlet.PowerOutlet">
-
+        <Property Name="Actions" Type="PowerOutlet.v0_8_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
       </EntityType>
 
-		<EnumType Name="PlugType">
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="PowerOutlet.v0_8_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <EnumType Name="PlugType">
         <Member Name="A">
           <Annotation Term="OData.Description" String="NEMA 1-15, U.S. 2-pin."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -81,7 +82,7 @@
         <Member Name="B">
           <Annotation Term="OData.Description" String="NEMA 5-15, U.S. 3-pin."/>
           <Annotation Term="OData.LongDescription" String="."/>
-        </Member>		  
+        </Member>
         <Member Name="C">
           <Annotation Term="OData.Description" String="CEE 7/16 Europlug."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -97,7 +98,7 @@
         <Member Name="F">
           <Annotation Term="OData.Description" String="CEE 7/3, 16A Schuko."/>
           <Annotation Term="OData.LongDescription" String="."/>
-        </Member>		  
+        </Member>
         <Member Name="G">
           <Annotation Term="OData.Description" String="BS1363, UK."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -134,12 +135,9 @@
           <Annotation Term="OData.Description" String="TIS 166-2549, Thailand."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-		</EnumType>
-		
-		
-		
-		
-		<EnumType Name="PhaseWiringType">
+      </EnumType>
+
+      <EnumType Name="PhaseWiringType">
         <Member Name="Single">
           <Annotation Term="OData.Description" String="1-Phase, 3-Wire."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -151,7 +149,7 @@
         <Member Name="TwoPhase4Wire">
           <Annotation Term="OData.Description" String="2-Phase / 4-Wire (Line1, Line2, Neutral, Protective Earth)."/>
           <Annotation Term="OData.LongDescription" String="."/>
-        </Member>		  
+        </Member>
         <Member Name="ThreePhase4Wire">
           <Annotation Term="OData.Description" String="3-Phase / 4-Wire (Line1, Line2, Line3, Protective Earth)."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -160,7 +158,7 @@
           <Annotation Term="OData.Description" String="3-Phase / 5-Wire (Line1, Line2, Line3, Neutral, Protective Earth)."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Member>
-      </EnumType>		
+      </EnumType>
 
       <EnumType Name="OutputVoltageType">
         <Member Name="DCNeg48V">
