@@ -1,36 +1,38 @@
 {
 	"@odata.type": "#Sensor.v0_8_0.Sensor",
-	"Id": "CurrentA1",
-	"Name": "Current Outlet A1",
-	"ReadingType": "Current",
-	"ElectricalSourceType": "Line1",
+	"Id": "CabTemp",
+	"Name": "Rack PDU Temperature",
+	"ReadingType": "Temperature",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK"
 	},
-	"Reading": 8.92,
-	"ReadingUnits": "A",
+	"Reading": 31,
+	"ReadingUnits": "C",
 	"ReadingRangeMin": 0,
-	"ReadingRangeMax": 40,
-	"Accuracy": 0.05,
-	"Precision": 2,
-	"SensingInterval": 0.1,
+	"ReadingRangeMax": 70,
+	"Accuracy": 0.25,
+	"Precision": 1,
+	"SensingInterval": 3,
 	"PhysicalContext": "Chassis",
 
 	"Thresholds": {
 		"UpperCritical": {
-			"Reading": 25,
+			"Reading": 40,
 			"Activation": "Increasing",
 			"DwellTime": "00:01:00"
 		},
 		"UpperWarning": {
-			"Reading": 20,
-			"Activation": "Increasing",
+			"Reading": 35,
 			"DwellTime": "00:10:00"
+		},
+		"LowerWarning": {
+			"Reading": 10,
+			"DwellTime": "00:05:00"
 		}
 	},
 	"Oem": {},
 	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CabTemp",
 	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

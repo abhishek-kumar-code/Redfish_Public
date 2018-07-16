@@ -4,7 +4,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/OutletGroups/A"
+            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/OutletGroups/Rack5Storage"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#CircuitCollection.CircuitCollection",
