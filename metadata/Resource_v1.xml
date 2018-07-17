@@ -920,6 +920,14 @@
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LOC field as defined in RFC5139.  It is used to provide additional information."/>
         </Property>
       </ComplexType>
+
+      <ComplexType Name="Placement" BaseType="Resource.v1_3_0.Placement">
+        <Property Name="AdditionalInfo" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Area designation or other additional info."/>
+          <Annotation Term="OData.LongDescription" String="The value shall contain additional information, such as Tile, Column (Post), Wall, or other designation used to describe a location that cannot be conveyed with other properties defined for the Placement object."/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
