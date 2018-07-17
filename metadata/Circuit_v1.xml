@@ -142,11 +142,6 @@
           <Annotation Term="OData.Description" String="Indicates if the circuit can be powered."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power enable state of the circuit.  True shall indicate that the circuit may be powered on, and false shall indicate that the circuit cannot be powered."/>
         </Property>
-        <Property Name="BreakerTripped" Type="Edm.Boolean">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The state of the breaker for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the breaker state of the circuit."/>
-        </Property>
 
         <Property Name="Voltage" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

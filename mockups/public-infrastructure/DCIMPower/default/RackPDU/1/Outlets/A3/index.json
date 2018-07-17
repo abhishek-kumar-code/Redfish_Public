@@ -24,7 +24,6 @@
 	"BreakerState": "Normal",
 
 	"PowerEnabled": true,
-	"BreakerTripped": false,
 
 	"Voltage": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
