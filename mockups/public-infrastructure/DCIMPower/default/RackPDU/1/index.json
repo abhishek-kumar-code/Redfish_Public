@@ -103,7 +103,7 @@
 		},
 		"Oem": {},
 		"@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
-		"@odata.id": "redfish/v1/DCIMPower/default/RackPDU/1/Alarms/Overload"
+		"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Alarms/Overload"
 	}],
 
 	"Mains": {

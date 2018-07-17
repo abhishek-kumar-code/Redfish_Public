@@ -1,7 +1,7 @@
 {
 	"@odata.type": "#Circuit.v0_8_0.Circuit",
-	"Id": "A1",
-	"Name": "Outlet A1, Branch Circuit A",
+	"Id": "A3",
+	"Name": "Outlet A3, Branch Circuit A",
 	"Status": {
 		"Health": "OK",
 		"State": "Enabled"
@@ -12,12 +12,12 @@
 	"VoltageType": "AC",
 	"IECOutletType": "B",
 	"NEMAOutletType": 5,
-	"LockingOutlet": false,
+	"LockingOutlet": true,
 	"RatedCurrentAmps": 20,
 	"NominalVoltage": 120,
 
-	"IndicatorLED": "Lit",
-	"PowerOnDelaySeconds": 4,
+	"IndicatorLED": "Off",
+	"PowerOnDelaySeconds": 10,
 	"PowerOffDelaySeconds": 0,
 
 	"PowerState": "On",
@@ -43,52 +43,52 @@
 	"Current": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
 		"Name": "Line1 to Neutral Current",
-		"Reading": 3.4,
-		"PeakReading": 6.8,
+		"Reading": 1.9,
+		"PeakReading": 3.8,
 		"ReadingUnits": "A"
 	},
 	"PolyPhaseCurrents": {
 		"Line1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
 			"Name": "Line1 to Neutral Current",
-			"Reading": 3.4,
-			"PeakReading": 6.8,
+			"Reading": 1.9,
+			"PeakReading": 3.8,
 			"ReadingUnits": "A"
 		}
 	},
 	"PowerReading": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
-		"Name": "Outlet A1 Power",		
-		"Reading": 412.36,
-		"PeakReading": 1037.1,
+		"Name": "Outlet A3 Power",		
+		"Reading": 345.97,
+		"PeakReading": 1455.4,
 		"ReadingUnits": "W"
 	},
 	"PolyPhasePowerReadings": {
 		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
-		    "Name": "Outlet A1 Power",
-			"Reading": 412.36,
-			"PeakReading": 1037.1,
+		    "Name": "Outlet A3 Power",
+			"Reading": 345.97,
+			"PeakReading": 1455.4,
 			"ReadingUnits": "W"
 		}
 	},
 	"Frequency": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
-		"Name": "Outlet A1 Frequency",
+		"Name": "Outlet A3 Frequency",
 		"Reading": 60.0,
 		"ReadingUnits": "Hz"
 	},
 	"Energy": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
-		"Name": "Outlet A1 Energy",
-		"Reading": 26880,
+		"Name": "Outlet A3 Energy",
+		"Reading": 78522,
 		"ReadingUnits": "W"
 	},
 	"EnergyReadings": {
 		"Line1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
-		    "Name": "Outlet A1 Energy",
-			"Reading": 26880,
+		    "Name": "Outlet A3 Energy",
+			"Reading": 78522,
 			"ReadingUnits": "W"
 		}
 	},
@@ -96,11 +96,11 @@
 	"Actions": {
 		"#Circuit.PowerControl": {
 			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/Circuit.PowerControl",
-			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1/PowerControlActionInfo"
+			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A3/PowerControlActionInfo"
 		},
 		"#Circuit.ResetBreaker": {
-			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1/Circuit.ResetBreaker",
-			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1/ResetBreakerActionInfo"
+			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A3/Circuit.ResetBreaker",
+			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A3/ResetBreakerActionInfo"
 		}
 	},
 
@@ -110,6 +110,6 @@
 		}
 	},
 	"@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A3",
 	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

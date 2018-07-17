@@ -99,7 +99,7 @@
 			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A2/PowerControlActionInfo"
 		},
 		"#Circuit.ResetBreaker": {
-			"target": "/redfish/v1/DCIMPower/default/RackPDU/0/Outlets/A2/Circuit.ResetBreaker",
+			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A2/Circuit.ResetBreaker",
 			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A2/ResetBreakerActionInfo"
 		}
 	},
