@@ -104,7 +104,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/1",
                     "Name": "AC Input - RMS Voltage (L-L) Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -310,7 +310,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/19",
             "Name": "Compressor Phase AB Voltage Sensor",
-            "ReadingType": "ACVoltage",
+            "ReadingType": "Voltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -321,7 +321,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/20",
             "Name": "Compressor Phase BC Voltage Sensor",
-            "ReadingType": "ACVoltage",
+            "ReadingType": "Voltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -332,7 +332,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/21",
             "Name": "Compressor Phase CA Voltage Sensor",
-            "ReadingType": "ACVoltage",
+            "ReadingType": "Voltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"

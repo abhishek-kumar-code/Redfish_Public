@@ -32,7 +32,7 @@
         {
             "@odata.id": "/redfish/v1/DCIMPower/default/PowerMeter/0/Sensors/0",
             "Name": "AC Input - RMS Voltage Sensor",
-            "ReadingType": "ACVoltage",
+            "ReadingType": "Voltage",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"

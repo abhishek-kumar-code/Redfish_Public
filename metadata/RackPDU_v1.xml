@@ -117,24 +117,21 @@
           <Annotation Term="OData.Description" String="The actual Physical Location of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of RackPDU."/>
         </Property>
-        <Property Name="CircuitSummary" Type="RackPDU.CircuitSummary">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="CircuitSummary" Type="RackPDU.v0_8_0.CircuitSummary">
           <Annotation Term="OData.Description" String="Contains summary information about the circuits of this PDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the circuit summary information for this RackPDU."/>
         </Property>
 
-        <Property Name="PowerReading" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <NavigationProperty Name="PowerReading" Type="Sensor.Sensor">
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the total power, measured in Watts, for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple power sensors exist for this circuit."/>
-        </Property>
-        <Property Name="EnergyReading" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </NavigationProperty>
+        <NavigationProperty Name="EnergyReading" Type="Sensor.Sensor">
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The energy sensor for this PDU."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the total energy, measured in Watt-hours (units of Watts), for this PDU, which represents the 'Total' ElectricalSourceType sensor when multiple energy sensors exist for this PDU."/>
-        </Property>
+        </NavigationProperty>
 
         <!-- Sensors collection for this equipment -->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
@@ -145,7 +142,6 @@
 
         <!-- Array of temperature sensors for this equipment -->
         <NavigationProperty Name="Temperatures" Type="Collection(Sensor.Sensor)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Temperature"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
           <Annotation Term="OData.AutoExpand"/>
@@ -153,7 +149,6 @@
 
         <!-- Array of Humidity sensors for this equipment -->
         <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Humidity"/>
           <Annotation Term="OData.Description" String="Contains the humidity sensors."/>
           <Annotation Term="OData.AutoExpand"/>
@@ -198,11 +193,10 @@
         </NavigationProperty>
 
         <Property Name="Actions" Type="RackPDU.v0_8_0.Actions" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-		</EntityType>
+      </EntityType>
 
       <ComplexType Name="CircuitSummary">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -245,7 +239,7 @@
           <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
       </ComplexType>
-	  
+
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>

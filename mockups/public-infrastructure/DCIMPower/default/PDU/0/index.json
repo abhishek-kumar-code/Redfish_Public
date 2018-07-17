@@ -59,7 +59,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/0",
                     "Name": "AC Input 1 - RMS Voltage Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -106,7 +106,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/3",
                     "Name": "AC Input 2 - RMS Voltage Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -155,7 +155,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/6",
                     "Name": "AC Output - RMS Voltage Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"

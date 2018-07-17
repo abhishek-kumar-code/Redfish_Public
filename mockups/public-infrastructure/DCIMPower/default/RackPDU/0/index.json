@@ -80,7 +80,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/0",
                     "Name": "AC Input - RMS Voltage Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -91,7 +91,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0/Sensors/1",
                     "Name": "AC Input - Single Phase Bank Voltage Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
