@@ -5,7 +5,7 @@
     "@odata.type": "#Memory.v1_6_0.Memory",
     "Name": "Intel Optane NVDIMM",
     "Id": "7",
-    "MemoryType": "Intel Optane",
+    "MemoryType": "Intel_Optane",
     "MemoryDeviceType": "DDR4",
     "BaseModuleType": "LRDIMM",
     "MemoryMedia": [
