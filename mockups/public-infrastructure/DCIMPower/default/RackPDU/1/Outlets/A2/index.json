@@ -8,7 +8,7 @@
 	},
 
 	"CircuitType": "Outlet",
-	"PhaseWiringType": "Line1ToNeutral",
+	"PhaseWiringType": "Single",
 	"VoltageType": "AC",
 	"IECOutletType": "B",
 	"NEMAOutletType": 5,

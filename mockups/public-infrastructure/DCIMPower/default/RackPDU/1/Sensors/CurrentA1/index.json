@@ -23,7 +23,7 @@
 			"Activation": "Increasing",
 			"DwellTime": "00:01:00"
 		},
-		"UpperWarning": {
+		"UpperCaution": {
 			"Reading": 20,
 			"Activation": "Increasing",
 			"DwellTime": "00:10:00"

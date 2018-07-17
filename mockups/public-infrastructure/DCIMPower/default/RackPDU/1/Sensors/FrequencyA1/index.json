@@ -22,11 +22,11 @@
 			"Activation": "Increasing",
 			"DwellTime": "00:01:00"
 		},
-		"UpperWarning": {
+		"UpperCaution": {
 			"Reading": 60.2,
 			"DwellTime": "00:10:00"
 		},
-		"LowerWarning": {
+		"LowerCaution": {
 			"Reading": 59.5,
 			"DwellTime": "00:05:00"
 		},

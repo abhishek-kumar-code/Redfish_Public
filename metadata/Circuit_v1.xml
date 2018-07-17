@@ -100,7 +100,7 @@
           <Annotation Term="OData.Description" String="The IEC outlet type."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Property>
-        <Property Name="NEMAOutletType" Type="Edm.Integer">
+        <Property Name="NEMAOutletType" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The NEMA outlet type."/>
           <Annotation Term="OData.LongDescription" String="."/>
@@ -210,15 +210,15 @@
           <Annotation Term="OData.Description" String="An array of references to the outlets contained by this circuit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this circuit is associated with and shall reference a resource of type Circuit."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-		</NavigationProperty>
+        </NavigationProperty>
         <NavigationProperty Name="BranchCurcuit" Type="Circuit.Circuit">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the branch circuit related to this circuit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the branch circuit resource that this circuit is associated with and shall reference a resource of type Circuit."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-		</NavigationProperty>
-	  </ComplexType>
-		
+        </NavigationProperty>
+      </ComplexType>
+
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
