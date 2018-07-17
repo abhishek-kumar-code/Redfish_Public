@@ -604,18 +604,18 @@ The $filter parameter indicates to the implementation that it should include a s
 
 The following table represents the Redfish allowable operators that shall be supported for $filter if $filter is implemented:
 
-| value     | Description                                     | Example                                                                          |
-| ---       | ---                                             | ---                                                                              |
-| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                      |
-| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                         |
-| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                      |
-| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                      |
-| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                         |
-| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                         |
-| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64         |
-| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                       |
-| not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
-| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
+| value     | Description                                     | Example                                                                           |
+| ---       | ---                                             | ---                                                                               |
+| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                       |
+| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                          |
+| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                       |
+| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                       |
+| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                          |
+| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                          |
+| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64          |
+| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                        |
+| not       | Logical negation operator                       | not (ProcessorSummary/Count eq 2)                                                 |
+| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK') or SystemType eq 'Physical' |
 
 Services shall use the following operator precedence when evaluating expressions: grouping, logical negation, relational comparison (gt, ge, lt, le which all have equal precedence), equality comparison (eq, ne which both have equal precedence), logical and, then logical or.
 
