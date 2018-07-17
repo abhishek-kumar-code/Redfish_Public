@@ -13,7 +13,7 @@
 	"ReadingRangeMax": 100,
 	"Accuracy": 0.5,
 	"Precision": 1,
-	"SensingInterval": 15,
+	"SensingFrequency": 15,
 	"PhysicalContext": "Chassis",
 
 	"Thresholds": {
