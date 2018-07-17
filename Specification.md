@@ -2194,6 +2194,10 @@ The Name property is used to convey a human-readable moniker for a resource.  Th
 
 The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
 
+#### MemberId<a id="memberid-property"></a>
+
+The MemberId property of an object within a resource uniquely identifies the object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.
+
 #### Status
 
 The Status property represents the status of a resource.
