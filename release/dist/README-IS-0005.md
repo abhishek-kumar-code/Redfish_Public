@@ -30,7 +30,7 @@ The Data Center Equipment schemas have undergone significant changes since the l
 
 The schemas defined to support these concepts are included in this release as "v0_8_0" schema versions.  In addition, the RackPDU schemas have been updated and expanded to utilize these concepts.  The Redfish Forum encourages feedback on both the architectural elements shown in this release, and on the content of the RackPDU schemas (RackPDU, Circuit and OutletGroup) that implement them.
 
-NOTE: The data mockups included in this release use ficticious data values and are neither internally consistent nor mathmatically accurate.  The data values (such as Voltage, Current and Power readings) are random and will not match values derived by forumulas.
+NOTE: The data mockups included in this release use ficticious data values and are neither internally consistent nor mathmatically accurate.  The data values (such as Voltage, Current and Power readings) are random and will not match values derived by forumulas.  Numerous references are made within these mockups to Sensor resources which are not yet populated.
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
