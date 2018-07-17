@@ -343,8 +343,11 @@
           <Annotation Term="OData.Description" String="The memory module is composed of a combination of non-volatile and volatile memory."/>
           <Annotation Term="OData.LongDescription" String="This memory type shall represent NVDIMM_P as defined by JEDEC."/>
         </Member>
+        <Member Name="Intel_Optane">
+          <Annotation Term="OData.Description" String="The memory module is Intel Optane DC Persistent Memory and composed of a combination of non-volatile and volatile memory."/>
+          <Annotation Term="OData.LongDescription" String="This memory type shall represent Intel Optane DC Persistent Memory."/>
+        </Member>
       </EnumType>
-
       <EnumType Name="MemoryDeviceType">
         <Member Name="DDR">
           <Annotation Term="OData.Description" String="DDR."/>
