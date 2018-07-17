@@ -102,7 +102,7 @@
       <EntityType Name="Storage" BaseType="Storage.Storage">
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
-        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.StorageController)" ContainsTarget="true">
+        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.v1_0_0.StorageController)" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The set of storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the storage controllers that this resource represents."/>
