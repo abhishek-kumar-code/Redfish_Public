@@ -6,9 +6,8 @@
 	"Id": "1",
 	"Name": "Scheduled Nightly Reboot of PROBLEM_CHILD",
 	"JobStatus": "OK",	
-	"JobState": "New",
-	"StartTime": "2018-03-07T14:44+06:00",
-	"EndTime": "2018-03-07T14:45+06:00",
+	"JobState": "Running",
+	"StartTime": "2018-03-07T00:02+06:00",
 	"PercentComplete": 85,
 	"CreatedBy": "Dr. Smith",
 	"Schedule": {
@@ -19,11 +18,10 @@
 	},
 	"Payload": {
 		"TargetUri": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
-		"HTTPOperation": "POST",
-		"HTTPHeaders": [],
+		"HttpOperation": "POST",
+		"HttpHeaders": [],
 		"UserName": "angrydad",
 		"Password": null,
-		"JSONBody": "{}",
-		"ResponseMonitorUri": "/jobmonitor/834RJ4436"
+		"JsonBody": null
 	}
 }
