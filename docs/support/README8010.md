@@ -33,9 +33,10 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Memory                | 1.6.0   | Added "OverwriteUnit" Action. |
 | NetworkAdapter        | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
 | NetworkDeviceFunction | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object. |
+| Protocol              | N/A     | Added "I2C" protocol type. |
 | Storage               | 1.5.0   | Added "CacheSummary" object to "StorageController". |
 | UpdateService         | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
-| Resource              | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo". |
+| Resource              | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement". |
 | AttributeRegistry     | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
 | Bios                  | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
 | ComputerSystem        | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB".  Corrected descriptions for the "Boot" properties since the scope of "Boot" has grown over time. |
@@ -49,11 +50,12 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | NetworkPort           | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps", "MinBWAllocPercent", and "MaxBWAllocPercent". |
 | PrivilegeRegistry     | 1.x.x   | Errata release.  Fixed permissions term on "PrivilegesUsed", "OEMPrivilegesUsed", "Entity", "Targets", and "Privilege". |
 | Processor             | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
+| Protocol              | N/A     | Errata release.  Removed "Vendor Proprietary" wording from PCIe description. |
 | Resource              | 1.x.x   | Errata release.  Added missing Required term on "Name" in ResourceCollection. |
 | Resource              | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
 | SessionService        | 1.x.x   | Errata release.  Clarified the Long Description of "ServiceEnabled". |
 | UpdateService         | 1.x.x   | Errata release.  Clarified the Long Descriptions for "Targets", "HttpPushUriTargets", and "HttpPushUriTargetsBusy". |
-| (all files)           | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema. |
+| (all files)           | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema.  Added Description and LongDescription terms to all schema elements where missing. |
 
 ## Release 2018.1 (April 2018)
 
