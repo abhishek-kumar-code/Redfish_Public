@@ -76,6 +76,7 @@
         </Property>
         <Property Name="Location" Type="Collection(JsonSchemaFile.v1_0_0.Location)" Nullable="false">
           <Annotation Term="OData.Description" String="Location information for this schema file."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the location information for this schema file."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
       </EntityType>
@@ -153,7 +154,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="JsonSchemaFile.v1_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="JsonSchemaFile.v1_1_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

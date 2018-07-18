@@ -147,7 +147,10 @@
           <Annotation Term="OData.Description" String="This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a base64 encoded version of the kerberos keytab for this account service.  The value shall be null for GET requests."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="AuthenticationTypes">
@@ -172,7 +175,10 @@
           <Annotation Term="OData.Description" String="This property contains the settings needed to search an external LDAP service."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the settings needed to search an external LDAP service."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="LDAPSearchSettings">
@@ -218,7 +224,10 @@
           <Annotation Term="OData.Description" String="The name of the local role in which to map the remote user or group."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the value of the RoleId property within a Role resource on this Redfish service in which to map the remote user or group."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -230,7 +239,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

@@ -70,7 +70,10 @@
       <EntityType Name="NetworkPort" BaseType="NetworkPort.NetworkPort">
         <Annotation Term="OData.Description" String="A Network Port represents a discrete physical port capable of connecting to a network."/>
         <Annotation Term="OData.LongDescription" String="A Network Port represents a discrete physical port capable of connecting to a network."/>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
         <Property Name="PhysicalPortNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The physical port number label for this port."/>
@@ -161,7 +164,8 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe a minimum bandwidth percentage allocation for a network device function associated with a port."/>
         <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the NetworkDeviceFunction associated with this bandwidth setting of this Network Port."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference of type NetworkDeviceFunction that represents the Network Device Function associated with this bandwidth setting of this Network Port."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="MinBWAllocPercent" Type="Edm.Int64">
@@ -177,7 +181,8 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe a maximum bandwidth percentage allocation for a network device function associated with a port."/>
         <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the NetworkDeviceFunction associated with this bandwidth setting of this Network Port."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference of type NetworkDeviceFunction that represents the Network Device Function associated with this bandwidth setting of this Network Port."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="MaxBWAllocPercent" Type="Edm.Int64">
@@ -260,7 +265,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="NetworkPort.v1_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="NetworkPort.v1_1_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

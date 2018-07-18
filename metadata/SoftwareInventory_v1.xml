@@ -64,7 +64,10 @@
       <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.SoftwareInventory">
         <Annotation Term="OData.Description" String="This schema defines an inventory of software components."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a single software component managed by this Redfish Service."/>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
         <Property Name="Version" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A string representing the version of this software."/>
@@ -76,7 +79,8 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this software can be updated by the update service. If false, this software is for reporting purpose only."/>
         </Property>
         <Property Name="Actions" Type="SoftwareInventory.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
       </EntityType>
 
@@ -84,7 +88,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="SoftwareInventory.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="SoftwareInventory.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
