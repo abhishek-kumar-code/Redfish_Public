@@ -1877,7 +1877,7 @@ EnumType elements contain `Member` elements that define the members of the enume
   </EnumType>
 ~~~
 
-Enumeration Types shall include [Description](#description) and [LongDescription](#long-description) annotations.
+Enumeration Types may include [Description](#description) and [LongDescription](#long-description) annotations.
 
 Enumeration Members shall include [Description](#description) annotations.
 

@@ -35,6 +35,7 @@
 
       <EntityType Name="EventDestination" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -69,7 +70,8 @@
         <Property Name="EventTypes" Type="Collection(Event.EventType)" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property shall contain the types of events that shall be sent to the desination."/>
+          <Annotation Term="OData.Description" String="This property contains the types of events that will be sent to the desination."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be an array that contains the types of events that shall be sent to the destination."/>
         </Property>
         <Property Name="Context" Type="Edm.String">
           <Annotation Term="Redfish.Required"/>
@@ -200,7 +202,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="EventDestination.v1_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="EventDestination.v1_2_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

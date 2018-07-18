@@ -30,9 +30,11 @@
 
       <EntityType Name="ZoneCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of Zone resource instances."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Resource Collection of Zone instances for a Redfish implementation."/>
         <NavigationProperty Name="Members" Type="Collection(Zone.Zone)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
           <Annotation Term="Redfish.Required"/>
         </NavigationProperty>
