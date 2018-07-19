@@ -245,7 +245,7 @@ The protocol operations are specified independently of the data model.  The prot
 
 #### Hypermedia API service endpoint
 
-Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through hyperlinks found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service.
+Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via URIs referenced from the root.  Any resource discovered through hyperlinks found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service.
 
 ### Service elements
 
@@ -317,6 +317,7 @@ A URI is used to identify a resource, including the base service and all Redfish
 
 * Each unique instance of a resource shall be identified by a URI.
 * A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in clause 5, Reference Resolution, of [RFC3986](#RFC3986).
+[MR Note for Discussion: Should we need the above bullet?]
 
 To begin operations, a client must know a URI for a resource.
 
@@ -450,7 +451,7 @@ A GET on the resource "/redfish" shall return the following body:
 
 ### Redfish-defined URIs and relative URI rules
 
-Redfish is a hypermedia API with a small set of defined URIs.  All other resources are accessible via opaque URIs referenced from the root service.  The following Redfish-defined URIs shall be supported by a Redfish Service:
+The following Redfish-defined URIs shall be supported by a Redfish Service:
 
 | URI                   | Description                                                                       |
 | ---------             | -----------                                                                       |
@@ -464,6 +465,8 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | URI         | Associated Redfish-Defined URI |
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
+
+All other Redfish URIs supported by the service shall match the URI patterns described by the [Resource URI pattern definitions section](#resource-uri-pattern-definitions), with the exception to supplemental resources referenced by the "@Redfish.Settings", "@Redfish.ActionInfo", and "@Redfish.CollectionCapabilities" payload annotations.  The URIs for these supplemental resources shall be treated as opaque by the client.
 
 All relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g., //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g., /redfish/v1/Systems).
 
@@ -720,7 +723,7 @@ The POST method is used to initiate operations on the object (such as Actions).
 * The POST operation may not be idempotent.
 * Services may allow the "@Redfish.OperationApplyTime" property to be included in the body of the request.  See the [Operation Apply Time](#operation-apply-time) section for further information.
 
-Actions are requested on a resource by sending the HTTP POST method to the URI of the action.  The "target" property within the [actions property](#actions-property) of a resource shall contain the URI of the action.  The URI of the action should be in the form of:
+Actions are requested on a resource by sending the HTTP POST method to the URI of the action.  The "target" property within the [actions property](#actions-property) of a resource shall contain the URI of the action.  The URI of the action shall be in the form of:
 
 ` *ResourceUri*/Actions/*QualifiedActionName*`
 
@@ -1800,6 +1803,33 @@ The EntityType contains the [property](#resource-properties) and [reference prop
 ~~~
 
 All resources shall include [Description](#description) and [LongDescription](#long-description) annotations.
+
+
+#### Resource URI pattern definitions
+
+The URI patterns allowed for a given Redfish Resource are expressed using the `Redfish.Uris` annotation within the `EntityType` element.
+
+~~~xml
+  <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+
+    <!-- Other definitions for the EntityType go here -->
+
+    <Annotation Term="Redfish.Uris">
+      <Collection>
+        <String>/redfish/v1/AccountService/Accounts/{ManagerAccountId}</String>
+      </Collection>
+    </Annotation>
+  </EntityType>
+~~~
+
+In the above example, the `Redfish.Uris` annotation describes a single URI pattern.  This definition means the client can expect to find the `ManagerAccount` resource at the URI `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`, if the resource is implemented by the service.
+
+Items between the the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the "Id" string property for the corresponding Redfish resource.
+
+All Redfish Resources and Redfish Resource Collections shall be annotated with `Redfish.Uris`.
+
+All Redfish Resources and Redfish Resource Collections implemented by a service shall match the URI pattern described by the `Redfish.Uris` annotation for their given `EntityType` definition.
+
 
 #### Resource properties
 

@@ -55,7 +55,7 @@
         </Annotation>
         <Annotation Term="Redfish.Uris">
           <Collection>
-            <String>/redfish/v1/AccountService/Accounts/{AccountId}</String>
+            <String>/redfish/v1/AccountService/Accounts/{ManagerAccountId}</String>
           </Collection>
         </Annotation>
       </EntityType>
