@@ -226,7 +226,7 @@
         <Member Name="obsolete"/>
       </EnumType>
 
-      <Term Name="choice" Type="Edm.String">
+      <Term Name="choice" Type="Collection(Edm.PrimitiveType)">
         <Annotation Term="OData.Description" String="The yang statement choice string."/>
       </Term>
 
