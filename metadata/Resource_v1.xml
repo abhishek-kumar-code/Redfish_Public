@@ -921,7 +921,6 @@
 
       <ComplexType Name="Location" BaseType="Resource.v1_6_0.Location">
         <Property Name="Contacts" Type="Collection(Resource.v1_7_0.ContactInfo">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Array of contact information."/>
           <Annotation Term="OData.LongDescription" String="The value shall contain contact information used to obtain more information from an individual or organization responsible for this resource."/>
         </Property>
