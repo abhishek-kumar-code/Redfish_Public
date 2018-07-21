@@ -242,6 +242,7 @@
         <Annotation Term="OData.Description" String="The clearing logic associated with this message.  The properties within indicate that what messages are cleared by this message as well as under what conditions."/>
 	    <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="ClearsIf" Type="MessageRegistry.v1_2_0.ClearingType" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
         </Property>
@@ -250,6 +251,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of Message Ids that are cleared by this message, provided the other conditions are met."/>
         </Property>
         <Property Name="ClearsAll" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property indicates that all prior conditions and messsages are cleared provided the ClearsIf condition is met."/>
           <Annotation Term="OData.LongDescription" String="This property shall  ndicate that all prior conditions and messsages are cleared provided the ClearsIf condition is met."/>
         </Property>
