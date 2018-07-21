@@ -943,8 +943,8 @@
       </ComplexType>
 
       <ComplexType Name="ContactInfo">
-          <Annotation Term="OData.Description" String="Contact information for this resource."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain contact information used to obtain more information from an individual or organization responsible for this resource."/>
+        <Annotation Term="OData.Description" String="Contact information for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This object shall contain contact information used to obtain more information from an individual or organization responsible for this resource."/>
         <Property Name="ContactName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Name of this contact."/>
