@@ -36,12 +36,12 @@
             "ContactName": "Jessica Rabbit",
             "PhoneNumber": "(800) 555-1212",
             "EmailAddress": "jessica@toontown.gov"
-		},
-		{
-		    "ContactName": "Contoso Server Repair",
-			"PhoneNumber": "(900) 555-1212",
-			"EmailAddress": "help@contoso.com"
-		}]
+        },
+        {
+            "ContactName": "Contoso Server Repair",
+            "PhoneNumber": "(900) 555-1212",
+            "EmailAddress": "help@contoso.com"
+        }]
     },
     "Status": {
         "State": "Enabled",
