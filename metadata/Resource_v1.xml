@@ -924,7 +924,7 @@
           <Annotation Term="OData.Description" String="Array of contact information."/>
           <Annotation Term="OData.LongDescription" String="The value shall contain contact information used to obtain more information from an individual or organization responsible for this resource."/>
         </Property>
-	  </ComplexType>
+      </ComplexType>
 
       <ComplexType Name="PostalAddress" BaseType="Resource.v1_3_0.PostalAddress">
         <Property Name="AdditionalInfo" Type="Edm.String">

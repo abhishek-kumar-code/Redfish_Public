@@ -32,10 +32,10 @@
             "RackOffsetUnits": "EIA_310",
             "RackOffset": 12
         },
-		"Contacts": [{
-		    "ContactName": "Jessica Rabbit",
-			"PhoneNumber": "(800) 555-1212",
-			"EmailAddress": "jessica@toontown.gov"
+        "Contacts": [{
+            "ContactName": "Jessica Rabbit",
+            "PhoneNumber": "(800) 555-1212",
+            "EmailAddress": "jessica@toontown.gov"
 		},
 		{
 		    "ContactName": "Contoso Server Repair",
