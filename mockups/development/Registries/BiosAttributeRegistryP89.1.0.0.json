@@ -277,6 +277,30 @@
         "Dependency": {
           "MapFrom": [
             {
+              "MapFromAttribute": "BootMode",
+              "MapFromCondition": "EQU",
+              "MapFromProperty": "CurrentValue",
+              "MapFromValue": "LegacyBios"
+            },
+            {
+              "MapFromAttribute": "EmbeddedSata",
+              "MapFromCondition": "EQU",
+              "MapFromProperty": "CurrentValue",
+              "MapFromValue": "Raid",
+              "MapTerms": "AND"
+            }
+          ],
+          "MapToAttribute": "EmbeddedSata",
+          "MapToProperty": "CurrentValue",
+          "MapToValue": "Ahci"
+        },
+        "DependencyFor": "EmbeddedSata",
+        "Type": "Map"
+      },
+      {
+        "Dependency": {
+          "MapFrom": [
+            {
               "MapFromAttribute": "PowerProfile",
               "MapFromCondition": "EQU",
               "MapFromProperty": "CurrentValue",

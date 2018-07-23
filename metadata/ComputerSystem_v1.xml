@@ -247,7 +247,7 @@
         </Property>
         <Property Name="Boot" Type="ComputerSystem.v1_0_0.Boot"  Nullable="false">
           <Annotation Term="OData.Description" String="Information about the boot settings for this system."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe boot information for the current resource. Changes to this object do not alter the BIOS persistent boot order configuration."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe boot information for the current resource."/>
         </Property>
         <Property Name="BiosVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -290,7 +290,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -326,7 +329,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="ComputerSystem.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="ComputerSystem.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -405,17 +411,17 @@
         <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions. UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride. UefiBootNext indicates to boot from the UEFI BootOptionReference found in BootNext."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions. UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride. UefiBootNext indicates to boot from the UEFI BootOptionReference found in BootNext. Changes to this property do not alter the BIOS persistent boot order configuration."/>
         </Property>
         <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.v1_0_0.BootSourceOverrideEnabled">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Describes the state of the Boot Source Override feature."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled. If the property value is set to Once, the value will be reset back to Disabled after the BootSourceOverrideTarget actions have been completed."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled. If the property value is set to Once, the value will be reset back to Disabled after the BootSourceOverrideTarget actions have been completed. Changes to this property do not alter the BIOS persistent boot order configuration."/>
         </Property>
         <Property Name="UefiTargetBootSourceOverride" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property is the UEFI Device Path of the device to boot from when BootSourceOverrideTarget is UefiTarget."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of the override boot target. The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for UEFI Boot Source Override as this setting is defined in UEFI as a one time boot only."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of the override boot target. The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for UEFI Boot Source Override as this setting is defined in UEFI as a one time boot only. Changes to this property do not alter the BIOS persistent boot order configuration."/>
         </Property>
       </ComplexType>
 
@@ -495,7 +501,10 @@
           <Annotation Term="OData.Description" String="The processor model for the primary or majority of processors in this system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in the Processor Information - Processor Family section of the SMBIOS Specification DSP0134 2.8 or later."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="MemorySummary">
@@ -509,7 +518,10 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="GiBy"/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
       </ComplexType>
 
     </Schema>
@@ -650,8 +662,14 @@
           <Annotation Term="OData.Description" String="This property indicates the interface type of the Trusted Module."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the interface type of the installed Trusted Module."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="InterfaceType">
@@ -747,7 +765,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type HostedStorageServices."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="HostingRole">
@@ -995,8 +1016,14 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the action to perform upon the  expiration of the Watchdog Timer."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="WatchdogWarningActions">
@@ -1043,7 +1070,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_5_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to add Units annotations on Memory Summary properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number. Additionally, it was created to update the longDescription of several Boot Override properties."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_0.ComputerSystem"/>
     </Schema>
 

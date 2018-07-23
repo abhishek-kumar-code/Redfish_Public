@@ -101,7 +101,7 @@ function constructTest(file) {
     'All EntityType defintions have Actions': entityTypesHaveActions,
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
-    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations,
+    'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
     'All namespaces have OwningEntity': schemaOwningEntityCheck
   }
 }
@@ -741,15 +741,25 @@ function checkVersionInPublishedList(version, publishedList, schemaName) {
   }
 }
 
-function complexTypesHaveAnnotations(err, csdl) {
+function definitionsHaveAnnotations(err, csdl) {
   if(err) {
     return;
   }
 
   let fileName = this.context.name.substring(this.context.name.lastIndexOf('/')+1);
-  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml') {
+  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml' || fileName === 'Volume_v1.xml') {
     //Ignore OEM extensions and metadata files
     return;
+  }
+
+  let entityTypes = CSDL.search(csdl, 'EntityType');
+  for(let i = 0; i < entityTypes.length; i++) {
+    let entityType = entityTypes[i];
+    if(entityType.Abstract === true) {
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType');
   }
 
   let complexTypes = CSDL.search(csdl, 'ComplexType');
@@ -760,6 +770,42 @@ function complexTypesHaveAnnotations(err, csdl) {
     }
 
     typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
+  }
+
+  let properties = CSDL.search(csdl, 'Property');
+  for(let i = 0; i < properties.length; i++) {
+    let property = properties[i];
+    if(property.Name === "Id" || property.Name === "Name" || property.Name === "Description") {
+      // Special case for properties that reference TypeDefinitions; annotations get carried over in these cases, and these ones already have descriptions
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(property, ['OData.Description', 'OData.LongDescription'], property.Name, 'Property');
+  }
+
+  let navProperties = CSDL.search(csdl, 'NavigationProperty');
+  for(let i = 0; i < navProperties.length; i++) {
+    let navProperty = navProperties[i];
+
+    typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty');
+  }
+
+  let actions = CSDL.search(csdl, 'Action');
+  for(let i = 0; i < actions.length; i++) {
+    let action = actions[i];
+
+    typeOrBaseTypesHaveAnnotations(action, ['OData.Description', 'OData.LongDescription'], action.Name, 'Action');
+  }
+
+  let parameters = CSDL.search(csdl, 'Parameter');
+  for(let i = 0; i < parameters.length; i++) {
+    let parameter = parameters[i];
+    if(parameter.Type.endsWith('.Actions')) {
+      // This is the binding parameter; no descriptions needed since it's not part of the client's payload
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(parameter, ['OData.Description', 'OData.LongDescription'], parameter.Name, 'Parameter');
   }
 }
 
@@ -1067,7 +1113,27 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
     //TODO do a check for each entry in the array...
   }
   else {
-    let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+    let typeLookup = CSDLProperty.Type
+    let namespaceIndex = typeLookup.indexOf('.');
+    if(namespaceIndex === -1) {
+      throw new Error('Cannot get namespace of "' + typeLookup + '"');
+    }
+    let namespace = typeLookup.substring(0, namespaceIndex);
+    if(namespace === '') {
+      throw new Error('Cannot get namespace of "' + typeLookup + '"');
+    }
+    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+      let typeNameIndex = typeLookup.lastIndexOf('.');
+      if(typeNameIndex === -1) {
+        throw new Error('Cannot get type of "' + typeLookup + '"');
+      }
+      let typeName = typeLookup.substring(typeNameIndex+1);
+      if(namespace === '') {
+        throw new Error('Cannot get type of "' + typeLookup + '"');
+      }
+      typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+    }
+    let propType = CSDL.findByType({_options: options}, typeLookup);
     if(typeof propType === 'string') {
       simpleTypeCheck(propType, propValue, CSDLProperty, propName);
     }

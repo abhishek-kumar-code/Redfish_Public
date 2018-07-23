@@ -1,0 +1,73 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_1.json",
+    "copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "properties": {
+        "@Redfish.ActionInfo": {
+            "description": "The term can be applied to an Action to specify a URI to an ActionInfo resource which describes the parameters supported by this instance of the Action.",
+            "type": "string",
+            "format": "uri",
+            "readonly": true
+        },
+        "@Redfish.Settings": {
+            "description": "Reference to the resource that represents the settings to be applied to this object.",
+            "$ref": "http://redfish.dmtf.org/schemas/v1/Settings.json#/definitions/Settings"
+        },
+        "@Redfish.SettingsApplyTime": {
+            "description": "Configuration settings for when the values in the settings object are applied to a given resource.",
+            "$ref": "http://redfish.dmtf.org/schemas/v1/Settings.json#/definitions/PreferredApplyTime"
+        },
+        "@Redfish.OperationApplyTime": {
+            "description": "The requested apply time from a client when performing a Create, Delete, or Action operation.",
+            "$ref": "http://redfish.dmtf.org/schemas/v1/Settings.json#/definitions/OperationApplyTime"
+        },
+        "@Redfish.OperationApplyTimeSupport": {
+            "description": "Indicates if a client is allowed to request for a specific apply time of a Create, Delete, or Action operation of a given resource via the OperationApplyTime term.",
+            "$ref": "http://redfish.dmtf.org/schemas/v1/Settings.json#/definitions/OperationApplyTimeSupport"
+        },
+        "@Redfish.MaintenanceWindow": {
+            "description": "Maintenance window configuration of a resource for when to apply settings or operations.",
+            "$ref": "http://redfish.dmtf.org/schemas/v1/Settings.json#/definitions/MaintenanceWindow"
+        },
+        "@Redfish.CollectionCapabilities": {
+            "description": "Reference to the resource that represents the POST capabilities of a given collection.",
+            "$ref": "http://redfish.dmtf.org/schemas/v1/CollectionCapabilities.json#/definitions/CollectionCapabilities"
+        }
+    },
+    "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@Redfish.AllowableValues$": {
+            "description": "The set of allowable values for a parameter or property.",
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "readonly": true
+        },
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@Redfish.RequiredOnCreate$": {
+            "description": "The term specifies that a property is required to be specified in the body of a POST request to create the resource.",
+            "type": "boolean",
+            "readonly": true
+        },
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@Redfish.SetOnlyOnCreate$": {
+            "description": "The term specifies that a property can only be set when a client is creating a new instance of a resource via POST.",
+            "type": "boolean",
+            "readonly": true
+        },
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@Redfish.OptionalOnCreate$": {
+            "description": "The term specifies that a property may be set when a client is creating a new instance of a resource via POST.",
+            "type": "boolean",
+            "readonly": true
+        },
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@Redfish.UpdatableAfterCreate$": {
+            "description": "The term specifies that a property may be set by a client using PATCH after creating a new instance of a resource via POST.",
+            "type": "boolean",
+            "readonly": true
+        },
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@Message.ExtendedInfo$": {
+            "description": "The ExtendedInfo annotation can be applied to any object or property to provide additional information about the item.",
+            "type": "array",
+            "items": {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/Message.json#/definitions/Message"
+            }
+        }
+    }
+}
