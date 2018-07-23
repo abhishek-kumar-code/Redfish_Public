@@ -70,7 +70,7 @@
         <Property Name="ReportUpdates" Type="MetricReportDefinition.v1_0_0.ReportUpdatesEnum" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="When logging metric reports, specifies how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition.  Namely, whether to overwrite, append, or create new report resource)."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall spefify how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false">
           <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
