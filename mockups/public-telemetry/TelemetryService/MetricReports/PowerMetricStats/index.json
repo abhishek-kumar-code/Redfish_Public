@@ -7,111 +7,111 @@
     },
     "MetricValues": [
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricValue": "44.0",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "MaximumConsumedWatts",
+            "MetricId": "MaximumConsumedWatts",
             "MetricValue": "50.5",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "MinimumConsumedWatts",
+            "MetricId": "MinimumConsumedWatts",
             "MetricValue": "30.2",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricValue": "44.0",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "MaximumConsumedWatts",
+            "MetricId": "MaximumConsumedWatts",
             "MetricValue": "50.5",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "MinimumConsumedWatts",
+            "MetricId": "MinimumConsumedWatts",
             "MetricValue": "30.2",
-            "TimeStamp": "20161108T122500-0500",
+            "Timesamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricValue": "44.0",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "MaximumConsumedWatts",
+            "MetricId": "MaximumConsumedWatts",
             "MetricValue": "50.5",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "MinimumConsumedWatts",
+            "MetricId": "MinimumConsumedWatts",
             "MetricValue": "30.2",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricValue": "44.0",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "MaximumConsumedWatts",
+            "MetricId": "MaximumConsumedWatts",
             "MetricValue": "50.5",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "MinimumConsumedWatts",
+            "MetricId": "MinimumConsumedWatts",
             "MetricValue": "30.2",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricValue": "44.0",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_3/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "MaximumConsumedWatts",
+            "MetricId": "MaximumConsumedWatts",
             "MetricValue": "50.5",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_3/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "MinimumConsumedWatts",
+            "MetricId": "MinimumConsumedWatts",
             "MetricValue": "30.2",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_3/Power#/PowerControl/0/PowerConsumedWatts"
         },
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricValue": "44.0",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_3/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "MaximumConsumedWatts",
+            "MetricId": "MaximumConsumedWatts",
             "MetricValue": "50.5",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_3/Power#/PowerControl/1/PowerConsumedWatts"
         },
         {
-            "MemberID": "MinimumConsumedWatts",
+            "MetricId": "MinimumConsumedWatts",
             "MetricValue": "30.2",
-            "TimeStamp": "20161108T122500-0500",
+            "Timestamp": "20161108T122500-0500",
             "MetricProperty": "/redfish/v1/Chassis/Tray_3/Power#/PowerControl/1/PowerConsumedWatts"
         }
     ],

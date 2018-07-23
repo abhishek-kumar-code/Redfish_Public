@@ -6,10 +6,6 @@
     "Schedule": {
         "RecurrenceInterval": "T00:00:00.010"
     },
-    "ReportActions": [
-        "Transmit",
-        "Log"
-    ],
     "ReportUpdates": "Overwrite",
     "MetricReport": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricReports/AvgPlatformPowerUsage"
@@ -27,7 +23,7 @@
     ],
     "Metrics": [
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricProperties": [
                 "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/{Wild}/PowerConsumedWatts"
             ],
