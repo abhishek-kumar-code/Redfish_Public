@@ -247,6 +247,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
         </Property>
         <Property Name="ClearsMessage" Type="Collection(Edm.String)" Nullable="true">
+	  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains the array of Message Ids that are cleared by this message, provided the other conditions are met."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of Message Ids that are cleared by this message, provided the other conditions are met.  The Message Ids shall not include the Registry name or version and shall just be the Message Id portion.  Message Ids shall not reference other Message Registries."/>
         </Property>
