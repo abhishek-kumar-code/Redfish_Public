@@ -90,7 +90,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contains a list of value to which a metric reading will be compared.  This property shall be present when the DiscreteTriggerCondition property has a value of 'Specified'."/>
         </Property>
         <Property Name="TriggerInterval" Type="Schedule.Schedule" Nullable="false">
-          <Annotation Term="OData.Description" String="Specified how often to trigger regardless of other trigger conditions."/>
+          <Annotation Term="OData.Description" String="Specifies how often to trigger regardless of other trigger conditions."/>
           <Annotation Term="OData.LongDescription" String="This property shall specify how often a trigger is performed regardless of the state of the properties being monitored."/>
         </Property>
 
