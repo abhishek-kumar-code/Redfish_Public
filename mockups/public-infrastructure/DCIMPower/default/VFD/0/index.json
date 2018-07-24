@@ -101,7 +101,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/1",
                     "Name": "AC Input - RMS Voltage (L-L) Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -137,7 +137,7 @@
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/3",
                     "@odata.type": "#Sensor.v0_8_0.Sensor",
                     "Name": "AC Output - RMS Voltage (L-L) Sensor",
-                    "ReadingType": "ACVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"
@@ -170,7 +170,7 @@
                 {
                     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0/Sensors/5",
                     "Name": "DC Bus - RMS Voltage Sensor",
-                    "ReadingType": "DCVoltage",
+                    "ReadingType": "Voltage",
                     "Status": {
                         "State": "Enabled",
                         "Health": "OK"

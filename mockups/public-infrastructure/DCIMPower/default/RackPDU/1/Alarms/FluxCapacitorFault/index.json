@@ -1,0 +1,19 @@
+{
+    "@odata.type": "#Alarm.v0_8_0.Alarm",
+    "Id": "FluxCapacitorFault",
+    "Name": "Flux Capacitor Fault",
+	"AlarmState": "Armed",
+	"Acknowledged": false,
+    "Severity": "Critical",
+    "TriggerTime": "2055-01-03T0:00:00Z",
+	"AutomaticReArm": true,
+    "Message": "Great Scott! The Flux Capacitor has failed!",
+    "MessageId": "DCIM.0.1.0.FluxCapacitor",
+    "MessageArgs": [
+        "OUTATIME"
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Alarm.Alarm",
+    "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Alarms/FluxCapacitorFault",
+    "@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

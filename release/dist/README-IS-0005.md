@@ -2,11 +2,11 @@
 DocTitle: Data Center Equipment Schema Readme
 DocNumber: 'IS-0005'
 DocClass: Informative
-DocVersion: '0.2a'
-modified: '2017-012-01'
+DocVersion: '0.8a'
+modified: '2018-07-20'
 status: Work in Progress
 released: false
-copyright: '2017'
+copyright: '2017-2018'
 ---
 # Foreword
 
@@ -14,12 +14,38 @@ IMPORTANT: These documents are not final. They do not necessarily reflect the vi
 
 The following files are part of the Redfish Data Center Equipment Schema development effort:
 
-* README-IS-0005.pdf - Redfish Data Center Equipment Schema Readme (for Work in Progress release)
-* Overview-IS-0005.pdf - Overview of Redfish DCIM modeling concepts (for Work in Progreess release)
+* README-IS-0005.pdf - Redfish Data Center Equipment Schema Readme (for Work in Progress v0.8 release)
+* Overview-IS-0005.pdf - Overview of Redfish DCIM modeling concepts (for Work in Progreess v0.2 release)
+* \WIP-v0.2.0a - Contents of previous Work in Progress release which have not been updated
+* \mockups - Rack PDU mockup using the v0.8.0a schema concepts
+
 
 # Redfish Work in Progress Schemas
 
-The following new schema files are released as Work In Progress documents. 
+The Data Center Equipment schemas have undergone significant changes since the last Work in Progress release.  The Redfish Forum has been concentrating on the structural elements of the data model, which represent the bulk of the changes shown in this release.  The primary concepts updated or introduced with this v0.8 Work in Progress release are:
+
+- Revamped Sensor model that can be applied across the Redfish data model and allows for better integration with the Telemetry service model.
+- The use of schema 'Excerpts' to provide sensor readings and identification properties within the resources where they are needed.
+- A concept of an 'Alarm' collection used to represent alert conditions which have no supporting properties in the data model.
+
+The schemas defined to support these concepts are included in this release as "v0_8_0" schema versions.  In addition, the RackPDU schemas have been updated and expanded to utilize these concepts.  The Redfish Forum encourages feedback on both the architectural elements shown in this release, and on the content of the RackPDU schemas (RackPDU, Circuit and OutletGroup) that implement them.
+
+NOTE: The data mockups included in this release use ficticious data values and are neither internally consistent nor mathmatically accurate.  The data values (such as Voltage, Current and Power readings) are random and will not match values derived by forumulas.  Numerous references are made within these mockups to Sensor resources which are not yet populated.
+
+| Schema File | Version | Date      | Description     |
+| ---         | ---     | ---       | ---             |
+| Alarm_v1 | 0.8.0a | 2018-07-20 | Work in Progress release.  |
+| AlarmCollection_v1 |  0.8.0a | 2018-07-20 | Work in Progress release.  |
+| Circuit_v1 | 0.8.0a | 2018-07-20 | Work in Progress release.  |
+| CircuitCollection_v1 |  0.8.0a | 2018-07-20 | Work in Progress release.  |
+| OutletGroup_v1 | 0.8.0a | 2018-07-20 | Work in Progress release.  |
+| OutletGroupCollection_v1 |  0.8.0a | 2018-07-20 | Work in Progress release.  |
+| RackPDU_v1 | 0.8.0a | 2018-07-20 | Work in Progress release.  |
+| RackPDUCollection_v1 |  0.8.0a | 2018-07-20 | Work in Progress release.  |
+| Sensor_v1 | 0.8.0a | 2018-07-20 | Work in Progress release.  |
+| SensorCollection_v1 |  0.8.0a | 2018-07-20 | Work in Progress release.  |
+
+The following schema files have not been updated since the v0.2 Work In Progress release (pending feedback on the significant changes to the Sensor model), and they are included in a separate folder for reference.  These schemas are expected to be updated to be consistent in content and architectural style to that of the v0.8 RackPDU as shown in this release.
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
