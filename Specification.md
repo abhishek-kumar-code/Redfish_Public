@@ -594,7 +594,7 @@ The $select parameter indicates to the implementation that it should return a su
 An example of the use of select might be:
 * GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
 
-When performing $select, Services shall return all of the requested properties of the referenced resource.
+When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed.  The ["@odata.context"](#context-property) property shall be in the response payload and should be in the recommended format specified by the [Context property section](#context-property).  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
 
 Any other supported syntax for $select is outside the scope of this specification.
 
@@ -604,18 +604,18 @@ The $filter parameter indicates to the implementation that it should include a s
 
 The following table represents the Redfish allowable operators that shall be supported for $filter if $filter is implemented:
 
-| value     | Description                                     | Example                                                                          |
-| ---       | ---                                             | ---                                                                              |
-| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                      |
-| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                         |
-| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                      |
-| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                      |
-| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                         |
-| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                         |
-| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64         |
-| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                       |
-| not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
-| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
+| value     | Description                                     | Example                                                                           |
+| ---       | ---                                             | ---                                                                               |
+| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                       |
+| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                          |
+| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                       |
+| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                       |
+| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                          |
+| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                          |
+| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64          |
+| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                        |
+| not       | Logical negation operator                       | not (ProcessorSummary/Count eq 2)                                                 |
+| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK') or SystemType eq 'Physical' |
 
 Services shall use the following operator precedence when evaluating expressions: grouping, logical negation, relational comparison (gt, ge, lt, le which all have equal precedence), equality comparison (eq, ne which both have equal precedence), logical and, then logical or.
 
@@ -1877,7 +1877,7 @@ EnumType elements contain `Member` elements that define the members of the enume
   </EnumType>
 ~~~
 
-Enumeration Types shall include [Description](#description) and [LongDescription](#long-description) annotations.
+Enumeration Types may include [Description](#description) and [LongDescription](#long-description) annotations.
 
 Enumeration Members shall include [Description](#description) annotations.
 
@@ -2193,6 +2193,10 @@ The Name property is used to convey a human-readable moniker for a resource.  Th
 #### Description<a id="description-property"></a>
 
 The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
+
+#### MemberId<a id="memberid-property"></a>
+
+The MemberId property of an object within a resource uniquely identifies the object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.
 
 #### Status
 

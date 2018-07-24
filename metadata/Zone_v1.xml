@@ -47,7 +47,10 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Zone" BaseType="Zone.Zone">
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
         <Property Name="Links" Type="Zone.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
@@ -112,7 +115,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Zone.v1_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Zone.v1_1_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
