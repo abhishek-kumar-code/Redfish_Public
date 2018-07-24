@@ -1164,7 +1164,7 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 ##### Type property
 
-All resources in a response shall include a type property named "@odata.type". All embedded objects in a response should include a type property named "@odata.type." The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
+All resources in a response shall include a type property named "@odata.type".  If support of generic OData clients is desired, all embedded JSON objects in a response should include a type property named "@odata.type."  The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
 
   #*Namespace*.*TypeName*
 
