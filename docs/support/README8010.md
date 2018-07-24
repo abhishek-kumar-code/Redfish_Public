@@ -26,36 +26,42 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 ## Release 2018.2 (TBD)
 
-| Schema Name           | Version | Description |
-| ---                   | ---     | ---         |
-| Assembly              | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
-| Drive                 | 1.2.0   | Added "HotspareReplacementMode" property. |
-| Memory                | 1.6.0   | Added "OverwriteUnit" Action. |
-| NetworkAdapter        | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
-| NetworkDeviceFunction | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object. |
-| Protocol              | N/A     | Added "I2C" protocol type. |
-| Storage               | 1.5.0   | Added "CacheSummary" object to "StorageController". |
-| UpdateService         | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
-| Resource              | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement". |
-| AttributeRegistry     | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
-| Bios                  | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
-| ComputerSystem        | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB".  Corrected descriptions for the "Boot" properties since the scope of "Boot" has grown over time. |
-| Drive                 | 1.x.x   | Errata release.  Added missing Units annotation to "PredictedMediaLifeLeftPercent" and "PercentageComplete". |
-| EventService          | 1.x.x   | Errata release.  Added clarification to "OriginOfCondition" parameter for "SubmitTestEvent" to highlight that it's a string and not a reference object. |
-| LogEntry              | 1.x.x   | Errata release.  Fixed typo in the description for "EntryType".  Clarified Description and Long Description in several properties. |
-| Memory                | 1.x.x   | Errata release.  Added missing Units annotation to many properties in the schema.  Added references to NIST standards for what each type of erase action follows. |
-| MemoryChunks          | 1.x.x   | Errata release.  Added missing Units annotation to "MemoryChunkSizeMiB", "OffsetMiB", and "SizeMiB". |
-| MemoryMetrics         | 1.x.x   | Errata release.  Added missing Units annotation to "HealthData" and "PredictedMediaLifeLeftPercent". |
-| MessageRegistryFile   | 1.x.x   | Errata release.  Clarified "Registry" property to show that this is used for other types of registries. |
-| NetworkPort           | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps", "MinBWAllocPercent", and "MaxBWAllocPercent". |
-| PrivilegeRegistry     | 1.x.x   | Errata release.  Fixed permissions term on "PrivilegesUsed", "OEMPrivilegesUsed", "Entity", "Targets", and "Privilege". |
-| Processor             | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
-| Protocol              | N/A     | Errata release.  Removed "Vendor Proprietary" wording from PCIe description. |
-| Resource              | 1.x.x   | Errata release.  Added missing Required term on "Name" in ResourceCollection. |
-| Resource              | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
-| SessionService        | 1.x.x   | Errata release.  Clarified the Long Description of "ServiceEnabled". |
-| UpdateService         | 1.x.x   | Errata release.  Clarified the Long Descriptions for "Targets", "HttpPushUriTargets", and "HttpPushUriTargetsBusy". |
-| (all files)           | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema.  Added Description and LongDescription terms to all schema elements where missing. |
+| Schema Name            | Version | Description |
+| ---                    | ---     | ---         |
+| ActionInfo             | 1.1.0   | Added "MinimumValue" and "MaximumValue" properties. |
+| Assembly               | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
+| Drive                  | 1.2.0   | Added "HotspareReplacementMode" property. |
+| Endpoint               | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
+| ManagerNetworkProtocol | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
+| Memory                 | 1.6.0   | Added "OverwriteUnit" Action.  Added "IntelOptane" to the "MemoryType" enum. |
+| NetworkAdapter         | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
+| NetworkDeviceFunction  | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object. |
+| Protocol               | N/A     | Added "I2C" protocol type. |
+| Storage                | 1.5.0   | Added "CacheSummary" object to "StorageController". |
+| UpdateService          | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
+| Resource               | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
+| Assembly               | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ProductionDate" property as the time of day value if it's unknown. | 
+| AttributeRegistry      | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
+| Bios                   | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
+| ComputerSystem         | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB".  Corrected descriptions for the "Boot" properties since the scope of "Boot" has grown over time. |
+| Drive                  | 1.x.x   | Errata release.  Added missing Units annotation to "PredictedMediaLifeLeftPercent" and "PercentageComplete". |
+| EventService           | 1.x.x   | Errata release.  Added clarification to "OriginOfCondition" parameter for "SubmitTestEvent" to highlight that it's a string and not a reference object. |
+| LogEntry               | 1.x.x   | Errata release.  Fixed typo in the description for "EntryType".  Clarified Description and Long Description in several properties. |
+| ManagerNetworkProtocol | 1.x.x   | Errata release.  Clarified description of "DHCP" to show it's for DHCPv4. |
+| Memory                 | 1.x.x   | Errata release.  Added missing Units annotation to many properties in the schema.  Added references to NIST standards for what each type of erase action follows. |
+| MemoryChunks           | 1.x.x   | Errata release.  Added missing Units annotation to "MemoryChunkSizeMiB", "OffsetMiB", and "SizeMiB". |
+| MemoryMetrics          | 1.x.x   | Errata release.  Added missing Units annotation to "HealthData" and "PredictedMediaLifeLeftPercent". |
+| MessageRegistryFile    | 1.x.x   | Errata release.  Clarified "Registry" property to show that this is used for other types of registries. |
+| NetworkPort            | 1.x.x   | Errata release.  Added missing Units annotation to "LinkSpeedMbps", "MinBWAllocPercent", and "MaxBWAllocPercent". |
+| PrivilegeRegistry      | 1.x.x   | Errata release.  Fixed permissions term on "PrivilegesUsed", "OEMPrivilegesUsed", "Entity", "Targets", and "Privilege". |
+| Processor              | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
+| Protocol               | N/A     | Errata release.  Removed "Vendor Proprietary" wording from PCIe description. |
+| Resource               | 1.x.x   | Errata release.  Added missing Required term on "Name" in ResourceCollection. |
+| Resource               | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
+| SessionService         | 1.x.x   | Errata release.  Clarified the Long Description of "ServiceEnabled". |
+| SoftwareInventory      | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ReleaseDate" property as the time of day value if it's unknown. | 
+| UpdateService          | 1.x.x   | Errata release.  Clarified the Long Descriptions for "Targets", "HttpPushUriTargets", and "HttpPushUriTargetsBusy". |
+| (all files)            | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema.  Added Description and LongDescription terms to all schema elements where missing. |
 
 ## Release 2018.1 (April 2018)
 
