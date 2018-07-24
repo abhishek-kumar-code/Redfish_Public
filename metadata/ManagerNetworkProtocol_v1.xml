@@ -260,9 +260,9 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_2_1.ManagerNetworkProtocol">
-        <Property Name="RemoteDesktop" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
-          <Annotation Term="OData.Description" String="Settings for this Manager's Remote Desktop protocol support."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain information for the Remote Desktop protocol settings for the manager."/>
+        <Property Name="RDP" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
+          <Annotation Term="OData.Description" String="Settings for this Manager's Remote Desktop Protocol support."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the Remote Desktop Protocol settings for the manager."/>
         </Property>
         <Property Name="RFB" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
           <Annotation Term="OData.Description" String="Settings for this Manager's Remote Frame Buffer protocol support, which can be used to support VNC."/>
