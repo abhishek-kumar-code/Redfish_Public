@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ManagerNetworkProtocol  v1.2.1-->
+<!--# Redfish Schema:  ManagerNetworkProtocol  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -194,8 +194,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_3.ManagerNetworkProtocol">
         <Property Name="DHCP" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
-          <Annotation Term="OData.Description" String="Settings for this Manager's DHCP protocol support."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain information for the DHCP protocol settings for the manager."/>
+          <Annotation Term="OData.Description" String="Settings for this Manager's DHCPv4 protocol support."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the DHCPv4 protocol settings for the manager."/>
         </Property>
       </EntityType>
     </Schema>
@@ -208,7 +208,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_1_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify that the DHCP property is for DHCPv4."/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_1_1.ManagerNetworkProtocol"/>
     </Schema>
 
@@ -253,8 +253,18 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_2_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify that the DHCP property is for DHCPv4."/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_2_0.ManagerNetworkProtocol"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_2_1.ManagerNetworkProtocol">
+        <Property Name="DHCPv6" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
+          <Annotation Term="OData.Description" String="Settings for this Manager's DHCPv6 protocol support."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the DHCPv6 protocol settings for the manager."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
