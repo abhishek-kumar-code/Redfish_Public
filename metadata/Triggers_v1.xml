@@ -60,7 +60,7 @@
 
       <EntityType Name="Triggers" BaseType="Triggers.Triggers">
         <Annotation Term="OData.Description" String="Triggers which apply to a list of metrics."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall specify triggers, which apply a list of metrics."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall specify triggers, which apply to a list of metrics."/>
 
         <Property Name="MetricType" Type="Triggers.v1_0_0.MetricTypeEnum">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
