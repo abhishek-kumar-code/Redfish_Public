@@ -59,7 +59,7 @@
             "time-a.nist.gov"
         ]
     },
-    "RemoteDesktop": {
+    "RDP": {
         "ProtocolEnabled": true,
         "Port": 3389
     },
