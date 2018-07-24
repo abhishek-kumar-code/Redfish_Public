@@ -594,7 +594,7 @@ The $select parameter indicates to the implementation that it should return a su
 An example of the use of select might be:
 * GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
 
-When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed. If the  ["@odata.context"](#context-property) property is supported, it should be in the recommended format specified by the [Context property section](#context-property).  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
+When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed. If the ["@odata.context"](#context-property) property is supported, it shall be in the response payload and should be in the recommended format specified by the [Context property section](#context-property).  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
 
 Any other supported syntax for $select is outside the scope of this specification.
 
