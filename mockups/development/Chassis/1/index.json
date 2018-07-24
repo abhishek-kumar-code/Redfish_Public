@@ -33,9 +33,9 @@
             "RackOffset": 12
         },
         "Contacts": [{
-            "ContactName": "Jessica Rabbit",
+            "ContactName": "Bob Fixer",
             "PhoneNumber": "(800) 555-1212",
-            "EmailAddress": "jessica@toontown.gov"
+            "EmailAddress": "Bob@contoso.com"
         },
         {
             "ContactName": "Contoso Server Repair",
