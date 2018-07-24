@@ -34,7 +34,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Triggers" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="Specifie a trigger, which apply to metrics."/>
+        <Annotation Term="OData.Description" String="Specifies a trigger, which apply to metrics."/>
         <Annotation Term="OData.LongDescription" String="This resource shall specify a trigger, which apply to metrics."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
