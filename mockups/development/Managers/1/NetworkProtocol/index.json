@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ManagerNetworkProtocol.ManagerNetworkProtocol",
     "@odata.id": "/redfish/v1/Managers/1/NetworkProtocol",
-    "@odata.type": "#ManagerNetworkProtocol.v1_2_0.ManagerNetworkProtocol",
+    "@odata.type": "#ManagerNetworkProtocol.v1_3_0.ManagerNetworkProtocol",
     "Id": "NetworkProtocol",
     "Name": "Manager Network Protocol",
     "Description": "Manager Network Service Status",
@@ -58,6 +58,14 @@
             "1.pool.ntp.org",
             "time-a.nist.gov"
         ]
+    },
+    "RDP": {
+        "ProtocolEnabled": true,
+        "Port": 3389
+    },
+    "RFB": {
+        "ProtocolEnabled": true,
+        "Port": 5900
     },
     "Oem": {}
 }
