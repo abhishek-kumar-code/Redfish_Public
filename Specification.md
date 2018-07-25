@@ -1424,6 +1424,8 @@ Resource Collections are returned as a JSON object. The JSON object shall includ
 
 Responses for Resource Collections shall contain the ["Name" property](#name-property).  Responses for Resource Collections may contain the ["Description" property](#description-property).
 
+Responses for Resource Collections shall not contain any property or annotation not explicitly defined in this section of this specification.
+
 ##### Context property
 
 Responses shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the Resource Collection according to [OData-Protocol](#OData-Protocol).
