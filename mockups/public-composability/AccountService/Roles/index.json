@@ -10,7 +10,7 @@
             "@odata.id": "/redfish/v1/AccountService/Roles/Operator"
         },
         {
-            "@odata.id": "/redfish/v1/AccountService/Roles/ReadOnlyUser"
+            "@odata.id": "/redfish/v1/AccountService/Roles/ReadOnly"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#RoleCollection.RoleCollection",
