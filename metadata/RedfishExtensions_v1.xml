@@ -115,9 +115,11 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe the pattern to which a dynamic property name must adhere."/>
         <Property Name="Pattern" Type="Edm.String">
           <Annotation Term="OData.Description" String="The pattern that the property name shall match."/>
+          <Annotation Term="OData.LongDescription" String="This shall be the pattern that the property name shall match."/>
         </Property>
         <Property Name="Type" Type="Edm.String">
           <Annotation Term="OData.Description" String="The type that the name shall have."/>
+          <Annotation Term="OData.LongDescription" String="This shall be the type that the name shall have."/>
         </Property>
       </ComplexType>
 
@@ -130,6 +132,7 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe a member of an enumeration which contains spaces, starts with a number, or otherwise does not comply with OData EnumMember naming rules."/>
         <Property Name="Member" Type="Edm.String">
           <Annotation Term="OData.Description" String="An allowable string member."/>
+          <Annotation Term="OData.LongDescription" String="This shall be an allowable string member for the enumeration."/>
         </Property>
       </ComplexType>
 
