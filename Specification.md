@@ -2337,13 +2337,23 @@ The Redfish Service requires a client or administrator to create subscriptions t
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status code [404](#status-404).
 
-There are two types of events generated in a Redfish Service - life cycle and alert.
+NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
+
+#### EventType based eventing
+There are two types of events generated in a Redfish Service - life cycle and alert.  This method of eventing has been deprecated in the Redfish Schema.
 
 Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this is similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any properties that changed.
 
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
+#### Ways to register for events
+Event subscriptions can be subscribed to by specifying a RegistryId, ResourceType, ResourceOrigin (including SubordinateResources) in order to filter events to any EventDestination.
+
+The RegistryId property has the list of message registries that the service provides and that the subscriber would like messages corresponding to.  The values of this property are the values of the RegistryPrefix and can be standard or OEM message registries.  It acts like a filter, only sending messages to the subscriber if the RegistryId in the subscription matches the Registry Prefix.  This value does not include the version of the registry. If this value is empty when subscribing, the subscriber can receive messages from any registry.
+
+The ResourceType property has the list of schema names (@odata.type values) that the service provides and that the subscriber would like messages corresponding to.  The values of this property are the schema names (@odata.type values) and can be standard or OEM schema names.  It acts like a filter, only sending messages to the subscriber if the ResourceType in the subscription matches the @odata.type value of the OriginOfCondition.  This value does not include the version of the schema (thus there are no periods).  The this value is empty when subscribing, the subscriber can receive messages from any resource.
+
+ResourceOrigin can be specified to limit the events sent to the destination to the resource list (in URI format) specified.  Leaving this property empty indicates that events from any resources are acceptable.  The property SubordinateResources can be specified to indicate those resources as well as subordinate ones, regardless of depth.
 
 #### Event message subscription
 
@@ -2371,6 +2381,11 @@ where
 * *MajorVersion* is a positive integer representing the major version of the registry
 * *MinorVersion* is a positive integer representing the minor version of the registry
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.
+
+Event messages may also have an EventGroupId property.  The purpose of this property is to let clients know that different messages may be from the same event.  For instance, if a LAN cable is disconnected, they may get a specific message from one registry about the LAN cable being disconnected, another message from a general registry about the resource changing, perhaps a message about resource state change and maybe even more.  In order for the client to be able to tell all of these have the same root cause, these messages would have the same value for the EventGroupId property.
+
+#### OEM Extensions
+OEMs can extend both messages and message registries.  There are OEM sections defined in any individual message (per the message registry schema definition).  Thus if OEMs wish to provide additional information or properties, this can be done using the OEM section.  OEMs shall not supply additional message arguments beyond those in a standard message registry.  OEMs may substitue their own message registry with their own in order to provide the OEM section within the registry but shall not change the standard values (such as Messages) in such registries.
 
 #### Subscription cleanup
 
