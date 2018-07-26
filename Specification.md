@@ -557,8 +557,8 @@ Clients can add query parameters to request additional features from the service
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
 * The contents of the response body shall be as if the query parameters were evaluated in the following order: 
- * prior to service side pagination: $filter, $skip, $top
- * after applying any service side pagination: $expand, $select
+    * Prior to service side pagination: $filter, $skip, $top
+    * After applying any service side pagination: $expand, $select
 
 ***Query parameters for Paging***
 
