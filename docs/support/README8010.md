@@ -8,6 +8,7 @@ status: published
 released: True
 copyright: '2015-2018'
 ---
+
 # Foreword
 
 The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort:
@@ -30,6 +31,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ---                    | ---     | ---         |
 | ActionInfo             | 1.1.0   | Added "MinimumValue" and "MaximumValue" properties. |
 | Assembly               | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
+| CollectionCapabilities | 1.1.0   | Added "ComputerSystemConstrainedComposition" enum. |
+| CompositionService     | 1.1.0   | Added "AllowOverprovisioning" property. |
 | Drive                  | 1.2.0   | Added "HotspareReplacementMode" property. |
 | Endpoint               | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
 | ManagerNetworkProtocol | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
