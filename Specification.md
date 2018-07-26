@@ -556,6 +556,9 @@ Clients can add query parameters to request additional features from the service
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
+* The contents of the response body shall be as if the query parameters were evaluated in the following order: 
+    * Prior to service side pagination: $filter, $skip, $top
+    * After applying any service side pagination: $expand, $select
 
 ***Query parameters for Paging***
 
