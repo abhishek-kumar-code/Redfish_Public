@@ -339,11 +339,9 @@ The scheme and authority part of the URI shall not be considered part of the uni
 * An implementation may use a [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the payload (body and/or HTTP headers) to identify a resource within the implementation.
 * An implementation may use an absolute URI in the payload (body and/or HTTP headers) to identify a resource within a different implementation.  See [RFC3986](#RFC3986) for the absolute URI definition.
 
-For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
+For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST): `/redfish/v1/Systems/2`
 
-    Example: /redfish/v1/Systems/2
-
-Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
+Assuming the client is connecting through an appliance named "mgmt.vendor.com", the absolute URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
 
@@ -556,6 +554,9 @@ Clients can add query parameters to request additional features from the service
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
+* The contents of the response body shall be as if the query parameters were evaluated in the following order: 
+    * Prior to service side pagination: $filter, $skip, $top
+    * After applying any service side pagination: $expand, $select
 
 ***Query parameters for Paging***
 
@@ -986,7 +987,7 @@ Where the HTTP status code indicates a failure, the response body contains an [e
 
 NOTE: Refer to the [Security](#security) clause for security implications of extended errors
 
-The following table lists some of the common HTTP status codes. Other codes may be returned by the service as appropriate. See the Description column for a description of the status code and additional requirements imposed by this specification.
+The following table lists HTTP status codes which have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification. Other codes may be returned by the service as appropriate, and their usage is implementation-specific. See the Description column for usage and additional requirements imposed by this specification.
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
@@ -1671,12 +1672,14 @@ Resource Name, Property Names, and constants such as Enumerations shall be Pasca
 * The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
 * No underscores are used.
 * Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn).
+* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
 
 Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI"
+ * Well-known technology names like "iSCSI" (e.g. "iSCSITarget")
  * Product names like "iLO"
  * Well-known abbreviations or acronyms
+ * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
+ * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish reources or properties.
 
 For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
  * Bandwidth (Mbps), (e.g., PortSpeedMbps)
