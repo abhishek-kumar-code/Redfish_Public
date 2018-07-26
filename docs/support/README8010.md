@@ -63,6 +63,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Resource               | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
 | SessionService         | 1.x.x   | Errata release.  Clarified the Long Description of "ServiceEnabled". |
 | SoftwareInventory      | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ReleaseDate" property as the time of day value if it's unknown. | 
+| Storage                | 1.x.x   | Errata release.  Clarified the description for "SpeedGbps". |
 | UpdateService          | 1.x.x   | Errata release.  Clarified the Long Descriptions for "Targets", "HttpPushUriTargets", and "HttpPushUriTargetsBusy". |
 | (all files)            | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema.  Added Description and LongDescription terms to all schema elements where missing. |
 
