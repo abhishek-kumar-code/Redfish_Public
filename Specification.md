@@ -549,8 +549,9 @@ Clients can add query parameters to request additional features from the service
 | $expand   | Include data from hyperlinks in the resource inline within the current payload, depending on the value of the expand                                            | `http://resourcecollection?$expand=.($levels=1)`|
 | $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                     | `http://resource?$select=SystemType,Status`|
 | $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                       | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
+| excerpt   | Include a subset of the properties of a resource based on the presence of the 'Excerpt' schema annotation in its definition. If no excerpt properties exist, the entire resource shall be returned. | `http://resource?excerpt`  |
 
-* Services should support the $top and $skip query parameters.
+* Services should support the excerpt, $top, and $skip query parameters.
 * Service may support the $expand, $filter and $select query parameters. 
 * When the service supports query parameters, the service shall include the ProtocolFeaturesSupported object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
