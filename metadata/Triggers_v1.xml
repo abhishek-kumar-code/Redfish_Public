@@ -24,9 +24,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Schedule_v1.xml">
-    <edmx:Include Namespace="Schedule"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -88,10 +85,6 @@
         <Property Name="DiscreteTriggers" Type="Collection(Triggers.v1_0_0.DiscreteTrigger)" Nullable="false">
           <Annotation Term="OData.Description" String="List of discrete triggers."/>
           <Annotation Term="OData.LongDescription" String="This property shall contains a list of value to which a metric reading will be compared.  This property shall be present when the DiscreteTriggerCondition property has a value of 'Specified'."/>
-        </Property>
-        <Property Name="TriggerInterval" Type="Schedule.Schedule" Nullable="false">
-          <Annotation Term="OData.Description" String="Specifies how often to trigger regardless of other trigger conditions."/>
-          <Annotation Term="OData.LongDescription" String="This property shall specify how often a trigger is performed regardless of the state of the properties being monitored."/>
         </Property>
 
         <Property Name="Status" Type="Resource.Status" Nullable="false">
