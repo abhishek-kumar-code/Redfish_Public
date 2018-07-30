@@ -922,7 +922,14 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_7_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to deprecate Location within PostalAddress in favor of AdditionalInfo."/>
+      <Annotation Term="OData.Description" String="This version was created to add an array of Contact Information entries to Location, and to deprecate Location within PostalAddress in favor of AdditionalInfo."/>
+
+      <ComplexType Name="Location" BaseType="Resource.v1_6_0.Location">
+        <Property Name="Contacts" Type="Collection(Resource.v1_7_0.ContactInfo)">
+          <Annotation Term="OData.Description" String="Array of contact information."/>
+          <Annotation Term="OData.LongDescription" String="The value shall contain contact information used to obtain more information from an individual or organization responsible for this resource."/>
+        </Property>
+      </ComplexType>
 
       <ComplexType Name="PostalAddress" BaseType="Resource.v1_3_0.PostalAddress">
         <Property Name="AdditionalInfo" Type="Edm.String">
@@ -937,6 +944,26 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Area designation or other additional info."/>
           <Annotation Term="OData.LongDescription" String="The value shall contain additional information, such as Tile, Column (Post), Wall, or other designation used to describe a location that cannot be conveyed with other properties defined for the Placement object."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="ContactInfo">
+        <Annotation Term="OData.Description" String="Contact information for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This object shall contain contact information used to obtain more information from an individual or organization responsible for this resource."/>
+        <Property Name="ContactName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Name of this contact."/>
+          <Annotation Term="OData.LongDescription" String="The value shall contain the name of a person or organization to contact for information about this resource."/>
+        </Property>
+        <Property Name="PhoneNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Phone number for this contact."/>
+          <Annotation Term="OData.LongDescription" String="The value shall contain the phone number for a person or organization to contact for information about this resource."/>
+        </Property>
+        <Property Name="EmailAddress" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Email address for this contact."/>
+          <Annotation Term="OData.LongDescription" String="The value shall contain the email address for a person or organization to contact for information about this resource."/>
         </Property>
       </ComplexType>
     </Schema>
