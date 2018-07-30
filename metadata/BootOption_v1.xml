@@ -88,7 +88,7 @@
         <Property Name="Alias" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The alias of this Boot Source."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the string alias to of this Boot Source."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the string alias of this Boot Source that describes the type of boot that will be performed."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
