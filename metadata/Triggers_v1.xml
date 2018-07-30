@@ -129,7 +129,7 @@
       <EnumType Name="TriggerActionEnum">
         <Annotation Term="OData.Description" String="Specifies the actions to perform when a trigger occurs."/>
         <Annotation Term="OData.LongDescription" String="The value shall specify the actions to perform when a trigger occurs."/>
-        <Member Name="Log">
+        <Member Name="LogToLogService">
           <Annotation Term="OData.Description" String="Upon a trigger, record in a log."/>
           <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall log the occurrence of the condition to the log indicated by the LogService property in the TelemetryService resource."/>
         </Member>
@@ -251,7 +251,7 @@
           <Annotation Term="OData.Description" String="The direction in which the metric value shall cross the trigger value in order to constitute an excursion."/>
           <Annotation Term="OData.LongDescription" String="This property shall specify the direction in which the metric value shall cross the trigger value in order to constitue an excurion."/>
         </Property>
-        <Property Name="DwellTimMsec" Type="Edm.Decimal">
+        <Property Name="DwellTimeMilliSeconds" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The duration that the excursion persists before a trigger event has occurred."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the duration that the excursion persists before the trigger event has occurred and the MetricAction(s) are performed."/>
@@ -281,9 +281,9 @@
         <Property Name="Value" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value of the discrete metric that constitutes a trigger occurance."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the value discrete metric that constitutes a trigger event.  The DwellTimeMsec shall be measured from this point in time."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the value discrete metric that constitutes a trigger event.  The DwellTimeMilliSeconds shall be measured from this point in time."/>
         </Property>
-        <Property Name="DwellTimeMsec" Type="Edm.Decimal">
+        <Property Name="DwellTimeMilliSeconds" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This time the trigger occurance persists before a trigger event has occurred."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the time that a trigger occurance persists before the MetricAction is performed."/>

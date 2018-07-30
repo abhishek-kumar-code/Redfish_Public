@@ -36,6 +36,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TriggersCollection_v1.xml">
     <edmx:Include Namespace="TriggersCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService_v1.xml">
+    <edmx:Include Namespace="LogService"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -126,6 +129,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to the collection of Triggers, which apply to metrics."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a link to a resource of type TriggersCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="LogService" Type="LogService.LogService" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a reference to a Log Service used by the Telemetry Service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a LogService for the use by this Telemetry Service."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Actions" Type="TelemetryService.v1_0_0.Actions" Nullable="false">

@@ -3,6 +3,9 @@
     "Id": "TransmitPowerUsageOnChange",
     "Name": "Transmit Power Usage on change",
     "MetricReportDefinitionType":"OnChange",
+    "ReportActions": [
+        "RedfishEvent"
+    ],
     "Status": {
         "State": "Enabled"
     },

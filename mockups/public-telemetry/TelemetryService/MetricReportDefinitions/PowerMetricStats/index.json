@@ -7,6 +7,9 @@
         "RecurrenceInterval": "T00:00:000.001",
         "Lifetime": "00-00-05T00:00:00"
     },
+    "ReportActions": [
+        "LogToMetricReportsCollection"
+    ],
     "Status": {
         "State": "Enabled"
     },

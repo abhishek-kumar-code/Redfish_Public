@@ -6,6 +6,10 @@
     "Schedule": {
         "RecurrenceInterval": "T00:00:00.1"
     },
+    "ReportActions": [
+        "RedfishEvent",
+        "LogToMetricReportsCollection"
+    ],
     "ReportUpdates": "Overwrite",
     "MetricReport": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"

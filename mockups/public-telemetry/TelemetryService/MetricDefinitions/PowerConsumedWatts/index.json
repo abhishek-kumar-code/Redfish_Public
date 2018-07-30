@@ -3,10 +3,9 @@
     "Id": "PowerConsumedWatts",
     "Name": "Power Consumed Watts Metric Definition",
     "MetricType": "Numeric",
-    "ReadingType": "Power",
     "Implementation": "PhysicalSensor",
     "PhysicalContext": "PowerSupply",
-    "DataType": "Decimal",
+    "MetricDataType": "Decimal",
     "Units": "W",
     "Precision": 4,
     "Accuracy": 1.0,
@@ -14,7 +13,7 @@
     "MinReadingRange": 0.0,
     "MaxReadingRange": 50.0,
     "SensingInterval": "T00:00:01",
-    "TimeStampAccuracy": "T00:00:01",
+    "TimestampAccuracy": "T00:00:01",
     "Wildcards": [
         {
             "Name": "ChassisID",

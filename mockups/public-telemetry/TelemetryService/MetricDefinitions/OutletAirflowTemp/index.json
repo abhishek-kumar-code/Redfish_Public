@@ -5,7 +5,6 @@
     "MetricType": "Numeric",
     "Implementation": "Synthesized",
     "PhysicalContext": "Exhaust",
-    "ReadingType": "Temperature",
     "Units": "Cel",
     "Wildcards": [
         {
