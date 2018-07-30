@@ -67,6 +67,10 @@
         <Member Name="Alert">
           <Annotation Term="OData.Description" String="A condition exists which requires attention."/>
         </Member>
+        <Member Name="MetricReport">
+          <Annotation Term="OData.Description" String="A metric report managed by the Telemetry Service is being sent."/>
+          <Annotation Term="OData.LongDescription" String="Events of type MetricReport shall be sent to a client in accordance with the MetricReport schema definition."/>
+        </Member>
       </EnumType>
 
     </Schema>
@@ -292,6 +296,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Event" BaseType="Event.v1_2_1.Event"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add MetricReport to the EventType enum."/>
+      <EntityType Name="Event" BaseType="Event.v1_2_2.Event"/>
     </Schema>
 
   </edmx:DataServices>

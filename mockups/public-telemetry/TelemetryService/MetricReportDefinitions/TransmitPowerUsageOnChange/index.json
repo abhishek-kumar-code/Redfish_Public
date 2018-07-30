@@ -4,7 +4,7 @@
     "Name": "Transmit Power Usage on change",
     "MetricReportDefinitionType":"OnChange",
     "ReportActions": [
-        "Transmit"
+        "RedfishEvent"
     ],
     "Status": {
         "State": "Enabled"
@@ -18,7 +18,7 @@
     ],
     "Metrics": [
         {
-            "MemberID": "PowerUsageReading",
+            "MetricId": "PowerUsageReading",
             "MetricProperties": [
                 "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/{Wild}/PowerConsumedWatts"
             ]

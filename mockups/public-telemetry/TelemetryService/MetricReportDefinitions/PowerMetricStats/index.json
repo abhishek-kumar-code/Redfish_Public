@@ -8,7 +8,7 @@
         "Lifetime": "00-00-05T00:00:00"
     },
     "ReportActions": [
-        "Transmit"
+        "LogToMetricReportsCollection"
     ],
     "Status": {
         "State": "Enabled"
@@ -32,21 +32,21 @@
     ],
     "Metrics": [
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "CollectionFunction": "Average",
             "MetricProperties": [
                 "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerConsumedWatts"
             ]
         },
         {
-            "MemberID": "MaximumConsumedWatts",
+            "MetricId": "MaximumConsumedWatts",
             "CollectionFunction": "Maximum",
             "MetricProperties": [
                 "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerConsumedWatts"
             ]
         },
         {
-            "MemberID": "MinimumConsumedWatts",
+            "MetricId": "MinimumConsumedWatts",
             "CollectionFunction": "Minimum",
             "MetricProperties": [
                 "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerConsumedWatts"

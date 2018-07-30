@@ -18,13 +18,11 @@
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
-    <edmx:Include Namespace="Sensor.v0_8_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
     <edmx:Include Namespace="PhysicalContext"/>
@@ -50,11 +48,10 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="false"/>
+            <PropertyValue Property="Deletable" Bool="true"/>
           </Record>
         </Annotation>
       </EntityType>
-
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricDefinition.v1_0_0">
@@ -77,7 +74,7 @@
           <Annotation Term="OData.Description" String="The metric is a counter metric.  The metric reading is a non-negative integer which increases monotonically.  When a counter reaches its maximum, the value resets to 0 and resumes counting."/>
         </Member>
         <Member Name="Countdown">
-          <Annotation Term="OData.Description" String="The metric is a countdown metric.  The metric reading is a non-negative integer which decreases monotically.  When a counter reaches its minimum, the value resets to preset value and resumes counting down."/>
+          <Annotation Term="OData.Description" String="The metric is a countdown metric.  The metric reading is a non-negative integer which decreases monotonically.  When a counter reaches its minimum, the value resets to preset value and resumes counting down."/>
         </Member>
       </EnumType>
 
@@ -96,24 +93,27 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="DataType">
+      <EnumType Name="MetricDataType">
         <Annotation Term="OData.Description" String="The data type of the related metric values.  The property provides information to the client on the nature of the metric reading."/>
-        <Annotation Term="OData.LongDescription" String="The value shall be the data type of the related metric values as defined by the Odata Edm.xsd schema."/>
-        <Member Name="Binary"/>
-        <Member Name="Boolean"/>
-        <Member Name="Byte"/>
-        <Member Name="Date"/>
-        <Member Name="DateTimeOffset"/>
-        <Member Name="Duration"/>
-        <Member Name="TimeOfDay"/>
-        <Member Name="Decimal"/>
-        <Member Name="Double"/>
-        <Member Name="Single"/>
-        <Member Name="Int16"/>
-        <Member Name="Int32"/>
-        <Member Name="Int64"/>
-        <Member Name="String"/>
-        <Member Name="SByte"/>
+        <Annotation Term="OData.LongDescription" String="The value shall be the data type of the related metric values as defined by JSON data types."/>
+        <Member Name="Boolean">
+          <Annotation Term="OData.Description" String="The data type follows the JSON Boolean definition."/>
+        </Member>
+        <Member Name="DateTime">
+          <Annotation Term="OData.Description" String="The data type follows the JSON String definition with the Date-Time format applied."/>
+        </Member>
+        <Member Name="Decimal">
+          <Annotation Term="OData.Description" String="The data type follows the JSON Decimal definition."/>
+        </Member>
+        <Member Name="Integer">
+          <Annotation Term="OData.Description" String="The data type follows the JSON Integer definition."/>
+        </Member>
+        <Member Name="String">
+          <Annotation Term="OData.Description" String="The data type follows the JSON String definition."/>
+        </Member>
+        <Member Name="Enumeration">
+          <Annotation Term="OData.Description" String="The data type follows the JSON String definition with a set of enumerations defined."/>
+        </Member>
       </EnumType>
 
       <EnumType Name="Calculable">
@@ -139,9 +139,9 @@
           <Annotation Term="OData.Description" String="The type of metric."/>
           <Annotation Term="OData.LongDescription" String="The value shall specify the type of metric."/>
         </Property>
-        <Property Name="DataType" Type="MetricDefinition.v1_0_0.DataType">
+        <Property Name="MetricDataType" Type="MetricDefinition.v1_0_0.MetricDataType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The data type of the  metric."/>
+          <Annotation Term="OData.Description" String="The data type of the metric."/>
           <Annotation Term="OData.LongDescription" String="The value shall specify the data-type of the metric."/>
         </Property>
         <Property Name="Units" Type="Edm.String">
@@ -185,12 +185,7 @@
           <Annotation Term="OData.Description" String="Specifies the physical context of the metric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the physical context of the metric."/>
         </Property>
-        <Property Name="ReadingType" Type="Sensor.v0_8_0.ReadingType">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The kind of sensor being represented."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the type of the sensor being represented. The property shall be present, when the MetricType property has the value 'PhysicalSensor'."/>
-        </Property>
-        <Property Name="SensingInterval" Type="Edm.String">
+        <Property Name="SensingInterval" Type="Resource.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time interval between when a metric is updated."/>
           <Annotation Term="OData.LongDescription" String="The value shall specify the time interval between when a metric is updated.  The format of the value shall conform to the Redfish Duration format."/>
@@ -216,7 +211,7 @@
           <Annotation Term="OData.Description" String="Specifies the calibration offset added to the metric reading."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the calibration offset added to the metric reading.  The value shall have the units specified in the property Units.  The property is not meaningful, when the MetricType property has the value 'Discrete'."/>
         </Property>
-        <Property Name="TimeStampAccuracy" Type="Edm.String">
+        <Property Name="TimestampAccuracy" Type="Resource.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Accuracy of the timestamp."/>
           <Annotation Term="OData.LongDescription" String="The value shall specify the expected + or - variability of the timestamp.  The format of the value shall conform to the Redfish Duration format."/>
@@ -236,7 +231,7 @@
           <Annotation Term="OData.Description" String="The calculation which is performed on a source metric to obtain the metric being defined."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the calculation performed to obtain the metric."/>
         </Property>
-        <Property Name="CalculationTimeInterval" Type="Edm.String">
+        <Property Name="CalculationTimeInterval" Type="Resource.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time interval over which the metric calculation is performed."/>
           <Annotation Term="OData.LongDescription" String="The value shall specify the time interval over the metric calculation is performed.  The format of the value shall conform to the Redfish Duration format."/>
@@ -245,7 +240,6 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-
       </EntityType>
 
       <ComplexType Name="CalculationParamsType">
@@ -299,7 +293,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="MetricDefinition.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="MetricDefinition.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -307,7 +304,6 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
-
     </Schema>
 
   </edmx:DataServices>

@@ -7,8 +7,8 @@
         "RecurrenceInterval": "T00:00:00.010"
     },
     "ReportActions": [
-        "Transmit",
-        "Log"
+        "RedfishEvent",
+        "LogToMetricReportsCollection"
     ],
     "ReportUpdates": "Overwrite",
     "MetricReport": {
@@ -27,7 +27,7 @@
     ],
     "Metrics": [
         {
-            "MemberID": "AverageConsumedWatts",
+            "MetricId": "AverageConsumedWatts",
             "MetricProperties": [
                 "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/{Wild}/PowerConsumedWatts"
             ],

@@ -311,7 +311,7 @@
       </EntityContainer>
 
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_1_2.ServiceRoot">
-        <NavigationProperty Name="CompositionService" Type="CompositionService.CompositionService" ContainsTarget="true" Nullable="false">
+        <NavigationProperty Name="CompositionService" Type="CompositionService.CompositionService" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the CompositionService."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the CompositionService schema."/>
@@ -421,7 +421,7 @@
       </EntityContainer>
 
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_2_0.ServiceRoot">
-        <NavigationProperty Name="TelemetryService" Type="TelemetryService.TelemetryService" ContainsTarget="true" Nullable="false">
+        <NavigationProperty Name="TelemetryService" Type="TelemetryService.TelemetryService" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the TelemetryService."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a link to the TelemetryService."/>

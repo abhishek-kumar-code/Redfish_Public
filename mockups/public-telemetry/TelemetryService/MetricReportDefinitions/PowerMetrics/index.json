@@ -7,8 +7,8 @@
         "RecurrenceInterval": "T00:00:00.1"
     },
     "ReportActions": [
-        "Transmit",
-        "Log"
+        "RedfishEvent",
+        "LogToMetricReportsCollection"
     ],
     "ReportUpdates": "Overwrite",
     "MetricReport": {

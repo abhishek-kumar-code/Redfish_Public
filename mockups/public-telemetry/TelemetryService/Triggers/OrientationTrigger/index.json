@@ -4,7 +4,7 @@
     "Name": "Trigger when orientation becomes incline",
     "MetricType": "Discrete",
     "TriggerActions": [
-        "Transmit"
+        "RedfishEvent"
     ],
     "DiscreteTriggerCondition": "Specified",
     "DiscreteTriggers": [
