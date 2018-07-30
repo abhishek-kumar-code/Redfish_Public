@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Manager  v1.4.1-->
+<!--# Redfish Schema:  Manager  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -544,13 +544,25 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Switch resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-       </ComplexType>
+      </ComplexType>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_4_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Manager" BaseType="Manager.v1_4_0.Manager"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="Manager" BaseType="Manager.v1_4_1.Manager">
+        <Property Name="ServiceRootUri" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property contains the URI of the Redfish Service Root for the remote Manager represented by this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the Redfish Service Root for the remote Manager represented by this resource.  This property shall not be present if the Manager instance represents the local service."/>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
