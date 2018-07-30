@@ -1421,18 +1421,17 @@ The client can get the definition of the annotation from the [service metadata](
 #### Resource Collection responses
 
 Resource Collections are returned as a JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).  Resource Collection schema shall be derived from the Resource Schema and thus Resource Collection responses shall contain the following properties:
-- the ["Id" property](#id-property) 
-- the ["Name" property](#name-property)  
-- the [Resource Identifier property] (#resource-identifier-property)
-- the [Type property](#type-property)
-- a [resource count](#count-property)
-- an array of [Members](#members-property) 
+* The ["Name" property](#name-property)
+* The [Resource Identifier property](#resource-identifier-property)
+* The [Type property](#type-property)
+* An array of [Members](#members-property)
+* A [resource count](#count-property)
 
 Responses for Resource Collections may contain the following properties:
-- the ["Description" property](#description-property)
-- the [context](#context-property)
-- an [Etag property](#etag-property)
-- a [Next Link Property](#next-link-property-and-partial-results) for partial results.
+* The ["Description" property](#description-property)
+* The [Context property](#context-property)
+* An [Etag property](#etag-property)
+* A [Next Link Property](#next-link-property-and-partial-results) for partial results
 
 Responses for Resource Collections shall not contain any property not explicitly defined in this section of this specification.
 
