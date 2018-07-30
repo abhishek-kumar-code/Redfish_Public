@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2015-2016 Storage Networking Industry Association (SNIA), USA. All rights reserved.-->
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Schedule  v1.2.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2018 Distributed Management Task Force, Inc. (DMTF).                       -->
+<!--# Portions Copyright 2015-2018 Storage Networking Industry Association (SNIA), USA.    -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
@@ -9,37 +19,35 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource.v1_0_0" Alias="Resource"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
-      <ComplexType  Name="Schedule" Abstract="true">
+      <ComplexType Name="Schedule" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="Schedule a series of occurrences."/>
-        <Annotation Term="OData.LongDescription" String="Schedule a series of occurrences."/>
+        <Annotation Term="OData.LongDescription" String="The properties of this type shall be used to Schedule a series of occurrences."/>
       </ComplexType>
 
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule.v1_0_0">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.OwningEntity" String="SNIA"/>
 
       <ComplexType  Name="Schedule" BaseType="Schedule.Schedule">
         <Annotation Term="OData.Description" String="Schedule a series of occurrences."/>
-        <Annotation Term="OData.LongDescription" String="Schedule a series of occurrences."/>
+        <Annotation Term="OData.LongDescription" String="The properties of this type shall be used to Schedule a series of occurrences."/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The Schedule name."/>
           <Annotation Term="OData.LongDescription" String="The name of the Schedule. It should be constructed as OrgID:ScheduleName. Examples: ACME:Daily, ACME:Weekly, ACME:FirstTuesday."/>
         </Property>
-        <Property Name="Lifetime" Type="Resource.Duration">
+        <Property Name="Lifetime" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The duration after provisioning when the schedul,e as a whole, expires."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be duration after provisioning when the schedule, as a whole, expires. The format of the value shall conform to the Redfish Duration format."/>
+          <Annotation Term="OData.Description" String="The time after provisioning when the schedule as a whole expires."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an ISO 8601 conformant duration describing the time after provisioning when the schedule expires."/>
         </Property>
         <Property Name="MaxOccurrences" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -48,13 +56,13 @@
         </Property>
         <Property Name="InitialStartTime" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Time at which the schedule commences."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be the time at which the schedule commences.  The value shall conform to the ISO 8601  datetime with timezone format."/>
+          <Annotation Term="OData.Description" String="Time for initial occurrence."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an ISO 8601 conformant time of day on which the initial occurrence is scheduled to occur."/>
         </Property>
-        <Property Name="RecurrenceInterval" Type="Resource.Duration">
+        <Property Name="RecurrenceInterval" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Time interval which elapses before the next occurrences."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be the time interval which elapses before the next occurrence. The format of the value shall conform to the Redfish Duration format."/>
+          <Annotation Term="OData.Description" String="Distance until the next occurrences."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an ISO 8601 conformant duration describing the time until the next occurrence."/>
         </Property>
         <Property Name="EnabledDaysOfWeek" Type="Collection(Schedule.v1_0_0.DayOfWeek)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -63,9 +71,9 @@
         </Property>
         <Property Name="EnabledDaysOfMonth" Type="Collection(Edm.Int64)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Days of month when scheduled occurrences are enabled."/>
-          <Annotation Term="OData.LongDescription" String="Days of month when scheduled occurrences are enabled, for enabled days of week and months of year. If not present, all days of the month shall be enabled."/>
-          <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="OData.Description" String="Days of month when scheduled occurrences are enabled. Zero indicates that every day of the month is enabled."/>
+          <Annotation Term="OData.LongDescription" String="Days of month when scheduled occurrences are enabled, for enabled days of week and months of year. If the array contains a single value of zero, or if the property is not present, all days of the month shall be enabled."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="31"/>
         </Property>
         <Property Name="EnabledMonthsOfYear" Type="Collection(Schedule.v1_0_0.MonthOfYear)">
@@ -98,6 +106,9 @@
         </Member>
         <Member Name="Sunday">
           <Annotation Term="OData.Description" String="Sunday."/>
+        </Member>
+        <Member Name="Every">
+          <Annotation Term="OData.Description" String="Every day of the week."/>
         </Member>
       </EnumType>
 
@@ -140,13 +151,16 @@
         <Member Name="December">
           <Annotation Term="OData.Description" String="December."/>
         </Member>
+        <Member Name="Every">
+          <Annotation Term="OData.Description" String="Every month of the year."/>
+        </Member>
       </EnumType>
 
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule.v1_1_0">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-    
+      <Annotation Term="Redfish.OwningEntity" String="SNIA"/>
+
       <ComplexType  Name="Schedule" BaseType="Schedule.v1_0_0.Schedule">
         <Property Name="EnabledIntervals" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -154,8 +168,13 @@
           <Annotation Term="OData.LongDescription" String="Each value shall be an ISO 8601 conformant interval specifying when occurences are enabled."/>
         </Property>
       </ComplexType>
-
     </Schema>
-    
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add 'Every' enumerations to DayOfWeek and MonthOfYear types, and to incorporate default behavior into descriptions."/>
+      <ComplexType  Name="Schedule" BaseType="Schedule.v1_1_0.Schedule"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
