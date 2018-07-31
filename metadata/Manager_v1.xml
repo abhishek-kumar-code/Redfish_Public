@@ -55,6 +55,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Switch_v1.xml">
     <edmx:Include Namespace="Switch"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
+    <edmx:Include Namespace="AccountService"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -562,6 +565,12 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the Redfish Service Root for the remote Manager represented by this resource.  This property shall only be present when providing aggregation of Redfish services."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
+        <NavigationProperty Name="RemoteAccountService" Type="AccountService.AccountService" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property contains a reference to the AccountService resource for the remote Manager represented by this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the AccountService resource for the remote Manager represented by this resource.  This property shall only be present when providing aggregation of Redfish services."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
     </Schema>
 
