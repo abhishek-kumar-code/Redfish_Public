@@ -79,7 +79,10 @@
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
-        <Property Name="ServiceCapabilities" Type="JobService.v1_0_0.JobServiceCapabilities" Nullable="false"/>
+        <Property Name="ServiceCapabilities" Type="JobService.v1_0_0.JobServiceCapabilities" Nullable="false">
+          <Annotation Term="OData.Description" String="This object describes the supported capabilities of this Job Service implementation."/>
+          <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the capabilities or supported features of this implementation of JobService."/>
+        </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="Log" Type="LogService.LogService" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -101,8 +104,6 @@
 
       <ComplexType Name="JobServiceCapabilities">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This object describes the supported capabilities of this Job Service implementation."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the capabilities or supported features of this implementation of JobService."/>
         <Property Name="MaxJobs" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum number of Jobs supported."/>
