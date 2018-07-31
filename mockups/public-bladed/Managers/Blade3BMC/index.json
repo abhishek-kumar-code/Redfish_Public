@@ -16,7 +16,7 @@
         ]
     },
     "FirmwareVersion": "1.00",
-    "ServiceRootUri": "https://192.168.56.122/redfish/v1",
+    "RemoteRedfishServiceUri": "https://192.168.56.122/redfish/v1",
     "EthernetInterfaces": {
         "@odata.id": "/redfish/v1/Managers/Blade3BMC/EthernetInterfaces"
     },
