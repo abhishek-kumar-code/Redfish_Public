@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#SerialInterfaceCollection.SerialInterfaceCollection",
-    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces",
     "@odata.type": "#SerialInterfaceCollection.SerialInterfaceCollection",
     "Name": "Serial Interface Collection",
     "Description": "Collection of Serial Interfaces for this System",
@@ -11,5 +8,8 @@
             "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1"
         }
     ],
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#SerialInterfaceCollection.SerialInterfaceCollection",
+    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

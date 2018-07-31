@@ -1,11 +1,11 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-    "@odata.id": "/redfish/v1/Systems/1/Memory/1",
     "@odata.type": "#Memory.v1_4_0.Memory",
     "Name": "Regular Memory",
     "Id": "1",
-    "RankCount": 1,
-    "MaxTDPMilliWatts": [ 12000 ],
+    "RankCount": 2,
+    "MaxTDPMilliWatts": [
+        12000
+    ],
     "CapacityMiB": 8192,
     "DataWidthBits": 64,
     "BusWidthBits": 72,
@@ -26,14 +26,14 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "Metrics": {
-        "@odata.id": "/redfish/v1/Systems/1/Memory/1/Metrics"
-    },
     "Location": {
-      "PartLocation": {
-        "ServiceLabel": "Socket 1_A",
-        "LocationType": "Socket",
-        "LocationOrdinalValue": 0
-      }
-    }
+        "PartLocation": {
+            "ServiceLabel": "Socket 1_A",
+            "LocationType": "Socket",
+            "LocationOrdinalValue": 0
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
+    "@odata.id": "/redfish/v1/Systems/1/Memory/1",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

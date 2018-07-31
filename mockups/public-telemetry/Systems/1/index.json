@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/1",
     "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
     "Id": "1",
     "Name": "My Computer System",
@@ -41,23 +38,12 @@
             "UefiHttp",
             "UefiBootNext"
         ],
-        "UefiTargetBootSourceOverride": "",
-        "BootOptions": {
-            "@odata.id": "/redfish/v1/Systems/1/BootOptions"
-        },
-        "BootNext": "Boot0003",
-        "BootOrder": [
-            "Boot0001",
-            "Boot0000",
-            "Boot0002",
-            "Boot0004",
-            "Boot0003"
-        ]
+        "UefiTargetBootSourceOverride": ""
     },
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "ProcessorSummary": {
         "Count": 8,
-        "LogicalProcessorCount":  256,
+        "LogicalProcessorCount": 256,
         "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
         "Status": {
             "State": "Enabled",
@@ -67,7 +53,7 @@
     },
     "MemorySummary": {
         "TotalSystemMemoryGiB": 16,
-        "MemoryMirroring" : "System",		
+        "MemoryMirroring": "System",
         "Status": {
             "State": "Enabled",
             "Health": "OK",
@@ -76,57 +62,41 @@
     },
     "TrustedModules": [
         {
-          "Status": {
-            "State": "Enabled",
-            "Health": "OK"
-           },
-           "ModuleType":"TPM2_0",
-           "FirmwareVersion": "3.1",
-           "FirmwareVersion2": "1",
-           "InterfaceTypeSelection": "None"
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "ModuleType": "TPM2_0",
+            "FirmwareVersion": "3.1",
+            "FirmwareVersion2": "1",
+            "InterfaceTypeSelection": "None"
         }
     ],
     "HostWatchdogTimer": {
         "FunctionEnabled": true,
-	"WarningAction": "DiagnosticInterrupt",
-	"WarningAction@Redfish.AllowableValues": [ "DiagnosticInterrupt", "SMI", "None" ],
-	"TimeoutAction": "ResetSystem",
-	"TimeoutAction@Redfish.AllowableValues": [ "ResetSystem", "PowerCycle", "PowerDown", "None" ],
-	"Status": {
-	   "State": "StandbyOffline"
-	}
+        "WarningAction": "DiagnosticInterrupt",
+        "WarningAction@Redfish.AllowableValues": [
+            "DiagnosticInterrupt",
+            "SMI",
+            "None"
+        ],
+        "TimeoutAction": "ResetSystem",
+        "TimeoutAction@Redfish.AllowableValues": [
+            "ResetSystem",
+            "PowerCycle",
+            "PowerDown",
+            "None"
+        ],
+        "Status": {
+            "State": "StandbyOffline"
+        }
     },
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/1/Processors"
     },
     "Memory": {
         "@odata.id": "/redfish/v1/Systems/1/Memory"
-    },	
-    "EthernetInterfaces": {
-        "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces"
     },
-    "NetworkInterfaces": {
-        "@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces"
-    },
-    "SimpleStorage": {
-        "@odata.id": "/redfish/v1/Systems/1/SimpleStorage"
-    },
-    "LogServices": {
-        "@odata.id": "/redfish/v1/Systems/1/LogServices"
-    },
-    "SecureBoot": {
-        "@odata.id": "/redfish/v1/Systems/1/SecureBoot"
-    },
-    "Bios": {
-        "@odata.id": "/redfish/v1/Systems/1/Bios"
-    },
-    "PCIeDevices": [
-        {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}
-    ],
-    "PCIeFunctions": [
-        {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC/Functions/1"},
-        {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC/Functions/2"}
-    ],
     "Links": {
         "Chassis": [
             {
@@ -138,23 +108,14 @@
                 "@odata.id": "/redfish/v1/Managers/1"
             }
         ],
-         "Oem": {}
+        "Oem": {}
     },
     "Actions": {
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
             "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
         },
-        "#ComputerSystem.SetDefaultBootOrder": {
-            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.SetDefaultBootOrder",
-            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/RSetDefaultBootOrderActionInfo"
-        },
-        "Oem": {
-            "#Contoso.Reset": {
-                "target": "/redfish/v1/Systems/1/OEM/Contoso/Actions/Contoso.Reset",
-                "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ContosoResetActionInfo"
-            }
-        }
+        "Oem": {}
     },
     "Oem": {
         "Contoso": {
@@ -168,5 +129,8 @@
             "@odata.type": "#Chipwise.ComputerSystem",
             "Style": "Executive"
         }
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/1",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

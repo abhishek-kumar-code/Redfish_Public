@@ -1,6 +1,4 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Links/Memory/#entity",
-    "@odata.id": "/redfish/v1/Systems/1/Memory",
     "@odata.type": "#MemoryCollection.MemoryCollection",
     "Name": "Memory Module Collection",
     "Members@odata.count": 2,
@@ -11,5 +9,8 @@
         {
             "@odata.id": "/redfish/v1/Systems/1/Memory/2"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Links/Memory/#entity",
+    "@odata.id": "/redfish/v1/Systems/1/Memory",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

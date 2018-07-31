@@ -1,6 +1,4 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/Processors/#entity",
-    "@odata.id": "/redfish/v1/Systems/1/Processors",
     "@odata.type": "#ProcessorCollection.ProcessorCollection",
     "Name": "Processors Collection",
     "Members@odata.count": 2,
@@ -11,5 +9,8 @@
         {
             "@odata.id": "/redfish/v1/Systems/1/Processors/2"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ProcessorCollection.ProcessorCollection",
+    "@odata.id": "/redfish/v1/Systems/1/Processors",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

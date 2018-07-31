@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#EthernetInterfaceCollection.EthernetInterfaceCollection",
-    "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces",
     "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
     "Name": "Ethernet Network Interface Collection",
     "Description": "Collection of EthernetInterfaces for this Manager",
@@ -11,5 +8,8 @@
             "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1"
         }
     ],
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterfaceCollection.EthernetInterfaceCollection",
+    "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

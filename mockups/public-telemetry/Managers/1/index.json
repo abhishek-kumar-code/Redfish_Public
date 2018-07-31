@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
-    "@odata.id": "/redfish/v1/Managers/1",
-    "@odata.type": "#Manager.v1_1_0.Manager",
+    "@odata.type": "#Manager.v1_3_1.Manager",
     "Id": "1",
     "Name": "Manager",
     "ManagerType": "BMC",
@@ -82,5 +79,8 @@
         },
         "Oem": {}
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
+    "@odata.id": "/redfish/v1/Managers/1",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

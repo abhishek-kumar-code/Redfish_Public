@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#LogServiceCollection.LogServiceCollection",
-    "@odata.id": "/redfish/v1/Managers/1/LogServices",
     "@odata.type": "#LogServiceCollection.LogServiceCollection",
     "Name": "Log Service Collection",
     "Description": "Collection of Log Services for this Manager",
@@ -10,5 +7,8 @@
         {
             "@odata.id": "/redfish/v1/Managers/1/LogServices/Log1"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#LogServiceCollection.LogServiceCollection",
+    "@odata.id": "/redfish/v1/Managers/1/LogServices",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

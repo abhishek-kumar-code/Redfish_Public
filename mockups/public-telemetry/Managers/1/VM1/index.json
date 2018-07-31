@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#VirtualMediaCollection.VirtualMediaCollection",
-    "@odata.id": "/redfish/v1/Managers/1/VM1",
     "@odata.type": "#VirtualMediaCollection.VirtualMediaCollection",
     "Name": "Virtual Media Services",
     "Description": "Redfish Manager Virtual Media Services Settings",
@@ -14,5 +11,8 @@
             "@odata.id": "/redfish/v1/Managers/1/VM1/CD1"
         }
     ],
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#VirtualMediaCollection.VirtualMediaCollection",
+    "@odata.id": "/redfish/v1/Managers/1/VM1",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

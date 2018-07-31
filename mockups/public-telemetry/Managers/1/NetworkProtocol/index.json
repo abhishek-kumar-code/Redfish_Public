@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#ManagerNetworkProtocol.ManagerNetworkProtocol",
-    "@odata.id": "/redfish/v1/Managers/1/NetworkProtocol",
     "@odata.type": "#ManagerNetworkProtocol.v1_2_0.ManagerNetworkProtocol",
     "Id": "NetworkProtocol",
     "Name": "Manager Network Protocol",
@@ -59,5 +56,8 @@
             "time-a.nist.gov"
         ]
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ManagerNetworkProtocol.ManagerNetworkProtocol",
+    "@odata.id": "/redfish/v1/Managers/1/NetworkProtocol",
+    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

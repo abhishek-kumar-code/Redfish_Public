@@ -1,22 +1,24 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
-	"@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
-	"@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
-	"Parameters": [{
-		"Name": "ResetType",
-		"Required": true,
-		"DataType": "String",
-		"AllowableValues": [
-			"On",
-			"ForceOff",
-			"GracefulShutdown",
-			"GracefulRestart",
-			"ForceRestart",
-			"Nmi",
-			"ForceOn",
-			"PushPowerButton"
-		]
-	}],
-	"Oem": {}
+    "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+    "Parameters": [
+        {
+            "Name": "ResetType",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "On",
+                "ForceOff",
+                "GracefulShutdown",
+                "GracefulRestart",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ]
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

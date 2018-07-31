@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
-    "@odata.id": "/redfish/v1/Chassis/Tray_3/Thermal",
     "@odata.type": "#Thermal.v1_1_0.Thermal",
     "Id": "Thermal",
     "Name": "Thermal",
@@ -26,7 +23,9 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/1/Processors/1" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Processors/1"
+                }
             ]
         },
         {
@@ -49,7 +48,9 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/1/Processors/2" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/1/Processors/2"
+                }
             ]
         },
         {
@@ -72,8 +73,12 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "Intake",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Chassis/Tray_3" },
-                {"@odata.id": "/redfish/v1/Systems/1" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Tray_3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/1"
+                }
             ]
         }
     ],
@@ -97,12 +102,18 @@
             "LowerThresholdFatal": 42,
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
-            "Redundancy" : [
-                {"@odata.id": "/redfish/v1/Chassis/Tray_3/Thermal#/Redundancy/0"}
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Tray_3/Thermal#/Redundancy/0"
+                }
             ],
-            "RelatedItem" : [
-                {"@odata.id": "/redfish/v1/Systems/1" },
-                {"@odata.id": "/redfish/v1/Chassis/Tray_3" }
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Systems/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Tray_3"
+                }
             ]
         },
         {
@@ -124,14 +135,20 @@
             "LowerThresholdFatal": 42,
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
-            "Redundancy" : [
-                {"@odata.id": "/redfish/v1/Chassis/Tray_3/Thermal#/Redundancy/0"}
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Tray_3/Thermal#/Redundancy/0"
+                }
             ],
-            "RelatedItem" : [
-                {"@odata.id": "/redfish/v1/Systems/1" },
-                {"@odata.id": "/redfish/v1/Chassis/Tray_3" }
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Systems/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Tray_3"
+                }
             ]
-       }
+        }
     ],
     "Redundancy": [
         {
@@ -140,8 +157,12 @@
             "Name": "BaseBoard System Fans",
             "RedundancyEnabled": false,
             "RedundancySet": [
-                { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0" },
-                { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1"
+                }
             ],
             "Mode": "N+m",
             "Status": {
@@ -151,5 +172,8 @@
             "MinNumNeeded": 1,
             "MaxNumSupported": 2
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
+    "@odata.id": "/redfish/v1/Chassis/Tray_3/Thermal",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

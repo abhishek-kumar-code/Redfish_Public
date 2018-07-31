@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.id": "/redfish/v1/Chassis/1",
     "@odata.type": "#Chassis.v1_6_0.Chassis",
     "Id": "1",
     "Name": "Computer System Chassis",
@@ -15,7 +12,6 @@
     "IndicatorLED": "Lit",
     "PowerState": "On",
     "Location" : {
-        "@odata.type": "#Resource.v1_3_0.Location",
         "PostalAddress": {
             "Country": "US",
             "Territory": "TX",
@@ -38,22 +34,19 @@
         "State": "Enabled",
         "Health": "OK"
     },
-	"HeightMm": 44.45,
-	"WidthMm": 431.8,
-	"DepthMm": 711,
-	"WeightKg": 15.31,
+    "HeightMm": 44.45,
+    "WidthMm": 431.8,
+    "DepthMm": 711,
+    "WeightKg": 15.31,
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/1/Thermal"
     },
     "Power": {
         "@odata.id": "/redfish/v1/Chassis/1/Power"
     },
-    "NetworkAdapters": {
-        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters"
+    "Assembly": {
+        "@odata.id": "/redfish/v1/Chassis/1/Assembly"
     },
-	"Assembly": {
-		"@odata.id": "/redfish/v1/Chassis/1/Assembly"
-	},
     "Links": {
         "ComputerSystems": [
             {
@@ -70,10 +63,10 @@
                 "@odata.id": "/redfish/v1/Managers/1"
             }
         ],
-        "PCIeDevices": [
-            {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}
-        ],
         "Oem": {}
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.id": "/redfish/v1/Chassis/1",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

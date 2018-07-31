@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
-    "@odata.id": "/redfish/v1/Managers/1/VM1/CD1",
     "@odata.type": "#VirtualMedia.v1_2_0.VirtualMedia",
     "Id": "CD1",
     "Name": "Virtual CD",
@@ -22,5 +19,8 @@
         "#VirtualMedia.EjectMedia": {
             "target": "/redfish/v1/Managers/1/VM1/CD1/Actions/VM.EjectMedia"
         }
-    }    
+    }    ,
+    "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
+    "@odata.id": "/redfish/v1/Managers/1/VM1/CD1",
+    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
