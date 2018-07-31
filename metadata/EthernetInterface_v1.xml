@@ -520,7 +520,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_4_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to correct type used in IPv6StaticGatewayAddress."/>
+      <Annotation Term="OData.Description" String="This version was created to correct type used in IPv6StaticDefaultGateways."/>
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_4_0.EthernetInterface"/>
     </Schema>
 
