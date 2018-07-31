@@ -547,7 +547,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Switch resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-       </ComplexType>
+      </ComplexType>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_4_1">
@@ -559,6 +559,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Manager" BaseType="Manager.v1_4_1.Manager">
+        <Property Name="RemoteRedfishServiceUri" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property contains the URI of the Redfish Service Root for the remote Manager represented by this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the Redfish Service Root for the remote Manager represented by this resource.  This property shall only be present when providing aggregation of Redfish services."/>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
         <NavigationProperty Name="RemoteAccountService" Type="AccountService.AccountService" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains a reference to the AccountService resource for the remote Manager represented by this resource."/>
