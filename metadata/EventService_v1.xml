@@ -219,7 +219,7 @@
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify the OriginOfCondition parameter in the SubmitTestEvent action."/>
       <EntityType Name="EventService" BaseType="EventService.v1_1_0.EventService"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add the RegistryPrefix, ResourceType and SubordinateResources method of eventing."/>
@@ -241,5 +241,6 @@
         </Property>
       </EntityType>
     </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

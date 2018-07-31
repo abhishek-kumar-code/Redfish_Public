@@ -299,7 +299,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to deprecate EventType and to add the grouping mechanism EventGroupId."/>
-      <EntityType Name="Event" BaseType="Event.v1_2_2.Event"/>      
+      <EntityType Name="Event" BaseType="Event.v1_2_2.Event"/>
       <EntityType Name="EventRecord" BaseType="Event.v1_2_0.EventRecord">
         <Property Name="EventGroupId" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

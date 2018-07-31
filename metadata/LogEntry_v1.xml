@@ -721,7 +721,7 @@
       <Annotation Term="OData.Description" String="This version was created to correct the Description for EntryType.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify the descriptions for many properties."/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_3_0.LogEntry"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to deprecate EventType and to add EventGroupId in the case the log is used for Events."/>
@@ -732,7 +732,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate that events are related and shall have the same value in the case where multiple Event messages are produced by the same root cause.  Implementations shall use separate values for events with separate root cause.  There shall not be ordering of events implied by the value of this property."/>
         </Property>
       </EntityType>
-    </Schema>    
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>

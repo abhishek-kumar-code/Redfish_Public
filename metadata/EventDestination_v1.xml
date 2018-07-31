@@ -259,7 +259,7 @@
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_3_0.EventDestination"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add the RegistryPrefix, ResourceType and SubordinateResources method of eventing."/>
@@ -280,7 +280,7 @@
           <Annotation Term="OData.LongDescription" String="When set to true and OriginResources is specifed, indicates the subscription shall be for events from the OriginsResources specified and all subordinate resources.  When set to false and OriginResources is specified, indicates subscription shall be for events only from the OriginResources.  If OriginResources is not specified, it has no relevenace."/>
         </Property>
       </EntityType>
-    </Schema>    
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
