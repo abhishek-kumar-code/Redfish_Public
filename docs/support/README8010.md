@@ -35,20 +35,26 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | CompositionService     | 1.1.0   | Added "AllowOverprovisioning" property. |
 | Drive                  | 1.2.0   | Added "HotspareReplacementMode" property. |
 | Endpoint               | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
+| HostInterface          | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
+| Manager                | 1.5.0   | Added "RemoteRedfishServiceUri" and "RemoteAccountService" properties. |
 | ManagerNetworkProtocol | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
 | Memory                 | 1.6.0   | Added "OverwriteUnit" Action.  Added "IntelOptane" to the "MemoryType" enum. |
 | NetworkAdapter         | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
-| NetworkDeviceFunction  | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object. |
+| NetworkDeviceFunction  | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object.  Deprecated "PhysicalPortAssignment" at the root of the payload in favor of "PhysicalPortAssignment" inside "Links". |
 | Protocol               | N/A     | Added "I2C" protocol type. |
 | Storage                | 1.5.0   | Added "CacheSummary" object to "StorageController". |
+| Thermal                | 1.5.0   | Added "SensorNumber" to "Fan". |
 | UpdateService          | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
 | Resource               | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
 | Assembly               | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ProductionDate" property as the time of day value if it's unknown. | 
 | AttributeRegistry      | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
 | Bios                   | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
+| BootOption             | 1.x.x   | Errata release.  Errata release.  Clarified the description of the "Alias" property. |
 | ComputerSystem         | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB".  Corrected descriptions for the "Boot" properties since the scope of "Boot" has grown over time. |
 | Drive                  | 1.x.x   | Errata release.  Added missing Units annotation to "PredictedMediaLifeLeftPercent" and "PercentageComplete". |
+| EthernetInterface      | 1.4.1   | Errata release.  Fixed type definition of "IPv6StaticDefaultGateways" to not require "PrefixLength". |
 | EventService           | 1.x.x   | Errata release.  Added clarification to "OriginOfCondition" parameter for "SubmitTestEvent" to highlight that it's a string and not a reference object. |
+| IPAddresses            | 1.0.7   | Errata release.  Fixed type definition of "IPv6GatewayStaticAddress" to not require "PrefixLength". |
 | LogEntry               | 1.x.x   | Errata release.  Fixed typo in the description for "EntryType".  Clarified Description and Long Description in several properties. |
 | ManagerNetworkProtocol | 1.x.x   | Errata release.  Clarified description of "DHCP" to show it's for DHCPv4. |
 | Memory                 | 1.x.x   | Errata release.  Added missing Units annotation to many properties in the schema.  Added references to NIST standards for what each type of erase action follows. |
@@ -59,7 +65,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | PrivilegeRegistry      | 1.x.x   | Errata release.  Fixed permissions term on "PrivilegesUsed", "OEMPrivilegesUsed", "Entity", "Targets", and "Privilege". |
 | Processor              | 1.x.x   | Errata release.  Added missing Units annotation to "MaxSpeedMHz". |
 | Protocol               | N/A     | Errata release.  Removed "Vendor Proprietary" wording from PCIe description. |
-| Resource               | 1.x.x   | Errata release.  Added missing Required term on "Name" in ResourceCollection. |
+| Resource               | 1.x.x   | Errata release.  Added missing Required term on "Name" in ResourceCollection.  Fixed the description for the "PartLocation" property inside of "Location". |
 | Resource               | 1.6.1   | Errata release.  Fixed permissions of "Longitude", "Latitude", and "AltitudeMeters" properties. |
 | SessionService         | 1.x.x   | Errata release.  Clarified the Long Description of "ServiceEnabled". |
 | SoftwareInventory      | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ReleaseDate" property as the time of day value if it's unknown. | 
