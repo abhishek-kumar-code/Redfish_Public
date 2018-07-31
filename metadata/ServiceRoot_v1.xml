@@ -411,10 +411,15 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add the $only query parameter support to ProtocolFeaturesSupported."/>
+      <Annotation Term="OData.Description" String="This version was created to add support of the 'excerpt' and 'only' query parameters to ProtocolFeaturesSupported."/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_2.ServiceRoot"/>
 
       <ComplexType Name="ProtocolFeaturesSupported" BaseType="ServiceRoot.v1_3_0.ProtocolFeaturesSupported">
+        <Property Name="ExcerptQuery" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the 'excerpt' query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the 'excerpt' query parameter as described by the specification."/>
+        </Property>
         <Property Name="OnlyMemberQuery" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether the 'only' query parameter is supported."/>
