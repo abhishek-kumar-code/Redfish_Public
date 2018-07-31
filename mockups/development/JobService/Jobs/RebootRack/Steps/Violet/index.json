@@ -5,16 +5,15 @@
 	"Id": "Violet",
 	"Name": "Reboot Server VIOLET",
 	"JobState": "Completed",
+   "PercentComplete": 100,
 	"JobStatus": "OK",
 	"StartTime": "2018-04-01T01:44+06:00",
 	"EndTime": "2018-04-01T01:49+06:00",
 	"Payload": {
 		"TargetUri": "/redfish/v1/Systems/PDX_Violet/Actions#Reset",
-		"HTTPHeaders": [],
-		"UserName": "fred",
-		"Password": null,
-		"JSONBody": "{}",
-		"ResponseMonitorUri": "/tasks/583402"
+		"HttpHeaders": [],
+		"HttpOperation": "POST",
+		"JsonBody": null
 	},
 	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

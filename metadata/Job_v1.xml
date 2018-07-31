@@ -129,22 +129,7 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-      </EntityType>  
-
-		<EnumType Name="MultipleInstancesOfJobs">
-		  <Member Name="Allowed">
-          <Annotation Term="OData.Description" String="Multiple instances of the job are allowed."/>
-          <Annotation Term="OData.LongDescription" String="This value shall represent that multiple instances of this job are allowed. A new, temporary job instance will be created if an overlapping schedule occurs."/>
-        </Member>
-		  <Member Name="NotAllowed">
-          <Annotation Term="OData.Description" String="Multiple instances of the job are not allowed."/>
-          <Annotation Term="OData.LongDescription" String="This value shall represent that only one instance of this job is allowed."/>
-        </Member>
-		  <Member Name="Skip">
-          <Annotation Term="OData.Description" String="Overlapping job schedules will be skipped."/>
-          <Annotation Term="OData.LongDescription" String="This value shall represent that if the this job running when a new instance is scheduled to start, the new instance will be skipped."/>
-        </Member>
-		</EnumType>
+      </EntityType>
 
       <EnumType Name="JobState">
         <Member Name="New">
@@ -203,8 +188,6 @@
 
       <ComplexType Name="Payload">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this job resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the HTTP and JSON payload details used to execute the job described by this resource."/>
         <Property Name="TargetUri" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The URI of the target for this job."/>
@@ -220,16 +203,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This represents the HTTP headers used in the operation of this job."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of HTTP headers used in the execution of this job."/>
-        </Property>
-        <Property Name="UserName" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the user name for use with this job."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name for this job."/>
-        </Property>
-        <Property Name="Password" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property is used with a POST write the password for use in the job.  This property is null on a GET."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the password used for this job.  The value shall be null for GET requests."/>
         </Property>
         <Property Name="JsonBody" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

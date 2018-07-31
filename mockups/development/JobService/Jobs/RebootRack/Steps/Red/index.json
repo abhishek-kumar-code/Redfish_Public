@@ -10,11 +10,9 @@
 	"EndTime": "2018-04-01T01:49+06:00",
 	"Payload": {
 		"TargetUri": "/redfish/v1/Systems/PDX_Red/Actions#Reset",
-		"HTTPHeaders": [],
-		"UserName": "fred",
-		"Password": null,
-		"JSONBody": "{}",
-		"ResponseMonitorUri": "/tasks/583402"
+		"HttpOperation": "POST",
+		"HttpHeaders": [],
+		"JsonBody": null
 	},
 	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
