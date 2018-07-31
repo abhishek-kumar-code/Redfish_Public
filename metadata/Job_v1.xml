@@ -87,21 +87,16 @@
           <Annotation Term="OData.Description" String="The date-time stamp that the job was completed."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the time the job was completed. This property shall not appear if the job is running or has otherwise not been completed. This property shall appear only if the JobState is Completed, Cancelled, or Exception."/>
         </Property>
+        <Property Name="MaxExecutionTime" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The maximum amount of time the job is allowed to execute."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an ISO 8601 conformant duration describing the maximum duration the job is allowed to execute before being stopped by the service."/>
+        </Property>
         <Property Name="PercentComplete" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The completion percentage of this job."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the completion progress of the job, reported in percent of completion."/>
-        </Property>
-        <Property Name="MultipleJobInstances" Type="Job.MultipleInstancesOfJobs">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates the support and handling of multiple instances of this job when scheduling overlaps occur."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate how the service will resolve overlapping scheduled instances of this job, as when a prior instance has not completed before the next scheduled instance occurs."/>
-        </Property>
-        <Property Name="DuplicateJob" Type="Edm.Boolean">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates that this job is a temporary instance of another job."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether this resource is an instance of another job definition within this JobsCollection or not.  If this property is not present, the default value shall be false."/>
-        </Property>		  
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the completion progress of the job, reported in percent of completion. If the job has not been started, the value shall be zero."/>
+        </Property>	  
         <Property Name="CreatedBy" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The person or program that created this job entry."/>
@@ -123,8 +118,8 @@
         </NavigationProperty>
         <Property Name="StepOrder" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This represents the order of the Job Steps to be executed."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of Ids for the Job Steps in order that they should be executed. Each step shall be completed prior to the execution of the next step in array order."/>
+          <Annotation Term="OData.Description" String="This represents the serialized execution order of the Job Steps."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of Ids for the Job Steps in the order that they shall be executed. Each step shall be completed prior to the execution of the next step in array order. An incomplete list of steps shall be considered an invalid configuration. If this property is not present or contains an empty array it shall indicate that the step execution order is not specified and may occur in parallel or in series as determined by the service."/>
         </Property>
         <Property Name="Messages" Type="Collection(Message.Message)" Nullable="false">
           <Annotation Term="OData.Description" String="This is an array of messages associated with the job."/>

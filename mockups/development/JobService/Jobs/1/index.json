@@ -8,6 +8,7 @@
 	"JobStatus": "OK",	
 	"JobState": "Running",
 	"StartTime": "2018-03-07T00:02+06:00",
+	"MaxExecutionTime": "02:00",
 	"PercentComplete": 85,
 	"CreatedBy": "Dr. Smith",
 	"Schedule": {
@@ -20,8 +21,6 @@
 		"TargetUri": "/redfish/v1/Systems/PROBLEM_CHILD/Actions#Reset",
 		"HttpOperation": "POST",
 		"HttpHeaders": [],
-		"UserName": "angrydad",
-		"Password": null,
 		"JsonBody": null
 	}
 }

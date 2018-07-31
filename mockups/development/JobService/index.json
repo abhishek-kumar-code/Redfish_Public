@@ -9,7 +9,6 @@
 		"Health": "OK"
 	},
 	"ServiceEnabled": true,
-	"LifeCycleEventOnJobStateChange": true,
 	"ServiceCapabilities": {
 		"MaxJobs": 100,
 		"MaxSteps": 50,
