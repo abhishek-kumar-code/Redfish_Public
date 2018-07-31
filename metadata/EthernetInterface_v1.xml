@@ -397,7 +397,7 @@
           <Annotation Term="OData.Description" String="Stateless Address Automatic Configuration (SLAAC) parameters for this interface."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the IPv4 and IPv6 Stateless Address Automatic Configuration (SLAAC) properties for this interface."/>
         </Property>
-        <Property Name="IPv6StaticDefaultGateways" Type="Collection(IPAddresses.IPv6DefaultGatewayStaticAddress)" Nullable="false">
+        <Property Name="IPv6StaticDefaultGateways" Type="Collection(IPAddresses.IPv6GatewayStaticAddress)" Nullable="false">
           <Annotation Term="OData.Description" String="The IPv6 static default gateways for this interface."/>
           <Annotation Term="OData.LongDescription" String="The values in this array shall represent the IPv6 static default gateway addresses for this interface."/>
         </Property>

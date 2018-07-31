@@ -45,6 +45,12 @@
         <Annotation Term="OData.LongDescription" String="This type shall represent a single IPv6 static address to be assigned on a network interface."/>
       </ComplexType>
 
+      <ComplexType Name="IPv6GatewayStaticAddress" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object represents a single IPv6 static address to be assigned on a network interface."/>
+        <Annotation Term="OData.LongDescription" String="This type shall represent a single IPv6 static address to be assigned on a network interface."/>
+      </ComplexType>
+
     </Schema>
 
 
@@ -182,7 +188,7 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="IPv6DefaultGatewayStaticAddress" BaseType="IPAddresses.IPv6StaticAddress">
+      <ComplexType Name="IPv6GatewayStaticAddress" BaseType="IPAddresses.IPv6GatewayStaticAddress">
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
@@ -234,7 +240,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.v1_0_8">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for IPv6DefaultGatewayStaticAddress.  It was also created to make PrefixLength in IPv6StaticAddress writable."/>
+      <Annotation Term="OData.Description" String="This version was created to add an abstract base type for IPv6GatewayStaticAddress.  It was also created to make PrefixLength in IPv6StaticAddress writable."/>
     </Schema>
 
   </edmx:DataServices>
