@@ -13,7 +13,7 @@
 		"TargetUri": "/redfish/v1/Systems/PDX_Yellow/Actions#Reset",
 		"HttpHeaders": [],
 		"HttpOperation": "POST",
-		"JSONBody": null
+		"JsonBody": null
 	},
 	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

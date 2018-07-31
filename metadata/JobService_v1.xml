@@ -98,6 +98,8 @@
       </EntityType>
 
       <ComplexType Name="JobServiceCapabilities">
+        <Annotation Term="OData.Description" String="This object describes the supported capabilities of this Job Service implementation."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the capabilities or supported features of this implementation of JobService."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="MaxJobs" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

@@ -187,6 +187,8 @@
       </EnumType>
 
       <ComplexType Name="Payload">
+        <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this job."/>
+        <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the HTTP and JSON payload information for executing this job."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="TargetUri" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
