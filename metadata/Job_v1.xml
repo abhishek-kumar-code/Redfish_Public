@@ -106,9 +106,14 @@
           <Annotation Term="OData.Description" String="The Schedule Settings for this Job."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the scheduling for this job and the re-occurrence frequency for future instances of this job."/>
         </Property>
+        <Property Name="HidePayload" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates that the contents of the Payload should be hidden from view after the Job has been created.  When set to True, the Payload object will not be returned on GET."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be set to True if the Payload object  shall not be returned on GET operations, and set to False if the contents can be returned normally. If this property is not specified when the Job is created, the default value shall be False."/>
+        </Property>
         <Property Name="Payload" Type="Job.v1_0_0.Payload" Nullable="false">
           <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this job."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the HTTP and JSON payload information for executing this job."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the HTTP and JSON payload information for executing this job. This object shall not be included in the response if the HidePayload property is set to True."/>
         </Property>		  
         <NavigationProperty Name="Steps" Type="JobCollection.JobCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -209,8 +214,9 @@
         <Property Name="JsonBody" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains the JSON payload to use in the execution of this Job.  This property is null on a GET."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be JSON formatted payload used for this job.  The value shall be null for GET requests."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be JSON formatted payload used for this job."/>
         </Property>
+
       </ComplexType>
 
       <ComplexType Name="Actions">
