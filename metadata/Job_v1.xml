@@ -198,7 +198,7 @@
         <Property Name="TargetUri" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The URI of the target for this job."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a URI referencing a location to be used as the target for a POST or PATCH."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI referencing a location to be used as the target for an HTTP operation."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
         <Property Name="HttpOperation" Type="Edm.String" Nullable="false">
@@ -213,7 +213,7 @@
         </Property>
         <Property Name="JsonBody" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the JSON payload to use in the execution of this Job.  This property is null on a GET."/>
+          <Annotation Term="OData.Description" String="This property contains the JSON payload to use in the execution of this Job."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be JSON formatted payload used for this job."/>
         </Property>
 
