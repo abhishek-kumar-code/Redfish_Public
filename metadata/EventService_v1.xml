@@ -239,7 +239,21 @@
           <Annotation Term="OData.Description" String="This indicates if the service supports the SubordinateResource property on Event Subscriptions."/>
           <Annotation Term="OData.LongDescription" String="When set to true, the service is indicating that it supports the SubordinateResource property on Event Subscriptions and on generated Events."/>
         </Property>
+        <Property Name="EventFormatTypes" Type="Collection(EventDestination.v1_4_0.EventFormatType)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the content types of the message that this service can send to the event destination."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the the content types of the message that this service can send to the event destination.  If this property is not present, the EventFormatType shall be assumed to be Event."/>
+        </Property>
       </EntityType>
+
+      <EnumType Name="EventFormatType">
+        <Member Name="Event">
+          <Annotation Term="OData.Description" String="The subscription destination will receive JSON Bodies of the Resource Type Event."/>
+        </Member>
+        <Member Name="MetricReport">
+          <Annotation Term="OData.Description" String="The subscription destination will receive JSON Bodies of the Resource Type MetricReport."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>
