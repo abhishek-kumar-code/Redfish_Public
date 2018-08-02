@@ -73,12 +73,12 @@
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
-        <Property Name="PCIeType" Type="PCIeSlot.PCIeTypes">
+        <Property Name="PCIeType" Type="PCIeSlots.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the PCIe specification supported by this slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum PCIe specification that this slot supports."/>
         </Property>
-        <Property Name="SlotType" Type="PCIeSlot.SlotTypes">
+        <Property Name="SlotType" Type="PCIeSlots.SlotTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the PCIe slot type for this slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the slot type as specified by the PCIe specification."/>
@@ -87,12 +87,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes supported by this slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of PCIe lanes supported by the slot."/>
-		  <Annotation Term="OData.Validation" String="Validation.Maximum=16"/>
-		  <Annotation Term="OData.Validation" String="Validation.Minimum=1"/>
+		  <Annotation Term="Validation.Maximum" Int="16"/>
+		  <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="Location" Type="Resource.Location" Nullable="false"/>
-        <Property Name="Links" Type="PCIeSlot.PCIeLinks">
+        <Property Name="Links" Type="PCIeSlots.PCIeLinks">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
@@ -114,12 +114,12 @@
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
-        <Property Name="MaxPCIeType" Type="PCIeSlot.PCIeTypes">
+        <Property Name="MaxPCIeType" Type="PCIeSlots.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The highest version of the PCIe specification supported by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum PCIe specification that this device supports."/>
         </Property>
-        <Property Name="PCIeType" Type="PCIeSlot.PCIeTypes">
+        <Property Name="PCIeType" Type="PCIeSlots.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The version of the PCIe specification in use by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the negotiated PCIe interface version in use by this device."/>
@@ -128,15 +128,15 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes supported by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of PCIe lanes supported by this device."/>
-		  <Annotation Term="OData.Validation" String="Validation.Maximum=16"/>
-		  <Annotation Term="OData.Validation" String="Validation.Minimum=1"/>
+		  <Annotation Term="Validation.Maximum" Int="16"/>
+		  <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
         <Property Name="LanesInUse" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes in use by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of PCIe lanes in use by this device, which shall be equal or less than the value of MaxLanes."/>
-		  <Annotation Term="OData.Validation" String="Validation.Maximum=16"/>
-		  <Annotation Term="OData.Validation" String="Validation.Minimum=1"/>
+		  <Annotation Term="Validation.Maximum" Int="16"/>
+		  <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
 	  </ComplexType>
 		
