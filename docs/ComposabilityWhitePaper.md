@@ -49,6 +49,8 @@ The Composition Service is the top level resource for all things related to Comp
 
 The Composition Service contains the `AllowOverprovisioning` property.  This is used to indicate if the service can accept [Constrained Composition](#constrained-composition) requests where the client may allow for more resources than those requested.
 
+The Composition Service contains the `AllowZoneAffinity` property.  This is used to indicate if the service can accept [Constrained Composition](#constrained-composition) requests where the client may desire a given composition request to be fulfilled using [Resource Blocks](#resource-blocks) from a particular [Resource Zones](#resource-zones).
+
 The Composition Service also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
 
 Example Composition Service Resource:
@@ -65,6 +67,7 @@ Example Composition Service Resource:
     },
     "ServiceEnabled": true,
     "AllowOverprovisioning": true,
+    "AllowZoneAffinity": true,
     "ResourceBlocks": {
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks"
     },
@@ -79,7 +82,7 @@ Example Composition Service Resource:
 
 Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not in a state where system software is able to use them until they belong in a composition.  For example, if a Resource Block contains a Drive instance, the Drive will not belong to any given Computer System until a composition request is made that makes use of its Resource Block.
 
-The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.
+The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value `Expansion` is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.
 
 The property `CompositionStatus` is an object that contains several properties:
 * `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.
@@ -98,7 +101,7 @@ Example Resource Block Resource:
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
-    "@odata.type": "#ResourceBlock.v1_1_0.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_2_0.ResourceBlock",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3",
     "Id": "DriveBlock3",
     "Name": "Drive Block 3",
@@ -825,6 +828,7 @@ OData-Version: 4.0
 {
     "Name": "My Computer System",
     "Description": "Description of server",
+    "@Redfish.ZoneAffinity": "1",
     "PowerState": "On",
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "Processors": {
@@ -908,7 +912,7 @@ Content-Length: <computed-length>
 Location: /redfish/v1/Systems/NewSystem2
 ```
 
-The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation `@Redfish.AllowOverprovisioning` permits the Redfish service to supply more resources that what was requested.
+The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation `@Redfish.AllowOverprovisioning` permits the Redfish service to supply more resources that what was requested.  The usage of the annotation `@Redfish.ZoneAffinity` indicates the client wants the components for the composition to be all selected from the [Resource Zone](#resource-zones) that contains the value `"1"` for the `Id` property.
 
 In the above Service Response Example, the service responded with a successful 201 response, and indicates that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
