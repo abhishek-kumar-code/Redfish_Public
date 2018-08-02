@@ -39,7 +39,8 @@
         </Annotation>
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
-            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="A VirtualMedia instance can be updated to change properties such as the Image, Inserted, and WriteProtected."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
