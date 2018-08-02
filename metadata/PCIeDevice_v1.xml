@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  PCIeDevice  v1.2.1-->
+<!--# Redfish Schema:  PCIeDevice  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -217,36 +217,36 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes supported by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of PCIe lanes supported by this device."/>
-		  <Annotation Term="Validation.Maximum" Int="16"/>
-		  <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="Validation.Maximum" Int="32"/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
         <Property Name="LanesInUse" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes in use by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of PCIe lanes in use by this device, which shall be equal or less than the value of MaxLanes."/>
-		  <Annotation Term="Validation.Maximum" Int="16"/>
-		  <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="Validation.Maximum" Int="32"/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
       </EntityType>
-		
+
       <EnumType Name="PCIeTypes">
         <Member Name="Gen1">
           <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
         </Member>
         <Member Name="Gen2">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v2.0 slot."/>
         </Member>
         <Member Name="Gen3">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v3.0 slot."/>
         </Member>
         <Member Name="Gen4">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v4.0 slot."/>
         </Member>
         <Member Name="Gen5">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v5.0 slot."/>
         </Member>
       </EnumType>
-	  
+
     </Schema>
 
   </edmx:DataServices>

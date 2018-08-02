@@ -62,7 +62,6 @@
         <Property Name="PCIeSlots" Type="Collection(PCIeSlots.v1_0_0.PCIeSlot)">
           <Annotation Term="OData.Description" String="An array of PCI Slot information."/>
           <Annotation Term="OData.LongDescription" String="This array shall contain an entry for each PCIe slot, including empty slots (with no device or card installed)."/>
-          <Annotation Term="OData.AutoExpand"/>
         </Property>
         <Property Name="Actions" Type="Assembly.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -71,18 +70,19 @@
       </EntityType>
 
       <ComplexType Name="PCIeSlot">
-          <Annotation Term="OData.Description" String="This is the definition for a PCI slot information object."/>
-          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PCIe Slot for a Redfish implementation."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the definition for a PCI slot information object."/>
+        <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PCIe Slot for a Redfish implementation."/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
-        <Property Name="PCIeType" Type="PCIeSlots.PCIeTypes">
+        <Property Name="PCIeType" Type="PCIeSlots.v1_0_0.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the PCIe specification supported by this slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum PCIe specification that this slot supports."/>
         </Property>
-        <Property Name="SlotType" Type="PCIeSlots.SlotTypes">
+        <Property Name="SlotType" Type="PCIeSlots.v1_0_0.SlotTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the PCIe slot type for this slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the slot type as specified by the PCIe specification."/>
@@ -91,8 +91,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes supported by this slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of PCIe lanes supported by the slot."/>
-		  <Annotation Term="Validation.Maximum" Int="16"/>
-		  <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="Validation.Maximum" Int="32"/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false">
           <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
@@ -102,7 +102,7 @@
           <Annotation Term="OData.Description" String="The Location of the PCIe slot."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain part location information, including a ServiceLable of the associated PCIe Slot."/>
         </Property>
-        <Property Name="Links" Type="PCIeSlots.PCIeLinks">
+        <Property Name="Links" Type="PCIeSlots.v1_0_0.PCIeLinks">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
@@ -111,13 +111,13 @@
       <ComplexType Name="PCIeLinks" BaseType="Resource.Links">
         <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
-        <NavigationProperty Name="PCIeDevice" Type="PCIeDevice.PCIeDevice)">
+        <NavigationProperty Name="PCIeDevice" Type="PCIeDevice.PCIeDevice">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A references to the PCIe Device contained in this slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this physical slot is associated with and shall reference a resource of type PCIeDevice. If the Status.State of this slot has a value of Absent, this property shall not appear in the resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-	  </ComplexType>
+      </ComplexType>
 
       <ComplexType Name="PCIeInterface">
         <Annotation Term="OData.Description" String="This is the definition for a PCI Interface object."/>
@@ -126,12 +126,12 @@
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
-        <Property Name="MaxPCIeType" Type="PCIeSlots.PCIeTypes">
+        <Property Name="MaxPCIeType" Type="PCIeSlots.v1_0_0.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The highest version of the PCIe specification supported by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum PCIe specification that this device supports."/>
         </Property>
-        <Property Name="PCIeType" Type="PCIeSlots.PCIeTypes">
+        <Property Name="PCIeType" Type="PCIeSlots.v1_0_0.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The version of the PCIe specification in use by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the negotiated PCIe interface version in use by this device."/>
@@ -140,33 +140,33 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes supported by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of PCIe lanes supported by this device."/>
-		  <Annotation Term="Validation.Maximum" Int="16"/>
-		  <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="Validation.Maximum" Int="16"/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
         <Property Name="LanesInUse" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of PCIe lanes in use by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of PCIe lanes in use by this device, which shall be equal or less than the value of MaxLanes."/>
-		  <Annotation Term="Validation.Maximum" Int="16"/>
-		  <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="Validation.Maximum" Int="16"/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
-	  </ComplexType>
-		
+      </ComplexType>
+
       <EnumType Name="PCIeTypes">
         <Member Name="Gen1">
           <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
         </Member>
         <Member Name="Gen2">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v2.0 slot."/>
         </Member>
         <Member Name="Gen3">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v3.0 slot."/>
         </Member>
         <Member Name="Gen4">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v4.0 slot."/>
         </Member>
         <Member Name="Gen5">
-          <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
+          <Annotation Term="OData.Description" String="A PCIe v5.0 slot."/>
         </Member>
       </EnumType>
 
@@ -192,7 +192,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Chassis.v1_0_0.OemActions" Nullable="false">
+        <Property Name="Oem" Type="PCIeSlots.v1_0_0.OemActions" Nullable="false">
           <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
         </Property>
@@ -204,7 +204,7 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
-	</Schema>
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
