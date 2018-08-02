@@ -104,6 +104,10 @@
         <Annotation Term="OData.Description" String="The term specifies that a client is allowing the service to provide more resources than what was requested, which includes, but is not limited to, a larger quantity of items, larger capacity, and faster devices."/>
         <Annotation Term="OData.LongDescription" String="The term shall specify that a client is allowing the service to provide more resources than what was requested, which includes, but is not limited to, a larger quantity of items, larger capacity, and faster devices.  If not specified by the client, then the service shall treat this as false."/>
       </Term>
+      <Term Name="Filter" Type="Edm.String">
+        <Annotation Term="OData.Description" String="Indicates a filter to apply to an array of objects when the values are copies of data elsewhere in the data model."/>
+        <Annotation Term="OData.LongDescription" String="The term shall specify a Filter to apply to a set of objects used as the data source for an array. The value of the term shall follow the Filter query parameter format as specified in the Redfish Specification. Items matching the filter shall be included in the resulting array, while items that do not match the filter shall be excluded from the results."/>
+      </Term>
 
       <EnumType Name="ReleaseStatusType">
         <Member Name="Standard">
