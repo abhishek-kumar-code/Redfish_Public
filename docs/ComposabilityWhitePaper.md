@@ -49,6 +49,8 @@ The Composition Service is the top level resource for all things related to Comp
 
 The Composition Service contains the `AllowOverprovisioning` property.  This is used to indicate if the service can accept [Constrained Composition](#constrained-composition) requests where the client may allow for more resources than those requested.
 
+The Composition Service contains the `AllowZoneAffinity` property.  This is used to indicate if the service can accept [Constrained Composition](#constrained-composition) requests where the client may desire a given composition request to be fulfilled using [Resource Blocks](#resource-blocks) from a particular [Resource Zones](#resource-zones).
+
 The Composition Service also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
 
 Example Composition Service Resource:
@@ -65,6 +67,7 @@ Example Composition Service Resource:
     },
     "ServiceEnabled": true,
     "AllowOverprovisioning": true,
+    "AllowZoneAffinity": true,
     "ResourceBlocks": {
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks"
     },
@@ -79,9 +82,15 @@ Example Composition Service Resource:
 
 Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not in a state where system software is able to use them until they belong in a composition.  For example, if a Resource Block contains a Drive instance, the Drive will not belong to any given Computer System until a composition request is made that makes use of its Resource Block.
 
-The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.
+The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value `Expansion` is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.
 
-The property `CompositionStatus` is an object that contains two properties: `CompositionState` and `Reserved`.  `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.  `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, the second client should consider it allocated and not use it; the second client should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
+The property `CompositionStatus` is an object that contains several properties:
+* `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.
+* `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, the second client should consider it allocated and not use it; the second client should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
+* `SharingCapable` is a flag to indicate if the Resource Block is capable of participating in multiple compositions simultaneously.
+* `SharingEnabled` is a writable flag to indicate if the Resource Block is allowed to participate in multiple compositions simultaneously.
+* `MaxCompositions` is used to indicate the maximum number of compositions in which the Resource Block is capable of participating simultaneously.
+* `NumberOfCompositions` is used to indicate the number of compositions in which the Resource Block is currently participating.
 
 There are several arrays of links to various component types, such as the `Processors`, `Memory`, and `Storage` arrays.  These links ultimately go to the individual components that are within the Resource Block.  These components are made available to the new composition after a composition request is made.  The `ComputerSystems` array is used when a Resource Block contains one or more whole Computer Systems.  This gives the client the ablity to create a single composed Computer System from a set of smaller Computer Systems.
 
@@ -92,7 +101,7 @@ Example Resource Block Resource:
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
-    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_2_0.ResourceBlock",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3",
     "Id": "DriveBlock3",
     "Name": "Drive Block 3",
@@ -103,7 +112,11 @@ Example Resource Block Resource:
     },
     "CompositionStatus": {
         "Reserved": false,
-        "CompositionState": "Composed"
+        "CompositionState": "ComposedAndAvailable",
+        "SharingCapable": true,
+        "SharingEnabled": true,
+        "MaxCompositions": 8,
+        "NumberOfCompositions": 1
     },
     "Processors": [],
     "Memory": [],
@@ -135,7 +148,20 @@ Example Resource Block Resource:
 }
 ```
 
-In the above example, the Resource Block is of type `Storage`, and it contains a single storage entity.  From the `CompositionStatus`, it's noted that the Resource Block is currently used in a composition, and in the `Links` section, it's being used by the Computer System `ComposedSystem`.
+In the above example, the Resource Block is of type `Storage`, and it contains a single storage entity.  From the `CompositionStatus`, it's noted that the Resource Block is currently part of at least one composition and can be used in more compositions, and in the `Links` section, it's being used by the Computer System `ComposedSystem`.
+
+
+#### Recommended State Diagrams for CompositionState
+
+As clients make requests to create or delete composed resources, a Resource Block will transition between different states as shown by the `CompositionState` property within the `CompositionStatus` object.  Figure 1 shows the recommended state diagram for `CompositionState` involving a Resource Block that is not sharable.  Figure 2 shows the recommended state diagram for `CompositionState` involving a Resource Block that is sharable.  While not shown in the diagrams, client requests can fail for precondition checks, such as something not being powered, thus leaving the state unchanged.
+
+| ![Figure 1](ComposabilityWhitepaper_files/Figure-CompositionState-NonSharable.jpg "Figure 1") |
+| :--------: |
+| *Figure 1* |
+
+| ![Figure 2](ComposabilityWhitepaper_files/Figure-CompositionState-Sharable.jpg "Figure 2") |
+| :--------: |
+| *Figure 2* |
 
 
 ### Resource Zones
@@ -211,9 +237,9 @@ The property `CapabilitiesObject` contains a URI to the underlying object instan
 
 The property `UseCase` is used to inform the client of the context of a particular create (POST) operation.  The table below shows the different values for `UseCase` as used by Composability.  Each value corresponds with a specific type of resource being composed in addition to a [type of composition](#types-of-compositions) for the request.
 
-| `UseCase` Value                        | Composed Resource | Type of Composition                     |
-| -------------------------------------- | ----------------- | --------------------------------------- |
-| `ComputerSystemComposition`            | `ComputerSystem`  | [Specific](#specific-composition)       |
+| `UseCase` Value                        | Composed Resource | Type of Composition |
+| -------------------------------------- | ----------------- | ------------------- |
+| `ComputerSystemComposition`            | `ComputerSystem`  | [Specific](#specific-composition) |
 | `ComputerSystemConstrainedComposition` | `ComputerSystem`  | [Constrained](#constrained-composition) |
 
 The property `TargetCollection` inside the `Links` object contains the URI of the Resource Collection that accepts the given capability.  A client will be able to perform a create (POST) operation against this URI as described by the contents of the `CapabilitiesObject`.
@@ -261,18 +287,22 @@ The Collection Capabilities Object follows the schema of the new resource a clie
 
 The object itself contains annotated properties the client can use in the body of the create (POST) operation.  It also lists out optional properties, and any restrictions properties may have after the new resource is created.  The table below describes the different annotations used on the properties within the Collection Capabilities Object.
 
-| Property Annotation             | Description                                                                                                                                                                                            |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `@Redfish.RequiredOnCreate`     | The client must provide the given property in the body of the create (POST) request                                                                                                                    |
-| `@Redfish.OptionalOnCreate`     | The client may provide the property in the body of the create (POST) request                                                                                                                           |
+| Property Annotation             | Description |
+| ------------------------------- | ----------- |
+| `@Redfish.RequiredOnCreate`     | The client must provide the given property in the body of the create (POST) request |
+| `@Redfish.OptionalOnCreate`     | The client may provide the property in the body of the create (POST) request |
 | `@Redfish.SetOnlyOnCreate`      | If the client has a specific value needed for the property, it must be provided in the body of the create (POST) request; this property is likely a "Read Only" property after the resource's creation |
-| `@Redfish.UpdatableAfterCreate` | The client is allowed to update the property after the resource is created                                                                                                                             |
-| `@Redfish.AllowableValues`      | The client is allowed to use any of the specified values in the body of the create (POST) request for the given property                                                                               |
+| `@Redfish.UpdatableAfterCreate` | The client is allowed to update the property after the resource is created |
+| `@Redfish.AllowableValues`      | The client is allowed to use any of the specified values in the body of the create (POST) request for the given property |
+
+In the above table, some of the annotation terms can conflict with one another if used incorrectly.  This may be due to conflicting logical semantics with the term definitions.  Services need to ensure their Collection Capabilities Objects do not have the following types of conflicts:
+* Do not annotate a property with both `@Redfish.RequiredOnCreate` and `@Redfish.OptionalOnCreate`.  A property cannot be both required and optional.
+* Do not annotate a property with both `@Redfish.SetOnlyOnCreate` and `@Redfish.UpdatableAfterCreate`.  A property can only be one of these.
 
 The object can also contain object level annotations to describe other types of payload rules to the client.  The table below describes the different annotations used at the object level within the Collection Capabilities Object.
 
-| Object Annotation                 | Description                                                                                                                                                                                        |
-| ----------------------------------| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Object Annotation                 | Description |
+| ----------------------------------| ----------- |
 | `@Redfish.RequestedCountRequired` | Indicates that the client is required to annotate the corresponding object in the request payload with `@Redfish.RequestedCount` to show how many instances of the object the client is requesting |
 
 Example Collection Capabilities Object:
@@ -798,6 +828,7 @@ OData-Version: 4.0
 {
     "Name": "My Computer System",
     "Description": "Description of server",
+    "@Redfish.ZoneAffinity": "1",
     "PowerState": "On",
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "Processors": {
@@ -881,7 +912,7 @@ Content-Length: <computed-length>
 Location: /redfish/v1/Systems/NewSystem2
 ```
 
-The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation `@Redfish.AllowOverprovisioning` permits the Redfish service to supply more resources that what was requested.
+The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation `@Redfish.AllowOverprovisioning` permits the Redfish service to supply more resources that what was requested.  The usage of the annotation `@Redfish.ZoneAffinity` indicates the client wants the components for the composition to be all selected from the [Resource Zone](#resource-zones) that contains the value `"1"` for the `Id` property.
 
 In the above Service Response Example, the service responded with a successful 201 response, and indicates that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
