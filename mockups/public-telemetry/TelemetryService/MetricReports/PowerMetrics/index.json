@@ -2,6 +2,7 @@
     "@odata.type": "#MetricReport.v1_0_0.MetricReport",
     "Id": "PowerMetrics",
     "Name": "Power Metrics Report",
+    "ReportSequence": "129",
     "MetricReportDefinition": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics"
     },

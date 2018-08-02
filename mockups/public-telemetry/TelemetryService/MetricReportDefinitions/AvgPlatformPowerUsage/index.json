@@ -4,13 +4,14 @@
     "Name": "Average Platform Power Usage",
     "MetricReportDefinitionType": "Periodic",
     "Schedule": {
-        "RecurrenceInterval": "T00:00:00.010"
+        "RecurrenceInterval": "T01:00:00.000"
     },
     "ReportActions": [
         "RedfishEvent",
         "LogToMetricReportsCollection"
     ],
-    "ReportUpdates": "Overwrite",
+    "ReportUpdates": "AppendWrapsWhenFull",
+    "AppendLimit": 256,
     "MetricReport": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricReports/AvgPlatformPowerUsage"
     },

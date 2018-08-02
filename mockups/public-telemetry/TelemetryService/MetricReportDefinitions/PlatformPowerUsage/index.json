@@ -4,13 +4,14 @@
     "Name": "Transmit and Log Platform Power Usage",
     "MetricReportDefinitionType": "Periodic",
     "Schedule": {
-        "RecurrenceInterval": "T00:00:01"
+        "RecurrenceInterval": "T01:00:00"
     },
     "ReportActions": [
         "RedfishEvent",
         "LogToMetricReportsCollection"
     ],
-    "ReportUpdates": "NewReport",
+    "ReportUpdates": "AppendWrapsWhenFull",
+    "AppendLimit": 256,
     "MetricReport": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"
     },

@@ -2,6 +2,7 @@
     "@odata.type": "#MetricReport.v1_0_0.MetricReport",
     "Id": "PlatformPowerUsage",
     "Name": "PlatformPowerUsage",
+    "ReportSequence": "128",
     "MetricReportDefinition": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage"
     },

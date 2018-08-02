@@ -50,7 +50,7 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="false"/>
+            <PropertyValue Property="Deletable" Bool="true"/>
           </Record>
         </Annotation>
       </EntityType>
@@ -66,6 +66,12 @@
           <Annotation Term="OData.LongDescription" String="The value shall be reference to the definition for this metric."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <Property Name="ReportSequence" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The current sequence identifier for this metric report."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the current sequence identifier for this metric report."/>
+          <Annotation Term="Redfish.Required"/>
+        </Property>
         <Property Name="MetricValues" Type="Collection(MetricReport.v1_0_0.MetricValue)">
           <Annotation Term="OData.Description" String="An array of metric values for the metered items of this Metric."/>
           <Annotation Term="OData.LongDescription" String="The values shall be metric values for this MetricReport."/>

@@ -23,6 +23,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Schedule_v1.xml">
     <edmx:Include Namespace="Schedule"/>
@@ -76,6 +77,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="When logging metric reports, specifies how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition.  Namely, whether to overwrite, append, or create new report resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition."/>
+        </Property>
+        <Property Name="AppendLimit" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the maximum number of entries that can be appended to a metric report.  When the metric report reaches its limit, its behavior is dictated by the ReportUpdates property."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a number that indicates the maximum number of entries that can be appended to a metric report.  When the metric report reaches its limit, its behavior shall be dictated by the ReportUpdates property.  This property shall be required if ReportUpdates is either AppendWrapsWhenFull or AppendStopsWhenFull."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false">
           <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
@@ -190,8 +197,11 @@
         <Member Name="Overwrite">
           <Annotation Term="OData.Description" String="When a metric report is updated, overwrite the specified metric report resource."/>
         </Member>
-        <Member Name="Append">
-          <Annotation Term="OData.Description" String="When a metric report is updated, append to the specified metric report resource."/>
+        <Member Name="AppendWrapsWhenFull">
+          <Annotation Term="OData.Description" String="When a metric report is updated, append to the specified metric report resource.  This also indicates that the metric report overwrites its entries with new entries when the metric report has reached its maximum capacity."/>
+        </Member>
+        <Member Name="AppendStopsWhenFull">
+          <Annotation Term="OData.Description" String="When a metric report is updated, append to the specified metric report resource.  This also indicates that the metric report stops adding entries when the metric report has reached its maximum capacity."/>
         </Member>
         <Member Name="NewReport">
           <Annotation Term="OData.Description" String="When a metric report is updated, create a new metric report resource, whose resource name is the metric report resource name concatenated with the timestamp."/>
