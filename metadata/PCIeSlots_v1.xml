@@ -63,7 +63,7 @@
           <Annotation Term="OData.Description" String="An array of PCI Slot information."/>
           <Annotation Term="OData.LongDescription" String="This array shall contain an entry for each PCIe slot, including empty slots (with no device or card installed)."/>
         </Property>
-        <Property Name="Actions" Type="Assembly.v1_0_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="PCIeSlots.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
