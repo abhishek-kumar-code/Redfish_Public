@@ -10,6 +10,9 @@
     "ReportActions": [
         "LogToMetricReportsCollection"
     ],
+    "MetricReport": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetricStats"
+    },
     "ReportUpdates": "Overwrite",
     "Status": {
         "State": "Enabled"
