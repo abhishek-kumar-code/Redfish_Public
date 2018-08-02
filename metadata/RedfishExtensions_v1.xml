@@ -106,7 +106,7 @@
       </Term>
       <Term Name="ZoneAffinity" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term specifies that a client is requesting the service fulfills a request using resources available within a specific Zone resource.  The value of the term is the Id property of the given Zone resource."/>
-        <Annotation Term="OData.LongDescription" String="The term shall specify that a client is requesting the service fulfills a request using resources available within a specific Zone resource.  The value of the term shall be the Id property of the given Zone resource."/>
+        <Annotation Term="OData.LongDescription" String="The term shall specify that a client is requesting the service fulfills a request using resources available within a specific Zone resource.  The value of the term shall be the Id property of the given Zone resource.  This term shall only be at the root level of the request payload."/>
       </Term>
 
       <EnumType Name="ReleaseStatusType">
