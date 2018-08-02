@@ -94,8 +94,14 @@
 		  <Annotation Term="Validation.Maximum" Int="16"/>
 		  <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
+        <Property Name="Location" Type="Resource.Location" Nullable="false">
+          <Annotation Term="OData.Description" String="The Location of the PCIe slot."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain part location information, including a ServiceLable of the associated PCIe Slot."/>
+        </Property>
         <Property Name="Links" Type="PCIeSlots.PCIeLinks">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
