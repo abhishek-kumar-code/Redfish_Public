@@ -1,8 +1,8 @@
 {
-	"@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
 	"@odata.id": "/redfish/v1/Chassis/1",
-	"@odata.type": "#Chassis.v1_6_0.Chassis",
+	"@odata.type": "#Chassis.v1_8_0.Chassis",
 	"Id": "1",
 	"Name": "Computer System Chassis",
 	"ChassisType": "RackMount",
@@ -53,58 +53,9 @@
 	"DepthMm": 711,
 	"WeightKg": 15.31,
 
-	"PCIeSlots": [{
-			"PCIeSpec": "ENUMs Gen3, Gen4, Gen5",
-			"Lanes": 16,
-			"LanesUsed": 4,
-			"SlotLength": "Full/Half/ENUM",
-			"SlotHeight": "Full/Half/ENUM",
-			"Status": {
-				"State": "Enabled"
-			},
-			"Location": {
-				"PartLocation": {
-					"ServiceLabel": "Slot 1",
-					"other stuff": "BLAH"
-				}
-			},
-			"PCIeDevice": {
-				"@odata.id": "/redfish/v1/Systems/1/PCIeDevices/14"
-			}
-		},
-		{
-			"PCIeSpec": "ENUMs Gen3, Gen4, Gen5",
-			"Lanes": 1,
-			"LanesUsed": 0,
-			"SlotLength": "Full/Half/ENUM",
-			"SlotHeight": "Full/Half/ENUM",
-			"Status": {
-				"State": "Absent"
-			},
-			"Location": {
-				"PartLocation": {
-					"ServiceLabel": "Slot 2",
-					"other stuff": "BLAH"
-				}
-			}
-		},
-		{
-			"PCIeSpec": "ENUMs Gen3, Gen4, Gen5",
-			"Lanes": 1,
-			"LanesUsed": 0,
-			"SlotLength": "Full/Half/ENUM",
-			"SlotHeight": "Full/Half/ENUM",
-			"Status": {
-				"State": "Absent"
-			},
-			"Location": {
-				"PartLocation": {
-					"ServiceLabel": "Slot 2",
-					"other stuff": "BLAH"
-				}
-			}
-		}
-	],
+	"PCIeSlots": {
+		"@odata.id": "/redfish/v1/Chassis/1/PCIeSlots"
+	},
 	"Thermal": {
 		"@odata.id": "/redfish/v1/Chassis/1/Thermal"
 	},

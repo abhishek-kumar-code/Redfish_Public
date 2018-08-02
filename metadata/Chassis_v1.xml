@@ -64,6 +64,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Switch_v1.xml">
     <edmx:Include Namespace="Switch"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeSlots_v1.xml">
+    <edmx:Include Namespace="PCIeSlots"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -726,5 +729,14 @@
       <EntityType Name="Chassis" BaseType="Chassis.v1_7_0.Chassis"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_8_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_7_1.Chassis"/>
+        <NavigationProperty Name="PCIeSlots" Type="PCIeSlots.PCIeSlots" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the PCIe Slot properties of this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the PCIe Slot information for this chassis and shall be of type PCIeSlot."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
   </edmx:DataServices>
 </edmx:Edmx>
