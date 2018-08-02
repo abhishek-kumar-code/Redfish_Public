@@ -65,12 +65,13 @@
         </Property>
         <Property Name="Registry" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Registry Name, Major and Minor version used in MessageID construction."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the value of the Registry Name, Major and Minor version and shall conform to the syntax specified in the Redfish specification for the MessageId property without the MessageKey."/>
+          <Annotation Term="OData.Description" String="The Registry Name, Major, and Minor version.  This Registry can reference any type of Registry, such as a Message Registry, Privilege Registry, or Attribute Registry."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the value of the Registry Name, Major, and Minor version.  This Registry may reference any type of Registry, such as a Message Registry, Privilege Registry, or Attribute Registry."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Location" Type="Collection(MessageRegistryFile.v1_0_0.Location)" Nullable="false">
-          <Annotation Term="OData.Description" String="Location information for this schema file."/>
+          <Annotation Term="OData.Description" String="Location information for this registry file."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the location information for this registry file."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
       </EntityType>
@@ -131,7 +132,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistryFile.v1_0_5">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the description for Registry."/>
       <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.v1_0_4.MessageRegistryFile"/>
     </Schema>
 
@@ -148,7 +149,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="MessageRegistryFile.v1_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="MessageRegistryFile.v1_1_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -160,7 +164,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistryFile.v1_1_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the description for Registry."/>
       <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.v1_1_0.MessageRegistryFile"/>
     </Schema>
 

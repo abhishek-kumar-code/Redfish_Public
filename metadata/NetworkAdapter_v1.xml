@@ -85,15 +85,20 @@
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.NetworkAdapter">
         <Annotation Term="OData.Description" String="A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters."/>
         <Annotation Term="OData.LongDescription" String="A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters."/>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
         <NavigationProperty Name="NetworkPorts" Type="NetworkPortCollection.NetworkPortCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the collection of NetworkPorts associated with this NetworkAdapter."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type NetworkPortCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkDeviceFunctions" Type="NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="A reference to the collection of NetworkDeviceFunctions associated with this NetworkAdapter."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type NetworkDeviceFunctionCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Manufacturer" Type="Edm.String">
@@ -135,7 +140,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="NetworkAdapter.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="NetworkAdapter.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -224,17 +232,20 @@
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="An array of references to the PCIeDevices associated with this Network Controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeDevice that represent the PCI-e Devices associated with this Network Controller."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkPorts" Type="Collection(NetworkPort.NetworkPort)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="An array of references to the NetworkPorts associated with this Network Controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type NetworkPort that represent the Network Ports associated with this Network Controller."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkDeviceFunctions" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.Description" String="An array of references to the NetworkDeviceFunctions associated with this Network Controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type NetworkDeviceFunction that represent the Network Device Functions associated with this Network Controller."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
@@ -253,6 +264,8 @@
         <Annotation Term="OData.Description" String="A Virtualization offload capability of a controller."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe the capability, status, and configuration values related to a virtualization offload for a controller."/>
         <Property Name="VirtualFunction" Type="NetworkAdapter.v1_0_0.VirtualFunction">
+          <Annotation Term="OData.Description" String="The virtual function of the controller."/>
+          <Annotation Term="OData.LongDescription" String="This property shall describe the capability, status, and configuration values related to the virtual function for this controller."/>
         </Property>
         <Property Name="SRIOV" Type="NetworkAdapter.v1_0_0.SRIOV">
           <Annotation Term="OData.Description" String="Single-Root Input/Output Virtualization (SR-IOV) capabilities."/>
@@ -301,7 +314,10 @@
       </EntityType>
 
       <ComplexType Name="Controllers" BaseType="NetworkAdapter.v1_0_0.Controllers">
-        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
+        <Property Name="Location" Type="Resource.Location" Nullable="false">
+          <Annotation Term="OData.Description" String="The Location of the network adapter controller."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated network adapter controller."/>
+        </Property>
       </ComplexType>
     </Schema>
 
