@@ -30,6 +30,13 @@
             "NumberOfArgs": 0,
             "Resolution": "None"
         },
+        "NoOperation": {
+            "Description": "Indicates that the requested operation will not perform any changes on the service.",
+            "Message": "The request body submitted contain no data to act upon and no changes to the resource took place.",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Add properties in the JSON object and resubmit the request."
+        },
         "PropertyDuplicate": {
             "Description": "Indicates that a duplicate property was included in the request body.",
             "Message": "The property %1 was duplicated in the request.",
