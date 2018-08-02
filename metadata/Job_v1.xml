@@ -28,7 +28,7 @@
     <edmx:Include Namespace="JobCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Schedule_v1.xml">
-    <edmx:Include Namespace="Schedule.v1_2_0"/>
+    <edmx:Include Namespace="Schedule"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message_v1.xml">
     <edmx:Include Namespace="Message"/>
@@ -71,7 +71,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The status of the job."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the health status of the job."/>
-        </Property>		  
+        </Property>
         <Property Name="JobState" Type="Job.v1_0_0.JobState" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The state of the job."/>
@@ -96,13 +96,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The completion percentage of this job."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the completion progress of the job, reported in percent of completion. If the job has not been started, the value shall be zero."/>
-        </Property>	  
+        </Property>
         <Property Name="CreatedBy" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The person or program that created this job entry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name, software program name, or other identifier indicating the creator of this job."/>
         </Property>
-        <Property Name="Schedule" Type="Schedule.v1_2_0.Schedule" Nullable="false">
+        <Property Name="Schedule" Type="Schedule.Schedule" Nullable="false">
           <Annotation Term="OData.Description" String="The Schedule Settings for this Job."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the scheduling for this job and the re-occurrence frequency for future instances of this job."/>
         </Property>
@@ -114,7 +114,7 @@
         <Property Name="Payload" Type="Job.v1_0_0.Payload" Nullable="false">
           <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this job."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the HTTP and JSON payload information for executing this job. This object shall not be included in the response if the HidePayload property is set to True."/>
-        </Property>		  
+        </Property>
         <NavigationProperty Name="Steps" Type="JobCollection.JobCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of Steps for this Job."/>
@@ -223,7 +223,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Job.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Job.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

@@ -872,7 +872,7 @@ function validCSDLTypeInMockup(err, json) {
       if(namespace === '') {
         throw new Error('Cannot get namespace of "' + typeLookup + '"');
       }
-      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule') {
         let typeNameIndex = typeLookup.lastIndexOf('.');
         if(typeNameIndex === -1) {
           throw new Error('Cannot get type of "' + typeLookup + '"');
@@ -1122,7 +1122,7 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
     if(namespace === '') {
       throw new Error('Cannot get namespace of "' + typeLookup + '"');
     }
-    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule') {
       let typeNameIndex = typeLookup.lastIndexOf('.');
       if(typeNameIndex === -1) {
         throw new Error('Cannot get type of "' + typeLookup + '"');

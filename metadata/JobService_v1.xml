@@ -56,12 +56,11 @@
           </Record>
         </Annotation>
       </EntityType>
-
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JobService.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <EntityType Name="JobService" BaseType="JobService.JobService">		
+      <EntityType Name="JobService" BaseType="JobService.JobService">
         <Annotation Term="OData.Description" String="This is the schema definition for the Job Service.  It represents the properties for the service itself and has links to the actual list of tasks."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a job service for a Redfish implementation."/>
         <Property Name="DateTime" Type="Edm.DateTimeOffset">
@@ -78,7 +77,10 @@
           <Annotation Term="OData.Description" String="This object describes the supported capabilities of this Job Service implementation."/>
           <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the capabilities or supported features of this implementation of JobService."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
         <NavigationProperty Name="Log" Type="LogService.LogService" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a Log Service used by the Job Service."/>
@@ -94,7 +96,7 @@
         <Property Name="Actions" Type="JobService.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
-        </Property> 
+        </Property>
       </EntityType>
 
       <ComplexType Name="JobServiceCapabilities">
@@ -116,13 +118,16 @@
           <Annotation Term="OData.Description" String="Indicates whether scheduling of Jobs is supported."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the support of scheduling of Jobs using the Schedule object within the Job resource."/>
         </Property>
-      </ComplexType>	
+      </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="JobService.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="JobService.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -130,7 +135,6 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
-
     </Schema>
 
   </edmx:DataServices>

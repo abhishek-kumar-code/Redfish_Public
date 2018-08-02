@@ -109,7 +109,7 @@
         </Member>
         <Member Name="Every">
           <Annotation Term="OData.Description" String="Every day of the week."/>
-        </Member>		  
+        </Member>
       </EnumType>
 
       <EnumType Name="MonthOfYear">
@@ -153,7 +153,7 @@
         </Member>
         <Member Name="Every">
           <Annotation Term="OData.Description" String="Every month of the year."/>
-        </Member>		  
+        </Member>
       </EnumType>
 
     </Schema>
@@ -168,15 +168,13 @@
           <Annotation Term="OData.LongDescription" String="Each value shall be an ISO 8601 conformant interval specifying when occurences are enabled."/>
         </Property>
       </ComplexType>
-
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add 'Every' enumerations to DayOfWeek and MonthOfYear types, and to incorporate default behavior into descriptions."/>
       <ComplexType  Name="Schedule" BaseType="Schedule.v1_1_0.Schedule"/>
-
-
     </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
