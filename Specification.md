@@ -2154,7 +2154,23 @@ There are many ways this suffix could be used, depending on OEM need. For exampl
 
 The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
 
+
+##### URIs for OEM resources
+
+Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources, the URIs for OEM resources shall be in the form of:
+
+` *BaseUri*/Oem/*OemName*/*ResourceName*`
+
+Where:
+* *BaseUri* is the URI segment of the standard Redfish Resource where the "Oem" property is used
+* *OemName* is the name of the OEM, which follows the same naming as defined in the [Oem property format and content section](#oem-property-format-and-content)
+* *ResourceName* is the name of the resource defined by the OEM
+
+For example, if Contoso defined a new resource called "AccountServiceMetrics" to be linked via the "Oem" property found at the URI "/redfish/v1/AccountService", the OEM resource would have the URI "/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics".
+
+
 #### Oem property examples
+
 The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
 
 ~~~json
@@ -2213,7 +2229,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 }
 ~~~
 
-The URI of the OEM action in the "target" property should be in the form of:
+The URI of the OEM action in the "target" property shall be in the form of:
 
 ` *ResourceUri*/Actions/Oem/*QualifiedActionName*`
 
