@@ -29,7 +29,7 @@
 			}
 		},
 		{
-			"PCIeSpec": "Gen4",
+			"PCIeType": "Gen4",
 			"Lanes": 4,
 			"SlotType": "FullLength",
 			"Status": {
@@ -46,7 +46,7 @@
 			}
 		},
 		{
-			"PCIeSpec": "Gen3",
+			"PCIeType": "Gen3",
 			"Lanes": 1,
 			"SlotType": "HalfLength",
 			"Status": {
