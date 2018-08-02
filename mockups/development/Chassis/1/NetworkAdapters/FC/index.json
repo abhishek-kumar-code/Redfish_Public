@@ -23,11 +23,6 @@
         {
             "FirmwarePackageVersion": "4.5",
             "Links": {
-                "PCIeFunctions": [
-                    {
-                        "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/FC/Functions/1"
-                    }
-                ],
                 "NetworkPorts": [
                     {
                         "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/1"
