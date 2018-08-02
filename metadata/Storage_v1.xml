@@ -180,8 +180,8 @@
         </Property>
         <Property Name="SpeedGbps" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The speed of the storage controller interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the speed of the Storage bus interface (in Gigabits per second)."/>
+          <Annotation Term="OData.Description" String="The maximum speed of the storage controller's device interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the maximum supported speed of the Storage bus interface (in Gigabits per second). The interface specified connects the controller to the storage devices, not the controller to a host (e.g. SAS bus, not PCIe host bus)."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>

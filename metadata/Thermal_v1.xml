@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Thermal  v1.4.1-->
+<!--# Redfish Schema:  Thermal  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -571,6 +571,18 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Thermal" BaseType="Thermal.v1_4_0.Thermal"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="Thermal" BaseType="Thermal.v1_4_1.Thermal"/>
+      <EntityType Name="Fan" BaseType="Thermal.v1_4_0.Fan">
+        <Property Name="SensorNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A numerical identifier to represent the fan speed sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this fan speed sensor that is unique within this resource."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>

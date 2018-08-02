@@ -343,11 +343,9 @@ The scheme and authority part of the URI shall not be considered part of the uni
 * An implementation may use a [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the payload (body and/or HTTP headers) to identify a resource within the implementation.
 * An implementation may use an absolute URI in the payload (body and/or HTTP headers) to identify a resource within a different implementation.  See [RFC3986](#RFC3986) for the absolute URI definition.
 
-For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
+For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST): `/redfish/v1/Systems/2`
 
-    Example: /redfish/v1/Systems/2
-
-Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
+Assuming the client is connecting through an appliance named "mgmt.vendor.com", the absolute URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
 
@@ -562,6 +560,9 @@ Clients can add query parameters to request additional features from the service
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
+* The contents of the response body shall be as if the query parameters were evaluated in the following order: 
+    * Prior to service side pagination: $filter, $skip, $top
+    * After applying any service side pagination: $expand, $select
 
 ***Query parameters for Paging***
 
@@ -676,7 +677,8 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * Services shall support the PATCH method to update properties within a resource.
 * If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
 * If the client specifies a PATCH request against a Resource Collection, HTTP status code [405](#status-405) should be returned.
-* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, an HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
+* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, unknown, or unsupported, an HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing a Message [annotation](#extended-information) specifying the non-updatable properties. In this success case, other properties may be updated in the resource.
+* In the case of a request modifying a single property, if the property in the request can never be updated, such as when the property is read only, unknown, or unsupported, an HTTP status code of [400](#status-400) shall be returned along with a representation of the resource containing a Message [annotation](#extended-information) specifying the non-updatable property. 
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 * Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
 
@@ -991,7 +993,7 @@ Where the HTTP status code indicates a failure, the response body contains an [e
 
 NOTE: Refer to the [Security](#security) clause for security implications of extended errors
 
-The following table lists some of the common HTTP status codes. Other codes may be returned by the service as appropriate. See the Description column for a description of the status code and additional requirements imposed by this specification.
+The following table lists HTTP status codes which have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification. Other codes may be returned by the service as appropriate, and their usage is implementation-specific. See the Description column for usage and additional requirements imposed by this specification.
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
@@ -1015,13 +1017,13 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple properties that work in a linked manner using incompatible values).                                                                                                                                                                                                                             |
 | <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities SHOULD delete references to the Request-URI after user approval.  If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code [404](#status-404) (Not Found) SHOULD be used instead.  This response is cacheable unless indicated otherwise. |
 | <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead).  The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                        |
-| <a id="status-412"></a>412 Precondition Failed    |The precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <a id="status-412"></a>412 Precondition Failed    |The precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | <a id="status-428"></a>428 Precondition Required  | The request did not provide the required precondition, such as an If-Match or If-None-Match header.                                                                                                                                                                                                                                                                                                                                                                                             |
-| <a id="status-431"></a>431 Request Header Field Too Large  | The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.                                                                                                                                                                                                                                                                                                                                |
+| <a id="status-431"></a>431 Request Header Field Too Large  | The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.                                                                                                                                                                                                                                                                                                                                        |
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
-| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                  |
+| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.  It may also use this response to indicate the service itself is undergoing maintenance, such as finishing initialization steps after reboot of the service.                                                     |
 | <a id="status-507"></a>507 Insufficient Storage   | The server is unable to build the response for the client due to the size of the response.                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 #### Metadata responses
@@ -1685,12 +1687,14 @@ Resource Name, Property Names, and constants such as Enumerations shall be Pasca
 * The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
 * No underscores are used.
 * Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn).
+* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
 
 Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI"
+ * Well-known technology names like "iSCSI" (e.g. "iSCSITarget")
  * Product names like "iLO"
  * Well-known abbreviations or acronyms
+ * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
+ * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish reources or properties.
 
 For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
  * Bandwidth (Mbps), (e.g., PortSpeedMbps)

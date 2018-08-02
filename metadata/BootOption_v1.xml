@@ -93,8 +93,8 @@
         </Property>
         <Property Name="Alias" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The alias of this Boot Source when described in the BootSourceOverrideTarget property in the Computersystem resource."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an alias to the Boot Source that describes this Boot Option in the BootSourceOverrideTarget property in the ComputerSystem resource. The possible values of this property are specified through the Redfish.AllowableValues annotation on BootSourceOverrideTarget in the ComputerSystem resource."/>
+          <Annotation Term="OData.Description" String="The alias of this Boot Source."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the string alias of this Boot Source that describes the type of boot that will be performed."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

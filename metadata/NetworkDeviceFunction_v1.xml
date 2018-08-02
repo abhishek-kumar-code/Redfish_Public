@@ -120,6 +120,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="PhysicalPortAssignment" Type="NetworkPort.NetworkPort" Nullable="false">
+          <Annotation Term="Redfish.Deprecated" String="This property has been deprecated and moved to the Links section to avoid loops on expand."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The physical port that this network device function is currently assigned to."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the physical port that this network device function is currently assigned to. This value shall be one of the AssignablePhysicalPorts array members."/>
@@ -549,9 +550,15 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  Also adds support for VLAN to Ethernet."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  Also adds support for VLAN to Ethernet. Also moving PhysicalPortAssignment to Links."/>
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.v1_2_2.NetworkDeviceFunction"/>
-
+      <ComplexType Name="Links" BaseType="NetworkDeviceFunction.v1_2_0.Links">
+        <NavigationProperty Name="PhysicalPortAssignment" Type="NetworkPort.NetworkPort" Nullable="false">
+          <Annotation Term="OData.Description" String="The physical port that this network device function is currently assigned to."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the physical port that this network device function is currently assigned to. This value shall be one of the AssignablePhysicalPorts array members."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
       <ComplexType Name="Ethernet" BaseType="NetworkDeviceFunction.v1_0_0.Ethernet">
         <Property Name="VLAN" Type="VLanNetworkInterface.VLAN">
           <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource."/>
