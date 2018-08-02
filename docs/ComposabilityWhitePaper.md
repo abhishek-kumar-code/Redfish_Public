@@ -292,7 +292,7 @@ The object itself contains annotated properties the client can use in the body o
 | `@Redfish.UpdatableAfterCreate` | The client is allowed to update the property after the resource is created |
 | `@Redfish.AllowableValues`      | The client is allowed to use any of the specified values in the body of the create (POST) request for the given property |
 
-In the above table, some of the annotation terms can conflict with one another if used incorrectly.  This may be due to conflicting logical semantics with the term definitions.  Services need to ensure their Collection Capabilities Object do not have the following types of conflicts:
+In the above table, some of the annotation terms can conflict with one another if used incorrectly.  This may be due to conflicting logical semantics with the term definitions.  Services need to ensure their Collection Capabilities Objects do not have the following types of conflicts:
 * Do not annotate a property with both `@Redfish.RequiredOnCreate` and `@Redfish.OptionalOnCreate`.  A property cannot be both required and optional.
 * Do not annotate a property with both `@Redfish.SetOnlyOnCreate` and `@Redfish.UpdatableAfterCreate`.  A property can only be one of these.
 
