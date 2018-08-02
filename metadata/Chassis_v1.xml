@@ -731,7 +731,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_8_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <EntityType Name="Chassis" BaseType="Chassis.v1_7_1.Chassis"/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_7_1.Chassis">
         <NavigationProperty Name="PCIeSlots" Type="PCIeSlots.PCIeSlots" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the PCIe Slot properties of this chassis."/>
