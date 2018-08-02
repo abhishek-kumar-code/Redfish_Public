@@ -114,6 +114,8 @@
 	  </ComplexType>
 
       <ComplexType Name="PCIeInterface">
+        <Annotation Term="OData.Description" String="This is the definition for a PCI Interface object."/>
+        <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PCIe Interface for a Redfish implementation."/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
