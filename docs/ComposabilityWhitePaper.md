@@ -150,7 +150,7 @@ In the above example, the Resource Block is of type `Storage`, and it contains a
 
 #### Recommended State Diagrams for CompositionState
 
-As clients make requests to create or delete composed resources, a Resource Block will transition between different states as shown by the `CompositionState` property within the `CompositionStatus` object.  Figure 1 shows the recommended state diagram for Resource Blocks that are not sharable.  Figure 2 shows the recommended state diagram for Resource Blocks that are sharable.  While not shown in the diagrams, client requests can fail for precondition checks, such as something not being powered, thus leaving the state unchanged.
+As clients make requests to create or delete composed resources, a Resource Block will transition between different states as shown by the `CompositionState` property within the `CompositionStatus` object.  Figure 1 shows the recommended state diagram for `CompositionState` involving a Resource Block that is not sharable.  Figure 2 shows the recommended state diagram for `CompositionState` involving a Resource Block that is sharable.  While not shown in the diagrams, client requests can fail for precondition checks, such as something not being powered, thus leaving the state unchanged.
 
 | ![Figure 1](ComposabilityWhitepaper_files/Figure-CompositionState-NonSharable.jpg "Figure 1") |
 | :--------: |
