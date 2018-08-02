@@ -738,5 +738,8 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the PCIe Slot information for this chassis and shall be of type PCIeSlot."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+      </EntityType>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
