@@ -84,7 +84,7 @@ The property `ResourceBlockType` contains classification information about the t
 The property `CompositionStatus` is an object that contains several properties:
 * `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.
 * `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, the second client should consider it allocated and not use it; the second client should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
-* `SharingCapable` is a flag to indicate if this Resource Block is capable of participating in multiple compositions simultaneously.
+* `SharingCapable` is a flag to indicate if the Resource Block is capable of participating in multiple compositions simultaneously.
 * `SharingEnabled` is a writable flag to indicate if the Resource Block is allowed to participate in multiple compositions simultaneously.
 * `MaxCompositions` is used to indicate the maximum number of compositions in which the Resource Block is capable of participating simultaneously.
 * `NumberOfCompositions` is used to indicate the number of compositions in which the Resource Block is currently participating.
