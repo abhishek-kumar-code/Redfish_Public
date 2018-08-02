@@ -221,7 +221,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeDevice.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="PCIeDevice" BaseType="PCIeDevice.v1_2_1.PCIeDevice">
-        <Property Name="MaxPCIeType" Type="PCIeDevice.v1_3_0.PCIeTypes">
+        <Property Name="MaxPCIeType" Type="PCIeDevice.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The highest version of the PCIe specification supported by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum PCIe specification that this device supports."/>
