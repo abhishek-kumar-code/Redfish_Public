@@ -264,12 +264,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add the RegistryPrefix, ResourceType and SubordinateResources method of eventing."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_3_0.EventDestination">
-        <Property Name="RegistryPrefix" Type="Collection(Edm.String)">
+        <Property Name="RegistryPrefixes" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of the Prefixes for the Message Registries that contain the MessageIds that will be sent to this event destination."/>
           <Annotation Term="OData.LongDescription" String="The value of this property is the array of the Prefixes of the Message Registries that contain the MessageIds in the Events that shall be sent to the EventDestination.  If this property is absent or the array is empty, the service shall send Events with MessageIds from any Message Registry."/>
         </Property>
-        <Property Name="ResourceType" Type="Collection(Edm.String)">
+        <Property Name="ResourceTypes" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of Resource Type values (Schema names) that correspond to the OriginOfCondition.  The version and full namespace should not be specified."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of Resource Type values.  When an event is generated, if the OriginOfCondition's Resource Type matches a value in this array, the event shall be sent to the event destination (unless it would be filtered by other property conditions such as RegistryPrefix).  If this property is absent or the array is empty, the service shall send Events from any Resource Type to the subscriber.  The value of this property shall be only the general namespace for the type and not the versioned value.  For example, it shall not be Task.v1_2_0.Task and instead shall just be Task."/>
