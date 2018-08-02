@@ -53,6 +53,7 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/AccountService/ExternalAccountProviders/{ExternalAccountProviderId}</String>
+            <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/ExternalAccountProviders/{ExternalAccountProviderId}</String>
           </Collection>
         </Annotation>
       </EntityType>

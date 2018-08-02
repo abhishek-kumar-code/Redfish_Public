@@ -54,6 +54,7 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/AccountService/Roles/{RoleId}</String>
+            <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/Roles/{RoleId}</String>
           </Collection>
         </Annotation>
       </EntityType>

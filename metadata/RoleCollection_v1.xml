@@ -53,6 +53,7 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/AccountService/Roles</String>
+            <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/Roles</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Role.Role)">

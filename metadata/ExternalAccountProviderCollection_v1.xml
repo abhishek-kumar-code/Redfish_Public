@@ -54,6 +54,7 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/AccountService/ExternalAccountProviders</String>
+            <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/ExternalAccountProviders</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(ExternalAccountProvider.ExternalAccountProvider)">
