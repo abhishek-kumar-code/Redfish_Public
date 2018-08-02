@@ -2349,7 +2349,7 @@ Alert events happen when a resource needs to indicate an event of some significa
 
 #### Ways to register for events
 
-Event subscriptions can be subscribed to by specifying a RegistryId, ResourceType, ResourceOrigin (including SubordinateResources) in order to filter events to any EventDestination.
+Event subscriptions can be subscribed to by specifying a RegistryPrefixes, ResourceTypes, OriginResources (including SubordinateResources) in order to filter events to any EventDestination.  An EventFormatType can also be specified.
 
 The RegistryPrefixes property has the list of message registries that the service provides and that the subscriber would like messages corresponding to.  The values of this property are the values of the RegistryPrefix and can be standard or OEM message registries.  It acts like a filter, only sending messages to the subscriber if the RegistryPrefix in the subscription matches the RegistryPrefix of the registry.  This value does not include the version of the registry. If this value is empty when subscribing, the subscriber can receive messages from any registry.
 
