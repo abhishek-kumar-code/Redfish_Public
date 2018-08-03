@@ -32,7 +32,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ActionInfo             | 1.1.0   | Added "MinimumValue" and "MaximumValue" properties. |
 | Assembly               | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
 | CollectionCapabilities | 1.1.0   | Added "ComputerSystemConstrainedComposition" enum. |
-| CompositionService     | 1.1.0   | Added "AllowOverprovisioning" property. |
+| CompositionService     | 1.1.0   | Added "AllowOverprovisioning" and "AllowZoneAffinity" properties. |
 | Drive                  | 1.2.0   | Added "HotspareReplacementMode" property. |
 | Endpoint               | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
 | HostInterface          | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
@@ -40,12 +40,14 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ManagerNetworkProtocol | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
 | Memory                 | 1.6.0   | Added "OverwriteUnit" Action.  Added "IntelOptane" to the "MemoryType" enum. |
 | NetworkAdapter         | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
-| NetworkDeviceFunction  | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object.  Deprecated "PhysicalPortAssignment" at the root of the payload in favor of "PhysicalPortAssignment" inside "Links". |
+| NetworkDeviceFunction  | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object.  Added "FibreChannelId" to "FibreChannel" object.  Deprecated "PhysicalPortAssignment" at the root of the payload in favor of "PhysicalPortAssignment" inside "Links". |
+| NetworkPort            | 1.2.0   | Added properties to support Fibre Channel devices.  Deprecated "LinkSpeedMbps" in favor of "CapableLinkSpeedMbps". |
 | Protocol               | N/A     | Added "I2C" protocol type. |
 | Storage                | 1.5.0   | Added "CacheSummary" object to "StorageController". |
 | Thermal                | 1.5.0   | Added "SensorNumber" to "Fan". |
 | UpdateService          | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
 | Resource               | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
+| ResourceBlock          | 1.2.0   | Added "Expansion" to the "ResourceBlockType" enum.  Added "Unavailable" to the "CompositionState" enum. |
 | Assembly               | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ProductionDate" property as the time of day value if it's unknown. | 
 | AttributeRegistry      | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
 | Bios                   | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
