@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.5.1'
+DocVersion: '1.6.0'
 modified: '2018-08-10'
-SupersedesVersion: '1.5.0'
+SupersedesVersion: '1.5.1'
 status: published
 released: true
 copyright: '2014-2018'
