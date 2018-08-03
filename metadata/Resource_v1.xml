@@ -872,8 +872,8 @@
 
       <ComplexType Name="Location" BaseType="Resource.v1_3_0.Location">
         <Property Name="PartLocation" Type="Resource.v1_5_0.PartLocation">
-          <Annotation Term="OData.Description" String="Postal address of the addressed resource."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
+          <Annotation Term="OData.Description" String="The part location within the placement."/>
+          <Annotation Term="OData.LongDescription" String="The value shall describe a location within a resource.  This representation shall be used to indicate the location within the Placement."/>
         </Property>
       </ComplexType>
 
