@@ -69,12 +69,8 @@
           <Annotation Term="OData.Description" String="This property specifies the actions to perform when the trigger occurs."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the actions to perform when the trigger occurs."/>
         </Property>
-        <Property Name="NumericTriggers" Type="Collection(Triggers.v1_0_0.NumericTrigger)" Nullable="false">
-          <Annotation Term="OData.Description" String="List of numeric triggers."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain list of triggers to which a numeric metric value shall be compared."/>
-        </Property>
-        <Property Name="Thresholds" Type="Triggers.v1_0_0.Thresholds">
-          <Annotation Term="OData.Description" String="The set of thresholds defined for this trigger."/>
+        <Property Name="NumericThresholds" Type="Triggers.v1_0_0.Thresholds">
+          <Annotation Term="OData.Description" String="Specifies the thresholds when a numeric metric triggers."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain list of thresholds to which a numeric metric value shall be compared."/>
         </Property>
         <Property Name="DiscreteTriggerCondition" Type="Triggers.v1_0_0.DiscreteTriggerConditionEnum">
@@ -128,7 +124,7 @@
         </Member>
         <Member Name="RedfishEvent">
           <Annotation Term="OData.Description" String="Upon a trigger, send a Redfish Event message of type MetricReport."/>
-          <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall produce a Redfish Event of type MetricReport to matching subscribers indicated in the EventSubscription collection found on the EventService."/>
+          <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall produce a Redfish Event of type Event to matching subscribers indicated in the EventSubscription collection found on the EventService."/>
         </Member>
       </EnumType>
 
@@ -147,29 +143,21 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The set of thresholds defined for a sensor."/>
         <Annotation Term="OData.LongDescription" String="This structure shall contain a set of thresholds defined for a sensor."/>
-        <Property Name="UpperCaution" Type="Triggers.v1_0_0.Threshold">
+        <Property Name="UpperWarning" Type="Triggers.v1_0_0.Threshold">
           <Annotation Term="OData.Description" String="Above normal range."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range.  The units shall be the same units as the Reading."/>
         </Property>
         <Property Name="UpperCritical" Type="Triggers.v1_0_0.Threshold">
-          <Annotation Term="OData.Description" String="Above normal range but not yet fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range and but is not yet fatal.  The units shall be the same units as the Reading."/>
+          <Annotation Term="OData.Description" String="Above normal range and requires attention."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range and may require attention.  The units shall be the same units as the Reading."/>
         </Property>
-        <Property Name="UpperFatal" Type="Triggers.v1_0_0.Threshold">
-          <Annotation Term="OData.Description" String="Above normal range and fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range and is fatal.  The units shall be the same units as the Reading."/>
-        </Property>
-        <Property Name="LowerCaution" Type="Triggers.v1_0_0.Threshold">
+        <Property Name="LowerWarning" Type="Triggers.v1_0_0.Threshold">
           <Annotation Term="OData.Description" String="Below normal range."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range.  The units shall be the same units as the Reading."/>
         </Property>
         <Property Name="LowerCritical" Type="Triggers.v1_0_0.Threshold">
-          <Annotation Term="OData.Description" String="Below normal range but not yet fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range and but is not yet fatal.  The units shall be the same units as the Reading."/>
-        </Property>
-        <Property Name="LowerFatal" Type="Triggers.v1_0_0.Threshold">
-          <Annotation Term="OData.Description" String="Below normal range and fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range and is fatal.  The units shall be the same units as the Reading."/>
+          <Annotation Term="OData.Description" String="Below normal range and requires attention."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range and may require attention.  The units shall be the same units as the Reading."/>
         </Property>
       </ComplexType>
 
@@ -225,37 +213,6 @@
         </Member>
       </EnumType>
 
-      <ComplexType Name="NumericTrigger">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="Specifies the characteristics of a trigger."/>
-        <Annotation Term="OData.LongDescription" String="This object shall specific the characteristics of a triggger."/>
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The name of trigger."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a name for the trigger."/>
-        </Property>
-        <Property Name="Value" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The value of the trigger."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the value of the trigger."/>
-        </Property>
-        <Property Name="DirectionOfCrossing" Type="Triggers.v1_0_0.DirectionOfCrossingEnum">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The direction in which the metric value shall cross the trigger value in order to constitute an excursion."/>
-          <Annotation Term="OData.LongDescription" String="This property shall specify the direction in which the metric value shall cross the trigger value in order to constitue an excurion."/>
-        </Property>
-        <Property Name="DwellTimeMilliSeconds" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The duration that the excursion persists before a trigger event has occurred."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the duration that the excursion persists before the trigger event has occurred and the MetricAction(s) are performed."/>
-        </Property>
-        <Property Name="Severity" Type="Resource.Health">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the value of the Severity property in the Event message."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be used for the Severity property in the Event message."/>
-        </Property>
-      </ComplexType>
-
       <EnumType Name="DirectionOfCrossingEnum">
         <Annotation Term="OData.Description" String="The direction of crossing which corresponds to a trigger."/>
         <Annotation Term="OData.LongDescription" String="The value shall indicate the direction of crossing which corresponds to a trigger."/>
@@ -277,17 +234,17 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain a name for the trigger."/>
         </Property>
         <Property Name="Value" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The value of the discrete metric that constitutes a trigger occurance."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value discrete metric that constitutes a trigger event.  The DwellTimeMilliSeconds shall be measured from this point in time."/>
         </Property>
-        <Property Name="DwellTimeMilliSeconds" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="DwellTime" Type="Resource.Duration">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This time the trigger occurance persists before a trigger event has occurred."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the time that a trigger occurance persists before the MetricAction is performed."/>
         </Property>
         <Property Name="Severity" Type="Resource.Health">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property contains the value of the Severity property in the Event message."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used for the Severity property in the Event message."/>
         </Property>

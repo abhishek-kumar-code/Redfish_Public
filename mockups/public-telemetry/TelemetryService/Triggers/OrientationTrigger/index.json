@@ -10,7 +10,7 @@
     "DiscreteTriggers": [
         {
             "Value": "inclined",
-            "DwellTimeMilliSeconds": 1,
+            "DwellTime": "T00:00:00.001",
             "Severity": "Warning"
         }
     ],

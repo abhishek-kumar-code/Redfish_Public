@@ -6,34 +6,18 @@
     "TriggerActions": [
         "RedfishEvent"
     ],
-    "Thresholds": {
+    "NumericThresholds": {
         "UpperCritical": {
             "Reading": 50,
             "Activation": "Increasing",
             "DwellTime": "T00:00:00.001"
         },
-        "UpperCaution": {
+        "UpperWarning": {
             "Reading": 48.1,
             "Activation": "Increasing",
             "DwellTime": "T00:00:00.004"
         }
     },
-    "NumericTriggers": [
-        {
-            "Name": "UpperThresholdCritical",
-            "Value": 50.0,
-            "DirectionOfCrossing": "Increasing",
-            "DwellTimeMilliSeconds": 1,
-            "Severity": "Critical"
-        },
-        {
-            "Name": "UpperThresholdNonCritical",
-            "Value": 48.1,
-            "DirectionOfCrossing": "Increasing",
-            "DwellTimeMilliSeconds": 4,
-            "Severity": "Warning"
-        }
-    ],
     "MetricProperties": [
         "/redfish/v1/Chassis/1/Power#/PowerControl/0/PowerConsumedWatts",
         "/redfish/v1/Chassis/1/Power#/PowerControl/1/PowerConsumedWatts"
