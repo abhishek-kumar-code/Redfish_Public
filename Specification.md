@@ -3130,14 +3130,19 @@ OData-Version: 4.0
 |         |            | Clarified service handling of annotations in PATCH requests. |
 |         |            | Clarified handling of various PATCH request error conditions. |
 |         |            | Clarified ability to create Resource Collection members by POST operations to the Resource Collection or the Members[] array within the resource. |
-|         |            | Corrected several resource examples to always show required properties. |
+|         |            | Corrected several examples to show required properties in payload. |
 |         |            | Clarified usage of the Link header and values of 'rel=describedBy'. |
 |         |            | Clarified that the HTTP status code table only describes Redfish-specific behavior and that unless specified, all other usage follows the definitions within the appropriate RFCs. |
 |         |            | Added missing entry for HTTP status code 431. |
 |         |            | Added statement that HTTP status code 503 can be used during reboot/reset of a Service to indicate that the service is temporarily unavailable. |
 |         |            | Clarified usage of the @odata.type annotation within embedded objects. |
-|         |            | Added missing statements about required properties 'Name' and 'Id', and common property 'Description', which have always been shown as required in schema files, but were not mentioned in the Specification. |
-
+|         |            | Added missing statements about required properties 'Name', 'Id', 'MemberId', and common property 'Description', which have always been shown as required in schema files, but were not mentioned in the Specification. |
+|         |            | Added guidance for the value of time/date properties when time is unknown. |
+|         |            | Added missing description of the 'title' property in Action requests. |
+|         |            | Clarified usage of the '@odata.nextLink' annotation at the end of Resource Collections. |
+|         |            | Added additional guidance for naming properties and enumeration values which contain 'OEM' or which include acronyms. |
+|         |            | Corrected requirements for Description and LongDescription schema annotations. |
+|         |            | Corrected name of 'ConfigureComponents' in Operation-to-Privilege mapping clause. |
 |         |            | Various typographical errors and grammatical improvements. |
 | 1.5.0   | 2018-04-05 | Added support for Server-Sent Eventing for streaming events to web-based GUIs or other clients. |
 |         |          | Added "OperationApplyTime" annotation to provide a mechanism for specifying deterministic behavior for the application of Create, Delete or Action (POST) operations. |
