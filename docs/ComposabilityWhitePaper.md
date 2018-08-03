@@ -3,7 +3,7 @@ DocTitle: Redfish Composability White Paper
 DocNumber: '2050'
 DocClass: Informative
 DocVersion: '1.1.0'
-modified: '2018-04-11'
+modified: '2018-08-03'
 status: Published
 released: true
 copyright: '2014-2018'
@@ -960,3 +960,14 @@ The above example will request that the composed system called `NewSystem` be re
 * Resource Block Schema: [http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml](http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml)
 * Resource Zone Schema: [http://redfish.dmtf.org/schemas/v1/Zone_v1.xml](http://redfish.dmtf.org/schemas/v1/Zone_v1.xml)
 * Collection Capabilities Schema: [http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml](http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml)
+
+
+### Change log
+
+| Version | Date       | Description |
+| ------- | ---------- | ----------- |
+| 1.1.0   | 2018-08-03 | Added documentation for Constrained Composition requests. |
+|         |            | Updated modeling section to cover new properties added in DSP8010 2018.1 and 2018.2. |
+|         |            | Added guidance for implementers on different conditions to avoid when annotating properties in the Capabilities Object. |
+|         |            | Added recommended flow diagrams for the CompositionState property within a Resource Block. |
+| 1.0.0   | 2017-06-30 | Initial release. |
