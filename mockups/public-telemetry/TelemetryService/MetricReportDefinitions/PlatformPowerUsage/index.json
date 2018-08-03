@@ -13,7 +13,7 @@
     "ReportUpdates": "AppendWrapsWhenFull",
     "AppendLimit": 256,
     "MetricReport": {
-        "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PlatformPowerUsage"
     },
     "Status": {
         "State": "Enabled"

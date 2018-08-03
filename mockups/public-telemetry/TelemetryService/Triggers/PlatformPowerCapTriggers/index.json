@@ -10,27 +10,27 @@
         "UpperCritical": {
             "Reading": 50,
             "Activation": "Increasing",
-            "DwellTime": "00:00:01"
+            "DwellTime": "T00:00:00.001"
         },
         "UpperCaution": {
             "Reading": 48.1,
             "Activation": "Increasing",
-            "DwellTime": "00:00:04"
+            "DwellTime": "T00:00:00.004"
         }
     },
     "NumericTriggers": [
         {
             "Name": "UpperThresholdCritical",
-            "Value": "50.0",
+            "Value": 50.0,
             "DirectionOfCrossing": "Increasing",
-            "DwellTimems": "1",
+            "DwellTimeMilliSeconds": 1,
             "Severity": "Critical"
         },
         {
             "Name": "UpperThresholdNonCritical",
-            "Value": "48.1",
+            "Value": 48.1,
             "DirectionOfCrossing": "Increasing",
-            "DwellTimems": "4",
+            "DwellTimeMilliSeconds": 4,
             "Severity": "Warning"
         }
     ],

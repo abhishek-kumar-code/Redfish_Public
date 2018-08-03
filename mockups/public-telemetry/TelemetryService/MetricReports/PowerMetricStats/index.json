@@ -4,7 +4,7 @@
     "Name": "Power Metric Statistics",
     "ReportSequence": "130",
     "MetricReportDefinition": {
-        "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics"
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetricStats"
     },
     "MetricValues": [
         {
