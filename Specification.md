@@ -2360,11 +2360,13 @@ The Redfish Service requires a client or administrator to create subscriptions t
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status code [404](#status-404).
 
-There are two types of events generated in a Redfish Service - life cycle and alert.
+There are three types of events generated in a Redfish Service - life cycle, alert, and metric report.
 
 Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this is similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any properties that changed.
 
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
+
+Metric report event happen when the TelemetryService has generated a new Metric Report or updated an existing Metric Report.  These types of events shall be generated as specified by the MetricReportDefinition resources found subordinate to the TelemetryService.  This can be defined to be done on a periodic basis, on demand, or when changes in the metric properties are detected.  See the Redfish MetricReportDefinition Schema for full details.
 
 NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
 
@@ -2378,7 +2380,13 @@ On success, the Event Service shall return an HTTP status 201 (CREATED) and the 
 
 Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
 
-#### Event message objects
+#### Event formats
+
+There are two formats of events:
+* [Metric report message objects](#metric-report-message-objects): This format shall be when the TelemetryService has generated a new Metric Report or updated an existing Metric Report.
+* [Event message objects](#event-message-objects): This format shall be used for all other types of events.
+
+##### Event message objects
 
 Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.
 
@@ -2394,6 +2402,10 @@ where
 * *MajorVersion* is a positive integer representing the major version of the registry
 * *MinorVersion* is a positive integer representing the minor version of the registry
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.
+
+##### Metric report message objects
+
+Metric report message objects sent to the specified client endpoint shall contain the properties as described in the Redfish MetricReport Schema.
 
 #### Subscription cleanup
 
