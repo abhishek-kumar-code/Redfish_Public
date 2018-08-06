@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EventService.EventService",
     "@odata.id": "/redfish/v1/EventService",
-    "@odata.type": "#EventService.v1_1_0.EventService",
+    "@odata.type": "#EventService.v1_2_0.EventService",
     "Id": "EventService",
     "Name": "Event Service",
     "Status": {
@@ -20,6 +20,15 @@
         "Alert"
     ],
     "ServerSentEventUri": "/redfish/v1/EventService/SSE",
+    "SSEQueryParametersSupported": {
+        "EventTypes": true,
+        "Context": true,
+        "MetricIds": false,
+        "RegistryPrefixes": true,
+        "ResourceTypes": true,
+        "EventFormatType": false,
+        "MessageIds": true
+    },
     "Subscriptions": {
         "@odata.id": "/redfish/v1/EventService/Subscriptions"
     },

@@ -2544,6 +2544,18 @@ data:}
 
 When a client opens an SSE stream for the EventService, the service shall create an EventDestination instance in the Subscriptions collection for the EventService to represent the connection.  The service shall delete the corresponding EventDestination instance when the connection is closed.  The service shall close the connection if the corresponding EventDestination is deleted.
 
+The service should support optional query parameters provided in the URI by the client.  The following table describes the available query parameters.
+
+| Parameter        | Example                                           | Description |
+| ---------------- | ------------------------------------------------- | ----------- |
+| EventTypes       | `http://sseuri?EventTypes=StatusChange,Alert`     | A comma separated list containing the EventTypes for Events to receive.  If provided, the service shall only send Events of the matching EventTypes as specified by the client.  See the EventType enum defined by the Redfish Event Schema for the values allowed. |
+| Context          | `http://sseuri?Context=ClientContext`             | The client context.  If provided, the service shall use the provided string as the "Context" property in the corresponding Subscription.  If not provided, the service shall assign an opaque context to the Subscription. |
+| MetricIds        | `http://sseuri?MetricIds=MetricA,MetricB,MetricC` | A comma separated list containing the Ids of the of the Metric Report Definition resources in which to receive.  If provided, the service shall only send Metric Reports for the Metric Report Definition resources with the matching "Id" property. |
+| RegistryPrefixes | `http://sseuri?RegistryPrefixes=Resource,Task`    | A comma separated list containing the Registry Prefixes for Events to receive.  If provided, the service shall only send Events with Messages that are part of the specified Registry Prefixes. |
+| ResourceTypes    | `http://sseuri?ResourceTypes=Power,Thermal`       | A comma separated list containing the Resource Types for Events to receive.  If provided, the service shall only send Events for resources matching the type as specified by the client. |
+| EventFormatType  | `http://sseuri?EventFormatType=Event`             | The format of events to receive.  The service shall only send event payloads of the matching type.  If not provided, the service shall only send payloads of type Event to the client.  See the EventFormatType enum defined by the Redfish EventService Schema for the values allowed. |
+| MessageIds       | `http://sseuri?MessageIds=Contoso.1.0.TempAssert` | A comma separated list containing the Message Ids for Events to received.  If provided, the service shall only send Events containing the matching Message Ids as specified by the client. |
+
 
 ## Security
 

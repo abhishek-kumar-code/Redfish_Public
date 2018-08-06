@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EventService  v1.1.1-->
+<!--# Redfish Schema:  EventService  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -218,6 +218,57 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify the OriginOfCondition parameter in the SubmitTestEvent action."/>
       <EntityType Name="EventService" BaseType="EventService.v1_1_0.EventService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="EventService" BaseType="EventService.v1_1_1.EventService">
+        <Property Name="SSEQueryParametersSupported" Type="EventService.v1_2_0.SSEQueryParametersSupported" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains a set of properties that indicate which query parameters are supported for the ServerSentEventUri."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a set of properties that indicate which query parameters are supported for the URI indicated by the ServerSentEventUri property."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="SSEQueryParametersSupported">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Contains a set of properties that indicate which query parameters are supported for the ServerSentEventUri."/>
+        <Annotation Term="OData.LongDescription" String="The type shall contain a set of properties that indicate which query parameters are supported for the URI indicated by the ServerSentEventUri property."/>
+        <Property Name="EventTypes" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the EventTypes query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the EventTypes query parameter as described by the specification."/>
+        </Property>
+        <Property Name="Context" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the Context query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the Context query parameter as described by the specification."/>
+        </Property>
+        <Property Name="MetricIds" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the MetricIds query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the MetricIds query parameter as described by the specification."/>
+        </Property>
+        <Property Name="RegistryPrefixes" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the RegistryPrefixes query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the RegistryPrefixes query parameter as described by the specification."/>
+        </Property>
+        <Property Name="ResourceTypes" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the ResourceTypes query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the ResourceTypes query parameter as described by the specification."/>
+        </Property>
+        <Property Name="EventFormatType" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the EventFormatType query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the EventFormatType query parameter as described by the specification."/>
+        </Property>
+        <Property Name="MessageIds" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether the MessageIds query parameter is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the MessageIds query parameter as described by the specification."/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
