@@ -66,7 +66,7 @@
         </Property>
         <Property Name="Schedule" Type="Schedule.Schedule" Nullable="false">
           <Annotation Term="OData.Description" String="Specifies the schedule for generating the metric report."/>
-          <Annotation Term="OData.LongDescription" String="If the schedule present, the metric report is generated at an interval specified by Schedule.Duration property.  If Schedule.MaxOccurrences is specified, the metric report will no longer be generated after the specified number of occurances."/>
+          <Annotation Term="OData.LongDescription" String="If the schedule present, the metric report is generated at an interval specified by Schedule.RecurrenceInterval property.  If Schedule.MaxOccurrences is specified, the metric report will no longer be generated after the specified number of occurances."/>
         </Property>
         <Property Name="ReportActions" Type="Collection(MetricReportDefinition.v1_0_0.ReportActionsEnum)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
