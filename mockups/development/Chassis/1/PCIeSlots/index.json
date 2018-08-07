@@ -23,9 +23,9 @@
 				}
 			},
 			"Links": {
-				"PCIeDevice": {
+				"PCIeDevice": [{
 					"@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC"
-				}
+				}]
 			}
 		},
 		{
