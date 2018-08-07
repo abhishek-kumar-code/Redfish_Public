@@ -34,7 +34,7 @@
             ],
             "CollectionFunction": "Average",
             "CollectionTimeScope": "Interval",
-            "CollectionDuration": "T00:00:00.020"
+            "CollectionDuration": "PT0.02S"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",

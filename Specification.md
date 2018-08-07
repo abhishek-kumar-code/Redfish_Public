@@ -1191,6 +1191,7 @@ Primitive properties shall be returned as JSON values according to the following
 | ---                | ---
 | Edm.Boolean        | Boolean
 | Edm.DateTimeOffset | String, formatted as specified in [DateTime Values](#datetime-values)
+| Edm.Duration       | String, formatted as specified in [Duration Values](#duration-values)
 | Edm.Decimal        | Number, optionally containing a decimal point
 | Edm.Double         | Number, optionally containing a decimal point and optionally containing an exponent
 | Edm.Guid           | String, matching the pattern ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})
@@ -1211,6 +1212,13 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 * The 'T' separator and 'Z' suffix shall be capitals.
 
 In cases where the time of day is unknown or serves no purpose, the service shall report "00:00:00Z" for the time of day portion of the DateTime value.
+
+
+###### Duration values
+
+Duration values shall be returned as JSON strings according to the ISO 8601 "duration" format of the form:
+
+ `P[*Y*Y][*M*M][*W*W][*D*D][T[*H*H][*M*M][*S*S]]`
 
 
 ##### Structured properties

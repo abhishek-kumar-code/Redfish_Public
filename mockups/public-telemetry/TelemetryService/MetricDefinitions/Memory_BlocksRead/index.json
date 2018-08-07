@@ -8,7 +8,7 @@
     "Units": "Blocks",
     "MinReadingRange": 0,
     "MaxReadingRange": 1000000,
-    "SensingInterval": "T00:00:01",
+    "SensingInterval": "PT1S",
     "Wildcards": [
         {
             "Name": "SystemID",

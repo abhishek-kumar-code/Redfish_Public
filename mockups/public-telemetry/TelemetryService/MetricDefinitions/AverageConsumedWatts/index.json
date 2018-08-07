@@ -8,7 +8,7 @@
     "MetricDataType": "Decimal",
     "Units": "W",
     "CalculationAlgorithm": "Average",
-    "CalculationTimeInterval": "T00:00:01",
+    "CalculationTimeInterval": "PT1S",
     "IsLinear": true,
     "Calculable": "NonSummable",
     "Wildcards": [

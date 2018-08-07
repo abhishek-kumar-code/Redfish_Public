@@ -185,10 +185,10 @@
           <Annotation Term="OData.Description" String="Specifies the physical context of the metric."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the physical context of the metric."/>
         </Property>
-        <Property Name="SensingInterval" Type="Resource.Duration">
+        <Property Name="SensingInterval" Type="Edm.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time interval between when a metric is updated."/>
-          <Annotation Term="OData.LongDescription" String="The value shall specify the time interval between when a metric is updated.  The format of the value shall conform to the Redfish Duration format."/>
+          <Annotation Term="OData.LongDescription" String="The value shall specify the time interval between when a metric is updated.  The format of the value shall conform to the Duration format."/>
         </Property>
         <Property Name="DiscreteValues" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -211,10 +211,10 @@
           <Annotation Term="OData.Description" String="Specifies the calibration offset added to the metric reading."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the calibration offset added to the metric reading.  The value shall have the units specified in the property Units.  The property is not meaningful, when the MetricType property has the value 'Discrete'."/>
         </Property>
-        <Property Name="TimestampAccuracy" Type="Resource.Duration">
+        <Property Name="TimestampAccuracy" Type="Edm.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Accuracy of the timestamp."/>
-          <Annotation Term="OData.LongDescription" String="The value shall specify the expected + or - variability of the timestamp.  The format of the value shall conform to the Redfish Duration format."/>
+          <Annotation Term="OData.LongDescription" String="The value shall specify the expected + or - variability of the timestamp.  The format of the value shall conform to the Duration format."/>
         </Property>
         <Property Name="MinReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -231,10 +231,10 @@
           <Annotation Term="OData.Description" String="The calculation which is performed on a source metric to obtain the metric being defined."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify the calculation performed to obtain the metric."/>
         </Property>
-        <Property Name="CalculationTimeInterval" Type="Resource.Duration">
+        <Property Name="CalculationTimeInterval" Type="Edm.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time interval over which the metric calculation is performed."/>
-          <Annotation Term="OData.LongDescription" String="The value shall specify the time interval over the metric calculation is performed.  The format of the value shall conform to the Redfish Duration format."/>
+          <Annotation Term="OData.LongDescription" String="The value shall specify the time interval over the metric calculation is performed.  The format of the value shall conform to the Duration format."/>
         </Property>
         <Property Name="Actions" Type="MetricDefinition.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>

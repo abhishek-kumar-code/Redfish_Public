@@ -5,7 +5,7 @@
     "MetricType": "Discrete",
     "Implementation": "PhysicalSensor",
     "PhysicalContext": "ComputeBay",
-    "SensingInterval": "T00:00:01",
+    "SensingInterval": "PT1S",
     "DiscreteValues": [
         "Vertical",
         "Horizontal",

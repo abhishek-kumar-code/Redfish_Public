@@ -10,12 +10,12 @@
         "UpperCritical": {
             "Reading": 50,
             "Activation": "Increasing",
-            "DwellTime": "T00:00:00.001"
+            "DwellTime": "PT0.001S"
         },
         "UpperWarning": {
             "Reading": 48.1,
             "Activation": "Increasing",
-            "DwellTime": "T00:00:00.004"
+            "DwellTime": "PT0.004S"
         }
     },
     "MetricProperties": [

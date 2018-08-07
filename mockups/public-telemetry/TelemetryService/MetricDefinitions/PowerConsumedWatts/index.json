@@ -12,8 +12,8 @@
     "Calibration": 2,
     "MinReadingRange": 0.0,
     "MaxReadingRange": 50.0,
-    "SensingInterval": "T00:00:01",
-    "TimestampAccuracy": "T00:00:01",
+    "SensingInterval": "PT1S",
+    "TimestampAccuracy": "PT1S",
     "Wildcards": [
         {
             "Name": "ChassisID",
