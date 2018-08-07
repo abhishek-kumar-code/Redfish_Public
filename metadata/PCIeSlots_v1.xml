@@ -110,10 +110,10 @@
       <ComplexType Name="PCIeLinks" BaseType="Resource.Links">
         <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
-        <NavigationProperty Name="PCIeDevice" Type="PCIeDevice.PCIeDevice">
+        <NavigationProperty Name="PCIeDevice" Type="Collection(PCIeDevice.PCIeDevice)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A references to the PCIe Device contained in this slot."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this physical slot is associated with and shall reference a resource of type PCIeDevice. If the Status.State of this slot has a value of Absent, this property shall not appear in the resource."/>
+          <Annotation Term="OData.Description" String="An array of references to the PCIe Devices contained in this slot."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references to the resources that this physical slot is associated with and shall reference resources of type PCIeDevice. If the Status.State of this slot has a value of Absent, this property shall not appear in the resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
