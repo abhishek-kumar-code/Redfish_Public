@@ -10,9 +10,9 @@
 	"StartTime": "2018-04-01T00:01+6:00",
 	"PercentComplete": 24,
 	"Schedule": {
-		"Lifetime": "4Y",
+		"Lifetime": "P4Y",
 		"InitialStartTime": "2018-01-01T01:00:00+06:00",
-		"RecurrenceInterval": "1D",
+		"RecurrenceInterval": "P1D",
 		"EnabledDaysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 	},
 	"Steps": {

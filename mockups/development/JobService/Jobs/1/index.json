@@ -12,9 +12,9 @@
 	"PercentComplete": 85,
 	"CreatedBy": "Dr. Smith",
 	"Schedule": {
-	   "Lifetime": "4Y",
+	   "Lifetime": "P4Y",
 		"InitialStartTime": "2018-01-01T01:00+06:00",
-		"RecurrenceInterval": "1D",
+		"RecurrenceInterval": "P1D",
 		"EnabledDaysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 	},
 	"Payload": {
