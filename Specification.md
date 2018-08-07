@@ -397,10 +397,7 @@ In order to reduce the cases of unnecessary RESTful accesses to resources, the R
 * Implementations should support returning ETag headers for each response that represents a single resource.
 * Implementations shall support returning ETag headers for GET requests of ManagerAccount resources.
 
-The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
-
-* Weak model -- only "important" portions of the object are included in formulation of the ETag.  For instance, meta-data such as a last modified time should not be included in the ETag generation. The "important" properties that determine ETag change include writable settings and changeable properties such as UUID, FRU data, serial numbers, etc.
-* Strong model -- all portions of the object are included in the formulation of the ETag.
+The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial.  There are two types of ETags: weak and strong.  If an ETag is supported for a given resource, it shall use the strong ETag format as specified in [RFC7232](#RFC7232).
 
 This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.
 
@@ -413,7 +410,7 @@ In addition to returning the ETag property on each resource,
 
 The format of the ETag header is:
 
-	ETag: W/"<string>"
+	ETag: "<string>"
 
 ### Protocol version
 
