@@ -1,7 +1,7 @@
 {
     "@odata.type": "#MetricReportCollection.MetricReportCollection",
     "Name": "MetricReports",
-    "Members@odata.count": 5,
+    "Members@odata.count": 4,
     "Members": [
         {
             "@odata.id": "/redfish/v1/TelemetryService/MetricReports/AvgPlatformPowerUsage"
@@ -14,9 +14,6 @@
         },
         {
             "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetricStats"
-        },
-        {
-            "@odata.id": "/redfish/v1/TelemetryService/MetricReports/TransmitPowerUsage"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#TelemetryService/MetricReports",
