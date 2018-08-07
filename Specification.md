@@ -2350,7 +2350,7 @@ Providers may split the schema resources into separate files such as Schema + St
 
 ### Eventing
 
-This section covers the REST-based mechanism for subscribing to and receiving event messages.
+This clause covers the REST-based mechanism for subscribing to and receiving event messages.
 
 #### Event subscription types
 
