@@ -2169,7 +2169,7 @@ The OEM identifier portion of the name will typically identify the company or or
 
 ##### URIs for OEM resources
 
-Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources, the URIs for OEM resources should be in the form of:
+Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources should be in the form of:
 
 ` *BaseUri*/Oem/*OemName*/*ResourceName*`
 
