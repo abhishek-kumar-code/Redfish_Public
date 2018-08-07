@@ -826,6 +826,11 @@ In cases where the processing of the Action may require extra time to complete, 
 * HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
 * In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
 
+Actions may have required parameters as defined in the [Resource actions section](#resource-actions).  If a client does not provide all required parameters, the service shall reject the request with HTTP Status Code [400](#status-400).  If an Action does not have any required parameters, the service should accept an empty JSON object in the HTTP body for the Action request.  If a client provides a parameter that the service does not support, the service shall either reject the request with HTTP Status Code [400](#status-400) or ignore the unknown parameters.
+
+If an Action requested by the client will have no effect, such as performing a Reset of a ComputerSystem where the parameter "ResetType" is set to "On" and the ComputerSystem is already "On", the service should respond with an HTTP Status Code [200](#status-200) and return the NoOperation message defined in the Base Message Registry.
+
+
 #### Operation apply time
 
 Services may accept the "@Redfish.OperationApplyTime" annotation in the body of a [Create](#create-post), [Delete](#delete-delete), or [Action](#actions-post) operation.  This is to give the client control as to when a particular operation is carried out.  For example, if the client wants to delete a particular Volume resource, but can only safely do so when a reset is taking place, the client can use this annotation to instruct the service to delete the Volume on the next reset.  If multiple operations are pending, the service shall process them in the order in which they were received.
@@ -2048,14 +2053,21 @@ Individual actions are defined within a [namespace](#namespace-definitions) usin
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
 
-The first parameter is called the "binding parameter" and specifies the resource or [structured type](#structured-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
+The first parameter is called the "binding parameter" and specifies the resource or [structured type](#structured-types) that the action appears as a member of (the type of the Actions property on the resource).  The remaining Parameter elements describe additional parameters to be passed to the action.  Parameters containing the term `Nullable="false"` are required to be provided in the Action request.
 
 ~~~xml
   <Action Name="MyAction" IsBound="true">
     <Parameter Name="Thing" Type="MyType.Actions"/>
     <Parameter Name="Parameter1" Type="Edm.Boolean"/>
+    <Parameter Name="Parameter2" Type="Edm.String" Nullable="false"/>
   </Action>
 ~~~
+
+In the above example, three parameters are defined:
+* Thing: This is the binding parameter, which is not provided in the request by the client
+* Parameter1: A boolean parameter used in the client payload for the request
+* Parameter2: A string parameter used in the client payload for the request and is also required to be provided by the client
+
 
 #### Resource extensibility
 
@@ -2316,7 +2328,11 @@ There are some situations that arise with certain kinds of resources that need t
 
 #### Absent resources
 
-Resources may be either absent or their state unknown at the time a client requests information about that resource.  For removed resources where the URI is expected to remain constant (such as when a fan is removed), the resource should represent the State property of the Status object as "Absent".  In this circumstance, any required or supported properties for which there is no known value shall be represented as null.
+Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g. an empty PCIe elot, DIMM socket, or drive bay) that would not be apparent if the resource  simply did not exist.  This also applies to resources which represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g. an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
+
+For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the State property of the Status object as "Absent".  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g. the "Power" and "Thermal" resources under a "Chassis" resource should not exist for an absent Chassis).
+
+Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the "Memory" resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an "Absent" State).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
 
 #### Schema variations
 
@@ -2336,13 +2352,33 @@ Providers may split the schema resources into separate files such as Schema + St
 
 This clause covers the REST-based mechanism for subscribing to and receiving event messages.
 
-The Redfish Service requires a client or administrator to create subscriptions to receive events. A subscription is created when an administrator sends an HTTP POST message to the URI of the subscription resource. This request includes the URI where an event-receiver client expects events to be sent, as well as the type of events to be sent.  The Redfish Service will then, when an event is triggered within the service, send an event to that URI.
+#### Event subscription types
+
+The Redfish Service requires a client or administrator to create subscriptions to receive events.  There are two methods of creating a subscription: directly by sending an HTTP POST to the subscription collection, or indirectly when a [Server-Sent Events (SSE)](#sse-eventservice) connection is opened for the Event Service.
+
+##### POST to the subscription collection method
+
+The client locates the Event Service by traversing the Redfish Service interface.  The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
+
+When the service has been discovered, clients subscribe to messages by sending a HTTP POST to the URI of the Resource Collection for "Subscriptions" in the Event Service.  This request includes the URI where an event-receiver client expects events to be sent, as well as the type of events to be sent.  The Redfish Service will then, when an event is triggered within the service, send an event to that URI.  The specific syntax of the subscription body is found in the Redfish Schema definition for "EventDestination".
+
+On success, the Event Service shall return an HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created subscription resource.  The body of the response, if any, shall contain a representation of the subscription resource conforming to the "EventDestination" schema.  Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.  Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively.  Historical events are not retained by the service.
 
 * Services shall support "push" style eventing for all resources capable of sending events.
 * Services shall not "push" events (using HTTP POST) unless an event subscription has been created. Either the client or the service can terminate the event stream at any time by deleting the subscription.  The service may delete a subscription if the number of delivery errors exceeds preconfigured thresholds.
 * Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.  Subscriptions are persistent and will remain across event service restarts.
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status code [404](#status-404).
+
+To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
+
+These are some configurable properties that are global settings that define the behavior for all event subscriptions.  See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service's behavior.
+
+##### SSE method
+
+A service may support the "ServerSentEventUri" property within the Event Service resource.  If a client performs a GET on the URI specified by the "ServerSentEventUri", an SSE connection will be opened for the client.  See the [Server-Sent Events: EventService section](#sse-eventservice) for details on this method.
+
+#### Event types
 
 There are two types of events generated in a Redfish Service - life cycle and alert.
 
@@ -2351,16 +2387,6 @@ Life cycle events happen when resources are created, modified or destroyed.  Not
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
 NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
-
-#### Event message subscription
-
-The client locates the Event Service by traversing the Redfish Service interface.  When the service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the Resource Collection for "Subscriptions" in the Event Service. The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
-
-The specific syntax of the subscription body is found in the Redfish Schema definition for "EventDestination".
-
-On success, the Event Service shall return an HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created subscription resource. The body of the response, if any, shall contain a representation of the subscription resource conforming to the "EventDestination" schema. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
-
-Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
 
 #### Event message objects
 
@@ -2378,12 +2404,6 @@ where
 * *MajorVersion* is a positive integer representing the major version of the registry
 * *MinorVersion* is a positive integer representing the minor version of the registry
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.
-
-#### Subscription cleanup
-
-To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
-
-These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service's behavior.
 
 ### Asynchronous operations
 
@@ -2486,7 +2506,7 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 Server-Sent Events (SSE), as defined by the Web Hypertext Application Technology Working Group, allows for a client to open a connection with a web service, and the web service can continuously push data to the client as needed.  Resource responses for SSE shall have a Content-Type header set as "text/event-stream;charset=UTF-8".  A service may occasionally send a comment within a stream to keep the connection alive.  The following sections describe how this is used by Redfish in different contexts of the Redfish data model.  Details about SSE can be found in the [HTML5 Specification](#HTML5-Spec-SSE).
 
 
-#### EventService
+#### EventService<a id="sse-eventservice"></a>
 
 A service's implementation of the "EventService" resource may contain a property called "ServerSentEventUri".  If a client performs a GET on the URI specified by the "ServerSentEventUri", the service shall keep the connection open and conform to the [HTML5 Specification](#HTML5-Spec-SSE) until the client closes the socket.  Events generated by the service shall be sent to the client using the open connection.
 
