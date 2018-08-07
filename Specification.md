@@ -317,7 +317,7 @@ A URI is used to identify a resource, including the base service and all Redfish
 * A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in clause 5, Reference Resolution, of [RFC3986](#RFC3986).
 * URIs shall not include any unsafe characters as specified in [RFC1738](#RFC1738)
     * This includes characters such as "{", "}", "|", "", "^", "~", "[", "]", "`", and """.
-    * While "#" is considered unsafe, it may still be used to identify a fragment
+    * This also includes "#" for anything other than an indicator for the start of a fragment
 * URIs shall not include any percent encoding of characters
 
 To begin operations, a client must know a URI for a resource.
