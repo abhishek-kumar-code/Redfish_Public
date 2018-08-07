@@ -133,6 +133,11 @@
           <Annotation Term="OData.Description" String="This indicates whether this service is allowed to overprovision a composition relative to the composition request."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is allowed to overprovision a composition relative to the composition request."/>
         </Property>
+        <Property Name="AllowZoneAffinity" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether a client is allowed to request that given composition request is fulfilled by a specified Resource Zone."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether a client is allowed to request that given composition request is fulfilled by a specified Resource Zone."/>
+        </Property>
       </EntityType>
     </Schema>
 
