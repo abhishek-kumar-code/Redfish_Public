@@ -28,12 +28,12 @@
                     "DurableName": "5782BCB07197C600"
                 }
             ],
-            "Manufacturer": "ManufacturerName",
-            "Model": "ProductModelName",
-            "SKU": "",
+            "Manufacturer": "Contoso",
+            "Model": "RAID 16oz can",
+            "SKU": "7687121",
             "SerialNumber": "2M220100SL",
-            "PartNumber": "",
-            "AssetTag": "CustomerWritableThingy",
+            "PartNumber": "88/476363",
+            "AssetTag": "8675309",
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
             "SupportedControllerProtocols": [
@@ -42,7 +42,13 @@
             "SupportedDeviceProtocols": [
                 "SAS",
                 "SATA"
-            ]
+            ],
+            "PCIeInterface": {
+                "PCIeType": "Gen2",
+		          "MaxPCIeType": "Gen3",
+		          "LanesInUse": 4,
+		          "MaxLanes": 4
+            }
         }
     ],
     "Drives": [
