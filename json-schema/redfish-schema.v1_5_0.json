@@ -85,7 +85,7 @@
         },
         "autoExpand": {
             "type": "boolean",
-            "description": "The term specifies if the resource referenced by the hyperlink shall be expanded in the response body."
+            "description": "The term specifies if the resource referenced by the hyperlink shall be expanded in the response body as specified in the 'Expanded resources' clause of the Redfish Specification."
         }
     },
     "properties": {
