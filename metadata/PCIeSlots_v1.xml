@@ -136,7 +136,7 @@
         </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="And OEM-specific slot."/>
-        </Member>        
+        </Member>
       </EnumType>
 
       <ComplexType Name="Actions">
