@@ -2438,7 +2438,7 @@ Event messages may also have an EventGroupId property.  The purpose of this prop
 
 #### OEM Extensions
 
-OEMs can extend both messages and message registries.  There are OEM sections defined in any individual message (per the message registry schema definition).  Thus if OEMs wish to provide additional information or properties, this can be done using the OEM section.  OEMs shall not supply additional message arguments beyond those in a standard message registry.  OEMs may substitue their own message registry with their own in order to provide the OEM section within the registry but shall not change the standard values (such as Messages) in such registries.
+OEMs can extend both messages and message registries.  There are OEM sections defined in any individual message (per the message registry schema definition).  Thus if OEMs wish to provide additional information or properties, this can be done using the OEM section.  OEMs shall not supply additional message arguments beyond those in a standard message registry.  OEMs may substitute their own message registry with their own in order to provide the OEM section within the registry but shall not change the standard values (such as Messages) in such registries.
 
 ### Asynchronous operations
 
