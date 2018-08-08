@@ -1218,7 +1218,26 @@ In cases where the time of day is unknown or serves no purpose, the service shal
 
 Duration values shall be returned as JSON strings according to the ISO 8601 "duration" format of the form:
 
- `P[*Y*Y][*M*M][*W*W][*D*D][T[*H*H][*M*M][*S*S]]`
+ `P[*Y*Y][*M*M][*W*W][*D*D][T[*h*H][*m*M][*s*[.*S*]S]]`
+
+  where
+
+* *Y* is the number of years
+* *M* is the number of months
+* *W* is the number of weeks
+* *D* is the number of days
+* *h* is the number of hours
+* *m* is the number of minutes
+* *s* is the number of seconds
+* *S* is the fractional seconds
+
+Each field is optional and may contain more than one digit.  Below are some examples:
+
+* "P3D" specifies a duration of 3 days
+* "PT6H" specifies a duration of 6 hours
+* "PT10S" specifies a duration of 10 seconds
+* "PT0.001S" specifies a duration of 0.001 seconds
+* "PT1H30M" specifies a duration of 1 hour and 30 minutes
 
 
 ##### Structured properties
