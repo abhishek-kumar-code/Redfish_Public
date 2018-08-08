@@ -8,14 +8,13 @@
     "ChassisType": "RackMount",
     "Manufacturer": "ManufacturerName",
     "Model": "ProductModelName",
-    "SKU": "",
+    "SKU": "3452-7812",
     "SerialNumber": "2M220100SL",
-    "PartNumber": "",
+    "PartNumber": "00347664-021",
     "AssetTag": "CustomerWritableThingy",
     "IndicatorLED": "Lit",
     "PowerState": "On",
     "Location" : {
-        "@odata.type": "#Resource.v1_3_0.Location",
         "PostalAddress": {
             "Country": "US",
             "Territory": "TX",
@@ -32,7 +31,17 @@
             "Rack": "WEB43",
             "RackOffsetUnits": "EIA_310",
             "RackOffset": 12
-        }
+        },
+        "Contacts": [{
+            "ContactName": "Bob Fixer",
+            "PhoneNumber": "(800) 555-1212",
+            "EmailAddress": "Bob@contoso.com"
+        },
+        {
+            "ContactName": "Contoso Server Repair",
+            "PhoneNumber": "(900) 555-1212",
+            "EmailAddress": "help@contoso.com"
+        }]
     },
     "Status": {
         "State": "Enabled",

@@ -147,14 +147,14 @@
         <Property Name="ReleaseDate" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Release date of this software."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the date of release or production for this software."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the date of release or production for this software.  The time of day portion of the property shall be '00:00:00Z' if the time of day is unknown."/>
         </Property>
       </EntityType>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_2_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to clarify the time of day portion of the ReleaseDate property."/>
       <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.v1_2_0.SoftwareInventory"/>
     </Schema>
 
