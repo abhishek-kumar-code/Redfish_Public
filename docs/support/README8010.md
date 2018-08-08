@@ -39,6 +39,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | MetricReportDefinition | 1.0.0   | Initial release. A collection of MetricReportDefinition resources. |
 | MetricReportDefinitionCollection | 1.0.0   | Initial release. A collection of MetricReportDefinition resources. |
 | PCIeSlots              | 1.0.0   | Initial release. Contains details on PCIe Slots. |
+| TelemetryService       | 1.0.0   | Intiial release. Entry point for managing a Redfish Telemetry Service. |
 | ActionInfo             | 1.1.0   | Added "MinimumValue" and "MaximumValue" properties. |
 | Assembly               | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
 | Chassis                | 1.8.0   | Added "PCIeSlots" link. |
