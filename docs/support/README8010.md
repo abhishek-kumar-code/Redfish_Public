@@ -53,7 +53,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Manager                          | 1.5.0   | Added "RemoteRedfishServiceUri" and "RemoteAccountService" properties. |
 | ManagerNetworkProtocol           | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
 | Memory                           | 1.6.0   | Added "OverwriteUnit" Action.  Added "IntelOptane" to the "MemoryType" enum. |
-| NetworkAdapter                   | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
+| NetworkAdapter                   | 1.2.0   | Added "NPAR" property to control NIC Partitioning. Added "PCIeInterface" object. |
 | NetworkDeviceFunction            | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object.  Added "FibreChannelId" to "FibreChannel" object.  Deprecated "PhysicalPortAssignment" at the root of the payload in favor of "PhysicalPortAssignment" inside "Links". |
 | NetworkPort                      | 1.2.0   | Added properties to support Fibre Channel devices.  Deprecated "LinkSpeedMbps" in favor of "CapableLinkSpeedMbps". |
 | PCIeDevice                       | 1.3.0   | Added "PCIeInterface" object and definition for referencing from other schema. |
