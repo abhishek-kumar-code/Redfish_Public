@@ -2369,6 +2369,8 @@ Providers may split the schema resources into separate files such as Schema + St
 
 This clause covers the REST-based mechanism for subscribing to and receiving event messages.
 
+NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
+
 #### Event subscription types
 
 The Redfish Service requires a client or administrator to create subscriptions to receive events.  There are two methods of creating a subscription: directly by sending an HTTP POST to the subscription collection, or indirectly when a [Server-Sent Events (SSE)](#sse-eventservice) connection is opened for the Event Service.
@@ -2390,8 +2392,6 @@ On success, the Event Service shall return an HTTP status 201 (CREATED) and the 
 To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
 These are some configurable properties that are global settings that define the behavior for all event subscriptions.  See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service's behavior.
-
-NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
 
 ##### SSE method
 
