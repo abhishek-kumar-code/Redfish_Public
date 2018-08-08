@@ -41,7 +41,7 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-        "Oem": {}
+            "Oem": {}
         }
     ],
     "Voltages": [

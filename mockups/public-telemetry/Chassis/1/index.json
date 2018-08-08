@@ -65,7 +65,12 @@
         ],
         "Oem": {}
     },
-    "Oem": {},
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#ContosoExtensions.v1_0_0.ContosoChassis",
+            "Orientation": "Horizontal"
+        }
+    },
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/1",
     "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

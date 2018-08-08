@@ -26,6 +26,9 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "Metrics": {
+        "@odata.id": "/redfish/v1/Systems/1/Memory/2/MemoryMetrics"
+    },
     "Location": {
         "PartLocation": {
             "ServiceLabel": "Socket 1_B",

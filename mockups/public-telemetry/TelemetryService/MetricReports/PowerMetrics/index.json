@@ -24,21 +24,6 @@
         },
         {
             "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
-            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PowerMetrics/AverageConsumedWatts",
-            "MetricValue": "2.1"
-        },
-        {
-            "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
-            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PowerMetrics/MinConsumedWatts",
-            "MetricValue": "1.9"
-        },
-        {
-            "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
-            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/1/PowerMetrics/MaxConsumedWatts",
-            "MetricValue": "3.0"
-        },
-        {
-            "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PowerMetrics/AverageConsumedWatts",
             "MetricValue": "2.1"
         },
@@ -50,21 +35,6 @@
         {
             "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
             "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/0/PowerMetrics/MaxConsumedWatts",
-            "MetricValue": "3.1"
-        },
-        {
-            "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
-            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PowerMetrics/AverageConsumedWatts",
-            "MetricValue": "2.2"
-        },
-        {
-            "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
-            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PowerMetrics/MinConsumedWatts",
-            "MetricValue": "1.9"
-        },
-        {
-            "Timestamp": "2016-07-25T11:27:59.795513984+02:00",
-            "MetricProperty": "/redfish/v1/Chassis/Tray_2/Power#/PowerControl/1/PowerMetrics/MaxConsumedWatts",
             "MetricValue": "3.1"
         }
     ],
