@@ -36,8 +36,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="MetricReport" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A metric Value."/>
-        <Annotation Term="OData.LongDescription" String="Abstract metric Value."/>
+        <Annotation Term="OData.Description" String="The metric definitions used to create a metric report."/>
+        <Annotation Term="OData.LongDescription" String="The value shall be reference to the definition for this metric report."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -62,8 +62,8 @@
       <EntityType Name="MetricReport" BaseType="MetricReport.MetricReport">
         <NavigationProperty Name="MetricReportDefinition" Type="MetricReportDefinition.MetricReportDefinition" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The metric definitions for this metric."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be reference to the definition for this metric."/>
+          <Annotation Term="OData.Description" String="The metric definitions used to create a metric report."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be reference to the definition for this metric report."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="ReportSequence" Type="Edm.String" Nullable="false">
