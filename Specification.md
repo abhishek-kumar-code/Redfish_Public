@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.5.0'
-modified: '2018-04-05'
-SupersedesVersion: '1.4.1'
+DocVersion: '1.5.1'
+modified: '2018-08-10'
+SupersedesVersion: '1.5.0'
 status: published
 released: true
 copyright: '2014-2018'
@@ -286,8 +286,6 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 The Redfish Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#OData-Protocol), JSON payloads, as defined in [OData-JSON](#OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#OData-CSDL). The OData Schema representations include annotations to enable direct translation to JSON Schema representations for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
 
-Redfish follows the OData minimal conformance level for clients consuming minimal metadata.
-
 Throughout this document, we refer to Redfish as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the Redfish protocol.
 
 The Redfish protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.
@@ -341,11 +339,9 @@ The scheme and authority part of the URI shall not be considered part of the uni
 * An implementation may use a [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the payload (body and/or HTTP headers) to identify a resource within the implementation.
 * An implementation may use an absolute URI in the payload (body and/or HTTP headers) to identify a resource within a different implementation.  See [RFC3986](#RFC3986) for the absolute URI definition.
 
-For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
+For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST): `/redfish/v1/Systems/2`
 
-    Example: /redfish/v1/Systems/2
-
-Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
+Assuming the client is connecting through an appliance named "mgmt.vendor.com", the absolute URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
 
@@ -484,7 +480,7 @@ HTTP defines headers that can be used in request messages. The following table d
 
 | Header           | Service Requirement | Client Requirement | Supported Values                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | --------         | ---                 | ---                | -----------------                  | ------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Accept           | Yes                 | Yes                | [RFC 7231](#RFC7231)               | Indicates to the server what media type(s) this client is prepared to accept.  Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`.  Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`.  Services shall support requests for all resources with an Accept header including `application/*`, `application/*;charset=utf-8`, `*/*`, or `*/*;charset=utf-8`. |
+| Accept           | Yes                 | No                 | [RFC 7231](#RFC7231)               | Indicates to the server what media type(s) this client is prepared to accept.  Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`.  Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`.  Services shall support requests for all resources with an Accept header including `application/*`, `application/*;charset=utf-8`, `*/*`, or `*/*;charset=utf-8`. |
 | Accept-Encoding  | No                  | No                 | [RFC 7231](#RFC7231)               | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                      |
 | Accept-Language  | No                  | No                 | [RFC 7231](#RFC7231)               | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                                                                                                                                                                                                                     |
 | Content-Type     | Conditional         | Conditional        | [RFC 7231](#RFC7231)               | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`. It is recommended that Clients use these values in requests since other values may result in an error.                                                                                                                                                                         |
@@ -510,7 +506,7 @@ HTTP defines headers that can be used in request messages. The following table d
 
 #### Read requests (GET)
 
-The GET method is used to retrieve a representation of a resource. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types clause [Media Types](#media-types). If the Accept header is not present, the service will return the resources representations as application/json.
+The GET method is used to retrieve a representation of a resource.  The service shall return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types clause [Media Types](#media-types).  If the Accept header is not present, the service shall return the resource's representation as application/json.
 
 * The HTTP GET method shall be used to retrieve a resource without causing any side effects.
 * The service shall ignore the content of the body on a GET.
@@ -559,6 +555,9 @@ Clients can add query parameters to request additional features from the service
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
+* The contents of the response body shall be as if the query parameters were evaluated in the following order: 
+    * Prior to service side pagination: $filter, $skip, $top
+    * After applying any service side pagination: $expand, $select
 
 ***Query parameters for Resource Collections***
 
@@ -599,7 +598,7 @@ The $select parameter indicates to the implementation that it should return a su
 An example of the use of select might be:
 * GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
 
-When performing $select, Services shall return all of the requested properties of the referenced resource.
+When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed.  The ["@odata.context"](#context-property) property shall be in the response payload and should be in the recommended format specified by the [Context property section](#context-property).  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
 
 Any other supported syntax for $select is outside the scope of this specification.
 
@@ -609,18 +608,18 @@ The $filter parameter indicates to the implementation that it should include a s
 
 The following table represents the Redfish allowable operators that shall be supported for $filter if $filter is implemented:
 
-| value     | Description                                     | Example                                                                          |
-| ---       | ---                                             | ---                                                                              |
-| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                      |
-| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                         |
-| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                      |
-| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                      |
-| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                         |
-| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                         |
-| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64         |
-| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                       |
-| not       | Logical negation operator                       | not ProcessorSummary/Count eq 2                                                  |
-| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK) or SystemType eq 'Physical' |
+| value     | Description                                     | Example                                                                           |
+| ---       | ---                                             | ---                                                                               |
+| eq        | Equal comparison operator                       | ProcessorSummary/Count eq 2                                                       |
+| ne        | Not equal comparison operator                   | SystemType ne 'Physical'                                                          |
+| gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                       |
+| ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                       |
+| lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                          |
+| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                          |
+| and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64          |
+| or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                        |
+| not       | Logical negation operator                       | not (ProcessorSummary/Count eq 2)                                                 |
+| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK') or SystemType eq 'Physical' |
 
 Services shall use the following operator precedence when evaluating expressions: grouping, logical negation, relational comparison (gt, ge, lt, le which all have equal precedence), equality comparison (eq, ne which both have equal precedence), logical and, then logical or.
 
@@ -675,13 +674,14 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * Services shall support the PATCH method to update properties within a resource.
 * If the resource or all properties can never be updated, HTTP status code [405](#status-405) shall be returned.
 * If the client specifies a PATCH request against a Resource Collection, HTTP status code [405](#status-405) should be returned.
-* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, an HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
+* In the case of a request including modification to several properties, if one or more properties in the request can never be updated, such as when a property is read only, unknown, or unsupported, an HTTP status code of [200](#status-200) shall be returned along with a representation of the resource containing a Message [annotation](#extended-information) specifying the non-updatable properties. In this success case, other properties may be updated in the resource.
+* In the case of a request modifying a single property, if the property in the request can never be updated, such as when the property is read only, unknown, or unsupported, an HTTP status code of [400](#status-400) shall be returned along with a representation of the resource containing a Message [annotation](#extended-information) specifying the non-updatable property. 
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 * Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
-OData annotations ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [Links Property](#links-property)) are ignored on Update.
+OData annotations (such as [resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property), and [Links Property](#links-property)) shall be ignored by the service on Update.  This includes any annotations matching the forms "*PropertyName*@odata.*TermName*" or "@odata.*TermName*", where *PropertyName* is the name of the property being annotated, and *TermName* is the specific OData annotation term.  If an Update request only contains OData annotations, the service should return the NoOperation message defined in the Base Message Registry.
 
 ##### Replace (PUT)<a id="replace-put"></a>
 
@@ -738,7 +738,7 @@ Clients can query a resource directly to determine the [actions](#actions-proper
 For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
 ~~~xml
-  <Schema Name="ComputerSystem">
+  <Schema Namespace="ComputerSystem">
     ...
     <Action Name="Reset" IsBound="true">
       <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions"/>
@@ -828,6 +828,11 @@ In cases where the processing of the Action may require extra time to complete, 
 * HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
 * HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
 * In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
+
+Actions may have required parameters as defined in the [Resource actions section](#resource-actions).  If a client does not provide all required parameters, the service shall reject the request with HTTP Status Code [400](#status-400).  If an Action does not have any required parameters, the service should accept an empty JSON object in the HTTP body for the Action request.  If a client provides a parameter that the service does not support, the service shall either reject the request with HTTP Status Code [400](#status-400) or ignore the unknown parameters.
+
+If an Action requested by the client will have no effect, such as performing a Reset of a ComputerSystem where the parameter "ResetType" is set to "On" and the ComputerSystem is already "On", the service should respond with an HTTP Status Code [200](#status-200) and return the NoOperation message defined in the Base Message Registry.
+
 
 #### Operation apply time
 
@@ -990,7 +995,7 @@ Where the HTTP status code indicates a failure, the response body contains an [e
 
 NOTE: Refer to the [Security](#security) clause for security implications of extended errors
 
-The following table lists some of the common HTTP status codes. Other codes may be returned by the service as appropriate. See the Description column for a description of the status code and additional requirements imposed by this specification.
+The following table lists HTTP status codes which have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification. Other codes may be returned by the service as appropriate, and their usage is implementation-specific. See the Description column for usage and additional requirements imposed by this specification.
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
@@ -1014,13 +1019,13 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple properties that work in a linked manner using incompatible values).                                                                                                                                                                                                                             |
 | <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities SHOULD delete references to the Request-URI after user approval.  If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code [404](#status-404) (Not Found) SHOULD be used instead.  This response is cacheable unless indicated otherwise. |
 | <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead).  The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                        |
-| <a id="status-412"></a>412 Precondition Failed    |The precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <a id="status-412"></a>412 Precondition Failed    |The precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | <a id="status-428"></a>428 Precondition Required  | The request did not provide the required precondition, such as an If-Match or If-None-Match header.                                                                                                                                                                                                                                                                                                                                                                                             |
-| <a id="status-431"></a>431 Request Header Field Too Large  | The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.                                                                                                                                                                                                                                                                                                                                |
+| <a id="status-431"></a>431 Request Header Field Too Large  | The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.                                                                                                                                                                                                                                                                                                                                        |
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
-| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                  |
+| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.  It may also use this response to indicate the service itself is undergoing maintenance, such as finishing initialization steps after reboot of the service.                                                     |
 | <a id="status-507"></a>507 Insufficient Storage   | The server is unable to build the response for the client due to the size of the response.                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 #### Metadata responses
@@ -1169,7 +1174,7 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 ##### Type property
 
-All resources in a response shall include a type property named "@odata.type". All embedded objects in a response should include a type property named "@odata.type." The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
+All resources in a response shall include a type property named "@odata.type".  If support of generic OData clients is desired, all embedded JSON objects in a response should include a type property named "@odata.type."  The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
 
   #*Namespace*.*TypeName*
 
@@ -1207,6 +1212,9 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 * *SSS* = one or more digits representing a decimal fraction of a second, with the number of digits implying precision.
 * The 'T' separator and 'Z' suffix shall be capitals.
+
+In cases where the time of day is unknown or serves no purpose, the service shall report "00:00:00Z" for the time of day portion of the DateTime value.
+
 
 ##### Structured properties
 
@@ -1450,7 +1458,7 @@ The Members of the Resource Collection of resources are returned as a JSON array
 
 ##### Next Link Property and partial results
 
-Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a Next Link Property named "Members@odata.nextLink". The value of the Next Link Property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The Next Link Property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
+Responses may contain a subset of the members of the full Resource Collection.  For partial Resource Collections the response includes a Next Link Property named "Members@odata.nextLink".  The value of the Next Link Property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members.  The Next Link Property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned, and if the payload does not represent the end of the requested Resource Collection.
 
 The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
@@ -1672,12 +1680,14 @@ Resource Name, Property Names, and constants such as Enumerations shall be Pasca
 * The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
 * No underscores are used.
 * Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn).
+* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
 
 Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI"
+ * Well-known technology names like "iSCSI" (e.g. "iSCSITarget")
  * Product names like "iLO"
  * Well-known abbreviations or acronyms
+ * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
+ * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish reources or properties.
 
 For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
  * Bandwidth (Mbps), (e.g., PortSpeedMbps)
@@ -1882,7 +1892,7 @@ EnumType elements contain `Member` elements that define the members of the enume
   </EnumType>
 ~~~
 
-Enumeration Types shall include [Description](#description) and [LongDescription](#long-description) annotations.
+Enumeration Types may include [Description](#description) and [LongDescription](#long-description) annotations.
 
 Enumeration Members shall include [Description](#description) annotations.
 
@@ -2036,24 +2046,31 @@ The type of the Actions property is a [structured type](#structured-types) with 
 
 ~~~xml
   <ComplexType Name="Actions">
-    <Property Name="OEM" Type="MyType.OEMActions"/>
+    <Property Name="Oem" Type="MyType.OemActions"/>
   </ComplexType>
 
-  <ComplexType Name="OEMActions"/>
+  <ComplexType Name="OemActions"/>
 ~~~
 
 Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
 
-The first parameter is called the "binding parameter" and specifies the resource or [structured type](#structured-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
+The first parameter is called the "binding parameter" and specifies the resource or [structured type](#structured-types) that the action appears as a member of (the type of the Actions property on the resource).  The remaining Parameter elements describe additional parameters to be passed to the action.  Parameters containing the term `Nullable="false"` are required to be provided in the Action request.
 
 ~~~xml
   <Action Name="MyAction" IsBound="true">
     <Parameter Name="Thing" Type="MyType.Actions"/>
     <Parameter Name="Parameter1" Type="Edm.Boolean"/>
+    <Parameter Name="Parameter2" Type="Edm.String" Nullable="false"/>
   </Action>
 ~~~
+
+In the above example, three parameters are defined:
+* Thing: This is the binding parameter, which is not provided in the request by the client
+* Parameter1: A boolean parameter used in the client payload for the request
+* Parameter2: A string parameter used in the client payload for the request and is also required to be provided by the client
+
 
 #### Resource extensibility
 
@@ -2068,7 +2085,7 @@ In the context of this clause, the term OEM refers to any company, manufacturer,
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
 ~~~xml
-  <Schema Name="Contoso.v1_2_0">
+  <Schema Namespace="Contoso.v1_2_0">
     ...
     <ComplexType Name="AnvilType1">
       <Property Name="slogan" Type="Edm.String"/>
@@ -2148,11 +2165,11 @@ The following fragment presents some examples of naming and use of the Oem prope
 
 ##### OEM actions
 
-OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#resource-actions) property type.
+OEM-specific actions can be defined by defining actions bound to the Oem property of the [resource's Actions](#resource-actions) property type.
 
 ~~~xml
   <Action Name="Ping" IsBound="true">
-    <Parameter Name="ContosoType" Type="MyType.OEMActions"/>
+    <Parameter Name="ContosoType" Type="MyType.OemActions"/>
   </Action>
 ~~~
 
@@ -2199,6 +2216,10 @@ The Name property is used to convey a human-readable moniker for a resource.  Th
 
 The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
 
+#### MemberId<a id="memberid-property"></a>
+
+The MemberId property of an object within a resource uniquely identifies the object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.
+
 #### Status
 
 The Status property represents the status of a resource.
@@ -2222,7 +2243,7 @@ The [Actions](#actions-property) property contains the actions supported by a re
 
 #### OEM
 
-The [OEM](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
 
 ### Redfish resources
 
@@ -2310,7 +2331,11 @@ There are some situations that arise with certain kinds of resources that need t
 
 #### Absent resources
 
-Resources may be either absent or their state unknown at the time a client requests information about that resource.  For removed resources where the URI is expected to remain constant (such as when a fan is removed), the resource should represent the State property of the Status object as "Absent".  In this circumstance, any required or supported properties for which there is no known value shall be represented as null.
+Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g. an empty PCIe elot, DIMM socket, or drive bay) that would not be apparent if the resource  simply did not exist.  This also applies to resources which represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g. an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
+
+For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the State property of the Status object as "Absent".  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g. the "Power" and "Thermal" resources under a "Chassis" resource should not exist for an absent Chassis).
+
+Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the "Memory" resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an "Absent" State).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
 
 #### Schema variations
 
@@ -2330,13 +2355,33 @@ Providers may split the schema resources into separate files such as Schema + St
 
 This clause covers the REST-based mechanism for subscribing to and receiving event messages.
 
-The Redfish Service requires a client or administrator to create subscriptions to receive events. A subscription is created when an administrator sends an HTTP POST message to the URI of the subscription resource. This request includes the URI where an event-receiver client expects events to be sent, as well as the type of events to be sent.  The Redfish Service will then, when an event is triggered within the service, send an event to that URI.
+#### Event subscription types
+
+The Redfish Service requires a client or administrator to create subscriptions to receive events.  There are two methods of creating a subscription: directly by sending an HTTP POST to the subscription collection, or indirectly when a [Server-Sent Events (SSE)](#sse-eventservice) connection is opened for the Event Service.
+
+##### POST to the subscription collection method
+
+The client locates the Event Service by traversing the Redfish Service interface.  The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
+
+When the service has been discovered, clients subscribe to messages by sending a HTTP POST to the URI of the Resource Collection for "Subscriptions" in the Event Service.  This request includes the URI where an event-receiver client expects events to be sent, as well as the type of events to be sent.  The Redfish Service will then, when an event is triggered within the service, send an event to that URI.  The specific syntax of the subscription body is found in the Redfish Schema definition for "EventDestination".
+
+On success, the Event Service shall return an HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created subscription resource.  The body of the response, if any, shall contain a representation of the subscription resource conforming to the "EventDestination" schema.  Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.  Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively.  Historical events are not retained by the service.
 
 * Services shall support "push" style eventing for all resources capable of sending events.
 * Services shall not "push" events (using HTTP POST) unless an event subscription has been created. Either the client or the service can terminate the event stream at any time by deleting the subscription.  The service may delete a subscription if the number of delivery errors exceeds preconfigured thresholds.
 * Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.  Subscriptions are persistent and will remain across event service restarts.
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status code [404](#status-404).
+
+To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
+
+These are some configurable properties that are global settings that define the behavior for all event subscriptions.  See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service's behavior.
+
+##### SSE method
+
+A service may support the "ServerSentEventUri" property within the Event Service resource.  If a client performs a GET on the URI specified by the "ServerSentEventUri", an SSE connection will be opened for the client.  See the [Server-Sent Events: EventService section](#sse-eventservice) for details on this method.
+
+#### Event types
 
 There are two types of events generated in a Redfish Service - life cycle and alert.
 
@@ -2345,16 +2390,6 @@ Life cycle events happen when resources are created, modified or destroyed.  Not
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
 NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
-
-#### Event message subscription
-
-The client locates the Event Service by traversing the Redfish Service interface.  When the service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the Resource Collection for "Subscriptions" in the Event Service. The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
-
-The specific syntax of the subscription body is found in the Redfish Schema definition for "EventDestination".
-
-On success, the Event Service shall return an HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created subscription resource. The body of the response, if any, shall contain a representation of the subscription resource conforming to the "EventDestination" schema. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
-
-Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
 
 #### Event message objects
 
@@ -2372,12 +2407,6 @@ where
 * *MajorVersion* is a positive integer representing the major version of the registry
 * *MinorVersion* is a positive integer representing the minor version of the registry
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.
-
-#### Subscription cleanup
-
-To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
-
-These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service's behavior.
 
 ### Asynchronous operations
 
@@ -2480,7 +2509,7 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 Server-Sent Events (SSE), as defined by the Web Hypertext Application Technology Working Group, allows for a client to open a connection with a web service, and the web service can continuously push data to the client as needed.  Resource responses for SSE shall have a Content-Type header set as "text/event-stream;charset=UTF-8".  A service may occasionally send a comment within a stream to keep the connection alive.  The following sections describe how this is used by Redfish in different contexts of the Redfish data model.  Details about SSE can be found in the [HTML5 Specification](#HTML5-Spec-SSE).
 
 
-#### EventService
+#### EventService<a id="sse-eventservice"></a>
 
 A service's implementation of the "EventService" resource may contain a property called "ServerSentEventUri".  If a client performs a GET on the URI specified by the "ServerSentEventUri", the service shall keep the connection open and conform to the [HTML5 Specification](#HTML5-Spec-SSE) until the client closes the socket.  Events generated by the service shall be sent to the client using the open connection.
 
@@ -2832,7 +2861,7 @@ property in the ManagerAccount resource requires the "ConfigureSelf" or the "Con
 to the "ConfigureUsers" privilege required for the rest of the properties in ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
-(ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
+(ConfigureManager is required) or ComputerSystem (ConfigureComponents is required) resources.
 * Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
 The overrides are defined in the context of the operation-to-privilege mapping for an entity.
 
@@ -2907,7 +2936,7 @@ required for the rest of the properties on ManagerAccount resources.
 
 ##### Subordinate override
 
-The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponent" privilege.
+The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise, the client would require the "ConfigureComponents" privilege.
 ~~~json
 {
     "Entity": "EthernetInterface",
@@ -2924,22 +2953,22 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
@@ -2985,22 +3014,22 @@ In the following example, use of the ResourceURI Override syntax for representin
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureComponent" ]
+                "Privilege": [ "ConfigureComponents" ]
             }
         ]
     },
@@ -3100,6 +3129,29 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.5.1   | 2018-08-10 | Reorganized Eventing section to break out the different subscription methods to differentiate pub-sub from SSE. |
+|         |            | Removed statements referencing OData conformance levels. |
+|         |            | Clarified terminology to explain usage of absolute versus relative URIs throughout. |
+|         |            | Clarified client-side HTTP Accept header requirements. |
+|         |            | Added evaluation order for supported query parameters and clarified examples. |
+|         |            | Clarified handling of annotations in response payloads when used with $select queries. |
+|         |            | Clarified service handling of annotations in PATCH requests. |
+|         |            | Clarified handling of various PATCH request error conditions. |
+|         |            | Clarified ability to create Resource Collection members by POST operations to the Resource Collection or the Members[] array within the resource. |
+|         |            | Corrected several examples to show required properties in payload. |
+|         |            | Clarified usage of the Link header and values of 'rel=describedBy'. |
+|         |            | Clarified that the HTTP status code table only describes Redfish-specific behavior and that unless specified, all other usage follows the definitions within the appropriate RFCs. |
+|         |            | Added missing entry for HTTP status code 431. |
+|         |            | Added statement that HTTP status code 503 can be used during reboot/reset of a Service to indicate that the service is temporarily unavailable. |
+|         |            | Clarified usage of the @odata.type annotation within embedded objects. |
+|         |            | Added missing statements about required properties 'Name', 'Id', 'MemberId', and common property 'Description', which have always been shown as required in schema files, but were not mentioned in the Specification. |
+|         |            | Added guidance for the value of time/date properties when time is unknown. |
+|         |            | Added missing description of the 'title' property in Action requests. |
+|         |            | Clarified usage of the '@odata.nextLink' annotation at the end of Resource Collections. |
+|         |            | Added additional guidance for naming properties and enumeration values which contain 'OEM' or which include acronyms. |
+|         |            | Corrected requirements for Description and LongDescription schema annotations. |
+|         |            | Corrected name of 'ConfigureComponents' in Operation-to-Privilege mapping clause. |
+|         |            | Various typographical errors and grammatical improvements. |
 | 1.5.0   | 2018-04-05 | Added support for Server-Sent Eventing for streaming events to web-based GUIs or other clients. |
 |         |          | Added "OperationApplyTime" annotation to provide a mechanism for specifying deterministic behavior for the application of Create, Delete or Action (POST) operations. |
 | 1.4.1   | 2018-04-05 | Updated name of the DMTF Forum from 'SPMF' to 'Redfish Forum'. |

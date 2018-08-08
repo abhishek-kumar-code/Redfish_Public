@@ -1,4 +1,3 @@
-
 # Redfish Messaging
 
 All SPMF activities with expected public output should be listed in this document, with planned or expected release dates.  
@@ -13,12 +12,11 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | Event Name | Dates      | Location      | Contact             | Presence                                     |
 | ---        | ---        | ---           | ---                 | ---                                          |
 | LISA       | 10/29-11/2 | San Francisco |                     | Session?                                     |
-| SC18       | November 12-15, 2018   | Denver, CO    |                     | Booth, propose session                       |
+| SC18       | November 12-15, 2018   | Dallas, TX   |                     | Booth, propose session                       |
 | OCP Fall   | 3Q-4Q18    | TBD           |                     | Booth and workshop attendance / presentation |
 | SDC | September 24-27, 2018 | Santa Clara, CA | Jeff Hilland, Richelle Ahlvers | Propose session |
 | NOMS 2019  | April 2019 |               |                     | Submission deadline likely November 2018    |
 | OCP Summit | March 2019 | TBD  | www.opencompute.org | Booth and workshop attendance / presentation |
-
 
 
 ## Specifications
@@ -29,15 +27,18 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 * DSP0272 - Redfish Interoperability Spec
 * DSP0218 - Redfish Device Enablement (PMCI WG)
 
+
 ## Schema & Registries
 
 * DSP8011 - Registries.  These get published and unzipped on redfish.dmtf.org/registries
 * DSP8010 - Schema Zip.  These get published and unzipped on redfish.dmtf.org/schemas
 * DSP8013 - Profile ZIP.  These get published and unzipped on redfish.dmtf.org/profiles
 
+
 ## Informational Specification Bundles
 
 (section for each bundle plan)
+
 
 ## White Papers / Informational 
 
@@ -51,65 +52,84 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | OCP HW Mgmt w/ RF   | Profile   | DSP2049 | 0.2.2b | 2017-06 |
 | Composability       | Schema    | DSP2050 | 1.0.0  | 2017-07 |
 | Telemetry           | Schema    | DSP2051 | 0.9.0  | N/A     |
-| Redfish Technote    | Technote  | NA      | NA     | 2016-08 |
-| Redfish Exec Brief  | Technote  | NA      | NA     | 2018-05 |
+| Redfish Technote    | Technote  | N/A     | N/A    | 2016-08 |
+| Redfish Exec Brief  | Technote  | N/A     | N/A    | 2018-05 |
+| BIOS White Paper    | Overview  | N/A     | N/A    | N/A     |
+| Firmware Update WP  | Overview  | N/A     | N/A    | N/A     |
+| Boot Option WP      | Overview  | N/A     | N/A    | N/A     |
+| OEM Extensions      | Overview  | N/A     | N/A    | N/A     |
+| Fabrics             | Overview  | N/A     | N/A    | N/A     |
+| Sensors and Alarms  | Overview  | N/A     | N/A    | N/A     |
+| Jobs                | Overview  | N/A     | N/A    | N/A     |
+| Privilege Map       | Overview  | N/A     | N/A    | N/A     |
+| DCIM                | Overview  | N/A     | N/A    | N/A     |
+
 
 ## Educational Material
+
 For the DMTF Redfish Page (www.dmtf.org/standards/Redfish), the Tutorials/Education side bar will have links to all of the Redfish School plus recent stuff as indicated in the Presentations section below to indicate if it goes on the Side Bar or Previous Presentation section at the bottom of the page.  The Previous Presentations section should be at the bottom of the page. 
 The links in the Tutorials/Education side bar will be reflected on the developer hub Education Page (http://redfish.dmtf.org/education).  The Education Page will also have a link to the Previous Presentations section.
 
+
 ### BrightTalk
+
 * Redfish Data Model Deep Dive, [Jul 15, 2015](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/163783/play), live demo using the explorer and a mockup.
 * DMTF: Redfish Overview, [May 20, 2015](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/156709/play), DocID 83340
 * Redfish Modeling Guidelines, [Feb 23, 2016](https://www.brighttalk.com/service/player/en-US/theme/default/channel/9077/webcast/192089/play), DocID 82375 
 
+
 ### Redfish School (Youtube)
+
 Here the Pub column means has it been published yet.  The intent is to publish all of these presentations on the Tutorials/Education side bar of dmtf.org/standards/Redfish and reflected on the Developer Hub Education Page (http://redfish.dmtf.org/education) 
 
-| Subject             | Presenter | Rec? | Pub? |  DocID |  
-| ---                 | ---       | ---  | ---  | ---    |
-| Why Redfish         | Jeff A    | Y    |    N | 84013  |
-| Architecture        | Jeff H    | Y    |    N | 84151  |
-| Common Prop         | Jeff H    | Y    |    N | 84152  |
-| Chassis             | Jeff H    | Y    |      | na  |
-| Managers            | Jeff H    | Y    |      | na  |
-| Systems             | Jeff H    | Y    |      | na  |
-| CSDL Intro          | Mike R    | Y    |    N | 84774  |
-| CSDL Usage          | Mike R    | Y    |    N | 84775  |
-| OData Client        | Mike R    | Y    |    N | 84776  |
-| Storage             | Mike R    | Y    |    N | 86144  |
-| Composability       | Mike R    | Y    |    N | 86073  |
-| Case for Redfish    | Jeff H    |      | Y    | 85771  |
-| Tasks               | Jeff H    |      | Y    | 86324  |
-| Adv Comm Device     | Jeff H    |      |    N | 86894  |
-| Eventing            | Jeff H    |      | Y    | 86372  |
-| Proc & Memory       | Jeff H    |      |      |   |
-| Sessions            | Jeff H    |      |      |   |
-| Users & Priv        | Jon H     |      |      |   |
-| BIOS                | Samer     |      |      |   |
-| Switches            | John L    |      |      |   |
-| Telemetry           | John L    |      |      |   |
-| Host Interface      | Paul V    |      |      |   |
-| Profiles            | Jeff A    |      |      |   |
-| FW Update           | Jeff A    |      |      |   |
-| Service Validator   | Jeff A    |      |      |   |
-| Conformance Check   |           |      |      |   |
-| Mockup Server       |           |      |      |   |
-| Redfishtool         | Paul V    |      |      |   |
-| DCIM WIP v.8        | Jon H     |      |      |   |
-| OpenAPI             | Mike R    |      |      |   | 
-| Sensor Model        | Jeff A    |      |      |   |
-| Alarms              | John L    |      |      |   |
-| SSE                 | Mike R    |      |      |   |
-| Fabrics             | Jeff H    |      |      |   |
-| Ethernet Switching  | Joe White |      |      |   |
-| Jobs                | Jeff A    |      |      |   |
-| Boot model / option | Samer     |      |      |   |
-| PCI device and slot |           |      |      |   |    
-| OEM Extensions      |           |      |      |   |
-| How to Model in Redfish | Jeff A |     |      |   |           
+| Subject             | Presenter | Rec? | Pub? | DocID |
+| ---                 | ---       | ---  | ---  | ---   |
+| Why Redfish         | Jeff A    | Y    | N    | 84013 |
+| Architecture        | Jeff H    | Y    | N    | 84151 |
+| Common Prop         | Jeff H    | Y    | N    | 84152 |
+| Chassis             | Jeff H    | Y    |      | N/A   |
+| Managers            | Jeff H    | Y    |      | N/A   |
+| Systems             | Jeff H    | Y    |      | N/A   |
+| CSDL Intro          | Mike R    | Y    | N    | 84774 |
+| CSDL Usage          | Mike R    | Y    | N    | 84775 |
+| OData Client        | Mike R    | Y    | N    | 84776 |
+| Storage             | Mike R    | Y    | N    | 86144 |
+| Composability       | Mike R    | Y    | N    | 86073 |
+| Case for Redfish    | Jeff H    | Y    | Y    | 85771 |
+| Tasks               | Jeff H    |      | Y    | 86324 |
+| Adv Comm Device     | Jeff H    |      | N    | 86894 |
+| Eventing            | Jeff H    |      | Y    | 86372 |
+| Proc & Memory       | Jeff H    |      |      |       |
+| Sessions            | Jeff H    |      |      |       |
+| Users & Priv        | Jon H     |      |      |       |
+| BIOS                | Samer     |      |      |       |
+| Telemetry           | John L    |      |      |       |
+| Host Interface      | Paul V    |      |      |       |
+| Profiles            | Jeff A    |      |      |       |
+| FW Update           | Jeff A    |      |      |       |
+| Service Validator   | Jeff A    |      |      |       |
+| Boot model / option | Samer     |      |      |       |
+| PCI device and slot |           |      |      |       |
+| OEM Extensions      |           |      |      |       |
+| How to Model in Redfish | Jeff A |     |      |       |
+| OpenAPI             | Mike R    |      |      |       |
+| SSE                 | Mike R    |      |      |       |
+| Fabrics             | Jeff H    |      |      |       |
+| Conformance Check   |           |      |      |       |
+| Interop Validator   | JL        |      |      |       |
+| Sensor Model        | Jeff A    |      |      |       |
+| Alarms              | John L    |      |      |       |
+| Jobs                | Jeff A    |      |      |       |
+| Privilege Map       | Jon H     |      |      |       |
+| Mockup Server/Creator |         |      |      |       |
+| JSON Schema Validator | Paul V  |      |      |       |
+| Redfishtool         | Paul V    |      |      |       |
+| DCIM WIP v.8        | Jon H     |      |      |       |
+| Ethernet Switching  | Joe White |      |      |       |
+
 
 ### Presentations
+
 The Pub column will have the values pp, SB or N where:
 * pp means it goes on the Previous Presentations section of dmtf.org/standards/Redfish
 * SB means it goes on the Tutorials/Education side bar of dmtf.org/standards/Redfish and reflected on the Developer Hub Education Page (http://redfish.dmtf.org/education)
@@ -144,15 +164,20 @@ The Pub column will have the values pp, SB or N where:
 | Title  | Subject   | New/Modified | Date   |
 | ---    | ---       | ---          | ---    |
 
+
 ## Outreach
 
 (upcoming articles, forum posts)
 
+
 ## Alliance Partner Engagements
+
 
 ### OCP
 
+
 ### TGG
+
 
 ### SNIA SSM (Swordfish)
 
