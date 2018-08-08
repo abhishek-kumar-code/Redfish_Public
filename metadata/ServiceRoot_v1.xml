@@ -70,6 +70,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml">
     <edmx:Include Namespace="CompositionService"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/JobService_v1.xml">
+    <edmx:Include Namespace="JobService"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -407,12 +410,24 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_1.ServiceRoot"/>
-	</Schema>
+    </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to add support of the 'excerpt' and 'only' query parameters to ProtocolFeaturesSupported."/>
-      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_2.ServiceRoot"/>
+      <Annotation Term="OData.Description" String="This version was created to add support of the 'excerpt' and 'only' query parameters to ProtocolFeaturesSupported.  It was also created to add the JobService property."/>
+
+      <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_2_0.ServiceContainer">
+        <Singleton Name="JobService" Type="JobService.JobService"/>
+      </EntityContainer>
+
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_2.ServiceRoot">
+        <NavigationProperty Name="JobService" Type="JobService.JobService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the JobService."/>
+          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that conforms to the JobService schema."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
 
       <ComplexType Name="ProtocolFeaturesSupported" BaseType="ServiceRoot.v1_3_0.ProtocolFeaturesSupported">
         <Property Name="ExcerptQuery" Type="Edm.Boolean" Nullable="false">
@@ -424,7 +439,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether the 'only' query parameter is supported."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the 'only' query parameter as described by the specification."/>
-        </Property> 
+        </Property>
       </ComplexType>
     </Schema>
 
