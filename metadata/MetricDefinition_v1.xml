@@ -50,6 +50,11 @@
             <PropertyValue Property="Deletable" Bool="true"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/TelemetryService/MetricDefinitions/{MetricDefinitionId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
     </Schema>
 

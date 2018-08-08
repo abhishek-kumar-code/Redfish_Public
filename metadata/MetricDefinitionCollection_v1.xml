@@ -50,6 +50,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/TelemetryService/MetricDefinitions</String>
+          </Collection>
+        </Annotation>
         <Annotation Term="OData.Description" String="A Collection of supporting resource instances."/>
         <NavigationProperty Name="Members" Type="Collection(MetricDefinition.MetricDefinition)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
