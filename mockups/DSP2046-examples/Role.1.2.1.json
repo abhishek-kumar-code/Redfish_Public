@@ -16,5 +16,5 @@
         "OemPowerControl"
     ],
     "@odata.context": "/redfish/v1/$metadata#Role.Role",
-    "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
+    "@odata.id": "/redfish/v1/AccountService/Roles/Administrator"
 }

@@ -47,6 +47,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/JsonSchemas/{JsonSchemaFileId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

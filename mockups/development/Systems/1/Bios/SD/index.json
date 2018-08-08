@@ -17,6 +17,7 @@
     "ProcCoreDisable": 0,
     "ProcHyperthreading": "Enabled",
     "ProcTurboMode": "Disabled",
-    "UsbControl": "UsbEnabled"
+    "UsbControl": "UsbEnabled",
+    "ConsoleBaudRate": "115200"
   }
 }
