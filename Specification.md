@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.5.0'
-modified: '2018-04-05'
-SupersedesVersion: '1.4.1'
+DocVersion: '1.5.1'
+modified: '2018-08-10'
+SupersedesVersion: '1.5.0'
 status: published
 released: true
 copyright: '2014-2018'
@@ -65,6 +65,7 @@ Educational material is also increasing, both from the DMTF and other organizati
 
 The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
 
+* <a id="RFC1738">IETF RFC 1738</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI), [http://www.ietf.org/rfc/rfc1738.txt](http://www.ietf.org/rfc/rfc1738.txt "http://www.ietf.org/rfc/rfc1738.txt")
 * <a id="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
 * <a id="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
 * <a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
@@ -314,6 +315,10 @@ A URI is used to identify a resource, including the base service and all Redfish
 
 * Each unique instance of a resource shall be identified by a URI.
 * A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in clause 5, Reference Resolution, of [RFC3986](#RFC3986).
+* URIs shall not include any unsafe characters as specified in [RFC1738](#RFC1738)
+    * This includes characters such as "{", "}", "|", "", "^", "~", "[", "]", "`", and """.
+    * This also includes "#" for anything other than an indicator for the start of a fragment
+* URIs shall not include any percent encoding of characters
 
 To begin operations, a client must know a URI for a resource.
 
@@ -397,10 +402,7 @@ In order to reduce the cases of unnecessary RESTful accesses to resources, the R
 * Implementations should support returning ETag headers for each response that represents a single resource.
 * Implementations shall support returning ETag headers for GET requests of ManagerAccount resources.
 
-The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
-
-* Weak model -- only "important" portions of the object are included in formulation of the ETag.  For instance, meta-data such as a last modified time should not be included in the ETag generation. The "important" properties that determine ETag change include writable settings and changeable properties such as UUID, FRU data, serial numbers, etc.
-* Strong model -- all portions of the object are included in the formulation of the ETag.
+The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial.  There are two types of ETags: weak and strong.  If an ETag is supported for a given resource, it shall use the strong ETag format as specified in [RFC7232](#RFC7232).
 
 This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.
 
@@ -413,7 +415,7 @@ In addition to returning the ETag property on each resource,
 
 The format of the ETag header is:
 
-	ETag: W/"<string>"
+	ETag: "<string>"
 
 ### Protocol version
 
@@ -544,11 +546,13 @@ Clients can add query parameters to request additional features from the service
 | ---       | ---                                                                                                                                                             | ---                                 |
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
+| only      | For Resource Collections, if there is exactly one Member in the collection, return that member's resource in place of the Resource Collection.                  | 'http://resourcecollection?only' |
 | $expand   | Include data from hyperlinks in the resource inline within the current payload, depending on the value of the expand                                            | `http://resourcecollection?$expand=.($levels=1)`|
 | $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                     | `http://resource?$select=SystemType,Status`|
 | $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                       | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
+| excerpt   | Include a subset of the properties of a resource based on the presence of the 'Excerpt' schema annotation in its definition. If no excerpt properties exist, the entire resource shall be returned. | `http://resource?excerpt`  |
 
-* Services should support the $top and $skip query parameters.
+* Services should support the $top, $skip, "only", and "excerpt" query parameters.
 * Service may support the $expand, $filter and $select query parameters. 
 * When the service supports query parameters, the service shall include the ProtocolFeaturesSupported object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
@@ -558,9 +562,11 @@ Clients can add query parameters to request additional features from the service
     * Prior to service side pagination: $filter, $skip, $top
     * After applying any service side pagination: $expand, $select
 
-***Query parameters for Paging***
+***Query parameters for Resource Collections***
 
-When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
+When the resource addressed is a Resource Collection, the client may use the $top and $skip paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
+
+By adding the "only" parameter when addressing a Resource Collection, the client will achieve more efficient retrieval of collection members.  If the target collection contains exactly one member (in the Members[] array), a GET operation including the "only" query parameter shall return the member's resource as if the GET operation was for that resource.  If the collection contains either zero members or more than one member, the collection resource is returned as expected.
 
 ***Query parameters for Expand***
 
@@ -595,7 +601,7 @@ The $select parameter indicates to the implementation that it should return a su
 An example of the use of select might be:
 * GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
 
-When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed.  The ["@odata.context"](#context-property) property shall be in the response payload and should be in the recommended format specified by the [Context property section](#context-property).  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
+When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed. If the ["@odata.context"](#context-property) property is supported, it shall be in the response payload and should be in the recommended format specified by the [Context property section](#context-property).  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
 
 Any other supported syntax for $select is outside the scope of this specification.
 
@@ -954,7 +960,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Via                                | No          | [RFC 7230](#RFC7230)                | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA. |
 | Max-Forwards                       | No          | [RFC 7231](#RFC7231)                | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely. |
 | Access-Control-Allow-Origin        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks. |
-| Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Should be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
+| Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
 | WWW-Authenticate                   | Yes         | [RFC 7235](#RFC7235), Section 4.1   | Required for Basic and other optional authentication mechanisms. See the [Security](#security) clause for details. |
 | X-Auth-Token                       | Yes         | Opaque encoded octet strings        | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 | Retry-After                        | No          | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
@@ -1130,7 +1136,7 @@ See also [Resource Collection responses](#resource-collection-responses).
 
 ##### Context property
 
-Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
+Responses that represent a single resource may contain a context property named "@odata.context" describing the source of the payload. If the ["@odata.context"](#context-property) property is present, it shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
 
 The context URL for a resource should be of the following form:
 
@@ -1427,9 +1433,20 @@ The client can get the definition of the annotation from the [service metadata](
 
 #### Resource Collection responses
 
-Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [Next Link Property](#next-link-property-and-partial-results) for partial results.
+Resource Collections are returned as a JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).  Resource Collection schema shall be derived from the Resource Schema and thus Resource Collection responses shall contain the following properties:
+* The ["Name" property](#name-property)
+* The [Resource Identifier property](#resource-identifier-property)
+* The [Type property](#type-property)
+* An array of [Members](#members-property)
+* A [resource count](#count-property)
 
-Responses for Resource Collections shall contain the ["Name" property](#name-property).  Responses for Resource Collections may contain the ["Description" property](#description-property).
+Responses for Resource Collections may contain the following properties:
+* The ["Description" property](#description-property)
+* The [Context property](#context-property)
+* An [Etag property](#etag-property)
+* A [Next Link Property](#next-link-property-and-partial-results) for partial results
+
+Responses for Resource Collections shall not contain any property not explicitly defined in this section of this specification.
 
 ##### Context property
 
@@ -3126,6 +3143,29 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.5.1   | 2018-08-10 | Reorganized Eventing section to break out the different subscription methods to differentiate pub-sub from SSE. |
+|         |            | Removed statements referencing OData conformance levels. |
+|         |            | Clarified terminology to explain usage of absolute versus relative URIs throughout. |
+|         |            | Clarified client-side HTTP Accept header requirements. |
+|         |            | Added evaluation order for supported query parameters and clarified examples. |
+|         |            | Clarified handling of annotations in response payloads when used with $select queries. |
+|         |            | Clarified service handling of annotations in PATCH requests. |
+|         |            | Clarified handling of various PATCH request error conditions. |
+|         |            | Clarified ability to create Resource Collection members by POST operations to the Resource Collection or the Members[] array within the resource. |
+|         |            | Corrected several examples to show required properties in payload. |
+|         |            | Clarified usage of the Link header and values of 'rel=describedBy'. |
+|         |            | Clarified that the HTTP status code table only describes Redfish-specific behavior and that unless specified, all other usage follows the definitions within the appropriate RFCs. |
+|         |            | Added missing entry for HTTP status code 431. |
+|         |            | Added statement that HTTP status code 503 can be used during reboot/reset of a Service to indicate that the service is temporarily unavailable. |
+|         |            | Clarified usage of the @odata.type annotation within embedded objects. |
+|         |            | Added missing statements about required properties 'Name', 'Id', 'MemberId', and common property 'Description', which have always been shown as required in schema files, but were not mentioned in the Specification. |
+|         |            | Added guidance for the value of time/date properties when time is unknown. |
+|         |            | Added missing description of the 'title' property in Action requests. |
+|         |            | Clarified usage of the '@odata.nextLink' annotation at the end of Resource Collections. |
+|         |            | Added additional guidance for naming properties and enumeration values which contain 'OEM' or which include acronyms. |
+|         |            | Corrected requirements for Description and LongDescription schema annotations. |
+|         |            | Corrected name of 'ConfigureComponents' in Operation-to-Privilege mapping clause. |
+|         |            | Various typographical errors and grammatical improvements. |
 | 1.5.0   | 2018-04-05 | Added support for Server-Sent Eventing for streaming events to web-based GUIs or other clients. |
 |         |          | Added "OperationApplyTime" annotation to provide a mechanism for specifying deterministic behavior for the application of Create, Delete or Action (POST) operations. |
 | 1.4.1   | 2018-04-05 | Updated name of the DMTF Forum from 'SPMF' to 'Redfish Forum'. |
