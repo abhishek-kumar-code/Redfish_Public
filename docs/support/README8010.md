@@ -36,6 +36,9 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Drive                  | 1.2.0   | Added "HotspareReplacementMode" property. |
 | Endpoint               | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
 | HostInterface          | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
+| Job                    | 1.0.0   | Initial release.  A resource to describe a Job within a Redfish implementation. |
+| JobCollection          | 1.0.0   | Initial release.  A collection of Job resources. |
+| JobService             | 1.0.0   | Initial release.  Entry point for managing Jobs within a Redfish implementation. |
 | Manager                | 1.5.0   | Added "RemoteRedfishServiceUri" and "RemoteAccountService" properties. |
 | ManagerNetworkProtocol | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
 | Memory                 | 1.6.0   | Added "OverwriteUnit" Action.  Added "IntelOptane" to the "MemoryType" enum. |
@@ -43,13 +46,16 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | NetworkDeviceFunction  | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object.  Added "FibreChannelId" to "FibreChannel" object.  Deprecated "PhysicalPortAssignment" at the root of the payload in favor of "PhysicalPortAssignment" inside "Links". |
 | NetworkPort            | 1.2.0   | Added properties to support Fibre Channel devices.  Deprecated "LinkSpeedMbps" in favor of "CapableLinkSpeedMbps". |
 | Protocol               | N/A     | Added "I2C" protocol type. |
+| Schedule               | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and TimeDateOffset types. |
+| ServiceRoot            | 1.4.0   | Added "ExcerptQuery" and "OnlyMemberQuery" to "ProtocolFeaturesSupported".  Added "JobService" property. |
 | Storage                | 1.5.0   | Added "CacheSummary" object to "StorageController". |
+| Task                   | 1.3.0   | Added "Payload" and "HidePayload" properties. |
 | Thermal                | 1.5.0   | Added "SensorNumber" to "Fan". |
 | UpdateService          | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
 | Resource               | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
 | ResourceBlock          | 1.2.0   | Added "Expansion" to the "ResourceBlockType" enum.  Added "Unavailable" to the "CompositionState" enum. |
 | Assembly               | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ProductionDate" property as the time of day value if it's unknown. | 
-| AttributeRegistry      | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut". |
+| AttributeRegistry      | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut".  Relaxed patterns allowed for "ValueName", "MenuName", and "MenuPath" properties. |
 | Bios                   | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
 | BootOption             | 1.x.x   | Errata release.  Errata release.  Clarified the description of the "Alias" property. |
 | ComputerSystem         | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB".  Corrected descriptions for the "Boot" properties since the scope of "Boot" has grown over time. |
@@ -73,7 +79,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | SoftwareInventory      | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ReleaseDate" property as the time of day value if it's unknown. | 
 | Storage                | 1.x.x   | Errata release.  Clarified the description for "SpeedGbps". |
 | UpdateService          | 1.x.x   | Errata release.  Clarified the Long Descriptions for "Targets", "HttpPushUriTargets", and "HttpPushUriTargetsBusy". |
-| (all files)            | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema.  Added Description and LongDescription terms to all schema elements where missing. |
+| (all files)            | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema.  Added Description and LongDescription terms to all schema elements where missing.  Added "Capabilities" and "Uris" annotations on all resources. |
 
 ## Release 2018.1 (April 2018)
 
