@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/Members/$entity",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF, Inc. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
     "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated",
-    "@odata.type": "#Storage.v1_0_0.Storage",
+    "@odata.type": "#Storage.v1_5_0.Storage",
     "Id": "RAIDIntegrated",
     "Name": "Integrated RAID Storage System",
     "Description": "Contoso Internal RAID",
