@@ -59,6 +59,12 @@
             <Annotation Term="OData.Description" String="Jobs can be removed with a Delete operation."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/JobService/Jobs/{JobId}</String>
+            <String>/redfish/v1/JobService/Jobs/{JobId}/Steps/{JobId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

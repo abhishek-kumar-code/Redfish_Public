@@ -49,6 +49,15 @@
             <Annotation Term="OData.Description" String="VLan Network Interface can be deleted in some implementations, though others may keep a fixed number in the collection and thus not allow deletion."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}/Ethernet/VLANs/{VLanNetworkInterfaceId}</String>
+            <String>/redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/{VLanNetworkInterfaceId}</String>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/{VLanNetworkInterfaceId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/{VLanNetworkInterfaceId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/EthernetInterfaces/{EthernetInterfaceId}/VLANs/{VLanNetworkInterfaceId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <ComplexType Name="VLAN" Abstract="true">

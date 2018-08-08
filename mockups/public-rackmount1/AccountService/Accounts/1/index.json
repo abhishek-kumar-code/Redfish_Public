@@ -10,7 +10,7 @@
     "Locked": false,
     "Links": {
         "Role": {
-            "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
+            "@odata.id": "/redfish/v1/AccountService/Roles/Administrator"
         }
     },
     "@odata.context": "/redfish/v1/$metadata#ManagerAccount.ManagerAccount",
