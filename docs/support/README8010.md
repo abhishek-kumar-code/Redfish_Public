@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2018.1'
-modified: '2018-04-05'
+DocVersion: '2018.2'
+modified: '2018-08-10'
 status: published
 released: True
 copyright: '2015-2018'
@@ -25,7 +25,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 # Redfish Schema Release History
 
-## Release 2018.2 (TBD)
+## Release 2018.2 (August 2018)
 
 | Schema Name                      | Version | Description |
 | ---                              | ---     | ---         |
@@ -40,6 +40,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | MetricReportDefinitionCollection | 1.0.0   | Initial release.  A collection of MetricReportDefinition resources. |
 | PCIeSlots                        | 1.0.0   | Initial release.  Contains details on PCIe Slots. |
 | TelemetryService                 | 1.0.0   | Intiial release.  Entry point for managing a Redfish Telemetry Service. |
+| Triggers                         | 1.0.0   | Initial release. Specifies triggers which apply to metrics. |
+| TriggersCollection               | 1.0.0   | Initial release. A collection of Triggers resources. |
 | ActionInfo                       | 1.1.0   | Added "MinimumValue" and "MaximumValue" properties. |
 | Assembly                         | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
 | Chassis                          | 1.8.0   | Added "PCIeSlots" link. |
@@ -56,14 +58,14 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | NetworkPort                      | 1.2.0   | Added properties to support Fibre Channel devices.  Deprecated "LinkSpeedMbps" in favor of "CapableLinkSpeedMbps". |
 | PCIeDevice                       | 1.3.0   | Added "PCIeInterface" object and definition for referencing from other schema. |
 | Protocol                         | N/A     | Added "I2C" protocol type. |
+| Resource                         | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
+| ResourceBlock                    | 1.2.0   | Added "Expansion" to the "ResourceBlockType" enum.  Added "Unavailable" to the "CompositionState" enum. |
 | Schedule                         | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and TimeDateOffset types. |
 | ServiceRoot                      | 1.4.0   | Added "ExcerptQuery" and "OnlyMemberQuery" to "ProtocolFeaturesSupported".  Added "JobService" property. |
 | Storage                          | 1.5.0   | Added "CacheSummary" and "PCIeInterface" objects to "StorageController". |
 | Task                             | 1.3.0   | Added "Payload" and "HidePayload" properties. |
 | Thermal                          | 1.5.0   | Added "SensorNumber" to "Fan". |
 | UpdateService                    | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
-| Resource                         | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
-| ResourceBlock                    | 1.2.0   | Added "Expansion" to the "ResourceBlockType" enum.  Added "Unavailable" to the "CompositionState" enum. |
 | Assembly                         | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ProductionDate" property as the time of day value if it's unknown. | 
 | AttributeRegistry                | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut".  Relaxed patterns allowed for "ValueName", "MenuName", and "MenuPath" properties. |
 | Bios                             | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
