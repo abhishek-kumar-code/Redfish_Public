@@ -1,0 +1,58 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
+    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC",
+    "@odata.type": "#NetworkAdapter.v1_2_0.NetworkAdapter",
+    "Id": "E300",
+    "Name": "FC Adapter",
+    "Description" :"FC Adapter - May be missing Device ID (PCI ID type unique ID) field",
+    "Manufacturer": "BEST FC Adapter Co",
+    "Model": "FC-1000",
+    "SerialNumber": "BESTCO00023234FC",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "NetworkPorts": {
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts"
+    },
+    "NetworkDeviceFunctions": {
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkDeviceFunctions"
+    },
+    "Controllers": [
+        {
+            "FirmwarePackageVersion": "4.5",
+            "Links": {
+                "NetworkPorts": [
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/1"
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkPorts/2"
+                    }
+                ],
+                "NetworkDeviceFunctions": [
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/FC/NetworkDeviceFunctions/111111111100"
+                    }
+                ]
+            },
+            "ControllerCapabilities": {
+                "NetworkPortCount": 2,
+                "NetworkDeviceFunctionCount": 1,
+                "NPIV": {
+                    "MaxDeviceLogins": 4,
+                    "MaxPortLogins": 2
+                }
+            }
+        }
+    ],
+    "Actions": {
+        "#NetworkAdapter.ResetSettingsToDefault": {
+            "target": "/redfish/v1/Chassis/1/NetworkAdapters/FC/Actions/NetworkAdapter.ResetSettingsToDefault"
+        },
+        "Oem": {
+            "BESTFCAdapterCoCardTemperature" : "Normal"
+        }
+    }
+}
