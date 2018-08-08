@@ -45,9 +45,9 @@
             ],
             "PCIeInterface": {
                 "PCIeType": "Gen2",
-		          "MaxPCIeType": "Gen3",
-		          "LanesInUse": 4,
-		          "MaxLanes": 4
+                "MaxPCIeType": "Gen3",
+                "LanesInUse": 4,
+                "MaxLanes": 4
             }
         }
     ],
