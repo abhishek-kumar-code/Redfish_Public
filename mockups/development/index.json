@@ -6,18 +6,20 @@
     "Id": "RootService",
     "Name": "Root Service",
     "Product": "Contoso WidgetDeluxe 8744",
-    "RedfishVersion": "1.0.0",
+    "RedfishVersion": "1.6.0",
     "UUID": "92384634-2938-2342-8820-489239905423",
     "ProtocolFeaturesSupported": {
+        "FilterQuery": false,
+        "SelectQuery": false,
+        "ExcerptQuery": true,
+        "OnlyMemberQuery": true,
         "ExpandQuery": {
+            "Links": false,
+            "NoLinks": true,
             "ExpandAll": true,
             "Levels": true,
-            "MaxLevels": 2,
-            "Links": true,
-            "NoLinks": true
-        },
-        "SelectQuery": false,
-        "FilterQuery": false
+            "MaxLevels": 3
+        }
     },
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"
