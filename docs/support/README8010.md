@@ -29,26 +29,35 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema Name            | Version | Description |
 | ---                    | ---     | ---         |
+| Job                    | 1.0.0   | Initial release.  A resource to describe a Job within a Redfish implementation. |
+| JobCollection          | 1.0.0   | Initial release.  A collection of Job resources. |
+| JobService             | 1.0.0   | Initial release.  Entry point for managing Jobs within a Redfish implementation. |
+| MetricDefinition       | 1.0.0   | Initial release. Metadata that defines a metric (measurement point). |
+| MetricDefinitionCollection       | 1.0.0   | Initial release. A collection of MetricDefinition resources. |
+| MetricReport           | 1.0.0   | Initial release. A set of reported metric values. |
+| MetricReportCollection | 1.0.0   | Initial release. A collection of MetricReport resources. |
+| MetricReportDefinition | 1.0.0   | Initial release. A collection of MetricReportDefinition resources. |
+| MetricReportDefinitionCollection | 1.0.0   | Initial release. A collection of MetricReportDefinition resources. |
+| PCIeSlots              | 1.0.0   | Initial release. Contains details on PCIe Slots. |
 | ActionInfo             | 1.1.0   | Added "MinimumValue" and "MaximumValue" properties. |
 | Assembly               | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
+| Chassis                | 1.8.0   | Added "PCIeSlots" link. |
 | CollectionCapabilities | 1.1.0   | Added "ComputerSystemConstrainedComposition" enum. |
 | CompositionService     | 1.1.0   | Added "AllowOverprovisioning" and "AllowZoneAffinity" properties. |
 | Drive                  | 1.2.0   | Added "HotspareReplacementMode" property. |
 | Endpoint               | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
 | HostInterface          | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
-| Job                    | 1.0.0   | Initial release.  A resource to describe a Job within a Redfish implementation. |
-| JobCollection          | 1.0.0   | Initial release.  A collection of Job resources. |
-| JobService             | 1.0.0   | Initial release.  Entry point for managing Jobs within a Redfish implementation. |
 | Manager                | 1.5.0   | Added "RemoteRedfishServiceUri" and "RemoteAccountService" properties. |
 | ManagerNetworkProtocol | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
 | Memory                 | 1.6.0   | Added "OverwriteUnit" Action.  Added "IntelOptane" to the "MemoryType" enum. |
 | NetworkAdapter         | 1.2.0   | Added "NPAR" property to control NIC Partitioning. |
 | NetworkDeviceFunction  | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object.  Added "FibreChannelId" to "FibreChannel" object.  Deprecated "PhysicalPortAssignment" at the root of the payload in favor of "PhysicalPortAssignment" inside "Links". |
 | NetworkPort            | 1.2.0   | Added properties to support Fibre Channel devices.  Deprecated "LinkSpeedMbps" in favor of "CapableLinkSpeedMbps". |
+| PCIeDevice             | 1.3.0   | Added "PCIeInterface" object and definition for referencing from other schema. |
 | Protocol               | N/A     | Added "I2C" protocol type. |
 | Schedule               | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and TimeDateOffset types. |
 | ServiceRoot            | 1.4.0   | Added "ExcerptQuery" and "OnlyMemberQuery" to "ProtocolFeaturesSupported".  Added "JobService" property. |
-| Storage                | 1.5.0   | Added "CacheSummary" object to "StorageController". |
+| Storage                | 1.5.0   | Added "CacheSummary" and "PCIeInterface" objects to "StorageController". |
 | Task                   | 1.3.0   | Added "Payload" and "HidePayload" properties. |
 | Thermal                | 1.5.0   | Added "SensorNumber" to "Fan". |
 | UpdateService          | 1.3.0   | Deprecated "NSF" TransferProtocolType in favor of "NFS". |
