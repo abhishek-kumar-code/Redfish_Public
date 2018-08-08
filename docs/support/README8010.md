@@ -36,12 +36,12 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | MetricDefinitionCollection       | 1.0.0   | Initial release.  A collection of MetricDefinition resources. |
 | MetricReport                     | 1.0.0   | Initial release.  A set of reported metric values. |
 | MetricReportCollection           | 1.0.0   | Initial release.  A collection of MetricReport resources. |
-| MetricReportDefinition           | 1.0.0   | Initial release.  A collection of MetricReportDefinition resources. |
+| MetricReportDefinition           | 1.0.0   | Initial release.  Metadata that defines how metric reports are constructed. |
 | MetricReportDefinitionCollection | 1.0.0   | Initial release.  A collection of MetricReportDefinition resources. |
 | PCIeSlots                        | 1.0.0   | Initial release.  Contains details on PCIe Slots. |
 | TelemetryService                 | 1.0.0   | Intiial release.  Entry point for managing a Redfish Telemetry Service. |
-| Triggers                         | 1.0.0   | Initial release. Specifies triggers which apply to metrics. |
-| TriggersCollection               | 1.0.0   | Initial release. A collection of Triggers resources. |
+| Triggers                         | 1.0.0   | Initial release.  Specifies triggers which apply to metrics. |
+| TriggersCollection               | 1.0.0   | Initial release.  A collection of Triggers resources. |
 | ActionInfo                       | 1.1.0   | Added "MinimumValue" and "MaximumValue" properties. |
 | Assembly                         | 1.2.0   | Added "SerialNumber" and "PhysicalContext" properties. |
 | Chassis                          | 1.8.0   | Added "PCIeSlots" link. |
@@ -61,7 +61,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Resource                         | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
 | ResourceBlock                    | 1.2.0   | Added "Expansion" to the "ResourceBlockType" enum.  Added "Unavailable" to the "CompositionState" enum. |
 | Schedule                         | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and TimeDateOffset types. |
-| ServiceRoot                      | 1.4.0   | Added "ExcerptQuery" and "OnlyMemberQuery" to "ProtocolFeaturesSupported".  Added "JobService" property. |
+| ServiceRoot                      | 1.4.0   | Added "ExcerptQuery" and "OnlyMemberQuery" to "ProtocolFeaturesSupported".  Added "JobService" and "TelemetryService" properties. |
 | Storage                          | 1.5.0   | Added "CacheSummary" and "PCIeInterface" objects to "StorageController". |
 | Task                             | 1.3.0   | Added "Payload" and "HidePayload" properties. |
 | Thermal                          | 1.5.0   | Added "SensorNumber" to "Fan". |
