@@ -825,7 +825,7 @@ function validCSDLTypeInMockup(err, json) {
   if(err) {
     return;
   }
-  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp')) {
+  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp') || this.context.name.includes('/ConstrainedCompositionCapabilities')) {
     //Ignore the paging file and the external error example
     return;
   }
@@ -872,7 +872,7 @@ function validCSDLTypeInMockup(err, json) {
       if(namespace === '') {
         throw new Error('Cannot get namespace of "' + typeLookup + '"');
       }
-      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule') {
         let typeNameIndex = typeLookup.lastIndexOf('.');
         if(typeNameIndex === -1) {
           throw new Error('Cannot get type of "' + typeLookup + '"');
@@ -1050,6 +1050,11 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
         }
       }
       break;
+    case 'Edm.Duration':
+      if(typeof propValue !== 'string' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.Duration, but the value in the mockup is not a valid JSON string.');
+      }
+      break;
     default:
       throw new Error('Property "'+propName+'" is type "'+propType+'" which is not allowed by the Redfish spec.');
   }
@@ -1122,7 +1127,7 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
     if(namespace === '') {
       throw new Error('Cannot get namespace of "' + typeLookup + '"');
     }
-    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule') {
       let typeNameIndex = typeLookup.lastIndexOf('.');
       if(typeNameIndex === -1) {
         throw new Error('Cannot get type of "' + typeLookup + '"');

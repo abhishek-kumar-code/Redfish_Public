@@ -35,7 +35,7 @@
         ]
     },
     "@Redfish.CollectionCapabilities": {
-        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "@odata.type": "#CollectionCapabilities.v1_1_0.CollectionCapabilities",
         "Capabilities": [
             {
                 "CapabilitiesObject": {
