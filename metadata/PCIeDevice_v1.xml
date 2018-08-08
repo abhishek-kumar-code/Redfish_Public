@@ -43,6 +43,12 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
 
+      <ComplexType Name="PCIeInterface" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes a PCIe Interface."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the PCIe interface characteristics of a PCIe Device."/>
+      </ComplexType>
+
       <EnumType Name="PCIeTypes">
         <Member Name="Gen1">
           <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
@@ -221,6 +227,20 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeDevice.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="PCIeDevice" BaseType="PCIeDevice.v1_2_1.PCIeDevice">
+        <Property Name="PCIeInterface" Type="PCIeDevice.v1_3_0.PCIeInterface">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The PCIe interface details for this PCIe device."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain details on the PCIe interface used to connect this PCIe Device to its host or upstream switch."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="PCIeInterface" BaseType="PCIeDevice.PCIeInterface">
+        <Annotation Term="OData.Description" String="This is the definition for a PCI Interface object."/>
+        <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PCIe Interface for a Redfish implementation."/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
         <Property Name="MaxPCIeType" Type="PCIeDevice.PCIeTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The highest version of the PCIe specification supported by this device."/>
@@ -243,7 +263,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of PCIe lanes in use by this device, which shall be equal or less than the value of MaxLanes."/>
           <Annotation Term="Validation.Maximum" Int="32"/>
         </Property>
-      </EntityType>
+      </ComplexType>
 
     </Schema>
 

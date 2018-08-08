@@ -7,10 +7,10 @@
     "Description": "Simple Two-Port NIC PCIe Device",
     "AssetTag": "free form asset tag",
     "Manufacturer": "Contoso",
-    "Model": "Model Name",
-    "SKU": "",
+    "Model": "SuperNIC 2000",
+    "SKU": "89587433",
     "SerialNumber": "2M220100SL",
-    "PartNumber": "",
+    "PartNumber": "232-4598D7",
     "DeviceType": "MultiFunction",
     "FirmwareVersion": "12.342-343",
     "Status": {
@@ -18,6 +18,13 @@
         "Health": "OK",
         "HealthRollup": "OK"
     },
+    "PCIeInterface": {
+        "PCIeType": "Gen2",
+		  "MaxPCIeType": "Gen3",
+		  "LanesInUse": 4,
+		  "MaxLanes": 4
+    },
+
     "Links": {
         "Chassis": [{
             "@odata.id": "/redfish/v1/Chassis/1"
