@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#PCIeDevice.PCIeDevice",
     "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC",
-    "@odata.type": "#PCIeDevice.v1_0_0.PCIeDevice",
+    "@odata.type": "#PCIeDevice.v1_3_0.PCIeDevice",
     "Id": "NIC",
     "Name": "Simple Two-Port NIC",
     "Description": "Simple Two-Port NIC PCIe Device",
@@ -20,11 +20,10 @@
     },
     "PCIeInterface": {
         "PCIeType": "Gen2",
-		  "MaxPCIeType": "Gen3",
-		  "LanesInUse": 4,
-		  "MaxLanes": 4
+        "MaxPCIeType": "Gen3",
+        "LanesInUse": 4,
+        "MaxLanes": 4
     },
-
     "Links": {
         "Chassis": [{
             "@odata.id": "/redfish/v1/Chassis/1"
