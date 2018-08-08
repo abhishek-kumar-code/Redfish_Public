@@ -8,6 +8,7 @@
     },
     "ServiceEnabled": true,
     "AllowOverprovisioning": true,
+    "AllowZoneAffinity": true,
     "ResourceBlocks": {
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks"
     },
