@@ -134,6 +134,9 @@
         <Member Name="M2">
           <Annotation Term="OData.Description" String="PCIe M.2 slot."/>
         </Member>
+        <Member Name="OEM">
+          <Annotation Term="OData.Description" String="And OEM-specific slot."/>
+        </Member>        
       </EnumType>
 
       <ComplexType Name="Actions">
