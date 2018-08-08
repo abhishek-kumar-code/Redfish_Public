@@ -83,6 +83,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/{ManagerId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="Reset" IsBound="true">

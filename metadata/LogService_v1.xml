@@ -53,6 +53,13 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}</String>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/LogServices/{LogServiceId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/LogServices/{LogServiceId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="ClearLog" IsBound="true">

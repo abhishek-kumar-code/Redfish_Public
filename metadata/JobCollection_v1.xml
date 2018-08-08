@@ -57,6 +57,12 @@
           <Annotation Term="OData.AutoExpandReferences"/>
           <Annotation Term="Redfish.Required"/>
         </NavigationProperty>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/JobService/Jobs</String>
+            <String>/redfish/v1/JobService/Jobs/{JobId}/Steps</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

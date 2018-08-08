@@ -52,6 +52,13 @@
             <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual Log Entries."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries/{LogEntryId}</String>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Entries/{LogEntryId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Entries/{LogEntryId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>
