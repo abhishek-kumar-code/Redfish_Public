@@ -7,9 +7,9 @@
         "Health": "OK"
     },
     "SupportedCollectionFunctions": [
-        "Avg",
-        "Min",
-        "Max"
+        "Average",
+        "Minimum",
+        "Maximum"
     ],
     "MetricDefinitions": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions"
