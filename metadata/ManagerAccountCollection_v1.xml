@@ -34,6 +34,7 @@
 
       <EntityType Name="ManagerAccountCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of ManagerAccount resource instances."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Resource Collection of ManagerAccount instances for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="true"/>
@@ -50,9 +51,16 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/AccountService/Accounts</String>
+            <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/Accounts</String>
+          </Collection>
+        </Annotation>
         <NavigationProperty Name="Members" Type="Collection(ManagerAccount.ManagerAccount)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
           <Annotation Term="Redfish.Required"/>
         </NavigationProperty>

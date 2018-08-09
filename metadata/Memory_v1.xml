@@ -62,6 +62,13 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="UnlockUnit" IsBound="true">
@@ -342,6 +349,10 @@
         <Member Name="NVDIMM_P">
           <Annotation Term="OData.Description" String="The memory module is composed of a combination of non-volatile and volatile memory."/>
           <Annotation Term="OData.LongDescription" String="This memory type shall represent NVDIMM_P as defined by JEDEC."/>
+        </Member>
+        <Member Name="IntelOptane">
+          <Annotation Term="OData.Description" String="The memory module is Intel Optane DC Persistent Memory and composed of a combination of non-volatile and volatile memory."/>
+          <Annotation Term="OData.LongDescription" String="This memory type shall represent Intel Optane DC Persistent Memory."/>
         </Member>
       </EnumType>
 
@@ -627,7 +638,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Memory.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Memory.v1_0_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -665,7 +679,10 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Memory" BaseType="Memory.v1_0_1.Memory">
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
       </EntityType>
     </Schema>
 
@@ -823,7 +840,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of the logical memory in MiB."/>
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
-        <Property Name="Location" Type="Resource.Location" Nullable="false"/>
+        <Property Name="Location" Type="Resource.Location" Nullable="false">
+          <Annotation Term="OData.Description" String="The Location of the memory."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated memory."/>
+        </Property>
         <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Assembly resource associated with this memory."/>
@@ -866,7 +886,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_6_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to change the LongDescription of SecureEraseUnit.  It was also created to to define a new OverwriteUnit action."/>
+      <Annotation Term="OData.Description" String="This version was created to change the LongDescription of SecureEraseUnit.  It was also created to to define a new OverwriteUnit action.  It was also created to add IntelOptane to the MemoryType list."/>
       <EntityType Name="Memory" BaseType="Memory.v1_5_1.Memory"/>
     </Schema>
 

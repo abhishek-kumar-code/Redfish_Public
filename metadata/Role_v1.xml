@@ -51,6 +51,12 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/AccountService/Roles/{RoleId}</String>
+            <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/Roles/{RoleId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>
@@ -111,7 +117,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Role.v1_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Role.v1_1_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

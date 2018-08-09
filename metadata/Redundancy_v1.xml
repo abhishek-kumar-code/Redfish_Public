@@ -65,6 +65,8 @@
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)">
@@ -177,7 +179,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Redundancy.v1_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Redundancy.v1_2_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
