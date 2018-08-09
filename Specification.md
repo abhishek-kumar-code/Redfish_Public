@@ -3217,9 +3217,10 @@ OData-Version: 4.0
 
 ### Change log
 
-| Version | Date     | Description     |
-| ---     | ---      | ---             |
-| 1.5.1   | 2018-08-10 | Reorganized Eventing section to break out the different subscription methods to differentiate pub-sub from SSE. |
+| Version | Date       | Description |
+| ---     | ---        | ---         |
+| 1.5.1   | 2018-08-10 | Added clarifications to required properties in structured properties derived from ReferenceableMembers. |
+|         |            | Reorganized Eventing section to break out the different subscription methods to differentiate pub-sub from SSE. |
 |         |            | Removed statements referencing OData conformance levels. |
 |         |            | Clarified terminology to explain usage of absolute versus relative URIs throughout. |
 |         |            | Clarified client-side HTTP Accept header requirements. |
@@ -3243,101 +3244,101 @@ OData-Version: 4.0
 |         |            | Corrected name of 'ConfigureComponents' in Operation-to-Privilege mapping clause. |
 |         |            | Various typographical errors and grammatical improvements. |
 | 1.5.0   | 2018-04-05 | Added support for Server-Sent Eventing for streaming events to web-based GUIs or other clients. |
-|         |          | Added "OperationApplyTime" annotation to provide a mechanism for specifying deterministic behavior for the application of Create, Delete or Action (POST) operations. |
+|         |            | Added "OperationApplyTime" annotation to provide a mechanism for specifying deterministic behavior for the application of Create, Delete or Action (POST) operations. |
 | 1.4.1   | 2018-04-05 | Updated name of the DMTF Forum from 'SPMF' to 'Redfish Forum'. |
-|         |           | Changed terminology for consistent usage of 'hyperlink'. |
-|         |           | Added example to clarify usage of $select query parameter with $expand, and clarified expected results when using 'AutoExpand'. Corrected order of precedence for $filter parameter options. |
-|         |           | Corrected terminology for OEM-defined actions removing 'custom' in favor of OEM, and clarified that the Action 'target' property is always required for an Action, along with its usage. |
-|         |           | Corrected location header values for responses to Data modification requests which create a Task (Task resource vs. Task Monitor). Clarified error handling of DELETE operations on Task resources. |
-|         |           | Removed references to obsolete and un-used 'Privilege' annotation namespace. |
-|         |           | Clarified usage of the 'Base.1.0.GeneralError' message in the Base Message Registry. |
-|         |           | Added missing durable URIs for Registries and Profiles, clarified intended usage for each folder in the Repository. Added missing file naming conventions for Registries and Profiles, and clarified file naming for Schemas. |
-|         |           | Added statement to clarify that additional headers may be added to M-SEARCH responses for SSDP to allow for UPnP compatibility. |
-|         |           | Clarified assignment requirements for predefined or custom roles when new Manager Account instances are created, using the 'RoleId' property. |
-| 1.4.0   | 2017-11-17| Added support for optional Query parameters ("$expand", "$filter", and "$select") on requests to allow for more efficient retrieval of resources or properties from a Redfish Service. |
-|         |          | Clarified HTTP status and payload responses after successful processing of data modification requests. This includes POST operations for performing Actions, as well as other POST, PATCH, or PUT requests. |
-|         |          | Added HTTP status code entries for 428 and 507 to clarify the proper response to certain error conditions. Added reference links to the HTTP status code table throughout. |
-|         |          | Updated Abstract to reflect current state of the Specification. |
-|         |          | Added reference to RFC 6585 and clarified expected behavior when ETag support is used in conjunction with PUT or PATCH operations. |
-|         |          | Added definition for "Property" term and updated text to use term consistently. |
-|         |          | Added "Client Requirement" column and information for HTTP headers on requests. |
-|         |          | Clarified the usage and expected format of the Context property value. |
-|         |          | Added clause detailing how Structured properties can be revised and how to resolve their definitions in schema. |
-|         |          | Added more descriptive definition for the Settings resource.  Added an example for the "SettingsObject".  Added description and example for using the "SettingsApplyTime" annotation. |
-|         |          | Added Action example using the ActionInfo resource in addition to the simple AllowableValues example. Updated example to show a proper subset of the available enumerations to reflect a real-world example. |
-|         |          | Added statement explaining the updates required to TaskState upon task completion. |
-| 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP status code [428](#status-428). |
-|         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
-| 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
-|         |          | Clarified wording of the "Partial resource results" section. |
-|         |          | Clarified behavior of a Service when receiving a PATCH with an empty JSON object. |
-|         |          | Added statement about other uses of the HTTP 503 status code. |
-|         |          | Clarified format of URI fragments to conform to RFC6901. |
-|         |          | Clarified use of absolute and relative URIs. |
-|         |          | Clarified definition of the "target" property as originating from OData. |
-|         |          | Clarified distinction between "hyperlinks" and the "Links Property". |
-|         |          | Corrected the JSON example of the privilege map. |
-|         |          | Clarified format of the "@odata.context" property. |
-|         |          | Added clauses about the schema file naming conventions. |
-|         |          | Clarified behavior of a Service when receiving a PUT with missing properties. |
-|         |          | Clarified valid values in the "Accept" header to include wildcards per RFC7231. |
-|         |          | Corrected "ConfigureUser" privilege to be spelled "ConfigureUsers". |
-|         |          | Corrected Session Login section to include normative language. |
-| 1.2.0   | 2017-4-14| Added support for the Redfish Composability Service. |
-|         |          | Clarified Service handling of the Accept-Encoding header in a request. |
-|         |          | Improved consistency and formatting of example requests and responses throughout. |
-|         |          | Corrected usage of the "@odata.type" property in response examples. |
-|         |          | Clarified usage of the "Required" schema annotation. |
-|         |          | Clarified usage of SubordinateOverrides in the Privilege Registry. |
-| 1.1.0   | 2016-12-9| Added Redfish Service Operation to Privilege Mapping clause. This functionality allows a Service to present a resource or even property-level mapping of HTTP operations to account Roles and Privileges. |
-|         |          | Added references to the Redfish Host Interface Specification (DSP0270). |
-| 1.0.5   | 2016-12-9| Errata release.  Various typographical errors. |
-|         |          | Corrected terminology usage of "Collection", "Resource Collection" and "Members" throughout. |
-|         |          | Added glossary entries for "Resource Collection" and "Members". |
-|         |          | Corrected Certificate requirements to reference definitions and requirements in RFC 5280 and added a normative reference to RFC 5280. |
-|         |          | Clarified usage of HTTP POST and PATCH operations. |
-|         |          | Clarified usage of HTTP Status codes and Error responses. |
-| 1.0.4   | 2016-8-28| Errata release.  Various typographical errors. |
-|         |          | Added example of an HTTP Link Header and clarified usage and content. |
-|         |          | Added Schema Modification clause describing allowed usage of the Schema files. |
-|         |          | Added recommendation to use TLS 1.2 or later, and to follow the SNIA TLS Specification.  Added reference to the SNIA TLS Specification.  Added additional recommended TLS_RSA_WITH_AES_128_CBC_SHA Cipher suite. |
-|         |          | Clarified that the "Id" property of a Role resource must match the Role Name. |
-| 1.0.3   | 2016-6-17| Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References.  Corrected typographical error in ETag example. |
-|         |          | Clarified examples for ExtendedInfo to show arrays of Messages. |
-|         |          | Clarified that a POST to Session Service to create a new Session does not require authorization headers. |
-| 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
-|         |          | Corrected normative language for M-SEARCH queries and responses. |
-|         |          | Corrected Cache-Control and USN format in M-SEARCH responses. |
-|         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for JSON Schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
-|         |          | Added missing clause detailing the location of the Schema Repository and listing the durable URLs for the repository. |
-|         |          | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
-|         |          | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
-|         |          | Removed duplicative or out-of-scope sub-clauses from the Security clause, which made unintended requirements on Redfish service implementations. |
-|         |          | Added missing requirement that property names in Resource Responses must match the casing (capitalization) as specified in schema. |
-|         |          | Updated normative references to current HTTP RFCs and added clause references throughout the document where applicable. |
-|         |          | Clarified ETag header requirements. |
-|         |          | Clarified that no authentication is required for accessing the Service Root resource. |
-|         |          | Clarified description of Retrieving Collections. |
-|         |          | Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers. |
-|         |          | Clarified usage of the 'Allow' HTTP Response Header and added missing table entry for usage of the 'Retry-After' header. |
-|         |          | Clarified normative usage of the Type Property and Context Property, explaining the ability to use two URL forms, and corrected the "@odata.context" URL examples throughout. |
-|         |          | Corrected inconsistent terminology throughout the Collection Resource Response clause. |
-|         |          | Corrected name of normative Resource Members Property ('Members', not 'value'). |
-|         |          | Clarified that Error Responses may include information about multiple error conditions. |
-|         |          | Corrected name of Measures.Unit annotation term as used in examples. |
-|         |          | Corrected outdated reference to Core OData specification in Annotation Term examples. |
-|         |          | Added missing 'Members' property to the Common Redfish Resource Properties clause. |
-|         |          | Clarified terminology and usage of the Task Monitor and related operations in the Asynchronous Operations clause. |
-|         |          | Clarified that implementation of the SSDP protocol is optional. |
-|         |          | Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org'). |
-|         |          | Added missing OPTIONS method to the allowed HTTP Methods list. |
-|         |          | Fixed nullablity in example.  |
-| 1.0.1   | 2015-9-17| Errata release.  Various grammatical corrections. |
-|         |          | Clarified normative use of LongDescription in schema files. |
-|         |          | Clarified usage of the 'rel-describedby' link header. |
-|         |          | Corrected text in example of 'Select List' in OData Context property. |
-|         |          | Clarified Accept-Encoding Request header handling. |
-|         |          | Deleted duplicative and conflicting statement on returning extended error resources. |
-|         |          | Clarified relative URI resolution rules. |
-|         |          | Clarified USN format.  |
-| 1.0.0   | 2015-8-4 | Initial release |
+|         |            | Changed terminology for consistent usage of 'hyperlink'. |
+|         |            | Added example to clarify usage of $select query parameter with $expand, and clarified expected results when using 'AutoExpand'. Corrected order of precedence for $filter parameter options. |
+|         |            | Corrected terminology for OEM-defined actions removing 'custom' in favor of OEM, and clarified that the Action 'target' property is always required for an Action, along with its usage. |
+|         |            | Corrected location header values for responses to Data modification requests which create a Task (Task resource vs. Task Monitor). Clarified error handling of DELETE operations on Task resources. |
+|         |            | Removed references to obsolete and un-used 'Privilege' annotation namespace. |
+|         |            | Clarified usage of the 'Base.1.0.GeneralError' message in the Base Message Registry. |
+|         |            | Added missing durable URIs for Registries and Profiles, clarified intended usage for each folder in the Repository. Added missing file naming conventions for Registries and Profiles, and clarified file naming for Schemas. |
+|         |            | Added statement to clarify that additional headers may be added to M-SEARCH responses for SSDP to allow for UPnP compatibility. |
+|         |            | Clarified assignment requirements for predefined or custom roles when new Manager Account instances are created, using the 'RoleId' property. |
+| 1.4.0   | 2017-11-17 | Added support for optional Query parameters ("$expand", "$filter", and "$select") on requests to allow for more efficient retrieval of resources or properties from a Redfish Service. |
+|         |            | Clarified HTTP status and payload responses after successful processing of data modification requests. This includes POST operations for performing Actions, as well as other POST, PATCH, or PUT requests. |
+|         |            | Added HTTP status code entries for 428 and 507 to clarify the proper response to certain error conditions. Added reference links to the HTTP status code table throughout. |
+|         |            | Updated Abstract to reflect current state of the Specification. |
+|         |            | Added reference to RFC 6585 and clarified expected behavior when ETag support is used in conjunction with PUT or PATCH operations. |
+|         |            | Added definition for "Property" term and updated text to use term consistently. |
+|         |            | Added "Client Requirement" column and information for HTTP headers on requests. |
+|         |            | Clarified the usage and expected format of the Context property value. |
+|         |            | Added clause detailing how Structured properties can be revised and how to resolve their definitions in schema. |
+|         |            | Added more descriptive definition for the Settings resource.  Added an example for the "SettingsObject".  Added description and example for using the "SettingsApplyTime" annotation. |
+|         |            | Added Action example using the ActionInfo resource in addition to the simple AllowableValues example. Updated example to show a proper subset of the available enumerations to reflect a real-world example. |
+|         |            | Added statement explaining the updates required to TaskState upon task completion. |
+| 1.3.0   | 2017-08-11 | Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP status code [428](#status-428). |
+|         |            | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
+| 1.2.1   | 2017-08-10 | Clarified wording of the "Oem" object definition. |
+|         |            | Clarified wording of the "Partial resource results" section. |
+|         |            | Clarified behavior of a Service when receiving a PATCH with an empty JSON object. |
+|         |            | Added statement about other uses of the HTTP 503 status code. |
+|         |            | Clarified format of URI fragments to conform to RFC6901. |
+|         |            | Clarified use of absolute and relative URIs. |
+|         |            | Clarified definition of the "target" property as originating from OData. |
+|         |            | Clarified distinction between "hyperlinks" and the "Links Property". |
+|         |            | Corrected the JSON example of the privilege map. |
+|         |            | Clarified format of the "@odata.context" property. |
+|         |            | Added clauses about the schema file naming conventions. |
+|         |            | Clarified behavior of a Service when receiving a PUT with missing properties. |
+|         |            | Clarified valid values in the "Accept" header to include wildcards per RFC7231. |
+|         |            | Corrected "ConfigureUser" privilege to be spelled "ConfigureUsers". |
+|         |            | Corrected Session Login section to include normative language. |
+| 1.2.0   | 2017-04-14 | Added support for the Redfish Composability Service. |
+|         |            | Clarified Service handling of the Accept-Encoding header in a request. |
+|         |            | Improved consistency and formatting of example requests and responses throughout. |
+|         |            | Corrected usage of the "@odata.type" property in response examples. |
+|         |            | Clarified usage of the "Required" schema annotation. |
+|         |            | Clarified usage of SubordinateOverrides in the Privilege Registry. |
+| 1.1.0   | 2016-12-09 | Added Redfish Service Operation to Privilege Mapping clause. This functionality allows a Service to present a resource or even property-level mapping of HTTP operations to account Roles and Privileges. |
+|         |            | Added references to the Redfish Host Interface Specification (DSP0270). |
+| 1.0.5   | 2016-12-09 | Errata release.  Various typographical errors. |
+|         |            | Corrected terminology usage of "Collection", "Resource Collection" and "Members" throughout. |
+|         |            | Added glossary entries for "Resource Collection" and "Members". |
+|         |            | Corrected Certificate requirements to reference definitions and requirements in RFC 5280 and added a normative reference to RFC 5280. |
+|         |            | Clarified usage of HTTP POST and PATCH operations. |
+|         |            | Clarified usage of HTTP Status codes and Error responses. |
+| 1.0.4   | 2016-08-28 | Errata release.  Various typographical errors. |
+|         |            | Added example of an HTTP Link Header and clarified usage and content. |
+|         |            | Added Schema Modification clause describing allowed usage of the Schema files. |
+|         |            | Added recommendation to use TLS 1.2 or later, and to follow the SNIA TLS Specification.  Added reference to the SNIA TLS Specification.  Added additional recommended TLS_RSA_WITH_AES_128_CBC_SHA Cipher suite. |
+|         |            | Clarified that the "Id" property of a Role resource must match the Role Name. |
+| 1.0.3   | 2016-06-17 | Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References.  Corrected typographical error in ETag example. |
+|         |            | Clarified examples for ExtendedInfo to show arrays of Messages. |
+|         |            | Clarified that a POST to Session Service to create a new Session does not require authorization headers. |
+| 1.0.2   | 2016-03-31 | Errata release.  Various typographical errors. |
+|         |            | Corrected normative language for M-SEARCH queries and responses. |
+|         |            | Corrected Cache-Control and USN format in M-SEARCH responses. |
+|         |            | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for JSON Schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
+|         |            | Added missing clause detailing the location of the Schema Repository and listing the durable URLs for the repository. |
+|         |            | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
+|         |            | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
+|         |            | Removed duplicative or out-of-scope sub-clauses from the Security clause, which made unintended requirements on Redfish service implementations. |
+|         |            | Added missing requirement that property names in Resource Responses must match the casing (capitalization) as specified in schema. |
+|         |            | Updated normative references to current HTTP RFCs and added clause references throughout the document where applicable. |
+|         |            | Clarified ETag header requirements. |
+|         |            | Clarified that no authentication is required for accessing the Service Root resource. |
+|         |            | Clarified description of Retrieving Collections. |
+|         |            | Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers. |
+|         |            | Clarified usage of the 'Allow' HTTP Response Header and added missing table entry for usage of the 'Retry-After' header. |
+|         |            | Clarified normative usage of the Type Property and Context Property, explaining the ability to use two URL forms, and corrected the "@odata.context" URL examples throughout. |
+|         |            | Corrected inconsistent terminology throughout the Collection Resource Response clause. |
+|         |            | Corrected name of normative Resource Members Property ('Members', not 'value'). |
+|         |            | Clarified that Error Responses may include information about multiple error conditions. |
+|         |            | Corrected name of Measures.Unit annotation term as used in examples. |
+|         |            | Corrected outdated reference to Core OData specification in Annotation Term examples. |
+|         |            | Added missing 'Members' property to the Common Redfish Resource Properties clause. |
+|         |            | Clarified terminology and usage of the Task Monitor and related operations in the Asynchronous Operations clause. |
+|         |            | Clarified that implementation of the SSDP protocol is optional. |
+|         |            | Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org'). |
+|         |            | Added missing OPTIONS method to the allowed HTTP Methods list. |
+|         |            | Fixed nullablity in example.  |
+| 1.0.1   | 2015-09-17 | Errata release.  Various grammatical corrections. |
+|         |            | Clarified normative use of LongDescription in schema files. |
+|         |            | Clarified usage of the 'rel-describedby' link header. |
+|         |            | Corrected text in example of 'Select List' in OData Context property. |
+|         |            | Clarified Accept-Encoding Request header handling. |
+|         |            | Deleted duplicative and conflicting statement on returning extended error resources. |
+|         |            | Clarified relative URI resolution rules. |
+|         |            | Clarified USN format.  |
+| 1.0.0   | 2015-08-04 | Initial release. |
