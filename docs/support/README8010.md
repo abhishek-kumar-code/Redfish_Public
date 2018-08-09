@@ -47,7 +47,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Chassis                          | 1.8.0   | Added "PCIeSlots" link. |
 | CollectionCapabilities           | 1.1.0   | Added "ComputerSystemConstrainedComposition" enum. |
 | CompositionService               | 1.1.0   | Added "AllowOverprovisioning" and "AllowZoneAffinity" properties. |
-| Drive                            | 1.2.0   | Added "HotspareReplacementMode" property. |
+| Drive                            | 1.5.0   | Added "HotspareReplacementMode" property. |
 | Endpoint                         | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
 | Event                            | 1.3.0   | Deprecated "EventType" in favor of new subscription properties.  Added "EventGroupId" to "EventRecord". |
 | EventDestination                 | 1.4.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResources", and "EventFormatType" properties. |
