@@ -223,50 +223,50 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="EventService" BaseType="EventService.v1_1_1.EventService">
-        <Property Name="SSEQueryParametersSupported" Type="EventService.v1_2_0.SSEQueryParametersSupported" Nullable="false">
-          <Annotation Term="OData.Description" String="Contains a set of properties that indicate which query parameters are supported for the ServerSentEventUri."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a set of properties that indicate which query parameters are supported for the URI indicated by the ServerSentEventUri property."/>
+        <Property Name="SSEFilterPropertiesSupported" Type="EventService.v1_2_0.SSEFilterPropertiesSupported" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains a set of properties that indicate which properties are supported in the $filter query parameter for the ServerSentEventUri."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a set of properties that indicate which properties are supported in the $filter query parameter for the URI indicated by the ServerSentEventUri property."/>
         </Property>
       </EntityType>
 
-      <ComplexType Name="SSEQueryParametersSupported">
+      <ComplexType Name="SSEFilterPropertiesSupported">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="Contains a set of properties that indicate which query parameters are supported for the ServerSentEventUri."/>
-        <Annotation Term="OData.LongDescription" String="The type shall contain a set of properties that indicate which query parameters are supported for the URI indicated by the ServerSentEventUri property."/>
-        <Property Name="EventTypes" Type="Edm.Boolean" Nullable="false">
+        <Annotation Term="OData.Description" String="Contains a set of properties that indicate which properties are supported in the $filter query parameter for the ServerSentEventUri."/>
+        <Annotation Term="OData.LongDescription" String="The type shall contain a set of properties that indicate which properties are supported in the $filter query parameter for the URI indicated by the ServerSentEventUri property."/>
+        <Property Name="EventType" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the EventTypes query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the EventTypes query parameter as described by the specification."/>
+          <Annotation Term="OData.Description" String="This indicates if the EventType property is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating if this service supports the use of the EventType property in the $filter query parameter as described by the specification."/>
         </Property>
-        <Property Name="Context" Type="Edm.Boolean" Nullable="false">
+        <Property Name="MetricReportDefinition" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the Context query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the Context query parameter as described by the specification."/>
+          <Annotation Term="OData.Description" String="This indicates if the MetricReportDefinition property is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating if this service supports the use of the MetricReportDefinition property in the $filter query parameter as described by the specification."/>
         </Property>
-        <Property Name="MetricIds" Type="Edm.Boolean" Nullable="false">
+        <Property Name="RegistryPrefix" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the MetricIds query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the MetricIds query parameter as described by the specification."/>
+          <Annotation Term="OData.Description" String="This indicates if the RegistryPrefix property is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating if this service supports the use of the RegistryPrefix property in the $filter query parameter as described by the specification."/>
         </Property>
-        <Property Name="RegistryPrefixes" Type="Edm.Boolean" Nullable="false">
+        <Property Name="ResourceType" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the RegistryPrefixes query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the RegistryPrefixes query parameter as described by the specification."/>
-        </Property>
-        <Property Name="ResourceTypes" Type="Edm.Boolean" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the ResourceTypes query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the ResourceTypes query parameter as described by the specification."/>
+          <Annotation Term="OData.Description" String="This indicates if the ResourceType property is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating if this service supports the use of the ResourceType property in the $filter query parameter as described by the specification."/>
         </Property>
         <Property Name="EventFormatType" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the EventFormatType query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the EventFormatType query parameter as described by the specification."/>
+          <Annotation Term="OData.Description" String="This indicates if the EventFormatType property is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating if this service supports the use of the EventFormatType property in the $filter query parameter as described by the specification."/>
         </Property>
-        <Property Name="MessageIds" Type="Edm.Boolean" Nullable="false">
+        <Property Name="MessageId" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This indicates whether the MessageIds query parameter is supported."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the MessageIds query parameter as described by the specification."/>
+          <Annotation Term="OData.Description" String="This indicates if the MessageId property is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating if this service supports the use of the MessageId property in the $filter query parameter as described by the specification."/>
+        </Property>
+        <Property Name="OriginResource" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates if the OriginResource property is supported."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating if this service supports the use of the OriginResource property in the $filter query parameter as described by the specification."/>
         </Property>
       </ComplexType>
     </Schema>

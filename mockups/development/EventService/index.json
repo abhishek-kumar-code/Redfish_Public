@@ -20,14 +20,14 @@
         "Alert"
     ],
     "ServerSentEventUri": "/redfish/v1/EventService/SSE",
-    "SSEQueryParametersSupported": {
-        "EventTypes": true,
-        "Context": true,
-        "MetricIds": false,
-        "RegistryPrefixes": true,
-        "ResourceTypes": true,
+    "SSEFilterPropertiesSupported": {
+        "EventType": true,
+        "MetricReportDefinition": false,
+        "RegistryPrefix": true,
+        "ResourceType": true,
         "EventFormatType": false,
-        "MessageIds": true
+        "MessageId": true,
+        "OriginResource": true
     },
     "Subscriptions": {
         "@odata.id": "/redfish/v1/EventService/Subscriptions"
