@@ -3127,7 +3127,7 @@ OData-Version: 4.0
 ### Change log
 
 | Version | Date       | Description |
-| ---     | ---        | ---         mo|
+| ---     | ---        | ---         |
 | 1.5.1   | 2018-08-10 | Added clarifications to required properties in structured properties derived from ReferenceableMembers. |
 |         |            | Reorganized Eventing section to break out the different subscription methods to differentiate pub-sub from SSE. |
 |         |            | Removed statements referencing OData conformance levels. |
