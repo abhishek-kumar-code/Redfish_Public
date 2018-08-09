@@ -50,6 +50,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/{ManagerId}/SerialInterfaces</String>
+          </Collection>
+        </Annotation>
         <NavigationProperty Name="Members" Type="Collection(SerialInterface.SerialInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>

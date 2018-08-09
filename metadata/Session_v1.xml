@@ -48,6 +48,11 @@
             <Annotation Term="OData.Description" String="Sessions can be removed by Deleting the Session resource."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/SessionService/Sessions/{SessionId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>
