@@ -2427,6 +2427,8 @@ Providers may split the schema resources into separate files such as Schema + St
 
 This clause covers the REST-based mechanism for subscribing to and receiving event messages.
 
+NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
+
 #### Event subscription types
 
 The Redfish Service requires a client or administrator to create subscriptions to receive events.  There are two methods of creating a subscription: directly by sending an HTTP POST to the subscription collection, or indirectly when a [Server-Sent Events (SSE)](#sse-eventservice) connection is opened for the Event Service.
@@ -2453,15 +2455,25 @@ These are some configurable properties that are global settings that define the 
 
 A service may support the "ServerSentEventUri" property within the Event Service resource.  If a client performs a GET on the URI specified by the "ServerSentEventUri", an SSE connection will be opened for the client.  See the [Server-Sent Events: EventService section](#sse-eventservice) for details on this method.
 
-#### Event types
+#### EventType based eventing
 
-There are two types of events generated in a Redfish Service - life cycle and alert.
+There are two types of events generated in a Redfish Service - life cycle and alert.  This method of eventing has been deprecated in the Redfish Schema.
 
 Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this is similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any properties that changed.
 
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
+#### Ways to register for events
+
+Event subscriptions can be subscribed to by specifying a RegistryPrefixes, ResourceTypes, OriginResources (including SubordinateResources) in order to filter events to any EventDestination.  An EventFormatType can also be specified.
+
+The RegistryPrefixes property has the list of message registries that the service provides and that the subscriber would like messages corresponding to.  The values of this property are the values of the RegistryPrefix and can be standard or OEM message registries.  It acts like a filter, only sending messages to the subscriber if the RegistryPrefix in the subscription matches the RegistryPrefix of the registry.  This value does not include the version of the registry. If this value is empty when subscribing, the subscriber can receive messages from any registry.
+
+The ResourceTypes property has the list of Resource Types  that the service provides events on which the subscriber can use in the ResourceType property of the EventDestination.  The values of this property is an array of Resource Types and can be standard or OEM schema Resource Types.  It acts like a filter, only sending messages to the subscriber if the ResourceType in the subscription matches the Resource Type of the OriginOfCondition.  This value does not include the version of the schema (thus there are no periods).  For example, if the normal Resource Type is "Task.v1_2_0.Task", then the value in this property is just "Task". If this value is empty when subscribing, the subscriber can receive messages from any resource.
+
+OriginResources can be specified to limit the events sent to the destination to the resource list (in URI format) specified.  Leaving this property empty indicates that events from any resources are acceptable.  The property SubordinateResources can be specified to indicate those resources as well as subordinate ones, regardless of depth.
+
+EventFormatType can be specified in the subscription as well.  The service advertises the list of formats that can be sent using the EventFormatTypes property in the EventService.  This value represents the format of the payload sent to the Event Destination.  If the value is not specified, then the payload will correspond to the Event Schema.
 
 #### Event message objects
 
@@ -2479,6 +2491,12 @@ where
 * *MajorVersion* is a positive integer representing the major version of the registry
 * *MinorVersion* is a positive integer representing the minor version of the registry
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.
+
+Event messages may also have an EventGroupId property.  The purpose of this property is to let clients know that different messages may be from the same event.  For instance, if a LAN cable is disconnected, they may get a specific message from one registry about the LAN cable being disconnected, another message from a general registry about the resource changing, perhaps a message about resource state change and maybe even more.  In order for the client to be able to tell all of these have the same root cause, these messages would have the same value for the EventGroupId property.
+
+#### OEM Extensions
+
+OEMs can extend both messages and message registries.  There are OEM sections defined in any individual message (per the message registry schema definition).  Thus if OEMs wish to provide additional information or properties, this can be done using the OEM section.  OEMs shall not supply additional message arguments beyond those in a standard message registry.  OEMs may substitute their own message registry for the standard registry in order to provide the OEM section within the registry but shall not change the standard values (such as Messages) in such registries.
 
 ### Asynchronous operations
 
