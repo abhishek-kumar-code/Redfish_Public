@@ -94,6 +94,9 @@
       <Term Name="OwningEntity" Type="Edm.String">
         <Annotation Term="OData.Description" String="Indicates the name of the entity responsible for development, publication and maintenance of a given schema.  Possible values include DMTF, SNIA or an OEM label such as is used in a Redfish OEM extension section."/>
       </Term>
+      <Term Name="Uris" Type="Collection(Edm.String)">
+        <Annotation Term="OData.Description" String="The term specifies the URIs a service is allowed to use for the given resource."/>
+      </Term>
       <Term Name="RequestedCount" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term is used by a client in order to specify a request for a quantity of items."/>
       </Term>

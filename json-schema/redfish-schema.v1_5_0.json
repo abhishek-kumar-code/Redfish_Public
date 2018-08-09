@@ -63,6 +63,29 @@
         "excerptCopyOnly": {
             "type": "string",
             "description": "The term specifies that the property is a data element that shall appear only when the resource definition is used as a copy (using the ExcerptCopy term), and shall not appear in the original data resource."
+        },
+        "insertable": {
+            "type": "boolean",
+            "description": "The term specifies if new members can be added to the resource using the POST method."
+        },
+        "updatable": {
+            "type": "boolean",
+            "description": "The term specifies whether or not the resource is able to be updated using the PATCH or PUT methods."
+        },
+        "deletable": {
+            "type": "boolean",
+            "description": "The term specifies whether or not the resource is able to be removed using the DELETE methods."
+        },
+        "uris": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "The term specifies the URIs a service is allowed to use for the given resource."
+        },
+        "autoExpand": {
+            "type": "boolean",
+            "description": "The term specifies if the resource referenced by the hyperlink shall be expanded in the response body as specified in the 'Expanded resources' clause of the Redfish Specification."
         }
     },
     "properties": {
@@ -103,6 +126,30 @@
         },
         "owningEntity": {
             "$ref": "#/definitions/owningEntity"
+        },
+        "excerpt": {
+            "$ref": "#/definitions/excerpt"
+        },
+        "excerptCopy": {
+            "$ref": "#/definitions/excerptCopy"
+        },
+        "excerptCopyOnly": {
+            "$ref": "#/definitions/excerptCopyOnly"
+        },
+        "insertable": {
+            "$ref": "#/definitions/insertable"
+        },
+        "updatable": {
+            "$ref": "#/definitions/updatable"
+        },
+        "deletable": {
+            "$ref": "#/definitions/deletable"
+        },
+        "uris": {
+            "$ref": "#/definitions/uris"
+        },
+        "autoExpand": {
+            "$ref": "#/definitions/autoExpand"
         }
     }
 }

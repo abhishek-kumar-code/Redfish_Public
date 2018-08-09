@@ -58,6 +58,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/EventService</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="SubmitTestEvent" IsBound="true">
