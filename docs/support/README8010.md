@@ -49,10 +49,15 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | CompositionService               | 1.1.0   | Added "AllowOverprovisioning" and "AllowZoneAffinity" properties. |
 | Drive                            | 1.2.0   | Added "HotspareReplacementMode" property. |
 | Endpoint                         | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
+| Event                            | 1.3.0   | Deprecated "EventType" in favor of new subscription properties.  Added "EventGroupId" to "EventRecord". |
+| EventDestination                 | 1.4.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResources", and "EventFormatType" properties. |
+| EventService                     | 1.2.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResourcesSupported", and "EventFormatTypes" properties. |
 | HostInterface                    | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
+| LogEntry                         | 1.4.0   | Deprecated "EventType".  Added "EventGroupId" property. |
 | Manager                          | 1.5.0   | Added "RemoteRedfishServiceUri" and "RemoteAccountService" properties. |
 | ManagerNetworkProtocol           | 1.3.0   | Added "DHCPv6", "RDP", and "RFB" properties. |
 | Memory                           | 1.6.0   | Added "OverwriteUnit" Action.  Added "IntelOptane" to the "MemoryType" enum. |
+| MessageRegistry                  | 1.2.0   | Added "ClearingLogic" property. |
 | NetworkAdapter                   | 1.2.0   | Added "NPAR" property to control NIC Partitioning. Added "PCIeInterface" object. |
 | NetworkDeviceFunction            | 1.3.0   | Added "VLAN" and "VLANs" properties to the "Ethernet" object.  Added "FibreChannelId" to "FibreChannel" object.  Deprecated "PhysicalPortAssignment" at the root of the payload in favor of "PhysicalPortAssignment" inside "Links". |
 | NetworkPort                      | 1.2.0   | Added properties to support Fibre Channel devices.  Deprecated "LinkSpeedMbps" in favor of "CapableLinkSpeedMbps". |
