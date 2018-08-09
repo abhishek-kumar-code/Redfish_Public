@@ -1,0 +1,1349 @@
+components:
+  schemas:
+    RedfishError:
+      properties:
+        error:
+          properties:
+            '@Message.ExtendedInfo':
+              items:
+                $ref: http://redfish.dmtf.org/schemas/v1/Message.v1_0_5.yaml#/components/schemas/Message
+              type: array
+            code:
+              type: string
+            message:
+              type: string
+          type: object
+      type: object
+info:
+  contact:
+    name: DMTF
+    url: https://www.dmtf.org/standards/redfish
+  description: This contains the definition of a Redfish service.
+  title: Redfish API
+  version: '2018.1'
+  x-copyright: Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For
+    the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
+openapi: 3.0.0
+paths:
+  /redfish/v1/:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_3_2.yaml#/components/schemas/ServiceRoot
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_3_2.yaml#/components/schemas/ServiceRoot
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_3_2.yaml#/components/schemas/ServiceRoot
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_3_2.yaml#/components/schemas/ServiceRoot
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_3_2.yaml#/components/schemas/ServiceRoot
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/AccountService:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    patch:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    put:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/AccountService/Accounts:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.yaml#/components/schemas/ManagerAccountCollection
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.yaml#/components/schemas/ManagerAccountCollection
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.yaml#/components/schemas/ManagerAccountCollection
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.yaml#/components/schemas/ManagerAccountCollection
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.yaml#/components/schemas/ManagerAccountCollection
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.yaml#/components/schemas/ManagerAccount
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.yaml#/components/schemas/ManagerAccount
+          description: Resource created
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/AccountService/Accounts/{AccountId}:
+    delete:
+      parameters:
+      - description: The AccountId parameter
+        in: path
+        name: AccountId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    get:
+      parameters:
+      - description: The AccountId parameter
+        in: path
+        name: AccountId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      parameters:
+      - description: The AccountId parameter
+        in: path
+        name: AccountId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    patch:
+      parameters:
+      - description: The AccountId parameter
+        in: path
+        name: AccountId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    put:
+      parameters:
+      - description: The AccountId parameter
+        in: path
+        name: AccountId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_1_3.yaml#/components/schemas/ManagerAccount
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/AccountService/Roles:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/RoleCollection.yaml#/components/schemas/RoleCollection
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/RoleCollection.yaml#/components/schemas/RoleCollection
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/RoleCollection.yaml#/components/schemas/RoleCollection
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/RoleCollection.yaml#/components/schemas/RoleCollection
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/RoleCollection.yaml#/components/schemas/RoleCollection
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/AccountService/Roles/{RoleId}:
+    get:
+      parameters:
+      - description: The RoleId parameter
+        in: path
+        name: RoleId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      parameters:
+      - description: The RoleId parameter
+        in: path
+        name: RoleId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    patch:
+      parameters:
+      - description: The RoleId parameter
+        in: path
+        name: RoleId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    put:
+      parameters:
+      - description: The RoleId parameter
+        in: path
+        name: RoleId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}:
+    get:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.DisablePassphrase:
+    post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/DisablePassphraseRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.SecureEraseUnit:
+    post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/SecureEraseUnitRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.SetPassphrase:
+    post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/SetPassphraseRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.UnlockUnit:
+    post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/UnlockUnitRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}:
+    get:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.DisablePassphrase
+  : post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/DisablePassphraseRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SecureEraseUnit
+  : post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/SecureEraseUnitRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SetPassphrase
+  : post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/SetPassphraseRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.UnlockUnit
+  : post:
+      parameters:
+      - description: The ResourceBlockId parameter
+        in: path
+        name: ResourceBlockId
+        required: true
+        schema:
+          type: string
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/UnlockUnitRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}:
+    get:
+      parameters:
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource response
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource found
+        '304':
+          description: Resource not modified
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+    head:
+      parameters:
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Success, but no response data
+        '301':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource moved
+        '302':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/Memory
+          description: Resource found
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.DisablePassphrase:
+    post:
+      parameters:
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/DisablePassphraseRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SecureEraseUnit:
+    post:
+      parameters:
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/SecureEraseUnitRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SetPassphrase:
+    post:
+      parameters:
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/SetPassphraseRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.UnlockUnit:
+    post:
+      parameters:
+      - description: The ComputerSystemId parameter
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      - description: The MemoryId parameter
+        in: path
+        name: MemoryId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_5_1.yaml#/components/schemas/UnlockUnitRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Resource response
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_1_1.yaml#/components/schemas/Task
+          description: Accepted; Task generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
