@@ -1171,7 +1171,7 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 ##### Type property
 
-All resources in a response shall include a type property named "@odata.type".  If support of generic OData clients is desired, all embedded JSON objects in a response should include a type property named "@odata.type."  The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
+All resources in a response shall include a type property named "@odata.type".  If support of generic OData clients is desired, all [structured properties](#structured-properties) in a response should include a type property named "@odata.type."  The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
 
   #*Namespace*.*TypeName*
 
@@ -1216,6 +1216,8 @@ In cases where the time of day is unknown or serves no purpose, the service shal
 ##### Structured properties
 
 Structured properties, defined as [complex types](#structured-types) or [expanded](#expanded-resources) [resource types](#resource-type-definitions), are returned as JSON objects.  The type of the JSON object is specified in the Redfish Schema definition of the property containing the structured value.
+
+Some structured properties inherit from the definition "Resource.v1_0_0.ReferenceableMember".  Structured properties that follow this definition shall contain the ["MemberId" property](#memberid-property) as well as the [resource identifier property](#resource-identifier-property).
 
 Since the definition of structured properties can evolve over time, clients need to be aware of the inheritance model used by the different structured property definitions.  For example, the "Location" definition found in Resource_v1.xml has gone through several iterations since the original introduction in the "Resource.v1_1_0" namespace, and each iteration inherits from the previous version so that existing references found in other schemas can leverage the new additions.  There are two types of structured property references that need to be resolved: local references and external references.
 
