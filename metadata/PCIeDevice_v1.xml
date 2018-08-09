@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -40,6 +43,27 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the PCIeDevice resource.  It represents the properties of a PCIeDevice attached to a System."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a PCIeDevice attached to a System."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}</String>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/PCIeDevices/{PCIeDeviceId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>

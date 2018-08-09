@@ -51,6 +51,12 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/BootOptions</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/BootOptions</String>
+          </Collection>
+        </Annotation>
         <NavigationProperty Name="Members" Type="Collection(BootOption.BootOption)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>

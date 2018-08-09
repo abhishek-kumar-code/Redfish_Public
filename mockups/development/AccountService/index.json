@@ -46,11 +46,11 @@
         "RemoteRoleMapping": [
             {
                 "RemoteUser": "cn=Manager,dc=example,dc=org",
-                "LocalRole": "Admin"
+                "LocalRole": "Administrator"
             },
             {
                 "RemoteGroup": "cn=Admins,ou=Groups,dc=example,dc=org",
-                "LocalRole": "Admin"
+                "LocalRole": "Administrator"
             },
             {
                 "RemoteGroup": "cn=PowerUsers,ou=Groups,dc=example,dc=org",
@@ -58,7 +58,7 @@
             },
             {
                 "RemoteGroup": "(cn=*)",
-                "LocalRole": "ReadOnlyUser"
+                "LocalRole": "ReadOnly"
             }
         ]
     },
@@ -78,7 +78,7 @@
         "RemoteRoleMapping": [
             {
                 "RemoteGroup": "Administrators",
-                "LocalRole": "Admin"
+                "LocalRole": "Administrator"
             },
             {
                 "RemoteUser": "DOMAIN\\Bob",
@@ -90,7 +90,7 @@
             },
             {
                 "RemoteGroup": "Everybody",
-                "LocalRole": "ReadOnlyUser"
+                "LocalRole": "ReadOnly"
             }
         ]
     },

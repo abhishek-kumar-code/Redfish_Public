@@ -17,15 +17,15 @@
     "RemoteRoleMapping": [
         {
             "RemoteGroup": "Admin",
-            "LocalRole": "Admin"
+            "LocalRole": "Administrator"
         },
         {
             "RemoteGroup": "Operator",
             "LocalRole": "Operator"
         },
         {
-            "RemoteGroup": "ReadOnlyUser",
-            "LocalRole": "ReadOnlyUser"
+            "RemoteGroup": "ReadOnly",
+            "LocalRole": "ReadOnly"
         }
     ]
 }
