@@ -1,0 +1,58 @@
+{
+    "@odata.type": "#EthernetInterface.v1_4_0.EthernetInterface",
+    "Id": "SD",
+    "Name": "Manager Ethernet Interface",
+    "Description": "Management Network Interface",
+    "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
+    "MACAddress": "AA:BB:CC:DD:EE:FF",
+    "SpeedMbps": 100,
+    "AutoNeg": true,
+    "FullDuplex": true,
+    "MTUSize": 1500,
+    "HostName": "MyHostName",
+    "FQDN": "MyHostName.MyDomainName.com",
+    "MaxIPv6StaticAddresses": 1,
+    "VLAN": {
+        "VLANEnable": true,
+        "VLANId": 101
+    },
+    "IPv4Addresses": [
+        {
+            "Address": "192.168.0.10",
+            "SubnetMask": "255.255.252.0",
+            "AddressOrigin": "DHCP",
+            "Gateway": "192.168.0.1",
+            "Oem": {}
+        }
+    ],
+    "IPv6AddressPolicyTable": [
+        {
+            "Prefix": "::1/128",
+            "Precedence": 50,
+            "Label": 0
+        }
+    ],
+    "IPv6StaticAddresses": [
+        {
+            "Address": "fe80::1ec1:deff:fe6f:1e24",
+            "PrefixLength": 16
+        }
+    ],
+    "IPv6DefaultGateway": "fe80::1ec1:deff:fe6f:1e24",
+    "IPv6Addresses": [
+        {
+            "Address": "fe80::1ec1:deff:fe6f:1e24",
+            "PrefixLength": 64,
+            "AddressOrigin": "SLAAC",
+            "AddressState": "Preferred",
+            "Oem": {}
+        }
+    ],
+    "NameServers": [
+        "TheNameServer"
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
+    "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD",
+    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

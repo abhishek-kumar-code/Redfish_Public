@@ -66,6 +66,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="ResetSettingsToDefault" IsBound="true">
@@ -327,6 +332,13 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapter.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.v1_1_1.NetworkAdapter"/>
+
+      <ComplexType Name="Controllers" BaseType="NetworkAdapter.v1_1_0.Controllers">
+        <Property Name="PCIeInterface" Type="PCIeDevice.PCIeInterface">
+          <Annotation Term="OData.Description" String="The PCIe interface details for this controller."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain details on the PCIe interface used to connect this PCIe-based controller to its host."/>
+        </Property>
+      </ComplexType>
 
       <ComplexType Name="ControllerCapabilities" BaseType="NetworkAdapter.v1_0_0.ControllerCapabilities">
         <Property Name="NPAR" Type="NetworkAdapter.v1_2_0.NicPartitioning">
