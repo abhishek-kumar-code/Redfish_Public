@@ -29,7 +29,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 * "csdl": Contains the OData Common Schema Definition Language format as XML files
     * The files "RedfishExtensions_v1.xml" and "Resource_v1.xml" contain core definitions of Redfish
 * "json-schema": Contains the JSON Schema format as JSON files
-    * The files named "redfish-schema.*.json" and "odata.*.json" contain supplementary information about the schema files
+    * The files named "redfish-schema.\*.json" and "odata.\*.json" contain supplementary information about the schema files
 * "openapi": Contains the OpenAPI format as YAML files
     * The file "openapi.yaml" contains the OpenAPI service document that describes all of the standard paths
 
