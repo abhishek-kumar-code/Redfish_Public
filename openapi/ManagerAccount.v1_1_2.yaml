@@ -23,7 +23,7 @@ components:
             for resources described by this schema shall comply to the requirements
             as described in the Redfish specification.
         Role:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Role object defining Privileges for this
             account--returned when the resource is read. The ID of the role is the
             same as property RoleId.
@@ -45,13 +45,13 @@ components:
         this manager is responsible for the Redfish service.
       properties:
         '@odata.context':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/context
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/context
         '@odata.etag':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/etag
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/etag
         '@odata.id':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/id
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/id
         '@odata.type':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/type
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/type
         Actions:
           $ref: '#/components/schemas/Actions'
           description: The available actions for this resource.
@@ -127,9 +127,6 @@ components:
           x-longDescription: The value of this property shall be the user name for
             this account.
       required:
-      - '@odata.id'
-      - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object

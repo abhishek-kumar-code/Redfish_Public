@@ -98,7 +98,7 @@ components:
         resource.
       properties:
         Chassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Chassis which contains this Memory.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to a
@@ -123,13 +123,13 @@ components:
         configuration.
       properties:
         '@odata.context':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/context
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/context
         '@odata.etag':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/etag
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/etag
         '@odata.id':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/id
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/id
         '@odata.type':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/type
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/type
         Actions:
           $ref: '#/components/schemas/Actions'
           description: The available actions for this resource.
@@ -140,30 +140,27 @@ components:
             in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be thealignment boundary
             on which memory regions are allocated, measured in MiB.
-          x-units: MiBy
         AllocationIncrementMiB:
           description: The size of the smallest unit of allocation for a memory region
             in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the allocation increment
             for regions, measured in MiB.
-          x-units: MiBy
         AllowedSpeedsMHz:
           description: Speed bins supported by this Memory.
           items:
-            type: integer
+            type: number
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be the speed supported
             by this Memory.
-          x-units: MHz
         Assembly:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Assembly resource associated with this memory.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a resource
@@ -179,14 +176,14 @@ components:
           description: Bus Width in bits.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the bus width in
             bits.
         CacheSizeMiB:
           description: Total size of the cache portion memory in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             the cache portion memory in MiB.
           x-units: MiBy
@@ -194,7 +191,7 @@ components:
           description: Memory Capacity in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the Memory capacity
             in MiB.
           x-units: MiBy
@@ -202,7 +199,7 @@ components:
           description: Data Width in bits.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the data width in
             bits.
         Description:
@@ -287,7 +284,7 @@ components:
           description: Total size of the logical memory in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             the logical memory in MiB.
           x-units: MiBy
@@ -301,12 +298,11 @@ components:
         MaxTDPMilliWatts:
           description: Maximum TDPs in milli Watts.
           items:
-            type: integer
+            type: number
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be the maximum power
             budgets supported by the Memory in milli Watts.
-          x-units: mW
         MemoryDeviceType:
           $ref: '#/components/schemas/MemoryDeviceType'
           description: Type details of the Memory.
@@ -355,7 +351,7 @@ components:
           x-longDescription: The value of this property shall be the type of Memory
             represented by this resource.
         Metrics:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Metrics associated with this Memory.
           readOnly: true
           x-longDescription: A reference to the Metrics associated with this Memory.
@@ -382,7 +378,7 @@ components:
           description: Total size of the non-volatile portion memory in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             the non-volatile portion memory in MiB.
           x-units: MiBy
@@ -404,7 +400,7 @@ components:
           description: Operating speed of Memory in MHz or MT/s as appropriate.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the operating speed
             of Memory in MHz or MT/s (mega-transfers per second) as reported by the
             memory device. Memory devices which operate at their bus speed shall report
@@ -413,7 +409,6 @@ components:
             speed in MT/s (mega-transfers/second). In any case, the reported value
             shall match the conventionally reported values for the technology utilized
             by the memory device.
-          x-units: MHz
         PartNumber:
           description: The product part number of this device.
           nullable: true
@@ -425,25 +420,23 @@ components:
           description: Total number of persistent regions this Memory can support.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total number
             of persistent regions this Memory can support.
         PersistentRegionSizeLimitMiB:
           description: Total size of persistent regions in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             persistent regions in MiB.
-          x-units: MiBy
         PersistentRegionSizeMaxMiB:
           description: Maximum size of a single persistent region in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the maximum size
             of a single persistent regions in MiB.
-          x-units: MiBy
         PowerManagementPolicy:
           $ref: '#/components/schemas/PowerManagementPolicy'
           description: Power management policy information.
@@ -453,7 +446,7 @@ components:
           description: Number of ranks available in the Memory.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be number of ranks available
             in the Memory. The ranks could be used for spare or interleave.
         Regions:
@@ -479,7 +472,7 @@ components:
           description: Number of unused spare devices available in the Memory.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the number of unused
             spare devices available in the Memory. If memory devices fails, the spare
             device could be used.
@@ -516,37 +509,32 @@ components:
           description: Total number of volatile regions this Memory can support.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total number
             of volatile regions this Memory can support.
         VolatileRegionSizeLimitMiB:
           description: Total size of volatile regions in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             volatile regions in MiB.
-          x-units: MiBy
         VolatileRegionSizeMaxMiB:
           description: Maximum size of a single volatile region in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the maximum size
             of a single volatile regions in MiB.
-          x-units: MiBy
         VolatileSizeMiB:
           description: Total size of the volitile portion memory in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             the volatile portion memory in MiB.
           x-units: MiBy
       required:
-      - '@odata.id'
-      - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object
@@ -617,25 +605,25 @@ components:
           description: Channel number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Channel number in which Memory is connected.
         MemoryController:
           description: Memory controller number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Memory controller number in which Memory is connected.
         Slot:
           description: Slot number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Slot number in which Memory is connected.
         Socket:
           description: Socket number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Socket number in which Memory is connected.
       type: object
       x-longDescription: This type shall contain properties which describe the Memory
@@ -700,21 +688,21 @@ components:
           description: Average power budget in milli watts.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Average power budget in milli watts.
           x-units: mW
         MaxTDPMilliWatts:
           description: Maximum TDP in milli watts.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Maximum TDP in milli watts.
           x-units: mW
         PeakPowerBudgetMilliWatts:
           description: Peak power budget in milli watts.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Peak power budget in milli watts.
           x-units: mW
         PolicyEnabled:
@@ -745,7 +733,7 @@ components:
             of this memory region in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Offset with in the Memory that corresponds to the starting
             of this memory region in MiB.
           x-units: MiBy
@@ -769,7 +757,7 @@ components:
           description: Size of this memory region in mebibytes (MiB).
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Size of this memory region in MiB.
           x-units: MiBy
       type: object
@@ -823,7 +811,7 @@ components:
           description: Maximum number of passphrases supported for this Memory.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Maximum number of passphrases supported for this Memory.
         PassphraseCapable:
           description: Memory passphrase set capability.

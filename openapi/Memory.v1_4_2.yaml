@@ -6,6 +6,8 @@ components:
       properties:
         '#Memory.DisablePassphrase':
           $ref: '#/components/schemas/DisablePassphrase'
+        '#Memory.OverwriteUnit':
+          $ref: '#/components/schemas/OverwriteUnit'
         '#Memory.SecureEraseUnit':
           $ref: '#/components/schemas/SecureEraseUnit'
         '#Memory.SetPassphrase':
@@ -14,6 +16,10 @@ components:
           $ref: '#/components/schemas/UnlockUnit'
         Oem:
           $ref: '#/components/schemas/OemActions'
+          description: This property contains the available OEM specific actions for
+            this resource.
+          x-longDescription: This property shall contain any additional OEM actions
+            for this resource.
       type: object
       x-longDescription: This type shall contain the available actions for this resource.
       x-patternProperties:
@@ -98,7 +104,7 @@ components:
         resource.
       properties:
         Chassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Chassis which contains this Memory.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to a
@@ -163,7 +169,7 @@ components:
             by this Memory.
           x-units: MHz
         Assembly:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Assembly resource associated with this memory.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a resource
@@ -283,6 +289,9 @@ components:
             by (subordinate to), this resource.
         Location:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Location
+          description: The Location of the memory.
+          x-longDescription: This property shall contain location information of the
+            associated memory.
         LogicalSizeMiB:
           description: Total size of the logical memory in MiB.
           nullable: true
@@ -355,7 +364,7 @@ components:
           x-longDescription: The value of this property shall be the type of Memory
             represented by this resource.
         Metrics:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Metrics associated with this Memory.
           readOnly: true
           x-longDescription: A reference to the Metrics associated with this Memory.
@@ -485,6 +494,10 @@ components:
             device could be used.
         Status:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Status
+          description: This property describes the status and health of the resource
+            and its children.
+          x-longDescription: This property shall contain any status or health properties
+            of the resource.
         SubsystemDeviceID:
           deprecated: true
           description: Subsystem Device ID.
@@ -659,9 +672,12 @@ components:
       - NVDIMM_N
       - NVDIMM_F
       - NVDIMM_P
+      - IntelOptane
       type: string
       x-enumDescriptions:
         DRAM: The memory module is composed of volatile memory.
+        IntelOptane: The memory module is Intel Optane DC Persistent Memory and composed
+          of a combination of non-volatile and volatile memory.
         NVDIMM_F: The memory module is composed of non-volatile memory.
         NVDIMM_N: The memory module is composed of volatile memory backed by non-volatile
           memory.
@@ -669,6 +685,7 @@ components:
           volatile memory.
       x-enumLongDescriptions:
         DRAM: This memory type shall represent volatile DRAM.
+        IntelOptane: This memory type shall represent Intel Optane DC Persistent Memory.
         NVDIMM_F: This memory type shall represent NVDIMM_F as defined by JEDEC.
         NVDIMM_N: This memory type shall represent NVDIMM_N as defined by JEDEC.
         NVDIMM_P: This memory type shall represent NVDIMM_P as defined by JEDEC.
@@ -692,6 +709,49 @@ components:
         Block: Block accessible system memory.
         PMEM: Persistent memory, byte accesible through system address space.
         Volatile: Volatile memory.
+    OverwriteUnit:
+      additionalProperties: false
+      description: 'This defines the action for securely erasing given regions using
+        the NIST SP800-88 Purge: Overwrite.'
+      properties:
+        target:
+          description: Link to invoke action
+          format: uri
+          type: string
+        title:
+          description: Friendly action name
+          type: string
+      type: object
+      x-longDescription: 'This action shall securely erase the supplied region provided
+        the supplied passphrase matches that of the given region using the NIST SP800-88
+        Purge: Overwrite. Use the SecureEraseUnit method to perform NIST SP800-88
+        Purge: Cryptographic Erase.'
+      x-patternProperties:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+          description: This property shall specify a valid odata or Redfish property.
+    OverwriteUnitRequestBody:
+      additionalProperties: false
+      description: 'This defines the action for securely erasing given regions using
+        the NIST SP800-88 Purge: Overwrite.'
+      properties:
+        Passphrase:
+          description: Passphrase for doing the operation.
+          type: string
+          x-longDescription: The value of this property shall be the passphrase used
+            in this action.
+        RegionId:
+          description: Memory region ID for which this action to be applied.
+          type: string
+          x-longDescription: The value of this property shall be the Memory region
+            ID for which this action to be applied.
+      required:
+      - Passphrase
+      - RegionId
+      type: object
+      x-longDescription: 'This action shall securely erase the supplied region provided
+        the supplied passphrase matches that of the given region using the NIST SP800-88
+        Purge: Overwrite. Use the SecureEraseUnit method to perform NIST SP800-88
+        Purge: Cryptographic Erase.'
     PowerManagementPolicy:
       additionalProperties: false
       description: Power management policy information.
@@ -780,7 +840,8 @@ components:
           description: This property shall specify a valid odata or Redfish property.
     SecureEraseUnit:
       additionalProperties: false
-      description: This defines the action for securely erasing given regions.
+      description: 'This defines the action for securely erasing given regions using
+        the NIST SP800-88 Purge: Cryptograhic Erase.'
       properties:
         target:
           description: Link to invoke action
@@ -790,14 +851,17 @@ components:
           description: Friendly action name
           type: string
       type: object
-      x-longDescription: This action shall securely erase the supplied region provided
-        the supplied passphrase matches that of the given region.
+      x-longDescription: 'This action shall securely erase the supplied region provided
+        the supplied passphrase matches that of the given region using the NIST SP800-88
+        Purge: Cryptographic Erase. Use the OverwriteUnit method to perform NIST SP800-88
+        Purge: Overwrite.'
       x-patternProperties:
         ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     SecureEraseUnitRequestBody:
       additionalProperties: false
-      description: This defines the action for securely erasing given regions.
+      description: 'This defines the action for securely erasing given regions using
+        the NIST SP800-88 Purge: Cryptograhic Erase.'
       properties:
         Passphrase:
           description: Passphrase for doing the operation.
@@ -813,8 +877,10 @@ components:
       - Passphrase
       - RegionId
       type: object
-      x-longDescription: This action shall securely erase the supplied region provided
-        the supplied passphrase matches that of the given region.
+      x-longDescription: 'This action shall securely erase the supplied region provided
+        the supplied passphrase matches that of the given region using the NIST SP800-88
+        Purge: Cryptographic Erase. Use the OverwriteUnit method to perform NIST SP800-88
+        Purge: Overwrite.'
     SecurityCapabilities:
       additionalProperties: false
       description: This type contains security capabilities of a Memory entity.
@@ -935,6 +1001,5 @@ components:
       x-longDescription: This action shall apply the supplied passphrase to the supplied
         region for the purpose of unlocking the given regions.
 title: '#Memory.v1_4_2.Memory'
-x-copyright: Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For
-  the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
+x-copyright: Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
 x-owningEntity: DMTF

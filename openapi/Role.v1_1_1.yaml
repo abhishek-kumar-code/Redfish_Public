@@ -9,7 +9,7 @@ components:
       type: object
       x-longDescription: This type shall contain the available actions for this resource.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     OemActions:
       additionalProperties: true
@@ -19,7 +19,7 @@ components:
       x-longDescription: This type shall contain any additional OEM actions for this
         resource.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     Role:
       additionalProperties: false
@@ -27,13 +27,11 @@ components:
         a Manager Account.
       properties:
         '@odata.context':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/context
-        '@odata.etag':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/etag
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.yaml#/components/schemas/context
         '@odata.id':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/id
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.yaml#/components/schemas/id
         '@odata.type':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/type
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.yaml#/components/schemas/type
         Actions:
           $ref: '#/components/schemas/Actions'
           description: The available actions for this resource.
@@ -83,18 +81,14 @@ components:
             readOnly. For custom roles some implementations may not allow writing
             this property.
       required:
-      - '@odata.id'
-      - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object
       x-longDescription: This resource shall be used to represent resources that represent
         the user role for the user account.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
 title: '#Role.v1_1_1.Role'
-x-copyright: Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For
+x-copyright: Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For
   the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
-x-owningEntity: DMTF

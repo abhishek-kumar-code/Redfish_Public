@@ -1,24 +1,5 @@
 components:
   schemas:
-    Actions:
-      additionalProperties: false
-      description: The available actions for this resource.
-      properties:
-        '#Memory.DisablePassphrase':
-          $ref: '#/components/schemas/DisablePassphrase'
-        '#Memory.SecureEraseUnit':
-          $ref: '#/components/schemas/SecureEraseUnit'
-        '#Memory.SetPassphrase':
-          $ref: '#/components/schemas/SetPassphrase'
-        '#Memory.UnlockUnit':
-          $ref: '#/components/schemas/UnlockUnit'
-        Oem:
-          $ref: '#/components/schemas/OemActions'
-      type: object
-      x-longDescription: This type shall contain the available actions for this resource.
-      x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
-          description: This property shall specify a valid odata or Redfish property.
     BaseModuleType:
       enum:
       - RDIMM
@@ -58,28 +39,8 @@ components:
       x-longDescription: This action shall disaple the need for passphrases on the
         supplied region provided the supplied passphrase matches that of the region.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
-    DisablePassphraseRequestBody:
-      additionalProperties: false
-      description: Disable passphrase for given regions.
-      properties:
-        Passphrase:
-          description: Passphrase for doing the operation.
-          type: string
-          x-longDescription: The value of this property shall be the passphrase used
-            in this action.
-        RegionId:
-          description: Memory region ID for which this action to be applied.
-          type: string
-          x-longDescription: The value of this property shall be the Memory region
-            ID for which this action to be applied.
-      required:
-      - Passphrase
-      - RegionId
-      type: object
-      x-longDescription: This action shall disaple the need for passphrases on the
-        supplied region provided the supplied passphrase matches that of the region.
     ErrorCorrection:
       enum:
       - NoECC
@@ -98,27 +59,45 @@ components:
         configuration.
       properties:
         '@odata.context':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/context
-        '@odata.etag':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/etag
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.4.0.0.yaml#/components/schemas/context
         '@odata.id':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/id
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.4.0.0.yaml#/components/schemas/id
         '@odata.type':
-          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/type
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.4.0.0.yaml#/components/schemas/type
         Actions:
-          $ref: '#/components/schemas/Actions'
+          additionalProperties: false
           description: The available actions for this resource.
+          properties:
+            '#Memory.DisablePassphrase':
+              $ref: '#/components/schemas/DisablePassphrase'
+            '#Memory.SecureEraseUnit':
+              $ref: '#/components/schemas/SecureEraseUnit'
+            '#Memory.SetPassphrase':
+              $ref: '#/components/schemas/SetPassphrase'
+            '#Memory.UnlockUnit':
+              $ref: '#/components/schemas/UnlockUnit'
+            Oem:
+              additionalProperties: true
+              properties: {}
+              type: object
+              x-patternProperties:
+                ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+                  description: This property shall specify a valid odata or Redfish
+                    property.
+          type: object
           x-longDescription: The Actions property shall contain the available actions
             for this resource.
+          x-patternProperties:
+            ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+              description: This property shall specify a valid odata or Redfish property.
         AllowedSpeedsMHz:
           description: Speed bins supported by this Memory.
           items:
-            type: integer
+            type: number
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be the speed supported
             by this Memory.
-          x-units: MHz
         BaseModuleType:
           $ref: '#/components/schemas/BaseModuleType'
           description: The base module type of Memory.
@@ -130,14 +109,14 @@ components:
           description: Bus Width in bits.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the bus width in
             bits.
         CapacityMiB:
-          description: Memory Capacity in mebibytes (MiB).
+          description: Memory Capacity in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the Memory capacity
             in MiB.
           x-units: MiBy
@@ -145,7 +124,7 @@ components:
           description: Data Width in bits.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the data width in
             bits.
         Description:
@@ -153,12 +132,10 @@ components:
           nullable: true
           readOnly: true
         DeviceID:
-          deprecated: true
           description: Device ID.
           nullable: true
           readOnly: true
           type: string
-          x-deprecatedReason: This property has been Deprecated in favor of Memory.v1_3_0.ModuleProductID
           x-longDescription: The value of this property shall be the device ID of
             the Memory.
         DeviceLocator:
@@ -190,14 +167,11 @@ components:
           x-longDescription: The value of this property shall be the revision of firmware
             on the Memory controller.
         FunctionClasses:
-          deprecated: true
           description: Function Classes by the Memory.
           items:
             type: string
           readOnly: true
           type: array
-          x-deprecatedReason: This property has been Deprecated in favor of Memory.v1_0_0.Memory.OperatingMemoryModes
-            or Memory.v1_0_0.Memory.RegionSet.MemoryClassification.
           x-longDescription: The value of this property shall be the function classes
             by the Memory.
         Id:
@@ -227,12 +201,11 @@ components:
         MaxTDPMilliWatts:
           description: Maximum TDPs in milli Watts.
           items:
-            type: integer
+            type: number
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be the maximum power
             budgets supported by the Memory in milli Watts.
-          x-units: mW
         MemoryDeviceType:
           $ref: '#/components/schemas/MemoryDeviceType'
           description: Type details of the Memory.
@@ -261,7 +234,7 @@ components:
           x-longDescription: The value of this property shall be the type of Memory
             represented by this resource.
         Metrics:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v5_0_0.yaml#/components/schemas/idRef
+          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Metrics associated with this Memory.
           readOnly: true
           x-longDescription: A reference to the Metrics associated with this Memory.
@@ -283,19 +256,12 @@ components:
           x-longDescription: The value of this property shall be the memory modes
             supported by the Memory.
         OperatingSpeedMhz:
-          description: Operating speed of Memory in MHz or MT/s as appropriate.
+          description: Operating speed of Memory in MHz.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the operating speed
-            of Memory in MHz or MT/s (mega-transfers per second) as reported by the
-            memory device. Memory devices which operate at their bus speed shall report
-            the operating speed in MHz (bus speed), while memory device which transfer
-            data faster than their bus speed (e.g. DDR memory) shall report the operating
-            speed in MT/s (mega-transfers/second). In any case, the reported value
-            shall match the conventionally reported values for the technology utilized
-            by the memory device.
-          x-units: MHz
+            of Memory in MHz.
         PartNumber:
           description: The product part number of this device.
           nullable: true
@@ -304,13 +270,12 @@ components:
           x-longDescription: This property shall indicate the part number as provided
             by the manufacturer of this Memory.
         PersistentRegionSizeLimitMiB:
-          description: Total size of persistent regions in mebibytes (MiB).
+          description: Total size of persistent regions in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             persistent regions in MiB.
-          x-units: MiBy
         PowerManagementPolicy:
           $ref: '#/components/schemas/PowerManagementPolicy'
           description: Power management policy information.
@@ -320,7 +285,7 @@ components:
           description: Number of ranks available in the Memory.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be number of ranks available
             in the Memory. The ranks could be used for spare or interleave.
         Regions:
@@ -346,56 +311,46 @@ components:
           description: Number of unused spare devices available in the Memory.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the number of unused
             spare devices available in the Memory. If memory devices fails, the spare
             device could be used.
         SubsystemDeviceID:
-          deprecated: true
           description: Subsystem Device ID.
           nullable: true
           readOnly: true
           type: string
-          x-deprecatedReason: This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerProductID
           x-longDescription: The value of this property shall be the subsystem Device
             ID of the Memory.
         SubsystemVendorID:
-          deprecated: true
           description: SubSystem Vendor ID.
           nullable: true
           readOnly: true
           type: string
-          x-deprecatedReason: This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerManufacturerID
           x-longDescription: The value of this property shall be the subsystem Vendor
             ID of the Memory.
         VendorID:
-          deprecated: true
           description: Vendor ID.
           nullable: true
           readOnly: true
           type: string
-          x-deprecatedReason: This property has been Deprecated in favor of Memory.v1_3_0.ModuleManufacturerID
           x-longDescription: The value of this property shall be the vendor ID of
             the Memory.
         VolatileRegionSizeLimitMiB:
-          description: Total size of volatile regions in mebibytes (MiB).
+          description: Total size of volatile regions in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: The value of this property shall be the total size of
             volatile regions in MiB.
-          x-units: MiBy
       required:
-      - '@odata.id'
-      - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object
       x-longDescription: This resource shall be used to represent the Memory in a
         Redfish implementation.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     MemoryClassification:
       enum:
@@ -428,7 +383,6 @@ components:
       - EDO
       - FastPageMode
       - PipelinedNibble
-      - Logical
       type: string
       x-enumDescriptions:
         DDR: DDR.
@@ -447,43 +401,40 @@ components:
         FastPageMode: Fast Page Mode.
         LPDDR3_SDRAM: LPDDR3 SDRAM.
         LPDDR4_SDRAM: LPDDR4 SDRAM.
-        Logical: Logical Non-volatile device.
         PipelinedNibble: Pipelined Nibble.
         ROM: ROM.
         SDRAM: SDRAM.
     MemoryLocation:
       additionalProperties: false
-      description: Memory connection information to sockets and memory controllers.
+      description: .
       properties:
         Channel:
           description: Channel number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Channel number in which Memory is connected.
         MemoryController:
           description: Memory controller number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Memory controller number in which Memory is connected.
         Slot:
           description: Slot number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Slot number in which Memory is connected.
         Socket:
           description: Socket number in which Memory is connected.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Socket number in which Memory is connected.
       type: object
-      x-longDescription: This type shall contain properties which describe the Memory
-        connection information to sockets and memory controllers.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     MemoryMedia:
       enum:
@@ -503,27 +454,10 @@ components:
       - NVDIMM_P
       type: string
       x-enumDescriptions:
-        DRAM: The memory module is composed of volatile memory.
-        NVDIMM_F: The memory module is composed of non-volatile memory.
-        NVDIMM_N: The memory module is composed of volatile memory backed by non-volatile
-          memory.
-        NVDIMM_P: The memory module is composed of a combination of non-volatile and
-          volatile memory.
-      x-enumLongDescriptions:
-        DRAM: This memory type shall represent volatile DRAM.
-        NVDIMM_F: This memory type shall represent NVDIMM_F as defined by JEDEC.
-        NVDIMM_N: This memory type shall represent NVDIMM_N as defined by JEDEC.
-        NVDIMM_P: This memory type shall represent NVDIMM_P as defined by JEDEC.
-    OemActions:
-      additionalProperties: true
-      description: The available OEM specific actions for this resource.
-      properties: {}
-      type: object
-      x-longDescription: This type shall contain any additional OEM actions for this
-        resource.
-      x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
-          description: This property shall specify a valid odata or Redfish property.
+        DRAM: DRAM.
+        NVDIMM_F: NVDIMM_F as defined by JEDEC.
+        NVDIMM_N: NVDIMM_N as defined by JEDEC.
+        NVDIMM_P: NVDIMM_P as defined by JEDEC.
     OperatingMemoryModes:
       enum:
       - Volatile
@@ -536,27 +470,27 @@ components:
         Volatile: Volatile memory.
     PowerManagementPolicy:
       additionalProperties: false
-      description: Power management policy information.
+      description: .
       properties:
         AveragePowerBudgetMilliWatts:
           description: Average power budget in milli watts.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Average power budget in milli watts.
           x-units: mW
         MaxTDPMilliWatts:
           description: Maximum TDP in milli watts.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Maximum TDP in milli watts.
           x-units: mW
         PeakPowerBudgetMilliWatts:
           description: Peak power budget in milli watts.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Peak power budget in milli watts.
           x-units: mW
         PolicyEnabled:
@@ -566,14 +500,12 @@ components:
           type: boolean
           x-longDescription: Power management policy enabled status.
       type: object
-      x-longDescription: This type shall contain properties which describe the power
-        management policy for the current resource.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     RegionSet:
       additionalProperties: false
-      description: Memory region information within a Memory entity.
+      description: Memory region information.
       properties:
         MemoryClassification:
           $ref: '#/components/schemas/MemoryClassification'
@@ -584,20 +516,18 @@ components:
             region.
         OffsetMiB:
           description: Offset with in the Memory that corresponds to the starting
-            of this memory region in mebibytes (MiB).
+            of this memory region in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Offset with in the Memory that corresponds to the starting
             of this memory region in MiB.
           x-units: MiBy
         PassphraseState:
-          deprecated: true
           description: State of the passphrase for this region.
           nullable: true
           readOnly: true
           type: boolean
-          x-deprecatedReason: This property has been Deprecated in favor of Memory.v1_5_0.Memory.RegionSet.PassphraseEnabled.
           x-longDescription: State of the passphrase for this region.
         RegionId:
           description: Unique region ID representing a specific region within the
@@ -608,17 +538,15 @@ components:
           x-longDescription: Unique region ID representing a specific region within
             the Memory.
         SizeMiB:
-          description: Size of this memory region in mebibytes (MiB).
+          description: Size of this memory region in MiB.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Size of this memory region in MiB.
           x-units: MiBy
       type: object
-      x-longDescription: This type shall describe the memory region information within
-        a Memory entity.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     SecureEraseUnit:
       additionalProperties: false
@@ -635,37 +563,16 @@ components:
       x-longDescription: This action shall securely erase the supplied region provided
         the supplied passphrase matches that of the given region.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
-    SecureEraseUnitRequestBody:
-      additionalProperties: false
-      description: This defines the action for securely erasing given regions.
-      properties:
-        Passphrase:
-          description: Passphrase for doing the operation.
-          type: string
-          x-longDescription: The value of this property shall be the passphrase used
-            in this action.
-        RegionId:
-          description: Memory region ID for which this action to be applied.
-          type: string
-          x-longDescription: The value of this property shall be the Memory region
-            ID for which this action to be applied.
-      required:
-      - Passphrase
-      - RegionId
-      type: object
-      x-longDescription: This action shall securely erase the supplied region provided
-        the supplied passphrase matches that of the given region.
     SecurityCapabilities:
       additionalProperties: false
-      description: This type contains security capabilities of a Memory entity.
       properties:
         MaxPassphraseCount:
           description: Maximum number of passphrases supported for this Memory.
           nullable: true
           readOnly: true
-          type: integer
+          type: number
           x-longDescription: Maximum number of passphrases supported for this Memory.
         PassphraseCapable:
           description: Memory passphrase set capability.
@@ -681,10 +588,8 @@ components:
           type: array
           x-longDescription: Security states supported by the Memory.
       type: object
-      x-longDescription: This type shall contain properties which describe the security
-        capabilities of a Memory entity.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
     SecurityStates:
       enum:
@@ -717,28 +622,8 @@ components:
       x-longDescription: This action shall apply the supplied passphrase to the supplied
         region.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
-    SetPassphraseRequestBody:
-      additionalProperties: false
-      description: Set passphrase for the given regions.
-      properties:
-        Passphrase:
-          description: Passphrase for doing the operation.
-          type: string
-          x-longDescription: The value of this property shall be the passphrase used
-            in this action.
-        RegionId:
-          description: Memory region ID for which this action to be applied.
-          type: string
-          x-longDescription: The value of this property shall be the Memory region
-            ID for which this action to be applied.
-      required:
-      - Passphrase
-      - RegionId
-      type: object
-      x-longDescription: This action shall apply the supplied passphrase to the supplied
-        region.
     UnlockUnit:
       additionalProperties: false
       description: This defines the action for unlocking given regions.
@@ -754,29 +639,8 @@ components:
       x-longDescription: This action shall apply the supplied passphrase to the supplied
         region for the purpose of unlocking the given regions.
       x-patternProperties:
-        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
+        ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
           description: This property shall specify a valid odata or Redfish property.
-    UnlockUnitRequestBody:
-      additionalProperties: false
-      description: This defines the action for unlocking given regions.
-      properties:
-        Passphrase:
-          description: Passphrase for doing the operation.
-          type: string
-          x-longDescription: The value of this property shall be the passphrase used
-            in this actionn.
-        RegionId:
-          description: Memory region ID for which this action to be applied.
-          type: string
-          x-longDescription: The value of this property shall be the Memory region
-            ID for which this action to be applied.
-      required:
-      - Passphrase
-      - RegionId
-      type: object
-      x-longDescription: This action shall apply the supplied passphrase to the supplied
-        region for the purpose of unlocking the given regions.
 title: '#Memory.v1_0_1.Memory'
-x-copyright: Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For
+x-copyright: Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For
   the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
-x-owningEntity: DMTF
