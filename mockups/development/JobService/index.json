@@ -30,5 +30,5 @@
 	},
 	"Oem": {},
 	"@odata.context": "/redfish/v1/$metadata/JobService.JobService",
-	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+	"@Redfish.Copyright": "Copyright 2018 DMTF. All rights reserved."
 }
