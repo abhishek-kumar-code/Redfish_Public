@@ -23,6 +23,17 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 * DSP8013 - Redfish Interoperability Profiles - A bundle of published Redfish Interoperability Profile documents as well as supporting schema and sample documents used for creating profiles.
 
 
+# Redfish Schema Bundle Contents
+
+This bundles contains the set of Redfish schema files.  The contents of the folder are put into several folders.  Each folder contains a complete set of Redfish schema files for a given schema language.  The folders are as follows:
+* "csdl": Contains the OData Common Schema Definition Language format as XML files
+    * The files "RedfishExtensions_v1.xml" and "Resource_v1.xml" contain core definitions of Redfish
+* "json-schema": Contains the JSON Schema format as JSON files
+    * The files named "redfish-schema.*.json" and "odata.*.json" contain supplementary information about the schema files
+* "openapi": Contains the OpenAPI format as YAML files
+    * The file "openapi.yaml" contains the OpenAPI service document that describes all of the standard paths
+
+
 # Redfish Schema Release History
 
 ## Release 2018.2 (August 2018)
@@ -49,7 +60,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | CompositionService               | 1.1.0   | Added "AllowOverprovisioning" and "AllowZoneAffinity" properties. |
 | Drive                            | 1.5.0   | Added "HotspareReplacementMode" property. |
 | Endpoint                         | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
-| Event                            | 1.3.0   | Deprecated "EventType" in favor of new subscription properties.  Added "EventGroupId" to "EventRecord". |
+| Event                            | 1.3.0   | Deprecated "EventType" in favor of new subscription properties.  Added "MetricReport" as an EventType.  Added "EventGroupId" to "EventRecord". |
 | EventDestination                 | 1.4.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResources", and "EventFormatType" properties. |
 | EventService                     | 1.2.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResourcesSupported", and "EventFormatTypes" properties. |
 | HostInterface                    | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
