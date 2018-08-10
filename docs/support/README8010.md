@@ -23,7 +23,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 * DSP8013 - Redfish Interoperability Profiles - A bundle of published Redfish Interoperability Profile documents as well as supporting schema and sample documents used for creating profiles.
 
 
-# Redfish Schema Bundle Contents
+## Redfish Schema Bundle Contents
 
 This bundles contains the set of Redfish schema files.  The contents of the folder are put into several folders.  Each folder contains a complete set of Redfish schema files for a given schema language.  The folders are as follows:
 * "csdl": Contains the OData Common Schema Definition Language format as XML files
@@ -34,9 +34,9 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
     * The file "openapi.yaml" contains the OpenAPI service document that describes all of the standard paths
 
 
-# Redfish Schema Release History
+## Redfish Schema Release History
 
-## Release 2018.2 (August 2018)
+### Release 2018.2 (August 2018)
 
 | Schema Name                      | Version | Description |
 | ---                              | ---     | ---         |
@@ -109,7 +109,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | UpdateService                    | 1.x.x   | Errata release.  Clarified the Long Descriptions for "Targets", "HttpPushUriTargets", and "HttpPushUriTargetsBusy". |
 | (all files)                      | various | Errata release.  Added missing Required annotation on "Members" properties in Resource Collections.  Added missing "Members@odata.nextLink" property to Resource Collections.  Corrected some cases in JSON Schema where the type "integer" should have been used instead of "number".  Added "@odata.id", "@odata.type", and "@odata.context" as required properties in JSON Schema.  Added Description and LongDescription terms to all schema elements where missing.  Added "Capabilities" and "Uris" annotations on all resources. |
 
-## Release 2018.1 (April 2018)
+### Release 2018.1 (April 2018)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -139,7 +139,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Memory | 1.4.1 |  Errata release. Description clarifications. |
 | UpdateService | 1.0.3, 1.1.2, 1.2.1 |  Errata release. Regenerated JSON schema to pick up action parameters added in previous release. |
 
-## Release 2017.3 (November 2017)
+### Release 2017.3 (November 2017)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -202,7 +202,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | TaskService | 1.x.x | Errata release. Updated description of "LifeCycleEventOnTaskStateChange" to remove obsolete terminology. |
 | VLanNetworkInterface | 1.x.x | Errata release. Changed internal schema definition for "VLAN". |
 
-## Release 2017.2 (August 2017)
+### Release 2017.2 (August 2017)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -226,7 +226,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | SessionService | 1.x.x | Errata release.  Added clarifications to "ServiceEnabled" usage. |
 | Thermal | 1.x.x | Errata release.  Removed the errant auto-expand annotation within "Redundancy". |
 
-## Release 2017.1 (April 2017)
+### Release 2017.1 (April 2017)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -250,7 +250,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | (many) | various | Minor release.  Added Actions and OemActions objects to allow for OEM extensions. |
 | (many) | various | Errata release.  Corrected integer type properties in CSDL schemas to Int64 (from Int16 or Int32) for consistency.  Added missing descriptions in Complex Type definitions.  Added Actions and OemActions objects to allow for OEM extensions. Corrected Links and "Members" properties (Collection schemas) in all schemas to be non-nullable. |
 
-## Release 2016.3 (December 2016)
+### Release 2016.3 (December 2016)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -287,7 +287,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Power | 1.0.3 | Corrected descriptions for voltage-related properties and changed sensor descriptions to avoid use of term 'current', instead referring to 'present value'. |
 | ServiceRoot | 1.1.1 | Added missing EntityContainer for "ServiceContainer" in CSDL schema. |
 
-## Release 2016.2 (August 2016)
+### Release 2016.2 (August 2016)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -339,7 +339,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Storage | 1.0.1 | Corrected type definition of the "Volumes" link. |
 | Volume  | 1.0.1 | Corrected description of "VolumeType". |
 
-## Release 2016.1 (March 2016)
+### Release 2016.1 (March 2016)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -376,13 +376,13 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Thermal     | 1.1.0  | Added 'Name' to 'Fan' object.  Deprecated inconsistent 'FanName' in 'Fan'. |
 | Thermal     | 1.0.2 | Errata release (see 1.0.2 errata description above).  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions. | 
 
-## Release 1.1 (November 2015)
+### Release 1.1 (November 2015)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
 | Chassis    | 1.1.0   | Added 'PhysicalSecurity' object for Intrusion Detection sensor support. |
 
-## Release 1.0.1 (September 2015)
+### Release 1.0.1 (September 2015)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
@@ -393,7 +393,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Power       | 1.0.1  |  Errata release.  Corrected longDescription text for 'IntervalInMin'.  |
 | VLanNetworkInterface | 1.0.1  |  Errata release.  Corrected maximum VLAN ID value.  |
 
-## Release 1.0 (August 2015)
+### Release 1.0 (August 2015)
 
 | Schema Name | Version | Description     |
 | ---         | ---     | ---             |
