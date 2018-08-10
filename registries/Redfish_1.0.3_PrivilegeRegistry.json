@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2015-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2015-2018 DMTF. All rights reserved.",
     "@odata.type": "#PrivilegeRegistry.v1_0_0.PrivilegeRegistry",
     "Id": "Redfish_1.0.3_PrivilegeRegistry",
     "Name": "Privilege Mapping array collection",
