@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.5.1'
+DocVersion: '1.6.0'
 modified: '2018-08-10'
-SupersedesVersion: '1.5.0'
+SupersedesVersion: '1.5.1'
 status: published
 released: true
 copyright: '2014-2018'
@@ -3321,6 +3321,21 @@ OData-Version: 4.0
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
+| 1.6.0   | 2018-08-10 | Added methods of using $filter on the SSE URI for the EventService. |
+|         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
+|         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segements and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 must conform to these URI patterns. |
+|         |            | Added support for creating and naming Redfish schema files in the OpenAPI YAML-based format. |
+|         |            | Added URI construction rules for OEM extensions. |
+|         |            | Changed ETag usage to require strong ETag format. |
+|         |            | Added requirement for HTTP Allow header as a response header for GET and HEAD operations. |
+|         |            | Added Metric Reports as a type of event that can be produced by a Redfish Service. Added support for SSE streaming of Metric reports in support of new TelemetryService schema. |
+|         |            | Added Registry, Resource, Origin, or EventFormatType-based event subscription methods as detailed in the Specification and schema. Added an EventFormatType to allow for additional payload types for subscription-based or streaming events. Deprecated 'EventType'-based event subscription mechanism. |
+|         |            | Added Event message grouping capability. |
+|         |            | Provided guidance for defining and using OEM extensions for Messages and Message Registries. |
+|         |            | Added 'excerpt' and 'only' query parameters. |
+|         |            | Clarified requirements for Resource Collection responses, which includes required properties that were expected, but not listed explicitly in the Specification. |
+|         |            | Made inclusion of the '@odata.context' annotation optional. |
+|         |            | Removed requirement for clients to include the 'OData-Version' HTTP header in all requests. |
 | 1.5.1   | 2018-08-10 | Added clarifications to required properties in structured properties derived from ReferenceableMembers. |
 |         |            | Reorganized Eventing section to break out the different subscription methods to differentiate pub-sub from SSE. |
 |         |            | Removed statements referencing OData conformance levels. |
