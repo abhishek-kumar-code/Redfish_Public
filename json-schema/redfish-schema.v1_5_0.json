@@ -82,6 +82,10 @@
                 "type": "string"
             },
             "description": "The term specifies the URIs a service is allowed to use for the given resource."
+        },
+        "autoExpand": {
+            "type": "boolean",
+            "description": "The term specifies if the resource referenced by the hyperlink shall be expanded in the response body as specified in the 'Expanded resources' clause of the Redfish Specification."
         }
     },
     "properties": {
@@ -123,6 +127,15 @@
         "owningEntity": {
             "$ref": "#/definitions/owningEntity"
         },
+        "excerpt": {
+            "$ref": "#/definitions/excerpt"
+        },
+        "excerptCopy": {
+            "$ref": "#/definitions/excerptCopy"
+        },
+        "excerptCopyOnly": {
+            "$ref": "#/definitions/excerptCopyOnly"
+        },
         "insertable": {
             "$ref": "#/definitions/insertable"
         },
@@ -134,6 +147,9 @@
         },
         "uris": {
             "$ref": "#/definitions/uris"
+        },
+        "autoExpand": {
+            "$ref": "#/definitions/autoExpand"
         }
     }
 }
