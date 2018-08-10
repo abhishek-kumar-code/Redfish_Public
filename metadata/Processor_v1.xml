@@ -442,10 +442,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Processor that are directly connected to this Processor."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)">
+        <NavigationProperty Name="PCIeDevice" Type="PCIeDevice.PCIeDevice">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the PCIeDevices associated with this Processor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeDevice that represent the PCI-e Devices associated with this Processor."/>
+          <Annotation Term="OData.Description" String="A reference to the PCIeDevice associated with this Processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference of type PCIeDevice that represents the PCI-e Device associated with this Processor."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)">
@@ -610,6 +610,11 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA sideband interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that describes the sideband connectivity used by a management controller."/>
+        </Property>
+        <Property Name="PCIeVirtualFunctions" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The number of the PCIe Virtual Functions."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that describes the number of PCIe Virtual Functions configured within the FPGA."/>
         </Property>
         <Property Name="ProgrammableFromHost" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
