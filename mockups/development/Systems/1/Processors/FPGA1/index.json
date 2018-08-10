@@ -1,67 +1,66 @@
 {
-  "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
-  "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1",
-  "@odata.type": "#Processor.v1_4_0.Processor",
-  "Name": "FPGA",
-  "Id": "FPGA1",
-  "ProcessorType": "FPGA",
-  "ProcessorArchitecture": "OEM",
-  "InstructionSet": "OEM",
-  "Manufacturer": "Intel(R) Corporation",
-  "Model": "Stratix 10",
-  "UUID": "00000000-0000-0000-0000-000000000000",
-  "Status": {
-    "State": "Enabled",
-    "Health": "OK"
-  },
-  "Metrics": {
-    "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Metrics"
-  },
-  "TDPWatts": 120,
-  "MaxTDPWatts": 150,
-  "ProcessorMemory": [
-    {
-      "IntegratedMemory": true,
-      "MemoryType": "HBM2",
-      "CapacityMiB": 512,
-      "SpeedMHz": 1066
-    }
-  ],
-  "FPGA": {
-    "FpgaType": "Discrete",
-    "Model": "Stratix10",
-    "FwId": "0x6400002fc614bb9",
-    "FwManufacturer": "Intel(R) Corporation",
-    "FwVersion": "Blue v.1.00.86",
-    "HostInterface": "PCIeGen4x8",
-    "ExternalInterfaces": [
-      "Eth10Gx4"
-    ],
-    "SidebandInterface": "I2C",
-    "PCIeVirtualFunctions": 1,
-    "ProgrammableFromHost": true,
-    "ReconfigurationSlots": [
-      {
-        "SlotId": "AFU0",
-        "UUID": "00000000-0000-0000-0000-000000000000",
-        "ProgrammableFromHost": true,
-        "AccelerationFunctionLink": {
-          "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions/Compression"
+    "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
+    "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1",
+    "@odata.type": "#Processor.v1_4_0.Processor",
+    "Name": "FPGA",
+    "Id": "FPGA1",
+    "ProcessorType": "FPGA",
+    "ProcessorArchitecture": "OEM",
+    "InstructionSet": "OEM",
+    "Manufacturer": "Intel(R) Corporation",
+    "Model": "Stratix 10",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Metrics": {
+        "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Metrics"
+    },
+    "TDPWatts": 120,
+    "MaxTDPWatts": 150,
+    "ProcessorMemory": [
+        {
+            "IntegratedMemory": true,
+            "MemoryType": "HBM2",
+            "CapacityMiB": 512,
+            "SpeedMHz": 1066
         }
-      }
     ],
+    "FPGA": {
+        "FpgaType": "Discrete",
+        "Model": "Stratix10",
+        "FirmwareId": "0x6400002fc614bb9",
+        "FirmwareManufacturer": "Intel(R) Corporation",
+        "FirmwareVersion": "Blue v.1.00.86",
+        "HostInterface": "PCIeGen4x8",
+        "ExternalInterfaces": [
+            "Eth10Gx4"
+        ],
+        "SidebandInterface": "I2C",
+        "ProgrammableFromHost": true,
+        "ReconfigurationSlots": [
+            {
+                "SlotId": "AFU0",
+                "UUID": "00000000-0000-0000-0000-000000000000",
+                "ProgrammableFromHost": true,
+                "AccelerationFunction": {
+                    "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions/Compression"
+                }
+            }
+        ],
+        "Oem": {}
+    },
     "AccelerationFunctions": {
-      "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions"
+        "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions"
+    },
+    "Links": {
+        "Endpoints": [],
+        "ConnectedProcessors":[
+            {
+                "@odata.id": "/redfish/v1/Systems/1/Processors/1"
+            }
+        ]
     },
     "Oem": {}
-  },
-  "Links": {
-    "Endpoints": [],
-    "ConnectedProcessors":[
-      {
-        "@odata.id": "/redfish/v1/Systems/1/Processors/1"
-      }
-    ]
-  },
-  "Oem": {}
 }

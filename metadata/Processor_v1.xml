@@ -48,6 +48,12 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccelerationFunctionCollection_v1.xml">
     <edmx:Include Namespace="AccelerationFunctionCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
+    <edmx:Include Namespace="PCIeDevice"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
+    <edmx:Include Namespace="PCIeFunction"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -388,46 +394,64 @@
         <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Processor."/>
-          <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this Processor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to the Metrics associated with this Processor."/>
         </NavigationProperty>
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this processor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the processor. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the processor.  RFC4122 describes methods that can be used to create the value.  The value should be considered to be opaque.  Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID."/>
         </Property>
         <Property Name="TDPWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Nominal TDP in watts."/>
-          <Annotation Term="OData.LongDescription" String="Nominal TDP in watts."/>
+          <Annotation Term="OData.Description" String="The nominal TDP in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the nominal TDP in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
         <Property Name="MaxTDPWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Maximum TDP in watts."/>
-          <Annotation Term="OData.LongDescription" String="Maximum TDP in watts."/>
+          <Annotation Term="OData.Description" String="The maximum TDP in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum TDP in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
         <Property Name="ProcessorMemory" Type="Collection(Processor.v1_4_0.ProcessorMemory)" Nullable="false">
-          <Annotation Term="OData.Description" String="Memory directly attached or integrated witin the Procesor."/>
+          <Annotation Term="OData.Description" String="The memory directly attached or integrated witin this Procesor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory directly attached or integrated witin this Processor."/>
         </Property>
         <Property Name="FPGA" Type="Processor.v1_4_0.FPGA" Nullable="true">
-          <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
-          <Annotation Term="OData.LongDescription" String="The properties of the FPGA device represented by this Processor."/>
+          <Annotation Term="OData.Description" String="The properties specific for Processors of type FPGA."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an object containing properties specific for Processors of type FPGA."/>
         </Property>
+        <NavigationProperty Name="AccelerationFunctions" Type="AccelerationFunctionCollection.AccelerationFunctionCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of Acceleration Functions associated with this Processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type AccelerationFunctionCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Processor.v1_1_0.Links">
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this processor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Endpoint that represent Endpoints accociated with this Processor."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="ConnectedProcessors" Type="Collection(Processor.Processor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the processors directly connected to this processor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor is directly connected and shall reference a resource of type Processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Processor that are directly connected to this Processor."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the PCIeDevices associated with this Processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeDevice that represent the PCI-e Devices associated with this Processor."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the PCIeFunctions associated with this Processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeFunction that represent the PCI-e Functions associated with this Processor."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
@@ -439,23 +463,23 @@
         <Property Name="IntegratedMemory" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates whether this memory is integrated within the Processor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this memory is integrated within the Porcessor. Otherwise it is discrete memory attached to the Processor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this memory is integrated within the Porcessor.  Otherwise it is discrete memory attached to the Processor."/>
         </Property>
         <Property Name="MemoryType" Type="Processor.v1_4_0.ProcessorMemoryType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of the integrated memory."/>
+          <Annotation Term="OData.Description" String="The type of memory used by this processor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the processor memory type."/>
         </Property>
         <Property Name="CapacityMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Memory Capacity in MiB."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory capacity in MiB."/>
+          <Annotation Term="OData.Description" String="The memory capacity in MiB."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory capacity in MiB."/>
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="SpeedMHz" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Operating speed of Memory in MHz."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the operating speed of Memory in MHz."/>
+          <Annotation Term="OData.Description" String="The operating speed of the memory in MHz."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the operating speed of the memory in MHz."/>
         </Property>
       </ComplexType>
 
@@ -545,8 +569,8 @@
 
       <ComplexType Name="FPGA">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="Properties of the FPGA device."/>
-        <Annotation Term="OData.LongDescription" String="The properties of the FPGA device represented by this Processor."/>
+        <Annotation Term="OData.Description" String="The properties of the FPGA device."/>
+        <Annotation Term="OData.LongDescription" String="This object shall contain the properties of the FPGA device represented by a Processor."/>
         <Property Name="FpgaType" Type="Processor.v1_4_0.FpgaType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA type."/>
@@ -557,17 +581,17 @@
           <Annotation Term="OData.Description" String="The FPGA model."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a model of the FPGA device."/>
         </Property>
-        <Property Name="FwId" Type="Edm.String" Nullable="false">
+        <Property Name="FirmwareId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA firmware identifier."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the FPGA firmware identifier. A format of the identifier is vendor specific."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the FPGA firmware identifier."/>
         </Property>
-        <Property Name="FwManufacturer" Type="Edm.String" Nullable="false">
+        <Property Name="FirmwareManufacturer" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA firmware manufacturer."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the FPGA firmware manufacturer."/>
         </Property>
-        <Property Name="FwVersion" Type="Edm.String" Nullable="false">
+        <Property Name="FirmwareVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA firmware version."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the FPGA firmware version."/>
@@ -575,49 +599,41 @@
         <Property Name="HostInterface" Type="Processor.v1_4_0.FpgaInterface" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA interface to the host."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA interface to the host."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be string that describes the connectivity to the host for system software to use."/>
         </Property>
         <Property Name="ExternalInterfaces" Type="Collection(Processor.v1_4_0.FpgaInterface)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of the FPGA external interfaces."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the FPGA external interfaces."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of strings that describe the external connectivity of the FPGA."/>
         </Property>
         <Property Name="SidebandInterface" Type="Processor.v1_4_0.FpgaInterface" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA sideband interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the FPGA sideband interface."/>
-        </Property>
-        <Property Name="PCIeVirtualFunctions" Type="Edm.Int64" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Number of the PCIe Virtual Functions."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number of PCIe Virtual Functions configured within the FPGA."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that describes the sideband connectivity used by a management controller."/>
         </Property>
         <Property Name="ProgrammableFromHost" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This flag indicates if the FPGA FW can be reprogrammed from the host."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the FPGA FW can be reprogrammed from the host. If set to false, a FPGA FW can be programmed through the sideband interface only."/>
+          <Annotation Term="OData.Description" String="This flag indicates if the FPGA firmware can be reprogrammed from the host using system software."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the FPGA firmware can be reprogrammed from the host using system software.  If set to false, system software shall not be able to program the FPGA firmware from the host interface.  In either state, a management controller may be able to program the FPGA firmware using the sideband interface."/>
         </Property>
         <Property Name="ReconfigurationSlots" Type="Collection(Processor.v1_4_0.FpgaReconfigurationSlot)" Nullable="false">
-          <Annotation Term="OData.Description" String="An array of the FPGA reconfiguration slots."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the structures describing the FPGA reconfiguration slots that can be programmed with the acceleration function code."/>
+          <Annotation Term="OData.Description" String="An array of the FPGA reconfiguration slots.  A reconfiguration slot is used by an FPGA to contain an acceleration function that can change as the FPGA is being provisioned."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the structures describing the FPGA reconfiguration slots that can be programmed with the acceleration functions."/>
         </Property>
-        <NavigationProperty Name="AccelerationFunctions" Type="AccelerationFunctionCollection.AccelerationFunctionCollection" ContainsTarget="true" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The value of this property shall be a reference to the resources that this processor uses and shall reference a resource of type AccelerationFunction."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this processor uses and shall reference a resource of type AccelerationFunction."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="FpgaReconfigurationSlot">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This type describes the FPGA reconfiguration slot."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain information about FPGA reconfiguration slot."/>
+        <Annotation Term="OData.Description" String="This type describes the FPGA reconfiguration slot.  A reconfiguration slot is used by an FPGA to contain an acceleration function that can change as the FPGA is being provisioned."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain information about the FPGA reconfiguration slot."/>
         <Property Name="SlotId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The FPGA slot identifier."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a type of the integrated memory type."/>
+          <Annotation Term="OData.Description" String="The FPGA reconfiguration slot identifier."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the FPGA reconfiguration slot identifier."/>
         </Property>
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -626,10 +642,10 @@
         </Property>
         <Property Name="ProgrammableFromHost" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This flag indicates if the reconfiguration slot can be programmed from the host."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the reconfiguration slot can be reprogrammed from the host. If set to ‘false’ a reconfiguration slot can be programmed through the sideband interface only."/>
+          <Annotation Term="OData.Description" String="This flag indicates if the reconfiguration slot can be reprogrammed from the host using system software."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the reconfiguration slot can be reprogrammed from the host using system software.  If set to false, system software shall not be able to program the reconfiguration slot from the host interface.  In either state, a management controller may be able to program the reconfiguration slot using the sideband interface."/>
         </Property>
-        <NavigationProperty Name="AccelerationFunctionLink" Type="AccelerationFunction.AccelerationFunction">
+        <NavigationProperty Name="AccelerationFunction" Type="AccelerationFunction.AccelerationFunction">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to the Acceleration Function provided by the code programmed into a reconfiguration slot."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the acceleration function resources provided by the code programmed into a reconfiguration slot and shall reference a resource of type AccelerationFunction."/>
@@ -653,202 +669,201 @@
           <Annotation Term="OData.Description" String="The Intel UltraPath Interconnect."/>
         </Member>
         <Member Name="PCIeGen3">
-          <Annotation Term="OData.Description" String="The PCIe version three."/>
+          <Annotation Term="OData.Description" String="PCIe generation 3."/>
         </Member>
         <Member Name="PCIeGen3x1">
-          <Annotation Term="OData.Description" String="The one line PCIe version three."/>
+          <Annotation Term="OData.Description" String="PCIe generation 3, one lane."/>
         </Member>
         <Member Name="PCIeGen3x2">
-          <Annotation Term="OData.Description" String="The two lines PCIe version three."/>
+          <Annotation Term="OData.Description" String="PCIe generation 3, two lanes."/>
         </Member>
         <Member Name="PCIeGen3x4">
-          <Annotation Term="OData.Description" String="The four lines PCIe version three."/>
+          <Annotation Term="OData.Description" String="PCIe generation 3, four lanes."/>
         </Member>
         <Member Name="PCIeGen3x8">
-          <Annotation Term="OData.Description" String="The eight lines PCIe version three."/>
+          <Annotation Term="OData.Description" String="PCIe generation 3, eight lanes."/>
         </Member>
         <Member Name="PCIeGen3x16">
-          <Annotation Term="OData.Description" String="The sixteen lines PCIe version three."/>
+          <Annotation Term="OData.Description" String="PCIe generation 3, sixteen lanes."/>
         </Member>
         <Member Name="PCIeGen4">
-          <Annotation Term="OData.Description" String="The PCIe version four."/>
+          <Annotation Term="OData.Description" String="PCIe generation 3."/>
         </Member>
         <Member Name="PCIeGen4x1">
-          <Annotation Term="OData.Description" String="The one line PCIe version four."/>
+          <Annotation Term="OData.Description" String="PCIe generation 4, one lane."/>
         </Member>
         <Member Name="PCIeGen4x2">
-          <Annotation Term="OData.Description" String="The two lines PCIe version four."/>
+          <Annotation Term="OData.Description" String="PCIe generation 4, two lanes."/>
         </Member>
         <Member Name="PCIeGen4x4">
-          <Annotation Term="OData.Description" String="The four lines PCIe version four."/>
+          <Annotation Term="OData.Description" String="PCIe generation 4, four lanes."/>
         </Member>
         <Member Name="PCIeGen4x8">
-          <Annotation Term="OData.Description" String="The eight lines PCIe version four."/>
+          <Annotation Term="OData.Description" String="PCIe generation 4, eight lanes."/>
         </Member>
         <Member Name="PCIeGen4x16">
-          <Annotation Term="OData.Description" String="The sixteen lines PCIe version four."/>
+          <Annotation Term="OData.Description" String="PCIe generation 4, sixteen lanes."/>
         </Member>
         <Member Name="PCIeGen5">
-          <Annotation Term="OData.Description" String="The PCIe version five."/>
+          <Annotation Term="OData.Description" String="PCIe generation 5."/>
         </Member>
         <Member Name="PCIeGen5x1">
-          <Annotation Term="OData.Description" String="The one line PCIe version five."/>
+          <Annotation Term="OData.Description" String="PCIe generation 5, one lane."/>
         </Member>
         <Member Name="PCIeGen5x2">
-          <Annotation Term="OData.Description" String="The two lines PCIe version five."/>
+          <Annotation Term="OData.Description" String="PCIe generation 5, two lanes."/>
         </Member>
         <Member Name="PCIeGen5x4">
-          <Annotation Term="OData.Description" String="The four lines PCIe version five."/>
+          <Annotation Term="OData.Description" String="PCIe generation 5, four lanes."/>
         </Member>
         <Member Name="PCIeGen5x8">
-          <Annotation Term="OData.Description" String="The eight lines PCIe version five."/>
+          <Annotation Term="OData.Description" String="PCIe generation 5, eight lanes."/>
         </Member>
         <Member Name="PCIeGen5x16">
-          <Annotation Term="OData.Description" String="The sixteen lines PCIe version five."/>
+          <Annotation Term="OData.Description" String="PCIe generation 5, sixteen lanes."/>
         </Member>
         <Member Name="Eth10G">
-          <Annotation Term="OData.Description" String="The 10G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="10G Ethernet interface."/>
         </Member>
         <Member Name="Eth10Gx1">
-          <Annotation Term="OData.Description" String="The single 10G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="10G Ethernet interface, one lane."/>
         </Member>
         <Member Name="Eth10Gx2">
-          <Annotation Term="OData.Description" String="The two 10G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="10G Ethernet interface, two lanes."/>
         </Member>
-        <Member Name="Ethe10Gx4">
-          <Annotation Term="OData.Description" String="The four 10G Ethernet interfaces."/>
+        <Member Name="Eth10Gx4">
+          <Annotation Term="OData.Description" String="10G Ethernet interface, four lanes."/>
         </Member>
-        <Member Name="Ethe10Gx8">
-          <Annotation Term="OData.Description" String="The eight 10G Ethernet interfaces."/>
+        <Member Name="Eth10Gx8">
+          <Annotation Term="OData.Description" String="10G Ethernet interface, eight lanes."/>
         </Member>
         <Member Name="Eth10Gx10">
-          <Annotation Term="OData.Description" String="The ten 10G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="10G Ethernet interface, ten lanes."/>
         </Member>
         <Member Name="Eth25G">
-          <Annotation Term="OData.Description" String="The 25G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="25G Ethernet interface."/>
         </Member>
         <Member Name="Eth25Gx1">
-          <Annotation Term="OData.Description" String="The single 25G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="25G Ethernet interface, one lane."/>
         </Member>
         <Member Name="Eth25Gx2">
-          <Annotation Term="OData.Description" String="The two 25G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="25G Ethernet interface, two lanes."/>
         </Member>
         <Member Name="Eth25Gx4">
-          <Annotation Term="OData.Description" String="The four 25G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="25G Ethernet interface, four lanes."/>
         </Member>
-        <Member Name="Ethe25Gx8">
-          <Annotation Term="OData.Description" String="The eight 25G Ethernet interfaces."/>
+        <Member Name="Eth25Gx8">
+          <Annotation Term="OData.Description" String="25G Ethernet interface, eight lanes."/>
         </Member>
         <Member Name="Eth25Gx10">
-          <Annotation Term="OData.Description" String="The ten 25G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="25G Ethernet interface, ten lanes."/>
         </Member>
         <Member Name="Eth40G">
-          <Annotation Term="OData.Description" String="The 40G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="40G Ethernet interface."/>
         </Member>
         <Member Name="Eth40Gx1">
-          <Annotation Term="OData.Description" String="The single 40G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="40G Ethernet interface, one lane."/>
         </Member>
         <Member Name="Eth40Gx2">
-          <Annotation Term="OData.Description" String="The two 40G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="40G Ethernet interface, two lanes."/>
         </Member>
         <Member Name="Eth40Gx4">
-          <Annotation Term="OData.Description" String="The four 40G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="40G Ethernet interface, four lanes."/>
         </Member>
-        <Member Name="Ethe40Gx8">
-          <Annotation Term="OData.Description" String="The eight 40G Ethernet interfaces."/>
+        <Member Name="Eth40Gx8">
+          <Annotation Term="OData.Description" String="40G Ethernet interface, eight lanes."/>
         </Member>
         <Member Name="Eth40Gx10">
-          <Annotation Term="OData.Description" String="The ten 40G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="40G Ethernet interface, ten lanes."/>
         </Member>
         <Member Name="Eth50G">
-          <Annotation Term="OData.Description" String="The 50G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="50G Ethernet interface."/>
         </Member>
         <Member Name="Eth50Gx1">
-          <Annotation Term="OData.Description" String="The single 50G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="50G Ethernet interface, one lane."/>
         </Member>
         <Member Name="Eth50Gx2">
-          <Annotation Term="OData.Description" String="The two 50G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="50G Ethernet interface, two lanes."/>
         </Member>
         <Member Name="Eth50Gx4">
-          <Annotation Term="OData.Description" String="The four 50G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="50G Ethernet interface, four lanes."/>
         </Member>
-        <Member Name="Ethe50Gx8">
-          <Annotation Term="OData.Description" String="The eight 50G Ethernet interfaces."/>
+        <Member Name="Eth50Gx8">
+          <Annotation Term="OData.Description" String="50G Ethernet interface, eight lanes."/>
         </Member>
         <Member Name="Eth50Gx10">
-          <Annotation Term="OData.Description" String="The ten 50G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="50G Ethernet interface, ten lanes."/>
         </Member>
         <Member Name="Eth100G">
-          <Annotation Term="OData.Description" String="The 100G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="100G Ethernet interface."/>
         </Member>
         <Member Name="Eth100Gx1">
-          <Annotation Term="OData.Description" String="The single 100G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="100G Ethernet interface, one lane."/>
         </Member>
         <Member Name="Eth100Gx2">
-          <Annotation Term="OData.Description" String="The two 100G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="100G Ethernet interface, two lanes."/>
         </Member>
         <Member Name="Eth100Gx4">
-          <Annotation Term="OData.Description" String="The four 100G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="100G Ethernet interface, four lanes."/>
         </Member>
-        <Member Name="Ethe100Gx8">
-          <Annotation Term="OData.Description" String="The eight 100G Ethernet interfaces."/>
+        <Member Name="Eth100Gx8">
+          <Annotation Term="OData.Description" String="100G Ethernet interface, eight lanes."/>
         </Member>
         <Member Name="Eth100Gx10">
-          <Annotation Term="OData.Description" String="The ten 100G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="100G Ethernet interface, ten lanes."/>
         </Member>
         <Member Name="Eth200G">
-          <Annotation Term="OData.Description" String="The 200G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="200G Ethernet interface."/>
         </Member>
         <Member Name="Eth200Gx1">
-          <Annotation Term="OData.Description" String="The single 200G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="200G Ethernet interface, one lane."/>
         </Member>
         <Member Name="Eth200Gx2">
-          <Annotation Term="OData.Description" String="The two 200G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="200G Ethernet interface, two lanes."/>
         </Member>
         <Member Name="Eth200Gx4">
-          <Annotation Term="OData.Description" String="The four 200G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="200G Ethernet interface, four lanes."/>
         </Member>
-        <Member Name="Ethe200Gx8">
-          <Annotation Term="OData.Description" String="The eight 200G Ethernet interfaces."/>
+        <Member Name="Eth200Gx8">
+          <Annotation Term="OData.Description" String="200G Ethernet interface, eight lanes."/>
         </Member>
         <Member Name="Eth200Gx10">
-          <Annotation Term="OData.Description" String="The ten 200G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="200G Ethernet interface, ten lanes."/>
         </Member>
         <Member Name="Eth400G">
-          <Annotation Term="OData.Description" String="The 400G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="400G Ethernet interface."/>
         </Member>
         <Member Name="Eth400Gx1">
-          <Annotation Term="OData.Description" String="The single 400G Ethernet interface."/>
+          <Annotation Term="OData.Description" String="400G Ethernet interface, one lane."/>
         </Member>
         <Member Name="Eth400Gx2">
-          <Annotation Term="OData.Description" String="The two 400G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="400G Ethernet interface, two lanes."/>
         </Member>
         <Member Name="Eth400Gx4">
-          <Annotation Term="OData.Description" String="The four 400G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="400G Ethernet interface, four lanes."/>
         </Member>
-        <Member Name="Ethe400Gx8">
-          <Annotation Term="OData.Description" String="The eight 400G Ethernet interfaces."/>
+        <Member Name="Eth400Gx8">
+          <Annotation Term="OData.Description" String="400G Ethernet interface, eight lanes."/>
         </Member>
         <Member Name="Eth400Gx10">
-          <Annotation Term="OData.Description" String="The ten 400G Ethernet interfaces."/>
+          <Annotation Term="OData.Description" String="400G Ethernet interface, ten lanes."/>
         </Member>
         <Member Name="SPI">
-          <Annotation Term="OData.Description" String="The Serial Peripheral Interface Bus."/>
+          <Annotation Term="OData.Description" String="Serial Peripheral Interface Bus."/>
         </Member>
         <Member Name="SMBus">
-          <Annotation Term="OData.Description" String="The System Management Bus."/>
+          <Annotation Term="OData.Description" String="System Management Bus."/>
         </Member>
         <Member Name="I2C">
-          <Annotation Term="OData.Description" String="The Inter-Integrated Circuit Bus."/>
+          <Annotation Term="OData.Description" String="Inter-Integrated Circuit Bus."/>
         </Member>
         <Member Name="I3C">
-          <Annotation Term="OData.Description" String="The Improved Inter-Integrated Circuit Bus."/>
+          <Annotation Term="OData.Description" String="Improved Inter-Integrated Circuit Bus."/>
         </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="OEM-defined."/>
         </Member>
       </EnumType>
-
     </Schema>
 
   </edmx:DataServices>

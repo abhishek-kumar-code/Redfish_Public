@@ -21,8 +21,8 @@
       "OccupancyPercent": 90.1
     }
   ],
-  "MblBytes": 18253611008,
-  "MbrBytes": 81788928,
+  "LocalMemoryBandwidthBytes": 18253611008,
+  "RemoteMemoryBandwidthBytes": 81788928,
   "KernelPercent": 2.3,
   "UserPercent": 34.7,
   "CoreMetrics": [
@@ -30,19 +30,19 @@
       "CoreId": "core0",
       "InstructionsPerCycle": 1.16,
       "UnhaltedCycles": 6254383746,
-      "MemStallCount": 58372,
-      "IoStallCount": 2634872,
+      "MemoryStallCount": 58372,
+      "IOStallCount": 2634872,
       "CoreCache":[
         {
           "Level": 2,
           "CacheMiss": 0.472,
           "CahceHitRatio": 0.57,
-          "CacheMpi": 0.00346,
+          "CacheMissesPerInstruction": 0.00346,
           "OccupancyBytes": 198231,
           "OccupancyPercent": 77.4
         }
       ],
-      "CstateResidency": [
+      "CStateResidency": [
         {
           "Level": "C0",
           "Residency": 1.13
