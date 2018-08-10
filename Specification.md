@@ -1201,6 +1201,7 @@ Primitive properties shall be returned as JSON values according to the following
 | ---                | ---
 | Edm.Boolean        | Boolean
 | Edm.DateTimeOffset | String, formatted as specified in [DateTime Values](#datetime-values)
+| Edm.Duration       | String, formatted as specified in [Duration Values](#duration-values)
 | Edm.Decimal        | Number, optionally containing a decimal point
 | Edm.Double         | Number, optionally containing a decimal point and optionally containing an exponent
 | Edm.Guid           | String, matching the pattern ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})
@@ -1221,6 +1222,32 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 * The 'T' separator and 'Z' suffix shall be capitals.
 
 In cases where the time of day is unknown or serves no purpose, the service shall report "00:00:00Z" for the time of day portion of the DateTime value.
+
+
+###### Duration values
+
+Duration values shall be returned as JSON strings according to the ISO 8601 "duration" format of the form:
+
+ `P[*Y*Y][*M*M][*W*W][*D*D][T[*h*H][*m*M][*s*[.*S*]S]]`
+
+  where
+
+* *Y* is the number of years
+* *M* is the number of months
+* *W* is the number of weeks
+* *D* is the number of days
+* *h* is the number of hours
+* *m* is the number of minutes
+* *s* is the number of seconds
+* *S* is the fractional seconds
+
+Each field is optional and may contain more than one digit.  Below are some examples:
+
+* "P3D" specifies a duration of 3 days
+* "PT6H" specifies a duration of 6 hours
+* "PT10S" specifies a duration of 10 seconds
+* "PT0.001S" specifies a duration of 0.001 seconds
+* "PT1H30M" specifies a duration of 1 hour and 30 minutes
 
 
 ##### Structured properties
@@ -2457,11 +2484,13 @@ A service may support the "ServerSentEventUri" property within the Event Service
 
 #### EventType based eventing
 
-There are two types of events generated in a Redfish Service - life cycle and alert.  This method of eventing has been deprecated in the Redfish Schema.
+There are two types of events generated in a Redfish Service - life cycle, alert, and metric report.  This method of eventing has been deprecated in the Redfish Schema.
 
 Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this is similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any properties that changed.
 
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
+
+Metric report event happen when the TelemetryService has generated a new Metric Report or updated an existing Metric Report.  These types of events shall be generated as specified by the MetricReportDefinition resources found subordinate to the TelemetryService.  This can be defined to be done on a periodic basis, on demand, or when changes in the metric properties are detected.  See the Redfish MetricReportDefinition Schema for full details.
 
 #### Ways to register for events
 
@@ -2475,7 +2504,13 @@ OriginResources can be specified to limit the events sent to the destination to 
 
 EventFormatType can be specified in the subscription as well.  The service advertises the list of formats that can be sent using the EventFormatTypes property in the EventService.  This value represents the format of the payload sent to the Event Destination.  If the value is not specified, then the payload will correspond to the Event Schema.
 
-#### Event message objects
+#### Event formats
+
+There are two formats of events:
+* [Metric report message objects](#metric-report-message-objects): This format shall be when the TelemetryService has generated a new Metric Report or updated an existing Metric Report.
+* [Event message objects](#event-message-objects): This format shall be used for all other types of events.
+
+##### Event message objects
 
 Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.
 
@@ -2493,6 +2528,10 @@ where
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.
 
 Event messages may also have an EventGroupId property.  The purpose of this property is to let clients know that different messages may be from the same event.  For instance, if a LAN cable is disconnected, they may get a specific message from one registry about the LAN cable being disconnected, another message from a general registry about the resource changing, perhaps a message about resource state change and maybe even more.  In order for the client to be able to tell all of these have the same root cause, these messages would have the same value for the EventGroupId property.
+
+##### Metric report message objects
+
+Metric report message objects sent to the specified client endpoint shall contain the properties as described in the Redfish MetricReport Schema.
 
 #### OEM Extensions
 
@@ -2603,6 +2642,27 @@ Server-Sent Events (SSE), as defined by the Web Hypertext Application Technology
 
 A service's implementation of the "EventService" resource may contain a property called "ServerSentEventUri".  If a client performs a GET on the URI specified by the "ServerSentEventUri", the service shall keep the connection open and conform to the [HTML5 Specification](#HTML5-Spec-SSE) until the client closes the socket.  Events generated by the service shall be sent to the client using the open connection.
 
+When a client opens an SSE stream for the EventService, the service shall create an EventDestination instance in the Subscriptions collection for the EventService to represent the connection.  The "Context" property in the EventDestination resource shall be an opaque string generated by the service.  The service shall delete the corresponding EventDestination instance when the connection is closed.  The service shall close the connection if the corresponding EventDestination is deleted.
+
+There are two formats of SSE streams:
+* [Metric report SSE stream](#metric-report-sse-stream): This format shall be when the TelemetryService has generated a new Metric Report or updated an existing Metric Report.
+* [Event message SSE stream](#event-message-sse-stream): This format shall be used for all other types of events.
+
+The service should support using the $filter query parameter provided in the URI for the SSE stream by the client in order to reduce the amount of data returned to the client.  The following table shows the properties that the service should allow to be filtered.  The $filter syntax shall follow the format specified in the [Query parameters for Filter clause](#query-parameters).
+
+| Property                         | Description                                                                                                                                                       | Example |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| EventType                        | The service shall only send Events of the matching EventType.  See the EventType enum defined by the Redfish Event Schema for the values allowed.                 | `http://sseuri?$filter=EventType eq StatusChange` |
+| MetricReportDefinition           | The service shall only send MetricReports generated from the specified MetricReportDefinition.                                                                    | `http://sseuri?$filter=MetricReportDefinition eq '/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics'` |
+| RegistryPrefix                   | The service shall only send Events with Messages that are part of the specified Registry Prefix.                                                                  | `http://sseuri?$filter=(RegistryPrefix eq Resource) or (RegistryPrefix eq Task)` |
+| ResourceType                     | The service shall only send Events for resources matching the type.                                                                                               | `http://sseuri?$filter=(ResourceType eq 'Power') or (ResourceType eq 'Thermal')` |
+| EventFormatType                  | The service shall only send event payloads of the matching type.  See the EventFormatType enum defined by the Redfish EventService Schema for the values allowed. | `http://sseuri?$filter=EventFormatType eq Event` |
+| MessageId                        | The service shall only send Events containing the matching Message Id.                                                                                            | `http://sseuri?$filter=MessageId eq 'Contoso.1.0.TempAssert'` |
+| OriginResource                   | The service shall only send Events for the specified resouce.                                                                                                     | `http://sseuri?$filter=OriginResource eq '/redfish/v1/Chassis/1/Thermal'` |
+
+
+##### Event message SSE stream
+
 The service shall use the "id" field in the SSE stream to uniquely indicate an event.  The value of the "id" field shall be the same as the "Id" property in the event payload.  The value of the "Id" property should be a positive integer value and should be generated in a sequential manner.  A service should accept the "Last-Event-ID" header from the client in order to allow a client to restart the event stream in case the connection is interrupted.
 
 The service shall use the "data" field in the SSE stream to include the JSON representation of the Event object as defined in the [Event message objects section](#event-message-objects).
@@ -2639,19 +2699,49 @@ data:    ]
 data:}
 ```
 
-When a client opens an SSE stream for the EventService, the service shall create an EventDestination instance in the Subscriptions collection for the EventService to represent the connection.  The "Context" property in the EventDestination resource shall be an opaque string generated by the service.  The service shall delete the corresponding EventDestination instance when the connection is closed.  The service shall close the connection if the corresponding EventDestination is deleted.
 
-The service should support using the $filter query parameter provided in the URI for the SSE stream by the client in order to reduce the amount of data returned to the client.  The following table shows the properties that the service should allow to be filtered.  The $filter syntax shall follow the format specified in the [Query parameters for Filter clause](#query-parameters).
+##### Metric report SSE stream
 
-| Property                         | Description                                                                                                                                                       | Example |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| EventType                        | The service shall only send Events of the matching EventType.  See the EventType enum defined by the Redfish Event Schema for the values allowed.                 | `http://sseuri?$filter=EventType eq StatusChange` |
-| MetricReportDefinition           | The service shall only send MetricReports generated from the specified MetricReportDefinition.                                                                    | `http://sseuri?$filter=MetricReportDefinition eq '/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics'` |
-| RegistryPrefix                   | The service shall only send Events with Messages that are part of the specified Registry Prefix.                                                                  | `http://sseuri?$filter=(RegistryPrefix eq Resource) or (RegistryPrefix eq Task)` |
-| ResourceType                     | The service shall only send Events for resources matching the type.                                                                                               | `http://sseuri?$filter=(ResourceType eq 'Power') or (ResourceType eq 'Thermal')` |
-| EventFormatType                  | The service shall only send event payloads of the matching type.  See the EventFormatType enum defined by the Redfish EventService Schema for the values allowed. | `http://sseuri?$filter=EventFormatType eq Event` |
-| MessageId                        | The service shall only send Events containing the matching Message Id.                                                                                            | `http://sseuri?$filter=MessageId eq 'Contoso.1.0.TempAssert'` |
-| OriginResource                   | The service shall only send Events for the specified resouce.                                                                                                     | `http://sseuri?$filter=OriginResource eq '/redfish/v1/Chassis/1/Thermal'` |
+The service shall use the "id" field in the SSE stream to uniquely indicate a metric report transmission.  The value of the "id" field shall be the same as the "ReportSequence" property in the metric report payload.  The value of the "ReportSequence" property should be a positive integer value and should be generated in a sequential manner.  A service should accept the "Last-Event-ID" header from the client in order to allow a client to restart the metric report stream in case the connection is interrupted.
+
+The service shall use the "data" field in the SSE stream to include the JSON representation of the Metric Report object as defined in the [Metric report message objects section](#metric-report-message-objects).
+
+The example payload below shows a stream containing a metric report with the "id" field set to 127, and the "data" field containing the Metric Report object.
+
+```
+id: 127
+data:{
+data:    "@odata.id": "/redfish/v1/TelemetryService/MetricReports/AvgPlatformPowerUsage",
+data:    "@odata.context": "/redfish/v1/$metadata#MetricReport.MetricReport",
+data:    "@odata.type": "#MetricReport.v1_0_0.MetricReport",
+data:    "Id": "AvgPlatformPowerUsage",
+data:    "Name": "Average Platform Power Usage metric report",
+data:    "ReportSequence": "127",
+data:    "MetricReportDefinition": {
+data:        "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/AvgPlatformPowerUsage"
+data:    },
+data:    "MetricValues": [
+data:        {
+data:            "MetricId": "AverageConsumedWatts",
+data:            "MetricValue": "100",
+data:            "Timestamp": "2016-11-08T12:25:00-05:00",
+data:            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/0/PowerConsumedWatts"
+data:        },
+data:        {
+data:            "MetricId": "AverageConsumedWatts",
+data:            "MetricValue": "94",
+data:            "Timestamp": "2016-11-08T13:25:00-05:00",
+data:            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/0/PowerConsumedWatts"
+data:        },
+data:        {
+data:            "MetricId": "AverageConsumedWatts",
+data:            "MetricValue": "100",
+data:            "Timestamp": "2016-11-08T14:25:00-05:00",
+data:            "MetricProperty": "/redfish/v1/Chassis/Tray_1/Power#/0/PowerConsumedWatts"
+data:        }
+data:    ]
+data:}
+```
 
 
 ## Security

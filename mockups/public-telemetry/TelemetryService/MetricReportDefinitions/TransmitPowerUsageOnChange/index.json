@@ -1,0 +1,30 @@
+{
+    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "Id": "TransmitPowerUsageOnChange",
+    "Name": "Transmit Power Usage on change",
+    "MetricReportDefinitionType":"OnChange",
+    "ReportActions": [
+        "RedfishEvent"
+    ],
+    "Status": {
+        "State": "Enabled"
+    },
+    "Wildcards": [
+        {
+            "Wild": [
+                "0"
+            ]
+        }
+    ],
+    "Metrics": [
+        {
+            "MetricId": "PowerUsageReading",
+            "MetricProperties": [
+                "/redfish/v1/Chassis/Tray_1/Power#/PowerControl/{Wild}/PowerConsumedWatts"
+            ]
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/TransmitPowerUsageOnChange",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

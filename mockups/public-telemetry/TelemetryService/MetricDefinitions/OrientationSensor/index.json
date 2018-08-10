@@ -1,0 +1,28 @@
+{
+    "@odata.type": "#MetricDefinition.v1_0_0.MetricDefinition",
+    "Id": "OrientationSensor",
+    "Name": "Senses the orientation of the chassis",
+    "MetricType": "Discrete",
+    "Implementation": "PhysicalSensor",
+    "PhysicalContext": "ComputeBay",
+    "SensingInterval": "PT1S",
+    "DiscreteValues": [
+        "Vertical",
+        "Horizontal",
+        "Inclined"
+    ],
+    "Wildcards": [
+        {
+            "Name": "ChassisID",
+            "Values": [
+                "1"
+            ]
+        }
+    ],
+    "MetricProperties": [
+        "/redfish/v1/Chassis/{ChassisID}#/Oem/Contoso/Orientation"
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricDefinition.MetricDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/OrientationSensor",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

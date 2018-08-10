@@ -68,6 +68,10 @@
         <Member Name="Alert">
           <Annotation Term="OData.Description" String="A condition exists which requires attention."/>
         </Member>
+        <Member Name="MetricReport">
+          <Annotation Term="OData.Description" String="A metric report managed by the Telemetry Service is being sent."/>
+          <Annotation Term="OData.LongDescription" String="Events of type MetricReport shall be sent to a client in accordance with the MetricReport schema definition."/>
+        </Member>
       </EnumType>
 
     </Schema>
@@ -299,6 +303,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to deprecate EventType and to add the grouping mechanism EventGroupId."/>
+
       <EntityType Name="Event" BaseType="Event.v1_2_2.Event"/>
       <EntityType Name="EventRecord" BaseType="Event.v1_2_0.EventRecord">
         <Property Name="EventGroupId" Type="Edm.Int64" Nullable="false">
