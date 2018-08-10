@@ -1,5 +1,5 @@
 {
-  "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+  "@Redfish.Copyright": "Copyright 2016 DMTF. All rights reserved.",
   "@odata.type": "#AttributeRegistry.v1_0_0.AttributeRegistry",
   "Description": "This registry defines a representation of BIOS Attribute instances",
   "Id": "BiosAttributeRegistryP89.v1_0_0",
@@ -46,7 +46,7 @@
         "MenuPath": "./SystemOptions/NetworkBootOptions",
         "AttributeName": "NicBoot2",
         "ReadOnly": false,
-        "Hidden": false,       
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -68,7 +68,7 @@
         "MenuPath": "./SystemOptions/SataOptions",
         "AttributeName": "EmbeddedSata",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -90,7 +90,7 @@
         "MenuPath": "./SystemOptions/UsbOptions",
         "AttributeName": "UsbControl",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -111,7 +111,7 @@
         "MenuPath": "./SystemOptions/ProcessorOptions",
         "AttributeName": "ProcHyperthreading",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -133,7 +133,7 @@
         "MenuPath": "./SystemOptions/ProcessorOptions",
         "AttributeName": "ProcCoreDisable",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "ScalarIncrement": 1,
         "Type": "Integer",
         "UpperBound": 18,
@@ -147,7 +147,7 @@
         "MenuPath": "./BootOptions",
         "AttributeName": "BootMode",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -169,7 +169,7 @@
         "MenuPath": "./PowerManagementOptions",
         "AttributeName": "PowerProfile",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -198,7 +198,7 @@
         "MenuPath": "./PerformanceOptions",
         "AttributeName": "ProcTurbo",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -221,7 +221,7 @@
         "MinLength": 0,
         "AttributeName": "AdminPhone",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "String",
         "ValueExpression": "[\\x20-\\x7e]"
       },
@@ -233,7 +233,7 @@
         "MenuPath": "./PowerManagementOptions",
         "AttributeName": "MinProcIdlePower",
         "ReadOnly": false,
-        "Hidden": false,        
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -254,6 +254,51 @@
           }
         ]
       }
+      {
+        "CurrentValue": null,
+        "DisplayName": "Console BAUD Rate",
+        "DisplayOrder": 96,
+        "HelpText": "Configures the serial port BAUD rate for the system.",
+        "MenuPath": "./SystemOptions/ConsoleBaudRate",
+        "AttributeName": "ConsoleBaudRate",
+        "ReadOnly": false,
+        "Hidden": false,
+        "Type": "Enumeration",
+        "Value": [
+          {
+            "ValueDisplayName": "9600",
+            "ValueName": "9600"
+          },
+          {
+            "ValueDisplayName": "14400",
+            "ValueName": "14400"
+          },
+          {
+            "ValueDisplayName": "19200",
+            "ValueName": "19200"
+          },
+          {
+            "ValueDisplayName": "38400",
+            "ValueName": "38400"
+          },
+          {
+            "ValueDisplayName": "57600",
+            "ValueName": "57600"
+          },
+          {
+            "ValueDisplayName": "115200",
+            "ValueName": "115200"
+          },
+          {
+            "ValueDisplayName": "128000",
+            "ValueName": "128000"
+          },
+          {
+            "ValueDisplayName": "256000",
+            "ValueName": "256000"
+          }
+        ]
+      },
     ],
     "Dependencies": [
       {
@@ -269,6 +314,30 @@
           "MapToAttribute": "EmbeddedSata",
           "MapToProperty": "ReadOnly",
           "MapToValue": true
+        },
+        "DependencyFor": "EmbeddedSata",
+        "Type": "Map"
+      },
+      {
+        "Dependency": {
+          "MapFrom": [
+            {
+              "MapFromAttribute": "BootMode",
+              "MapFromCondition": "EQU",
+              "MapFromProperty": "CurrentValue",
+              "MapFromValue": "LegacyBios"
+            },
+            {
+              "MapFromAttribute": "EmbeddedSata",
+              "MapFromCondition": "EQU",
+              "MapFromProperty": "CurrentValue",
+              "MapFromValue": "Raid",
+              "MapTerms": "AND"
+            }
+          ],
+          "MapToAttribute": "EmbeddedSata",
+          "MapToProperty": "CurrentValue",
+          "MapToValue": "Ahci"
         },
         "DependencyFor": "EmbeddedSata",
         "Type": "Map"

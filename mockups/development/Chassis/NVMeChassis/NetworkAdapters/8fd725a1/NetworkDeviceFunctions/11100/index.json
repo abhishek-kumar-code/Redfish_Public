@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkDeviceFunction.NetworkDeviceFunction",
     "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100",
-    "@odata.type": "#NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction",
+    "@odata.type": "#NetworkDeviceFunction.v1_3_0.NetworkDeviceFunction",
     "Id": "11100",
     "Name": "Network Device Function View",
     "NetDevFuncType": "Ethernet",
@@ -13,7 +13,10 @@
     "Ethernet": {
         "PermanentMACAddress": "00:0C:29:9A:98:01",
         "MACAddress": "00:0C:29:9A:98:01",
-        "MTUSize": 1500
+        "MTUSize": 1500,
+        "VLANs": {
+            "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1/VLANs"
+        }
     },
     "iSCSIBoot": {
         "IPAddressType": "IPv4",

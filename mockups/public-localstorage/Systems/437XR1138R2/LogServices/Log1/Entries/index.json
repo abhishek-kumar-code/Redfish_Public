@@ -6,21 +6,17 @@
     "Members": [
         {
             "@odata.id": "/redfish/v1/Systems/437XR1138R2/LogServices/Log1/Entries/1",
+            "@odata.type": "#LogEntry.v1_2_0.LogEntry",
             "Id": "1",
             "Name": "Log Entry 1",
             "EntryType": "SEL",
-            "OemRecordFormat": "Contoso",
-            "RecordId": 1,
-            "Severity": "Warning",
+            "Severity": "Critical",
             "Created": "2012-03-07T14:44:00Z",
-            "EntryCode": "Assert",
+            "EntryCode": "Upper Critical - going high",
             "SensorType": "Temperature",
-            "Number": 1,
+            "SensorNumber": 1,
             "Message": "Temperature threshold exceeded",
-            "MessageID": "Contoso.1.0.TempAssert",
-            "MessageArgs": [
-                "42"
-            ],
+            "MessageId": "0x592A28",
             "Links": {
                 "OriginOfCondition": {
                     "@odata.id": "/redfish/v1/Chassis/1U/Thermal"
@@ -31,21 +27,17 @@
         },
         {
             "@odata.id": "/redfish/v1/Systems/437XR1138R2/LogServices/Log1/Entries/2",
+            "@odata.type": "#LogEntry.v1_2_0.LogEntry",
             "Id": "2",
             "Name": "Log Entry 2",
             "EntryType": "SEL",
-            "OemRecordFormat": "Contoso",
-            "RecordId": 2,
             "Severity": "Critical",
             "Created": "2012-03-07T14:45:00Z",
-            "EntryCode": "Assert",
+            "EntryCode": "Upper Critical - going high",
             "SensorType": "Temperature",
-            "Number": 2,
+            "SensorNumber": 2,
             "Message": "Temperature threshold exceeded",
-            "MessageID": "Contoso.1.0.TempAssert",
-            "MessageArgs": [
-                "46"
-            ],
+            "MessageId": "0x592E28",
             "Links": {
                 "OriginOfCondition": {
                     "@odata.id": "/redfish/v1/Chassis/1U/Thermal"
@@ -58,5 +50,5 @@
     "@odata.nextLink": "/redfish/v1/Systems/437XR1138R2/LogServices/Log1/Entries?$skiptoken=2",
     "@odata.context": "/redfish/v1/$metadata#LogEntryCollection.LogEntryCollection",
     "@odata.id": "/redfish/v1/Systems/437XR1138R2/LogServices/Log1/Entries",
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

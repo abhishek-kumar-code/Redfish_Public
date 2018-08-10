@@ -53,10 +53,6 @@
                         "Members@odata.count": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
-                        "Members@odata.navigationLink": {
-                            "type": "string",
-                            "format": "uri"
-                        },
                         "Members": {
                             "type": "array",
                             "items": {
@@ -79,5 +75,5 @@
             "description": "A Collection of resource instances."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -1,0 +1,18 @@
+{
+    "@odata.type": "#VirtualMediaCollection.VirtualMediaCollection",
+    "Name": "Virtual Media Services",
+    "Description": "Redfish Manager Virtual Media Services Settings",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/1/VM1/Floppy1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/1/VM1/CD1"
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#VirtualMediaCollection.VirtualMediaCollection",
+    "@odata.id": "/redfish/v1/Managers/1/VM1",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved."
+}
