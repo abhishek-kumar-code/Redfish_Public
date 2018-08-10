@@ -38,6 +38,7 @@
             "Eth10Gx4"
         ],
         "SidebandInterface": "I2C",
+        "PCIeVirtualFunctions": 1,
         "ProgrammableFromHost": true,
         "ReconfigurationSlots": [
             {
