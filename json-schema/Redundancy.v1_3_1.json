@@ -159,7 +159,8 @@
                 "MinNumNeeded",
                 "Status",
                 "RedundancySet",
-                "@odata.id"
+                "@odata.id",
+                "MemberId"
             ],
             "type": "object"
         },

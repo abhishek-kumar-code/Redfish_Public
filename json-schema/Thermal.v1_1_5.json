@@ -183,7 +183,8 @@
                 }
             },
             "required": [
-                "@odata.id"
+                "@odata.id",
+                "MemberId"
             ],
             "type": "object"
         },
@@ -362,7 +363,8 @@
                 }
             },
             "required": [
-                "@odata.id"
+                "@odata.id",
+                "MemberId"
             ],
             "type": "object"
         },
@@ -468,7 +470,6 @@
             "required": [
                 "@odata.id",
                 "@odata.type",
-                "@odata.context",
                 "Id",
                 "Name"
             ],

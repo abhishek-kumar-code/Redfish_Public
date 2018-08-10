@@ -190,7 +190,6 @@ components:
       - Context
       - '@odata.id'
       - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       - SubscriptionType

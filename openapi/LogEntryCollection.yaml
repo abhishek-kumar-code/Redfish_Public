@@ -42,7 +42,6 @@ components:
       - Members
       - '@odata.id'
       - '@odata.type'
-      - '@odata.context'
       - Name
       type: object
       x-longDescription: This resource shall be used to represent a Resource Collection

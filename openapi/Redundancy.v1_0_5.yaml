@@ -77,6 +77,7 @@ components:
       - Status
       - RedundancySet
       - '@odata.id'
+      - MemberId
       type: object
       x-longDescription: This object represents the Redundancy element property.  All
         values for resources described by this schema shall comply to the requirements
