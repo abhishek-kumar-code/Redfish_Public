@@ -81,8 +81,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - Passphrase
       - RegionId
+      - Passphrase
       type: object
       x-longDescription: This action shall disaple the need for passphrases on the
         supplied region provided the supplied passphrase matches that of the region.
@@ -480,7 +480,6 @@ components:
       required:
       - '@odata.id'
       - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object
@@ -666,8 +665,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - Passphrase
       - RegionId
+      - Passphrase
       type: object
       x-longDescription: 'This action shall securely erase the supplied region provided
         the supplied passphrase matches that of the given region using the NIST SP800-88
@@ -795,8 +794,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - Passphrase
       - RegionId
+      - Passphrase
       type: object
       x-longDescription: 'This action shall securely erase the supplied region provided
         the supplied passphrase matches that of the given region using the NIST SP800-88
@@ -879,8 +878,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - Passphrase
       - RegionId
+      - Passphrase
       type: object
       x-longDescription: This action shall apply the supplied passphrase to the supplied
         region.
@@ -916,8 +915,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - Passphrase
       - RegionId
+      - Passphrase
       type: object
       x-longDescription: This action shall apply the supplied passphrase to the supplied
         region for the purpose of unlocking the given regions.

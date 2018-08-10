@@ -168,7 +168,6 @@ components:
       - Links
       - '@odata.id'
       - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object

@@ -169,7 +169,6 @@ components:
       - ChassisType
       - '@odata.id'
       - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object

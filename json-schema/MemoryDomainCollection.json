@@ -79,7 +79,6 @@
                         "Members",
                         "@odata.id",
                         "@odata.type",
-                        "@odata.context",
                         "Name"
                     ],
                     "type": "object"

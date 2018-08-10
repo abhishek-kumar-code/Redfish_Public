@@ -75,7 +75,6 @@
                 "Events",
                 "@odata.id",
                 "@odata.type",
-                "@odata.context",
                 "Id",
                 "Name"
             ],
@@ -177,7 +176,8 @@
             "required": [
                 "EventType",
                 "MessageId",
-                "@odata.id"
+                "@odata.id",
+                "MemberId"
             ],
             "type": "object"
         },

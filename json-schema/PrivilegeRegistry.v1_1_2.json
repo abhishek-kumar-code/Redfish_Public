@@ -320,7 +320,6 @@
             "required": [
                 "@odata.id",
                 "@odata.type",
-                "@odata.context",
                 "Id",
                 "Name"
             ],

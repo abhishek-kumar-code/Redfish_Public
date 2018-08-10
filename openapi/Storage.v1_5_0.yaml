@@ -309,7 +309,6 @@ components:
       required:
       - '@odata.id'
       - '@odata.type'
-      - '@odata.context'
       - Id
       - Name
       type: object
@@ -477,6 +476,7 @@ components:
             this storage controller can use to communicate with attached devices.
       required:
       - '@odata.id'
+      - MemberId
       type: object
       x-longDescription: This resource shall be used to represent a resource that
         represents a storage controller in the Redfish specification.

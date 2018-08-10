@@ -45,7 +45,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TelemetryService">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
-      <EntityType Name="TelemetryService" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="TelemetryService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the Metrics Service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Metrics Service for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
