@@ -1,0 +1,126 @@
+{
+    "@Redfish.Copyright":"Copyright (c) 2016 DMTF. All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
+    "@odata.id": "/redfish/v1/Systems/4/Memory/7",
+    "@odata.type": "#Memory.v1_6_0.Memory",
+    "Name": "Intel Optane NVDIMM",
+    "Id": "7",
+    "MemoryType": "IntelOptane",
+    "MemoryDeviceType": "DDR4",
+    "BaseModuleType": "LRDIMM",
+    "MemoryMedia": [
+		"NAND"		
+    ],
+    "CapacityMiB": 131072,
+    "DataWidthBits": 64,
+    "BusWidthBits": 72,
+    "Manufacturer": "Intel",
+    "SerialNumber": "1A2B3F",
+    "PartNumber": "1A2B3D",
+    "AllowedSpeedsMHz": [
+        2133,
+        2400,
+        2667
+    ],
+    "FirmwareRevision": "RevAbc",
+    "FirmwareApiVersion": "ApiAbc",
+    "VendorID": "vendorX",
+    "DeviceID": "deviceX",
+    "SubsystemVendorID": "vendorA",
+    "SubsystemDeviceID": "deviceA",
+    "MaxTDPMilliWatts": [
+        10000,
+        12000,
+        15000
+    ],
+    "SecurityCapabilities": {
+        "PassphraseCapable": true,
+        "MaxPassphraseCount": 4,
+        "SecurityStates": [
+            "enabled",
+            "unlocked"
+        ]
+    },
+    "RankCount": 1,
+    "DeviceLocator": "PROC 2 DIMM 1",
+    "MemoryLocation": {
+        "Socket": 2,
+        "MemoryController": 1,
+        "Channel": 1,
+        "Slot": 1
+    },
+    "ErrorCorrection": "MultiBitECC",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "OperatingSpeedMhz": 2400,
+    "PersistentRegionSizeLimitMiB": 131072,
+    "PersistentRegionNumberLimit" : 1,
+    "PersistentRegionSizeMaxMiB" : 131072,
+    "AllocationIncrementMiB": 1024,
+    "AllocationAlignmentMiB": 1024,
+    "Regions": [
+        {
+            "RegionId": "1",
+            "MemoryClassification": "ByteAccessiblePeristent",
+            "OffsetMiB": 0,
+            "SizeMiB": 131072,
+            "PassphraseState": "Enabled"
+        }
+    ],
+    "OperatingMemoryModes": [
+        "Volatile",
+        "PMEM"
+    ],
+    "PowerManagementPolicy": {
+        "PolicyEnabled": true,
+        "MaxTDPMilliWatts": 15000,
+        "PeakPowerBudgetMilliWatts": 10000,
+        "AveragePowerBudgetMilliWatts": 5000
+    },
+    "IsSpareDeviceEnabled": true,
+    "IsRankSpareEnabled": false,
+    "Metrics": {
+        "@odata.id": "/redfish/v1/Systems/4/Memory/7/Metrics"
+    },
+    "Actions": {
+        "#Memory.UnlockUnit": {
+            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.UnlockUnit",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "#Memory.SecureEraseUnit": {
+            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.SecureEraseUnit",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "#Memory.OverwriteUnit": {
+            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.OverwriteUnit",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+	      "#Memory.SetPassphrase": {
+            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.SetPassphrase",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "#Memory.DisablePassphrase": {
+            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.DisablePassphrase",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
+}

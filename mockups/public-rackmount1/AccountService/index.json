@@ -43,11 +43,11 @@
         "RemoteRoleMapping": [
             {
                 "RemoteUser": "cn=Manager,dc=example,dc=org",
-                "LocalRole": "Admin"
+                "LocalRole": "Administrator"
             },
             {
                 "RemoteGroup": "cn=Admins,ou=Groups,dc=example,dc=org",
-                "LocalRole": "Admin"
+                "LocalRole": "Administrator"
             },
             {
                 "RemoteGroup": "cn=PowerUsers,ou=Groups,dc=example,dc=org",
@@ -55,7 +55,7 @@
             },
             {
                 "RemoteGroup": "(cn=*)",
-                "LocalRole": "ReadOnlyUser"
+                "LocalRole": "ReadOnly"
             }
         ]
     },
@@ -75,7 +75,7 @@
         "RemoteRoleMapping": [
             {
                 "RemoteGroup": "Administrators",
-                "LocalRole": "Admin"
+                "LocalRole": "Administrator"
             },
             {
                 "RemoteUser": "DOMAIN\\Bob",
@@ -87,7 +87,7 @@
             },
             {
                 "RemoteGroup": "Everybody",
-                "LocalRole": "ReadOnlyUser"
+                "LocalRole": "ReadOnly"
             }
         ]
     },
@@ -96,5 +96,5 @@
     },
     "@odata.context": "/redfish/v1/$metadata#AccountService.AccountService",
     "@odata.id": "/redfish/v1/AccountService",
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

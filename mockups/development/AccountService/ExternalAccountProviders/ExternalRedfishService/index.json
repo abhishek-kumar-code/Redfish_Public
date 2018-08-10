@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ExternalAccountProvider.ExternalAccountProvider",
     "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders/ExternalRedfishService",
     "@odata.type": "#ExternalAccountProvider.v1_0_0.ExternalAccountProvider",
@@ -17,15 +17,15 @@
     "RemoteRoleMapping": [
         {
             "RemoteGroup": "Admin",
-            "LocalRole": "Admin"
+            "LocalRole": "Administrator"
         },
         {
             "RemoteGroup": "Operator",
             "LocalRole": "Operator"
         },
         {
-            "RemoteGroup": "ReadOnlyUser",
-            "LocalRole": "ReadOnlyUser"
+            "RemoteGroup": "ReadOnly",
+            "LocalRole": "ReadOnly"
         }
     ]
 }

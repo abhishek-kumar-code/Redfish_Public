@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.type": "#MessageRegistry.v1_0_0.MessageRegistry",
     "Id": "Base.1.4.0",
     "Name": "Base Message Registry",
@@ -29,6 +29,13 @@
             "Severity": "OK",
             "NumberOfArgs": 0,
             "Resolution": "None"
+        },
+        "NoOperation": {
+            "Description": "Indicates that the requested operation will not perform any changes on the service.",
+            "Message": "The request body submitted contain no data to act upon and no changes to the resource took place.",
+            "Severity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Add properties in the JSON object and resubmit the request."
         },
         "PropertyDuplicate": {
             "Description": "Indicates that a duplicate property was included in the request body.",

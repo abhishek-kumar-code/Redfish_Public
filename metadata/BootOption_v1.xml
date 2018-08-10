@@ -5,7 +5,7 @@
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -53,6 +53,12 @@
             <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual Boot Option Entries."/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
     </Schema>
@@ -87,8 +93,8 @@
         </Property>
         <Property Name="Alias" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The alias of this Boot Source when described in the BootSourceOverrideTarget property in the Computersystem resource."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an alias to the Boot Source that describes this Boot Option in the BootSourceOverrideTarget property in the ComputerSystem resource. The possible values of this property are specified through the Redfish.AllowableValues annotation on BootSourceOverrideTarget in the ComputerSystem resource."/>
+          <Annotation Term="OData.Description" String="The alias of this Boot Source."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the string alias of this Boot Source that describes the type of boot that will be performed."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
