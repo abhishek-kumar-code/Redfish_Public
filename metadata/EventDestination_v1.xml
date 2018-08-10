@@ -59,6 +59,15 @@
         </Annotation>
       </EntityType>
 
+      <EnumType Name="EventFormatType">
+        <Member Name="Event">
+          <Annotation Term="OData.Description" String="The subscription destination will receive JSON Bodies of the Resource Type Event."/>
+        </Member>
+        <Member Name="MetricReport">
+          <Annotation Term="OData.Description" String="The subscription destination will receive JSON Bodies of the Resource Type MetricReport."/>
+        </Member>
+      </EnumType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_0">
@@ -284,21 +293,12 @@
           <Annotation Term="OData.Description" String="By setting this to true and specifying OriginResources, this indicates the subscription will be for events from the OriginsResources specified and also all subordinate resources.  Note that resources associated via the Links section are not considered subordinate."/>
           <Annotation Term="OData.LongDescription" String="When set to true and OriginResources is specifed, indicates the subscription shall be for events from the OriginsResources specified and all subordinate resources.  When set to false and OriginResources is specified, indicates subscription shall be for events only from the OriginResources.  If OriginResources is not specified, it has no relevenace."/>
         </Property>
-        <Property Name="EventFormatType" Type="EventDestination.v1_4_0.EventFormatType">
+        <Property Name="EventFormatType" Type="EventDestination.EventFormatType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates the content types of the message that will be sent to the EventDestination."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the the content types of the message that this service will send to the EventDestination.  If this property is not present, the EventFormatType shall be assumed to be Event."/>
         </Property>
       </EntityType>
-
-      <EnumType Name="EventFormatType">
-        <Member Name="Event">
-          <Annotation Term="OData.Description" String="The subscription destination will receive JSON Bodies of the Resource Type Event."/>
-        </Member>
-        <Member Name="MetricReport">
-          <Annotation Term="OData.Description" String="The subscription destination will receive JSON Bodies of the Resource Type MetricReport."/>
-        </Member>
-      </EnumType>
     </Schema>
 
   </edmx:DataServices>

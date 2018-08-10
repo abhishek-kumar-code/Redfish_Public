@@ -6,7 +6,7 @@
 	"Id": "1",
 	"Name": "PCIe Slot Information",
 
-	"PCIeSlots": [{
+	"Slots": [{
 			"PCIeType": "Gen3",
 			"Lanes": 16,
 			"SlotType": "FullLength",

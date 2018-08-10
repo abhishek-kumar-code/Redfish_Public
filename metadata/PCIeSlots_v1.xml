@@ -23,6 +23,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
     <edmx:Include Namespace="PCIeDevice"/>
@@ -64,7 +65,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="PCIeSlots" BaseType="PCIeSlots.PCIeSlots">
-        <Property Name="PCIeSlots" Type="Collection(PCIeSlots.v1_0_0.PCIeSlot)">
+        <Property Name="Slots" Type="Collection(PCIeSlots.v1_0_0.PCIeSlot)">
           <Annotation Term="OData.Description" String="An array of PCI Slot information."/>
           <Annotation Term="OData.LongDescription" String="This array shall contain an entry for each PCIe slot, including empty slots (with no device or card installed)."/>
         </Property>

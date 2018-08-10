@@ -270,22 +270,6 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain  then the server shall substitute.  Each not empty value shall be substituted for the wildcard."/>
         </Property>
       </ComplexType>
-
-      <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The available actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="MetricReport.v1_0_0.OemActions" Nullable="false">
-          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="OemActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
-        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
-      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
