@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyrightm (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@Redfish.Copyright":"Copyrightm (c) 2016 DMTF. All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics",
     "@odata.id": "/redfish/v1/Systems/4/Memory/6/Metrics",
     "@odata.type": "#MemoryMetrics.v1_1_0.MemoryMetrics",
