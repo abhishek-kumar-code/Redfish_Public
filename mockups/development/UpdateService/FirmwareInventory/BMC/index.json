@@ -22,5 +22,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#UpdateService/FirmwareInventory/Members/$entity",
     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BMC",
-    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "@Redfish.Copyright": "Copyright 2016 DMTF. All rights reserved."
 }

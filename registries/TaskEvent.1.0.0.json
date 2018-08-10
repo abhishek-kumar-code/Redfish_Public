@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF) in cooperation with the Storage Networking Industry Association (SNIA). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF in cooperation with the Storage Networking Industry Association (SNIA). All rights reserved.",
     "@odata.type": "#MessageRegistry.1.2.0.MessageRegistry",
     "Id": "TaskEvents.1.0.0",
     "Name": "Task Event Message Registry",
