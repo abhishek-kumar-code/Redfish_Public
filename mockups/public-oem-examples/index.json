@@ -19,7 +19,7 @@
         "Contoso": {
             "@odata.type": "#ContosoExtensions.v1_0_0.ServiceRoot",
             "TurboencabulatorService": {
-                "@odata.id": "/redfish/v1/TurboencabulatorService"
+                "@odata.id": "/redfish/v1/Oem/Contoso/TurboencabulatorService"
             }
         }
     },
