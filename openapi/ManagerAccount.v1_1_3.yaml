@@ -27,7 +27,7 @@ components:
             for resources described by this schema shall comply to the requirements
             as described in the Redfish specification.
         Role:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Role object defining Privileges for this
             account--returned when the resource is read. The ID of the role is the
             same as property RoleId.

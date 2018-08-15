@@ -41,7 +41,7 @@ components:
         resource.
       properties:
         Chassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Chassis which contains this Processor.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to a

@@ -45,7 +45,7 @@ components:
           description: Links.
           properties:
             NetworkAdapter:
-              $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+              $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               description: Contains the members of this collection.
               readOnly: true
             Oem:
@@ -63,11 +63,11 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
           readOnly: true
         NetworkDeviceFunctions:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Contains the members of this collection.
           readOnly: true
         NetworkPorts:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Contains the members of this collection.
           readOnly: true
         Oem:

@@ -125,7 +125,7 @@ components:
             interface.  If this interface supports more than one VLAN, the VLAN property
             shall not be present and the VLANS collection link shall be present instead.
         VLANs:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of VLANs and is only used
             if the interface supports more than one VLANs.
           readOnly: true
@@ -268,7 +268,7 @@ components:
           description: An array of references to endpoints associated with this network
             device function.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The type shall contain an array property who's members
@@ -277,7 +277,7 @@ components:
         Endpoints@odata.count:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/count
         PCIeFunction:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the PCIeFunction associated with this Network
             Device Function.
           readOnly: true
@@ -285,7 +285,7 @@ components:
             PCIeFunction that represents the PCI-e Function associated with this Network
             Device Function.
         PhysicalPortAssignment:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The physical port that this network device function is currently
             assigned to.
           x-longDescription: The value of this property shall be the physical port
@@ -320,7 +320,7 @@ components:
           description: The array of physical port references that this network device
             function may be assigned to.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of physical
@@ -401,7 +401,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PhysicalPortAssignment:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           deprecated: true
           description: The physical port that this network device function is currently
             assigned to.

@@ -148,7 +148,7 @@ components:
           x-longDescription: The value of this property shall contain the value of
             the asset tag of the system.
         Bios:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the BIOS settings associated with this system.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a resource
@@ -173,7 +173,7 @@ components:
           nullable: true
           readOnly: true
         EthernetInterfaces:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of Ethernet interfaces associated
             with this system.
           readOnly: true
@@ -220,7 +220,7 @@ components:
               description: An array of references to the chassis in which this system
                 is contained.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference a resource
@@ -250,7 +250,7 @@ components:
               description: An array of references to the endpoints that connect to
                 this system.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to
@@ -265,7 +265,7 @@ components:
               description: An array of references to the Managers responsible for
                 this system.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference a resource
@@ -306,7 +306,7 @@ components:
             ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
               description: This property shall specify a valid odata or Redfish property.
         LogServices:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of Log Services associated with
             this system.
           readOnly: true
@@ -320,14 +320,14 @@ components:
           x-longDescription: The value of this property shall contain a value that
             represents the manufacturer of the system.
         Memory:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of Memory associated with this
             system.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a collection
             of type MemoryCollection.
         MemoryDomains:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of Memory Domains associated
             with this system.
           nullable: true
@@ -360,7 +360,7 @@ components:
           description: A reference to a collection of PCIe Devices used by this computer
             system.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -374,7 +374,7 @@ components:
           description: A reference to a collection of PCIe Functions used by this
             computer system.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -405,7 +405,7 @@ components:
           x-longDescription: This object shall contain properties which describe the
             central processors for the current resource.
         Processors:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of Processors associated with
             this system.
           readOnly: true
@@ -419,7 +419,7 @@ components:
           x-longDescription: The value of this property shall contain the Stock Keeping
             Unit (SKU) for the system.
         SecureBoot:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the UEFI SecureBoot resource associated with
             this system.
           readOnly: true
@@ -433,7 +433,7 @@ components:
           x-longDescription: The value of this property shall contain the serial number
             for the system.
         SimpleStorage:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of storage devices associated
             with this system.
           readOnly: true
@@ -442,7 +442,7 @@ components:
         Status:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Status
         Storage:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of storage devices associated
             with this system.
           readOnly: true
@@ -493,7 +493,7 @@ components:
         Oem:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Oem
         StorageServices:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to a collection of storage services supported by
             this computer system.
           readOnly: true

@@ -45,13 +45,13 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         ResourceBlocks:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The resource blocks available on the service.
           readOnly: true
           x-longDescription: This property shall contain the link to a collection
             of type ResourceBlockCollection.
         ResourceZones:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The resource zones available on the service.
           readOnly: true
           x-longDescription: This property shall contain the link to a collection

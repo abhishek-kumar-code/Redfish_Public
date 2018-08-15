@@ -47,7 +47,7 @@ components:
               description: An array of references to the endpoints that are contained
                 in this zone.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to
@@ -62,7 +62,7 @@ components:
               description: An array of references to the switchs that are utilized
                 in this zone.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to
@@ -83,7 +83,7 @@ components:
               description: An array of references to the Resource Blocks that are
                 used in this Zone.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be an array of references

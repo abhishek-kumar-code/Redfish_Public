@@ -178,7 +178,7 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Description
           nullable: true
         EthernetInterfaces:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of NICs that this manager
             uses for network communication.  It is here that clients will find NIC
             configuration options and settings.
@@ -209,7 +209,7 @@ components:
               description: This property is an array of references to the chassis
                 that this manager has control over.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: This property shall contain an array of references
@@ -223,7 +223,7 @@ components:
               description: This property is an array of references to the systems
                 that this manager has control over.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: This property shall contain an array of references
@@ -234,7 +234,7 @@ components:
               format: uri
               type: string
             ManagerInChassis:
-              $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+              $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               description: This property is a reference to the chassis that this manager
                 is located in.
               readOnly: true
@@ -255,7 +255,7 @@ components:
             ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
               description: This property shall specify a valid odata or Redfish property.
         LogServices:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of Logs used by the manager.
           readOnly: true
           x-longDescription: The value of this property shall contain a reference
@@ -282,7 +282,7 @@ components:
         Name:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
         NetworkProtocol:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to the network services and their settings
             that the manager controls.  It is here that clients will find network
             configuration options as well as network services.
@@ -306,7 +306,7 @@ components:
         Redundancy:
           description: Redundancy information for the managers of this system
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
         Redundancy@odata.count:
@@ -321,7 +321,7 @@ components:
           x-longDescription: The value of this property shall contain information
             about the Serial Console service of this manager.
         SerialInterfaces:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of serial interfaces that
             this manager uses for serial and console communication.  It is here that
             clients will find serial configuration options and settings.
@@ -347,7 +347,7 @@ components:
           x-longDescription: The value of this property shall contain the universal
             unique identifier number for the manager.
         VirtualMedia:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to the Virtual Media services for this
             particular manager.
           readOnly: true

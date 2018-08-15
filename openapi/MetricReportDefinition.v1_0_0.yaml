@@ -183,7 +183,7 @@ components:
             with the value in the Wildcard property.  Property identifiers in the
             URI shall follow JSON fragment notation rules defined by RFC6901.
         MetricReport:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Specifies the location where the resultant metric report is
             placed.
           readOnly: true
@@ -237,7 +237,7 @@ components:
             metric reports are handled in relationship to an existing metric report
             created from the metric report definition.
         Schedule:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Specifies the schedule for generating the metric report.
           x-longDescription: If the schedule present, the metric report is generated
             at an interval specified by Schedule.RecurrenceInterval property.  If

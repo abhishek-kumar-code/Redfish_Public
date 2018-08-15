@@ -43,7 +43,7 @@ components:
           x-longDescription: The value of this property shall be the maximum bandwidth
             percentage allocation for the associated network device function.
         NetworkDeviceFunction:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Contains the members of this collection.
           readOnly: true
       type: object
@@ -63,7 +63,7 @@ components:
             percentage allocation for the associated network device function.  The
             sum total of all minimum percentages shall not exceed 100.
         NetworkDeviceFunction:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Contains the members of this collection.
           readOnly: true
       type: object

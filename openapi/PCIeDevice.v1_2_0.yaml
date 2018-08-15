@@ -31,7 +31,7 @@ components:
           description: An array of references to the chassis in which the PCIe device
             is contained.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall reference a resource
@@ -48,7 +48,7 @@ components:
         PCIeFunctions:
           description: An array of references to PCIeFunctions exposed by this device.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be a reference to the
@@ -90,7 +90,7 @@ components:
           x-longDescription: The Actions property shall contain the available actions
             for this resource.
         Assembly:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Assembly resource associated with this PCIe
             device.
           readOnly: true

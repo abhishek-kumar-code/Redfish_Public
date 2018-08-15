@@ -106,7 +106,7 @@ components:
           x-longDescription: This property shall contain any status or health properties
             of the resource.
         Tasks:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: References to the Tasks collection.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a resource

@@ -73,7 +73,7 @@ components:
                 in this chassis.  This will only reference ComputerSystems that are
                 directly and wholly contained in this chassis.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to
@@ -88,7 +88,7 @@ components:
               format: uri
               type: string
             ContainedBy:
-              $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+              $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               description: A reference to the chassis that this chassis is contained
                 by.
               readOnly: true
@@ -99,7 +99,7 @@ components:
               description: An array of references to any other chassis that this chassis
                 has in it.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to
@@ -129,7 +129,7 @@ components:
               description: An array of references to the disk drives located in this
                 Chassis.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference one or
@@ -143,7 +143,7 @@ components:
               description: An array of references to the Managers responsible for
                 managing this chassis.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to
@@ -158,7 +158,7 @@ components:
               description: An array of references to the managers located in this
                 Chassis.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference one or
@@ -193,7 +193,7 @@ components:
               description: An array of references to the storage subsystems connected
                 to or inside this Chassis.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference one or
@@ -214,7 +214,7 @@ components:
         Location:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.yaml#/components/schemas/Location
         LogServices:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the logs for this chassis.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a collection
@@ -258,7 +258,7 @@ components:
           x-longDescription: This value of this property shall contain the sensor
             state of the physical security.
         Power:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the power properties (power supplies, power
             policies, sensors) for this chassis.
           readOnly: true
@@ -289,7 +289,7 @@ components:
         Status:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Status
         Thermal:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the thermal properties (fans, cooling, sensors)
             for this chassis.
           readOnly: true
