@@ -76,7 +76,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Protocol                         | N/A     | Added "I2C" protocol type. |
 | Resource                         | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
 | ResourceBlock                    | 1.2.0   | Added "Expansion" to the "ResourceBlockType" enum.  Added "Unavailable" to the "CompositionState" enum. |
-| Schedule                         | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and TimeDateOffset types. |
+| Schedule                         | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and DateTimeOffset types. |
 | ServiceRoot                      | 1.4.0   | Added "ExcerptQuery" and "OnlyMemberQuery" to "ProtocolFeaturesSupported".  Added "JobService" and "TelemetryService" properties. |
 | Storage                          | 1.5.0   | Added "CacheSummary" and "PCIeInterface" objects to "StorageController". |
 | Task                             | 1.3.0   | Added "Payload" and "HidePayload" properties. |
