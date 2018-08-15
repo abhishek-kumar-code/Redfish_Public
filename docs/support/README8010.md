@@ -62,7 +62,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Endpoint                         | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
 | Event                            | 1.3.0   | Deprecated "EventType" in favor of new subscription properties.  Added "MetricReport" as an EventType.  Added "EventGroupId" to "EventRecord". |
 | EventDestination                 | 1.4.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResources", and "EventFormatType" properties. |
-| EventService                     | 1.2.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResourcesSupported", and "EventFormatTypes" properties. |
+| EventService                     | 1.2.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResourcesSupported", and "EventFormatTypes" properties. Added "SSEFilterPropertiesSupported" object. |
 | HostInterface                    | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
 | LogEntry                         | 1.4.0   | Deprecated "EventType".  Added "EventGroupId" property. |
 | Manager                          | 1.5.0   | Added "RemoteRedfishServiceUri" and "RemoteAccountService" properties. |
