@@ -11,13 +11,13 @@ components:
         '@odata.type':
           $ref: http://redfish.dmtf.org/schemas/v1/odata.4.0.0.yaml#/components/schemas/type
         AccountService:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to the Account Service.
           readOnly: true
           x-longDescription: The classes structure shall only contain a reference
             to a resource that complies to the AccountService schema.
         Chassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to a collection of Chassis.
           readOnly: true
           x-longDescription: This object shall only contain a reference to a collection
@@ -27,7 +27,7 @@ components:
           nullable: true
           readOnly: true
         EventService:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to the EventService.
           readOnly: true
           x-longDescription: The classes structure shall only contain a reference
@@ -36,7 +36,7 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Id
           readOnly: true
         JsonSchemas:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to a collection of Json-Schema files.
           readOnly: true
           x-longDescription: This object shall only contain a reference to a collection
@@ -54,7 +54,7 @@ components:
                 for resources described by this schema shall comply to the requirements
                 as described in the Redfish specification.
             Sessions:
-              $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+              $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               description: Link to a collection of Sessions.
               readOnly: true
               x-longDescription: This property shall contain the link to a collection
@@ -67,7 +67,7 @@ components:
             ^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$:
               description: This property shall specify a valid odata or Redfish property.
         Managers:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to a collection of Managers.
           readOnly: true
           x-longDescription: This object shall only contain a reference to a collection
@@ -91,24 +91,24 @@ components:
             majorversion.minorversion.errata in compliance with Protocol Version section
             of the Redfish specification.
         Registries:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to a collection of Registries.
           readOnly: true
           x-longDescription: This object shall contain a reference to Message Registry.
         SessionService:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to the Sessions Service.
           readOnly: true
           x-longDescription: The classes structure shall only contain a reference
             to a resource that complies to the SessionService schema.
         Systems:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to a collection of Systems.
           readOnly: true
           x-longDescription: This object shall only contain a reference to a collection
             of resources that comply to the Systems schema.
         Tasks:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a link to the Task Service.
           readOnly: true
           x-longDescription: The classes structure shall only contain a reference

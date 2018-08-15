@@ -68,7 +68,7 @@ components:
           description: An array of references to the NetworkDeviceFunctions associated
             with this Network Controller.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -80,7 +80,7 @@ components:
           description: An array of references to the NetworkPorts associated with
             this Network Controller.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -98,7 +98,7 @@ components:
           description: An array of references to the PCIeDevices associated with this
             Network Controller.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -211,7 +211,7 @@ components:
           x-longDescription: The Actions property shall contain the available actions
             for this resource.
         Assembly:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Assembly resource associated with this adapter.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a resource
@@ -249,14 +249,14 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
           readOnly: true
         NetworkDeviceFunctions:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of NetworkDeviceFunctions associated
             with this NetworkAdapter.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a collection
             of type NetworkDeviceFunctionCollection.
         NetworkPorts:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of NetworkPorts associated with
             this NetworkAdapter.
           readOnly: true

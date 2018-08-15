@@ -32,7 +32,7 @@ components:
           nullable: true
           readOnly: true
         Endpoints:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A collection of references to the endpoints contained in this
             fabric.
           readOnly: true
@@ -40,7 +40,7 @@ components:
             resources that this fabric uses and shall reference a resource of type
             Endpoint.
         FabricType:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The protocol being sent over this fabric.
           nullable: true
           readOnly: true
@@ -77,7 +77,7 @@ components:
         Status:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Status
         Switches:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A collection of references to the switches contained in this
             fabric.
           readOnly: true
@@ -85,7 +85,7 @@ components:
             resources that this fabric uses and shall reference a resource of type
             Switch.
         Zones:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A collection of references to the zones contained in this fabric.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to the

@@ -116,7 +116,7 @@ components:
               description: An array of references to the drives which the PCIe device
                 produces
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference a resource
@@ -131,7 +131,7 @@ components:
               description: An array of references to the ethernet interfaces which
                 the PCIe device produces
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference a resource
@@ -149,7 +149,7 @@ components:
                 for resources described by this schema shall comply to the requirements
                 as described in the Redfish specification.
             PCIeDevice:
-              $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+              $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               description: A reference to the PCIeDevice on which this function resides.
               nullable: true
               readOnly: true

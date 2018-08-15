@@ -19,7 +19,7 @@ components:
         Members:
           description: Contains the members of this collection.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: This property shall contain an array of references to

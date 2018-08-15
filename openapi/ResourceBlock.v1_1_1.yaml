@@ -118,7 +118,7 @@ components:
           description: An array of references to the Chassis in which this Resource
             Block is contained.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -130,7 +130,7 @@ components:
           description: An array of references to the Computer Systems that are composed
             from this Resource Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -148,7 +148,7 @@ components:
           description: An array of references to the Zones in which this Resource
             Block is bound.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -200,7 +200,7 @@ components:
           description: An array of references to the Computer Systems available in
             this Resource Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -215,7 +215,7 @@ components:
           description: An array of references to the Ethernet Interfaces available
             in this Resource Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -236,7 +236,7 @@ components:
           description: An array of references to the Memory available in this Resource
             Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -250,7 +250,7 @@ components:
           description: An array of references to the Network Interfaces available
             in this Resource Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -267,7 +267,7 @@ components:
           description: An array of references to the Processors available in this
             Resource Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -287,7 +287,7 @@ components:
           description: An array of references to the Simple Storage available in this
             Resource Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -304,7 +304,7 @@ components:
           description: An array of references to the Storage available in this Resource
             Block.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references

@@ -240,7 +240,7 @@ components:
           description: An array of references to endpoints associated with this network
             device function.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The type shall contain an array property who's members
@@ -249,7 +249,7 @@ components:
         Endpoints@odata.count:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/count
         PCIeFunction:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Contains the members of this collection.
           readOnly: true
       type: object
@@ -281,7 +281,7 @@ components:
           description: The array of physical port references that this network device
             function may be assigned to.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of physical
@@ -362,7 +362,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PhysicalPortAssignment:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The physical port that this network device function is currently
             assigned to.
           readOnly: true

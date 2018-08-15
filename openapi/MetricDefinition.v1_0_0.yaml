@@ -274,7 +274,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PhysicalContext:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Specifies the physical context of the metric.
           nullable: true
           readOnly: true

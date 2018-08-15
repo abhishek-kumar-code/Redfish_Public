@@ -18,7 +18,7 @@ components:
         to this endpoint.
       properties:
         EntityLink:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to the associated entity.
           nullable: true
           readOnly: true
@@ -106,7 +106,7 @@ components:
           nullable: true
           readOnly: true
         EndpointProtocol:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The protocol supported by this endpoint.
           nullable: true
           readOnly: true
@@ -155,7 +155,7 @@ components:
           description: Redundancy information for the lower level endpoints supporting
             this endpoint.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
         Redundancy@odata.count:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.yaml#/components/schemas/count
@@ -218,7 +218,7 @@ components:
           description: An array of references to the endpoints that may not be used
             in zones if this endpoint is used in a zone.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -236,7 +236,7 @@ components:
           description: An array of references to the the physical ports associated
             with this endpoint.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references

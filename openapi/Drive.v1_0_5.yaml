@@ -194,7 +194,7 @@ components:
             of life remaining in the Drive's media.
           x-units: '%'
         Protocol:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The protocol this drive is using to communicate to the storage
             controller.
           nullable: true
@@ -319,7 +319,7 @@ components:
             This will reference Volumes that are either wholly or only partly contained
             by this drive.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be a reference to the

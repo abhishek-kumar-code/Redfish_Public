@@ -96,7 +96,7 @@ components:
         manager used in the parameter.
       properties:
         NewManager:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This parameter specifies the Manager in which to fail over.  In
             this case, a valid reference is supported.
           x-longDescription: This parameter shall contain a resource reference of
@@ -161,7 +161,7 @@ components:
           description: This property is an array of references to the chassis that
             this manager has control over.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: This property shall contain an array of references to
@@ -172,7 +172,7 @@ components:
           description: This property is an array of references to the systems that
             this manager has control over.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: This property shall contain an array of references to
@@ -180,7 +180,7 @@ components:
         ManagerForServers@odata.count:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/count
         ManagerInChassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This property is a reference to the chassis that this manager
             is located in.
           readOnly: true
@@ -248,7 +248,7 @@ components:
           nullable: true
           readOnly: true
         EthernetInterfaces:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of NICs that this manager
             uses for network communication.  It is here that clients will find NIC
             configuration options and settings.
@@ -279,7 +279,7 @@ components:
             shall contain references to resources that are related to, but not contained
             by (subordinate to), this resource.
         LogServices:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of Logs used by the manager.
           readOnly: true
           x-longDescription: The value of this property shall contain a reference
@@ -307,7 +307,7 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
           readOnly: true
         NetworkProtocol:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to the network services and their settings
             that the manager controls.  It is here that clients will find network
             configuration options as well as network services.
@@ -331,7 +331,7 @@ components:
         Redundancy:
           description: Redundancy information for the managers of this system.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-autoExpand: true
           x-longDescription: The values of the properties in this array shall be used
@@ -346,7 +346,7 @@ components:
           x-longDescription: The value of this property shall contain information
             about the Serial Console service of this manager.
         SerialInterfaces:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of serial interfaces that
             this manager uses for serial and console communication.  It is here that
             clients will find serial configuration options and settings.
@@ -377,7 +377,7 @@ components:
           x-longDescription: The value of this property shall contain the universal
             unique identifier number for the manager.
         VirtualMedia:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to the Virtual Media services for this
             particular manager.
           readOnly: true
@@ -467,7 +467,7 @@ components:
           description: This array defines the Managers to add to the redundancy set.  In
             this case, a valid reference is supported.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-longDescription: This parameter shall contain an array of resource references
             of the Managers to add to the redundancy set.
@@ -475,7 +475,7 @@ components:
           description: This array defines the Managers to remove from the redundancy
             set.  In this case, a valid reference is supported.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-longDescription: This parameter shall contain an array of resource references
             of the Managers to remove from the redundancy set.

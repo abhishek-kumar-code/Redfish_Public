@@ -23,7 +23,7 @@ components:
         resource.
       properties:
         Chassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the chassis which contains this switch.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to the
@@ -32,7 +32,7 @@ components:
         ManagedBy:
           description: An array of references to the managers that manage this switch.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be a reference to the
@@ -152,7 +152,7 @@ components:
             shall contain references to resources that are related to, but not contained
             by (subordinate to), this resource.
         LogServices:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of Log Services associated with
             this system.
           nullable: true
@@ -192,7 +192,7 @@ components:
             by the organization that is responsible for producing or manufacturing
             the switch.
         Ports:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A collection of references to the ports for this switch.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to the
@@ -208,7 +208,7 @@ components:
         Redundancy:
           description: Redundancy information for the switches.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-autoExpand: true
           x-longDescription: The values of the properties in this array shall be used
@@ -237,7 +237,7 @@ components:
           x-longDescription: This property shall contain any status or health properties
             of the resource.
         SwitchType:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The protocol being sent over this switch.
           nullable: true
           readOnly: true

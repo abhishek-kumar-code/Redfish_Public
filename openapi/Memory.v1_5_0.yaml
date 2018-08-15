@@ -75,8 +75,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - RegionId
       - Passphrase
+      - RegionId
       type: object
       x-longDescription: This action shall disaple the need for passphrases on the
         supplied region provided the supplied passphrase matches that of the region.
@@ -98,7 +98,7 @@ components:
         resource.
       properties:
         Chassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Chassis which contains this Memory.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to a
@@ -160,7 +160,7 @@ components:
           x-longDescription: The value of this property shall be the speed supported
             by this Memory.
         Assembly:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Assembly resource associated with this memory.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a resource
@@ -351,7 +351,7 @@ components:
           x-longDescription: The value of this property shall be the type of Memory
             represented by this resource.
         Metrics:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Metrics associated with this Memory.
           readOnly: true
           x-longDescription: A reference to the Metrics associated with this Memory.
@@ -805,8 +805,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - RegionId
       - Passphrase
+      - RegionId
       type: object
       x-longDescription: This action shall securely erase the supplied region provided
         the supplied passphrase matches that of the given region.
@@ -887,8 +887,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - RegionId
       - Passphrase
+      - RegionId
       type: object
       x-longDescription: This action shall apply the supplied passphrase to the supplied
         region.
@@ -924,8 +924,8 @@ components:
           x-longDescription: The value of this property shall be the Memory region
             ID for which this action to be applied.
       required:
-      - RegionId
       - Passphrase
+      - RegionId
       type: object
       x-longDescription: This action shall apply the supplied passphrase to the supplied
         region for the purpose of unlocking the given regions.

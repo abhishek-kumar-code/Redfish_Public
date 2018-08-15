@@ -21,7 +21,7 @@ components:
         resource.
       properties:
         NetworkAdapter:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the NetworkAdapter which contains this NetworkInterface.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to a
@@ -74,14 +74,14 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
           readOnly: true
         NetworkDeviceFunctions:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of NetworkDeviceFunctions associated
             with this NetworkInterface.
           readOnly: true
           x-longDescription: The value of this property shall be a link to a collection
             of type NetworkDeviceFunctionCollection.
         NetworkPorts:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the collection of NetworkPorts associated with
             this NetworkInterface.
           readOnly: true

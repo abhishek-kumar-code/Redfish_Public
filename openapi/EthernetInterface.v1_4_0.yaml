@@ -377,7 +377,7 @@ components:
             interface.  If this interface supports more than one VLAN, the VLAN property
             shall not be present and the VLANS collection link shall be present instead.
         VLANs:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of VLANs and is only used
             if the interface supports more than one VLANs.
           readOnly: true
@@ -444,7 +444,7 @@ components:
         resource.
       properties:
         Chassis:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Chassis which contains this Ethernet Interface.
           readOnly: true
           x-longDescription: The value of this property shall be a reference to a
@@ -454,7 +454,7 @@ components:
           description: An array of references to the endpoints that connect to this
             ethernet interface.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be a reference to the
@@ -463,7 +463,7 @@ components:
         Endpoints@odata.count:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.yaml#/components/schemas/count
         HostInterface:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a Host Interface that is associated
             with this Ethernet Interface.
           readOnly: true

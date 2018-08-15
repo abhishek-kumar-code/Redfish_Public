@@ -22,7 +22,7 @@ components:
         to this endpoint.
       properties:
         EntityLink:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to the associated entity.
           nullable: true
           readOnly: true
@@ -122,7 +122,7 @@ components:
           nullable: true
           readOnly: true
         EndpointProtocol:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The protocol supported by this endpoint.
           nullable: true
           readOnly: true
@@ -184,7 +184,7 @@ components:
           description: Redundancy information for the lower level endpoints supporting
             this endpoint.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-autoExpand: true
           x-longDescription: The values of the properties in this array shall be used
@@ -270,7 +270,7 @@ components:
           x-longDescription: The value of this property shall be an specify UDP or
             TCP port number used for communication with the Endpoint.
         TransportProtocol:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The protocol used by the connection entity.
           readOnly: true
           x-longDescription: The value shall be the protocol used by the connection
@@ -290,7 +290,7 @@ components:
           description: An array of references to the endpoints that may not be used
             in zones if this endpoint is used in a zone.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -303,7 +303,7 @@ components:
             contains references to the network device function that connect to this
             endpoint.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be a reference to a
@@ -320,7 +320,7 @@ components:
           description: An array of references to the the physical ports associated
             with this endpoint.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references

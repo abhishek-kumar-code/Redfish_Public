@@ -40,7 +40,7 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Id
           readOnly: true
         MetricReportDefinition:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The metric definitions used to create a metric report.
           readOnly: true
           x-longDescription: The value shall be reference to the definition for this
@@ -84,7 +84,7 @@ components:
       description: A metric Value.
       properties:
         MetricDefinition:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to the Metric Definition.
           readOnly: true
           x-longDescription: The value shall be reference to the Metric Definition

@@ -164,7 +164,7 @@ components:
             the SubordinateResource property on Event Subscriptions and on generated
             Events.
         Subscriptions:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a collection of Event Destination resources.
           readOnly: true
           x-longDescription: The value of this property shall contain the link to
@@ -320,14 +320,14 @@ components:
           x-longDescription: This parameter shall have the same semantics as the Severity
             property in the Event schema for Redfish.
       required:
-      - EventType
-      - OriginOfCondition
-      - Message
+      - MessageId
       - EventTimestamp
       - MessageArgs
-      - EventId
-      - MessageId
+      - Message
+      - EventType
       - Severity
+      - OriginOfCondition
+      - EventId
       type: object
       x-longDescription: This action shall add a test event to the event service with
         the event data specified in the action parameters. This message should then
