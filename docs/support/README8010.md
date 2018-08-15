@@ -85,7 +85,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Assembly                         | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ProductionDate" property as the time of day value if it's unknown. | 
 | AttributeRegistry                | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut".  Relaxed patterns allowed for "ValueName", "MenuName", and "MenuPath" properties. |
 | Bios                             | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
-| BootOption                       | 1.x.x   | Errata release.  Errata release.  Clarified the description of the "Alias" property. |
+| BootOption                       | 1.x.x   | Errata release.  Clarified the description of the "Alias" property. |
 | ComputerSystem                   | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB".  Corrected descriptions for the "Boot" properties since the scope of "Boot" has grown over time. |
 | Drive                            | 1.x.x   | Errata release.  Added missing Units annotation to "PredictedMediaLifeLeftPercent" and "PercentageComplete". |
 | EthernetInterface                | 1.4.1   | Errata release.  Fixed type definition of "IPv6StaticDefaultGateways" to not require "PrefixLength". |
