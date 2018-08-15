@@ -200,7 +200,7 @@ components:
           description: Redundancy information for the power subsystem of this system
             or device.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-autoExpand: true
           x-longDescription: This property shall contain redundancy information for
@@ -258,7 +258,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PhysicalContext:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Describes the area, device, or set of devices to which this
             power control applies.
           readOnly: true
@@ -602,7 +602,7 @@ components:
           description: This structure is used to show redundancy for power supplies.  The
             Component ids will reference the members of the redundancy groups.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-longDescription: The values of the properties in this array shall be used
             to show redundancy for power supplies and other elements in this resource.  The
@@ -759,7 +759,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PhysicalContext:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Describes the area or device to which this voltage measurement
             applies.
           readOnly: true

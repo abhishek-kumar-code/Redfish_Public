@@ -72,7 +72,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PhysicalContext:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Describes the area or device associated with this fan.
           readOnly: true
           x-longDescription: The value of this property shall be a description of
@@ -96,7 +96,7 @@ components:
           description: This structure is used to show redundancy for fans.  The Component
             ids will reference the members of the redundancy groups.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-longDescription: The values of the properties in this array shall be used
             to show redundancy for fans and other elements in this resource.  The
@@ -231,7 +231,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PhysicalContext:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Describes the area or device to which this temperature measurement
             applies.
           readOnly: true
@@ -348,7 +348,7 @@ components:
           description: This structure is used to show redundancy for fans.  The Component
             ids will reference the members of the redundancy groups.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-autoExpand: true
           x-longDescription: The values of the properties in this array shall be used

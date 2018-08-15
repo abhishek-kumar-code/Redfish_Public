@@ -124,7 +124,7 @@ components:
             this resource.
           properties:
             Chassis:
-              $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+              $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               description: A reference to the Chassis which contains this Drive.
               readOnly: true
               x-longDescription: The value of this property shall be a reference to
@@ -134,7 +134,7 @@ components:
               description: An array of references to the endpoints that connect to
                 this drive.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to
@@ -156,7 +156,7 @@ components:
                 drive. This will reference Volumes that are either wholly or only
                 partly contained by this drive.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to

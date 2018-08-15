@@ -61,7 +61,7 @@ components:
             percentage allocation for the associated network device function.
           x-units: '%'
         NetworkDeviceFunction:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the NetworkDeviceFunction associated with this
             bandwidth setting of this Network Port.
           readOnly: true
@@ -90,7 +90,7 @@ components:
             sum total of all minimum percentages shall not exceed 100.
           x-units: '%'
         NetworkDeviceFunction:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the NetworkDeviceFunction associated with this
             bandwidth setting of this Network Port.
           readOnly: true

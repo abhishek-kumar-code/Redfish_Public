@@ -36,7 +36,7 @@ components:
       description: An operation currently running on this resource.
       properties:
         AssociatedTask:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the task associated with the operation if any.
           readOnly: true
         OperationName:
@@ -145,7 +145,7 @@ components:
                 volume. This will reference Drives that either wholly or only partly
                 contain this volume.
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall be a reference to

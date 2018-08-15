@@ -80,7 +80,7 @@ components:
     Item:
       anyOf:
       - $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/ReferenceableMember
-      - $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+      - $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
       description: This is the base type for resources and referenceable members.
     ItemOrCollection:
       $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/ResourceCollection

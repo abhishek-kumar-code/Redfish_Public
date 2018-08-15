@@ -89,7 +89,7 @@ components:
         Messages:
           description: This is an array of messages associated with the job.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-longDescription: The value of this property shall be an array of messages
             associated with the job.
@@ -118,7 +118,7 @@ components:
             progress of the job, reported in percent of completion. If the job has
             not been started, the value shall be zero.
         Schedule:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The Schedule Settings for this Job.
           x-longDescription: This object shall contain information detailing the scheduling
             for this job and the re-occurrence frequency for future instances of this
@@ -145,7 +145,7 @@ components:
             that the step execution order is not specified and may occur in parallel
             or in series as determined by the service.
         Steps:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to a collection of Steps for this Job.
           readOnly: true
           x-longDescription: This property shall contain the link to a collection

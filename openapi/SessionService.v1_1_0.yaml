@@ -63,7 +63,7 @@ components:
             shall support any value between the Validation.Minimum and Validation.Maximum.
           x-units: s
         Sessions:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Link to a collection of Sessions
           readOnly: true
           x-longDescription: This property shall contain the link to a collection

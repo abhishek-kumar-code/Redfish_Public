@@ -74,7 +74,7 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Description
           nullable: true
         FirmwareInventory:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: An inventory of firmware.
           nullable: true
           readOnly: true
@@ -98,7 +98,7 @@ components:
           x-longDescription: The value of this property shall be a boolean indicating
             whether this service is enabled.
         SoftwareInventory:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: An inventory of software.
           nullable: true
           readOnly: true

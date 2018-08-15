@@ -121,9 +121,9 @@ components:
           x-longDescription: This parameter shall define the BIOS password name to
             change. For instance, this could be the AdminPassword or UserPassword.
       required:
-      - PasswordName
-      - OldPassword
       - NewPassword
+      - OldPassword
+      - PasswordName
       type: object
       x-longDescription: This action shall perform a change of the selected BIOS password.
     OemActions:

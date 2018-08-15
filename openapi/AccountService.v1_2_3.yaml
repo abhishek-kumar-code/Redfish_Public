@@ -57,7 +57,7 @@ components:
             login attempts at which point the user's account is locked.  If set to
             0, no lockout shall ever occur.
         Accounts:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to a collection of Manager Accounts.
           readOnly: true
           x-longDescription: This property shall contain the link to a collection
@@ -108,7 +108,7 @@ components:
           x-longDescription: The value of this string shall be of the format for the
             reserved word *Oem*.
         PrivilegeMap:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Privilege mapping that defines the privileges
             needed to perform a requested operation on a URI associated with this
             service.
@@ -118,7 +118,7 @@ components:
             in order to perform a requested operation on a URI associated with this
             service.
         Roles:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to a collection of Roles.
           readOnly: true
           x-longDescription: This property shall contain the link to a collection

@@ -69,7 +69,7 @@ components:
           nullable: true
           readOnly: true
         Entries:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: References to the log entry collection.
           readOnly: true
           x-longDescription: The value of this property shall reference a collection

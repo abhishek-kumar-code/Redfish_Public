@@ -100,7 +100,7 @@ components:
           description: The set of drives attached to the storage controllers represented
             by this resource.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: A collection that indicates all the drives attached to
@@ -121,7 +121,7 @@ components:
               description: An array of references to the chassis to which this storage
                 subsystem is attached
               items:
-                $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+                $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
               readOnly: true
               type: array
               x-longDescription: The value of this property shall reference a resource
@@ -157,7 +157,7 @@ components:
         Redundancy:
           description: Redundancy information for the storage subsystem
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
         Redundancy@odata.count:
@@ -184,7 +184,7 @@ components:
           description: The set of volumes produced by the storage controllers represented
             by this resource.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: A collection that indicates all the volumes produced
