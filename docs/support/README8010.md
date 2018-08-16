@@ -62,7 +62,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Endpoint                         | 1.2.0   | Deprecated "PciFunctionNumber" and "PciClassCode" inside "ConnectedEntity" in favor of "FunctionNumber" and "ClassCode" inside of "PciId". |
 | Event                            | 1.3.0   | Deprecated "EventType" in favor of new subscription properties.  Added "MetricReport" as an EventType.  Added "EventGroupId" to "EventRecord". |
 | EventDestination                 | 1.4.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResources", and "EventFormatType" properties. |
-| EventService                     | 1.2.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResourcesSupported", and "EventFormatTypes" properties. |
+| EventService                     | 1.2.0   | Added "RegistryPrefixes", "ResourceTypes", "SubordinateResourcesSupported", and "EventFormatTypes" properties. Added "SSEFilterPropertiesSupported" object. |
 | HostInterface                    | 1.2.0   | Added "AuthNoneRoleId" and "AuthNoneRole" properties. |
 | LogEntry                         | 1.4.0   | Deprecated "EventType".  Added "EventGroupId" property. |
 | Manager                          | 1.5.0   | Added "RemoteRedfishServiceUri" and "RemoteAccountService" properties. |
@@ -76,7 +76,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Protocol                         | N/A     | Added "I2C" protocol type. |
 | Resource                         | 1.7.0   | Deprecated the "Location" string in "PostalAddress" in favor of "AdditionalInfo".  Added "AdditionalInfo" in "Placement".  Added "Contacts" array in "Location". |
 | ResourceBlock                    | 1.2.0   | Added "Expansion" to the "ResourceBlockType" enum.  Added "Unavailable" to the "CompositionState" enum. |
-| Schedule                         | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and TimeDateOffset types. |
+| Schedule                         | 1.2.0   | Initial transition from SNIA.  Added "Every" enumeration to "DayOfWeek" and "MonthOfYear".  Updated several properties to use Duration and DateTimeOffset types. |
 | ServiceRoot                      | 1.4.0   | Added "ExcerptQuery" and "OnlyMemberQuery" to "ProtocolFeaturesSupported".  Added "JobService" and "TelemetryService" properties. |
 | Storage                          | 1.5.0   | Added "CacheSummary" and "PCIeInterface" objects to "StorageController". |
 | Task                             | 1.3.0   | Added "Payload" and "HidePayload" properties. |
@@ -85,7 +85,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Assembly                         | 1.x.x   | Errata release.  Added clause about using "00:00:00Z" in the "ProductionDate" property as the time of day value if it's unknown. | 
 | AttributeRegistry                | 1.x.x   | Errata release.  Fixed typo in the description for "GrayOut".  Relaxed patterns allowed for "ValueName", "MenuName", and "MenuPath" properties. |
 | Bios                             | 1.x.x   | Errata release.  Clarified behavior around the "ResetBios" action. |
-| BootOption                       | 1.x.x   | Errata release.  Errata release.  Clarified the description of the "Alias" property. |
+| BootOption                       | 1.x.x   | Errata release.  Clarified the description of the "Alias" property. |
 | ComputerSystem                   | 1.x.x   | Errata release.  Added missing Units annotation to "TotalSystemMemoryGiB".  Corrected descriptions for the "Boot" properties since the scope of "Boot" has grown over time. |
 | Drive                            | 1.x.x   | Errata release.  Added missing Units annotation to "PredictedMediaLifeLeftPercent" and "PercentageComplete". |
 | EthernetInterface                | 1.4.1   | Errata release.  Fixed type definition of "IPv6StaticDefaultGateways" to not require "PrefixLength". |

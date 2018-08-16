@@ -253,8 +253,8 @@
         </Property>
         <Property Name="ClearsAll" Type="Edm.Boolean" Nullable="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property indicates that all prior conditions and messsages are cleared provided the ClearsIf condition is met."/>
-          <Annotation Term="OData.LongDescription" String="This property shall  ndicate that all prior conditions and messsages are cleared provided the ClearsIf condition is met."/>
+          <Annotation Term="OData.Description" String="This property indicates that all prior conditions and messages are cleared provided the ClearsIf condition is met."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate that all prior conditions and messages are cleared provided the ClearsIf condition is met."/>
         </Property>
       </ComplexType>
 
