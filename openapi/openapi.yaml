@@ -4322,7 +4322,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId}:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}:
     get:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -4339,7 +4339,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -4372,7 +4372,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -4385,7 +4385,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId}/Assembly
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/Assembly
   : get:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -4402,7 +4402,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -4435,7 +4435,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -4464,7 +4464,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -4505,7 +4505,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -4574,49 +4574,6 @@ paths:
         schema:
           type: string
       responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/SimpleStorage/{SimpleStorageId}/Actions/#Storage.SetEncryptionKey
-  : post:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the SimpleStorage resource
-        in: path
-        name: SimpleStorageId
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_1.yaml#/components/schemas/SetEncryptionKeyRequestBody
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: The response contains a representation of the SetEncryptionKeyRequestBody
-            resource
-        '202':
-          content:
-            application/json:
-              schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
-          description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
         default:
@@ -8814,7 +8771,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId}
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}
   : get:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -8837,7 +8794,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -8876,7 +8833,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -8889,7 +8846,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId}/Assembly
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/Assembly
   : get:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -8912,7 +8869,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -8951,7 +8908,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -8986,7 +8943,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -9033,7 +8990,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -9330,55 +9287,6 @@ paths:
         schema:
           type: string
       responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}/Actions/#Storage.SetEncryptionKey
-  : post:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the SimpleStorage resource
-        in: path
-        name: SimpleStorageId
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_1.yaml#/components/schemas/SetEncryptionKeyRequestBody
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: The response contains a representation of the SetEncryptionKeyRequestBody
-            resource
-        '202':
-          content:
-            application/json:
-              schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
-          description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
         default:
@@ -11732,7 +11640,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/JobService/Jobs/{JobId}/Steps/{JobId}:
+  /redfish/v1/JobService/Jobs/{JobId}/Steps/{JobId2}:
     delete:
       parameters:
       - description: The value of the Id property of the Job resource
@@ -11743,7 +11651,7 @@ paths:
           type: string
       - description: The value of the Id property of the Job resource
         in: path
-        name: JobId
+        name: JobId2
         required: true
         schema:
           type: string
@@ -11778,7 +11686,7 @@ paths:
           type: string
       - description: The value of the Id property of the Job resource
         in: path
-        name: JobId
+        name: JobId2
         required: true
         schema:
           type: string
@@ -11805,7 +11713,7 @@ paths:
           type: string
       - description: The value of the Id property of the Job resource
         in: path
-        name: JobId
+        name: JobId2
         required: true
         schema:
           type: string
@@ -11828,7 +11736,7 @@ paths:
           type: string
       - description: The value of the Id property of the Job resource
         in: path
-        name: JobId
+        name: JobId2
         required: true
         schema:
           type: string
@@ -11863,7 +11771,7 @@ paths:
           type: string
       - description: The value of the Id property of the Job resource
         in: path
-        name: JobId
+        name: JobId2
         required: true
         schema:
           type: string
@@ -17706,7 +17614,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId}:
+  /redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}:
     get:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -17723,7 +17631,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -17756,7 +17664,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -17769,7 +17677,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId}/Assembly:
+  /redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/Assembly:
     get:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -17786,7 +17694,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -17819,7 +17727,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -17848,7 +17756,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -17889,7 +17797,7 @@ paths:
           type: string
       - description: The value of the Id property of the Processor resource
         in: path
-        name: ProcessorId
+        name: ProcessorId2
         required: true
         schema:
           type: string
@@ -18132,49 +18040,6 @@ paths:
         schema:
           type: string
       responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}/Actions/#Storage.SetEncryptionKey:
-    post:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the SimpleStorage resource
-        in: path
-        name: SimpleStorageId
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_1.yaml#/components/schemas/SetEncryptionKeyRequestBody
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: The response contains a representation of the SetEncryptionKeyRequestBody
-            resource
-        '202':
-          content:
-            application/json:
-              schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
-          description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
         default:

@@ -77,8 +77,8 @@ components:
           x-longDescription: This parameter shall contain the contents of the MetricReportValues
             array property in the generated metric report.
       required:
-      - MetricReportValues
       - MetricReportName
+      - MetricReportValues
       type: object
       x-longDescription: This action shall cause the event service to immediately
         generate the metric report, as an Alert Event. This message should then be
