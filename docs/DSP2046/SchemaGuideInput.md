@@ -367,6 +367,26 @@ mockups/DSP2046-examples/ManagerNetworkProtocol-v1-example.json
 ### Mockup
 mockups/DSP2046-examples/Memory-v1-example.json
 
+## MetricDefinition
+
+### Mockup
+mockups/DSP2046-examples/MetricDefinition-v1-example.json
+
+## MetricReportDefinition
+
+### Mockup
+mockups/DSP2046-examples/MetricReportDefinition-v1-example.json
+
+## MetricReport
+
+### Mockup
+mockups/DSP2046-examples/MetricReport-v1-example.json
+
+## PCIeSlots
+
+### Mockup
+mockups/DSP2046-examples/PCIeSlots-v1-example.json
+
 ## Port
 
 ### Mockup
@@ -442,10 +462,20 @@ mockups/DSP2046-examples/Task-v1-example.json
 ### Mockup
 mockups/DSP2046-examples/TaskService-v1-example.json
 
+## TelemetryService
+
+### Mockup
+mockups/DSP2046-examples/TelemetryService-v1-example.json
+
 ## Thermal
 
 ### Mockup
 mockups/DSP2046-examples/Thermal-v1-example.json
+
+## Triggers
+
+### Mockup
+mockups/DSP2046-examples/Triggers-v1-example.json
 
 ## UpdateService
 
