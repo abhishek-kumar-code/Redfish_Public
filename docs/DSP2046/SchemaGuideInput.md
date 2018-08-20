@@ -53,13 +53,8 @@ Note: you can specify the location of the TOC, presumably in the Introduction se
 
 Note: markdown is allowed in description overrides, but HTML markup is not; it will be escaped.
 
-* Status: See the [Status object](#status-object) definition in the [Using this guide](#using-this-guide) section.
 * Oem: See the OEM object definition in the [Using this guide](#using-this-guide) section.
-* Location: See the [Location object](#location-object) definition in the [Common Properties](#common-properties) section.
-* Identifier: See the [Identifier object](#identifier-object) definition in the [Common Properties](#common-properties) section.
-* Identifiers: See the [Identifier object](#identifier-object) definition in the [Common Properties](#common-properties) section.
-* IPv4Addresses: See the [IP Address objects](#ip-address-objects) definition in the [Common Properties](#common-properties) section.
-* IPv6Addresses: See the [IP Address objects](#ip-address-objects) definition in the [Common Properties](#common-properties) section.
+
 
 # Units Translation
 
@@ -76,6 +71,13 @@ String-replacement for "units" values. Case-sensitive. Any units not matched wil
 | V                | Volts            |
 | mW               | milliWatts       |
 | m                | meters           |
+
+# Enum Deprecations
+
+Second-level heading with path to enum definition (omit protocol):
+
+
+
 
 # Manual Fix-ups required prior to Release
 
@@ -165,7 +167,7 @@ The property-level details include:
 | Description | The description of the property, as copied directly from the schema 'Description' definition. |
 
 
-## Common properties
+# Common properties
 
 The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.
 
@@ -177,37 +179,8 @@ In addition, the following properties are frequently defined in Redfish schemas.
 
 [insert_common_objects]
 
-## Status object
 
-The 'Status' object and its properties is common to many Redfish schema.
-
-#include_fragment ./json-schema/Resource.json#/definitions/Status
-
-
-## Location object
-
-The 'Location' object and its properties is common to many Redfish schema.
-
-#include_fragment ./json-schema/Resource.v1_7_0.json#/definitions/Location
-
-## Identifier object
-
-Properties used to identify a particular instance of a device.
-
-#include_fragment ./json-schema/Resource.v1_7_0.json#/definitions/Identifier
-
-## IP address objects
-
-IP address objects appear in several areas of the data model.
-### IPv4 addresses 
-
-#include_fragment ./json-schema/IPAddresses.v1_0_7.json#/definitions/IPv4Address
-
-### IPv6 addresses
-
-#include_fragment ./json-schema/IPAddresses.v1_0_7.json#/definitions/IPv6Address
-
-## Resource collections
+# Resource collections
 
 A core concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).
 
@@ -244,7 +217,7 @@ As shown in the example below, a Redfish Service may provide management function
 
 # Reference Guide
 
-This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.1 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
+This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
 
 
 # Excluded Properties
@@ -276,6 +249,8 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 ## HostedStorageServices
 ## StorageService
 ## StorageSystem
+## idRef
+## Oem
 
 
 

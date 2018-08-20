@@ -157,25 +157,19 @@ pre.code{
 <li><a href="#where-can-i-find-more-information">Where can I find more information?</a></li>
 </ul>
 <li><a href="#using-this-guide">Using this guide</a></li>
-<ul>
 <li><a href="#common-properties">Common properties</a></li>
+<ul>
 <li><a href="#common-properties-Identifier_v1.7.0">Identifier (v.1.7.0)</a></li>
-<li><a href="#common-properties-idRef_v4.0.3">idRef (v.4.0.3)</a></li>
 <li><a href="#common-properties-IPv4Address_v1.0.7">IPv4Address (v.1.0.7)</a></li>
 <li><a href="#common-properties-IPv6Address_v1.0.7">IPv6Address (v.1.0.7)</a></li>
 <li><a href="#common-properties-IPv6GatewayStaticAddress_v1.0.7">IPv6GatewayStaticAddress (v.1.0.7)</a></li>
 <li><a href="#common-properties-IPv6StaticAddress_v1.0.7">IPv6StaticAddress (v.1.0.7)</a></li>
 <li><a href="#common-properties-Location_v1.7.0">Location (v.1.7.0)</a></li>
 <li><a href="#common-properties-Message_v1.0.6">Message (v.1.0.6)</a></li>
-<li><a href="#common-properties-Oem">Oem</a></li>
 <li><a href="#common-properties-Schedule_v1.2.0">Schedule (v.1.2.0)</a></li>
 <li><a href="#common-properties-Status">Status</a></li>
-<li><a href="#status-object">Status object</a></li>
-<li><a href="#location-object">Location object</a></li>
-<li><a href="#identifier-object">Identifier object</a></li>
-<li><a href="#ip-address-objects">IP address objects</a></li>
-<li><a href="#resource-collections">Resource collections</a></li>
 </ul>
+<li><a href="#resource-collections">Resource collections</a></li>
 <li><a href="#reference-guide">Reference Guide</a></li>
 <ul>
 <li><a href="#AccountService">AccountService 1.3.1</a></li>
@@ -298,7 +292,7 @@ pre.code{
 </tr>
 </tbody>
 </table>
-<h2 id="common-properties">Common properties</h2>
+<h1 id="common-properties">Common properties</h1>
 <p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.</p>
 
 <table class="properties">
@@ -322,7 +316,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 </tbody></table>
 <h2 id="common-properties-Identifier_v1.7.0">Identifier (v.1.7.0)</h2>
-<p>See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section.</p>
+<p>This type describes any additional identifiers for a resource.</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>DurableName</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the world wide, persistent name of the resource.</td></tr>
@@ -349,12 +343,6 @@ pre.code{
 
 </div>
 </div>
-<h2 id="common-properties-idRef_v4.0.3">idRef (v.4.0.3)</h2>
-<p>A reference to a resource.</p>
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-</tbody></table>
 <h2 id="common-properties-IPv4Address_v1.0.7">IPv4Address (v.1.0.7)</h2>
 <p>This type describes an IPv4 Address.</p>
 <table class="properties">
@@ -441,7 +429,7 @@ pre.code{
 <tr><td><nobr><b>PrefixLength</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> <nobr>required</nobr> (null)</td><td>The Prefix Length of this IPv6 address.</td></tr>
 </tbody></table>
 <h2 id="common-properties-Location_v1.7.0">Location (v.1.7.0)</h2>
-<p>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section.</p>
+<p>This type describes the location of a resource.</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>AltitudeMeters</b> <i>(v1.6+)</i></nobr></td><td>number<br>(meters)</td><td><nobr>read-write</nobr> (null)</td><td>The altitude of the resource in meters.</td></tr>
@@ -573,12 +561,6 @@ pre.code{
 <tr><td><nobr><b>Resolution</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Used to provide suggestions on how to resolve the situation that caused the error.</td></tr>
 <tr><td><nobr><b>Severity</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the severity of the errors.</td></tr>
 </tbody></table>
-<h2 id="common-properties-Oem">Oem</h2>
-<p>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</p>
-<table class="properties">
-<tbody>
-
-</tbody></table>
 <h2 id="common-properties-Schedule_v1.2.0">Schedule (v.1.2.0)</h2>
 <p>Schedule a series of occurrences.</p>
 <table class="properties">
@@ -638,7 +620,7 @@ pre.code{
 </div>
 </div>
 <h2 id="common-properties-Status">Status</h2>
-<p>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section.</p>
+<p>This type describes the status and health of a resource and its children.</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>Health</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Resource.json|details|Health">Health</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -695,288 +677,7 @@ pre.code{
 
 </div>
 </div>
-<h2 id="status-object">Status object</h2>
-<p>The 'Status' object and its properties is common to many Redfish schema.</p>
-
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>Health</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See <a href="#./json-schema/Resource.json|details|Health">Health</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>HealthRollup</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This represents the overall health state from the view of this resource.<br><i>See <a href="#./json-schema/Resource.json|details|HealthRollup">HealthRollup</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>State</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See <a href="#./json-schema/Resource.json|details|State">State</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-</tbody></table>
-<div class="property-details">
-<h3>Property Details</h3>
-<div class="property-details-content">
-<h4 id="./json-schema/Resource.json|details|Health">Health:</h4>
-<p>This represents the health state of this resource in the absence of its dependent resources.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>Critical</td><td>A critical condition exists that requires immediate attention.</td></tr>
-<tr><td>OK</td><td>Normal.</td></tr>
-<tr><td>Warning</td><td>A condition exists that requires attention.</td></tr>
-</tbody></table>
-
-<h4 id="./json-schema/Resource.json|details|HealthRollup">HealthRollup:</h4>
-<p>This represents the overall health state from the view of this resource.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>Critical</td><td>A critical condition exists that requires immediate attention.</td></tr>
-<tr><td>OK</td><td>Normal.</td></tr>
-<tr><td>Warning</td><td>A condition exists that requires attention.</td></tr>
-</tbody></table>
-
-<h4 id="./json-schema/Resource.json|details|State">State:</h4>
-<p>This indicates the known state of the resource, such as if it is enabled.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>Absent</td><td>This function or resource is not present or not detected.</td></tr>
-<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
-<tr><td>Disabled</td><td>This function or resource has been disabled.</td></tr>
-<tr><td>Enabled</td><td>This function or resource has been enabled.</td></tr>
-<tr><td>InTest</td><td>This function or resource is undergoing testing.</td></tr>
-<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
-<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it.</td></tr>
-<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
-<tr><td>Starting</td><td>This function or resource is starting.</td></tr>
-<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used.</td></tr>
-<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
-</tbody></table>
-
-</div>
-</div>
-<h2 id="location-object">Location object</h2>
-<p>The 'Location' object and its properties is common to many Redfish schema.</p>
-
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>AltitudeMeters</b></nobr></td><td>number<br>(meters)</td><td><nobr>read-write</nobr> (null)</td><td>The altitude of the resource in meters.</td></tr>
-<tr><td><nobr><b>Contacts</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Array of contact information.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ContactName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name of this contact.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EmailAddress</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Email address for this contact.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PhoneNumber</b></nobr><br>} ]</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Phone number for this contact.</td></tr>
-<tr><td><nobr><b>Info</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the location of the resource.</td></tr>
-<tr><td><nobr><b>InfoFormat</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the Info property.</td></tr>
-<tr><td><nobr><b>Latitude</b></nobr></td><td>number<br>(deg)</td><td><nobr>read-write</nobr> (null)</td><td>The latitude resource.</td></tr>
-<tr><td><nobr><b>Longitude</b></nobr></td><td>number<br>(deg)</td><td><nobr>read-write</nobr> (null)</td><td>The longitude resource in degrees.</td></tr>
-<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>PartLocation</b> {</nobr></td><td>object</td><td> (null)</td><td>The part location within the placement.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocationOrdinalValue</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The number that represents the location of the part.  If LocationType is slot and this unit is in slot 2 then the LocationOrdinalValue will be 2.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of location of the part, such as slot, bay, socket and slot.<br><i>See <a href="#./json-schema/Resource.v1_7_0.json|details|LocationType">LocationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Orientation</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The orientation for the ordering of the slot enumeration used by the LocationOrdinalValue property.<br><i>See <a href="#./json-schema/Resource.v1_7_0.json|details|Orientation">Orientation</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Reference</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The reference point for the part location.  This is used to give guidance as to the general location of the part.<br><i>See <a href="#./json-schema/Resource.v1_7_0.json|details|Reference">Reference</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceLabel</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the label of the part location, such as a silk screened name or a printed label.</td></tr>
-<tr><td><nobr><b>Placement</b> {</nobr></td><td>object</td><td> (null)</td><td>A place within the addressed location.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AdditionalInfo</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Area designation or other additional info.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Rack</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name of a rack location within a row.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RackOffset</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> (null)</td><td>Vertical location of the item in terms of RackOffsetUnits.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RackOffsetUnits</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The type of Rack Units in use.<br><i>See <a href="#./json-schema/Resource.v1_7_0.json|details|RackOffsetUnits">RackOffsetUnits</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Row</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name of row.</td></tr>
-<tr><td><nobr><b>PostalAddress</b> {</nobr></td><td>object</td><td> (null)</td><td>Postal address of the addressed resource.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AdditionalCode</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Additional code.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AdditionalInfo</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Room designation or other additional info.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Building</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name of the building.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>City</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>City, township, or shi (JP).</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Community</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Postal community name.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Country</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Country.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>District</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>A county, parish, gun (JP), or  district (IN).</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Division</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>City division, borough, dity district, ward, chou (JP).</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Floor</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Floor.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GPSCoords</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The GPS coordinates of the part.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>HouseNumber</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> (null)</td><td>Numeric portion of house number.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>HouseNumberSuffix</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>House number suffix.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Landmark</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Landmark.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LeadingStreetDirection</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>A leading street direction.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Room designation or other additional info.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Neighborhood</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Neighborhood or block.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PlaceType</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>A description of the type of place that is addressed.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>POBox</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Post office box (P.O. box).</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PostalCode</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Postal code (or zip code).</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Road</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>A primary road or street.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RoadBranch</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Road branch.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RoadPostModifier</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Road post-modifier.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RoadPreModifier</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Road pre-modifier.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RoadSection</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Road Section.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RoadSubBranch</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Road sub branch.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Room</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name or number of the room.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Seat</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Seat (desk, cubicle, workstation).</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Street</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Street name.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StreetSuffix</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Avenue, Platz, Street, Circle.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Territory</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>A top-level subdivision within a country.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TrailingStreetSuffix</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>A trailing street suffix.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Unit</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name or number of the unit (apartment, suite).</td></tr>
-</tbody></table>
-<div class="property-details">
-<h3>Property Details</h3>
-<div class="property-details-content">
-<h4 id="./json-schema/Resource.v1_7_0.json|details|LocationType">LocationType:</h4>
-<p>The type of location of the part, such as slot, bay, socket and slot.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>Bay</td><td>Defines a bay as the type of location.</td></tr>
-<tr><td>Connector</td><td>Defines a connector as the type of location.</td></tr>
-<tr><td>Slot</td><td>Defines a slot as the type of location.</td></tr>
-<tr><td>Socket</td><td>Defines a socket as the type of location.</td></tr>
-</tbody></table>
-
-<h4 id="./json-schema/Resource.v1_7_0.json|details|Orientation">Orientation:</h4>
-<p>The orientation for the ordering of the slot enumeration used by the LocationOrdinalValue property.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>BackToFront</td><td>Defines the ordering for the LocationOrdinalValue is back to front.</td></tr>
-<tr><td>BottomToTop</td><td>Defines the ordering for the LocationOrdinalValue is bottom to top.</td></tr>
-<tr><td>FrontToBack</td><td>Defines the ordering for the LocationOrdinalValue is front to back.</td></tr>
-<tr><td>LeftToRight</td><td>Defines the ordering for the LocationOrdinalValue is left to right.</td></tr>
-<tr><td>RightToLeft</td><td>Defines the ordering for the LocationOrdinalValue is right to left.</td></tr>
-<tr><td>TopToBottom</td><td>Defines the ordering for the LocationOrdinalValue is top to bottom.</td></tr>
-</tbody></table>
-
-<h4 id="./json-schema/Resource.v1_7_0.json|details|RackOffsetUnits">RackOffsetUnits:</h4>
-<p>The type of Rack Units in use.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>EIA_310</td><td>Defines a rack unit as being equal to 1.75 in (44.45 mm).</td></tr>
-<tr><td>OpenU</td><td>Defines a rack unit as being equal to 48 mm (1.89 in).</td></tr>
-</tbody></table>
-
-<h4 id="./json-schema/Resource.v1_7_0.json|details|Reference">Reference:</h4>
-<p>The reference point for the part location.  This is used to give guidance as to the general location of the part.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>Bottom</td><td>Defines the part as being in the bottom of the unit.</td></tr>
-<tr><td>Front</td><td>Defines the part as being in the front of the unit.</td></tr>
-<tr><td>Left</td><td>Defines the part as being in the left of the unit.</td></tr>
-<tr><td>Middle</td><td>Defines the part as being in the middle of the unit.</td></tr>
-<tr><td>Rear</td><td>Defines the part as being in the rear of the unit.</td></tr>
-<tr><td>Right</td><td>Defines the part as being in the right of the unit.</td></tr>
-<tr><td>Top</td><td>Defines the part as being in the top of the unit.</td></tr>
-</tbody></table>
-
-</div>
-</div>
-<h2 id="identifier-object">Identifier object</h2>
-<p>Properties used to identify a particular instance of a device.</p>
-
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>DurableName</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the world wide, persistent name of the resource.</td></tr>
-<tr><td><nobr><b>DurableNameFormat</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the DurableName property.<br><i>See <a href="#./json-schema/Resource.v1_7_0.json|details|DurableNameFormat">DurableNameFormat</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-</tbody></table>
-<div class="property-details">
-<h3>Property Details</h3>
-<div class="property-details-content">
-<h4 id="./json-schema/Resource.v1_7_0.json|details|DurableNameFormat">DurableNameFormat:</h4>
-<p>This represents the format of the DurableName property.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>EUI</td><td>IEEE-defined 64-bit Extended Unique Identifier.</td></tr>
-<tr><td>FC_WWN</td><td>Fibre Channel World Wide Name.</td></tr>
-<tr><td>iQN</td><td>iSCSI Qualified Name.</td></tr>
-<tr><td>NAA</td><td>Name Address Authority Format.</td></tr>
-<tr><td>NQN</td><td>NVMe Qualified Name.</td></tr>
-<tr><td>NSID</td><td>NVM Namespace Identifier.</td></tr>
-<tr><td>UUID</td><td>Universally Unique Identifier.</td></tr>
-</tbody></table>
-
-</div>
-</div>
-<h2 id="ip-address-objects">IP address objects</h2>
-<p>IP address objects appear in several areas of the data model.</p>
-<h3 id="ipv4-addresses">IPv4 addresses</h3>
-
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>Address</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 Address.</td></tr>
-<tr><td><nobr><b>AddressOrigin</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates how the address was determined.<br><i>See <a href="#./json-schema/IPAddresses.v1_0_7.json|details|AddressOrigin">AddressOrigin</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Gateway</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 gateway for this address.</td></tr>
-<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>SubnetMask</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 Subnet mask.</td></tr>
-</tbody></table>
-<div class="property-details">
-<h3>Property Details</h3>
-<div class="property-details-content">
-<h4 id="./json-schema/IPAddresses.v1_0_7.json|details|AddressOrigin">AddressOrigin:</h4>
-<p>This indicates how the address was determined.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>BOOTP</td><td>Address is provided by a BOOTP service.</td></tr>
-<tr><td>DHCP</td><td>Address is provided by a DHCPv4 service.</td></tr>
-<tr><td>IPv4LinkLocal</td><td>Address is valid only for this network segment (link).</td></tr>
-<tr><td>Static</td><td>A static address as configured by the user.</td></tr>
-</tbody></table>
-
-</div>
-</div>
-<h3 id="ipv6-addresses">IPv6 addresses</h3>
-
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>Address</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv6 Address.</td></tr>
-<tr><td><nobr><b>AddressOrigin</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates how the address was determined.<br><i>See <a href="#./json-schema/IPAddresses.v1_0_7.json|details|AddressOrigin">AddressOrigin</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>AddressState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The current state of this address as defined in RFC 4862.<br><i>See <a href="#./json-schema/IPAddresses.v1_0_7.json|details|AddressState">AddressState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>Oem extension object. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>PrefixLength</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>This is the IPv6 Address Prefix Length.</td></tr>
-</tbody></table>
-<div class="property-details">
-<h3>Property Details</h3>
-<div class="property-details-content">
-<h4 id="./json-schema/IPAddresses.v1_0_7.json|details|AddressOrigin">AddressOrigin:</h4>
-<p>This indicates how the address was determined.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>DHCPv6</td><td>Address is provided by a DHCPv6 service.</td></tr>
-<tr><td>LinkLocal</td><td>Address is valid only for this network segment (link).</td></tr>
-<tr><td>SLAAC</td><td>Address is provided by a Stateless Address AutoConfiguration (SLAAC) service.</td></tr>
-<tr><td>Static</td><td>A static address as configured by the user.</td></tr>
-</tbody></table>
-
-<h4 id="./json-schema/IPAddresses.v1_0_7.json|details|AddressState">AddressState:</h4>
-<p>The current state of this address as defined in RFC 4862.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>Deprecated</td><td>This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.</td></tr>
-<tr><td>Failed</td><td>This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use.</td></tr>
-<tr><td>Preferred</td><td>This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.</td></tr>
-<tr><td>Tentative</td><td>This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.</td></tr>
-</tbody></table>
-
-</div>
-</div>
-<h2 id="resource-collections">Resource collections</h2>
+<h1 id="resource-collections">Resource collections</h1>
 <p>A core concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).</p>
 <p>The properties of a Resource Collection are as follows:</p>
 
@@ -1083,7 +784,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PrivilegeRegistry resource. See the Links section and the <a href="#PrivilegeRegistry">PrivilegeRegistry</a> schema for details.</td></tr>
 <tr><td><nobr><b>Roles</b> { }</nobr></td><td>object</td><td></td><td>A link to a collection of Roles. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this service is enabled.  If set to false, the AccountService is disabled.  This means no users can be created, deleted or modified.  Any service attempting to access the AccountService resource (for example, the Session Service) will fail.  New sessions cannot be started when the service is disabled. However, established sessions may still continue operating. This does not affect Basic AUTH connections.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -1312,7 +1013,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number of this assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>SKU of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Spare part number of the Assembly.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Vendor</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Vendor of the Assembly.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Version</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Version of the Assembly.</td></tr>
 </tbody></table>
@@ -1708,7 +1409,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Storage resource. See the Links section and the <a href="#Storage">Storage</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Switches</b> <i>(v1.7+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Switches located in this Chassis.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Switch resource. See the Links section and the <a href="#Switch">Switch</a> schema for details.</td></tr>
-<tr><td><nobr><b>Location</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Location</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the chassis. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>LogServices</b> { }</nobr></td><td>object</td><td></td><td>A reference to the logs for this chassis. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer of this chassis.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The model number of the chassis.</td></tr>
@@ -1725,7 +1426,7 @@ pre.code{
 <tr><td><nobr><b>PowerState</b> <i>(v1.0.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The current power state of the chassis.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Chassis.json|details|PowerState">PowerState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number of the chassis.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The SKU of the chassis.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Thermal</b> {</nobr></td><td>object</td><td></td><td>A reference to the thermal properties (fans, cooling, sensors) of this chassis. See the <a href="#Thermal">Thermal</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Thermal resource. See the Links section and the <a href="#Thermal">Thermal</a> schema for details.</td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Universal Unique Identifier (UUID) for this Chassis.</td></tr>
@@ -1926,7 +1627,7 @@ pre.code{
 <tr><td><nobr><b>ResourceBlocks</b> { }</nobr></td><td>object</td><td></td><td>The resource blocks available on the service. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>ResourceZones</b> { }</nobr></td><td>object</td><td></td><td>The resource zones available on the service. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -1979,7 +1680,7 @@ pre.code{
 <tr><td><nobr><b>HostWatchdogTimer</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>This object describes the Host Watchdog Timer functionality for this system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FunctionEnabled</b> <i>(v1.5+)</i></nobr></td><td>boolean</td><td><nobr>read-write</nobr> <nobr>required</nobr> (null)</td><td>This indicates if the Host Watchdog Timer functionality has been enabled. Additional host-based software is necessary to activate the timer function.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.5+)</i> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.5+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.5+)</i> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TimeoutAction</b> <i>(v1.5+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> <nobr>required</nobr> (null)</td><td>This property indicates the action to perform when the Watchdog Timer reaches its timeout value.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|TimeoutAction">TimeoutAction</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>WarningAction</b> <i>(v1.5+)</i></nobr><br>}</td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property indicates the action to perform when the Watchdog Timer is close (typically 3-10 seconds) to reaching its timeout value.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|WarningAction">WarningAction</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>IndicatorLED</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The state of the indicator LED, used to identify the system.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|IndicatorLED">IndicatorLED</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -2007,7 +1708,7 @@ pre.code{
 <tr><td><nobr><b>MemoryDomains</b> { }</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Memory Domains associated with this system. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>MemorySummary</b> {</nobr></td><td>object</td><td></td><td>This object describes the central memory of the system in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemoryMirroring</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The ability and type of memory mirroring supported by this system.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|MemoryMirroring">MemoryMirroring</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TotalSystemMemoryGiB</b></nobr></td><td>number<br>(GiBy)</td><td><nobr>read-only</nobr> (null)</td><td>The total configured operating system-accessible memory (RAM), measured in GiB.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TotalSystemPersistentMemoryGiB</b> <i>(v1.4+)</i></nobr><br>}</td><td>number<br>(GiBy)</td><td><nobr>read-only</nobr> (null)</td><td>The total configured, system-accessible persistent memory, measured in GiB.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product name for this system, without the manufacturer name.</td></tr>
@@ -2023,7 +1724,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Count</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The number of physical processors in the system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LogicalProcessorCount</b> <i>(v1.5+)</i></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The number of logical processors in the system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The processor model for the primary or majority of processors in this system.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>}</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Redundancy</b> <i>(v1.5+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>A reference to a collection of Redundancy entities that each name a set of computer systems that provide redundancy for this ComputerSystem.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>SecureBoot</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the UEFI SecureBoot resource associated with this system. See the <a href="#SecureBoot">SecureBoot</a> schema for details on this property.</td></tr>
@@ -2031,7 +1732,7 @@ pre.code{
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this system.</td></tr>
 <tr><td><nobr><b>SimpleStorage</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of storage devices associated with this system. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer SKU for this system.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Storage</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of storage devices associated with this system. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>SubModel</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The sub-model for this system.</td></tr>
 <tr><td><nobr><b>SystemType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The type of computer system represented by this resource.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|SystemType">SystemType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -2041,7 +1742,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceType</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property indicates the interface type of the Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceType">InterfaceType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceTypeSelection</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The Interface Type selection supported by this Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceTypeSelection">InterfaceTypeSelection</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr><br>} ]</td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The universal unique identifier (UUID) for this system.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -2413,7 +2114,7 @@ pre.code{
 <tr><td><nobr><b>FailurePredicted</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Is this drive currently predicting a failure in the near future.</td></tr>
 <tr><td><nobr><b>HotspareReplacementMode</b> <i>(v1.5+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The replacement mode for the hotspare drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|HotspareReplacementMode">HotspareReplacementMode</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>HotspareType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of hotspare this drive is currently serving as.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|HotspareType">HotspareType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>The Durable names for the drive. This type describes any additional identifiers for a resource. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>IndicatorLED</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The state of the indicator LED, used to identify the drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|IndicatorLED">IndicatorLED</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Chassis</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the Chassis which contains this Drive. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
@@ -2423,7 +2124,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Volumes</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Volume resource. See the Links section and the <a href="#Volume">Volume</a> schema for details.</td></tr>
-<tr><td><nobr><b>Location</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Location</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>The Location of the drive. This type describes the location of a resource. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this drive.</td></tr>
 <tr><td><nobr><b>MediaType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of media contained in this drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|MediaType">MediaType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the model number for the drive.</td></tr>
@@ -2434,14 +2135,14 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OperationName</b> <i>(v1.1.3+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The name of the operation.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PercentageComplete</b> <i>(v1.1.3+)</i></nobr><br>} ]</td><td>integer<br>(%)</td><td><nobr>read-only</nobr> (null)</td><td>The percentage of the operation that has been completed.</td></tr>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The part number for this drive.</td></tr>
-<tr><td><nobr><b>PhysicalLocation</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>PhysicalLocation</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the drive. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>PredictedMediaLifeLeftPercent</b></nobr></td><td>number<br>(%)</td><td><nobr>read-only</nobr> (null)</td><td>The percentage of reads and writes that are predicted to still be available for the media.</td></tr>
 <tr><td><nobr><b>Protocol</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol this drive is using to communicate to the storage controller.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|Protocol">Protocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Revision</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The revision of this Drive. This is typically the firmware/hardware version of the drive.</td></tr>
 <tr><td><nobr><b>RotationSpeedRPM</b></nobr></td><td>number<br>(RPM)</td><td><nobr>read-only</nobr> (null)</td><td>The rotation speed of this Drive in Revolutions per Minute (RPM).</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this drive.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this drive.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>StatusIndicator</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The state of the status indicator, used to communicate status information about this drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|StatusIndicator">StatusIndicator</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -2648,13 +2349,13 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VendorId</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor ID of this PCIe function.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EntityRole</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The role of the connected entity.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Endpoint.json|details|EntityRole">EntityRole</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EntityType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of the connected entity.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Endpoint.json|details|EntityType">EntityType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td> (null)</td><td>See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td> (null)</td><td>Identifiers for the remote entity. This type describes any additional identifiers for a resource. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PciClassCode</b> <i>(deprecated v1.0.4)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Class Code, Subclass code, and Programming Interface code of this PCIe function. <i>Deprecated v1.0.4+. This property has been deprecated in favor of the ClassCode property inside the EntityPciId object.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PciFunctionNumber</b> <i>(deprecated v1.0.4)</i></nobr><br>} ]</td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The PCI ID of the connected entity. <i>Deprecated v1.0.4+. This property has been deprecated in favor of the FunctionNumber property inside the EntityPciId object.</i></td></tr>
 <tr><td><nobr><b>EndpointProtocol</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol supported by this endpoint.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Endpoint.json|details|EndpointProtocol">EndpointProtocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>HostReservationMemoryBytes</b></nobr></td><td>integer<br>(bytes)</td><td><nobr>read-only</nobr> (null)</td><td>The amount of memory in Bytes that the Host should allocate to connect to this endpoint.</td></tr>
-<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td> (null)</td><td>See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td> (null)</td><td>Identifiers for this endpoint. This type describes any additional identifiers for a resource. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>IPTransportDetails</b> <i>(v1.1+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This array contains details for each IP transport supported by this endpoint. The array structure can be used to model multiple IP addresses for this endpoint.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IPv4Address</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The IPv4 addresses assigned to the Endpoint. See the <a href="#common-properties-IPv4Address_v1.0.7">IPv4Address object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IPv6Address</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The IPv6 addresses assigned to the Endpoint. See the <a href="#common-properties-IPv6Address_v1.0.7">IPv6Address object</a> for details on this property.</td></tr>
@@ -2677,7 +2378,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VendorId</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor ID of this PCIe function.</td></tr>
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the lower level endpoints supporting this endpoint.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -2846,9 +2547,9 @@ pre.code{
 <tr><td><nobr><b>FullDuplex</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates if the interface is in Full Duplex mode or not.</td></tr>
 <tr><td><nobr><b>HostName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The DNS Host Name, without any domain information.</td></tr>
 <tr><td><nobr><b>InterfaceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this interface is enabled.</td></tr>
-<tr><td><nobr><b>IPv4Addresses</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>See the <a href="#ip-address-objects">IP Address objects</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-IPv4Address_v1.0.7">IPv4Address object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>IPv4Addresses</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>The IPv4 addresses currently assigned to this interface. This type describes an IPv4 Address. See the <a href="#common-properties-IPv4Address_v1.0.7">IPv4Address object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>IPv4StaticAddresses</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>The IPv4 static addresses assigned to this interface. This type describes an IPv4 Address. See the <a href="#common-properties-IPv4Address_v1.0.7">IPv4Address object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>IPv6Addresses</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>See the <a href="#ip-address-objects">IP Address objects</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-IPv6Address_v1.0.7">IPv6Address object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>IPv6Addresses</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>Enumerates in an array all of the currently assigned IPv6 addresses on this interface. This type describes an IPv6 Address. See the <a href="#common-properties-IPv6Address_v1.0.7">IPv6Address object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>IPv6AddressPolicyTable</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>An array representing the RFC 6724 Address Selection Policy Table.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Label</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> (null)</td><td>The IPv6 Label (as defined in RFC 6724 section 2.1).</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Precedence</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> (null)</td><td>The IPv6 Precedence (as defined in RFC 6724 section 2.1.</td></tr>
@@ -2875,7 +2576,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IPv4AutoConfigEnabled</b> <i>(v1.4+)</i></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether IPv4 SLAAC is enabled for this interface.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IPv6AutoConfigEnabled</b> <i>(v1.4+)</i></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether IPv6 SLAAC is enabled for this interface.</td></tr>
 <tr><td><nobr><b>StaticNameServers</b> <i>(v1.4+)</i> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-write</nobr></td><td>A statically defined set of DNS server IP addresses (both IPv4 and IPv6).</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>UefiDevicePath</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UEFI device path for this interface.</td></tr>
 <tr><td><nobr><b>VLAN</b> {</nobr></td><td>object</td><td> (null)</td><td>If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource. See the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a VLAN resource. See the Links section and the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details.</td></tr>
@@ -3179,7 +2880,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OriginResource</b> <i>(v1.2+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates if the OriginResource property is supported.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegistryPrefix</b> <i>(v1.2+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates if the RegistryPrefix property is supported.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ResourceType</b> <i>(v1.2+)</i></nobr><br>}</td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates if the ResourceType property is supported.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SubordinateResourcesSupported</b> <i>(v1.2+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>This indicates if the service supports the SubordinateResource property on Event Subscriptions.</td></tr>
 <tr><td><nobr><b>Subscriptions</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of Event Destination resources. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 </tbody></table>
@@ -3391,7 +3092,7 @@ pre.code{
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>MaxZones</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The value of this property shall contain the maximum number of zones the switch can currently configure.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Switches</b> { }</nobr></td><td>object</td><td></td><td>A collection of references to the switches contained in this fabric. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>Zones</b> { }</nobr></td><td>object</td><td></td><td>A collection of references to the zones contained in this fabric. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 </tbody></table>
@@ -3494,7 +3195,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a EthernetInterface resource. See the Links section and the <a href="#EthernetInterface">EthernetInterface</a> schema for details.</td></tr>
 <tr><td><nobr><b>NetworkProtocol</b> {</nobr></td><td>object</td><td></td><td>The Redfish link to the network services and their settings that the Manager controls.  It is here that clients will find network configuration options as well as network services. See the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ManagerNetworkProtocol resource. See the Links section and the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -3600,7 +3301,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxSteps</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Maximum number of Job Steps supported.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Scheduling</b></nobr><br>}</td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates whether scheduling of Jobs is supported.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <h2 id="JsonSchemaFile">JsonSchemaFile 1.1.1</h2>
 <p>This is the schema definition for the Schema File locator resource.</p>
@@ -3845,7 +3546,7 @@ pre.code{
 <tr><td><nobr><b>MaxNumberOfRecords</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>The maximum number of log entries this service can have.</td></tr>
 <tr><td><nobr><b>OverWritePolicy</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The overwrite policy for this service that takes place when the log is full.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/LogService.json|details|OverWritePolicy">OverWritePolicy</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -3964,7 +3665,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr></td><td>Indicates if the service is enabled for this manager.</td></tr>
 <tr><td><nobr><b>SerialInterfaces</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>ServiceEntryPointUUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UUID of the Redfish Service provided by this manager.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Universal Unique Identifier (UUID) for this Manager.</td></tr>
 <tr><td><nobr><b>VirtualMedia</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to the Virtual Media services for this particular manager. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 </tbody></table>
@@ -4238,7 +3939,7 @@ pre.code{
 <tr><td><nobr><b>SSH</b> {</nobr></td><td>object</td><td></td><td>Settings for this Manager's SSH (Secure Shell) protocol support.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Port</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> (null)</td><td>Indicates the protocol port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ProtocolEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates if the protocol is enabled or disabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Telnet</b> {</nobr></td><td>object</td><td></td><td>Settings for this Manager's Telnet protocol support.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Port</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> (null)</td><td>Indicates the protocol port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ProtocolEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates if the protocol is enabled or disabled.</td></tr>
@@ -4350,7 +4051,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Chassis</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the Chassis which contains this Memory. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.2+)</i> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the memory. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>LogicalSizeMiB</b> <i>(v1.4+)</i></nobr></td><td>integer<br>(mebibytes)</td><td><nobr>read-only</nobr> (null)</td><td>Total size of the logical memory in MiB.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Memory manufacturer.</td></tr>
 <tr><td><nobr><b>MaxTDPMilliWatts</b> [ ] </nobr></td><td>array<br>(milliWatts)<br>(integer)</td><td><nobr>read-only</nobr></td><td>Maximum TDPs in milli Watts.</td></tr>
@@ -4394,7 +4095,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SecurityStates</b> [ ] </nobr><br>}</td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>Security states supported by the Memory.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Memory.json|details|SecurityStates">SecurityStates</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product serial number of this device.</td></tr>
 <tr><td><nobr><b>SpareDeviceCount</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Number of unused spare devices available in the Memory.</td></tr>
-<tr><td><nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SubsystemDeviceID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Subsystem Device ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerProductID</i></td></tr>
 <tr><td><nobr><b>SubsystemVendorID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>SubSystem Vendor ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerManufacturerID</i></td></tr>
 <tr><td><nobr><b>VendorID</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Vendor ID. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Memory.v1_3_0.ModuleManufacturerID</i></td></tr>
@@ -4633,7 +4334,7 @@ pre.code{
 <tr><td><nobr><b>IsMirrorEnabled</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Mirror Enabled status.</td></tr>
 <tr><td><nobr><b>IsSpare</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Spare enabled status.</td></tr>
 <tr><td><nobr><b>MemoryChunkSizeMiB</b></nobr></td><td>integer<br>(mebibytes)</td><td><nobr>read-only</nobr> (null)</td><td>Size of the memory chunk measured in mebibytes (MiB).</td></tr>
-<tr><td><nobr><b>Status</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -4915,7 +4616,7 @@ pre.code{
 <tr><td><nobr><b>ReportActions</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>Specifies the actions to perform when a metric report is generated. Actions to perform when a metric report is generated.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/MetricReportDefinition.json|details|ReportActions">ReportActions</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>ReportUpdates</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>When logging metric reports, specifies how subsequent metric reports are handled in relationship to an existing metric report created from the metric report definition.  Namely, whether to overwrite, append, or create new report resource.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/MetricReportDefinition.json|details|ReportUpdates">ReportUpdates</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Schedule</b> { }</nobr></td><td>object</td><td></td><td>Specifies the schedule for generating the metric report. See the <a href="#common-properties-Schedule_v1.2.0">Schedule object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Wildcards</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Specifies the strings used to replace wildcards in the paths in MetricProperties array property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Keys</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>An array of Key values to substitute for the wildcard.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Name</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The name of Wildcard.</td></tr>
@@ -5022,7 +4723,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PCIeDevices</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the PCIeDevices associated with this Network Controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PCIeDevice resource. See the Links section and the <a href="#PCIeDevice">PCIeDevice</a> schema for details.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the network adapter controller. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PCIeInterface</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td> (null)</td><td>The PCIe interface details for this controller. See the <a href="#PCIeDevice">PCIeDevice</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PCIeInterface resource. See the Links section and the <a href="#PCIeDevice">PCIeDevice</a> schema for details.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer or OEM of this network adapter.</td></tr>
@@ -5032,7 +4733,7 @@ pre.code{
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Part number for this network adapter.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this network adapter.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer SKU for this network adapter.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -5112,7 +4813,7 @@ pre.code{
 <tr><td><nobr><b>NetDevFuncType</b> <i>(v1.0.2+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The configured capability of this network device function.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/NetworkDeviceFunction.json|details|NetDevFuncType">NetDevFuncType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>PhysicalPortAssignment</b> <i>(deprecated v1.0.3)</i> {</nobr></td><td>object</td><td></td><td>The physical port that this network device function is currently assigned to. See the <a href="#NetworkPort">NetworkPort</a> schema for details on this property. <i>Deprecated v1.0.3+. This property has been deprecated and moved to the Links section to avoid loops on expand.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a NetworkPort resource. See the Links section and the <a href="#NetworkPort">NetworkPort</a> schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>VirtualFunctionsEnabled</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Whether Single Root I/O Virtualization (SR-IOV) Virual Functions (VFs) are enabled for this Network Device Function.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -5207,7 +4908,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>NetworkDeviceFunctions</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkDeviceFunctions associated with this NetworkInterface. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>NetworkPorts</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkPorts associated with this NetworkInterface. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <h2 id="NetworkPort">NetworkPort 1.2.0</h2>
 <p>A Network Port represents a discrete physical port capable of connecting to a network.</p>
@@ -5236,7 +4937,7 @@ pre.code{
 <tr><td><nobr><b>PhysicalPortNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The physical port number label for this port.</td></tr>
 <tr><td><nobr><b>PortMaximumMTU</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The largest maximum transmission unit (MTU) that can be configured for this network port.</td></tr>
 <tr><td><nobr><b>SignalDetected</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Whether or not the port has detected enough signal on enough lanes to establish link.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SupportedEthernetCapabilities</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr> (null)</td><td>The set of Ethernet capabilities that this port supports.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/NetworkPort.json|details|SupportedEthernetCapabilities">SupportedEthernetCapabilities</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SupportedLinkCapabilities</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>The self-described link capabilities of this port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AutoSpeedNegotiation</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates whether the port has the capability to auto negotiate speed.</td></tr>
@@ -5366,7 +5067,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PCIeType</b> <i>(v1.0.3+)</i></nobr><br>}</td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The version of the PCIe specification in use by this device.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/PCIeDevice.json|details|PCIeType">PCIeType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this PCIe device.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this PCIe device.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -5436,7 +5137,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageControllers</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the storage controllers which the PCIe device produces.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a StorageController resource. See the Links section and the <a href="#Storage">Storage</a> schema for details.</td></tr>
 <tr><td><nobr><b>RevisionId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Revision ID of this PCIe function.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SubsystemId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Subsystem ID of this PCIe function.</td></tr>
 <tr><td><nobr><b>SubsystemVendorId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Subsystem Vendor ID of this PCIe function.</td></tr>
 <tr><td><nobr><b>VendorId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor ID of this PCIe function.</td></tr>
@@ -5500,11 +5201,11 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PCIeDevice</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the PCIe Devices contained in this slot.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PCIeDevice resource. See the Links section and the <a href="#PCIeDevice">PCIeDevice</a> schema for details.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> { }</nobr></td><td>object</td><td></td><td>The Location of the PCIe slot. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PCIeType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the PCIe specification supported by this slot.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/PCIeSlots.json|details|PCIeType">PCIeType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SlotType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the PCIe slot type for this slot.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/PCIeSlots.json|details|SlotType">SlotType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -5555,12 +5256,12 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ConnectedSwitchPorts</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the ports that connect to the switch through this port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to another Port resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Location</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Location</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the port. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>MaxSpeedGbps</b></nobr></td><td>number<br>(Gbit/s)</td><td><nobr>read-only</nobr> (null)</td><td>The maximum speed of this port as currently configured.</td></tr>
 <tr><td><nobr><b>PortId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the label of this port on the physical switch package.</td></tr>
 <tr><td><nobr><b>PortProtocol</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol being sent over this port.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Port.json|details|PortProtocol">PortProtocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>PortType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the type of this port.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Port.json|details|PortType">PortType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Width</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The number of lanes, phys, or other physical transport links that this port contains.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -5707,7 +5408,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PowerRequestedWatts</b></nobr></td><td>number<br>(Watts)</td><td><nobr>read-only</nobr> (null)</td><td>The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The ID(s) of the resources associated with this Power Limit.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>PowerSupplies</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Details of the power supplies associated with this system or device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b> <i>(v1.0.7+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
@@ -5728,7 +5429,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LastPowerOutputWatts</b></nobr></td><td>number<br>(Watts)</td><td><nobr>read-only</nobr> (null)</td><td>The average power output of this Power Supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LineInputVoltage</b></nobr></td><td>number<br>(Volts)</td><td><nobr>read-only</nobr> (null)</td><td>The line input voltage at which the Power Supply is operating.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LineInputVoltageType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The line voltage type supported as an input to this Power Supply.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Power.json|details|LineInputVoltageType">LineInputVoltageType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.5+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.5+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the power supply. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Manufacturer</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this power supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemberId</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the identifier for the member within the collection.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The model number for this Power Supply.</td></tr>
@@ -5745,7 +5446,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this Power Supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The spare part number for this Power Supply.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the power subsystem of this system or device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>Voltages</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the definition for voltage sensors.</td></tr>
@@ -5764,7 +5465,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>Describes the areas or devices to which this voltage measurement applies.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SensorNumber</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>A numerical identifier to represent the voltage sensor.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdCritical</b></nobr></td><td>number<br>(Volts)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdFatal</b></nobr></td><td>number<br>(Volts)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdNonCritical</b></nobr><br>} ]</td><td>number<br>(Volts)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range.</td></tr>
@@ -6122,7 +5823,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Chassis</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the Chassis which contains this Processor. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Location</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Location</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the processor. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The processor manufacturer.</td></tr>
 <tr><td><nobr><b>MaxSpeedMHz</b></nobr></td><td>integer<br>(MHz)</td><td><nobr>read-only</nobr> (null)</td><td>The maximum clock speed of the processor.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product model number of this device.</td></tr>
@@ -6136,7 +5837,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VendorId</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor Identification for this processor.</td></tr>
 <tr><td><nobr><b>ProcessorType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of processor.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorType">ProcessorType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Socket</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The socket or location of the processor.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SubProcessors</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Sub-Processors associated with this system, such as cores or threads that are part of a processor. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>TotalCores</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The total number of cores contained in this processor.</td></tr>
 <tr><td><nobr><b>TotalThreads</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The total number of execution threads supported by this processor.</td></tr>
@@ -6257,7 +5958,7 @@ pre.code{
 <tr><td><nobr><b>ResourceBlockType</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This property represents the types of resources available on this Resource Block.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ResourceBlock.json|details|ResourceBlockType">ResourceBlockType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>SimpleStorage</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Simple Storage available in this Resource Block.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SimpleStorage resource. See the Links section and the <a href="#SimpleStorage">SimpleStorage</a> schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Storage</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Storage available in this Resource Block.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Storage resource. See the Links section and the <a href="#Storage">Storage</a> schema for details.</td></tr>
 </tbody></table>
@@ -6761,7 +6462,7 @@ pre.code{
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.  If set to false, the Session Service is disabled, and new sessions cannot be created, old sessions cannot be deleted, and established sessions may continue operating.</td></tr>
 <tr><td><nobr><b>Sessions</b> { }</nobr></td><td>object</td><td></td><td>Link to a collection of Sessions. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>SessionTimeout</b></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-write</nobr></td><td>This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -6793,12 +6494,12 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product model number of this device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The name of the resource or array element.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Links</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Chassis</b> {</nobr></td><td>object</td><td></td><td>A reference to the Chassis which contains this Simple Storage. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>UefiDevicePath</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UEFI device path used to access this storage controller.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
@@ -6862,7 +6563,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>ReleaseDate</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Release date of this software.</td></tr>
 <tr><td><nobr><b>SoftwareId</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>A string representing the implementation-specific ID for identifying this software.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>UefiDevicePaths</b> <i>(v1.1+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>A list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item.</td></tr>
 <tr><td><nobr><b>Updateable</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates whether this software can be updated by the update service.</td></tr>
 <tr><td><nobr><b>Version</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>A string representing the version of this software.</td></tr>
@@ -6912,7 +6613,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the storage subsystem.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>StorageControllers</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The set of storage controllers represented by this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b> <i>(v1.0.5+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
@@ -6921,17 +6622,17 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AssetTag</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The user assigned asset tag for this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CacheSummary</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>This object describes the cache memory of the storage controller in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PersistentCacheSizeMiB</b></nobr></td><td>integer<br>(mebibytes)</td><td><nobr>read-only</nobr> (null)</td><td>The portion of the cache memory that is persistent, measured in MiB.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TotalCacheSizeMiB</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>integer<br>(mebibytes)</td><td><nobr>read-only</nobr> <nobr>required</nobr> (null)</td><td>The total configured cache memory, measured in MiB.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareVersion</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The firmware version of this storage Controller.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>The Durable names for the storage controller. This type describes any additional identifiers for a resource. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Links</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Endpoints</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>An array of references to the endpoints that connect to this controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Endpoint resource. See the Links section and the <a href="#Endpoint">Endpoint</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> <i>(v1.4+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>An array of references to the StorageServices that connect to this controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the storage controller. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Manufacturer</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemberId</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the identifier for the member within the collection.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Model</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the model number for the storage controller.</td></tr>
@@ -6943,7 +6644,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SKU</b> <i>(v1.0.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SpeedGbps</b> <i>(v1.0.1+)</i></nobr></td><td>number<br>(Gbit/s)</td><td><nobr>read-only</nobr> (null)</td><td>The maximum speed of the storage controller's device interface.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.0.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.0.1+)</i> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedControllerProtocols</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols by which this storage controller can be communicated to.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedControllerProtocols">SupportedControllerProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedDeviceProtocols</b> [ ] </nobr><br>} ]</td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols which the storage controller can use to communicate with attached devices.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedDeviceProtocols">SupportedDeviceProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Volumes</b> { }</nobr></td><td>object</td><td></td><td>The set of volumes produced by the storage controllers represented by this resource. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
@@ -7118,7 +6819,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagedBy</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the managers that manage this switch.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Manager resource. See the Links section and the <a href="#Manager">Manager</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Location</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Location</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the switch. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>LogServices</b> { }</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Log Services associated with this system. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this switch.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product model number of this switch.</td></tr>
@@ -7129,7 +6830,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this switch.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this switch.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SwitchType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol being sent over this switch.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Switch.json|details|SwitchType">SwitchType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>TotalSwitchWidth</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The total number of lanes, phys, or other physical transport links that this switch contains.</td></tr>
 </tbody></table>
@@ -7385,7 +7086,7 @@ pre.code{
 <tr><td><nobr><b>DateTime</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The current DateTime (with offset) setting that the task service is using.</td></tr>
 <tr><td><nobr><b>LifeCycleEventOnTaskStateChange</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>Send an Event upon Task State Change.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Tasks</b> { }</nobr></td><td>object</td><td></td><td>References to the Tasks collection. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -7438,7 +7139,7 @@ pre.code{
 <tr><td><nobr><b>MetricReportDefinitions</b> { }</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Report Definitions. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>MetricReports</b> { }</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Reports. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 <tr><td><nobr><b>MinCollectionInterval</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The minimum time interval between collections supported by this service.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SupportedCollectionFunctions</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-write</nobr> (null)</td><td>The functions that can be performed over each metric. An operation to perform over the sample.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/TelemetryService.json|details|SupportedCollectionFunctions">SupportedCollectionFunctions</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Triggers</b> { }</nobr></td><td>object</td><td></td><td>A link to the collection of Triggers, which apply to metrics. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
 </tbody></table>
@@ -7487,7 +7188,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FanName</b> <i>(deprecated v1.0.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Name of the fan. <i>Deprecated v1.0.3+. This property has been Deprecated in favor of Thermal.v1_1_0.Thermal.Fan.Name</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>HotPluggable</b> <i>(v1.4+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates if this device can be inserted or removed while the equipment is in operation.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>IndicatorLED</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The state of the indicator LED, used to identify this Fan.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Thermal.json|details|IndicatorLED">IndicatorLED</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>See the <a href="#location-object">Location object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the fan. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LowerThresholdCritical</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Below normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LowerThresholdFatal</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Below normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LowerThresholdNonCritical</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Below normal range.</td></tr>
@@ -7509,13 +7210,13 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SensorNumber</b> <i>(v1.5+)</i></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>A numerical identifier to represent the fan speed sensor.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this Fan.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The spare part number for this Fan.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdCritical</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdFatal</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdNonCritical</b></nobr><br>} ]</td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range.</td></tr>
 <tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Temperatures</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the definition for temperature sensors.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b> <i>(v1.0.7+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
@@ -7538,7 +7239,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>Describes the areas or devices to which this temperature measurement applies.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SensorNumber</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>A numerical identifier to represent the temperature sensor.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdCritical</b></nobr></td><td>number<br>(Celsius)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdFatal</b></nobr></td><td>number<br>(Celsius)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdNonCritical</b></nobr><br>} ]</td><td>number<br>(Celsius)</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range.</td></tr>
@@ -7832,7 +7533,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Activation</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The direction of crossing that activates this threshold.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Triggers.json|details|Activation">Activation</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>DwellTime</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Reading</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>number</td><td><nobr>read-write</nobr> (null)</td><td>The threshold value.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>TriggerActions</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This property specifies the actions to perform when the trigger occurs. Specifies the actions to perform when a trigger occurs.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Triggers.json|details|TriggerActions">TriggerActions</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Wildcards</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Wildcards used to replace values in MetricProperties array property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The name of Wildcard.</td></tr>
@@ -7912,7 +7613,7 @@ pre.code{
 <tr><td><nobr><b>HttpPushUriTargetsBusy</b> <i>(v1.2+)</i></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This represents if the HttpPushUriTargets property is reserved by any client.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>SoftwareInventory</b> { }</nobr></td><td>object</td><td> (null)</td><td>An inventory of software. See the <a href="#common-properties-idRef_v4.0.3">idRef object</a> (v4.0.3) for details on this property.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -8094,7 +7795,7 @@ pre.code{
 <tr><td><nobr><b>CapacityBytes</b></nobr></td><td>number<br>(bytes)</td><td><nobr>read-only</nobr> (null)</td><td>The size in bytes of this Volume.</td></tr>
 <tr><td><nobr><b>Encrypted</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Is this Volume encrypted.</td></tr>
 <tr><td><nobr><b>EncryptionTypes</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-write</nobr></td><td>The types of encryption used by this Volume.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Volume.json|details|EncryptionTypes">EncryptionTypes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> (v1.1.0) for details on this property.</td></tr>
+<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>The Durable names for the volume. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> (v1.1.0) for details on this property.</td></tr>
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Drives</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the drives which contain this volume. This will reference Drives that either wholly or only partly contain this volume.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Drive resource. See the Links section and the <a href="#Drive">Drive</a> schema for details.</td></tr>
@@ -8105,7 +7806,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OperationName</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The name of the operation.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PercentageComplete</b></nobr><br>} ]</td><td>number</td><td><nobr>read-only</nobr> (null)</td><td>The percentage of the operation that has been completed.</td></tr>
 <tr><td><nobr><b>OptimumIOSizeBytes</b></nobr></td><td>number<br>(bytes)</td><td><nobr>read-only</nobr> (null)</td><td>The size in bytes of this Volume's optimum IO size.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This type describes the status and health of a resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>VolumeType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of this volume.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Volume.json|details|VolumeType">VolumeType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -8191,7 +7892,7 @@ pre.code{
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>Actions</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
-<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td> (null)</td><td>See the <a href="#identifier-object">Identifier object</a> definition in the <a href="#common-properties">Common Properties</a> section. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Identifiers</b> [ { } ]</nobr></td><td>array (object)</td><td> (null)</td><td>Identifiers for this zone. This type describes any additional identifiers for a resource. See the <a href="#common-properties-Identifier_v1.7.0">Identifier object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Endpoints</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>Represents an array of references to the endpoints that are contained in this zone.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Endpoint resource. See the Links section and the <a href="#Endpoint">Endpoint</a> schema for details.</td></tr>
@@ -8200,7 +7901,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ResourceBlocks</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Resource Blocks that are used in this Zone.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ResourceBlock resource. See the Links section and the <a href="#ResourceBlock">ResourceBlock</a> schema for details.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>See the <a href="#status-object">Status object</a> definition in the <a href="#using-this-guide">Using this guide</a> section. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
