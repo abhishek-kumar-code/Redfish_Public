@@ -2,8 +2,8 @@
 DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
-DocVersion: '2018.1'
-modified: '2018-05-01'
+DocVersion: '2018.2'
+modified: '2018-08-10'
 status: published
 released: True
 copyright: '2017-2018'
@@ -53,13 +53,8 @@ Note: you can specify the location of the TOC, presumably in the Introduction se
 
 Note: markdown is allowed in description overrides, but HTML markup is not; it will be escaped.
 
-* Status: See the [Status object](#status-object) definition in the [Using this guide](#using-this-guide) section.
 * Oem: See the OEM object definition in the [Using this guide](#using-this-guide) section.
-* Location: See the [Location object](#location-object) definition in the [Common Properties](#common-properties) section.
-* Identifier: See the [Identifier object](#identifier-object) definition in the [Common Properties](#common-properties) section.
-* Identifiers: See the [Identifier object](#identifier-object) definition in the [Common Properties](#common-properties) section.
-* IPv4Addresses: See the [IP Address objects](#ip-address-objects) definition in the [Common Properties](#common-properties) section.
-* IPv6Addresses: See the [IP Address objects](#ip-address-objects) definition in the [Common Properties](#common-properties) section.
+
 
 # Units Translation
 
@@ -76,6 +71,13 @@ String-replacement for "units" values. Case-sensitive. Any units not matched wil
 | V                | Volts            |
 | mW               | milliWatts       |
 | m                | meters           |
+
+# Enum Deprecations
+
+Second-level heading with path to enum definition (omit protocol):
+
+
+
 
 # Manual Fix-ups required prior to Release
 
@@ -105,8 +107,8 @@ A number of corner-case issues have been found in the schema definitions which c
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2018-5-1</p>
-<p align="right">Version: <span class="version">2018.1</span></p>
+<p align="right">Date: 2018-8-10</p>
+<p align="right">Version: <span class="version">2018.2</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
@@ -117,7 +119,7 @@ A number of corner-case issues have been found in the schema definitions which c
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
-    <p>Copyright &copy; 2016-2018 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+    <p>Copyright &copy; 2016-2018 DMTF. All rights reserved.
 <br><br>
   <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
   <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -131,7 +133,7 @@ A number of corner-case issues have been found in the schema definitions which c
 
 # Overview
 
-The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
+The Redfish standard comprises a set of specifications maintained by the Redfish Forum, a working group within the DMTF. The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
 
 The Redfish standard addresses several key issues for infrastructures that require scalability. Large infrastructures often consist of many simple servers of different makes and types. This hyperscale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard protocol based on out-of-band systems management.
 
@@ -165,7 +167,7 @@ The property-level details include:
 | Description | The description of the property, as copied directly from the schema 'Description' definition. |
 
 
-## Common properties
+# Common properties
 
 The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.
 
@@ -175,38 +177,10 @@ In addition, the following properties are frequently defined in Redfish schemas.
 
 #include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/FrequentProperties/properties
 
-
-## Status object
-
-The 'Status' object and its properties is common to many Redfish schema.
-
-#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status
+[insert_common_objects]
 
 
-## Location object
-
-The 'Location' object and its properties is common to many Redfish schema.
-
-#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Location
-
-## Identifier object
-
-Properties used to identify a particular instance of a device.
-
-#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.v1_6_0.json#/definitions/Identifier
-
-## IP address objects
-
-IP address objects appear in several areas of the data model.
-### IPv4 addresses 
-
-#include_fragment ./json-schema/IPAddresses.v1_0_6.json#/definitions/IPv4Address
-
-### IPv6 addresses
-
-#include_fragment http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json#/definitions/IPv6Address
-
-## Resource collections
+# Resource collections
 
 A core concept in Redfish is a Collection of resources.  A Collection is a group of like resources where the number of instances in the group can shrink or grow depending on the scope of the Redfish Service or the configuration of the devices being managed. Every Resource Collection resource has the same set of supported properties, and all contain "Collection" in the name of their schema.  Every resource linked in the "Members" array within a Resource Collection will have the same resource type (same schema with the same major version, but can vary in minor or errata schema versions, which are all compatible).
 
@@ -243,7 +217,7 @@ As shown in the example below, a Redfish Service may provide management function
 
 # Reference Guide
 
-This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.1 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
+This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
 
 
 # Excluded Properties
@@ -275,6 +249,8 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 ## HostedStorageServices
 ## StorageService
 ## StorageSystem
+## idRef
+## Oem
 
 
 
@@ -284,37 +260,37 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 ## AccountService
 
 ### Mockup
-mockups/DSP2046-examples/AccountService.1.3.0.json
+mockups/DSP2046-examples/AccountService-v1-example.json
 
 ## ActionInfo
 
 ### Mockup
-mockups/DSP2046-examples/ActionInfo.1.0.3.json
+mockups/DSP2046-examples/ActionInfo-v1-example.json
 
 ## Assembly
 
 ### Mockup
-mockups/DSP2046-examples/Assembly.1.1.0.json
+mockups/DSP2046-examples/Assembly-v1-example.json
 
 ## Bios
 
 ### Mockup
-mockups/DSP2046-examples/Bios.1.0.3.json
+mockups/DSP2046-examples/Bios-v1-example.json
 
 ## Chassis
 
 ### Mockup
-mockups/DSP2046-examples/Chassis.1.7.0.json
+mockups/DSP2046-examples/Chassis-v1-example.json
 
 ## CompositionService
 
 ### Mockup
-mockups/DSP2046-examples/CompositionService.1.0.1.json
+mockups/DSP2046-examples/CompositionService-v1-example.json
 
 ## ComputerSystem
 
 ### Mockup
-mockups/DSP2046-examples/ComputerSystem.1.5.0.json
+mockups/DSP2046-examples/ComputerSystem-v1-example.json
 
 ### Property Details
 
@@ -329,172 +305,202 @@ Regarding the case of the hex values, RFC4122 specifies that the hex values shou
 ## Drive
 
 ### Mockup
-mockups/DSP2046-examples/Drive.1.4.0.json
+mockups/DSP2046-examples/Drive-v1-example.json
 
 ## Endpoint
 
 ### Mockup
-mockups/DSP2046-examples/Endpoint.1.1.0.json
+mockups/DSP2046-examples/Endpoint-v1-example.json
 
 ## EthernetInterface
 
 ### Mockup
-mockups/DSP2046-examples/EthernetInterface.1.4.0.json
+mockups/DSP2046-examples/EthernetInterface-v1-example.json
 
 ## EventService
 
 ### Mockup
-mockups/DSP2046-examples/EventService.1.1.0.json
+mockups/DSP2046-examples/EventService-v1-example.json
 
 ## EventDestination
 
 ### Mockup
-mockups/DSP2046-examples/EventDestination.1.3.0.json
+mockups/DSP2046-examples/EventDestination-v1-example.json
 
 ## ExternalAccountProvider
 
 ### Mockup
-mockups/DSP2046-examples/ExternalAccountProvider.1.0.0.json
+mockups/DSP2046-examples/ExternalAccountProvider-v1-example.json
 
 ## Fabric
 
 ### Mockup
-mockups/DSP2046-examples/Fabric.1.0.3.json
+mockups/DSP2046-examples/Fabric-v1-example.json
 
 ## LogEntry
 
 ### Mockup
-mockups/DSP2046-examples/LogEntry.1.3.0.json
+mockups/DSP2046-examples/LogEntry-v1-example.json
 
 ## LogService
 
 ### Mockup
-mockups/DSP2046-examples/LogService.1.1.0.json
+mockups/DSP2046-examples/LogService-v1-example.json
 
 ## Manager
 
 ### Mockup
-mockups/DSP2046-examples/Manager.1.4.0.json
+mockups/DSP2046-examples/Manager-v1-example.json
 
 ## ManagerAccount
 
 ### Mockup
-mockups/DSP2046-examples/ManagerAccount.1.1.2.json
+mockups/DSP2046-examples/ManagerAccount-v1-example.json
 
 ## ManagerNetworkProtocol
 
 ### Mockup
-mockups/DSP2046-examples/ManagerNetworkProtocol.1.2.0.json
+mockups/DSP2046-examples/ManagerNetworkProtocol-v1-example.json
 
 ## Memory
 
 ### Mockup
-mockups/DSP2046-examples/Memory.1.5.0.json
+mockups/DSP2046-examples/Memory-v1-example.json
+
+## MetricDefinition
+
+### Mockup
+mockups/DSP2046-examples/MetricDefinition-v1-example.json
+
+## MetricReportDefinition
+
+### Mockup
+mockups/DSP2046-examples/MetricReportDefinition-v1-example.json
+
+## MetricReport
+
+### Mockup
+mockups/DSP2046-examples/MetricReport-v1-example.json
+
+## PCIeSlots
+
+### Mockup
+mockups/DSP2046-examples/PCIeSlots-v1-example.json
 
 ## Port
 
 ### Mockup
-mockups/DSP2046-examples/Port.1.1.0.json
+mockups/DSP2046-examples/Port-v1-example.json
 
 ## Power
 
 ### Mockup
-mockups/DSP2046-examples/Power.1.5.0.json
+mockups/DSP2046-examples/Power-v1-example.json
 
 ## Processor
 
 ### Mockup
-mockups/DSP2046-examples/Processor.1.3.0.json
+mockups/DSP2046-examples/Processor-v1-example.json
 
 ## ResourceBlock
 
 ### Mockup
-mockups/DSP2046-examples/ResourceBlock.1.1.0.json
+mockups/DSP2046-examples/ResourceBlock-v1-example.json
 
 ## Role
 
 ### Mockup
-mockups/DSP2046-examples/Role.1.2.1.json
+mockups/DSP2046-examples/Role-v1-example.json
 
 ## SerialInterface
 
 ### Mockup
-mockups/DSP2046-examples/SerialInterface.1.1.2.json
+mockups/DSP2046-examples/SerialInterface-v1-example.json
 
 ## ServiceRoot
 
 ### Mockup
-mockups/DSP2046-examples/ServiceRoot.1.3.1.json
+mockups/DSP2046-examples/ServiceRoot-v1-example.json
 
 ## SessionService
 
 ### Mockup
-mockups/DSP2046-examples/SessionService.1.1.3.json
+mockups/DSP2046-examples/SessionService-v1-example.json
 
 ## Session
 
 ### Mockup
-mockups/DSP2046-examples/Session.1.1.0.json
+mockups/DSP2046-examples/Session-v1-example.json
 
 ## SimpleStorage
 
 ### Mockup
-mockups/DSP2046-examples/SimpleStorage.1.2.0.json
+mockups/DSP2046-examples/SimpleStorage-v1-example.json
 
 ## SoftwareInventory
 
 ### Mockup
-mockups/DSP2046-examples/SoftwareInventory.1.2.0.json
+mockups/DSP2046-examples/SoftwareInventory-v1-example.json
 
 ## Storage
 
 ### Mockup
-mockups/DSP2046-examples/Storage.1.4.0.json
+mockups/DSP2046-examples/Storage-v1-example.json
 
 ## Switch
 
 ### Mockup
-mockups/DSP2046-examples/Switch.1.1.0.json
+mockups/DSP2046-examples/Switch-v1-example.json
 
 ## Task
 
 ### Mockup
-mockups/DSP2046-examples/Task.1.2.0.json
+mockups/DSP2046-examples/Task-v1-example.json
 
 ## TaskService
 
 ### Mockup
-mockups/DSP2046-examples/TaskService.1.1.1.json
+mockups/DSP2046-examples/TaskService-v1-example.json
+
+## TelemetryService
+
+### Mockup
+mockups/DSP2046-examples/TelemetryService-v1-example.json
 
 ## Thermal
 
 ### Mockup
-mockups/DSP2046-examples/Thermal.1.4.0.json
+mockups/DSP2046-examples/Thermal-v1-example.json
+
+## Triggers
+
+### Mockup
+mockups/DSP2046-examples/Triggers-v1-example.json
 
 ## UpdateService
 
 ### Mockup
-mockups/DSP2046-examples/UpdateService.1.2.1.json
+mockups/DSP2046-examples/UpdateService-v1-example.json
 
 ## VLanNetworkInterface
 
 ### Mockup
-mockups/DSP2046-examples/VLanNetworkInterface.1.1.1.json
+mockups/DSP2046-examples/VLanNetworkInterface-v1-example.json
 
 ## VirtualMedia
 
 ### Mockup
-mockups/DSP2046-examples/VirtualMedia.1.2.0.json
+mockups/DSP2046-examples/VirtualMedia-v1-example.json
 
 ## Volume
 
 ### Mockup
-mockups/DSP2046-examples/Volume.1.0.3.json
+mockups/DSP2046-examples/Volume-v1-example.json
 
 ## Zone
 
 ### Mockup
-mockups/DSP2046-examples/Zone.1.2.0.json
+mockups/DSP2046-examples/Zone-v1-example.json
 
 
 # Postscript
@@ -509,5 +515,6 @@ This document was created using the Redfish Documentation Generator utility, whi
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
+| 2018.2  | 2018-08-10 | Built from Redfish schemas released in DSP8010 version 2018.2 |
 | 2018.1  | 2018-05-01 | Initial release. Built from Redfish schemas released in DSP8010 version 2018.1 |
 | 2017.0a | 2017-05-19| Work in progress release to gather feedback on content and format. |
