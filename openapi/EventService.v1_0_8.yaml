@@ -193,14 +193,14 @@ components:
           x-longDescription: This parameter shall have the same semantics as the Severity
             property in the Event schema for Redfish.
       required:
-      - MessageId
-      - EventTimestamp
-      - MessageArgs
-      - Message
-      - EventType
-      - Severity
-      - OriginOfCondition
       - EventId
+      - EventTimestamp
+      - EventType
+      - Message
+      - MessageArgs
+      - MessageId
+      - OriginOfCondition
+      - Severity
       type: object
       x-longDescription: This action shall add a test event to the event service with
         the event data specified in the action parameters. This message should then

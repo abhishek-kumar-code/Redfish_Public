@@ -19,7 +19,7 @@
             "updatable": true,
             "uris": [
                 "/redfish/v1/JobService/Jobs/{JobId}",
-                "/redfish/v1/JobService/Jobs/{JobId}/Steps/{JobId}"
+                "/redfish/v1/JobService/Jobs/{JobId}/Steps/{JobId2}"
             ]
         }
     },
