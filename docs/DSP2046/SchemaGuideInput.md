@@ -99,7 +99,7 @@ A number of corner-case issues have been found in the schema definitions which c
 
 3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed.
 
-
+------------------------------------------ SCHEMA GUIDE BEGINS HERE --------------------------------------
 
 # Introduction
 
@@ -214,6 +214,13 @@ As shown in the example below, a Redfish Service may provide management function
 }
 
 ~~~
+
+## Resource Collection Reference 
+
+The following table lists all of the Redfish-defined Resource Collections and the URIs where they can appear.  NOTE: The URIs listed are valid for Redfish Services conforming to the Redfish Specification v1.6.0 or higher.  Services built on earlier versions of the Specification may use different URIs which must be discovered by following the links from the Service Root (/redfish/v1/).
+
+[insert_collections]
+
 
 # Reference Guide
 
