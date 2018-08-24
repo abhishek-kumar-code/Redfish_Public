@@ -62,6 +62,5 @@
 		}
 	],
 	"Oem": {},
-	"@Redfish.Copyright": "Copyright 2018 DMTF, Inc. All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#PCIeSlots.PCIeSlots",
 }

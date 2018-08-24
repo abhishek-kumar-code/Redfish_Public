@@ -40,6 +40,9 @@
 table.properties{
     width: 100%;
 }
+table.uris tr td:nth-child(2) {
+    word-break: break-all;
+}
 .property-details-content {
     margin-left: 5em;
 }
@@ -158,6 +161,9 @@ pre.code{
 <li><a href="#where-can-i-find-more-information">Where can I find more information?</a></li>
 </ul>
 <li><a href="#using-this-guide">Using this guide</a></li>
+<ul>
+<li><a href="#uri-listings">URI listings</a></li>
+</ul>
 <li><a href="#common-properties">Common properties</a></li>
 <ul>
 <li><a href="#common-properties-Identifier_v1.7.0">Identifier (v.1.7.0)</a></li>
@@ -171,6 +177,9 @@ pre.code{
 <li><a href="#common-properties-Status">Status</a></li>
 </ul>
 <li><a href="#resource-collections">Resource collections</a></li>
+<ul>
+<li><a href="#resource-collection-uris-redfish-v16">Resource Collection URIs (Redfish v1.6+)</a></li>
+</ul>
 <li><a href="#reference-guide">Reference Guide</a></li>
 <ul>
 <li><a href="#AccountService">AccountService 1.3.1</a></li>
@@ -265,8 +274,17 @@ pre.code{
 <li><strong>DMTF Redfish Forum</strong> (Working group that maintains the Redfish standard):  <a href="http://www.dmtf.org/standards/spmf">http://www.dmtf.org/standards/spmf</a> Companies involved, upcoming schedules and future work, charter, and information about joining.</li>
 </ul>
 <h1 id="using-this-guide">Using this guide</h1>
-<p>Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions defined for the schema, and an example payload for a resource using the schema.</p>
-<p>The property-level details include:</p>
+<p>Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.</p>
+<p>Each schema section contains:</p>
+<ul>
+<li>The name, current version and description of the schema.</li>
+<li>A listing of the possible URIs where resources defined by this schema can appear in a Redfish Service (v1.6 or later). See <a href="#uri-listings">URI listings</a> below for more information.</li>
+<li>A table defining each property with additional details for those properties when needed.</li>
+<li>A listing of the available Actions defined for the schema.</li>
+<li>An example JSON payload for a resource using the schema.</li>
+</ul>
+<p><br>
+The property-level details include:</p>
 <table>
 <thead>
 <tr>
@@ -293,6 +311,10 @@ pre.code{
 </tr>
 </tbody>
 </table>
+<h2 id="uri-listings">URI listings</h2>
+<p>The Redfish Specification v1.6.0 added mandatory support for the OpenAPI Specification v3.0.  As part of this support, the URIs for every Redfish Resource are defined to appear at known, fixed locations. Resource Collections also appear at fixed locations, with the Members of each collection appearing at URIs constructed using a fixed path structure, with appropriate path segments equal to the value of "Id" properties of Members along the path.  </p>
+<p>Support for v1.6.0 and OpenAPI can be determined by comparing the value of the "RedfishVersion" property in the Service Root (\redfish\v1).  Services reporting a value of "1.6.0" or higher (such as "1.6.1" or "1.7.0") adhere to the URI definitions shown.</p>
+<p>The URI listings do not apply to Redfish Services reporting support of Specification versions prior to v1.6.0.  For those Services, clients must utilize the hypermedia features of the API to discover links from the Service Root to each resource.  While Services will typically match the URIs listed in this documents for many of their resources, this is not guaranteed and will result in errors.</p>
 <h1 id="common-properties">Common properties</h1>
 <p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.</p>
 
@@ -720,6 +742,57 @@ pre.code{
 </pre></div>
 
 
+<h2 id="resource-collection-uris-redfish-v16">Resource Collection URIs (Redfish v1.6+)</h2>
+<p>The following table lists all of the Redfish-defined Resource Collections and the URIs where they can appear.  NOTE: The URIs listed are valid for Redfish Services conforming to the Redfish Specification v1.6.0 or higher.  Services built on earlier versions of the Specification may use different URIs which must be discovered by following the links from the Service Root (/redfish/v1/).</p>
+<table class="uris">
+<thead>
+<tr><th>Collection Type</th><th>URIs</th></tr>
+</thead>
+<tbody>
+<tr><td>BootOptionCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/BootOptions<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/BootOptions</td></tr>
+<tr><td>ChassisCollection</td><td>/redfish/v1/Chassis</td></tr>
+<tr><td>ComputerSystemCollection</td><td>/redfish/v1/Systems</td></tr>
+<tr><td>EndpointCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Endpoints</td></tr>
+<tr><td>EthernetInterfaceCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/EthernetInterfaces<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/HostInterfaces/<i><a href="#HostInterface">{HostInterfaceId}</a></i>/HostEthernetInterfaces<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces</td></tr>
+<tr><td>EventDestinationCollection</td><td>/redfish/v1/EventService/Subscriptions</td></tr>
+<tr><td>ExternalAccountProviderCollection</td><td>/redfish/v1/AccountService/ExternalAccountProviders<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/RemoteAccountService/ExternalAccountProviders</td></tr>
+<tr><td>FabricCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i></td></tr>
+<tr><td>HostInterfaceCollection</td><td>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/HostInterfaces</td></tr>
+<tr><td>JobCollection</td><td>/redfish/v1/JobService/Jobs<br>/redfish/v1/JobService/Jobs/<i><a href="#Job">{JobId}</a></i>/Steps</td></tr>
+<tr><td>JsonSchemaFileCollection</td><td>/redfish/v1/JsonSchemas</td></tr>
+<tr><td>LogEntryCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices/<i><a href="#LogService">{LogServiceId}</a></i>/Entries<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/LogServices/<i><a href="#LogService">{LogServiceId}</a></i>/Entries<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices/<i><a href="#LogService">{LogServiceId}</a></i>/Entries</td></tr>
+<tr><td>LogServiceCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/LogServices<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices</td></tr>
+<tr><td>ManagerAccountCollection</td><td>/redfish/v1/AccountService/Accounts<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/RemoteAccountService/Accounts</td></tr>
+<tr><td>ManagerCollection</td><td>/redfish/v1/Managers</td></tr>
+<tr><td>MemoryChunksCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains/<i><a href="#MemoryDomain">{MemoryDomainId}</a></i>/MemoryChunks<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains/<i><a href="#MemoryDomain">{MemoryDomainId}</a></i>/MemoryChunks</td></tr>
+<tr><td>MemoryCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Memory<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Memory</td></tr>
+<tr><td>MemoryDomainCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains</td></tr>
+<tr><td>MessageRegistryCollection</td><td></td></tr>
+<tr><td>MessageRegistryFileCollection</td><td>/redfish/v1/Registries</td></tr>
+<tr><td>MetricDefinitionCollection</td><td>/redfish/v1/TelemetryService/MetricDefinitions</td></tr>
+<tr><td>MetricReportCollection</td><td>/redfish/v1/TelemetryService/MetricReports</td></tr>
+<tr><td>MetricReportDefinitionCollection</td><td>/redfish/v1/TelemetryService/MetricReportDefinitions</td></tr>
+<tr><td>NetworkAdapterCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters</td></tr>
+<tr><td>NetworkDeviceFunctionCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters/<i><a href="#NetworkAdapter">{NetworkAdapterId}</a></i>/NetworkDeviceFunctions<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkDeviceFunctions<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkDeviceFunctions<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkDeviceFunctions</td></tr>
+<tr><td>NetworkInterfaceCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces</td></tr>
+<tr><td>NetworkPortCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters/<i><a href="#NetworkAdapter">{NetworkAdapterId}</a></i>/NetworkPorts<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkPorts<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkPorts<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkPorts</td></tr>
+<tr><td>PortCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Switches/<i><a href="#Switch">{SwitchId}</a></i>/Ports</td></tr>
+<tr><td>ProcessorCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Processors/<i><a href="#Processor">{ProcessorId}</a></i>/SubProcessors<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors/<i><a href="#Processor">{ProcessorId}</a></i>/SubProcessors<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors/<i><a href="#Processor">{ProcessorId}</a></i>/SubProcessors</td></tr>
+<tr><td>ResourceBlockCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks</td></tr>
+<tr><td>RoleCollection</td><td>/redfish/v1/AccountService/Roles<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/RemoteAccountService/Roles</td></tr>
+<tr><td>SerialInterfaceCollection</td><td>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/SerialInterfaces</td></tr>
+<tr><td>SessionCollection</td><td>/redfish/v1/SessionService/Sessions</td></tr>
+<tr><td>SimpleStorageCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/SimpleStorage<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/SimpleStorage</td></tr>
+<tr><td>SoftwareInventoryCollection</td><td>/redfish/v1/UpdateService/FirmwareInventory<br>/redfish/v1/UpdateService/SoftwareInventory</td></tr>
+<tr><td>StorageCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Storage<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage</td></tr>
+<tr><td>SwitchCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Switches</td></tr>
+<tr><td>TaskCollection</td><td>/redfish/v1/TaskService/Tasks</td></tr>
+<tr><td>TriggersCollection</td><td>/redfish/v1/TelemetryService/Triggers</td></tr>
+<tr><td>VirtualMediaCollection</td><td>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/VirtualMedia</td></tr>
+<tr><td>VLanNetworkInterfaceCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters/<i><a href="#NetworkAdapter">{NetworkAdapterId}</a></i>/NetworkDeviceFunctions/<i><a href="#NetworkDeviceFunction">{NetworkDeviceFunctionId}</a></i>/Ethernet/VLANs<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs</td></tr>
+<tr><td>VolumeCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes</td></tr>
+<tr><td>ZoneCollection</td><td>/redfish/v1/CompositionService/ResourceZones<br>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Zones</td></tr>
+</tbody></table>
 <h1 id="reference-guide">Reference Guide</h1>
 <p>This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's <a href="#redfish-documentation-generator">Redfish Documentation Generator</a>.  </p><h2 id="AccountService">AccountService 1.3.1</h2>
 <p>The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.</p>
@@ -1519,7 +1592,7 @@ pre.code{
 <tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
 <tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
 <tr><td>Off</td><td>The Indicator LED is off.</td></tr>
-<tr><td>Unknown</td><td>The state of the Indicator LED cannot be determined.</td></tr>
+<tr><td>Unknown <i>(deprecated v1.1.2)</i></td><td>The state of the Indicator LED cannot be determined. <i>This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/Chassis.json|details|IntrusionSensor">IntrusionSensor:</h4>
@@ -1866,7 +1939,7 @@ pre.code{
 <tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
 <tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
 <tr><td>Off</td><td>The Indicator LED is off.</td></tr>
-<tr><td>Unknown</td><td>The state of the Indicator LED cannot be determined.</td></tr>
+<tr><td>Unknown <i>(deprecated v1.0.2)</i></td><td>The state of the Indicator LED cannot be determined. <i>This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceType">InterfaceType:</h4>
@@ -5501,7 +5574,6 @@ pre.code{
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2018 DMTF, Inc. All rights reserved.&quot;</span><span class="p">,</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#PCIeSlots.PCIeSlots&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div></div>
@@ -5786,9 +5858,9 @@ pre.code{
 <tr><td>AC240V</td><td>AC 240V nominal input.</td></tr>
 <tr><td>AC277V</td><td>AC 277V nominal input.</td></tr>
 <tr><td>ACandDCWideRange</td><td>Wide range AC or DC input.</td></tr>
-<tr><td>ACHighLine</td><td>277V AC input.</td></tr>
-<tr><td>ACLowLine</td><td>100-127V AC input.</td></tr>
-<tr><td>ACMidLine</td><td>200-240V AC input.</td></tr>
+<tr><td>ACHighLine <i>(deprecated v1.1)</i></td><td>277V AC input. <i>This value has been Deprecated in favor of AC277V.</i></td></tr>
+<tr><td>ACLowLine <i>(deprecated v1.1)</i></td><td>100-127V AC input. <i>This value has been Deprecated in favor of AC120V.</i></td></tr>
+<tr><td>ACMidLine <i>(deprecated v1.1)</i></td><td>200-240V AC input. <i>This value has been Deprecated in favor of AC240V.</i></td></tr>
 <tr><td>ACWideRange</td><td>Wide range AC input.</td></tr>
 <tr><td>DC240V</td><td>DC 240V nominal input.</td></tr>
 <tr><td>DC380V</td><td>High Voltage DC input (380V).</td></tr>
@@ -7317,7 +7389,7 @@ pre.code{
 <tr><td>Completed</td><td>Task has completed.</td></tr>
 <tr><td>Exception</td><td>Task has stopped due to an exception condition.</td></tr>
 <tr><td>Interrupted</td><td>Task has been interrupted.</td></tr>
-<tr><td>Killed</td><td>Task was terminated.</td></tr>
+<tr><td>Killed <i>(deprecated v1.2)</i></td><td>Task was terminated. <i>This value has been deprecated and is being replaced by the value Cancelled which has more determinate semantics.</i></td></tr>
 <tr><td>New</td><td>A new task.</td></tr>
 <tr><td>Pending</td><td>Task is pending and has not started.</td></tr>
 <tr><td>Running</td><td>Task is running normally.</td></tr>
@@ -8002,7 +8074,7 @@ pre.code{
 <tr><td>HTTP</td><td>Hypertext Transfer Protocol.</td></tr>
 <tr><td>HTTPS</td><td>HTTP Secure protocol.</td></tr>
 <tr><td>NFS <i>(v1.0.4+)</i></td><td>Network File System protocol.</td></tr>
-<tr><td>NSF</td><td>Network File System protocol.</td></tr>
+<tr><td>NSF <i>(deprecated v1.3)</i></td><td>Network File System protocol. <i>This value has been Deprecated in favor of NFS.</i></td></tr>
 <tr><td>OEM</td><td>A protocol defined by the manufacturer.</td></tr>
 <tr><td>SCP</td><td>Secure File Copy protocol.</td></tr>
 <tr><td>SFTP <i>(v1.0.1+)</i></td><td>Secure File Transfer Protocol.</td></tr>
@@ -8317,7 +8389,27 @@ pre.code{
 <tr>
 <td>2018.2</td>
 <td>2018-08-10</td>
-<td>Built from Redfish schemas released in DSP8010 version 2018.2</td>
+<td>Release built from Redfish schemas released in DSP8010 version 2018.2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Expanding introduction section with additional information.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Added URI listings for all resources for use with Redfish Specification v1.6.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Added Resource Collection table showing schema names and URIs.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Restructured common objects section utilizing new Documentation Generator functions.</td>
 </tr>
 <tr>
 <td>2018.1</td>

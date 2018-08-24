@@ -74,28 +74,51 @@ String-replacement for "units" values. Case-sensitive. Any units not matched wil
 
 # Enum Deprecations
 
-Second-level heading with path to enum definition (omit protocol):
+## redfish.dmtf.org/schemas/v1/Chassis.v1_1_2.json#definitions/IndicatorLED
 
+* Unknown | 1.1.2 | This value has been Deprecated in favor of returning null if the state is unknown.
 
+## redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_2.json#definitions/IndicatorLED
 
+* Unknown | 1.0.2 | This value has been Deprecated in favor of returning null if the state is unknown.
+
+## redfish.dmtf.org/schemas/v1/Drive.v1_0_1.json#definitions/EncryptionStatus
+
+* Enecrypted | 1.0.1 | This value has been Deprecated in favor of Unencrypted.
+
+## redfish.dmtf.org/schemas/v1/Power.v1_1_0.json#definitions/LineInputVoltageType
+
+* ACLowLine | 1.1 | This value has been Deprecated in favor of AC120V.
+* ACMidLine | 1.1 | This value has been Deprecated in favor of AC240V.
+* ACHighLine | 1.1 | This value has been Deprecated in favor of AC277V.
+
+## redfish.dmtf.org/schemas/v1/Task.v1_2_0.json#definitions/TaskState
+
+* Killed | 1.2 | This value has been deprecated and is being replaced by the value Cancelled which has more determinate semantics.
+
+## redfish.dmtf.org/schemas/v1/UpdateService.v1_3_0.json#definitions/TransferProtocolType
+
+* NSF | 1.3 | This value has been Deprecated in favor of NFS.
+
+# Bugs
+
+1) Deprecated statements are including errata versions - should only report major/minor version
+
+2) Version included in heading for common objects.  Perhaps an option (don't want this normally).  Style is different (remove parenthesis).
+
+3) Enum version added isn't working properly.  See Processor/ProcessorType Core and Thread (show 1.0.5).  See UpdateService/TransferProtocolType NFS (should show 1.3+)
 
 # Manual Fix-ups required prior to Release
 
 A number of corner-case issues have been found in the schema definitions which can be addressed over time with additional special cases in the documentation generator.  Until those have been addressed, the following steps must be taken to correct the HTML output before publication:
 
-1) "Location" definition in JsonSchemaFile must be restored.  This property is unfortunately named the same as the common "Location" property.  The description for Location in JsonSchemaFile is:  Location information for a schema file.
-
-2) Remove reference to the Resource schema.  The contents of the Resource schema are documented in the Introduction section under "Common Properties".  The external references will generate an additional statement " See the Resource schema for details on this property." which is unnecessary and should be removed with a search (note that a simple text search will miss these as the HTML will contain a hyperlink).
+1) Remove reference to the Resource schema from the Common Object defintions for OEM and Links.  
 
 3) Definitions moved to unversioned namespaces.  Approximately 7 properties have had their definitions moved to the unversioned namespaces, and the "versioned" property was deprecated. The documentation generator sees this as a valid deprecation and flags it (incorrectly).  These invalid deprecations should be removed, and can be located in the HTML by searching for "unversioned namespace".  Both the description and the property name "(deprecated v1.x.x)" should be edited.
 
-4) Unit replacement errata - Unit replacements (see above) for many entries are not getting caught, likely due to units annotations or properties added after version 1.0 of a schema (speculation - this is a doc generator bug).  A search and replace can work using the "(unit)" search - e.g. "(W)" / "(Watts)"
-
 # Doc generator open enhancements list
 
-1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive
-
-2) Global description override - Add a tag in the schema section to suppress the global description replacements.  Useful for duplicate property names (Location is the example), or other cases where the global/common description may not be appropriate in certain instances.  
+1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive.
 
 3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed.
 
@@ -155,8 +178,17 @@ The following web sites provide more information about the Redfish standard:
 
 # Using this guide
 
-Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions defined for the schema, and an example payload for a resource using the schema.
+Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.
 
+Each schema section contains:
+
+* The name, current version and description of the schema.
+* A listing of the possible URIs where resources defined by this schema can appear in a Redfish Service (v1.6 or later). See [URI listings](#uri-listings) below for more information.
+* A table defining each property with additional details for those properties when needed.
+* A listing of the available Actions defined for the schema.
+* An example JSON payload for a resource using the schema.
+
+<br>
 The property-level details include:
 
 | Column | Purpose |
@@ -165,6 +197,14 @@ The property-level details include:
 | Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types that use defined enumerations will state "(enum)".  Number types will state their units where used. |
 | Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
 | Description | The description of the property, as copied directly from the schema 'Description' definition. |
+
+## URI listings
+
+The Redfish Specification v1.6.0 added mandatory support for the OpenAPI Specification v3.0.  As part of this support, the URIs for every Redfish Resource are defined to appear at known, fixed locations. Resource Collections also appear at fixed locations, with the Members of each collection appearing at URIs constructed using a fixed path structure, with appropriate path segments equal to the value of "Id" properties of Members along the path.  
+
+Support for v1.6.0 and OpenAPI can be determined by comparing the value of the "RedfishVersion" property in the Service Root (\redfish\v1\).  Services reporting a value of "1.6.0" or higher (such as "1.6.1" or "1.7.0") adhere to the URI definitions shown.
+
+The URI listings do not apply to Redfish Services reporting support of Specification versions prior to v1.6.0.  For those Services, clients must utilize the hypermedia features of the API to discover links from the Service Root to each resource.  While Services will typically match the URIs listed in this documents for many of their resources, this is not guaranteed and will result in errors.
 
 
 # Common properties
@@ -215,7 +255,7 @@ As shown in the example below, a Redfish Service may provide management function
 
 ~~~
 
-## Resource Collection Reference 
+## Resource Collection URIs (Redfish v1.6+)
 
 The following table lists all of the Redfish-defined Resource Collections and the URIs where they can appear.  NOTE: The URIs listed are valid for Redfish Services conforming to the Redfish Specification v1.6.0 or higher.  Services built on earlier versions of the Specification may use different URIs which must be discovered by following the links from the Service Root (/redfish/v1/).
 
@@ -522,6 +562,10 @@ This document was created using the Redfish Documentation Generator utility, whi
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
-| 2018.2  | 2018-08-10 | Built from Redfish schemas released in DSP8010 version 2018.2 |
+| 2018.2  | 2018-08-10 | Release built from Redfish schemas released in DSP8010 version 2018.2 |
+|         |            | Expanding introduction section with additional information. |
+|         |            | Added URI listings for all resources for use with Redfish Specification v1.6.0 |
+|         |            | Added Resource Collection table showing schema names and URIs. |
+|         |            | Restructured common objects section utilizing new Documentation Generator functions. |
 | 2018.1  | 2018-05-01 | Initial release. Built from Redfish schemas released in DSP8010 version 2018.1 |
 | 2017.0a | 2017-05-19| Work in progress release to gather feedback on content and format. |
