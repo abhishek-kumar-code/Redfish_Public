@@ -209,13 +209,73 @@ The URI listings do not apply to Redfish Services reporting support of Specifica
 
 # Common properties
 
-The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.
+## Properties defined for all Redfish schemas
+
+The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.  Note that several of these properties are payload annotations, but are listed here as they are required for all Redfish resources.
 
 #include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/CommonProperties/properties
+
+## Frequently used properites
 
 In addition, the following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.
 
 #include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/FrequentProperties/properties
+
+## Payload annotations
+
+Payload annotations are a mechanism in which a service provides additional information about a given property or object.  Redfish limits usage of these annotations to OData core terms, Redfish Extensions or Redfish Messages.
+
+### Property-level annotations
+
+A payload annotation for a single property takes the form of an additional property named `Property@Schema.Term`, where `Property` is the JSON property being annotated, `Schema` is the schema file where the definition for the annotation is found, and `Term` is the name of the Annotation.
+
+| Term                       | Usage |
+| ----                       | ----- |
+| `@Redfish.AllowableValues` | Indicates to the client the different string values the service accepts for a given action parameter |
+| `@Message.ExtendedInfo`    | Allows the service to provide a set of Message structures for a given property to indicate additional information; this can be useful when a property is `null` due to an error condition, and the service wants to convey why the property is `null` |
+| `@odata.count`             | Can be used on properties that are arrays in order to indicate their size so that a client does not need to count the array members |
+
+In the example below, the property `ResetType` is being annotated with the `AllowableValues` term, which is defined in the `Redfish` schema (an alias for RedfishExtensions).  This is used to indicate to the client that the service supports the values `On` and `ForceOff` for `ResetType`.
+
+```json
+{
+    "ResetType@Redfish.AllowableValues": [
+        "On",
+        "ForceOff"
+    ],
+    ...
+}
+```
+
+
+### Resource or object-level annotations
+
+A payload annotation for an entire resource or a JSON object takes the form of `@Schema.Term`, where `Namespace` is the schema file where the definition is found and `Term` is the name of the Annotation.  These payload annotations are used to provide further information about the object itself.
+
+| Term                    | Usage |
+| ----                    | ----- |
+| `@Redfish.Settings`     | Gives the client a reference to the resource that represents the future property settings to be applied to this object |
+| `@Redfish.ActionInfo`   | Used on actions to provide the client a reference to an ActionInfo resource, which gives detailed information about a given action's parameters |
+| `@Message.ExtendedInfo` | Allows the service to provide a set of Message structures for a given object to indicate additional information; this can be useful when an error condition is reached, and the service wants to convey what error was encountered |
+| `@odata.id`             | Provides the unique URI for a given resource |
+| `@odata.type`           | Provides the type definition of the object in the format of `#Namespace.Type`, where `Namespace` is the Namespace in the CSDL file where the definition is found and `Type` is the name of the ComplexType or EntityType element found in the Namespace |
+| `@odata.context`        | Provides an OData client with a descriptor for the content of the payload; in Redfish, this is simply always going to be `/redfish/v1/$metadata#Namespace.Entity`, where `Namespace` is the unversioned Namespace in the CSDL file where the definition is found and `Entity` is the name of the EntityType element being used |
+
+In the example below, the object is being annotated with the `ActionInfo` term, which is defined in the `Redfish` schema (an alias for RedfishExtensions).  This is used to indicate to the client that it can find more information about the given action, in this case `#ComputerSystem.Reset`, at the URI `/redfish/v1/Systems/1/ResetActionInfo`.
+
+```json
+{
+    "#ComputerSystem.Reset": {
+        "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
+    },
+    ...
+}
+```
+
+# Common objects
+ 
+The following JSON objects are frequently defined in Redfish schemas.  Like the individual common propoerties listed above, these objects share a common definition which is shown here to avoid repetition in teh Reference Guide property tables.
 
 [insert_common_objects]
 
