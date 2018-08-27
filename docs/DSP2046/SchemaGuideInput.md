@@ -384,6 +384,16 @@ mockups/DSP2046-examples/ExternalAccountProvider-v1-example.json
 ### Mockup
 mockups/DSP2046-examples/Fabric-v1-example.json
 
+## Job
+
+### Mockup
+mockups/DSP2046-examples/Job-v1-example.json
+
+## JobService
+
+### Mockup
+mockups/DSP2046-examples/JobService-v1-example.json
+
 ## LogEntry
 
 ### Mockup
@@ -413,6 +423,21 @@ mockups/DSP2046-examples/ManagerNetworkProtocol-v1-example.json
 
 ### Mockup
 mockups/DSP2046-examples/Memory-v1-example.json
+
+## MemoryChunks
+
+### Mockup
+mockups/DSP2046-examples/MemoryChunks-v1-example.json
+
+## MemoryDomain
+
+### Mockup
+mockups/DSP2046-examples/MemoryDomain-v1-example.json
+
+## MemoryMetrics
+
+### Mockup
+mockups/DSP2046-examples/MemoryMetrics-v1-example.json
 
 ## MetricDefinition
 
