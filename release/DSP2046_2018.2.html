@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Redfish Resource and Schema Guide</title>
+<title>Contents</title>
 
 <style>
  * {margin: 0; padding: 0;}
@@ -166,6 +166,12 @@ pre.code{
 </ul>
 <li><a href="#common-properties">Common properties</a></li>
 <ul>
+<li><a href="#properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</a></li>
+<li><a href="#frequently-used-properites">Frequently used properites</a></li>
+<li><a href="#payload-annotations">Payload annotations</a></li>
+</ul>
+<li><a href="#common-objects">Common objects</a></li>
+<ul>
 <li><a href="#common-properties-Identifier_v1.7.0">Identifier (v.1.7.0)</a></li>
 <li><a href="#common-properties-IPv4Address_v1.0.7">IPv4Address (v.1.0.7)</a></li>
 <li><a href="#common-properties-IPv6Address_v1.0.7">IPv6Address (v.1.0.7)</a></li>
@@ -316,7 +322,8 @@ The property-level details include:</p>
 <p>Support for v1.6.0 and OpenAPI can be determined by comparing the value of the "RedfishVersion" property in the Service Root (\redfish\v1).  Services reporting a value of "1.6.0" or higher (such as "1.6.1" or "1.7.0") adhere to the URI definitions shown.</p>
 <p>The URI listings do not apply to Redfish Services reporting support of Specification versions prior to v1.6.0.  For those Services, clients must utilize the hypermedia features of the API to discover links from the Service Root to each resource.  While Services will typically match the URIs listed in this documents for many of their resources, this is not guaranteed and will result in errors.</p>
 <h1 id="common-properties">Common properties</h1>
-<p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.</p>
+<h2 id="properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</h2>
+<p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.  Note that several of these properties are payload annotations, but are listed here as they are required for all Redfish resources.</p>
 
 <table class="properties">
 <tbody>
@@ -329,6 +336,7 @@ The property-level details include:</p>
 <tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.</td></tr>
 <tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
+<h2 id="frequently-used-properites">Frequently used properites</h2>
 <p>In addition, the following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.</p>
 
 <table class="properties">
@@ -338,6 +346,92 @@ The property-level details include:</p>
 <tr><td><nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 </tbody></table>
+<h2 id="payload-annotations">Payload annotations</h2>
+<p>Payload annotations are a mechanism in which a service provides additional information about a given property or object.  Redfish limits usage of these annotations to OData core terms, Redfish Extensions or Redfish Messages.</p>
+<h3 id="property-level-annotations">Property-level annotations</h3>
+<p>A payload annotation for a single property takes the form of an additional property named <code>Property@Schema.Term</code>, where <code>Property</code> is the JSON property being annotated, <code>Schema</code> is the schema file where the definition for the annotation is found, and <code>Term</code> is the name of the Annotation.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Redfish.AllowableValues</code></td>
+<td>Indicates to the client the different string values the service accepts for a given action parameter</td>
+</tr>
+<tr>
+<td><code>@Message.ExtendedInfo</code></td>
+<td>Allows the service to provide a set of Message structures for a given property to indicate additional information; this can be useful when a property is <code>null</code> due to an error condition, and the service wants to convey why the property is <code>null</code></td>
+</tr>
+<tr>
+<td><code>@odata.count</code></td>
+<td>Can be used on properties that are arrays in order to indicate their size so that a client does not need to count the array members</td>
+</tr>
+</tbody>
+</table>
+<p>In the example below, the property <code>ResetType</code> is being annotated with the <code>AllowableValues</code> term, which is defined in the <code>Redfish</code> schema (an alias for RedfishExtensions).  This is used to indicate to the client that the service supports the values <code>On</code> and <code>ForceOff</code> for <code>ResetType</code>.</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ResetType@Redfish.AllowableValues&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;On&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ForceOff&quot;</span>
+    <span class="p">],</span>
+    <span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="resource-or-object-level-annotations">Resource or object-level annotations</h3>
+<p>A payload annotation for an entire resource or a JSON object takes the form of <code>@Schema.Term</code>, where <code>Namespace</code> is the schema file where the definition is found and <code>Term</code> is the name of the Annotation.  These payload annotations are used to provide further information about the object itself.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Redfish.Settings</code></td>
+<td>Gives the client a reference to the resource that represents the future property settings to be applied to this object</td>
+</tr>
+<tr>
+<td><code>@Redfish.ActionInfo</code></td>
+<td>Used on actions to provide the client a reference to an ActionInfo resource, which gives detailed information about a given action's parameters</td>
+</tr>
+<tr>
+<td><code>@Message.ExtendedInfo</code></td>
+<td>Allows the service to provide a set of Message structures for a given object to indicate additional information; this can be useful when an error condition is reached, and the service wants to convey what error was encountered</td>
+</tr>
+<tr>
+<td><code>@odata.id</code></td>
+<td>Provides the unique URI for a given resource</td>
+</tr>
+<tr>
+<td><code>@odata.type</code></td>
+<td>Provides the type definition of the object in the format of <code>#Namespace.Type</code>, where <code>Namespace</code> is the Namespace in the CSDL file where the definition is found and <code>Type</code> is the name of the ComplexType or EntityType element found in the Namespace</td>
+</tr>
+<tr>
+<td><code>@odata.context</code></td>
+<td>Provides an OData client with a descriptor for the content of the payload; in Redfish, this is simply always going to be <code>/redfish/v1/$metadata#Namespace.Entity</code>, where <code>Namespace</code> is the unversioned Namespace in the CSDL file where the definition is found and <code>Entity</code> is the name of the EntityType element being used</td>
+</tr>
+</tbody>
+</table>
+<p>In the example below, the object is being annotated with the <code>ActionInfo</code> term, which is defined in the <code>Redfish</code> schema (an alias for RedfishExtensions).  This is used to indicate to the client that it can find more information about the given action, in this case <code>#ComputerSystem.Reset</code>, at the URI <code>/redfish/v1/Systems/1/ResetActionInfo</code>.</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;#ComputerSystem.Reset&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Actions/ComputerSystem.Reset&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;@Redfish.ActionInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/ResetActionInfo&quot;</span>
+    <span class="p">},</span>
+    <span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="common-objects">Common objects</h1>
+<p>The following JSON objects are frequently defined in Redfish schemas.  Like the individual common propoerties listed above, these objects share a common definition which is shown here to avoid repetition in teh Reference Guide property tables.</p>
 <h2 id="common-properties-Identifier_v1.7.0">Identifier (v.1.7.0)</h2>
 <p>This type describes any additional identifiers for a resource.</p>
 <table class="properties">
@@ -460,8 +554,8 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ContactName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name of this contact.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EmailAddress</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Email address for this contact.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PhoneNumber</b></nobr><br>} ]</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Phone number for this contact.</td></tr>
-<tr><td><nobr><b>Info</b> <i>(v1.1+, deprecated v1.1.4)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the location of the resource. <i>Deprecated v1.1.4+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
-<tr><td><nobr><b>InfoFormat</b> <i>(v1.1+, deprecated v1.1.4)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the Info property. <i>Deprecated v1.1.4+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
+<tr><td><nobr><b>Info</b> <i>(v1.1+, deprecated v1.2.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the location of the resource. <i>Deprecated v1.2.3+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
+<tr><td><nobr><b>InfoFormat</b> <i>(v1.1+, deprecated v1.2.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the Info property. <i>Deprecated v1.2.3+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
 <tr><td><nobr><b>Latitude</b> <i>(v1.6+)</i></nobr></td><td>number<br>(deg)</td><td><nobr>read-write</nobr> (null)</td><td>The latitude resource.</td></tr>
 <tr><td><nobr><b>Longitude</b> <i>(v1.6+)</i></nobr></td><td>number<br>(deg)</td><td><nobr>read-write</nobr> (null)</td><td>The longitude resource in degrees.</td></tr>
 <tr><td><nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
@@ -3410,6 +3504,29 @@ The property-level details include:</p>
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Job.Job&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Jobs/RebootRack&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Job.v1_0_0.Job&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;RebootRack&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Scheduled Nightly Reboot of the rack&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;JobStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;JobState&quot;</span><span class="p">:</span> <span class="s2">&quot;Running&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;StartTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-04-01T00:01+6:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;PercentComplete&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="nt">&quot;Schedule&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Lifetime&quot;</span><span class="p">:</span> <span class="s2">&quot;P4Y&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;InitialStartTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-01-01T01:00:00+06:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;RecurrenceInterval&quot;</span><span class="p">:</span> <span class="s2">&quot;P1D&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;EnabledDaysOfWeek&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Steps&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Jobs/RebootRack/Steps&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;StepOrder&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">,</span> <span class="s2">&quot;Yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="s2">&quot;Indigo&quot;</span><span class="p">,</span> <span class="s2">&quot;Violet&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="JobService">JobService 1.0.0</h2>
 <p>This is the schema definition for the Job Service.  It represents the properties for the service itself and has links to the actual list of tasks.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/JobService</li></ul>
@@ -3427,6 +3544,41 @@ The property-level details include:</p>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#JobService.v1_0_0.JobService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;JobService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Job Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;DateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-06-13T04:14+06:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;ServiceCapabilities&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;MaxJobs&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="nt">&quot;MaxSteps&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;Scheduling&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Jobs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Jobs&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Log&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Log&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;#Contoso.EasyButton&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Contoso.EasyButton&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;@Redfish.ActionInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/EasyButtonActionInfo&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata/JobService.JobService&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="JsonSchemaFile">JsonSchemaFile 1.1.1</h2>
 <p>This is the schema definition for the Schema File locator resource.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/JsonSchemas/<i><a href="#JsonSchemaFile">{JsonSchemaFileId}</a></i></li></ul>
@@ -4493,6 +4645,47 @@ The property-level details include:</p>
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>  
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/MemoryDomains/1/MemoryChunks/1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#MemoryChunks.v1_0_0.MemoryChunks&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Memory Chunk - Whole System&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MemoryChunkSizeMiB&quot;</span><span class="p">:</span> <span class="mi">32768</span><span class="p">,</span>
+    <span class="nt">&quot;AddressRangeType&quot;</span><span class="p">:</span> <span class="s2">&quot;Volatile&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;IsMirrorEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;IsSpare&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;InterleaveSets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/1&quot;</span>
+        <span class="p">}},</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/2&quot;</span>
+        <span class="p">}},</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/3&quot;</span>
+        <span class="p">}},</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/4&quot;</span>
+        <span class="p">}}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@Redfish.Settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Settings.v1_0_0.Settings&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SettingsObject&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/MemoryDomains/1/MemoryChunks/1/SD&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-03-07T14:44.30-05:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ETag&quot;</span><span class="p">:</span> <span class="s2">&quot;someetag&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.Success&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#MemoryChunks.MemoryChunks&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="MemoryDomain">MemoryDomain 1.2.1</h2>
 <p>This is the schema definition of a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains/<i><a href="#MemoryDomain">{MemoryDomainId}</a></i></li>
@@ -4509,6 +4702,31 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Memory resource. See the Links section and the <a href="#Memory">Memory</a> schema for details.</td></tr>
 <tr><td><nobr><b>MemoryChunks</b> { }</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Memory Chunks associated with this Memory Domain.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/MemoryDomains/1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#MemoryDomain.v1_2_1.MemoryDomain&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Memory Domain - Whole System Mirroring Only&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MemoryChunks&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/4/MemoryDomains/1/MemoryChunks&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;AllowsMemoryChunkCreation&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;AllowsBlockProvisioning&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;InterleavableMemorySets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;MemorySet&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/1&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/2&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/3&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/4&quot;</span><span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#MemoryDomain.MemoryDomain&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="MemoryMetrics">MemoryMetrics 1.1.4</h2>
 <p>MemoryMetrics contains usage and health statistics for a single Memory module or device instance.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Memory/<i><a href="#Memory">{MemoryId}</a></i>/MemoryMetrics</li>
@@ -4546,6 +4764,43 @@ The property-level details include:</p>
 <p>(This action takes no parameters.)</p>
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>  
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Memory/1/MemoryMetrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#MemoryMetrics.v1_1_4.MemoryMetrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Memory Metrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Metrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;BlockSizeBytes&quot;</span><span class="p">:</span> <span class="mi">4096</span><span class="p">,</span>
+    <span class="nt">&quot;CurrentPeriod&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;BlocksRead&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;BlocksWritten&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;LifeTime&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;BlocksRead&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;BlocksWritten&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;HealthData&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;RemainingSpareBlockPercentage&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;LastShutdownSuccess&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;DataLossDetected&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;PerformanceDegraded&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;AlarmTrips&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Temperature&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;SpareBlock&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;UncorrectableECCError&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;CorrectableECCError&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;#MemoryMetrics.ClearCurrentPeriod&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Memory/1/Actions/MemoryMetrics.ClearCurrentPeriod&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="MessageRegistry">MessageRegistry 1.2.0</h2>
 <p>This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageId is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.</p>
 <table class="properties">
@@ -6734,9 +6989,9 @@ The property-level details include:</p>
     <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ServiceRoot.v1_4_0.ServiceRoot&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;RootService&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Root Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;RedfishVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;RedfishVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.6.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso 1U Server&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;UR99 1U Server&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ProtocolFeaturesSupported&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;ExpandQuery&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;ExpandAll&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -6746,7 +7001,9 @@ The property-level details include:</p>
             <span class="nt">&quot;NoLinks&quot;</span><span class="p">:</span> <span class="kc">true</span>
         <span class="p">},</span>
         <span class="nt">&quot;SelectQuery&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;FilterQuery&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="nt">&quot;FilterQuery&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nt">&quot;OnlyMemberQuery&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nt">&quot;ExcerptQuery&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="nt">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
@@ -7384,8 +7641,8 @@ The property-level details include:</p>
 <tr><th>string</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Cancelled <i>(v1.0.5+)</i></td><td>Task has been cancelled by an operator or internal process.</td></tr>
-<tr><td>Cancelling <i>(v1.0.5+)</i></td><td>Task is in the process of being cancelled.</td></tr>
+<tr><td>Cancelled <i>(v1.2+)</i></td><td>Task has been cancelled by an operator or internal process.</td></tr>
+<tr><td>Cancelling <i>(v1.2+)</i></td><td>Task is in the process of being cancelled.</td></tr>
 <tr><td>Completed</td><td>Task has completed.</td></tr>
 <tr><td>Exception</td><td>Task has stopped due to an exception condition.</td></tr>
 <tr><td>Interrupted</td><td>Task has been interrupted.</td></tr>
@@ -8073,7 +8330,7 @@ The property-level details include:</p>
 <tr><td>FTP</td><td>File Transfer Protocol.</td></tr>
 <tr><td>HTTP</td><td>Hypertext Transfer Protocol.</td></tr>
 <tr><td>HTTPS</td><td>HTTP Secure protocol.</td></tr>
-<tr><td>NFS <i>(v1.0.4+)</i></td><td>Network File System protocol.</td></tr>
+<tr><td>NFS <i>(v1.3+)</i></td><td>Network File System protocol.</td></tr>
 <tr><td>NSF <i>(deprecated v1.3)</i></td><td>Network File System protocol. <i>This value has been Deprecated in favor of NFS.</i></td></tr>
 <tr><td>OEM</td><td>A protocol defined by the manufacturer.</td></tr>
 <tr><td>SCP</td><td>Secure File Copy protocol.</td></tr>
