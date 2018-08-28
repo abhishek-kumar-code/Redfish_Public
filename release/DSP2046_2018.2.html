@@ -40,6 +40,9 @@
 table.properties{
     width: 100%;
 }
+table.uris tr td:nth-child(2) {
+    word-break: break-all;
+}
 .property-details-content {
     margin-left: 5em;
 }
@@ -158,7 +161,16 @@ pre.code{
 <li><a href="#where-can-i-find-more-information">Where can I find more information?</a></li>
 </ul>
 <li><a href="#using-this-guide">Using this guide</a></li>
+<ul>
+<li><a href="#uri-listings">URI listings</a></li>
+</ul>
 <li><a href="#common-properties">Common properties</a></li>
+<ul>
+<li><a href="#properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</a></li>
+<li><a href="#frequently-used-properites">Frequently used properites</a></li>
+<li><a href="#payload-annotations">Payload annotations</a></li>
+</ul>
+<li><a href="#common-objects">Common objects</a></li>
 <ul>
 <li><a href="#common-properties-Identifier_v1.7.0">Identifier (v.1.7.0)</a></li>
 <li><a href="#common-properties-IPv4Address_v1.0.7">IPv4Address (v.1.0.7)</a></li>
@@ -171,6 +183,9 @@ pre.code{
 <li><a href="#common-properties-Status">Status</a></li>
 </ul>
 <li><a href="#resource-collections">Resource collections</a></li>
+<ul>
+<li><a href="#resource-collection-uris-redfish-v16">Resource Collection URIs (Redfish v1.6+)</a></li>
+</ul>
 <li><a href="#reference-guide">Reference Guide</a></li>
 <ul>
 <li><a href="#AccountService">AccountService 1.3.1</a></li>
@@ -265,8 +280,17 @@ pre.code{
 <li><strong>DMTF Redfish Forum</strong> (Working group that maintains the Redfish standard):  <a href="http://www.dmtf.org/standards/spmf">http://www.dmtf.org/standards/spmf</a> Companies involved, upcoming schedules and future work, charter, and information about joining.</li>
 </ul>
 <h1 id="using-this-guide">Using this guide</h1>
-<p>Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.  Each schema section contains a table defining each property, additional details for those properties when needed, details for the available Actions defined for the schema, and an example payload for a resource using the schema.</p>
-<p>The property-level details include:</p>
+<p>Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.</p>
+<p>Each schema section contains:</p>
+<ul>
+<li>The name, current version and description of the schema.</li>
+<li>A listing of the possible URIs where resources defined by this schema can appear in a Redfish Service (v1.6 or later). See <a href="#uri-listings">URI listings</a> below for more information.</li>
+<li>A table defining each property with additional details for those properties when needed.</li>
+<li>A listing of the available Actions defined for the schema.</li>
+<li>An example JSON payload for a resource using the schema.</li>
+</ul>
+<p><br>
+The property-level details include:</p>
 <table>
 <thead>
 <tr>
@@ -293,8 +317,13 @@ pre.code{
 </tr>
 </tbody>
 </table>
+<h2 id="uri-listings">URI listings</h2>
+<p>The Redfish Specification v1.6.0 added mandatory support for the OpenAPI Specification v3.0.  As part of this support, the URIs for every Redfish Resource are defined to appear at known, fixed locations. Resource Collections also appear at fixed locations, with the Members of each collection appearing at URIs constructed using a fixed path structure, with appropriate path segments equal to the value of "Id" properties of Members along the path.  </p>
+<p>Support for v1.6.0 and OpenAPI can be determined by comparing the value of the "RedfishVersion" property in the Service Root (\redfish\v1).  Services reporting a value of "1.6.0" or higher (such as "1.6.1" or "1.7.0") adhere to the URI definitions shown.</p>
+<p>The URI listings do not apply to Redfish Services reporting support of Specification versions prior to v1.6.0.  For those Services, clients must utilize the hypermedia features of the API to discover links from the Service Root to each resource.  While Services will typically match the URIs listed in this documents for many of their resources, this is not guaranteed and will result in errors.</p>
 <h1 id="common-properties">Common properties</h1>
-<p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.</p>
+<h2 id="properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</h2>
+<p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.  Note that several of these properties are payload annotations, but are listed here as they are required for all Redfish resources.</p>
 
 <table class="properties">
 <tbody>
@@ -307,6 +336,7 @@ pre.code{
 <tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.</td></tr>
 <tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
 </tbody></table>
+<h2 id="frequently-used-properites">Frequently used properites</h2>
 <p>In addition, the following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.</p>
 
 <table class="properties">
@@ -316,6 +346,92 @@ pre.code{
 <tr><td><nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The RelatedItem property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition.  This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, Fans may be in one area of the system and Processors in another area of the system. It could be that the relationship between the two is not obvious. The RelatedItem property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 </tbody></table>
+<h2 id="payload-annotations">Payload annotations</h2>
+<p>Payload annotations are a mechanism in which a service provides additional information about a given property or object.  Redfish limits usage of these annotations to OData core terms, Redfish Extensions or Redfish Messages.</p>
+<h3 id="property-level-annotations">Property-level annotations</h3>
+<p>A payload annotation for a single property takes the form of an additional property named <code>Property@Schema.Term</code>, where <code>Property</code> is the JSON property being annotated, <code>Schema</code> is the schema file where the definition for the annotation is found, and <code>Term</code> is the name of the Annotation.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Redfish.AllowableValues</code></td>
+<td>Indicates to the client the different string values the service accepts for a given action parameter</td>
+</tr>
+<tr>
+<td><code>@Message.ExtendedInfo</code></td>
+<td>Allows the service to provide a set of Message structures for a given property to indicate additional information; this can be useful when a property is <code>null</code> due to an error condition, and the service wants to convey why the property is <code>null</code></td>
+</tr>
+<tr>
+<td><code>@odata.count</code></td>
+<td>Can be used on properties that are arrays in order to indicate their size so that a client does not need to count the array members</td>
+</tr>
+</tbody>
+</table>
+<p>In the example below, the property <code>ResetType</code> is being annotated with the <code>AllowableValues</code> term, which is defined in the <code>Redfish</code> schema (an alias for RedfishExtensions).  This is used to indicate to the client that the service supports the values <code>On</code> and <code>ForceOff</code> for <code>ResetType</code>.</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ResetType@Redfish.AllowableValues&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;On&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ForceOff&quot;</span>
+    <span class="p">],</span>
+    <span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="resource-or-object-level-annotations">Resource or object-level annotations</h3>
+<p>A payload annotation for an entire resource or a JSON object takes the form of <code>@Schema.Term</code>, where <code>Namespace</code> is the schema file where the definition is found and <code>Term</code> is the name of the Annotation.  These payload annotations are used to provide further information about the object itself.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@Redfish.Settings</code></td>
+<td>Gives the client a reference to the resource that represents the future property settings to be applied to this object</td>
+</tr>
+<tr>
+<td><code>@Redfish.ActionInfo</code></td>
+<td>Used on actions to provide the client a reference to an ActionInfo resource, which gives detailed information about a given action's parameters</td>
+</tr>
+<tr>
+<td><code>@Message.ExtendedInfo</code></td>
+<td>Allows the service to provide a set of Message structures for a given object to indicate additional information; this can be useful when an error condition is reached, and the service wants to convey what error was encountered</td>
+</tr>
+<tr>
+<td><code>@odata.id</code></td>
+<td>Provides the unique URI for a given resource</td>
+</tr>
+<tr>
+<td><code>@odata.type</code></td>
+<td>Provides the type definition of the object in the format of <code>#Namespace.Type</code>, where <code>Namespace</code> is the Namespace in the CSDL file where the definition is found and <code>Type</code> is the name of the ComplexType or EntityType element found in the Namespace</td>
+</tr>
+<tr>
+<td><code>@odata.context</code></td>
+<td>Provides an OData client with a descriptor for the content of the payload; in Redfish, this is simply always going to be <code>/redfish/v1/$metadata#Namespace.Entity</code>, where <code>Namespace</code> is the unversioned Namespace in the CSDL file where the definition is found and <code>Entity</code> is the name of the EntityType element being used</td>
+</tr>
+</tbody>
+</table>
+<p>In the example below, the object is being annotated with the <code>ActionInfo</code> term, which is defined in the <code>Redfish</code> schema (an alias for RedfishExtensions).  This is used to indicate to the client that it can find more information about the given action, in this case <code>#ComputerSystem.Reset</code>, at the URI <code>/redfish/v1/Systems/1/ResetActionInfo</code>.</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;#ComputerSystem.Reset&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Actions/ComputerSystem.Reset&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;@Redfish.ActionInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/ResetActionInfo&quot;</span>
+    <span class="p">},</span>
+    <span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1 id="common-objects">Common objects</h1>
+<p>The following JSON objects are frequently defined in Redfish schemas.  Like the individual common propoerties listed above, these objects share a common definition which is shown here to avoid repetition in teh Reference Guide property tables.</p>
 <h2 id="common-properties-Identifier_v1.7.0">Identifier (v.1.7.0)</h2>
 <p>This type describes any additional identifiers for a resource.</p>
 <table class="properties">
@@ -438,8 +554,8 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ContactName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Name of this contact.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EmailAddress</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Email address for this contact.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PhoneNumber</b></nobr><br>} ]</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>Phone number for this contact.</td></tr>
-<tr><td><nobr><b>Info</b> <i>(v1.1+, deprecated v1.1.4)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the location of the resource. <i>Deprecated v1.1.4+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
-<tr><td><nobr><b>InfoFormat</b> <i>(v1.1+, deprecated v1.1.4)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the Info property. <i>Deprecated v1.1.4+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
+<tr><td><nobr><b>Info</b> <i>(v1.1+, deprecated v1.2.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the location of the resource. <i>Deprecated v1.2.3+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
+<tr><td><nobr><b>InfoFormat</b> <i>(v1.1+, deprecated v1.2.3)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the Info property. <i>Deprecated v1.2.3+. This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location.</i></td></tr>
 <tr><td><nobr><b>Latitude</b> <i>(v1.6+)</i></nobr></td><td>number<br>(deg)</td><td><nobr>read-write</nobr> (null)</td><td>The latitude resource.</td></tr>
 <tr><td><nobr><b>Longitude</b> <i>(v1.6+)</i></nobr></td><td>number<br>(deg)</td><td><nobr>read-write</nobr> (null)</td><td>The longitude resource in degrees.</td></tr>
 <tr><td><nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
@@ -720,6 +836,57 @@ pre.code{
 </pre></div>
 
 
+<h2 id="resource-collection-uris-redfish-v16">Resource Collection URIs (Redfish v1.6+)</h2>
+<p>The following table lists all of the Redfish-defined Resource Collections and the URIs where they can appear.  NOTE: The URIs listed are valid for Redfish Services conforming to the Redfish Specification v1.6.0 or higher.  Services built on earlier versions of the Specification may use different URIs which must be discovered by following the links from the Service Root (/redfish/v1/).</p>
+<table class="uris">
+<thead>
+<tr><th>Collection Type</th><th>URIs</th></tr>
+</thead>
+<tbody>
+<tr><td>BootOptionCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/BootOptions<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/BootOptions</td></tr>
+<tr><td>ChassisCollection</td><td>/redfish/v1/Chassis</td></tr>
+<tr><td>ComputerSystemCollection</td><td>/redfish/v1/Systems</td></tr>
+<tr><td>EndpointCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Endpoints</td></tr>
+<tr><td>EthernetInterfaceCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/EthernetInterfaces<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/HostInterfaces/<i><a href="#HostInterface">{HostInterfaceId}</a></i>/HostEthernetInterfaces<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces</td></tr>
+<tr><td>EventDestinationCollection</td><td>/redfish/v1/EventService/Subscriptions</td></tr>
+<tr><td>ExternalAccountProviderCollection</td><td>/redfish/v1/AccountService/ExternalAccountProviders<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/RemoteAccountService/ExternalAccountProviders</td></tr>
+<tr><td>FabricCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i></td></tr>
+<tr><td>HostInterfaceCollection</td><td>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/HostInterfaces</td></tr>
+<tr><td>JobCollection</td><td>/redfish/v1/JobService/Jobs<br>/redfish/v1/JobService/Jobs/<i><a href="#Job">{JobId}</a></i>/Steps</td></tr>
+<tr><td>JsonSchemaFileCollection</td><td>/redfish/v1/JsonSchemas</td></tr>
+<tr><td>LogEntryCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices/<i><a href="#LogService">{LogServiceId}</a></i>/Entries<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/LogServices/<i><a href="#LogService">{LogServiceId}</a></i>/Entries<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices/<i><a href="#LogService">{LogServiceId}</a></i>/Entries</td></tr>
+<tr><td>LogServiceCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/LogServices<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/LogServices</td></tr>
+<tr><td>ManagerAccountCollection</td><td>/redfish/v1/AccountService/Accounts<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/RemoteAccountService/Accounts</td></tr>
+<tr><td>ManagerCollection</td><td>/redfish/v1/Managers</td></tr>
+<tr><td>MemoryChunksCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains/<i><a href="#MemoryDomain">{MemoryDomainId}</a></i>/MemoryChunks<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains/<i><a href="#MemoryDomain">{MemoryDomainId}</a></i>/MemoryChunks</td></tr>
+<tr><td>MemoryCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Memory<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Memory</td></tr>
+<tr><td>MemoryDomainCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains</td></tr>
+<tr><td>MessageRegistryCollection</td><td></td></tr>
+<tr><td>MessageRegistryFileCollection</td><td>/redfish/v1/Registries</td></tr>
+<tr><td>MetricDefinitionCollection</td><td>/redfish/v1/TelemetryService/MetricDefinitions</td></tr>
+<tr><td>MetricReportCollection</td><td>/redfish/v1/TelemetryService/MetricReports</td></tr>
+<tr><td>MetricReportDefinitionCollection</td><td>/redfish/v1/TelemetryService/MetricReportDefinitions</td></tr>
+<tr><td>NetworkAdapterCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters</td></tr>
+<tr><td>NetworkDeviceFunctionCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters/<i><a href="#NetworkAdapter">{NetworkAdapterId}</a></i>/NetworkDeviceFunctions<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkDeviceFunctions<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkDeviceFunctions<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkDeviceFunctions</td></tr>
+<tr><td>NetworkInterfaceCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces</td></tr>
+<tr><td>NetworkPortCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters/<i><a href="#NetworkAdapter">{NetworkAdapterId}</a></i>/NetworkPorts<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkPorts<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkPorts<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/NetworkInterfaces/<i><a href="#NetworkInterface">{NetworkInterfaceId}</a></i>/NetworkPorts</td></tr>
+<tr><td>PortCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Switches/<i><a href="#Switch">{SwitchId}</a></i>/Ports</td></tr>
+<tr><td>ProcessorCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Processors/<i><a href="#Processor">{ProcessorId}</a></i>/SubProcessors<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors/<i><a href="#Processor">{ProcessorId}</a></i>/SubProcessors<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Processors/<i><a href="#Processor">{ProcessorId}</a></i>/SubProcessors</td></tr>
+<tr><td>ResourceBlockCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks</td></tr>
+<tr><td>RoleCollection</td><td>/redfish/v1/AccountService/Roles<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/RemoteAccountService/Roles</td></tr>
+<tr><td>SerialInterfaceCollection</td><td>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/SerialInterfaces</td></tr>
+<tr><td>SessionCollection</td><td>/redfish/v1/SessionService/Sessions</td></tr>
+<tr><td>SimpleStorageCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/SimpleStorage<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/SimpleStorage</td></tr>
+<tr><td>SoftwareInventoryCollection</td><td>/redfish/v1/UpdateService/FirmwareInventory<br>/redfish/v1/UpdateService/SoftwareInventory</td></tr>
+<tr><td>StorageCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Storage<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage</td></tr>
+<tr><td>SwitchCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Switches</td></tr>
+<tr><td>TaskCollection</td><td>/redfish/v1/TaskService/Tasks</td></tr>
+<tr><td>TriggersCollection</td><td>/redfish/v1/TelemetryService/Triggers</td></tr>
+<tr><td>VirtualMediaCollection</td><td>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/VirtualMedia</td></tr>
+<tr><td>VLanNetworkInterfaceCollection</td><td>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i>/NetworkAdapters/<i><a href="#NetworkAdapter">{NetworkAdapterId}</a></i>/NetworkDeviceFunctions/<i><a href="#NetworkDeviceFunction">{NetworkDeviceFunctionId}</a></i>/Ethernet/VLANs<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces/<i><a href="#EthernetInterface">{EthernetInterfaceId}</a></i>/VLANs</td></tr>
+<tr><td>VolumeCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes</td></tr>
+<tr><td>ZoneCollection</td><td>/redfish/v1/CompositionService/ResourceZones<br>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Zones</td></tr>
+</tbody></table>
 <h1 id="reference-guide">Reference Guide</h1>
 <p>This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's <a href="#redfish-documentation-generator">Redfish Documentation Generator</a>.  </p><h2 id="AccountService">AccountService 1.3.1</h2>
 <p>The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.</p>
@@ -1519,7 +1686,7 @@ pre.code{
 <tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
 <tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
 <tr><td>Off</td><td>The Indicator LED is off.</td></tr>
-<tr><td>Unknown</td><td>The state of the Indicator LED cannot be determined.</td></tr>
+<tr><td>Unknown <i>(deprecated v1.1.2)</i></td><td>The state of the Indicator LED cannot be determined. <i>This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/Chassis.json|details|IntrusionSensor">IntrusionSensor:</h4>
@@ -1866,7 +2033,7 @@ pre.code{
 <tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
 <tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
 <tr><td>Off</td><td>The Indicator LED is off.</td></tr>
-<tr><td>Unknown</td><td>The state of the Indicator LED cannot be determined.</td></tr>
+<tr><td>Unknown <i>(deprecated v1.0.2)</i></td><td>The state of the Indicator LED cannot be determined. <i>This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceType">InterfaceType:</h4>
@@ -3337,6 +3504,29 @@ pre.code{
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Job.Job&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Jobs/RebootRack&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Job.v1_0_0.Job&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;RebootRack&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Scheduled Nightly Reboot of the rack&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;JobStatus&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;JobState&quot;</span><span class="p">:</span> <span class="s2">&quot;Running&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;StartTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-04-01T00:01+6:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;PercentComplete&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="nt">&quot;Schedule&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Lifetime&quot;</span><span class="p">:</span> <span class="s2">&quot;P4Y&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;InitialStartTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-01-01T01:00:00+06:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;RecurrenceInterval&quot;</span><span class="p">:</span> <span class="s2">&quot;P1D&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;EnabledDaysOfWeek&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Steps&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Jobs/RebootRack/Steps&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;StepOrder&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">,</span> <span class="s2">&quot;Yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="s2">&quot;Indigo&quot;</span><span class="p">,</span> <span class="s2">&quot;Violet&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="JobService">JobService 1.0.0</h2>
 <p>This is the schema definition for the Job Service.  It represents the properties for the service itself and has links to the actual list of tasks.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/JobService</li></ul>
@@ -3354,6 +3544,41 @@ pre.code{
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#JobService.v1_0_0.JobService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;JobService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Job Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;DateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-06-13T04:14+06:00&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;ServiceCapabilities&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;MaxJobs&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="nt">&quot;MaxSteps&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;Scheduling&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Jobs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Jobs&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Log&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Log&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;#Contoso.EasyButton&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/Contoso.EasyButton&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;@Redfish.ActionInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/JobService/EasyButtonActionInfo&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata/JobService.JobService&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="JsonSchemaFile">JsonSchemaFile 1.1.1</h2>
 <p>This is the schema definition for the Schema File locator resource.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/JsonSchemas/<i><a href="#JsonSchemaFile">{JsonSchemaFileId}</a></i></li></ul>
@@ -4420,6 +4645,47 @@ pre.code{
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>  
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/MemoryDomains/1/MemoryChunks/1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#MemoryChunks.v1_0_0.MemoryChunks&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Memory Chunk - Whole System&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MemoryChunkSizeMiB&quot;</span><span class="p">:</span> <span class="mi">32768</span><span class="p">,</span>
+    <span class="nt">&quot;AddressRangeType&quot;</span><span class="p">:</span> <span class="s2">&quot;Volatile&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;IsMirrorEnabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;IsSpare&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;InterleaveSets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/1&quot;</span>
+        <span class="p">}},</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/2&quot;</span>
+        <span class="p">}},</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/3&quot;</span>
+        <span class="p">}},</span>
+        <span class="p">{</span><span class="nt">&quot;Memory&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/4&quot;</span>
+        <span class="p">}}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@Redfish.Settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Settings.v1_0_0.Settings&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;SettingsObject&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/MemoryDomains/1/MemoryChunks/1/SD&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-03-07T14:44.30-05:00&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ETag&quot;</span><span class="p">:</span> <span class="s2">&quot;someetag&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.Success&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#MemoryChunks.MemoryChunks&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="MemoryDomain">MemoryDomain 1.2.1</h2>
 <p>This is the schema definition of a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/MemoryDomains/<i><a href="#MemoryDomain">{MemoryDomainId}</a></i></li>
@@ -4436,6 +4702,31 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Memory resource. See the Links section and the <a href="#Memory">Memory</a> schema for details.</td></tr>
 <tr><td><nobr><b>MemoryChunks</b> { }</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Memory Chunks associated with this Memory Domain.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/MemoryDomains/1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#MemoryDomain.v1_2_1.MemoryDomain&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Memory Domain - Whole System Mirroring Only&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;MemoryChunks&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/4/MemoryDomains/1/MemoryChunks&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;AllowsMemoryChunkCreation&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;AllowsBlockProvisioning&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;InterleavableMemorySets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;MemorySet&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/1&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/2&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/3&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/2/Memory/4&quot;</span><span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#MemoryDomain.MemoryDomain&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="MemoryMetrics">MemoryMetrics 1.1.4</h2>
 <p>MemoryMetrics contains usage and health statistics for a single Memory module or device instance.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Memory/<i><a href="#Memory">{MemoryId}</a></i>/MemoryMetrics</li>
@@ -4473,6 +4764,43 @@ pre.code{
 <p>(This action takes no parameters.)</p>
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>  
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Memory/1/MemoryMetrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#MemoryMetrics.v1_1_4.MemoryMetrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Memory Metrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Metrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;BlockSizeBytes&quot;</span><span class="p">:</span> <span class="mi">4096</span><span class="p">,</span>
+    <span class="nt">&quot;CurrentPeriod&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;BlocksRead&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;BlocksWritten&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;LifeTime&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;BlocksRead&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nt">&quot;BlocksWritten&quot;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;HealthData&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;RemainingSpareBlockPercentage&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nt">&quot;LastShutdownSuccess&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;DataLossDetected&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;PerformanceDegraded&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;AlarmTrips&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Temperature&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;SpareBlock&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;UncorrectableECCError&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;CorrectableECCError&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;#MemoryMetrics.ClearCurrentPeriod&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Memory/1/Actions/MemoryMetrics.ClearCurrentPeriod&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="MessageRegistry">MessageRegistry 1.2.0</h2>
 <p>This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageId is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.</p>
 <table class="properties">
@@ -5501,7 +5829,6 @@ pre.code{
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@Redfish.Copyright&quot;</span><span class="p">:</span> <span class="s2">&quot;Copyright 2018 DMTF, Inc. All rights reserved.&quot;</span><span class="p">,</span>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#PCIeSlots.PCIeSlots&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div></div>
@@ -5786,9 +6113,9 @@ pre.code{
 <tr><td>AC240V</td><td>AC 240V nominal input.</td></tr>
 <tr><td>AC277V</td><td>AC 277V nominal input.</td></tr>
 <tr><td>ACandDCWideRange</td><td>Wide range AC or DC input.</td></tr>
-<tr><td>ACHighLine</td><td>277V AC input.</td></tr>
-<tr><td>ACLowLine</td><td>100-127V AC input.</td></tr>
-<tr><td>ACMidLine</td><td>200-240V AC input.</td></tr>
+<tr><td>ACHighLine <i>(deprecated v1.1)</i></td><td>277V AC input. <i>This value has been Deprecated in favor of AC277V.</i></td></tr>
+<tr><td>ACLowLine <i>(deprecated v1.1)</i></td><td>100-127V AC input. <i>This value has been Deprecated in favor of AC120V.</i></td></tr>
+<tr><td>ACMidLine <i>(deprecated v1.1)</i></td><td>200-240V AC input. <i>This value has been Deprecated in favor of AC240V.</i></td></tr>
 <tr><td>ACWideRange</td><td>Wide range AC input.</td></tr>
 <tr><td>DC240V</td><td>DC 240V nominal input.</td></tr>
 <tr><td>DC380V</td><td>High Voltage DC input (380V).</td></tr>
@@ -6662,9 +6989,9 @@ pre.code{
     <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ServiceRoot.v1_4_0.ServiceRoot&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;RootService&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Root Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;RedfishVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;RedfishVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.6.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso 1U Server&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Product&quot;</span><span class="p">:</span> <span class="s2">&quot;UR99 1U Server&quot;</span><span class="p">,</span>
     <span class="nt">&quot;ProtocolFeaturesSupported&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;ExpandQuery&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;ExpandAll&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -6674,7 +7001,9 @@ pre.code{
             <span class="nt">&quot;NoLinks&quot;</span><span class="p">:</span> <span class="kc">true</span>
         <span class="p">},</span>
         <span class="nt">&quot;SelectQuery&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="nt">&quot;FilterQuery&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="nt">&quot;FilterQuery&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nt">&quot;OnlyMemberQuery&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nt">&quot;ExcerptQuery&quot;</span><span class="p">:</span> <span class="kc">true</span>
     <span class="p">},</span>
     <span class="nt">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
@@ -7312,12 +7641,12 @@ pre.code{
 <tr><th>string</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Cancelled <i>(v1.0.5+)</i></td><td>Task has been cancelled by an operator or internal process.</td></tr>
-<tr><td>Cancelling <i>(v1.0.5+)</i></td><td>Task is in the process of being cancelled.</td></tr>
+<tr><td>Cancelled <i>(v1.2+)</i></td><td>Task has been cancelled by an operator or internal process.</td></tr>
+<tr><td>Cancelling <i>(v1.2+)</i></td><td>Task is in the process of being cancelled.</td></tr>
 <tr><td>Completed</td><td>Task has completed.</td></tr>
 <tr><td>Exception</td><td>Task has stopped due to an exception condition.</td></tr>
 <tr><td>Interrupted</td><td>Task has been interrupted.</td></tr>
-<tr><td>Killed</td><td>Task was terminated.</td></tr>
+<tr><td>Killed <i>(deprecated v1.2)</i></td><td>Task was terminated. <i>This value has been deprecated and is being replaced by the value Cancelled which has more determinate semantics.</i></td></tr>
 <tr><td>New</td><td>A new task.</td></tr>
 <tr><td>Pending</td><td>Task is pending and has not started.</td></tr>
 <tr><td>Running</td><td>Task is running normally.</td></tr>
@@ -8001,8 +8330,8 @@ pre.code{
 <tr><td>FTP</td><td>File Transfer Protocol.</td></tr>
 <tr><td>HTTP</td><td>Hypertext Transfer Protocol.</td></tr>
 <tr><td>HTTPS</td><td>HTTP Secure protocol.</td></tr>
-<tr><td>NFS <i>(v1.0.4+)</i></td><td>Network File System protocol.</td></tr>
-<tr><td>NSF</td><td>Network File System protocol.</td></tr>
+<tr><td>NFS <i>(v1.3+)</i></td><td>Network File System protocol.</td></tr>
+<tr><td>NSF <i>(deprecated v1.3)</i></td><td>Network File System protocol. <i>This value has been Deprecated in favor of NFS.</i></td></tr>
 <tr><td>OEM</td><td>A protocol defined by the manufacturer.</td></tr>
 <tr><td>SCP</td><td>Secure File Copy protocol.</td></tr>
 <tr><td>SFTP <i>(v1.0.1+)</i></td><td>Secure File Transfer Protocol.</td></tr>
@@ -8317,7 +8646,27 @@ pre.code{
 <tr>
 <td>2018.2</td>
 <td>2018-08-10</td>
-<td>Built from Redfish schemas released in DSP8010 version 2018.2</td>
+<td>Release built from Redfish schemas released in DSP8010 version 2018.2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Expanding introduction section with additional information.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Added URI listings for all resources for use with Redfish Specification v1.6.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Added Resource Collection table showing schema names and URIs.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Restructured common objects section utilizing new Documentation Generator functions.</td>
 </tr>
 <tr>
 <td>2018.1</td>
