@@ -120,17 +120,17 @@ A number of corner-case issues have been found in the schema definitions which c
 
 4) Some errata schemas are causing enums to be added in eariler versions - deleting the following schema files before generating the documentation will fix this.  This is a schema error.  Workaround for the doc generator would be to only gather version added information from minor, non-errata (v1.x.0) files.  That will leave one manual case for FanName?
 
-* Resource.v1_1_4
-* Resource.v1_1_5
-* Resource.v1_1_6
-* Resource.v1_2_[1+]
-* Resource.v1_3_[1+]
-* Task.v1_0_5
-* Task.v1_1_2
-* Task.v1_2_1
-* UpdateService.v1_0_4
-* UpdateService.v1_1_3
-* UpdateService.v1_2_2
+- Resource.v1_1_4
+- Resource.v1_1_5
+- Resource.v1_1_6
+- Resource.v1_2_[1+]
+- Resource.v1_3_[1+]
+- Task.v1_0_5
+- Task.v1_1_2
+- Task.v1_2_1
+- UpdateService.v1_0_4
+- UpdateService.v1_1_3
+- UpdateService.v1_2_2
 
 
 # Doc generator open enhancements list
@@ -138,8 +138,7 @@ A number of corner-case issues have been found in the schema definitions which c
 1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive.
 
 3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed. 
-
-* 
+ 
 
 ------------------------------------------ SCHEMA GUIDE BEGINS HERE --------------------------------------
 
@@ -261,8 +260,7 @@ In the example below, the property `ResetType` is being annotated with the `Allo
     "ResetType@Redfish.AllowableValues": [
         "On",
         "ForceOff"
-    ],
-    ...
+    ]
 }
 ```
 
@@ -287,8 +285,7 @@ In the example below, the object is being annotated with the `ActionInfo` term, 
     "#ComputerSystem.Reset": {
         "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
         "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
-    },
-    ...
+    }
 }
 ```
 
