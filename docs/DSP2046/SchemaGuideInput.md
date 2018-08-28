@@ -102,11 +102,11 @@ String-replacement for "units" values. Case-sensitive. Any units not matched wil
 
 # Bugs
 
-1) Deprecated statements are including errata versions - should only report major/minor version
+1) Deprecated statements are picked up from errata versions - should only report major/minor version
 
 2) Version included in heading for common objects.  Perhaps an option (don't want this normally).  Style is different (remove parenthesis).
 
-3) Enum version added isn't working properly.  See Processor/ProcessorType Core and Thread (show 1.0.5).  See UpdateService/TransferProtocolType NFS (should show 1.3+)
+3) Enum version added is picking up errata versions due to generated JSON schemas. Schema issue, not a doc generator problem.  See Processor/ProcessorType Core and Thread (show 1.0.5).  See UpdateService/TransferProtocolType NFS (should show 1.3+)
 
 # Manual Fix-ups required prior to Release
 
@@ -114,13 +114,32 @@ A number of corner-case issues have been found in the schema definitions which c
 
 1) Remove reference to the Resource schema from the Common Object defintions for OEM and Links.  
 
+2) Remove version strings from common object headings (adjust hyperlinks accordingly)
+
 3) Definitions moved to unversioned namespaces.  Approximately 7 properties have had their definitions moved to the unversioned namespaces, and the "versioned" property was deprecated. The documentation generator sees this as a valid deprecation and flags it (incorrectly).  These invalid deprecations should be removed, and can be located in the HTML by searching for "unversioned namespace".  Both the description and the property name "(deprecated v1.x.x)" should be edited.
+
+4) Some errata schemas are causing enums to be added in eariler versions - deleting the following schema files before generating the documentation will fix this.  This is a schema error.  Workaround for the doc generator would be to only gather version added information from minor, non-errata (v1.x.0) files.  That will leave one manual case for FanName?
+
+* Resource.v1_1_4
+* Resource.v1_1_5
+* Resource.v1_1_6
+* Resource.v1_2_[1+]
+* Resource.v1_3_[1+]
+* Task.v1_0_5
+* Task.v1_1_2
+* Task.v1_2_1
+* UpdateService.v1_0_4
+* UpdateService.v1_1_3
+* UpdateService.v1_2_2
+
 
 # Doc generator open enhancements list
 
 1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive.
 
-3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed.
+3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed. 
+
+* 
 
 ------------------------------------------ SCHEMA GUIDE BEGINS HERE --------------------------------------
 
