@@ -179,6 +179,7 @@ pre.code{
 <li><a href="#common-properties-IPv6StaticAddress_v1.0.7">IPv6StaticAddress</a></li>
 <li><a href="#common-properties-Location_v1.7.0">Location</a></li>
 <li><a href="#common-properties-Message_v1.0.6">Message</a></li>
+<li><a href="#common-properties-Redundancy_v1.3.1">Redundancy</a></li>
 <li><a href="#common-properties-Schedule_v1.2.0">Schedule</a></li>
 <li><a href="#common-properties-Status">Status</a></li>
 </ul>
@@ -605,6 +606,23 @@ The property-level details include:</p>
 <tr><td><nobr><b>RelatedProperties</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-only</nobr></td><td>This is an array of properties described by the message.</td></tr>
 <tr><td><nobr><b>Resolution</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Used to provide suggestions on how to resolve the situation that caused the error.</td></tr>
 <tr><td><nobr><b>Severity</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the severity of the errors.</td></tr>
+</tbody></table>
+<h2 id="common-properties-Redundancy_v1.3.1">Redundancy</h2>
+<p>This is the redundancy definition to be used in other resource schemas.</p>
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Actions</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
+<tr><td><nobr><b>MaxNumSupported</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> <nobr>required</nobr> (null)</td><td>This is the maximum number of members allowable for this particular redundancy group.</td></tr>
+<tr><td><nobr><b>MemberId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>This is the identifier for the member within the collection.</td></tr>
+<tr><td><nobr><b>MinNumNeeded</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> <nobr>required</nobr> (null)</td><td>This is the minumum number of members needed for this group to be redundant.</td></tr>
+<tr><td><nobr><b>Mode</b></nobr></td><td></td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the redundancy mode of the group.</td></tr>
+<tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>The name of the resource or array element.</td></tr>
+<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
+<tr><td><nobr><b>RedundancyEnabled</b> <i>(v1.1+)</i></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether redundancy is enabled.</td></tr>
+<tr><td><nobr><b>RedundancySet</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>Contains any ids that represent components of this redundancy set.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td> <nobr>required</nobr></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <h2 id="common-properties-Schedule_v1.2.0">Schedule</h2>
 <p>Schedule a series of occurrences.</p>
@@ -1614,7 +1632,7 @@ The property-level details include:</p>
 <tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
 <tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
 <tr><td>Off</td><td>The Indicator LED is off.</td></tr>
-<tr><td>Unknown <i>(deprecated v1.1.2)</i></td><td>The state of the Indicator LED cannot be determined. <i>Deprecated v1.1.2+. This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
+<tr><td>Unknown <i>(deprecated v1.5)</i></td><td>The state of the Indicator LED cannot be determined. <i>Deprecated v1.5+. This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/Chassis.json|details|IntrusionSensor">IntrusionSensor:</h4>
@@ -1853,8 +1871,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LogicalProcessorCount</b> <i>(v1.5+)</i></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The number of logical processors in the system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The processor model for the primary or majority of processors in this system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>}</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Redundancy</b> <i>(v1.5+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>A reference to a collection of Redundancy entities that each name a set of computer systems that provide redundancy for this ComputerSystem.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>A reference to a collection of Redundancy entities that each name a set of computer systems that provide redundancy for this ComputerSystem. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SecureBoot</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the UEFI SecureBoot resource associated with this system. See the <a href="#SecureBoot">SecureBoot</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SecureBoot resource. See the Links section and the <a href="#SecureBoot">SecureBoot</a> schema for details.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this system.</td></tr>
@@ -1961,7 +1978,7 @@ The property-level details include:</p>
 <tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
 <tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
 <tr><td>Off</td><td>The Indicator LED is off.</td></tr>
-<tr><td>Unknown <i>(deprecated v1.0.2)</i></td><td>The state of the Indicator LED cannot be determined. <i>Deprecated v1.0.2+. This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
+<tr><td>Unknown <i>(deprecated v1.4)</i></td><td>The state of the Indicator LED cannot be determined. <i>Deprecated v1.4+. This value has been Deprecated in favor of returning null if the state is unknown.</i></td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceType">InterfaceType:</h4>
@@ -2509,8 +2526,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SubsystemId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Subsystem ID of this PCIe function.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SubsystemVendorId</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Subsystem Vendor ID of this PCIe function.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VendorId</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Vendor ID of this PCIe function.</td></tr>
-<tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the lower level endpoints supporting this endpoint.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>Redundancy information for the lower level endpoints supporting this endpoint. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -3866,8 +3882,7 @@ The property-level details include:</p>
 <tr><td><nobr><b>NetworkProtocol</b> {</nobr></td><td>object</td><td></td><td>This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services. See the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ManagerNetworkProtocol resource. See the Links section and the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details.</td></tr>
 <tr><td><nobr><b>PowerState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the current power state of the Manager.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Manager.json|details|PowerState">PowerState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the managers of this system.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>Redundancy information for the managers of this system. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>RemoteAccountService</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>This property contains a reference to the AccountService resource for the remote Manager represented by this resource. See the <a href="#AccountService">AccountService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a AccountService resource. See the Links section and the <a href="#AccountService">AccountService</a> schema for details.</td></tr>
 <tr><td><nobr><b>RemoteRedfishServiceUri</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the URI of the Redfish Service Root for the remote Manager represented by this resource.</td></tr>
@@ -5961,15 +5976,13 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PowerInputWatts</b> <i>(v1.5+)</i></nobr></td><td>number<br>(Watts)</td><td><nobr>read-only</nobr> (null)</td><td>The measured input power of this Power Supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PowerOutputWatts</b> <i>(v1.5+)</i></nobr></td><td>number<br>(Watts)</td><td><nobr>read-only</nobr> (null)</td><td>The measured output power of this Power Supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PowerSupplyType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The Power Supply type (AC or DC).<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Power.json|details|PowerSupplyType">PowerSupplyType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This structure is used to show redundancy for power supplies.  The Component ids will reference the members of the redundancy groups.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>This structure is used to show redundancy for power supplies.  The Component ids will reference the members of the redundancy groups. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>The ID(s) of the resources associated with this Power Limit.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this Power Supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SparePartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The spare part number for this Power Supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the power subsystem of this system or device.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>Redundancy information for the power subsystem of this system or device. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Voltages</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the definition for voltage sensors.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Actions</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
@@ -6041,9 +6054,9 @@ The property-level details include:</p>
 <tr><td>AC240V</td><td>AC 240V nominal input.</td></tr>
 <tr><td>AC277V</td><td>AC 277V nominal input.</td></tr>
 <tr><td>ACandDCWideRange</td><td>Wide range AC or DC input.</td></tr>
-<tr><td>ACHighLine <i>(deprecated v1.1)</i></td><td>277V AC input. <i>Deprecated v1.1+. This value has been Deprecated in favor of AC277V.</i></td></tr>
-<tr><td>ACLowLine <i>(deprecated v1.1)</i></td><td>100-127V AC input. <i>Deprecated v1.1+. This value has been Deprecated in favor of AC120V.</i></td></tr>
-<tr><td>ACMidLine <i>(deprecated v1.1)</i></td><td>200-240V AC input. <i>Deprecated v1.1+. This value has been Deprecated in favor of AC240V.</i></td></tr>
+<tr><td>ACHighLine <i>(deprecated v1.3)</i></td><td>277V AC input. <i>Deprecated v1.3+. This value has been Deprecated in favor of AC277V.</i></td></tr>
+<tr><td>ACLowLine <i>(deprecated v1.3)</i></td><td>100-127V AC input. <i>Deprecated v1.3+. This value has been Deprecated in favor of AC120V.</i></td></tr>
+<tr><td>ACMidLine <i>(deprecated v1.3)</i></td><td>200-240V AC input. <i>Deprecated v1.3+. This value has been Deprecated in favor of AC240V.</i></td></tr>
 <tr><td>ACWideRange</td><td>Wide range AC input.</td></tr>
 <tr><td>DC240V</td><td>DC 240V nominal input.</td></tr>
 <tr><td>DC380V</td><td>High Voltage DC input (380V).</td></tr>
@@ -7157,8 +7170,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Enclosures</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the chassis to which this storage subsystem is attached.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
-<tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the storage subsystem.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>Redundancy information for the storage subsystem. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>StorageControllers</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The set of storage controllers represented by this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
@@ -7373,8 +7385,7 @@ The property-level details include:</p>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The part number for this switch.</td></tr>
 <tr><td><nobr><b>Ports</b> { }</nobr></td><td>object</td><td></td><td>A collection of references to the ports for this switch.</td></tr>
 <tr><td><nobr><b>PowerState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the current power state of the switch.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Switch.json|details|PowerState">PowerState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>Redundancy information for the switches.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>Redundancy information for the switches. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this switch.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the SKU for this switch.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
@@ -7787,8 +7798,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PhysicalContext</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>Describes the area or device associated with this fan.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Thermal.json|details|PhysicalContext">PhysicalContext</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Reading</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Current fan speed.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ReadingUnits</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>Units in which the reading and thresholds are measured.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Thermal.json|details|ReadingUnits">ReadingUnits</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RelatedItem</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>The ID(s) of the resources serviced with this fan.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SensorNumber</b> <i>(v1.5+)</i></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>A numerical identifier to represent the fan speed sensor.</td></tr>
@@ -7798,8 +7808,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdCritical</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range but not yet fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdFatal</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range and is fatal.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UpperThresholdNonCritical</b></nobr><br>} ]</td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>Above normal range.</td></tr>
-<tr><td><nobr><b>Redundancy</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Temperatures</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the definition for temperature sensors.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
