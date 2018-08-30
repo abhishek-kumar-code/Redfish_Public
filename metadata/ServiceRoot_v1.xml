@@ -462,10 +462,10 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_4_0.ServiceRoot">
-        <Property Name="Vendor" Type="Edm.String" Nullable="false">
+        <Property Name="Manufacturer" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The vendor associated with this Redfish service."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the vendor represented by this Redfish service. If this property is supported, the vendor name shall not be included in the value of the Product property."/>
+          <Annotation Term="OData.Description" String="The manufacturer or vendor associated with this Redfish service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the manufacturer or vendor represented by this Redfish service. If this property is supported, the manufacturer name shall not be included in the value of the Product property."/>
         </Property>
       </EntityType>
     </Schema>

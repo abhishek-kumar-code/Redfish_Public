@@ -5,7 +5,7 @@
     "@odata.type": "#ServiceRoot.v1_5_0.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
-    "Vendor": "Contoso",
+    "Manufacturer": "Contoso",
     "Product": "WidgetDeluxe 8744",
     "RedfishVersion": "1.6.0",
     "UUID": "92384634-2938-2342-8820-489239905423",
