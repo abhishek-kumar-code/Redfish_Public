@@ -843,7 +843,8 @@ The property-level details include:</p>
 <tr><td><nobr><b>AccountLockoutCounterResetAfter</b></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-write</nobr></td><td>The interval of time in seconds between the last failed login attempt and reset of the lockout threshold counter. This value must be less than or equal to AccountLockoutDuration. Reset sets the counter to zero.</td></tr>
 <tr><td><nobr><b>AccountLockoutDuration</b></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-write</nobr> (null)</td><td>The time in seconds an account is locked out. The value must be greater than or equal to the value of the AccountLockoutCounterResetAfter property. If set to 0, no lockout occurs.</td></tr>
 <tr><td><nobr><b>AccountLockoutThreshold</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> (null)</td><td>The number of failed login attempts allowed before a user account is locked for a specified duration. A value of 0 means it is never locked.</td></tr>
-<tr><td><nobr><b>Accounts</b> { }</nobr></td><td>object</td><td></td><td>A link to a collection of Manager Accounts.</td></tr>
+<tr><td><nobr><b>Accounts</b> {</nobr></td><td>object</td><td></td><td>A link to a collection of Manager Accounts. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ManagerAccount">ManagerAccount</a>. See the ManagerAccount schema for details.</td></tr>
 <tr><td><nobr><b>Actions</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>ActiveDirectory</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>The first ActiveDirectory external account provider this AccountService supports.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AccountProviderType</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the type of external account provider this resource references.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AccountProviderType">AccountProviderType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -868,37 +869,39 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceAddresses</b> <i>(v1.3+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>This property contains the addresses of the user account providers this resource references. The format of this field depends on the Type.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b> <i>(v1.3+)</i></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>AdditionalExternalAccountProviders</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>The additional external account providers this AccountService is using.</td></tr>
+<tr><td><nobr><b>AdditionalExternalAccountProviders</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>The additional external account providers this AccountService is using. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ExternalAccountProvider">ExternalAccountProvider</a>. See the ExternalAccountProvider schema for details.</td></tr>
 <tr><td><nobr><b>AuthFailureLoggingThreshold</b></nobr></td><td>integer</td><td><nobr>read-write</nobr></td><td>The number of authorization failures allowed before the failure attempt is logged to the manager log.</td></tr>
 <tr><td><nobr><b>LDAP</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>The first LDAP external account provider this AccountService supports.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AccountProviderType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the type of external account provider this resource references.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AccountProviderType">AccountProviderType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Authentication</b> {</nobr></td><td>object</td><td> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AccountProviderType</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the type of external account provider this resource references.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AccountProviderType">AccountProviderType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Authentication</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td> (null)</td><td>This property contains the authentication information for the external account provider.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AuthenticationType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>This property contains the type of authentication used to connect to the external account provider.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|AuthenticationType">AuthenticationType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KerberosKeytab</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Password</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the password for the account service.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Token</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Username</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr></td><td>This property contains the user name for the account service.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LDAPService</b> {</nobr></td><td>object</td><td> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LDAPService</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td> (null)</td><td>This property contains additional mapping information needed to parse a generic LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SearchSettings</b> {</nobr></td><td>object</td><td> (null)</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BaseDistinguishedNames</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The base distinguished names to use when searching the LDAP service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupNameAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the name of the Group.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>GroupsAttribute</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Groups for a user.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UsernameAttribute</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The attribute name that contains the Username.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteRoleMapping</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteRoleMapping</b> <i>(v1.3+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This property contains a collection of the mapping rules to convert the external account providers account information to the local Redfish Role.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LocalRole</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The name of the local role in which to map the remote user or group.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteGroup</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote group (or in the case of a Redfish Service, remote role) that will be mapped to the local role referenced by this entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RemoteUser</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the name of the remote user that will be mapped to the local role referenced by this entity.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceAddresses</b> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>This property contains the addresses of the user account providers this resource references. The format of this field depends on the Type.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceAddresses</b> <i>(v1.3+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>This property contains the addresses of the user account providers this resource references. The format of this field depends on the Type.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b> <i>(v1.3+)</i></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>LocalAccountAuth</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>Controls when this service will use the accounts defined withing this AccountService as part of authentication.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/AccountService.json|details|LocalAccountAuth">LocalAccountAuth</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>MaxPasswordLength</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>The maximum password length for this service.</td></tr>
 <tr><td><nobr><b>MinPasswordLength</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>The minimum password length for this service.</td></tr>
 <tr><td><nobr><b>PrivilegeMap</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the Privilege mapping that defines the privileges needed to perform a requested operation on a URI associated with this service. See the <a href="#PrivilegeRegistry">PrivilegeRegistry</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PrivilegeRegistry resource. See the Links section and the <a href="#PrivilegeRegistry">PrivilegeRegistry</a> schema for details.</td></tr>
-<tr><td><nobr><b>Roles</b> { }</nobr></td><td>object</td><td></td><td>A link to a collection of Roles.</td></tr>
+<tr><td><nobr><b>Roles</b> {</nobr></td><td>object</td><td></td><td>A link to a collection of Roles. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Role">Role</a>. See the Role schema for details.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this service is enabled.  If set to false, the AccountService is disabled.  This means no users can be created, deleted or modified.  Any service attempting to access the AccountService resource (for example, the Session Service) will fail.  New sessions cannot be started when the service is disabled. However, established sessions may still continue operating. This does not affect Basic AUTH connections.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
@@ -1413,9 +1416,9 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>NewPassword</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The value of the new BIOS password.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OldPassword</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The value of the existing password.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PasswordName</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>The name of the BIOS password to change.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>NewPassword</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The value of the new BIOS password.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OldPassword</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The value of the existing password.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PasswordName</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The name of the BIOS password to change.</td></tr>
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Bios.json|action_details|#Bios.ResetBios">ResetBios</h4>
 <p>This action is used to reset the BIOS attributes to default.</p>
@@ -1553,10 +1556,12 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Switches</b> <i>(v1.7+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the Switches located in this Chassis.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Switch resource. See the Links section and the <a href="#Switch">Switch</a> schema for details.</td></tr>
 <tr><td><nobr><b>Location</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the chassis. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>LogServices</b> { }</nobr></td><td>object</td><td></td><td>A reference to the logs for this chassis.</td></tr>
+<tr><td><nobr><b>LogServices</b> {</nobr></td><td>object</td><td></td><td>A reference to the logs for this chassis. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#LogService">LogService</a>. See the LogService schema for details.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer of this chassis.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The model number of the chassis.</td></tr>
-<tr><td><nobr><b>NetworkAdapters</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Network Adapters associated with this chassis.</td></tr>
+<tr><td><nobr><b>NetworkAdapters</b> <i>(v1.4+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Network Adapters associated with this chassis. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkAdapter">NetworkAdapter</a>. See the NetworkAdapter schema for details.</td></tr>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The part number of the chassis.</td></tr>
 <tr><td><nobr><b>PCIeSlots</b> <i>(v1.8+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the PCIe Slot properties of this chassis. See the <a href="#PCIeSlots">PCIeSlots</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PCIeSlots resource. See the Links section and the <a href="#PCIeSlots">PCIeSlots</a> schema for details.</td></tr>
@@ -1768,8 +1773,10 @@ The property-level details include:</p>
 <tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>AllowOverprovisioning</b> <i>(v1.1+)</i></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is allowed to overprovision a composition relative to the composition request.</td></tr>
 <tr><td><nobr><b>AllowZoneAffinity</b> <i>(v1.1+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>This indicates whether a client is allowed to request that given composition request is fulfilled by a specified Resource Zone.</td></tr>
-<tr><td><nobr><b>ResourceBlocks</b> { }</nobr></td><td>object</td><td></td><td>The resource blocks available on the service.</td></tr>
-<tr><td><nobr><b>ResourceZones</b> { }</nobr></td><td>object</td><td></td><td>The resource zones available on the service.</td></tr>
+<tr><td><nobr><b>ResourceBlocks</b> {</nobr></td><td>object</td><td></td><td>The resource blocks available on the service. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ResourceBlock">ResourceBlock</a>. See the ResourceBlock schema for details.</td></tr>
+<tr><td><nobr><b>ResourceZones</b> {</nobr></td><td>object</td><td></td><td>The resource zones available on the service. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Zone">Zone</a>. See the Zone schema for details.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
@@ -1811,16 +1818,18 @@ The property-level details include:</p>
 <tr><td><nobr><b>BiosVersion</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The version of the system BIOS or primary system firmware.</td></tr>
 <tr><td><nobr><b>Boot</b> {</nobr></td><td>object</td><td></td><td>Information about the boot settings for this system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootNext</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the BootOptionReference of the Boot Option to perform a one time boot from when BootSourceOverrideTarget is UefiBootNext.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootOptions</b> <i>(v1.5+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of the UEFI Boot Options associated with this Computer System.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootOptions</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the collection of the UEFI Boot Options associated with this Computer System. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#BootOption">BootOption</a>. See the BootOption schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootOrder</b> <i>(v1.5+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>Ordered array of BootOptionReference strings representing the persistent Boot Order associated with this computer system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootSourceOverrideEnabled</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>Describes the state of the Boot Source Override feature.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootSourceOverrideEnabled">BootSourceOverrideEnabled</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootSourceOverrideMode</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The BIOS Boot Mode (either Legacy or UEFI) to be used when BootSourceOverrideTarget boot source is booted from.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootSourceOverrideMode">BootSourceOverrideMode</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootSourceOverrideTarget</b> <i>(deprecated v1.5)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootSourceOverrideTarget">BootSourceOverrideTarget</a> in Property Details, below, for the possible values of this property.</i> <i>Deprecated v1.5+. This definition has been moved to the unversioned namespace so that external references can pick up changes over time.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UefiTargetBootSourceOverride</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the UEFI Device Path of the device to boot from when BootSourceOverrideTarget is UefiTarget.</td></tr>
-<tr><td><nobr><b>EthernetInterfaces</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Ethernet interfaces associated with this system.</td></tr>
+<tr><td><nobr><b>EthernetInterfaces</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Ethernet interfaces associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EthernetInterface">EthernetInterface</a>. See the EthernetInterface schema for details.</td></tr>
 <tr><td><nobr><b>HostedServices</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>The services that this computer system supports.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.2+)</i> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> <i>(v1.2+)</i></nobr><br>}</td><td></td><td><nobr>read-only</nobr></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b></nobr><br>}</td><td></td><td><nobr>read-only</nobr></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
 <tr><td><nobr><b>HostingRoles</b> <i>(v1.2+)</i> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>The hosing roles that this computer system supports. The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|HostingRoles">HostingRoles</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>HostName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The DNS Host Name, without any domain information.</td></tr>
 <tr><td><nobr><b>HostWatchdogTimer</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>This object describes the Host Watchdog Timer functionality for this system.</td></tr>
@@ -1848,24 +1857,29 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ResourceBlock resource. See the Links section and the <a href="#ResourceBlock">ResourceBlock</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupplyingComputerSystems</b> <i>(v1.5+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to ComputerSystems that contribute, in whole or in part, to the implementation of this ComputerSystem.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to another ComputerSystem resource.</td></tr>
-<tr><td><nobr><b>LogServices</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Log Services associated with this system.</td></tr>
+<tr><td><nobr><b>LogServices</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Log Services associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#LogService">LogService</a>. See the LogService schema for details.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer or OEM of this system.</td></tr>
-<tr><td><nobr><b>Memory</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Memory associated with this system.</td></tr>
-<tr><td><nobr><b>MemoryDomains</b> { }</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Memory Domains associated with this system.</td></tr>
+<tr><td><nobr><b>Memory</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Memory associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Memory">Memory</a>. See the Memory schema for details.</td></tr>
+<tr><td><nobr><b>MemoryDomains</b> {</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Memory Domains associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MemoryDomain">MemoryDomain</a>. See the MemoryDomain schema for details.</td></tr>
 <tr><td><nobr><b>MemorySummary</b> {</nobr></td><td>object</td><td></td><td>This object describes the central memory of the system in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemoryMirroring</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The ability and type of memory mirroring supported by this system.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|MemoryMirroring">MemoryMirroring</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TotalSystemMemoryGiB</b></nobr></td><td>number<br>(GiBy)</td><td><nobr>read-only</nobr> (null)</td><td>The total configured operating system-accessible memory (RAM), measured in GiB.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TotalSystemPersistentMemoryGiB</b> <i>(v1.4+)</i></nobr><br>}</td><td>number<br>(GiBy)</td><td><nobr>read-only</nobr> (null)</td><td>The total configured, system-accessible persistent memory, measured in GiB.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product name for this system, without the manufacturer name.</td></tr>
-<tr><td><nobr><b>NetworkInterfaces</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Network Interfaces associated with this system.</td></tr>
+<tr><td><nobr><b>NetworkInterfaces</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Network Interfaces associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkInterface">NetworkInterface</a>. See the NetworkInterface schema for details.</td></tr>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The part number for this system.</td></tr>
 <tr><td><nobr><b>PCIeDevices</b> <i>(v1.2+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>A reference to a collection of PCIe Devices used by this computer system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PCIeDevice resource. See the Links section and the <a href="#PCIeDevice">PCIeDevice</a> schema for details.</td></tr>
 <tr><td><nobr><b>PCIeFunctions</b> <i>(v1.2+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>A reference to a collection of PCIe Functions used by this computer system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PCIeFunction resource. See the Links section and the <a href="#PCIeFunction">PCIeFunction</a> schema for details.</td></tr>
 <tr><td><nobr><b>PowerState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the current power state of the system.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|PowerState">PowerState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Processors</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Processors associated with this system.</td></tr>
+<tr><td><nobr><b>Processors</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Processors associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Processor">Processor</a>. See the Processor schema for details.</td></tr>
 <tr><td><nobr><b>ProcessorSummary</b> {</nobr></td><td>object</td><td></td><td>This object describes the central processors of the system in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Count</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The number of physical processors in the system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>LogicalProcessorCount</b> <i>(v1.5+)</i></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The number of logical processors in the system.</td></tr>
@@ -1875,19 +1889,21 @@ The property-level details include:</p>
 <tr><td><nobr><b>SecureBoot</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the UEFI SecureBoot resource associated with this system. See the <a href="#SecureBoot">SecureBoot</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SecureBoot resource. See the Links section and the <a href="#SecureBoot">SecureBoot</a> schema for details.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this system.</td></tr>
-<tr><td><nobr><b>SimpleStorage</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of storage devices associated with this system.</td></tr>
+<tr><td><nobr><b>SimpleStorage</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of storage devices associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SimpleStorage">SimpleStorage</a>. See the SimpleStorage schema for details.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer SKU for this system.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Storage</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of storage devices associated with this system.</td></tr>
+<tr><td><nobr><b>Storage</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the collection of storage devices associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Storage">Storage</a>. See the Storage schema for details.</td></tr>
 <tr><td><nobr><b>SubModel</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The sub-model for this system.</td></tr>
 <tr><td><nobr><b>SystemType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The type of computer system represented by this resource.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|SystemType">SystemType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>TrustedModules</b> <i>(v1.1+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This object describes the array of Trusted Modules in the system.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareVersion</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The firmware version of this Trusted Module.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareVersion2</b> <i>(v1.3+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The 2nd firmware version of this Trusted Module, if applicable.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceType</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property indicates the interface type of the Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceType">InterfaceType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceTypeSelection</b> <i>(v1.3+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The Interface Type selection supported by this Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceTypeSelection">InterfaceTypeSelection</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareVersion</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The firmware version of this Trusted Module.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FirmwareVersion2</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The 2nd firmware version of this Trusted Module, if applicable.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property indicates the interface type of the Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceType">InterfaceType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>InterfaceTypeSelection</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The Interface Type selection supported by this Trusted Module.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|InterfaceTypeSelection">InterfaceTypeSelection</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> { }</nobr><br>} ]</td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The universal unique identifier (UUID) for this system.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -2733,7 +2749,8 @@ The property-level details include:</p>
 <tr><td><nobr><b>UefiDevicePath</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UEFI device path for this interface.</td></tr>
 <tr><td><nobr><b>VLAN</b> {</nobr></td><td>object</td><td> (null)</td><td>If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource. See the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a VLAN resource. See the Links section and the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details.</td></tr>
-<tr><td><nobr><b>VLANs</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs.</td></tr>
+<tr><td><nobr><b>VLANs</b> {</nobr></td><td>object</td><td></td><td>This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#VLanNetworkInterface">VLanNetworkInterface</a>. See the VLanNetworkInterface schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -3037,7 +3054,8 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ResourceType</b> <i>(v1.2+)</i></nobr><br>}</td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates if the ResourceType property is supported.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SubordinateResourcesSupported</b> <i>(v1.2+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>This indicates if the service supports the SubordinateResource property on Event Subscriptions.</td></tr>
-<tr><td><nobr><b>Subscriptions</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of Event Destination resources.</td></tr>
+<tr><td><nobr><b>Subscriptions</b> {</nobr></td><td>object</td><td></td><td>This is a reference to a collection of Event Destination resources. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EventDestination">EventDestination</a>. See the EventDestination schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -3048,14 +3066,14 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>This is the ID of event to be added.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventTimestamp</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>This is the time stamp of event to be added.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventId</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the ID of event to be added.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventTimestamp</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the time stamp of event to be added.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>This is the type of event to be added.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventService.json|details|EventType">EventType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Message</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>This is the human readable message of event to be added.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MessageArgs</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-write</nobr></td><td>This is the array of message arguments of the event to be added.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MessageId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>This is the message ID of event to be added.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OriginOfCondition</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>This is the string of the URL within the OriginOfCondition property of the event to be added.  It is not a reference object.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Severity</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>This is the Severity of event to be added.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Message</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the human readable message of event to be added.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MessageArgs</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the array of message arguments of the event to be added.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MessageId</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the message ID of event to be added.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OriginOfCondition</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the string of the URL within the OriginOfCondition property of the event to be added.  It is not a reference object.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Severity</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the Severity of event to be added.</td></tr>
 </tbody></table>
 </div>
 </div>
@@ -3245,14 +3263,17 @@ The property-level details include:</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
-<tr><td><nobr><b>Endpoints</b> { }</nobr></td><td>object</td><td></td><td>A collection of references to the endpoints contained in this fabric.</td></tr>
+<tr><td><nobr><b>Endpoints</b> {</nobr></td><td>object</td><td></td><td>A collection of references to the endpoints contained in this fabric. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Endpoint">Endpoint</a>. See the Endpoint schema for details.</td></tr>
 <tr><td><nobr><b>FabricType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The protocol being sent over this fabric.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Fabric.json|details|FabricType">FabricType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
 <tr><td><nobr><b>MaxZones</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The value of this property shall contain the maximum number of zones the switch can currently configure.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Switches</b> { }</nobr></td><td>object</td><td></td><td>A collection of references to the switches contained in this fabric.</td></tr>
-<tr><td><nobr><b>Zones</b> { }</nobr></td><td>object</td><td></td><td>A collection of references to the zones contained in this fabric.</td></tr>
+<tr><td><nobr><b>Switches</b> {</nobr></td><td>object</td><td></td><td>A collection of references to the switches contained in this fabric. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Switch">Switch</a>. See the Switch schema for details.</td></tr>
+<tr><td><nobr><b>Zones</b> {</nobr></td><td>object</td><td></td><td>A collection of references to the zones contained in this fabric. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Zone">Zone</a>. See the Zone schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -3335,7 +3356,8 @@ The property-level details include:</p>
 <tr><td><nobr><b>ExternallyAccessible</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>Indicates whether this interface is accessible by external entities.</td></tr>
 <tr><td><nobr><b>FirmwareAuthEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this firmware authentication is enabled for this interface.</td></tr>
 <tr><td><nobr><b>FirmwareAuthRoleId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Role used for firmware authentication on this interface.</td></tr>
-<tr><td><nobr><b>HostEthernetInterfaces</b> { }</nobr></td><td>object</td><td></td><td>The Redfish link to the collection of network interface controllers or cards (NICs) that a Computer System uses to communicate with this Host Interface.</td></tr>
+<tr><td><nobr><b>HostEthernetInterfaces</b> {</nobr></td><td>object</td><td></td><td>The Redfish link to the collection of network interface controllers or cards (NICs) that a Computer System uses to communicate with this Host Interface. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EthernetInterface">EthernetInterface</a>. See the EthernetInterface schema for details.</td></tr>
 <tr><td><nobr><b>HostInterfaceType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>Indicates the Host Interface type for this interface.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/HostInterface.json|details|HostInterfaceType">HostInterfaceType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>InterfaceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this interface is enabled.</td></tr>
 <tr><td><nobr><b>KernelAuthEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Indicates whether this kernel authentication is enabled for this interface.</td></tr>
@@ -3407,7 +3429,8 @@ The property-level details include:</p>
 <tr><td><nobr><b>Schedule</b> { }</nobr></td><td>object</td><td></td><td>The Schedule Settings for this Job. See the <a href="#common-properties-Schedule_v1.2.0">Schedule object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>StartTime</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The date-time stamp that the job was started or is scheduled to start.</td></tr>
 <tr><td><nobr><b>StepOrder</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-only</nobr></td><td>This represents the serialized execution order of the Job Steps.</td></tr>
-<tr><td><nobr><b>Steps</b> { }</nobr></td><td>object</td><td></td><td>A link to a collection of Steps for this Job.</td></tr>
+<tr><td><nobr><b>Steps</b> {</nobr></td><td>object</td><td></td><td>A link to a collection of Steps for this Job. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Job">Job</a>. See the Job schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -3478,7 +3501,8 @@ The property-level details include:</p>
 <tbody>
 <tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>DateTime</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The current DateTime (with offset) setting that the job service is using.</td></tr>
-<tr><td><nobr><b>Jobs</b> { }</nobr></td><td>object</td><td></td><td>References to the Jobs collection.</td></tr>
+<tr><td><nobr><b>Jobs</b> {</nobr></td><td>object</td><td></td><td>References to the Jobs collection. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Job">Job</a>. See the Job schema for details.</td></tr>
 <tr><td><nobr><b>Log</b> {</nobr></td><td>object</td><td></td><td>This is a reference to a Log Service used by the Job Service. See the <a href="#LogService">LogService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a LogService resource. See the Links section and the <a href="#LogService">LogService</a> schema for details.</td></tr>
 <tr><td><nobr><b>ServiceCapabilities</b> {</nobr></td><td>object</td><td></td><td>This object describes the supported capabilities of this Job Service implementation.</td></tr>
@@ -3768,7 +3792,8 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#LogService.ClearLog</b> { }</nobr><br>}</td><td>object</td><td></td><td>This action is used to clear the log for this Log Service.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/LogService.json|action_details|#LogService.ClearLog">Action Details</a> section below.</i></td></tr>
 <tr><td><nobr><b>DateTime</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The current DateTime (with offset) for the log service, used to set or read time.</td></tr>
 <tr><td><nobr><b>DateTimeLocalOffset</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The time offset from UTC that the DateTime property is set to in format: +06:00 .</td></tr>
-<tr><td><nobr><b>Entries</b> { }</nobr></td><td>object</td><td></td><td>References to the log entry collection.</td></tr>
+<tr><td><nobr><b>Entries</b> {</nobr></td><td>object</td><td></td><td>References to the log entry collection. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#LogEntry">LogEntry</a>. See the LogEntry schema for details.</td></tr>
 <tr><td><nobr><b>LogEntryType</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The format of the Entries of this log.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/LogService.json|details|LogEntryType">LogEntryType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>MaxNumberOfRecords</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>The maximum number of log entries this service can have.</td></tr>
 <tr><td><nobr><b>OverWritePolicy</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>The overwrite policy for this service that takes place when the log is full.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/LogService.json|details|OverWritePolicy">OverWritePolicy</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -3859,13 +3884,15 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr></td><td>Indicates if the service is enabled for this manager.</td></tr>
 <tr><td><nobr><b>DateTime</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The current DateTime (with offset) for the manager, used to set or read time.</td></tr>
 <tr><td><nobr><b>DateTimeLocalOffset</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The time offset from UTC that the DateTime property is set to in format: +06:00 .</td></tr>
-<tr><td><nobr><b>EthernetInterfaces</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings.</td></tr>
+<tr><td><nobr><b>EthernetInterfaces</b> {</nobr></td><td>object</td><td></td><td>This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EthernetInterface">EthernetInterface</a>. See the EthernetInterface schema for details.</td></tr>
 <tr><td><nobr><b>FirmwareVersion</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The firmware version of this Manager.</td></tr>
 <tr><td><nobr><b>GraphicalConsole</b> {</nobr></td><td>object</td><td></td><td>The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ConnectTypesSupported</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This object is used to enumerate the Graphical Console connection types allowed by the implementation.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Manager.json|details|ConnectTypesSupported">ConnectTypesSupported</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxConcurrentSessions</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr></td><td>Indicates if the service is enabled for this manager.</td></tr>
-<tr><td><nobr><b>HostInterfaces</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of Host Interfaces that this manager uses for local host communication.  It is here that clients will find Host Interface configuration options and settings.</td></tr>
+<tr><td><nobr><b>HostInterfaces</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>This is a reference to a collection of Host Interfaces that this manager uses for local host communication.  It is here that clients will find Host Interface configuration options and settings. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#HostInterface">HostInterface</a>. See the HostInterface schema for details.</td></tr>
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagerForChassis</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>This property is an array of references to the chassis that this manager has control over.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
@@ -3873,10 +3900,11 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a ComputerSystem resource. See the Links section and the <a href="#ComputerSystem">ComputerSystem</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagerForSwitches</b> <i>(v1.4+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>This property is an array of references to the switches that this manager has control over.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Switch resource. See the Links section and the <a href="#Switch">Switch</a> schema for details.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagerInChassis</b> {</nobr></td><td>object</td><td></td><td>This property is a reference to the chassis that this manager is located in. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ManagerInChassis</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>This property is a reference to the chassis that this manager is located in. See the <a href="#Chassis">Chassis</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Chassis resource. See the Links section and the <a href="#Chassis">Chassis</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
-<tr><td><nobr><b>LogServices</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of Logs used by the manager.</td></tr>
+<tr><td><nobr><b>LogServices</b> {</nobr></td><td>object</td><td></td><td>This is a reference to a collection of Logs used by the manager. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#LogService">LogService</a>. See the LogService schema for details.</td></tr>
 <tr><td><nobr><b>ManagerType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>This property represents the type of manager that this resource represents.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Manager.json|details|ManagerType">ManagerType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The model information of this Manager as defined by the manufacturer.</td></tr>
 <tr><td><nobr><b>NetworkProtocol</b> {</nobr></td><td>object</td><td></td><td>This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services. See the <a href="#ManagerNetworkProtocol">ManagerNetworkProtocol</a> schema for details on this property.</td></tr>
@@ -3890,11 +3918,13 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ConnectTypesSupported</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This object is used to enumerate the Serial Console connection types allowed by the implementation.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Manager.json|details|ConnectTypesSupported">ConnectTypesSupported</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxConcurrentSessions</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ServiceEnabled</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr></td><td>Indicates if the service is enabled for this manager.</td></tr>
-<tr><td><nobr><b>SerialInterfaces</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings.</td></tr>
+<tr><td><nobr><b>SerialInterfaces</b> {</nobr></td><td>object</td><td></td><td>This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SerialInterface">SerialInterface</a>. See the SerialInterface schema for details.</td></tr>
 <tr><td><nobr><b>ServiceEntryPointUUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UUID of the Redfish Service provided by this manager.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>UUID</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The Universal Unique Identifier (UUID) for this Manager.</td></tr>
-<tr><td><nobr><b>VirtualMedia</b> { }</nobr></td><td>object</td><td></td><td>This is a reference to the Virtual Media services for this particular manager.</td></tr>
+<tr><td><nobr><b>VirtualMedia</b> {</nobr></td><td>object</td><td></td><td>This is a reference to the Virtual Media services for this particular manager. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#VirtualMedia">VirtualMedia</a>. See the VirtualMedia schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -4346,8 +4376,8 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>Passphrase for doing the operation.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Passphrase for doing the operation.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.OverwriteUnit">OverwriteUnit</h4>
 <p>This defines the action for securely erasing given regions using the NIST SP800-88 Purge: Overwrite.</p>
@@ -4355,8 +4385,8 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>Passphrase for doing the operation.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Passphrase for doing the operation.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.SecureEraseUnit">SecureEraseUnit</h4>
 <p>This defines the action for securely erasing given regions using the NIST SP800-88 Purge: Cryptograhic Erase.</p>
@@ -4364,8 +4394,8 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>Passphrase for doing the operation.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Passphrase for doing the operation.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.SetPassphrase">SetPassphrase</h4>
 <p>Set passphrase for the given regions.</p>
@@ -4373,8 +4403,8 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>Passphrase for doing the operation.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Passphrase for doing the operation.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
 </tbody></table>
 <h4 id="redfish.dmtf.org/schemas/v1/Memory.json|action_details|#Memory.UnlockUnit">UnlockUnit</h4>
 <p>This defines the action for unlocking given regions.</p>
@@ -4382,8 +4412,8 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>Passphrase for doing the operation.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Passphrase</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Passphrase for doing the operation.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>RegionId</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>Memory region ID for which this action to be applied.</td></tr>
 </tbody></table>
 </div>
 </div>
@@ -4643,7 +4673,8 @@ The property-level details include:</p>
 <tr><td><nobr><b>InterleavableMemorySets</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is the interleave sets for the memory chunk.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemorySet</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>This is the collection of memory for a particular interleave set.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Memory resource. See the Links section and the <a href="#Memory">Memory</a> schema for details.</td></tr>
-<tr><td><nobr><b>MemoryChunks</b> { }</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Memory Chunks associated with this Memory Domain.</td></tr>
+<tr><td><nobr><b>MemoryChunks</b> {</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Memory Chunks associated with this Memory Domain. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MemoryChunks">MemoryChunks</a>. See the MemoryChunks schema for details.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
 <div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -5184,8 +5215,10 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a PCIeInterface resource. See the Links section and the <a href="#PCIeDevice">PCIeDevice</a> schema for details.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer or OEM of this network adapter.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The model string for this network adapter.</td></tr>
-<tr><td><nobr><b>NetworkDeviceFunctions</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkDeviceFunctions associated with this NetworkAdapter.</td></tr>
-<tr><td><nobr><b>NetworkPorts</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkPorts associated with this NetworkAdapter.</td></tr>
+<tr><td><nobr><b>NetworkDeviceFunctions</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkDeviceFunctions associated with this NetworkAdapter. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkDeviceFunction">NetworkDeviceFunction</a>. See the NetworkDeviceFunction schema for details.</td></tr>
+<tr><td><nobr><b>NetworkPorts</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkPorts associated with this NetworkAdapter. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkPort">NetworkPort</a>. See the NetworkPort schema for details.</td></tr>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Part number for this network adapter.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this network adapter.</td></tr>
 <tr><td><nobr><b>SKU</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The manufacturer SKU for this network adapter.</td></tr>
@@ -5215,7 +5248,8 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>PermanentMACAddress</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the permanent MAC address assigned to this network device function (physical function).</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VLAN</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td> (null)</td><td>If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource. See the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a VLAN resource. See the Links section and the <a href="#VLanNetworkInterface">VLanNetworkInterface</a> schema for details.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VLANs</b> <i>(v1.3+)</i> { }</nobr><br>}</td><td>object</td><td></td><td>This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>VLANs</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#VLanNetworkInterface">VLanNetworkInterface</a>. See the VLanNetworkInterface schema for details.</td></tr>
 <tr><td><nobr><b>FibreChannel</b> {</nobr></td><td>object</td><td> (null)</td><td>Fibre Channel.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AllowFIPVLANDiscovery</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>Whether the FCoE Initialization Protocol (FIP) is used for populating the FCoE VLAN Id.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootTargets</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>An array of Fibre Channel boot targets configured for this network device function.</td></tr>
@@ -5366,8 +5400,10 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>NetworkAdapter</b> {</nobr></td><td>object</td><td></td><td>A reference to the NetworkAdapter which contains this NetworkInterface. See the <a href="#NetworkAdapter">NetworkAdapter</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a NetworkAdapter resource. See the Links section and the <a href="#NetworkAdapter">NetworkAdapter</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
-<tr><td><nobr><b>NetworkDeviceFunctions</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkDeviceFunctions associated with this NetworkInterface.</td></tr>
-<tr><td><nobr><b>NetworkPorts</b> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkPorts associated with this NetworkInterface.</td></tr>
+<tr><td><nobr><b>NetworkDeviceFunctions</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkDeviceFunctions associated with this NetworkInterface. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkDeviceFunction">NetworkDeviceFunction</a>. See the NetworkDeviceFunction schema for details.</td></tr>
+<tr><td><nobr><b>NetworkPorts</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of NetworkPorts associated with this NetworkInterface. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#NetworkPort">NetworkPort</a>. See the NetworkPort schema for details.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <h2 id="NetworkPort">NetworkPort 1.2.0</h2>
@@ -6378,7 +6414,8 @@ The property-level details include:</p>
 <tr><td><nobr><b>ProcessorType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of processor.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Processor.json|details|ProcessorType">ProcessorType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Socket</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The socket or location of the processor.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>SubProcessors</b> <i>(v1.3+)</i> { }</nobr></td><td>object</td><td></td><td>A reference to the collection of Sub-Processors associated with this system, such as cores or threads that are part of a processor.</td></tr>
+<tr><td><nobr><b>SubProcessors</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Sub-Processors associated with this system, such as cores or threads that are part of a processor. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Processor">Processor</a>. See the Processor schema for details.</td></tr>
 <tr><td><nobr><b>TotalCores</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The total number of cores contained in this processor.</td></tr>
 <tr><td><nobr><b>TotalThreads</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The total number of execution threads supported by this processor.</td></tr>
 </tbody></table>
@@ -6885,38 +6922,45 @@ The property-level details include:</p>
 <tbody>
 <tr><td><nobr><b>AccountService</b> {</nobr></td><td>object</td><td></td><td>This is a link to the Account Service. See the <a href="#AccountService">AccountService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a AccountService resource. See the Links section and the <a href="#AccountService">AccountService</a> schema for details.</td></tr>
-<tr><td><nobr><b>Chassis</b> { }</nobr></td><td>object</td><td></td><td>This is a link to a collection of Chassis.</td></tr>
+<tr><td><nobr><b>Chassis</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of Chassis. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Chassis">Chassis</a>. See the Chassis schema for details.</td></tr>
 <tr><td><nobr><b>CompositionService</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>This is a link to the CompositionService. See the <a href="#CompositionService">CompositionService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a CompositionService resource. See the Links section and the <a href="#CompositionService">CompositionService</a> schema for details.</td></tr>
 <tr><td><nobr><b>EventService</b> {</nobr></td><td>object</td><td></td><td>This is a link to the EventService. See the <a href="#EventService">EventService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a EventService resource. See the Links section and the <a href="#EventService">EventService</a> schema for details.</td></tr>
-<tr><td><nobr><b>Fabrics</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>A link to a collection of all fabric entities.</td></tr>
+<tr><td><nobr><b>Fabrics</b> <i>(v1.1+)</i> {</nobr></td><td>object</td><td></td><td>A link to a collection of all fabric entities. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Fabric">Fabric</a>. See the Fabric schema for details.</td></tr>
 <tr><td><nobr><b>JobService</b> <i>(v1.4+)</i> {</nobr></td><td>object</td><td></td><td>This is a link to the JobService. See the <a href="#JobService">JobService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a JobService resource. See the Links section and the <a href="#JobService">JobService</a> schema for details.</td></tr>
-<tr><td><nobr><b>JsonSchemas</b> { }</nobr></td><td>object</td><td></td><td>This is a link to a collection of Json-Schema files.</td></tr>
+<tr><td><nobr><b>JsonSchemas</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of Json-Schema files. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#JsonSchemaFile">JsonSchemaFile</a>. See the JsonSchemaFile schema for details.</td></tr>
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td> <nobr>required</nobr></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Sessions</b> { }</nobr><br>}</td><td>object</td><td> <nobr>required</nobr></td><td>Link to a collection of Sessions.</td></tr>
-<tr><td><nobr><b>Managers</b> { }</nobr></td><td>object</td><td></td><td>This is a link to a collection of Managers.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Sessions</b> {</nobr></td><td>object</td><td> <nobr>required</nobr></td><td>Link to a collection of Sessions. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Session">Session</a>. See the Session schema for details.</td></tr>
+<tr><td><nobr><b>Managers</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of Managers. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Manager">Manager</a>. See the Manager schema for details.</td></tr>
 <tr><td><nobr><b>Product</b> <i>(v1.3+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The product associated with this Redfish service.</td></tr>
 <tr><td><nobr><b>ProtocolFeaturesSupported</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>Contains information about protocol features supported by the service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ExcerptQuery</b> <i>(v1.4+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the 'excerpt' query parameter is supported.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ExpandQuery</b> <i>(v1.3+)</i> {</nobr></td><td>object</td><td></td><td>Contains information about the use of $expand in the service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ExpandQuery</b> {</nobr></td><td>object</td><td></td><td>Contains information about the use of $expand in the service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ExpandAll</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the $expand support of asterisk (expand all entries) is supported.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Levels</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the expand support of the $levels qualifier is supported by the service.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Links</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the $expand support of tilde (expand only entries in the Links section) is supported.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MaxLevels</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>This indicates the maximum number value of the $levels qualifier in $expand operations.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>NoLinks</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the $expand support of period (expand only entries not in the Links section) is supported.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FilterQuery</b> <i>(v1.3+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the $filter query parameter is supported.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>FilterQuery</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the $filter query parameter is supported.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OnlyMemberQuery</b> <i>(v1.4+)</i></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the 'only' query parameter is supported.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SelectQuery</b> <i>(v1.3+)</i></nobr><br>}</td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the $select query parameter is supported.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SelectQuery</b></nobr><br>}</td><td>boolean</td><td><nobr>read-only</nobr></td><td>This indicates whether the $select query parameter is supported.</td></tr>
 <tr><td><nobr><b>RedfishVersion</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The version of the Redfish service.</td></tr>
-<tr><td><nobr><b>Registries</b> { }</nobr></td><td>object</td><td></td><td>This is a link to a collection of Registries.</td></tr>
+<tr><td><nobr><b>Registries</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of Registries. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MessageRegistryFile">MessageRegistryFile</a>. See the MessageRegistryFile schema for details.</td></tr>
 <tr><td><nobr><b>SessionService</b> {</nobr></td><td>object</td><td></td><td>This is a link to the Sessions Service. See the <a href="#SessionService">SessionService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SessionService resource. See the Links section and the <a href="#SessionService">SessionService</a> schema for details.</td></tr>
 <tr><td><nobr><b>StorageServices</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>A link to a collection of all storage service entities.</td></tr>
 <tr><td><nobr><b>StorageSystems</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This is a link to a collection of storage systems.</td></tr>
-<tr><td><nobr><b>Systems</b> { }</nobr></td><td>object</td><td></td><td>This is a link to a collection of Systems.</td></tr>
+<tr><td><nobr><b>Systems</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of Systems. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ComputerSystem">ComputerSystem</a>. See the ComputerSystem schema for details.</td></tr>
 <tr><td><nobr><b>Tasks</b> {</nobr></td><td>object</td><td></td><td>This is a link to the Task Service. See the <a href="#TaskService">TaskService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a TaskService resource. See the Links section and the <a href="#TaskService">TaskService</a> schema for details.</td></tr>
 <tr><td><nobr><b>TelemetryService</b> <i>(v1.4+)</i> {</nobr></td><td>object</td><td></td><td>This is a link to the TelemetryService. See the <a href="#TelemetryService">TelemetryService</a> schema for details on this property.</td></tr>
@@ -7011,7 +7055,8 @@ The property-level details include:</p>
 <tbody>
 <tr><td><nobr><b>Actions</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.  If set to false, the Session Service is disabled, and new sessions cannot be created, old sessions cannot be deleted, and established sessions may continue operating.</td></tr>
-<tr><td><nobr><b>Sessions</b> { }</nobr></td><td>object</td><td></td><td>Link to a collection of Sessions.</td></tr>
+<tr><td><nobr><b>Sessions</b> {</nobr></td><td>object</td><td></td><td>Link to a collection of Sessions. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Session">Session</a>. See the Session schema for details.</td></tr>
 <tr><td><nobr><b>SessionTimeout</b></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-write</nobr></td><td>This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
@@ -7205,7 +7250,8 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedControllerProtocols</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols by which this storage controller can be communicated to.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedControllerProtocols">SupportedControllerProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedDeviceProtocols</b> [ ] </nobr><br>} ]</td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols which the storage controller can use to communicate with attached devices.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedDeviceProtocols">SupportedDeviceProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Volumes</b> { }</nobr></td><td>object</td><td></td><td>The set of volumes produced by the storage controllers represented by this resource.</td></tr>
+<tr><td><nobr><b>Volumes</b> {</nobr></td><td>object</td><td></td><td>The set of volumes produced by the storage controllers represented by this resource. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Volume">Volume</a>. See the Volume schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -7216,7 +7262,7 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EncryptionKey</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>The encryption key to set on the storage subsytem.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EncryptionKey</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The encryption key to set on the storage subsytem.</td></tr>
 </tbody></table>
 </div>
 </div>
@@ -7379,11 +7425,13 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Manager resource. See the Links section and the <a href="#Manager">Manager</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#using-this-guide">Using this guide</a> section.</td></tr>
 <tr><td><nobr><b>Location</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the switch. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>LogServices</b> { }</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Log Services associated with this system.</td></tr>
+<tr><td><nobr><b>LogServices</b> {</nobr></td><td>object</td><td> (null)</td><td>A reference to the collection of Log Services associated with this system. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#LogService">LogService</a>. See the LogService schema for details.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this switch.</td></tr>
 <tr><td><nobr><b>Model</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The product model number of this switch.</td></tr>
 <tr><td><nobr><b>PartNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The part number for this switch.</td></tr>
-<tr><td><nobr><b>Ports</b> { }</nobr></td><td>object</td><td></td><td>A collection of references to the ports for this switch.</td></tr>
+<tr><td><nobr><b>Ports</b> {</nobr></td><td>object</td><td></td><td>A collection of references to the ports for this switch. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Port">Port</a>. See the Port schema for details.</td></tr>
 <tr><td><nobr><b>PowerState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This is the current power state of the switch.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Switch.json|details|PowerState">PowerState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Redundancy</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>Redundancy information for the switches. This is the redundancy definition to be used in other resource schemas. See the <a href="#common-properties-Redundancy_v1.3.1">Redundancy object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SerialNumber</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The serial number for this switch.</td></tr>
@@ -7647,7 +7695,8 @@ The property-level details include:</p>
 <tr><td><nobr><b>LifeCycleEventOnTaskStateChange</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr></td><td>Send an Event upon Task State Change.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
-<tr><td><nobr><b>Tasks</b> { }</nobr></td><td>object</td><td></td><td>References to the Tasks collection.</td></tr>
+<tr><td><nobr><b>Tasks</b> {</nobr></td><td>object</td><td></td><td>References to the Tasks collection. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Task">Task</a>. See the Task schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -7696,13 +7745,17 @@ The property-level details include:</p>
 <tr><td><nobr><b>LogService</b> {</nobr></td><td>object</td><td></td><td>This is a reference to a Log Service used by the Telemetry Service. See the <a href="#LogService">LogService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a LogService resource. See the Links section and the <a href="#LogService">LogService</a> schema for details.</td></tr>
 <tr><td><nobr><b>MaxReports</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>The maximum number of metric reports supported by this service.</td></tr>
-<tr><td><nobr><b>MetricDefinitions</b> { }</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Definitions.</td></tr>
-<tr><td><nobr><b>MetricReportDefinitions</b> { }</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Report Definitions.</td></tr>
-<tr><td><nobr><b>MetricReports</b> { }</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Reports.</td></tr>
+<tr><td><nobr><b>MetricDefinitions</b> {</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Definitions. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MetricDefinition">MetricDefinition</a>. See the MetricDefinition schema for details.</td></tr>
+<tr><td><nobr><b>MetricReportDefinitions</b> {</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Report Definitions. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MetricReportDefinition">MetricReportDefinition</a>. See the MetricReportDefinition schema for details.</td></tr>
+<tr><td><nobr><b>MetricReports</b> {</nobr></td><td>object</td><td></td><td>A link to the collection of Metric Reports. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MetricReport">MetricReport</a>. See the MetricReport schema for details.</td></tr>
 <tr><td><nobr><b>MinCollectionInterval</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The minimum time interval between collections supported by this service.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>SupportedCollectionFunctions</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-write</nobr> (null)</td><td>The functions that can be performed over each metric. An operation to perform over the sample.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/TelemetryService.json|details|SupportedCollectionFunctions">SupportedCollectionFunctions</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Triggers</b> { }</nobr></td><td>object</td><td></td><td>A link to the collection of Triggers, which apply to metrics.</td></tr>
+<tr><td><nobr><b>Triggers</b> {</nobr></td><td>object</td><td></td><td>A link to the collection of Triggers, which apply to metrics. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#Triggers">Triggers</a>. See the Triggers schema for details.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -7713,8 +7766,8 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MetricReportName</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The Name property of the metric report in generated metric report.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MetricReportValues</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr></td><td>The content of MetricReportValues array in generated metric report.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MetricReportName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The Name property of the metric report in generated metric report.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MetricReportValues</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The content of MetricReportValues array in generated metric report.</td></tr>
 </tbody></table>
 </div>
 </div>
@@ -8230,12 +8283,14 @@ The property-level details include:</p>
 <tbody>
 <tr><td><nobr><b>Actions</b> {</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>#UpdateService.SimpleUpdate</b> { }</nobr><br>}</td><td>object</td><td></td><td>This action is used to update software components.<br><i>For more information, see the <a href="#redfish.dmtf.org/schemas/v1/UpdateService.json|action_details|#UpdateService.SimpleUpdate">Action Details</a> section below.</i></td></tr>
-<tr><td><nobr><b>FirmwareInventory</b> { }</nobr></td><td>object</td><td> (null)</td><td>An inventory of firmware.</td></tr>
+<tr><td><nobr><b>FirmwareInventory</b> {</nobr></td><td>object</td><td> (null)</td><td>An inventory of firmware. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SoftwareInventory">SoftwareInventory</a>. See the SoftwareInventory schema for details.</td></tr>
 <tr><td><nobr><b>HttpPushUri</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The URI used to perform an HTTP or HTTPS push update to the Update Service.</td></tr>
 <tr><td><nobr><b>HttpPushUriTargets</b> <i>(v1.2+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-write</nobr></td><td>The array of URIs indicating the target for applying the update image.</td></tr>
 <tr><td><nobr><b>HttpPushUriTargetsBusy</b> <i>(v1.2+)</i></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This represents if the HttpPushUriTargets property is reserved by any client.</td></tr>
 <tr><td><nobr><b>ServiceEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><nobr><b>SoftwareInventory</b> { }</nobr></td><td>object</td><td> (null)</td><td>An inventory of software.</td></tr>
+<tr><td><nobr><b>SoftwareInventory</b> {</nobr></td><td>object</td><td> (null)</td><td>An inventory of software. Contains a link to a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#SoftwareInventory">SoftwareInventory</a>. See the SoftwareInventory schema for details.</td></tr>
 <tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
@@ -8247,7 +8302,7 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ImageURI</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The URI of the software image to be installed.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ImageURI</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The URI of the software image to be installed.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Targets</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-write</nobr></td><td>The array of URIs indicating where the update image is to be applied.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>TransferProtocol</b></nobr><br>}</td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/UpdateService.json|details|TransferProtocol">TransferProtocol</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
@@ -8334,7 +8389,7 @@ The property-level details include:</p>
 <table>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Image</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The URI of the remote media to attach to the virtual media.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Image</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The URI of the remote media to attach to the virtual media.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Inserted</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr></td><td>Indicates if the image is to be treated as inserted upon completion of the action.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>WriteProtected</b></nobr><br>}</td><td>boolean</td><td><nobr>read-write</nobr></td><td>Indicates if the remote media is supposed to be treated as write protected.</td></tr>
 </tbody></table>
