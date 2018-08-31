@@ -72,41 +72,13 @@ String-replacement for "units" values. Case-sensitive. Any units not matched wil
 | mW               | milliWatts       |
 | m                | meters           |
 
-# Enum Deprecations
 
-## redfish.dmtf.org/schemas/v1/Chassis.v1_1_2.json#definitions/IndicatorLED
-
-* Unknown | 1.1.2 | This value has been Deprecated in favor of returning null if the state is unknown.
-
-## redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_2.json#definitions/IndicatorLED
-
-* Unknown | 1.0.2 | This value has been Deprecated in favor of returning null if the state is unknown.
-
-## redfish.dmtf.org/schemas/v1/Drive.v1_0_1.json#definitions/EncryptionStatus
-
-* Enecrypted | 1.0.1 | This value has been Deprecated in favor of Unencrypted.
-
-## redfish.dmtf.org/schemas/v1/Power.v1_1_0.json#definitions/LineInputVoltageType
-
-* ACLowLine | 1.1 | This value has been Deprecated in favor of AC120V.
-* ACMidLine | 1.1 | This value has been Deprecated in favor of AC240V.
-* ACHighLine | 1.1 | This value has been Deprecated in favor of AC277V.
-
-## redfish.dmtf.org/schemas/v1/Task.v1_2_0.json#definitions/TaskState
-
-* Killed | 1.2 | This value has been deprecated and is being replaced by the value Cancelled which has more determinate semantics.
-
-## redfish.dmtf.org/schemas/v1/UpdateService.v1_3_0.json#definitions/TransferProtocolType
-
-* NSF | 1.3 | This value has been Deprecated in favor of NFS.
 
 # Bugs
 
-1) Deprecated statements are including errata versions - should only report major/minor version
+1) Deprecated statements are picked up from errata versions - should only report major/minor version.  Workaround is in place in the doc generator to only check v1.x.0 for deprecated properties/enumerations.
 
-2) Version included in heading for common objects.  Perhaps an option (don't want this normally).  Style is different (remove parenthesis).
-
-3) Enum version added isn't working properly.  See Processor/ProcessorType Core and Thread (show 1.0.5).  See UpdateService/TransferProtocolType NFS (should show 1.3+)
+3) Enum version added is picking up errata versions due to generated JSON schemas. Schema issue, not a doc generator problem.  See Processor/ProcessorType Core and Thread (show 1.0.5).  See UpdateService/TransferProtocolType NFS (should show 1.3+)
 
 # Manual Fix-ups required prior to Release
 
@@ -114,13 +86,18 @@ A number of corner-case issues have been found in the schema definitions which c
 
 1) Remove reference to the Resource schema from the Common Object defintions for OEM and Links.  
 
+2) Delete "idRef" reference in Redundancy.json so that Redundancy appears in the Common Objects section.  Redundancy is defined to be a Referenceable Member which is why "idRef" is present in the anyOf array, but this makes it appear as a "normal" schema resource to the doc generator (not a common object).  Looking for a solution to this.
+
 3) Definitions moved to unversioned namespaces.  Approximately 7 properties have had their definitions moved to the unversioned namespaces, and the "versioned" property was deprecated. The documentation generator sees this as a valid deprecation and flags it (incorrectly).  These invalid deprecations should be removed, and can be located in the HTML by searching for "unversioned namespace".  Both the description and the property name "(deprecated v1.x.x)" should be edited.
+
+
 
 # Doc generator open enhancements list
 
 1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive.
 
-3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed.
+3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed. 
+ 
 
 ------------------------------------------ SCHEMA GUIDE BEGINS HERE --------------------------------------
 
@@ -242,8 +219,7 @@ In the example below, the property `ResetType` is being annotated with the `Allo
     "ResetType@Redfish.AllowableValues": [
         "On",
         "ForceOff"
-    ],
-    ...
+    ]
 }
 ```
 
@@ -268,8 +244,7 @@ In the example below, the object is being annotated with the `ActionInfo` term, 
     "#ComputerSystem.Reset": {
         "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
         "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
-    },
-    ...
+    }
 }
 ```
 
