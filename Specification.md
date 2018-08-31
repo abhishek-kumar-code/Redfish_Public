@@ -612,7 +612,7 @@ The following table represents the Redfish allowable operators that shall be sup
 | gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                       |
 | ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                       |
 | lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                          |
-| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                          |
+| le        | Less than or equal to comparison operator       | MemorySummary/TotalSystemMemoryGiB le 64                                          |
 | and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64          |
 | or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                        |
 | not       | Logical negation operator                       | not (ProcessorSummary/Count eq 2)                                                 |
