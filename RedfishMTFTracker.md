@@ -108,7 +108,7 @@ Here the Pub column means has it been published yet.  The intent is to publish a
 | Profiles            | Jeff A    |      |      |       |
 | FW Update           | Jeff A    |      |      |       |
 | Service Validator   | Jeff A    |      |      |       |
-| Boot model / option | Samer     |      |      |       |
+| Boot model / option | Ghazi B   |      |      |       |
 | PCI device and slot |           |      |      |       |
 | OEM Extensions      |           |      |      |       |
 | How to Model in Redfish | Jeff A |     |      |       |
