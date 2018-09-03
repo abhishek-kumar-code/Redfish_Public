@@ -32,6 +32,8 @@ A "Description" third-level section can be used to supplement the "Description" 
 
 A "JSONPayload" section can contain a JSON payload example for this schema.  This sample will be appended to the end of that schema's section, and will also populate the language-specific tab in the Slate documentation.
 
+--------------------------------- DOCUMENTATION GENERATOR INPUT OPTIONS ----------------------------------------
+
 # Schema URI Mapping
 
 Map schema URIs to local files. You may omit the protocol (e.g., https://) from the URI.
@@ -54,6 +56,7 @@ Note: you can specify the location of the TOC, presumably in the Introduction se
 Note: markdown is allowed in description overrides, but HTML markup is not; it will be escaped.
 
 * Oem: See the OEM object definition in the [Using this guide](#using-this-guide) section.
+* Redundancy: A reference to a set of Redundancy entities that provide redundant services for this resource. See the Redundancy object definition in the [Using this guide](#using-this-guide) section.
 
 
 # Units Translation
@@ -72,6 +75,38 @@ String-replacement for "units" values. Case-sensitive. Any units not matched wil
 | mW               | milliWatts       |
 | m                | meters           |
 
+# Excluded Properties
+
+The Excluded properties clause removes properties from the root level of any schema section.  Instances of the property within embedded objects are retained.  If the excluded properties require documentation, include it in the Introduction clause of this document.
+
+## @odata.context
+## @odata.type
+## @odata.id
+## @odata.etag
+## Name
+## Id
+## Description
+## Oem
+
+
+# Excluded Annotations
+
+These annotations are removed from the schema details in all cases.  If the excluded annotations require documentation, include them in the Introduction clause of this document.
+
+## *@odata.count
+## *@odata.navigationLink
+
+# Excluded Schemas
+
+Some schemas are excluded from the documentation for clarity.  Since all Redfish collections are based on the same structure, this is documented in the Introduction clause to reduce repetition in the document.
+
+## *Collection
+## HostedStorageServices
+## StorageService
+## StorageSystem
+## idRef
+## Oem
+
 
 
 # Bugs
@@ -80,31 +115,28 @@ String-replacement for "units" values. Case-sensitive. Any units not matched wil
 
 3) Enum version added is picking up errata versions due to generated JSON schemas. Schema issue, not a doc generator problem.  See Processor/ProcessorType Core and Thread (show 1.0.5).  See UpdateService/TransferProtocolType NFS (should show 1.3+)
 
-# Manual Fix-ups required prior to Release
-
-A number of corner-case issues have been found in the schema definitions which can be addressed over time with additional special cases in the documentation generator.  Until those have been addressed, the following steps must be taken to correct the HTML output before publication:
-
-1) Remove reference to the Resource schema from the Common Object defintions for OEM and Links.  
-
-2) Delete "idRef" reference in Redundancy.json so that Redundancy appears in the Common Objects section.  Redundancy is defined to be a Referenceable Member which is why "idRef" is present in the anyOf array, but this makes it appear as a "normal" schema resource to the doc generator (not a common object).  Looking for a solution to this.
-
-3) Definitions moved to unversioned namespaces.  Approximately 7 properties have had their definitions moved to the unversioned namespaces, and the "versioned" property was deprecated. The documentation generator sees this as a valid deprecation and flags it (incorrectly).  These invalid deprecations should be removed, and can be located in the HTML by searching for "unversioned namespace".  Both the description and the property name "(deprecated v1.x.x)" should be edited.
-
-
-
 # Doc generator open enhancements list
 
 1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive.
 
-3) Ignore deprecated property annotations if property exists in unversioned schema namespace.  Properties that are moved from versioned to unversioned namespace are marked as deprecated, but this is an internal schema construct and does not indicate the property has actually been deprecated (from the user perspective).  The docgen is picking up these annotations, however, so an exception algorithm to catch these is needed. 
- 
+2) Manual whitelist for Common Objects section - "Redundancy" is the example.
+
+------------------------------------------ RELEASE PROCESS -----------------------------------------------
+
+# Manual Fix-ups required prior to Release
+
+A number of corner-case issues have been found in the schema definitions which can be addressed over time with additional special cases in the documentation generator.  Until those have been addressed, the following steps must be taken to correct the HTML output before publication:
+
+1) Remove reference to the Resource schema from the Common Object definitions for OEM and Links.  
+
+2) Re-order Redundancy placement in the Common Objects section into alphabetical order.  Redundancy is manually added to the section currently - this will be added via a whitelist option in a future version.  It is not detected as a common object because of its definition as a referenceable member (as well as a standalone schema file). 
 
 ------------------------------------------ SCHEMA GUIDE BEGINS HERE --------------------------------------
 
 # Introduction
 
 <p align="right">
-  <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
+  <img src="http://redfish.dmtf.org/sites/default/files/DMTF_Redfish_logo_R.jpg" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
 <p align="right">Date: 2018-8-10</p>
@@ -135,9 +167,9 @@ A number of corner-case issues have been found in the schema definitions which c
 
 The Redfish standard comprises a set of specifications maintained by the Redfish Forum, a working group within the DMTF. The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
 
-The Redfish standard addresses several key issues for infrastructures that require scalability. Large infrastructures often consist of many simple servers of different makes and types. This hyperscale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard protocol based on out-of-band systems management.
+The Redfish standard addresses several key issues for infrastructures that require scalability. Large infrastructures often consist of many simple servers of different makes and types. This hyper-scale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard protocol based on out-of-band systems management.
 
-With the above goals in mind, the Redfish protocol was designed as an open industry standard to meet scalability requirements in multivendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and using JSON and OData formats for data payloads.
+With the above goals in mind, the Redfish protocol was designed as an open industry standard to meet scalability requirements in multi-vendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and using JSON and OData formats for data payloads.
 
 ## Who should read this document?
 
@@ -192,7 +224,7 @@ The following properties are defined for inclusion in every Redfish schema, and 
 
 #include_fragment ./docs/DSP2046/CommonPropertySchema.json#/definitions/CommonProperties/properties
 
-## Frequently used properites
+## Frequently used properties
 
 In addition, the following properties are frequently defined in Redfish schemas.  Their definition and usage is the same throughout the Redfish data model.
 
@@ -250,9 +282,15 @@ In the example below, the object is being annotated with the `ActionInfo` term, 
 
 # Common objects
  
-The following JSON objects are frequently defined in Redfish schemas.  Like the individual common propoerties listed above, these objects share a common definition which is shown here to avoid repetition in teh Reference Guide property tables.
+The following JSON objects are frequently defined in Redfish schemas.  Like the individual common properties listed above, these objects share a common definition which is shown here to avoid repetition in the Reference Guide property tables.
 
 [insert_common_objects]
+
+## Redundancy
+
+This is the redundancy definition to be used in other resource schemas.
+
+#include_fragment ./json-schema/Redundancy.v1_3_1.json#/definitions/Redundancy/properties
 
 
 # Resource collections
@@ -300,41 +338,6 @@ The following table lists all of the Redfish-defined Resource Collections and th
 # Reference Guide
 
 This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
-
-
-# Excluded Properties
-
-The Excluded properties clause removes properties from the root level of any schema section.  Instances of the property within embedded objects are retained.  If the excluded properties require documentation, include it in the Introduction clause of this document.
-
-## @odata.context
-## @odata.type
-## @odata.id
-## @odata.etag
-## Name
-## Id
-## Description
-## Oem
-
-
-# Excluded Annotations
-
-These annotations are removed from the schema details in all cases.  If the excluded annotations require documentation, include them in the Introduction clause of this document.
-
-## *@odata.count
-## *@odata.navigationLink
-
-# Excluded Schemas
-
-Some schemas are excluded from the documentation for clarity.  Since all Redfish collections are based on the same structure, this is documented in the Introduction clause to reduce repetition in the document.
-
-## *Collection
-## HostedStorageServices
-## StorageService
-## StorageSystem
-## idRef
-## Oem
-
-
 
 
 # Schema Supplement
@@ -623,7 +626,8 @@ This document was created using the Redfish Documentation Generator utility, whi
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
 | 2018.2  | 2018-08-10 | Release built from Redfish schemas released in DSP8010 version 2018.2 |
-|         |            | Expanding introduction section with additional information. |
+|         |            | Expanded introduction section with additional information. |
+|         |            | Expanded Common Objects section to include previously excluded objects. |
 |         |            | Added URI listings for all resources for use with Redfish Specification v1.6.0 |
 |         |            | Added Resource Collection table showing schema names and URIs. |
 |         |            | Restructured common objects section utilizing new Documentation Generator functions. |
