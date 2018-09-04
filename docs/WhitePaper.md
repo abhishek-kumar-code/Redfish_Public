@@ -2,11 +2,11 @@
 DocTitle: Redfish White Paper
 DocNumber: '2044'
 DocClass: Informative
-DocVersion: '1.0.3'
-modified: '2017-08-04'
+DocVersion: '1.0.4'
+modified: '2018-09-04'
 status: published
 released: true
-copyright: '2014-2017'
+copyright: '2014-2018'
 ---
 
 # What is the Redfish API?
