@@ -17,7 +17,8 @@ components:
       x-longDescription: This resource shall be used to represent a PCIeDevice attached
         to a System.
     PCIeInterface:
-      $ref: http://redfish.dmtf.org/schemas/v1/PCIeDevice.v1_3_0.yaml#/components/schemas/PCIeInterface
+      anyOf:
+      - $ref: http://redfish.dmtf.org/schemas/v1/PCIeDevice.v1_3_0.yaml#/components/schemas/PCIeInterface
       description: This type describes a PCIe Interface.
       x-longDescription: This type shall describe the PCIe interface characteristics
         of a PCIe Device.
