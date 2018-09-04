@@ -1,6 +1,4 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#JsonSchemaFile.JsonSchemaFile",
-    "@odata.id": "/redfish/v1/JsonSchemas/Chassis.v1_7_0",
     "@odata.type": "#JsonSchemaFile.v1_1_1.JsonSchemaFile",
     "Id": "Chassis.v1_7_0",
     "Name": "Chassis Schema File",
@@ -28,5 +26,7 @@
             "Uri": "/redfish/v1/JsonSchemas/Chassis.v1_7_0.xy.json",
             "PublicationUri": "http://schemas.contoso.com/Chassis.v1_7_0.xy.json"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#JsonSchemaFile.JsonSchemaFile",
+    "@odata.id": "/redfish/v1/JsonSchemas/Chassis.v1_7_0"
 }
