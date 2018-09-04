@@ -281,6 +281,11 @@ This is the redundancy definition to be used in other resource schemas.
 
 #include_fragment ./json-schema/Redundancy.v1_3_1.json#/definitions/Redundancy/properties
 
+## Settings
+
+This describes the settings for a resource.
+
+#include_fragment ./json-schema/Settings.v1_2_1.json#/definitions/Settings/properties
 
 # Resource collections
 
