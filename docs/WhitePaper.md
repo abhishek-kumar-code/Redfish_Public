@@ -2,11 +2,11 @@
 DocTitle: Redfish White Paper
 DocNumber: '2044'
 DocClass: Informative
-DocVersion: '1.0.3'
-modified: '2017-08-04'
+DocVersion: '1.0.4'
+modified: '2018-09-04'
 status: published
 released: true
-copyright: '2014-2017'
+copyright: '2014-2018'
 ---
 
 # What is the Redfish API?
@@ -260,7 +260,7 @@ A client read/modify/write cycle consists of:
 1. Modify the resource properties
 1. Generate a new ETag
 1. PATCH the modified resource including the If-Match header containing the last known ETag.
-1. If the supplied ETag no longer matches the object (something has changed since the read), the service will return 304 Not Modified.  The client should recover by repeating these steps.
+1. If the supplied ETag no longer matches the object (something has changed since the read), the service will return 412 Precondition Failed.  The client should recover by repeating these steps.
 
 * Clients _should_ include an ETag when updating Setting Data to enable Providers to more efficiently detect changes and to prevent multi-client race conditions.
 
@@ -457,3 +457,4 @@ Application code should always start at the root: /redfish/v1/
 |         |        | Fixed annotation documentation in the Common Annotations section                                |
 |         |        | Updated @odata.context documentation in the Common Annotations section to use the simple format |
 |         |        | Updated the Idempotent Modify section to mention about client race conditions                   |
+| 1.0.4   | 2018-9 | Corrected the HTTP status code for PATCH when the incorrect etag is provided in the If-Match header. |
