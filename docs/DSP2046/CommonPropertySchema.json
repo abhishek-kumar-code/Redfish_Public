@@ -40,7 +40,7 @@
                "description": "The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection."
             },
             "Oem": {
-               "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+               "type": "object",
                "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."
             }
          },
@@ -65,7 +65,7 @@
                }
             },
             "Links": {
-               "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Links",
+               "type": "object",
                "description": "The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource."
             },
             "RelatedItem": {
@@ -105,7 +105,7 @@
                "readonly": true
             },
             "Oem": {
-               "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+               "type": "object",
                "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
             },

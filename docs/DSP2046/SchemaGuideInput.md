@@ -55,8 +55,8 @@ Note: you can specify the location of the TOC, presumably in the Introduction se
 
 Note: markdown is allowed in description overrides, but HTML markup is not; it will be escaped.
 
-* Oem: See the OEM object definition in the [Using this guide](#using-this-guide) section.
-* Redundancy: A reference to a set of Redundancy entities that provide redundant services for this resource. See the Redundancy object definition in the [Using this guide](#using-this-guide) section.
+* Oem: See the OEM object definition in the [Common properties](#common-properties) section.
+* Redundancy: A reference to a set of Redundancy entities that provide redundant services for this resource. See the [Redundancy](#redundancy) object definition in the Common objects section.
 
 
 # Units Translation
@@ -113,13 +113,17 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 
 1) Deprecated statements are picked up from errata versions - should only report major/minor version.  Workaround is in place in the doc generator to only check v1.x.0 for deprecated properties/enumerations.
 
+2) Redundancy description override not being picked up - may be due to array definition?
+
 3) Enum version added is picking up errata versions due to generated JSON schemas. Schema issue, not a doc generator problem.  See Processor/ProcessorType Core and Thread (show 1.0.5).  See UpdateService/TransferProtocolType NFS (should show 1.3+)
 
 # Doc generator open enhancements list
 
 1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive.
 
-2) Manual whitelist for Common Objects section - "Redundancy" is the example.
+2) Manual whitelist for Common Objects section - "Redundancy", "Settings" are the examples - these should be then handled as if they were detected to be Common Objects.
+
+3) References to common objects from schema fragments are not resolved (go to DMTF.org)
 
 ------------------------------------------ RELEASE PROCESS -----------------------------------------------
 
