@@ -2,9 +2,9 @@
     "@odata.type": "#ServiceRoot.v1_4_0.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
-    "RedfishVersion": "1.5.0",
+    "RedfishVersion": "1.6.0",
     "UUID": "92384634-2938-2342-8820-489239905423",
-    "Product": "Contoso 1U Server",
+    "Product": "UR99 1U Server",
     "ProtocolFeaturesSupported": {
         "ExpandQuery": {
             "ExpandAll": true,
@@ -14,7 +14,9 @@
             "NoLinks": true
         },
         "SelectQuery": false,
-        "FilterQuery": false
+        "FilterQuery": false,
+        "OnlyMemberQuery": true,
+        "ExcerptQuery": true
     },
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"
