@@ -45,16 +45,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/AccountService:
     get:
       responses:
@@ -65,16 +55,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
           description: The response contains a representation of the AccountService
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -137,16 +117,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.yaml#/components/schemas/ManagerAccountCollection
           description: The response contains a representation of the ManagerAccountCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -234,23 +204,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ManagerAccount resource
-        in: path
-        name: ManagerAccountId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ManagerAccount resource
@@ -321,16 +274,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ExternalAccountProviderCollection.yaml#/components/schemas/ExternalAccountProviderCollection
           description: The response contains a representation of the ExternalAccountProviderCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -418,23 +361,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ExternalAccountProvider resource
-        in: path
-        name: ExternalAccountProviderId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ExternalAccountProvider resource
@@ -511,16 +437,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/AccountService/Roles/{RoleId}:
     get:
       parameters:
@@ -537,23 +453,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
           description: The response contains a representation of the Role resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Role resource
-        in: path
-        name: RoleId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -634,16 +533,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Chassis/{ChassisId}:
     get:
       parameters:
@@ -660,23 +549,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Chassis.v1_8_0.yaml#/components/schemas/Chassis
           description: The response contains a representation of the Chassis resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -800,23 +672,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Chassis resource
@@ -897,29 +752,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Drive.v1_5_0.yaml#/components/schemas/Drive
           description: The response contains a representation of the Drive resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -1067,29 +899,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Chassis resource
@@ -1183,23 +992,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}:
     get:
       parameters:
@@ -1223,29 +1015,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/NetworkAdapter.v1_2_0.yaml#/components/schemas/NetworkAdapter
           description: The response contains a representation of the NetworkAdapter
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -1317,29 +1086,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -1445,29 +1191,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkDeviceFunctions/{NetworkDeviceFunctionId}:
     get:
       parameters:
@@ -1497,35 +1220,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/NetworkDeviceFunction.v1_3_0.yaml#/components/schemas/NetworkDeviceFunction
           description: The response contains a representation of the NetworkDeviceFunction
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkDeviceFunction resource
-        in: path
-        name: NetworkDeviceFunctionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -1645,35 +1339,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.yaml#/components/schemas/VLanNetworkInterfaceCollection
           description: The response contains a representation of the VLanNetworkInterfaceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkDeviceFunction resource
-        in: path
-        name: NetworkDeviceFunctionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -1816,41 +1481,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkDeviceFunction resource
-        in: path
-        name: NetworkDeviceFunctionId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the VLanNetworkInterface resource
-        in: path
-        name: VLanNetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Chassis resource
@@ -1976,29 +1606,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/NetworkPorts/{NetworkPortId}:
     get:
       parameters:
@@ -2027,35 +1634,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_2_0.yaml#/components/schemas/NetworkPort
           description: The response contains a representation of the NetworkPort resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkAdapter resource
-        in: path
-        name: NetworkAdapterId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkPort resource
-        in: path
-        name: NetworkPortId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -2172,29 +1750,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeDevice resource
-        in: path
-        name: PCIeDeviceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/Assembly:
     get:
       parameters:
@@ -2217,29 +1772,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeDevice resource
-        in: path
-        name: PCIeDeviceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -2351,35 +1883,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeDevice resource
-        in: path
-        name: PCIeDeviceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeFunction resource
-        in: path
-        name: PCIeFunctionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Chassis/{ChassisId}/PCIeSlots:
     get:
       parameters:
@@ -2402,23 +1905,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Chassis/{ChassisId}/Power:
     get:
       parameters:
@@ -2435,23 +1921,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Power.v1_5_1.yaml#/components/schemas/Power
           description: The response contains a representation of the Power resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -2538,29 +2007,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PowerSupply resource
-        in: path
-        name: PowerSupplyId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -2659,23 +2105,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Chassis resource
@@ -2756,29 +2185,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Chassis resource
-        in: path
-        name: ChassisId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Fan resource
-        in: path
-        name: FanId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -2871,16 +2277,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       responses:
         '200':
@@ -2943,16 +2339,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}:
     get:
       parameters:
@@ -2970,23 +2356,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ResourceBlock.v1_2_0.yaml#/components/schemas/ResourceBlock
           description: The response contains a representation of the ResourceBlock
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -3076,29 +2445,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EthernetInterface.v1_4_1.yaml#/components/schemas/EthernetInterface
           description: The response contains a representation of the EthernetInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -3200,29 +2546,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.yaml#/components/schemas/VLanNetworkInterfaceCollection
           description: The response contains a representation of the VLanNetworkInterfaceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -3347,35 +2670,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the VLanNetworkInterface resource
-        in: path
-        name: VLanNetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -3482,29 +2776,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_6_0.yaml#/components/schemas/Memory
           description: The response contains a representation of the Memory resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -3754,29 +3025,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -3876,29 +3124,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/MemoryMetrics/Actions/#MemoryMetrics.ClearCurrentPeriod
   : post:
       parameters:
@@ -3971,29 +3196,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/NetworkInterfaces/{NetworkInterfaceId}/NetworkDeviceFunctions
   : get:
       parameters:
@@ -4017,29 +3219,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/NetworkDeviceFunctionCollection.yaml#/components/schemas/NetworkDeviceFunctionCollection
           description: The response contains a representation of the NetworkDeviceFunctionCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -4075,29 +3254,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}:
     get:
       parameters:
@@ -4126,29 +3282,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/Assembly:
     get:
       parameters:
@@ -4171,29 +3304,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -4299,29 +3409,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}:
     get:
       parameters:
@@ -4356,35 +3443,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId2
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/Assembly
   : get:
       parameters:
@@ -4413,35 +3471,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId2
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -4559,29 +3588,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the SimpleStorage resource
-        in: path
-        name: SimpleStorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage:
     get:
       parameters:
@@ -4599,23 +3605,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/StorageCollection.yaml#/components/schemas/StorageCollection
           description: The response contains a representation of the StorageCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -4644,29 +3633,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Storage.v1_5_0.yaml#/components/schemas/Storage
           description: The response contains a representation of the Storage resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -4814,29 +3780,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -4935,35 +3878,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Drive.v1_5_0.yaml#/components/schemas/Drive
           description: The response contains a representation of the Drive resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -5135,35 +4049,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -5269,29 +4154,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VolumeCollection.yaml#/components/schemas/VolumeCollection
           description: The response contains a representation of the VolumeCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -5408,35 +4270,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Volume.v1_0_3.yaml#/components/schemas/Volume
           description: The response contains a representation of the Volume resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Volume resource
-        in: path
-        name: VolumeId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -5584,29 +4417,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_5_1.yaml#/components/schemas/ComputerSystem
           description: The response contains a representation of the ComputerSystem
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -5799,29 +4609,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -6007,29 +4794,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -6146,35 +4910,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the BootOption resource
-        in: path
-        name: BootOptionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/EthernetInterfaces:
     get:
       parameters:
@@ -6198,29 +4933,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.yaml#/components/schemas/EthernetInterfaceCollection
           description: The response contains a representation of the EthernetInterfaceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -6256,35 +4968,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EthernetInterface.v1_4_1.yaml#/components/schemas/EthernetInterface
           description: The response contains a representation of the EthernetInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -6404,35 +5087,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.yaml#/components/schemas/VLanNetworkInterfaceCollection
           description: The response contains a representation of the VLanNetworkInterfaceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -6575,41 +5229,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the VLanNetworkInterface resource
-        in: path
-        name: VLanNetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -6735,29 +5354,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/LogServices/{LogServiceId}:
     get:
       parameters:
@@ -6786,35 +5382,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/LogService.v1_1_1.yaml#/components/schemas/LogService
           description: The response contains a representation of the LogService resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -6987,35 +5554,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Entries/{LogEntryId}
   : delete:
       parameters:
@@ -7103,41 +5641,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogEntry resource
-        in: path
-        name: LogEntryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory:
     get:
       parameters:
@@ -7161,29 +5664,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/MemoryCollection.yaml#/components/schemas/MemoryCollection
           description: The response contains a representation of the MemoryCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -7218,35 +5698,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_6_0.yaml#/components/schemas/Memory
           description: The response contains a representation of the Memory resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -7532,35 +5983,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -7678,35 +6100,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics/Actions/#MemoryMetrics.ClearCurrentPeriod
   : post:
       parameters:
@@ -7785,29 +6178,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/MemoryDomains/{MemoryDomainId}:
     get:
       parameters:
@@ -7843,35 +6213,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryDomain resource
-        in: path
-        name: MemoryDomainId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/MemoryDomains/{MemoryDomainId}/MemoryChunks
   : get:
       parameters:
@@ -7901,35 +6242,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/MemoryChunksCollection.yaml#/components/schemas/MemoryChunksCollection
           description: The response contains a representation of the MemoryChunksCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryDomain resource
-        in: path
-        name: MemoryDomainId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -8072,41 +6384,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryDomain resource
-        in: path
-        name: MemoryDomainId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryChunks resource
-        in: path
-        name: MemoryChunksId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -8232,29 +6509,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/NetworkInterfaces/{NetworkInterfaceId}
   : get:
       parameters:
@@ -8284,35 +6538,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/NetworkInterface.v1_1_1.yaml#/components/schemas/NetworkInterface
           description: The response contains a representation of the NetworkInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -8354,35 +6579,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/NetworkInterfaces/{NetworkInterfaceId}/NetworkPorts
   : get:
       parameters:
@@ -8418,35 +6614,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors:
     get:
       parameters:
@@ -8470,29 +6637,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ProcessorCollection.yaml#/components/schemas/ProcessorCollection
           description: The response contains a representation of the ProcessorCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -8533,35 +6677,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/Assembly
   : get:
       parameters:
@@ -8590,35 +6705,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -8742,35 +6828,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}
   : get:
       parameters:
@@ -8811,41 +6868,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId2
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/Assembly
   : get:
       parameters:
@@ -8880,41 +6902,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId2
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -9037,29 +7024,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/SecureBoot.v1_0_4.yaml#/components/schemas/SecureBoot
           description: The response contains a representation of the SecureBoot resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -9208,29 +7172,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}:
     get:
       parameters:
@@ -9266,35 +7207,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the SimpleStorage resource
-        in: path
-        name: SimpleStorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage:
     get:
       parameters:
@@ -9318,29 +7230,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/StorageCollection.yaml#/components/schemas/StorageCollection
           description: The response contains a representation of the StorageCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -9375,35 +7264,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Storage.v1_5_0.yaml#/components/schemas/Storage
           description: The response contains a representation of the Storage resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -9575,35 +7435,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -9720,41 +7551,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Drive.v1_5_0.yaml#/components/schemas/Drive
           description: The response contains a representation of the Drive resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -9950,41 +7746,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -10108,35 +7869,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VolumeCollection.yaml#/components/schemas/VolumeCollection
           description: The response contains a representation of the VolumeCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -10277,41 +8009,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ResourceBlock resource
-        in: path
-        name: ResourceBlockId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Volume resource
-        in: path
-        name: VolumeId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -10422,16 +8119,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/CompositionService/ResourceZones/{ZoneId}:
     get:
       parameters:
@@ -10454,23 +8141,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Zone resource
-        in: path
-        name: ZoneId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/EventService:
     get:
       responses:
@@ -10481,16 +8151,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EventService.v1_2_0.yaml#/components/schemas/EventService
           description: The response contains a representation of the EventService
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -10589,16 +8249,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     post:
       requestBody:
         content:
@@ -10644,23 +8294,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_4_0.yaml#/components/schemas/EventDestination
           description: The response contains a representation of the EventDestination
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the EventDestination resource
-        in: path
-        name: EventDestinationId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -10749,23 +8382,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Fabrics/{FabricId}/Endpoints:
     get:
       parameters:
@@ -10783,23 +8399,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EndpointCollection.yaml#/components/schemas/EndpointCollection
           description: The response contains a representation of the EndpointCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -10834,29 +8433,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Endpoint resource
-        in: path
-        name: EndpointId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Fabrics/{FabricId}/Switches:
     get:
       parameters:
@@ -10874,23 +8450,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/SwitchCollection.yaml#/components/schemas/SwitchCollection
           description: The response contains a representation of the SwitchCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -10919,29 +8478,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Switch.v1_1_1.yaml#/components/schemas/Switch
           description: The response contains a representation of the Switch resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Switch resource
-        in: path
-        name: SwitchId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -11090,29 +8626,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Switch resource
-        in: path
-        name: SwitchId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Fabrics/{FabricId}/Switches/{SwitchId}/Ports/{PortId}:
     get:
       parameters:
@@ -11141,35 +8654,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Port.v1_1_1.yaml#/components/schemas/Port
           description: The response contains a representation of the Port resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Switch resource
-        in: path
-        name: SwitchId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Port resource
-        in: path
-        name: PortId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -11248,23 +8732,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Fabrics/{FabricId}/Zones/{ZoneId}:
     get:
       parameters:
@@ -11293,29 +8760,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Fabric resource
-        in: path
-        name: FabricId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Zone resource
-        in: path
-        name: ZoneId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/JobService:
     get:
       responses:
@@ -11325,16 +8769,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/JobService.v1_0_0.yaml#/components/schemas/JobService
           description: The response contains a representation of the JobService resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -11395,16 +8829,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/JobCollection.yaml#/components/schemas/JobCollection
           description: The response contains a representation of the JobCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -11490,23 +8914,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Job resource
-        in: path
-        name: JobId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Job resource
@@ -11582,23 +8989,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/JobCollection.yaml#/components/schemas/JobCollection
           description: The response contains a representation of the JobCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Job resource
-        in: path
-        name: JobId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -11703,29 +9093,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Job resource
-        in: path
-        name: JobId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Job resource
-        in: path
-        name: JobId2
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Job resource
@@ -11812,16 +9179,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/JsonSchemas/{JsonSchemaFileId}:
     get:
       parameters:
@@ -11845,23 +9202,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the JsonSchemaFile resource
-        in: path
-        name: JsonSchemaFileId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers:
     get:
       responses:
@@ -11872,16 +9212,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ManagerCollection.yaml#/components/schemas/ManagerCollection
           description: The response contains a representation of the ManagerCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -11904,23 +9234,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Manager.v1_5_0.yaml#/components/schemas/Manager
           description: The response contains a representation of the Manager resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -12119,23 +9432,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/EthernetInterfaces/{EthernetInterfaceId}:
     get:
       parameters:
@@ -12159,29 +9455,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EthernetInterface.v1_4_1.yaml#/components/schemas/EthernetInterface
           description: The response contains a representation of the EthernetInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -12283,29 +9556,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.yaml#/components/schemas/VLanNetworkInterfaceCollection
           description: The response contains a representation of the VLanNetworkInterfaceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -12430,35 +9680,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the VLanNetworkInterface resource
-        in: path
-        name: VLanNetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -12566,23 +9787,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}:
     get:
       parameters:
@@ -12606,29 +9810,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/HostInterface.v1_2_0.yaml#/components/schemas/HostInterface
           description: The response contains a representation of the HostInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the HostInterface resource
-        in: path
-        name: HostInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -12736,29 +9917,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the HostInterface resource
-        in: path
-        name: HostInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/LogServices:
     get:
       parameters:
@@ -12776,23 +9934,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/LogServiceCollection.yaml#/components/schemas/LogServiceCollection
           description: The response contains a representation of the LogServiceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -12821,29 +9962,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/LogService.v1_1_1.yaml#/components/schemas/LogService
           description: The response contains a representation of the LogService resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -12992,29 +10110,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Entries/{LogEntryId}:
     delete:
       parameters:
@@ -13090,35 +10185,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogEntry resource
-        in: path
-        name: LogEntryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/NetworkProtocol:
     get:
       parameters:
@@ -13136,23 +10202,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.v1_3_0.yaml#/components/schemas/ManagerNetworkProtocol
           description: The response contains a representation of the ManagerNetworkProtocol
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -13242,23 +10291,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -13336,23 +10368,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.yaml#/components/schemas/ManagerAccountCollection
           description: The response contains a representation of the ManagerAccountCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -13459,29 +10474,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ManagerAccount resource
-        in: path
-        name: ManagerAccountId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -13571,23 +10563,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ExternalAccountProviderCollection.yaml#/components/schemas/ExternalAccountProviderCollection
           description: The response contains a representation of the ExternalAccountProviderCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -13694,29 +10669,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the ExternalAccountProvider resource
-        in: path
-        name: ExternalAccountProviderId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -13812,23 +10764,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/RemoteAccountService/Roles/{RoleId}:
     get:
       parameters:
@@ -13851,29 +10786,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Role.v1_2_2.yaml#/components/schemas/Role
           description: The response contains a representation of the Role resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Role resource
-        in: path
-        name: RoleId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -13973,23 +10885,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/SerialInterfaces/{SerialInterfaceId}:
     get:
       parameters:
@@ -14013,29 +10908,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/SerialInterface.v1_1_3.yaml#/components/schemas/SerialInterface
           description: The response contains a representation of the SerialInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the SerialInterface resource
-        in: path
-        name: SerialInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -14137,23 +11009,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}:
     get:
       parameters:
@@ -14177,29 +11032,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VirtualMedia.v1_2_1.yaml#/components/schemas/VirtualMedia
           description: The response contains a representation of the VirtualMedia
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Manager resource
-        in: path
-        name: ManagerId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the VirtualMedia resource
-        in: path
-        name: VirtualMediaId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -14380,16 +11212,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Registries/{MessageRegistryFileId}:
     get:
       parameters:
@@ -14413,23 +11235,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the MessageRegistryFile resource
-        in: path
-        name: MessageRegistryFileId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/SessionService:
     get:
       responses:
@@ -14440,16 +11245,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/SessionService.v1_1_4.yaml#/components/schemas/SessionService
           description: The response contains a representation of the SessionService
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -14512,16 +11307,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/SessionCollection.yaml#/components/schemas/SessionCollection
           description: The response contains a representation of the SessionCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -14607,23 +11392,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Session resource
-        in: path
-        name: SessionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems:
     get:
       responses:
@@ -14634,16 +11402,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystemCollection.yaml#/components/schemas/ComputerSystemCollection
           description: The response contains a representation of the ComputerSystemCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -14725,23 +11483,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_5_1.yaml#/components/schemas/ComputerSystem
           description: The response contains a representation of the ComputerSystem
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -14904,23 +11645,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -15076,23 +11800,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -15191,29 +11898,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the BootOption resource
-        in: path
-        name: BootOptionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/EthernetInterfaces:
     get:
       parameters:
@@ -15231,23 +11915,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.yaml#/components/schemas/EthernetInterfaceCollection
           description: The response contains a representation of the EthernetInterfaceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -15277,29 +11944,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/EthernetInterface.v1_4_1.yaml#/components/schemas/EthernetInterface
           description: The response contains a representation of the EthernetInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -15401,29 +12045,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.yaml#/components/schemas/VLanNetworkInterfaceCollection
           description: The response contains a representation of the VLanNetworkInterfaceCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -15548,35 +12169,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the EthernetInterface resource
-        in: path
-        name: EthernetInterfaceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the VLanNetworkInterface resource
-        in: path
-        name: VLanNetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -15684,23 +12276,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/LogServices/{LogServiceId}:
     get:
       parameters:
@@ -15723,29 +12298,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/LogService.v1_1_1.yaml#/components/schemas/LogService
           description: The response contains a representation of the LogService resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -15894,29 +12446,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Entries/{LogEntryId}:
     delete:
       parameters:
@@ -15992,35 +12521,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogService resource
-        in: path
-        name: LogServiceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the LogEntry resource
-        in: path
-        name: LogEntryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/Memory:
     get:
       parameters:
@@ -16038,23 +12538,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/MemoryCollection.yaml#/components/schemas/MemoryCollection
           description: The response contains a representation of the MemoryCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -16083,29 +12566,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Memory.v1_6_0.yaml#/components/schemas/Memory
           description: The response contains a representation of the Memory resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -16355,29 +12815,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -16477,29 +12914,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Memory resource
-        in: path
-        name: MemoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics/Actions/#MemoryMetrics.ClearCurrentPeriod:
     post:
       parameters:
@@ -16566,23 +12980,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/MemoryDomains/{MemoryDomainId}:
     get:
       parameters:
@@ -16612,29 +13009,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryDomain resource
-        in: path
-        name: MemoryDomainId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/MemoryDomains/{MemoryDomainId}/MemoryChunks:
     get:
       parameters:
@@ -16658,29 +13032,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/MemoryChunksCollection.yaml#/components/schemas/MemoryChunksCollection
           description: The response contains a representation of the MemoryChunksCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryDomain resource
-        in: path
-        name: MemoryDomainId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -16805,35 +13156,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryDomain resource
-        in: path
-        name: MemoryDomainId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the MemoryChunks resource
-        in: path
-        name: MemoryChunksId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -16941,23 +13263,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/NetworkInterfaces/{NetworkInterfaceId}:
     get:
       parameters:
@@ -16981,29 +13286,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/NetworkInterface.v1_1_1.yaml#/components/schemas/NetworkInterface
           description: The response contains a representation of the NetworkInterface
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -17039,29 +13321,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/NetworkInterfaces/{NetworkInterfaceId}/NetworkPorts:
     get:
       parameters:
@@ -17085,29 +13344,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/NetworkPortCollection.yaml#/components/schemas/NetworkPortCollection
           description: The response contains a representation of the NetworkPortCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the NetworkInterface resource
-        in: path
-        name: NetworkInterfaceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -17142,29 +13378,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeDevice resource
-        in: path
-        name: PCIeDeviceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/PCIeDevices/{PCIeDeviceId}/Assembly:
     get:
       parameters:
@@ -17187,29 +13400,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeDevice resource
-        in: path
-        name: PCIeDeviceId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -17321,35 +13511,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeDevice resource
-        in: path
-        name: PCIeDeviceId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the PCIeFunction resource
-        in: path
-        name: PCIeFunctionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/Processors:
     get:
       parameters:
@@ -17367,23 +13528,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/ProcessorCollection.yaml#/components/schemas/ProcessorCollection
           description: The response contains a representation of the ProcessorCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -17418,29 +13562,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/Assembly:
     get:
       parameters:
@@ -17463,29 +13584,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -17591,29 +13689,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}:
     get:
       parameters:
@@ -17648,35 +13723,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId2
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/Assembly:
     get:
       parameters:
@@ -17705,35 +13751,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Assembly.v1_2_0.yaml#/components/schemas/Assembly
           description: The response contains a representation of the Assembly resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Processor resource
-        in: path
-        name: ProcessorId2
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -17838,23 +13855,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/SecureBoot.v1_0_4.yaml#/components/schemas/SecureBoot
           description: The response contains a representation of the SecureBoot resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -17979,23 +13979,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}:
     get:
       parameters:
@@ -18025,29 +14008,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the SimpleStorage resource
-        in: path
-        name: SimpleStorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/Systems/{ComputerSystemId}/Storage:
     get:
       parameters:
@@ -18065,23 +14025,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/StorageCollection.yaml#/components/schemas/StorageCollection
           description: The response contains a representation of the StorageCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -18110,29 +14053,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Storage.v1_5_0.yaml#/components/schemas/Storage
           description: The response contains a representation of the Storage resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -18280,29 +14200,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -18401,35 +14298,6 @@ paths:
               schema:
                 $ref: http://redfish.dmtf.org/schemas/v1/Drive.v1_5_0.yaml#/components/schemas/Drive
           description: The response contains a representation of the Drive resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -18601,35 +14469,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Drive resource
-        in: path
-        name: DriveId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -18735,29 +14574,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/VolumeCollection.yaml#/components/schemas/VolumeCollection
           description: The response contains a representation of the VolumeCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -18880,35 +14696,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the ComputerSystem resource
-        in: path
-        name: ComputerSystemId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Storage resource
-        in: path
-        name: StorageId
-        required: true
-        schema:
-          type: string
-      - description: The value of the Id property of the Volume resource
-        in: path
-        name: VolumeId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -19006,16 +14793,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       responses:
         '200':
@@ -19076,16 +14853,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/TaskService/Tasks/{TaskId}:
     delete:
       parameters:
@@ -19137,23 +14904,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Task resource
-        in: path
-        name: TaskId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/TelemetryService:
     get:
       responses:
@@ -19164,16 +14914,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/TelemetryService.v1_0_0.yaml#/components/schemas/TelemetryService
           description: The response contains a representation of the TelemetryService
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -19272,16 +15012,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     post:
       requestBody:
         content:
@@ -19363,23 +15093,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the MetricDefinition resource
-        in: path
-        name: MetricDefinitionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the MetricDefinition resource
@@ -19450,16 +15163,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/MetricReportDefinitionCollection.yaml#/components/schemas/MetricReportDefinitionCollection
           description: The response contains a representation of the MetricReportDefinitionCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -19547,23 +15250,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the MetricReportDefinition resource
-        in: path
-        name: MetricReportDefinitionId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the MetricReportDefinition resource
@@ -19640,16 +15326,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/TelemetryService/MetricReports/{MetricReportId}:
     delete:
       parameters:
@@ -19703,23 +15379,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the MetricReport resource
-        in: path
-        name: MetricReportId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/TelemetryService/Triggers:
     get:
       responses:
@@ -19730,16 +15389,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/TriggersCollection.yaml#/components/schemas/TriggersCollection
           description: The response contains a representation of the TriggersCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -19825,23 +15474,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the Triggers resource
-        in: path
-        name: TriggersId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
     patch:
       parameters:
       - description: The value of the Id property of the Triggers resource
@@ -19910,16 +15542,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/UpdateService.v1_3_0.yaml#/components/schemas/UpdateService
           description: The response contains a representation of the UpdateService
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -20018,16 +15640,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/UpdateService/FirmwareInventory/{SoftwareInventoryId}:
     get:
       parameters:
@@ -20051,23 +15663,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the SoftwareInventory resource
-        in: path
-        name: SoftwareInventoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
   /redfish/v1/UpdateService/SoftwareInventory:
     get:
       responses:
@@ -20078,16 +15673,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/SoftwareInventoryCollection.yaml#/components/schemas/SoftwareInventoryCollection
           description: The response contains a representation of the SoftwareInventoryCollection
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
@@ -20111,23 +15696,6 @@ paths:
                 $ref: http://redfish.dmtf.org/schemas/v1/SoftwareInventory.v1_2_1.yaml#/components/schemas/SoftwareInventory
           description: The response contains a representation of the SoftwareInventory
             resource
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RedfishError'
-          description: Error condition
-    head:
-      parameters:
-      - description: The value of the Id property of the SoftwareInventory resource
-        in: path
-        name: SoftwareInventoryId
-        required: true
-        schema:
-          type: string
-      responses:
-        '204':
-          description: Success, but no response data
         default:
           content:
             application/json:
