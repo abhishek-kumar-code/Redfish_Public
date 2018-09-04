@@ -457,3 +457,4 @@ Application code should always start at the root: /redfish/v1/
 |         |        | Fixed annotation documentation in the Common Annotations section                                |
 |         |        | Updated @odata.context documentation in the Common Annotations section to use the simple format |
 |         |        | Updated the Idempotent Modify section to mention about client race conditions                   |
+| 1.0.4   | 2018-9 | Corrected the HTTP status code for PATCH when the incorrect etag is provided in the If-Match header. |
