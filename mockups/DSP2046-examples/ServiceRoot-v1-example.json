@@ -15,8 +15,8 @@
         },
         "SelectQuery": false,
         "FilterQuery": false,
-		  "OnlyMemberQuery": true,
-		  "ExcerptQuery": true
+        "OnlyMemberQuery": true,
+        "ExcerptQuery": true
     },
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"

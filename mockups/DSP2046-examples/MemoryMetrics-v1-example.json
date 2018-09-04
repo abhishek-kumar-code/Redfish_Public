@@ -1,5 +1,4 @@
-{  
-    "@odata.id": "/redfish/v1/Systems/1/Memory/1/MemoryMetrics",
+{
     "@odata.type": "#MemoryMetrics.v1_1_4.MemoryMetrics",
     "Name": "Memory Metrics",
     "Id": "Metrics",
@@ -31,5 +30,6 @@
         "Oem": {}
     },
     "Oem": {},
-    "@odata.context": "/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics"
+    "@odata.context": "/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics",
+    "@odata.id": "/redfish/v1/Systems/1/Memory/1/MemoryMetrics"
 }

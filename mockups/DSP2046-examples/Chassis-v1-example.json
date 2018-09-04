@@ -42,9 +42,9 @@
     "Power": {
         "@odata.id": "/redfish/v1/Chassis/1U/Power"
     },
-	"Assembly": {
-		"@odata.id": "/redfish/v1/Chassis/1U/Assembly"
-	},
+    "Assembly": {
+        "@odata.id": "/redfish/v1/Chassis/1U/Assembly"
+    },
     "Links": {
         "ComputerSystems": [
             {
