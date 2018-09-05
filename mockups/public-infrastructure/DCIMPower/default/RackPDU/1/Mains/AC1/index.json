@@ -122,13 +122,11 @@
 		}
 	},
 	"Frequency": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/Freq1-1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FreqMains",
 	    "Name": "Mains Frequency",
 		"Reading": 60.1,
 		"ReadingUnits": "Hz"
 	},
-
-	"@odata.context": "/redfish/v1/$metadata#RackPDU.RackPDU",
 	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Mains/AC1",
-	"@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+	"@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
