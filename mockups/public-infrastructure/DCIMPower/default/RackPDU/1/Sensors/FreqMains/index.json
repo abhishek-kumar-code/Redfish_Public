@@ -1,7 +1,7 @@
 {
 	"@odata.type": "#Sensor.v0_8_0.Sensor",
-	"Id": "FrequencyA1",
-	"Name": "Frequency reading for outlet A1",
+	"Id": "FreqMains",
+	"Name": "Frequency Mains",
 	"ReadingType": "Frequency",
 	"Status": {
 		"State": "Enabled",
@@ -37,6 +37,6 @@
 	},
 	"Oem": {},
 	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FreqMains",
 	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

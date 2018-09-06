@@ -1,13 +1,13 @@
 {
 	"@odata.type": "#Sensor.v0_8_0.Sensor",
-	"Id": "VoltageA1",
-	"Name": "Voltage reading for outlet A1",
+	"Id": "VoltageAL1L2",
+	"Name": "Voltage Branch A Line 1 to Line 2",
 	"ReadingType": "Voltage",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK"
 	},
-	"ElectricalSourceType": "Line1ToNeutral",
+	"ElectricalSourceType": "Line1ToLine2",
 	"Reading": 119.27,
 	"ReadingUnits": "V",
 	"ReadingRangeMin": 0,
@@ -38,6 +38,6 @@
 	},
 	"Oem": {},
 	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageAL1L2",
 	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
