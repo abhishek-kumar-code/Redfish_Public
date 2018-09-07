@@ -1,5 +1,6 @@
 {
-    "@odata.type": "#ManagerNetworkProtocol.v1_2_0.ManagerNetworkProtocol",
+    "@Redfish.ReleaseStatus": "WorkInProgress",
+    "@odata.type": "#ManagerNetworkProtocol.v1_4_0.ManagerNetworkProtocol",
     "Id": "NetworkProtocol",
     "Name": "Manager Network Protocol",
     "Description": "Manager Network Service",
@@ -15,7 +16,10 @@
     },
     "HTTPS": {
         "ProtocolEnabled": true,
-        "Port": 443
+        "Port": 443,
+        "Certificates": {
+            "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates"
+        }
     },
     "IPMI": {
         "ProtocolEnabled": true,

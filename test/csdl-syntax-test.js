@@ -550,7 +550,7 @@ function checkReferencesUsed(err, csdl) {
                         nameSpaceAliases = propertiesHaveNamespace(entity.Parameters, nameSpaceAliases);
                         if(entity.ReturnType !== null) {
                           for(let j = 0; j < nameSpaceAliases.length; j++) {
-                            if(entity.ReturnType.startsWith(nameSpaceAliases[j])) {
+                            if(entity.ReturnType.Type.startsWith(nameSpaceAliases[j])) {
                               nameSpaceAliases.splice(j, 1);
                               break;
                             }

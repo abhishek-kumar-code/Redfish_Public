@@ -1,0 +1,15 @@
+{
+    "@Redfish.ReleaseStatus": "WorkInProgress",
+    "@odata.type": "#CertificateCollection.CertificateCollection",
+    "Name": "Certificate Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates/1"
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#CertificateCollection.CertificateCollection",
+    "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
