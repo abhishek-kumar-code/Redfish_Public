@@ -2,7 +2,7 @@
 	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "DMTFBasicServer",
 	"ProfileVersion": "0.92",
-	"Author": "A Work in Progress from SPMF",
+	"Author": "A Work in Progress from the DMTF Redfish Forum",
 	"Purpose": "A baseline interoperability profile for typical scale-out 1P/2P servers",
 	"ContactInfo": "dmtf.org/feedback",
 	"Protocol": {
@@ -241,6 +241,17 @@
 				}
 			}
 		},
+		"HostInterface": {
+			"MinVersion": "1.1.0",
+			"ReadRequirement": "Recommended",
+			"PropertyRequirements": {
+				"AuthenticationModes": {},
+				"HostEthernetInterfaces": {},
+				"HostInterfaceType": {},
+				"InterfaceEnabled": {},
+				"Status": {}
+			}
+		},
 		"ManagerAccount": {},
 		"ManagerCollection": {
 			"PropertyRequirements": {
@@ -259,10 +270,10 @@
 				"EthernetInterfaces": {},
 				"SerialConsole": {
 					"ReadRequirement": "Mandatory",
-					"Purpose": "SSH or IPMI-based serial remote console is required.",
+					"Purpose": "SSH-based serial remote console is required.",
 					"PropertyRequirements": {
 						"ConnectTypesSupported": {
-							"Values": [ "SSH", "IPMI"],
+							"Values": [ "SSH" ],
 							"Comparison": "AnyOf"
 						}
 					}
@@ -297,29 +308,29 @@
 				"FQDN": {},
 				"HTTP": {
 					"PropertyRequirements": {
-						"ProtocolEnable": {},
+						"ProtocolEnabled": {},
 						"Port": {}
 					}
 				},
 				"HTTPS": {
 					"PropertyRequirements": {
-						"ProtocolEnable": {},
+						"ProtocolEnabled": {},
 						"Port": {}
 					}
 				},
 				"SSH": {
 					"ReadRequirement": "Recommended",
 					"PropertyRequirements": {
-						"ProtocolEnable": {},
+						"ProtocolEnabled": {},
 						"Port": {}
 					}
 				},
 				"SSDP": {
 					"ReadRequirement": "Recommended",
 					"PropertyRequirements": {
-						"ProtocolEnable": {},
+						"ProtocolEnabled": {},
 						"Port": {},
-						"NotifyMulticstIntervalSeconds": {},
+						"NotifyMulticastIntervalSeconds": {},
 						"NotifyIPv6Scope": {},
 						"NotifyTTL": {}
 					}
@@ -340,6 +351,13 @@
 						}
 					}
 				}
+			}
+		},
+		"Role": {
+			"PropertyRequirements": {
+				"RoleId": {},
+				"IsPredefined": {},
+				"AssignedPrivileges": {}
 			}
 		},
 		"SessionService": {},
@@ -386,7 +404,7 @@
 				"Redundancy": {
 					"ReadRequirement": "IfImplemented",
 					"PropertyRequirements": {
-						"MemerId": {},
+						"MemberId": {},
 						"RedundancySet": {},
 						"Mode": {},
 						"Status": {},
