@@ -45,9 +45,14 @@
             "DataType": "String"
         },
         {
+            "Name": "KeyLengthBits",
+            "Required": true,
+            "DataType": "Number"
+        },
+        {
             "Name": "ResourceUri",
             "Required": true,
-            "DataType": "String"
+            "DataType": "Object"
         }
     ],
     "Oem": {},
