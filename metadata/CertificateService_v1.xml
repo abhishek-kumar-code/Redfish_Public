@@ -95,6 +95,10 @@
           <Annotation Term="OData.Description" String="The email address of the contact within the organization making the request."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the email address of the contact within the organization making the request."/>
         </Parameter>
+        <Parameter Name="KeyLengthBits" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Description" String="The length of the key in bits."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the length of the key in bits."/>
+        </Parameter>
         <Parameter Name="ResourceUri" Type="CertificateCollection.CertificateCollection" Nullable="false">
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate Collection where the certificate will be installed once the CA has signed the certificate."/>
