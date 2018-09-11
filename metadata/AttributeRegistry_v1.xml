@@ -125,6 +125,7 @@
           <Annotation Term="OData.Description" String="The unique name of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of this attribute that is unique in this registry."/>
           <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
+          <Annotation Term="Redfish.Required"/>	  
         </Property>
         <Property Name="Type" Type="AttributeRegistry.v1_0_0.AttributeType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -297,6 +298,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The unique value name of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the value name of the attribute. ValueName is a unique string within the list of possible values in the 'Value' array of a given attribute."/>
+          <Annotation Term="Redfish.Required"/>	  
         </Property>
         <Property Name="ValueDisplayName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -533,7 +535,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_5">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to clarify that AttributeValue.ValueName is a required property for enum type Attributes."/>
+      <Annotation Term="OData.Description" String="This version was created to clarify that Attributes.AttributeName and AttributeValue.ValueName are required properties."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_4.AttributeRegistry"/>
     </Schema>
 
@@ -591,7 +593,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to clarify that AttributeValue.ValueName is a required property for enum type Attributes."/>
+      <Annotation Term="OData.Description" String="This version was created to clarify that Attributes.AttributeName and AttributeValue.ValueName are required properties."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_3.AttributeRegistry"/>
     </Schema>
 
@@ -633,7 +635,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_2_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to clarify that AttributeValue.ValueName is a required property for enum type Attributes."/>
+      <Annotation Term="OData.Description" String="This version was created to clarify that Attributes.AttributeName and AttributeValue.ValueName are required properties."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_2_1.AttributeRegistry"/>
     </Schema>
 
