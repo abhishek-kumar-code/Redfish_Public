@@ -230,6 +230,9 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add ClearingLogic to a MessageRegistry."/>
+
+      <EntityType Name="MessageRegistry" BaseType="MessageRegistry.v1_1_2.MessageRegistry"/>
+
       <ComplexType Name="Message" BaseType="MessageRegistry.v1_0_0.Message">
         <Property Name="ClearingLogic" Type="MessageRegistry.v1_2_0.ClearingLogic">
           <Annotation Term="OData.Description" String="The clearing logic associated with this message.  The properties within indicate that what messages are cleared by this message as well as under what conditions."/>
