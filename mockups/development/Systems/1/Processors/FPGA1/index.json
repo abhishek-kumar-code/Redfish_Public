@@ -15,7 +15,7 @@
         "Health": "OK"
     },
     "Metrics": {
-        "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Metrics"
+        "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/ProcessorMetrics"
     },
     "TDPWatts": 120,
     "MaxTDPWatts": 150,
@@ -46,14 +46,14 @@
                 "UUID": "00000000-0000-0000-0000-000000000000",
                 "ProgrammableFromHost": true,
                 "AccelerationFunction": {
-                    "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions/Compression"
+                    "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/AccelerationFunctions/Compression"
                 }
             }
         ],
         "Oem": {}
     },
     "AccelerationFunctions": {
-        "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/Functions"
+        "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/AccelerationFunctions"
     },
     "Links": {
         "Endpoints": [],
