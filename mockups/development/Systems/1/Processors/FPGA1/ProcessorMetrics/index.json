@@ -15,7 +15,7 @@
         {
             "Level": 3,
             "CacheMiss": 0.12,
-            "CahceHitRatio": 0.719,
+            "CacheHitRatio": 0.719,
             "CacheMpi": 0.00088,
             "OccupancyBytes": 3030144,
             "OccupancyPercent": 90.1
@@ -36,7 +36,7 @@
                 {
                     "Level": 2,
                     "CacheMiss": 0.472,
-                    "CahceHitRatio": 0.57,
+                    "CacheHitRatio": 0.57,
                     "CacheMissesPerInstruction": 0.00346,
                     "OccupancyBytes": 198231,
                     "OccupancyPercent": 77.4
