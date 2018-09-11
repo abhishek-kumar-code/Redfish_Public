@@ -33,9 +33,21 @@
         "FirmwareId": "0x6400002fc614bb9",
         "FirmwareManufacturer": "Intel(R) Corporation",
         "FirmwareVersion": "Blue v.1.00.86",
-        "HostInterface": "PCIeGen4x8",
+        "HostInterface": {
+            "InterfaceType": "PCIe",
+            "PCIe": {
+                "MaxPCIeType": "Gen4",
+                "MaxLanes": 8
+            }
+        },
         "ExternalInterfaces": [
-            "Eth10Gx4"
+            {
+                "InterfaceType": "Ethernet",
+                "Ethernet": {
+                    "MaxSpeedMbps": 10240,
+                    "MaxLanes": 4
+                }
+            }
         ],
         "PCIeVirtualFunctions": 1,
         "ProgrammableFromHost": true,

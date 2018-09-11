@@ -607,14 +607,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string decsribing the FPGA firmware version."/>
         </Property>
         <Property Name="HostInterface" Type="Processor.v1_4_0.FpgaInterface" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The FPGA interface to the host."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be string that describes the connectivity to the host for system software to use."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an object that describes the connectivity to the host for system software to use."/>
         </Property>
         <Property Name="ExternalInterfaces" Type="Collection(Processor.v1_4_0.FpgaInterface)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of the FPGA external interfaces."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of strings that describe the external connectivity of the FPGA."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects that describe the external connectivity of the FPGA."/>
         </Property>
         <Property Name="PCIeVirtualFunctions" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -671,207 +669,60 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="FpgaInterface">
+      <ComplexType Name="FpgaInterface">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes an interface to the FPGA."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain information about the interface to the FPGA."/>
+        <Property Name="InterfaceType" Type="Processor.v1_4_0.FpgaInterfaceType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The FPGA interface type."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an enum that describes the type of interface to the FPGA."/>
+        </Property>
+        <Property Name="PCIe" Type="PCIeDevice.PCIeInterface">
+          <Annotation Term="OData.Description" String="Describes the PCI-e related information about this FPGA interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an object the describes the PCI-e related information about this FPGA interface."/>
+        </Property>
+        <Property Name="Ethernet" Type="Processor.v1_4_0.EthernetInterface">
+          <Annotation Term="OData.Description" String="Describes the Ethernet related information about this FPGA interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an object the describes the Ethernet related information about this FPGA interface."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="EthernetInterface">
+        <Annotation Term="OData.Description" String="This is the definition for an Ethernet Interface object."/>
+        <Annotation Term="OData.LongDescription" String="These properties shall be the definition for an Ethernet Interface for a Redfish implementation."/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
+        <Property Name="MaxSpeedMbps" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum speed supported by this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum speed supported by this interface."/>
+          <Annotation Term="Measures.Unit" String="Mbit/s"/>
+        </Property>
+        <Property Name="MaxLanes" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the number of lanes supported by this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of lanes supported by this interface."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="FpgaInterfaceType">
         <Member Name="QPI">
           <Annotation Term="OData.Description" String="The Intel QuickPath Interconnect."/>
         </Member>
         <Member Name="UPI">
           <Annotation Term="OData.Description" String="The Intel UltraPath Interconnect."/>
         </Member>
-        <Member Name="PCIeGen3">
-          <Annotation Term="OData.Description" String="PCIe generation 3."/>
+        <Member Name="PCIe">
+          <Annotation Term="OData.Description" String="A PCI Express interface."/>
         </Member>
-        <Member Name="PCIeGen3x1">
-          <Annotation Term="OData.Description" String="PCIe generation 3, one lane."/>
-        </Member>
-        <Member Name="PCIeGen3x2">
-          <Annotation Term="OData.Description" String="PCIe generation 3, two lanes."/>
-        </Member>
-        <Member Name="PCIeGen3x4">
-          <Annotation Term="OData.Description" String="PCIe generation 3, four lanes."/>
-        </Member>
-        <Member Name="PCIeGen3x8">
-          <Annotation Term="OData.Description" String="PCIe generation 3, eight lanes."/>
-        </Member>
-        <Member Name="PCIeGen3x16">
-          <Annotation Term="OData.Description" String="PCIe generation 3, sixteen lanes."/>
-        </Member>
-        <Member Name="PCIeGen4">
-          <Annotation Term="OData.Description" String="PCIe generation 3."/>
-        </Member>
-        <Member Name="PCIeGen4x1">
-          <Annotation Term="OData.Description" String="PCIe generation 4, one lane."/>
-        </Member>
-        <Member Name="PCIeGen4x2">
-          <Annotation Term="OData.Description" String="PCIe generation 4, two lanes."/>
-        </Member>
-        <Member Name="PCIeGen4x4">
-          <Annotation Term="OData.Description" String="PCIe generation 4, four lanes."/>
-        </Member>
-        <Member Name="PCIeGen4x8">
-          <Annotation Term="OData.Description" String="PCIe generation 4, eight lanes."/>
-        </Member>
-        <Member Name="PCIeGen4x16">
-          <Annotation Term="OData.Description" String="PCIe generation 4, sixteen lanes."/>
-        </Member>
-        <Member Name="PCIeGen5">
-          <Annotation Term="OData.Description" String="PCIe generation 5."/>
-        </Member>
-        <Member Name="PCIeGen5x1">
-          <Annotation Term="OData.Description" String="PCIe generation 5, one lane."/>
-        </Member>
-        <Member Name="PCIeGen5x2">
-          <Annotation Term="OData.Description" String="PCIe generation 5, two lanes."/>
-        </Member>
-        <Member Name="PCIeGen5x4">
-          <Annotation Term="OData.Description" String="PCIe generation 5, four lanes."/>
-        </Member>
-        <Member Name="PCIeGen5x8">
-          <Annotation Term="OData.Description" String="PCIe generation 5, eight lanes."/>
-        </Member>
-        <Member Name="PCIeGen5x16">
-          <Annotation Term="OData.Description" String="PCIe generation 5, sixteen lanes."/>
-        </Member>
-        <Member Name="Eth10G">
-          <Annotation Term="OData.Description" String="10G Ethernet interface."/>
-        </Member>
-        <Member Name="Eth10Gx1">
-          <Annotation Term="OData.Description" String="10G Ethernet interface, one lane."/>
-        </Member>
-        <Member Name="Eth10Gx2">
-          <Annotation Term="OData.Description" String="10G Ethernet interface, two lanes."/>
-        </Member>
-        <Member Name="Eth10Gx4">
-          <Annotation Term="OData.Description" String="10G Ethernet interface, four lanes."/>
-        </Member>
-        <Member Name="Eth10Gx8">
-          <Annotation Term="OData.Description" String="10G Ethernet interface, eight lanes."/>
-        </Member>
-        <Member Name="Eth10Gx10">
-          <Annotation Term="OData.Description" String="10G Ethernet interface, ten lanes."/>
-        </Member>
-        <Member Name="Eth25G">
-          <Annotation Term="OData.Description" String="25G Ethernet interface."/>
-        </Member>
-        <Member Name="Eth25Gx1">
-          <Annotation Term="OData.Description" String="25G Ethernet interface, one lane."/>
-        </Member>
-        <Member Name="Eth25Gx2">
-          <Annotation Term="OData.Description" String="25G Ethernet interface, two lanes."/>
-        </Member>
-        <Member Name="Eth25Gx4">
-          <Annotation Term="OData.Description" String="25G Ethernet interface, four lanes."/>
-        </Member>
-        <Member Name="Eth25Gx8">
-          <Annotation Term="OData.Description" String="25G Ethernet interface, eight lanes."/>
-        </Member>
-        <Member Name="Eth25Gx10">
-          <Annotation Term="OData.Description" String="25G Ethernet interface, ten lanes."/>
-        </Member>
-        <Member Name="Eth40G">
-          <Annotation Term="OData.Description" String="40G Ethernet interface."/>
-        </Member>
-        <Member Name="Eth40Gx1">
-          <Annotation Term="OData.Description" String="40G Ethernet interface, one lane."/>
-        </Member>
-        <Member Name="Eth40Gx2">
-          <Annotation Term="OData.Description" String="40G Ethernet interface, two lanes."/>
-        </Member>
-        <Member Name="Eth40Gx4">
-          <Annotation Term="OData.Description" String="40G Ethernet interface, four lanes."/>
-        </Member>
-        <Member Name="Eth40Gx8">
-          <Annotation Term="OData.Description" String="40G Ethernet interface, eight lanes."/>
-        </Member>
-        <Member Name="Eth40Gx10">
-          <Annotation Term="OData.Description" String="40G Ethernet interface, ten lanes."/>
-        </Member>
-        <Member Name="Eth50G">
-          <Annotation Term="OData.Description" String="50G Ethernet interface."/>
-        </Member>
-        <Member Name="Eth50Gx1">
-          <Annotation Term="OData.Description" String="50G Ethernet interface, one lane."/>
-        </Member>
-        <Member Name="Eth50Gx2">
-          <Annotation Term="OData.Description" String="50G Ethernet interface, two lanes."/>
-        </Member>
-        <Member Name="Eth50Gx4">
-          <Annotation Term="OData.Description" String="50G Ethernet interface, four lanes."/>
-        </Member>
-        <Member Name="Eth50Gx8">
-          <Annotation Term="OData.Description" String="50G Ethernet interface, eight lanes."/>
-        </Member>
-        <Member Name="Eth50Gx10">
-          <Annotation Term="OData.Description" String="50G Ethernet interface, ten lanes."/>
-        </Member>
-        <Member Name="Eth100G">
-          <Annotation Term="OData.Description" String="100G Ethernet interface."/>
-        </Member>
-        <Member Name="Eth100Gx1">
-          <Annotation Term="OData.Description" String="100G Ethernet interface, one lane."/>
-        </Member>
-        <Member Name="Eth100Gx2">
-          <Annotation Term="OData.Description" String="100G Ethernet interface, two lanes."/>
-        </Member>
-        <Member Name="Eth100Gx4">
-          <Annotation Term="OData.Description" String="100G Ethernet interface, four lanes."/>
-        </Member>
-        <Member Name="Eth100Gx8">
-          <Annotation Term="OData.Description" String="100G Ethernet interface, eight lanes."/>
-        </Member>
-        <Member Name="Eth100Gx10">
-          <Annotation Term="OData.Description" String="100G Ethernet interface, ten lanes."/>
-        </Member>
-        <Member Name="Eth200G">
-          <Annotation Term="OData.Description" String="200G Ethernet interface."/>
-        </Member>
-        <Member Name="Eth200Gx1">
-          <Annotation Term="OData.Description" String="200G Ethernet interface, one lane."/>
-        </Member>
-        <Member Name="Eth200Gx2">
-          <Annotation Term="OData.Description" String="200G Ethernet interface, two lanes."/>
-        </Member>
-        <Member Name="Eth200Gx4">
-          <Annotation Term="OData.Description" String="200G Ethernet interface, four lanes."/>
-        </Member>
-        <Member Name="Eth200Gx8">
-          <Annotation Term="OData.Description" String="200G Ethernet interface, eight lanes."/>
-        </Member>
-        <Member Name="Eth200Gx10">
-          <Annotation Term="OData.Description" String="200G Ethernet interface, ten lanes."/>
-        </Member>
-        <Member Name="Eth400G">
-          <Annotation Term="OData.Description" String="400G Ethernet interface."/>
-        </Member>
-        <Member Name="Eth400Gx1">
-          <Annotation Term="OData.Description" String="400G Ethernet interface, one lane."/>
-        </Member>
-        <Member Name="Eth400Gx2">
-          <Annotation Term="OData.Description" String="400G Ethernet interface, two lanes."/>
-        </Member>
-        <Member Name="Eth400Gx4">
-          <Annotation Term="OData.Description" String="400G Ethernet interface, four lanes."/>
-        </Member>
-        <Member Name="Eth400Gx8">
-          <Annotation Term="OData.Description" String="400G Ethernet interface, eight lanes."/>
-        </Member>
-        <Member Name="Eth400Gx10">
-          <Annotation Term="OData.Description" String="400G Ethernet interface, ten lanes."/>
-        </Member>
-        <Member Name="SPI">
-          <Annotation Term="OData.Description" String="Serial Peripheral Interface Bus."/>
-        </Member>
-        <Member Name="SMBus">
-          <Annotation Term="OData.Description" String="System Management Bus."/>
-        </Member>
-        <Member Name="I2C">
-          <Annotation Term="OData.Description" String="Inter-Integrated Circuit Bus."/>
-        </Member>
-        <Member Name="I3C">
-          <Annotation Term="OData.Description" String="Improved Inter-Integrated Circuit Bus."/>
+        <Member Name="Ethernet">
+          <Annotation Term="OData.Description" String="An Ethernet interface."/>
         </Member>
         <Member Name="OEM">
-          <Annotation Term="OData.Description" String="OEM-defined."/>
+          <Annotation Term="OData.Description" String="An OEM defined interface."/>
         </Member>
       </EnumType>
     </Schema>
