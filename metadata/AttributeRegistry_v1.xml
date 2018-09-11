@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.2.1-->
+<!--# Redfish Schema:  AttributeRegistry  v1.2.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -531,6 +531,12 @@
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_3.AttributeRegistry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to clarify that AttributeValue.ValueName is a required property for enum type Attributes."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_4.AttributeRegistry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_2.AttributeRegistry">
@@ -583,6 +589,12 @@
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to clarify that AttributeValue.ValueName is a required property for enum type Attributes."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_3.AttributeRegistry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_1_2.AttributeRegistry"/>
@@ -624,6 +636,6 @@
       <Annotation Term="OData.Description" String="This version was created to clarify that AttributeValue.ValueName is a required property for enum type Attributes."/>
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_2_1.AttributeRegistry"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
