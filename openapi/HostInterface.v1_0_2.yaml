@@ -63,7 +63,7 @@ components:
           x-longDescription: The value of this property shall be the ID of the Role
             resource that is configured for firmware authentication on this interface.
         HostEthernetInterfaces:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The Redfish link to the collection of network interface controllers
             or cards (NICs) that a Computer System uses to communicate with this Host
             Interface.
@@ -110,7 +110,7 @@ components:
             shall contain references to resources that are related to, but not contained
             by (subordinate to), this resource.
         ManagerEthernetInterface:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The Redfish link to a single network interface controllers
             or cards (NIC) that this Manager uses for network communication with this
             Host Interface.
@@ -122,7 +122,7 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
           readOnly: true
         NetworkProtocol:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: The Redfish link to the network services and their settings
             that the Manager controls.  It is here that clients will find network
             configuration options as well as network services.
@@ -162,7 +162,7 @@ components:
           description: An array of references to the Computer Systems connected to
             this Host Interface.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The value of this property shall be an array of references
@@ -170,7 +170,7 @@ components:
         ComputerSystems@odata.count:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.yaml#/components/schemas/count
         FirmwareAuthRole:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Role that has firmware authentication privileges
             on this Host Interface.
           readOnly: true
@@ -178,7 +178,7 @@ components:
             object instance, and should reference the object identified by property
             FirmwareAuthRoleId.
         KernelAuthRole:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A reference to the Role object defining Privileges for this
             Host Interface when using kernel authentication.
           readOnly: true

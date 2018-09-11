@@ -47,6 +47,7 @@ Off of the root are several folders which contain the schemas and mockups create
 | json-schema  | Redfish Schema files in json-schema format |
 | metadata     | Redfish Schema files in CSDL format |
 | mockups      | Redfish Mockups including the "development" and published, public-facing mockups |
+| openapi      | Redfish Schema files in OpenAPI v3 YAML format |
 | profiles     | Redfish Interoperability Profiles |
 | registries   | Redfish Message Registries |
 | release      | Individual released (published) documents in HTML and PDF formats |

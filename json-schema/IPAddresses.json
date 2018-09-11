@@ -24,6 +24,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_7.json#/definitions/IPv4Address"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_1_0.json#/definitions/IPv4Address"
                 }
             ],
             "description": "This type describes an IPv4 Address.",
@@ -51,6 +54,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_7.json#/definitions/IPv6Address"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_1_0.json#/definitions/IPv6Address"
                 }
             ],
             "description": "This type describes an IPv6 Address.",
@@ -59,25 +65,7 @@
         "IPv6GatewayStaticAddress": {
             "anyOf": [
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv6GatewayStaticAddress"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_2.json#/definitions/IPv6GatewayStaticAddress"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_3.json#/definitions/IPv6GatewayStaticAddress"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_4.json#/definitions/IPv6GatewayStaticAddress"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_5.json#/definitions/IPv6GatewayStaticAddress"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_6.json#/definitions/IPv6GatewayStaticAddress"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_7.json#/definitions/IPv6GatewayStaticAddress"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_1_0.json#/definitions/IPv6GatewayStaticAddress"
                 }
             ],
             "description": "This object represents a single IPv6 static address to be assigned on a network interface.",
@@ -105,6 +93,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_7.json#/definitions/IPv6StaticAddress"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_1_0.json#/definitions/IPv6StaticAddress"
                 }
             ],
             "description": "This object represents a single IPv6 static address to be assigned on a network interface.",

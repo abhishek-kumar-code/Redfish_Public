@@ -138,7 +138,7 @@ components:
           type: string
           x-longDescription: The value of this property shall be the name of the assembly.
         PhysicalContext:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Describes the area or device to which this assembly data applies.
           readOnly: true
           x-longDescription: The value of this property shall be a description of

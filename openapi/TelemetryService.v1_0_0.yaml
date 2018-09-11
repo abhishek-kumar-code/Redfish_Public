@@ -77,8 +77,8 @@ components:
           x-longDescription: This parameter shall contain the contents of the MetricReportValues
             array property in the generated metric report.
       required:
-      - MetricReportValues
       - MetricReportName
+      - MetricReportValues
       type: object
       x-longDescription: This action shall cause the event service to immediately
         generate the metric report, as an Alert Event. This message should then be
@@ -110,7 +110,7 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Id
           readOnly: true
         LogService:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: This is a reference to a Log Service used by the Telemetry
             Service.
           readOnly: true
@@ -124,17 +124,17 @@ components:
           x-longDescription: The value shall be the maximum number of metric reports
             supported by this service.
         MetricDefinitions:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to the collection of Metric Definitions.
           readOnly: true
           x-longDescription: The entries of shall be resources of type MetricDefinitionCollection.
         MetricReportDefinitions:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to the collection of Metric Report Definitions.
           readOnly: true
           x-longDescription: The value shall be a link to a resource of type MetricReportDefinitionCollection.
         MetricReports:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to the collection of Metric Reports.
           readOnly: true
           x-longDescription: The value shall be a link to a resource of type MetricReportCollection.
@@ -173,7 +173,7 @@ components:
           x-longDescription: The value shall define the function to apply over the
             collection duration.
         Triggers:
-          $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+          $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: A link to the collection of Triggers, which apply to metrics.
           readOnly: true
           x-longDescription: The value shall be a link to a resource of type TriggersCollection.

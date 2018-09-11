@@ -92,7 +92,7 @@ components:
           description: This structure is used to show redundancy for fans.  The Component
             ids will reference the members of the redundancy groups.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The values of the properties in this array shall be used
@@ -331,7 +331,7 @@ components:
           description: This structure is used to show redundancy for fans.  The Component
             ids will reference the members of the redundancy groups.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           readOnly: true
           type: array
           x-longDescription: The values of the properties in this array shall be used

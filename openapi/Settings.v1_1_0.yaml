@@ -84,7 +84,7 @@ components:
         Messages:
           description: This is an array of messages associated with the task.
           items:
-            $ref: https://gps.lss.emc.com/schemas/yaml/odata.v4_0_3.yaml#/components/schemas/idRef
+            $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           type: array
           x-longDescription: The value of this property shall be an array of messages
             associated with the task.
