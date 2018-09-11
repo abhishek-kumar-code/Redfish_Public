@@ -105,7 +105,7 @@
         </Parameter>
         <ReturnType Type="CertificateService.v0_9_0.GenerateCSRResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to perform a certificate signing request."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a PEM encoded signing request that is used to be signed by a certificate authority (CA).  The service shall retain the private key used for the generation of this request for when the certificate is installed.  The private key shall not be part of the response."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a PEM encoded signing request that is used to be signed by a certificate authority (CA).  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
       </Action>
     </Schema>
 
@@ -155,7 +155,7 @@
         <Property Name="CSRString" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The PEM encoded string for the certificate signing request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the PEM encoded string of the certificate signing request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the PEM encoded string of the certificate signing request.  The private key should not be part of the string."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
       </ComplexType>
