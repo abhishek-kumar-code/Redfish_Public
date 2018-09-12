@@ -50,8 +50,8 @@
             },
             "properties": {
                 "ClearsAll": {
-                    "description": "This property indicates that all prior conditions and messsages are cleared provided the ClearsIf condition is met.",
-                    "longDescription": "This property shall  ndicate that all prior conditions and messsages are cleared provided the ClearsIf condition is met.",
+                    "description": "This property indicates that all prior conditions and messages are cleared provided the ClearsIf condition is met.",
+                    "longDescription": "This property shall indicate that all prior conditions and messages are cleared provided the ClearsIf condition is met.",
                     "readonly": true,
                     "type": [
                         "boolean",
@@ -115,6 +115,18 @@
                 }
             },
             "properties": {
+                "ClearingLogic": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ClearingLogic"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The clearing logic associated with this message.  The properties within indicate that what messages are cleared by this message as well as under what conditions.",
+                    "longDescription": "This type shall contain the available actions for this resource."
+                },
                 "Description": {
                     "description": "This is a short description of how and when this message is to be used.",
                     "longDescription": "The value of this property shall indicate how and when this message is returned by the Redfish service.",
@@ -229,18 +241,6 @@
                     "$ref": "#/definitions/Actions",
                     "description": "The available actions for this resource.",
                     "longDescription": "The Actions property shall contain the available actions for this resource."
-                },
-                "ClearingLogic": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/ClearingLogic"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The clearing logic associated with this message.  The properties within indicate that what messages are cleared by this message as well as under what conditions.",
-                    "longDescription": "This type shall contain the available actions for this resource."
                 },
                 "Description": {
                     "anyOf": [
