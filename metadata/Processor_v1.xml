@@ -400,6 +400,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
       <EntityType Name="Processor" BaseType="Processor.v1_3_1.Processor">
         <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

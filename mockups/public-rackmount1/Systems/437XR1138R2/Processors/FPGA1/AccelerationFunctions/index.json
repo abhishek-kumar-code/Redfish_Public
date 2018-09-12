@@ -1,4 +1,5 @@
 {
+    "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#AccelerationFunctionCollection.AccelerationFunctionCollection",
     "Name": "Acceleration Function Collection",
     "Members@odata.count": 1,

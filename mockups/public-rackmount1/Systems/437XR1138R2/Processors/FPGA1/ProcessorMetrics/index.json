@@ -1,5 +1,6 @@
 {
-    "@odata.type": "#ProcessorMetrics.v1_0_0.ProcessorMetrics",
+    "@Redfish.ReleaseStatus": "WorkInProgress",
+    "@odata.type": "#ProcessorMetrics.v0_9_0.ProcessorMetrics",
     "Id": "Metrics",
     "Description": "Processor Metrics",
     "Name": "Processor Metrics",

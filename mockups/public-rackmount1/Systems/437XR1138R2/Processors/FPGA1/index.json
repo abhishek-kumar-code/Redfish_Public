@@ -1,4 +1,5 @@
 {
+    "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#Processor.v1_4_0.Processor",
     "Id": "FPGA1",
     "Name": "FPGA",
