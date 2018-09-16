@@ -8,48 +8,46 @@
 	},
 
 	"CircuitType": "Outlet",
-	"PhaseWiringType": "Single",
+	"PhaseWiringType": "SinglePhase3Wire",
 	"VoltageType": "AC",
-	"IECOutletType": "B",
-	"NEMAOutletType": 5,
+	"NEMAOutletType": "5-20",
 	"LockingOutlet": false,
 	"RatedCurrentAmps": 20,
 	"NominalVoltage": 120,
 
-	"IndicatorLED": "Lit",
+	"IndicatorLED": "On",
 	"PowerOnDelaySeconds": 4,
 	"PowerOffDelaySeconds": 0,
 
 	"PowerState": "On",
-	"BreakerState": "Normal",
-
+	
 	"PowerEnabled": true,
 
 	"Voltage": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
-		"Name": "Line1 to Neutral Voltage",
-		"Reading": 120,
+		"Name": "Outlet A1 Voltage L1N",
+		"Reading": 120.5,
 		"ReadingUnits": "V"
 	},
 	"PolyPhaseVoltages": {
 		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
-			"Name": "Line1 to Neutral Voltage",
-			"Reading": 120,
+			"Name": "Outlet A1 Voltage L1N",
+			"Reading": 120.5,
 			"ReadingUnits": "V"
 		}
 	},
 	"Current": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
-		"Name": "Line1 to Neutral Current",
-		"Reading": 3.4,
-		"PeakReading": 6.8,
+		"Name": "Outlet A1 Current",
+		"Reading": 3.45,
+		"PeakReading": 4.86,
 		"ReadingUnits": "A"
 	},
 	"PolyPhaseCurrents": {
-		"Line1": {
+		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
-			"Name": "Line1 to Neutral Current",
+			"Name": "Outlet A1 Current",
 			"Reading": 3.4,
 			"PeakReading": 6.8,
 			"ReadingUnits": "A"
@@ -58,36 +56,36 @@
 	"PowerReading": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
 		"Name": "Outlet A1 Power",		
-		"Reading": 412.36,
-		"PeakReading": 1037.1,
+		"Reading": 415.7,
+		"PeakReading": 586.6,
 		"ReadingUnits": "W"
 	},
 	"PolyPhasePowerReadings": {
 		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
 		    "Name": "Outlet A1 Power",
-			"Reading": 412.36,
-			"PeakReading": 1037.1,
+			"Reading": 415.7,
+			"PeakReading": 586.6,
 			"ReadingUnits": "W"
 		}
 	},
 	"Frequency": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
 		"Name": "Outlet A1 Frequency",
-		"Reading": 60.0,
+		"Reading": 60.1,
 		"ReadingUnits": "Hz"
 	},
 	"Energy": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
 		"Name": "Outlet A1 Energy",
-		"Reading": 26880,
+		"Reading": 36166,
 		"ReadingUnits": "W"
 	},
 	"EnergyReadings": {
-		"Line1": {
+		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
 		    "Name": "Outlet A1 Energy",
-			"Reading": 26880,
+			"Reading": 36166,
 			"ReadingUnits": "W"
 		}
 	},
@@ -96,10 +94,6 @@
 		"#Circuit.PowerControl": {
 			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/Circuit.PowerControl",
 			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1/PowerControlActionInfo"
-		},
-		"#Circuit.ResetBreaker": {
-			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1/Circuit.ResetBreaker",
-			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1/ResetBreakerActionInfo"
 		}
 	},
 

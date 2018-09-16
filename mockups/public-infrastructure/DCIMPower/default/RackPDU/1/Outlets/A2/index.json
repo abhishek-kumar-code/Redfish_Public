@@ -8,86 +8,84 @@
 	},
 
 	"CircuitType": "Outlet",
-	"PhaseWiringType": "Single",
+	"PhaseWiringType": "SinglePhase3Wire",
 	"VoltageType": "AC",
-	"IECOutletType": "B",
-	"NEMAOutletType": 5,
-	"LockingOutlet": true,
+	"NEMAOutletType": "5-20",
+	"LockingOutlet": false,
 	"RatedCurrentAmps": 20,
 	"NominalVoltage": 120,
 
-	"IndicatorLED": "Off",
-	"PowerOnDelaySeconds": 10,
+	"IndicatorLED": "On",
+	"PowerOnDelaySeconds": 6,
 	"PowerOffDelaySeconds": 0,
 
 	"PowerState": "On",
-	"BreakerState": "Normal",
 
 	"PowerEnabled": true,
 
 	"Voltage": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
-		"Name": "Line1 to Neutral Voltage",
-		"Reading": 120,
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA2",
+		"Name": "Outlet A2 Voltage L1N",
+		"Reading": 120.5,
 		"ReadingUnits": "V"
 	},
 	"PolyPhaseVoltages": {
 		"Line1ToNeutral": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
-			"Name": "Line1 to Neutral Voltage",
-			"Reading": 120,
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA2",
+			"Name": "Outlet A2 Voltage L1N",
+			"Reading": 120.5,
 			"ReadingUnits": "V"
 		}
 	},
 	"Current": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
-		"Name": "Line1 to Neutral Current",
-		"Reading": 1.9,
-		"PeakReading": 3.8,
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA2",
+		"Name": "Outlet A2 Current",
+		"Reading": 5.05,
+		"PeakReading": 6.25,
 		"ReadingUnits": "A"
 	},
 	"PolyPhaseCurrents": {
-		"Line1": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
-			"Name": "Line1 to Neutral Current",
-			"Reading": 1.9,
-			"PeakReading": 3.8,
+		"Line1ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA2",
+			"Name": "Outlet A2 Current",
+			"Reading": 5.05,
+			"PeakReading": 6.25,
 			"ReadingUnits": "A"
 		}
 	},
 	"PowerReading": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA2",
 		"Name": "Outlet A2 Power",		
-		"Reading": 345.97,
-		"PeakReading": 1455.4,
+		"Reading": 608.52,
+		"PeakReading": 753.1,
 		"ReadingUnits": "W"
 	},
 	"PolyPhasePowerReadings": {
 		"Line1ToNeutral": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA2",
 		    "Name": "Outlet A2 Power",
-			"Reading": 345.97,
-			"PeakReading": 1455.4,
+			"Reading": 608.52,
+			"PeakReading": 753.1,
 			"ReadingUnits": "W"
 		}
 	},
 	"Frequency": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA2",
 		"Name": "Outlet A2 Frequency",
-		"Reading": 60.0,
+		"Reading": 60.1,
 		"ReadingUnits": "Hz"
 	},
 	"Energy": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA2",
 		"Name": "Outlet A2 Energy",
-		"Reading": 78522,
+		"Reading": 52941,
 		"ReadingUnits": "W"
 	},
 	"EnergyReadings": {
-		"Line1": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
+		"Line1ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA2",
 		    "Name": "Outlet A2 Energy",
-			"Reading": 78522,
+			"Reading": 52941,
 			"ReadingUnits": "W"
 		}
 	},
@@ -96,10 +94,6 @@
 		"#Circuit.PowerControl": {
 			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/Circuit.PowerControl",
 			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A2/PowerControlActionInfo"
-		},
-		"#Circuit.ResetBreaker": {
-			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A2/Circuit.ResetBreaker",
-			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A2/ResetBreakerActionInfo"
 		}
 	},
 

@@ -9,71 +9,71 @@
 
 	"CircuitType": "Branch",
 	"PhaseWiringType": "TwoPhase3Wire",
-	"BreakerState": "Normal",
+	"OverCurrentProtectionState": "Normal",
 
 	"PolyPhaseVoltages": {
 		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageAL1N",
-			"Name": "Line1 to Neutral Voltage",
-			"Reading": 120,
+			"Name": "Branch A Voltage L1N",
+			"Reading": 120.5,
 			"ReadingUnits": "V"
 		},
 		"Line1ToLine2": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageAL1L2",
-			"Name": "Line1 to Line2 Voltage",
-			"Reading": 120.4,
+			"Name": "Branch A Voltage L12",
+			"Reading": 208.6,
 			"ReadingUnits": "V"
 		}
 	},
 	"Current": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA",
-		"Name": "Line1 to Neutral Current",
-		"Reading": 3.4,
-		"PeakReading": 6.8,
+		"Name": "Branch A Current",
+		"Reading": 14.4,
+		"PeakReading": 15.5,
 		"ReadingUnits": "A"
 	},
 	"PolyPhaseCurrents": {
 		"Line1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA",
-			"Name": "Line1 to Neutral Current",
-			"Reading": 3.4,
-			"PeakReading": 6.8,
+			"Name": "Branch A Current",
+			"Reading": 14.4,
+			"PeakReading": 15.5,
 			"ReadingUnits": "A"
 		}
 	},
 	"PowerReading": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA",
 		"Name": "Branch A Power",		
-		"Reading": 838.36,
-		"PeakReading": 1431.1,
+		"Reading": 1735.2,
+		"PeakReading": 1900.5,
 		"ReadingUnits": "W"
 	},
 	"PolyPhasePowerReadings": {
-		"Line1ToNeutral": {
+		"Line1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA1",
-		    "Name": "Branch A Power",
-			"Reading": 838.36,
-			"PeakReading": 1431.1,
+		  "Name": "Branch A Power",
+			"Reading": 1735.2,
+			"PeakReading": 1900.5,
 			"ReadingUnits": "W"
 		}
 	},
 	"Frequency": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA",
 		"Name": "Branch A Frequency",
-		"Reading": 60.0,
+		"Reading": 60.1,
 		"ReadingUnits": "Hz"
 	},
 	"Energy": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA",
 		"Name": "Branch A Energy",
-		"Reading": 79880,
+		"Reading": 325675,
 		"ReadingUnits": "W"
 	},
 	"EnergyReadings": {
 		"Line1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA1",
 		    "Name": "Branch A Energy",
-			"Reading": 79880,
+			"Reading": 325675,
 			"ReadingUnits": "W"
 		}
 	},
