@@ -23,37 +23,37 @@
 		"Line1ToLine2": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-1",
 			"Name": "Mains Voltage L1L2",
-			"Reading": 120,
+			"Reading": 208.6,
 			"ReadingUnits": "V"
 		},
 		"Line2ToLine3": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-2",
 			"Name": "Mains Voltage L2L3",
-			"Reading": 120,
+			"Reading": 209.2,
 			"ReadingUnits": "V"
 		},
 		"Line3ToLine1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-3",
 			"Name": "Mains Voltage L3L1",
-			"Reading": 120,
+			"Reading": 209.0,
 			"ReadingUnits": "V"
 		},
 		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-4",
 			"Name": "Mains Voltage L1N",
-			"Reading": 120,
+			"Reading": 120.5,
 			"ReadingUnits": "V"
 		},
 		"Line2ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-5",
 			"Name": "Mains Voltage L2N",
-			"Reading": 120,
+			"Reading": 120.2,
 			"ReadingUnits": "V"
 		},
 		"Line3ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-6",
 			"Name": "Mains Voltage L3N",
-			"Reading": 120,
+			"Reading": 120.7,
 			"ReadingUnits": "V"
 		}
 	},
@@ -79,7 +79,7 @@
 		"Neutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentMainsNeutral",
 			"Name": "Mains Current N",
-			"Reading": 40.2,
+			"Reading": 1.38,
 			"ReadingUnits": "A"
 		}
 	},
@@ -87,37 +87,37 @@
 		"Line1ToLine2": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-1",
 			"Name": "Mains Power L1L2",
-			"Reading": 412.36,
+			"Reading": 0.0,
 			"ReadingUnits": "W"
 		},
 		"Line2ToLine3": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-2",
 			"Name": "Mains Power L2L3",			
-			"Reading": 418.84,
+			"Reading": 0.0,
 			"ReadingUnits": "W"
 		},
 		"Line3ToLine1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-3",
 			"Name": "Mains Power L3L1",
-			"Reading": 405.31,
+			"Reading": 0.0,
 			"ReadingUnits": "W"
 		},
 		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-4",
 			"Name": "Mains Power L1N",			
-			"Reading": 412.36,
+			"Reading": 1735.2,
 			"ReadingUnits": "W"
 		},
 		"Line2ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-5",
 			"Name": "Mains Power L2N",
-			"Reading": 398.84,
+			"Reading": 1538.6,
 			"ReadingUnits": "W"
 		},
 		"Line3ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-6",
 			"Name": "Mains Power L3N",
-			"Reading": 415.42,
+			"Reading": 1629.5,
 			"ReadingUnits": "W"
 		}
 	},
