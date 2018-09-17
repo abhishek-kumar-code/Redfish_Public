@@ -53,6 +53,12 @@
             "Name": "ResourceUri",
             "Required": true,
             "DataType": "Object"
+        },
+        {
+            "Name": "CSRFormat",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [ "PEM", "DER" ]
         }
     ],
     "Oem": {},

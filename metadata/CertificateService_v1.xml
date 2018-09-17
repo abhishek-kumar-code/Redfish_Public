@@ -103,9 +103,13 @@
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate Collection where the certificate will be installed once the CA has signed the certificate."/>
         </Parameter>
+        <Parameter Name="CSRFormat" Type="CertificateService.v0_9_0.CSRFormat" Nullable="false">
+          <Annotation Term="OData.Description" String="The requested format of the certificate signing request."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the format type for the certificate signing request."/>
+        </Parameter>
         <ReturnType Type="CertificateService.v0_9_0.GenerateCSRResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to perform a certificate signing request."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a PEM encoded signing request that is used to be signed by a certificate authority (CA).  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a signing request that is used to be signed by a certificate authority (CA), and the format shall follow the requirements specified by the CSRFormat parameter.  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
       </Action>
     </Schema>
 
@@ -142,6 +146,17 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
+      <EnumType Name="CSRFormat">
+        <Member Name="PEM">
+          <Annotation Term="OData.Description" String="A PEM encoded certificate signing request."/>
+          <Annotation Term="OData.LongDescription" String="The format of the certificate signing request shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC2986."/>
+        </Member>
+        <Member Name="DER">
+          <Annotation Term="OData.Description" String="A DER encoded certificate signing request."/>
+          <Annotation Term="OData.LongDescription" String="The format of the certificate signing request shall be the Base64 encoding of a Distinguished Encoding Rules (DER) binary, containing structures specified by RFC2986."/>
+        </Member>
+      </EnumType>
+
       <ComplexType Name="GenerateCSRResponse">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The response body for the GenerateCSR action."/>
@@ -154,8 +169,14 @@
         </NavigationProperty>
         <Property Name="CSRString" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The PEM encoded string for the certificate signing request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the PEM encoded string of the certificate signing request.  The private key should not be part of the string."/>
+          <Annotation Term="OData.Description" String="The string for the certificate signing request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the string of the certificate signing request, and the format shall follow the requirements specified by the CSRFormat property.  The private key should not be part of the string."/>
+          <Annotation Term="Redfish.Required"/>
+        </Property>
+        <Property Name="CSRFormat" Type="CertificateService.v0_9_0.CSRFormat" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The requested format of the certificate signing request."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the format type for the certificate signing request."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
       </ComplexType>
