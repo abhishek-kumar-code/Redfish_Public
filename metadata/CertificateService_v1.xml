@@ -109,7 +109,7 @@
         </Parameter>
         <ReturnType Type="CertificateService.v0_9_0.GenerateCSRResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to perform a certificate signing request."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a signing request that is used to be signed by a certificate authority (CA), and the format shall follow the requirements specified by the CSRFormat parameter.  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a signing request that is used to be signed by a certificate authority (CA), and the format shall follow the requirements specified by the value of the CSRFormat parameter.  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
       </Action>
     </Schema>
 
@@ -170,7 +170,7 @@
         <Property Name="CSRString" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The string for the certificate signing request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the string of the certificate signing request, and the format shall follow the requirements specified by the CSRFormat property.  The private key should not be part of the string."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the string of the certificate signing request, and the format shall follow the requirements specified by the value of the CSRFormat property.  The private key should not be part of the string."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="CSRFormat" Type="CertificateService.v0_9_0.CSRFormat" Nullable="false">
