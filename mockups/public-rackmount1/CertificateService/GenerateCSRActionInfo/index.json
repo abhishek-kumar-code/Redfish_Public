@@ -59,6 +59,27 @@
             "Required": true,
             "DataType": "String",
             "AllowableValues": [ "PEM", "DER" ]
+        },
+        {
+            "Name": "KeyUsage",
+            "Required": false,
+            "DataType": "StringArray",
+            "AllowableValues": [
+                "DigitalSignature",
+                "NonRepudiation",
+                "KeyEncipherment",
+                "DataEncipherment",
+                "KeyAgreement",
+                "KeyCertSign",
+                "CRLSigning",
+                "EncipherOnly",
+                "DecipherOnly",
+                "ServerAuthentication",
+                "ClientAuthentication",
+                "CodeSigning",
+                "EmailProtection",
+                "OCSPSigning"
+            ]
         }
     ],
     "Oem": {},
