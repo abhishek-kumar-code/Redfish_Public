@@ -55,7 +55,6 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/TaskService/Tasks/{TaskId}</String>
-			<String>/redfish/v1/StorageServices/{StorageServiceId}Volumes/{VolumeId}/AssociatedTask</String>
           </Collection>
         </Annotation>
       </EntityType>

@@ -56,7 +56,6 @@
             <String>/redfish/v1/Managers/{ManagerId}/HostInterfaces/{HostInterfaceId}/HostEthernetInterfaces</String>
             <String>/redfish/v1/Systems/{ComputerSystemId}/EthernetInterfaces</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/EthernetInterfaces</String>
-			<String>/redfish/v1/StorageServices/{StorageServiceId}/FileSystems/{FileSystemId}/ExportedShares/{FileShareId}/EthernetInterfaces</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(EthernetInterface.EthernetInterface)">
