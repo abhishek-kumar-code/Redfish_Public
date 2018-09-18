@@ -64,25 +64,13 @@
           <Annotation Term="OData.Description" String="A PEM encoded certificate."/>
           <Annotation Term="OData.LongDescription" String="The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280."/>
         </Member>
-        <Member Name="DER">
-          <Annotation Term="OData.Description" String="A DER encoded certificate."/>
-          <Annotation Term="OData.LongDescription" String="The format of the certificate shall be the Base64 encoding of a Distinguished Encoding Rules (DER) binary, containing structures specified by RFC5280."/>
-        </Member>
-        <Member Name="PKCS7_PEM">
+        <Member Name="PKCS7">
           <Annotation Term="OData.Description" String="A PEM encoded PKCS7 certificate."/>
           <Annotation Term="OData.LongDescription" String="The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280 and RFC2315."/>
         </Member>
-        <Member Name="PKCS7_DER">
-          <Annotation Term="OData.Description" String="A DER encoded PKCS7 certificate."/>
-          <Annotation Term="OData.LongDescription" String="The format of the certificate shall be the Base64 encoding of a Distinguished Encoding Rules (DER) binary, containing structures specified by RFC5280 and RFC2315."/>
-        </Member>
-        <Member Name="PKCS12_PEM">
+        <Member Name="PKCS12">
           <Annotation Term="OData.Description" String="A PEM encoded PKCS12 certificate."/>
           <Annotation Term="OData.LongDescription" String="The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280 and RFC7292."/>
-        </Member>
-        <Member Name="PKCS12_DER">
-          <Annotation Term="OData.Description" String="A DER encoded PKCS12 certificate."/>
-          <Annotation Term="OData.LongDescription" String="The format of the certificate shall be the Base64 encoding of a Distinguished Encoding Rules (DER) binary, containing structures specified by RFC5280 and RFC7292."/>
         </Member>
       </EnumType>
     </Schema>
