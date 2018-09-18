@@ -77,15 +77,13 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the ASCII representation of the serial number of the certificate."/>
           <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}:){0,}([0-9A-Fa-f]{2})$"/>
         </Property>
-        <Property Name="Issuer" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="Issuer" Type="Certificate.v0_9_0.Identifier" Nullable="false">
           <Annotation Term="OData.Description" String="The issuer of the certificate."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the issuer of the certificate and shall follow the format described by RFC2253."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an object containing information about the issuer of the certificate."/>
         </Property>
-        <Property Name="Subject" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="Subject" Type="Certificate.v0_9_0.Identifier" Nullable="false">
           <Annotation Term="OData.Description" String="The subject of the certificate."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the subject of the certificate and shall follow the format described by RFC2253."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an object containing information about the subject of the certificate."/>
         </Property>
         <Property Name="FingerprintMD5" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -133,6 +131,47 @@
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
       </EntityType>
+
+      <ComplexType Name="Identifier">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The identifier information about a certificate."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the properties used to identify the issuer or subject of a certificate."/>
+        <Property Name="CommonName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The fully qualified domain name of the entity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the fully qualified domain name of the entity."/>
+        </Property>
+        <Property Name="Organization" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The name of the organization of the entity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the name of the organization of the entity."/>
+        </Property>
+        <Property Name="OrganizationalUnit" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The name of the unit or division of the organization of the entity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the name of the unit or division of the organization of the entity."/>
+        </Property>
+        <Property Name="City" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The city or locality of the organization of the entity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the city or locality of the organization of the entity."/>
+        </Property>
+        <Property Name="State" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The state, province, or region of the organization of the entity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the state, province, or region of the organization of the entity."/>
+        </Property>
+        <Property Name="Country" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The country of the organization of the entity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the two letter ISO code for the country of the organization of the entity."/>
+        </Property>
+        <Property Name="Email" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The email address of the contact within the organization of the entity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the email address of the contact within the organization of the entity."/>
+        </Property>
+      </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
