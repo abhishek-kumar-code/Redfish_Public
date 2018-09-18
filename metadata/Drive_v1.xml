@@ -76,6 +76,11 @@
             <String>/redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Drives/{DriveId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/Drives</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/Volumes/{VolumeId}/CapacitySources/ProvidingDrives/{DriveId}</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/StoragePools/{StoragePoolId}/CapacitySources/ProvidingDrives/{DriveId}</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/FileSystems/{FileSystemId}/CapacitySources/ProvidingDrives/{DriveId}</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/FileSystems/{FileSystemId}/FileShares/{FileShare}/CapacitySources/ProvidingDrives/{DriveId}</String>
           </Collection>
         </Annotation>
       </EntityType>

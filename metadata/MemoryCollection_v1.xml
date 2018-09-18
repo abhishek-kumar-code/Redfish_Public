@@ -53,6 +53,9 @@
           <Collection>
             <String>/redfish/v1/Systems/{ComputerSystemId}/Memory</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/FileSystems/{FileSystemId}/CapacitySources/{CapacitySourceId}/ProvidingMemory</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/StoragePools/{StoragePoolId}/CapacitySources/{CapacitySourceId}/ProvidingMemory</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/Volumes/{VolumeId}/CapacitySources/{CapacitySourceId}/ProvidingMemory</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Memory.Memory)">

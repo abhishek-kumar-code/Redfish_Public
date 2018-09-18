@@ -55,6 +55,7 @@
             <String>/redfish/v1/Systems/{ComputerSystemId}/Storage</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage</String>
+			<String>/redfish/v1/StorageServices/{StorageServiceId}/HostingSystem</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Storage.Storage)">
