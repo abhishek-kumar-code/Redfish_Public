@@ -87,6 +87,36 @@
           <Annotation Term="OData.Description" String="The subject of the certificate."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the subject of the certificate and shall follow the format described by RFC2253."/>
         </Property>
+        <Property Name="FingerprintMD5" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The MD5 fingerprint of the certificate."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the ASCII representation of the MD5 fingerprint of the certificate."/>
+          <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}:){15}([0-9A-Fa-f]{2})$"/>
+        </Property>
+        <Property Name="FingerprintSHA1" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The SHA1 fingerprint of the certificate."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the ASCII representation of the SHA1 fingerprint of the certificate."/>
+          <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}:){19}([0-9A-Fa-f]{2})$"/>
+        </Property>
+        <Property Name="FingerprintSHA256" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The SHA256 fingerprint of the certificate."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the ASCII representation of the SHA256 fingerprint of the certificate."/>
+          <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}:){31}([0-9A-Fa-f]{2})$"/>
+        </Property>
+        <Property Name="FingerprintSHA384" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The SHA384 fingerprint of the certificate."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the ASCII representation of the SHA384 fingerprint of the certificate."/>
+          <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}:){47}([0-9A-Fa-f]{2})$"/>
+        </Property>
+        <Property Name="FingerprintSHA512" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The SHA512 fingerprint of the certificate."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string containing the ASCII representation of the SHA512 fingerprint of the certificate."/>
+          <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}:){63}([0-9A-Fa-f]{2})$"/>
+        </Property>
         <Property Name="ValidNotBefore" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The date when the certificate becomes valid."/>
