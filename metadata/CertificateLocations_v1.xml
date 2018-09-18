@@ -77,7 +77,7 @@
       <ComplexType Name="Links" BaseType="Resource.Links">
         <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
-        <NavigationProperty Name="Certificates" Type="Collection(Certificates.Certificates)">
+        <NavigationProperty Name="Certificates" Type="Collection(Certificate.Certificate)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the certificates installed on this service."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Certificate resources that are installed on this service."/>

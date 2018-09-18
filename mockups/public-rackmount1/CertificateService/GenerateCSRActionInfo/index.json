@@ -55,12 +55,6 @@
             "DataType": "Object"
         },
         {
-            "Name": "CSRFormat",
-            "Required": true,
-            "DataType": "String",
-            "AllowableValues": [ "PEM", "DER" ]
-        },
-        {
             "Name": "KeyUsage",
             "Required": false,
             "DataType": "StringArray",
