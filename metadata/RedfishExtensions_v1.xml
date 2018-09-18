@@ -20,6 +20,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml">
     <edmx:Include Namespace="CollectionCapabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Certificate_v1.xml">
+    <edmx:Include Namespace="Certificate"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -123,6 +126,9 @@
       </Term>
       <Term Name="ExcerptCopyOnly" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term specifies that the property is a data element that shall appear only when the resource definition is used as a copy (using the ExcerptCopy term), and shall not appear in the original data resource."/>
+      </Term>
+      <Term Name="SupportedCertificates" Type="Collection(Certificate.CertificateType)">
+        <Annotation Term="OData.Description" String="The term specifies the supported certificate formats for a given certificate collection."/>
       </Term>
 
       <EnumType Name="ReleaseStatusType">
