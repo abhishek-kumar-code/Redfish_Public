@@ -15,71 +15,71 @@
 		"Line3ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageCL3N",
 			"Name": "Branch C Voltage L3N",
-			"Reading": 120.7,
+			"Reading": 118.4,
 			"ReadingUnits": "V"
 		},
 		"Line3ToLine1": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageCL3L1",
 			"Name": "Branch C Voltage L31",
-			"Reading": 209.0,
+			"Reading": 205.1,
 			"ReadingUnits": "V"
 		}
 	},
 	"Current": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentC",
 		"Name": "Branch C Current",
-		"Reading": 13.5,
-		"PeakReading": 14.0,
+		"Reading": 4.13,
+		"PeakReading": 4.48,
 		"ReadingUnits": "A"
 	},
 	"PolyPhaseCurrents": {
 		"Line3": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentC",
 			"Name": "Branch C Current",
-			"Reading": 13.5,
-			"PeakReading": 14.0,
+			"Reading": 4.13,
+			"PeakReading": 4.48,
 			"ReadingUnits": "A"
 		}
 	},
 	"PowerReading": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerC",
 		"Name": "Branch C Power",
-		"Reading": 1629.5,
-		"PeakReading": 1689.8,
+		"Reading": 816.5,
+		"PeakReading": 920.8,
 		"ReadingUnits": "W",
-		"ApparentVA": 0,
-		"ReactiveVAR": 0,
-		"PowerFactor": 0.97
+		"ApparentVA": 816.5,
+		"ReactiveVAR": 0.0,
+		"PowerFactor": 1.00
 	},
 	"PolyPhasePowerReadings": {
 		"Line3": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerC1",
 			"Name": "Branch C Power",
-			"Reading": 1629.5,
-			"PeakReading": 1689.8,
+			"Reading": 816.5,
+			"PeakReading": 920.8,
 			"ReadingUnits": "W",
-			"ApparentVA": 0,
-			"ReactiveVAR": 0,
-			"PowerFactor": 0.97
+			"ApparentVA": 816.5,
+			"ReactiveVAR": 0.0,
+			"PowerFactor": 1.00
 		}
 	},
 	"Frequency": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyC",
 		"Name": "Branch C Frequency",
-		"Reading": 60.1,
+		"Reading": 60.0,
 		"ReadingUnits": "Hz"
 	},
 	"Energy": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC",
 		"Name": "Branch C Energy",
-		"Reading": 141766,
+		"Reading": 121666,
 		"ReadingUnits": "W"
 	},
 	"EnergyReadings": {
 		"Line3": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC1",
 			"Name": "Branch C Energy",
-			"Reading": 141766,
+			"Reading": 121666,
 			"ReadingUnits": "W"
 		}
 	},
@@ -100,6 +100,6 @@
 		}
 	},
 	"@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/C",
 	"@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

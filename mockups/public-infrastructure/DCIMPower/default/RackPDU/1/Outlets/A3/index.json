@@ -10,69 +10,75 @@
 	"CircuitType": "Outlet",
 	"PhaseWiringType": "TwoPhase3Wire",
 	"VoltageType": "AC",
-	"IECOutletType": "IEC-C13",
+	"IECOutletType": "C13",
 	"LockingOutlet": false,
-	"RatedCurrentAmps": 16,
+	"RatedCurrentAmps": 12,
 	"NominalVoltage": 208,
 
-	"IndicatorLED": "Off",
+	"IndicatorLED": "On",
 	"PowerOnDelaySeconds": 10,
 	"PowerOffDelaySeconds": 0,
 
-	"PowerState": "Off",
+	"PowerState": "On",
 
-	"PowerEnabled": false,
+	"PowerEnabled": true,
 
 	"Voltage": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA3",
 		"Name": "Outlet A3 Voltage L12",
-		"Reading": 209.0,
+		"Reading": 202.3,
 		"ReadingUnits": "V"
 	},
 	"PolyPhaseVoltages": {
 		"Line1ToLine2": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA3",
 			"Name": "Outlet A3 Voltage L12",
-			"Reading": 209.0,
+			"Reading": 202.3,
 			"ReadingUnits": "V"
 		}
 	},
 	"Current": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA3",
 		"Name": "Outlet A3 Current",
-		"Reading": 0.00,
-		"PeakReading": 0.00,
+		"Reading": 1.73,
+		"PeakReading": 2.50,
 		"ReadingUnits": "A"
 	},
 	"PolyPhaseCurrents": {
 		"Line1ToLine2": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA3",
 			"Name": "Outlet A3 Current",
-			"Reading": 0.00,
-			"PeakReading": 0.00,
+			"Reading": 1.73,
+			"PeakReading": 2.50,
 			"ReadingUnits": "A"
 		}
 	},
 	"PowerReading": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA3",
 		"Name": "Outlet A3 Power",		
-		"Reading": 0.0,
-		"PeakReading": 0.0,
-		"ReadingUnits": "W"
+		"Reading": 349.9,
+		"PeakReading": 505.7,
+		"ReadingUnits": "W",
+		"ApparentVA": 349.9,
+		"ReactiveVAR": 0.0,
+		"PowerFactor": 1.00
 	},
 	"PolyPhasePowerReadings": {
 		"Line1ToLine2": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerA3",
-		    "Name": "Outlet A3 Power",
-			"Reading": 0.0,
-			"PeakReading": 0.0,
-			"ReadingUnits": "W"
+		  "Name": "Outlet A3 Power",
+			"Reading": 349.9,
+			"PeakReading": 505.7,
+			"ReadingUnits": "W",
+			"ApparentVA": 349.9,
+		  "ReactiveVAR": 0.0,
+		  "PowerFactor": 1.00
 		}
 	},
 	"Frequency": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyA3",
 		"Name": "Outlet A3 Frequency",
-		"Reading": 60.1,
+		"Reading": 60.0,
 		"ReadingUnits": "Hz"
 	},
 	"Energy": {
