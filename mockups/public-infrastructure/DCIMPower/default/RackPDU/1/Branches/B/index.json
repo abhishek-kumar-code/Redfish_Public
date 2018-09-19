@@ -9,7 +9,7 @@
 
 	"CircuitType": "Branch",
 	"PhaseWiringType": "TwoPhase3Wire",
-	"OverCurrentProtectionState": "Normal",
+	"BreakerState": "Normal",
 
 	"PolyPhaseVoltages": {
 		"Line2ToNeutral": {
