@@ -47,6 +47,41 @@ This document contains details about specific properties contained within Schema
  -  Purpose of the document
  -  Structure and usage
  -  Other sources of information
+
+# General Considerations
+
+## Maintain Tree Stability
+
+The resource tree should be stable.   
+
+An unusual or non-trivial change to the configuration of the system's components might cause a change in the resource tree. This would likely be a rare occurence.
+
+From the point of view of a Redfish client application, resetting the Redfish service should not in itself alter the tree. Assuming that no changes were made to any components, the Redfish service should return the same tree after a reset of the service. A Redfish client should expect persistence of the resource tree when the underlying components have not changed.
+
+For example, performing a reboot or power operation on a system, the client should be able to expect stability of the URIs. If a client was able to perform a GET request on a resource /redfish/v1/AccountService/Accounts/5, the client should be able to perform a GET request on the same URI after a power cycle.
+
+### Handling Collections
+
+Implementations of a Redfish service should account for the treatment of collections, where URLs are likely to change. The variability of URIs within a collection, should not affect resources that are higher in the tree's hierarchy.
+
+There might be logic required to handle certain situations. For example, if an operator of a rack of servers, physically removes adapters, it is reasonable to assume that the previous sequential numbering of adapters might change.
+
+Do not to imply logical or functional relationships based on physical relationships. Functional in this context refers to the abstract description of the design or topology of the components.
+
+This is important when deciding how to represent the name of a collection. When selecting an ID value for collection members, avoid using values associated with the physical component to which it refers. For example, suppose the system has a bladed enclosure and that there can be 16 servers (chassis) within a Chassis. Avoid naming the enclosure based on the serial number. That physical aspect (the serial number) of the component might change even though the functional view of the Chassis is the same.
+
+For example, a more useful naming convention in this case would be: 
+
+ - /blade_slot_2
+ - /blade_slot_3
+ 
+### Caching Schema Data
+
+When implementing a Redfish service, it is likely that it will be necessary to cache some of the data as opposed to reading the data from each of the components for every request. What guidelines should be followed when caching the data?
+
+An implementation can cache and reuse the resource tree as long as no system events have been detected that would alter the tree. It would be a rare occurrence to re-build the resource-tree from scratch.
+
+For example, suppose a system has a collection with 7 hard drives. The operator of the computer system adds another hard drive. Some form of caching might be used to maintain the original 7 drives at their original URIs. Only the added 8th drive would require a new name space.
  
 # Common Redfish Properties
 
