@@ -1,8 +1,8 @@
 ---
-DocTitle: Supplmental Material for the Redfish Schemas
+DocTitle: Supplemental Material for the Redfish Schemas
 DocClass: DMTF Specification
 DocVersion: '0.5.0'
-modified: '2017-3-29'
+modified: '2018-01-19'
 status: work in progress
 released: false
 copyright: '2017'
@@ -105,15 +105,31 @@ Collections ...
 
 #### UUID
 
-The value of this property contains a universal unique identifier number for the system.  Clients should consider the value of the property to be opaque and should not interpret any sub-fields within the UUID, but comparisons between UUID representations should always be case-insensitive.
-The format of the string follows the 35-character string format specified in RFC4122 of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" where each x represents a hex value 0-1,a-f.
+The UUID property contains the value of the Universally Unique IDentifier (UUID) of a system, also known in some systems as GUIDs (Globally Unique IDentifier). A UUID is 128 bits long (16 bytes). 
 
-If the computer system supports SMBIOS, then the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the Redfish API.
+Redfish clients should consider the value of the property to be opaque and should not interpret any sub-fields within the UUID.
 
-The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
+The UUID property is a string data type. The format of the string is the 35-character string format specified in RFC4122: "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx". Each x represents a hexadecimal digit (0-f).
+
+If the computer system supports SMBIOS, then the UUID string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS. The UUID is represented out-of-band through the Redfish API.
+
+##### Case sensitivity
+
+Regarding the case of the hex values, RFC4122 specifies that the hex values should be lowercase characters. Most modern scripting languages typically also represent hex values in lowercase characters following the RFC. However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output. 
+
+Comparisons between UUID values should always be case-insensitive.
+
+For new Redfish implementations, the recommendation is to follow RFC4122 guidelines: output using lower-case hex values when converting from the SMBIOS raw binary data.
+
+Redfish implementations and operating system APIs are permitted to output in uppercase. For that reason, Redfish clients MUST compare UUIDs using a case-insensitive comparison (as recommended by RFC4122).
+
+##### Conversion of UUID format
+
+The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
+
 WMI and Linux dmidecode also follow the SMBIOS guidelines.
 
-Specifically, since RFC4122 defines that the canonical string value should follow network byte ordering, and since SMBIOS represents the UUID as five fields shown below:
+Specifically, RFC4122 defines that the canonical string value should follow network byte ordering. The SMBIOS represents the UUID as five fields:
 
     {
      DWORD    time_low,
@@ -123,15 +139,20 @@ Specifically, since RFC4122 defines that the canonical string value should follo
      BYTE     clock_seq_low,
      BYTE[6]  node
     }
-then for little-endian systems (including x86 systems), there is a little-endian to network-byte-order conversion required for the first three fields to convert the SMBIOS binary UUID to network byte order.
 
-Therefore, as specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:
+Little-endian systems (including x86 systems) require a little-endian to network-byte-order conversion for the first three fields in order to convert the SMBIOS binary UUID to network byte order.
+
+As specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:
 
     "00112233-4455-6677-8899-aabbccddeeff"
+    
 then the corresponding raw representation in the SMBIOS UUID structure would be:
 
-    raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00,    0x55, 0x44,     0x77, 0x66,     0x88, 0x99,     0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
-and the C-code to convert the raw SMBIOS UUID struct in a little-endian system to the canonical string would be:
+    raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00, 0x55, 0x44, 0x77, 0x66, 0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
+
+Notice in the above SMBIOS representation that each of the first three words boundaries are in little-endian order. For example, the hex digits "00112233" are represented by the first raw SMBIOS 4-byte DWORD "0x33, 0x22, 0x11, 0x00".
+
+The following sample code (written in C) could be used to convert the raw SMBIOS UUID struct in a little-endian system to the 35-character canonical string:
 
     /* routine to convert raw little-endian smbios structure to canonical string */
     sprintf(redfishUUID,"%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x")
@@ -139,19 +160,16 @@ and the C-code to convert the raw SMBIOS UUID struct in a little-endian system t
         raw_smbios_uuid[5],raw_smbios_uuid[4],
         raw_smbios_uuid[7],raw_smbios_uuid[6],
         raw_smbios_uuid[8],raw_smbios_uuid[9],
-        raw_smbios_uuid[10],raw_smbios_uuid[11],raw_smbios_uuid[12],raw_smbios_uuid[13],raw_smbios_uuid[14],raw_smbios_uuid[15]
+        raw_smbios_uuid[10],raw_smbios_uuid[11],
+        raw_smbios_uuid[12],raw_smbios_uuid[13],
+	raw_smbios_uuid[14],raw_smbios_uuid[15]
         );
     
-This will create the same canonical formated string as WMI and dmidecode for little-endian X86 systems.
-In the case that the computer architecture is not little-endian, then the conversion and canonical representation should be the same as the OS APIs such as WMI and dmidecode.
+The above sample code creates the same canonical-formated string as WMI and dmidecode for little-endian X86 systems.
+
+If the computer architecture is not little-endian, then the conversion and canonical representation should be the same as the operating system's APIs, such as WMI and dmidecode.
 
 Note that as specified in RFC4122, the fields in the string should be zero-filled hex values as shown in the conversion code above so that the overall string length and format is of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx.
-
-Regarding the case of the hex values:  RFC4122 specifies that on output the hex values should be lower-case, but that clients should use case-insensitive comparison on input.  Most modern scripting languages typically also represent hex values in lower-case following the RFC.
-However, dmidecode, WMI and some Redfish implementations currently use upper-case for UUID on output.
-
-Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lower-case hex values when converting from the SMBIOS raw binary data as shown in the code example above.
-However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive compares (as recommended by RFC4122).
 
 ## Processor
 
