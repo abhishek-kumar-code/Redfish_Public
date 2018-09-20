@@ -53,6 +53,8 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/Fabrics/{FabricId}/Endpoints</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/EndpointGroups/{EndpointGroupId}/Endpoints</String>
+			<String>/redfish/v1/StorageServices/{StorageServiceId}/Endpoints</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Endpoint.Endpoint)">

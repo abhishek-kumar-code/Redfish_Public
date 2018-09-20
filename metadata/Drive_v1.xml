@@ -80,7 +80,7 @@
             <String>/redfish/v1/StorageServices/{StorageServiceId}/Volumes/{VolumeId}/CapacitySources/ProvidingDrives/{DriveId}</String>
             <String>/redfish/v1/StorageServices/{StorageServiceId}/StoragePools/{StoragePoolId}/CapacitySources/ProvidingDrives/{DriveId}</String>
             <String>/redfish/v1/StorageServices/{StorageServiceId}/FileSystems/{FileSystemId}/CapacitySources/ProvidingDrives/{DriveId}</String>
-            <String>/redfish/v1/StorageServices/{StorageServiceId}/FileSystems/{FileSystemId}/FileShares/{FileShare}/CapacitySources/ProvidingDrives/{DriveId}</String>
+            <String>/redfish/v1/StorageServices/{StorageServiceId}/FileSystems/{FileSystemId}/FileShares/{FileShareId}/CapacitySources/ProvidingDrives/{DriveId}</String>
           </Collection>
         </Annotation>
       </EntityType>
