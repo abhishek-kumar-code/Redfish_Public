@@ -27,8 +27,8 @@
     "jsonschema": "^1.1.1",
     "libxmljs-mt": "^0.18.0",
     "marked": "^0.3.5",
-    "openapi-schema-validator": "^2.0.1",
     "request": "^2.69",
+    "swagger-parser": "^5.0.5",
     "traverse": "^0.6.6",
     "vows": "^0.8.1",
     "yaml-lint": "^1.2.4"
