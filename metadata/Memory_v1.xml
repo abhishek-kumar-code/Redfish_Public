@@ -459,8 +459,8 @@
         <Member Name="NAND">
           <Annotation Term="OData.Description" String="NAND media."/>
         </Member>
-        <Member Name="3DXPoint">
-          <Annotation Term="OData.Description" String="3D XPoint media."/>
+        <Member Name="Intel3DXPoint">
+          <Annotation Term="OData.Description" String="Intel 3D XPoint media."/>
         </Member>
         <Member Name="Proprietary">
           <Annotation Term="OData.Description" String="Proprietary media."/>
