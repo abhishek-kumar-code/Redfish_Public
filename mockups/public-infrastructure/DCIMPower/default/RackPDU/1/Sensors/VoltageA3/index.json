@@ -1,7 +1,7 @@
 {
 	"@odata.type": "#Sensor.v0_8_0.Sensor",
-	"Id": "VoltageA1",
-	"Name": "Voltage reading for outlet A1",
+	"Id": "VoltageA3",
+	"Name": "Voltage reading for outlet A3",
 	"ReadingType": "Voltage",
 	"Status": {
 		"State": "Enabled",
@@ -38,6 +38,6 @@
 	},
 	"Oem": {},
 	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA1",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageA3",
 	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

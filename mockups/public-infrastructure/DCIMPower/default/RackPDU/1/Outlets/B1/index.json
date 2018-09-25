@@ -75,12 +75,6 @@
 		  "PowerFactor": 0.63
 		}
 	},
-	"Frequency": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyB1",
-		"Name": "Outlet B1 Frequency",
-		"Reading": 60.0,
-		"ReadingUnits": "Hz"
-	},
 	"Energy": {
 		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB1",
 		"Name": "Outlet B1 Energy",
