@@ -2,28 +2,13 @@
     "@odata.type": "#ServiceRoot.v1_4_0.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
-    "RedfishVersion": "1.0.2",
+    "RedfishVersion": "1.6.0",
     "UUID": "92384634-2938-2342-8820-489239905423",
-    "Systems": {
-        "@odata.id": "/redfish/v1/Systems"
-    },
-    "Chassis": {
-        "@odata.id": "/redfish/v1/Chassis"
-    },
     "DCIMPower": {
         "@odata.id": "/redfish/v1/DCIMPower"
     },
-    "DCIMCooling": {
-        "@odata.id": "/redfish/v1/DCIMCooling"
-    },
-    "Facilities": {
-        "@odata.id": "/redfish/v1/Facilities"
-    },
     "Managers": {
         "@odata.id": "/redfish/v1/Managers"
-    },
-    "Tasks": {
-        "@odata.id": "/redfish/v1/TaskService"
     },
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
