@@ -1,7 +1,7 @@
 {
 	"@odata.type": "#Sensor.v0_8_0.Sensor",
-	"Id": "PowerC1",
-	"Name": "Power reading for outlet C1",
+	"Id": "PowerB3",
+	"Name": "Power reading for outlet B3",
 	"ReadingType": "Power",
 	"ElectricalSourceType": "Line1ToNeutral",
 	"Status": {
@@ -42,6 +42,6 @@
 	},
 	"Oem": {},
 	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyC1",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerB3",
 	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,7 +1,7 @@
 {
 	"@odata.type": "#Sensor.v0_8_0.Sensor",
 	"Id": "VoltageAL1N",
-	"Name": "Voltage Branch A L1 to Neutral,
+	"Name": "Voltage Branch A L1 to Neutral",
 	"ReadingType": "Voltage",
 	"Status": {
 		"State": "Enabled",
