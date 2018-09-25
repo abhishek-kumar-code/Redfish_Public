@@ -1,0 +1,42 @@
+{
+    "@odata.type": "#PowerEquipment.v0_8_0.PowerEquipment",
+    "Id": "PowerEquipment",
+    "Name": "DCIM Power",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Generators": {
+        "@odata.id": "/redfish/v1/PowerEquipment/Generators"
+    },
+    "PDUs": {
+        "@odata.id": "/redfish/v1/PowerEquipment/PDUs"
+    },
+    "RackPDUs": {
+        "@odata.id": "/redfish/v1/PowerEquipment/RackPDUs"
+    },
+    "Rectifier": {
+        "@odata.id": "/redfish/v1/PowerEquipment/Rectifier"
+    },
+    "Switchgear": {
+        "@odata.id": "/redfish/v1/PowerEquipment/Switchgear"
+    },
+    "TransferSwitches": {
+        "@odata.id": "/redfish/v1/PowerEquipment/TransferSwitches"
+    },
+    "Transformers": {
+        "@odata.id": "/redfish/v1/PowerEquipment/Transformers"
+    },
+    "UPSs": {
+        "@odata.id": "/redfish/v1/PowerEquipment/UPSs"
+    },
+    "VFDs": {
+        "@odata.id": "/redfish/v1/PowerEquipment/VFDs"
+    },
+    "PowerMeters": {
+        "@odata.id": "/redfish/v1/PowerEquipment/PowerMeters"
+    },
+    "Links": {},
+    "@odata.id": "/redfish/v1/PowerEquipment",
+    "@Redfish.Copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

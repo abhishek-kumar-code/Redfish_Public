@@ -1,0 +1,68 @@
+{
+	"@odata.type": "#OutletGroup.v0_8_0.OutletGroup",
+	"Id": "Rack5Storage",
+	"Name": "Outlet Group Rack5Storage",
+	"Status": {
+		"Health": "OK",
+		"State": "Enabled"
+	},
+
+	"CreatedBy": "Bob",
+	"PowerOnDelaySeconds": 4,
+	"PowerOffDelaySeconds": 0,
+	"PowerState": "On",
+	"PowerEnabled": true,
+
+	"Outlets": [{
+			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A1"
+		},
+		{
+			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A2"
+		},
+		{
+			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A3"
+		}
+	],
+
+	"Voltage": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/GroupVoltage1",
+		"Name": "Rack5Storage Voltage",
+		"Reading": 120,
+		"ReadingUnits": "V"
+	},
+	"Current": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/GroupCurrentA",
+		"Name": "Rack5Storage Current",
+		"Reading": 3.4,
+		"ReadingUnits": "A"
+	},
+	"PowerReading": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/GroupPowerA",
+		"Name": "Rack5Storage Power",		
+		"Reading": 412.36,
+		"ReadingUnits": "W"
+	},
+	"Frequency": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/GroupFrequencyA",
+		"Name": "Rack5Storage Frequency",
+		"Reading": 60.0,
+		"ReadingUnits": "Hz"
+	},
+	"Energy": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/GroupEnergyA",
+		"Name": "Rack5Storage Energy",
+		"Reading": 26880,
+		"ReadingUnits": "W"
+	},
+
+	"Actions": {
+		"#Circuit.PowerControl": {
+			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/OutletGroups/Rack5Storage/OutletGroup.PowerControl",
+			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/OutletGroups/Rack5Storage/PowerControlActionInfo"
+		}
+	},
+
+	"@odata.context": "/redfish/v1/$metadata#OutletGroup.OutletGroup",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/OutletGroups/Rack5Storage",
+	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

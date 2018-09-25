@@ -1,0 +1,38 @@
+{
+	"@odata.type": "#Sensor.v0_8_0.Sensor",
+	"Id": "CabTemp",
+	"Name": "Rack PDU Temperature",
+	"ReadingType": "Temperature",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Reading": 31,
+	"ReadingUnits": "C",
+	"ReadingRangeMin": 0,
+	"ReadingRangeMax": 70,
+	"Accuracy": 0.25,
+	"Precision": 1,
+	"SensingFrequency": 3,
+	"PhysicalContext": "Chassis",
+
+	"Thresholds": {
+		"UpperCritical": {
+			"Reading": 40,
+			"Activation": "Increasing",
+			"DwellTime": "00:01:00"
+		},
+		"UpperCaution": {
+			"Reading": 35,
+			"DwellTime": "00:10:00"
+		},
+		"LowerCaution": {
+			"Reading": 10,
+			"DwellTime": "00:05:00"
+		}
+	},
+	"Oem": {},
+	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CabTemp",
+	"@Redfish.Copyright": "Copyright 2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
