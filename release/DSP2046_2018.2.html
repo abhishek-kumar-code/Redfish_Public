@@ -152,6 +152,7 @@ pre.code{
   <p>For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit <a href="http://www.dmtf.org/about/policies/disclosures.php">http://www.dmtf.org/about/policies/disclosures.php</a>.</p>
   <p>This document's normative language is English. Translation into other languages is permitted.</p>
   <br></p>
+<p style="page-break-before: always">
 <h1 id="contents">Contents</h1>
 <p><div class="toc"><ul>
 <li><a href="#contents">Contents</a></li>
@@ -178,11 +179,14 @@ pre.code{
 <li><a href="#common-properties-IPv6GatewayStaticAddress">IPv6GatewayStaticAddress</a></li>
 <li><a href="#common-properties-IPv6StaticAddress_v1.1.0">IPv6StaticAddress</a></li>
 <li><a href="#common-properties-Location_v1.7.0">Location</a></li>
+<li><a href="#common-properties-MaintenanceWindow_v1.2.1">MaintenanceWindow</a></li>
 <li><a href="#common-properties-Message_v1.0.6">Message</a></li>
+<li><a href="#common-properties-OperationApplyTimeSupport_v1.2.1">OperationApplyTimeSupport</a></li>
+<li><a href="#common-properties-PreferredApplyTime_v1.2.1">PreferredApplyTime</a></li>
 <li><a href="#common-properties-Schedule_v1.2.0">Schedule</a></li>
+<li><a href="#common-properties-Settings_v1.2.1">Settings</a></li>
 <li><a href="#common-properties-Status">Status</a></li>
 <li><a href="#redundancy">Redundancy</a></li>
-<li><a href="#settings">Settings</a></li>
 </ul>
 <li><a href="#resource-collections">Resource collections</a></li>
 <ul>
@@ -266,6 +270,7 @@ pre.code{
 </ul>
 </div>
 </p>
+<p style="page-break-before: always">
 <h1 id="overview">Overview</h1>
 <p>The Redfish standard comprises a set of specifications maintained by the Redfish Forum, a working group within the DMTF. The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.</p>
 <p>The Redfish standard addresses several key issues for infrastructures that require scalability. Large infrastructures often consist of many simple servers of different makes and types. This hyper-scale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard protocol based on out-of-band systems management.</p>
@@ -375,12 +380,12 @@ The property-level details include:</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>@Redfish.ActionInfo</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The term can be applied to an Action to specify a URI to an ActionInfo resource which describes the parameters supported by this instance of the Action.</td></tr>
-<tr><td><nobr><b>@Redfish.CollectionCapabilities</b> { }</nobr></td><td>object</td><td></td><td>Reference to the resource that represents the POST capabilities of a given collection. See the <a href="http://redfish.dmtf.org/schemas/v1/CollectionCapabilities.json" target="_blank">CollectionCapabilities</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>@Redfish.MaintenanceWindow</b> { }</nobr></td><td>object</td><td></td><td>Maintenance window configuration of a resource for when to apply settings or operations. See the <a href="http://redfish.dmtf.org/schemas/v1/Settings.json" target="_blank">Settings</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>@Redfish.CollectionCapabilities</b> { }</nobr></td><td>object</td><td></td><td>Reference to the resource that represents the POST capabilities of a given collection. See the <a href="#common-properties-CollectionCapabilities_v1.1.0">CollectionCapabilities object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>@Redfish.MaintenanceWindow</b> { }</nobr></td><td>object</td><td></td><td>Maintenance window configuration of a resource for when to apply settings or operations. See the <a href="#common-properties-MaintenanceWindow_v1.2.1">MaintenanceWindow object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>@Redfish.OperationApplyTime</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>The requested apply time from a client when performing a Create, Delete, or Action operation.<br><i>See <a href="#./docs/DSP2046/CommonPropertySchema.json|details|@Redfish.OperationApplyTime">@Redfish.OperationApplyTime</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>@Redfish.OperationApplyTimeSupport</b> { }</nobr></td><td>object</td><td></td><td>Indicates if a client is allowed to request for a specific apply time of a Create, Delete, or Action operation of a given resource via the OperationApplyTime term. See the <a href="http://redfish.dmtf.org/schemas/v1/Settings.json" target="_blank">Settings</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>@Redfish.Settings</b> { }</nobr></td><td>object</td><td></td><td>Reference to the resource that represents the settings to be applied to this object. See the <a href="http://redfish.dmtf.org/schemas/v1/Settings.json" target="_blank">Settings</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>@Redfish.SettingsApplyTime</b> { }</nobr></td><td>object</td><td></td><td>Configuration settings for when the values in the settings object are applied to a given resource. See the <a href="http://redfish.dmtf.org/schemas/v1/Settings.json" target="_blank">Settings</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>@Redfish.OperationApplyTimeSupport</b> { }</nobr></td><td>object</td><td></td><td>Indicates if a client is allowed to request for a specific apply time of a Create, Delete, or Action operation of a given resource via the OperationApplyTime term. See the <a href="#common-properties-OperationApplyTimeSupport_v1.2.1">OperationApplyTimeSupport object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>@Redfish.Settings</b> { }</nobr></td><td>object</td><td></td><td>Reference to the resource that represents the settings to be applied to this object. See the <a href="#common-properties-Settings_v1.2.1">Settings object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>@Redfish.SettingsApplyTime</b> { }</nobr></td><td>object</td><td></td><td>Configuration settings for when the values in the settings object are applied to a given resource. See the <a href="#common-properties-PreferredApplyTime_v1.2.1">PreferredApplyTime object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -576,6 +581,13 @@ The property-level details include:</p>
 
 </div>
 </div>
+<h2 id="common-properties-MaintenanceWindow_v1.2.1">MaintenanceWindow</h2>
+<p>This object indicates if a given resource has a maintenance window assignment for applying settings or operations.</p>
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>MaintenanceWindowDurationInSeconds</b> <i>(v1.2+)</i></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The value of this property as specified by client indicates the expiry time of maintenance window in seconds.</td></tr>
+<tr><td><nobr><b>MaintenanceWindowStartTime</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The value of this property as specified by client to indicate the start time of a maintenance window.</td></tr>
+</tbody></table>
 <h2 id="common-properties-Message_v1.0.6">Message</h2>
 <p>This type describes a Message returned by the Redfish service.</p>
 <table class="properties">
@@ -588,6 +600,60 @@ The property-level details include:</p>
 <tr><td><nobr><b>Resolution</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Used to provide suggestions on how to resolve the situation that caused the error.</td></tr>
 <tr><td><nobr><b>Severity</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the severity of the errors.</td></tr>
 </tbody></table>
+<h2 id="common-properties-OperationApplyTimeSupport_v1.2.1">OperationApplyTimeSupport</h2>
+<p>This object indicates if a client is allowed to request for a specific apply time of a Create, Delete, or Action operation of a given resource.</p>
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>MaintenanceWindowDurationInSeconds</b> <i>(v1.2+)</i></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-only</nobr></td><td>The value of this property as specified by client indicates the expiry time of maintenance window in seconds.</td></tr>
+<tr><td><nobr><b>MaintenanceWindowResource</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>The value of this property is used to indicate the location of the maintenance window settings.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>MaintenanceWindowStartTime</b> <i>(v1.2+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The value of this property as specified by client to indicate the start time of a maintenance window.</td></tr>
+<tr><td><nobr><b>SupportedValues</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This property indicates the types of apply times the client is allowed request when performing a Create, Delete, or Action operation.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Settings.json|details|SupportedValues">SupportedValues</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/Settings.json|details|SupportedValues">SupportedValues:</h4>
+<p>This property indicates the types of apply times the client is allowed request when performing a Create, Delete, or Action operation.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>AtMaintenanceWindowStart</td><td>Apply the requested operation during a maintenance window as specified by an administrator.</td></tr>
+<tr><td>Immediate</td><td>Apply the requested operation immediately.</td></tr>
+<tr><td>InMaintenanceWindowOnReset</td><td>Apply the requested operation after a reset but within maintenance window as specified by an adminstrator.</td></tr>
+<tr><td>OnReset</td><td>Apply the requested operation on a reset.</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<h2 id="common-properties-PreferredApplyTime_v1.2.1">PreferredApplyTime</h2>
+<p>This object indicates when the future configuration (i.e. Settings resource) should be applied.</p>
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>ApplyTime</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>This property indicates when the future configuration (i.e. Settings resource) should be applied.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Settings.json|details|ApplyTime">ApplyTime</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>MaintenanceWindowDurationInSeconds</b> <i>(v1.1+)</i></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-write</nobr></td><td>The value of this property as specified by client indicates the expiry time of maintenance window in seconds.</td></tr>
+<tr><td><nobr><b>MaintenanceWindowStartTime</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The value of this property as specified by client to indicate the start time of a maintenance window.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/Settings.json|details|ApplyTime">ApplyTime:</h4>
+<p>This property indicates when the future configuration (i.e. Settings resource) should be applied.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>AtMaintenanceWindowStart</td><td>Apply during a maintenance window as specified by an administrator.</td></tr>
+<tr><td>Immediate</td><td>Apply immediately.</td></tr>
+<tr><td>InMaintenanceWindowOnReset</td><td>Apply after a reset but within maintenance window as specified by an adminstrator.</td></tr>
+<tr><td>OnReset</td><td>Apply on a reset.</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h2 id="common-properties-Schedule_v1.2.0">Schedule</h2>
 <p>Schedule a series of occurrences.</p>
 <table class="properties">
@@ -642,6 +708,37 @@ The property-level details include:</p>
 <tr><td>November</td><td>November.</td></tr>
 <tr><td>October</td><td>October.</td></tr>
 <tr><td>September</td><td>September.</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<h2 id="common-properties-Settings_v1.2.1">Settings</h2>
+<p>This type describes the settings of a resouce.</p>
+<table class="properties">
+<tbody>
+<tr><td><nobr><b>ETag</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The ETag of the resource to which the settings were applied, after the application.</td></tr>
+<tr><td><nobr><b>MaintenanceWindowResource</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>The value of this property is used to indicate the location of the maintenance window settings.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>Messages</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>This is an array of messages associated with the task. This type describes a Message returned by the Redfish service. See the <a href="#common-properties-Message_v1.0.6">Message object</a> for details on this property.</td></tr>
+<tr><td><nobr><b>SettingsObject</b> {</nobr></td><td>object</td><td></td><td>Reference to the resource the client may PUT/PATCH to in order to change this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>SupportedApplyTimes</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This property indicates when a Settings resource can be applied.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Settings.json|details|SupportedApplyTimes">SupportedApplyTimes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>Time</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Indicates the time the settings were applied.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/Settings.json|details|SupportedApplyTimes">SupportedApplyTimes:</h4>
+<p>This property indicates when a Settings resource can be applied.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>AtMaintenanceWindowStart</td><td>Apply during a maintenance window as specified by an administrator.</td></tr>
+<tr><td>Immediate</td><td>Apply immediately.</td></tr>
+<tr><td>InMaintenanceWindowOnReset</td><td>Apply after a reset but within maintenance window as specified by an adminstrator.</td></tr>
+<tr><td>OnReset</td><td>Apply on a reset.</td></tr>
 </tbody></table>
 
 </div>
@@ -716,12 +813,12 @@ The property-level details include:</p>
 <tr><td><nobr><b>MinNumNeeded</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> <nobr>required</nobr> (null)</td><td>This is the minumum number of members needed for this group to be redundant.</td></tr>
 <tr><td><nobr><b>Mode</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> <nobr>required</nobr> (null)</td><td>This is the redundancy mode of the group.<br><i>See <a href="#./json-schema/Redundancy.v1_3_1.json|details|Mode">Mode</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Name</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>The name of the resource or array element.</td></tr>
-<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. See the <a href="#common-properties-Oem">Oem object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>RedundancyEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>This indicates whether redundancy is enabled.</td></tr>
 <tr><td><nobr><b>RedundancySet</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>Contains any ids that represent components of this redundancy set.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>RedundancySet@odata.count</b></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>The number of items in a collection.</td></tr>
-<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td> <nobr>required</nobr></td><td>This property describes the status and health of the resource and its children. See the <a href="http://redfish.dmtf.org/schemas/v1/Resource.json" target="_blank">Resource</a> schema for details on this property.</td></tr>
+<tr><td><nobr><b>Status</b> { }</nobr></td><td>object</td><td> <nobr>required</nobr></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -738,38 +835,6 @@ The property-level details include:</p>
 <tr><td>NotRedundant</td><td>The subsystem is not configured in a redundancy mode, either due to configuration or the functionality has been disabled by the user.</td></tr>
 <tr><td>Sharing</td><td>Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail.</td></tr>
 <tr><td>Sparing</td><td>One or more spare units are available to take over the function of a failed unit, but takeover is not automatic.</td></tr>
-</tbody></table>
-
-</div>
-</div>
-<h2 id="settings">Settings</h2>
-<p>This describes the settings for a resource.</p>
-
-<table class="properties">
-<tbody>
-<tr><td><nobr><b>ETag</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The ETag of the resource to which the settings were applied, after the application.</td></tr>
-<tr><td><nobr><b>MaintenanceWindowResource</b> {</nobr></td><td>object</td><td></td><td>The value of this property is used to indicate the location of the maintenance window settings.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-<tr><td><nobr><b>Messages</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>This is an array of messages associated with the task. This type describes a Message returned by the Redfish service. See the <a href="http://redfish.dmtf.org/schemas/v1/Message.json" target="_blank">Message</a> schema for details on this property.</td></tr>
-<tr><td><nobr><b>SettingsObject</b> {</nobr></td><td>object</td><td></td><td>Reference to the resource the client may PUT/PATCH to in order to change this resource.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-<tr><td><nobr><b>SupportedApplyTimes</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This property indicates when a Settings resource can be applied.<br><i>See <a href="#./json-schema/Settings.v1_2_1.json|details|SupportedApplyTimes">SupportedApplyTimes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>Time</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>Indicates the time the settings were applied.</td></tr>
-</tbody></table>
-<div class="property-details">
-<h3>Property Details</h3>
-<div class="property-details-content">
-<h4 id="./json-schema/Settings.v1_2_1.json|details|SupportedApplyTimes">SupportedApplyTimes:</h4>
-<p>This property indicates when a Settings resource can be applied.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>AtMaintenanceWindowStart</td><td>Apply during a maintenance window as specified by an administrator.</td></tr>
-<tr><td>Immediate</td><td>Apply immediately.</td></tr>
-<tr><td>InMaintenanceWindowOnReset</td><td>Apply after a reset but within maintenance window as specified by an adminstrator.</td></tr>
-<tr><td>OnReset</td><td>Apply on a reset.</td></tr>
 </tbody></table>
 
 </div>
@@ -867,6 +932,7 @@ The property-level details include:</p>
 <tr><td>VolumeCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes</td></tr>
 <tr><td>ZoneCollection</td><td>/redfish/v1/CompositionService/ResourceZones<br>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Zones</td></tr>
 </tbody></table>
+<p style="page-break-before: always">
 <h1 id="reference-guide">Reference Guide</h1>
 <p>This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's <a href="#redfish-documentation-generator">Redfish Documentation Generator</a>.  </p><h2 id="AccountService">AccountService 1.3.1</h2>
 <p>The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.</p>
@@ -1863,8 +1929,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EthernetInterface">EthernetInterface</a>. See the EthernetInterface schema for details.</td></tr>
 <tr><td><nobr><b>HostedServices</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>The services that this computer system supports.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> {</nobr></td><td>object</td><td></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b></nobr><br>}</td><td></td><td><nobr>read-only</nobr></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
 <tr><td><nobr><b>HostingRoles</b> <i>(v1.2+)</i> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>The hosing roles that this computer system supports. The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|HostingRoles">HostingRoles</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>HostName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The DNS Host Name, without any domain information.</td></tr>
 <tr><td><nobr><b>HostWatchdogTimer</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>This object describes the Host Watchdog Timer functionality for this system.</td></tr>
@@ -4849,31 +4914,12 @@ The property-level details include:</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>Actions</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
-<tr><td><nobr><b>ClearingLogic</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td> (null)</td><td>The clearing logic associated with this message.  The properties within indicate that what messages are cleared by this message as well as under what conditions.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ClearsAll</b></nobr></td><td>boolean</td><td><nobr>read-only</nobr> (null)</td><td>This property indicates that all prior conditions and messsages are cleared provided the ClearsIf condition is met.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ClearsIf</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This property contains the available OEM specific actions for this resource.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/MessageRegistry.json|details|ClearsIf">ClearsIf</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>ClearsMessage</b> [ ] </nobr><br>}</td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>This property contains the array of Message Ids that are cleared by this message, provided the other conditions are met.</td></tr>
 <tr><td><nobr><b>Language</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>This is the RFC 5646 compliant language code for the registry.</td></tr>
 <tr><td><nobr><b>Messages</b> { }</nobr></td><td>object</td><td> <nobr>required</nobr></td><td>The pattern property indicates that a free-form string is the unique identifier for the message within the registry.</td></tr>
 <tr><td><nobr><b>OwningEntity</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>This is the organization or company that publishes this registry.</td></tr>
 <tr><td><nobr><b>RegistryPrefix</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>This is the single word prefix used to form a messageID structure.</td></tr>
 <tr><td><nobr><b>RegistryVersion</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr></td><td>This is the message registry version which is used in the middle portion of a messageID.</td></tr>
 </tbody></table>
-<div class="property-details">
-<h3>Property Details</h3>
-<div class="property-details-content">
-<h4 id="redfish.dmtf.org/schemas/v1/MessageRegistry.json|details|ClearsIf">ClearsIf:</h4>
-<p>This property contains the available OEM specific actions for this resource.</p>
-<table class="enum enum-details">
-<thead>
-<tr><th>string</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td>SameOriginOfCondition</td><td>Indicates the message is cleared by the other message(s) listed in the ClearingLogic object, provided the OriginOfCondition for both Events are the same.</td></tr>
-</tbody></table>
-
-</div>
-</div>
 <h2 id="MessageRegistryFile">MessageRegistryFile 1.1.1</h2>
 <p>This is the schema definition for the Schema File locator resource.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/Registries/<i><a href="#MessageRegistryFile">{MessageRegistryFileId}</a></i></li></ul>
@@ -7030,10 +7076,8 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#MessageRegistryFile">MessageRegistryFile</a>. See the MessageRegistryFile schema for details.</td></tr>
 <tr><td><nobr><b>SessionService</b> {</nobr></td><td>object</td><td></td><td>This is a link to the Sessions Service. See the <a href="#SessionService">SessionService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SessionService resource. See the Links section and the <a href="#SessionService">SessionService</a> schema for details.</td></tr>
-<tr><td><nobr><b>StorageServices</b> {</nobr></td><td>object</td><td></td><td>A link to a collection of all storage service entities.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
-<tr><td><nobr><b>StorageSystems</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of storage systems.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>StorageServices</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>A link to a collection of all storage service entities.</td></tr>
+<tr><td><nobr><b>StorageSystems</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This is a link to a collection of storage systems.</td></tr>
 <tr><td><nobr><b>Systems</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of Systems. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ComputerSystem">ComputerSystem</a>. See the ComputerSystem schema for details.</td></tr>
 <tr><td><nobr><b>Tasks</b> {</nobr></td><td>object</td><td></td><td>This is a link to the Task Service. See the <a href="#TaskService">TaskService</a> schema for details on this property.</td></tr>
@@ -7310,7 +7354,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Endpoint resource. See the Links section and the <a href="#Endpoint">Endpoint</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> <i>(v1.4+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>An array of references to the StorageServices that connect to this controller.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the storage controller. See the <a href="#common-properties-Location_v1.7.0">Location object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Manufacturer</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemberId</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the identifier for the member within the collection.</td></tr>
