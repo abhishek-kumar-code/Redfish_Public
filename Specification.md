@@ -3,7 +3,7 @@ DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.6.0'
-modified: '2018-08-10'
+modified: '2018-08-23'
 SupersedesVersion: '1.5.1'
 status: published
 released: true
@@ -622,7 +622,7 @@ The following table represents the Redfish allowable operators that shall be sup
 | gt        | Great than comparison operator                  | ProcessorSummary/Count gt 2                                                       |
 | ge        | Greater than or equal to comparison operator    | ProcessorSummary/Count ge 2                                                       |
 | lt        | Less than comparison operator                   | MemorySummary/TotalSystemMemoryGiB lt 64                                          |
-| le        | Less than or equal to comparsion operator       | MemorySummary/TotalSystemMemoryGiB le 64                                          |
+| le        | Less than or equal to comparison operator       | MemorySummary/TotalSystemMemoryGiB le 64                                          |
 | and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64          |
 | or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                        |
 | not       | Logical negation operator                       | not (ProcessorSummary/Count eq 2)                                                 |
@@ -1006,7 +1006,7 @@ The following table lists HTTP status codes which have meaning or usage defined 
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
-* Redfish Services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.
+* Redfish Services should not return the status code 100. Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
 
 | HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -1739,11 +1739,11 @@ Resource Name, Property Names, and constants such as Enumerations shall be Pasca
 * Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
 
 Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI" (e.g. "iSCSITarget")
+ * Well-known technology names like "iSCSI" (e.g.,"iSCSITarget")
  * Product names like "iLO"
  * Well-known abbreviations or acronyms
  * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
- * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish reources or properties.
+ * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
 
 For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
  * Bandwidth (Mbps), (e.g., PortSpeedMbps)
@@ -3321,9 +3321,9 @@ OData-Version: 4.0
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
-| 1.6.0   | 2018-08-10 | Added methods of using $filter on the SSE URI for the EventService. |
+| 1.6.0   | 2018-08-23 | Added methods of using $filter on the SSE URI for the EventService. |
 |         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
-|         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segements and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 must conform to these URI patterns. |
+|         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 must conform to these URI patterns. |
 |         |            | Added support for creating and naming Redfish schema files in the OpenAPI YAML-based format. |
 |         |            | Added URI construction rules for OEM extensions. |
 |         |            | Changed ETag usage to require strong ETag format. |
