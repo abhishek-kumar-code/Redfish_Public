@@ -1,0 +1,150 @@
+{
+	"@odata.type": "#Circuit.v0_8_0.Circuit",
+	"Id": "AC1",
+	"Name": "Mains AC Input",
+	"Status": {
+		"Health": "OK"
+	},
+
+	"CircuitType": "Mains",
+	"PhaseWiringType": "ThreePhase5Wire",
+
+	"Temperature": {
+		"DataSourceURI": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/MainsTemp",
+		"Status": {
+			"Health": "OK"
+		},
+		"Reading": 31,
+		"ReadingUnits": "C",
+		"PhysicalContext": "Chassis"
+	},
+
+	"PolyPhaseVoltages": {
+		"Line1ToLine2": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-1",
+			"Name": "Mains Voltage L1L2",
+			"Reading": 202.8,
+			"ReadingUnits": "V"
+		},
+		"Line2ToLine3": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-2",
+			"Name": "Mains Voltage L2L3",
+			"Reading": 203.8,
+			"ReadingUnits": "V"
+		},
+		"Line3ToLine1": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-3",
+			"Name": "Mains Voltage L3L1",
+			"Reading": 205.3,
+			"ReadingUnits": "V"
+		},
+		"Line1ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-4",
+			"Name": "Mains Voltage L1N",
+			"Reading": 117.8,
+			"ReadingUnits": "V"
+		},
+		"Line2ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-5",
+			"Name": "Mains Voltage L2N",
+			"Reading": 116.6,
+			"ReadingUnits": "V"
+		},
+		"Line3ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageMains1-6",
+			"Name": "Mains Voltage L3N",
+			"Reading": 118.5,
+			"ReadingUnits": "V"
+		}
+	},
+	"PolyPhaseCurrents": {
+		"Line1": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentMains1-1",
+			"Name": "Mains Current L1",
+			"Reading": 8.02,
+			"ReadingUnits": "A"
+		},
+		"Line2": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentMains1-2",
+			"Name": "Mains Current L2",
+			"Reading": 8.66,
+			"ReadingUnits": "A"
+		},
+		"Line3": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentMains1-3",
+			"Name": "Mains Current L3",
+			"Reading": 6.91,
+			"ReadingUnits": "A"
+		},
+		"Neutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentMainsNeutral",
+			"Name": "Mains Current N",
+			"Reading": 2.74,
+			"ReadingUnits": "A"
+		}
+	},
+	"PolyPhasePowerReadings": {
+		"Line1ToLine2": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-1",
+			"Name": "Mains Power L1L2",
+			"Reading": 738.9,
+			"ReadingUnits": "W",
+			"ApparentVA": 738.9,
+		  "ReactiveVAR": 0.0,
+		  "PowerFactor": 1.00
+		},
+		"Line2ToLine3": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-2",
+			"Name": "Mains Power L2L3",			
+			"Reading": 748.3,
+			"ReadingUnits": "W",
+			"ApparentVA": 748.3,
+		  "ReactiveVAR": 0.0,
+		  "PowerFactor": 1.00
+		},
+		"Line3ToLine1": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-3",
+			"Name": "Mains Power L3L1",
+			"Reading": 759.6,
+			"ReadingUnits": "W",
+			"ApparentVA": 759.6,
+		  "ReactiveVAR": 0.0,
+		  "PowerFactor": 1.00
+		},
+		"Line1ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-4",
+			"Name": "Mains Power L1N",			
+			"Reading": 198.4,
+			"ReadingUnits": "W",
+			"ApparentVA": 198.4,
+		  "ReactiveVAR": 0.0,
+		  "PowerFactor": 1.00
+		},
+		"Line2ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-5",
+			"Name": "Mains Power L2N",
+			"Reading": 231.5,
+			"ReadingUnits": "W",
+			"ApparentVA": 364.4,
+		  "ReactiveVAR": 281.4,
+		  "PowerFactor": 0.63
+		},
+		"Line3ToNeutral": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-6",
+			"Name": "Mains Power L3N",
+			"Reading": 58.1,
+			"ReadingUnits": "W",
+			"ApparentVA": 58.1,
+		  "ReactiveVAR": 0.0,
+		  "PowerFactor": 1.00
+		}
+	},
+	"Frequency": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FreqMains",
+	  "Name": "Mains Frequency",
+		"Reading": 60.0,
+		"ReadingUnits": "Hz"
+	},
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Mains/AC1",
+	"@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

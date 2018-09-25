@@ -1,0 +1,36 @@
+{
+	"@odata.type": "#Sensor.v0_8_0.Sensor",
+	"Id": "CurrentA1",
+	"Name": "Current Outlet A1",
+	"ReadingType": "Current",
+	"ElectricalSourceType": "Line1",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Reading": 8.92,
+	"ReadingUnits": "A",
+	"ReadingRangeMin": 0,
+	"ReadingRangeMax": 40,
+	"Accuracy": 0.05,
+	"Precision": 2,
+	"SensingFrequency": 0.1,
+	"PhysicalContext": "Chassis",
+
+	"Thresholds": {
+		"UpperCritical": {
+			"Reading": 25,
+			"Activation": "Increasing",
+			"DwellTime": "00:01:00"
+		},
+		"UpperCaution": {
+			"Reading": 20,
+			"Activation": "Increasing",
+			"DwellTime": "00:10:00"
+		}
+	},
+	"Oem": {},
+	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentA1",
+	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

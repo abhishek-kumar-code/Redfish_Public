@@ -1,0 +1,17 @@
+{
+    "@odata.type": "#DCIMPower.v0_2_0.DCIMPower",
+    "Id": "default",
+    "Name": "DCIMPower Default Domain",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "RackPDU": {
+        "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU"
+    },
+    "Links": {
+    },
+    "@odata.context": "/redfish/v1/$metadata#DCIMPower.DCIMPower",
+    "@odata.id": "/redfish/v1/DCIMPower/default",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
