@@ -1105,10 +1105,10 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
       }
       break;
     case 'Edm.String':
-      if(typeof propValue !== 'string' || propValue !== null) {
+      if(typeof propValue !== 'string' && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
       }
-      if(CSDLProperty.Annotations['Validation.Pattern']) {
+      if(CSDLProperty.Annotations['Validation.Pattern'] && propValue !== null) {
         let regex = CSDLProperty.Annotations['Validation.Pattern'].String;
         if(regex[0] === '/') {
           regex = regex.substring(1);
