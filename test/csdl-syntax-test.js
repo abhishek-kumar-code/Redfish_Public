@@ -861,6 +861,66 @@ function validCSDLTypeInMockup(err, json) {
       if(!Array.isArray(json[propName])) {
         throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
       }
+      let typeLookup = CSDLProperty.Type.substring(11);
+      typeLookup = typeLookup.substring(0, typeLookup.length-1);
+      let namespaceIndex = typeLookup.indexOf('.');
+      if(namespaceIndex === -1) {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      let namespace = typeLookup.substring(0, namespaceIndex);
+      if(namespace === '') {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice') {
+        let typeNameIndex = typeLookup.lastIndexOf('.');
+        if(typeNameIndex === -1) {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        let typeName = typeLookup.substring(typeNameIndex+1);
+        if(namespace === '') {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+      }
+      let propType = CSDL.findByType({_options: options}, typeLookup);
+      if(propType === null || propType === undefined) {
+        throw new Error('Cannot locate property type '+typeLookup+'.');
+      }
+      for(let i = 0; i < json[propName].length; i++) {
+        let propValue = json[propName][i];
+        if(typeof propType === 'string') {
+          simpleTypeCheck(propType, propValue, CSDLProperty, propName);
+        }
+        else {
+          if(propType.constructor.name === 'EnumType') {
+            enumTypeCheck(propType, propValue, CSDLProperty, propName);
+          }
+          else if(propType.constructor.name === 'TypeDefinition') {
+            simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
+          }
+          else if(propType.constructor.name === 'ComplexType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is a ComplexType, but the value in the mockup is not a valid JSON object.');
+            }
+            //Ignore Oem and Actions types...
+            if(propType.Name === 'Actions') {
+              validateActions(propValue);
+            }
+            else if(propType.Name !== 'Oem') {
+              complexTypeCheck(propType, propValue, propName+'['+i.toString()+']', type);
+            }
+          }
+          else if(propType.constructor.name === 'EntityType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
+            }
+            //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
+            if(propValue['@odata.id'] === undefined) {
+              throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+            }
+          }
+        }
+      }
     }
     else {
       let typeLookup = CSDLProperty.Type
