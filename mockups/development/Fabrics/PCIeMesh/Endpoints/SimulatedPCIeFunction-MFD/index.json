@@ -9,8 +9,8 @@
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
-            "DeviceType": "Simulated",
-            "DevicePciId": {
+            "EntityType": null,
+            "EntityPciId": {
                 "DeviceId": "0xABCD",
                 "VendorId": "0xABCD",
                 "SubsystemId": "0xABCD",
@@ -18,7 +18,7 @@
 				"HostReservationMemoryBytes": 67108864,
 				"FunctionNumber": 0
             },
-            "DeviceLink": {
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
 			},
             "Oem": {}
