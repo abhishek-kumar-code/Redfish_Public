@@ -652,6 +652,11 @@
       </ComplexType>
 
       <ComplexType Name="Menus" BaseType="AttributeRegistry.v1_0_0.Menus">
+        <Property Name="Hidden" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The hidden state of this menu."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the visibility state of this menu. When set to true, a hidden menu should be hidden in user interfaces. The hidden state of a menu might be affected by the results of evaluating the 'Dependencies' array."/>
+        </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
