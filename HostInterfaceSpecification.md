@@ -171,6 +171,8 @@ Information in the SMBIOS structure shall allow Host Software to discover the Re
 
 For Network Host Interfaces, the mechanism that clients should use to discover/obtain the Redfish Service Entry Point IP address shall also be described in the structure.
 
+All SMBIOS structures referenced in this specification shall assume a little-endian ordering convention, unless explicitly specified otherwise, i.e., multi-byte numbers (WORD, DWORD, etc.) are stored with the low-order byte at the lowest address and the high-order byte at the highest address.
+ 
 
 ### SMBIOS Type 42 structure general layout
 
