@@ -14,7 +14,7 @@ const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'));
 var mockupFiles = [];
 if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
-  mockupFiles = glob.sync(path.join('mockups', '**', 'index.json'));
+  mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
 }
 const syntaxBatch = {};
 const mockupsCSDL = {};
@@ -45,6 +45,7 @@ const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
+const OldRegistries = ['registries/Base.1.0.0.json', 'registries/ResourceEvent.1.0.0.json', 'registries/TaskEvent.1.0.0.json'];
 /************************************************************/
 
 const setupBatch = {
@@ -109,6 +110,9 @@ function constructTest(file) {
 mockupFiles.forEach(constructMockupTest);
 
 function constructMockupTest(file) {
+  if(OldRegistries.includes(file) || file.includes('explorer_config.json')) {
+    return;
+  }
   mockupsCSDL[file] = {
     topic: function() {
       var txt = fs.readFileSync(file);
@@ -827,6 +831,10 @@ function validCSDLTypeInMockup(err, json) {
   }
   if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp') || this.context.name.includes('/ConstrainedCompositionCapabilities')) {
     //Ignore the paging file and the external error example
+    return;
+  }
+  if(json["$schema"] !== undefined) {
+    //Ignore JSON schema files
     return;
   }
   if(json['@odata.type'] === undefined) {
