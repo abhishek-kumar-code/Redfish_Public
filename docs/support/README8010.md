@@ -36,6 +36,16 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 
 ## Redfish Schema Release History
 
+### Release 2018.3 (TBD)
+
+| Schema Name       | Version | Description |
+| ---               | ---     | ---         |
+| AttributeRegistry | 1.3.0   | Added "Oem" property to "Attributes" and "Menus".  Added "Hidden" property to "Menus". |
+| ServiceRoot       | 1.5.0   | Added "Vendor" property. | 
+| AttributeRegistry | 1.x.x   | Errata release.  Clarified the description for "ValueName".  Add missing Required terms for "AttributeName" and "ValueName". |
+| Bios              | 1.0.5   | Errata release.  Clarified the description for "Attributes". |
+
+
 ### Release 2018.2 (August 2018)
 
 | Schema Name                      | Version | Description |
