@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ServiceRoot  v1.4.0-->
+<!--# Redfish Schema:  ServiceRoot  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -457,6 +457,17 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the 'only' query parameter as described by the specification."/>
         </Property>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_4_0.ServiceRoot">
+        <Property Name="Vendor" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The vendor or manufacturer associated with this Redfish service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the manufacturer or vendor represented by this Redfish service. If this property is supported, the vendor name shall not be included in the value of the Product property."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
