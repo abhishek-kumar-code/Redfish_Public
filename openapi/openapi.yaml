@@ -613,7 +613,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Chassis/{ChassisId}/Actions/#Chassis.Reset:
+  /redfish/v1/Chassis/{ChassisId}/Actions/Chassis.Reset:
     post:
       parameters:
       - description: The value of the Id property of the Chassis resource
@@ -828,7 +828,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}/Actions/#Drive.SecureErase:
+  /redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}/Actions/Drive.SecureErase:
     post:
       parameters:
       - description: The value of the Id property of the Chassis resource
@@ -1021,7 +1021,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Actions/#NetworkAdapter.ResetSettingsToDefault:
+  /redfish/v1/Chassis/{ChassisId}/NetworkAdapters/{NetworkAdapterId}/Actions/NetworkAdapter.ResetSettingsToDefault:
     post:
       parameters:
       - description: The value of the Id property of the Chassis resource
@@ -2782,7 +2782,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.DisablePassphrase:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/Memory.DisablePassphrase:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -2825,7 +2825,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.OverwriteUnit:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/Memory.OverwriteUnit:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -2868,7 +2868,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.SecureEraseUnit:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/Memory.SecureEraseUnit:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -2911,7 +2911,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.SetPassphrase:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/Memory.SetPassphrase:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -2954,7 +2954,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/#Memory.UnlockUnit:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/Actions/Memory.UnlockUnit:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -3124,7 +3124,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/MemoryMetrics/Actions/#MemoryMetrics.ClearCurrentPeriod
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/MemoryMetrics/Actions/MemoryMetrics.ClearCurrentPeriod
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -3709,7 +3709,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Actions/#Storage.SetEncryptionKey:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Actions/Storage.SetEncryptionKey:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -3966,7 +3966,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Drives/{DriveId}/Actions/#Drive.SecureErase
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Drives/{DriveId}/Actions/Drive.SecureErase
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -4495,7 +4495,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Actions/#ComputerSystem.Reset:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Actions/ComputerSystem.Reset:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -4538,7 +4538,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Actions/#ComputerSystem.SetDefaultBootOrder
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Actions/ComputerSystem.SetDefaultBootOrder
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -4679,7 +4679,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Bios/Actions/#Bios.ChangePassword
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Bios/Actions/Bios.ChangePassword
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -4722,7 +4722,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Bios/Actions/#Bios.ResetBios:
+  /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Bios/Actions/Bios.ResetBios:
     post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -5470,7 +5470,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Actions/#LogService.ClearLog
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -5704,7 +5704,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.DisablePassphrase
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.DisablePassphrase
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -5753,7 +5753,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.OverwriteUnit
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.OverwriteUnit
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -5802,7 +5802,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SecureEraseUnit
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.SecureEraseUnit
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -5851,7 +5851,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SetPassphrase
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.SetPassphrase
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -5900,7 +5900,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.UnlockUnit
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.UnlockUnit
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -6100,7 +6100,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics/Actions/#MemoryMetrics.ClearCurrentPeriod
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics/Actions/MemoryMetrics.ClearCurrentPeriod
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -7100,7 +7100,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SecureBoot/Actions/#SecureBoot.ResetKeys
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SecureBoot/Actions/SecureBoot.ResetKeys
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -7352,7 +7352,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Actions/#Storage.SetEncryptionKey
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Actions/Storage.SetEncryptionKey
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -7651,7 +7651,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}/Actions/#Drive.SecureErase
+  ? /redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}/Actions/Drive.SecureErase
   : post:
       parameters:
       - description: The value of the Id property of the ResourceBlock resource
@@ -8203,7 +8203,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/EventService/Actions/#EventService.SubmitTestEvent:
+  /redfish/v1/EventService/Actions/EventService.SubmitTestEvent:
     post:
       requestBody:
         content:
@@ -8554,7 +8554,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Fabrics/{FabricId}/Switches/{SwitchId}/Actions/#Switch.Reset:
+  /redfish/v1/Fabrics/{FabricId}/Switches/{SwitchId}/Actions/Switch.Reset:
     post:
       parameters:
       - description: The value of the Id property of the Fabric resource
@@ -8660,7 +8660,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Fabrics/{FabricId}/Switches/{SwitchId}/Ports/{PortId}/Actions/#Port.Reset:
+  /redfish/v1/Fabrics/{FabricId}/Switches/{SwitchId}/Ports/{PortId}/Actions/Port.Reset:
     post:
       parameters:
       - description: The value of the Id property of the Fabric resource
@@ -9298,7 +9298,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Managers/{ManagerId}/Actions/#Manager.ForceFailover:
+  /redfish/v1/Managers/{ManagerId}/Actions/Manager.ForceFailover:
     post:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -9335,7 +9335,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Managers/{ManagerId}/Actions/#Manager.ModifyRedundancySet:
+  /redfish/v1/Managers/{ManagerId}/Actions/Manager.ModifyRedundancySet:
     post:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -9372,7 +9372,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Managers/{ManagerId}/Actions/#Manager.Reset:
+  /redfish/v1/Managers/{ManagerId}/Actions/Manager.Reset:
     post:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -10038,7 +10038,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Actions/#LogService.ClearLog:
+  /redfish/v1/Managers/{ManagerId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog:
     post:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -11110,7 +11110,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/#VirtualMedia.EjectMedia:
+  /redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.EjectMedia:
     post:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -11153,7 +11153,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/#VirtualMedia.InsertMedia:
+  /redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}/Actions/VirtualMedia.InsertMedia:
     post:
       parameters:
       - description: The value of the Id property of the Manager resource
@@ -11549,7 +11549,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Actions/#ComputerSystem.Reset:
+  /redfish/v1/Systems/{ComputerSystemId}/Actions/ComputerSystem.Reset:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -11586,7 +11586,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Actions/#ComputerSystem.SetDefaultBootOrder:
+  /redfish/v1/Systems/{ComputerSystemId}/Actions/ComputerSystem.SetDefaultBootOrder:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -11703,7 +11703,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Bios/Actions/#Bios.ChangePassword:
+  /redfish/v1/Systems/{ComputerSystemId}/Bios/Actions/Bios.ChangePassword:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -11740,7 +11740,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Bios/Actions/#Bios.ResetBios:
+  /redfish/v1/Systems/{ComputerSystemId}/Bios/Actions/Bios.ResetBios:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -12374,7 +12374,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Actions/#LogService.ClearLog:
+  /redfish/v1/Systems/{ComputerSystemId}/LogServices/{LogServiceId}/Actions/LogService.ClearLog:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -12572,7 +12572,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.DisablePassphrase:
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.DisablePassphrase:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -12615,7 +12615,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.OverwriteUnit:
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.OverwriteUnit:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -12658,7 +12658,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SecureEraseUnit:
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.SecureEraseUnit:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -12701,7 +12701,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.SetPassphrase:
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.SetPassphrase:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -12744,7 +12744,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/#Memory.UnlockUnit:
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/Actions/Memory.UnlockUnit:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -12914,7 +12914,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics/Actions/#MemoryMetrics.ClearCurrentPeriod:
+  /redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics/Actions/MemoryMetrics.ClearCurrentPeriod:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -13919,7 +13919,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/SecureBoot/Actions/#SecureBoot.ResetKeys:
+  /redfish/v1/Systems/{ComputerSystemId}/SecureBoot/Actions/SecureBoot.ResetKeys:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -14129,7 +14129,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Actions/#Storage.SetEncryptionKey:
+  /redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Actions/Storage.SetEncryptionKey:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -14386,7 +14386,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}/Actions/#Drive.SecureErase:
+  /redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}/Actions/Drive.SecureErase:
     post:
       parameters:
       - description: The value of the Id property of the ComputerSystem resource
@@ -14966,7 +14966,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/TelemetryService/Actions/#TelemetryService.SubmitTestMetricReport:
+  /redfish/v1/TelemetryService/Actions/TelemetryService.SubmitTestMetricReport:
     post:
       requestBody:
         content:
@@ -15594,7 +15594,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
-  /redfish/v1/UpdateService/Actions/#UpdateService.SimpleUpdate:
+  /redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate:
     post:
       requestBody:
         content:
