@@ -30,12 +30,17 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
     <edmx:Include Namespace="Sensor"/>
+    <edmx:Include Namespace="Sensor.v0_8_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AlarmCollection_v1.xml">
     <edmx:Include Namespace="AlarmCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Circuit_v1.xml">
+    <edmx:Include Namespace="Circuit"/>
+    <edmx:Include Namespace="Circuit.v0_8_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>

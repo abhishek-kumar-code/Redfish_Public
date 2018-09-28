@@ -206,12 +206,12 @@
           <Annotation Term="OData.Description" String="The time interval between readings of the physical sensor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the time interval between reading the physical sensor."/>
         </Property>
-        <Property Name="PeakReadingTime" Type="Edm.Time">
+        <Property Name="PeakReadingTime" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time at which the Peak Reading value occurred."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the timestamp when the Peak Reading value was observed."/>
         </Property>
-        <Property Name="SensorResetTime" Type="Edm.Time">
+        <Property Name="SensorResetTime" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time at which the time-based properties were last reset."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the timestamp when the time-based property values were last reset by the user or the service."/>
