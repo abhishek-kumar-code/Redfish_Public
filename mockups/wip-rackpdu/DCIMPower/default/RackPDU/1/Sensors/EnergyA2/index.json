@@ -1,0 +1,19 @@
+{
+	"@odata.type": "#Sensor.v0_8_0.Sensor",
+	"Id": "EnergyA2",
+	"Name": "Energy for outlet A2",
+	"ReadingType": "Energy",
+	"ElectricalSourceType": "Total",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Reading": 7855,
+	"ReadingUnits": "W",
+	"PhysicalContext": "Chassis",
+
+	"Oem": {},
+	"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyA2",
+	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

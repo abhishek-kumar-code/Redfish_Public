@@ -1,0 +1,108 @@
+{
+	"@odata.type": "#Circuit.v0_8_0.Circuit",
+	"Id": "B2",
+	"Name": "Outlet B2, Branch Circuit B",
+	"Status": {
+		"Health": "OK",
+		"State": "Enabled"
+	},
+
+	"CircuitType": "Outlet",
+	"PhaseWiringType": "TwoPhase3Wire",
+	"VoltageType": "AC",
+	"IECOutletType": "C13",
+	"LockingOutlet": false,
+	"RatedCurrentAmps": 12,
+	"NominalVoltage": 208,
+
+	"IndicatorLED": "On",
+	"PowerOnDelaySeconds": 6,
+	"PowerOffDelaySeconds": 0,
+
+	"PowerState": "On",
+
+	"PowerEnabled": true,
+
+	"Voltage": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageB2",
+		"Name": "Outlet A2 Voltage L23",
+		"Reading": 203.6,
+		"ReadingUnits": "V"
+	},
+	"PolyPhaseVoltages": {
+		"Line2ToLine3": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageB2",
+			"Name": "Outlet B2 Voltage L23",
+			"Reading": 203.6,
+			"ReadingUnits": "V"
+		}
+	},
+	"Current": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentB2",
+		"Name": "Outlet B2 Current",
+		"Reading": 1.58,
+		"PeakReading": 2.25,
+		"ReadingUnits": "A"
+	},
+	"PolyPhaseCurrents": {
+		"Line2ToLine3": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentB2",
+			"Name": "Outlet B2 Current",
+			"Reading": 1.58,
+			"PeakReading": 2.25,
+			"ReadingUnits": "A"
+		}
+	},
+	"PowerReading": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerB2",
+		"Name": "Outlet B2 Power",		
+		"Reading": 321.6,
+		"PeakReading": 458.1,
+		"ReadingUnits": "W",
+		"ApparentVA": 321.6,
+		"ReactiveVAR": 0.0,
+		"PowerFactor": 1.00
+	},
+	"PolyPhasePowerReadings": {
+		"Line2ToLine3": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerB2",
+		  "Name": "Outlet B2 Power",
+			"Reading": 321.6,
+			"PeakReading": 458.1,
+			"ReadingUnits": "W",
+			"ApparentVA": 321.6,
+		  "ReactiveVAR": 0.0,
+		  "PowerFactor": 1.00
+		}
+	},
+	"Energy": {
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB2",
+		"Name": "Outlet B2 Energy",
+		"Reading": 52941,
+		"ReadingUnits": "W"
+	},
+	"EnergyReadings": {
+		"Line2ToLine3": {
+			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB2",
+		    "Name": "Outlet B2 Energy",
+			"Reading": 52941,
+			"ReadingUnits": "W"
+		}
+	},
+
+	"Actions": {
+		"#Circuit.PowerControl": {
+			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/Circuit.PowerControl",
+			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B2/PowerControlActionInfo"
+		}
+	},
+
+	"Links": {
+		"BranchCircuit": {
+			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/B"
+		}
+	},
+	"@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B2",
+	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

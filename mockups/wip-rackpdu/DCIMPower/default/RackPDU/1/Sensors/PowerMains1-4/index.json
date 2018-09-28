@@ -1,0 +1,46 @@
+{
+	"@odata.type": "#Sensor.v0_8_0.Sensor",
+	"Id": "PowerMains1-4",
+	"Name": "Mains Power L1N",
+	"ReadingType": "Power",
+	"ElectricalSourceType": "Line1ToNeutral",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Reading": 412.36,
+	"ReadingUnits": "W",
+	"ReadingRangeMin": 0,
+	"ReadingRangeMax": 1200,
+	"ApparentVA": 0,
+	"ReactiveVAR": 0,
+	"PowerFactor": 0.97,
+	"EnergykWh": 0,
+	"Accuracy": 0.2,
+	"Precision": 2,
+	"SensingFrequency": 0.25,
+	"PhysicalContext": "Chassis",
+
+	"Thresholds": {
+		"UpperCritical": {
+			"Reading": 1000,
+			"Activation": "Increasing",
+			"DwellTime": "00:01:00"
+		},
+		"UpperCaution": {
+			"Reading": 800,
+			"DwellTime": "00:10:00"
+		},
+		"LowerCaution": {
+			"Reading": 20,
+			"DwellTime": "00:05:00"
+		},
+		"LowerCritical": {
+			"Reading": 5,
+			"DwellTime": "00:01:00"
+		}
+	},
+	"Oem": {},
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerMains1-4",
+	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
