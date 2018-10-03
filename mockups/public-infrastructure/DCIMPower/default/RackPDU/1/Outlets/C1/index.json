@@ -8,7 +8,7 @@
 	},
 
 	"CircuitType": "Outlet",
-	"PhaseWiringType": "SinglePhase3Wire",
+	"PhaseWiringType": "Single",
 	"VoltageType": "AC",
 	"NEMAOutletType": "5-20",
 	"LockingOutlet": false,

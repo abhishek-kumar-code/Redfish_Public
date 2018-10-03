@@ -26,7 +26,6 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Sensor_v1.xml">
     <edmx:Include Namespace="Sensor"/>
-    <edmx:Include Namespace="Sensor.v0_8_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Circuit_v1.xml">
     <edmx:Include Namespace="Circuit"/>
@@ -75,7 +74,10 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="OutletGroup.v0_8_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="OutletGroup" BaseType="OutletGroup.OutletGroup">
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
 
         <Property Name="CreatedBy" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -109,7 +111,7 @@
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the Outlet circuits included in the Outlet Group that this resource represents."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-		
+
         <Property Name="Voltage" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
@@ -163,12 +165,15 @@
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
       </EntityType>
-		
+
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Circuit.v0_8_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Circuit.v0_8_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

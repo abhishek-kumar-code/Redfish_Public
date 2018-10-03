@@ -48,6 +48,7 @@
 
       <EntityType Name="CoolingTower" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for a Cooling Tower."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Cooling Tower for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -129,6 +130,7 @@
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to a resource of type SensorCollection that contains the sensors located in the equipment and sub-components."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -136,6 +138,7 @@
         <NavigationProperty Name="Setpoints" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more sensors that have setpoints."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that have setpoints."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -143,6 +146,7 @@
         <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure temperature."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -150,6 +154,7 @@
         <NavigationProperty Name="Humidity" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more humidity sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure humidity."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -157,6 +162,7 @@
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to a resource of type AlarmCollection that contains the alarms for the equipment."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -164,6 +170,7 @@
         <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
+          <Annotation Term="OData.LongDescription" String="This array shall contain the set of Members of the Alarm Collection which have an 'AlarmStatus' of 'Triggered'."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -371,7 +378,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="CoolingTower.v0_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="CoolingTower.v0_2_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

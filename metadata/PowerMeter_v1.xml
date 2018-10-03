@@ -38,6 +38,7 @@
 
       <EntityType Name="PowerMeter" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for a PowerMeter."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Power Meter for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -118,7 +119,8 @@
         <!-- Equipment Sensors Collection-->
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this sensor collection."/>
+          <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to a resource of type SensorCollection that contains the sensors located in the equipment and sub-components."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -147,7 +149,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="PowerMeter.v0_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="PowerMeter.v0_2_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

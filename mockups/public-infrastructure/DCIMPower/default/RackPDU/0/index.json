@@ -1,15 +1,15 @@
 {
-    "@odata.type": "#RackPDU.v0_2_0.RackPDU",
+    "@odata.type": "#RackPDU.v0_8_0.RackPDU",
     "Id": "RackPDU0",
     "Name": "RackPDU0",
-    "FirmwareRevision": "1.0.0",
+    "FirmwareVersion": "1.0.0",
     "DateOfManufacture": "2017-01-11T08:00:00Z",
     "Manufacturer": "Manufacturer",
     "Model": "Model",
     "SerialNumber": "SerialNum",
     "PartNumber": "PartNum",
     "AssetTag": "AssetTag",
-    "PhysicalLocation": {
+    "Location": {
         "Longitude": 45.52,
         "Latitude": 122.67,
         "PostalAddress": {

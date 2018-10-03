@@ -82,7 +82,7 @@
 	},
 
 	"TriggeredAlarms": [{
-		"@odata.type": "#Alarm.v0_8_0.Alarm",
+		"@odata.type": "#Alarm.v0_3_0.Alarm",
 		"Id": "Overload",
 		"Name": "PDU Unit Overload",
 		"AlarmState": "Triggered",
