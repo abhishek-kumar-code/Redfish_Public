@@ -5,7 +5,7 @@
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Copyright 2014-2018 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -64,12 +64,16 @@
         <Property Name="PrivilegesUsed" Type="Collection(Privileges.PrivilegeType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Lists the set of Redfish standard priviliges used in building this mapping."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be an array that contains the set of Redfish standard priviliges used in building this mapping."/>
         </Property>
         <Property Name="OEMPrivilegesUsed" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Lists the set of OEM Priviliges used in building this mapping."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be an array that contains the set of OEM Priviliges used in building this mapping."/>
         </Property>
         <Property Name="Mappings" Type="Collection(PrivilegeRegistry.v1_0_0.Mapping)" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the mappings between entities and the relevant privileges used to access them."/>
+          <Annotation Term="OData.LongDescription" String="This property shall describe the mappings between entities and the relevant privileges used to access them."/>
         </Property>
       </EntityType>
 
@@ -186,7 +190,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="PrivilegeRegistry.v1_1_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="PrivilegeRegistry.v1_1_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">

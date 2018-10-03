@@ -1,0 +1,34 @@
+{
+    "@odata.type": "#MetricDefinitionCollection.MetricDefinitionCollection",
+    "Name": "MetricDefinitions",
+    "Members@odata.count": 8,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/PowerConsumedWatts"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageConsumedWatts"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/MaximumConsumedWatts"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/MinimumConsumedWatts"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/AverageReadingCelsius"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/Memory_BlocksRead"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/OutletAirflowTemp"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions/OrientationSensor"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#TelemetryService/MetricDefinitions",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

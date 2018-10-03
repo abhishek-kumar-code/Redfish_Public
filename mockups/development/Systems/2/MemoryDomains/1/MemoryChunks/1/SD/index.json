@@ -1,5 +1,5 @@
 {
-   "@Redfish.Copyright": "Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+   "@Redfish.Copyright": "Copyright (c) 2016 DMTF. All rights reserved.",
    "@odata.context": "/redfish/v1/$metadata#Systems/Members/2/MemoryDomains/1/MemoryChunks/$entity",
    "@odata.id": "/redfish/v1/Systems/2/MemoryDomains/1/MemoryChunks/1/SD",
    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",

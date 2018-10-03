@@ -1,460 +1,517 @@
 {
-  "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-  "@odata.type": "#AttributeRegistry.v1_0_0.AttributeRegistry",
-  "Description": "This registry defines a representation of BIOS Attribute instances",
-  "Id": "BiosAttributeRegistryP89.v1_0_0",
-  "Language": "en",
-  "Name": "P89 BIOS Attribute Registry",
-  "OwningEntity": "HPE",
-  "RegistryVersion": "1.0.0",
-  "SupportedSystems": [
-    {
-      "ProductName": "HPE ProLiant DL380 Gen9",
-      "SystemId": "P89",
-      "FirmwareVersion": "P89 v1.00 (06/02/2014)"
-    }
-  ],
-  "RegistryEntries": {
-    "Attributes": [
-      {
-        "CurrentValue": null,
-        "DisplayName": "Embedded NIC 1 Boot",
-        "DisplayOrder": 5,
-        "HelpText": "Select this option to enable network boot (PXE, iSCSI, or FCoE) for the selected NIC. You may need to configure the NIC firmware for the boot option to be active.",
-        "MenuPath": "./SystemOptions/NetworkBootOptions",
-        "AttributeName": "NicBoot1",
-        "ReadOnly": false,
-        "Hidden": false,
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "Network Boot",
-            "ValueName": "NetworkBoot"
-          },
-          {
-            "ValueDisplayName": "Disabled",
-            "ValueName": "Disabled"
-          }
-        ],
-        "WarningText": "Important: When enabling network boot support for an embedded NIC, the NIC boot option does not appear in the UEFI Boot Order or Legacy IPL lists until the next system reboot."
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Embedded NIC 2 Boot",
-        "DisplayOrder": 6,
-        "HelpText": "Select this option to enable network boot (PXE, iSCSI, or FCoE) for the selected NIC. You may need to configure the NIC firmware for the boot option to be active.",
-        "MenuPath": "./SystemOptions/NetworkBootOptions",
-        "AttributeName": "NicBoot2",
-        "ReadOnly": false,
-        "Hidden": false,       
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "Network Boot",
-            "ValueName": "NetworkBoot"
-          },
-          {
-            "ValueDisplayName": "Disabled",
-            "ValueName": "Disabled"
-          }
-        ],
-        "WarningText": "Important: When enabling network boot support for an embedded NIC, the NIC boot option does not appear in the UEFI Boot Order or Legacy IPL lists until the next system reboot."
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Embedded SATA Configuration",
-        "DisplayOrder": 74,
-        "HelpText": "Important: Select this option to configure the embedded chipset SATA controller. When selecting the Advanced Host Controller Interface (AHCI) or Software RAID (if supported), ensure that the proper operating system drivers are used for correct operations.",
-        "MenuPath": "./SystemOptions/SataOptions",
-        "AttributeName": "EmbeddedSata",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "Enable SATA AHCI Support",
-            "ValueName": "Ahci"
-          },
-          {
-            "ValueDisplayName": "Enable Software RAID Support",
-            "ValueName": "Raid"
-          }
-        ],
-        "WarningText": "Important: Software RAID is not supported when the Boot Mode is configured in Legacy BIOS Mode.\\n\\nImportant: Enabling Software RAID results in data loss or data corruption on existing SATA drives. Backup all drives before enabling this option. Before enabling AHCI, see the operating system documentation to ensure base media drivers support this feature."
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "USB Control",
-        "DisplayOrder": 65,
-        "HelpText": "USB Enabled: enables all USB ports and embedded devices. External USB Ports Disabled: only external USB ports are disabled.",
-        "MenuPath": "./SystemOptions/UsbOptions",
-        "AttributeName": "UsbControl",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "USB Enabled",
-            "ValueName": "UsbEnabled"
-          },
-          {
-            "ValueDisplayName": "External USB Ports Disabled",
-            "ValueName": "ExternalUsbDisabled"
-          }
-        ]
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Intel(R) Hyperthreading Options",
-        "DisplayOrder": 71,
-        "HelpText": "Select this option to enable or disable Intel Hyperthreading. When enabled, each physical processor core operates as two logical processor cores. When disabled, each physical processor core operates as only one logical processor core. Enabling this option can improve overall performance for applications that benefit from a higher processor core count.",
-        "MenuPath": "./SystemOptions/ProcessorOptions",
-        "AttributeName": "ProcHyperthreading",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "Enabled",
-            "ValueName": "Enabled"
-          },
-          {
-            "ValueDisplayName": "Disabled",
-            "ValueName": "Disabled"
-          }
-        ]
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Processor Core Disable",
-        "DisplayOrder": 72,
-        "HelpText": "Select this option to disable processor cores using Intel's Core Multi-Processing (CMP) Technology. This option lets you disable a specific number of the cores on each physical processor. This option lets you reduce processor power usage and can improve performance with some applications. It can improve overall performance for applications that benefit from higher performance cores rather than more processing cores. This option also addresses issues with software that is licensed on a per-core basis. The value entered should be the number of enabled cores per socket.",
-        "LowerBound": 0,
-        "MenuPath": "./SystemOptions/ProcessorOptions",
-        "AttributeName": "ProcCoreDisable",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "ScalarIncrement": 1,
-        "Type": "Integer",
-        "UpperBound": 18,
-        "WarningText": "Enter the number of cores to be enabled per socket. Entering an incorrect value results in no cores being disabled. 0 = Enable All Cores."
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Boot Mode",
-        "DisplayOrder": 82,
-        "HelpText": "This option lets you select the boot mode of the system. Selecting configures the system to boot Unified Extensible Firmware Interface (UEFI) compatible operating systems. Selecting \"Legacy BIOS Mode\" configures the system to boot traditional operating systems in Legacy BIOS compatibility mode. The Operating System can only boot in the mode it gets installed in. In addition, the following features require booting in UEFI Boot Mode: Secure Boot, IPv6 PXE Boot, boot > 2.2 TB Disks.",
-        "MenuPath": "./BootOptions",
-        "AttributeName": "BootMode",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "UEFI Mode",
-            "ValueName": "Uefi"
-          },
-          {
-            "ValueDisplayName": "Legacy BIOS Mode",
-            "ValueName": "LegacyBios"
-          }
-        ],
-        "WarningText": "Boot Mode changes require a system reboot to take effect. Changing the Boot Mode may impact the ability of the server to boot the installed Operating System. An Operating System is installed in the same mode as whatever Boot Mode the platform is in during the installation. If the Boot Mode does not match the Operating System installation, it will not boot. In addition, the following features require the server be configured for UEFI Boot Mode: Secure Boot, IPv6 PXE Boot, Boot > 2.2 TB Disks."
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Power Profile",
-        "DisplayOrder": 88,
-        "HelpText": "- Balanced Power and Performance:  Provides the optimum settings to maximize power savings with minimal impact to performance for most operating systems and applications. \\n- Minimum Power Usage:  Enables power reduction mechanisms that can negatively affect performance. This mode guarantees a lower maximum power usage by the system. \\n- Maximum Performance:  Disables all power management options that can negatively affect performance.",
-        "MenuPath": "./PowerManagementOptions",
-        "AttributeName": "PowerProfile",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "Balanced Power and Performance",
-            "ValueName": "BalancedPowerPerf"
-          },
-          {
-            "ValueDisplayName": "Minimum Power Usage",
-            "ValueName": "MinPower"
-          },
-          {
-            "ValueDisplayName": "Maximum Performance",
-            "ValueName": "MaxPerf"
-          },
-          {
-            "ValueDisplayName": "Custom",
-            "ValueName": "Custom"
-          }
-        ]
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Intel(R) Turbo Boost Technology",
-        "DisplayOrder": 101,
-        "HelpText": "Turbo Boost Technology lets the processor transition to a higher frequency than the processor's rated speed if the processor has available power and is within temperature specifications. Disabling this option reduces power usage and also reduces the systems maximum achievable performance under some workloads.",
-        "MenuPath": "./PerformanceOptions",
-        "AttributeName": "ProcTurbo",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "Disabled",
-            "ValueName": "Disabled"
-          },
-          {
-            "ValueDisplayName": "Enabled",
-            "ValueName": "Enabled"
-          }
-        ]
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Administrator Phone Number",
-        "DisplayOrder": 152,
-        "HelpText": "Enter the server administrator's phone number text.",
-        "MaxLength": 28,
-        "MenuPath": "./ServerAssetText/AdminInfo",
-        "MinLength": 0,
-        "AttributeName": "AdminPhone",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "String",
-        "ValueExpression": "[\\x20-\\x7e]"
-      },
-      {
-        "CurrentValue": null,
-        "DisplayName": "Minimum Processor Idle Power Core C-State",
-        "DisplayOrder": 90,
-        "HelpText": "You can only configure this option if HP Power Profile is set to Custom. This option lets you select the processor's lowest idle power state (C-state) that the operating system uses. The higher the C-state, the lower the power usage of that idle state (C6 is the lowest power idle state supported by the processor).",
-        "MenuPath": "./PowerManagementOptions",
-        "AttributeName": "MinProcIdlePower",
-        "ReadOnly": false,
-        "Hidden": false,        
-        "Type": "Enumeration",
-        "Value": [
-          {
-            "ValueDisplayName": "C6 State",
-            "ValueName": "C6"
-          },
-          {
-            "ValueDisplayName": "C3 State",
-            "ValueName": "C3"
-          },
-          {
-            "ValueDisplayName": "C1E State",
-            "ValueName": "C1E"
-          },
-          {
-            "ValueDisplayName": "No C-states",
-            "ValueName": "NoCStates"
-          }
-        ]
-      }
+    "@Redfish.Copyright": "Copyright 2016 DMTF. All rights reserved.",
+    "@odata.type": "#AttributeRegistry.v1_0_0.AttributeRegistry",
+    "Description": "This registry defines a representation of BIOS Attribute instances",
+    "Id": "BiosAttributeRegistryP89.v1_0_0",
+    "Language": "en",
+    "Name": "P89 BIOS Attribute Registry",
+    "OwningEntity": "HPE",
+    "RegistryVersion": "1.0.0",
+    "SupportedSystems": [
+        {
+            "ProductName": "HPE ProLiant DL380 Gen9",
+            "SystemId": "P89",
+            "FirmwareVersion": "P89 v1.00 (06/02/2014)"
+        }
     ],
-    "Dependencies": [
-      {
-        "Dependency": {
-          "MapFrom": [
+    "RegistryEntries": {
+        "Attributes": [
             {
-              "MapFromAttribute": "BootMode",
-              "MapFromCondition": "EQU",
-              "MapFromProperty": "CurrentValue",
-              "MapFromValue": "LegacyBios"
-            }
-          ],
-          "MapToAttribute": "EmbeddedSata",
-          "MapToProperty": "ReadOnly",
-          "MapToValue": true
-        },
-        "DependencyFor": "EmbeddedSata",
-        "Type": "Map"
-      },
-      {
-        "Dependency": {
-          "MapFrom": [
-            {
-              "MapFromAttribute": "BootMode",
-              "MapFromCondition": "EQU",
-              "MapFromProperty": "CurrentValue",
-              "MapFromValue": "LegacyBios"
+                "CurrentValue": null,
+                "DisplayName": "Embedded NIC 1 Boot",
+                "DisplayOrder": 5,
+                "HelpText": "Select this option to enable network boot (PXE, iSCSI, or FCoE) for the selected NIC. You may need to configure the NIC firmware for the boot option to be active.",
+                "MenuPath": "./SystemOptions/NetworkBootOptions",
+                "AttributeName": "NicBoot1",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "Network Boot",
+                        "ValueName": "NetworkBoot"
+                    },
+                    {
+                        "ValueDisplayName": "Disabled",
+                        "ValueName": "Disabled"
+                    }
+                ],
+                "WarningText": "Important: When enabling network boot support for an embedded NIC, the NIC boot option does not appear in the UEFI Boot Order or Legacy IPL lists until the next system reboot."
             },
             {
-              "MapFromAttribute": "EmbeddedSata",
-              "MapFromCondition": "EQU",
-              "MapFromProperty": "CurrentValue",
-              "MapFromValue": "Raid",
-              "MapTerms": "AND"
-            }
-          ],
-          "MapToAttribute": "EmbeddedSata",
-          "MapToProperty": "CurrentValue",
-          "MapToValue": "Ahci"
-        },
-        "DependencyFor": "EmbeddedSata",
-        "Type": "Map"
-      },
-      {
-        "Dependency": {
-          "MapFrom": [
+                "CurrentValue": null,
+                "DisplayName": "Embedded NIC 2 Boot",
+                "DisplayOrder": 6,
+                "HelpText": "Select this option to enable network boot (PXE, iSCSI, or FCoE) for the selected NIC. You may need to configure the NIC firmware for the boot option to be active.",
+                "MenuPath": "./SystemOptions/NetworkBootOptions",
+                "AttributeName": "NicBoot2",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "Network Boot",
+                        "ValueName": "NetworkBoot"
+                    },
+                    {
+                        "ValueDisplayName": "Disabled",
+                        "ValueName": "Disabled"
+                    }
+                ],
+                "WarningText": "Important: When enabling network boot support for an embedded NIC, the NIC boot option does not appear in the UEFI Boot Order or Legacy IPL lists until the next system reboot."
+            },
             {
-              "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "EQU",
-              "MapFromProperty": "CurrentValue",
-              "MapFromValue": "MaxPerf"
-            }
-          ],
-          "MapToAttribute": "MinProcIdlePower",
-          "MapToProperty": "CurrentValue",
-          "MapToValue": "NoCStates"
-        },
-        "DependencyFor": "PowerProfile",
-        "Type": "Map"
-      },
-      {
-        "Dependency": {
-          "MapFrom": [
+                "CurrentValue": null,
+                "DisplayName": "Embedded SATA Configuration",
+                "DisplayOrder": 74,
+                "HelpText": "Important: Select this option to configure the embedded chipset SATA controller. When selecting the Advanced Host Controller Interface (AHCI) or Software RAID (if supported), ensure that the proper operating system drivers are used for correct operations.",
+                "MenuPath": "./SystemOptions/SataOptions",
+                "AttributeName": "EmbeddedSata",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "Enable SATA AHCI Support",
+                        "ValueName": "Ahci"
+                    },
+                    {
+                        "ValueDisplayName": "Enable Software RAID Support",
+                        "ValueName": "Raid"
+                    }
+                ],
+                "WarningText": "Important: Software RAID is not supported when the Boot Mode is configured in Legacy BIOS Mode.\\n\\nImportant: Enabling Software RAID results in data loss or data corruption on existing SATA drives. Backup all drives before enabling this option. Before enabling AHCI, see the operating system documentation to ensure base media drivers support this feature."
+            },
             {
-              "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "EQU",
-              "MapFromProperty": "CurrentValue",
-              "MapFromValue": "BalancedPowerPerf"
-            }
-          ],
-          "MapToAttribute": "MinProcIdlePower",
-          "MapToProperty": "CurrentValue",
-          "MapToValue": "C6"
-        },
-        "DependencyFor": "PowerProfile",
-        "Type": "Map"
-      },
-      {
-        "Dependency": {
-          "MapFrom": [
+                "CurrentValue": null,
+                "DisplayName": "USB Control",
+                "DisplayOrder": 65,
+                "HelpText": "USB Enabled: enables all USB ports and embedded devices. External USB Ports Disabled: only external USB ports are disabled.",
+                "MenuPath": "./SystemOptions/UsbOptions",
+                "AttributeName": "UsbControl",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "USB Enabled",
+                        "ValueName": "UsbEnabled"
+                    },
+                    {
+                        "ValueDisplayName": "External USB Ports Disabled",
+                        "ValueName": "ExternalUsbDisabled"
+                    }
+                ]
+            },
             {
-              "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "EQU",
-              "MapFromProperty": "CurrentValue",
-              "MapFromValue": "MinPower"
-            }
-          ],
-          "MapToAttribute": "MinProcIdlePower",
-          "MapToProperty": "CurrentValue",
-          "MapToValue": "C6"
-        },
-        "DependencyFor": "PowerProfile",
-        "Type": "Map"
-      },
-      {
-        "Dependency": {
-          "MapFrom": [
+                "CurrentValue": null,
+                "DisplayName": "Intel(R) Hyperthreading Options",
+                "DisplayOrder": 71,
+                "HelpText": "Select this option to enable or disable Intel Hyperthreading. When enabled, each physical processor core operates as two logical processor cores. When disabled, each physical processor core operates as only one logical processor core. Enabling this option can improve overall performance for applications that benefit from a higher processor core count.",
+                "MenuPath": "./SystemOptions/ProcessorOptions",
+                "AttributeName": "ProcHyperthreading",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "Enabled",
+                        "ValueName": "Enabled"
+                    },
+                    {
+                        "ValueDisplayName": "Disabled",
+                        "ValueName": "Disabled"
+                    }
+                ],
+                "Oem": {
+                    "Contoso": {
+                        "@odata.type": "#Contoso.BiosExtensions",
+                        "RequiresGoldPlan": true
+                    }
+                }
+            },
             {
-              "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "NEQ",
-              "MapFromProperty": "CurrentValue",
-              "MapFromValue": "Custom"
+                "CurrentValue": null,
+                "DisplayName": "Processor Core Disable",
+                "DisplayOrder": 72,
+                "HelpText": "Select this option to disable processor cores using Intel's Core Multi-Processing (CMP) Technology. This option lets you disable a specific number of the cores on each physical processor. This option lets you reduce processor power usage and can improve performance with some applications. It can improve overall performance for applications that benefit from higher performance cores rather than more processing cores. This option also addresses issues with software that is licensed on a per-core basis. The value entered should be the number of enabled cores per socket.",
+                "LowerBound": 0,
+                "MenuPath": "./SystemOptions/ProcessorOptions",
+                "AttributeName": "ProcCoreDisable",
+                "ReadOnly": false,
+                "Hidden": false,
+                "ScalarIncrement": 1,
+                "Type": "Integer",
+                "UpperBound": 18,
+                "WarningText": "Enter the number of cores to be enabled per socket. Entering an incorrect value results in no cores being disabled. 0 = Enable All Cores.",
+                "Oem": {
+                    "Contoso": {
+                        "@odata.type": "#Contoso.BiosExtensions",
+                        "RequiresGoldPlan": true
+                    }
+                }
+            },
+            {
+                "CurrentValue": null,
+                "DisplayName": "Boot Mode",
+                "DisplayOrder": 82,
+                "HelpText": "This option lets you select the boot mode of the system. Selecting configures the system to boot Unified Extensible Firmware Interface (UEFI) compatible operating systems. Selecting \"Legacy BIOS Mode\" configures the system to boot traditional operating systems in Legacy BIOS compatibility mode. The Operating System can only boot in the mode it gets installed in. In addition, the following features require booting in UEFI Boot Mode: Secure Boot, IPv6 PXE Boot, boot > 2.2 TB Disks.",
+                "MenuPath": "./BootOptions",
+                "AttributeName": "BootMode",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "UEFI Mode",
+                        "ValueName": "Uefi"
+                    },
+                    {
+                        "ValueDisplayName": "Legacy BIOS Mode",
+                        "ValueName": "LegacyBios"
+                    }
+                ],
+                "WarningText": "Boot Mode changes require a system reboot to take effect. Changing the Boot Mode may impact the ability of the server to boot the installed Operating System. An Operating System is installed in the same mode as whatever Boot Mode the platform is in during the installation. If the Boot Mode does not match the Operating System installation, it will not boot. In addition, the following features require the server be configured for UEFI Boot Mode: Secure Boot, IPv6 PXE Boot, Boot > 2.2 TB Disks."
+            },
+            {
+                "CurrentValue": null,
+                "DisplayName": "Power Profile",
+                "DisplayOrder": 88,
+                "HelpText": "- Balanced Power and Performance:  Provides the optimum settings to maximize power savings with minimal impact to performance for most operating systems and applications. \\n- Minimum Power Usage:  Enables power reduction mechanisms that can negatively affect performance. This mode guarantees a lower maximum power usage by the system. \\n- Maximum Performance:  Disables all power management options that can negatively affect performance.",
+                "MenuPath": "./PowerManagementOptions",
+                "AttributeName": "PowerProfile",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "Balanced Power and Performance",
+                        "ValueName": "BalancedPowerPerf"
+                    },
+                    {
+                        "ValueDisplayName": "Minimum Power Usage",
+                        "ValueName": "MinPower"
+                    },
+                    {
+                        "ValueDisplayName": "Maximum Performance",
+                        "ValueName": "MaxPerf"
+                    },
+                    {
+                        "ValueDisplayName": "Custom",
+                        "ValueName": "Custom"
+                    }
+                ]
+            },
+            {
+                "CurrentValue": null,
+                "DisplayName": "Intel(R) Turbo Boost Technology",
+                "DisplayOrder": 101,
+                "HelpText": "Turbo Boost Technology lets the processor transition to a higher frequency than the processor's rated speed if the processor has available power and is within temperature specifications. Disabling this option reduces power usage and also reduces the systems maximum achievable performance under some workloads.",
+                "MenuPath": "./PerformanceOptions",
+                "AttributeName": "ProcTurbo",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "Disabled",
+                        "ValueName": "Disabled"
+                    },
+                    {
+                        "ValueDisplayName": "Enabled",
+                        "ValueName": "Enabled"
+                    }
+                ]
+            },
+            {
+                "CurrentValue": null,
+                "DisplayName": "Administrator Phone Number",
+                "DisplayOrder": 152,
+                "HelpText": "Enter the server administrator's phone number text.",
+                "MaxLength": 28,
+                "MenuPath": "./ServerAssetText/AdminInfo",
+                "MinLength": 0,
+                "AttributeName": "AdminPhone",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "String",
+                "ValueExpression": "[\\x20-\\x7e]"
+            },
+            {
+                "CurrentValue": null,
+                "DisplayName": "Minimum Processor Idle Power Core C-State",
+                "DisplayOrder": 90,
+                "HelpText": "You can only configure this option if HP Power Profile is set to Custom. This option lets you select the processor's lowest idle power state (C-state) that the operating system uses. The higher the C-state, the lower the power usage of that idle state (C6 is the lowest power idle state supported by the processor).",
+                "MenuPath": "./PowerManagementOptions",
+                "AttributeName": "MinProcIdlePower",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "C6 State",
+                        "ValueName": "C6"
+                    },
+                    {
+                        "ValueDisplayName": "C3 State",
+                        "ValueName": "C3"
+                    },
+                    {
+                        "ValueDisplayName": "C1E State",
+                        "ValueName": "C1E"
+                    },
+                    {
+                        "ValueDisplayName": "No C-states",
+                        "ValueName": "NoCStates"
+                    }
+                ]
+            },
+            {
+                "CurrentValue": null,
+                "DisplayName": "Console BAUD Rate",
+                "DisplayOrder": 96,
+                "HelpText": "Configures the serial port BAUD rate for the system.",
+                "MenuPath": "./SystemOptions/ConsoleBaudRate",
+                "AttributeName": "ConsoleBaudRate",
+                "ReadOnly": false,
+                "Hidden": false,
+                "Type": "Enumeration",
+                "Value": [
+                    {
+                        "ValueDisplayName": "9600",
+                        "ValueName": "9600"
+                    },
+                    {
+                        "ValueDisplayName": "14400",
+                        "ValueName": "14400"
+                    },
+                    {
+                        "ValueDisplayName": "19200",
+                        "ValueName": "19200"
+                    },
+                    {
+                        "ValueDisplayName": "38400",
+                        "ValueName": "38400"
+                    },
+                    {
+                        "ValueDisplayName": "57600",
+                        "ValueName": "57600"
+                    },
+                    {
+                        "ValueDisplayName": "115200",
+                        "ValueName": "115200"
+                    },
+                    {
+                        "ValueDisplayName": "128000",
+                        "ValueName": "128000"
+                    },
+                    {
+                        "ValueDisplayName": "256000",
+                        "ValueName": "256000"
+                    }
+                ]
             }
-          ],
-          "MapToAttribute": "MinProcIdlePower",
-          "MapToProperty": "ReadOnly",
-          "MapToValue": true
-        },
-        "DependencyFor": "MinProcIdlePower",
-        "Type": "Map"
-      }
-    ],
-    "Menus": [
-      {
-        "DisplayName": "BIOS Configuration",
-        "DisplayOrder": 1,
-        "MenuPath": "./",
-        "MenuName": "BiosMainMenu",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "System Options",
-        "DisplayOrder": 2,
-        "MenuPath": "./SystemOptions",
-        "MenuName": "SystemOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "Network Boot Options",
-        "DisplayOrder": 4,
-        "MenuPath": "./SystemOptions/NetworkBootOptions",
-        "MenuName": "NetworkBootOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "USB Options",
-        "DisplayOrder": 6,
-        "MenuPath": "./SystemOptions/UsbOptions",
-        "MenuName": "UsbOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "Processor Options",
-        "DisplayOrder": 7,
-        "MenuPath": "./SystemOptions/ProcessorOptions",
-        "MenuName": "ProcessorOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "SATA Controller Options",
-        "DisplayOrder": 8,
-        "MenuPath": "./SystemOptions/SataOptions",
-        "MenuName": "SataOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "Boot Options",
-        "DisplayOrder": 11,
-        "MenuPath": "./BootOptions",
-        "MenuName": "BootOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "Power Management",
-        "DisplayOrder": 15,
-        "MenuPath": "./PowerManagementOptions",
-        "MenuName": "PowerManagementOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "Performance Options",
-        "DisplayOrder": 17,
-        "MenuPath": "./PerformanceOptions",
-        "MenuName": "PerformanceOptions",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "Server Asset Information",
-        "DisplayOrder": 24,
-        "MenuPath": "./ServerAssetText",
-        "MenuName": "ServerAssetText",
-        "Hidden": false,
-        "ReadOnly": false
-      },
-      {
-        "DisplayName": "Administrator Information",
-        "DisplayOrder": 26,
-        "MenuPath": "./ServerAssetText/AdminInfo",
-        "MenuName": "AdminInfo",
-        "Hidden": false,
-        "ReadOnly": false
-      }
-    ]
-  }
+        ],
+        "Dependencies": [
+            {
+                "Dependency": {
+                    "MapFrom": [
+                        {
+                            "MapFromAttribute": "BootMode",
+                            "MapFromCondition": "EQU",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "LegacyBios"
+                        }
+                    ],
+                    "MapToAttribute": "EmbeddedSata",
+                    "MapToProperty": "ReadOnly",
+                    "MapToValue": true
+                },
+                "DependencyFor": "EmbeddedSata",
+                "Type": "Map"
+            },
+            {
+                "Dependency": {
+                    "MapFrom": [
+                        {
+                            "MapFromAttribute": "BootMode",
+                            "MapFromCondition": "EQU",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "LegacyBios"
+                        },
+                        {
+                            "MapFromAttribute": "EmbeddedSata",
+                            "MapFromCondition": "EQU",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "Raid",
+                            "MapTerms": "AND"
+                        }
+                    ],
+                    "MapToAttribute": "EmbeddedSata",
+                    "MapToProperty": "CurrentValue",
+                    "MapToValue": "Ahci"
+                },
+                "DependencyFor": "EmbeddedSata",
+                "Type": "Map"
+            },
+            {
+                "Dependency": {
+                    "MapFrom": [
+                        {
+                            "MapFromAttribute": "PowerProfile",
+                            "MapFromCondition": "EQU",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "MaxPerf"
+                        }
+                    ],
+                    "MapToAttribute": "MinProcIdlePower",
+                    "MapToProperty": "CurrentValue",
+                    "MapToValue": "NoCStates"
+                },
+                "DependencyFor": "PowerProfile",
+                "Type": "Map"
+            },
+            {
+                "Dependency": {
+                    "MapFrom": [
+                        {
+                            "MapFromAttribute": "PowerProfile",
+                            "MapFromCondition": "EQU",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "BalancedPowerPerf"
+                        }
+                    ],
+                    "MapToAttribute": "MinProcIdlePower",
+                    "MapToProperty": "CurrentValue",
+                    "MapToValue": "C6"
+                },
+                "DependencyFor": "PowerProfile",
+                "Type": "Map"
+            },
+            {
+                "Dependency": {
+                    "MapFrom": [
+                        {
+                            "MapFromAttribute": "PowerProfile",
+                            "MapFromCondition": "EQU",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "MinPower"
+                        }
+                    ],
+                    "MapToAttribute": "MinProcIdlePower",
+                    "MapToProperty": "CurrentValue",
+                    "MapToValue": "C6"
+                },
+                "DependencyFor": "PowerProfile",
+                "Type": "Map"
+            },
+            {
+                "Dependency": {
+                    "MapFrom": [
+                        {
+                            "MapFromAttribute": "PowerProfile",
+                            "MapFromCondition": "NEQ",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "Custom"
+                        }
+                    ],
+                    "MapToAttribute": "MinProcIdlePower",
+                    "MapToProperty": "ReadOnly",
+                    "MapToValue": true
+                },
+                "DependencyFor": "MinProcIdlePower",
+                "Type": "Map"
+            }
+        ],
+        "Menus": [
+            {
+                "DisplayName": "BIOS Configuration",
+                "DisplayOrder": 1,
+                "MenuPath": "./",
+                "MenuName": "BiosMainMenu",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "System Options",
+                "DisplayOrder": 2,
+                "MenuPath": "./SystemOptions",
+                "MenuName": "SystemOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "Network Boot Options",
+                "DisplayOrder": 4,
+                "MenuPath": "./SystemOptions/NetworkBootOptions",
+                "MenuName": "NetworkBootOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "USB Options",
+                "DisplayOrder": 6,
+                "MenuPath": "./SystemOptions/UsbOptions",
+                "MenuName": "UsbOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "Processor Options",
+                "DisplayOrder": 7,
+                "MenuPath": "./SystemOptions/ProcessorOptions",
+                "MenuName": "ProcessorOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "SATA Controller Options",
+                "DisplayOrder": 8,
+                "MenuPath": "./SystemOptions/SataOptions",
+                "MenuName": "SataOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "Boot Options",
+                "DisplayOrder": 11,
+                "MenuPath": "./BootOptions",
+                "MenuName": "BootOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "Power Management",
+                "DisplayOrder": 15,
+                "MenuPath": "./PowerManagementOptions",
+                "MenuName": "PowerManagementOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "Performance Options",
+                "DisplayOrder": 17,
+                "MenuPath": "./PerformanceOptions",
+                "MenuName": "PerformanceOptions",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "Server Asset Information",
+                "DisplayOrder": 24,
+                "MenuPath": "./ServerAssetText",
+                "MenuName": "ServerAssetText",
+                "Hidden": false,
+                "ReadOnly": false
+            },
+            {
+                "DisplayName": "Administrator Information",
+                "DisplayOrder": 26,
+                "MenuPath": "./ServerAssetText/AdminInfo",
+                "MenuName": "AdminInfo",
+                "Hidden": false,
+                "ReadOnly": false
+            }
+        ]
+    }
 }

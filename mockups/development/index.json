@@ -1,13 +1,27 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
     "@odata.id": "/redfish/v1/",
-    "@odata.type": "#ServiceRoot.v1_3_0.ServiceRoot",
+    "@odata.type": "#ServiceRoot.v1_5_0.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
-    "Product": "Contoso WidgetDeluxe 8744",
-    "RedfishVersion": "1.0.0",
+    "Vendor": "Contoso",
+    "Product": "WidgetDeluxe 8744",
+    "RedfishVersion": "1.6.0",
     "UUID": "92384634-2938-2342-8820-489239905423",
+    "ProtocolFeaturesSupported": {
+        "FilterQuery": false,
+        "SelectQuery": false,
+        "ExcerptQuery": true,
+        "OnlyMemberQuery": true,
+        "ExpandQuery": {
+            "Links": false,
+            "NoLinks": true,
+            "ExpandAll": true,
+            "Levels": true,
+            "MaxLevels": 3
+        }
+    },
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"
     },
@@ -44,6 +58,9 @@
     "JsonSchemas": {
         "@odata.id": "/redfish/v1/JsonSchemas"
     },
+    "JobService": {
+        "@odata.id": "/redfish/v1/JobService"
+    },		  
     "Links": {
         "Sessions": {
             "@odata.id": "/redfish/v1/SessionService/Sessions"

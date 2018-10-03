@@ -14,12 +14,12 @@ const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'));
 var mockupFiles = [];
 if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
-  mockupFiles = glob.sync(path.join('mockups', '**', 'index.json'));
+  mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
 }
 const syntaxBatch = {};
 const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
-                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com')],
+                          path.normalize(__dirname+'/../mockups/public-oem-examples/Contoso.com')],
                useNetwork: true};
 
 //Setup a global cache for speed
@@ -45,6 +45,7 @@ const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
+const OldRegistries = ['registries/Base.1.0.0.json', 'registries/ResourceEvent.1.0.0.json', 'registries/TaskEvent.1.0.0.json'];
 /************************************************************/
 
 const setupBatch = {
@@ -101,7 +102,7 @@ function constructTest(file) {
     'All EntityType defintions have Actions': entityTypesHaveActions,
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
-    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations,
+    'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
     'All namespaces have OwningEntity': schemaOwningEntityCheck
   }
 }
@@ -109,6 +110,9 @@ function constructTest(file) {
 mockupFiles.forEach(constructMockupTest);
 
 function constructMockupTest(file) {
+  if(OldRegistries.includes(file) || file.includes('explorer_config.json')) {
+    return;
+  }
   mockupsCSDL[file] = {
     topic: function() {
       var txt = fs.readFileSync(file);
@@ -741,15 +745,25 @@ function checkVersionInPublishedList(version, publishedList, schemaName) {
   }
 }
 
-function complexTypesHaveAnnotations(err, csdl) {
+function definitionsHaveAnnotations(err, csdl) {
   if(err) {
     return;
   }
 
   let fileName = this.context.name.substring(this.context.name.lastIndexOf('/')+1);
-  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml') {
+  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml' || fileName === 'Volume_v1.xml') {
     //Ignore OEM extensions and metadata files
     return;
+  }
+
+  let entityTypes = CSDL.search(csdl, 'EntityType');
+  for(let i = 0; i < entityTypes.length; i++) {
+    let entityType = entityTypes[i];
+    if(entityType.Abstract === true) {
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType');
   }
 
   let complexTypes = CSDL.search(csdl, 'ComplexType');
@@ -760,6 +774,42 @@ function complexTypesHaveAnnotations(err, csdl) {
     }
 
     typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
+  }
+
+  let properties = CSDL.search(csdl, 'Property');
+  for(let i = 0; i < properties.length; i++) {
+    let property = properties[i];
+    if(property.Name === "Id" || property.Name === "Name" || property.Name === "Description") {
+      // Special case for properties that reference TypeDefinitions; annotations get carried over in these cases, and these ones already have descriptions
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(property, ['OData.Description', 'OData.LongDescription'], property.Name, 'Property');
+  }
+
+  let navProperties = CSDL.search(csdl, 'NavigationProperty');
+  for(let i = 0; i < navProperties.length; i++) {
+    let navProperty = navProperties[i];
+
+    typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty');
+  }
+
+  let actions = CSDL.search(csdl, 'Action');
+  for(let i = 0; i < actions.length; i++) {
+    let action = actions[i];
+
+    typeOrBaseTypesHaveAnnotations(action, ['OData.Description', 'OData.LongDescription'], action.Name, 'Action');
+  }
+
+  let parameters = CSDL.search(csdl, 'Parameter');
+  for(let i = 0; i < parameters.length; i++) {
+    let parameter = parameters[i];
+    if(parameter.Type.endsWith('.Actions')) {
+      // This is the binding parameter; no descriptions needed since it's not part of the client's payload
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(parameter, ['OData.Description', 'OData.LongDescription'], parameter.Name, 'Parameter');
   }
 }
 
@@ -779,8 +829,12 @@ function validCSDLTypeInMockup(err, json) {
   if(err) {
     return;
   }
-  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp')) {
+  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp') || this.context.name.includes('/ConstrainedCompositionCapabilities')) {
     //Ignore the paging file and the external error example
+    return;
+  }
+  if(json["$schema"] !== undefined) {
+    //Ignore JSON schema files
     return;
   }
   if(json['@odata.type'] === undefined) {
@@ -826,7 +880,7 @@ function validCSDLTypeInMockup(err, json) {
       if(namespace === '') {
         throw new Error('Cannot get namespace of "' + typeLookup + '"');
       }
-      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice') {
         let typeNameIndex = typeLookup.lastIndexOf('.');
         if(typeNameIndex === -1) {
           throw new Error('Cannot get type of "' + typeLookup + '"');
@@ -1004,6 +1058,11 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
         }
       }
       break;
+    case 'Edm.Duration':
+      if(typeof propValue !== 'string' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.Duration, but the value in the mockup is not a valid JSON string.');
+      }
+      break;
     default:
       throw new Error('Property "'+propName+'" is type "'+propType+'" which is not allowed by the Redfish spec.');
   }
@@ -1076,7 +1135,7 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
     if(namespace === '') {
       throw new Error('Cannot get namespace of "' + typeLookup + '"');
     }
-    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface') {
+    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice') {
       let typeNameIndex = typeLookup.lastIndexOf('.');
       if(typeNameIndex === -1) {
         throw new Error('Cannot get type of "' + typeLookup + '"');
