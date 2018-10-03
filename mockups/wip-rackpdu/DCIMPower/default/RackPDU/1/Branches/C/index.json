@@ -52,7 +52,7 @@
 		"PowerFactor": 1.00
 	},
 	"PolyPhasePowerReadings": {
-		"Line3": {
+		"Line1ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerC1",
 			"Name": "Branch C Power",
 			"Reading": 816.5,

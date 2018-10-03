@@ -15,7 +15,7 @@
 	"RatedCurrentAmps": 12,
 	"NominalVoltage": 208,
 
-	"IndicatorLED": "On",
+	"IndicatorLED": "Lit",
 	"PowerOnDelaySeconds": 10,
 	"PowerOffDelaySeconds": 0,
 
@@ -45,7 +45,7 @@
 		"ReadingUnits": "A"
 	},
 	"PolyPhaseCurrents": {
-		"Line3ToLine1": {
+		"Line3": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentC3",
 			"Name": "Outlet C3 Current",
 			"Reading": 1.74,

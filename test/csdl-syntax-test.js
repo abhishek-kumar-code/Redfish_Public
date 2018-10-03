@@ -923,8 +923,8 @@ function validCSDLTypeInMockup(err, json) {
             throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
           }
           //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
-          if(propValue['@odata.id'] === undefined) {
-            throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+          if((propValue['@odata.id'] === undefined) && (propValue['DataSourceUri'] === undefined)) {
+            throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id or DataSourceUri!');
           }
         }
       }
@@ -1170,8 +1170,8 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
         throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
       }
       //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
-      if(propValue['@odata.id'] === undefined && Object.keys(propValue).length > 0) {
-        throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+      if(propValue['@odata.id'] === undefined && propValue['DataSourceUri'] === undefined && Object.keys(propValue).length > 0) {
+        throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id or DataSourceUri!');
       }
     }
   }

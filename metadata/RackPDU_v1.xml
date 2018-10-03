@@ -38,8 +38,13 @@
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Circuit_v1.xml">
-    <edmx:Include Namespace="Circuit"/>
     <edmx:Include Namespace="Circuit.v0_8_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CircuitCollection_v1.xml">
+    <edmx:Include Namespace="CircuitCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/OutletGroupCollection_v1.xml">
+    <edmx:Include Namespace="OutletGroupCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -118,6 +123,11 @@
           <Annotation Term="OData.Description" String="The actual Asset Tag of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Asset Tag of RackPDU."/>
         </Property>
+        <Property Name="UUID" Type="Resource.UUID">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Universal Unique Identifier (UUID) for this RackPDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the RackPDU."/>
+        </Property>
         <Property Name="Location" Type="Resource.Location">
           <Annotation Term="OData.Description" String="The actual Physical Location of RackPDU."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the actual Physical Location of RackPDU."/>
@@ -183,25 +193,32 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
         </Property>
 
-        <NavigationProperty Name="Mains" Type="Collection(Circuit.v0_8_0.Circuit)">
+        <NavigationProperty Name="Mains" Type="CircuitCollection.CircuitCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for AcInput."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for AcInput for a Redfish implementation."/>
-          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
-        <NavigationProperty Name="Branches" Type="Collection(Circuit.v0_8_0.Circuit)">
+        <NavigationProperty Name="Branches" Type="CircuitCollection.CircuitCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Branch Circuits."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for Branch Circuits for a Redfish implementation."/>
-          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
-        <NavigationProperty Name="Outlets" Type="Collection(Circuit.v0_8_0.Circuit)">
+        <NavigationProperty Name="Outlets" Type="CircuitCollection.CircuitCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for Outlets."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for Outlets for a Redfish implementation."/>
-          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="OutletGroups" Type="OutletGroupCollection.OutletGroupCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for Outlet Groups."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for Outlet Groups for a Redfish implementation."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
         <Property Name="Actions" Type="RackPDU.v0_8_0.Actions" Nullable="false">
@@ -242,6 +259,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The number of monitored Phases supported by this Rack PDU."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Phases of RackPDU."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MonitoredBranches" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The number of monitored Branches supported by this Rack PDU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual maximum number of Branches of RackPDU."/>
           <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
         <Property Name="TotalBranches" Type="Edm.Int64">

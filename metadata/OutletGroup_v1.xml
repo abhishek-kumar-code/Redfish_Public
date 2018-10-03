@@ -99,7 +99,7 @@
           <Annotation Term="OData.Description" String="The power state of the outlet group."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the outlet group."/>
         </Property>
-        <Property Name="Powered" Type="Edm.Boolean">
+        <Property Name="PowerEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The power state of the outlet group."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the outlet group."/>
@@ -112,36 +112,36 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
-        <Property Name="Voltage" Type="Sensor.Sensor">
+        <NavigationProperty Name="Voltage" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
           <Annotation Term="OData.Description" String="The voltage sensor for this single phase circuit."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the voltage, measured in Volts, for this single phase circuit. This object shall not appear in resource instances representing poly-phase circuits."/>
-        </Property>
-        <Property Name="Current" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Current" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Current"/>
           <Annotation Term="OData.Description" String="The current sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the current, measured in Amperes, for this single phase circuit. This object shall not appear in resource instances representing poly-phase circuits."/>
-        </Property>
-        <Property Name="PowerReading" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="PowerReading" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the total power, measured in Watts, for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple power sensors exist for this circuit."/>
-        </Property>
-        <Property Name="EnergyReading" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="EnergyReading" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the total energy, measured in Watt-hours (units of Watts), for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple energy sensors exist for this circuit."/>
-        </Property>
-        <Property Name="Frequency" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Frequency" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Frequency"/>
           <Annotation Term="OData.Description" String="The frequency sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
+        </NavigationProperty>
 
         <Property Name="PolyPhaseVoltages" Type="Circuit.v0_8_0.Voltages">
           <Annotation Term="OData.Description" String="The voltage sensors for this circuit."/>
@@ -186,156 +186,156 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object contains the voltages."/>
         <Annotation Term="OData.LongDescription" String="This object shall contain the voltage sensor(s) for this circuit. For single phase circuits this object will contain a duplicate copy of the voltage sensor referenced in the 'Voltage' object. For poly-phase circuits this object may contain multiple voltage sensor readings used to fully describe the circuit."/>
-        <Property Name="Line1ToLine2" Type="Sensor.Sensor">
+        <NavigationProperty Name="Line1ToLine2" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
           <Annotation Term="OData.Description" String="The voltage sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line2ToLine3" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line2ToLine3" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
           <Annotation Term="OData.Description" String="The voltage sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line3ToLine1" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line3ToLine1" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
           <Annotation Term="OData.Description" String="The voltage sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line1ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line1ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
           <Annotation Term="OData.Description" String="The voltage sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line2ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line2ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
           <Annotation Term="OData.Description" String="The voltage sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line3ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line3ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Voltage"/>
           <Annotation Term="OData.Description" String="The voltage sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
+        </NavigationProperty>
       </ComplexType>
 
       <ComplexType Name="Currents">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object contains the current sensors."/>
         <Annotation Term="OData.LongDescription" String="."/>
-        <Property Name="Line1" Type="Sensor.Sensor">
+        <NavigationProperty Name="Line1" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Current"/>
           <Annotation Term="OData.Description" String="The current sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line2" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line2" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Current"/>
           <Annotation Term="OData.Description" String="The current sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line3" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line3" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Current"/>
           <Annotation Term="OData.Description" String="The current sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Neutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Neutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Current"/>
           <Annotation Term="OData.Description" String="The current sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
+        </NavigationProperty>
       </ComplexType>
 
       <ComplexType Name="EnergyReadings">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object contains the energy sensors."/>
         <Annotation Term="OData.LongDescription" String="."/>
-        <Property Name="Line1ToLine2" Type="Sensor.Sensor">
+        <NavigationProperty Name="Line1ToLine2" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line2ToLine3" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line2ToLine3" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The Energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line3ToLine1" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line3ToLine1" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The Energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line1ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line1ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line2ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line2ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line3ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line3ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
+        </NavigationProperty>
       </ComplexType>
 
       <ComplexType Name="PowerReadings">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object contains the power sensors."/>
         <Annotation Term="OData.LongDescription" String="."/>
-        <Property Name="Line1ToLine2" Type="Sensor.Sensor">
+        <NavigationProperty Name="Line1ToLine2" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line2ToLine3" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line2ToLine3" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The Power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line3ToLine1" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line3ToLine1" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The Power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line1ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line1ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The Power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line2ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line2ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The Power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
-        <Property Name="Line3ToNeutral" Type="Sensor.Sensor">
+        </NavigationProperty>
+        <NavigationProperty Name="Line3ToNeutral" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Power"/>
           <Annotation Term="OData.Description" String="The Power sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
+        </NavigationProperty>
       </ComplexType>
 
     </Schema>
