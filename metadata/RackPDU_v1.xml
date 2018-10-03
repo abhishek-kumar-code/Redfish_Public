@@ -37,9 +37,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Alarm_v1.xml">
     <edmx:Include Namespace="Alarm"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Circuit_v1.xml">
-    <edmx:Include Namespace="Circuit.v0_8_0"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CircuitCollection_v1.xml">
     <edmx:Include Namespace="CircuitCollection"/>
   </edmx:Reference>
