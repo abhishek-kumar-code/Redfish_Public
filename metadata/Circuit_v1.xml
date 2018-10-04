@@ -116,12 +116,10 @@
           <Annotation Term="OData.Description" String="Designates if the outlet is a locking type."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether the outlet includes a locking design. The value shall be true if the outlet is a locking type, and false if the outlet is a non-locking type."/>
         </Property>
-        <Property Name="NominalVoltage" Type="Edm.Decimal">
+        <Property Name="NominalVoltage" Type="Circuit.v0_8_0.NominalVoltageType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The nominal voltage for this circuit."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the nominal voltage for this circuit, in Volts."/>
-          <Annotation Term="Measures.Unit" String="V"/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="RatedCurrentAmps" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -135,8 +133,8 @@
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the circuit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the indicator light state for the indicator light associated with this circuit."/>
         </Property>
-        <Property Name="BreakerState" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Property Name="BreakerState" Type="Circuit.v0_8_0.BreakerStates">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="."/>
           <Annotation Term="OData.LongDescription" String="."/>
         </Property>
@@ -437,6 +435,21 @@
         </Member>
       </EnumType>
 
+      <EnumType Name="BreakerStates">
+        <Member Name="Normal">
+          <Annotation Term="OData.Description" String="The breaker is powered on."/>
+        </Member>
+        <Member Name="Tripped">
+          <Annotation Term="OData.Description" String="The breaker has been tripped."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The breaker is off."/>
+        </Member>		  
+        <Member Name="Reset">
+          <Annotation Term="OData.Description" String="The breaker is to be reset to the Normal state."/>
+        </Member>			  
+      </EnumType>
+
       <EnumType Name="PhaseWiringType">
         <Member Name="Single">
           <Annotation Term="OData.Description" String="1-Phase, 3-Wire."/>
@@ -539,7 +552,7 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="LineInputVoltageType">
+      <EnumType Name="NominalVoltageType">
         <Member Name="DCNeg48V">
           <Annotation Term="OData.Description" String="-48V DC input."/>
         </Member>

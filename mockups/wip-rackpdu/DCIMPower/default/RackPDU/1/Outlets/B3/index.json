@@ -13,7 +13,7 @@
 	"IECOutletType": "C13",
 	"LockingOutlet": false,
 	"RatedCurrentAmps": 12,
-	"NominalVoltage": 208,
+	"NominalVoltage": "AC240V",
 
 	"IndicatorLED": "Lit",
 	"PowerOnDelaySeconds": 10,

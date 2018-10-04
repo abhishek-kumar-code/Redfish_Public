@@ -13,7 +13,7 @@
 	"NEMAOutletType": "5-20",
 	"LockingOutlet": false,
 	"RatedCurrentAmps": 20,
-	"NominalVoltage": 120,
+	"NominalVoltage": "AC120V",
 
 	"IndicatorLED": "Lit",
 	"PowerOnDelaySeconds": 4,

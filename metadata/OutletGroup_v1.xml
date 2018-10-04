@@ -101,8 +101,8 @@
         </Property>
         <Property Name="PowerEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The power state of the outlet group."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the outlet group."/>
+          <Annotation Term="OData.Description" String="Indicates if the outlet group can be powered."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power enable state of the outlet group.  True shall indicate that the group may be powered on, and false shall indicate that the group cannot be powered."/>
         </Property>
 
         <NavigationProperty Name="Outlets" Type="Collection(Circuit.Circuit)" ContainsTarget="true">
