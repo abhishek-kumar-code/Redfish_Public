@@ -75,7 +75,7 @@
 		"Reading": 121666,
 		"ReadingUnits": "W"
 	},
-	"EnergyReadings": {
+	"PolyPhaseEnergyReadings": {
 		"Line3": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC1",
 			"Name": "Branch C Energy",

@@ -186,12 +186,6 @@
         <NavigationProperty Name="Energy" Type="Sensor.Sensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
-        </NavigationProperty>
-        <NavigationProperty Name="EnergyReading" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
           <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain the total energy, measured in Watt-hours (units of Watts), for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple energy sensors exist for this circuit."/>
         </NavigationProperty>

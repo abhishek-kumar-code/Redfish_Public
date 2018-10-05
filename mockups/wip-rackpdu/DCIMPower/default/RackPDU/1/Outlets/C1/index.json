@@ -81,7 +81,7 @@
 		"Reading": 36166,
 		"ReadingUnits": "W"
 	},
-	"EnergyReadings": {
+	"PolyPhaseEnergyReadings": {
 		"Line3ToNeutral": {
 			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC1",
 		    "Name": "Outlet C1 Energy",
