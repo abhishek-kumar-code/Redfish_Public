@@ -75,14 +75,7 @@
 		"Reading": 110345,
 		"ReadingUnits": "W"
 	},
-	"PolyPhaseEnergyReadings": {
-		"Line2": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB1",
-			"Name": "Branch B Energy",
-			"Reading": 110345,
-			"ReadingUnits": "W"
-		}
-	},
+
 	"Outlets": [{
 			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B1"
 		},

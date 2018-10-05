@@ -81,14 +81,6 @@
 		"Reading": 52941,
 		"ReadingUnits": "W"
 	},
-	"PolyPhaseEnergyReadings": {
-		"Line2ToLine3": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB2",
-		    "Name": "Outlet B2 Energy",
-			"Reading": 52941,
-			"ReadingUnits": "W"
-		}
-	},
 
 	"Actions": {
 		"#Circuit.PowerControl": {

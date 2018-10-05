@@ -208,10 +208,6 @@
           <Annotation Term="OData.Description" String="The power sensors for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
-        <Property Name="PolyPhaseEnergyReadings" Type="Circuit.v0_8_0.EnergyReadings">
-          <Annotation Term="OData.Description" String="The energy sensors for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
-        </Property>
 
         <Property Name="Actions" Type="Circuit.v0_8_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -320,48 +316,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Current"/>
           <Annotation Term="OData.Description" String="The current sensor for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
-        </NavigationProperty>
-      </ComplexType>
-
-      <ComplexType Name="EnergyReadings">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This object contains the energy sensors."/>
-        <Annotation Term="OData.LongDescription" String="."/>
-        <NavigationProperty Name="Line1ToLine2" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
-          <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
-        </NavigationProperty>
-        <NavigationProperty Name="Line2ToLine3" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
-          <Annotation Term="OData.Description" String="The Energy sensor for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
-        </NavigationProperty>
-        <NavigationProperty Name="Line3ToLine1" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
-          <Annotation Term="OData.Description" String="The Energy sensor for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
-        </NavigationProperty>
-        <NavigationProperty Name="Line1ToNeutral" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
-          <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
-        </NavigationProperty>
-        <NavigationProperty Name="Line2ToNeutral" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
-          <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
-        </NavigationProperty>
-        <NavigationProperty Name="Line3ToNeutral" Type="Sensor.Sensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.ExcerptCopy" String="Sensor.ReadingType/Energy"/>
-          <Annotation Term="OData.Description" String="The energy sensor for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </NavigationProperty>
       </ComplexType>
