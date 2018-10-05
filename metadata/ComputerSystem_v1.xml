@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.5.1-->
+<!--# Redfish Schema:  ComputerSystem  v1.5.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -172,15 +172,47 @@
         </Member>
         <Member Name="SDCard">
           <Annotation Term="OData.Description" String="Boot from an SD Card."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="UefiHttp">
           <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="RemoteDrive">
           <Annotation Term="OData.Description" String="Boot from a remote drive (e.g. iSCSI)."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_2_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="UefiBootNext">
           <Annotation Term="OData.Description" String="Boot to the UEFI Device specified in the BootNext property."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_5_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -371,6 +403,14 @@
         <Member Name="Composed">
           <Annotation Term="OData.Description" String="A computer system that has been created by binding resource blocks together."/>
           <Annotation Term="OData.LongDescription" String="A SystemType of Composed is typically used when representating a single system constructed from disaggregated resource via the Redfish Composition service."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -378,8 +418,16 @@
       <EnumType Name="IndicatorLED">
         <Member Name="Unknown">
           <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined."/>
-          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of returning null if the state is unknown."/>
           <Annotation Term="OData.LongDescription" String="This value shall represent the Indicator LED is in an unknown state.  The service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+                <PropertyValue Property="Description" String="This value has been Deprecated in favor of returning null if the state is unknown."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="Lit">
           <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
@@ -430,55 +478,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of the override boot target. The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for UEFI Boot Source Override as this setting is defined in UEFI as a one time boot only. Changes to this property do not alter the BIOS persistent boot order configuration."/>
         </Property>
       </ComplexType>
-
-      <EnumType Name="BootSource">
-        <Annotation Term="Redfish.Deprecated" String="This definition has been moved to the unversioned namespace so that external references can pick up changes over time."/>
-        <Member Name="None">
-          <Annotation Term="OData.Description" String="Boot from the normal boot device."/>
-        </Member>
-        <Member Name="Pxe">
-          <Annotation Term="OData.Description" String="Boot from the Pre-Boot EXecution (PXE) environment."/>
-        </Member>
-        <Member Name="Floppy">
-          <Annotation Term="OData.Description" String="Boot from the floppy disk drive."/>
-        </Member>
-        <Member Name="Cd">
-          <Annotation Term="OData.Description" String="Boot from the CD/DVD disc."/>
-        </Member>
-        <Member Name="Usb">
-          <Annotation Term="OData.Description" String="Boot from a USB device as specified by the system BIOS."/>
-        </Member>
-        <Member Name="Hdd">
-          <Annotation Term="OData.Description" String="Boot from a hard drive."/>
-        </Member>
-        <Member Name="BiosSetup">
-          <Annotation Term="OData.Description" String="Boot to the BIOS Setup Utility."/>
-        </Member>
-        <Member Name="Utilities">
-          <Annotation Term="OData.Description" String="Boot the manufacturer's Utilities program(s)."/>
-        </Member>
-        <Member Name="Diags">
-          <Annotation Term="OData.Description" String="Boot the manufacturer's Diagnostics program."/>
-        </Member>
-        <Member Name="UefiShell">
-          <Annotation Term="OData.Description" String="Boot to the UEFI Shell."/>
-        </Member>
-        <Member Name="UefiTarget">
-          <Annotation Term="OData.Description" String="Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property."/>
-        </Member>
-        <Member Name="SDCard">
-          <Annotation Term="OData.Description" String="Boot from an SD Card."/>
-        </Member>
-        <Member Name="UefiHttp">
-          <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location."/>
-        </Member>
-        <Member Name="RemoteDrive">
-          <Annotation Term="OData.Description" String="Boot from a remote drive (e.g. iSCSI)."/>
-        </Member>
-        <Member Name="UefiBootNext">
-          <Annotation Term="OData.Description" String="Boot to the UEFI Device specified in the BootNext property."/>
-        </Member>
-      </EnumType>
 
       <EnumType Name="BootSourceOverrideEnabled">
         <Member Name="Disabled">
