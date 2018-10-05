@@ -1,0 +1,23 @@
+{
+	"@odata.type": "#Circuit.v0_8_0.Circuit",
+	"Id": "A5",
+	"Name": "Un-managed, Un-monitored Outlet A5, Branch Circuit A",
+
+	"CircuitType": "Outlet",
+	"PhaseWiringType": "Single",
+	"VoltageType": "AC",
+	"IECOutletType": "B",
+	"NEMAOutletType": 5,
+	"LockingOutlet": true,
+	"RatedCurrentAmps": 20,
+	"NominalVoltage": 120,
+
+	"Links": {
+		"BranchCircuit": {
+			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A"
+		}
+	},
+	"@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
+	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/A5",
+	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
