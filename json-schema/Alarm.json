@@ -1,0 +1,24 @@
+{
+    "$ref": "#/definitions/Alarm",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Alarm": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Alarm.v0_3_0.json#/definitions/Alarm"
+                }
+            ],
+            "deletable": false,
+            "description": "This resource defines the data definition for an Alarm.  An Alarm is an entity that has a latch type behavior.  It is designed to be used to persist sensor threshold crossing or to capture the momentary state of another property.",
+            "insertable": false,
+            "longDescription": "This resource shall represent an Alarm in a Redfish implementation.",
+            "updatable": true
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#Alarm.Alarm"
+}

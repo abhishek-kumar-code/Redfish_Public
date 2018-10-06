@@ -1,0 +1,709 @@
+{
+    "$ref": "#/definitions/Sensor",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#Sensor.ResetStatistics": {
+                    "$ref": "#/definitions/ResetStatistics"
+                },
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "DiscreteReadings": {
+            "enum": [
+                "Open",
+                "Closed",
+                "Active",
+                "Inactive"
+            ],
+            "enumDescriptions": {
+                "Active": "The sensor is active.",
+                "Closed": "The sensor is closed.",
+                "Inactive": "The sensor is inactive.",
+                "Open": "The sensor is open."
+            },
+            "enumLongDescriptions": {
+                "Active": ".",
+                "Closed": ".",
+                "Inactive": ".",
+                "Open": "."
+            },
+            "type": "string"
+        },
+        "ElectricalSourceType": {
+            "enum": [
+                "Line1",
+                "Line2",
+                "Line3",
+                "Neutral",
+                "LineToLine",
+                "Line1ToLine2",
+                "Line2ToLine3",
+                "Line3ToLine1",
+                "LineToNeutral",
+                "Line1ToNeutral",
+                "Line2ToNeutral",
+                "Line3ToNeutral",
+                "Line1ToNeutralAndL1L2",
+                "Line2ToNeutralAndL1L2",
+                "Line2ToNeutralAndL2L3",
+                "Line3ToNeutralAndL3L1",
+                "Total"
+            ],
+            "enumDescriptions": {
+                "Line1": ".",
+                "Line1ToLine2": ".",
+                "Line1ToNeutral": ".",
+                "Line1ToNeutralAndL1L2": ".",
+                "Line2": ".",
+                "Line2ToLine3": ".",
+                "Line2ToNeutral": ".",
+                "Line2ToNeutralAndL1L2": ".",
+                "Line2ToNeutralAndL2L3": ".",
+                "Line3": ".",
+                "Line3ToLine1": ".",
+                "Line3ToNeutral": ".",
+                "Line3ToNeutralAndL3L1": ".",
+                "LineToLine": ".",
+                "LineToNeutral": ".",
+                "Neutral": ".",
+                "Total": "."
+            },
+            "enumLongDescriptions": {
+                "Line1": ".",
+                "Line1ToLine2": ".",
+                "Line1ToNeutral": ".",
+                "Line1ToNeutralAndL1L2": ".",
+                "Line2": ".",
+                "Line2ToLine3": ".",
+                "Line2ToNeutral": ".",
+                "Line2ToNeutralAndL1L2": ".",
+                "Line2ToNeutralAndL2L3": ".",
+                "Line3": ".",
+                "Line3ToLine1": ".",
+                "Line3ToNeutral": ".",
+                "Line3ToNeutralAndL3L1": ".",
+                "LineToLine": ".",
+                "LineToNeutral": ".",
+                "Neutral": ".",
+                "Total": "."
+            },
+            "type": "string"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "ReadingType": {
+            "enum": [
+                "Temperature",
+                "Humidity",
+                "Power",
+                "Energy",
+                "Voltage",
+                "Current",
+                "Frequency",
+                "Pressure",
+                "LiquidLevel",
+                "Rotational",
+                "AirFlow",
+                "LiquidFlow",
+                "Barometric",
+                "Altitude",
+                "ContactClosure"
+            ],
+            "enumDescriptions": {
+                "AirFlow": ".",
+                "Altitude": ".",
+                "Barometric": ".",
+                "ContactClosure": "A discrete sensor with open and closed values.",
+                "Current": ".",
+                "Energy": "Energy consumption (Watt-hours).",
+                "Frequency": ".",
+                "Humidity": ".",
+                "LiquidFlow": ".",
+                "LiquidLevel": ".",
+                "Power": ".",
+                "Pressure": ".",
+                "Rotational": ".",
+                "Temperature": "Sensor type for measuring temperature.",
+                "Voltage": "Voltage (AC or DC)."
+            },
+            "enumLongDescriptions": {
+                "AirFlow": ".",
+                "Altitude": ".",
+                "Barometric": ".",
+                "ContactClosure": ".",
+                "Current": "This property shall indicate the root mean square (RMS) of instantaneous current measurements calculated over an integer number of line cycles for a circuit. Current is expressed in Amperes units.",
+                "Energy": "The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'.",
+                "Frequency": ".",
+                "Humidity": ".",
+                "LiquidFlow": ".",
+                "LiquidLevel": ".",
+                "Power": "The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'.",
+                "Pressure": ".",
+                "Rotational": ".",
+                "Temperature": ".",
+                "Voltage": "This property shall indicate the root mean square (RMS) of instantaneous voltage measurements calculated over an integer number of line cycles for a circuit.  Voltage is expressed in Volts units."
+            },
+            "type": "string"
+        },
+        "ResetStatistics": {
+            "additionalProperties": false,
+            "description": "This action is used to reset statistics related to this sensor.",
+            "longDescription": "This action shall perform a reset of any time intervals or counted values for this sensor.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Sensor": {
+            "additionalProperties": false,
+            "description": "This schema defines a Sensor to be used in conjunction with data center equipment.",
+            "longDescription": "This resource shall be used to represent resources that represent the sensor data.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
+                },
+                "Accuracy": {
+                    "description": "Estimated percent error of measured vs. actual values.",
+                    "longDescription": "The value of this property shall be the percent error +/- of the measured vs. actual values.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "ApparentVA": {
+                    "description": "The product of Voltage and Current for an AC circuit, in Volt-Amperes units.",
+                    "longDescription": "This property shall indicate the product of VoltageRMS multiplied by CurrentRMS for a circuit. PowerApparentVA is expressed in Volt-Amperes units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DataSourceUri": {
+                    "description": "A link to the resource that provides the data for this object.",
+                    "format": "uri",
+                    "longDescription": "This property shall contain a URI to the resource that provides the source of the schema Excerpt contained within this copy.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DeadBand": {
+                    "description": "The band of values around the SetPoint where the control system does not respond to the SetPoint.",
+                    "longDescription": "This property shall indicate the band of values around the SetPoint where the control system does not respond to the SetPoint.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DiscreteReading": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DiscreteReadings"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The present value for this discrete Sensor.",
+                    "longDescription": "This property shall indicate the present discrete value of this Sensor at the time the information request occurred.",
+                    "readonly": true
+                },
+                "ElectricalSourceType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ElectricalSourceType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of electrical circuit measurement within a circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "EnergykWh": {
+                    "description": "The integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units.",
+                    "longDescription": "This property shall indicate the integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LoadPercent": {
+                    "description": "The power load utilization for this Sensor.",
+                    "longDescription": "This property shall indicate the present value of this Sensor at the time the information request occurred. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Location": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The location information for this Sensor.",
+                    "longDescription": "This property shall indicate the location information of this Sensor."
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "PeakReading": {
+                    "description": "The peak reading value for this sensor.",
+                    "longDescription": "The value of this property shall be the peak value of the Reading for this sensor during the last interval.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PeakReadingTime": {
+                    "description": "The time at which the Peak Reading value occurred.",
+                    "format": "date-time",
+                    "longDescription": "The value of this property shall the timestamp when the Peak Reading value was observed.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PhysicalContext": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/PhysicalContext.json#/definitions/PhysicalContext"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Describes the area or device to which this sensor measurement applies..",
+                    "longDescription": "The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies.",
+                    "readonly": true
+                },
+                "PowerFactor": {
+                    "description": "The power factor for this Sensor.",
+                    "longDescription": "This property shall identify the quotient of PowerRealWatts and PowerApparentVA for a circuit. PowerFactor is expressed in unit-less 1/100ths. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values.",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Precision": {
+                    "description": "Number of significant digits in the Reading.",
+                    "longDescription": "The value of this property shall specify the number of significant digits in the Reading.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ReactiveVAR": {
+                    "description": "The square root of the difference term of squared ApparentVA and squared Power (Reading) for a circuit, expressed in VAR units.",
+                    "longDescription": "This property shall indicate the arithmetic mean of product terms of instantaneous voltage and quadrature current measurements calculated over an integer number of line cycles for a circuit. PowerReactiveVAR is expressed in VAR units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Reading": {
+                    "description": "The present value for this Sensor.",
+                    "longDescription": "This property shall indicate the present value of this Sensor at the time the information request occurred.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ReadingRangeMax": {
+                    "description": "The maximum value of Reading possible for this Sensor.",
+                    "longDescription": "This property shall indicate the Max Reading Range information of this Sensor.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ReadingRangeMin": {
+                    "description": "The minimum value of Reading possible for this Sensor.",
+                    "longDescription": "This property shall indicate the Min Reading Range information of this Sensor.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ReadingType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ReadingType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The kind of sensor being represented.",
+                    "longDescription": "This property shall indicate the type of the sensor being represented.",
+                    "readonly": true
+                },
+                "ReadingUnits": {
+                    "description": "Units in which the reading and thresholds are measured.",
+                    "longDescription": "The value of this property shall be the units in which the sensor's reading and thresholds are measured.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SensingFrequency": {
+                    "description": "The time interval between readings of the physical sensor.",
+                    "longDescription": "The value of this property shall the time interval between reading the physical sensor.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "SensorResetTime": {
+                    "description": "The time at which the time-based properties were last reset.",
+                    "format": "date-time",
+                    "longDescription": "The value of this property shall be the timestamp when the time-based property values were last reset by the user or the service.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SetPoint": {
+                    "description": "The equipment Setpoint for the environmental characteristic instrumented by this sensor.",
+                    "longDescription": "This property shall indicate the Setpoint for the equipment based on this sensor reading.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
+                },
+                "Thresholds": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Thresholds"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The set of thresholds defined for this sensor.",
+                    "longDescription": "."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "Threshold": {
+            "additionalProperties": false,
+            "description": "A threshold definition for a sensor.",
+            "longDescription": "This type shall contain the properties for an individual threshold for this sensor.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Activation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ThresholdActivation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The direction of crossing that activates this threshold.",
+                    "longDescription": "This property shall indicate the direction of crossing of the Reading value for this Sensor that triggers the threshold.",
+                    "readonly": false
+                },
+                "DwellTime": {
+                    "description": "The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                    "longDescription": ".",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Reading": {
+                    "description": "The threshold value.",
+                    "longDescription": "This property shall indicate the Reading value of this Sensor that triggers the threshold. The units of this property shall follow the Reading and ReadingUnits of this sensor.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ThresholdActivation": {
+            "enum": [
+                "Increasing",
+                "Decreasing",
+                "Either"
+            ],
+            "enumDescriptions": {
+                "Decreasing": "Value decreases below the threshold.",
+                "Either": "Value crosses the threshold in either direction.",
+                "Increasing": "Value increases above the threshold."
+            },
+            "enumLongDescriptions": {
+                "Decreasing": "This threshold is activated when the value of Reading changes from a value higher than the threshold to a value lower than the threshold.",
+                "Either": "This threshold is activated when either the Increasing or Decreasing conditions are met.",
+                "Increasing": "This threshold is activated when the value of Reading changes from a value lower than the threshold to a value higher than the threshold."
+            },
+            "type": "string"
+        },
+        "Thresholds": {
+            "additionalProperties": false,
+            "description": "The set of thresholds defined for a sensor.",
+            "longDescription": ".",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "LowerCaution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Threshold"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Below normal range.",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range. The units shall be the same units as the Reading."
+                },
+                "LowerCritical": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Threshold"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Below normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range and but is not yet fatal. The units shall be the same units as the Reading."
+                },
+                "LowerFatal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Threshold"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Below normal range and fatal.",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range and is fatal. The units shall be the same units as the Reading."
+                },
+                "UpperCaution": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Threshold"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Above normal range.",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range. The units shall be the same units as the Reading."
+                },
+                "UpperCritical": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Threshold"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Above normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range and but is not yet fatal. The units shall be the same units as the Reading."
+                },
+                "UpperFatal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Threshold"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Above normal range and fatal.",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range and is fatal. The units shall be the same units as the Reading."
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#Sensor.v0_8_0.Sensor"
+}

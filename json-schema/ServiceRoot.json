@@ -64,6 +64,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_4_0.json#/definitions/ServiceRoot"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_5_0.json#/definitions/ServiceRoot"
                 }
             ],
             "deletable": false,

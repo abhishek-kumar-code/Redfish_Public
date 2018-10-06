@@ -1,0 +1,256 @@
+{
+    "$ref": "#/definitions/Facility",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "Facility": {
+            "additionalProperties": false,
+            "description": "The Facility schema represents the physical location containing equipment, such as a room, building, or campus.",
+            "longDescription": "This resource shall be used to represent a location containing equipment, such as a room, building, or campus, for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "FacilityType": {
+                    "$ref": "#/definitions/FacilityType",
+                    "description": "The type of location this resource represents.",
+                    "longDescription": "FacilityType shall indicate the type of location this resource represents.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Links": {
+                    "$ref": "#/definitions/Links",
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "Location": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location",
+                    "description": "The Location of the facility.",
+                    "longDescription": "This property shall contain location information of the associated facility."
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
+                }
+            },
+            "required": [
+                "FacilityType",
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "FacilityType": {
+            "enum": [
+                "Room",
+                "Floor",
+                "Building",
+                "Site"
+            ],
+            "enumDescriptions": {
+                "Building": "A structure with a roof and walls.",
+                "Floor": "A floor inside of a building.",
+                "Room": "A room inside of a building or floor.",
+                "Site": "A small area consisting of several buildings."
+            },
+            "type": "string"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "Contains references to other resources that are related to this resource.",
+            "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ContainedBy": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Facility.json#/definitions/Facility",
+                    "description": "A reference to the facility that this facility is contained by.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the facility that contains this chassis and shall be of type Facility.",
+                    "readonly": true
+                },
+                "Contains": {
+                    "description": "An array of references to any other facility that this facility has in it.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Facility.json#/definitions/Facility"
+                    },
+                    "longDescription": "The value of this property shall be an array of references to resources that represent the facilities that this facility contains and shall be of type Facility.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Contains@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "ContainsChassis": {
+                    "description": "An array of references to chassis instances that this facility has in it.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"
+                    },
+                    "longDescription": "The value of this property shall be an array of references to resources that represent the chassis that this facility contains and shall be of type Chassis.  Chassis instances that are within Facility instances represented in the Contains link should not be included in this list.  This list should only contain top level Chassis instances, meaning each Chassis instance does not have the ContainedBy link.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ContainsChassis@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "CoolingEquipment": {
+                    "description": "An array of references to cooling equipment that this facility has in it.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/DCIMCooling.json#/definitions/DCIMCooling"
+                    },
+                    "longDescription": "The value of this property shall be an array of references to resources that represent the cooling equipment that this facility contains and shall be of type DCIMCooling.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "CoolingEquipment@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "ManagedBy": {
+                    "description": "An array of references to the Managers responsible for managing this facility.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.json#/definitions/Manager"
+                    },
+                    "longDescription": "The value of this property shall be an array of references to resources that manage this facility and shall reference a resource of type Manager.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ManagedBy@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                },
+                "PowerEquipment": {
+                    "description": "An array of references to power equipment that this facility has in it.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/DCIMPower.json#/definitions/DCIMPower"
+                    },
+                    "longDescription": "The value of this property shall be an array of references to resources that represent the power equipment that this facility contains and shall be of type DCIMPower.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "PowerEquipment@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                }
+            },
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#Facility.v0_2_0.Facility"
+}

@@ -1,0 +1,262 @@
+{
+    "$ref": "#/definitions/Alarm",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "Alarm": {
+            "additionalProperties": false,
+            "description": "This resource defines the data definition for an Alarm.  An Alarm is an entity that has a latch type behavior.  It is designed to be used to persist sensor threshold crossing or to capture the momentary state of another property.",
+            "longDescription": "This resource shall represent an Alarm in a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
+                },
+                "Acknowledged": {
+                    "description": "This is the acknowledge state of the Alarm.",
+                    "longDescription": "The value of this property shall initially be false when alarm is Armed and can be used by client to acknoledge the alarm without having to rearm the alarm.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "AlarmState": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/AlarmStates"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This is the Armed-Triggered-Disbled status of the Alarm.",
+                    "longDescription": "The value of this property shall be the AlarmStatus enumeration of the Alarm.",
+                    "readonly": false
+                },
+                "AutomaticReArm": {
+                    "description": "Identifies whether the Alarm will rearm automatically without requiring a Redfish client to change the AlarmState.",
+                    "longDescription": "The value of True shall indicate that the Alarm will be rearmed by the device or instrumentation, a value of False shall indicate that the Alarm must be rearmed by an API client.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Links": {
+                    "$ref": "#/definitions/Links",
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "Message": {
+                    "description": "This property decodes from AlarmId in the Alarm Registry .",
+                    "longDescription": "The value of this property shall be the message property of the alarm registry as indexed by the AlarmId.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MessageArgs": {
+                    "description": "The values of this property shall be any arguments for the message.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "This contains message arguments to be substituted into the message included or in the message looked up via a registry.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "MessageId": {
+                    "description": "This property decodes from EntryType:  If it is Event then it is a message id.  Otherwise, it is SEL or Oem specific.  This value is only used for registries - for more information, see the specification.",
+                    "longDescription": "The value of this property shall the MessageId property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Severity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/AlarmSeverity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This is the severity of the Alarm.",
+                    "longDescription": "The value of this property shall be the severity of the condition resulting in the Alarm.",
+                    "readonly": true
+                },
+                "TriggerTime": {
+                    "description": "The time the Alarm was triggered.",
+                    "format": "date-time",
+                    "longDescription": "The value of this property shall be the time at which the Alarm was triggered.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "AlarmSeverity": {
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ],
+            "type": "string"
+        },
+        "AlarmStates": {
+            "enum": [
+                "Armed",
+                "Triggered",
+                "Disabled"
+            ],
+            "type": "string"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "Contains references to other resources that are related to this resource.",
+            "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                },
+                "RelatedProperty": {
+                    "description": "This is the URI of the Property that the Alarm is triggered by.",
+                    "format": "uri",
+                    "longDescription": "The value of this property shall be an href that references the resource for which the alarm is associated.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "RelatedSensor": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef",
+                    "description": "This is the URI of the sensor that the alarm is triggered by.",
+                    "longDescription": "The value of this property shall be an href that references the resource for which the alarm is associated.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#Alarm.v0_3_0.Alarm"
+}

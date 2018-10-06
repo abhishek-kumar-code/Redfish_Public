@@ -1,0 +1,24 @@
+{
+    "$ref": "#/definitions/Circuit",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Circuit": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Circuit.v0_8_0.json#/definitions/Circuit"
+                }
+            ],
+            "deletable": false,
+            "description": "This is the schema definition for an electrical circuit.",
+            "insertable": false,
+            "longDescription": "This resource shall be used to represent an electrical circuit for a Redfish implementation.",
+            "updatable": true
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#Circuit.Circuit"
+}

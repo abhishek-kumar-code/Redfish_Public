@@ -1,0 +1,1175 @@
+{
+    "$ref": "#/definitions/Switchgear",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "CriticalBoard": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/CriticalBoardActions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "CriticalBoardsMetering": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/SwitchgearMetering"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Switchgear Metering unit type of CriticalBoard.",
+                    "longDescription": "The value of this property shall represent the actual Switchgear Metering unit type (CriticalBoardMetering enumeration) of CriticalBoard.",
+                    "readonly": true
+                },
+                "LoadBankBreakerClosed": {
+                    "description": "The actual Load Bank Breaker Closed boolean value of CriticalBoard.",
+                    "longDescription": "The value of this property shall represent the actual Load Bank Breaker Closed boolean value of CriticalBoard.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "LoadBankBreakerOpen": {
+                    "description": "The actual Load Bank Breaker Open boolean value of CriticalBoard.",
+                    "longDescription": "The value of this property shall represent the actual Load Bank Breaker Open boolean value of CriticalBoard.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "LoadBankBreakerTripped": {
+                    "description": "The actual Load Bank Breaker Tripped boolean value of CriticalBoard.",
+                    "longDescription": "The value of this property shall represent the actual Load Bank Breaker Tripped boolean value of CriticalBoard.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MainBreakerClosed": {
+                    "description": "The actual Main Breaker Closed boolean value of CriticalBoard.",
+                    "longDescription": "The value of this property shall represent the actual Main Breaker Closed boolean value of CriticalBoard.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MainBreakerOpen": {
+                    "description": "The actual Main Breaker Open boolean value of CriticalBoard.",
+                    "longDescription": "The value of this property shall represent the actual Main Breaker Open boolean value of CriticalBoard.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MainBreakerTripped": {
+                    "description": "The actual Main Breaker Tripped boolean value of CriticalBoard.",
+                    "longDescription": "The value of this property shall represent the actual Main Breaker Tripped boolean value of CriticalBoard.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MemberId": {
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "MemberId"
+            ],
+            "type": "object"
+        },
+        "CriticalBoardActions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/CriticalBoardOemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "CriticalBoardOemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "GeneratorParallelingSwitchgear": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/GeneratorParallelingSwitchgearActions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "CircuitBreakerClosed": {
+                    "description": "The actual Circuit Breaker Closed boolean value of GeneratorParallelingSwitchgear.",
+                    "longDescription": "The value of this property shall represent the actual Circuit Breaker Closed boolean value of GeneratorParallelingSwitchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "CircuitBreakerOpen": {
+                    "description": "The actual Circuit Breaker Open boolean value of GeneratorParallelingSwitchgear.",
+                    "longDescription": "The value of this property shall represent the actual Circuit Breaker Open boolean value of GeneratorParallelingSwitchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "CircuitBreakerTripped": {
+                    "description": "The actual Circuit Breaker Tripped boolean value of GeneratorParallelingSwitchgear.",
+                    "longDescription": "The value of this property shall represent the actual Circuit Breaker Tripped boolean value of GeneratorParallelingSwitchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "GeneratorParallelingSwitchgearMetering": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/SwitchgearMetering"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual GeneratorParallelingSwitchgear Metering unit type of GeneratorParallelingSwitchgear.",
+                    "longDescription": "The value of this property shall represent the actual GeneratorParallelingSwitchgear Metering unit type (GeneratorParallelingSwitchgearMetering enumeration) of GeneratorParallelingSwitchgear.",
+                    "readonly": true
+                },
+                "InLocalMode": {
+                    "description": "The actual In Local Mode boolean value of GeneratorParallelingSwitchgear.",
+                    "longDescription": "The value of this property shall represent the actual In Local Mode boolean value of GeneratorParallelingSwitchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MemberId": {
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "SummaryAlarmOn": {
+                    "description": "The actual Summary Alarm On boolean value of GeneratorParallelingSwitchgear.",
+                    "longDescription": "The value of this property shall represent the actual Summary Alarm On boolean value of GeneratorParallelingSwitchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "MemberId"
+            ],
+            "type": "object"
+        },
+        "GeneratorParallelingSwitchgearActions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/GeneratorParallelingSwitchgearOemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "GeneratorParallelingSwitchgearOemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "Switchgear": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for a power Switchgear.",
+            "longDescription": "This resource shall be used to represent a Power Switchgear for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Alarms": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/AlarmCollection.json#/definitions/AlarmCollection",
+                    "description": "Contains the naivgation pointer to the equipment Alarm collection.",
+                    "longDescription": "This property shall be a reference to a resource of type AlarmCollection that contains the alarms for the equipment.",
+                    "readonly": true
+                },
+                "AlternateUtilityBreakerClosed": {
+                    "description": "The actual Alternate Utility Breaker Closed boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Alternate Utility Breaker Closed boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "AlternateUtilityBreakerOpen": {
+                    "description": "The actual Alternate Utility Breaker Open boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Alternate Utility Breaker Open boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "AlternateUtilityReclosureOpen": {
+                    "description": "The actual Alternate Utility Reclosure Open boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Alternate Utility Reclosure Open boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "AssetTag": {
+                    "description": "The actual Asset Tag of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Asset Tag of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "AutoRetransferInAuto": {
+                    "description": "The actual Auto Retransfer in Auto boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Auto Retransfer in Auto boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "AutoRetransferInManual": {
+                    "description": "The actual Auto Retransfer in Manual boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Auto Retransfer in Manual boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ClosedTransitionModeSelected": {
+                    "description": "The actual Closed Transition Mode Selected boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Closed Transition Mode Selected boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "CriticalBoards": {
+                    "autoExpand": true,
+                    "description": "This is the definition for Critical Boards.",
+                    "items": {
+                        "$ref": "#/definitions/CriticalBoard"
+                    },
+                    "longDescription": "These properties shall be the definition for an Critical Board array for a Redfish implementation.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "CriticalBoards@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "DateOfManufacture": {
+                    "description": "The date of manufacture of Switchgear.",
+                    "format": "date-time",
+                    "longDescription": "The value of this property shall represent the actual date of manufacture of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "ExportMode": {
+                    "description": "The actual Export Mode of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Export Mode of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FirmwareRevision": {
+                    "description": "The actual Firmware Revision of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Firmware Revision of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GeneratorParallelingSwitchgear": {
+                    "autoExpand": true,
+                    "description": "This is the definition for Generator Paralleling Switchgear.",
+                    "items": {
+                        "$ref": "#/definitions/GeneratorParallelingSwitchgear"
+                    },
+                    "longDescription": "These properties shall be the definition for a Generator Paralleling Switchgear array for a Redfish implementation.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "GeneratorParallelingSwitchgear@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "GeneratorXOnLine": {
+                    "description": "The actual Generator X On Line boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Generator X On Line boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "GroundFault": {
+                    "description": "The actual Ground Fault boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Ground Fault boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "HardwareRevision": {
+                    "description": "The actual Hardware Revision of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Hardware Revision of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HighVoltageSwitchClosedASide": {
+                    "description": "The actual High Voltage Switch Closed A Side boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual High Voltage Switch Closed A Side boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "HighVoltageSwitchClosedBSide": {
+                    "description": "The actual High Voltage Switch Closed B Side boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual High Voltage Switch Closed B Side boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "HighVoltageSwitchOpenASide": {
+                    "description": "The actual High Voltage Switch Open A Side boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual High Voltage Switch Open A Side boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "HighVoltageSwitchOpenBSide": {
+                    "description": "The actual High Voltage Switch Open B Side boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual High Voltage Switch Open B Side boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "HoldMechanicalPlantStable": {
+                    "description": "The actual Hold Mechanical Plant Stable boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Hold Mechanical Plant Stable boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "ImportMode": {
+                    "description": "The actual Import Mode of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Import Mode of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LoadAddShedControlLevelX": {
+                    "description": "The actual Load Add/Shed Control Level X of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Load Add/Shed Control Level X of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LoadControlBypass": {
+                    "description": "The actual Load Control Bypass of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Load Control Bypass of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LoadDemandOn": {
+                    "description": "The actual Load Demand On boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Load Demand On boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Manufacturer": {
+                    "description": "The actual Manufacturer of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Manufacturer of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MasterControlInAutoMode": {
+                    "description": "The actual Master Control In Auto Mode boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Master Control In Auto Mode boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MasterControlInManualMode": {
+                    "description": "The actual Master Control In Manual Mode boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Master Control In Manual Mode boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Model": {
+                    "description": "The actual Model Number of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Model Number of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "NormalMode": {
+                    "description": "The actual Normal Mode of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Normal Mode of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "OpenTransitionModeSelected": {
+                    "description": "The actual Open Transition Mode Selected boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Open Transition Mode Selected boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PLCFailure": {
+                    "description": "The actual PLC Failure boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual PLC Failure boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PartNumber": {
+                    "description": "The actual Part Number of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Part Number of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PeakShavingModeInProgress": {
+                    "description": "The actual Peak Shaving Mode In Progress boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Peak Shaving Mode Not In Progress boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PhysicalLocation": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Physical Location of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Physical Location of Switchgear."
+                },
+                "PrimaryUtilityBreakerClosed": {
+                    "description": "The actual Primary Utility Breaker Closed boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Primary Utility Breaker Closed boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PrimaryUtilityBreakerOpen": {
+                    "description": "The actual Primary Utility Breaker Open boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Primary Utility Breaker Open boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PrimaryUtilityReclosureOpen": {
+                    "description": "The actual Primary Utility Reclosure Open boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Primary Utility Reclosure Open boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PrimaryUtilitySourceAndGeneratorFailureMode": {
+                    "description": "The actual Primary Utility Source and Generator Failure Mode of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Primary Utility Source and Generator Failure Mode of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PrimaryUtilitySourceFailureMode": {
+                    "description": "The actual Primary Utility Source Failure Mode of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Primary Utility Source Failure Mode of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ReturnToUtility": {
+                    "description": "The actual Return to Utility of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Return to Utility of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Sensors": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SensorCollection.json#/definitions/SensorCollection",
+                    "description": "The naivgation pointer to the collection of sensors located in the equipment and sub-components.",
+                    "longDescription": "This property shall be a reference to a resource of type SensorCollection that contains the sensors located in the equipment and sub-components.",
+                    "readonly": true
+                },
+                "SerialNumber": {
+                    "description": "The actual Serial Number of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Serial Number of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SubstationSummaryAlarmOn": {
+                    "description": "The actual Substation Summary Alarm On boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Substation Summary Alarm On boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SubstationXCircuitBreakerClosed": {
+                    "description": "The actual Substation-X Circuit Breaker Closed boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual UPS Substation Circuit Breaker Closed boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SubstationXCircuitBreakerOpen": {
+                    "description": "The actual Substation-X Circuit Breaker Open boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual UPS Substation Circuit Breaker Open boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SubstationXCircuitBreakerTripped": {
+                    "description": "The actual Substation-X Circuit Breaker Tripped boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual UPS Substation Circuit Breaker Tripped boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SummaryAlarmOn": {
+                    "description": "The actual Summary Alarm On boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Summary Alarm On boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SurgeArrestorFailure": {
+                    "description": "The actual Surge Arrestor Failure boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Surge Arrestor Failure boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Switchgear2": {
+                    "autoExpand": true,
+                    "description": "This is the definition for Switchgear 2.",
+                    "items": {
+                        "$ref": "#/definitions/Switchgear2"
+                    },
+                    "longDescription": "These properties shall be the definition for a Switchgear 2 array for a Redfish implementation.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Switchgear2@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "SystemMetering": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/SwitchgearMetering"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Metering unit type of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Metering unit type (SwitchgearMetering enumeration) of Switchgear.",
+                    "readonly": true
+                },
+                "Temperature": {
+                    "autoExpand": true,
+                    "description": "Contains the array of 1 or more temperature sensors.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                    },
+                    "longDescription": "The value of this property shall be an array of sensors that measure temperature.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Temperature@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "TransferFailed": {
+                    "description": "The actual Transfer Failed boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Transfer Failed boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "TransferImminent": {
+                    "description": "The actual Tranfer Imminent boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Transfer Imminent boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "TransformerFanFailure": {
+                    "description": "The actual Transformer Fan Failure boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Transformer Fan Failure boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "TransformerHighTemp": {
+                    "description": "The actual Transformer High Temperature boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual Transformer High Temperature boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "TriggeredAlarms": {
+                    "autoExpand": true,
+                    "description": "Contains the array of 0 or more triggered alarms.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Alarm.json#/definitions/Alarm"
+                    },
+                    "longDescription": "This array shall contain the set of Members of the Alarm Collection which have an 'AlarmStatus' of 'Triggered'.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "TriggeredAlarms@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                },
+                "UPSSubstationCircuitBreakerClosed": {
+                    "description": "The actual UPS Substation Circuit Breaker Closed boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual UPS Substation Circuit Breaker Closed boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UPSSubstationCircuitBreakerOpen": {
+                    "description": "The actual UPS Substation Circuit Breaker Open boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual UPS Substation Circuit Breaker Open boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UPSSubstationCircuitBreakerTripped": {
+                    "description": "The actual UPS Substation Circuit Breaker Tripped boolean value of Switchgear.",
+                    "longDescription": "The value of this property shall represent the actual UPS Substation Circuit Breaker Tripped boolean value of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ZeroPowerTransfer": {
+                    "description": "The actual Zero Power Transfer of Switchgear.",
+                    "longDescription": "This property shall indicate the actual Zero Power Transfer of Switchgear.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "Switchgear2": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Switchgear2Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "CircuitBreakerClosed": {
+                    "description": "The actual Circuit Breaker Closed boolean value of Switchgear2.",
+                    "longDescription": "The value of this property shall represent the actual Circuit Breaker Closed boolean value of Switchgear2.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "CircuitBreakerOpen": {
+                    "description": "The actual Circuit Breaker Open boolean value of Switchgear2.",
+                    "longDescription": "The value of this property shall represent the actual Circuit Breaker Open boolean value of Switchgear2.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "CircuitBreakerTripped": {
+                    "description": "The actual Circuit Breaker Tripped boolean value of Switchgear2.",
+                    "longDescription": "The value of this property shall represent the actual Circuit Breaker Tripped boolean value of Switchgear2.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "InLocalMode": {
+                    "description": "The actual In Local Mode boolean value of Switchgear2.",
+                    "longDescription": "The value of this property shall represent the actual In Local Mode boolean value of Switchgear2.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MemberId": {
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "PLCFailure": {
+                    "description": "The actual PLC Failure boolean value of Switchgear2.",
+                    "longDescription": "The value of this property shall represent the actual PLC Failure boolean value of Switchgear2.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "SummaryAlarmOn": {
+                    "description": "The actual Summary Alarm On boolean value of Switchgear2.",
+                    "longDescription": "The value of this property shall represent the actual Summary Alarm On boolean value of Switchgear2.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Switchgear2Metering": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/SwitchgearMetering"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The actual Switchgear Metering unit type of Switchgear2.",
+                    "longDescription": "The value of this property shall represent the actual Switchgear Metering unit type (SwitchgearMetering enumeration) of Switchgear2.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "MemberId"
+            ],
+            "type": "object"
+        },
+        "Switchgear2Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/Switchgear2OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "Switchgear2OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "SwitchgearMetering": {
+            "enum": [
+                "Amps",
+                "Volts",
+                "KW",
+                "KVA",
+                "KWH",
+                "KVAR",
+                "KVARH",
+                "PF"
+            ],
+            "type": "string"
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#Switchgear.v0_2_0.Switchgear"
+}

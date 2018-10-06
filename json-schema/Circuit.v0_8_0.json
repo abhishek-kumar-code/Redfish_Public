@@ -1,0 +1,969 @@
+{
+    "$ref": "#/definitions/Circuit",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#Circuit.PowerControl": {
+                    "$ref": "#/definitions/PowerControl"
+                },
+                "#Circuit.ResetBreaker": {
+                    "$ref": "#/definitions/ResetBreaker"
+                },
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "BreakerStates": {
+            "enum": [
+                "Normal",
+                "Tripped",
+                "Off",
+                "Reset"
+            ],
+            "enumDescriptions": {
+                "Normal": "The breaker is powered on.",
+                "Off": "The breaker is off.",
+                "Reset": "The breaker is to be reset to the Normal state.",
+                "Tripped": "The breaker has been tripped."
+            },
+            "type": "string"
+        },
+        "Circuit": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for an electrical circuit.",
+            "longDescription": "This resource shall be used to represent an electrical circuit for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "BreakerState": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BreakerStates"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": ".",
+                    "longDescription": ".",
+                    "readonly": false
+                },
+                "CircuitType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/CircuitType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of circuit.",
+                    "longDescription": ".",
+                    "readonly": true
+                },
+                "Current": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The current sensor for this circuit.",
+                    "longDescription": "This object shall contain the current, measured in Amperes, for this single phase circuit. This object shall not appear in resource instances representing poly-phase circuits.",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Energy": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The energy sensor for this circuit.",
+                    "longDescription": "This object shall contain the total energy, measured in Watt-hours (units of Watts), for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple energy sensors exist for this circuit.",
+                    "readonly": true
+                },
+                "Frequency": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The frequency sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "IECOutletType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IECType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The IEC outlet type.",
+                    "longDescription": ".",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "IndicatorLED": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/IndicatorLED"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The state of the indicator LED, used to identify the circuit.",
+                    "longDescription": "The value of this property shall contain the indicator light state for the indicator light associated with this circuit.",
+                    "readonly": false
+                },
+                "LockingOutlet": {
+                    "description": "Designates if the outlet is a locking type.",
+                    "longDescription": "The value of this property shall indicate whether the outlet includes a locking design. The value shall be true if the outlet is a locking type, and false if the outlet is a non-locking type.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "NEMAOutletType": {
+                    "description": "The NEMA outlet type.",
+                    "longDescription": ".",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "NominalVoltage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/NominalVoltageType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The nominal voltage for this circuit.",
+                    "longDescription": "This property shall represent the nominal voltage for this circuit, in Volts.",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "PhaseWiringType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/PhaseWiringType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The phase wiring of the circuit.",
+                    "longDescription": ".",
+                    "readonly": true
+                },
+                "PolyPhaseCurrents": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Currents"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The current sensors for this circuit.",
+                    "longDescription": "TBD."
+                },
+                "PolyPhasePowerReadings": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/PowerReadings"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The power sensors for this circuit.",
+                    "longDescription": "TBD."
+                },
+                "PolyPhaseVoltages": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Voltages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensors for this circuit.",
+                    "longDescription": "This object shall contain the voltage sensor(s) for this circuit. For single phase circuits this object will contain a duplicate copy of the voltage sensor referenced in the 'Voltage' object. For poly-phase circuits this object may contain multiple voltage sensor readings used to fully describe the circuit."
+                },
+                "PowerEnabled": {
+                    "description": "Indicates if the circuit can be powered.",
+                    "longDescription": "The value of this property shall contain the power enable state of the circuit.  True shall indicate that the circuit may be powered on, and false shall indicate that the circuit cannot be powered.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PowerOffDelaySeconds": {
+                    "description": "The number of seconds to delay power off after a PowerControl request. Zero seconds indicates no delay to power off.",
+                    "longDescription": "TBD.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PowerOnDelaySeconds": {
+                    "description": "The number of seconds to delay power up after a power cycle or a PowerControl request. Zero seconds indicates no delay to power up.",
+                    "longDescription": "TBD.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PowerReading": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The power sensor for this circuit.",
+                    "longDescription": "This object shall contain the total power, measured in Watts, for this circuit, which represents the 'Total' ElectricalSourceType sensor when multiple power sensors exist for this circuit.",
+                    "readonly": true
+                },
+                "PowerState": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/PowerState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The power state of the circuit.",
+                    "longDescription": "The value of this property shall contain the power state of the circuit.",
+                    "readonly": true
+                },
+                "RatedCurrentAmps": {
+                    "description": "The rated maximum current allowed for this circuit.",
+                    "longDescription": "This property shall represent the rated maximum current for this circuit, in Amps.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "A"
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
+                },
+                "Temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": ".",
+                    "longDescription": ".",
+                    "readonly": true
+                },
+                "Voltage": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensor for this single phase circuit.",
+                    "longDescription": "This object shall contain the voltage, measured in Volts, for this single phase circuit. This object shall not appear in resource instances representing poly-phase circuits.",
+                    "readonly": true
+                },
+                "VoltageType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VoltageType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of voltage output on the circuit.",
+                    "longDescription": ".",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "CircuitType": {
+            "enum": [
+                "Mains",
+                "Branch",
+                "Outlet"
+            ],
+            "enumDescriptions": {
+                "Branch": "A branch (output) circuit.",
+                "Mains": "A Mains input circuit.",
+                "Outlet": "A power outlet (receptacle)."
+            },
+            "type": "string"
+        },
+        "Currents": {
+            "additionalProperties": false,
+            "description": "This object contains the current sensors.",
+            "longDescription": ".",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Line1": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The current sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line2": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The current sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line3": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The current sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Neutral": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The current sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "IECType": {
+            "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "I",
+                "J",
+                "K",
+                "L",
+                "M",
+                "N",
+                "O",
+                "C13"
+            ],
+            "enumDescriptions": {
+                "A": "NEMA 1-15, U.S. 2-pin.",
+                "B": "NEMA 5-15, U.S. 3-pin.",
+                "C": "CEE 7/16 Europlug.",
+                "C13": "C13.",
+                "D": "BS 546, 5A.",
+                "E": "CEE 7/5, 16A.",
+                "F": "CEE 7/3, 16A Schuko.",
+                "G": "BS1363, UK.",
+                "H": "SI 32, Israel.",
+                "I": "AS/NZS 2112, Australia.",
+                "J": "SEV-1011, 10A, Switzerland.",
+                "K": "SRAF 1962/DB, Denmark.",
+                "L": "CEI 23-50.",
+                "M": "BS 546, 15A.",
+                "N": "NBR 14136, Brazil.",
+                "O": "TIS 166-2549, Thailand."
+            },
+            "enumLongDescriptions": {
+                "A": ".",
+                "B": ".",
+                "C": ".",
+                "C13": ".",
+                "D": ".",
+                "E": ".",
+                "F": ".",
+                "G": ".",
+                "H": ".",
+                "I": ".",
+                "J": ".",
+                "K": ".",
+                "L": ".",
+                "M": ".",
+                "N": ".",
+                "O": "."
+            },
+            "type": "string"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "Contains references to other resources that are related to this resource.",
+            "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "BranchCurcuit": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Circuit.json#/definitions/Circuit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A reference to the branch circuit related to this circuit.",
+                    "longDescription": "The value of this property shall be a reference to the branch circuit resource that this circuit is associated with and shall reference a resource of type Circuit.",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                },
+                "Outlets": {
+                    "description": "An array of references to the outlets contained by this circuit.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Circuit.json#/definitions/Circuit"
+                    },
+                    "longDescription": "The value of this property shall be a reference to the resource that this circuit is associated with and shall reference a resource of type Circuit.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Outlets@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
+                }
+            },
+            "type": "object"
+        },
+        "NominalVoltageType": {
+            "enum": [
+                "DCNeg48V",
+                "DC380V",
+                "AC120V",
+                "AC240V",
+                "AC277V",
+                "ACandDCWideRange",
+                "ACWideRange",
+                "DC240V"
+            ],
+            "enumDescriptions": {
+                "AC120V": "AC 120V nominal input.",
+                "AC240V": "AC 240V nominal input.",
+                "AC277V": "AC 277V nominal input.",
+                "ACWideRange": "Wide range AC input.",
+                "ACandDCWideRange": "Wide range AC or DC input.",
+                "DC240V": "DC 240V nominal input.",
+                "DC380V": "High Voltage DC input (380V).",
+                "DCNeg48V": "-48V DC input."
+            },
+            "type": "string"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "PhaseWiringType": {
+            "enum": [
+                "Single",
+                "TwoPhase3Wire",
+                "TwoPhase4Wire",
+                "ThreePhase4Wire",
+                "ThreePhase5Wire"
+            ],
+            "enumDescriptions": {
+                "Single": "1-Phase, 3-Wire.",
+                "ThreePhase4Wire": "3-Phase / 4-Wire (Line1, Line2, Line3, Protective Earth).",
+                "ThreePhase5Wire": "3-Phase / 5-Wire (Line1, Line2, Line3, Neutral, Protective Earth).",
+                "TwoPhase3Wire": "2-Phase / 3-Wire (Line1, Line2, Protective Earth).",
+                "TwoPhase4Wire": "2-Phase / 4-Wire (Line1, Line2, Neutral, Protective Earth)."
+            },
+            "enumLongDescriptions": {
+                "Single": ".",
+                "ThreePhase4Wire": ".",
+                "ThreePhase5Wire": ".",
+                "TwoPhase3Wire": ".",
+                "TwoPhase4Wire": "."
+            },
+            "type": "string"
+        },
+        "PowerControl": {
+            "additionalProperties": false,
+            "description": "This action is used to turn the circuit on or off.",
+            "longDescription": "TBD.",
+            "parameters": {
+                "PowerState": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Circuit.json#/definitions/PowerState",
+                    "description": "The desired power state of the circuit.",
+                    "longDescription": "This parameter shall define the desired power state of the circuit."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PowerReadings": {
+            "additionalProperties": false,
+            "description": "This object contains the power sensors.",
+            "longDescription": ".",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Line1ToLine2": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The power sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line1ToNeutral": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Power sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line2ToLine3": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Power sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line2ToNeutral": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Power sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line3ToLine1": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Power sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line3ToNeutral": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Power sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "PowerState": {
+            "enum": [
+                "On",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Off": "The circuit or outlet is powered off.",
+                "On": "The circuit or outlet is powered on."
+            },
+            "type": "string"
+        },
+        "ResetBreaker": {
+            "additionalProperties": false,
+            "description": "This action is used to attempt to reset the circuit breaker.",
+            "longDescription": "TBD.",
+            "parameters": {
+                "PowerState": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Circuit.json#/definitions/PowerState",
+                    "description": "The desired power state of the circuit if the breaker is reset successfully.",
+                    "longDescription": "This parameter shall define the desired power state of the circuit."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VoltageType": {
+            "enum": [
+                "AC",
+                "DC",
+                "ACorDC"
+            ],
+            "enumDescriptions": {
+                "AC": "Alternating Current (AC) circuit.",
+                "ACorDC": "Circuit supports both DC or AC.",
+                "DC": "Direct Current (DC) circuit."
+            },
+            "type": "string"
+        },
+        "Voltages": {
+            "additionalProperties": false,
+            "description": "This object contains the voltages.",
+            "longDescription": "This object shall contain the voltage sensor(s) for this circuit. For single phase circuits this object will contain a duplicate copy of the voltage sensor referenced in the 'Voltage' object. For poly-phase circuits this object may contain multiple voltage sensor readings used to fully describe the circuit.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Line1ToLine2": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line1ToNeutral": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line2ToLine3": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line2ToNeutral": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line3ToLine1": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                },
+                "Line3ToNeutral": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.json#/definitions/Sensor"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The voltage sensor for this circuit.",
+                    "longDescription": "TBD.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#Circuit.v0_8_0.Circuit"
+}

@@ -1,0 +1,24 @@
+{
+    "$ref": "#/definitions/PowerMeter",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "PowerMeter": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PowerMeter.v0_2_0.json#/definitions/PowerMeter"
+                }
+            ],
+            "deletable": false,
+            "description": "This is the schema definition for a PowerMeter.",
+            "insertable": false,
+            "longDescription": "This resource shall be used to represent a Power Meter for a Redfish implementation.",
+            "updatable": true
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#PowerMeter.PowerMeter"
+}
