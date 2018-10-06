@@ -1,16 +1,17 @@
 {
     "$ref": "#/definitions/Thermal",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Fan": {
             "additionalProperties": false,
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -19,6 +20,9 @@
                 }
             },
             "properties": {
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
                 "Actions": {
                     "$ref": "#/definitions/FanActions",
                     "description": "The available actions for this resource.",
@@ -52,7 +56,7 @@
                     "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not yet fatal. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -61,7 +65,7 @@
                     "longDescription": "The value of this property shall indicate the Reading is below the normal range and is fatal. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -70,7 +74,7 @@
                     "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not critical. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -88,7 +92,7 @@
                     "longDescription": "The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -103,7 +107,7 @@
                     "longDescription": "The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -150,7 +154,7 @@
                     "longDescription": "The value of this property shall be the current value of the fan sensor's reading.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -176,19 +180,19 @@
                     "type": "array"
                 },
                 "Redundancy@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "RelatedItem": {
                     "description": "The ID(s) of the resources serviced with this fan.",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
                     },
                     "longDescription": "The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that are being serviced by this fan.",
                     "readonly": true,
                     "type": "array"
                 },
                 "RelatedItem@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "SerialNumber": {
                     "description": "The serial number for this Fan.",
@@ -209,14 +213,16 @@
                     ]
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "UpperThresholdCritical": {
                     "description": "Above normal range but not yet fatal.",
                     "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not yet fatal. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -225,7 +231,7 @@
                     "longDescription": "The value of this property shall indicate the Reading is above the normal range and is fatal. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -234,11 +240,15 @@
                     "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not critical. The units shall be the same units as the related Reading property.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 }
             },
+            "required": [
+                "@odata.id",
+                "MemberId"
+            ],
             "type": "object"
         },
         "FanActions": {
@@ -246,11 +256,12 @@
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -260,7 +271,9 @@
             },
             "properties": {
                 "Oem": {
-                    "$ref": "#/definitions/FanOemActions"
+                    "$ref": "#/definitions/FanOemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -270,11 +283,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -299,11 +313,12 @@
         "Temperature": {
             "additionalProperties": false,
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -312,6 +327,9 @@
                 }
             },
             "properties": {
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
                 "Actions": {
                     "$ref": "#/definitions/TemperatureActions",
                     "description": "The available actions for this resource.",
@@ -406,26 +424,28 @@
                 "RelatedItem": {
                     "description": "Describes the areas or devices to which this temperature measurement applies.",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
                     },
                     "longDescription": "The value of this property shall the array of IDs of areas or devices to which this temperature measurement applies.",
                     "readonly": true,
                     "type": "array"
                 },
                 "RelatedItem@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "SensorNumber": {
                     "description": "A numerical identifier to represent the temperature sensor.",
                     "longDescription": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "UpperThresholdCritical": {
                     "description": "Above normal range but not yet fatal.",
@@ -458,6 +478,10 @@
                     "units": "Cel"
                 }
             },
+            "required": [
+                "@odata.id",
+                "MemberId"
+            ],
             "type": "object"
         },
         "TemperatureActions": {
@@ -465,11 +489,12 @@
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -479,7 +504,9 @@
             },
             "properties": {
                 "Oem": {
-                    "$ref": "#/definitions/TemperatureOemActions"
+                    "$ref": "#/definitions/TemperatureOemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -489,11 +516,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -509,11 +537,12 @@
             "description": "This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling.",
             "longDescription": "This resource shall be used to represent a thermal metrics resource for a Redfish implementation.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -523,13 +552,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Actions": {
                     "$ref": "#/definitions/ThermalActions",
@@ -548,6 +580,7 @@
                     "readonly": true
                 },
                 "Fans": {
+                    "autoExpand": true,
                     "description": "This is the definition for fans.",
                     "items": {
                         "$ref": "#/definitions/Fan"
@@ -557,7 +590,7 @@
                     "type": "array"
                 },
                 "Fans@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "Id": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
@@ -573,6 +606,7 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Redundancy": {
+                    "autoExpand": true,
                     "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
@@ -581,12 +615,15 @@
                     "type": "array"
                 },
                 "Redundancy@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "Temperatures": {
+                    "autoExpand": true,
                     "description": "This is the definition for temperature sensors.",
                     "items": {
                         "$ref": "#/definitions/Temperature"
@@ -596,10 +633,12 @@
                     "type": "array"
                 },
                 "Temperatures@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 }
             },
             "required": [
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -610,11 +649,12 @@
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -624,7 +664,9 @@
             },
             "properties": {
                 "Oem": {
-                    "$ref": "#/definitions/ThermalOemActions"
+                    "$ref": "#/definitions/ThermalOemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -634,11 +676,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -650,5 +693,6 @@
             "type": "object"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#Thermal.v1_3_2.Thermal"
 }

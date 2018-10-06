@@ -1,17 +1,19 @@
 {
     "$ref": "#/definitions/EventDestination",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "EventDestination": {
             "additionalProperties": false,
             "description": "An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.",
+            "longDescription": "This resource shall be used to represent the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -21,13 +23,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Context": {
                     "description": "A client-supplied string that is stored with the event destination subscription.",
@@ -57,10 +62,11 @@
                     "type": "string"
                 },
                 "EventTypes": {
-                    "description": "This property shall contain the types of events that shall be sent to the desination.",
+                    "description": "This property contains the types of events that will be sent to the desination.",
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Event.json#/definitions/EventType"
                     },
+                    "longDescription": "This property shall be an array that contains the types of events that shall be sent to the destination.",
                     "readonly": true,
                     "type": "array"
                 },
@@ -94,6 +100,8 @@
             },
             "required": [
                 "Context",
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -113,16 +121,28 @@
             },
             "type": "string"
         },
+        "EventFormatType": {
+            "enum": [
+                "Event",
+                "MetricReport"
+            ],
+            "enumDescriptions": {
+                "Event": "The subscription destination will receive JSON Bodies of the Resource Type Event.",
+                "MetricReport": "The subscription destination will receive JSON Bodies of the Resource Type MetricReport."
+            },
+            "type": "string"
+        },
         "HttpHeaderProperty": {
             "additionalProperties": false,
             "description": "The value of the HTTP header is the property value.  The header name is the property name.",
             "longDescription": "This type shall a names and value of an HTTP header to be included with every event POST to the Event Destination.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -137,5 +157,6 @@
             "type": "object"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#EventDestination.v1_0_5.EventDestination"
 }

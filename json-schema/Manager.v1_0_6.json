@@ -1,18 +1,19 @@
 {
     "$ref": "#/definitions/Manager",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Actions": {
             "additionalProperties": false,
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -31,7 +32,9 @@
                     "$ref": "#/definitions/Reset"
                 },
                 "Oem": {
-                    "$ref": "#/definitions/OemActions"
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -56,11 +59,12 @@
             "description": "Information about a Command Shell service provided by a manager.",
             "longDescription": "This type shall describe a Command Shell service of a manager.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -83,7 +87,7 @@
                     "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation.",
                     "minimum": 0,
                     "readonly": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "ServiceEnabled": {
                     "description": "Indicates if the service is enabled for this manager.",
@@ -107,11 +111,12 @@
                 }
             },
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -148,11 +153,12 @@
             "description": "Information about a Graphical Console service provided by a manager.",
             "longDescription": "This type shall describe a Graphical Console service of a manager.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -175,7 +181,7 @@
                     "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation.",
                     "minimum": 0,
                     "readonly": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "ServiceEnabled": {
                     "description": "Indicates if the service is enabled for this manager.",
@@ -191,11 +197,12 @@
             "description": "Contains references to other resources that are related to this resource.",
             "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -214,7 +221,7 @@
                     "type": "array"
                 },
                 "ManagerForChassis@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "ManagerForServers": {
                     "description": "This property is an array of references to the systems that this manager has control over.",
@@ -226,7 +233,7 @@
                     "type": "array"
                 },
                 "ManagerForServers@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "Oem": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
@@ -241,11 +248,12 @@
             "description": "This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.",
             "longDescription": "This resource shall be used to represent a management subsystem for a Redfish implementation.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -255,13 +263,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Actions": {
                     "$ref": "#/definitions/Actions",
@@ -370,14 +381,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Redundancy": {
+                    "autoExpand": true,
                     "description": "Redundancy information for the managers of this system.",
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
+                    "longDescription": "The values of the properties in this array shall be used to show how this manager is grouped with other managers for form redundancy sets.",
                     "type": "array"
                 },
                 "Redundancy@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "SerialConsole": {
                     "$ref": "#/definitions/SerialConsole",
@@ -404,7 +417,9 @@
                     "readonly": true
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "UUID": {
                     "anyOf": [
@@ -427,6 +442,8 @@
                 }
             },
             "required": [
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -436,11 +453,12 @@
             "additionalProperties": false,
             "description": "Used for describing services like Serial Console, Command Shell or Graphical Console.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -454,7 +472,7 @@
                     "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation.",
                     "minimum": 0,
                     "readonly": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "ServiceEnabled": {
                     "description": "Indicates if the service is enabled for this manager.",
@@ -471,14 +489,16 @@
                 "EnclosureManager",
                 "BMC",
                 "RackManager",
-                "AuxiliaryController"
+                "AuxiliaryController",
+                "Service"
             ],
             "enumDescriptions": {
                 "AuxiliaryController": "A controller which provides management functions for a particular subsystem or group of devices.",
                 "BMC": "A controller which provides management functions for a single computer system.",
                 "EnclosureManager": "A controller which provides management functions for a chassis or group of devices or systems.",
                 "ManagementController": "A controller used primarily to monitor or manage the operation of a device or system.",
-                "RackManager": "A controller which provides management functions for a whole or part of a rack."
+                "RackManager": "A controller which provides management functions for a whole or part of a rack.",
+                "Service": "A software-based service which provides management functions."
             },
             "type": "string"
         },
@@ -505,11 +525,12 @@
                 }
             },
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -535,11 +556,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -562,11 +584,12 @@
                 }
             },
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -607,11 +630,12 @@
             "description": "Information about a Serial Console service provided by a manager.",
             "longDescription": "This type shall describe a Serial Console service of a manager.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -634,7 +658,7 @@
                     "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation.",
                     "minimum": 0,
                     "readonly": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "ServiceEnabled": {
                     "description": "Indicates if the service is enabled for this manager.",
@@ -646,5 +670,6 @@
             "type": "object"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#Manager.v1_0_6.Manager"
 }

@@ -1,18 +1,19 @@
 {
     "$ref": "#/definitions/Event",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Event": {
             "additionalProperties": false,
             "description": "The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information.",
             "longDescription": "This resource shall be used to represent an event for a Redfish implementation.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -22,13 +23,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Description": {
                     "anyOf": [
@@ -42,6 +46,7 @@
                     "readonly": true
                 },
                 "Events": {
+                    "autoExpand": true,
                     "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously.",
                     "items": {
                         "$ref": "#/definitions/EventRecord"
@@ -50,7 +55,7 @@
                     "type": "array"
                 },
                 "Events@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "Id": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
@@ -68,6 +73,8 @@
             },
             "required": [
                 "Events",
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -76,11 +83,12 @@
         "EventRecord": {
             "additionalProperties": false,
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -89,6 +97,9 @@
                 }
             },
             "properties": {
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
+                },
                 "Context": {
                     "deprecated": "Events are triggered independently from subscriptions to those events.  This property has been Deprecated in favor of Event.v1_0_2.Event.Context",
                     "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
@@ -111,6 +122,7 @@
                 },
                 "EventType": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Event.json#/definitions/EventType",
+                    "deprecated": "This property has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType.",
                     "description": "This indicates the type of event sent, according to the definitions in the EventService.",
                     "longDescription": "The value of this property shall indicate the type of event as defined in the EventService schema.",
                     "readonly": true
@@ -149,7 +161,7 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "OriginOfCondition": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/idRef",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef",
                     "description": "This indicates the resource that originated the condition that caused the event to be generated.",
                     "longDescription": "The value of this property shall contain a pointer consistent with JSON pointer syntax to the resource that caused the event to be generated.",
                     "readonly": true
@@ -163,7 +175,9 @@
             },
             "required": [
                 "EventType",
-                "MessageId"
+                "MessageId",
+                "@odata.id",
+                "MemberId"
             ],
             "type": "object"
         },
@@ -186,5 +200,6 @@
             "type": "string"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#Event.v1_0_6.Event"
 }

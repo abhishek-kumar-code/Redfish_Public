@@ -22,6 +22,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Bios.v1_0_4.json#/definitions/Bios"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Bios.v1_0_5.json#/definitions/Bios"
                 }
             ],
             "deletable": false,

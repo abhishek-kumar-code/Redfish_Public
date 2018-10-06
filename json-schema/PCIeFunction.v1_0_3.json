@@ -1,7 +1,7 @@
 {
     "$ref": "#/definitions/PCIeFunction",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "DeviceClass": {
             "enum": [
@@ -72,11 +72,12 @@
             "description": "Contains references to other resources that are related to this resource.",
             "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -95,7 +96,7 @@
                     "type": "array"
                 },
                 "Drives@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "EthernetInterfaces": {
                     "description": "An array of references to the ethernet interfaces which the PCIe device produces.",
@@ -107,7 +108,7 @@
                     "type": "array"
                 },
                 "EthernetInterfaces@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "Oem": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
@@ -137,7 +138,7 @@
                     "type": "array"
                 },
                 "StorageControllers@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 }
             },
             "type": "object"
@@ -145,12 +146,14 @@
         "PCIeFunction": {
             "additionalProperties": false,
             "description": "This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System.",
+            "longDescription": "This resource shall be used to represent a PCIeFunction attached to a System.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -160,13 +163,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "ClassCode": {
                     "description": "The Class Code of this PCIe function.",
@@ -210,7 +216,7 @@
                     "longDescription": "The value of this property shall the PCIe device function number within a given PCIe device.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -226,7 +232,8 @@
                 },
                 "Links": {
                     "$ref": "#/definitions/Links",
-                    "description": "The links object contains the links to other resources that are related to this resource."
+                    "description": "The links object contains the links to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
                 "Name": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
@@ -248,14 +255,9 @@
                     ]
                 },
                 "Status": {
-                    "anyOf": [
-                        {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "SubsystemId": {
                     "description": "The Subsystem ID of this PCIe function.",
@@ -289,11 +291,14 @@
                 }
             },
             "required": [
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
             "type": "object"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#PCIeFunction.v1_0_3.PCIeFunction"
 }

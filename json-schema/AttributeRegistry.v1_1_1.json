@@ -1,18 +1,19 @@
 {
     "$ref": "#/definitions/AttributeRegistry",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Actions": {
             "additionalProperties": false,
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -22,7 +23,9 @@
             },
             "properties": {
                 "Oem": {
-                    "$ref": "#/definitions/OemActions"
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -32,11 +35,12 @@
             "description": "The AttributeRegistry schema contains a set of key-value pairs that represents the structure of a Registry. It includes mechanisms for building user interfaces (menus), allowing consistent navigation of the contents. The Attribute Registry is specific to a particular implementation or product. The attributes and property names are not standardized.",
             "longDescription": "This resource shall be used to represent an Attribute registry for a Redfish implementation.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -46,13 +50,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Actions": {
                     "$ref": "#/definitions/Actions",
@@ -119,6 +126,8 @@
                 "Language",
                 "RegistryVersion",
                 "OwningEntity",
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -146,11 +155,12 @@
             "description": "A possible value for attributes of type 'Enumeration'.",
             "longDescription": "This type shall describe a possible value of an attribute of type 'Enumeration'.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -169,16 +179,15 @@
                     ]
                 },
                 "ValueName": {
-                    "description": "The value name of the attribute.",
+                    "description": "The unique value name of the attribute.",
                     "longDescription": "The value of this property shall be a string representing the value name of the attribute. ValueName is a unique string within the list of possible values in the 'Value' array of a given attribute.",
-                    "pattern": "^[A-Za-z][A-Za-z0-9_]+$",
                     "readonly": true,
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             },
+            "required": [
+                "ValueName"
+            ],
             "type": "object"
         },
         "Attributes": {
@@ -186,11 +195,12 @@
             "description": "An attribute and its possible values.",
             "longDescription": "This type shall describe an attribute and its possible values and other metadata.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -242,13 +252,13 @@
                     "longDescription": "The value of this property shall be a number the describes the ascending order in which this attribute is displayed, relative to other attributes.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
                 "GrayOut": {
                     "description": "The gray-out state of this attribute.",
-                    "longDescription": "The value of this property shall be a boolean describing the gray-out state of this attribute. When set to true, a grayed-out attribute should be grayed out in user interfaces. But, unlike ReadOnly, the value of grayed-out attributes might still be be modified. The grayout state of an attribute might be affected by the results of evaluating the 'Dependencies' array.",
+                    "longDescription": "The value of this property shall be a boolean describing the gray-out state of this attribute. When set to true, a grayed-out attribute should be grayed out in user interfaces. But, unlike ReadOnly, the value of grayed-out attributes might still be modified. The grayout state of an attribute might be affected by the results of evaluating the 'Dependencies' array.",
                     "readonly": true,
                     "type": [
                         "boolean",
@@ -296,7 +306,7 @@
                     "longDescription": "The value of this property shall be a number indicating the lower limit of the value of an attribute of type 'Integer'.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -305,14 +315,14 @@
                     "longDescription": "The value of this property shall be a number indicating the maximum character length of the value of an attribute of type 'String'.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
                 "MenuPath": {
                     "description": "A path that describes the menu hierarchy of this attribute.",
-                    "longDescription": "The value of this property shall be a string indicating the menu hierarchy of this attribute, in the form of a path to the menu names.",
-                    "pattern": "^[.]?[A-Za-z0-9//]+$",
+                    "longDescription": "The value of this property shall be a string indicating the menu hierarchy of this attribute, in the form of a path to the menu names.  It shall start with './' to indicate the root menu, followed by the menu names with '/' characters to delineate the menu traversal.",
+                    "pattern": "^\\.\\/([^/]+(\\/[^/]+)*)?$",
                     "readonly": true,
                     "type": [
                         "string",
@@ -324,7 +334,7 @@
                     "longDescription": "The value of this property shall be a number indicating the minimum character length of the value of an attribute of type 'String'.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -342,7 +352,7 @@
                     "longDescription": "The value of this property shall be a number indicating the amount to increment or decrement the value of an attribute of type 'Integer' each time a user requests a value change. A ScalarIncrement value of 0 indicates a free-form numeric user input.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -357,7 +367,7 @@
                     "longDescription": "The value of this property shall be a number indicating the upper limit of the value of an attribute of type 'Integer'.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -397,6 +407,9 @@
                     ]
                 }
             },
+            "required": [
+                "AttributeName"
+            ],
             "type": "object"
         },
         "Dependencies": {
@@ -404,11 +417,12 @@
             "description": "A dependency of attributes on this component.",
             "longDescription": "This type shall describe a dependency of attributes on this component.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -425,7 +439,7 @@
                 "DependencyFor": {
                     "description": "The AttributeName of the attribute whose change triggers the evaluation of this dependency expression.",
                     "longDescription": "The value of this property shall be the AttributeName of the attribute whose change triggers the evaluation of this dependency expression.",
-                    "pattern": "^[A-Z][A-Za-z0-9]+$",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]+$",
                     "readonly": true,
                     "type": "string"
                 },
@@ -443,11 +457,12 @@
             "description": "The dependency expression for one or more Attributes in this Attribute Registry.",
             "longDescription": "This type shall describe the dependency expression for one or more Attributes in this Attribute Registry.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -467,7 +482,7 @@
                 "MapToAttribute": {
                     "description": "The Name of the attribute that is affected by this dependency expression.",
                     "longDescription": "The value of this property shall be the AttributeName of the attribute that is affected by this dependency expression.",
-                    "pattern": "^[A-Z][A-Za-z0-9]+$",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]+$",
                     "readonly": true,
                     "type": "string"
                 },
@@ -505,11 +520,12 @@
             "description": "A map-from condition for mapping dependency.",
             "longDescription": "This type shall describe a map-from condition for a dependency of Type 'Map'.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -521,7 +537,7 @@
                 "MapFromAttribute": {
                     "description": "The attribute that is used to evaluate this dependency expression.",
                     "longDescription": "The value of this property shall be the AttributeName of the attribute that is used in evaluating this dependency expression term.",
-                    "pattern": "^[A-Z][A-Za-z0-9]+$",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]+$",
                     "readonly": true,
                     "type": "string"
                 },
@@ -662,11 +678,12 @@
             "description": "A menu and its hierarchy.",
             "longDescription": "This type shall describe an attribute's menu and its hierarchy.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -689,7 +706,7 @@
                     "longDescription": "The value of this property shall be a number the describes the ascending order in which this menu is displayed, relative to other menus.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -705,14 +722,14 @@
                 "MenuName": {
                     "description": "The unique name string of this menu.",
                     "longDescription": "The value of this property shall be the name of this menu that is unique in this registry.",
-                    "pattern": "^[A-Z][A-Za-z0-9]+$",
+                    "pattern": "^[^/]+$",
                     "readonly": true,
                     "type": "string"
                 },
                 "MenuPath": {
                     "description": "A path that describes this menu hierarchy relative to other menus.",
-                    "longDescription": "The value of this property shall be a string indicating the menu hierarchy of this menu, in the form of a path to the menu names.",
-                    "pattern": "^[.]?[A-Za-z0-9//]+$",
+                    "longDescription": "The value of this property shall be a string indicating the menu hierarchy of this menu, in the form of a path to the menu names.  It shall start with './' to indicate the root menu, followed by the menu names with '/' characters to delineate the menu traversal.",
+                    "pattern": "^\\.\\/([^/]+(\\/[^/]+)*)?$",
                     "readonly": true,
                     "type": [
                         "string",
@@ -736,11 +753,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -756,11 +774,12 @@
             "description": "List of all attributes and their metadata for this component.",
             "longDescription": "This type shall describe a list of all attributes for this component, along with their possible values, dependencies, and other metadata.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -801,11 +820,12 @@
             "description": "A system supported by this attribute registry.",
             "longDescription": "This type shall describe a system supported by this attribute registry.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -846,5 +866,6 @@
             "type": "object"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#AttributeRegistry.v1_1_1.AttributeRegistry"
 }

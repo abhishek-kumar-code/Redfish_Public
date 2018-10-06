@@ -147,15 +147,15 @@
                     ]
                 },
                 "ValueName": {
-                    "description": "The value name of the attribute.",
+                    "description": "The unique value name of the attribute.",
                     "longDescription": "The value of this property shall be a string representing the value name of the attribute. ValueName is a unique string within the list of possible values in the 'Value' array of a given attribute.",
                     "readonly": true,
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             },
+            "required": [
+                "ValueName"
+            ],
             "type": "object"
         },
         "Attributes": {
@@ -375,6 +375,9 @@
                     ]
                 }
             },
+            "required": [
+                "AttributeName"
+            ],
             "type": "object"
         },
         "Dependencies": {

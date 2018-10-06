@@ -1,18 +1,19 @@
 {
     "$ref": "#/definitions/Drive",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Actions": {
             "additionalProperties": false,
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -25,7 +26,9 @@
                     "$ref": "#/definitions/SecureErase"
                 },
                 "Oem": {
-                    "$ref": "#/definitions/OemActions"
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -35,11 +38,12 @@
             "description": "The Drive schema represents a single physical disk drive for a system, including links to associated Volumes.",
             "longDescription": "This resource shall be used to represent a disk drive or other physical storage medium for a Redfish implementation.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -49,13 +53,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Actions": {
                     "$ref": "#/definitions/Actions",
@@ -76,7 +83,7 @@
                     "longDescription": "This property shall contain size of the smallest addressible unit of the associated drive.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ],
                     "units": "By"
@@ -96,7 +103,7 @@
                     "longDescription": "This property shall contain the raw size in bytes of the associated drive.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ],
                     "units": "By"
@@ -191,6 +198,7 @@
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
                 "Location": {
+                    "deprecated": "This property has been Deprecated in favor of the singular property PhysicalLocation found in Drive.v1_4_0.",
                     "description": "The Location of the drive.",
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location"
@@ -272,7 +280,8 @@
                     "type": [
                         "number",
                         "null"
-                    ]
+                    ],
+                    "units": "%"
                 },
                 "Protocol": {
                     "anyOf": [
@@ -325,7 +334,9 @@
                     ]
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "StatusIndicator": {
                     "anyOf": [
@@ -342,6 +353,8 @@
                 }
             },
             "required": [
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -400,11 +413,12 @@
             "description": "Contains references to other resources that are related to this resource.",
             "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -423,7 +437,7 @@
                     "type": "array"
                 },
                 "Endpoints@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "Oem": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
@@ -440,7 +454,7 @@
                     "type": "array"
                 },
                 "Volumes@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 }
             },
             "type": "object"
@@ -463,11 +477,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -483,11 +498,12 @@
             "description": "An operation currently running on this resource.",
             "longDescription": "This type shall describe a currently running operation on the resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -499,10 +515,12 @@
                 "AssociatedTask": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Task.json#/definitions/Task",
                     "description": "A reference to the task associated with the operation if any.",
+                    "longDescription": "The value of this property shall be a reference to a resource of type Task that represents the task associated with the operation.",
                     "readonly": true
                 },
                 "OperationName": {
                     "description": "The name of the operation.",
+                    "longDescription": "This property shall be a string of the name of the operation.",
                     "readonly": true,
                     "type": [
                         "string",
@@ -511,11 +529,13 @@
                 },
                 "PercentageComplete": {
                     "description": "The percentage of the operation that has been completed.",
+                    "longDescription": "This property shall be an interger of the percentage of the operation that has been completed.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
-                    ]
+                    ],
+                    "units": "%"
                 }
             },
             "type": "object"
@@ -526,11 +546,12 @@
             "longDescription": "This action shall perform a secure erase of the drive.",
             "parameters": {},
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -573,5 +594,6 @@
             "type": "string"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#Drive.v1_1_3.Drive"
 }

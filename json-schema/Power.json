@@ -94,6 +94,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_5_1.json#/definitions/Power"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_6_0.json#/definitions/Power"
                 }
             ],
             "deletable": false,

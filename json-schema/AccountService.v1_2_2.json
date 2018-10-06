@@ -1,18 +1,19 @@
 {
     "$ref": "#/definitions/AccountService",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "AccountService": {
             "additionalProperties": false,
             "description": "The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.",
             "longDescription": "This resource shall be used to represent a management account service for a Redfish implementation.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -22,20 +23,23 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "AccountLockoutCounterResetAfter": {
                     "description": "The interval of time in seconds between the last failed login attempt and reset of the lockout threshold counter. This value must be less than or equal to AccountLockoutDuration. Reset sets the counter to zero.",
                     "longDescription": "This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login.",
                     "minimum": 0,
                     "readonly": false,
-                    "type": "number",
+                    "type": "integer",
                     "units": "s"
                 },
                 "AccountLockoutDuration": {
@@ -44,7 +48,7 @@
                     "minimum": 0,
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ],
                     "units": "s"
@@ -55,7 +59,7 @@
                     "minimum": 0,
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -75,7 +79,7 @@
                     "longDescription": "This property shall reference the threshold for when an authorization failure is logged.  This represents a modulo function value, thus the failure shall be logged every nth occurrence where n represents the value of this property.",
                     "minimum": 0,
                     "readonly": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "Description": {
                     "anyOf": [
@@ -97,14 +101,14 @@
                     "longDescription": "This property shall reference the maximum password length that the implementation will allow a password to be set to.",
                     "minimum": 0,
                     "readonly": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "MinPasswordLength": {
                     "description": "The minimum password length for this service.",
                     "longDescription": "This property shall reference the minimum password length that the implementation will allow a password to be set to.",
                     "minimum": 0,
                     "readonly": true,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "Name": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
@@ -137,10 +141,14 @@
                     ]
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 }
             },
             "required": [
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -151,11 +159,12 @@
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -165,7 +174,9 @@
             },
             "properties": {
                 "Oem": {
-                    "$ref": "#/definitions/OemActions"
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -175,11 +186,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -191,5 +203,6 @@
             "type": "object"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#AccountService.v1_2_2.AccountService"
 }

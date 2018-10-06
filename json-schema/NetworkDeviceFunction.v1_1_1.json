@@ -1,18 +1,19 @@
 {
     "$ref": "#/definitions/NetworkDeviceFunction",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Actions": {
             "additionalProperties": false,
             "description": "The available actions for this resource.",
             "longDescription": "This type shall contain the available actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -22,7 +23,9 @@
             },
             "properties": {
                 "Oem": {
-                    "$ref": "#/definitions/OemActions"
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -62,11 +65,12 @@
             "description": "A Fibre Channel boot target configured for a network device function.",
             "longDescription": "This type shall describe a Fibre Channel boot target configured for a network device function.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -80,7 +84,7 @@
                     "longDescription": "The value of this property shall be the relative priority for this entry in the boot targets array.  Lower numbers shall represent higher priority, with zero being the highest priority.  The BootPriority shall be unique for all entries of the BootTargets array.",
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -110,11 +114,12 @@
             "description": "This type describes Ethernet capabilities, status, and configuration of a network device function.",
             "longDescription": "This type shall describe the Ethernet capabilities, status, and configuration values for a network device function.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -137,7 +142,7 @@
                     "longDescription": "The Maximum Transmission Unit (MTU) configured for this Network Device Function.  This value serves as a default for the OS driver when booting.  The value only takes-effect on boot.",
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -158,11 +163,12 @@
             "description": "This type describes Fibre Channel capabilities, status, and configuration of a network device function.",
             "longDescription": "This object shall describe the Fibre Channel capabilities, status, and configuration values for a network device function.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -198,18 +204,22 @@
                 "FCoEActiveVLANId": {
                     "description": "The active FCoE VLAN ID.",
                     "longDescription": "For FCoE connections, the value of this property shall be null or a VLAN ID currently being used for FCoE traffic.  When the FCoE link is down this value shall be null.  When the FCoE link is up this value shall be either the FCoELocalVLANId property or a VLAN discovered via the FIP protocol.",
+                    "maximum": 4094,
+                    "minimum": 0,
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
                 "FCoELocalVLANId": {
                     "description": "The locally configured FCoE VLAN ID.",
                     "longDescription": "For FCoE connections, the value of this property shall be the VLAN ID configured locally by setting this property.  This value shall be used for FCoE traffic to this network device function during boot unless AllowFIPVLANDiscovery is true and a valid FCoE VLAN ID is found via the FIP VLAN Discovery Protocol.",
+                    "maximum": 4094,
+                    "minimum": 0,
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -281,11 +291,12 @@
             "description": "Contains references to other resources that are related to this resource.",
             "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -296,7 +307,8 @@
             "properties": {
                 "PCIeFunction": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.json#/definitions/PCIeFunction",
-                    "description": "Contains the members of this collection.",
+                    "description": "A reference to the PCIeFunction associated with this Network Device Function.",
+                    "longDescription": "The value of this property shall be a references of type PCIeFunction that represents the PCI-e Function associated with this Network Device Function.",
                     "readonly": true
                 }
             },
@@ -307,11 +319,12 @@
             "description": "A Network Device Function represents a logical interface exposed by the network adapter.",
             "longDescription": "A Network Device Function represents a logical interface exposed by the network adapter.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -321,13 +334,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Actions": {
                     "$ref": "#/definitions/Actions",
@@ -344,7 +360,7 @@
                     "type": "array"
                 },
                 "AssignablePhysicalPorts@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_1.json#/definitions/count"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/count"
                 },
                 "BootMode": {
                     "anyOf": [
@@ -417,7 +433,7 @@
                     "longDescription": "The value of this property shall be the number of virtual functions (VFs) that are available for this Network Device Function.",
                     "readonly": true,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -461,19 +477,15 @@
                 },
                 "PhysicalPortAssignment": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/NetworkPort.json#/definitions/NetworkPort",
+                    "deprecated": "This property has been deprecated and moved to the Links section to avoid loops on expand.",
                     "description": "The physical port that this network device function is currently assigned to.",
                     "longDescription": "The value of this property shall be the physical port that this network device function is currently assigned to. This value shall be one of the AssignablePhysicalPorts array members.",
                     "readonly": true
                 },
                 "Status": {
-                    "anyOf": [
-                        {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "VirtualFunctionsEnabled": {
                     "description": "Whether Single Root I/O Virtualization (SR-IOV) Virual Functions (VFs) are enabled for this Network Device Function.",
@@ -498,6 +510,8 @@
                 }
             },
             "required": [
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -525,11 +539,12 @@
             "description": "The available OEM specific actions for this resource.",
             "longDescription": "This type shall contain any additional OEM actions for this resource.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -556,11 +571,12 @@
             "description": "This type describes iSCSI boot capabilities, status, and configuration of a network device function.",
             "longDescription": "This type shall describe the iSCSI boot capabilities, status, and configuration values for a network device function.",
             "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -690,7 +706,7 @@
                     "longDescription": "The value of this property shall be the logical unit number (LUN) for the primary iSCSI boot target.",
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -717,7 +733,7 @@
                     "longDescription": "The value of this property shall be the TCP port for the primary iSCSI boot target.",
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -733,9 +749,11 @@
                 "PrimaryVLANId": {
                     "description": "The 802.1q VLAN ID to use for iSCSI boot from the primary target.",
                     "longDescription": "The value of this property shall be the 802.1q VLAN ID to use for iSCSI boot from the primary target.  This VLAN ID is only used if PrimaryVLANEnable is true.",
+                    "maximum": 4094,
+                    "minimum": 0,
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -762,7 +780,7 @@
                     "longDescription": "The value of this property shall be the logical unit number (LUN) for the secondary iSCSI boot target.",
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -789,7 +807,7 @@
                     "longDescription": "The value of this property shall be the TCP port for the secondary iSCSI boot target.",
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -805,9 +823,11 @@
                 "SecondaryVLANId": {
                     "description": "The 802.1q VLAN ID to use for iSCSI boot from the secondary target.",
                     "longDescription": "The value of this property shall be the 802.1q VLAN ID to use for iSCSI boot from the secondary target.  This VLAN ID is only used if SecondaryVLANEnable is true.",
+                    "maximum": 4094,
+                    "minimum": 0,
                     "readonly": false,
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 },
@@ -824,5 +844,6 @@
             "type": "object"
         }
     },
+    "owningEntity": "DMTF",
     "title": "#NetworkDeviceFunction.v1_1_1.NetworkDeviceFunction"
 }

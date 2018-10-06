@@ -1,7 +1,7 @@
 {
     "$ref": "#/definitions/EventService",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
-    "copyright": "Copyright 2014-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "Actions": {
             "additionalProperties": false,
@@ -13,6 +13,7 @@
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -25,7 +26,9 @@
                     "$ref": "#/definitions/SubmitTestEvent"
                 },
                 "Oem": {
-                    "$ref": "#/definitions/OemActions"
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
                 }
             },
             "type": "object"
@@ -33,12 +36,14 @@
         "EventService": {
             "additionalProperties": false,
             "description": "The Event Service resource contains properties for managing event subcriptions and generates the events sent to subscribers.  The resource has links to the actual collection of subscriptions (called Event Destinations).",
+            "longDescription": "This resource shall be used to represent an event service for a Redfish implementation.",
             "patternProperties": {
                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "description": "This property shall specify a valid odata or Redfish property.",
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -48,16 +53,16 @@
             },
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/context"
                 },
                 "@odata.etag": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/etag"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/etag"
                 },
                 "@odata.id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/type"
                 },
                 "Actions": {
                     "$ref": "#/definitions/Actions",
@@ -68,13 +73,13 @@
                     "description": "This is the number of attempts an event posting is retried before the subscription is terminated.  This retry is at the service level, meaning the HTTP POST to the Event Destination was returned by the HTTP operation as unsuccessful (4xx or 5xx return code) or an HTTP timeout occurred this many times before the Event Destination subscription is terminated.",
                     "longDescription": "The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated.  This retry is at the service level, meaning the HTTP POST to the Event Destination was returned by the HTTP operation as unsuccessful (4xx or 5xx return code) or an HTTP timeout occurred this many times before the Event Destination subscription is terminated.",
                     "readonly": false,
-                    "type": "number"
+                    "type": "integer"
                 },
                 "DeliveryRetryIntervalSeconds": {
                     "description": "This represents the number of seconds between retry attempts for sending any given Event.",
                     "longDescription": "The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination.",
                     "readonly": false,
-                    "type": "number",
+                    "type": "integer",
                     "units": "s"
                 },
                 "Description": {
@@ -120,7 +125,9 @@
                     ]
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
                 },
                 "Subscriptions": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/EventDestinationCollection.json#/definitions/EventDestinationCollection",
@@ -130,6 +137,8 @@
                 }
             },
             "required": [
+                "@odata.id",
+                "@odata.type",
                 "Id",
                 "Name"
             ],
@@ -145,6 +154,7 @@
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
@@ -201,8 +211,9 @@
                     "type": "string"
                 },
                 "OriginOfCondition": {
-                    "description": "This is the OriginOfCondition property of event to be added.",
-                    "longDescription": "This parameter shall have the same semantics as the OriginOfCondition property in the Event schema for Redfish.",
+                    "description": "This is the string of the URL within the OriginOfCondition property of the event to be added.  It is not a reference object.",
+                    "format": "uri",
+                    "longDescription": "This parameter shall be a string that represents the URL contained by the OriginOfCondition property in the Event schema for Redfish.",
                     "requiredParameter": true,
                     "type": "string"
                 },
@@ -219,6 +230,7 @@
                     "type": [
                         "array",
                         "boolean",
+                        "integer",
                         "number",
                         "null",
                         "object",
