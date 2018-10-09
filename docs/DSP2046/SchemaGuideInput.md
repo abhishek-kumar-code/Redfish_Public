@@ -108,7 +108,6 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 ## Oem
 
 
-
 # Bugs
 
 1) Deprecated statements are picked up from errata versions - should only report major/minor version.  Workaround is in place in the doc generator to only check v1.x.0 for deprecated properties/enumerations.
@@ -121,9 +120,8 @@ Some schemas are excluded from the documentation for clarity.  Since all Redfish
 
 1) For global description replacement - allow a choice to either replace the 'base' description and allow for appended details (created by the docgen), or a complete replacement, suppressing any docgen additions.  Base description is useful for enhanced descriptions beyond the schema contents.  Complete replacement is useful for the common properties and other conditions where the normal docgen additions are counter-productive.
 
-2) Manual whitelist for Common Objects section - "Redundancy", "Settings" are the examples - these should be then handled as if they were detected to be Common Objects.
+2) Manual whitelist for Common Objects section - "Redundancy" examples - these should be then handled as if they were detected to be Common Objects.
 
-3) References to common objects from schema fragments are not resolved (go to DMTF.org)
 
 ------------------------------------------ RELEASE PROCESS -----------------------------------------------
 
@@ -285,11 +283,6 @@ This is the redundancy definition to be used in other resource schemas.
 
 #include_fragment ./json-schema/Redundancy.v1_3_1.json#/definitions/Redundancy/properties
 
-## Settings
-
-This describes the settings for a resource.
-
-#include_fragment ./json-schema/Settings.v1_2_1.json#/definitions/Settings/properties
 
 # Resource collections
 
