@@ -648,10 +648,18 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="LogEntry" BaseType="LogEntry.v1_0_2.LogEntry">
         <Property Name="EventType" Type="Event.EventType" Nullable="false">
-          <Annotation Term="Redfish.Deprecated" String="This property has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the type of an event recorded in this log."/>
           <Annotation Term="OData.LongDescription" String="If present, this LogEntry records an Event and the value shall indicate the type of event."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+                <PropertyValue Property="Description" String="This property has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="EventId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

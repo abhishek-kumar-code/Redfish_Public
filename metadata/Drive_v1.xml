@@ -169,7 +169,15 @@
         <Property Name="Location" Type="Collection(Resource.Location)" Nullable="false">
           <Annotation Term="OData.Description" String="The Location of the drive."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated drive."/>
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of the singular property PhysicalLocation found in Drive.v1_4_0."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of the singular property PhysicalLocation found in Drive.v1_4_0."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="HotspareType" Type="Drive.v1_0_0.HotspareType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

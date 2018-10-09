@@ -225,34 +225,74 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of API supported by the firmware."/>
         </Property>
         <Property Name="FunctionClasses" Type="Collection(Edm.String)" Nullable="false">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_0_0.Memory.OperatingMemoryModes or Memory.v1_0_0.Memory.RegionSet.MemoryClassification."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Function Classes by the Memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the function classes by the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of OperatingMemoryModes at the root of the resource, or MemoryClassification found within RegionSet."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="VendorID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.ModuleManufacturerID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Vendor ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the vendor ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of ModuleManufacturerID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="DeviceID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.ModuleProductID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Device ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the device ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of ModuleProductID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="SubsystemVendorID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerManufacturerID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="SubSystem Vendor ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the subsystem Vendor ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of MemorySubsystemControllerManufacturerID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="SubsystemDeviceID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerProductID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Subsystem Device ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the subsystem Device ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of MemorySubsystemControllerProductID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="MaxTDPMilliWatts" Type="Collection(Edm.Int64)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -598,10 +638,18 @@
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="PassphraseState" Type="Edm.Boolean">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_5_0.Memory.RegionSet.PassphraseEnabled."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="State of the passphrase for this region."/>
           <Annotation Term="OData.LongDescription" String="State of the passphrase for this region."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_5_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of PassphraseEnabled found within RegionSet."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
       </ComplexType>
 
