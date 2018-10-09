@@ -565,7 +565,7 @@ function checkReferencesUsed(err, csdl) {
                         nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
                         if(entity.Type !== null) {
                           for(let j = 0; j < nameSpaceAliases.length; j++) {
-                            if(entity.Type.startsWith(nameSpaceAliases[j])) {
+                            if(entity.Type.startsWith(nameSpaceAliases[j]) || entity.Type.startsWith('Collection('+nameSpaceAliases[j])) {
                               nameSpaceAliases.splice(j, 1);
                               break;
                             }
