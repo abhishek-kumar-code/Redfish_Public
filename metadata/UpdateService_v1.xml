@@ -75,6 +75,14 @@
           <Annotation Term="OData.Description" String="The array of URIs indicating where the update image is to be applied."/>
           <Annotation Term="OData.LongDescription" String="This array property shall contain zero or more URIs indicating where the update image is to be applied. These targets should correspond to SoftwareInventory instances or their RelatedItems. If this property is not present or contains zero targets, the Service shall apply the software image to all applicable targets (as determined by the Service)."/>
           <Annotation Term="OData.IsURL"/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_2_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Parameter>
       </Action>
     </Schema>

@@ -134,6 +134,14 @@
         <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
         <Annotation Term="OData.Description" String="This action is used to set the Boot Order to the default settings."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a set the BootOrder to the default values."/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_5_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
       </Action>
 
       <EnumType Name="BootSource">
