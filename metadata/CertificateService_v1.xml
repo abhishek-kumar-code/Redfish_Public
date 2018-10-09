@@ -95,9 +95,9 @@
           <Annotation Term="OData.Description" String="The email address of the contact within the organization making the request."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the email address of the contact within the organization making the request."/>
         </Parameter>
-        <Parameter Name="KeyLengthBits" Type="Edm.Int64" Nullable="false">
-          <Annotation Term="OData.Description" String="The length of the key in bits."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the length of the key in bits."/>
+        <Parameter Name="KeyPairAlgorithm" Type="CertificateService.v0_9_0.KeyPairAlgorithm" Nullable="false">
+          <Annotation Term="OData.Description" String="The algorithm used to generate the key pair."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be algorithm used to generate the key pair."/>
         </Parameter>
         <Parameter Name="ResourceUri" Type="CertificateCollection.CertificateCollection" Nullable="false">
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
@@ -145,6 +145,17 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
+
+      <EnumType Name="KeyPairAlgorithm">
+        <Annotation Term="OData.Description" String="The types of algorithms used to generate key pairs."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the types of algorithms used to generate key pairs."/>
+        <Member Name="RSA2048Bit">
+          <Annotation Term="OData.Description" String="The key pair is generated using RSA with a key length of 2048 bits."/>
+        </Member>
+        <Member Name="RSA4096Bit">
+          <Annotation Term="OData.Description" String="The key pair is generated using RSA with a key length of 4096 bits."/>
+        </Member>
+      </EnumType>
 
       <EnumType Name="KeyUsage">
         <Annotation Term="OData.Description" String="The usages of a key contained within a certificate."/>

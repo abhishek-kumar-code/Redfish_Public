@@ -45,9 +45,13 @@
             "DataType": "String"
         },
         {
-            "Name": "KeyLengthBits",
+            "Name": "KeyPairAlgorithm",
             "Required": true,
-            "DataType": "Number"
+            "DataType": "String",
+            "AllowableValues": [
+                "RSA2048Bit",
+                "RSA4096Bit"
+            ]
         },
         {
             "Name": "ResourceUri",
