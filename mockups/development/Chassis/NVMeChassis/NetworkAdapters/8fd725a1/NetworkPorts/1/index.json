@@ -15,7 +15,7 @@
     ],
     "ActiveLinkTechnology": "Ethernet",
     "SupportedEthernetCapabilities":  [
-        "WakeOnLAN", "LLDP", "PoE", "EEE"
+        "WakeOnLAN", "EEE"
     ],
     "NetDevFuncMinBWAlloc": [
         {

@@ -318,9 +318,10 @@ A URI is used to identify a resource, including the base service and all Redfish
 
 * Each unique instance of a resource shall be identified by a URI.
 * URIs shall not include any unsafe characters as specified in [RFC1738](#RFC1738)
-    * This includes characters such as "{", "}", "|", "", "^", "~", "[", "]", "`", and """.
+    * This includes characters such as "{", "}", "|", "\\", "^", "~", "[", "]", "`", and """.
     * This also includes "#" for anything other than an indicator for the start of a fragment
 * URIs shall not include any percent encoding of characters
+    * This does not include the [query parameter](#query-parameters) portion of the URI
 
 To begin operations, a client must know a URI for a resource.
 
