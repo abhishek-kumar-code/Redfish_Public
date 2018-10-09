@@ -1,108 +1,101 @@
 {
-	"@odata.type": "#Circuit.v0_8_0.Circuit",
-	"Id": "C2",
-	"Name": "Outlet C2, Branch Circuit C",
-	"Status": {
-		"Health": "OK",
-		"State": "Enabled"
-	},
-
-	"CircuitType": "Outlet",
-	"PhaseWiringType": "TwoPhase3Wire",
-	"VoltageType": "AC",
-	"IECOutletType": "C13",
-	"LockingOutlet": false,
-	"RatedCurrentAmps": 12,
-	"NominalVoltage": "AC240V",
-
-	"IndicatorLED": "Lit",
-	"PowerOnDelaySeconds": 6,
-	"PowerOffDelaySeconds": 0,
-
-	"PowerState": "On",
-
-	"PowerEnabled": true,
-
-	"Voltage": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageC2",
-		"Name": "Outlet C2 Voltage L31",
-		"Reading": 204.2,
-		"ReadingUnits": "V"
-	},
-	"PolyPhaseVoltages": {
-		"Line3ToLine1": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageC2",
-			"Name": "Outlet C2 Voltage L31",
-			"Reading": 204.2,
-			"ReadingUnits": "V"
-		}
-	},
-	"Current": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentC2",
-		"Name": "Outlet C2 Current",
-		"Reading": 1.93,
-		"PeakReading": 2.50,
-		"ReadingUnits": "A"
-	},
-	"PolyPhaseCurrents": {
-		"Line1": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentC2",
-			"Name": "Outlet C2 Current",
-			"Reading": 1.93,
-			"PeakReading": 2.50,
-			"ReadingUnits": "A"
-		}
-	},
-	"PowerReading": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerC2",
-		"Name": "Outlet C2 Power",		
-		"Reading": 394.1,
-		"PeakReading": 510.5,
-		"ReadingUnits": "W",
-		"ApparentVA": 394.1,
-		"ReactiveVAR": 0.0,
-		"PowerFactor": 1.00
-	},
-	"PolyPhasePowerReadings": {
-		"Line3ToLine1": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerC2",
-		  "Name": "Outlet C2 Power",
-			"Reading": 394.1,
-			"PeakReading": 510.5,
-			"ReadingUnits": "W",
-			"ApparentVA": 394.1,
-		  "ReactiveVAR": 0.0,
-		  "PowerFactor": 1.00
-		}
-	},
-	"Energy": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC2",
-		"Name": "Outlet C2 Energy",
-		"Reading": 52941,
-		"ReadingUnits": "W"
-	},
-	"PolyPhaseEnergyReadings": {
-		"Line3ToLine1": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC2",
-		    "Name": "Outlet C2 Energy",
-			"Reading": 52941,
-			"ReadingUnits": "W"
-		}
-	},
-
-	"Actions": {
-		"#Circuit.PowerControl": {
-			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/Circuit.PowerControl",
-			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/C2/PowerControlActionInfo"
-		}
-	},
-
-	"Links": {
-		"BranchCircuit": {
-			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/C"
-		}
-	},
-	"@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/C2",
-	"@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@odata.type": "#Circuit.v0_8_0.Circuit",
+    "Id": "C2",
+    "Name": "Outlet C2, Branch Circuit C",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    },
+    "CircuitType": "Outlet",
+    "PhaseWiringType": "TwoPhase3Wire",
+    "VoltageType": "AC",
+    "IECOutletType": "C13",
+    "LockingOutlet": false,
+    "RatedCurrentAmps": 12,
+    "NominalVoltage": "AC240V",
+    "IndicatorLED": "Lit",
+    "PowerOnDelaySeconds": 6,
+    "PowerOffDelaySeconds": 0,
+    "PowerState": "On",
+    "PowerEnabled": true,
+    "Voltage": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageC2",
+        "Name": "Outlet C2 Voltage L31",
+        "Reading": 204.2,
+        "ReadingUnits": "V"
+    },
+    "PolyPhaseVoltages": {
+        "Line3ToLine1": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageC2",
+            "Name": "Outlet C2 Voltage L31",
+            "Reading": 204.2,
+            "ReadingUnits": "V"
+        }
+    },
+    "Current": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentC2",
+        "Name": "Outlet C2 Current",
+        "Reading": 1.93,
+        "PeakReading": 2.50,
+        "ReadingUnits": "A"
+    },
+    "PolyPhaseCurrents": {
+        "Line1": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentC2",
+            "Name": "Outlet C2 Current",
+            "Reading": 1.93,
+            "PeakReading": 2.50,
+            "ReadingUnits": "A"
+        }
+    },
+    "PowerReading": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerC2",
+        "Name": "Outlet C2 Power",
+        "Reading": 394.1,
+        "PeakReading": 510.5,
+        "ReadingUnits": "W",
+        "ApparentVA": 394.1,
+        "ReactiveVAR": 0.0,
+        "PowerFactor": 1.00
+    },
+    "PolyPhasePowerReadings": {
+        "Line3ToLine1": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerC2",
+            "Name": "Outlet C2 Power",
+            "Reading": 394.1,
+            "PeakReading": 510.5,
+            "ReadingUnits": "W",
+            "ApparentVA": 394.1,
+            "ReactiveVAR": 0.0,
+            "PowerFactor": 1.00
+        }
+    },
+    "Energy": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC2",
+        "Name": "Outlet C2 Energy",
+        "Reading": 52941,
+        "ReadingUnits": "W"
+    },
+    "PolyPhaseEnergyReadings": {
+        "Line3ToLine1": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyC2",
+            "Name": "Outlet C2 Energy",
+            "Reading": 52941,
+            "ReadingUnits": "W"
+        }
+    },
+    "Actions": {
+        "#Circuit.PowerControl": {
+            "target": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/Circuit.PowerControl",
+            "@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/C2/PowerControlActionInfo"
+        }
+    },
+    "Links": {
+        "BranchCircuit": {
+            "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/C"
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
+    "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/C2",
+    "@Redfish.Copyright": "Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

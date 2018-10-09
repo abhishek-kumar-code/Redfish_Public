@@ -212,7 +212,10 @@
           <Annotation Term="OData.Description" String="The energy sensors for this circuit."/>
           <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
-
+        <Property Name="Links" Type="Circuit.v0_8_0.Links" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        </Property>
         <Property Name="Actions" Type="Circuit.v0_8_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
@@ -228,7 +231,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this circuit is associated with and shall reference a resource of type Circuit."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="BranchCurcuit" Type="Circuit.Circuit">
+        <NavigationProperty Name="BranchCircuit" Type="Circuit.Circuit">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the branch circuit related to this circuit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the branch circuit resource that this circuit is associated with and shall reference a resource of type Circuit."/>

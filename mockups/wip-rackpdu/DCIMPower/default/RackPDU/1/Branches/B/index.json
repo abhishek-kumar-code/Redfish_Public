@@ -1,105 +1,106 @@
 {
-	"@odata.type": "#Circuit.v0_8_0.Circuit",
-	"Id": "B",
-	"Name": "Branch Circuit B",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-
-	"CircuitType": "Branch",
-	"PhaseWiringType": "TwoPhase3Wire",
-	"BreakerState": "Normal",
-
-	"PolyPhaseVoltages": {
-		"Line2ToNeutral": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageBL2N",
-			"Name": "Branch B Voltage L2N",
-			"Reading": 116.7,
-			"ReadingUnits": "V"
-		},
-		"Line2ToLine3": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageBL2L3",
-			"Name": "Branch B Voltage L23",
-			"Reading": 203.6,
-			"ReadingUnits": "V"
-		}
-	},
-	"Current": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentB",
-		"Name": "Branch B Current",
-		"Reading": 5.95,
-		"PeakReading": 7.00,
-		"ReadingUnits": "A"
-	},
-	"PolyPhaseCurrents": {
-		"Line2": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentB",
-			"Name": "Branch B Current",
-			"Reading": 5.95,
-			"PeakReading": 7.00,
-			"ReadingUnits": "A"
-		}
-	},
-	"PowerReading": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerB",
-		"Name": "Branch B Power",
-		"Reading": 977.8,
-		"PeakReading": 1000.9,
-		"ReadingUnits": "W",
-		"ApparentVA": 1104.2,
-		"ReactiveVAR": 512.9,
-		"PowerFactor": 0.88
-	},
-	"PolyPhasePowerReadings": {
-		"Line1ToNeutral": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerB1",
-			"Name": "Branch B Power",
-			"Reading": 977.8,
-			"PeakReading": 1000.9,
-			"ReadingUnits": "W",
-			"ApparentVA": 1104.2,
-			"ReactiveVAR": 512.9,
-			"PowerFactor": 0.88
-		}
-	},
-	"Frequency": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyB",
-		"Name": "Branch B Frequency",
-		"Reading": 60.0,
-		"ReadingUnits": "Hz"
-	},
-	"Energy": {
-		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB",
-		"Name": "Branch B Energy",
-		"Reading": 110345,
-		"ReadingUnits": "W"
-	},
-	"PolyPhaseEnergyReadings": {
-		"Line2": {
-			"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB1",
-			"Name": "Branch B Energy",
-			"Reading": 110345,
-			"ReadingUnits": "W"
-		}
-	},
-	"Outlets": [{
-			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B1"
-		},
-		{
-			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B2"
-		},
-		{
-			"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B3"
-		}
-	],
-	"Actions": {
-		"#Circuit.ResetBreaker": {
-			"target": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/B/Circuit.ResetBreaker",
-			"@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/B/ResetBreakerActionInfo"
-		}
-	},
-	"@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
-	"@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A",
-	"@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@odata.type": "#Circuit.v0_8_0.Circuit",
+    "Id": "B",
+    "Name": "Branch Circuit B",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "CircuitType": "Branch",
+    "PhaseWiringType": "TwoPhase3Wire",
+    "BreakerState": "Normal",
+    "PolyPhaseVoltages": {
+        "Line2ToNeutral": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageBL2N",
+            "Name": "Branch B Voltage L2N",
+            "Reading": 116.7,
+            "ReadingUnits": "V"
+        },
+        "Line2ToLine3": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/VoltageBL2L3",
+            "Name": "Branch B Voltage L23",
+            "Reading": 203.6,
+            "ReadingUnits": "V"
+        }
+    },
+    "Current": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentB",
+        "Name": "Branch B Current",
+        "Reading": 5.95,
+        "PeakReading": 7.00,
+        "ReadingUnits": "A"
+    },
+    "PolyPhaseCurrents": {
+        "Line2": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/CurrentB",
+            "Name": "Branch B Current",
+            "Reading": 5.95,
+            "PeakReading": 7.00,
+            "ReadingUnits": "A"
+        }
+    },
+    "PowerReading": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerB",
+        "Name": "Branch B Power",
+        "Reading": 977.8,
+        "PeakReading": 1000.9,
+        "ReadingUnits": "W",
+        "ApparentVA": 1104.2,
+        "ReactiveVAR": 512.9,
+        "PowerFactor": 0.88
+    },
+    "PolyPhasePowerReadings": {
+        "Line1ToNeutral": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/PowerB1",
+            "Name": "Branch B Power",
+            "Reading": 977.8,
+            "PeakReading": 1000.9,
+            "ReadingUnits": "W",
+            "ApparentVA": 1104.2,
+            "ReactiveVAR": 512.9,
+            "PowerFactor": 0.88
+        }
+    },
+    "Frequency": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/FrequencyB",
+        "Name": "Branch B Frequency",
+        "Reading": 60.0,
+        "ReadingUnits": "Hz"
+    },
+    "Energy": {
+        "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB",
+        "Name": "Branch B Energy",
+        "Reading": 110345,
+        "ReadingUnits": "W"
+    },
+    "PolyPhaseEnergyReadings": {
+        "Line2ToNeutral": {
+            "DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/EnergyB1",
+            "Name": "Branch B Energy",
+            "Reading": 110345,
+            "ReadingUnits": "W"
+        }
+    },
+    "Links": {
+        "Outlets": [
+            {
+                "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B1"
+            },
+            {
+                "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B2"
+            },
+            {
+                "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Outlets/B3"
+            }
+        ]
+    },
+    "Actions": {
+        "#Circuit.ResetBreaker": {
+            "target": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/B/Circuit.ResetBreaker",
+            "@Redfish.ActionInfo": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/B/ResetBreakerActionInfo"
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Circuit.Circuit",
+    "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/1/Branches/A",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
