@@ -48,6 +48,7 @@
 
       <EntityType Name="VFD" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for Variable Frequency Drive - VFD equipment."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Variable Frequency Drive (VFD) for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -129,6 +130,7 @@
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to a resource of type SensorCollection that contains the sensors located in the equipment and sub-components."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -136,6 +138,7 @@
         <NavigationProperty Name="Rotational" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more rotational sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure rotation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -143,6 +146,7 @@
         <NavigationProperty Name="Temperature" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more temperature sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure temperature."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -150,6 +154,7 @@
         <NavigationProperty Name="Alarms" Type="AlarmCollection.AlarmCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the naivgation pointer to the equipment Alarm collection."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to a resource of type AlarmCollection that contains the alarms for the equipment."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
 
@@ -157,6 +162,8 @@
         <NavigationProperty Name="TriggeredAlarms" Type="Collection(Alarm.Alarm)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 0 or more triggered alarms."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be an array containing the alarms triggered on the equipment."/>
+          <Annotation Term="OData.LongDescription" String="This array shall contain the set of Members of the Alarm Collection which have an 'AlarmStatus' of 'Triggered'."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -318,6 +325,7 @@
         <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more AC voltage sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure AC voltage."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -325,6 +333,7 @@
         <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure amperage."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -365,6 +374,7 @@
         <NavigationProperty Name="ACVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more AC voltage sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure AC voltage."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -372,6 +382,7 @@
         <NavigationProperty Name="Amperage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more amperage sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure amperage."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -379,6 +390,7 @@
         <NavigationProperty Name="Frequency" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more frequency sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure frequency."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -403,6 +415,7 @@
         <NavigationProperty Name="DCVoltage" Type="Collection(Sensor.Sensor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the array of 1 or more DC voltage sensors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of sensors that measure DC voltage."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
 
@@ -417,7 +430,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_2_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.OemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -430,7 +446,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_2_0.AcInputOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.AcInputOemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="AcInputOemActions">
@@ -443,7 +462,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_2_0.AcOutputOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.AcOutputOemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="AcOutputOemActions">
@@ -456,7 +478,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="VFD.v0_2_0.DcBusOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="VFD.v0_2_0.DcBusOemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <ComplexType Name="DcBusOemActions">

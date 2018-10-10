@@ -1,12 +1,12 @@
 {
-    "@odata.type": "#Alarm.v0_8_0.Alarm",
+    "@odata.type": "#Alarm.v0_3_0.Alarm",
     "Id": "FluxCapacitorFault",
     "Name": "Flux Capacitor Fault",
-	"AlarmState": "Armed",
-	"Acknowledged": false,
+    "AlarmState": "Armed",
+    "Acknowledged": false,
     "Severity": "Critical",
-    "TriggerTime": "2055-01-03T0:00:00Z",
-	"AutomaticReArm": true,
+    "TriggerTime": "2055-01-03T00:00:00Z",
+    "AutomaticReArm": true,
     "Message": "Great Scott! The Flux Capacitor has failed!",
     "MessageId": "DCIM.0.1.0.FluxCapacitor",
     "MessageArgs": [

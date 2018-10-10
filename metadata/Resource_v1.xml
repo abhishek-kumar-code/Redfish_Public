@@ -40,7 +40,7 @@
       <TypeDefinition Name="Name" UnderlyingType="Edm.String">
         <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
-        <Annotation Term="Redfish.Excerpt"/>		  
+        <Annotation Term="Redfish.Excerpt"/>
       </TypeDefinition>
 
       <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>

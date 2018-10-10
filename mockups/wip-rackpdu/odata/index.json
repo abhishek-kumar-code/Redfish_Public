@@ -6,39 +6,14 @@
             "url": "/redfish/v1/"
         },
         {
-            "name": "Systems",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Systems"
-        },
-        {
-            "name": "Chassis",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Chassis"
-        },
-        {
             "name": "DCIMPower",
             "kind": "Singleton",
             "url": "/redfish/v1/DCIMPower"
         },
         {
-            "name": "DCIMCooling",
-            "kind": "Singleton",
-            "url": "/redfish/v1/DCIMCooling"
-        },
-        {
-            "name": "Facilities",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Facilities"
-        },
-        {
             "name": "Managers",
             "kind": "Singleton",
             "url": "/redfish/v1/Managers"
-        },
-        {
-            "name": "TaskService",
-            "kind": "Singleton",
-            "url": "/redfish/v1/TaskService"
         },
         {
             "name": "AccountService",

@@ -1,12 +1,12 @@
 {
-    "@odata.type": "#Alarm.v0_8_0.Alarm",
+    "@odata.type": "#Alarm.v0_3_0.Alarm",
     "Id": "Overload",
     "Name": "PDU Unit Overload",
-	"AlarmState": "Triggered",
-	"Acknowledged": false,
+    "AlarmState": "Triggered",
+    "Acknowledged": false,
     "Severity": "Critical",
     "TriggerTime": "2018-08-07T14:44:00Z",
-	"AutomaticReArm": true,
+    "AutomaticReArm": true,
     "Message": "Rack PDU Overload Condition",
     "MessageId": "DCIM.0.1.0.Overload",
     "MessageArgs": [

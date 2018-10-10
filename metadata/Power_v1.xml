@@ -851,7 +851,10 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Power.v1_6_0.PowerSourceOemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Power.v1_6_0.PowerSourceOemActions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
+        </Property>
       </ComplexType>
 
       <EntityType Name="PowerSource" BaseType="Resource.v1_0_0.ReferenceableMember">
@@ -866,7 +869,10 @@
           <Annotation Term="OData.Description" String="The Universal Unique ID for the power source."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the Universal Unique ID for the power source."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
+          <Annotation Term="OData.Description" String="This property describes the status and health of the resource and its children."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the resource."/>
+        </Property>
         <Property Name="Actions" Type="Power.v1_6_0.PowerSourceActions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

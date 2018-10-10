@@ -10,7 +10,7 @@
 	"PhaseWiringType": "ThreePhase5Wire",
 
 	"Temperature": {
-		"DataSourceURI": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/MainsTemp",
+		"DataSourceUri": "/redfish/v1/DCIMPower/default/RackPDU/1/Sensors/MainsTemp",
 		"Status": {
 			"Health": "OK"
 		},
