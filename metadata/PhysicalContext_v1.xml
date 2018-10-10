@@ -54,12 +54,24 @@
         <Member Name="CPU">
           <Annotation Term="OData.Description" String="A Processor (CPU)."/>
         </Member>
+        <Member Name="CPUSubsystem">
+          <Annotation Term="OData.Description" String="The entire Processor (CPU) subsystem."/>
+        </Member>
         <Member Name="GPU">
           <Annotation Term="OData.Description" String="A Graphics Processor (GPU)."/>
         </Member>
-        <Member Name="ASIC">
-          <Annotation Term="OData.Description" String="An ASIC device, such as an FPGA or a GPGPU."/>
+        <Member Name="GPUSubsystem">
+          <Annotation Term="OData.Description" String="The entire Graphics Processor (GPU) subsystem."/>
         </Member>
+        <Member Name="FPGA">
+          <Annotation Term="OData.Description" String="A Field Programmable Gate Array (FPGA)."/>
+        </Member>
+        <Member Name="Accelerator">
+          <Annotation Term="OData.Description" String="An Accelerator."/>
+        </Member>
+        <Member Name="ASIC">
+          <Annotation Term="OData.Description" String="An ASIC device, such as networking chip or a chipset component."/>
+        </Member>        
         <Member Name="Backplane">
           <Annotation Term="OData.Description" String="A backplane within the chassis."/>
         </Member>
@@ -96,11 +108,17 @@
         <Member Name="Memory">
           <Annotation Term="OData.Description" String="A memory device."/>
         </Member>
+        <Member Name="MemorySubsystem">
+          <Annotation Term="OData.Description" String="The entire Memory subsystem."/>
+        </Member>
         <Member Name="Chassis">
           <Annotation Term="OData.Description" String="The entire chassis."/>
         </Member>
         <Member Name="Fan">
           <Annotation Term="OData.Description" String="A fan."/>
+        </Member>
+        <Member Name="CoolingSubsystem">
+          <Annotation Term="OData.Description" String="The entire cooling (air and liquid) subsystem."/>
         </Member>
       </EnumType>
 
