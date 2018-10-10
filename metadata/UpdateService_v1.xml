@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  UpdateService  v1.3.1-->
+<!--# Redfish Schema:  UpdateService  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -80,6 +80,30 @@
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
                 <PropertyValue Property="Version" String="v1_2_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Parameter>
+        <Parameter Name="Username" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The username to be used when accessing the URI specified by the ImageURI parameter."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a string representing the username to be used when accessing the URI specified by the ImageURI parameter."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Parameter>
+        <Parameter Name="Password" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The password to be used when accessing the URI specified by the ImageURI parameter."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a string representing the password to be used when accessing the URI specified by the ImageURI parameter."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
               </Record>
             </Collection>
           </Annotation>
@@ -307,6 +331,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_0.UpdateService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add Username and Password parameters to SimpleUpdate."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_1.UpdateService"/>
     </Schema>
 
   </edmx:DataServices>
