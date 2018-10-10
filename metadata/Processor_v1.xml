@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Processor  v1.3.1-->
+<!--# Redfish Schema:  Processor  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -380,5 +380,23 @@
       <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor">
+        <Property Name="TDPWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The nominal TDP in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the nominal TDP in watts."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+        <Property Name="MaxTDPWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum TDP in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum TDP in watts."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+      </EntityType>
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
