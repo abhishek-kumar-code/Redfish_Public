@@ -318,9 +318,10 @@ A URI is used to identify a resource, including the base service and all Redfish
 
 * Each unique instance of a resource shall be identified by a URI.
 * URIs shall not include any unsafe characters as specified in [RFC1738](#RFC1738)
-    * This includes characters such as "{", "}", "|", "", "^", "~", "[", "]", "`", and """.
+    * This includes characters such as "{", "}", "|", "\\", "^", "~", "[", "]", "`", and """.
     * This also includes "#" for anything other than an indicator for the start of a fragment
 * URIs shall not include any percent encoding of characters
+    * This does not include the [query parameter](#query-parameters) portion of the URI
 
 To begin operations, a client must know a URI for a resource.
 
@@ -586,7 +587,7 @@ The following table represents the Redfish allowable values that shall be suppor
 | $levels      | Indicates how many levels the service should cascade the expand operation.  Thus a $levels=2 will not only expand the current resource (level=1) but also the expanded resource (level=2).                                                        | `http://resourcecollection?$expand=.($levels=2)` |
 
 Examples of the use of expand might be:
-* GET of a LogEntryCollection.  By including expand, the client can request multiple LogEntry resource in a single request instead of fetching them one at a time.
+* GET of a SoftwareInventoryCollection.  By including expand, the client can request multiple SoftwareInventory resources in a single request instead of fetching them one at a time.
 * GET of a ComputerSystem.  By specifying levels, collection such as Processors, Memory and other resources could be included in a single GET request.
 * GET all of the UUIDs in the ComputerSystem collection.  This would be combining $select with $expand on the URI.  The syntax for this would be GET /redfish/v1/Systems?$select=UUID&$expand=.($levels=1)
 
