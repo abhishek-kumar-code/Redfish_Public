@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#UpdateService.v1_2_1.UpdateService",
+    "@odata.type": "#UpdateService.v1_4_0.UpdateService",
     "Id": "UpdateService",
     "Name": "Update service",
     "Status": {
