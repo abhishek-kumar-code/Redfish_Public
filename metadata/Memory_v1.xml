@@ -491,7 +491,7 @@
 
       <EnumType Name="SecurityStates">
         <Member Name="Enabled">
-          <Annotation Term="OData.Description" String="Secure mode is enabled."/>
+          <Annotation Term="OData.Description" String="Secure mode is enabled and access to the data is allowed."/>
         </Member>
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="Secure mode is disabled."/>
@@ -505,7 +505,7 @@
         </Member>
         <Member Name="Frozen">
           <Annotation Term="OData.Description" String="Secure state is frozen and can not be modified until reset."/>
-          <Annotation Term="Redfish.Deprecated" String="This value has been deprecated in favor of using the SecurityConfigurationLocked to indicate that the configuration has been frozen."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been deprecated in favor of using the ConfigurationLocked to indicate that the configuration has been frozen."/>
         </Member>
         <Member Name="Passphraselimit">
           <Annotation Term="OData.Description" String="Number of attempts to unlock the Memory exceeded limit."/>
@@ -922,8 +922,8 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the security capabilities of a Memory entity."/>
         <Property Name="ConfigurationLockCapable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Support for locking the security configuration."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether this memory supports the locking (freezing) of the security configuration."/>
+          <Annotation Term="OData.Description" String="Support for locking the configuration."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether this memory supports the locking (freezing) of the configuration."/>
         </Property>
         <Property Name="DataLockCapable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
