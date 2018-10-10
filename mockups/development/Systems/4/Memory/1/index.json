@@ -40,13 +40,13 @@
     ],
     "SecurityCapabilities": {
         "PassphraseCapable": true,
-		  "PassphraseLockLimit": 10,
+        "PassphraseLockLimit": 10,
         "MaxPassphraseCount": 4,
-		  "ConfigurationLockCapable": true,
-		  "DataLockCapable": true
+        "ConfigurationLockCapable": true,
+        "DataLockCapable": true
     },
-	 "SecurityState": "Enabled",
-	 "SecurityConfigurationLocked": false,
+    "SecurityState": "Enabled",
+    "ConfigurationLocked": false,
     "SpareDeviceCount": 1,
     "RankCount": 1,
     "DeviceLocator": "PROC 1 DIMM 1",

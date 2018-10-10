@@ -905,10 +905,10 @@
           <Annotation Term="OData.Description" String="The current security state of this Memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current security state of this memory."/>
         </Property>		
-        <Property Name="SecurityConfigurationLocked" Type="Edm.Boolean">
+        <Property Name="ConfigurationLocked" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates that the security feature configuration has been locked."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the current security configuation lock state of this memory. True shall indicate that the security configuration is locked and cannot be altered. False shall indicate that the security configuration is not locked and may be altered."/>
+          <Annotation Term="OData.Description" String="Indicates that the configuration of this memory has been locked."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the current configuration lock state of this memory. True shall indicate that the configuration is locked and cannot be altered. False shall indicate that the configuration is not locked and may be altered."/>
         </Property>
         <Property Name="SecurityCapabilities" Type="Memory.v1_7_0.SecurityCapabilities" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains security capabilities of the Memory."/>
