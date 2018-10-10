@@ -41,9 +41,13 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Schema Name       | Version | Description |
 | ---               | ---     | ---         |
 | AttributeRegistry | 1.3.0   | Added "Oem" property to "Attributes" and "Menus".  Added "Hidden" property to "Menus". |
+| Memory            | 1.7.0   | Added "Intel3DXPoint" to the "MemoryMedia" enum. |
+| PhysicalContext   | N/A     | Added "CPUSubsystem", "GPUSubsystem", "FPGA", "Accelerator", "MemorySubsystem", and "CoolingSubsystem" physical context types. |
 | ServiceRoot       | 1.5.0   | Added "Vendor" property. | 
+| UpdateService     | 1.4.0   | Added "Username" and "Password" parameters to "SimpleUpdate". |
 | AttributeRegistry | 1.x.x   | Errata release.  Clarified the description for "ValueName".  Add missing Required terms for "AttributeName" and "ValueName". |
 | Bios              | 1.0.5   | Errata release.  Clarified the description for "Attributes". |
+| ServiceRoot       | 1.x.x   | Errata release.  Allow "Product" property to be null. | 
 
 
 ### Release 2018.2 (August 2018)
