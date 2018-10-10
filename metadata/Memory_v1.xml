@@ -486,7 +486,7 @@
           <Annotation Term="OData.Description" String="Security states supported by the Memory."/>
           <Annotation Term="OData.LongDescription" String="Security states supported by the Memory."/>
           <Annotation Term="Redfish.Deprecated" String="This property has been deprecated in favor of using the individual PassphraseCapable, DataLockCapable and ConfigurationLockCapable properties."/>
-		  </Property>
+        </Property>
       </ComplexType>
 
       <EnumType Name="SecurityStates">
@@ -899,7 +899,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_7_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add 3DXPoint to the MediaType enum."/>
-      <EntityType Name="Memory" BaseType="Memory.v1_6_0.Memory">		
+      <EntityType Name="Memory" BaseType="Memory.v1_6_0.Memory">
         <Property Name="SecurityState" Type="Memory.v1_0_0.SecurityStates">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current security state of this Memory."/>
@@ -914,7 +914,7 @@
           <Annotation Term="OData.Description" String="This object contains security capabilities of the Memory."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the security capabilities of the Memory."/>
         </Property>
-		</EntityType>
+      </EntityType>
 
       <ComplexType Name="SecurityCapabilities">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -934,7 +934,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum number of incorrect passphrase attempts allowed before memory is locked."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of incorrect passphase access attempts allowed before access to data is locked. A value of zero shall indicate that there is no limit to the number of attempts."/>
-        </Property>		  
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
