@@ -67,6 +67,14 @@
                 "SelectQuery": {
                     "$ref": "#/definitions/ProtocolRequirement",
                     "description": "Indicates support requirements for the Select query parameter. If this property is absent, there is no requirement for support of the Select query parameter."
+                },
+                "OnlyQuery": {
+                    "$ref": "#/definitions/ProtocolRequirement",
+                    "description": "Indicates support requirements for the Only query parameter. If this property is absent, there is no requirement for support of the Only query parameter."
+                },
+                "ExcerptQuery": {
+                    "$ref": "#/definitions/ProtocolRequirement",
+                    "description": "Indicates support requirements for the Excerpt query parameter. If this property is absent, there is no requirement for support of the Excerpt query parameter."
                 }
             }
         },
@@ -102,6 +110,9 @@
                 "ReadRequirement": {
                     "$ref": "#/definitions/ReadRequirement"
                 },
+				"URIs": {
+				    "$ref": "#/definitions/URIs"
+				},
                 "CreateResource": {
                     "type": "boolean",
                     "description": "Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  creation of instances of this resource type."
@@ -281,6 +292,14 @@
             "type": "string",
             "description": "A description of the purpose of this requirement, to provide justification or explanation in the profile documentation."
         },
+		"URIs": {
+			"type": "array",
+			"description": "An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification.",
+			"items": {
+				"type": "string",
+				"format": "uri"
+			}
+		}	
         "ReadRequirement": {
             "type": "string",
             "description": "The read (HTTP GET) requirements for this property.  The default value, or if no 'ReadRequirement' is present, is 'Mandatory'. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.",
@@ -326,9 +345,12 @@
                 "Purpose": {
                     "$ref": "#/definitions/Purpose"
                 },
+				"URIs": {
+				    "$ref": "#/definitions/URIs"
+				},
                 "SubordinateToResource": {
                     "type": "array",
-                    "description": "An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list."
+                    "description": "An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list."
                 },
                 "Comparison": {
                     "$ref": "#/definitions/Comparison"

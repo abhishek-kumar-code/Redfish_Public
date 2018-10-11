@@ -147,17 +147,21 @@ An object named 'Protocol' contains properties which describe Redfish protocol f
 | ExpandQuery | string | Indicates support requirements for the Expand query parameter. Additional Expand support requirements may be specified in the Resource entry for the 'ProtocolFeaturesSupported' object within 'ServiceRoot'. If this property is absent, there is no requirement for support of the Expand query parameter. See the [Requirement values](#requirement-values) clause. |
 | FilterQuery | string | Indicates support requirements for the Filter query parameter. If this property is absent, there is no requirement for support of the Filter query parameter. See the [Requirement values](#requirement-values) clause. |
 | SelectQuery | string | Indicates support requirements for the Select query parameter. If this property is absent, there is no requirement for support of the Select query parameter. See the [Requirement values](#requirement-values) clause. |
+| OnlyQuery | string | Indicates support requirements for the Only query parameter. If this property is absent, there is no requirement for support of the Only query parameter. See the [Requirement values](#requirement-values) clause. |
+| ExcerptQuery | string | Indicates support requirements for the Excerpt query parameter. If this property is absent, there is no requirement for support of the Excerpt query parameter. See the [Requirement values](#requirement-values) clause. |
 
 #### Example 
 
 ~~~
    "Protocol": {
-      "MinVersion": "1.2",
+      "MinVersion": "1.6",
       "Discovery": "Mandatory",
       "HostInterface": "Recommended",
       "ExpandQuery": "Mandatory",
       "SelectQuery": "None",
-      "FilterQuery": "Recommended"
+      "FilterQuery": "Recommended",
+      "OnlyQuery": "Mandatory",
+      "ExcerptQuery": "Recommended"
    }
 ~~~
 
@@ -179,10 +183,11 @@ For each schema, an object is created in the JSON document, named to match the s
 The structure of the resource and property requirements is:
 ~~~
     <Schema Name>: {
-       "MinVersion": <version>,
+      "MinVersion": <version>,
       "CreateResource": <boolean>,
       "DeleteResource": <boolean>,
       "UpdateResource": <boolean>,
+      "URIs": [ <uri pattern>, <uri pattern>],
       "PropertyRequirements": {
          <Property Name>: { 
             <Requirements for this property>
@@ -194,7 +199,11 @@ The structure of the resource and property requirements is:
          <Action Name>: {
             <Requirements for this action>
          }
-      }
+      },
+	  "ConditionalRequirements": [ {
+	     <Conditional Requirement> }, 
+		 { <Conditional Requirement> }
+	  }
     },
    <Additional Schemas...>
 ~~~
@@ -213,6 +222,13 @@ The following options are available at the schema level:
 | CreateResource | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  creation of instances of this resource type. |
 | DeleteResource | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  deletion of instances of this resource type. |
 | UpdateResource | boolean | Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply. |
+| URIs | array | An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
+
+###### URI patterns
+
+As the Redfish Specification version 1.6 or higher defines the set of possible URIs for each resource type, this fact can be used to easily create requirements or conditional requirements for resource types that occur at multiple locations in the resource tree. This method is preferred for any profile that will also desire OpenAPI compatibility, which requires Redfish v1.6 protocol support and therefore the URIs of any conforming implementation will match those listed in the profile.
+
+Profiles which intend to apply to implementations conforming to Redfish Specification versions 1.0-1.5 cannot use this URI pattern matching in their profile definition.
 
 ##### Example
 
@@ -332,6 +348,7 @@ The following options are available for each conditional requirement:
 | ReadRequirement | string | The requirement to apply to the resource or property if the condition is met.|
 | WriteRequirement | string | Property-level write (HTTP PATCH or PUT) requirement for this property; see [WriteRequirement](#writerequirement) clause. |
 | Purpose | string | Text describing the purpose of this conditional requirement. |
+| URIs    | array  | An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
 | SubordinateToResource | array | An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) clause. |
 | Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) clause. |
 | Values | array | The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison. |
