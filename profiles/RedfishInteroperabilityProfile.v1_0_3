@@ -1,7 +1,7 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
-    "title": "#RedfishInteroperabilityProfile.v1_0_2.RedfishInteroperabilityProfile",
-    "copyright": "Copyright 2017-2018 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "title": "#RedfishInteroperabilityProfile.v1_0_3.RedfishInteroperabilityProfile",
+    "copyright": "Copyright 2017-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -335,20 +335,20 @@
                 },
                 "Values": {
                     "$ref": "#/definitions/Values"
-                },					 
+                },
                 "CompareProperty": {
                     "type": "string",
                     "description": "The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached."
                 },
                 "CompareType": {
                     "$ref": "#/definitions/Comparison",
-						  "description": "The type of comparison to make with the 'CompareProperty', using the 'CompareValues' for this conditional requirement."
+                    "description": "The type of comparison to make with the 'CompareProperty', using the 'CompareValues' for this conditional requirement."
                 },
                 "CompareValues": {
                     "description": "The values of the 'CompareProperty' used to test the 'CompareType' for this conditional requirement.",
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": ["boolean", "number", "string"]
                     }
                 }
             }
