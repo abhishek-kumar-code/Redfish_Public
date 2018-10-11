@@ -328,7 +328,7 @@
                 },
                 "SubordinateToResource": {
                     "type": "array",
-                    "description": "An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list."
+                    "description": "An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list."
                 },
                 "Comparison": {
                     "$ref": "#/definitions/Comparison"
