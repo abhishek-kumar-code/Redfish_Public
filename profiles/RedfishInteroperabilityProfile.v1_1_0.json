@@ -294,7 +294,7 @@
         },
 		"URIs": {
 			"type": "array",
-			"description": "An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification.",
+			"description": "An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. If the URIs property is absent, the list of URIs obtained from the schema will be applied. The URI requirements are used if the Profile's minimum protocol version is v1.6 or higher, otherwise the URI requirements are ignored.",
 			"items": {
 				"type": "string",
 				"format": "uri"

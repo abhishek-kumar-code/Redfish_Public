@@ -219,10 +219,10 @@ The following options are available at the schema level:
 | ReadRequirement | string | Resource-level requirement for this schema; see [ReadRequirement](#readrequirement) clause. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema; see [Conditional requirements](#conditional-requirements) clause. |
-| CreateResource | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  creation of instances of this resource type. |
-| DeleteResource | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support  deletion of instances of this resource type. |
+| CreateResource | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support creation of instances of this resource type. |
+| DeleteResource | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support deletion of instances of this resource type. |
 | UpdateResource | boolean | Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply. |
-| URIs | array | An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
+| URIs | array | An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. If the URIs property is absent, the list of URIs obtained from the schema will be applied. The URI requirements are used if the Profile's minimum protocol version is v1.6 or higher, otherwise the URI requirements are ignored. |
 
 ###### URI patterns
 
