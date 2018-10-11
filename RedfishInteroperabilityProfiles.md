@@ -2,17 +2,17 @@
 DocTitle: Redfish Interoperability Profiles
 DocNumber: '0272'
 DocClass: Normative
-DocVersion: '1.0.1'
-SupersedesVersion: '1.0.0'
-modified: '2018-05-15'
+DocVersion: '1.1.0'
+SupersedesVersion: '1.0.1'
+modified: '2018-10-15'
 status: published
-released: True
+released: False
 copyright: '2017-2018'
 ---
 
 # Foreword
 
-The Redfish Interoperability Profile specification was prepared by the Scalable Platforms Management Forum of the DMTF.
+The Redfish Interoperability Profile specification was prepared by the Redfish Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
@@ -70,7 +70,7 @@ Profile requirements do not allow for exclusions of data.  Implementations are a
    
 ## Profile tools
 
-A free, open source utility has been created by the SPMF to verify that a Redfish Service implementation conforms to the requirements included in a Redfish Interoperability Profile.  The Redfish Interop Validator is available for download from the DMTF's organization on Github at: https://github.com/DMTF/Redfish-Interop-Validator
+A free, open source utility has been created by the Redfish Forum to verify that a Redfish Service implementation conforms to the requirements included in a Redfish Interoperability Profile.  The Redfish Interop Validator is available for download from the DMTF's organization on Github at: https://github.com/DMTF/Redfish-Interop-Validator
 
 ## Profile repository
 
