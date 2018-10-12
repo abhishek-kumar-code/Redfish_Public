@@ -400,7 +400,7 @@ Allow: GET, PATCH, PUT, HEAD
 }
 ```
 
-In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response indicates that this is a composed resource because `SystemType` is set to `Composed`.  However, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate addition resources can be found in the [Update a Composed Resource](#update-a-composed-resource) section.
+In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response indicates that this is a composed resource because `SystemType` is set to `Composed`.  However, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Update a Composed Resource](#update-a-composed-resource) section.
 
 
 ## Appendix
