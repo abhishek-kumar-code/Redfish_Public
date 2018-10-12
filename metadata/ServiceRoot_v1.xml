@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ServiceRoot  v1.4.0-->
+<!--# Redfish Schema:  ServiceRoot  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -344,7 +344,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_2_0.ServiceRoot">
-        <Property Name="Product" Type="Edm.String" Nullable="false">
+        <Property Name="Product" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The product associated with this Redfish service."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the product represented by this Redfish service."/>
@@ -420,6 +420,12 @@
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_1.ServiceRoot"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_3_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that the Product property can be marked as a nullable property."/>
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_2.ServiceRoot"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
@@ -457,6 +463,23 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service supports the use of the 'only' query parameter as described by the specification."/>
         </Property>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_4_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that the Product property can be marked as a nullable property."/>
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_4_0.ServiceRoot"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_4_1.ServiceRoot">
+        <Property Name="Vendor" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The vendor or manufacturer associated with this Redfish service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the manufacturer or vendor represented by this Redfish service. If this property is supported, the vendor name shall not be included in the value of the Product property."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
