@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Processor  v1.3.1-->
+<!--# Redfish Schema:  Processor  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -220,6 +220,18 @@
               <PropertyValue Property="Member" String="MIPS"/>
               <Annotation Term="OData.Description" String="MIPS."/>
             </Record>
+			<Record>
+              <PropertyValue Property="Member" String="Power"/>
+              <Annotation Term="OData.Description" String="Power."/>
+			  <Annotation Term="Redfish.Revisions">
+				<Collection>
+					<Record>
+						<PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+						<PropertyValue Property="Version" String="v1_4_0"/>
+					</Record>
+				</Collection>
+			  </Annotation>
+            </Record>
             <Record>
               <PropertyValue Property="Member" String="OEM"/>
               <Annotation Term="OData.Description" String="OEM-defined."/>
@@ -258,6 +270,18 @@
             <Record>
               <PropertyValue Property="Member" String="MIPS64"/>
               <Annotation Term="OData.Description" String="MIPS 64-bit."/>
+            </Record>
+			<Record>
+              <PropertyValue Property="Member" String="PowerISA"/>
+              <Annotation Term="OData.Description" String="PowerISA-64 or PowerISA-32."/>
+			  <Annotation Term="Redfish.Revisions">
+				<Collection>
+					<Record>
+						<PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+						<PropertyValue Property="Version" String="v1_4_0"/>
+					</Record>
+				</Collection>
+			  </Annotation>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="OEM"/>
@@ -378,6 +402,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Units annotations on the MaxSpeedMHz property.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add Power architecture to ProcessorArchitecture and PowerISA to InstructionSet."/>
+      <EntityType Name="Processor" BaseType="Processor.v1_3_1.Processor"/>
     </Schema>
 
   </edmx:DataServices>
