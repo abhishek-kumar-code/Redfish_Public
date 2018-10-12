@@ -489,7 +489,7 @@
              <Collection>
                 <Record>
                   <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
-                  <PropertyValue Property="Version" EnumMember="v1_7_0"/>                  
+                  <PropertyValue Property="Version" String="v1_7_0"/>                  
                   <PropertyValue Property="Description" String="This property has been deprecated in favor of using the individual PassphraseCapable, DataLockCapable and ConfigurationLockCapable properties."/>
                 </Record>
              </Collection>
@@ -510,7 +510,7 @@
              <Collection>
                 <Record>
                   <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
-                  <PropertyValue Property="Version" EnumMember="v1_7_0"/>                  
+                  <PropertyValue Property="Version" String="v1_7_0"/>                  
                   <PropertyValue Property="Description" String="This value has been deprecated in favor of 'Enabled' to indicate normal security operation."/>
                 </Record>
              </Collection>
@@ -525,7 +525,7 @@
              <Collection>
                 <Record>
                   <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
-                  <PropertyValue Property="Version" EnumMember="v1_7_0"/>                  
+                  <PropertyValue Property="Version" String="v1_7_0"/>                  
                   <PropertyValue Property="Description" String="This value has been deprecated in favor of using the ConfigurationLocked to indicate that the configuration has been frozen."/>
                 </Record>
              </Collection>
