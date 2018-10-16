@@ -74,6 +74,14 @@
       </ComplexType>
 
       <EnumType Name="PCIeTypes">
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_3_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
         <Member Name="Gen1">
           <Annotation Term="OData.Description" String="A PCIe v1.0 slot."/>
         </Member>
