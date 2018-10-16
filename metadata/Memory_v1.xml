@@ -102,6 +102,14 @@
       <Action Name="OverwriteUnit" IsBound="true">
         <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions using the NIST SP800-88 Purge: Overwrite."/>
         <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region using the NIST SP800-88 Purge: Overwrite. Use the SecureEraseUnit method to perform NIST SP800-88 Purge: Cryptographic Erase."/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_6_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
         <Parameter Name="Memory" Type="Memory.v1_0_0.Actions"/>
         <Parameter Name="RegionId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="Memory region ID for which this action to be applied."/>
@@ -217,34 +225,74 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of API supported by the firmware."/>
         </Property>
         <Property Name="FunctionClasses" Type="Collection(Edm.String)" Nullable="false">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_0_0.Memory.OperatingMemoryModes or Memory.v1_0_0.Memory.RegionSet.MemoryClassification."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Function Classes by the Memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the function classes by the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of OperatingMemoryModes at the root of the resource, or MemoryClassification found within RegionSet."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="VendorID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.ModuleManufacturerID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Vendor ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the vendor ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of ModuleManufacturerID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="DeviceID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.ModuleProductID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Device ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the device ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of ModuleProductID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="SubsystemVendorID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerManufacturerID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="SubSystem Vendor ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the subsystem Vendor ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of MemorySubsystemControllerManufacturerID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="SubsystemDeviceID" Type="Edm.String">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_3_0.MemorySubsystemControllerProductID"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Subsystem Device ID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the subsystem Device ID of the Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of MemorySubsystemControllerProductID."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="MaxTDPMilliWatts" Type="Collection(Edm.Int64)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -353,6 +401,14 @@
         <Member Name="IntelOptane">
           <Annotation Term="OData.Description" String="The memory module is Intel Optane DC Persistent Memory and composed of a combination of non-volatile and volatile memory."/>
           <Annotation Term="OData.LongDescription" String="This memory type shall represent Intel Optane DC Persistent Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_6_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -416,6 +472,14 @@
         </Member>
         <Member Name="Logical">
           <Annotation Term="OData.Description" String="Logical Non-volatile device."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -461,6 +525,14 @@
         </Member>
         <Member Name="Intel3DXPoint">
           <Annotation Term="OData.Description" String="Intel 3D XPoint media."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_7_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="Proprietary">
           <Annotation Term="OData.Description" String="Proprietary media."/>
@@ -577,10 +649,18 @@
           <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="PassphraseState" Type="Edm.Boolean">
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_5_0.Memory.RegionSet.PassphraseEnabled."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="State of the passphrase for this region."/>
           <Annotation Term="OData.LongDescription" String="State of the passphrase for this region."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_5_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of PassphraseEnabled found within RegionSet."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
       </ComplexType>
 
@@ -679,6 +759,12 @@
       <EntityType Name="Memory" BaseType="Memory.v1_0_3.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_0_4.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Memory" BaseType="Memory.v1_0_1.Memory">
@@ -705,6 +791,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Units annotations on various properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Memory" BaseType="Memory.v1_1_2.Memory"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_1_3.Memory"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_2_0">
@@ -774,6 +866,12 @@
       <EntityType Name="Memory" BaseType="Memory.v1_2_1.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_2_2.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Memory" BaseType="Memory.v1_2_0.Memory">
@@ -814,6 +912,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Units annotations on various properties.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Memory" BaseType="Memory.v1_3_1.Memory"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_3_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_3_2.Memory"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_4_0">
@@ -868,6 +972,12 @@
       <EntityType Name="Memory" BaseType="Memory.v1_4_1.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_4_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_4_2.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Memory" BaseType="Memory.v1_4_1.Memory"/>
@@ -887,16 +997,28 @@
       <EntityType Name="Memory" BaseType="Memory.v1_5_0.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_5_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_5_1.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_6_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change the LongDescription of SecureEraseUnit.  It was also created to define a new OverwriteUnit action.  It also adds IntelOptane to the MemoryType list."/>
       <EntityType Name="Memory" BaseType="Memory.v1_5_1.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_6_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_6_0.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_7_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add 3DXPoint to the MediaType enum."/>
-      <EntityType Name="Memory" BaseType="Memory.v1_6_0.Memory"/>
+      <EntityType Name="Memory" BaseType="Memory.v1_6_1.Memory"/>
     </Schema>
 
   </edmx:DataServices>
