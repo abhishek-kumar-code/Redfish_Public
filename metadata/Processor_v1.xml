@@ -385,14 +385,14 @@
       <EntityType Name="Processor" BaseType="Processor.v1_3_1.Processor">
         <Property Name="TDPWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The nominal TDP in watts."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the nominal TDP in watts."/>
+          <Annotation Term="OData.Description" String="The nominal Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the nominal Thermal Design Power (TDP) in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
         <Property Name="MaxTDPWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The maximum TDP in watts."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum TDP in watts."/>
+          <Annotation Term="OData.Description" String="The maximum Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum Thermal Design Power (TDP) in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
       </EntityType>
