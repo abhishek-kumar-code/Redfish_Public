@@ -45,7 +45,7 @@ const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
-const OldRegistries = ['registries/Base.1.0.0.json', 'registries/ResourceEvent.1.0.0.json', 'registries/TaskEvent.1.0.0.json', 'registries/Redfish_1.0.1_PrivilegeRegistry.json', 'registries/Redfish_1.0.2_PrivilegeRegistry.json'];
+const OldRegistries = ['Base.1.0.0.json', 'ResourceEvent.1.0.0.json', 'TaskEvent.1.0.0.json', 'Redfish_1.0.1_PrivilegeRegistry.json', 'Redfish_1.0.2_PrivilegeRegistry.json'];
 /************************************************************/
 
 const setupBatch = {
@@ -110,7 +110,9 @@ function constructTest(file) {
 mockupFiles.forEach(constructMockupTest);
 
 function constructMockupTest(file) {
-  if(OldRegistries.includes(file) || file.includes('explorer_config.json')) {
+  let justFileName = file.split('/');
+  justFileName = justFileName[justFileName.length - 1];
+  if(OldRegistries.includes(justFileName) || file.includes('explorer_config.json')) {
     return;
   }
   mockupsCSDL[file] = {
