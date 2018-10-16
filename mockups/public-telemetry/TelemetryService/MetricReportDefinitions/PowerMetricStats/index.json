@@ -20,13 +20,13 @@
     "Wildcards": [
         {
             "Name": "PWild",
-            "Values": [
+            "Keys": [
                 "0"
             ]
         },
         {
             "Name": "TWild",
-            "Values": [
+            "Keys": [
                 "Tray_1",
                 "Tray_2",
                 "Tray_3"
