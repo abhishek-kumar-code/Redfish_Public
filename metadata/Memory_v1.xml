@@ -485,7 +485,15 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Security states supported by the Memory."/>
           <Annotation Term="OData.LongDescription" String="Security states supported by the Memory."/>
-          <Annotation Term="Redfish.Deprecated" String="This property has been deprecated in favor of using the individual PassphraseCapable, DataLockCapable and ConfigurationLockCapable properties."/>
+          <Annotation Term="Redfish.Revisions">
+             <Collection>
+                <Record>
+                  <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                  <PropertyValue Property="Version" String="v1_7_0"/>                  
+                  <PropertyValue Property="Description" String="This property has been deprecated in favor of using the individual PassphraseCapable, DataLockCapable and ConfigurationLockCapable properties."/>
+                </Record>
+             </Collection>
+          </Annotation>
         </Property>
       </ComplexType>
 
@@ -498,14 +506,30 @@
         </Member>
         <Member Name="Unlocked">
           <Annotation Term="OData.Description" String="Secure mode is enabled and access to the data is unlocked."/>
-          <Annotation Term="Redfish.Deprecated" String="This value has been deprecated in favor of 'Enabled' to indicate normal security operation."/>
+          <Annotation Term="Redfish.Revisions">
+             <Collection>
+                <Record>
+                  <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                  <PropertyValue Property="Version" String="v1_7_0"/>                  
+                  <PropertyValue Property="Description" String="This value has been deprecated in favor of 'Enabled' to indicate normal security operation."/>
+                </Record>
+             </Collection>
+          </Annotation>
         </Member>
         <Member Name="Locked">
           <Annotation Term="OData.Description" String="Secure mode is enabled and access to the data is locked."/>
         </Member>
         <Member Name="Frozen">
           <Annotation Term="OData.Description" String="Secure state is frozen and can not be modified until reset."/>
-          <Annotation Term="Redfish.Deprecated" String="This value has been deprecated in favor of using the ConfigurationLocked to indicate that the configuration has been frozen."/>
+          <Annotation Term="Redfish.Revisions">
+             <Collection>
+                <Record>
+                  <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                  <PropertyValue Property="Version" String="v1_7_0"/>                  
+                  <PropertyValue Property="Description" String="This value has been deprecated in favor of using the ConfigurationLocked to indicate that the configuration has been frozen."/>
+                </Record>
+             </Collection>
+          </Annotation>
         </Member>
         <Member Name="Passphraselimit">
           <Annotation Term="OData.Description" String="Number of attempts to unlock the Memory exceeded limit."/>
