@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Processor  v1.3.2-->
+<!--# Redfish Schema:  Processor  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -418,6 +418,24 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="Processor" BaseType="Processor.v1_3_1.Processor"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="Processor" BaseType="Processor.v1_3_2.Processor">
+        <Property Name="TDPWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The nominal Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the nominal Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+        <Property Name="MaxTDPWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
