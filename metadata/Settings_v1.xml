@@ -38,6 +38,14 @@
       <ComplexType Name="MaintenanceWindow" Abstract="true"/>
 
       <EnumType Name="OperationApplyTime">
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_2_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
         <Member Name="Immediate">
           <Annotation Term="OData.Description" String="Apply the requested operation immediately."/>
           <Annotation Term="OData.LongDescription" String="This OperationApplyTime value shall be used to indicate the requested Create, Delete, or Action operation is applied immediately."/>
