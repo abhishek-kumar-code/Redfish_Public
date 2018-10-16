@@ -17,7 +17,7 @@
                 "SubsystemVendorId": "0xABCD"
             },
             "PciFunctionNumber": 0,
-            "PciClassCode": "0x1234"
+            "PciClassCode": "0x1234",
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
 			},
