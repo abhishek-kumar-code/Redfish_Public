@@ -382,7 +382,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor">
+      <EntityType Name="Processor" BaseType="Processor.v1_3_1.Processor">
         <Property Name="TDPWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The nominal TDP in watts."/>
@@ -397,6 +397,6 @@
         </Property>
       </EntityType>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
