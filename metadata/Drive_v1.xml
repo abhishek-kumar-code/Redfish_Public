@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Drive  v1.5.0-->
+<!--# Redfish Schema:  Drive  v1.5.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -169,7 +169,15 @@
         <Property Name="Location" Type="Collection(Resource.Location)" Nullable="false">
           <Annotation Term="OData.Description" String="The Location of the drive."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated drive."/>
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of the singular property PhysicalLocation found in Drive.v1_4_0."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of the singular property PhysicalLocation found in Drive.v1_4_0."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="HotspareType" Type="Drive.v1_0_0.HotspareType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -295,7 +303,15 @@
       <EnumType Name="EncryptionStatus">
         <Member Name="Unecrypted">
           <Annotation Term="OData.Description" String="The drive is not currently encrypted."/>
-          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of Unencrypted."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+                <PropertyValue Property="Description" String="This value has been Deprecated in favor of Unencrypted."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="Unlocked">
           <Annotation Term="OData.Description" String="The drive is currently encrypted but the data is accessible to the user unencrypted."/>
@@ -308,6 +324,14 @@
         </Member>
         <Member Name="Unencrypted">
           <Annotation Term="OData.Description" String="The drive is not currently encrypted."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -365,6 +389,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to add missing percent units onto existing properties."/>
       <EntityType Name="Drive" BaseType="Drive.v1_0_4.Drive"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_0_5.Drive"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_0">
@@ -434,6 +464,12 @@
       <EntityType Name="Drive" BaseType="Drive.v1_1_3.Drive"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_1_4.Drive"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
@@ -460,6 +496,12 @@
       <EntityType Name="Drive" BaseType="Drive.v1_2_1.Drive"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_2_2.Drive"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Drive" BaseType="Drive.v1_2_1.Drive">
@@ -478,6 +520,12 @@
       <EntityType Name="Drive" BaseType="Drive.v1_3_0.Drive"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_3_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_3_1.Drive"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Drive" BaseType="Drive.v1_3_0.Drive">
@@ -492,6 +540,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to add missing percent units onto existing properties."/>
       <EntityType Name="Drive" BaseType="Drive.v1_4_0.Drive"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_4_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_4_1.Drive"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_5_0">
@@ -512,6 +566,12 @@
           <Annotation Term="OData.Description" String="A hotspare drive that is commissioned due to a drive failure will remain as a data drive and will not revert to a hotspare if the failed drive is replaced."/>
         </Member>
       </EnumType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_5_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_5_0.Drive"/>
     </Schema>
 
   </edmx:DataServices>
