@@ -28,9 +28,9 @@
     ],
     "IPTransportDetails": [
       	{
-			      "TransportProtocol": "iWARP",
-            "IpAddress": "10.3.5.131",
+            "TransportProtocol": "iWARP",
+            "IPv4Address": "10.3.5.131",
             "Port": 13244
-	 	    }
+        }
     ]
 }
