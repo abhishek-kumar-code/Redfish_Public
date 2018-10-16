@@ -14,16 +14,16 @@
                 "DeviceId": "0xABCD",
                 "VendorId": "0xABCD",
                 "SubsystemId": "0xABCD",
-                "SubsystemVendorId": "0xABCD",
-				"HostReservationMemoryBytes": 67108864,
-				"FunctionNumber": 0
+                "SubsystemVendorId": "0xABCD"
             },
+            "PciFunctionNumber": 0
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
 			},
             "Oem": {}
         }
     ],
+    "HostReservationMemoryBytes": 67108864,
     "Links": {
         "Ports": [
             {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/2/Ports/Down2"}
