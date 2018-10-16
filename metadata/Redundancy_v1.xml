@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Redundancy  v1.3.1-->
+<!--# Redfish Schema:  Redundancy  v1.3.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -100,6 +100,14 @@
             <Record>
               <PropertyValue Property="Member" String="NotRedundant"/>
               <Annotation Term="OData.Description" String="The subsystem is not configured in a redundancy mode, either due to configuration or the functionality has been disabled by the user."/>
+              <Annotation Term="Redfish.Revisions">
+                <Collection>
+                  <Record>
+                    <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                    <PropertyValue Property="Version" String="v1_3_0"/>
+                  </Record>
+                </Collection>
+              </Annotation>
             </Record>
           </Collection>
         </Annotation>
@@ -137,6 +145,12 @@
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_4.Redundancy"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_5.Redundancy"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_2.Redundancy">
@@ -164,6 +178,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_2.Redundancy"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_3.Redundancy"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_2_0">
@@ -198,6 +218,12 @@
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_2_0.Redundancy"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Redundancy" BaseType="Redundancy.v1_2_1.Redundancy"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add the 'NotRedundant' enumeration to Mode, enable read-write support for that property, and clarify its description."/>
@@ -208,6 +234,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_3_0.Redundancy"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_3_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Redundancy" BaseType="Redundancy.v1_3_1.Redundancy"/>
     </Schema>
 
   </edmx:DataServices>
