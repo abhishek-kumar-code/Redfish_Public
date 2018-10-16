@@ -75,14 +75,38 @@
           <Annotation Term="OData.Description" String="The array of URIs indicating where the update image is to be applied."/>
           <Annotation Term="OData.LongDescription" String="This array property shall contain zero or more URIs indicating where the update image is to be applied. These targets should correspond to SoftwareInventory instances or their RelatedItems. If this property is not present or contains zero targets, the Service shall apply the software image to all applicable targets (as determined by the Service)."/>
           <Annotation Term="OData.IsURL"/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_2_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Parameter>
         <Parameter Name="Username" Type="Edm.String">
           <Annotation Term="OData.Description" String="The username to be used when accessing the URI specified by the ImageURI parameter."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain a string representing the username to be used when accessing the URI specified by the ImageURI parameter."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Parameter>
         <Parameter Name="Password" Type="Edm.String">
           <Annotation Term="OData.Description" String="The password to be used when accessing the URI specified by the ImageURI parameter."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain a string representing the password to be used when accessing the URI specified by the ImageURI parameter."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Parameter>
       </Action>
     </Schema>
@@ -145,6 +169,14 @@
         </Member>
         <Member Name="SFTP">
           <Annotation Term="OData.Description" String="Secure File Transfer Protocol."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="HTTP">
           <Annotation Term="OData.Description" String="Hypertext Transfer Protocol."/>
@@ -153,8 +185,16 @@
           <Annotation Term="OData.Description" String="HTTP Secure protocol."/>
         </Member>
         <Member Name="NSF">
-          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of NFS."/>
           <Annotation Term="OData.Description" String="Network File System protocol."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This value has been Deprecated in favor of NFS."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="SCP">
           <Annotation Term="OData.Description" String="Secure File Copy protocol."/>
@@ -167,6 +207,14 @@
         </Member>
         <Member Name="NFS">
           <Annotation Term="OData.Description" String="Network File System protocol."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -194,6 +242,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also updated to clarify the descriptions Targets, HttpPushUriTargets, and HttpPushUriTargetsBusy."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_3.UpdateService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_4.UpdateService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_0">
@@ -226,6 +280,12 @@
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_2.UpdateService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_3.UpdateService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_1.UpdateService">
@@ -255,16 +315,28 @@
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_1.UpdateService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_2.UpdateService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to deprecate NSF in favor of NFS in the TransferProtocolType enum."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_2.UpdateService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_3_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_0.UpdateService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Username and Password parameters to SimpleUpdate."/>
-      <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_0.UpdateService"/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_1.UpdateService"/>
     </Schema>
 
   </edmx:DataServices>
