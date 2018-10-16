@@ -16,7 +16,7 @@
                 "SubsystemId": "0xABCD",
                 "SubsystemVendorId": "0xABCD"
             },
-            "PciFunctionNumber": 0
+            "PciFunctionNumber": 0,
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
 			},
