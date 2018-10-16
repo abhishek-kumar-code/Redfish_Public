@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ResourceBlock  v1.2.0-->
+<!--# Redfish Schema:  ResourceBlock  v1.2.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -219,6 +219,14 @@
         </Member>
         <Member Name="Expansion">
           <Annotation Term="OData.Description" String="This Resource Block is capable of changing over time based on its configuration.  Different types of devices within this Resource Block can be added and removed over time."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_2_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -244,6 +252,14 @@
         </Member>
         <Member Name="ComposedAndAvailable">
           <Annotation Term="OData.Description" String="Indicates the Resource Block is currently participating in one or more compositions, and is available to be used in more compositions."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="Composed">
           <Annotation Term="OData.Description" String="Final successful state of a Resource Block which has participated in composition."/>
@@ -256,6 +272,14 @@
         </Member>
         <Member Name="Unavailable">
           <Annotation Term="OData.Description" String="Indicates the Resource Block has been made unavailable by the service, such as due to maintenance being performed on the Resource Block."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_2_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
@@ -265,6 +289,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_0_0.ResourceBlock"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_0_1.ResourceBlock"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_1_0">
@@ -305,10 +335,22 @@
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_1_0.ResourceBlock"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_1_1.ResourceBlock"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Expansion to the ResourceBlockType enum.  It was also created to add Unavailable to the CompositionState enum."/>
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_1_1.ResourceBlock"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_2_0.ResourceBlock"/>
     </Schema>
 
   </edmx:DataServices>

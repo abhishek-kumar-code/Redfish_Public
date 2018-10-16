@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkPort  v1.2.0-->
+<!--# Redfish Schema:  NetworkPort  v1.2.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -155,8 +155,16 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed of the link in Mbps when this link network technology is active."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of the link in megabits per second (Mbps) for this port when this link network technology is active."/>
-          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of the CapableLinkSpeedMbps collection found in NetworkPort.v1_2_0."/>
           <Annotation Term="Measures.Unit" String="Mbit/s"/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_2_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of the CapableLinkSpeedMbps."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
       </ComplexType>
 
@@ -253,6 +261,12 @@
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_0_1.NetworkPort"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_0_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_0_2.NetworkPort"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_0_1.NetworkPort">
@@ -283,6 +297,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Units annotations on the LinkSpeedMbps property.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number.  It was also created to add missing percent units onto existing properties."/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_0.NetworkPort"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_1.NetworkPort"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_2_0">
@@ -360,6 +380,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be indicate whether the port is capable of auto-negotiating speed."/>
         </Property>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_2_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_2_0.NetworkPort"/>
     </Schema>
 
   </edmx:DataServices>

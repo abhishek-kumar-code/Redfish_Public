@@ -9,7 +9,7 @@
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
-            "EntityType": "Initiator",
+            "EntityType": "StorageInitiator",
             "EntityRole": "Initiator",
             "EntityPciId": {
                 "DeviceId": "0xABCD",
