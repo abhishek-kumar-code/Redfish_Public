@@ -14,7 +14,7 @@
     "Wildcards": [
         {
             "Name": "ChassisID",
-            "Values": [
+            "Keys": [
                 "1"
             ]
         }

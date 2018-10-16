@@ -2,6 +2,7 @@
     "@odata.type": "#Assembly.v1_1_0.Assembly",
     "Assemblies": [
         {
+            "@odata.id": "/redfish/v1/Chassis/1/Assembly#/Assemblies/0",
             "Name": "System Board",
             "Description": "PCA System Board",
             "Model": "345TTT",
@@ -23,6 +24,7 @@
             }
         },
         {
+            "@odata.id": "/redfish/v1/Chassis/1/Assembly#/Assemblies/1",
             "Name": "Fan Controller",
             "Description": "PCA Fan Controller",
             "Model": "F58AS",
