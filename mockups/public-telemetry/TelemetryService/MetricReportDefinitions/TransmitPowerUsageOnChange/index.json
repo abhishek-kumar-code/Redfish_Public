@@ -11,7 +11,8 @@
     },
     "Wildcards": [
         {
-            "Wild": [
+            "Name": "Wild",
+            "Keys": [
                 "0"
             ]
         }

@@ -9,7 +9,7 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "EntityType": "Initiator",
+            "EntityType": "StorageInitiator",
             "EntityRole": "Initiator",
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/1"

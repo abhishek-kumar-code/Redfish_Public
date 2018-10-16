@@ -58,6 +58,14 @@
       <Action Name="InsertMedia" IsBound="true">
         <Annotation Term="OData.Description" String="This action is used to attach remote media to virtual media."/>
         <Annotation Term="OData.LongDescription" String="This action shall attach remote media to virtual media."/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_2_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
         <Parameter Name="VirtualMedia" Type="VirtualMedia.v1_1_0.Actions"/>
         <Parameter Name="Image" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The URI of the remote media to attach to the virtual media."/>
@@ -76,6 +84,14 @@
       <Action Name="EjectMedia" IsBound="true">
         <Annotation Term="OData.Description" String="This action is used to detach remote media from virtual media."/>
         <Annotation Term="OData.LongDescription" String="This action shall detach the remote media from the virtual media.  At the completion of the operation, inserted shall be set to false and the image name shall be cleared."/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_2_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
         <Parameter Name="VirtualMedia" Type="VirtualMedia.v1_1_0.Actions"/>
       </Action>
 
@@ -168,6 +184,12 @@
       <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_0_3.VirtualMedia"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_0_4.VirtualMedia"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_0_3.VirtualMedia">
@@ -206,6 +228,12 @@
       <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_1_1.VirtualMedia"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_1_3">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_1_2.VirtualMedia"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to change the permissions of Image, Inserted, and WriteProtected and to add the InsertMedia and InjectMedia actions."/>
@@ -216,6 +244,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_2_0.VirtualMedia"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_2_1.VirtualMedia"/>
     </Schema>
 
   </edmx:DataServices>

@@ -20,7 +20,7 @@
     ],
     "ConnectedEntities": [
         {
-            "EntityType": "NetworkDeviceFunction",
+            "EntityType": "NetworkController",
             "EntityRole": "Target",
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"
@@ -30,7 +30,7 @@
     "IPTransportDetails": [
         {
             "TransportProtocol": "iSCSI",
-            "IpAddress": "10.3.5.132",
+            "IPv4Address": "10.3.5.132",
             "Port": 13244
         }
     ]
