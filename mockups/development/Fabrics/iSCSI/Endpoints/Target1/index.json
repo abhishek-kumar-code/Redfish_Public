@@ -30,7 +30,7 @@
     "IPTransportDetails": [
         {
             "TransportProtocol": "iSCSI",
-            "IpAddress": "10.3.5.132",
+            "IPv4Address": "10.3.5.132",
             "Port": 13244
         }
     ]
