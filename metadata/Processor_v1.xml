@@ -237,6 +237,18 @@
               <Annotation Term="OData.Description" String="MIPS."/>
             </Record>
             <Record>
+              <PropertyValue Property="Member" String="Power"/>
+              <Annotation Term="OData.Description" String="Power."/>
+              <Annotation Term="Redfish.Revisions">
+                <Collection>
+                  <Record>
+                    <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                    <PropertyValue Property="Version" String="v1_4_0"/>
+                  </Record>
+                </Collection>
+              </Annotation>
+            </Record>
+            <Record>
               <PropertyValue Property="Member" String="OEM"/>
               <Annotation Term="OData.Description" String="OEM-defined."/>
             </Record>
@@ -274,6 +286,18 @@
             <Record>
               <PropertyValue Property="Member" String="MIPS64"/>
               <Annotation Term="OData.Description" String="MIPS 64-bit."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PowerISA"/>
+              <Annotation Term="OData.Description" String="PowerISA-64 or PowerISA-32."/>
+              <Annotation Term="Redfish.Revisions">
+                <Collection>
+                  <Record>
+                    <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                    <PropertyValue Property="Version" String="v1_4_0"/>
+                  </Record>
+                </Collection>
+              </Annotation>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="OEM"/>
@@ -422,6 +446,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to add TDPWatts and MaxTDPWatts.  It was also created to add Power architecture to ProcessorArchitecture and PowerISA to InstructionSet."/>
       <EntityType Name="Processor" BaseType="Processor.v1_3_2.Processor">
         <Property Name="TDPWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
