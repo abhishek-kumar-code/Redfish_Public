@@ -926,7 +926,10 @@ function validCSDLTypeInMockup(err, json) {
             }
             //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
             if(propValue['@odata.id'] === undefined) {
-              throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+              console.log(this.context.title);
+              if(!this.context.title.includes('non-resource-examples')) {
+                throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+              }
             }
           }
         }
