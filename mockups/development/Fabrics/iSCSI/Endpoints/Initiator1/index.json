@@ -29,7 +29,9 @@
     "IPTransportDetails": [
         {
             "TransportProtocol": "iSCSI",
-            "IPv4Address": "10.3.5.131",
+            "IPv4Address": {
+                "Address": "10.3.5.131"
+            },
             "Port": 13244
         }
     ]
