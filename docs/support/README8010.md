@@ -41,13 +41,15 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Schema Name       | Version | Description |
 | ---               | ---     | ---         |
 | AttributeRegistry | 1.3.0   | Added "Oem" property to "Attributes" and "Menus".  Added "Hidden" property to "Menus". |
-| Memory            | 1.7.0   | Added "Intel3DXPoint" to the "MemoryMedia" enum. |
+| Memory            | 1.7.0   | Added "Intel3DXPoint" to the "MemoryMedia" enum.  Deprecated "Unlocked" and "Frozen" enums in "SecurityStates", as well as the "SecurityStates" property in favor of the new "SecurityState", "ConfigurationLocked", "ConfigurationLockCapable", "DataLockCapable", and "PassphraseLockLimit" properties. |
 | PhysicalContext   | N/A     | Added "CPUSubsystem", "GPUSubsystem", "FPGA", "Accelerator", "MemorySubsystem", and "CoolingSubsystem" physical context types. |
+| Processor         | 1.4.0   | Added "TDPWatts" and "MaxTDPWatts" properties.  Added "Power" to "ProcessorArchitecture".  Added "PowerISA" to "InstructionSet". |
 | ServiceRoot       | 1.5.0   | Added "Vendor" property. | 
 | UpdateService     | 1.4.0   | Added "Username" and "Password" parameters to "SimpleUpdate". |
 | AttributeRegistry | 1.x.x   | Errata release.  Clarified the description for "ValueName".  Add missing Required terms for "AttributeName" and "ValueName". |
 | Bios              | 1.0.5   | Errata release.  Clarified the description for "Attributes". |
 | ServiceRoot       | 1.x.x   | Errata release.  Allow "Product" property to be null. | 
+| (various files)   | various | Errata release.  Added "Revisions" annotation to various schema elements as needed. |
 
 
 ### Release 2018.2 (August 2018)

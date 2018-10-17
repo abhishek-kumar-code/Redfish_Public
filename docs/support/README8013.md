@@ -57,9 +57,11 @@ Creates end user documentation by combining the Redfish Schemas with a Profile d
 
 # Change log
 
-| File | Version | Date      | Description     |
-| ---         | ---     | ---       | ---             |
-| RedfishInteroperabilityProfile | 1.0.1 | 2018-5-1 | Errata release.  Corrected inconsistent usage of the 'Comparison' property within Conditional Requirements.  Added missing 'Values' property to Conditional Requirements to enable specification of property values when a condition is met. |
-| SampleProfile.json | 1.0.3 | 2018-5-1 | Errata release.  Updated examples to reflect errata with v1.0.1 of the specification.  Added example to show a condition that also places requirements on the value of a property when a condition is met. |
-| RedfishInteroperabilityProfile | 1.0.0 | 2017-11-17 | Initial release.  JSON schema used to define a Redfish Interoperability Profile. |
-| SampleProfile.json | 1.0.0 | 2017-11-17 | Initial release.  Sample document to show examples of the various profile features. |
+| File                           | Version | Date       | Description |
+| ---                            | ---     | ---        | ---         |
+| RedfishInteroperabilityProfile | 1.0.3   | TBD        | Errata release.  Corrected the type for 'CompareType' to allow for booleans, numbers, and strings. |
+| RedfishInteroperabilityProfile | 1.0.2   | TBD        | Errata release.  Corrected the depth of 'additionalProperties' found in 'Parameters' for 'ActionProfile'. |
+| RedfishInteroperabilityProfile | 1.0.1   | 2018-05-01 | Errata release.  Corrected inconsistent usage of the 'Comparison' property within Conditional Requirements.  Added missing 'Values' property to Conditional Requirements to enable specification of property values when a condition is met. |
+| SampleProfile.json             | 1.0.3   | 2018-05-01 | Errata release.  Updated examples to reflect errata with v1.0.1 of the specification.  Added example to show a condition that also places requirements on the value of a property when a condition is met. |
+| RedfishInteroperabilityProfile | 1.0.0   | 2017-11-17 | Initial release.  JSON schema used to define a Redfish Interoperability Profile. |
+| SampleProfile.json             | 1.0.0   | 2017-11-17 | Initial release.  Sample document to show examples of the various profile features. |
