@@ -1,8 +1,8 @@
  {
-    "@Redfish.Copyright":"Copyright (c) 2016 DMTF. All rights reserved.",    
+    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
     "@odata.id": "/redfish/v1/Systems/4/Memory/1",
-    "@odata.type": "#Memory.v1_2_0.Memory",
+    "@odata.type": "#Memory.v1_7_0.Memory",
     "Name": "NVDIMM",
     "Id": "1",
     "MemoryType": "NVDIMM_N",
@@ -10,7 +10,7 @@
     "BaseModuleType": "LRDIMM",
     "MemoryMedia": [
         "DRAM",
-	"NAND"		
+        "NAND"		
     ],
     "CapacityMiB": 16384,
     "DataWidthBits": 64,
@@ -40,12 +40,13 @@
     ],
     "SecurityCapabilities": {
         "PassphraseCapable": true,
+        "PassphraseLockLimit": 10,
         "MaxPassphraseCount": 4,
-        "SecurityStates": [
-            "enabled",
-            "unlocked"
-        ]
+        "ConfigurationLockCapable": true,
+        "DataLockCapable": true
     },
+    "SecurityState": "Enabled",
+    "ConfigurationLocked": false,
     "SpareDeviceCount": 1,
     "RankCount": 1,
     "DeviceLocator": "PROC 1 DIMM 1",

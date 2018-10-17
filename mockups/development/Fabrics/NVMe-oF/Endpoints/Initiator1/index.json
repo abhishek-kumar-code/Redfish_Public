@@ -19,7 +19,7 @@
     ],
     "ConnectedEntities": [
         {
-            "EntityType": "NetworkDeviceFunction",
+            "EntityType": "NetworkController",
             "EntityRole": "Initiator",
 			      "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100"
@@ -28,9 +28,9 @@
     ],
     "IPTransportDetails": [
       	{
-			      "TransportProtocol": "iWARP",
-            "IpAddress": "10.3.5.131",
+            "TransportProtocol": "iWARP",
+            "IPv4Address": "10.3.5.131",
             "Port": 13244
-	 	    }
+        }
     ]
 }
