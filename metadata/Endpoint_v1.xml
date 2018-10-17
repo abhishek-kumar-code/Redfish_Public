@@ -428,5 +428,5 @@
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_2_1.Endpoint"/>
     </Schema>
 
-    </edmx:DataServices>
+  </edmx:DataServices>
 </edmx:Edmx>
