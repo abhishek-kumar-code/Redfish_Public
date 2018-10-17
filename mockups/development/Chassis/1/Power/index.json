@@ -9,7 +9,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0",
             "MemberId": "0",
-            "Name": "Chassis Power Control",
+            "Name": "System Input Power",
             "PhysicalContext": "Chassis",
             "PowerConsumedWatts": 8000,
             "PowerRequestedWatts": 8500,
@@ -28,27 +28,18 @@
                 "CorrectionInMs": 42
             },
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Chassis/1" }
+              {
+                "@odata.id": "/redfish/v1/Chassis/1"
+              },
+              {
+                "@odata.id": "/redfish/v1/Systems/1"
+              }
             ],
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Oem": {}
-        },
-        {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/1",
-            "MemberId": "1",
-            "Name": "System Power Control",
-            "PhysicalContext": "SystemBoard",
-            "PowerConsumedWatts": 7000,
-            "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Systems/1" }
-            ],
-            "Status": {
-              "State": "Enabled",
-              "Health": "OK"
-            }
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/2",
