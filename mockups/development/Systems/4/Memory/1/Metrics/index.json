@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright":"Copyright (c) 2016 DMTF. All rights reserved.",    
+    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics",
-    "@odata.id": "/redfish/v1/Systems/4/Memory/1/Metrics",
+    "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/1/Metrics",
     "@odata.type": "#MemoryMetrics.v1_1_0.MemoryMetrics",
     "Name": "Memory Metrics",
     "Id": "Metrics",
@@ -29,7 +29,7 @@
     },
     "Actions": {
         "#MemoryMetrics.ClearCurrentPeriod": {
-            "target": "/redfish/v1/Systems/4/Memory/1/Actions/MemoryMetrics.ClearCurrentPeriod"
+            "target": "/redfish/v1/Systems/nvdimm-example/Memory/1/Actions/MemoryMetrics.ClearCurrentPeriod"
         },
         "Oem": {}
     },

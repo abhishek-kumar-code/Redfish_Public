@@ -1,25 +1,25 @@
 {
-    "@Redfish.Copyright":"Copyright © 2016 DMTF. All rights reserved.",    
+    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#MemoryDomain.MemoryDomain",
-    "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/2",
+    "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2",
     "@odata.type": "#MemoryDomain.v1_0_0.MemoryDomain",
     "Name": "Memory Domain - NV DIMM",
     "Id": "1",
     "MemoryChunks": {
-        "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/2/MemoryChunks"
+        "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2/MemoryChunks"
     },
     "AllowsMemoryChunkCreation": true,
     "AllowsBlockProvisioning": true,
     "InterleavableMemorySets": [
         {
             "MemorySet": [
-                {"@odata.id": "/redfish/v1/Systems/4/Memory/1"},
-                {"@odata.id": "/redfish/v1/Systems/4/Memory/2"}
+                {"@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/1"},
+                {"@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/2"}
             ]
         },
         {
             "MemorySet": [
-                {"@odata.id": "/redfish/v1/Systems/4/Memory/6"}
+                {"@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/6"}
             ]
         }
     ],

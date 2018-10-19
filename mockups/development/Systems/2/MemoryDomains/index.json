@@ -6,7 +6,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/1"
+            "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/1"
         }
     ],
     "Oem": {}

@@ -1,12 +1,11 @@
 {
-    "@Redfish.Copyright":"Copyright © 2016 DMTF. All rights reserved.",    
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/4/MemoryDomains/$entity",
-    "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/1",
+    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
+    "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/1",
     "@odata.type": "#MemoryDomain.v1_1_0.MemoryDomain",
     "Name": "Memory Domain - Standard Memory Mirroring at System Level",
     "Id": "2",
     "MemoryChunks": {
-        "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/1/MemoryChunks"
+        "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/1/MemoryChunks"
     },
     "AllowsMemoryChunkCreation": false,
     "AllowsBlockProvisioning": false,
@@ -15,9 +14,9 @@
     "InterleavableMemorySets": [
         {
             "MemorySet" : [
-                {"@odata.id": "/redfish/v1/Systems/4/Memory/3"},
-                {"@odata.id": "/redfish/v1/Systems/4/Memory/4"},
-                {"@odata.id": "/redfish/v1/Systems/4/Memory/5"}
+                {"@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/3"},
+                {"@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/4"},
+                {"@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/5"}
             ]
         }
     ],

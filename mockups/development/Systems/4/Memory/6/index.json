@@ -1,7 +1,7 @@
  {
-    "@Redfish.Copyright":"Copyright (c) 2016 DMTF. All rights reserved.",    
+    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-    "@odata.id": "/redfish/v1/Systems/4/Memory/6",
+    "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/6",
     "@odata.type": "#Memory.v1_2_0.Memory",
     "Name": "NVDIMM",
     "Id": "6",
@@ -84,39 +84,39 @@
     "IsSpareDeviceEnabled": true,
     "IsRankSpareEnabled": false,
     "Metrics": {
-        "@odata.id": "/redfish/v1/Systems/4/Memory/6/Metrics"
+        "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/6/Metrics"
     },
     "Actions": {
         "#Memory.UnlockUnit": {
-            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.UnlockUnit",
+            "target": "/redfish/v1/Systems/nvdimm-example/Memory/6/Actions/Memory.UnlockUnit",
             "RegionId@Redfish.AllowableValues": [
                 "1"
             ],
             "Passphrase@Redfish.AllowableValues": "string"
         },
         "#Memory.SecureEraseUnit": {
-            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.SecureEraseUnit",
+            "target": "/redfish/v1/Systems/nvdimm-example/Memory/6/Actions/Memory.SecureEraseUnit",
             "RegionId@Redfish.AllowableValues": [
                 "1"
             ],
             "Passphrase@Redfish.AllowableValues": "string"
         },
         "#Memory.OverwriteUnit": {
-            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.OverwriteUnit",
+            "target": "/redfish/v1/Systems/nvdimm-example/Memory/6/Actions/Memory.OverwriteUnit",
             "RegionId@Redfish.AllowableValues": [
                 "1"
             ],
             "Passphrase@Redfish.AllowableValues": "string"
         },
 	"#Memory.SetPassphrase": {
-            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.SetPassphrase",
+            "target": "/redfish/v1/Systems/nvdimm-example/Memory/6/Actions/Memory.SetPassphrase",
             "RegionId@Redfish.AllowableValues": [
                 "1"
             ],
             "Passphrase@Redfish.AllowableValues": "string"
         },
         "#Memory.DisablePassphrase": {
-            "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.DisablePassphrase",
+            "target": "/redfish/v1/Systems/nvdimm-example/Memory/6/Actions/Memory.DisablePassphrase",
             "RegionId@Redfish.AllowableValues": [
                 "1"
             ],

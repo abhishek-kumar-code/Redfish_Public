@@ -16,7 +16,7 @@
             "@odata.id": "/redfish/v1/Systems/3"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/4"
+            "@odata.id": "/redfish/v1/Systems/nvdimm-example"
         },
         {
             "@odata.id": "/redfish/v1/Systems/5"

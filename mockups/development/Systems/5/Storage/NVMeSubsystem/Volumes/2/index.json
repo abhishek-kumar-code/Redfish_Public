@@ -1,6 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright  2014-2018 DMTF. All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/5/Storage/NVMeSubsystem/Volumes/Members/$entity",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes/2",
     "@odata.type": "#Volume.v1_0_3.Volume",
     "Id": "2",
