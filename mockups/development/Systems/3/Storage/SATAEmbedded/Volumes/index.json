@@ -1,6 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright  2014-2015 DMTF. All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/SATAEmbedded/Volumes/$entity",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes",
     "@odata.type": "#VolumeCollection.VolumeCollection",
     "Name": "Storage Volume Collection",

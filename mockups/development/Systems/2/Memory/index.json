@@ -1,6 +1,5 @@
 {
     "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/2/Links/Memory/#entity",
     "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory",
     "@odata.type": "#MemoryCollection.MemoryCollection",
     "Name": "Memory DIMM Collection",

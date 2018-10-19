@@ -1,5 +1,5 @@
 {
-  "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/Processors/Members/$entity",
+  "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved.",
   "@odata.id": "/redfish/v1/Systems/storage-example/Processors/1",
   "@odata.type": "#Processor.v1_0_0.Processor",
   "Name": "Processor",
