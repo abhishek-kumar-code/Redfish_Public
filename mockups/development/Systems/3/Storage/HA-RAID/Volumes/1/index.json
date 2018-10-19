@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright  2014-2015 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/HA-RAID/Volumes/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/1",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1",
     "@odata.type": "#Volume.v1_0_0.Volume",
     "Id": "1",
     "Name": "Virtual Disk 1",
@@ -24,7 +24,7 @@
     },
     "Actions": {
         "#Volume.Initialize": {
-            "target": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/1/Actions/Volume.Initialize",
+            "target": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1/Actions/Volume.Initialize",
             "InitializeType@Redfish.AllowableValues": [
                 "Fast",
                 "Slow"

@@ -1,17 +1,16 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/3",
+    "@odata.id": "/redfish/v1/Systems/storage-example",
     "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
-    "Id": "3",
+    "Id": "storage-example",
     "Name": "My Computer System with Storage",
     "SystemType": "Physical",
-    "AssetTag": "free form asset tag",
+    "AssetTag": "RET934-33",
     "Manufacturer": "Manufacturer Name",
     "Model": "Model Name",
-    "SKU": "",
     "SerialNumber": "2M220100SL",
-    "PartNumber": "",
+    "PartNumber": "44HRW756",
     "Description": "Description of server",
     "UUID": "00000000-0000-0000-0000-000000000000",
     "HostName": "web-srv345",
@@ -71,19 +70,19 @@
         }
     ],
     "Processors": {
-        "@odata.id": "/redfish/v1/Systems/3/Processors"
+        "@odata.id": "/redfish/v1/Systems/storage-example/Processors"
     },
     "EthernetInterfaces": {
-        "@odata.id": "/redfish/v1/Systems/3/EthernetInterfaces"
+        "@odata.id": "/redfish/v1/Systems/storage-example/EthernetInterfaces"
     },
     "SimpleStorage": {
-        "@odata.id": "/redfish/v1/Systems/3/SimpleStorage"
+        "@odata.id": "/redfish/v1/Systems/storage-example/SimpleStorage"
     },
     "Storage": {
-        "@odata.id": "/redfish/v1/Systems/3/Storage"
+        "@odata.id": "/redfish/v1/Systems/storage-example/Storage"
     },
     "LogServices": {
-        "@odata.id": "/redfish/v1/Systems/3/LogServices"
+        "@odata.id": "/redfish/v1/Systems/storage-example/LogServices"
     },
     "Links": {
         "Chassis": [
@@ -95,7 +94,7 @@
     },
     "Actions": {
         "#ComputerSystem.Reset": {
-            "target": "/redfish/v1/Systems/3/Actions/ComputerSystem.Reset",
+            "target": "/redfish/v1/Systems/storage-example/Actions/ComputerSystem.Reset",
             "ResetType@Redfish.AllowableValues": [
                 "On",
                 "ForceOff",
@@ -112,7 +111,7 @@
                 "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
                 "MaintenanceWindowDurationInSeconds": 600,
                 "MaintenanceWindowResource": {
-                    "@odata.id": "/redfish/v1/Systems/3"
+                    "@odata.id": "/redfish/v1/Systems/storage-example"
                 }
             }
         },

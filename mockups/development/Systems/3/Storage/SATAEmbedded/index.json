@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/4/Storage/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded",
     "@odata.type": "#Storage.v1_0_0.Storage",
     "Id": "1",
     "Name": "Embedded SATA Storage System",
@@ -13,7 +13,7 @@
     },
     "StorageControllers": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded#/StorageControllers/0",
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded#/StorageControllers/0",
             "@odata.type": "#Storage.v1_0_0.StorageController",
             "Id": "0",
             "Name": "System SATA",
@@ -45,7 +45,7 @@
         {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.4"}
     ],
     "Volumes": {
-        "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes"
+        "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes"
     },
     "Links": { 
         "Enclosures": [

@@ -13,7 +13,7 @@
             "@odata.id": "/redfish/v1/Systems/2"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/3"
+            "@odata.id": "/redfish/v1/Systems/storage-example"
         },
         {
             "@odata.id": "/redfish/v1/Systems/nvdimm-example"

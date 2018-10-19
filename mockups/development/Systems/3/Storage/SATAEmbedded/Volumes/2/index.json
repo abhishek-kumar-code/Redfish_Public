@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright  2014-2015 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/SATAEmbedded/Volumes/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/2",
     "@odata.type": "#Volume.v1_0_0.Volume",
     "Id": "2",
     "Name": "SATA Bay 2",

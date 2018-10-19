@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
-    "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated",
     "@odata.type": "#Storage.v1_5_0.Storage",
     "Id": "RAIDIntegrated",
     "Name": "Integrated RAID Storage System",
@@ -13,7 +13,7 @@
     },
     "StorageControllers": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/StorageControllers/0",
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated#/StorageControllers/0",
             "@odata.type": "#Storage.v1_0_0.StorageController",
             "Id": "0",
             "Name": "Contoso Internal RAID",
@@ -58,7 +58,7 @@
         {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
     ],
     "Volumes": {
-        "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes"
+        "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes"
     },
     "Links": {
         "Enclosures": [
@@ -67,7 +67,7 @@
     },
     "Actions": {
         "#Storage.SetEncryptionKey": {
-            "target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Actions/Storage.SetEncryptionKey"
+            "target": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Actions/Storage.SetEncryptionKey"
         }
     }
 }

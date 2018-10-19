@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID",
     "@odata.type": "#Storage.v1_0_0.Storage",
     "Id": "HA-RAID",
     "Name": "HA Storage System",
@@ -13,7 +13,7 @@
     },
     "StorageControllers": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/0",
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/0",
             "@odata.type": "#Storage.v1_1_0.StorageController",
             "Id": "0",
             "Name": "Contoso External RAID",
@@ -50,7 +50,7 @@
             }
         },
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/1",
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/1",
             "@odata.type": "#Storage.v1_0_0.StorageController",
             "Id": "1",
             "Name": "Contoso External RAID",
@@ -114,7 +114,7 @@
             {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.11"}
     ],
     "Volumes": {
-        "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes"
+        "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes"
     },
     "Links": {
         "Enclosures": [
@@ -126,15 +126,15 @@
     },
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Redundancy/0",
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/Redundancy/0",
             "MemberId": "0",
             "Name": "Controller Redundancy Group 1",
             "Mode": "Sharing",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "RedundancySet": [
-                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/0"},
-                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/1"}
+                {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/0"},
+                {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/1"}
             ],
             "Status": {
                 "State": "Enabled",

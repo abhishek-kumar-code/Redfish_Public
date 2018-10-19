@@ -1,19 +1,19 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#StorageCollection.StorageCollection",
-    "@odata.id": "/redfish/v1/Systems/3/Storage",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage",
     "@odata.type": "#StorageCollection.StorageCollection",
     "Name": "Storage Collection",
     "Members@odata.count": 3,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded"
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated"
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID"
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID"
         }
      ]
 }

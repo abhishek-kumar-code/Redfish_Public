@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#SimpleStorage.SimpleStorage",
-    "@odata.id": "/redfish/v1/Systems/3/SimpleStorage/1",
+    "@odata.id": "/redfish/v1/Systems/storage-example/SimpleStorage/1",
     "@odata.type": "#SimpleStorage.v1_0_0.SimpleStorage",
     "Id": "1",
     "Name": "Simple Storage Controller",
