@@ -1,21 +1,22 @@
 {
+    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/2/Links/Memory/#entity",
-    "@odata.id": "/redfish/v1/Systems/2/Memory",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory",
     "@odata.type": "#MemoryCollection.MemoryCollection",
     "Name": "Memory DIMM Collection",
     "Members@odata.count": 4,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/2/Memory/1"
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/1"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/2/Memory/2"
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/2"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/2/Memory/3"
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/3"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/2/Memory/4"
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4"
         }
     ]
 }

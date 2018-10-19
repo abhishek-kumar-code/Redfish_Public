@@ -1,17 +1,16 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/2",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example",
     "@odata.type": "#ComputerSystem.v1_2_0.ComputerSystem",
-    "Id": "2",
+    "Id": "cpu-memory-example",
     "Name": "My Computer System",
     "SystemType": "Physical",
-    "AssetTag": "free form asset tag",
+    "AssetTag": "CHI2335",
     "Manufacturer": "Manufacturer Name",
     "Model": "Model Name",
-    "SKU": "",
     "SerialNumber": "2M220100SL",
-    "PartNumber": "",
+    "PartNumber": "8688-787",
     "Description": "Description of server",
     "IndicatorLED": "Lit",
     "UUID": "00000000-0000-0000-0000-000000000000",
@@ -24,13 +23,13 @@
     },
     "Boot": {},
     "Processors": {
-        "@odata.id": "/redfish/v1/Systems/2/Processors"
+        "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors"
     },
     "Memory": {
-        "@odata.id": "/redfish/v1/Systems/2/Memory"
+        "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory"
     },
     "MemoryDomains": {
-        "@odata.id": "/redfish/v1/Systems/2/MemoryDomains"
+        "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains"
     },		
     "Links": {
         "Chassis": [

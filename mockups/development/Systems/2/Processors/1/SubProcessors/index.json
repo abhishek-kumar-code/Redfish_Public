@@ -1,15 +1,15 @@
 {
     "@odata.context": "/redfish/v1/$metadata#ProcessorCollection.ProcessorCollection",
-    "@odata.id": "/redfish/v1/Systems/2/Processors/1/SubProcessors",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors/1/SubProcessors",
     "@odata.type": "#ProcessorCollection.ProcessorCollection",
     "Name": "Processors Collection",
     "Members@odata.count": 2,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/2/Processors/1/SubProcessors/1"
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors/1/SubProcessors/1"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/2/Processors/1/SubProcessors/2"
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors/1/SubProcessors/2"
         }
     ]
 }

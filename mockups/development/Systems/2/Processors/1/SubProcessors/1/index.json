@@ -1,6 +1,6 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
-    "@odata.id": "/redfish/v1/Systems/2/Processors/1/SubProcessors/1",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors/1/SubProcessors/1",
     "@odata.type": "#Processor.v1_3_0.Processor",
     "Name": "Core 1",
     "Id": "1",

@@ -1,6 +1,7 @@
 {
+	"@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-	"@odata.id": "/redfish/v1/Systems/2/Memory/1",
+	"@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/1",
 	"@odata.type": "#Memory.v1_4_0.Memory",
 	"Name": "Regular Memory",
 	"Id": "1",
