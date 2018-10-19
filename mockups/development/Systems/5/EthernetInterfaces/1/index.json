@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
-    "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces/1",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example/EthernetInterfaces/1",
     "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
     "Id": "1",
     "Name": "Ethernet Interface",

@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/4/Storage/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem",
     "@odata.type": "#Storage.v1_0_0.Storage",
     "Id": "NVMeSubsystem",
     "Name": "NVMe over Fabric Storage System",
@@ -20,7 +20,7 @@
         }
     ],
     "Volumes": {
-        "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes"
+        "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes"
     },
     "Links": { 
         "Enclosures": [

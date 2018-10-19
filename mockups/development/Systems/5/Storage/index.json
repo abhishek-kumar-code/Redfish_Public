@@ -1,13 +1,13 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#StorageCollection.StorageCollection",
-    "@odata.id": "/redfish/v1/Systems/5/Storage",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage",
     "@odata.type": "#StorageCollection.StorageCollection",
     "Name": "Storage Collection",
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem"
+            "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem"
         }
      ]
 }

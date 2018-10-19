@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
-    "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces/NIC",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example/EthernetInterfaces/NIC",
     "@odata.type": "#EthernetInterface.v1_0_2.EthernetInterface",
     "Id": "NIC",
     "Name": "External Ethernet Interface",

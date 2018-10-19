@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/5",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example",
     "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
     "Id": "5",
     "Name": "Example Host Interface System",
@@ -13,7 +13,7 @@
     },
     "IndicatorLED": "Off",
     "EthernetInterfaces": {
-        "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces"
+        "@odata.id": "/redfish/v1/Systems/host-interface-example/EthernetInterfaces"
     },
     "Links": {
         "Chassis": [
