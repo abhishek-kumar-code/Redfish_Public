@@ -66,10 +66,10 @@
     "Regions": [
         {
             "RegionId": "1",
-            "MemoryType": "Block",
+            "MemoryClassification": "Block",
             "OffsetMiB": 0,
             "SizeMiB": 8192,
-            "PassphraseState": "Enabled"
+            "PassphraseState": true
         }
     ],
     "OperatingMemoryModes": [
