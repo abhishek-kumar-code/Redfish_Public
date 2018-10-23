@@ -63,10 +63,10 @@
     "Regions": [
         {
             "RegionId": "1",
-            "MemoryClassification": "ByteAccessiblePeristent",
+            "MemoryClassification": "ByteAccessiblePersistent",
             "OffsetMiB": 0,
             "SizeMiB": 131072,
-            "PassphraseState": "Enabled"
+            "PassphraseState": true
         }
     ],
     "OperatingMemoryModes": [

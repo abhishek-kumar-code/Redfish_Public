@@ -73,31 +73,31 @@
     "Regions": [
         {
             "RegionId": "1",
-            "MemoryType": "Volatile",
+            "MemoryClassification": "Volatile",
             "OffsetMiB": 0,
             "SizeMiB": 4096,
-            "PassphraseState": "Disabled"
+            "PassphraseState": false
         },
         {
             "RegionId": "2",
-            "MemoryType": "Volatile",
+            "MemoryClassification": "Volatile",
             "OffsetMiB": 4096,
             "SizeMiB": 4096,
-            "PassphraseState": "Disabled"
+            "PassphraseState": false
         },
         {
             "RegionId": "3",
-            "MemoryType": "Byte Accessible Persistent",
+            "MemoryClassification": "ByteAccessiblePersistent",
             "OffsetMiB": 8192,
             "SizeMiB": 4096,
-            "PassphraseState": "Enabled"
+            "PassphraseState": true
         },
         {
             "RegionId": "4",
-            "MemoryType": "Byte Accessible Persistent",
+            "MemoryClassification": "ByteAccessiblePersistent",
             "OffsetMiB": 12288,
             "SizeMiB": 4096,
-            "PassphraseState": "Enabled"
+            "PassphraseState": true
         }
     ],
     "OperatingMemoryModes": [

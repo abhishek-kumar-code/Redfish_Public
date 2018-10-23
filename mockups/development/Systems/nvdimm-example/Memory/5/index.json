@@ -52,7 +52,7 @@
     "Regions": [
         {
             "RegionId": "1",
-            "MemoryType": "Volatile",
+            "MemoryClassification": "Volatile",
             "OffsetMiB": 0,
             "SizeMiB": 8192
         }

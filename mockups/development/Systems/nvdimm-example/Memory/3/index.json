@@ -52,19 +52,19 @@
     "Regions": [
         {
             "RegionId": "1",
-            "MemoryType": "Volatile",
+            "MemoryClassification": "Volatile",
             "OffsetMiB": 0,
             "SizeMiB": 2048
         },
         {
             "RegionId": "2",
-            "MemoryType": "Volatile",
+            "MemoryClassification": "Volatile",
             "OffsetMiB": 2048,
             "SizeMiB": 2048
         },
         {
             "RegionId": "3",
-            "MemoryType": "Volatile",
+            "MemoryClassification": "Volatile",
             "OffsetMiB": 4096,
             "SizeMiB": 4096
         }
