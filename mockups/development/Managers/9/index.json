@@ -29,7 +29,7 @@
     "Links": {
         "ManagerForServers": [
             {
-                "@odata.id": "/redfish/v1/Systems/5"
+                "@odata.id": "/redfish/v1/Systems/nvdimm-example"
             }
         ]
     }

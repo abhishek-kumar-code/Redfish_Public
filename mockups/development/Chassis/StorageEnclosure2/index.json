@@ -27,7 +27,7 @@
             {"@odata.id":"/redfish/v1/Managers/8"}
         ],
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/3/Storage/HA-RAID"}
+            {"@odata.id":"/redfish/v1/Systems/storage-example/Storage/HA-RAID"}
         ],
         "Drives": [
             {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"},
