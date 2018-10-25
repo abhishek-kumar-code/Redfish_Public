@@ -18,7 +18,7 @@
                 "SubsystemVendorId": "0xABCD"
             },
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/StorageControllers/0"
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated#/StorageControllers/0"
             },
             "Oem": {}
         }

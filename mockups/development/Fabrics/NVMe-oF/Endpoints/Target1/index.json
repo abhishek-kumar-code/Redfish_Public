@@ -29,14 +29,14 @@
             "EntityType": "Volume",
             "EntityRole": "Target",
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes/1"
+                "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes/1"
             }
         },
         {
             "EntityType": "Volume",
             "EntityRole": "Target",
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes/2"
+                "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes/2"
             }
         }
     ],
