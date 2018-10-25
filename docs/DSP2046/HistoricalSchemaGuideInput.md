@@ -141,8 +141,8 @@ A number of corner-case issues have been found in the schema definitions which c
   <img src="http://redfish.dmtf.org/sites/default/files/DMTF_Redfish_logo_R.jpg" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2018-8-10</p>
-<p align="right">Version: <span class="version">2018.2</span></p>
+<p align="right">Date: 2018-10-30</p>
+<p align="right">Version: <span class="version">2017.3</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
@@ -191,16 +191,15 @@ The following web sites provide more information about the Redfish standard:
 
 Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.
 
-This version of the guide was created for historical comparison of previous releases of the Redfish Schema bundle (DSP8010).  The latest version of this document contains common property definitions, example payloads, and additional material to explain the Redfish data model.  This version should only be used as a historical reference.
+This version of the guide was created for historical comparison of previous releases of the Redfish Schema bundle (DSP8010).  The latest version of this document available from the Redfish Standards page contains common property definitions, example payloads, and additional material to explain the Redfish data model.  This version should only be used as a historical reference.
 
 
 Each schema section contains:
 
-* The name, current version and description of the schema.
-* A listing of the possible URIs where resources defined by this schema can appear in a Redfish Service (v1.6 or later). See [URI listings](#uri-listings) below for more information.
+* The name, version and description of the schema.
 * A table defining each property with additional details for those properties when needed.
 * A listing of the available Actions defined for the schema.
-* An example JSON payload for a resource using the schema.
+
 
 <br>
 The property-level details include:
@@ -215,280 +214,10 @@ The property-level details include:
 
 # Reference Guide
 
-This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
+This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
 
 
 # Schema Supplement
-
-## AccountService
-
-### Mockup
-mockups/DSP2046-examples/AccountService-v1-example.json
-
-## ActionInfo
-
-### Mockup
-mockups/DSP2046-examples/ActionInfo-v1-example.json
-
-## Assembly
-
-### Mockup
-mockups/DSP2046-examples/Assembly-v1-example.json
-
-## Bios
-
-### Mockup
-mockups/DSP2046-examples/Bios-v1-example.json
-
-## Chassis
-
-### Mockup
-mockups/DSP2046-examples/Chassis-v1-example.json
-
-## CompositionService
-
-### Mockup
-mockups/DSP2046-examples/CompositionService-v1-example.json
-
-## ComputerSystem
-
-### Mockup
-mockups/DSP2046-examples/ComputerSystem-v1-example.json
-
-### Property Details
-
-#### UUID
-
-The UUID property contains a value that represents the universal unique identifier number (UUID) of a system.  
-
-The UUID property is a string data type. The format of the string is the 35-character string format specified in RFC4122: "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx". Each x represents a hexadecimal digit (0-f).
-
-Regarding the case of the hex values, RFC4122 specifies that the hex values should be lowercase characters. Most modern scripting languages typically also represent hex values in lowercase characters following the RFC. However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output.
-
-## Drive
-
-### Mockup
-mockups/DSP2046-examples/Drive-v1-example.json
-
-## Endpoint
-
-### Mockup
-mockups/DSP2046-examples/Endpoint-v1-example.json
-
-## EthernetInterface
-
-### Mockup
-mockups/DSP2046-examples/EthernetInterface-v1-example.json
-
-## EventService
-
-### Mockup
-mockups/DSP2046-examples/EventService-v1-example.json
-
-## EventDestination
-
-### Mockup
-mockups/DSP2046-examples/EventDestination-v1-example.json
-
-## ExternalAccountProvider
-
-### Mockup
-mockups/DSP2046-examples/ExternalAccountProvider-v1-example.json
-
-## Fabric
-
-### Mockup
-mockups/DSP2046-examples/Fabric-v1-example.json
-
-## Job
-
-### Mockup
-mockups/DSP2046-examples/Job-v1-example.json
-
-## JobService
-
-### Mockup
-mockups/DSP2046-examples/JobService-v1-example.json
-
-## LogEntry
-
-### Mockup
-mockups/DSP2046-examples/LogEntry-v1-example.json
-
-## LogService
-
-### Mockup
-mockups/DSP2046-examples/LogService-v1-example.json
-
-## Manager
-
-### Mockup
-mockups/DSP2046-examples/Manager-v1-example.json
-
-## ManagerAccount
-
-### Mockup
-mockups/DSP2046-examples/ManagerAccount-v1-example.json
-
-## ManagerNetworkProtocol
-
-### Mockup
-mockups/DSP2046-examples/ManagerNetworkProtocol-v1-example.json
-
-## Memory
-
-### Mockup
-mockups/DSP2046-examples/Memory-v1-example.json
-
-## MemoryChunks
-
-### Mockup
-mockups/DSP2046-examples/MemoryChunks-v1-example.json
-
-## MemoryDomain
-
-### Mockup
-mockups/DSP2046-examples/MemoryDomain-v1-example.json
-
-## MemoryMetrics
-
-### Mockup
-mockups/DSP2046-examples/MemoryMetrics-v1-example.json
-
-## MetricDefinition
-
-### Mockup
-mockups/DSP2046-examples/MetricDefinition-v1-example.json
-
-## MetricReportDefinition
-
-### Mockup
-mockups/DSP2046-examples/MetricReportDefinition-v1-example.json
-
-## MetricReport
-
-### Mockup
-mockups/DSP2046-examples/MetricReport-v1-example.json
-
-## PCIeSlots
-
-### Mockup
-mockups/DSP2046-examples/PCIeSlots-v1-example.json
-
-## Port
-
-### Mockup
-mockups/DSP2046-examples/Port-v1-example.json
-
-## Power
-
-### Mockup
-mockups/DSP2046-examples/Power-v1-example.json
-
-## Processor
-
-### Mockup
-mockups/DSP2046-examples/Processor-v1-example.json
-
-## ResourceBlock
-
-### Mockup
-mockups/DSP2046-examples/ResourceBlock-v1-example.json
-
-## Role
-
-### Mockup
-mockups/DSP2046-examples/Role-v1-example.json
-
-## SerialInterface
-
-### Mockup
-mockups/DSP2046-examples/SerialInterface-v1-example.json
-
-## ServiceRoot
-
-### Mockup
-mockups/DSP2046-examples/ServiceRoot-v1-example.json
-
-## SessionService
-
-### Mockup
-mockups/DSP2046-examples/SessionService-v1-example.json
-
-## Session
-
-### Mockup
-mockups/DSP2046-examples/Session-v1-example.json
-
-## SimpleStorage
-
-### Mockup
-mockups/DSP2046-examples/SimpleStorage-v1-example.json
-
-## SoftwareInventory
-
-### Mockup
-mockups/DSP2046-examples/SoftwareInventory-v1-example.json
-
-## Storage
-
-### Mockup
-mockups/DSP2046-examples/Storage-v1-example.json
-
-## Switch
-
-### Mockup
-mockups/DSP2046-examples/Switch-v1-example.json
-
-## Task
-
-### Mockup
-mockups/DSP2046-examples/Task-v1-example.json
-
-## TaskService
-
-### Mockup
-mockups/DSP2046-examples/TaskService-v1-example.json
-
-## TelemetryService
-
-### Mockup
-mockups/DSP2046-examples/TelemetryService-v1-example.json
-
-## Thermal
-
-### Mockup
-mockups/DSP2046-examples/Thermal-v1-example.json
-
-## Triggers
-
-### Mockup
-mockups/DSP2046-examples/Triggers-v1-example.json
-
-## UpdateService
-
-### Mockup
-mockups/DSP2046-examples/UpdateService-v1-example.json
-
-## VLanNetworkInterface
-
-### Mockup
-mockups/DSP2046-examples/VLanNetworkInterface-v1-example.json
-
-## VirtualMedia
-
-### Mockup
-mockups/DSP2046-examples/VirtualMedia-v1-example.json
-
-## Volume
-
-### Mockup
-mockups/DSP2046-examples/Volume-v1-example.json
-
-## Zone
-
-### Mockup
-mockups/DSP2046-examples/Zone-v1-example.json
 
 
 # Postscript
@@ -510,4 +239,10 @@ This document was created using the Redfish Documentation Generator utility, whi
 |         |            | Added Resource Collection table showing schema names and URIs. |
 |         |            | Restructured common objects section utilizing new Documentation Generator functions. |
 | 2018.1  | 2018-05-01 | Initial release. Built from Redfish schemas released in DSP8010 version 2018.1 |
+| 2017.3  | 2018-10-30 | Historical version build from DSP8010 v2017.3 for use in comparisons with later releases. |
+| 2017.2  | 2018-10-30 | Historical version build from DSP8010 v2017.2 for use in comparisons with later releases. |
+| 2017.1  | 2018-10-30 | Historical version build from DSP8010 v2017.1 for use in comparisons with later releases. |
+| 2016.3  | 2018-10-30 | Historical version build from DSP8010 v2016.3 for use in comparisons with later releases. |
+| 2016.2  | 2018-10-30 | Historical version build from DSP8010 v2016.2 for use in comparisons with later releases. |
+| 2016.1  | 2018-10-30 | Historical version build from DSP8010 v2016.1 for use in comparisons with later releases. |
 | 2017.0a | 2017-05-19| Work in progress release to gather feedback on content and format. |
