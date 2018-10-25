@@ -304,7 +304,7 @@ The object can also contain object level annotations to describe other types of 
 | Object Annotation                 | Description |
 | ----------------------------------| ----------- |
 | `@Redfish.RequestedCountRequired` | Indicates that the client is required to annotate the corresponding object in the request payload with `@Redfish.RequestedCount` to show how many instances of the object the client is requesting |
-| `@Redfish.ResourceBlockLimits`    | Indicates any restrictions regarding quantities of Resource Blocks of a given type are allowed in a given composition request. |
+| `@Redfish.ResourceBlockLimits`    | Indicates any restrictions regarding quantities of Resource Blocks of a given type in a given composition request. |
 
 Example Collection Capabilities Object:
 ```json
