@@ -1,0 +1,19 @@
+{
+    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
+    "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2/MemoryChunks",
+    "@odata.type" : "#MemoryChunksCollection.MemoryChunksCollection",
+    "Name": "Memory Chunks Collection",
+    "Members@odata.count": 5,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2/MemoryChunks/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2/MemoryChunks/3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2/MemoryChunks/7"
+        }
+    ],
+    "Oem": {}
+}

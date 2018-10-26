@@ -1,0 +1,45 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes/2",
+    "@odata.type": "#Volume.v1_0_0.Volume",
+    "Id": "2",
+    "Name": "Virtual Disk 2",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "VolumeType": "Mirrored",
+    "CapacityBytes": 104857600,
+    "Encrypted": true,
+    "EncryptionTypes": [
+        "NativeDriveEncryption"
+    ],
+    "Identifiers": [
+        {
+            "DurableNameFormat": "NAA",
+            "DurableName": "690b11c02547001d96f0fbe6c1cb32"
+        },
+        {
+            "DurableNameFormat": "UUID",
+            "DurableName": "d820b7e6-0635-4a6a-bf2c-825d3824fe3d"
+        }
+    ],
+    "Links": {
+        "Drives": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"}
+        ]
+    },
+    "Actions": {
+        "#Volume.CheckConsistency": {
+            "target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.CheckConsistency"
+        },
+        "#Volume.Initialize": {
+            "target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.Initialize",
+            "InitializeType@Redfish.AllowableValues": [
+                "Fast",
+                "Slow"
+            ]
+        }
+    }
+}

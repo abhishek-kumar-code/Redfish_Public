@@ -1,0 +1,33 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem",
+    "@odata.type": "#Storage.v1_0_0.Storage",
+    "Id": "NVMeSubsystem",
+    "Name": "NVMe over Fabric Storage System",
+    "Description": "NVMe Subsystem",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "Drives": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.1"
+        }
+    ],
+    "Volumes": {
+        "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes"
+    },
+    "Links": { 
+        "Enclosures": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis"
+            }
+        ]
+    },
+    "Actions": {
+    }
+}
