@@ -28,7 +28,7 @@
           <Annotation Term="OData.Description" String="The room."/>
         </Member>
         <Member Name="Intake">
-          <Annotation Term="OData.Description" String="The air intake point or region of the chassis. References to this PhysicalContext could refer to a discrete point, or a calculated index across the intake region of the chassis."/>
+          <Annotation Term="OData.Description" String="The air intake point(s) or region of the chassis."/>
           <Annotation Term="Redfish.Revisions">
             <Collection>
               <Record>
@@ -39,7 +39,7 @@
           </Annotation>          
         </Member>
         <Member Name="Exhaust">
-          <Annotation Term="OData.Description" String="The air exhaust point or region of the chassis. References to this PhysicalContext could refer to a discrete point, or a calculated index across the exhaust region of the chassis."/>
+          <Annotation Term="OData.Description" String="The air exhaust point(s) or region of the chassis."/>
           <Annotation Term="Redfish.Revisions">
             <Collection>
               <Record>
