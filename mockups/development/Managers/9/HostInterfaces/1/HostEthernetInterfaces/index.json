@@ -8,7 +8,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces/ToManager"
+            "@odata.id": "/redfish/v1/Systems/host-interface-example/EthernetInterfaces/ToManager"
         }
     ]
 }

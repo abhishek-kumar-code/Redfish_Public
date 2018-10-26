@@ -1,0 +1,47 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#SimpleStorage.SimpleStorage",
+    "@odata.id": "/redfish/v1/Systems/storage-example/SimpleStorage/1",
+    "@odata.type": "#SimpleStorage.v1_0_0.SimpleStorage",
+    "Id": "1",
+    "Name": "Simple Storage Controller",
+    "Description": "System SATA",
+    "UefiDevicePath": "UEFI Device Path",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "Warning"
+    },
+    "Devices": [
+        {
+            "Name": "Drive 1",
+            "Manufacturer": "ACME",
+            "Model": "Drive Model string",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        },
+        {
+            "Name": "Drive 2",
+            "Manufacturer": "SuperDuperSSD",
+            "Model": "Drive Model string",
+            "Status": {
+                "State": "Enabled",
+                "Health": "Warning"
+            }
+        },
+        {
+            "Name": "Drive 3",
+            "Status": {
+                "State": "Absent"
+            }
+        },
+        {
+            "Name": "Drive 4",
+            "Status": {
+                "State": "Absent"
+            }
+        }
+    ]
+}

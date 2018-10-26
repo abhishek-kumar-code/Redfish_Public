@@ -20,10 +20,10 @@
             {"@odata.id":"/redfish/v1/Managers/5"}
         ],
         "ComputerSystems": [
-            {"@odata.id": "/redfish/v1/Systems/5"}
+            {"@odata.id": "/redfish/v1/Systems/host-interface-example"}
         ],
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/5/Storage/NVMeSubsystem"}
+            {"@odata.id":"/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem"}
         ],
         "Drives": [
             {"@odata.id":"/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"}

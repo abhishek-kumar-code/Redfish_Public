@@ -12,13 +12,13 @@
     "Wildcards": [
         {
             "Name": "SystemID",
-            "Keys": [
+            "Values": [
                 "1"
             ]
         },
         {
             "Name": "MemoryID",
-            "Keys": [
+            "Values": [
                 "1",
                 "2"
             ]
