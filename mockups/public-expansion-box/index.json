@@ -16,8 +16,8 @@
     "AccountService": {
         "@odata.id": "/redfish/v1/AccountService"
     },
-    "ResourceContainers": {
-        "@odata.id": "/redfish/v1/ResourceContainers"
+    "ResourcePools": {
+        "@odata.id": "/redfish/v1/ResourcePools"
     },
     "Links": {
         "Sessions": {

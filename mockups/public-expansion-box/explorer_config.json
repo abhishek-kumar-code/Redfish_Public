@@ -1,5 +1,5 @@
 {
-    "name": "Expansion Enclosure with Resource Containers",
+    "name": "Expansion Enclosure with Resource Pools",
     "description": "This example shows a service with various sets of disaggregated hardware as resources.  The service itself provides information about the types of hardware available in the enclosure, but provides no additional functionality for the client.  In these circumstances, an external Redfish service might be used to orchestrate how the equipment is provisioned for different use cases, such as composability.",
     "navlinks": [
         {
@@ -33,8 +33,8 @@
             ]
         },
         {
-            "text": "Resource Containers",
-            "target": "ResourceContainers"
+            "text": "Resource Pools",
+            "target": "ResourcePools"
         },
         {
             "text": "Managers",

@@ -72,6 +72,13 @@
     <edmx:Include Namespace="Power"/>
     <edmx:Include Namespace="Power.v1_3_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourcePool_v1.xml">
+    <edmx:Include Namespace="ResourcePool"/>
+    <edmx:Include Namespace="ResourcePool.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourcePoolCollection_v1.xml">
+    <edmx:Include Namespace="ResourcePoolCollection"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Role_v1.xml">
     <edmx:Include Namespace="Role"/>
     <edmx:Include Namespace="Role.v1_1_0"/>

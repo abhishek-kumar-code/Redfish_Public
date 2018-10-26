@@ -67,8 +67,8 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeSlots_v1.xml">
     <edmx:Include Namespace="PCIeSlots"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceContainer_v1.xml">
-    <edmx:Include Namespace="ResourceContainer"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourcePool_v1.xml">
+    <edmx:Include Namespace="ResourcePool"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -840,10 +840,10 @@
       <EntityType Name="Chassis" BaseType="Chassis.v1_8_1.Chassis"/>
 
       <ComplexType Name="Links" BaseType="Chassis.v1_7_0.Links">
-        <NavigationProperty Name="ResourceContainers" Type="Collection(ResourceContainer.ResourceContainer)">
+        <NavigationProperty Name="ResourcePools" Type="Collection(ResourcePool.ResourcePool)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the Resource Containers located in this Chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ResourceContainers that are contained in this Chassis."/>
+          <Annotation Term="OData.Description" String="An array of references to the Resource Pools located in this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ResourcePool that are contained in this Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>

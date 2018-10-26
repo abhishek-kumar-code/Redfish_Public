@@ -24,18 +24,18 @@
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/ExpansionEnclosure"
         },
-        "ResourceContainers": [
+        "ResourcePools": [
             {
-                "@odata.id": "/redfish/v1/ResourceContainers/Tray2-Drive1"
+                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive1"
             },
             {
-                "@odata.id": "/redfish/v1/ResourceContainers/Tray2-Drive2"
+                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive2"
             },
             {
-                "@odata.id": "/redfish/v1/ResourceContainers/Tray2-Drive3"
+                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive3"
             },
             {
-                "@odata.id": "/redfish/v1/ResourceContainers/Tray2-Drive4"
+                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive4"
             }
         ]
     },

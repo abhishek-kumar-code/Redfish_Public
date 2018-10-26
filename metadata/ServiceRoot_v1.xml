@@ -76,8 +76,8 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TelemetryService_v1.xml">
     <edmx:Include Namespace="TelemetryService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceContainerCollection_v1.xml">
-    <edmx:Include Namespace="ResourceContainerCollection"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourcePoolCollection_v1.xml">
+    <edmx:Include Namespace="ResourcePoolCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -482,10 +482,10 @@
           <Annotation Term="OData.Description" String="The vendor or manufacturer associated with this Redfish service."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the manufacturer or vendor represented by this Redfish service. If this property is supported, the vendor name shall not be included in the value of the Product property."/>
         </Property>
-        <NavigationProperty Name="ResourceContainers" Type="ResourceContainerCollection.ResourceContainerCollection" Nullable="false">
+        <NavigationProperty Name="ResourcePools" Type="ResourcePoolCollection.ResourcePoolCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A link to a collection of all resource container entities."/>
-          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all Resource Container instances."/>
+          <Annotation Term="OData.Description" String="A link to a collection of all resource pool entities."/>
+          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all Resource Pool instances."/>
         </NavigationProperty>
       </EntityType>
     </Schema>

@@ -33,9 +33,9 @@
             "url": "/redfish/v1/SessionService/Sessions"
         },
         {
-            "name": "ResourceContainers",
+            "name": "ResourcePools",
             "kind": "Singleton",
-            "url": "/redfish/v1/ResourceContainers"
+            "url": "/redfish/v1/ResourcePools"
         }
     ]
 }
