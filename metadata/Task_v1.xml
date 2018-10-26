@@ -17,6 +17,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -331,9 +334,10 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The completion percentage of this Task."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the completion progress of the task, reported in percent of completion. If the task has not been started, the value shall be zero."/>
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
       </EntityType>
     </Schema>
 
-    </edmx:DataServices>
+  </edmx:DataServices>
 </edmx:Edmx>
