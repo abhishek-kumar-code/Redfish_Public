@@ -73,6 +73,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="1.0"/>
 
       <EntityType Name="Power" BaseType="Power.Power">
         <NavigationProperty Name="PowerControl" Type="Collection(Power.v1_0_0.PowerControl)" ContainsTarget="true">
@@ -572,6 +573,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.1"/>
 
       <EntityType Name="Power" BaseType="Power.v1_0_2.Power"/>
       <EntityType Name="PowerSupply" BaseType="Power.v1_0_0.PowerSupply">
@@ -683,7 +685,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-
+      <Annotation Term="Redfish.Release" String="2016.2"/>
       <EntityType Name="Power" BaseType="Power.v1_1_0.Power"/>
 
       <EntityType Name="PowerSupply" BaseType="Power.v1_1_0.PowerSupply">
@@ -734,6 +736,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <EntityType Name="Power" BaseType="Power.v1_2_2.Power">
         <Property Name="Actions" Type="Power.v1_3_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -853,6 +856,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.2"/>
       <EntityType Name="Power" BaseType="Power.v1_3_1.Power"/>
 
       <EntityType Name="PowerControl" BaseType="Power.v1_3_0.PowerControl">
@@ -884,6 +888,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.3"/>
       <EntityType Name="Power" BaseType="Power.v1_4_1.Power"/>
 
       <EntityType Name="PowerSupply" BaseType="Power.v1_3_0.PowerSupply">

@@ -88,6 +88,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
 
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.ResourceBlock">
         <Annotation Term="OData.Description" String="This schema defines a Resource Block resource."/>
@@ -299,6 +300,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.1"/>
 
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_0_0.ResourceBlock"/>
 
@@ -343,6 +345,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <Annotation Term="OData.Description" String="This version was created to add Expansion to the ResourceBlockType enum.  It was also created to add Unavailable to the CompositionState enum."/>
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_1_1.ResourceBlock"/>
     </Schema>
