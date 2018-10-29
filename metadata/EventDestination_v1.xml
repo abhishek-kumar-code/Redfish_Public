@@ -80,6 +80,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="1.0"/>
 
       <EntityType Name="EventDestination" BaseType="EventDestination.EventDestination">
         <Property Name="Destination" Type="Edm.String" Nullable="false">
@@ -167,6 +168,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.2"/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_2.EventDestination">
         <NavigationProperty Name="OriginResources" Type="Collection(Resource.ItemOrCollection)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -213,6 +215,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_2.EventDestination">
         <Property Name="Actions" Type="EventDestination.v1_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -257,6 +260,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.1"/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_2_2.EventDestination">
         <Property Name="SubscriptionType" Type="EventDestination.v1_3_0.SubscriptionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -284,6 +288,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <Annotation Term="OData.Description" String="This version was created to add the RegistryPrefix, ResourceType and SubordinateResources method of eventing."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_3_0.EventDestination">
         <Property Name="RegistryPrefixes" Type="Collection(Edm.String)">
