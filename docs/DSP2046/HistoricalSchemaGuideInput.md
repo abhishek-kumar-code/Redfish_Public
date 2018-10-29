@@ -2,7 +2,7 @@
 DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
-DocVersion: '2018.2'
+DocVersion: '2016.1'
 modified: '2018-08-10'
 status: published
 released: True
@@ -55,8 +55,8 @@ Note: you can specify the location of the TOC, presumably in the Introduction se
 
 Note: markdown is allowed in description overrides, but HTML markup is not; it will be escaped.
 
-* Oem: See the OEM object definition in the [Common properties](#common-properties) section.
-* Redundancy: A reference to a set of Redundancy entities that provide redundant services for this resource. See the [Redundancy](#redundancy) object definition in the Common objects section.
+* Oem: An OEM object definition.
+* Redundancy: A reference to a set of Redundancy entities that provide redundant services for this resource. 
 
 
 # Units Translation
@@ -173,9 +173,9 @@ The Redfish standard addresses several key issues for infrastructures that requi
 
 With the above goals in mind, the Redfish protocol was designed as an open industry standard to meet scalability requirements in multi-vendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and using JSON and OData formats for data payloads.
 
-## Who should read this document?
+## Historical Reference 
 
-This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API. 
+This version of the Redfish Resource and Schema Guide was created to allow for historical comparison to previous releases of the Redfish Schema bundle (DSP8010).  The latest version of this document, available from the Redfish Standards website, contains up-to-date schema contents, as well as common property definitions, example payloads, and additional material to explain the Redfish data model.  This version of the document should only be used as a historical reference.
 
 ## Where can I find more information?
 
@@ -190,9 +190,6 @@ The following web sites provide more information about the Redfish standard:
 # Using this guide
 
 Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.
-
-This version of the guide was created for historical comparison of previous releases of the Redfish Schema bundle (DSP8010).  The latest version of this document available from the Redfish Standards page contains common property definitions, example payloads, and additional material to explain the Redfish data model.  This version should only be used as a historical reference.
-
 
 Each schema section contains:
 
