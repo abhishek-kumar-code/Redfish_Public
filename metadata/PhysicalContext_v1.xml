@@ -29,25 +29,9 @@
         </Member>
         <Member Name="Intake">
           <Annotation Term="OData.Description" String="The air intake point(s) or region of the chassis."/>
-          <Annotation Term="Redfish.Revisions">
-            <Collection>
-              <Record>
-                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Modified"/>
-                <PropertyValue Property="Version" String="2018.3"/>
-              </Record>
-            </Collection>
-          </Annotation>          
         </Member>
         <Member Name="Exhaust">
           <Annotation Term="OData.Description" String="The air exhaust point(s) or region of the chassis."/>
-          <Annotation Term="Redfish.Revisions">
-            <Collection>
-              <Record>
-                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Modified"/>
-                <PropertyValue Property="Version" String="2018.3"/>
-              </Record>
-            </Collection>
-          </Annotation>
         </Member>
         <Member Name="LiquidInlet">
           <Annotation Term="OData.Description" String="The liquid inlet point of the chassis."/>
