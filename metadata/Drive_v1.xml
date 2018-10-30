@@ -90,6 +90,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.1"/>
 
       <EntityType Name="Drive" BaseType="Drive.Drive">
         <Property Name="StatusIndicator" Type="Drive.v1_0_0.StatusIndicator">
@@ -399,6 +400,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.2"/>
 
       <EntityType Name="Drive" BaseType="Drive.v1_0_1.Drive">
         <Property Name="Operations" Type="Collection(Drive.v1_1_0.Operations)" Nullable="false">
@@ -472,6 +474,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
 
       <ComplexType Name="Links" BaseType="Drive.v1_1_0.Links">
@@ -504,6 +507,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.3"/>
       <EntityType Name="Drive" BaseType="Drive.v1_2_1.Drive">
         <NavigationProperty Name="Assembly" Type="Assembly.Assembly" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -528,6 +532,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.1"/>
       <EntityType Name="Drive" BaseType="Drive.v1_3_0.Drive">
         <Property Name="PhysicalLocation" Type="Resource.Location" Nullable="false">
           <Annotation Term="OData.Description" String="The Location of the drive."/>
@@ -550,6 +555,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <EntityType Name="Drive" BaseType="Drive.v1_4_1.Drive">
         <Property Name="HotspareReplacementMode" Type="Drive.v1_5_0.HotspareReplacementModeType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>

@@ -103,6 +103,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeDevice.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.2"/>
 
       <EntityType Name="PCIeDevice" BaseType="PCIeDevice.PCIeDevice">
         <Property Name="Manufacturer" Type="Edm.String">
@@ -208,6 +209,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeDevice.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <EntityType Name="PCIeDevice" BaseType="PCIeDevice.v1_0_2.PCIeDevice">
         <Property Name="Actions" Type="PCIeDevice.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -240,6 +242,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeDevice.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.3"/>
       <EntityType Name="PCIeDevice" BaseType="PCIeDevice.v1_1_0.PCIeDevice">
         <NavigationProperty Name="Assembly" Type="Assembly.Assembly" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -258,6 +261,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeDevice.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <EntityType Name="PCIeDevice" BaseType="PCIeDevice.v1_2_1.PCIeDevice">
         <Property Name="PCIeInterface" Type="PCIeDevice.v1_3_0.PCIeInterface">
           <Annotation Term="OData.Description" String="The PCIe interface details for this PCIe device."/>

@@ -65,6 +65,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
 
       <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.MetricReportDefinition">
         <Property Name="MetricReportDefinitionType" Type="MetricReportDefinition.v1_0_0.MetricReportDefinitionType">
