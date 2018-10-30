@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Redundancy  v1.3.3-->
+<!--# Redfish Schema:  Redundancy  v1.3.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -146,14 +146,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_0_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_5.Redundancy"/>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_0_7">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to clarify MaxNumSupported is not a required property."/>
-      <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_6.Redundancy"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_0">
@@ -187,14 +181,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_3.Redundancy"/>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_5">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to clarify MaxNumSupported is not a required property."/>
-      <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_4.Redundancy"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_2_0">
@@ -231,7 +219,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_2_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_2_1.Redundancy"/>
     </Schema>
 
@@ -249,14 +237,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_3_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_3_1.Redundancy"/>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_3_3">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to clarify MaxNumSupported is not a required property."/>
-      <EntityType Name="Redundancy" BaseType="Redundancy.v1_3_2.Redundancy"/>
     </Schema>
 
   </edmx:DataServices>
