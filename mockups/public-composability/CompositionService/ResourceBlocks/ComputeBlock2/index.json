@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ResourceBlock.v1_2_0.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_3_0.ResourceBlock",
     "Id": "ComputeBlock2",
     "Name": "Compute Block 2",
     "ResourceBlockType": [
