@@ -57,7 +57,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the maximum number of members allowable for this particular redundancy group."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of members allowed in the redundancy group."/>
-          <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="MinNumNeeded" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -148,7 +147,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_0_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_5.Redundancy"/>
     </Schema>
 
@@ -184,7 +183,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_3.Redundancy"/>
     </Schema>
 
@@ -223,7 +222,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_2_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_2_1.Redundancy"/>
     </Schema>
 
@@ -242,7 +241,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_3_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to remove the 'Required' term on MaxNumSupported."/>
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_3_1.Redundancy"/>
     </Schema>
 
