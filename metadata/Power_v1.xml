@@ -141,7 +141,7 @@
         </Property>
         <Property Name="PowerMetrics" Type="Power.v1_0_0.PowerMetric" Nullable="false">
           <Annotation Term="OData.Description" String="Power readings for this chassis."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain power metrics for power readings (interval, min/max/ave power consumption) for the chassis."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain power metrics for power readings (interval, minimum/maximum/average power consumption) for the chassis."/>
         </Property>
         <Property Name="PowerLimit" Type="Power.v1_0_0.PowerLimit" Nullable="false">
           <Annotation Term="OData.Description" String="Power limit status and configuration information for this chassis."/>
