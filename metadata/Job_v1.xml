@@ -245,7 +245,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Job.v1_0_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add the Measures.Unit annotation to PercentComplete."/>
-      <EntityType Name="Job" BaseType="Task.v1_0_0.Job"/>
+      <EntityType Name="Job" BaseType="Job.v1_0_0.Job"/>
     </Schema>
 
   </edmx:DataServices>
