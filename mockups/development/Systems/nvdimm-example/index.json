@@ -1,0 +1,32 @@
+{
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "Name": "Memory Subsystem Example",
+    "SystemType": "Physical",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "PowerState": "On",	
+    "Memory": {
+        "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory"
+    },
+    "MemoryDomains": {
+        "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains"
+    },
+    "MemorySummary": {
+        "TotalSystemMemoryGiB": 24,
+        "TotalSystemPersistentMemoryGiB": 40,
+        "MemoryMirroring" : "Hybrid",		
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK",
+            "HealthRollup": "OK"
+        }
+    },    
+    "Oem": {},
+    "Id": "nvdimm-example",
+    "@odata.id": "/redfish/v1/Systems/nvdimm-example",
+    "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved."
+}

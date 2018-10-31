@@ -84,10 +84,13 @@
         </Annotation>
       </EntityType>
 
+      <ComplexType Name="ResourceBlockLimits" Abstract="true"/>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
 
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.ResourceBlock">
         <Annotation Term="OData.Description" String="This schema defines a Resource Block resource."/>
@@ -299,6 +302,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.1"/>
 
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_0_0.ResourceBlock"/>
 
@@ -343,6 +347,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <Annotation Term="OData.Description" String="This version was created to add Expansion to the ResourceBlockType enum.  It was also created to add Unavailable to the CompositionState enum."/>
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_1_1.ResourceBlock"/>
     </Schema>
@@ -351,6 +356,100 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_2_0.ResourceBlock"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ResourceBlock.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <EntityType Name="ResourceBlock" BaseType="ResourceBlock.v1_2_1.ResourceBlock"/>
+
+      <ComplexType Name="ResourceBlockLimits" BaseType="ResourceBlock.ResourceBlockLimits">
+        <Annotation Term="OData.Description" String="This object specifies the allowable quantities of types of Resource Blocks for a given composition request."/>
+        <Annotation Term="OData.LongDescription" String="This object shall specify the allowable quantities of types of Resource Blocks for a given composition request."/>
+        <Property Name="MinCompute" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Compute required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Compute required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxCompute" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Compute required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Compute required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MinProcessor" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Processor required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Processor required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxProcessor" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Processor required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Processor required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MinMemory" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Memory required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Memory required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxMemory" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Memory required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Memory required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MinNetwork" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Network required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Network required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxNetwork" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Network required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Network required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MinStorage" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Storage required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Storage required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxStorage" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Storage required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Storage required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MinComputerSystem" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type ComputerSystem required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Network required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxComputerSystem" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type ComputerSystem required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Network required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+        <Property Name="MinExpansion" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Expansion required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Expansion required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxExpansion" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minimum number of Resource Blocks of type Expansion required for the composition request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an integer that specifies the minimum number of Resource Blocks of type Expansion required for the composition request."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

@@ -20,6 +20,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml">
     <edmx:Include Namespace="CollectionCapabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml">
+    <edmx:Include Namespace="ResourceBlock"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -76,6 +79,9 @@
       <Term Name="Confidential" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term specifies that a schema or property is un-released and is therefore confidential material not for public disclosure."/>
       </Term>
+      <Term Name="Release" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The term specifies the version of the release bundle that this schema or versioned namespace was first released."/>
+      </Term>
       <Term Name="ReleaseStatus" Type="RedfishExtensions.v1_0_0.ReleaseStatusType">
         <Annotation Term="OData.Description" String="The term specifies the public release status of a property or schema."/>
       </Term>
@@ -123,6 +129,9 @@
       </Term>
       <Term Name="ExcerptCopyOnly" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term specifies that the property is a data element that shall appear only when the resource definition is used as a copy (using the ExcerptCopy term), and shall not appear in the original data resource."/>
+      </Term>
+      <Term Name="ResourceBlockLimits" Type="ResourceBlock.ResourceBlockLimits">
+        <Annotation Term="OData.Description" String="The term specifies the allowable quantities of types of Resource Blocks for a given composition request."/>
       </Term>
 
       <EnumType Name="ReleaseStatusType">

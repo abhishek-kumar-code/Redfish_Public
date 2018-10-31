@@ -64,6 +64,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="1.0"/>
 
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.ManagerNetworkProtocol">
         <Property Name="HostName" Type="Edm.String">
@@ -197,6 +198,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.3"/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_3.ManagerNetworkProtocol">
         <Property Name="DHCP" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
           <Annotation Term="OData.Description" String="Settings for this Manager's DHCPv4 protocol support."/>
@@ -219,6 +221,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_1_1.ManagerNetworkProtocol">
         <Property Name="NTP" Type="ManagerNetworkProtocol.v1_2_0.NTPProtocol" Nullable="false">
           <Annotation Term="OData.Description" String="Settings for this Manager's NTP protocol support."/>
@@ -264,6 +267,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_2_1.ManagerNetworkProtocol">
         <Property Name="DHCPv6" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
           <Annotation Term="OData.Description" String="Settings for this Manager's DHCPv6 protocol support."/>

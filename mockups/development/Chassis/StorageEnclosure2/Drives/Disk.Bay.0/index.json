@@ -25,7 +25,7 @@
     "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2"}
+            {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/2"}
         ],
         "Endpoints": [
             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive1"}
