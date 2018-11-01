@@ -101,7 +101,7 @@ Example Resource Block Resource:
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
-    "@odata.type": "#ResourceBlock.v1_2_0.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_3_0.ResourceBlock",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3",
     "Id": "DriveBlock3",
     "Name": "Drive Block 3",
@@ -304,6 +304,7 @@ The object can also contain object level annotations to describe other types of 
 | Object Annotation                 | Description |
 | ----------------------------------| ----------- |
 | `@Redfish.RequestedCountRequired` | Indicates that the client is required to annotate the corresponding object in the request payload with `@Redfish.RequestedCount` to show how many instances of the object the client is requesting |
+| `@Redfish.ResourceBlockLimits`    | Indicates any restrictions regarding quantities of Resource Blocks of a given type in a given composition request. |
 
 Example Collection Capabilities Object:
 ```json
@@ -336,11 +337,16 @@ Example Collection Capabilities Object:
     "Links": {
         "ResourceBlocks@Redfish.RequiredOnCreate": true,
         "ResourceBlocks@Redfish.UpdatableAfterCreate": true
+    },
+    "@Redfish.ResourceBlockLimits": {
+        "MinCompute": 1,
+        "MaxCompute": 1,
+        "MaxStorage": 8
     }
 }
 ```
 
-In the above example, three properties are marked with the `Redfish.RequiredOnCreate` annotation: `Name`, `Links`, and `ResourceBlocks` inside of `Links`.  All other properties are annotated with `Redfish.OptionalOnCreate`.  However, both `Name` and `Description` are annotated with `Redfish.SetOnlyOnCreate`, meaning they cannot be modified after the new resource is created.
+In the above example, three properties are marked with the `Redfish.RequiredOnCreate` annotation: `Name`, `Links`, and `ResourceBlocks` inside of `Links`.  All other properties are annotated with `Redfish.OptionalOnCreate`.  However, both `Name` and `Description` are annotated with `Redfish.SetOnlyOnCreate`, meaning they cannot be modified after the new resource is created.  The response also tells us in the `@Redfish.ResourceBlockLimits` annotation that all requests must have exactly 1 Resource Block of type Compute, and can up have to 8 Resource Blocks of type Storage.
 
 
 ## Types of Compositions
@@ -560,6 +566,11 @@ Capabilities Object Sample for a Specific Composition:
     "Links": {
         "ResourceBlocks@Redfish.RequiredOnCreate": true,
         "ResourceBlocks@Redfish.UpdatableAfterCreate": true
+    },
+    "@Redfish.ResourceBlockLimits": {
+        "MinCompute": 1,
+        "MaxCompute": 1,
+        "MaxStorage": 8
     }
 }
 ```

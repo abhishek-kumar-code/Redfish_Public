@@ -6,7 +6,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Power#/PowerControl/0",
             "MemberId": "0",
-            "Name": "Server Power Control",
+            "Name": "System Input Power",
             "PowerConsumedWatts": 344,
             "PowerRequestedWatts": 800,
             "PowerAvailableWatts": 0,

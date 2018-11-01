@@ -1,0 +1,17 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes",
+    "@odata.type": "#VolumeCollection.VolumeCollection",
+    "Name": "Storage Volume Collection",
+    "Description": "Storage Volume Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/2"
+        }
+    ],
+    "Oem": {}
+}

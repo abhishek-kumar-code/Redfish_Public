@@ -1,0 +1,41 @@
+
+{
+    "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains/1/MemoryChunks/1",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
+    "Name": "Memory Chunk - Whole System",
+    "Id": "1",
+    "MemoryChunkSizeMiB": 32768,
+    "AddressRangeType": "Volatile",
+    "IsMirrorEnabled": false,
+    "IsSpare": false,
+    "InterleaveSets": [
+        {"Memory" : {
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/1"
+        }},
+        {"Memory" : {
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/2"
+        }},
+        {"Memory" : {
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/3"
+        }},
+        {"Memory" : {
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4"
+        }}
+    ],
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains/1/MemoryChunks/1/SD"
+        },
+        "Time": "2012-03-07T14:44.30-05:00",
+        "ETag": "someetag",
+        "Messages": [
+            {
+                "MessageId": "Base.1.0.Success"
+            }
+        ]
+    },
+    "Oem": {}
+}
+

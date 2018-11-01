@@ -20,7 +20,7 @@
     ],
     "ConnectedEntities": [
         {
-            "EntityType": "NetworkDeviceFunction",
+            "EntityType": "NetworkController",
             "EntityRole": "Initiator",
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100"

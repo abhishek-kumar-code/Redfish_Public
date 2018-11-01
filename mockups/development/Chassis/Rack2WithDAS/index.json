@@ -17,7 +17,7 @@
     "Links": {
         "ComputerSystems": [
             {
-                "@odata.id": "/redfish/v1/Systems/3"
+                "@odata.id": "/redfish/v1/Systems/storage-example"
             }
         ],
         "Contains": [

@@ -19,7 +19,7 @@
     ],
     "ConnectedEntities": [
        {
-            "EntityType": "NetworkDeviceFunction",
+            "EntityType": "NetworkController",
             "EntityRole": "Target",
 			      "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100"
@@ -29,14 +29,14 @@
             "EntityType": "Volume",
             "EntityRole": "Target",
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes/1"
+                "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes/1"
             }
         },
         {
             "EntityType": "Volume",
             "EntityRole": "Target",
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/5/Storage/NVMeSubsystem/Volumes/2"
+                "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes/2"
             }
         }
     ],

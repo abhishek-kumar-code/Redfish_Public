@@ -1,0 +1,14 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors/1/SubProcessors/2",
+    "@odata.type": "#Processor.v1_3_0.Processor",
+    "Name": "Core 2",
+    "Id": "2",
+    "ProcessorType": "Core",
+    "ProcessorArchitecture": "x86",
+    "InstructionSet": "x86-64",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    }
+}

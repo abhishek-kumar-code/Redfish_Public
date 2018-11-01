@@ -17,7 +17,7 @@
                 "SubsystemVendorId": "0xABCD"
             },
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/2"
+                "@odata.id": "/redfish/v1/Systems/cpu-memory-example"
             },
             "Oem": {}
         }
