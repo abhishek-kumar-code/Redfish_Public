@@ -1,0 +1,14 @@
+{
+    "@odata.type": "#ietf_system.system_state.v1_0_0.system_state",
+    "Id": "system_state",
+    "Name": "state of system",
+    "clock": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system_state/clock"
+    },
+    "platform": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system_state/platform"
+    },
+    "@odata.context": "/redfish/v1/$metadata#ietf_system.system_state.system_state",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system_state",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

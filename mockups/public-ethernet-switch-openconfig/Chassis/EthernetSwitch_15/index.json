@@ -1,0 +1,37 @@
+{
+    "@odata.type": "#Chassis.v1_5_0.Chassis",
+    "Id": "EthernetSwitch_15",
+    "Name": "Ethernet Switch 15",
+    "ChassisType": "Drawer",
+    "Manufacturer": "Ethernet R Us",
+    "Model": "The Best Switch",
+    "SKU": "776",
+    "SerialNumber": "SN1-ABC-DEFG",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+    "PowerState": "On",
+    "Status": {
+        "@odata.type": "#Resource.Status",
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Thermal": {
+        "@odata.id":"/redfish/v1/Chassis/EthernetSwitch_15/Thermal"
+    },
+    "Power": {
+        "@odata.id":"/redfish/v1/Chassis/EthernetSwitch_15/Power"
+    }, 
+    "Links": {
+        "@odata.type": "#Chassis.v1_5_0.Links",
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/EthernetSwitchManager"
+            }
+        ],
+        "Oem": {}
+    },
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
