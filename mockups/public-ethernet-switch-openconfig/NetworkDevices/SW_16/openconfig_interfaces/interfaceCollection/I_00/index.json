@@ -1,0 +1,31 @@
+{
+  "file" : "/home/ipedasia/prjs/swo/forkedOpenConfig/public/release/models/interfaces/output_dir/openconfig_interfaces.interfaces.interface_v1.xml",
+  "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+  "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.ietf_interfaces",
+  "@odata.type": "#ietf_interfaces.v1_0_0.ietf_interfaces",
+  "@odata.id": "/redfish/v1/NetworkDevices/SW_16/openconfig_interfaces/interfaceCollection/I_00",
+  "Id": "I_00",
+  "Name": "Ethernet_interface_00",
+  "configContainer": {
+    "name": "10GbEthernet",
+    "type": "/if:interfaces/if:interface/if:name",
+    "mtu": 1500,
+    "loopback_mode": false,
+    "enabled": true
+  },
+  "stateContainer": {},
+  "hold_timeContainer": {},
+  "subinterfacesContainer": {},
+  "ethernetContainer": {
+    "configContainer": {
+      "mac_address": "01:23:45:67:89:AB",
+      "auto_negotiate": true
+    },
+    "stateContainer": {}
+  },
+  "routed_vlanContainer": {
+    "configContainer": {
+      "vlan": "0"
+    }
+  }
+}

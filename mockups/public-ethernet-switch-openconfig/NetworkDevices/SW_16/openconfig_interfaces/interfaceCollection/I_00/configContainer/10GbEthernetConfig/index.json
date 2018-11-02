@@ -1,0 +1,12 @@
+{
+  "file" : "/home/ipedasia/prjs/swo/forkedOpenConfig/public/release/models/interfaces/output_dir/openconfig_interfaces.interfaces.interface_v1.xml",
+  "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+  "@odata.id": "/redfish/v1/NetworkDevices/SW_16/openconfig_interfaces/interfaceCollection/I_00/configContainer/10GbEthernetConfig",
+  "Id": "10GbEthernetConfig",
+  "configContainer": {
+    "name": "10GbEthernet",
+    "mtu": 9000,
+    "loopback_mode": false,
+    "enabled": true
+  }
+}

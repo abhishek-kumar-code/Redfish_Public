@@ -1,0 +1,10 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.ietf_interfaces",
+    "@odata.type": "#ietf_interfaces.v1_0_0.ietf_interfaces",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_16/openconfig_interfaces/openconfig_network_instance/network_instanceCollection",
+    "Id": "network_instanceCollection",
+    "Members": [
+      { "@odata.id": "/redfish/v1/NetworkDevices/SW_16/openconfig_network_instance/network_instanceCollection/NetworkInstance_00" }
+    ]
+}

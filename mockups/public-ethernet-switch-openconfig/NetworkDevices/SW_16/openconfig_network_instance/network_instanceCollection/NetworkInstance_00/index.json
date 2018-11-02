@@ -1,0 +1,23 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ietf_interfaces.ietf_interfaces",
+    "@odata.type": "#ietf_interfaces.v1_0_0.ietf_interfaces",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_16/openconfig_network_instance/network_instanceCollection/NetworkInstance_00",
+    "file": "/home/ipedasia/prjs/swo/openconfig/public/release/models/network-instance/output_dir/openconfig_network_instance.network_instances.network_instance_v1.xml",
+    "Id": "NetworkInstance_00",
+    "name": "f77a39b3-0ad1-4c12-824d-d5be67f8beb3",
+    "fdbContainer" : {
+      "configContainer": {
+        "mac_learning": true,
+        "mac_aging_time": 3600,
+        "maximum_entries": 4096
+      },
+      "mac_tableContainer": {
+        "entriesContainer": {
+          "entryCollection": {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_16/openconfig_network_instance/network_instanceCollection/NetworkInstance_00/mac_tableContainer/entriesContainer/entryCollection"
+          }
+        }
+      }
+    }
+}
