@@ -17,7 +17,7 @@
                 "SubsystemVendorId": "0xABCD"
             },
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/3/EthernetInterfaces/1"
+                "@odata.id": "/redfish/v1/Systems/storage-example/EthernetInterfaces/1"
             },
             "Oem": {}
         }

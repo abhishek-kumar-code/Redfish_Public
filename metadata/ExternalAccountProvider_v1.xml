@@ -62,6 +62,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ExternalAccountProvider.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.1"/>
 
       <EntityType Name="ExternalAccountProvider" BaseType="ExternalAccountProvider.ExternalAccountProvider">
         <Property Name="AccountProviderType" Type="ExternalAccountProvider.v1_0_0.AccountProviderTypes">

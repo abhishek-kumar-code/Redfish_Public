@@ -35,7 +35,7 @@
     "Links": {
         "ComputerSystems": [
             {
-                "@odata.id": "/redfish/v1/Systems/5"
+                "@odata.id": "/redfish/v1/Systems/host-interface-example"
             }
         ],
         "KernelAuthRole": {

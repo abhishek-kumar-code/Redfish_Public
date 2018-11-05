@@ -45,7 +45,7 @@ const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
-const OldRegistries = ['registries/Base.1.0.0.json', 'registries/ResourceEvent.1.0.0.json', 'registries/TaskEvent.1.0.0.json'];
+const OldRegistries = ['Base.1.0.0.json', 'ResourceEvent.1.0.0.json', 'TaskEvent.1.0.0.json', 'Redfish_1.0.1_PrivilegeRegistry.json', 'Redfish_1.0.2_PrivilegeRegistry.json'];
 /************************************************************/
 
 const setupBatch = {
@@ -110,7 +110,9 @@ function constructTest(file) {
 mockupFiles.forEach(constructMockupTest);
 
 function constructMockupTest(file) {
-  if(OldRegistries.includes(file) || file.includes('explorer_config.json')) {
+  let justFileName = file.split('/');
+  justFileName = justFileName[justFileName.length - 1];
+  if(OldRegistries.includes(justFileName) || file.includes('explorer_config.json')) {
     return;
   }
   mockupsCSDL[file] = {
@@ -869,6 +871,69 @@ function validCSDLTypeInMockup(err, json) {
       if(!Array.isArray(json[propName])) {
         throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
       }
+      let typeLookup = CSDLProperty.Type.substring(11);
+      typeLookup = typeLookup.substring(0, typeLookup.length-1);
+      let namespaceIndex = typeLookup.indexOf('.');
+      if(namespaceIndex === -1) {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      let namespace = typeLookup.substring(0, namespaceIndex);
+      if(namespace === '') {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice' || namespace === 'Message') {
+        let typeNameIndex = typeLookup.lastIndexOf('.');
+        if(typeNameIndex === -1) {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        let typeName = typeLookup.substring(typeNameIndex+1);
+        if(namespace === '') {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+      }
+      let propType = CSDL.findByType({_options: options}, typeLookup);
+      if(propType === null || propType === undefined) {
+        throw new Error('Cannot locate property type '+typeLookup+'.');
+      }
+      for(let i = 0; i < json[propName].length; i++) {
+        let propValue = json[propName][i];
+        if(typeof propType === 'string') {
+          simpleTypeCheck(propType, propValue, CSDLProperty, propName);
+        }
+        else {
+          if(propType.constructor.name === 'EnumType') {
+            enumTypeCheck(propType, propValue, CSDLProperty, propName);
+          }
+          else if(propType.constructor.name === 'TypeDefinition') {
+            simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
+          }
+          else if(propType.constructor.name === 'ComplexType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is a ComplexType, but the value in the mockup is not a valid JSON object.');
+            }
+            //Ignore Oem and Actions types...
+            if(propType.Name === 'Actions') {
+              validateActions(propValue);
+            }
+            else if(propType.Name !== 'Oem') {
+              complexTypeCheck(propType, propValue, propName+'['+i.toString()+']', type);
+            }
+          }
+          else if(propType.constructor.name === 'EntityType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
+            }
+            //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
+            if(propValue['@odata.id'] === undefined) {
+              console.log(this.context.title);
+              if(!this.context.title.includes('non-resource-examples')) {
+                throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+              }
+            }
+          }
+        }
+      }
     }
     else {
       let typeLookup = CSDLProperty.Type
@@ -1048,7 +1113,7 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
       if(typeof propValue !== 'string' && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
       }
-      if(CSDLProperty.Annotations['Validation.Pattern']) {
+      if(CSDLProperty.Annotations['Validation.Pattern'] && propValue !== null) {
         let regex = CSDLProperty.Annotations['Validation.Pattern'].String;
         if(regex[0] === '/') {
           regex = regex.substring(1);
