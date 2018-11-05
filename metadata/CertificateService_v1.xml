@@ -107,6 +107,22 @@
           <Annotation Term="OData.Description" String="The usage of the key contained in the certificate."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the usage of the key contained in the certificate.  If not provided by the client, the service may determine the appropriate key usage settings in the certificate signing request."/>
         </Parameter>
+        <Parameter Name="Surname" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The surname of the user making the request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the surname of the user making the request."/>
+        </Parameter>
+        <Parameter Name="GivenName" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The given name of the user making the request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the given name of the user making the request."/>
+        </Parameter>
+        <Parameter Name="Initials" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The initials of the user making the request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the initials of the user making the request."/>
+        </Parameter>
+        <Parameter Name="DistinguishedNameQualifier" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The distinguished name qualifier of the certificate."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the distinguished name qualifier of the certificate."/>
+        </Parameter>
         <ReturnType Type="CertificateService.v0_9_0.GenerateCSRResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to perform a certificate signing request."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a signing request that is used to be signed by a certificate authority (CA).  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
