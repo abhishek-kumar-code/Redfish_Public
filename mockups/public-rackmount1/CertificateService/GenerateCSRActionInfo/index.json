@@ -49,8 +49,9 @@
             "Required": true,
             "DataType": "String",
             "AllowableValues": [
-                "RSA2048Bit",
-                "RSA4096Bit"
+                "RSA:2048",
+                "RSA:4096",
+                "EC:secp256r1"
             ]
         },
         {
