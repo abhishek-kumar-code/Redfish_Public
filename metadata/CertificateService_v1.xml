@@ -99,7 +99,7 @@
           <Annotation Term="OData.Description" String="The algorithm used to generate the key pair."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be algorithm used to generate the key pair.  For RSA keys, the string shall be in the form 'RSA:Length', where 'Length' is the bit length of the key.  For Elliptic Curve keys, the string shall be in the form 'EC:Curve', where 'Curve' is the IANA assigned name of the elliptic curve.  If this parameter is not required by the service and not provided by the client, the service may use a predefined key pair for the request."/>
         </Parameter>
-        <Parameter Name="ResourceUri" Type="CertificateCollection.CertificateCollection" Nullable="false">
+        <Parameter Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate Collection where the certificate will be installed once the CA has signed the certificate."/>
         </Parameter>
@@ -216,7 +216,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The response body for the GenerateCSR action."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GenerateCSR action."/>
-        <NavigationProperty Name="ResourceUri" Type="CertificateCollection.CertificateCollection" Nullable="false">
+        <NavigationProperty Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the Certificate Collection where the certificate will be installed once the CA has signed the certificate."/>

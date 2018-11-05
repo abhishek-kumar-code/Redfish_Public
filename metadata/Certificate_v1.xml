@@ -184,7 +184,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The response body for the Renew action."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the Renew action."/>
-        <NavigationProperty Name="ResourceUri" Type="Certificate.Certificate" Nullable="false">
+        <NavigationProperty Name="Certificate" Type="Certificate.Certificate" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to the certificate that is being renewed."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the Certificate where the certificate will be renewed once the CA has signed the certificate."/>
