@@ -331,6 +331,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
       <Annotation Term="OData.Description" String="This version was created to add the PercentComplete property."/>
 
       <EntityType Name="Task" BaseType="Task.v1_3_1.Task">
