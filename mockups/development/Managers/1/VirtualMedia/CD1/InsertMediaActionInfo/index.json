@@ -20,6 +20,48 @@
             "Name": "Writable",
             "Required": true,
             "DataType": "Boolean"
+        },
+        {
+            "Name": "UserName",
+            "Required": false,
+            "DataType": "String"
+        },
+        {
+            "Name": "Password",
+            "Required": false,
+            "DataType": "String"
+        },
+        {
+            "Name": "MountOptions",
+            "Required": false,
+            "DataType": "String"
+        },
+        {
+            "Name": "Domain",
+            "Required": false,
+            "DataType": "String"
+        },
+        {
+            "Name": "NetworkProtocol",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "Http",
+                "Https",
+                "Cifs",
+                "Nfs",
+                "Ftp",
+                "Sftp"
+            ]
+        },
+        {
+            "Name": "TransferMethod",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "Stream",
+                "Upload"
+            ]
         }
     ]
 }
