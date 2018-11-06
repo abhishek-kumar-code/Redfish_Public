@@ -59,6 +59,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Triggers.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
 
       <EntityType Name="Triggers" BaseType="Triggers.Triggers">
         <Annotation Term="OData.Description" String="Triggers which apply to a list of metrics."/>

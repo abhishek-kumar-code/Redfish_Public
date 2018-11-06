@@ -109,7 +109,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml">
     <edmx:Include Namespace="ResourceBlock"/>
-    <edmx:Include Namespace="ResourceBlock.v1_2_0"/>
+    <edmx:Include Namespace="ResourceBlock.v1_3_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceBlockCollection_v1.xml">
     <edmx:Include Namespace="ResourceBlockCollection"/>

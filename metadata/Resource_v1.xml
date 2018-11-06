@@ -291,6 +291,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="1.0"/>
 
       <!--Base entity type for array members-->
       <EntityType Name="ReferenceableMember" BaseType="Resource.ReferenceableMember" Abstract="true">
@@ -373,6 +374,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.1"/>
 
       <ComplexType Name="Identifier" BaseType="Resource.Identifier">
         <Property Name="DurableName" Type="Edm.String">
@@ -507,6 +509,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.2"/>
       <Annotation Term="OData.Description" String="This version contained the former definition of PowerState, which has since been moved to the unversioned namespace."/>
     </Schema>
 
@@ -542,7 +545,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-
+      <Annotation Term="Redfish.Release" String="2016.3"/>
       <EnumType Name="RackUnits">
         <Annotation Term="OData.Description" String="Defines a rack unit."/>
         <Annotation Term="OData.LongDescription" String="Enumeration literals shall name the type of rack units in use."/>
@@ -806,6 +809,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <Annotation Term="OData.Description" String="This version was created to add PowerCycle enumeration to ResetType."/>
     </Schema>
 
@@ -831,6 +835,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.2"/>
       <Annotation Term="OData.Description" String="This version was created to add PartLocation to Location."/>
 
       <EnumType Name="LocationType">
@@ -972,6 +977,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_6_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.3"/>
       <Annotation Term="OData.Description" String="This version was created to add GPS Coordinated to Location and enumerations for DurableNameFormat for NVMe fabric extension."/>
 
       <ComplexType Name="Location" BaseType="Resource.v1_5_0.Location">
@@ -1008,6 +1014,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_7_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <Annotation Term="OData.Description" String="This version was created to add an array of Contact Information entries to Location, and to deprecate Location within PostalAddress in favor of AdditionalInfo."/>
 
       <ComplexType Name="Location" BaseType="Resource.v1_6_0.Location">

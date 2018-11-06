@@ -80,6 +80,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.2"/>
 
       <EntityType Name="Endpoint" BaseType="Endpoint.Endpoint">
         <Annotation Term="OData.Description" String="This is the schema definition for the Endpoint resource. It represents the properties of an entity that sends or receives protocol defined messages over a transport."/>
@@ -338,6 +339,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.3"/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_3.Endpoint">
         <Property Name="IPTransportDetails" Type="Collection(Endpoint.v1_1_0.IPTransportDetails)">
           <Annotation Term="OData.Description" String="This array contains details for each IP transport supported by this endpoint. The array structure can be used to model multiple IP addresses for this endpoint."/>
@@ -396,6 +398,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_1_1.Endpoint"/>
 
       <ComplexType Name="PciId" BaseType="Endpoint.v1_0_0.PciId">
