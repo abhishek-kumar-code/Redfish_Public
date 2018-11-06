@@ -7,6 +7,14 @@
         "#CertificateService.GenerateCSR": {
             "target": "/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR",
             "@Redfish.ActionInfo": "/redfish/v1/CertificateService/GenerateCSRActionInfo"
+        },
+        "#CertificateService.GenerateSelfSignedCertificate": {
+            "target": "/redfish/v1/CertificateService/Actions/CertificateService.GenerateSelfSignedCertificate",
+            "@Redfish.ActionInfo": "/redfish/v1/CertificateService/GenerateSelfSignedCertificateActionInfo"
+        },
+        "#CertificateService.ReplaceCertificate": {
+            "target": "/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate",
+            "@Redfish.ActionInfo": "/redfish/v1/CertificateService/ReplaceCertificateActionInfo"
         }
     },
     "CertificateLocations": {

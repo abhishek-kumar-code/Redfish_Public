@@ -1,8 +1,8 @@
 {
     "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#ActionInfo.v1_0_3.ActionInfo",
-    "Id": "GenerateCSRActionInfo",
-    "Name": "Generate CSR Action Info",
+    "Id": "GenerateSelfSignedCertificateActionInfo",
+    "Name": "Generate Self Signed Certificate Action Info",
     "Parameters": [
         {
             "Name": "CommonName",
