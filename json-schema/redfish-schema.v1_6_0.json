@@ -90,6 +90,10 @@
         "release": {
             "type": "string",
             "description": "The term specifies the version of the release bundle that this schema or versioned namespace was first released."
+        },
+        "filter": {
+            "type": "string",
+            "description": "Indicates a filter to apply to an array of objects when the values are copies of data elsewhere in the data model."
         }
     },
     "properties": {
@@ -157,6 +161,9 @@
         },
         "release": {
             "$ref": "#/definitions/release"
+        },
+        "filter": {
+            "$ref": "#/definitions/filter"
         }
     }
 }
