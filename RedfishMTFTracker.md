@@ -56,7 +56,7 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | Redfish Exec Brief  | Technote  | N/A     | N/A    | 2018-05 |
 | BIOS White Paper    | Overview  | N/A     | N/A    | N/A     |
 | Firmware Update WP  | Overview  | N/A     | N/A    | N/A     |
-| Boot Option WP      | Overview  | N/A     | N/A    | N/A     |
+| Boot Config WP      | Overview  | N/A     | N/A    | N/A     |
 | OEM Extensions      | Overview  | N/A     | N/A    | N/A     |
 | Fabrics             | Overview  | N/A     | N/A    | N/A     |
 | Sensors and Alarms  | Overview  | N/A     | N/A    | N/A     |
