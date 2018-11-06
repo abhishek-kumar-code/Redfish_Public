@@ -1139,7 +1139,7 @@
           <Annotation Term="OData.Description" String="Ordered array of boot source aliases representing the persistent Boot Order associated with this computer system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of boot source aliases (of type BootSource) representing the persistent Boot Order of this computer system."/>
         </Property>
-        <Property Name="BootOrderToUse" Type="ComputerSystem.v1_6_0.BootOrderTypes">
+        <Property Name="BootOrderPropertySelection" Type="ComputerSystem.v1_6_0.BootOrderTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Choice of which boot order property to use when specifying the boot order."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate which boot order property the system uses when specifying the persistent boot order."/>
