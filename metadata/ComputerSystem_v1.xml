@@ -1131,7 +1131,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_6_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_2.ComputerSystem">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_2.ComputerSystem"/>
+      <ComplexType Name="Boot" BaseType="ComputerSystem.v1_5_0">
         <Property Name="AliasBootOrder" Type="Collection(ComputerSystem.BootSource)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Ordered array of boot source aliases representing the persistent Boot Order associated with this computer system."/>
@@ -1142,7 +1143,7 @@
           <Annotation Term="OData.Description" String="Choice of which boot order property to use when specifying the boot order."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate which boot order property the system uses when specifying the persistent boot order."/>
         </Property>
-      </EntityType>
+      </ComplexType>
 
       <EnumType Name="BootOrderTypes">
         <Annotation Term="OData.Description" String="The enumerations of BootOrderTypes specify the choice of boot order property to use when controller the persistent boot order for this computer system."/>
