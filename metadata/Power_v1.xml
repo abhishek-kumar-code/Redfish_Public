@@ -141,7 +141,7 @@
         </Property>
         <Property Name="PowerMetrics" Type="Power.v1_0_0.PowerMetric" Nullable="false">
           <Annotation Term="OData.Description" String="Power readings for this chassis."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain power metrics for power readings (interval, min/max/ave power consumption) for the chassis."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain power metrics for power readings (interval, minimum/maximum/average power consumption) for the chassis."/>
         </Property>
         <Property Name="PowerLimit" Type="Power.v1_0_0.PowerLimit" Nullable="false">
           <Annotation Term="OData.Description" String="Power limit status and configuration information for this chassis."/>
@@ -161,7 +161,7 @@
 
       <ComplexType Name="PowerMetric">
         <Annotation Term="OData.Description" String="This type describe the power metrics for a resource."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain power metrics for power readings (interval, min/max/ave power consumption) for a resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain power metrics for power readings (interval, minimum/maximum/average power consumption) for a resource."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -567,7 +567,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_8">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_0_7.Power"/>
     </Schema>
 
@@ -679,7 +679,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_1_5.Power"/>
     </Schema>
 
@@ -730,7 +730,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_2_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_2_5.Power"/>
     </Schema>
 
@@ -850,7 +850,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_3_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_3_3.Power"/>
     </Schema>
 
@@ -882,7 +882,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_4_3">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_4_2.Power"/>
     </Schema>
 
@@ -940,7 +940,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_5_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also created to fix PowerMetrics/PowerMetric description, not to use abbreviated terms."/>
       <EntityType Name="Power" BaseType="Power.v1_5_1.Power"/>
     </Schema>
 
