@@ -1131,6 +1131,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_6_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_2.ComputerSystem"/>
       <ComplexType Name="Boot" BaseType="ComputerSystem.v1_5_0">
         <Property Name="AliasBootOrder" Type="Collection(ComputerSystem.BootSource)">
@@ -1153,7 +1154,7 @@
         <Member Name="AliasBootOrder">
           <Annotation Term="OData.Description" String="The system uses the AliasBootOrder property for specifying persistent boot order."/>
         </Member>
-      </EnumType>      
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>
