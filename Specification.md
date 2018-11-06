@@ -566,6 +566,7 @@ Clients can add query parameters to request additional features from the service
 * The contents of the response body shall be as if the query parameters were evaluated in the following order: 
     * Prior to service side pagination: $filter, $skip, $top
     * After applying any service side pagination: $expand, $select
+* Implementations may accept multiple query parameters in a single request using "&" to separate each query parameter
 
 ***Query parameters for Resource Collections***
 
