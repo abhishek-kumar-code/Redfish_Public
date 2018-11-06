@@ -1,0 +1,33 @@
+{
+  "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+  "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+  "@odata.id": "/redfish/v1/Chassis/1/Sensors/1",
+  "@odata.type": "#Sensor.v1_0_0.Sensor",
+  "Id": "1",
+  "Name": "Liquid Return Pressure",
+  "Oem": {},
+  "PhysicalContext": "LiquidOutlet",
+  "Reading": 35,
+  "ReadingRangeMax": 100,
+  "ReadingRangeMin": 0,
+  "ReadingType": "Pressure",
+  "ReadingUnits": "psi",
+  "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+  },
+  "Thresholds": {
+    "LowerCaution": {
+      "Reading": 15
+    },
+    "LowerCritical": {
+      "Reading": 5
+    },
+    "UpperCaution": {
+      "Reading": 50
+    },
+    "UpperCritical": {
+      "Reading": 70
+    }
+  }
+}

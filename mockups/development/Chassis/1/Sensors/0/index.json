@@ -1,0 +1,33 @@
+{
+  "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+  "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+  "@odata.id": "/redfish/v1/Chassis/1/Sensors/0",
+  "@odata.type": "#Sensor.v1_0_0.Sensor",
+  "Id": "0",
+  "Name": "Liquid Inlet Supply Pressure",
+  "Oem": {},
+  "PhysicalContext": "LiquidInlet",
+  "Reading": 45,
+  "ReadingRangeMax": 100,
+  "ReadingRangeMin": 0,
+  "ReadingType": "Pressure",
+  "ReadingUnits": "psi",
+  "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+  },
+  "Thresholds": {
+    "LowerCaution": {
+      "Reading": 15
+    },
+    "LowerCritical": {
+      "Reading": 5
+    },
+    "UpperCaution": {
+      "Reading": 60
+    },
+    "UpperCritical": {
+      "Reading": 80
+    }
+  }
+}
