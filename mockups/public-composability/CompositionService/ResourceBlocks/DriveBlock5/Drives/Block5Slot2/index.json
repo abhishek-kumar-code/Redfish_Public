@@ -1,7 +1,7 @@
 {
     "@odata.type": "#Drive.v1_2_0.Drive",
-    "Id": "Slot1",
-    "Name": "NVMe Drive Slot 1",
+    "Id": "Block5Slot2",
+    "Name": "NVMe Drive Slot 2",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
@@ -15,6 +15,6 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Drive.Drive",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4/Storage/Block4NVMe/Drives/Slot1",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Drives/Block5Slot2",
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

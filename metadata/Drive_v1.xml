@@ -75,6 +75,7 @@
             <String>/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}</String>
             <String>/redfish/v1/Chassis/{ChassisId}/Drives/{DriveId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Drives/{DriveId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Drives/{DriveId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}</String>
           </Collection>
         </Annotation>
