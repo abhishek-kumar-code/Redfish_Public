@@ -566,6 +566,7 @@ Clients can add query parameters to request additional features from the service
 * The contents of the response body shall be as if the query parameters were evaluated in the following order: 
     * Prior to service side pagination: $filter, $skip, $top
     * After applying any service side pagination: $expand, $select
+* Implementations may accept multiple query parameters in a single request using "&" to separate each query parameter
 
 ***Query parameters for Resource Collections***
 
@@ -627,7 +628,7 @@ The following table represents the Redfish allowable operators that shall be sup
 | and       | Logical and operator                            | ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64          |
 | or        | Logical or operator                             | ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4                        |
 | not       | Logical negation operator                       | not (ProcessorSummary/Count eq 2)                                                 |
-| ()        | Precedence grouping operator                    | (Status.State eq 'Enabled' and Status.Health eq 'OK') or SystemType eq 'Physical' |
+| ()        | Precedence grouping operator                    | (Status/State eq 'Enabled' and Status/Health eq 'OK') or SystemType eq 'Physical' |
 
 Services shall use the following operator precedence when evaluating expressions: grouping, logical negation, relational comparison (gt, ge, lt, le which all have equal precedence), equality comparison (eq, ne which both have equal precedence), logical and, then logical or.
 
@@ -834,6 +835,7 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
 In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task Monitor.  Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
 
 * HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
+    * If the Action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should use the Success message defined in the Base Message Registry in the response body for the "code" property.
 * HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
 * In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
 
@@ -841,6 +843,24 @@ Actions may have required parameters as defined in the [Resource actions section
 
 If an Action requested by the client will have no effect, such as performing a Reset of a ComputerSystem where the parameter "ResetType" is set to "On" and the ComputerSystem is already "On", the service should respond with an HTTP Status Code [200](#status-200) and return the NoOperation message defined in the Base Message Registry.
 
+Example successful Action response:
+~~~json
+{
+    "error": {
+        "code": "Base.1.0.Success",
+        "message": "Successfully Completed Request",
+        "@Message.ExtendedInfo": [
+            {
+                "@odata.type" : "#Message.v1_0_0.Message",
+                "MessageId": "Base.1.0.Success",
+                "Message": "Successfully Completed Request",
+                "Severity": "OK",
+                "Resolution": "None"
+            }
+        ]
+    }
+}
+~~~
 
 #### Operation apply time
 
