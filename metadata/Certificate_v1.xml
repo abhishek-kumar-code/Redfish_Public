@@ -65,7 +65,7 @@
         </Member>
         <Member Name="PKCS7">
           <Annotation Term="OData.Description" String="A PEM encoded PKCS7 certificate."/>
-          <Annotation Term="OData.LongDescription" String="The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280 and RFC2315.  The service may discard additional certificates in the structure."/>
+          <Annotation Term="OData.LongDescription" String="The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280 and RFC2315.  The service may discard additional certificates or other data in the structure."/>
         </Member>
         <Member Name="PKCS12">
           <Annotation Term="OData.Description" String="A PEM encoded PKCS12 certificate."/>
