@@ -67,18 +67,7 @@
           <Annotation Term="OData.Description" String="A PEM encoded PKCS7 certificate."/>
           <Annotation Term="OData.LongDescription" String="The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280 and RFC2315.  The service may discard additional certificates or other data in the structure."/>
         </Member>
-        <Member Name="PKCS12">
-          <Annotation Term="OData.Description" String="A PEM encoded PKCS12 certificate."/>
-          <Annotation Term="OData.LongDescription" String="The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280 and RFC7292."/>
-        </Member>
       </EnumType>
-
-      <Action Name="Renew" IsBound="true">
-        <Parameter Name="Certificate" Type="Certificate.v0_9_0.Actions"/>
-        <ReturnType Type="Certificate.v0_9_0.RenewResponse" Nullable="false"/>
-        <Annotation Term="OData.Description" String="This action is used to perform a certificate renewal request.  It generates a signing request based on the existing data within the certificate."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform a certificate renewal request.  The response shall contain a signing request that is used to be signed by a certificate authority (CA)."/>
-      </Action>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Certificate.v0_9_0">
@@ -178,24 +167,6 @@
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
-      </ComplexType>
-
-      <ComplexType Name="RenewResponse">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The response body for the Renew action."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the Renew action."/>
-        <NavigationProperty Name="Certificate" Type="Certificate.Certificate" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A link to the certificate that is being renewed."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the Certificate where the certificate will be renewed once the CA has signed the certificate."/>
-          <Annotation Term="Redfish.Required"/>
-        </NavigationProperty>
-        <Property Name="CSRString" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The string for the certificate signing request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the string of the certificate signing request as a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC2986."/>
-          <Annotation Term="Redfish.Required"/>
-        </Property>
       </ComplexType>
     </Schema>
 
