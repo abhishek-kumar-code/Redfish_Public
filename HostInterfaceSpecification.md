@@ -237,8 +237,15 @@ For USB devices:
 * idVendor, idProduct, and iSerialNumber originate from the USB descriptor for the device.
 * Within iSerialNumber, bDescriptorType is always 0x03 and bString is a Unicode string without a NULL terminator.
 
+Examples of USB devices:
+* Vendor ID is 0xAABB, Product ID is 0xCCDD, and the Serial Number is "SN00001": `0xBB 0xAA 0xDD 0xCC 0x10 0x03 0x53 0x00 0x4E 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x31 0x00`
+* Vendor ID is 0xAABB, Product ID is 0xCCDD, but there is no Serial Number: `0xBB 0xAA 0xDD 0xCC 0x02 0x03`
+
 For PCI/PCIe devices:
 * VendorID, DeviceID, Subsystem_Vendor_ID, and Subsystem_ID originate from the PCI configuration space for the device.
+
+Examples of PCI/PCIe devices:
+* Vendor ID is 0xAABB, Product ID is 0xCCDD, Subsystem Vendor ID is 0x0011, and Subsystem ID is 0x2233: `0xBB 0xAA 0xDD 0xCC 0x11 0x00 0x33 0x22`
 
 
 ### Table-4: Protocol Records data format:
