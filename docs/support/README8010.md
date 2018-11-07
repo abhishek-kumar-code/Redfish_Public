@@ -41,16 +41,18 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Schema Name       | Version | Description |
 | ---               | ---     | ---         |
 | AttributeRegistry | 1.3.0   | Added "Oem" property to "Attributes" and "Menus".  Added "Hidden" property to "Menus". |
+| ComputerSystem    | 1.6.0   | Added "AliasBootOrder" and "BootOrderPropertySelection" properties. |
 | Memory            | 1.7.0   | Added "Intel3DXPoint" to the "MemoryMedia" enum.  Deprecated "Unlocked" and "Frozen" enums in "SecurityStates", as well as the "SecurityStates" property in favor of the new "SecurityState", "ConfigurationLocked", "ConfigurationLockCapable", "DataLockCapable", and "PassphraseLockLimit" properties. |
 | PhysicalContext   | N/A     | Added "CPUSubsystem", "GPUSubsystem", "FPGA", "Accelerator", "MemorySubsystem", and "CoolingSubsystem" physical context types.  Updated "Intake" and "Exhaust" descriptions to allow for calculated values over a region. |
 | Processor         | 1.4.0   | Added "TDPWatts" and "MaxTDPWatts" properties.  Added "Power" to "ProcessorArchitecture".  Added "PowerISA" to "InstructionSet". |
-| ResourceBlock     | 1.3.0   | Added "ResourceBlockLimits" term. |
+| ResourceBlock     | 1.3.0   | Added "ResourceBlockLimits" term.  Added "Drives" property. |
 | ServiceRoot       | 1.5.0   | Added "Vendor" property. | 
 | Task              | 1.4.0   | Added "PercentComplete" property. |
-| UpdateService     | 1.4.0   | Added "Username" and "Password" parameters to "SimpleUpdate". |
+| UpdateService     | 1.4.0   | Added "Username" and "Password" parameters to "SimpleUpdate".  Added "HttpPushUriApplyTime" property. |
 | AttributeRegistry | 1.x.x   | Errata release.  Clarified the description for "ValueName".  Add missing Required terms for "AttributeName" and "ValueName". |
 | Bios              | 1.0.5   | Errata release.  Clarified the description for "Attributes". |
 | Job               | 1.0.1   | Errata release.  Added missing "Units" term on "PercentComplete". |
+| Power             | 1.x.x   | Errata release.  Clarified the description for "PowerMetrics". |
 | Redundancy        | 1.x.x   | Errata release.  Removed "Required" term on "MaxNumSupported". |
 | ServiceRoot       | 1.x.x   | Errata release.  Allow "Product" property to be null. | 
 | (various files)   | various | Errata release.  Added "Revisions" and "Release" annotation to various schema elements as needed. |
