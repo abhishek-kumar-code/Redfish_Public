@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_1_0.MetricReportDefinition",
     "Id": "PowerMetricStats",
     "Name": "Transmit Power Metric Statistics",
     "MetricReportDefinitionType": "Periodic",

@@ -133,7 +133,7 @@
           <Annotation Term="OData.Description" String="The string used as a wildcard."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the string used as a wildcard."/>
         </Property>
-        <Property Name="Values" Type="Collection(Edm.String)">
+        <Property Name="Keys" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of values to substitute for the wildcard."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the list of values to substitute for the wildcard."/>
@@ -268,6 +268,21 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_1_0">
+      <Annotation Term="OData.Description" String="This version was created to add the Values property to the Wildcard property."/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
+      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_0_0.MetricReportDefinition"/>
+      <ComplexType Name="Wildcard" BaseType="MetricReportDefinition.v1_0_0.Wildcard">
+        <Property Name="Values" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of values to substitute for the wildcard."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the list of values to substitute for the wildcard."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+
 
   </edmx:DataServices>
 </edmx:Edmx>
