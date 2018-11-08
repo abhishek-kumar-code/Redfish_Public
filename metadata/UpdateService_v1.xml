@@ -251,7 +251,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_5">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also updated to clarify the description of HttpPushUri."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_4.UpdateService"/>
     </Schema>
 
