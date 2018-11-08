@@ -21,9 +21,7 @@
     "Wildcards": [ 
         {
             "Name": "Wild",
-            "Keys": [
-                "0"
-            ]
+            "Values": [ "0" ]
         }
     ],
     "Metrics": [

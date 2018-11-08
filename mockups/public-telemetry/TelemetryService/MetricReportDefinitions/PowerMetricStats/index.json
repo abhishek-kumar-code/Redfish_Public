@@ -20,17 +20,11 @@
     "Wildcards": [
         {
             "Name": "PWild",
-            "Keys": [
-                "0"
-            ]
+            "Values": [ "0" ]
         },
         {
             "Name": "TWild",
-            "Keys": [
-                "Tray_1",
-                "Tray_2",
-                "Tray_3"
-            ]
+            "Values": [ "Tray_1", "Tray_2", "Tray_3" ]
         }
     ],
     "Metrics": [
