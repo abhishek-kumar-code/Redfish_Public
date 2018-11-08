@@ -2934,6 +2934,8 @@ A Redfish session is terminated when the client logs out.  This is accomplished 
 
 The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users sessions from a different session.
 
+When a session is terminated, the service shall not terminate open connections established by the session for long-standing HTTP operations, such as connections for [Server-Sent Events](#server-sent-events) or a transferring an image for the Update Service.
+
 
 #### AccountService
 
