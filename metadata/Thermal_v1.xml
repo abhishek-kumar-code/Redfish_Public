@@ -642,7 +642,7 @@
         <Property Name="EnvironmentalClass" Type="Thermal.v1_6_0.EnvironmentalClass">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The ASHRAE Environmental Class for this Chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the ASHRAE Environmental Specification Class for this Chassis, as defined by ASHRAE Thermal Guidelines for Data Processing Environments. These Classes define respective environmental limits which include temperature, relative humidity, dew point, maximum allowable elevation."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the ASHRAE Environmental Specification Class for this Chassis, as defined by ASHRAE Thermal Guidelines for Data Processing Environments. These classes define respective environmental limits which include temperature, relative humidity, dew point, and maximum allowable elevation."/>
         </Property>
       </EntityType>
 
