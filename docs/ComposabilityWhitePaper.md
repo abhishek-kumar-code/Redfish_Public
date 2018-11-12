@@ -382,11 +382,11 @@ Example Create (POST) Body for a Specific Composition:
 The Constrained Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the Resource Blocks is delegated by client to the Composition Service.  In constrained composition, the client does not need to comprehend Resource Zones.  An example of this type of composition can be found in the [Constrained Composition Workflow](#constrained-composition-workflow) section.
 
 
-### Pre-composed Resources
+### Expandable Resources
 
-In some cases, clients may not be able to directly compose new resources.  Instead, the service may have a baseline composed resource, and the client is only able to add additional components, or remove them.  A client can identify this case if the Allow HTTP header for the composed resource does not contain the DELETE method.
+In some cases, clients may not be able to directly compose new resources.  Instead, the service may have a baseline resource, and the client is only able to add additional components, or remove them.  A client can identify this case if the Allow HTTP header for the resource does not contain the DELETE method, as well as using other indicators in the resource itself.
 
-Example Pre-composed ComputerSystem:
+Example Expandable ComputerSystem:
 Client request example:
 ```http
 GET /redfish/v1/Systems/1 HTTP/1.1
@@ -396,17 +396,18 @@ OData-Version: 4.0
 Allow: GET, PATCH, PUT, HEAD
 {
     "Id": "1"
-    "Name": "Sample Pre-composed System",
-    "SystemType": "Composed",
+    "Name": "Sample Expandable System",
+    "SystemType": "Physical",
     "Links": {
         "ResourceBlocks": [
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock0" }
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputerSystemBlock0" }
         ]
-    }
+    },
+    ...
 }
 ```
 
-In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response indicates that this is a composed resource because `SystemType` is set to `Composed`.  However, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Update a Composed Resource](#update-a-composed-resource) section.
+In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response shows that it's a physical system since the `SystemType` is set to `Physical`.  However, the presence of the `ResourceBlocks` array in the `Links` property indicates that a client is able to add or remove components.  In addition, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Update a Composed Resource](#update-a-composed-resource) section.
 
 
 ## Appendix
@@ -1005,7 +1006,7 @@ The above example will request that the composed system called `NewSystem` be re
 | Version | Date       | Description |
 | ------- | ---------- | ----------- |
 | 1.2.0   | TBD        | Added text in the Constrained Composition section to link to the appendix. |
-|         |            | Added Pre-composed Resources section. |
+|         |            | Added Expandable Resources section. |
 | 1.1.0   | 2018-08-23 | Added documentation for Constrained Composition requests. |
 |         |            | Updated modeling section to cover new properties added in DSP8010 2018.1 and 2018.2. |
 |         |            | Added guidance for implementers on different conditions to avoid when annotating properties in the Capabilities Object. |
