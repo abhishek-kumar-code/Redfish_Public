@@ -19,9 +19,9 @@
     },
     "Processors": [],
     "Memory": [],
-    "Storage": [
+    "Drives": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Storage/Block3NVMe"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Drives/Block3Slot0"
         }
     ],
     "Links": {

@@ -1,6 +1,6 @@
 {
     "@odata.type": "#Storage.v1_3_0.Storage",
-    "Id": "Block5NVMe",
+    "Id": "NVMe",
     "Name": "NMVe Storage",
     "Status": {
         "State": "Enabled",
@@ -8,10 +8,10 @@
     },
     "Drives": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Storage/Block5NVMe/Drives/Slot2"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Drives/Block3Slot0"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Storage/Block5NVMe",
+    "@odata.id": "/redfish/v1/Systems/ComposedSystem2/Storage/NVMe",
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
