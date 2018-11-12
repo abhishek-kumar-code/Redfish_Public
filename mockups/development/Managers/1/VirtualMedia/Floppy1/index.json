@@ -16,9 +16,15 @@
     "WriteProtected": false,
     "UserName" : null,
     "Password" : null,
-    "MountOptions" : null,
-    "Domain" : null,
-    "NetworkProtocol" : "Https",
+    "TransferProtocolType": "HTTPS",
+    "TransferProtocolType@Redfish.AllowableValues": [
+      "HTTP",
+      "HTTPS",
+      "CIFS",
+      "NFS",
+      "FTP",
+      "SFTP"
+    ],
     "TransferMethod" : "Stream",
     "Actions": {
         "#VirtualMedia.InsertMedia": {

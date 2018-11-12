@@ -9,16 +9,22 @@
         "CD",
         "DVD"
     ],
-    "Image": "smb://myserver.org/mymedia-read-only.iso",
+    "Image": "smb://myserver/mymedia-read-only.iso",
     "ImageName": "mymedia-read-only.iso",
     "ConnectedVia": "URI",
     "Inserted": true,
     "WriteProtected": true,
-    "UserName" : "admin",
+    "UserName" : "WORKGROUP;admin",
     "Password" : null,
-    "MountOptions" : null,
-    "Domain" : "MYDOMAIN",
-    "NetworkProtocol" : "Cifs",
+    "TransferProtocolType": "CIFS",
+    "TransferProtocolType@Redfish.AllowableValues": [
+      "HTTP",
+      "HTTPS",
+      "CIFS",
+      "NFS",
+      "FTP",
+      "SFTP"
+    ],
     "TransferMethod" : "Stream",
     "Actions": {
         "#VirtualMedia.InsertMedia": {
