@@ -320,7 +320,7 @@
         <Property Name="TransferProtocolType" Type="VirtualMedia.v1_3_0.TransferProtocolType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Network protocol to use with the image."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain a value representing the network protocol to use with the specified image URI"/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a value representing the network protocol to use with the specified image URI."/>
         </Property>
         <Property Name="TransferMethod" Type="VirtualMedia.v1_3_0.TransferMethod">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
