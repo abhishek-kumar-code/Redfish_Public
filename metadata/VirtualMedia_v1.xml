@@ -103,7 +103,7 @@
           </Collection>
         </Annotation>
         </Parameter>
-        <Parameter Name="NetworkProtocol" Type="Edm.String">
+        <Parameter Name="TransferProtocolType" Type="VirtualMedia.v1_3_0.TransferProtocolType">
           <Annotation Term="OData.Description" String="Network protocol to use with the image."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain a value representing the network protocol to use with the specified image URI."/>
           <Annotation Term="Redfish.Revisions">
