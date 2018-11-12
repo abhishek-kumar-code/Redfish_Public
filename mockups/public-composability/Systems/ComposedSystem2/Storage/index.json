@@ -4,7 +4,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Storage/Block3NVMe"
+            "@odata.id": "/redfish/v1/Systems/ComposedSystem2/Storage/NVMe"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#StorageCollection.StorageCollection",
