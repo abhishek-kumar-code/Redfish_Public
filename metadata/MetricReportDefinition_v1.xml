@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MetricReportDefinition  v1.0.0-->
+<!--# Redfish Schema:  MetricReportDefinition  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -137,6 +137,15 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of values to substitute for the wildcard."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the list of values to substitute for the wildcard."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of using the property 'Values'."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
       </ComplexType>
 
@@ -269,6 +278,12 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to clarify descriptions of several properties."/>
+      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_0_0.MetricReportDefinition"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_1_0">
       <Annotation Term="OData.Description" String="This version was created to add the Values property to the Wildcard property."/>
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
@@ -282,7 +297,6 @@
         </Property>
       </ComplexType>
     </Schema>
-
 
   </edmx:DataServices>
 </edmx:Edmx>
