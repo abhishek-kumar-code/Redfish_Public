@@ -2,7 +2,7 @@
 	"@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
 	"@odata.id": "/redfish/v1/Chassis/1",
-	"@odata.type": "#Chassis.v1_8_0.Chassis",
+	"@odata.type": "#Chassis.v1_9_0.Chassis",
 	"Id": "1",
 	"Name": "Computer System Chassis",
 	"ChassisType": "RackMount",
@@ -52,6 +52,7 @@
 	"WidthMm": 431.8,
 	"DepthMm": 711,
 	"WeightKg": 15.31,
+  "EnvironmentalClass": "A3",    
 
 	"PCIeSlots": {
 		"@odata.id": "/redfish/v1/Chassis/1/PCIeSlots"

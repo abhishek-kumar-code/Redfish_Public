@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Thermal  v1.6.0-->
+<!--# Redfish Schema:  Thermal  v1.5.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -633,34 +633,6 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="Thermal" BaseType="Thermal.v1_5_0.Thermal"/>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_6_0">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.Release" String="2018.3"/>
-      <EntityType Name="Thermal" BaseType="Thermal.v1_5_1.Thermal">
-        <Property Name="EnvironmentalClass" Type="Thermal.v1_6_0.EnvironmentalClass">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The ASHRAE Environmental Class for this Chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the ASHRAE Environmental Specification Class for this Chassis, as defined by ASHRAE Thermal Guidelines for Data Processing Environments. These classes define respective environmental limits which include temperature, relative humidity, dew point, and maximum allowable elevation."/>
-        </Property>
-      </EntityType>
-
-      <EnumType Name="EnvironmentalClass">
-        <Member Name="A1">
-          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A1'."/>
-        </Member>
-        <Member Name="A2">
-          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A2'."/>
-        </Member>
-        <Member Name="A3">
-          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A3'."/>
-        </Member>
-        <Member Name="A4">
-          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A4'."/>
-        </Member>
-      </EnumType>
-      
     </Schema>
 
   </edmx:DataServices>
