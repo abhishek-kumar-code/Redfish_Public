@@ -129,7 +129,7 @@
           <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall log the occurrence of the condition to the log indicated by the LogService property in the TelemetryService resource."/>
         </Member>
         <Member Name="RedfishEvent">
-          <Annotation Term="OData.Description" String="Upon a trigger, send a Redfish Event message of type MetricReport."/>
+          <Annotation Term="OData.Description" String="Upon a trigger, send a Redfish Event message of type Event."/>
           <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall produce a Redfish Event of type Event to matching subscribers indicated in the EventSubscription collection found on the EventService."/>
         </Member>
       </EnumType>
