@@ -845,7 +845,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_8_1.Chassis">
-        <Property Name="EnvironmentalClass" Type="Chassis.v1_9_0.Chassis">
+        <Property Name="EnvironmentalClass" Type="Chassis.v1_9_0.EnvironmentalClass">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The ASHRAE Environmental Class for this Chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the ASHRAE Environmental Specification Class for this Chassis, as defined by ASHRAE Thermal Guidelines for Data Processing Environments. These classes define respective environmental limits which include temperature, relative humidity, dew point, and maximum allowable elevation."/>

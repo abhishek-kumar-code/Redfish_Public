@@ -52,7 +52,7 @@
 	"WidthMm": 431.8,
 	"DepthMm": 711,
 	"WeightKg": 15.31,
-        "EnvironmentalClass": "A3", 
+	"EnvironmentalClass": "A3",
 
 	"PCIeSlots": {
 		"@odata.id": "/redfish/v1/Chassis/1/PCIeSlots"
