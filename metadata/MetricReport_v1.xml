@@ -138,11 +138,17 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReport.v1_0_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to clarify descriptions of several properties."/>
+      <EntityType Name="MetricReport" BaseType="MetricReport.v1_0_0.MetricReport"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReport.v1_1_0">
       <Annotation Term="OData.Description" String="This version was created to add a TimeStamp property for the metric report in its entirety."/>
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
-      <EntityType Name="MetricReport" BaseType="MetricReport.v1_0_0.MetricReport">
+      <EntityType Name="MetricReport" BaseType="MetricReport.v1_0_1.MetricReport">
         <Property Name="Timestamp" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time associated with the metric report in its entirety. The time of the metric report may be relevant when the time of individual metrics are minimally different."/>
