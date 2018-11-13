@@ -576,7 +576,7 @@
           <Annotation Term="OData.Description" String="L3 cache."/>
         </Member>
         <Member Name="L4Cache">
-           Annotation Term="OData.Description" String="L4 cache."/>
+          <Annotation Term="OData.Description" String="L4 cache."/>
         </Member>
         <Member Name="L5Cache">
           <Annotation Term="OData.Description" String="L5 cache."/>

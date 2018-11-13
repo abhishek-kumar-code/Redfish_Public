@@ -837,7 +837,6 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_9_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-                                                                                                                           
       <EntityType Name="Chassis" BaseType="Chassis.v1_8_1.Chassis"/>
 
       <ComplexType Name="Links" BaseType="Chassis.v1_7_0.Links">
