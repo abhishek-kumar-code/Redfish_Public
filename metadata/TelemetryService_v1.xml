@@ -145,15 +145,7 @@
           <Annotation Term="OData.Description" String="A link to the collection of Triggers, which apply to metrics."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a link to a resource of type TriggersCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>          <Annotation Term="Redfish.Revisions">
-            <Collection>
-              <Record>
-                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
-                <PropertyValue Property="Version" String="v1_1_0"/>
-                <PropertyValue Property="Description" String="This property has been Deprecated in favor of using the property 'Values'."/>
-              </Record>
-            </Collection>
-          </Annotation>
+        </NavigationProperty>
         <NavigationProperty Name="LogService" Type="LogService.LogService" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a Log Service used by the Telemetry Service."/>
