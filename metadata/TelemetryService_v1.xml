@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  TelemetryService  v1.0.0-->
+<!--# Redfish Schema:  TelemetryService  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -75,13 +75,22 @@
         <Annotation Term="OData.Description" String="This action is used to generate a metric report."/>
         <Annotation Term="OData.LongDescription" String="This action shall cause the event service to immediately generate the metric report, as an Alert Event. This message should then be sent to any appropriate ListenerDestination targets."/>
         <Parameter Name="TelemetryService" Type="TelemetryService.v1_0_0.Actions"/>
-        <Parameter Name="MetricReportName" Type="Collection(MetricReport.MetricValue)" Nullable="false">
+        <Parameter Name="MetricReportName" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The Name property of the metric report in generated metric report."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall be the value of the Name property in the generated metric report."/>
         </Parameter>
         <Parameter Name="MetricReportValues" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The content of MetricReportValues array in generated metric report."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the contents of the MetricReportValues array property in the generated metric report."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of using the property 'GeneratedMetricReportValues'."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Parameter>
       </Action>
     </Schema>
@@ -136,7 +145,15 @@
           <Annotation Term="OData.Description" String="A link to the collection of Triggers, which apply to metrics."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a link to a resource of type TriggersCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
+        </NavigationProperty>          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of using the property 'Values'."/>
+              </Record>
+            </Collection>
+          </Annotation>
         <NavigationProperty Name="LogService" Type="LogService.LogService" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a Log Service used by the Telemetry Service."/>
@@ -181,6 +198,19 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TelemetryService.v1_1_0">
+      <Annotation Term="OData.Description" String="This version was created to add the GeneratedMetricReportValues property to the SubmittestMetricReport action."/>
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
+      <EntityType Name="TelemetryService" BaseType="TelemetryService.v1_0_0.TelemetryService"/>
+      <Action Name="SubmitTestMetricReport" IsBound="true">
+        <Parameter Name="GeneratedMetricReportValues" Type="Collection(MetricReport.MetricValue)" Nullable="false">
+          <Annotation Term="OData.Description" String="The content of the MetricReportValues in the generated metric report."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the contents of the MetricReportValues array property in the generated metric report."/>
+        </Parameter>
+      </Action>
     </Schema>
 
   </edmx:DataServices>
