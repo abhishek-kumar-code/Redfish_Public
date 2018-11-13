@@ -14,7 +14,7 @@
     "ConnectedVia": "URI",
     "Inserted": true,
     "WriteProtected": true,
-    "UserName" : "WORKGROUP\admin",
+    "UserName" : "WORKGROUP\\admin",
     "Password" : null,
     "TransferProtocolType": "CIFS",
     "TransferProtocolType@Redfish.AllowableValues": [
