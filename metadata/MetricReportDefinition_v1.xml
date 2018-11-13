@@ -288,7 +288,7 @@
       <Annotation Term="OData.Description" String="This version was created to add the Values property to the Wildcard property."/>
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
-      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_0_0.MetricReportDefinition"/>
+      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_0_1.MetricReportDefinition"/>
       <ComplexType Name="Wildcard" BaseType="MetricReportDefinition.v1_0_0.Wildcard">
         <Property Name="Values" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
