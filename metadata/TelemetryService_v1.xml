@@ -92,6 +92,19 @@
             </Collection>
           </Annotation>
         </Parameter>
+        <Parameter Name="GeneratedMetricReportValues" Type="Collection(MetricReport.MetricValue)" Nullable="false">
+          <Annotation Term="OData.Description" String="The content of the MetricReportValues in the generated metric report."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the contents of the MetricReportValues array property in the generated metric report."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_1_0"/>
+                <PropertyValue Property="Description" String="This property has been Deprecated in favor of using the property 'GeneratedMetricReportValues'."/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Parameter>
       </Action>
     </Schema>
 
@@ -197,12 +210,6 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
       <EntityType Name="TelemetryService" BaseType="TelemetryService.v1_0_0.TelemetryService"/>
-      <Action Name="SubmitTestMetricReport" IsBound="true">
-        <Parameter Name="GeneratedMetricReportValues" Type="Collection(MetricReport.MetricValue)" Nullable="false">
-          <Annotation Term="OData.Description" String="The content of the MetricReportValues in the generated metric report."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the contents of the MetricReportValues array property in the generated metric report."/>
-        </Parameter>
-      </Action>
     </Schema>
 
   </edmx:DataServices>
