@@ -75,7 +75,7 @@
         <Annotation Term="OData.Description" String="This action is used to generate a metric report."/>
         <Annotation Term="OData.LongDescription" String="This action shall cause the event service to immediately generate the metric report, as an Alert Event. This message should then be sent to any appropriate ListenerDestination targets."/>
         <Parameter Name="TelemetryService" Type="TelemetryService.v1_0_0.Actions"/>
-        <Parameter Name="MetricReportName" Type="Edm.String" Nullable="false">
+        <Parameter Name="MetricReportName" Type="Collection(MetricReport.MetricValue)" Nullable="false">
           <Annotation Term="OData.Description" String="The Name property of the metric report in generated metric report."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall be the value of the Name property in the generated metric report."/>
         </Parameter>
