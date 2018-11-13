@@ -2932,9 +2932,9 @@ Note that Redfish sessions "time-out" as opposed to having a token expiration ti
 
 A Redfish session is terminated when the client logs out.  This is accomplished by performing a DELETE to the Session resource identified by the hyperlink returned in the Location header when the session was created, or the SessionId returned in the response data.
 
-The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users sessions from a different session.
+The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users' sessions from a different session.
 
-When a session is terminated, the service shall not terminate open connections established by the session for long-standing HTTP operations, such as connections for [Server-Sent Events](#server-sent-events) or a transferring an image for the Update Service.
+When a session is terminated, the service shall not affect independent connections established originally by this session for other purposes, such as connections for [Server-Sent Events](#server-sent-events) or transferring an image for the Update Service.
 
 
 #### AccountService
