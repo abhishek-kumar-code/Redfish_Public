@@ -151,8 +151,8 @@
       <EntityType Name="MetricReport" BaseType="MetricReport.v1_0_1.MetricReport">
         <Property Name="Timestamp" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The time associated with the metric report in its entirety. The time of the metric report may be relevant when the time of individual metrics are minimally different."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be the time when the metric report was obtained.  When this property is present, the TimeStamp property for individual metrics may be present. Note that this may be different from the time when this instance is created."/>
+          <Annotation Term="OData.Description" String="The time associated with the metric report in its entirety.  The time of the metric report may be relevant when the time of individual metrics are minimally different."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the time when the metric report was generated."/>
         </Property>
       </EntityType>
     </Schema>
