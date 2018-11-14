@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.5.2-->
+<!--# Redfish Schema:  ComputerSystem  v1.6.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -1127,6 +1127,34 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_1.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_6_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_2.ComputerSystem"/>
+      <ComplexType Name="Boot" BaseType="ComputerSystem.v1_5_0.Boot">
+        <Property Name="AliasBootOrder" Type="Collection(ComputerSystem.BootSource)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Ordered array of boot source aliases representing the persistent Boot Order associated with this computer system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of boot source aliases (of type BootSource) representing the persistent Boot Order of this computer system."/>
+        </Property>
+        <Property Name="BootOrderPropertySelection" Type="ComputerSystem.v1_6_0.BootOrderTypes">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Choice of which boot order property to use when specifying the boot order."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate which boot order property the system uses when specifying the persistent boot order."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="BootOrderTypes">
+        <Annotation Term="OData.Description" String="The enumerations of BootOrderTypes specify the choice of boot order property to use when controller the persistent boot order for this computer system."/>
+        <Member Name="BootOrder">
+          <Annotation Term="OData.Description" String="The system uses the BootOrder property for specifying persistent boot order."/>
+        </Member>
+        <Member Name="AliasBootOrder">
+          <Annotation Term="OData.Description" String="The system uses the AliasBootOrder property for specifying persistent boot order."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>
