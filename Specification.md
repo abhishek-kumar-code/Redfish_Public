@@ -1434,7 +1434,7 @@ The value of the property is an array of [message objects](#message-object).
 
 ###### Extended property information
 
-An individual property within a JSON object can be annotated with extended information using "@Message.ExtendedInfo", pre-pended with the name of the property.
+An individual property within a JSON object can be annotated with extended information using "@Message.ExtendedInfo", prepended with the name of the property.
 
 ~~~json
 {
@@ -1700,7 +1700,7 @@ For example, version 1.2.0 of the BasicServer profile would be named "BasicServe
 
 ##### OEM schema file naming
 
-To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should pre-pend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
+To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
  
 #### Programmatic access to schema, registry, or profile files
 
@@ -2110,7 +2110,7 @@ The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/sch
 
 In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
 
-The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which has the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be pre-pended to the unit symbol.  For values which also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
+The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which has the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
 
 ~~~xml
   <Annotation Term="Measures.Unit" String="MiBy"/>
@@ -3467,7 +3467,7 @@ OData-Version: 4.0
 |         |            | Clarified format of the "@odata.context" property. |
 |         |            | Added clauses about the schema file naming conventions. |
 |         |            | Clarified behavior of a Service when receiving a PUT with missing properties. |
-|         |            | Clarified valid values in the "Accept" header to include wild cards per RFC7231. |
+|         |            | Clarified valid values in the "Accept" header to include wildcards per RFC7231. |
 |         |            | Corrected "ConfigureUser" privilege to be spelled "ConfigureUsers". |
 |         |            | Corrected Session Login section to include normative language. |
 | 1.2.0   | 2017-04-14 | Added support for the Redfish Composability Service. |
