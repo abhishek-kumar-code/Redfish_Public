@@ -260,9 +260,6 @@
             </Collection>
           </Annotation>
         </Member>
-        <Member Name="AccelerationFunction">
-          <Annotation Term="OData.Description" String="The entity is an acceleration function realized through e.g. FPGA. The EntityLink property (if present) should be a AccelerationFunction.AccelerationFunction entity."/>
-        </Member>
       </EnumType>
 
       <EnumType Name="EntityRole">
