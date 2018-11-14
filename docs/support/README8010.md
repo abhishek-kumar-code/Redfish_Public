@@ -52,6 +52,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | AttributeRegistry | 1.x.x   | Errata release.  Clarified the description for "ValueName".  Add missing Required terms for "AttributeName" and "ValueName". |
 | Bios              | 1.0.5   | Errata release.  Clarified the description for "Attributes". |
 | Job               | 1.0.1   | Errata release.  Added missing "Units" term on "PercentComplete". |
+| JSONSchemaFile    | 1.x.x   | Errata release.  Removed strict normative wording about the format of the schema file name in favor of pointing to the specification for the acceptable format. |
 | Power             | 1.x.x   | Errata release.  Clarified the description for "PowerMetrics". |
 | Redundancy        | 1.x.x   | Errata release.  Removed "Required" term on "MaxNumSupported". |
 | ServiceRoot       | 1.x.x   | Errata release.  Allow "Product" property to be null. | 
