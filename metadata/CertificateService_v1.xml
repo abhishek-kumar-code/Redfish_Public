@@ -121,80 +121,9 @@
           <Annotation Term="OData.Description" String="The initials of the user making the request."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the initials of the user making the request as defined by RFC5280."/>
         </Parameter>
-        <Parameter Name="DistinguishedNameQualifier" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The distinguished name qualifier of the certificate."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the distinguished name qualifier of the certificate as defined by RFC5280."/>
-        </Parameter>
         <ReturnType Type="CertificateService.v1_0_0.GenerateCSRResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to perform a certificate signing request."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a signing request that is used to be signed by a certificate authority (CA).  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
-      </Action>
-
-      <Action Name="GenerateSelfSignedCertificate" IsBound="true">
-        <Parameter Name="CertificateService" Type="CertificateService.v1_0_0.Actions"/>
-        <Parameter Name="CommonName" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The fully qualified domain name of the component that is being secured."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the fully qualified domain name of the component that is being secured as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="AlternativeNames" Type="Collection(Edm.String)">
-          <Annotation Term="OData.Description" String="Additional hostnames of the component that is being secured."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of additional hostnames of the component that is being secured as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="Organization" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The name of the organization making the request."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the name of the organization making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="OrganizationalUnit" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The name of the unit or division of the organization making the request."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the name of the unit or division of the organization making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="City" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The city or locality of the organization making the request."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the city or locality of the organization making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="State" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The state, province, or region of the organization making the request."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the state, province, or region of the organization making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="Country" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The country of the organization making the request."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the two letter ISO code for the country of the organization making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="Email" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The email address of the contact within the organization making the request."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the email address of the contact within the organization making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="KeyPairAlgorithm" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The algorithm used to generate the key pair."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be algorithm used to generate the key pair.  For RSA keys, the string shall be in the form 'RSA:Length', where 'Length' is the bit length of the key.  For Elliptic Curve keys, the string shall be in the form 'EC:Curve', where 'Curve' is the IANA assigned name of the elliptic curve.  If this parameter is not required by the service and not provided by the client, the service may use a predefined key pair for the request."/>
-        </Parameter>
-        <Parameter Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
-          <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate Collection where the certificate will be installed."/>
-        </Parameter>
-        <Parameter Name="KeyUsage" Type="Collection(CertificateService.v1_0_0.KeyUsage)">
-          <Annotation Term="OData.Description" String="The usage of the key contained in the certificate."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the usage of the key contained in the certificate.  If not provided by the client, the service may determine the appropriate key usage settings in the certificate signing request."/>
-        </Parameter>
-        <Parameter Name="Surname" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The surname of the user making the request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the surname of the user making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="GivenName" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The given name of the user making the request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the given name of the user making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="Initials" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The initials of the user making the request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the initials of the user making the request as defined by RFC5280."/>
-        </Parameter>
-        <Parameter Name="DistinguishedNameQualifier" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The distinguished name qualifier of the certificate."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the distinguished name qualifier of the certificate as defined by RFC5280."/>
-        </Parameter>
-        <ReturnType Type="CertificateService.v1_0_0.GenerateSelfSignedCertificateResponse" Nullable="false"/>
-        <Annotation Term="OData.Description" String="This action is used to create a self signed certificate."/>
-        <Annotation Term="OData.LongDescription" String="This action shall create a self signed certificate.  The response shall contain a certificate that has been signed by the service.  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
       </Action>
 
       <Action Name="ReplaceCertificate" IsBound="true">
