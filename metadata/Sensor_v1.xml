@@ -128,22 +128,22 @@
           <Annotation Term="Redfish.Excerpt"/>
         </Property>
 
-        <Property Name="MaxAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="MaxAllowableOperatingValue" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum allowable operating value for this equipment."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum allowable operating value for the equipment monitored by this sensor, as specified by a standards body, manufacturer, or a combination."/>
         </Property>
-        <Property Name="MinAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="MinAllowableOperatingValue" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Minimum allowable operating value for this equipment."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum allowable operating value for the equipment monitored by this sensor, as specified by a standards body, manufacturer, or a combination."/>
         </Property>
-        <Property Name="AdjustedMaxAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="AdjustedMaxAllowableOperatingValue" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Adjusted maximum allowable operating value for this equipment based on the current environmental conditions present."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted maximum allowable operating value for the equipment monitored by this sensor, as specified by a standards body, manufacturer, or a combination, and adjusted based on environmental conditions present. For example, liquid inlet temperature may be adjusted based on the available liquid pressure."/>
         </Property>
-        <Property Name="AdjustedMinAllowableOperatingValue" Type="Edm.Int64">
+        <Property Name="AdjustedMinAllowableOperatingValue" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Adjusted minimum allowable operating value for this equipment based on the current environmental conditions present."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted minimum allowable operating value for the equipment monitored by this sensor, as specified by a standards body, manufacturer, or a combination, and adjusted based on environmental conditions present. For example, liquid inlet temperature may be adjusted based on the available liquid pressure."/>
