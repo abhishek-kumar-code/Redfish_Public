@@ -53,6 +53,11 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Chassis/{ChassisId}/Sensors/{SensorId}</String>
+          </Collection>
+        </Annotation>
       </EntityType>
 
       <Action Name="ResetStatistics" IsBound="true">
@@ -65,6 +70,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Sensor.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
 
       <EntityType Name="Sensor" BaseType="Sensor.Sensor">
 
@@ -103,21 +109,16 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the units in which the sensor's reading and thresholds are measured."/>
           <Annotation Term="Redfish.Excerpt"/>
         </Property>
-        <Property Name="SetPoint" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The equipment Setpoint for the environmental characteristic instrumented by this sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the Setpoint for the equipment based on this sensor reading."/>
-        </Property>
-        <Property Name="DiscreteReading" Type="Sensor.v1_0_0.DiscreteReadings">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The present value for this discrete Sensor."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the present discrete value of this Sensor at the time the information request occurred."/>
-          <Annotation Term="Redfish.Excerpt"/>
-        </Property>
         <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Describes the area or device to which this sensor measurement applies.."/>
+          <Annotation Term="OData.Description" String="Describes the area or device to which this sensor measurement applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected component or region within the equipment to which this sensor measurement applies."/>
+          <Annotation Term="Redfish.Excerpt"/>
+        </Property>
+        <Property Name="PhysicalSubContext" Type="PhysicalContext.PhysicalSubContext">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describes the usage or location within a device to which this sensor measurement applies."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the usage or sub-region within the equipment to which this sensor measurement applies. This property is generally used to differentiate multiple sensors within the same instance of a PhysicalContext."/>
           <Annotation Term="Redfish.Excerpt"/>
         </Property>
         <Property Name="PeakReading" Type="Edm.Decimal">
@@ -126,7 +127,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the peak value of the Reading for this sensor during the last interval."/>
           <Annotation Term="Redfish.Excerpt"/>
         </Property>
-        
+
         <Property Name="MaxAllowableOperatingValue" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum allowable operating value for this equipment."/>
@@ -147,19 +148,19 @@
           <Annotation Term="OData.Description" String="Adjusted minimum allowable operating value for this equipment based on the current environmental conditions present."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the adjusted minimum allowable operating value for the equipment monitored by this sensor, as specified by a standards body, manufacturer, or a combination, and adjusted based on environmental conditions present. For example, liquid inlet temperature may be adjusted based on the available liquid pressure."/>
         </Property>
-        
+
         <!-- Excerpt properties specific to power reading type -->
         <Property Name="ApparentVA" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The product of Voltage and Current for an AC circuit, in Volt-Amperes units."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the product of VoltageRMS multiplied by CurrentRMS for a circuit. PowerApparentVA is expressed in Volt-Amperes units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Power"/>
         </Property>
         <Property Name="ReactiveVAR" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The square root of the difference term of squared ApparentVA and squared Power (Reading) for a circuit, expressed in VAR units."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the arithmetic mean of product terms of instantaneous voltage and quadrature current measurements calculated over an integer number of line cycles for a circuit. PowerReactiveVAR is expressed in VAR units using the ReadingUnits value of 'V'. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Power"/>
         </Property>
         <Property Name="PowerFactor" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -167,19 +168,13 @@
           <Annotation Term="OData.LongDescription" String="This property shall identify the quotient of PowerRealWatts and PowerApparentVA for a circuit. PowerFactor is expressed in unit-less 1/100ths. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="1"/>
-          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
-        </Property>
-        <Property Name="EnergykWh" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the integral of PowerRealWatts calculated over time for a circuit. Energy is expressed in kiloWatt-hour units. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Power"/>
         </Property>
         <Property Name="LoadPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The power load utilization for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the present value of this Sensor at the time the information request occurred. This property may appear in sensors of ReadingType of Power, and shall not appear in sensors of other ReadingType values."/>
-          <Annotation Term="Redfish.Excerpt" String="Sensor.ReadingType/Power"/>
+          <Annotation Term="Redfish.Excerpt" String="Power"/>
         </Property>
         <!-- end of Excerpt properties -->
 
@@ -187,22 +182,16 @@
           <Annotation Term="OData.Description" String="The location information for this Sensor."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the location information of this Sensor."/>
         </Property>
-        <Property Name="ElectricalSourceType" Type="Sensor.v1_0_0.ElectricalSourceType">
+        <Property Name="ElectricalContext" Type="Sensor.v1_0_0.ElectricalContext">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type of electrical circuit measurement within a circuit."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>
+          <Annotation Term="OData.Description" String="The combination of current-carrying conductors."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the combination of current-carrying conductors that are utilized to distribute power."/>
         </Property>
         <Property Name="VoltageType" Type="Sensor.v1_0_0.VoltageType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The voltage type (AC or DC) for this sensor."/>
-          <Annotation Term="OData.LongDescription" String="TBD."/>		  
+          <Annotation Term="OData.LongDescription" String="This property shall represent the type of input voltage the sensor monitors. Please use AC for alternating current and DC for direct current."/>
         </Property>
-        <Property Name="DeadBand" Type="Edm.Decimal">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The band of values around the SetPoint where the control system does not respond to the SetPoint."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the band of values around the SetPoint where the control system does not respond to the SetPoint."/>
-        </Property>
-
 
         <Property Name="Thresholds" Type="Sensor.v1_0_0.Thresholds">
           <Annotation Term="OData.Description" String="The set of thresholds defined for this sensor."/>
@@ -244,7 +233,7 @@
           <Annotation Term="OData.Description" String="The time at which the time-based properties were last reset."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the timestamp when the time-based property values were last reset by the user or the service."/>
         </Property>
-        
+
         <Property Name="Actions" Type="Sensor.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
@@ -255,7 +244,7 @@
       <ComplexType Name="Thresholds">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The set of thresholds defined for a sensor."/>
-        <Annotation Term="OData.LongDescription" String="."/>
+        <Annotation Term="OData.LongDescription" String="The set of thresholds that are used to derive a sensor's health and operational range."/>
         <Property Name="UpperCaution" Type="Sensor.v1_0_0.Threshold">
           <Annotation Term="OData.Description" String="Above normal range."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range. The units shall be the same units as the Reading."/>
@@ -299,7 +288,7 @@
         <Property Name="DwellTime" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.LongDescription" String="This property shall reflect the amount of time a sensor reading remains passed the trigger point before declaring the crossing to be a violation. In other words, if the sensor reading returns back to a reading before the trigger point, the threshold crossing may be disregarded."/>
         </Property>
       </ComplexType>
 
@@ -336,83 +325,64 @@
 
       <EnumType Name="ReadingType">
         <Member Name="Temperature">
-          <Annotation Term="OData.Description" String="Sensor type for measuring temperature."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Temperature."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a temperature measurement in degrees Celsius units and the ReadingUnits value shall be 'Cel'."/>
         </Member>
         <Member Name="Humidity">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Relative Humidity."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a relative humidity measurement in percent units and the ReadingUnits value shall be '%'."/>
         </Member>
         <Member Name="Power">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'."/>
+          <Annotation Term="OData.Description" String="Power."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be the arithmetic mean of product terms of instantaneous voltage and current values measured over integer number of line cycles for a circuit in Watt units and the ReadingUnits value shall be 'W'."/>
         </Member>
-        <Member Name="Energy">
-          <Annotation Term="OData.Description" String="Energy consumption (Watt-hours)."/>
-          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be in Watt units and the ReadingUnits value shall be 'W'."/>
+        <Member Name="EnergykWh">
+          <Annotation Term="OData.Description" String="Energy consumption (kW/h)."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall indicate the energy consumption (integral of Real Power over time) of the monitored item since the sensor statistics were last reset. The value of the Reading property shall be in kilowatt-hour units and the ReadingUnits value shall be 'kW'. This type is used for large-scale energy consumption measurements, while EnergyJoules is used for device-level consumption measurements."/>
+        </Member>
+        <Member Name="EnergyJoules">
+          <Annotation Term="OData.Description" String="Energy consumption (Joules)."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall indicate the energy consumption (integral of Real Power over time) of the monitored item since the sensor statistics were last reset. The value of the Reading property shall be in Joule units and the ReadingUnits value shall be 'J'. This type is used for device-level energy consumption measurements, while EnergykWh is used for large-scale consumption measurements."/>
         </Member>
         <Member Name="Voltage">
           <Annotation Term="OData.Description" String="Voltage (AC or DC)."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous voltage measurements calculated over an integer number of line cycles for a circuit.  Voltage is expressed in Volts units."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of the root mean square (RMS) of instantaneous voltage calculated over an integer number of line cycles for a circuit.  Voltage is expressed in Volts units and the ReadingUnits value shall be 'V'."/>
         </Member>
         <Member Name="Current">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the root mean square (RMS) of instantaneous current measurements calculated over an integer number of line cycles for a circuit. Current is expressed in Amperes units."/>
+          <Annotation Term="OData.Description" String="Current."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of  the root mean square (RMS) of instantaneous current calculated over an integer number of line cycles for a circuit. Current is expressed in Amperes units and the ReadingUnits value shall be 'A'."/>
         </Member>
         <Member Name="Frequency">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Frequency."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a frequency measurement in Hertz units and the ReadingUnits value shall be 'Hz'."/>
         </Member>
         <Member Name="Pressure">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Pressure."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of force applied perpendicular to the surface of an object per unit area over which that force is distributed. The ReadingUnits shall be 'Pa'."/>
         </Member>
         <Member Name="LiquidLevel">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Liquid level."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of fluid height relative to a specified vertical datum and the ReadingUnits value shall be 'cm'."/>
         </Member>
         <Member Name="Rotational">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Rotational."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of rotational frequency in Revolutions per Minute unit and the ReadingUnits value shall be 'RPM'."/>
         </Member>
         <Member Name="AirFlow">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Airflow."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of a volume of gas per unit of time that flows through a particular junction. The ReadingUnits shall be 'cft_i/min'."/>
         </Member>
         <Member Name="LiquidFlow">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Liquid flow."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of a volume of liquid per unit of time that flows through a particular junction. The ReadingUnits shall be 'L/s'."/>
         </Member>
         <Member Name="Barometric">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Barometric Pressure."/>
+          <Annotation Term="OData.LongDescription" String="the value of the Reading property shall be a measurement of barometric pressure in millimeters of a mercury column and the ReadingUnits value shall be 'mm[Hg]'."/>
         </Member>
         <Member Name="Altitude">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
-        </Member>
-        <Member Name="ContactClosure">
-          <Annotation Term="OData.Description" String="A discrete sensor with open and closed values."/>
-          <Annotation Term="OData.LongDescription" String="."/>
-        </Member>
-      </EnumType>
-
-      <EnumType Name="DiscreteReadings">
-        <Member Name="Open">
-          <Annotation Term="OData.Description" String="The sensor is open."/>
-          <Annotation Term="OData.LongDescription" String="."/>
-        </Member>
-        <Member Name="Closed">
-          <Annotation Term="OData.Description" String="The sensor is closed."/>
-          <Annotation Term="OData.LongDescription" String="."/>
-        </Member>
-        <Member Name="Active">
-          <Annotation Term="OData.Description" String="The sensor is active."/>
-          <Annotation Term="OData.LongDescription" String="."/>
-        </Member>
-        <Member Name="Inactive">
-          <Annotation Term="OData.Description" String="The sensor is inactive."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="Altitude."/>
+          <Annotation Term="OData.LongDescription" String="The value of the Reading property shall be a measurement of altitude in meter units and the ReadingUnits value shall be 'm'."/>
         </Member>
       </EnumType>
 
@@ -424,75 +394,75 @@
           <Annotation Term="OData.Description" String="Direct Current."/>
         </Member>
       </EnumType>
-	  
-      <EnumType Name="ElectricalSourceType">
+
+      <EnumType Name="ElectricalContext">
         <Member Name="Line1">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits sharing L1 current-carrying conductor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits sharing L1 current-carrying conductor when PhaseWiringType.TwoPhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line2">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits sharing L2 current-carrying conductor when PhaseWiringType.ThreePhase4Wire. TwoPhase4Wire, or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits sharing L2 current-carrying conductor when PhaseWiringType.ThreePhase4Wire. TwoPhase4Wire, or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line3">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits sharing L3 current-carrying conductor when PhaseWiringType.ThreePhase4Wire or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits sharing L3 current-carrying conductor when PhaseWiringType.ThreePhase4Wire or ThreePhase5Wire."/>
         </Member>
         <Member Name="Neutral">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The grounded current-carrying return circuit of current-carrying conductors when PhaseWiringType.OnePhase3Wire, TwoPhase4Wire, or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the grounded current-carrying return circuit of current-carrying conductors when PhaseWiringType.OnePhase3Wire, TwoPhase4Wire, or ThreePhase5Wire."/>
         </Member>
         <Member Name="LineToLine">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by two current-carrying conductors when PhaseWiringType.TwoPhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by two current-carrying conductors when PhaseWiringType.TwoPhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line1ToLine2">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by L1 and L2 current-carrying conductors when PhaseWiringType.TwoPhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by L1 and L2 current-carrying conductors when PhaseWiringType.TwoPhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line2ToLine3">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by L2 and L3 current-carrying conductors when PhaseWiringType.ThreePhase4Wire or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by L2 and L3 current-carrying conductors when PhaseWiringType.ThreePhase4Wire or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line3ToLine1">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by L3 and L1 current-carrying conductors when PhaseWiringType.ThreePhase4Wire or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by L3 and L1 current-carrying conductors when PhaseWiringType.ThreePhase4Wire or ThreePhase5Wire."/>
         </Member>
         <Member Name="LineToNeutral">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by a line and Neutral current-carrying conductor when PhaseWiringType.OnePhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by a line and Neutral current-carrying conductor when PhaseWiringType.OnePhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line1ToNeutral">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by L1 and Neutral current-carrying conductors when PhaseWiringType.OnePhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by L1 and Neutral current-carrying conductors when PhaseWiringType.OnePhase3Wire, TwoPhase4Wire, ThreePhase4Wire, or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line2ToNeutral">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by L2 and Neutral current-carrying conductors when PhaseWiringType.TwoPhase4Wire or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by L2 and Neutral current-carrying conductors when PhaseWiringType.TwoPhase4Wire or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line3ToNeutral">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuit formed by L3 and Neutral current-carrying conductors when PhaseWiringType.ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuit formed by L3 and Neutral current-carrying conductors when PhaseWiringType.ThreePhase5Wire."/>
         </Member>
          <Member Name="Line1ToNeutralAndL1L2">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits formed by L1, L2, and Neutral current-carrying conductors when PhaseWiringType.TwoPhase4Wire or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits formed by L1, L2, and Neutral current-carrying conductors when PhaseWiringType.TwoPhase4Wire or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line2ToNeutralAndL1L2">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits formed by L1, L2, and Neutral current-carrying conductors when PhaseWiringType.TwoPhase4Wire or ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits formed by L1, L2, and Neutral current-carrying conductors when PhaseWiringType.TwoPhase4Wire or ThreePhase5Wire."/>
         </Member>
         <Member Name="Line2ToNeutralAndL2L3">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits formed by L2, L3, and Neutral current-carrying conductors when PhaseWiringType.ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits formed by L2, L3, and Neutral current-carrying conductors when PhaseWiringType.ThreePhase5Wire."/>
         </Member>
         <Member Name="Line3ToNeutralAndL3L1">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits formed by L3, L1, and Neutral current-carrying conductors when PhaseWiringType.ThreePhase5Wire."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits formed by L3, L1, and Neutral current-carrying conductors when PhaseWiringType.ThreePhase5Wire."/>
         </Member>
         <Member Name="Total">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The circuits formed by all current-carrying conductors for any PhaseWiringType."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the circuits formed by all current-carrying conductors for any PhaseWiringType."/>
         </Member>
       </EnumType>
 

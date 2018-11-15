@@ -846,16 +846,15 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_9_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.Release" String="2018.3"/>      
-      <EntityType Name="Chassis" BaseType="Chassis.v1_8_0.Chassis">
+      <Annotation Term="Redfish.Release" String="2018.3"/>
 
+      <EntityType Name="Chassis" BaseType="Chassis.v1_8_0.Chassis">
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
           <Annotation Term="OData.LongDescription" String="This property shall be a reference to a resource of type SensorCollection that contains the sensors located in the Chassis and sub-components."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-
       </EntityType>
     </Schema>
 
