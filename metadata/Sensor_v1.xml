@@ -195,7 +195,7 @@
 
         <Property Name="Thresholds" Type="Sensor.v1_0_0.Thresholds">
           <Annotation Term="OData.Description" String="The set of thresholds defined for this sensor."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the set of thresholds that are used to derive a sensor's health and operational range."/>
         </Property>
 
         <Property Name="ReadingRangeMax" Type="Edm.Decimal">
@@ -244,7 +244,7 @@
       <ComplexType Name="Thresholds">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The set of thresholds defined for a sensor."/>
-        <Annotation Term="OData.LongDescription" String="The set of thresholds that are used to derive a sensor's health and operational range."/>
+        <Annotation Term="OData.LongDescription" String="This object shall contain the set of thresholds that are used to derive a sensor's health and operational range."/>
         <Property Name="UpperCaution" Type="Sensor.v1_0_0.Threshold">
           <Annotation Term="OData.Description" String="Above normal range."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range. The units shall be the same units as the Reading."/>
