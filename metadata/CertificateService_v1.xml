@@ -97,9 +97,9 @@
           <Annotation Term="OData.Description" String="The email address of the contact within the organization making the request."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the email address of the contact within the organization making the request as defined by the emailAddress attribute in RFC5280."/>
         </Parameter>
-        <Parameter Name="KeyPairAlgorithm" Type="Edm.String">
+        <Parameter Name="KeyPairAlgorithm" Type="CertificateService.v1_0_0.KeyPairAlgorithm">
           <Annotation Term="OData.Description" String="The algorithm used to generate the key pair."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be algorithm used to generate the key pair.  For RSA keys, the string shall be in the form 'RSA:Length', where 'Length' is the bit length of the key.  For Elliptic Curve keys, the string shall be in the form 'EC:Curve', where 'Curve' is the IANA assigned name of the elliptic curve.  If this parameter is not required by the service and not provided by the client, the service may use a predefined key pair for the request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be algorithm used to generate the key pair."/>
         </Parameter>
         <Parameter Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
@@ -178,6 +178,51 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
+
+      <EnumType Name="KeyPairAlgorithm">
+        <Annotation Term="OData.Description" String="The types of algorithms used to generate key pairs."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the types of algorithms used to generate key pairs."/>
+        <Member Name="RSA_2048Bit">
+          <Annotation Term="OData.Description" String="The key pair is generated using RSA with a key length of 2048 bits."/>
+          <Annotation Term="OData.LongDescription" String="This key pair shall be generated using RSA with a key length of 2048 bits as specified by RFC8230."/>
+        </Member>
+        <Member Name="RSA_3072Bit">
+          <Annotation Term="OData.Description" String="The key pair is generated using RSA with a key length of 3072 bits."/>
+          <Annotation Term="OData.LongDescription" String="This key pair shall be generated using RSA with a key length of 3072 bits as specified by RFC8230."/>
+        </Member>
+        <Member Name="RSA_4096Bit">
+          <Annotation Term="OData.Description" String="The key pair is generated using RSA with a key length of 4096 bits."/>
+          <Annotation Term="OData.LongDescription" String="This key pair shall be generated using RSA with a key length of 4096 bits as specified by RFC8230."/>
+        </Member>
+        <Member Name="EC_P256">
+          <Annotation Term="OData.Description" String="The key pair is generated using Elliptic Curve Digital Signature Algorithm (ECDSA) with the NIST P-256 curve."/>
+          <Annotation Term="OData.Description" String="This key pair shall be generated using Elliptic Curve Digital Signature Algorithm (ECDSA) with the NIST P-256 curve, also known as the secp256r1 curve, as specified by RFC8152."/>
+        </Member>
+        <Member Name="EC_P384">
+          <Annotation Term="OData.Description" String="The key pair is generated using Elliptic Curve Digital Signature Algorithm (ECDSA) with the NIST P-384 curve."/>
+          <Annotation Term="OData.Description" String="This key pair shall be generated using Elliptic Curve Digital Signature Algorithm (ECDSA) with the NIST P-384 curve, also known as the secp384r1 curve, as specified by RFC8152."/>
+        </Member>
+        <Member Name="EC_P521">
+          <Annotation Term="OData.Description" String="The key pair is generated using Elliptic Curve Digital Signature Algorithm (ECDSA) with the NIST P-521 curve."/>
+          <Annotation Term="OData.Description" String="This key pair shall be generated using Elliptic Curve Digital Signature Algorithm (ECDSA) with the NIST P-521 curve, also known as the secp521r1 curve, as specified by RFC8152."/>
+        </Member>
+        <Member Name="EC_X25519">
+          <Annotation Term="OData.Description" String="The key pair is generated using Elliptic Curve Diffie-Hellman (ECDH) with the X25519 curve."/>
+          <Annotation Term="OData.Description" String="This key pair shall be generated using Elliptic Curve Diffie-Hellman (ECDH) with the X25519 curve as specified by RFC8152."/>
+        </Member>
+        <Member Name="EC_X448">
+          <Annotation Term="OData.Description" String="The key pair is generated using Elliptic Curve Diffie-Hellman (ECDH) with the X448 curve."/>
+          <Annotation Term="OData.Description" String="This key pair shall be generated using Elliptic Curve Diffie-Hellman (ECDH) with the X448 curve as specified by RFC8152."/>
+        </Member>
+        <Member Name="EC_Ed25519">
+          <Annotation Term="OData.Description" String="The key pair is generated using Edwards-Curve Digital Signature Algorithm (EdDSA) with the Ed25519 curve."/>
+          <Annotation Term="OData.Description" String="This key pair shall be generated using Edwards-Curve Digital Signature Algorithm (EdDSA) with the Ed25519 curve as specified by RFC8152."/>
+        </Member>
+        <Member Name="EC_Ed448">
+          <Annotation Term="OData.Description" String="The key pair is generated using Edwards-Curve Digital Signature Algorithm (EdDSA) with the Ed448 curve."/>
+          <Annotation Term="OData.Description" String="This key pair shall be generated using Edwards-Curve Digital Signature Algorithm (EdDSA) with the Ed448 curve as specified by RFC8152."/>
+        </Member>
+      </EnumType>
 
       <EnumType Name="KeyUsage">
         <Annotation Term="OData.Description" String="The usages of a key contained within a certificate."/>
