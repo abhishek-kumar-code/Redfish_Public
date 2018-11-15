@@ -835,6 +835,7 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
 In cases where the processing of the Action may require extra time to complete, the service may respond with an HTTP Status code of [202](#status-202) with a location header in the response set to the URI of a Task Monitor.  Otherwise the response from the service after processing an Action may return a response with one of the following HTTP Status codes:
 
 * HTTP Status Code [200](#status-200) indicates the Action request was successfully processed, with the JSON message body as described in [Error Responses](#error-responses) and providing a message indicating success or any additional relevant messages.
+    * If the Action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should use the Success message defined in the Base Message Registry in the response body for the "code" property.
 * HTTP Status Code [204](#status-204) indicates the Action is successful and is returned without a message body.
 * In the case of an error, a valid HTTP status code in the range 400 or above indicating an error was detected and the Action was not processed.  In this case, the body of the response may contain a JSON object as described in [Error Responses](#error-responses) detailing the error or errors encountered.
 
@@ -842,6 +843,24 @@ Actions may have required parameters as defined in the [Resource actions section
 
 If an Action requested by the client will have no effect, such as performing a Reset of a ComputerSystem where the parameter "ResetType" is set to "On" and the ComputerSystem is already "On", the service should respond with an HTTP Status Code [200](#status-200) and return the NoOperation message defined in the Base Message Registry.
 
+Example successful Action response:
+~~~json
+{
+    "error": {
+        "code": "Base.1.0.Success",
+        "message": "Successfully Completed Request",
+        "@Message.ExtendedInfo": [
+            {
+                "@odata.type" : "#Message.v1_0_0.Message",
+                "MessageId": "Base.1.0.Success",
+                "Message": "Successfully Completed Request",
+                "Severity": "OK",
+                "Resolution": "None"
+            }
+        ]
+    }
+}
+~~~
 
 #### Operation apply time
 
@@ -1863,6 +1882,42 @@ The EntityType contains the [property](#resource-properties) and [reference prop
 All resources shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
 
+#### Resource capabilities
+
+The capabilities of a resource are expressed using the `Capabilities.InsertRestrictions`, `Capabilities.UpdateRestrictions`, and `Capabilities.DeleteRestrictions` terms.
+* `Capabilities.InsertRestrictions` is used to show whether or not a client is able to perform a POST on the resource.
+* `Capabilities.UpdateRestrictions` is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
+* `Capabilities.DeleteRestrictions` is used to show whether or not a client is able to perform a DELETE on the resource.
+* A service may only implement a subset of the capabilities that are set to true.
+
+~~~xml
+  <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+
+    <!-- Other definitions for the EntityType go here -->
+
+    <Annotation Term="Capabilities.InsertRestrictions">
+      <Record>
+        <PropertyValue Property="Insertable" Bool="false"/>
+      </Record>
+    </Annotation>
+    <Annotation Term="Capabilities.UpdateRestrictions">
+      <Record>
+        <PropertyValue Property="Updatable" Bool="true"/>
+        <Annotation Term="OData.Description" String="Manager Accounts can be updated to change the password and other writable properties."/>
+      </Record>
+    </Annotation>
+    <Annotation Term="Capabilities.DeleteRestrictions">
+      <Record>
+        <PropertyValue Property="Deletable" Bool="true"/>
+        <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
+      </Record>
+    </Annotation>
+  </EntityType>
+~~~
+
+In the above example, the `Capabilities.InsertRestrictions` term has the `Insertable` property set to false, meaning a client is not able to perform a POST on the resource.  It also uses the `Capabilities.UpdateRestrictions` term with the `Updatable` property set to true, meaning a client is able to perform a PATCH or PUT on the resource, assuming the client has the right privilege to perform these operations.  It also uses the `Capabilities.DeleteRestrictions` term with the `Deletable` property set to true, meaning a client is able to perform a DELETE on the resource, assuming the client has the right privilege to perform this operation.
+
+
 #### Resource URI pattern definitions
 
 The URI patterns allowed for a given Redfish Resource are expressed using the `Redfish.Uris` annotation within the `EntityType` element.
@@ -1909,11 +1964,15 @@ Properties that must have a non-nullable value include the [nullable attribute](
 
 All properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
-Properties that are read-only are annotated with the [Permissions annotation](#read-only-properties) with a value of `ODataPermission/Read`.
+Properties that are read-only are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/Read`.
+
+Properties that are writable are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/ReadWrite`.
+* A service may implement a writable property as read-only.
 
 Properties that are required to be implemented by all services are annotated with the [required annotation](#required-properties).
 
-Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure)
+Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure).
+
 
 ##### Property types
 
@@ -2009,12 +2068,18 @@ Properties may include the Nullable attribute with a value of false to specify t
   <Property Name="Property1" Type="Edm.String" Nullable="false">
 ~~~
 
-##### Read-only properties
+##### Permissions of properties
 
 The Permissions annotation term can be applied to a property with the value of `OData.Permission/Read` in order to specify that it is read-only.
 
 ~~~xml
   <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+~~~
+
+The Permissions annotation term can be applied to a property with the value of `OData.Permission/ReadWrite` in order to specify that it is writable.
+
+~~~xml
+  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
 ~~~
 
 The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
@@ -2913,7 +2978,9 @@ Note that Redfish sessions "time-out" as opposed to having a token expiration ti
 
 A Redfish session is terminated when the client logs out.  This is accomplished by performing a DELETE to the Session resource identified by the hyperlink returned in the Location header when the session was created, or the SessionId returned in the response data.
 
-The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users sessions from a different session.
+The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users' sessions from a different session.
+
+When a session is terminated, the service shall not affect independent connections established originally by this session for other purposes, such as connections for [Server-Sent Events](#server-sent-events) or transferring an image for the Update Service.
 
 
 #### AccountService
