@@ -7,27 +7,27 @@
   "Name": "Liquid Inlet Supply Pressure",
   "Oem": {},
   "PhysicalContext": "LiquidInlet",
-  "Reading": 45,
-  "ReadingRangeMax": 100,
+  "Reading": 310264,
+  "ReadingRangeMax": 700000,
   "ReadingRangeMin": 0,
   "ReadingType": "Pressure",
-  "ReadingUnits": "psi",
+  "ReadingUnits": "Pa",
   "Status": {
     "Health": "OK",
     "State": "Enabled"
   },
   "Thresholds": {
     "LowerCaution": {
-      "Reading": 15
+      "Reading": 100000
     },
     "LowerCritical": {
-      "Reading": 5
+      "Reading": 35000
     },
     "UpperCaution": {
-      "Reading": 60
+      "Reading": 415000
     },
     "UpperCritical": {
-      "Reading": 80
+      "Reading": 550000
     }
   }
 }
