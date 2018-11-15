@@ -1,12 +1,12 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF in cooperation with the Storage Networking Industry Association (SNIA). All rights reserved.",
-    "@odata.type": "#MessageRegistry.1.2.0.MessageRegistry",
-    "Id": "TaskEvents.1.0.0",
+    "@odata.type": "#MessageRegistry.v1_2_0.MessageRegistry",
+    "Id": "TaskEvent.1.0.1",
     "Name": "Task Event Message Registry",
     "Language": "en",
     "Description": "This registry defines the messages for task related events.",
     "RegistryPrefix": "TaskEvent",
-    "RegistryVersion": "1.0.0",
+    "RegistryVersion": "1.0.1",
     "OwningEntity": "DMTF",
     "Messages": {
         "TaskStarted": {
