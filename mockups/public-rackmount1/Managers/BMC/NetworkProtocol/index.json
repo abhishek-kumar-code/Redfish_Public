@@ -1,5 +1,4 @@
 {
-    "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#ManagerNetworkProtocol.v1_4_0.ManagerNetworkProtocol",
     "Id": "NetworkProtocol",
     "Name": "Manager Network Protocol",

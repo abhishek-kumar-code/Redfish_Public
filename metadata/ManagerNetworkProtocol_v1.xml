@@ -291,7 +291,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_3_0.ManagerNetworkProtocol"/>
 
       <ComplexType Name="HTTPSProtocol" BaseType="ManagerNetworkProtocol.v1_0_0.HTTPSProtocol">

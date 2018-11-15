@@ -1,5 +1,4 @@
 {
-    "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#CertificateCollection.CertificateCollection",
     "Name": "Certificate Collection",
     "Members@odata.count": 1,

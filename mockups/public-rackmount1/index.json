@@ -1,5 +1,4 @@
 {
-    "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#ServiceRoot.v1_5_0.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",

@@ -1,5 +1,4 @@
 {
-    "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#ManagerAccount.v1_2_0.ManagerAccount",
     "Id": "1",
     "Name": "User Account",

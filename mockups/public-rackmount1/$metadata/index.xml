@@ -21,18 +21,18 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Certificate_v1.xml">
     <edmx:Include Namespace="Certificate"/>
-    <edmx:Include Namespace="Certificate.v0_9_0"/>
+    <edmx:Include Namespace="Certificate.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CertificateCollection_v1.xml">
     <edmx:Include Namespace="CertificateCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CertificateLocations_v1.xml">
     <edmx:Include Namespace="CertificateLocations"/>
-    <edmx:Include Namespace="CertificateLocations.v0_9_0"/>
+    <edmx:Include Namespace="CertificateLocations.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CertificateService_v1.xml">
     <edmx:Include Namespace="CertificateService"/>
-    <edmx:Include Namespace="CertificateService.v0_9_0"/>
+    <edmx:Include Namespace="CertificateService.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>

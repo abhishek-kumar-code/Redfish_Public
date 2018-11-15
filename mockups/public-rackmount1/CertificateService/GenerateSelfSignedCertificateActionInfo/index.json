@@ -1,5 +1,4 @@
 {
-    "@Redfish.ReleaseStatus": "WorkInProgress",
     "@odata.type": "#ActionInfo.v1_0_3.ActionInfo",
     "Id": "GenerateSelfSignedCertificateActionInfo",
     "Name": "Generate Self Signed Certificate Action Info",

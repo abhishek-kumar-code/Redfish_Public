@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  CertificateService  v0.9.0-->
+<!--# Redfish Schema:  CertificateService  v1.0.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -37,7 +37,6 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CertificateService">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
 
       <EntityType Name="CertificateService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The CertificateService schema defines a Certificate Service which represents the actions available to manage certificates and links to where certificates are installed."/>
@@ -65,7 +64,7 @@
       </EntityType>
 
       <Action Name="GenerateCSR" IsBound="true">
-        <Parameter Name="CertificateService" Type="CertificateService.v0_9_0.Actions"/>
+        <Parameter Name="CertificateService" Type="CertificateService.v1_0_0.Actions"/>
         <Parameter Name="CommonName" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The fully qualified domain name of the component that is being secured."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the fully qualified domain name of the component that is being secured as defined by RFC5280."/>
@@ -106,7 +105,7 @@
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate Collection where the certificate will be installed once the CA has signed the certificate."/>
         </Parameter>
-        <Parameter Name="KeyUsage" Type="Collection(CertificateService.v0_9_0.KeyUsage)">
+        <Parameter Name="KeyUsage" Type="Collection(CertificateService.v1_0_0.KeyUsage)">
           <Annotation Term="OData.Description" String="The usage of the key contained in the certificate."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the usage of the key contained in the certificate.  If not provided by the client, the service may determine the appropriate key usage settings in the certificate signing request."/>
         </Parameter>
@@ -126,13 +125,13 @@
           <Annotation Term="OData.Description" String="The distinguished name qualifier of the certificate."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the distinguished name qualifier of the certificate as defined by RFC5280."/>
         </Parameter>
-        <ReturnType Type="CertificateService.v0_9_0.GenerateCSRResponse" Nullable="false"/>
+        <ReturnType Type="CertificateService.v1_0_0.GenerateCSRResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to perform a certificate signing request."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a certificate signing request.  The response shall contain a signing request that is used to be signed by a certificate authority (CA).  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
       </Action>
 
       <Action Name="GenerateSelfSignedCertificate" IsBound="true">
-        <Parameter Name="CertificateService" Type="CertificateService.v0_9_0.Actions"/>
+        <Parameter Name="CertificateService" Type="CertificateService.v1_0_0.Actions"/>
         <Parameter Name="CommonName" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The fully qualified domain name of the component that is being secured."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the fully qualified domain name of the component that is being secured as defined by RFC5280."/>
@@ -173,7 +172,7 @@
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate Collection where the certificate will be installed."/>
         </Parameter>
-        <Parameter Name="KeyUsage" Type="Collection(CertificateService.v0_9_0.KeyUsage)">
+        <Parameter Name="KeyUsage" Type="Collection(CertificateService.v1_0_0.KeyUsage)">
           <Annotation Term="OData.Description" String="The usage of the key contained in the certificate."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the usage of the key contained in the certificate.  If not provided by the client, the service may determine the appropriate key usage settings in the certificate signing request."/>
         </Parameter>
@@ -193,13 +192,13 @@
           <Annotation Term="OData.Description" String="The distinguished name qualifier of the certificate."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the distinguished name qualifier of the certificate as defined by RFC5280."/>
         </Parameter>
-        <ReturnType Type="CertificateService.v0_9_0.GenerateSelfSignedCertificateResponse" Nullable="false"/>
+        <ReturnType Type="CertificateService.v1_0_0.GenerateSelfSignedCertificateResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to create a self signed certificate."/>
         <Annotation Term="OData.LongDescription" String="This action shall create a self signed certificate.  The response shall contain a certificate that has been signed by the service.  The service should retain the private key used for the generation of this request for when the certificate is installed.  The private key should not be part of the response."/>
       </Action>
 
       <Action Name="ReplaceCertificate" IsBound="true">
-        <Parameter Name="CertificateService" Type="CertificateService.v0_9_0.Actions"/>
+        <Parameter Name="CertificateService" Type="CertificateService.v1_0_0.Actions"/>
         <Parameter Name="CertificateString" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The string for the certificate."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the string of the certificate, and the format shall follow the requirements specified by the value of the CertificateType property.  If the certificate contains any private keys, they shall be removed from the string on GET requests.  If the private key for the certificate is not known by the service and is needed to use the certificate, the client shall provide the private key as part of the string in the POST request."/>
@@ -212,18 +211,18 @@
           <Annotation Term="OData.Description" String="A link to the certificate that is being replaced."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate that is being replaced."/>
         </Parameter>
-        <ReturnType Type="CertificateService.v0_9_0.ReplaceCertificate" Nullable="false"/>
+        <ReturnType Type="CertificateService.v1_0_0.ReplaceCertificate" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to replace an existing certificate."/>
         <Annotation Term="OData.LongDescription" String="This action shall replace an existing certificate."/>
       </Action>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CertificateService.v0_9_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CertificateService.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
 
       <EntityType Name="CertificateService" BaseType="CertificateService.CertificateService">
-        <Property Name="Actions" Type="CertificateService.v0_9_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="CertificateService.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -239,7 +238,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="CertificateService.v0_9_0.OemActions" Nullable="false">
+        <Property Name="Oem" Type="CertificateService.v1_0_0.OemActions" Nullable="false">
           <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
         </Property>

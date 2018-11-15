@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Certificate  v0.9.0-->
+<!--# Redfish Schema:  Certificate  v1.0.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -28,7 +28,6 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Certificate">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
 
       <EntityType Name="Certificate" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Certificate resource describes a certificate used to prove the identify of a component, account, or service."/>
@@ -70,9 +69,9 @@
       </EnumType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Certificate.v0_9_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Certificate.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
 
       <EntityType Name="Certificate" BaseType="Certificate.Certificate">
         <Property Name="CertificateString" Type="Edm.String">
@@ -87,11 +86,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the format type for the certificate."/>
           <Annotation Term="Redfish.RequiredOnCreate"/>
         </Property>
-        <Property Name="Issuer" Type="Certificate.v0_9_0.Identifier" Nullable="false">
+        <Property Name="Issuer" Type="Certificate.v1_0_0.Identifier" Nullable="false">
           <Annotation Term="OData.Description" String="The issuer of the certificate."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an object containing information about the issuer of the certificate."/>
         </Property>
-        <Property Name="Subject" Type="Certificate.v0_9_0.Identifier" Nullable="false">
+        <Property Name="Subject" Type="Certificate.v1_0_0.Identifier" Nullable="false">
           <Annotation Term="OData.Description" String="The subject of the certificate."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an object containing information about the subject of the certificate."/>
         </Property>
@@ -106,7 +105,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the date on which the certificate validity period ends."/>
         </Property>
 
-        <Property Name="Actions" Type="Certificate.v0_9_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Certificate.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -157,7 +156,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="Certificate.v0_9_0.OemActions" Nullable="false">
+        <Property Name="Oem" Type="Certificate.v1_0_0.OemActions" Nullable="false">
           <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
         </Property>
