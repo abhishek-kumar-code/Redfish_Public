@@ -345,7 +345,7 @@
         <Member Name="HTTPS">
           <Annotation Term="OData.Description" String="HTTP Secure protocol."/>
         </Member>
-        <Member Name="NSF">
+        <Member Name="NFS">
           <Annotation Term="OData.Description" String="Network File System protocol."/>
         </Member>
         <Member Name="SCP">
@@ -357,9 +357,6 @@
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="A protocol defined by the manufacturer."/>
         </Member>
-        <Member Name="NFS">
-          <Annotation Term="OData.Description" String="Network File System protocol."/>
-       </Member>
       </EnumType>
 
       <EnumType Name="TransferMethod">
