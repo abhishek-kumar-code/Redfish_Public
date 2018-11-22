@@ -344,18 +344,33 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
-      <Annotation Term="OData.Description" String="This version was created to add Username and Password parameters to SimpleUpdate."/>
+      <Annotation Term="OData.Description" String="This version was created to add Username and Password parameters to SimpleUpdate. It was also created to add HttpPushUriOptions settings."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_1.UpdateService">
-        <Property Name="HttpPushUriApplyTime" Type="UpdateService.v1_4_0.HttpPushUriApplyTime" Nullable="false">
-          <Annotation Term="OData.Description" String="This property contains settings for when software is to be applied when provided via HttpPushUri."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain settings for when software is to be applied when provided via HttpPushUri."/>
+        <Property Name="HttpPushUriOptions" Type="UpdateService.v1_4_0.HttpPushUriOptions" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains options for software update via HttpPushUri."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain options and requirements of the service for software update via HttpPushUri."/>
         </Property>
+        <Property Name="HttpPushUriOptionsBusy" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This represents if the properties of HttpPushUriOptions are reserved by any client."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a boolean that determines when the properties within the HttpPushUriOptions object are being used by a client for software updates. A client should set this property to True when it is using any properties in HttpPushUriOptions for software update, and should set it to False when it is no longer using HttpPushUriOptions properties for updates. The property can provide multiple clients a way to negotiate ownership of HttpPushUriOptions. This will help clients to know if a firmware update using HttpPushUriOptions is used by another client. This property has no functional requirements for the Service."/>
+        </Property>        
       </EntityType>
+
+      <ComplexType Name="HttpPushUriOptions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object contains settings for software update via HttpPushUri."/>
+        <Annotation Term="OData.LongDescription" String="The properties in this object shall contain settings and requirements of the service for software update via HttpPushUri."/>
+        <Property Name="HttpPushUriApplyTime" Type="UpdateService.v1_4_0.HttpPushUriApplyTime" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains settings for when firmware is to be applied when provided via HttpPushUri."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain settings for when firmware is to be applied when provided via HttpPushUri."/>
+        </Property>
+      </ComplexType>
 
       <ComplexType Name="HttpPushUriApplyTime">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object contains settings for when software is to be applied when provided via HttpPushUri."/>
-        <Annotation Term="OData.LongDescription" String="The properties in this property shall contain settings for when software is to be applied when provided via HttpPushUri."/>
+        <Annotation Term="OData.LongDescription" String="The properties in this object shall contain settings for when software is to be applied when provided via HttpPushUri."/>
         <Property Name="ApplyTime" Type="UpdateService.v1_4_0.ApplyTime" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property indicates when the software  update invoked via HttpPushUri should be applied."/>
@@ -372,11 +387,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the end of the maintenance window as the number of seconds after the time specified by the HttpPushUriMaintenanceWindowStartTime property.  This property shall be required if the HttpPushUriApplyTime property is specified as AtMaintenanceWindowStart or InMaintenanceWindowOnReset."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="s"/>
-        </Property>
-        <Property Name="ApplyTimeBusy" Type="Edm.Boolean">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This represents if the properties within the HttpPushUriApplyTime property are reserved by any client."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be a boolean that determines when the properties within the HttpPushUriApplyTime property are being used by a client for software updates. A client should set this property to True when it is using HttpPushUriApplyTime for firmware update, and should set it to False when it is no longer using HttpPushUriApplyTime for updates. The property can provide multiple clients a way to negotiate ownership of HttpPushUriApplyTime. This will help clients to know if a firmware update using HttpPushUriApplyTime is used by another client. This property has no functional requirements for the Service."/>
         </Property>
       </ComplexType>
 
