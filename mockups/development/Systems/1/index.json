@@ -22,6 +22,7 @@
     },
     "IndicatorLED": "Off",
     "PowerState": "On",
+    "PowerRestorePolicy": "AlwaysOn",
     "Boot": {
         "BootSourceOverrideEnabled": "Once",
         "BootSourceOverrideMode": "UEFI",
