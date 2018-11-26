@@ -1137,6 +1137,7 @@
           <Annotation Term="OData.Description" String="The desired power state of the system when utility power (mains) is restored after a power loss."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the desired PowerState of the system when utility (mains) power is applied to the system.  A value of 'LastState' shall return the system to the PowerState it was in when utility power was lost."/>
         </Property>
+      </EntityType>
 
       <ComplexType Name="Boot" BaseType="ComputerSystem.v1_5_0.Boot">
         <Property Name="AliasBootOrder" Type="Collection(ComputerSystem.BootSource)">
