@@ -30,6 +30,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CollectionCapabilities.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
 
       <ComplexType Name="CollectionCapabilities" BaseType="CollectionCapabilities.CollectionCapabilities">
         <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
@@ -120,6 +121,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CollectionCapabilities.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <Annotation Term="OData.Description" String="This version was created to add ComputerSystemConstrainedComposition to the UseCase enum."/>
       <ComplexType Name="CollectionCapabilities" BaseType="CollectionCapabilities.v1_0_1.CollectionCapabilities"/>
     </Schema>

@@ -66,6 +66,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2016.3"/>
 
       <EntityType Name="NetworkPort" BaseType="NetworkPort.NetworkPort">
         <Annotation Term="OData.Description" String="A Network Port represents a discrete physical port capable of connecting to a network."/>
@@ -269,6 +270,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_0_1.NetworkPort">
         <Property Name="Actions" Type="NetworkPort.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -307,6 +309,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkPort.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <Annotation Term="OData.Description" String="This version was created to add FibreChannel properties."/>
       <EntityType Name="NetworkPort" BaseType="NetworkPort.v1_1_1.NetworkPort">
         <Property Name="FCPortConnectionType" Type="NetworkPort.v1_2_0.PortConnectionType">

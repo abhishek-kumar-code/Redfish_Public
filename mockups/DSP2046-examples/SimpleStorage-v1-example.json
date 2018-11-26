@@ -27,7 +27,7 @@
             "CapacityBytes": 4000000000000,
             "Status": {
                 "State": "Enabled",
-                "Health": "Degraded"
+                "Health": "Warning"
             }
         },
         {
