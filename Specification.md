@@ -465,7 +465,9 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
 
-All other Redfish URIs supported by the service shall match the URI patterns described by the [Resource URI pattern definitions section](#resource-uri-pattern-definitions), with the exception to supplemental resources referenced by the "@Redfish.Settings", "@Redfish.ActionInfo", and "@Redfish.CollectionCapabilities" payload annotations.  The URIs for these supplemental resources shall be treated as opaque by the client.
+All other Redfish URIs supported by the service shall match the URI patterns described by the [Resource URI pattern definitions section](#resource-uri-pattern-definitions), with the exception to supplemental resources referenced by the "@Redfish.Settings", "@Redfish.ActionInfo", and "@Redfish.CollectionCapabilities" payload annotations.  The URIs for these supplemental resources shall be treated as opaque by the client.  
+
+All URIs supported by a Redfish Service are considered reserved for future standardization by DMTF and DMTF Alliance Parterns, with the exception to OEM extension URIs which shall conform to the requirements in section [URIs for OEM resources](#uris-for-oem-resources)
 
 All relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g., //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g., /redfish/v1/Systems).
 
@@ -2282,7 +2284,7 @@ The OEM identifier portion of the name will typically identify the company or or
 
 ##### URIs for OEM resources
 
-Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources should be in the form of:
+Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources shall be in the form of:
 
 ` *BaseUri*/Oem/*OemName*/*ResourceName*`
 
