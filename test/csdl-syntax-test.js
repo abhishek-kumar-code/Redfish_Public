@@ -401,6 +401,12 @@ function checkPropertiesPascalCased(err, csdl) {
   if(err) {
     return;
   }
+
+  if(this.context.name.includes('RedfishError_v1.xml')) {
+    // Ignore the RedfishErrors file; the properties are dictated by the OData spec
+    return;
+  }
+
   let properties = CSDL.search(csdl, 'Property');
   for(let i = 0; i < properties.length; i++) {
     if(properties[i].Name.match(PascalRegex) === null && NonPascalCasePropertyWhiteList.indexOf(properties[i].Name) === -1) {
