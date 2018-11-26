@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chassis.v1_9_0.Chassis",
+    "@odata.type": "#Chassis.v1_8_1.Chassis",
     "Id": "ResourceTray2",
     "Name": "NVMe Resource Tray",
     "ChassisType": "Module",
@@ -24,18 +24,18 @@
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/ExpansionEnclosure"
         },
-        "ResourcePools": [
+        "ResourceBlocks": [
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive1"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray2-Drive1"
             },
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive2"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray2-Drive2"
             },
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive3"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray2-Drive3"
             },
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray2-Drive4"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray2-Drive4"
             }
         ]
     },

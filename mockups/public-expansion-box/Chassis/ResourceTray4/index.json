@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chassis.v1_9_0.Chassis",
+    "@odata.type": "#Chassis.v1_8_1.Chassis",
     "Id": "ResourceTray4",
     "Name": "Networking Resource Tray",
     "ChassisType": "Module",
@@ -24,18 +24,18 @@
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/ExpansionEnclosure"
         },
-        "ResourcePools": [
+        "ResourceBlocks": [
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray4-NIC1"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray4-NIC1"
             },
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray4-NIC2"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray4-NIC2"
             },
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray4-NIC3"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray4-NIC3"
             },
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray4-NIC4"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray4-NIC4"
             }
         ]
     },

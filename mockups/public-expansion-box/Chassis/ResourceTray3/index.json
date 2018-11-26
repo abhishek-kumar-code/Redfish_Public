@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chassis.v1_9_0.Chassis",
+    "@odata.type": "#Chassis.v1_8_1.Chassis",
     "Id": "ResourceTray3",
     "Name": "Memory Resource Tray",
     "ChassisType": "Module",
@@ -24,9 +24,9 @@
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/ExpansionEnclosure"
         },
-        "ResourcePools": [
+        "ResourceBlocks": [
             {
-                "@odata.id": "/redfish/v1/ResourcePools/Tray3-Memory"
+                "@odata.id": "/redfish/v1/ResourceBlocks/Tray3-Memory"
             }
         ]
     },
