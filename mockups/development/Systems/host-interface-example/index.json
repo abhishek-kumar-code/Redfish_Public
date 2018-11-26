@@ -1,0 +1,30 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example",
+    "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
+    "Id": "host-interface-example",
+    "Name": "Example Host Interface System",
+    "SystemType": "Physical",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "IndicatorLED": "Off",
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Systems/host-interface-example/EthernetInterfaces"
+    },
+    "Links": {
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/1"
+            }
+        ],
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/9"
+            }
+        ]
+    }
+}

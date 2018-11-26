@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ResourceBlock.v1_2_0.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_3_0.ResourceBlock",
     "Id": "DriveBlock5",
     "Name": "Drive Block 5",
     "ResourceBlockType": [
@@ -19,9 +19,9 @@
     },
     "Processors": [],
     "Memory": [],
-    "Storage": [
+    "Drives": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Storage/Block5NVMe"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Drives/Block5Slot2"
         }
     ],
     "Links": {

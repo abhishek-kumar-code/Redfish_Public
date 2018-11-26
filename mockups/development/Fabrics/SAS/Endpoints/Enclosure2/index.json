@@ -9,7 +9,7 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "EntityType": "Expander",
+            "EntityType": "StorageExpander",
             "EntityRole": null,
             "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"

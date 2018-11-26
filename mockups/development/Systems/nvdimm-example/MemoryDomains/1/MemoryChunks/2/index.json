@@ -1,0 +1,17 @@
+{
+    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",    
+    "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/1/MemoryChunks/2",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
+    "Name": "Memory Chunk6 - Volatile",
+    "Id": "6",
+    "MemoryChunkSizeMiB": 8192,
+    "AddressRangeType": "Volatile",
+    "IsMirrorEnabled": false,
+    "IsSpare": false,
+    "InterleaveSets": [
+        {"Memory" :{
+            "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/5"
+        }}
+    ],
+    "Oem": {}
+}

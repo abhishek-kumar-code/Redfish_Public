@@ -84,6 +84,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Assembly.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.3"/>
 
       <EntityType Name="Assembly" BaseType="Assembly.Assembly">
         <NavigationProperty Name="Assemblies" Type="Collection(Assembly.v1_0_0.AssemblyData)" ContainsTarget="true">
@@ -208,6 +209,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Assembly.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.1"/>
       <EntityType Name="Assembly" BaseType="Assembly.v1_0_0.Assembly"/>
 
       <EntityType Name="AssemblyData" BaseType="Assembly.v1_0_0.AssemblyData">
@@ -226,6 +228,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Assembly.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
       <Annotation Term="OData.Description" String="This version was created to add SerialNumber and PhysicalContext properties."/>
       <EntityType Name="Assembly" BaseType="Assembly.v1_1_1.Assembly"/>
 

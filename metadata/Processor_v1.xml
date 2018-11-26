@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Processor  v1.3.1-->
+<!--# Redfish Schema:  Processor  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -77,6 +77,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="1.0"/>
 
       <EntityType Name="Processor" BaseType="Processor.Processor">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System."/>
@@ -192,9 +193,25 @@
         </Member>
         <Member Name="Core">
           <Annotation Term="OData.Description" String="A Core in a Processor."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="Thread">
           <Annotation Term="OData.Description" String="A Thread in a Processor."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="An OEM-defined Processing Unit."/>
@@ -219,6 +236,18 @@
             <Record>
               <PropertyValue Property="Member" String="MIPS"/>
               <Annotation Term="OData.Description" String="MIPS."/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Power"/>
+              <Annotation Term="OData.Description" String="Power."/>
+              <Annotation Term="Redfish.Revisions">
+                <Collection>
+                  <Record>
+                    <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                    <PropertyValue Property="Version" String="v1_4_0"/>
+                  </Record>
+                </Collection>
+              </Annotation>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="OEM"/>
@@ -260,6 +289,18 @@
               <Annotation Term="OData.Description" String="MIPS 64-bit."/>
             </Record>
             <Record>
+              <PropertyValue Property="Member" String="PowerISA"/>
+              <Annotation Term="OData.Description" String="PowerISA-64 or PowerISA-32."/>
+              <Annotation Term="Redfish.Revisions">
+                <Collection>
+                  <Record>
+                    <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                    <PropertyValue Property="Version" String="v1_4_0"/>
+                  </Record>
+                </Collection>
+              </Annotation>
+            </Record>
+            <Record>
               <PropertyValue Property="Member" String="OEM"/>
               <Annotation Term="OData.Description" String="OEM-defined."/>
             </Record>
@@ -293,8 +334,15 @@
       <EntityType Name="Processor" BaseType="Processor.v1_0_4.Processor"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_0_6">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Processor" BaseType="Processor.v1_0_5.Processor"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.1"/>
       <EntityType Name="Processor" BaseType="Processor.v1_0_4.Processor">
         <Property Name="Links" Type="Processor.v1_1_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
@@ -340,8 +388,15 @@
       <EntityType Name="Processor" BaseType="Processor.v1_1_0.Processor"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Processor" BaseType="Processor.v1_1_1.Processor"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2017.3"/>
       <EntityType Name="Processor" BaseType="Processor.v1_1_0.Processor">
         <Property Name="Location" Type="Resource.Location" Nullable="false">
           <Annotation Term="OData.Description" String="The Location of the processor."/>
@@ -362,8 +417,15 @@
       <EntityType Name="Processor" BaseType="Processor.v1_2_0.Processor"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_2_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Processor" BaseType="Processor.v1_2_1.Processor"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.1"/>
       <EntityType Name="Processor" BaseType="Processor.v1_2_0.Processor">
         <NavigationProperty Name="SubProcessors" Type="ProcessorCollection.ProcessorCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -378,6 +440,32 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to add Units annotations on the MaxSpeedMHz property.  It was also created to force the regeneration of JSON Schema so that OData properties are marked as required, and integer properties are marked as integer rather than number."/>
       <EntityType Name="Processor" BaseType="Processor.v1_3_0.Processor"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_3_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <EntityType Name="Processor" BaseType="Processor.v1_3_1.Processor"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
+      <Annotation Term="OData.Description" String="This version was created to add TDPWatts and MaxTDPWatts.  It was also created to add Power architecture to ProcessorArchitecture and PowerISA to InstructionSet."/>
+      <EntityType Name="Processor" BaseType="Processor.v1_3_2.Processor">
+        <Property Name="TDPWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The nominal Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the nominal Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+        <Property Name="MaxTDPWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum Thermal Design Power (TDP) in watts."/>
+          <Annotation Term="Measures.Unit" String="W"/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>

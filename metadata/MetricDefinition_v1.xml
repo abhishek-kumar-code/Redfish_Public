@@ -60,6 +60,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricDefinition.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.2"/>
 
       <EnumType Name="MetricType">
         <Annotation Term="OData.Description" String="Specifies the type of metric provided.  The property provides information to the client on how the metric can be handled."/>
