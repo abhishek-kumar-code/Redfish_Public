@@ -6,7 +6,7 @@
     "definitions": {
         "RedfishError": {
             "additionalProperties": false,
-            "description": "Contains an error payload a Redfish Service.",
+            "description": "Contains an error payload from a Redfish Service.",
             "longDescription": "This type, as described by the Redfish Specification, shall contain an error payload from a Redfish Service.",
             "properties": {
                 "error": {
