@@ -215,7 +215,7 @@ The following describes the SMBIOS Management Controller Host Interface (Type 42
 
 ### Table-2: Interface specific data (for Interface Type 40h)
 
-Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  This table defines the Interface Specific data for Interface Type 40h.  There are three types of Device Descriptors defined (see Table-3); however, only one may be used in specific Type 42 table.
+Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  This table defines the Interface Specific data for Interface Type 40h.  There are five types of Device Descriptors defined (see Table-3); however, only one may be used in specific Type 42 table.
 
 | Offset | Name               | Length    | Value  | Description |
 | ---    | ---                | ---       | ---    | ---         |
