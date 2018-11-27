@@ -2,18 +2,30 @@
     "@Redfish.Copyright":"Copyright 2014-2017 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
     "@odata.id": "/redfish/v1/Managers/1/VirtualMedia/CD1",
-    "@odata.type": "#VirtualMedia.v1_2_0.VirtualMedia",
+    "@odata.type": "#VirtualMedia.v1_3_0.VirtualMedia",
     "Id": "CD1",
     "Name": "Virtual CD",
     "MediaTypes": [
         "CD",
         "DVD"
     ],
-    "Image": "irc://<only add this if http path someserver/mymedia-puttable.iso>",
+    "Image": "smb://myserver/mymedia-read-only.iso",
     "ImageName": "mymedia-read-only.iso",
-    "ConnectedVia": "Applet",
+    "ConnectedVia": "URI",
     "Inserted": true,
-    "WriteProtected": false,
+    "WriteProtected": true,
+    "UserName" : "WORKGROUP\\admin",
+    "Password" : null,
+    "TransferProtocolType": "CIFS",
+    "TransferProtocolType@Redfish.AllowableValues": [
+      "HTTP",
+      "HTTPS",
+      "CIFS",
+      "NFS",
+      "FTP",
+      "SFTP"
+    ],
+    "TransferMethod" : "Stream",
     "Actions": {
         "#VirtualMedia.InsertMedia": {
             "target": "/redfish/v1/Managers/1/VirtualMedia/CD1/Actions/VirtualMedia.InsertMedia",
