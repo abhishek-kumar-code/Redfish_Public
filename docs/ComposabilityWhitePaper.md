@@ -956,9 +956,14 @@ The above Client Request Example shows a composition request by the client being
 In the above Service Response Example, the service responded with a successful 201 response, and indicates that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
 
-#### Update a Composed Resource
+#### Modify a Composed Resource
 
-If the Redfish service supports updating an existing composition, the client can update an already created composition through PUT/PATCH.  This can be done by updating the `ResourceBlocks` array found in the composed resource.  When using PATCH, the same array semantics apply as described in the Redfish Specification.
+If the Redfish service supports updating an existing composition, the client can do so by either using PUT/PATCH on the composed resource, or by using actions on the composed resource.
+
+
+##### PUT/PATCH method for modifying
+
+The PUT/PATCH method can be done by updating the `ResourceBlocks` array found in the composed resource.  When using PATCH, the same array semantics apply as described in the Redfish Specification.
 
 Client Request Example:
 ```http
@@ -978,6 +983,62 @@ OData-Version: 4.0
 ```
 
 The above example will preserve the existing Resource Blocks in the composed resource for array elements 0 and 1, and it will add a the `NetworkBlock8` Resource Block to array element 2.
+
+
+##### Actions for modifying
+
+Composed resources that support using actions for modification will have them advertised in the GET response for the resource.
+
+Sample ComputerSystem with Modification Actions
+```json
+{
+    "@odata.id": "/redfish/v1/Systems/ComposedSystem",
+    "Id": "ComposedSystem",
+    "Name": "Sample Composed System",
+    "SystemType": "Composed",
+    "Links": {
+        "ResourceBlocks": [
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4"
+            }
+        ]
+    },
+    "Actions": {
+        "#ComputerSystem.AddResourceBlock": {
+            "target": "/redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.AddResourceBlock"
+        },
+        "#ComputerSystem.RemoveResourceBlock": {
+            "target": "/redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.RemoveResourceBlock"
+        }
+    },
+    ...
+}
+```
+
+In the above example, the Computer System `ComposedSystem` supports two actions: `ComputerSystem.AddResourceBlock` and `ComputerSystem.RemoveResourceBlock`.  A client is able to modify the Computer System by issuing POST to the URI specified by the `target` properties.
+
+Example AddResourceBlock Request:
+```http
+POST /redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.AddResourceBlock HTTP/1.1
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
+OData-Version: 4.0
+{
+    "ResourceBlock": {
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8"
+    },
+    "ResourceBlockETag": "6e83d4d5f1b8d93fed866876a220c0ab",
+    "ComputerSystemETag": "31171b07d6e2733c8368c54ab1857456"
+}
+```
+
+In the above example, the client is making a request to add `NetworkBlock8` to the Computer System `ComposedSystem`.  It also uses the optional parameters `ResourceBlockETag` and `ComputerSystemETag` to help protect the usage of the Computer System and Resource Block in multi-client scenarios so that the action is not carried out of if the specified ETags do not match the state of the resources.
 
 
 #### Delete a Composed Resource
