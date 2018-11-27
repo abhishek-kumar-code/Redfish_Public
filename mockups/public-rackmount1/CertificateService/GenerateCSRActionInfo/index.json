@@ -48,8 +48,8 @@
             "Required": true,
             "DataType": "String",
             "AllowableValues": [
-                "RSA_2048",
-                "RSA_4096"
+                "RSA_2048Bit",
+                "RSA_4096Bit"
             ]
         },
         {
