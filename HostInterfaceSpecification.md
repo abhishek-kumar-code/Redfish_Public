@@ -217,21 +217,23 @@ The following describes the SMBIOS Management Controller Host Interface (Type 42
 
 Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  This table defines the Interface Specific data for Interface Type 40h.  There are three types of Device Descriptors defined (see Table-3); however, only one may be used in specific Type 42 table.
 
-| Offset | Name               | Length    | Value  | Description                                                                                                      |
-| ---    | ---                | ---       | ---    | ---                                                                                                              |
-| X      | Device Type        | BYTE      | Enum   | USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh  <br/> other values reserved |
-| X+1    | Device Descriptors | n-1 Bytes | Varies | Device descriptor data formatted based on Device Type. <br/> See Table-3                                          |
+| Offset | Name               | Length    | Value  | Description |
+| ---    | ---                | ---       | ---    | ---         |
+| X      | Device Type        | BYTE      | Enum   | USB Network Interface = 02h, <br/> PCI/PCIe Network Interface = 03h, <br/> USB Network Interface v2 = 04h, <br/> PCI/PCIe Network Interface v2 = 05h, <br/> OEM = 80h-FFh <br/> other values reserved |
+| X+1    | Device Descriptors | n-1 Bytes | Varies | Device descriptor data formatted based on Device Type. <br/> See Table-3 |
 
 
 ### Table-3: Device descriptor data
 
 The following table defines the specific Device Descriptor data (referenced in Table-2) for each defined Device Type:
 
-| Device Type enum value | Device Type Name           | Length  | Value  | Description                                                                                                                                                                                                  |
-| ---                    | ---                        | ---     | ---    | ---                                                                                                                                                                                                          |
-| 02h                    | USB Network Interface      | Varies  | Varies | Device Descriptors for USB Device Type: <br/> -idVendor(2-bytes), <br/> -idProduct(2-bytes), <br/> -iSerialNumber: <br/> --- bLength(1-Byte), <br/> --- bDescriptorType(1-Byte), <br/> --- bString(Varies) ) |
-| 03h                    | PCI/PCIe Network Interface | 8-Bytes | Varies | Device Descriptors for PCI/PCIe Device Type: <br/> -VendorID(2-Bytes), <br/> -DeviceID(2-Bytes), <br/> -Subsystem_Vendor_ID(2-bytes), <br/> -Subsystem_ID(2-bytes)                                           |
-| 80h-FFh                | OEM                        | Varies  | Varies | Device Descriptors for OEM  Device Type: <br/> -vendor_IANA(4-bytes), <br/> -OEM defined data                                                                                                                |
+| Device Type enum value | Device Type Name              | Length  | Value  | Description |
+| ---                    | ---                           | ---     | ---    | ---         |
+| 02h                    | USB Network Interface         | Varies  | Varies | Device Descriptors for USB Device Type: <br/> - idVendor (2 bytes), <br/> - idProduct (2 bytes), <br/> - iSerialNumber: <br/> --- bLength (1 byte), <br/> --- bDescriptorType (1 byte), <br/> --- bString(Varies) |
+| 03h                    | PCI/PCIe Network Interface    | 8-Bytes | Varies | Device Descriptors for PCI/PCIe Device Type: <br/> - Vendor ID (2 bytes), <br/> - Device ID (2 bytes), <br/> - Subsystem Vendor ID (2 bytes), <br/> - Subsystem ID (2 bytes) |
+| 04h                    | USB Network Interface v2      | Varies  | Varies | Device Descriptors for USB Device Type v2: <br/> - Length of this structure (1 byte) <br/> - idVendor (2 bytes), <br/> - idProduct (2 bytes), <br/> - iSerialNumber: <br/> --- bLength (1 byte), <br/> --- bDescriptorType (1 byte), <br/> --- bString(Varies) |
+| 05h                    | PCI/PCIe Network Interface v2 | Varies  | Varies | Device Descriptors for PCI/PCIe Device Type v2: <br/> - Length of this structure (1 byte) <br/> - Vendor ID (2 bytes), <br/> - Device ID (2 bytes), <br/> - Subsystem Vendor ID (2 bytes), <br/> - Subsystem ID (2 bytes) |
+| 80h-FFh                | OEM                           | Varies  | Varies | Device Descriptors for OEM  Device Type: <br/> - Vendor IANA (4 bytes), <br/> - OEM defined data |
 
 For USB devices:
 * idVendor, idProduct, and iSerialNumber originate from the USB descriptor for the device.
@@ -242,7 +244,7 @@ Examples of USB devices:
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, but there is no Serial Number: `0xBB 0xAA 0xDD 0xCC 0x02 0x03`
 
 For PCI/PCIe devices:
-* VendorID, DeviceID, Subsystem_Vendor_ID, and Subsystem_ID originate from the PCI configuration space for the device.
+* Vendor ID, Device ID, Subsystem Vendor ID, and Subsystem ID originate from the PCI configuration space for the device.
 
 Examples of PCI/PCIe devices:
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, Subsystem Vendor ID is 0x0011, and Subsystem ID is 0x2233: `0xBB 0xAA 0xDD 0xCC 0x11 0x00 0x33 0x22`
