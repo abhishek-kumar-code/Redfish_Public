@@ -467,7 +467,7 @@ In addition, the following URI without a trailing slash shall be either Redirect
 
 All other Redfish URIs supported by the service shall match the URI patterns described by the [Resource URI pattern definitions section](#resource-uri-pattern-definitions), with the exception to supplemental resources referenced by the "@Redfish.Settings", "@Redfish.ActionInfo", and "@Redfish.CollectionCapabilities" payload annotations.  The URIs for these supplemental resources shall be treated as opaque by the client.
 
-All URIs supported by a Redfish Service are considered reserved for future standardization by DMTF and DMTF Alliance Parterns, with the exception to OEM extension URIs which shall conform to the requirements in section [URIs for OEM resources](#uris-for-oem-resources)
+All URIs supported by a Redfish Service shall be considered reserved for future standardization by DMTF and DMTF Alliance Parterns, with the exception to OEM extension URIs which shall conform to the requirements in section [URIs for OEM resources](#uris-for-oem-resources).
 
 All relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g., //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g., /redfish/v1/Systems).
 
