@@ -262,7 +262,7 @@
         <Property Name="HttpPushUri" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The URI used to perform an HTTP or HTTPS push update to the Update Service."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a URI at which the UpdateService supports an HTTP or HTTPS POST of a software image for the purpose of installing software contained within the image. Access to this URI shall require the same authentication as access to the Update Service."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI at which the UpdateService supports an HTTP or HTTPS POST of a software image for the purpose of installing software contained within the image.  Access to this URI shall require the same privilege as access to the Update Service."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
       </EntityType>
