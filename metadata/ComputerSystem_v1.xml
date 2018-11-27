@@ -1154,15 +1154,15 @@
       </ComplexType>
 
       <EnumType Name="PowerRestorePolicyTypes">
-        <Annotation Term="OData.Description" String="The enumerations of PowerRestorePolicyTypes specify the choice of power state for the system when utility power is applied."/>
+        <Annotation Term="OData.Description" String="The enumerations of PowerRestorePolicyTypes specify the choice of power state for the system when power is applied."/>
         <Member Name="AlwaysOn">
-          <Annotation Term="OData.Description" String="The system will always power on when utility power is applied."/>
+          <Annotation Term="OData.Description" String="The system will always power on when power is applied."/>
         </Member>
         <Member Name="AlwaysOff">
-          <Annotation Term="OData.Description" String="The system will always remain powered off when utility power is applied."/>
+          <Annotation Term="OData.Description" String="The system will always remain powered off when power is applied."/>
         </Member>
         <Member Name="LastState">
-          <Annotation Term="OData.Description" String="The system will return to its last power state (on or off) when utility power is applied."/>
+          <Annotation Term="OData.Description" String="The system will return to its last power state (on or off) when power is applied."/>
         </Member>
       </EnumType>
 	  
