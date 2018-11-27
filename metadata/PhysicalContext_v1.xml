@@ -217,9 +217,6 @@
             </Collection>
           </Annotation>
         </Member>
-        <Member Name="Drive">
-          <Annotation Term="OData.Description" String="A drive."/>
-        </Member>
         <Member Name="Motor">
           <Annotation Term="OData.Description" String="A motor."/>
         </Member>
