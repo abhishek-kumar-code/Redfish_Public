@@ -238,6 +238,7 @@ The following table defines the specific Device Descriptor data (referenced in T
 For USB devices (types 02h and 04h):
 * idVendor (Vendor ID), idProduct (Product ID), and iSerialNumber (Serial Number) originate from the USB descriptor for the device.
 * For type 02h, within iSerialNumber, bDescriptorType is always 0x03 and bString is a Unicode string without a NULL terminator.
+    * This string does not follow typical string patterns found elsewhere in SMBIOS definitions.
 * For type 04h, the string referenced by the string number after the descriptor is converted from Unicode to ASCII and is NULL terminated per SMBIOS design patterns.
 
 Examples of USB devices (type 02h):
@@ -280,7 +281,7 @@ The following table defines the protocol-specific data for the "Redfish Over IP"
 | X+84   | Redfish Service IP Port           | WORD    | Varies | Used for Static and AutoConfigure.                                                                                          |
 | X+86   | Redfish Service VLAN ID           | DWORD   | Varies | Used for Static and AutoConfigure.                                                                                          |
 | X+90   | Redfish Service Hostname Length   | BYTE    | Varies | The length in bytes of the "Redfish Service Hostname" field, including any NULL characters in the field                     |
-| X+91   | Redfish Service Hostname          | varies  | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.                                         |
+| X+91   | Redfish Service Hostname          | varies  | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.  This string does not follow typical string patterns found elsewhere in SMBIOS definitions. |
 
 In the above table, the fields "Host IP Address", "Host IP Mask", "Redfish Service IP Address", and "Redfish Service IP Mask" shall be stored in network byte order.
 * IPv4 Example: 10.12.110.57 will be stored, from lowest offset first, as `0x0A 0x0C 0x6E 0x39 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`
