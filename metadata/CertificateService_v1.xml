@@ -95,7 +95,7 @@
         </Parameter>
         <Parameter Name="Email" Type="Edm.String">
           <Annotation Term="OData.Description" String="The email address of the contact within the organization making the request."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain the email address of the contact within the organization making the request as defined by the emailAddress attribute in RFC5280."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the email address of the contact within the organization making the request as defined by the emailAddress attribute in RFC2985."/>
         </Parameter>
         <Parameter Name="KeyPairAlgorithm" Type="CertificateService.v1_0_0.KeyPairAlgorithm">
           <Annotation Term="OData.Description" String="The algorithm used to generate the key pair."/>
@@ -120,6 +120,18 @@
         <Parameter Name="Initials" Type="Edm.String">
           <Annotation Term="OData.Description" String="The initials of the user making the request."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the initials of the user making the request as defined by the initials attribute in RFC5280."/>
+        </Parameter>
+        <Parameter Name="ChallengePassword" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The challenge password to be applied to the certificate for revocation requests."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the challenge password to be applied to the certificate for revocation requests as defined by the challengePassword attribute in RFC2985."/>
+        </Parameter>
+        <Parameter Name="UnstructuredName" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The unstructured name of the subject."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the unstructured name of the subject as defined by the unstructuredName attribute in RFC2985."/>
+        </Parameter>
+        <Parameter Name="ContactPerson" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The name of the user making the request."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the name of the user making the request as defined by the name attribute in RFC5280."/>
         </Parameter>
         <ReturnType Type="CertificateService.v1_0_0.GenerateCSRResponse" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to perform a certificate signing request."/>
