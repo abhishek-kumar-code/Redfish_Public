@@ -83,6 +83,7 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}</String>
           </Collection>
         </Annotation>
       </EntityType>
