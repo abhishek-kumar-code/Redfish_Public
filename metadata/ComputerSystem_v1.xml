@@ -1135,8 +1135,8 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_5_2.ComputerSystem">
         <Property Name="PowerRestorePolicy" Type="ComputerSystem.v1_6_0.PowerRestorePolicyTypes" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The desired power state of the system when utility power (mains) is restored after a power loss."/>
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the desired PowerState of the system when utility (mains) power is applied to the system.  A value of 'LastState' shall return the system to the PowerState it was in when utility power was lost."/>
+          <Annotation Term="OData.Description" String="The desired power state of the system when power is restored after a power loss."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the desired PowerState of the system when power is applied to the system.  A value of 'LastState' shall return the system to the PowerState it was in when power was lost."/>
         </Property>
       </EntityType>
 
