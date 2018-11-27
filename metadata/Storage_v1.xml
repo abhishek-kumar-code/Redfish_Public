@@ -37,7 +37,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
     <edmx:Include Namespace="Drive"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VolumeCollection_v1.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/VolumeCollection_v1.xml">
     <edmx:Include Namespace="VolumeCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
@@ -275,7 +275,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to change the VolumeCollection reference to Swordfish."/>
       <EntityType Name="Storage" BaseType="Storage.v1_0_5.Storage"/>
     </Schema>
 
@@ -327,7 +327,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_1_5">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to change the VolumeCollection reference to Swordfish."/>
       <EntityType Name="Storage" BaseType="Storage.v1_1_4.Storage"/>
     </Schema>
 
@@ -373,7 +373,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_2_3">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to change the VolumeCollection reference to Swordfish."/>
       <EntityType Name="Storage" BaseType="Storage.v1_2_2.Storage"/>
     </Schema>
 
@@ -404,7 +404,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_3_3">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to change the VolumeCollection reference to Swordfish."/>
       <EntityType Name="Storage" BaseType="Storage.v1_3_2.Storage"/>
     </Schema>
 
@@ -442,7 +442,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_4_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to change the VolumeCollection reference to Swordfish."/>
       <EntityType Name="Storage" BaseType="Storage.v1_4_1.Storage"/>
     </Schema>
 
@@ -490,7 +490,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_5_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation."/>
+      <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation.  It was also created to change the VolumeCollection reference to Swordfish."/>
       <EntityType Name="Storage" BaseType="Storage.v1_5_0.Storage"/>
     </Schema>
 
