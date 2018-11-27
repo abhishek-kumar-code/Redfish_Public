@@ -116,6 +116,7 @@
           <Collection>
             <String>/redfish/v1/Systems/{ComputerSystemId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}</String>
           </Collection>
         </Annotation>
       </EntityType>
