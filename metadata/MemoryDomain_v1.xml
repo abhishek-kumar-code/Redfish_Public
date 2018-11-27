@@ -58,6 +58,7 @@
           <Collection>
             <String>/redfish/v1/Systems/{ComputerSystemId}/MemoryDomains/{MemoryDomainId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/MemoryDomains/{MemoryDomainId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/MemoryDomains/{MemoryDomainId}</String>
           </Collection>
         </Annotation>
       </EntityType>
