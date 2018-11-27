@@ -110,6 +110,10 @@
         "filter": {
             "type": "string",
             "description": "Indicates a filter to apply to an array of objects when the values are copies of data elsewhere in the data model."
+        },
+        "actionResponse": {
+            "type": "object",
+            "description": "Contains the definition of the response body for a given action if it does not follow the Redfish Error format."
         }
     },
     "properties": {
@@ -192,6 +196,9 @@
         },
         "filter": {
             "$ref": "#/definitions/filter"
+        },
+        "actionResponse": {
+            "$ref": "#/definitions/actionResponse"
         }
     }
 }
