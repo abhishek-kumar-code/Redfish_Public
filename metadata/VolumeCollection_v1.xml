@@ -56,6 +56,8 @@
             <String>/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Volumes</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Volumes</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Volume.Volume)">

@@ -60,6 +60,8 @@
             <String>/redfish/v1/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/SimpleStorage/{SimpleStorageId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/SimpleStorage/{SimpleStorageId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}</String>
           </Collection>
         </Annotation>
       </EntityType>
