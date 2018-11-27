@@ -171,8 +171,8 @@ Information in the SMBIOS structure shall allow Host Software to discover the Re
 
 For Network Host Interfaces, the mechanism that clients should use to discover/obtain the Redfish Service Entry Point IP address shall also be described in the structure.
 
-All SMBIOS structures referenced in this specification shall assume a little-endian ordering convention, unless explicitly specified otherwise, i.e., multi-byte numbers (WORD, DWORD, etc.) are stored with the low-order byte at the lowest address and the high-order byte at the highest address.
- 
+All SMBIOS structures referenced in this specification shall assume a little-endian ordering convention, unless explicitly specified otherwise, i.e., multi-byte numbers (WORD, DWORD, etc.) are stored with the low-order byte at the lowest address and the high-order byte at the highest address.  Unless otherwise noted, strings in these structures follow "Text Strings" pattern described in the [SMBIOS Specification](#DMTFDSP0134).
+
 
 ### SMBIOS Type 42 structure general layout
 
@@ -220,7 +220,7 @@ Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  T
 | Offset | Name               | Length    | Value  | Description |
 | ---    | ---                | ---       | ---    | ---         |
 | X      | Device Type        | BYTE      | Enum   | USB Network Interface = 02h, <br/> PCI/PCIe Network Interface = 03h, <br/> USB Network Interface v2 = 04h, <br/> PCI/PCIe Network Interface v2 = 05h, <br/> OEM = 80h-FFh <br/> other values reserved |
-| X+1    | Device Descriptors | n-1 Bytes | Varies | Device descriptor data formatted based on Device Type. <br/> See Table-3 |
+| X+1    | Device Descriptors | n-1 Bytes | Varies | Device descriptor data formatted based on Device Type.  See Table-3 |
 
 
 ### Table-3: Device descriptor data
@@ -229,24 +229,25 @@ The following table defines the specific Device Descriptor data (referenced in T
 
 | Device Type enum value | Device Type Name              | Length  | Value  | Description |
 | ---                    | ---                           | ---     | ---    | ---         |
-| 02h                    | USB Network Interface         | Varies  | Varies | Device Descriptors for USB Device Type: <br/> - idVendor (2 bytes), <br/> - idProduct (2 bytes), <br/> - iSerialNumber: <br/> --- bLength (1 byte), <br/> --- bDescriptorType (1 byte), <br/> --- bString(Varies) |
-| 03h                    | PCI/PCIe Network Interface    | 8-Bytes | Varies | Device Descriptors for PCI/PCIe Device Type: <br/> - Vendor ID (2 bytes), <br/> - Device ID (2 bytes), <br/> - Subsystem Vendor ID (2 bytes), <br/> - Subsystem ID (2 bytes) |
-| 04h                    | USB Network Interface v2      | Varies  | Varies | Device Descriptors for USB Device Type v2: <br/> - Length of this structure (1 byte) <br/> - idVendor (2 bytes), <br/> - idProduct (2 bytes), <br/> - iSerialNumber: <br/> --- bLength (1 byte), <br/> --- bDescriptorType (1 byte), <br/> --- bString(Varies) |
-| 05h                    | PCI/PCIe Network Interface v2 | Varies  | Varies | Device Descriptors for PCI/PCIe Device Type v2: <br/> - Length of this structure (1 byte) <br/> - Vendor ID (2 bytes), <br/> - Device ID (2 bytes), <br/> - Subsystem Vendor ID (2 bytes), <br/> - Subsystem ID (2 bytes) |
+| 02h                    | USB Network Interface         | Varies  | Varies | Device Descriptors for USB Device Type: <br/> - idVendor (2 bytes), <br/> - idProduct (2 bytes), <br/> - iSerialNumber: <br/> --- bLength (1 byte), <br/> --- bDescriptorType (1 byte), <br/> --- bString (Varies) |
+| 03h                    | PCI/PCIe Network Interface    | 8 bytes | Varies | Device Descriptors for PCI/PCIe Device Type: <br/> - Vendor ID (2 bytes), <br/> - Device ID (2 bytes), <br/> - Subsystem Vendor ID (2 bytes), <br/> - Subsystem ID (2 bytes) |
+| 04h                    | USB Network Interface v2      | Varies  | Varies | Device Descriptors for USB Device Type v2: <br/> - Length of this structure (1 byte) <br/> - Vendor ID (2 bytes), <br/> - Product ID (2 bytes), <br/> - String Number for the Serial Number (1 byte), <br/> - MAC Address (6 bytes) |
+| 05h                    | PCI/PCIe Network Interface v2 | Varies  | Varies | Device Descriptors for PCI/PCIe Device Type v2: <br/> - Length of this structure (1 byte) <br/> - Vendor ID (2 bytes), <br/> - Device ID (2 bytes), <br/> - Subsystem Vendor ID (2 bytes), <br/> - Subsystem ID (2 bytes), <br/> - MAC Address (6 bytes), <br/> - Bus Number (1 byte), <br/> - Device/Function Number (1 byte) <br/> --- Bits 7:3 - Device Number, <br/> --- Bits 2:0 - Function Number |
 | 80h-FFh                | OEM                           | Varies  | Varies | Device Descriptors for OEM  Device Type: <br/> - Vendor IANA (4 bytes), <br/> - OEM defined data |
 
-For USB devices:
-* idVendor, idProduct, and iSerialNumber originate from the USB descriptor for the device.
-* Within iSerialNumber, bDescriptorType is always 0x03 and bString is a Unicode string without a NULL terminator.
+For USB devices (types 02h and 04h):
+* idVendor (Vendor ID), idProduct (Product ID), and iSerialNumber (Serial Number) originate from the USB descriptor for the device.
+* For type 02h, within iSerialNumber, bDescriptorType is always 0x03 and bString is a Unicode string without a NULL terminator.
+* For type 04h, the string referenced by the string number after the descriptor is converted from Unicode to ASCII and is NULL terminated per SMBIOS design patterns.
 
-Examples of USB devices:
+Examples of USB devices (type 02h):
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, and the Serial Number is "SN00001": `0xBB 0xAA 0xDD 0xCC 0x10 0x03 0x53 0x00 0x4E 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x31 0x00`
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, but there is no Serial Number: `0xBB 0xAA 0xDD 0xCC 0x02 0x03`
 
-For PCI/PCIe devices:
+For PCI/PCIe devices (types 03h and 05h):
 * Vendor ID, Device ID, Subsystem Vendor ID, and Subsystem ID originate from the PCI configuration space for the device.
 
-Examples of PCI/PCIe devices:
+Examples of PCI/PCIe devices (type 03h):
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, Subsystem Vendor ID is 0x0011, and Subsystem ID is 0x2233: `0xBB 0xAA 0xDD 0xCC 0x11 0x00 0x33 0x22`
 
 
