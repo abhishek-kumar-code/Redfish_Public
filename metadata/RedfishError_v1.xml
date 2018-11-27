@@ -25,7 +25,7 @@
 
       <ComplexType Name="RedfishError">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="Contains an error payload a Redfish Service."/>
+        <Annotation Term="OData.Description" String="Contains an error payload from a Redfish Service."/>
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain an error payload from a Redfish Service."/>
         <Property Name="error" Type="RedfishError.v1_0_0.RedfishErrorContents" Nullable="false">
           <Annotation Term="OData.Description" String="Contains properties used to describe an error from a Redfish Service."/>
