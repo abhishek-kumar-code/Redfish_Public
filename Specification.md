@@ -344,7 +344,7 @@ The scheme and authority part of the URI shall not be considered part of the uni
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST): `/redfish/v1/Systems/2`
 
-Assuming the client is connecting through the `mgmt.vendor.com` appliance, the absolute URI to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
+Assuming the client is connecting through an appliance named "mgmt.vendor.com", the absolute URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (`?query`) and a frag (`#frag`) component.  Queries are addressed in the [Query Parameters](#query-parameters) clause.  The server shall ignore fragments (`#frag`) that are used as the URI for submitting an operation.
 
