@@ -127,6 +127,7 @@ The following additional terms are used in this document.
 | Redfish Alert Receiver          | The name for the functionality that receives alerts from a Redfish Service. This functionality is typically software running on a remote system that is separate from the managed system.                                                                                                                                                                                                                                                                                                 |
 | Redfish Client                  | The name for the functionality that communicates with a Redfish Service and accesses one or more resources or functions of the Service.                                                                                                                                                                                                                                                                                                                                                       |
 | Redfish Protocol                | The set of protocols that are used to discover, connect to, and inter-communicate with a Redfish Service.                                                                                                                                                                                                                                                                                                                                                                                 |
+| Redfish Provider                | A Redfish provider interacts with the Redfish Service to contribute resources to the Redfish resource tree and reacts to changes in its owned resources. There are two types of Redfish providers: internal providers and external providers. A internal provider is the Redfish Service itself that has a data model and can react to RESTful operations from a client. An external provider is an architected means for agents external to the Redfish Service to augment the Redfish resource tree. The interaction between a Redfish provider and a Redfish Service is not covered by this specification.|
 | Redfish Schema                  | The Schema definitions for Redfish resources.  It is defined according to OData Schema representation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                    |
 | Redfish Service                 | Also referred to as the "Service". The set of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                                                |
 | Redfish Service Entry Point     | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point.                                                                                                                                                                                                                                                                                              |
@@ -1882,6 +1883,42 @@ The EntityType contains the [property](#resource-properties) and [reference prop
 All resources shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
 
+#### Resource capabilities
+
+The capabilities of a resource are expressed using the `Capabilities.InsertRestrictions`, `Capabilities.UpdateRestrictions`, and `Capabilities.DeleteRestrictions` terms.
+* `Capabilities.InsertRestrictions` is used to show whether or not a client is able to perform a POST on the resource.
+* `Capabilities.UpdateRestrictions` is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
+* `Capabilities.DeleteRestrictions` is used to show whether or not a client is able to perform a DELETE on the resource.
+* A service may only implement a subset of the capabilities that are set to true.
+
+~~~xml
+  <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+
+    <!-- Other definitions for the EntityType go here -->
+
+    <Annotation Term="Capabilities.InsertRestrictions">
+      <Record>
+        <PropertyValue Property="Insertable" Bool="false"/>
+      </Record>
+    </Annotation>
+    <Annotation Term="Capabilities.UpdateRestrictions">
+      <Record>
+        <PropertyValue Property="Updatable" Bool="true"/>
+        <Annotation Term="OData.Description" String="Manager Accounts can be updated to change the password and other writable properties."/>
+      </Record>
+    </Annotation>
+    <Annotation Term="Capabilities.DeleteRestrictions">
+      <Record>
+        <PropertyValue Property="Deletable" Bool="true"/>
+        <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
+      </Record>
+    </Annotation>
+  </EntityType>
+~~~
+
+In the above example, the `Capabilities.InsertRestrictions` term has the `Insertable` property set to false, meaning a client is not able to perform a POST on the resource.  It also uses the `Capabilities.UpdateRestrictions` term with the `Updatable` property set to true, meaning a client is able to perform a PATCH or PUT on the resource, assuming the client has the right privilege to perform these operations.  It also uses the `Capabilities.DeleteRestrictions` term with the `Deletable` property set to true, meaning a client is able to perform a DELETE on the resource, assuming the client has the right privilege to perform this operation.
+
+
 #### Resource URI pattern definitions
 
 The URI patterns allowed for a given Redfish Resource are expressed using the `Redfish.Uris` annotation within the `EntityType` element.
@@ -1928,11 +1965,15 @@ Properties that must have a non-nullable value include the [nullable attribute](
 
 All properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
-Properties that are read-only are annotated with the [Permissions annotation](#read-only-properties) with a value of `ODataPermission/Read`.
+Properties that are read-only are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/Read`.
+
+Properties that are writable are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/ReadWrite`.
+* A service may implement a writable property as read-only.
 
 Properties that are required to be implemented by all services are annotated with the [required annotation](#required-properties).
 
-Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure)
+Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure).
+
 
 ##### Property types
 
@@ -2028,12 +2069,18 @@ Properties may include the Nullable attribute with a value of false to specify t
   <Property Name="Property1" Type="Edm.String" Nullable="false">
 ~~~
 
-##### Read-only properties
+##### Permissions of properties
 
 The Permissions annotation term can be applied to a property with the value of `OData.Permission/Read` in order to specify that it is read-only.
 
 ~~~xml
   <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+~~~
+
+The Permissions annotation term can be applied to a property with the value of `OData.Permission/ReadWrite` in order to specify that it is writable.
+
+~~~xml
+  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
 ~~~
 
 The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
@@ -2459,13 +2506,13 @@ Client software should be aware that when absent resources are later populated, 
 
 #### Schema variations
 
-There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A provider may build a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
+There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
 
 * All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
 * The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
 * For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration which specifies limits to the element.  This is an override for the schema only to be used when necessary.
 
-Providers may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
+A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
 
 * Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
 
@@ -2932,7 +2979,9 @@ Note that Redfish sessions "time-out" as opposed to having a token expiration ti
 
 A Redfish session is terminated when the client logs out.  This is accomplished by performing a DELETE to the Session resource identified by the hyperlink returned in the Location header when the session was created, or the SessionId returned in the response data.
 
-The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users sessions from a different session.
+The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users' sessions from a different session.
+
+When a session is terminated, the service shall not affect independent connections established originally by this session for other purposes, such as connections for [Server-Sent Events](#server-sent-events) or transferring an image for the Update Service.
 
 
 #### AccountService
