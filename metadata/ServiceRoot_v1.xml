@@ -76,6 +76,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TelemetryService_v1.xml">
     <edmx:Include Namespace="TelemetryService"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceBlockCollection_v1.xml">
+    <edmx:Include Namespace="ResourceBlockCollection"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -484,6 +487,11 @@
           <Annotation Term="OData.Description" String="The vendor or manufacturer associated with this Redfish service."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall include the name of the manufacturer or vendor represented by this Redfish service. If this property is supported, the vendor name shall not be included in the value of the Product property."/>
         </Property>
+        <NavigationProperty Name="ResourceBlocks" Type="ResourceBlockCollection.ResourceBlockCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A link to a collection of all resource block entities.  This collection is intended for implementations that do not contain a Composition Service, but will expose resources to an orchestrator that implements a Composition Service."/>
+          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all Resource Block instances."/>
+        </NavigationProperty>
       </EntityType>
     </Schema>
 
