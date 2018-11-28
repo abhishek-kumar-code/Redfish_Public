@@ -20,6 +20,38 @@
             "Name": "Writable",
             "Required": true,
             "DataType": "Boolean"
+        },
+        {
+            "Name": "UserName",
+            "Required": false,
+            "DataType": "String"
+        },
+        {
+            "Name": "Password",
+            "Required": false,
+            "DataType": "String"
+        },
+        {
+            "Name": "TransferProtocolType",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "HTTP",
+                "HTTPS",
+                "CIFS",
+                "NFS",
+                "FTP",
+                "SFTP"
+               ]
+        },
+        {
+            "Name": "TransferMethod",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "Stream",
+                "Upload"
+            ]
         }
     ]
 }
