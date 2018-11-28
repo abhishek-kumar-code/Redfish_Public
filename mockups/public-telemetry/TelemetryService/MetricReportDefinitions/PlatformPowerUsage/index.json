@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_1_0.MetricReportDefinition",
     "Id": "PlatformPowerUsage",
     "Name": "Transmit and Log Platform Power Usage",
     "MetricReportDefinitionType": "Periodic",
@@ -21,16 +21,11 @@
     "Wildcards": [
         {
             "Name": "PWild",
-            "Keys": [
-                "0"
-            ]
+            "Values": [ "0" ]
         },
         {
             "Name": "TWild",
-            "Keys": [
-                "Tray_1",
-                "Tray_2"
-            ]
+            "Values": [ "Tray_1", "Tray_2" ]
         }
     ],
     "MetricProperties": [

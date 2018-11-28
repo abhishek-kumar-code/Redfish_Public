@@ -52,6 +52,7 @@
           <Collection>
             <String>/redfish/v1/Systems/{ComputerSystemId}/SecureBoot</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SecureBoot</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SecureBoot</String>
           </Collection>
         </Annotation>
       </EntityType>
