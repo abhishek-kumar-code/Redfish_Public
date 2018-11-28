@@ -116,6 +116,7 @@
           <Collection>
             <String>/redfish/v1/Systems/{ComputerSystemId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}</String>
           </Collection>
         </Annotation>
       </EntityType>
@@ -139,6 +140,58 @@
             <Record>
               <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
               <PropertyValue Property="Version" String="v1_5_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Action>
+
+      <Action Name="AddResourceBlock" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
+        <Parameter Name="ResourceBlock" Type="ResourceBlock.ResourceBlock" Nullable="false">
+          <Annotation Term="OData.Description" String="The Resource Block to add to the system."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a link to the specified Resource Block to add to the system."/>
+        </Parameter>
+        <Parameter Name="ResourceBlockETag" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The current ETag of the Resource Block to add to the system."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a the current ETag of the Resource Block to add to the system.  If provided by the client, the service shall reject the request by returning HTTP 428 (Precondition Required) if the provided ETag does not match the current ETag of the Resource Block specified by the ResourceBlock parameter."/>
+        </Parameter>
+        <Parameter Name="ComputerSystemETag" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The current ETag of the system."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a the current ETag of the system.  If provided by the client, the service shall reject the request by returning HTTP 428 (Precondition Required) if the provided ETag does not match the current ETag of the system."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to add a Resource Block to a system."/>
+        <Annotation Term="OData.LongDescription" String="This action shall be used to add a Resource Block to a system."/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_6_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Action>
+
+      <Action Name="RemoveResourceBlock" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
+        <Parameter Name="ResourceBlock" Type="ResourceBlock.ResourceBlock" Nullable="false">
+          <Annotation Term="OData.Description" String="The Resource Block to remove from the system."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a link to the specified Resource Block to remove from the system."/>
+        </Parameter>
+        <Parameter Name="ResourceBlockETag" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The current ETag of the Resource Block to remove from the system."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a the current ETag of the Resource Block to remove from the system.  If provided by the client, the service shall reject the request by returning HTTP 428 (Precondition Required) if the provided ETag does not match the current ETag of the Resource Block specified by the ResourceBlock parameter."/>
+        </Parameter>
+        <Parameter Name="ComputerSystemETag" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The current ETag of the system."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall be a the current ETag of the system.  If provided by the client, the service shall reject the request by returning HTTP 428 (Precondition Required) if the provided ETag does not match the current ETag of the system."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to remove a Resource Block from a system."/>
+        <Annotation Term="OData.LongDescription" String="This action shall be used to remove a Resource Block from a system."/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_6_0"/>
             </Record>
           </Collection>
         </Annotation>
