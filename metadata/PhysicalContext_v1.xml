@@ -223,7 +223,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
@@ -234,7 +234,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
@@ -245,7 +245,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
@@ -256,7 +256,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
@@ -267,7 +267,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
@@ -278,7 +278,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
@@ -289,7 +289,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
@@ -300,7 +300,7 @@
             <Collection>
               <Record>
                 <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
-                <PropertyValue Property="Version" String="2017.3"/>
+                <PropertyValue Property="Version" String="2018.3"/>
               </Record>
             </Collection>
           </Annotation>
