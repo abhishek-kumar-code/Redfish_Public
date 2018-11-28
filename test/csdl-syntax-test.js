@@ -17,6 +17,7 @@ if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
   mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
 }
 const syntaxBatch = {};
+const overrideBatch = {};
 const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
                           path.normalize(__dirname+'/../mockups/public-oem-examples/Contoso.com')],
@@ -48,6 +49,7 @@ const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'R
 const OldRegistries = ['Base.1.0.0.json', 'ResourceEvent.1.0.0.json', 'TaskEvent.1.0.0.json', 'Redfish_1.0.1_PrivilegeRegistry.json', 'Redfish_1.0.2_PrivilegeRegistry.json'];
 const NamespacesWithReleaseTerm = ['PhysicalContext', 'Protocol' ];
 const NamespacesWithoutReleaseTerm = ['RedfishExtensions.v1_0_0', 'Validation.v1_0_0', 'RedfishError.v1_0_0', 'Schedule.v1_0_0', 'Schedule.v1_1_0' ];
+const OverRideFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume_v1.xml'];
 /************************************************************/
 
 const setupBatch = {
@@ -72,6 +74,22 @@ const setupBatch = {
       if(list !== null) {
         publishedSchemas = list;
       }
+    }
+  }
+}
+
+OverRideFiles.forEach(addOverrideTest);
+
+function addOverrideTest(file) {
+  overrideBatch[file] = {
+    topic: function() {
+      CSDL.parseMetadataUri(file, options, this.callback);
+    },
+    'is valid syntax': function(err, csdl) {
+      if(err) {
+        throw err;
+      }
+      assert.notEqual(csdl, null);
     }
   }
 }
@@ -1337,5 +1355,5 @@ function schemaReleaseCheck(err, csdl) {
 process.on('unhandledRejection', (reason, promise) => {
 });
 
-vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
+vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).addBatch(overrideBatch).addBatch(mockupsCSDL).export(module);
 /* vim: set tabstop=2 shiftwidth=2 expandtab: */
