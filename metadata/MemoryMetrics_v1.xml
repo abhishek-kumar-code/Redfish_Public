@@ -56,6 +56,8 @@
             <String>/redfish/v1/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/MemoryMetrics</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Memory/{MemoryId}/MemoryMetrics</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Memory/{MemoryId}/MemoryMetrics</String>
           </Collection>
         </Annotation>
       </EntityType>
