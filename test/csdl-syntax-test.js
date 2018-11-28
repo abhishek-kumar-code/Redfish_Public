@@ -46,6 +46,8 @@ const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServic
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
 const OldRegistries = ['Base.1.0.0.json', 'ResourceEvent.1.0.0.json', 'TaskEvent.1.0.0.json', 'Redfish_1.0.1_PrivilegeRegistry.json', 'Redfish_1.0.2_PrivilegeRegistry.json'];
+const NamespacesWithReleaseTerm = ['PhysicalContext', 'Protocol' ];
+const NamespacesWithoutReleaseTerm = ['RedfishExtensions.v1_0_0', 'Validation.v1_0_0', 'RedfishError.v1_0_0', 'Schedule.v1_0_0', 'Schedule.v1_1_0' ];
 /************************************************************/
 
 const setupBatch = {
@@ -103,7 +105,8 @@ function constructTest(file) {
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
     'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
-    'All namespaces have OwningEntity': schemaOwningEntityCheck
+    'All namespaces have OwningEntity': schemaOwningEntityCheck,
+    'All versioned, non-errata namespaces have Release': schemaReleaseCheck
   }
 }
 
@@ -1287,6 +1290,45 @@ function schemaOwningEntityCheck(err, csdl) {
       let owningEntity = CSDL.search(schemas[i], 'Annotation', 'RedfishExtensions.v1_0_0.OwningEntity');
       if(owningEntity.length === 0) {
         throw new Error('Namespace '+schemas[i]._Name+' lacks OwningEntity!');
+      }
+    }
+  }
+}
+
+function schemaReleaseCheck(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  if(this.context.name.includes('index.xml') ||
+     this.context.name.includes('ContosoExtensions_v1.xml') ||
+     this.context.name.includes('TurboencabulatorService_v1.xml')) {
+    // Ignore mockup files
+    return;
+  }
+
+  let schemas = CSDL.search(csdl, 'Schema');
+  for(let i = 0; i < schemas.length; i++) {
+    let release = CSDL.search(schemas[i], 'Annotation', 'Redfish.Release');
+    if(NamespacesWithReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and require the Release term
+      if(release.length === 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }    
+    }
+    else if(NamespacesWithoutReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and do not use the Release term
+      if(release.length !== 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
+      }    
+    }
+    else {
+      // All other namespaces require the Release term if it's versioned and non-errata
+      if((release.length === 0) && schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }
+      if((release.length !== 0) && !schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
       }
     }
   }
