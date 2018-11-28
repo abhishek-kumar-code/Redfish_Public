@@ -484,6 +484,28 @@
             </Collection>
           </Annotation>
         </Member>
+        <Member Name="HBM">
+          <Annotation Term="OData.Description" String="High Bandwidth Memory."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_7_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="HBM2">
+          <Annotation Term="OData.Description" String="High Bandwidth Memory 2."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_7_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
       </EnumType>
 
       <EnumType Name="BaseModuleType">
@@ -516,6 +538,17 @@
         </Member>
         <Member Name="SO_DIMM_32b">
           <Annotation Term="OData.Description" String="SO_DIMM_32b."/>
+        </Member>
+        <Member Name="Die">
+          <Annotation Term="OData.Description" String="A die within a package."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_7_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
       </EnumType>
 
