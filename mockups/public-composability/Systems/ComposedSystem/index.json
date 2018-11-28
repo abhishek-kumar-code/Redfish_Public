@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_6_0.ComputerSystem",
     "Id": "ComposedSystem",
     "Name": "Sample Composed System",
     "SystemType": "Composed",
@@ -41,6 +41,27 @@
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4"
             }
         ]
+    },
+    "Actions": {
+        "#ComputerSystem.Reset": {
+            "target": "/redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "On",
+                "ForceOff",
+                "GracefulShutdown",
+                "GracefulRestart",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ]
+        },
+        "#ComputerSystem.AddResourceBlock": {
+            "target": "/redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.AddResourceBlock"
+        },
+        "#ComputerSystem.RemoveResourceBlock": {
+            "target": "/redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.RemoveResourceBlock"
+        }
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/ComposedSystem",

@@ -15,7 +15,7 @@
     "NegotiatedSpeedGbs": 6,
     "Links": {
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"}
+            {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/1"}
         ]
     },
     "Actions": {

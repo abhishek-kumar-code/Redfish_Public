@@ -42,10 +42,12 @@ const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310'
 const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 
 const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ];
-const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml' ];
+const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml', 'Volume_v1.xml', 'VolumeCollection_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
-const OldRegistries = ['registries/Base.1.0.0.json', 'registries/ResourceEvent.1.0.0.json', 'registries/TaskEvent.1.0.0.json'];
+const OldRegistries = ['Base.1.0.0.json', 'ResourceEvent.1.0.0.json', 'TaskEvent.1.0.0.json', 'Redfish_1.0.1_PrivilegeRegistry.json', 'Redfish_1.0.2_PrivilegeRegistry.json'];
+const NamespacesWithReleaseTerm = ['PhysicalContext', 'Protocol' ];
+const NamespacesWithoutReleaseTerm = ['RedfishExtensions.v1_0_0', 'Validation.v1_0_0', 'RedfishError.v1_0_0', 'Schedule.v1_0_0', 'Schedule.v1_1_0' ];
 /************************************************************/
 
 const setupBatch = {
@@ -103,14 +105,17 @@ function constructTest(file) {
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
     'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
-    'All namespaces have OwningEntity': schemaOwningEntityCheck
+    'All namespaces have OwningEntity': schemaOwningEntityCheck,
+    'All versioned, non-errata namespaces have Release': schemaReleaseCheck
   }
 }
 
 mockupFiles.forEach(constructMockupTest);
 
 function constructMockupTest(file) {
-  if(OldRegistries.includes(file) || file.includes('explorer_config.json')) {
+  let justFileName = file.split('/');
+  justFileName = justFileName[justFileName.length - 1];
+  if(OldRegistries.includes(justFileName) || file.includes('explorer_config.json')) {
     return;
   }
   mockupsCSDL[file] = {
@@ -399,6 +404,12 @@ function checkPropertiesPascalCased(err, csdl) {
   if(err) {
     return;
   }
+
+  if(this.context.name.includes('RedfishError_v1.xml')) {
+    // Ignore the RedfishErrors file; the properties are dictated by the OData spec
+    return;
+  }
+
   let properties = CSDL.search(csdl, 'Property');
   for(let i = 0; i < properties.length; i++) {
     if(properties[i].Name.match(PascalRegex) === null && NonPascalCasePropertyWhiteList.indexOf(properties[i].Name) === -1) {
@@ -869,6 +880,69 @@ function validCSDLTypeInMockup(err, json) {
       if(!Array.isArray(json[propName])) {
         throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
       }
+      let typeLookup = CSDLProperty.Type.substring(11);
+      typeLookup = typeLookup.substring(0, typeLookup.length-1);
+      let namespaceIndex = typeLookup.indexOf('.');
+      if(namespaceIndex === -1) {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      let namespace = typeLookup.substring(0, namespaceIndex);
+      if(namespace === '') {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice' || namespace === 'Message') {
+        let typeNameIndex = typeLookup.lastIndexOf('.');
+        if(typeNameIndex === -1) {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        let typeName = typeLookup.substring(typeNameIndex+1);
+        if(namespace === '') {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+      }
+      let propType = CSDL.findByType({_options: options}, typeLookup);
+      if(propType === null || propType === undefined) {
+        throw new Error('Cannot locate property type '+typeLookup+'.');
+      }
+      for(let i = 0; i < json[propName].length; i++) {
+        let propValue = json[propName][i];
+        if(typeof propType === 'string') {
+          simpleTypeCheck(propType, propValue, CSDLProperty, propName);
+        }
+        else {
+          if(propType.constructor.name === 'EnumType') {
+            enumTypeCheck(propType, propValue, CSDLProperty, propName);
+          }
+          else if(propType.constructor.name === 'TypeDefinition') {
+            simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
+          }
+          else if(propType.constructor.name === 'ComplexType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is a ComplexType, but the value in the mockup is not a valid JSON object.');
+            }
+            //Ignore Oem and Actions types...
+            if(propType.Name === 'Actions') {
+              validateActions(propValue);
+            }
+            else if(propType.Name !== 'Oem') {
+              complexTypeCheck(propType, propValue, propName+'['+i.toString()+']', type);
+            }
+          }
+          else if(propType.constructor.name === 'EntityType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
+            }
+            //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
+            if(propValue['@odata.id'] === undefined) {
+              console.log(this.context.title);
+              if(!this.context.title.includes('non-resource-examples')) {
+                throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+              }
+            }
+          }
+        }
+      }
     }
     else {
       let typeLookup = CSDLProperty.Type
@@ -1048,7 +1122,7 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
       if(typeof propValue !== 'string' && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
       }
-      if(CSDLProperty.Annotations['Validation.Pattern']) {
+      if(CSDLProperty.Annotations['Validation.Pattern'] && propValue !== null) {
         let regex = CSDLProperty.Annotations['Validation.Pattern'].String;
         if(regex[0] === '/') {
           regex = regex.substring(1);
@@ -1216,6 +1290,45 @@ function schemaOwningEntityCheck(err, csdl) {
       let owningEntity = CSDL.search(schemas[i], 'Annotation', 'RedfishExtensions.v1_0_0.OwningEntity');
       if(owningEntity.length === 0) {
         throw new Error('Namespace '+schemas[i]._Name+' lacks OwningEntity!');
+      }
+    }
+  }
+}
+
+function schemaReleaseCheck(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  if(this.context.name.includes('index.xml') ||
+     this.context.name.includes('ContosoExtensions_v1.xml') ||
+     this.context.name.includes('TurboencabulatorService_v1.xml')) {
+    // Ignore mockup files
+    return;
+  }
+
+  let schemas = CSDL.search(csdl, 'Schema');
+  for(let i = 0; i < schemas.length; i++) {
+    let release = CSDL.search(schemas[i], 'Annotation', 'Redfish.Release');
+    if(NamespacesWithReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and require the Release term
+      if(release.length === 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }    
+    }
+    else if(NamespacesWithoutReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and do not use the Release term
+      if(release.length !== 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
+      }    
+    }
+    else {
+      // All other namespaces require the Release term if it's versioned and non-errata
+      if((release.length === 0) && schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }
+      if((release.length !== 0) && !schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
       }
     }
   }
