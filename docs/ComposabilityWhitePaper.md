@@ -407,7 +407,7 @@ Allow: GET, PATCH, PUT, HEAD
 }
 ```
 
-In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response shows that it's a physical system since the `SystemType` is set to `Physical`.  However, the presence of the `ResourceBlocks` array in the `Links` property indicates that a client is able to add or remove components.  In addition, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Update a Composed Resource](#update-a-composed-resource) section.
+In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response shows that it's a physical system since the `SystemType` is set to `Physical`.  However, the presence of the `ResourceBlocks` array in the `Links` property indicates that a client is able to add or remove components.  In addition, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Modify a Composed Resource](#modify-a-composed-resource) section.
 
 
 ## Appendix
