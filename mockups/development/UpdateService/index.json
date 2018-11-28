@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#UpdateService.v1_1_0.UpdateService",
+    "@odata.type": "#UpdateService.v1_4_0.UpdateService",
     "Id": "UpdateService",
     "Name": "Update service",
     "Status": {
@@ -9,6 +9,20 @@
     },
     "ServiceEnabled": true,
     "HttpPushUri": "/update",
+    "HttpPushUriOptions": {
+      "HttpPushUriApplyTime": {
+        "ApplyTime": "Immediate",
+        "ApplyTime@Redfish.AllowableValues": [
+            "Immediate",
+            "OnReset",
+            "AtMaintenanceWindowStart",
+            "InMaintenanceWindowOnReset"
+        ],
+        "MaintenanceWindowStartTime": "2018-12-01T03:00:00+06:00",
+        "MaintenanceWindowDurationInSeconds": 600
+      }
+    },
+    "HttpPushUriOptionsBusy": false,
     "FirmwareInventory": {
         "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
     },
@@ -25,5 +39,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#UpdateService/$entity",
     "@odata.id": "/redfish/v1/UpdateService",
-    "@Redfish.Copyright": "Copyright 2016 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2018 DMTF. All rights reserved."
 }
