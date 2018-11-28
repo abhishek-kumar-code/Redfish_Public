@@ -67,6 +67,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeSlots_v1.xml">
     <edmx:Include Namespace="PCIeSlots"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Processor_v1.xml">
+    <edmx:Include Namespace="Processor"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
     <edmx:Include Namespace="SensorCollection"/>
   </edmx:Reference>
@@ -876,6 +879,15 @@
           <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A4'."/>
         </Member>
       </EnumType>
+
+      <ComplexType Name="Links" BaseType="Chassis.v1_7_0.Links">
+        <NavigationProperty Name="Processors" Type="Collection(Processor.Processor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the Processors located in this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Processor that are contained in this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
