@@ -53,6 +53,7 @@
           <Collection>
             <String>/redfish/v1/Systems/{ComputerSystemId}/Bios</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Bios</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Bios</String>
           </Collection>
         </Annotation>
       </EntityType>
