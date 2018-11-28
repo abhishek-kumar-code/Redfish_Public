@@ -31,7 +31,6 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccelerationFunctionCollection">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
 
       <EntityType Name="AccelerationFunctionCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of AccelerationFunction resource instances."/>
@@ -56,6 +55,8 @@
             <String>/redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/AccelerationFunctions</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/AccelerationFunctions</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/AccelerationFunctions</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/AccelerationFunctions</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/AccelerationFunctions</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(AccelerationFunction.AccelerationFunction)">

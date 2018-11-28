@@ -1,6 +1,5 @@
 {
-    "@Redfish.ReleaseStatus": "WorkInProgress",
-    "@odata.type": "#AccelerationFunction.v0_9_0.AccelerationFunction",
+    "@odata.type": "#AccelerationFunction.v1_0_0.AccelerationFunction",
     "Id": "Compression",
     "Name": "Compression Accelerator",
     "Description": "Compression Acceleration Function",

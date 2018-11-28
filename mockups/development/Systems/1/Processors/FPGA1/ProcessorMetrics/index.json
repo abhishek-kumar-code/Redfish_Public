@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#ProcessorMetrics.ProcessorMetrics",
     "@odata.id": "/redfish/v1/Systems/1/Processors/FPGA1/ProcessorMetrics",
-    "@odata.type": "#ProcessorMetrics.v0_9_0.ProcessorMetrics",
+    "@odata.type": "#ProcessorMetrics.v1_0_0.ProcessorMetrics",
     "Id": "Metrics",
     "Description": "Processor Metrics",
     "Name": "Processor Metrics",
@@ -13,10 +13,10 @@
     "FrequencyRatio": 0.00432,
     "Cache":[
         {
-            "Level": 3,
+            "Level": "3",
             "CacheMiss": 0.12,
-            "CacheHitRatio": 0.719,
-            "CacheMpi": 0.00088,
+            "HitRatio": 0.719,
+            "CacheMissesPerInstruction": 0.00088,
             "OccupancyBytes": 3030144,
             "OccupancyPercent": 90.1
         }
@@ -34,9 +34,9 @@
             "IOStallCount": 2634872,
             "CoreCache":[
                 {
-                    "Level": 2,
+                    "Level": "2",
                     "CacheMiss": 0.472,
-                    "CacheHitRatio": 0.57,
+                    "HitRatio": 0.57,
                     "CacheMissesPerInstruction": 0.00346,
                     "OccupancyBytes": 198231,
                     "OccupancyPercent": 77.4

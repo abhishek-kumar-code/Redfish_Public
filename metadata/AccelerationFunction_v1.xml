@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AccelerationFunction  v0.9.0-->
+<!--# Redfish Schema:  AccelerationFunction  v1.0.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -38,7 +38,6 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccelerationFunction">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
 
       <EntityType Name="AccelerationFunction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The AccelerationFunction schema defines the accelerator implemented in a Processor device."/>
@@ -64,14 +63,16 @@
             <String>/redfish/v1/Systems/{ComputerSystemId}/Processors/{ProcessorId}/AccelerationFunctions/{AccelerationFunctionId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/AccelerationFunctions/{AccelerationFunctionId}</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/AccelerationFunctions/{AccelerationFunctionId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/AccelerationFunctions/{AccelerationFunctionId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/AccelerationFunctions/{AccelerationFunctionId}</String>
           </Collection>
         </Annotation>
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccelerationFunction.v0_9_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccelerationFunction.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
 
       <EntityType Name="AccelerationFunction" BaseType="AccelerationFunction.AccelerationFunction">
         <Property Name="Status" Type="Resource.Status" Nullable="false">
@@ -88,7 +89,7 @@
           <Annotation Term="OData.Description" String="An array of the reconfiguration slot identifiers for an FPGA."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of the FPGA reconfiguration slots identifiers that this acceleration function occupies."/>
         </Property>
-        <Property Name="AccelerationFunctionType" Type="AccelerationFunction.v0_9_0.AccelerationFunctionType">
+        <Property Name="AccelerationFunctionType" Type="AccelerationFunction.v1_0_0.AccelerationFunctionType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of acceleration function."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the type of acceleration function."/>
@@ -109,11 +110,11 @@
           <Annotation Term="OData.LongDescription" String="The total acceleration function power consumtion in watts."/>
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
-        <Property Name="Links" Type="AccelerationFunction.v0_9_0.Links" Nullable="false">
+        <Property Name="Links" Type="AccelerationFunction.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
-        <Property Name="Actions" Type="AccelerationFunction.v0_9_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="AccelerationFunction.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -140,7 +141,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="AccelerationFunction.v0_9_0.OemActions" Nullable="false">
+        <Property Name="Oem" Type="AccelerationFunction.v1_0_0.OemActions" Nullable="false">
           <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
         </Property>

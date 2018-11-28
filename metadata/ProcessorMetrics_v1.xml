@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ProcessorMetrics  v0.9.0-->
+<!--# Redfish Schema:  ProcessorMetrics  v1.0.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -32,7 +32,6 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ProcessorMetrics">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
 
       <EntityType Name="ProcessorMetrics" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="ProcessorMetrics contains usage and health statistics for a Processor (all Cores)."/>
@@ -61,14 +60,18 @@
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/ProcessorMetrics</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/ProcessorMetrics</String>
             <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/ProcessorMetrics</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/ProcessorMetrics</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/ProcessorMetrics</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/ProcessorMetrics</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Processors/{ProcessorId}/SubProcessors/{ProcessorId2}/ProcessorMetrics</String>
           </Collection>
         </Annotation>
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ProcessorMetrics.v0_9_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ProcessorMetrics.v1_0_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="Redfish.ReleaseStatus" EnumMember="Redfish.ReleaseStatusType/WorkInProgress"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
 
       <EntityType Name="ProcessorMetrics" BaseType="ProcessorMetrics.ProcessorMetrics">
         <Property Name="BandwidthPercent" Type="Edm.Decimal">
@@ -107,7 +110,7 @@
           <Annotation Term="OData.Description" String="The frequency relative to the nominal processor frequency ratio."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the frequency relative to the nominal processor frequency ratio of this processor."/>
         </Property>
-        <Property Name="Cache" Type="Collection(ProcessorMetrics.v0_9_0.CacheMetrics)">
+        <Property Name="Cache" Type="Collection(ProcessorMetrics.v1_0_0.CacheMetrics)">
           <Annotation Term="OData.Description" String="The processor cache metrics."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain properties that describe this processor's cache."/>
         </Property>
@@ -137,11 +140,11 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="%"/>
         </Property>
-        <Property Name="CoreMetrics" Type="Collection(ProcessorMetrics.v0_9_0.CoreMetrics)">
+        <Property Name="CoreMetrics" Type="Collection(ProcessorMetrics.v1_0_0.CoreMetrics)">
           <Annotation Term="OData.Description" String="The processor core metrics."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain properties that describe the cores of this processor."/>
         </Property>
-        <Property Name="Actions" Type="ProcessorMetrics.v0_9_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="ProcessorMetrics.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -175,11 +178,11 @@
           <Annotation Term="OData.Description" String="The number of stalled cycles due to I/O operations."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of stalled cycles due to I/O operations of this core in the processor."/>
         </Property>
-        <Property Name="CoreCache" Type="Collection(ProcessorMetrics.v0_9_0.CacheMetrics)">
+        <Property Name="CoreCache" Type="Collection(ProcessorMetrics.v1_0_0.CacheMetrics)">
           <Annotation Term="OData.Description" String="The cache metrics of this core in the processor."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain properties that describe the cache metrics of this core in the processor."/>
         </Property>
-        <Property Name="CStateResidency" Type="Collection(ProcessorMetrics.v0_9_0.CStateResidency)">
+        <Property Name="CStateResidency" Type="Collection(ProcessorMetrics.v1_0_0.CStateResidency)">
           <Annotation Term="OData.Description" String="The C-state residency of this core in the processor."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain properties that describe the C-state residency of this core in the processor."/>
         </Property>
@@ -244,7 +247,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
-        <Property Name="Oem" Type="ProcessorMetrics.v0_9_0.OemActions" Nullable="false">
+        <Property Name="Oem" Type="ProcessorMetrics.v1_0_0.OemActions" Nullable="false">
           <Annotation Term="OData.Description" String="This property contains the available OEM specific actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain any additional OEM actions for this resource."/>
         </Property>
