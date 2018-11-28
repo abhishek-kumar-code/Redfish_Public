@@ -848,7 +848,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
 
-      <EntityType Name="Chassis" BaseType="Chassis.v1_8_0.Chassis">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_8_1.Chassis">
+        <Property Name="EnvironmentalClass" Type="Chassis.v1_9_0.EnvironmentalClass">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The ASHRAE Environmental Class for this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the ASHRAE Environmental Specification Class for this Chassis, as defined by ASHRAE Thermal Guidelines for Data Processing Environments. These classes define respective environmental limits which include temperature, relative humidity, dew point, and maximum allowable elevation."/>
+        </Property>
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
@@ -856,6 +861,21 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
+
+      <EnumType Name="EnvironmentalClass">
+        <Member Name="A1">
+          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A1'."/>
+        </Member>
+        <Member Name="A2">
+          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A2'."/>
+        </Member>
+        <Member Name="A3">
+          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A3'."/>
+        </Member>
+        <Member Name="A4">
+          <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A4'."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>
