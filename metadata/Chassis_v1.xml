@@ -67,6 +67,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeSlots_v1.xml">
     <edmx:Include Namespace="PCIeSlots"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
+    <edmx:Include Namespace="SensorCollection"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -844,12 +847,19 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_9_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.3"/>
+
       <EntityType Name="Chassis" BaseType="Chassis.v1_8_1.Chassis">
         <Property Name="EnvironmentalClass" Type="Chassis.v1_9_0.EnvironmentalClass">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The ASHRAE Environmental Class for this Chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the ASHRAE Environmental Specification Class for this Chassis, as defined by ASHRAE Thermal Guidelines for Data Processing Environments. These classes define respective environmental limits which include temperature, relative humidity, dew point, and maximum allowable elevation."/>
         </Property>
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The naivgation pointer to the collection of sensors located in the equipment and sub-components."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to a resource of type SensorCollection that contains the sensors located in the Chassis and sub-components."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
 
       <EnumType Name="EnvironmentalClass">
@@ -866,7 +876,6 @@
           <Annotation Term="OData.Description" String="ASHRAE Environmental Specification Class 'A4'."/>
         </Member>
       </EnumType>
-
     </Schema>
 
   </edmx:DataServices>
