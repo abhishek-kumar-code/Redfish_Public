@@ -468,6 +468,8 @@ In addition, the following URI without a trailing slash shall be either Redirect
 
 All other Redfish URIs supported by the service shall match the URI patterns described by the [Resource URI pattern definitions section](#resource-uri-pattern-definitions), with the exception to supplemental resources referenced by the "@Redfish.Settings", "@Redfish.ActionInfo", and "@Redfish.CollectionCapabilities" payload annotations.  The URIs for these supplemental resources shall be treated as opaque by the client.
 
+All URIs supported by a Redfish Service shall be considered reserved for future standardization by DMTF and DMTF Alliance Parterns, with the exception to OEM extension URIs which shall conform to the requirements in section [URIs for OEM resources](#uris-for-oem-resources).
+
 All relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g., //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g., /redfish/v1/Systems).
 
 ### Requests
@@ -691,7 +693,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
-OData annotations (such as [resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property), and [Links Property](#links-property)) shall be ignored by the service on Update.  This includes any annotations matching the forms "*PropertyName*@odata.*TermName*" or "@odata.*TermName*", where *PropertyName* is the name of the property being annotated, and *TermName* is the specific OData annotation term.  If an Update request only contains OData annotations, the service should return the NoOperation message defined in the Base Message Registry.
+OData annotations (such as [resource identifiers](#resource-identifier-property), [type](#type-property), and [etag](#etag-property)) shall be ignored by the service on Update.  This includes any annotations matching the forms "*PropertyName*@odata.*TermName*" or "@odata.*TermName*", where *PropertyName* is the name of the property being annotated, and *TermName* is the specific OData annotation term.  If an Update request only contains OData annotations, the service should return the NoOperation message defined in the Base Message Registry.  In order to gain the protection semantics of an etag, the if-match or if-none-match header shall be used for that protection and not the @odata.etag property value.
 
 ##### Replace (PUT)<a id="replace-put"></a>
 
@@ -2283,7 +2285,7 @@ The OEM identifier portion of the name will typically identify the company or or
 
 ##### URIs for OEM resources
 
-Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources should be in the form of:
+Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources shall be in the form of:
 
 ` *BaseUri*/Oem/*OemName*/*ResourceName*`
 
