@@ -1069,6 +1069,7 @@ The above example will request that the composed system called `NewSystem` be re
 | 1.2.0   | TBD        | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
 |         |            | Added text in the Constrained Composition section to link to the appendix. |
 |         |            | Added Expandable Resources section. |
+|         |            | Added new methods for modifying composed resources. |
 | 1.1.0   | 2018-08-23 | Added documentation for Constrained Composition requests. |
 |         |            | Updated modeling section to cover new properties added in DSP8010 2018.1 and 2018.2. |
 |         |            | Added guidance for implementers on different conditions to avoid when annotating properties in the Capabilities Object. |

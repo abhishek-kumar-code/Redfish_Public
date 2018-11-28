@@ -3401,6 +3401,12 @@ OData-Version: 4.0
 |         |            | Added clarification about services supporting a subset of HTTP operations on resources specified in schema. |
 |         |            | Added clarification about services implementing writable properties as read only. |
 |         |            | Added clarification about session termination not affecting connections opened by the session. |
+|         |            | Added "Redfish Provider" term definition. |
+|         |            | Updated JSON Schema references to point to Draft 7 of the JSON Schema specification. |
+|         |            | Added clarifications about scenarios for when a request to add an Event Subscription contains conflicting information and how services respond. |
+|         |            | Removed language about ignoring the 'Links' property in PATCH requests. |
+|         |            | Clarified usage of ETags to show that a client is not supposed to PATCH '@odata.etag' when attempting to use ETag protection for a resource. |
+|         |            | Various spelling and grammar fixes. |
 | 1.6.0   | 2018-08-23 | Added methods of using $filter on the SSE URI for the EventService. |
 |         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
 |         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 must conform to these URI patterns. |
