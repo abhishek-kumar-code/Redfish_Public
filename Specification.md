@@ -692,7 +692,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
-OData annotations (such as [resource identifiers](#resource-identifier-property), [type](#type-property), and [etag](#etag-property)) shall be ignored by the service on Update.  This includes any annotations matching the forms "*PropertyName*@odata.*TermName*" or "@odata.*TermName*", where *PropertyName* is the name of the property being annotated, and *TermName* is the specific OData annotation term.  If an Update request only contains OData annotations, the service should return the NoOperation message defined in the Base Message Registry.  In order to gain the protection semantics of an etag, the if-match or if-none-match header shall be used for that protection and not the @odata.etag property value.
+OData annotations (such as [resource identifiers](#resource-identifier-property), [type](#type-property), and [etag](#etag-property)) shall be ignored by the service on Update.  This includes any annotations matching the forms "*PropertyName*@odata.*TermName*" or "@odata.*TermName*", where *PropertyName* is the name of the property being annotated, and *TermName* is the specific OData annotation term.  If an Update request only contains OData annotations, the service should return the NoOperation message defined in the Base Message Registry.  In order to gain the protection semantics of an etag, the If-Match or If-None-Match header shall be used for that protection and not the @odata.etag property value.
 
 ##### Replace (PUT)<a id="replace-put"></a>
 
@@ -2638,7 +2638,7 @@ In the unlikely event that a [202](#status-202) (Accepted) is returned on the DE
 
 After the operation has completed, the service shall update the TaskState with the appropriate value.  The values indicating that a task has completed are defined in the Task schema.
 
-After the operation has completed, the Task Monitor shall return a the appropriate status code ( OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+After the operation has completed, the Task Monitor shall return the appropriate status code (such as, but not limited to, OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously.  If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
 
 The service may return a status code of [410](#status-410) (Gone) or [404](#status-404) (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor.
 
