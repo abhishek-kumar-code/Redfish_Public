@@ -105,7 +105,7 @@
           <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate Collection where the certificate will be installed once the CA has signed the certificate."/>
         </Parameter>
-        <Parameter Name="KeyUsage" Type="Collection(CertificateService.v1_0_0.KeyUsage)">
+        <Parameter Name="KeyUsage" Type="Collection(Certificate.KeyUsage)">
           <Annotation Term="OData.Description" String="The usage of the key contained in the certificate."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the usage of the key contained in the certificate.  If not provided by the client, the service may determine the appropriate key usage settings in the certificate signing request."/>
         </Parameter>
@@ -152,9 +152,8 @@
           <Annotation Term="OData.Description" String="A link to the certificate that is being replaced."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the URI of the Certificate that is being replaced."/>
         </Parameter>
-        <ReturnType Type="CertificateService.v1_0_0.ReplaceCertificate" Nullable="false"/>
         <Annotation Term="OData.Description" String="This action is used to replace an existing certificate."/>
-        <Annotation Term="OData.LongDescription" String="This action shall replace an existing certificate."/>
+        <Annotation Term="OData.LongDescription" String="This action shall replace an existing certificate.  The Location header in the response shall contain the URI of the new Certificate resource."/>
       </Action>
     </Schema>
 
@@ -236,56 +235,6 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="KeyUsage">
-        <Annotation Term="OData.Description" String="The usages of a key contained within a certificate."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the usages of a key contained within a certificate as specified by the Key Usage and Extended Key Usage definitions in RFC5280."/>
-        <Member Name="DigitalSignature">
-          <Annotation Term="OData.Description" String="The public key is used for verifying digital signatures, other than signatures on certificates and CRLs."/>
-        </Member>
-        <Member Name="NonRepudiation">
-          <Annotation Term="OData.Description" String="The public key is used to verify digital signatures, other than signatures on certificates and CRLs, and used to provide a non-repudiation service that protects against the signing entity falsely denying some action."/>
-        </Member>
-        <Member Name="KeyEncipherment">
-          <Annotation Term="OData.Description" String="The public key is used for enciphering private or secret keys."/>
-        </Member>
-        <Member Name="DataEncipherment">
-          <Annotation Term="OData.Description" String="The public key is used for directly enciphering raw user data without the use of an intermediate symmetric cipher."/>
-        </Member>
-        <Member Name="KeyAgreement">
-          <Annotation Term="OData.Description" String="The public key is used for key agreement."/>
-        </Member>
-        <Member Name="KeyCertSign">
-          <Annotation Term="OData.Description" String="The public key is used for verifying signatures on public key certificates."/>
-        </Member>
-        <Member Name="CRLSigning">
-          <Annotation Term="OData.Description" String="The public key is used for verifying signatures on certificate revocation lists (CLRs)."/>
-        </Member>
-        <Member Name="EncipherOnly">
-          <Annotation Term="OData.Description" String="The public key could be used for enciphering data while performing key agreement."/>
-        </Member>
-        <Member Name="DecipherOnly">
-          <Annotation Term="OData.Description" String="The public key could be used for deciphering data while performing key agreement."/>
-        </Member>
-        <Member Name="ServerAuthentication">
-          <Annotation Term="OData.Description" String="The public key is used for TLS WWW server authentication."/>
-        </Member>
-        <Member Name="ClientAuthentication">
-          <Annotation Term="OData.Description" String="The public key is used for TLS WWW client authentication."/>
-        </Member>
-        <Member Name="CodeSigning">
-          <Annotation Term="OData.Description" String="The public key is used for the signing of executable code."/>
-        </Member>
-        <Member Name="EmailProtection">
-          <Annotation Term="OData.Description" String="The public key is used for email protection."/>
-        </Member>
-        <Member Name="Timestamping">
-          <Annotation Term="OData.Description" String="The public key is used for binding the hash of an object to a time."/>
-        </Member>
-        <Member Name="OCSPSigning">
-          <Annotation Term="OData.Description" String="The public key is used for signing OCSP responses."/>
-        </Member>
-      </EnumType>
-
       <ComplexType Name="GenerateCSRResponse">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The response body for the GenerateCSR action."/>
@@ -302,36 +251,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the string of the certificate signing request as a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC2986.  The private key should not be part of the string."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-      </ComplexType>
-
-      <ComplexType Name="GenerateSelfSignedCertificateResponse">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The response body for the GenerateSelfSignedCertificate action."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GenerateSelfSignedCertificate action."/>
-        <NavigationProperty Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A link to the certificate collection where the certificate will be installed."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the Certificate Collection where the certificate will be installed."/>
-          <Annotation Term="Redfish.Required"/>
-        </NavigationProperty>
-        <Property Name="CertificateString" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The string for the certificate signing request."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the string of the self signed certificate as a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280.  The private key should not be part of the string."/>
-          <Annotation Term="Redfish.Required"/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="ReplaceCertificateResponse">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="The response body for the ReplaceCertificate action."/>
-        <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the ReplaceCertificate action."/>
-        <NavigationProperty Name="CertificateUri" Type="Certificate.Certificate" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A link to the new certificate."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the URI of the new Certificate."/>
-          <Annotation Term="Redfish.Required"/>
-        </NavigationProperty>
       </ComplexType>
     </Schema>
 

@@ -22,6 +22,10 @@
     },
     "ValidNotBefore": "2018-09-07T13:22:05Z",
     "ValidNotAfter": "2019-09-07T13:22:05Z",
+    "KeyUsage": [
+        "KeyEncipherment",
+        "ServerAuthentication"
+    ],
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Certificate.Certificate",
     "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates/1",
