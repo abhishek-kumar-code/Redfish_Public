@@ -552,7 +552,7 @@ Clients can add query parameters to request additional features from the service
 | ---       | ---                                                                                                                                                             | ---                                 |
 | $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                               | `http://resourcecollection?$skip=5` |
 | $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
-| only      | For Resource Collections, if there is exactly one Member in the collection, return that member's resource in place of the Resource Collection.                  | `http://resourcecollection?only` |
+| only      | For Resource Collections, if there is exactly one Member in the collection, return that member's resource in place of the Resource Collection. This parameter shall be ignored when combined with '$expand' or for resources that are not Resource Collections.     | `http://resourcecollection?only` |
 | $expand   | Include data from hyperlinks in the resource inline within the current payload, depending on the value of the expand                                            | `http://resourcecollection?$expand=.($levels=1)`|
 | $select   | Include a subset of the properties of a resource based on the expression specified in the query parameters for this option.                                     | `http://resource?$select=SystemType,Status`|
 | $filter   | Include a subset of the members of a collection based on the expression specified in the query parameters for this option                                       | `http://resourcecollection?$filter=SystemType eq 'Physical'`|
@@ -562,6 +562,7 @@ Clients can add query parameters to request additional features from the service
 * Service may support the $expand, $filter and $select query parameters. 
 * When the service supports query parameters, the service shall include the ProtocolFeaturesSupported object in the service root.
 * Implementation shall return the [501](#status-501), Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
+* Implementation shall return the [400](#status-400), Bad Request, status code for any query parameters containing values that are invalid, or applied to parameters with no values defined (e.g. 'excerpt' or 'only').
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 * Query parameters shall only be supported on GET operations. 
 * The contents of the response body shall be as if the query parameters were evaluated in the following order: 
