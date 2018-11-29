@@ -29,6 +29,7 @@ options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
 let ucum = null;
 let ucumError = false;
 let publishedSchemas = {};
+let overrideCSDLs = [];
 
 /***************** White lists ******************************/
 //Units that don't exist in UCUM
@@ -90,6 +91,7 @@ function addOverrideTest(file) {
         throw err;
       }
       assert.notEqual(csdl, null);
+      overrideCSDLs.push(csdl);
     }
   }
 }
@@ -244,8 +246,19 @@ function checkPermissionsInSchema(schema, csdl) {
         propType = propType.substring(11, propType.length-1);
       }
       let type = CSDL.findByType(csdl, propType);
-      if(type === null) {
-        throw new Error('Unable to locate type "'+propType+'"');
+      if(type === null || type === undefined) {
+        if(overrideCSDLs.length > 0) {
+          for(let j = 0; j < overrideCSDLs.length; j++) {
+            console.log('Looking in overrideCSDL '+str(j));
+            type = CSDL.findByType(overrideCSDLs[j], propType);
+            if(type !== null && type !== undefined) {
+              break;
+            }
+          }
+        }
+        if(type === null || type === undefined) {
+          throw new Error('Unable to locate type "'+propType+'"');
+        }
       }
       else {
         if(type.constructor.name !== 'ComplexType') {
@@ -1355,5 +1368,5 @@ function schemaReleaseCheck(err, csdl) {
 process.on('unhandledRejection', (reason, promise) => {
 });
 
-vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).addBatch(overrideBatch).addBatch(mockupsCSDL).export(module);
+vows.describe('CSDL').addBatch(setupBatch).addBatch(overrideBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
 /* vim: set tabstop=2 shiftwidth=2 expandtab: */
