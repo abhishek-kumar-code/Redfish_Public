@@ -110,6 +110,10 @@
         "filter": {
             "type": "string",
             "description": "Indicates a filter to apply to an array of objects when the values are copies of data elsewhere in the data model."
+        },
+        "license": {
+            "type": "string",
+            "description": "The term is applied to Redfish schema or registry in order to specify licensing information."
         }
     },
     "properties": {
@@ -192,6 +196,9 @@
         },
         "filter": {
             "$ref": "#/definitions/filter"
+        },
+        "license": {
+            "$ref": "#/definitions/license"
         }
     }
 }
