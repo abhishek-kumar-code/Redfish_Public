@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  BootOption  v1.0.1-->
+<!--# Redfish Schema:  BootOption  v1.0.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -44,7 +44,7 @@
         </Annotation>
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
-            <PropertyValue Property="Updatable" Bool="false"/>
+            <PropertyValue Property="Updatable" Bool="true"/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
@@ -134,5 +134,11 @@
       <EntityType Name="BootOption" BaseType="BootOption.v1_0_0.BootOption"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="BootOption.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to correct InsertRestrictions Updatable annotation."/>
+      <EntityType Name="BootOption" BaseType="BootOption.v1_0_1.BootOption"/>
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
