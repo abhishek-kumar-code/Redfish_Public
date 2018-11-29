@@ -1069,6 +1069,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_8_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2018.3"/>
       <Annotation Term="OData.Description" String="This version was created to to add the Redfish Excerpt annotation to the Name property."/>
     </Schema>
 
