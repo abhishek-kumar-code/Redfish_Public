@@ -128,7 +128,7 @@
               </Record>
             </Collection>
           </Annotation>
-        </Member>        
+        </Member>
         <Member Name="Backplane">
           <Annotation Term="OData.Description" String="A backplane within the chassis."/>
         </Member>
@@ -216,6 +216,111 @@
               </Record>
             </Collection>
           </Annotation>
+        </Member>
+        <Member Name="Motor">
+          <Annotation Term="OData.Description" String="A motor."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="Transformer">
+          <Annotation Term="OData.Description" String="A Transformer."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="ACUtilityInput">
+          <Annotation Term="OData.Description" String="An AC Utility Input."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="ACStaticBypassInput">
+          <Annotation Term="OData.Description" String="An AC Static Bypass Input."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="ACMaintenanceBypassInput">
+          <Annotation Term="OData.Description" String="An AC Maintenance Bypass Input."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="DCBus">
+          <Annotation Term="OData.Description" String="A DC Bus."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="ACOutput">
+          <Annotation Term="OData.Description" String="An AC Output."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+        <Member Name="ACInput">
+          <Annotation Term="OData.Description" String="An AC Input."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2018.3"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="PhysicalSubContext">
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="2018.3"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Member Name="Input">
+          <Annotation Term="OData.Description" String="The input."/>
+        </Member>
+        <Member Name="Output">
+          <Annotation Term="OData.Description" String="The output."/>
         </Member>
       </EnumType>
 
