@@ -226,7 +226,7 @@ function checkPermissionsInSchema(schema, csdl) {
         propType = propType.substring(11, propType.length-1);
       }
       let type = CSDL.findByType(csdl, propType);
-      if(type === null) {
+      if(type === null || type === undefined) {
         throw new Error('Unable to locate type "'+propType+'"');
       }
       else {
