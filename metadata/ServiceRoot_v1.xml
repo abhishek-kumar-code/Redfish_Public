@@ -487,6 +487,7 @@
 
       <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_4_0.ServiceContainer">
         <Singleton Name="CertificateService" Type="CertificateService.CertificateService"/>
+        <Singleton Name="ResourceBlocks" Type="ResourceBlockCollection.ResourceBlockCollection"/>
       </EntityContainer>
 
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_4_1.ServiceRoot">

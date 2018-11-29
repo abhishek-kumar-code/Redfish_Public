@@ -139,6 +139,9 @@
       <Term Name="ResourceBlockLimits" Type="ResourceBlock.ResourceBlockLimits">
         <Annotation Term="OData.Description" String="The term specifies the allowable quantities of types of Resource Blocks for a given composition request."/>
       </Term>
+      <Term Name="License" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The term is applied to Redfish schema or registry in order to specify licensing information."/>
+      </Term>
 
       <EnumType Name="ReleaseStatusType">
         <Member Name="Standard">
@@ -183,7 +186,7 @@
           <Annotation Term="OData.Description" String="The kind of revision."/>
           <Annotation Term="OData.LongDescription" String="This property shall describe the type of change made."/>
         </Property>
-        <Property Name="Description" Type="Edm.String" Nullable="false">
+        <Property Name="Description" Type="Edm.String">
           <Annotation Term="OData.Description" String="Text describing the reason for the revision."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a description of the change made."/>
         </Property>
