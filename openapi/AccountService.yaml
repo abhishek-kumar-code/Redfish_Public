@@ -19,6 +19,7 @@ components:
       - $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_2_3.yaml#/components/schemas/AccountService
       - $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_0.yaml#/components/schemas/AccountService
       - $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_3_1.yaml#/components/schemas/AccountService
+      - $ref: http://redfish.dmtf.org/schemas/v1/AccountService.v1_4_0.yaml#/components/schemas/AccountService
       description: The AccountService schema contains properties for managing user
         accounts. The properties are common to all user accounts, such as password
         requirements, and control features such as account lockout. The schema also

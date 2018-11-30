@@ -38,6 +38,7 @@ components:
           Type Event.
         MetricReport: The subscription destination will receive JSON Bodies of the
           Resource Type MetricReport.
+      x-versionAdded: v1_4_0
 title: '#EventDestination.EventDestination'
 x-copyright: Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
 x-owningEntity: DMTF
