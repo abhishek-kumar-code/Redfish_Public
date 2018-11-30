@@ -2,8 +2,8 @@
 DocTitle: Redfish Composability White Paper
 DocNumber: '2050'
 DocClass: Informative
-DocVersion: '1.1.0'
-modified: '2018-08-23'
+DocVersion: '1.2.0'
+modified: '2018-11-29'
 status: published
 released: true
 copyright: '2014-2018'
@@ -1066,7 +1066,7 @@ The above example will request that the composed system called `NewSystem` be re
 
 | Version | Date       | Description |
 | ------- | ---------- | ----------- |
-| 1.2.0   | TBD        | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
+| 1.2.0   | 2018-11-29 | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
 |         |            | Added text in the Constrained Composition section to link to the appendix. |
 |         |            | Added Expandable Resources section. |
 |         |            | Added new methods for modifying composed resources. |

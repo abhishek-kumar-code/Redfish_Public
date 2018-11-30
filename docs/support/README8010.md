@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2018.2'
-modified: '2018-08-10'
+DocVersion: '2018.3'
+modified: '2018-11-29'
 status: published
 released: True
 copyright: '2015-2018'
@@ -36,7 +36,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 
 ## Redfish Schema Release History
 
-### Release 2018.3 (TBD)
+### Release 2018.3 (December 2018)
 
 | Schema Name                    | Version | Description |
 | ---                            | ---     | ---         |

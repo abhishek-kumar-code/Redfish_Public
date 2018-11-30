@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.6.0'
-modified: '2018-08-23'
-SupersedesVersion: '1.5.1'
+DocVersion: '1.6.1'
+modified: '2018-11-29'
+SupersedesVersion: '1.6.0'
 status: published
 released: true
 copyright: '2014-2018'
@@ -3394,7 +3394,7 @@ OData-Version: 4.0
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
-| 1.6.1   | TBD        | Added clause about percent encoding being allowed for query parameters. |
+| 1.6.1   | 2018-11-29 | Added clause about percent encoding being allowed for query parameters. |
 |         |            | Changed Expand example to use SoftwareInventory instead of LogEntry. |
 |         |            | Added missing clause about the usage of a separator for multiple query parameters. |
 |         |            | Fixed '$filter' examples to use '/' instead of '.' for property paths. |

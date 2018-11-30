@@ -8,6 +8,7 @@ components:
       - $ref: http://redfish.dmtf.org/schemas/v1/Bios.v1_0_2.yaml#/components/schemas/Bios
       - $ref: http://redfish.dmtf.org/schemas/v1/Bios.v1_0_3.yaml#/components/schemas/Bios
       - $ref: http://redfish.dmtf.org/schemas/v1/Bios.v1_0_4.yaml#/components/schemas/Bios
+      - $ref: http://redfish.dmtf.org/schemas/v1/Bios.v1_0_5.yaml#/components/schemas/Bios
       description: The Bios schema contains properties related to the BIOS Attribute
         Registry.  The Attribute Registry describes the system-specific BIOS attributes
         and Actions for changing to BIOS settings.  Changes to the BIOS typically

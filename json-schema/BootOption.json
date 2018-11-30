@@ -1,4 +1,5 @@
 {
+    "$id": "http://redfish.dmtf.org/schemas/v1/BootOption.json",
     "$ref": "#/definitions/BootOption",
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
     "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
@@ -19,10 +20,11 @@
             "description": "The BootOption resource reports information about a single BootOption contained within a system.",
             "insertable": false,
             "longDescription": "This resource shall be used to represent a single boot option contained within a system.",
-            "updatable": false,
+            "updatable": true,
             "uris": [
                 "/redfish/v1/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}",
-                "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}"
+                "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}",
+                "/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/BootOptions/{BootOptionId}"
             ]
         }
     },
