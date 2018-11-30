@@ -2,8 +2,8 @@
 DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
-DocVersion: '2018.2'
-modified: '2018-08-10'
+DocVersion: '2018.3'
+modified: '2018-12-14'
 status: published
 released: True
 copyright: '2017-2018'
@@ -141,8 +141,8 @@ A number of corner-case issues have been found in the schema definitions which c
   <img src="http://redfish.dmtf.org/sites/default/files/DMTF_Redfish_logo_R.jpg" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2018-8-10</p>
-<p align="right">Version: <span class="version">2018.2</span></p>
+<p align="right">Date: 2018-12-15</p>
+<p align="right">Version: <span class="version">2018.3</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
@@ -328,7 +328,7 @@ The following table lists all of the Redfish-defined Resource Collections and th
 
 # Reference Guide
 
-This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
+This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.3 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
 
 
 # Schema Supplement
@@ -616,6 +616,7 @@ This document was created using the Redfish Documentation Generator utility, whi
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
+| 2018.3  | 2018-12-15 | Release built from Redfish schemas released in DSP8010 version 2018.3 |
 | 2018.2  | 2018-08-10 | Release built from Redfish schemas released in DSP8010 version 2018.2 |
 |         |            | Expanded introduction section with additional information. |
 |         |            | Expanded Common Objects section to include previously excluded objects. |
