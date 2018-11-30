@@ -215,14 +215,14 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total cache level occupancy in bytes."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total cache occupancy of the processor or core in bytes."/>
-          <Annotation Term="OData.Measures" String="By"/>
+          <Annotation Term="Measures.Unit" String="By"/>
         </Property>
         <Property Name="OccupancyPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total cache occupancy percentage."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total cache occupancy percentage of the processor or core."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="OData.Measures" String="%"/>
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
       </ComplexType>
 
@@ -239,7 +239,7 @@
           <Annotation Term="OData.Description" String="The percentage of time that the processor or core has spent in this particular level of C-state."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the percentage of time that the processor or core has spent in this particular level of C-state."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="OData.Measures" String="%"/>
+          <Annotation Term="Measures.Unit" String="%"/>
         </Property>
       </ComplexType>
 

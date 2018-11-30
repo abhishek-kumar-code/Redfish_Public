@@ -41,6 +41,11 @@
             "url": "/redfish/v1/EventService"
         },
         {
+            "name": "CertificateService",
+            "kind": "Singleton",
+            "url": "/redfish/v1/CertificateService"
+        },
+        {
             "name": "UpdateService",
             "kind": "Singleton",
             "url": "/redfish/v1/UpdateService"

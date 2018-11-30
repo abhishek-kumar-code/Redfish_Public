@@ -2,8 +2,8 @@
 DocTitle: Redfish Composability White Paper
 DocNumber: '2050'
 DocClass: Informative
-DocVersion: '1.1.0'
-modified: '2018-08-23'
+DocVersion: '1.2.0'
+modified: '2018-11-29'
 status: published
 released: true
 copyright: '2014-2018'
@@ -407,7 +407,7 @@ Allow: GET, PATCH, PUT, HEAD
 }
 ```
 
-In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response shows that it's a physical system since the `SystemType` is set to `Physical`.  However, the presence of the `ResourceBlocks` array in the `Links` property indicates that a client is able to add or remove components.  In addition, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Update a Composed Resource](#update-a-composed-resource) section.
+In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response shows that it's a physical system since the `SystemType` is set to `Physical`.  However, the presence of the `ResourceBlocks` array in the `Links` property indicates that a client is able to add or remove components.  In addition, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Modify a Composed Resource](#modify-a-composed-resource) section.
 
 
 ## Appendix
@@ -1066,8 +1066,10 @@ The above example will request that the composed system called `NewSystem` be re
 
 | Version | Date       | Description |
 | ------- | ---------- | ----------- |
-| 1.2.0   | TBD        | Added text in the Constrained Composition section to link to the appendix. |
+| 1.2.0   | 2018-11-29 | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
+|         |            | Added text in the Constrained Composition section to link to the appendix. |
 |         |            | Added Expandable Resources section. |
+|         |            | Added new methods for modifying composed resources. |
 | 1.1.0   | 2018-08-23 | Added documentation for Constrained Composition requests. |
 |         |            | Updated modeling section to cover new properties added in DSP8010 2018.1 and 2018.2. |
 |         |            | Added guidance for implementers on different conditions to avoid when annotating properties in the Capabilities Object. |

@@ -375,12 +375,16 @@ For convenience when identifying the auto-generated credentials when active and 
 
 ### Change log
 
-| Version | Date       | Description     |
-| ---     | ---        | ---             |
+| Version | Date       | Description |
+| ---     | ---        | ---         |
+| 1.0.2   | TBD        | Clarified the byte ordering in SMBIOS structures. |
+|         |            | Clarified the data shown in the Device Descriptor Table. |
+|         |            | Clarified the format of the Host Name field. |
+|         |            | Added example device descriptors. |
 | 1.0.1   | 2017-12-11 | Errata release. Numerous terminology clarifications and typographical corrections. |
 |         |            | Terminology for 'host', 'manager' and 'service' were edited for consistency. |
 |         |            | Added additional wording about the SMBIOS Type 42 structure to describe its purpose. |
 |         |            | Added references to the UEFI Specification. |
 |         |            | Clarified byte ordering of IPv4 and IPv6 addresses in the SMBIOS Type 42 structure. |
 |         |            | Added missing case for what to use for the UUID in the SMBIOS Type 42 structure if it is unknown or not supported. |
-| 1.0.0   | 2016-12-30 | Initial release |
+| 1.0.0   | 2016-12-30 | Initial release. |

@@ -8,8 +8,10 @@ components:
       - $ref: http://redfish.dmtf.org/schemas/v1/JsonSchemaFile.v1_0_3.yaml#/components/schemas/JsonSchemaFile
       - $ref: http://redfish.dmtf.org/schemas/v1/JsonSchemaFile.v1_0_4.yaml#/components/schemas/JsonSchemaFile
       - $ref: http://redfish.dmtf.org/schemas/v1/JsonSchemaFile.v1_0_5.yaml#/components/schemas/JsonSchemaFile
+      - $ref: http://redfish.dmtf.org/schemas/v1/JsonSchemaFile.v1_0_6.yaml#/components/schemas/JsonSchemaFile
       - $ref: http://redfish.dmtf.org/schemas/v1/JsonSchemaFile.v1_1_0.yaml#/components/schemas/JsonSchemaFile
       - $ref: http://redfish.dmtf.org/schemas/v1/JsonSchemaFile.v1_1_1.yaml#/components/schemas/JsonSchemaFile
+      - $ref: http://redfish.dmtf.org/schemas/v1/JsonSchemaFile.v1_1_2.yaml#/components/schemas/JsonSchemaFile
       description: The JSON Schema File resource describes the location (URI) of a
         particular Redfish schema definition being implemented or referenced by a
         Redfish service.
