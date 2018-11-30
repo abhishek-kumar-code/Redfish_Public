@@ -46,7 +46,7 @@ info:
     url: https://www.dmtf.org/standards/redfish
   description: This contains the definition of a Redfish service.
   title: Redfish API
-  version: '2018.2'
+  version: '2018.3'
   x-copyright: Copyright 2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
 openapi: 3.0.1
 paths:
@@ -94,7 +94,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -117,7 +117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -161,7 +161,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -192,7 +192,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -244,7 +244,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -274,7 +274,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -332,7 +332,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -368,7 +368,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -439,7 +439,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -469,7 +469,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -534,7 +534,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -565,7 +565,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -617,7 +617,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -647,7 +647,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -705,7 +705,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -741,7 +741,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -812,7 +812,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -842,7 +842,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -930,7 +930,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -959,7 +959,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1004,7 +1004,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1034,7 +1034,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1117,7 +1117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1146,7 +1146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1182,7 +1182,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1233,7 +1233,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1262,7 +1262,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1325,7 +1325,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1360,7 +1360,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1402,7 +1402,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1465,7 +1465,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1500,7 +1500,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1595,7 +1595,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1658,7 +1658,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1693,7 +1693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1799,7 +1799,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1841,7 +1841,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1923,7 +1923,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -1972,7 +1972,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2060,7 +2060,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2108,7 +2108,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2212,7 +2212,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2253,7 +2253,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2344,7 +2344,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2379,7 +2379,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2487,7 +2487,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2516,7 +2516,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2579,7 +2579,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2614,7 +2614,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2700,7 +2700,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2735,7 +2735,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2777,7 +2777,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2828,7 +2828,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2857,7 +2857,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2920,7 +2920,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2955,7 +2955,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -2994,7 +2994,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3017,7 +3017,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3086,7 +3086,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3116,7 +3116,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3179,7 +3179,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3214,7 +3214,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3256,7 +3256,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3319,7 +3319,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3354,7 +3354,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3419,7 +3419,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3455,7 +3455,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3525,7 +3525,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3568,7 +3568,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3644,7 +3644,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3686,7 +3686,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3757,7 +3757,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3799,7 +3799,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3841,7 +3841,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3883,7 +3883,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3925,7 +3925,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -3988,7 +3988,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4023,7 +4023,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4095,7 +4095,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4337,7 +4337,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4372,7 +4372,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4539,7 +4539,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4580,7 +4580,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4730,7 +4730,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4765,7 +4765,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4807,7 +4807,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4870,7 +4870,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4905,7 +4905,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -4980,7 +4980,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5021,7 +5021,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5069,7 +5069,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5144,7 +5144,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5185,7 +5185,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5255,7 +5255,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5297,7 +5297,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5371,7 +5371,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5412,7 +5412,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5449,7 +5449,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5513,7 +5513,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5549,7 +5549,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5591,7 +5591,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5634,7 +5634,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5676,7 +5676,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5719,7 +5719,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5782,7 +5782,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5817,7 +5817,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5859,7 +5859,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5901,7 +5901,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -5971,7 +5971,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6013,7 +6013,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6087,7 +6087,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6128,7 +6128,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6234,7 +6234,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6276,7 +6276,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6358,7 +6358,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6407,7 +6407,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6495,7 +6495,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6543,7 +6543,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6647,7 +6647,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6688,7 +6688,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6736,7 +6736,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6819,7 +6819,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -6970,7 +6970,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7018,7 +7018,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7066,7 +7066,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7114,7 +7114,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7162,7 +7162,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7237,7 +7237,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7278,7 +7278,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7362,7 +7362,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7508,7 +7508,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7557,7 +7557,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7645,7 +7645,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -7693,7 +7693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8041,7 +8041,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8082,7 +8082,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8279,7 +8279,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8326,7 +8326,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8430,7 +8430,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8465,7 +8465,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8507,7 +8507,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8675,7 +8675,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8716,7 +8716,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8764,7 +8764,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8839,7 +8839,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8880,7 +8880,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -8967,7 +8967,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9014,7 +9014,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9068,7 +9068,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9155,7 +9155,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9202,7 +9202,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9284,7 +9284,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9332,7 +9332,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9418,7 +9418,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9465,7 +9465,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9542,7 +9542,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9565,7 +9565,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9594,7 +9594,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9638,7 +9638,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9691,7 +9691,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9721,7 +9721,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9880,7 +9880,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9915,7 +9915,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -9957,7 +9957,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10068,7 +10068,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10156,7 +10156,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10178,7 +10178,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10222,7 +10222,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10252,7 +10252,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10302,7 +10302,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10331,7 +10331,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10389,7 +10389,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10425,7 +10425,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10487,7 +10487,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10522,7 +10522,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10628,7 +10628,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10657,7 +10657,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10693,7 +10693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10730,7 +10730,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10766,7 +10766,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10854,7 +10854,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10890,7 +10890,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -10960,7 +10960,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11003,7 +11003,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11079,7 +11079,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11121,7 +11121,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11209,7 +11209,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11245,7 +11245,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11360,7 +11360,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11395,7 +11395,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11437,7 +11437,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11508,7 +11508,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11594,7 +11594,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11624,7 +11624,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11682,7 +11682,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11718,7 +11718,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11798,7 +11798,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11828,7 +11828,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11886,7 +11886,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11923,7 +11923,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -11987,7 +11987,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12023,7 +12023,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12093,7 +12093,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12135,7 +12135,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12226,7 +12226,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12262,7 +12262,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12347,7 +12347,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12384,7 +12384,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12448,7 +12448,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12484,7 +12484,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12554,7 +12554,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12596,7 +12596,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12687,7 +12687,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12723,7 +12723,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12836,7 +12836,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12871,7 +12871,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12959,7 +12959,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -12995,7 +12995,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13083,7 +13083,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13119,7 +13119,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13161,7 +13161,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13203,7 +13203,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13311,7 +13311,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13341,7 +13341,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13404,7 +13404,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13439,7 +13439,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13481,7 +13481,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13544,7 +13544,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13579,7 +13579,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13644,7 +13644,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13680,7 +13680,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13750,7 +13750,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13793,7 +13793,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13869,7 +13869,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13911,7 +13911,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -13982,7 +13982,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14024,7 +14024,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14066,7 +14066,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14108,7 +14108,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14150,7 +14150,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14213,7 +14213,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14248,7 +14248,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14320,7 +14320,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14562,7 +14562,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14597,7 +14597,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14764,7 +14764,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14805,7 +14805,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14955,7 +14955,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -14990,7 +14990,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15032,7 +15032,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15095,7 +15095,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15130,7 +15130,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15205,7 +15205,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15246,7 +15246,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15294,7 +15294,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15369,7 +15369,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15410,7 +15410,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15480,7 +15480,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15522,7 +15522,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15596,7 +15596,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15637,7 +15637,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15674,7 +15674,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15738,7 +15738,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15774,7 +15774,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15816,7 +15816,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15859,7 +15859,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15901,7 +15901,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -15944,7 +15944,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16007,7 +16007,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16042,7 +16042,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16084,7 +16084,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16126,7 +16126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16196,7 +16196,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16238,7 +16238,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16312,7 +16312,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16353,7 +16353,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16459,7 +16459,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16501,7 +16501,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16583,7 +16583,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16632,7 +16632,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16720,7 +16720,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16768,7 +16768,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16872,7 +16872,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16913,7 +16913,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -16961,7 +16961,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17044,7 +17044,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17195,7 +17195,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17243,7 +17243,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17291,7 +17291,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17339,7 +17339,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17387,7 +17387,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17462,7 +17462,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17503,7 +17503,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17587,7 +17587,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17733,7 +17733,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17782,7 +17782,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17870,7 +17870,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -17918,7 +17918,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18266,7 +18266,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18307,7 +18307,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18504,7 +18504,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18551,7 +18551,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18655,7 +18655,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18690,7 +18690,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18732,7 +18732,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18900,7 +18900,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18941,7 +18941,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -18989,7 +18989,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19064,7 +19064,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19105,7 +19105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19192,7 +19192,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19239,7 +19239,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19293,7 +19293,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19380,7 +19380,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19427,7 +19427,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19509,7 +19509,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19557,7 +19557,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19643,7 +19643,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19690,7 +19690,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19729,7 +19729,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19752,7 +19752,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19796,7 +19796,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19826,7 +19826,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19891,7 +19891,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19922,7 +19922,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -19974,7 +19974,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20004,7 +20004,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20040,7 +20040,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20077,7 +20077,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20113,7 +20113,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20150,7 +20150,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20201,7 +20201,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20230,7 +20230,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20266,7 +20266,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20302,7 +20302,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20360,7 +20360,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20396,7 +20396,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20458,7 +20458,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20493,7 +20493,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20581,7 +20581,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20617,7 +20617,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20687,7 +20687,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20730,7 +20730,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20806,7 +20806,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20848,7 +20848,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20934,7 +20934,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -20969,7 +20969,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21011,7 +21011,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21082,7 +21082,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21209,7 +21209,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21251,7 +21251,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21293,7 +21293,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21335,7 +21335,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21377,7 +21377,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21440,7 +21440,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21475,7 +21475,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21547,7 +21547,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21669,7 +21669,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21712,7 +21712,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21788,7 +21788,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -21830,7 +21830,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22031,7 +22031,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22066,7 +22066,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22279,7 +22279,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22314,7 +22314,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22481,7 +22481,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22522,7 +22522,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22608,7 +22608,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22637,7 +22637,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22673,7 +22673,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22811,7 +22811,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22846,7 +22846,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22888,7 +22888,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22951,7 +22951,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -22986,7 +22986,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23061,7 +23061,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23102,7 +23102,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23150,7 +23150,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23225,7 +23225,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23266,7 +23266,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23336,7 +23336,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23378,7 +23378,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23452,7 +23452,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23493,7 +23493,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23530,7 +23530,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23552,7 +23552,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23598,7 +23598,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23658,7 +23658,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23681,7 +23681,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23711,7 +23711,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23755,7 +23755,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23786,7 +23786,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23838,7 +23838,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23868,7 +23868,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23912,7 +23912,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23943,7 +23943,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -23995,7 +23995,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24025,7 +24025,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24072,7 +24072,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24138,7 +24138,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24168,7 +24168,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24218,7 +24218,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24247,7 +24247,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24286,7 +24286,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24309,7 +24309,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
@@ -24338,7 +24338,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_3_0.yaml#/components/schemas/Task
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
           description: Accepted; a Task has been generated
         '204':
           description: Success, but no response data
