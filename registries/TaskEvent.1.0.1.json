@@ -123,7 +123,7 @@
                 ]
             }
         },
-        "TaskProgessChanged": {
+        "TaskProgressChanged": {
             "Description": "The task with id %1 has changed to progress %2 percent complete.",
             "Message": "The task with id %1 has changed to progress %2 percent complete.",
             "Severity": "OK",
