@@ -2,11 +2,11 @@
 DocTitle: Redfish Host Interface Specification
 DocNumber: '0270'
 DocClass: Normative
-DocVersion: '1.0.1'
-modified: '2017-12-11'
-status: published
-released: true
-copyright: '2014-2017'
+DocVersion: '1.1.0a'
+modified: '2018-11-29'
+status: Work in Progress
+released: false
+copyright: '2014-2018'
 ---
 
 # Foreword
@@ -381,10 +381,11 @@ For convenience when identifying the auto-generated credentials when active and 
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
-| 1.0.2   | TBD        | Clarified the byte ordering in SMBIOS structures. |
+| 1.1.0a  | 2018-11-29 | Clarified the byte ordering in SMBIOS structures. |
 |         |            | Clarified the data shown in the Device Descriptor Table. |
 |         |            | Clarified the format of the Host Name field. |
 |         |            | Added example device descriptors. |
+|         |            | Added version 2 of the USB and PCI/PCI-e device descriptors. |
 | 1.0.1   | 2017-12-11 | Errata release. Numerous terminology clarifications and typographical corrections. |
 |         |            | Terminology for 'host', 'manager' and 'service' were edited for consistency. |
 |         |            | Added additional wording about the SMBIOS Type 42 structure to describe its purpose. |
