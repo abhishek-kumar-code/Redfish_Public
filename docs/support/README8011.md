@@ -28,7 +28,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Schema File                | Version | Date       | Description |
 | ---                        | ---     | ---        | ---         |
 | ResourceEvent              | 1.0.1   | TBD        | Corrected '@odata.type' and 'Id' property formats. |
-| TaskEvent                  | 1.0.1   | TBD        | Corrected '@odata.type' and 'Id' property formats. |
+| TaskEvent                  | 1.0.1   | TBD        | Corrected '@odata.type' and 'Id' property formats.  Fixed spelling of the 'TaskProgressChanged' event. |
 | ResourceEvent              | 1.0.0   | 2018-08-10 | Initial release.  Defines messages to use for resource events. |
 | TaskEvent                  | 1.0.0   | 2018-08-10 | Initial release.  Defines messages to use for task events. |
 | Base                       | 1.4.0   | 2018-08-10 | Added 'NoOperation' message. |

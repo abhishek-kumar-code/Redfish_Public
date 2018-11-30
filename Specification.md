@@ -3407,6 +3407,8 @@ OData-Version: 4.0
 |         |            | Added clarifications about scenarios for when a request to add an Event Subscription contains conflicting information and how services respond. |
 |         |            | Removed language about ignoring the 'Links' property in PATCH requests. |
 |         |            | Clarified usage of ETags to show that a client is not supposed to PATCH '@odata.etag' when attempting to use ETag protection for a resource. |
+|         |            | Clarified usage of the 'only' query parameter to show it's not to be combined with '$expand' and not to be used with singular resources. |
+|         |            | Clarified the usage of HTTP status codes with Task Monitors. |
 |         |            | Various spelling and grammar fixes. |
 | 1.6.0   | 2018-08-23 | Added methods of using $filter on the SSE URI for the EventService. |
 |         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
