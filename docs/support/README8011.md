@@ -8,6 +8,7 @@ status: published
 released: True
 copyright: '2015-2018'
 ---
+
 # Foreword
 
 The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort:
@@ -24,16 +25,18 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 # Redfish Registry Change log
 
-| Schema File | Version | Date      | Description     |
-| ---         | ---     | ---       | ---             |
-| ResourceEvent | 1.0.0 | 2018-08-10 | Initial release.  Defines messages to use for resource events. |
-| TaskEvent | 1.0.0 | 2018-08-10 | Initial release.  Defines messages to use for task events. |
-| Base | 1.4.0 | 2018-08-10 | Added 'NoOperation' message. |
-| Base | 1.3.1 | 2018-08-10 | Errata release.  Clarified description and message text for 'GeneralError'. Implementations are expected to provide specific 'Resolution' for this message. |
-| Redfish Privilege Registry | 1.0.3 | 2018-08-10 | Errata release.  Corrected 'ConfigureComponents' plurality privilege throughout. Corrected JSON object structure throughout.  |
-| Base | 1.3.0 | 2018-04-05 | Added 'PropertyValueOutOfRange' and 'SessionTerminated' messages. |
-| Base | 1.2.0 | 2017-08-18 | Added 'ResourceNotFound', 'ResourceExhaustion', 'StringValueTooLong' and 'EmptyJSON' messages. Clarified description for 'PropertyValueFormatError'.  Corrected parameters for 'ResourceAlreadyExists'. |
-| Redfish Privilege Registry | 1.0.2 | 2017-08-18 | Errata release.  Corrected 'ConfigureUsers' plurality privilege throughout. |
-| Base | 1.1.0 | 2017-05-19 | Added 'ResourceInStandby' message. |
-| Redfish Privilege Registry | 1.0.1 | 2017-05-19 | Initial release. |
-| Base | 1.0.0 | 2015-11-25 | Initial release. |
+| Schema File                | Version | Date       | Description |
+| ---                        | ---     | ---        | ---         |
+| ResourceEvent              | 1.0.1   | TBD        | Corrected '@odata.type' and 'Id' property formats. |
+| TaskEvent                  | 1.0.1   | TBD        | Corrected '@odata.type' and 'Id' property formats.  Fixed spelling of the 'TaskProgressChanged' event. |
+| ResourceEvent              | 1.0.0   | 2018-08-10 | Initial release.  Defines messages to use for resource events. |
+| TaskEvent                  | 1.0.0   | 2018-08-10 | Initial release.  Defines messages to use for task events. |
+| Base                       | 1.4.0   | 2018-08-10 | Added 'NoOperation' message. |
+| Base                       | 1.3.1   | 2018-08-10 | Errata release.  Clarified description and message text for 'GeneralError'. Implementations are expected to provide specific 'Resolution' for this message. |
+| Redfish Privilege Registry | 1.0.3   | 2018-08-10 | Errata release.  Corrected 'ConfigureComponents' plurality privilege throughout. Corrected JSON object structure throughout.  |
+| Base                       | 1.3.0   | 2018-04-05 | Added 'PropertyValueOutOfRange' and 'SessionTerminated' messages. |
+| Base                       | 1.2.0   | 2017-08-18 | Added 'ResourceNotFound', 'ResourceExhaustion', 'StringValueTooLong' and 'EmptyJSON' messages. Clarified description for 'PropertyValueFormatError'.  Corrected parameters for 'ResourceAlreadyExists'. |
+| Redfish Privilege Registry | 1.0.2   | 2017-08-18 | Errata release.  Corrected 'ConfigureUsers' plurality privilege throughout. |
+| Base                       | 1.1.0   | 2017-05-19 | Added 'ResourceInStandby' message. |
+| Redfish Privilege Registry | 1.0.1   | 2017-05-19 | Initial release. |
+| Base                       | 1.0.0   | 2015-11-25 | Initial release. |

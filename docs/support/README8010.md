@@ -36,6 +36,56 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 
 ## Redfish Schema Release History
 
+### Release 2018.3 (TBD)
+
+| Schema Name                    | Version | Description |
+| ---                            | ---     | ---         |
+| AccelerationFunction           | 1.0.0   | Initial release.  A resource to describe an Acceleration Function within a Redfish implementation. |
+| AccelerationFunctionCollection | 1.0.0   | Initial release.  A collection of AccelerationFunction resources. |
+| AccountService                 | 1.4.0   | Added "Certificates" property to "LDAP" and "ActiveDirectory" objects. |
+| AttributeRegistry              | 1.3.0   | Added "Oem" property to "Attributes" and "Menus".  Added "Hidden" property to "Menus". |
+| Certificate                    | 1.0.0   | Initial release.  A resource to describe a Certificate within a Redfish implementation. |
+| CertificateCollection          | 1.0.0   | Initial release.  A collection of Certificate resources. |
+| CertificateLocations           | 1.0.0   | Initial release.  A resource to describe Certificate Locations within a Redfish implementation. |
+| CertificateService             | 1.0.0   | Initial release.  A resource to describe a Certificate Service within a Redfish implementation. |
+| Chassis                        | 1.9.0   | Added "Sensors" and "EnvironmentalClass" properties. |
+| ComputerSystem                 | 1.6.0   | Added "AliasBootOrder", "BootOrderPropertySelection", and "PowerRestorePolicy" properties.  Added "AddResourceBlock" and "RemoveResourceBlock" actions. |
+| Endpoint                       | 1.3.0   | Added "AccelerationFunction" to the "EntityType" enum. |
+| ExternalAccountProvider        | 1.1.0   | Added "Certificates" property. |
+| ManagerAccount                 | 1.2.0   | Added "Certificates" property. |
+| ManagerNetworkProtocol         | 1.4.0   | Added "Certificates" property to "HTTPS" object. |
+| Memory                         | 1.7.0   | Added "Intel3DXPoint" to the "MemoryMedia" enum.  Added "HBM" and "HBM2" to the "MemoryDeviceType" enum.  Added "Die" to the "BaseModuleType" enum.  Deprecated "Unlocked" and "Frozen" enums in "SecurityStates", as well as the "SecurityStates" property in favor of the new "SecurityState", "ConfigurationLocked", "ConfigurationLockCapable", "DataLockCapable", and "PassphraseLockLimit" properties. |
+| MetricReport                   | 1.1.0   | Added "Timestamp" property for the overall MetricReport. |
+| MetricReportDefinition         | 1.1.0   | Deprecated "Keys" property within "Wildcards" in favor of "Values" property to align with other schemas. |
+| PhysicalContext                | N/A     | Added "CPUSubsystem", "GPUSubsystem", "FPGA", "Accelerator", "MemorySubsystem", "CoolingSubsystem", "Motor", "Transformer", "ACUtilityInput", "ACStaticBypassInput", "ACMaintenanceBypassInput", "DCBus", "ACOutput", and "ACInput" physical context types.  Updated "Intake" and "Exhaust" descriptions to allow for calculated values over a region.  Added "PhysicalSubContext" definition. |
+| Processor                      | 1.4.0   | Added "TDPWatts", "MaxTDPWatts", "AccelerationFunctions", and "Metrics" properties.  Added various other properties to support reporting and management of FPGAs.  Added "Power" to "ProcessorArchitecture".  Added "PowerISA" to "InstructionSet". |
+| ProcessorMetrics               | 1.0.0   | Initial release.  A resource to describe Processor Metrics within a Redfish implementation. |
+| ResourceBlock                  | 1.3.0   | Added "ResourceBlockLimits" term.  Added "Drives" property. |
+| Sensor                         | 1.0.0   | Initial release.  A resource to describe a Sensor within a Redfish implementation. |
+| SensorCollection               | 1.0.0   | Initial release.  A collection of Sensor resources. |
+| ServiceRoot                    | 1.5.0   | Added "Vendor", "ResourceBlocks", and "CertificateService" properties. | 
+| Storage                        | 1.6.0   | Added "SupportedRAIDTypes" to "StorageControllers". |
+| Task                           | 1.4.0   | Added "PercentComplete" property. |
+| TelemetryService               | 1.1.0   | Deprecated "MetricReportValues" parameter in "SubmitTestMetricReport" action in favor of the "GeneratedMetricReportValues" parameter in order to match the "MetricValues" definition of a MetricReport. |
+| UpdateService                  | 1.4.0   | Added "Username" and "Password" parameters to "SimpleUpdate".  Added "HttpPushUriOptions" and "HttpPushUriOptionsBusy" properties. |
+| VirtualMedia                   | 1.3.0   | Added "UserName", "Password", "TransferProtocolType", and "TransferMethod" properties.  Added "UserName", "Password", "TransferProtocolType", and "TransferMethod" parameters to "InsertMedia" action. |
+| AttributeRegistry              | 1.x.x   | Errata release.  Clarified the description for "ValueName".  Add missing Required terms for "AttributeName" and "ValueName". |
+| Bios                           | 1.0.5   | Errata release.  Clarified the description for "Attributes". |
+| Drive                          | 1.x.x   | Errata release.  Modified references to Volume to point to the Swordfish definition. |
+| Job                            | 1.0.1   | Errata release.  Added missing "Units" term on "PercentComplete". |
+| JSONSchemaFile                 | 1.x.x   | Errata release.  Removed strict normative wording about the format of the schema file name in favor of pointing to the specification for the acceptable format. |
+| MetricDefinition               | 1.0.1   | Errata release.  Updated descriptions for "Wildcards" to match other schemas. |
+| MetricReport                   | 1.0.1   | Errata release.  Clarified "Timestamp" property description within a "MetricValue". |
+| MetricReportDefinition         | 1.0.1   | Errata release.  Updated descriptions for "Wildcards" to match other schemas. |
+| Power                          | 1.x.x   | Errata release.  Clarified the description for "PowerMetrics". |
+| Redundancy                     | 1.x.x   | Errata release.  Removed "Required" term on "MaxNumSupported". |
+| ServiceRoot                    | 1.x.x   | Errata release.  Allow "Product" property to be null. | 
+| Storage                        | 1.x.x   | Errata release.  Modified references to Volume to point to the Swordfish definition. |
+| Triggers                       | 1.0.1   | Errata release.  Updated descriptions for "Wildcards" to match other schemas.  Fixed description for the "RedfishEvent" enum. |
+| UpdateService                  | 1.x.x   | Errata release.  Clarified "HttpPushUri" to indicate a client requires the same privileges as if performing operations on the UpdateService. |
+| (various files)                | various | Errata release.  Added "Revisions" and "Release" annotation to various schema elements as needed. |
+
+
 ### Release 2018.2 (August 2018)
 
 | Schema Name                      | Version | Description |
