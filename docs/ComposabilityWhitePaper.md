@@ -2,8 +2,8 @@
 DocTitle: Redfish Composability White Paper
 DocNumber: '2050'
 DocClass: Informative
-DocVersion: '1.1.0'
-modified: '2018-08-23'
+DocVersion: '1.2.0'
+modified: '2018-11-29'
 status: published
 released: true
 copyright: '2014-2018'
@@ -351,7 +351,7 @@ In the above example, three properties are marked with the `Redfish.RequiredOnCr
 
 ## Types of Compositions
 
-The Redfish Composability data model provides flexibility for service implementers to report different Composition Types based on their needs.  The service informs the client of the type of composition request based on the `UseCase` property found in the [Collection Capabilities Annotation](#collection-capabilities-annotation).  The existing Redfish Composability model has defined one type called [Specific Composition](#specific-composition).
+The Redfish Composability data model provides flexibility for service implementers to report different Composition Types based on their needs.  The service informs the client of the type of composition request based on the `UseCase` property found in the [Collection Capabilities Annotation](#collection-capabilities-annotation).  The existing Redfish Composability model has defined two types called [Specific Composition](#specific-composition) and [Constrained Composition](#constrained-composition).
 
 
 ### Specific Composition
@@ -379,7 +379,35 @@ Example Create (POST) Body for a Specific Composition:
 
 ### Constrained Composition
 
-The Constrained Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the Resource Blocks is delegated by client to the Composition Service.  In constrained composition, the client does not need to comprehend Resource Zones.
+The Constrained Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the Resource Blocks is delegated by client to the Composition Service.  In constrained composition, the client does not need to comprehend Resource Zones.  An example of this type of composition can be found in the [Constrained Composition Workflow](#constrained-composition-workflow) section.
+
+
+### Expandable Resources
+
+In some cases, clients may not be able to directly compose new resources.  Instead, the service may have a baseline resource, and the client is only able to add additional components, or remove them.  A client can identify this case if the Allow HTTP header for the resource does not contain the DELETE method, as well as using other indicators in the resource itself.
+
+Example Expandable ComputerSystem:
+Client request example:
+```http
+GET /redfish/v1/Systems/1 HTTP/1.1
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
+OData-Version: 4.0
+Allow: GET, PATCH, PUT, HEAD
+{
+    "Id": "1"
+    "Name": "Sample Expandable System",
+    "SystemType": "Physical",
+    "Links": {
+        "ResourceBlocks": [
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputerSystemBlock0" }
+        ]
+    },
+    ...
+}
+```
+
+In the above example, the client performed a GET on `/redfish/v1/Systems/1`.  The response shows that it's a physical system since the `SystemType` is set to `Physical`.  However, the presence of the `ResourceBlocks` array in the `Links` property indicates that a client is able to add or remove components.  In addition, the Allow header does not contain DELETE as one of the available methods.  The client is only allowed to update the allocated resources using PATCH or PUT.  An example of how to allocate additional resources can be found in the [Modify a Composed Resource](#modify-a-composed-resource) section.
 
 
 ## Appendix
@@ -928,9 +956,14 @@ The above Client Request Example shows a composition request by the client being
 In the above Service Response Example, the service responded with a successful 201 response, and indicates that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
 
-#### Update a Composed Resource
+#### Modify a Composed Resource
 
-If the Redfish service supports updating an existing composition, the client can update an already created composition through PUT/PATCH.  This can be done by updating the `ResourceBlocks` array found in the composed resource.  When using PATCH, the same array semantics apply as described in the Redfish Specification.
+If the Redfish service supports updating an existing composition, the client can do so by either using PUT/PATCH on the composed resource, or by using actions on the composed resource.
+
+
+##### PUT/PATCH method for modifying
+
+The PUT/PATCH method can be done by updating the `ResourceBlocks` array found in the composed resource.  When using PATCH, the same array semantics apply as described in the Redfish Specification.
 
 Client Request Example:
 ```http
@@ -950,6 +983,62 @@ OData-Version: 4.0
 ```
 
 The above example will preserve the existing Resource Blocks in the composed resource for array elements 0 and 1, and it will add a the `NetworkBlock8` Resource Block to array element 2.
+
+
+##### Actions for modifying
+
+Composed resources that support using actions for modification will have them advertised in the GET response for the resource.
+
+Sample ComputerSystem with Modification Actions
+```json
+{
+    "@odata.id": "/redfish/v1/Systems/ComposedSystem",
+    "Id": "ComposedSystem",
+    "Name": "Sample Composed System",
+    "SystemType": "Composed",
+    "Links": {
+        "ResourceBlocks": [
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4"
+            }
+        ]
+    },
+    "Actions": {
+        "#ComputerSystem.AddResourceBlock": {
+            "target": "/redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.AddResourceBlock"
+        },
+        "#ComputerSystem.RemoveResourceBlock": {
+            "target": "/redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.RemoveResourceBlock"
+        }
+    },
+    ...
+}
+```
+
+In the above example, the Computer System `ComposedSystem` supports two actions: `ComputerSystem.AddResourceBlock` and `ComputerSystem.RemoveResourceBlock`.  A client is able to modify the Computer System by issuing POST to the URI specified by the `target` properties.
+
+Example AddResourceBlock Request:
+```http
+POST /redfish/v1/Systems/ComposedSystem/Actions/ComputerSystem.AddResourceBlock HTTP/1.1
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
+OData-Version: 4.0
+{
+    "ResourceBlock": {
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8"
+    },
+    "ResourceBlockETag": "6e83d4d5f1b8d93fed866876a220c0ab",
+    "ComputerSystemETag": "31171b07d6e2733c8368c54ab1857456"
+}
+```
+
+In the above example, the client is making a request to add `NetworkBlock8` to the Computer System `ComposedSystem`.  It also uses the optional parameters `ResourceBlockETag` and `ComputerSystemETag` to help protect the usage of the Computer System and Resource Block in multi-client scenarios so that the action is not carried out of if the specified ETags do not match the state of the resources.
 
 
 #### Delete a Composed Resource
@@ -977,6 +1066,10 @@ The above example will request that the composed system called `NewSystem` be re
 
 | Version | Date       | Description |
 | ------- | ---------- | ----------- |
+| 1.2.0   | 2018-11-29 | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
+|         |            | Added text in the Constrained Composition section to link to the appendix. |
+|         |            | Added Expandable Resources section. |
+|         |            | Added new methods for modifying composed resources. |
 | 1.1.0   | 2018-08-23 | Added documentation for Constrained Composition requests. |
 |         |            | Updated modeling section to cover new properties added in DSP8010 2018.1 and 2018.2. |
 |         |            | Added guidance for implementers on different conditions to avoid when annotating properties in the Capabilities Object. |

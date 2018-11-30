@@ -5,6 +5,7 @@ components:
       - $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
       - $ref: http://redfish.dmtf.org/schemas/v1/ExternalAccountProvider.v1_0_0.yaml#/components/schemas/ExternalAccountProvider
       - $ref: http://redfish.dmtf.org/schemas/v1/ExternalAccountProvider.v1_0_1.yaml#/components/schemas/ExternalAccountProvider
+      - $ref: http://redfish.dmtf.org/schemas/v1/ExternalAccountProvider.v1_1_0.yaml#/components/schemas/ExternalAccountProvider
       description: A remote service that can provide accounts for this manager to
         utilize for authentication.
       x-longDescription: This resource shall be used to represent resources that represent

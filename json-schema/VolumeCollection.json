@@ -1,4 +1,5 @@
 {
+    "$id": "http://redfish.dmtf.org/schemas/v1/VolumeCollection.json",
     "$ref": "#/definitions/VolumeCollection",
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
     "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
@@ -53,7 +54,7 @@
                         "Members": {
                             "description": "Contains the members of this collection.",
                             "items": {
-                                "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.json#/definitions/Volume"
+                                "$ref": "http://redfish.dmtf.org/schemas/swordfish/v1/Volume.json#/definitions/Volume"
                             },
                             "longDescription": "This property shall contain an array of references to the members of this collection.",
                             "readonly": true,
@@ -90,7 +91,9 @@
             "uris": [
                 "/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes",
                 "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Volumes",
-                "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes"
+                "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes",
+                "/redfish/v1/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/Volumes",
+                "/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes"
             ]
         }
     },

@@ -17,6 +17,7 @@ if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
   mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
 }
 const syntaxBatch = {};
+const overrideBatch = {};
 const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
                           path.normalize(__dirname+'/../mockups/public-oem-examples/Contoso.com')],
@@ -28,6 +29,7 @@ options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
 let ucum = null;
 let ucumError = false;
 let publishedSchemas = {};
+let overrideCSDLs = [];
 
 /***************** White lists ******************************/
 //Units that don't exist in UCUM
@@ -37,15 +39,19 @@ const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310'
                                     'NVDIMM_F', 'NVDIMM_P', 'DDR4_SDRAM', 'DDR4E_SDRAM', 'LPDDR4_SDRAM', 'DDR3_SDRAM',
                                     'LPDDR3_SDRAM', 'DDR2_SDRAM', 'DDR2_SDRAM_FB_DIMM', 'DDR2_SDRAM_FB_DIMM_PROBE', 
                                     'DDR_SGRAM', 'DDR_SDRAM', 'SO_DIMM', 'Mini_RDIMM', 'Mini_UDIMM', 'SO_RDIMM_72b',
-                                    'SO_UDIMM_72b', 'SO_DIMM_16b', 'SO_DIMM_32b', 'TPM1_2', 'TPM2_0', 'TCM1_0', 'iWARP'];
+                                    'SO_UDIMM_72b', 'SO_DIMM_16b', 'SO_DIMM_32b', 'TPM1_2', 'TPM2_0', 'TCM1_0', 'iWARP',
+                                    'RSA_2048Bit', 'RSA_3072Bit', 'RSA_4096Bit', 'EC_P256', 'EC_P384', 'EC_P521', 'EC_X25519', 'EC_X448', 'EC_Ed25519', 'EC_Ed448'];
 //Properties names that are non-Pascal Cased
 const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 
 const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ];
-const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml' ];
+const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml', 'Volume_v1.xml', 'VolumeCollection_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
 const OldRegistries = ['Base.1.0.0.json', 'ResourceEvent.1.0.0.json', 'TaskEvent.1.0.0.json', 'Redfish_1.0.1_PrivilegeRegistry.json', 'Redfish_1.0.2_PrivilegeRegistry.json'];
+const NamespacesWithReleaseTerm = ['PhysicalContext', 'Protocol' ];
+const NamespacesWithoutReleaseTerm = ['RedfishExtensions.v1_0_0', 'Validation.v1_0_0', 'RedfishError.v1_0_0', 'Schedule.v1_0_0', 'Schedule.v1_1_0' ];
+const OverRideFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume_v1.xml'];
 /************************************************************/
 
 const setupBatch = {
@@ -70,6 +76,23 @@ const setupBatch = {
       if(list !== null) {
         publishedSchemas = list;
       }
+    }
+  }
+}
+
+OverRideFiles.forEach(addOverrideTest);
+
+function addOverrideTest(file) {
+  overrideBatch[file] = {
+    topic: function() {
+      CSDL.parseMetadataUri(file, options, this.callback);
+    },
+    'is valid syntax': function(err, csdl) {
+      if(err) {
+        throw err;
+      }
+      assert.notEqual(csdl, null);
+      overrideCSDLs.push(csdl);
     }
   }
 }
@@ -103,7 +126,8 @@ function constructTest(file) {
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
     'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
-    'All namespaces have OwningEntity': schemaOwningEntityCheck
+    'All namespaces have OwningEntity': schemaOwningEntityCheck,
+    'All versioned, non-errata namespaces have Release': schemaReleaseCheck
   }
 }
 
@@ -223,8 +247,19 @@ function checkPermissionsInSchema(schema, csdl) {
         propType = propType.substring(11, propType.length-1);
       }
       let type = CSDL.findByType(csdl, propType);
-      if(type === null) {
-        throw new Error('Unable to locate type "'+propType+'"');
+      if(type === null || type === undefined) {
+        if(overrideCSDLs.length > 0) {
+          for(let j = 0; j < overrideCSDLs.length; j++) {
+            console.log('Looking in overrideCSDL '+str(j));
+            type = CSDL.findByType(overrideCSDLs[j], propType);
+            if(type !== null && type !== undefined) {
+              break;
+            }
+          }
+        }
+        if(type === null || type === undefined) {
+          throw new Error('Unable to locate type "'+propType+'"');
+        }
       }
       else {
         if(type.constructor.name !== 'ComplexType') {
@@ -401,6 +436,12 @@ function checkPropertiesPascalCased(err, csdl) {
   if(err) {
     return;
   }
+
+  if(this.context.name.includes('RedfishError_v1.xml')) {
+    // Ignore the RedfishErrors file; the properties are dictated by the OData spec
+    return;
+  }
+
   let properties = CSDL.search(csdl, 'Property');
   for(let i = 0; i < properties.length; i++) {
     if(properties[i].Name.match(PascalRegex) === null && NonPascalCasePropertyWhiteList.indexOf(properties[i].Name) === -1) {
@@ -556,7 +597,7 @@ function checkReferencesUsed(err, csdl) {
                         nameSpaceAliases = propertiesHaveNamespace(entity.Parameters, nameSpaceAliases);
                         if(entity.ReturnType !== null) {
                           for(let j = 0; j < nameSpaceAliases.length; j++) {
-                            if(entity.ReturnType.startsWith(nameSpaceAliases[j])) {
+                            if(entity.ReturnType.Type.startsWith(nameSpaceAliases[j])) {
                               nameSpaceAliases.splice(j, 1);
                               break;
                             }
@@ -567,7 +608,7 @@ function checkReferencesUsed(err, csdl) {
                         nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
                         if(entity.Type !== null) {
                           for(let j = 0; j < nameSpaceAliases.length; j++) {
-                            if(entity.Type.startsWith(nameSpaceAliases[j])) {
+                            if(entity.Type.startsWith(nameSpaceAliases[j]) || entity.Type.startsWith('Collection('+nameSpaceAliases[j])) {
                               nameSpaceAliases.splice(j, 1);
                               break;
                             }
@@ -1286,8 +1327,47 @@ function schemaOwningEntityCheck(err, csdl) {
   }
 }
 
+function schemaReleaseCheck(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  if(this.context.name.includes('index.xml') ||
+     this.context.name.includes('ContosoExtensions_v1.xml') ||
+     this.context.name.includes('TurboencabulatorService_v1.xml')) {
+    // Ignore mockup files
+    return;
+  }
+
+  let schemas = CSDL.search(csdl, 'Schema');
+  for(let i = 0; i < schemas.length; i++) {
+    let release = CSDL.search(schemas[i], 'Annotation', 'Redfish.Release');
+    if(NamespacesWithReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and require the Release term
+      if(release.length === 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }    
+    }
+    else if(NamespacesWithoutReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and do not use the Release term
+      if(release.length !== 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
+      }    
+    }
+    else {
+      // All other namespaces require the Release term if it's versioned and non-errata
+      if((release.length === 0) && schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }
+      if((release.length !== 0) && !schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
+      }
+    }
+  }
+}
+
 process.on('unhandledRejection', (reason, promise) => {
 });
 
-vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
+vows.describe('CSDL').addBatch(setupBatch).addBatch(overrideBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
 /* vim: set tabstop=2 shiftwidth=2 expandtab: */

@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ManagerAccount.v1_1_0.ManagerAccount",
+    "@odata.type": "#ManagerAccount.v1_2_0.ManagerAccount",
     "Id": "1",
     "Name": "User Account",
     "Description": "User Account",
@@ -8,6 +8,9 @@
     "UserName": "Administrator",
     "RoleId": "Administrator",
     "Locked": false,
+    "Certificates": {
+        "@odata.id": "/redfish/v1/AccountService/Accounts/1/Certificates"
+    },
     "Links": {
         "Role": {
             "@odata.id": "/redfish/v1/AccountService/Roles/Administrator"
