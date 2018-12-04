@@ -1705,7 +1705,7 @@ For example, version 1.2.0 of the BasicServer profile would be named "BasicServe
 
 ##### Dictionary file naming
 
-The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. The file names for Dictionaries shall be formatted as:
+The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
 
   *DictionaryName_vMajorVersion.dict*
 
