@@ -18,30 +18,41 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 
 # Acknowledgments
 
-The DMTF acknowledges the following individuals for their contributions to this document:
+The DMTF acknowledges the following individuals for their contributions to the Redfish standard, including this document and Redfish Schemas, Interoperability Profiles, and Message Registries:
+* Rafiq Ahamed - Hewlett Packard Enterprise
+* Richelle Ahlvers - Broadcom Limited
 * Jeff Autor - Hewlett Packard Enterprise
 * Jeff Bobzin - Insyde Software Corp.
+* David Black - Dell Inc.
 * Patrick Boyd - Dell Inc.
 * David Brockhaus - Vertiv
 * Richard Brunner - VMware Inc.
+* Sean Byland - Cray Inc.
 * Lee Calcote - Seagate Technology
 * P Chandrasekhar - Dell Inc.
+* Barbara Craig - Hewlett Packard Enterprise
 * Chris Davenport - Hewlett Packard Enterprise
 * Gamma Dean - Vertiv
 * Daniel Dufresne - Dell Inc.
 * Samer El-Haj-Mahmoud - Lenovo, Hewlett Packard Enterprise
 * George Ericson - Dell Inc.
 * Wassim Fayed - Microsoft Corporation
+* Kevin Ferguson - Vertiv
 * Mike Garrett - Hewlett Packard Enterprise
 * Steve Geffin - Vertiv
 * Joe Handzik - Hewlett Packard Enterprise
 * Jon Hass - Dell Inc.
 * Jeff Hilland - Hewlett Packard Enterprise
 * Chris Hoffman - Vertiv
+* Cactus Jiang - Vertiv
+* Barry Kitner - Intel Corporation
 * Steven Krig - Intel Corporation
+* Jennifer Lee - Intel Corporation
 * John Leung - Intel Corporation
+* Steve Lyle - Hewlett Packard Enterprise
 * Jagan Molleti - Dell Inc.
 * Milena Natanov - Microsoft Corporation
+* Scott Phuong - Cisco 
 * Michael Pizzo - Microsoft Corporation
 * Chris Poblete - Dell Inc.
 * Michael Raineri - Dell Inc.
@@ -52,6 +63,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Donnie Sturgeon - Vertiv
 * Pawel Szymanski - Intel Corporation
 * Paul Vancil - Dell Inc.
+* Joseph White - Dell Inc.
 * Linda Wu - Super Micro Computer, Inc.
 
 ## Abstract
