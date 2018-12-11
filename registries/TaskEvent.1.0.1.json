@@ -15,7 +15,7 @@
             "Severity": "OK",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None."
         },
@@ -25,7 +25,7 @@
             "Severity": "OK",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None.",
             "ClearingLogic": {
@@ -41,7 +41,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None.",
             "ClearingLogic": {
@@ -57,7 +57,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None.",
             "ClearingLogic": {
@@ -73,7 +73,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None.",
             "ClearingLogic": {
@@ -89,7 +89,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None.",
             "ClearingLogic": {
@@ -103,7 +103,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None."
         },
@@ -113,7 +113,7 @@
             "Severity": "OK",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "value"
+                "string"
             ],
             "Resolution": "None.",
             "ClearingLogic": {
@@ -129,8 +129,8 @@
             "Severity": "OK",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "value",
-                "value"
+                "string",
+                "number"
             ],
             "Resolution": "None."
         }
