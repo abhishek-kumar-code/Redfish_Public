@@ -1513,6 +1513,7 @@ Responses for Resource Collections may contain the following properties:
 * The [Context property](#context-property)
 * An [Etag property](#etag-property)
 * A [Next Link Property](#next-link-property-and-partial-results) for partial results
+* An [OEM property](#oem-property)
 
 Responses for Resource Collections shall not contain any property not explicitly defined in this section of this specification.
 
