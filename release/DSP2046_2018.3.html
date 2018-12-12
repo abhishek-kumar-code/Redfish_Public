@@ -426,28 +426,98 @@ The property-level details include:</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>DurableName</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This indicates the world wide, persistent name of the resource.</td></tr>
-<tr><td><nobr><b>DurableNameFormat</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This represents the format of the DurableName property.</td></tr>
+<tr><td><nobr><b>DurableNameFormat</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This represents the format of the DurableName property.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Resource.json|details|DurableNameFormat">DurableNameFormat</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 </tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/Resource.json|details|DurableNameFormat">DurableNameFormat:</h4>
+<p>This represents the format of the DurableName property.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>EUI</td><td>IEEE-defined 64-bit Extended Unique Identifier.</td></tr>
+<tr><td>FC_WWN</td><td>Fibre Channel World Wide Name.</td></tr>
+<tr><td>iQN</td><td>iSCSI Qualified Name.</td></tr>
+<tr><td>NAA</td><td>Name Address Authority Format.</td></tr>
+<tr><td>NQN</td><td>NVMe Qualified Name.</td></tr>
+<tr><td>NSID</td><td>NVM Namespace Identifier.</td></tr>
+<tr><td>UUID</td><td>Universally Unique Identifier.</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h2 id="common-properties-IPv4Address_v1.1.0">IPv4Address</h2>
 <p>This type describes an IPv4 Address.</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>Address</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 Address.</td></tr>
-<tr><td><nobr><b>AddressOrigin</b></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This indicates how the address was determined.</td></tr>
+<tr><td><nobr><b>AddressOrigin</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates how the address was determined.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/IPAddresses.json|details|AddressOrigin">AddressOrigin</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Gateway</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 gateway for this address.</td></tr>
 <tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
-<tr><td><nobr><b>SubnetMask</b></nobr></td><td></td><td><nobr>read-write</nobr></td><td>This is the IPv4 Subnet mask.</td></tr>
+<tr><td><nobr><b>SubnetMask</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv4 Subnet mask.</td></tr>
 </tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/IPAddresses.json|details|AddressOrigin">AddressOrigin:</h4>
+<p>This indicates how the address was determined.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>BOOTP</td><td>Address is provided by a BOOTP service.</td></tr>
+<tr><td>DHCP</td><td>Address is provided by a DHCPv4 service.</td></tr>
+<tr><td>IPv4LinkLocal</td><td>Address is valid only for this network segment (link).</td></tr>
+<tr><td>Static</td><td>A static address as configured by the user.</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h2 id="common-properties-IPv6Address_v1.1.0">IPv6Address</h2>
 <p>This type describes an IPv6 Address.</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>Address</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This is the IPv6 Address.</td></tr>
-<tr><td><nobr><b>AddressOrigin</b></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This indicates how the address was determined.</td></tr>
-<tr><td><nobr><b>AddressState</b></nobr></td><td></td><td><nobr>read-only</nobr></td><td>The current state of this address as defined in RFC 4862.</td></tr>
+<tr><td><nobr><b>AddressOrigin</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>This indicates how the address was determined.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/IPAddresses.json|details|AddressOrigin">AddressOrigin</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>AddressState</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The current state of this address as defined in RFC 4862.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/IPAddresses.json|details|AddressState">AddressState</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
-<tr><td><nobr><b>PrefixLength</b></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This is the IPv6 Address Prefix Length.</td></tr>
+<tr><td><nobr><b>PrefixLength</b></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>This is the IPv6 Address Prefix Length.</td></tr>
 </tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/IPAddresses.json|details|AddressOrigin">AddressOrigin:</h4>
+<p>This indicates how the address was determined.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>DHCPv6</td><td>Address is provided by a DHCPv6 service.</td></tr>
+<tr><td>LinkLocal</td><td>Address is valid only for this network segment (link).</td></tr>
+<tr><td>SLAAC</td><td>Address is provided by a Stateless Address AutoConfiguration (SLAAC) service.</td></tr>
+<tr><td>Static</td><td>A static address as configured by the user.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/IPAddresses.json|details|AddressState">AddressState:</h4>
+<p>The current state of this address as defined in RFC 4862.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Deprecated</td><td>This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.</td></tr>
+<tr><td>Failed</td><td>This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use.</td></tr>
+<tr><td>Preferred</td><td>This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.</td></tr>
+<tr><td>Tentative</td><td>This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h2 id="common-properties-IPv6GatewayStaticAddress">IPv6GatewayStaticAddress</h2>
 <p>This object represents a single IPv6 static address to be assigned on a network interface.</p>
 <table class="properties">
@@ -462,7 +532,7 @@ The property-level details include:</p>
 <tbody>
 <tr><td><nobr><b>Address</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr> (null)</td><td>A valid IPv6 address.</td></tr>
 <tr><td><nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
-<tr><td><nobr><b>PrefixLength</b></nobr></td><td></td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The Prefix Length of this IPv6 address.</td></tr>
+<tr><td><nobr><b>PrefixLength</b></nobr></td><td>integer</td><td><nobr>read-write</nobr> <nobr>required</nobr> (null)</td><td>The Prefix Length of this IPv6 address.</td></tr>
 </tbody></table>
 <h2 id="common-properties-Location_v1.8.0">Location</h2>
 <p>This type describes the location of a resource.</p>
