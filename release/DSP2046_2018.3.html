@@ -2182,7 +2182,8 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EthernetInterface">EthernetInterface</a>. See the EthernetInterface schema for details.</td></tr>
 <tr><td><nobr><b>HostedServices</b> <i>(v1.2+)</i> {</nobr></td><td>object</td><td></td><td>The services that this computer system supports.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b></nobr><br>}</td><td></td><td><nobr>read-only</nobr></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> {</nobr></td><td>object</td><td></td><td>A reference to a collection of storage services supported by this computer system.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>HostingRoles</b> <i>(v1.2+)</i> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>The hosing roles that this computer system supports. The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|HostingRoles">HostingRoles</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>HostName</b></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>The DNS Host Name, without any domain information.</td></tr>
 <tr><td><nobr><b>HostWatchdogTimer</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>This object describes the Host Watchdog Timer functionality for this system.</td></tr>
@@ -2668,7 +2669,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Endpoint resource. See the Links section and the <a href="#Endpoint">Endpoint</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Volumes</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>Location</b> [ { } ]</nobr></td><td>array (object)</td><td></td><td>The Location of the drive. This type describes the location of a resource. See the <a href="#common-properties-Location_v1.8.0">Location object</a> for details on this property.</td></tr>
 <tr><td><nobr><b>Manufacturer</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this drive.</td></tr>
 <tr><td><nobr><b>MediaType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The type of media contained in this drive.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Drive.json|details|MediaType">MediaType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
@@ -7729,8 +7730,10 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ResourceBlock">ResourceBlock</a>. See the ResourceBlock schema for details.</td></tr>
 <tr><td><nobr><b>SessionService</b> {</nobr></td><td>object</td><td></td><td>This is a link to the Sessions Service. See the <a href="#SessionService">SessionService</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a SessionService resource. See the Links section and the <a href="#SessionService">SessionService</a> schema for details.</td></tr>
-<tr><td><nobr><b>StorageServices</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>A link to a collection of all storage service entities.</td></tr>
-<tr><td><nobr><b>StorageSystems</b> <i>(v1.1+)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This is a link to a collection of storage systems.</td></tr>
+<tr><td><nobr><b>StorageServices</b> {</nobr></td><td>object</td><td></td><td>A link to a collection of all storage service entities.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
+<tr><td><nobr><b>StorageSystems</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of storage systems.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>Systems</b> {</nobr></td><td>object</td><td></td><td>This is a link to a collection of Systems. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#ComputerSystem">ComputerSystem</a>. See the ComputerSystem schema for details.</td></tr>
 <tr><td><nobr><b>Tasks</b> {</nobr></td><td>object</td><td></td><td>This is a link to the Task Service. See the <a href="#TaskService">TaskService</a> schema for details on this property.</td></tr>
@@ -8012,7 +8015,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Endpoint resource. See the Links section and the <a href="#Endpoint">Endpoint</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>StorageServices</b> <i>(v1.4+)</i> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>An array of references to the StorageServices that connect to this controller.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Location</b> <i>(v1.4+)</i> { }</nobr></td><td>object</td><td></td><td>The Location of the storage controller. See the <a href="#common-properties-Location_v1.8.0">Location object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Manufacturer</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>This is the manufacturer of this storage controller.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemberId</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the identifier for the member within the collection.</td></tr>
@@ -8028,8 +8031,9 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Status</b> <i>(v1.1+)</i> { }</nobr></td><td>object</td><td></td><td>This property describes the status and health of the resource and its children. See the <a href="#common-properties-Status">Status object</a> for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedControllerProtocols</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols by which this storage controller can be communicated to.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedControllerProtocols">SupportedControllerProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedDeviceProtocols</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This represents the protocols which the storage controller can use to communicate with attached devices.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedDeviceProtocols">SupportedDeviceProtocols</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedRAIDTypes</b> [ ] </nobr><br>} ]</td><td>array ()</td><td><nobr>read-only</nobr> (null)</td><td>This object describes the RAID Types supported by the storage controller.</td></tr>
-<tr><td><nobr><b>Volumes</b></nobr></td><td></td><td><nobr>read-only</nobr></td><td>The set of volumes produced by the storage controllers represented by this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>SupportedRAIDTypes</b> [ ] </nobr><br>} ]</td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr> (null)</td><td>This object describes the RAID Types supported by the storage controller.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedRAIDTypes">SupportedRAIDTypes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
+<tr><td><nobr><b>Volumes</b> {</nobr></td><td>object</td><td></td><td>The set of volumes produced by the storage controllers represented by this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Action Details</h3>
@@ -8113,6 +8117,31 @@ The property-level details include:</p>
 <tr><td>SMB</td><td>Server Message Block (aka CIFS Common Internet File System).</td></tr>
 <tr><td>UHCI</td><td>Universal Host Controller Interface.</td></tr>
 <tr><td>USB</td><td>Universal Serial Bus.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/Storage.json|details|SupportedRAIDTypes">SupportedRAIDTypes:</h4>
+<p>This object describes the RAID Types supported by the storage controller.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>RAID0</td><td>A placement policy where consecutive logical blocks of data are uniformly distributed across a set of independent storage devices without offering any form of redundancy.</td></tr>
+<tr><td>RAID00</td><td>A placement policy that creates a RAID 0 stripe set over two or more RAID 0 sets.</td></tr>
+<tr><td>RAID01</td><td>A data placement policy that creates a mirrored device (RAID 1) over a set of striped devices (RAID 0).</td></tr>
+<tr><td>RAID1</td><td>A placement policy where each logical block of data is stored on more than one independent storage device.</td></tr>
+<tr><td>RAID10</td><td>A placement policy that creates a striped device (RAID 0) over a set of mirrored devices (RAID 1).</td></tr>
+<tr><td>RAID10E</td><td>A placement policy that uses a RAID 0 stripe set over two or more RAID 10 sets.</td></tr>
+<tr><td>RAID10Triple</td><td>A placement policy that uses a striped device (RAID 0) over a set of triple mirrored devices (RAID 1Triple).</td></tr>
+<tr><td>RAID1E</td><td>A placement policy that uses a form of mirroring implemented over a set of independent storage devices where logical blocks are duplicated on a pair of independent storage devices so that data is uniformly distributed across the storage devices.</td></tr>
+<tr><td>RAID1Triple</td><td>A placement policy where each logical block of data is mirrored three times across a set of three independent storage devices.</td></tr>
+<tr><td>RAID3</td><td>A placement policy using parity-based protection where logical bytes of data are uniformly distributed across a set of independent storage devices and where the parity is stored on a dedicated independent storage device.</td></tr>
+<tr><td>RAID4</td><td>A placement policy using parity-based protection where logical blocks of data are uniformly distributed across a set of independent storage devices and where the parity is stored on a dedicated independent storage device.</td></tr>
+<tr><td>RAID5</td><td>A placement policy using parity-based protection for storing stripes of 'n' logical blocks of data and one logical block of parity across a set of 'n+1' independent storage devices where the parity and data blocks are interleaved across the storage devices.</td></tr>
+<tr><td>RAID50</td><td>A placement policy that uses a RAID 0 stripe set over two or more RAID 5 sets of independent storage devices.</td></tr>
+<tr><td>RAID6</td><td>A placement policy using parity-based protection for storing stripes of 'n' logical blocks of data and two logical blocks of independent parity across a set of 'n+2' independent storage devices where the parity and data blocks are interleaved across the storage devices.</td></tr>
+<tr><td>RAID60</td><td>A placement policy that uses a RAID 0 stripe set over two or more RAID 6 sets of independent storage devices.</td></tr>
+<tr><td>RAID6TP</td><td>A placement policy that uses parity-based protection for storing stripes of 'n' logical blocks of data and three logical blocks of independent parity across a set of 'n+3' independent storage devices where the parity and data blocks are interleaved across the storage devices. This is commonly referred to as Triple Parity RAID. Data stored using this form of RAID is able to survive any three independent storage device failures without data loss.</td></tr>
 </tbody></table>
 
 </div>

@@ -41,6 +41,7 @@ The doc generator will use the local files when specified and otherwise
 follow the full URI, including data from remote files if possible.
 
 ## Local-repo: redfish.dmtf.org/schemas/v1 ./json-schema
+## Local-repo: redfish.dmtf.org/schemas/swordfish/v1 ../Swordfish/json-schema
 
 # Keyword Configuration
 
@@ -333,6 +334,11 @@ This guide was produced using the contents of the schema files from DMTF Redfish
 
 # Schema Supplement
 
+## AccelerationFunction
+
+### Mockup
+mockups/DSP2046-examples/AccelerationFunction-v1-example.json
+
 ## AccountService
 
 ### Mockup
@@ -503,6 +509,11 @@ mockups/DSP2046-examples/Power-v1-example.json
 ### Mockup
 mockups/DSP2046-examples/Processor-v1-example.json
 
+## ProcessorMetrics
+
+### Mockup
+mockups/DSP2046-examples/ProcessorMetrics-v1-example.json
+
 ## ResourceBlock
 
 ### Mockup
@@ -512,6 +523,11 @@ mockups/DSP2046-examples/ResourceBlock-v1-example.json
 
 ### Mockup
 mockups/DSP2046-examples/Role-v1-example.json
+
+## Sensor
+
+### Mockup
+mockups/DSP2046-examples/Sensor-v1-example.json
 
 ## SerialInterface
 
