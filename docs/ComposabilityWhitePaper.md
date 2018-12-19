@@ -3,10 +3,10 @@ DocTitle: Redfish Composability White Paper
 DocNumber: '2050'
 DocClass: Informative
 DocVersion: '1.2.0'
-modified: '2018-11-29'
+modified: '2018-12-11'
 status: published
 released: true
-copyright: '2014-2018'
+copyright: '2017-2018'
 ---
 
 
