@@ -82,7 +82,7 @@ Example Composition Service Resource:
 
 Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not in a state where system software is able to use them until they belong in a composition.  For example, if a Resource Block contains a Drive instance, the Drive will not belong to any given Computer System until a composition request is made that makes use of its Resource Block.
 
-The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value `Expansion` is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.
+The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements, which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value `Expansion` is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.
 
 The property `CompositionStatus` is an object that contains several properties:
 * `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.
@@ -360,7 +360,7 @@ The Specific Composition allows clients to create and manage the life cycle of c
 
 An example of choosing a Resource Block according to the binding rules and providing details of specific Resource Blocks in the a create (POST) request can be found in the [Create a Composed Resource](#create-a-composed-resource) section.
 
-Another industry standard server design which fits into the example of Specific Composition is defined in the [Bladed Partitions Mockup](#references).  In this example, a Multi-Blade Enclosure consisting of a disaggregated hardware chassis can be bound together to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.
+Another industry standard server design that fits into the example of Specific Composition is defined in the [Bladed Partitions Mockup](#references).  In this example, a Multi-Blade Enclosure consisting of a disaggregated hardware chassis can be bound together to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.
 
 Example Create (POST) Body for a Specific Composition:
 ```json
@@ -424,10 +424,10 @@ Here are the operations that a client is expected to use during the creation and
 
 Application code should always start at the root: `/redfish/v1/`
 
-1. Read the Service Root Resource
-    1. Find the `CompositionService` property
-    2. Perform a GET on the URI given by that property
-    3. Look for the value of `ServiceEnabled` attribute to be true
+1. Read the Service Root Resource.
+    1. Find the `CompositionService` property.
+    2. Perform a GET on the URI given by that property.
+    3. Look for the value of `ServiceEnabled` attribute to be true.
 
 General flow diagram:
 ```
@@ -444,13 +444,13 @@ The client needs to understand the composition model reported by the [Compositio
 
 ##### Read the Resource Blocks
 
-1. Perform a GET on the Composition Service URI
-2. Look for the `ResourceBlocks` property
-3. Perform a GET on that URI to get a list of all Resource Blocks
-4. For accessing details of a particular Resource Block, perform a GET on the associated URI listed for a given entry in the `Members` array
-5. The `CompositionStatus` property in each Resource Block will identify the availablity of the Resource Block in composition requests
-    * Clients should take note of this when making decisions on what Resource Blocks to use in a composition request
-    * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition
+1. Perform a GET on the Composition Service URI.
+2. Look for the `ResourceBlocks` property.
+3. Perform a GET on that URI to get a list of all Resource Blocks.
+4. For accessing details of a particular Resource Block, perform a GET on the associated URI listed for a given entry in the `Members` array.
+5. The `CompositionStatus` property in each Resource Block will identify the availability of the Resource Block in composition requests.
+    * Clients should take note of this when making decisions on what Resource Blocks to use in a composition request.
+    * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition.
 
 Resource Block Collection sample:
 ```json
@@ -476,10 +476,10 @@ Resource Block Collection sample:
 
 ##### Read the Resource Zones
 
-1. Perform a GET on the Composition Service URI
-2. Look for the `ResourceZones` property
-3. Perform a GET on that URI to get a list of all Resource Zones
-4. For accessing details of a particular Resource Zone, perform a GET on the associated URI listed for a given entry in the `Members` array
+1. Perform a GET on the Composition Service URI.
+2. Look for the `ResourceZones` property.
+3. Perform a GET on that URI to get a list of all Resource Zones.
+4. For accessing details of a particular Resource Zone, perform a GET on the associated URI listed for a given entry in the `Members` array.
 
 Resource Zone Collection Sample:
 ```json
@@ -498,10 +498,10 @@ Resource Zone Collection Sample:
 
 ##### Read the capabilities for each Resource Zone
 
-1. Perform a GET on each Resource Zone using the URI found in each entry of the `Members` array
-2. Look for the `@Redfish.CollectionCapabilities` annotation in each Resource Zone
-    * The `UseCase` property will be used later when a client has determined what type of composition to create
-    * The `TargetCollection` property will be used later for making the composition request
+1. Perform a GET on each Resource Zone using the URI found in each entry of the `Members` array.
+2. Look for the `@Redfish.CollectionCapabilities` annotation in each Resource Zone.
+    * The `UseCase` property will be used later when a client has determined what type of composition to create.
+    * The `TargetCollection` property will be used later for making the composition request.
 
 Resource Zone Capabilities Sample:
 ```json
@@ -534,7 +534,7 @@ Resource Zone Capabilities Sample:
 
 ##### Read each Capabilities Object
 
-1. Perform a GET on the URI listed in the `CapabilitiesObject` property for each of the Capabilities
+1. Perform a GET on the URI listed in the `CapabilitiesObject` property for each of the Capabilities.
 
 Capabilities Object Sample for a Specific Composition:
 ```json
@@ -579,27 +579,27 @@ Capabilities Object Sample for a Specific Composition:
 
 ##### Create a Composed Resource
 
-The client builds a specific composition request, the client with the following steps.
+The client builds a specific composition request with the following steps.
 
-1. List all [Resource Blocks](#resource-blocks) that belong to a particular [Resource Zone](#resource-zones) by doing a GET on their collection URIs as described in [the above example](#read-the-resource-blocks)
-    * When reading the Resource Blocks, take note of the `CompositionStatus` property
-    * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition
-2. (Optional) Reserve each Resource Block that has been identified for the composition request
-    * Perform a PATCH on each Resource Block with `Reserved` set to true
-    * This step should be done in scenarios where multiple clients may be making composition requests
-3. Identify the needs of a specific composition `UseCase`
-    * Perform a GET on the desired Resource Zone
-    * Find the matching `UseCase` value in the `@Redfish.CollectionCapabilities` annotation
-        * For example, look for the value `ComputerSystemComposition` if trying to compose a new Computer System from a specific list of Resource Blocks
-    * Perform a GET on the URI found in the property `CapabilitiesObject`
-    * Mark down all of the properties annotated with `RequiredOnCreate`
-        * These are the properties which need to be passed as part of the composition request
-    * Mark down the `TargetCollection` URI
-        * This is where the create (POST) request for the new composition is made
-4. Using all the properties that were annotated with `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI
-    * In step 4 of [the above example](#read-the-resource-blocks), only `Name` and `ResourceBlocks` found in `Links` are required
-    * The Redfish service may accept other properties as part of the request so they do not need to be updated later
-5. The `Location` HTTP header in the service response contains the URI of the composed resource
+1. List all [Resource Blocks](#resource-blocks) that belong to a particular [Resource Zone](#resource-zones) by doing a GET on their collection URIs as described in [the above example](#read-the-resource-blocks).
+    * When reading the Resource Blocks, take note of the `CompositionStatus` property.
+    * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition.
+2. (Optional) Reserve each Resource Block that has been identified for the composition request.
+    * Perform a PATCH on each Resource Block with `Reserved` set to true.
+    * This step should be done in scenarios where multiple clients may be making composition requests.
+3. Identify the needs of a specific composition `UseCase`.
+    * Perform a GET on the desired Resource Zone.
+    * Find the matching `UseCase` value in the `@Redfish.CollectionCapabilities` annotation.
+        * For example, look for the value `ComputerSystemComposition` if trying to compose a new Computer System from a specific list of Resource Blocks.
+    * Perform a GET on the URI found in the property `CapabilitiesObject`.
+    * Mark down all of the properties annotated with `RequiredOnCreate`.
+        * These are the properties that need to be passed as part of the composition request.
+    * Mark down the `TargetCollection` URI.
+        * This is where the create (POST) request for the new composition is made.
+4. Using all the properties that were annotated with `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI.
+    * In step 4 of [the above example](#read-the-resource-blocks), only `Name` and `ResourceBlocks` found in `Links` are required.
+    * The Redfish service may accept other properties as part of the request so they do not need to be updated later.
+5. The `Location` HTTP header in the service response contains the URI of the composed resource.
 
 General flow diagram:
 ```
@@ -815,19 +815,19 @@ In a constrained composition request, the request includes structures for the pr
 Based on the capabilities example in [the previous section](#read-the-capabilities-object), the following structures can contain an enumeration annotation and may required sub-properties.
 
 * The processors request
-    * The `@Redfish.RequestedCount` is required
-    * The `ProcessorType` and `TotalCores` properties are required
+    * The `@Redfish.RequestedCount` is required.
+    * The `ProcessorType` and `TotalCores` properties are required.
 * The memory request
-    * The `@Redfish.RequestedCount` is required
-    * The `MemoryType` and `CapacityMiB` properties are required
+    * The `@Redfish.RequestedCount` is required.
+    * The `MemoryType` and `CapacityMiB` properties are required.
 * The storage request
-    * The `@Redfish.RequestedCount` is required
-    * Either the `SimpleStorage` or `Storage` property may be present, or neither
-    * If present, `CapacityBytes` property is required
+    * The `@Redfish.RequestedCount` is required.
+    * Either the `SimpleStorage` or `Storage` property may be present, or neither.
+    * If present, `CapacityBytes` property is required.
 * The network interface request
-    * The `@Redfish.RequestedCount` is required
-    * Either `EthernetInterfaces` or `NetworkInterfaces` property may be present, or neither
-    * If present, `SpeedMbps` or `LinkSpeedMbps` properties are required
+    * The `@Redfish.RequestedCount` is required.
+    * Either `EthernetInterfaces` or `NetworkInterfaces` property may be present, or neither.
+    * If present, `SpeedMbps` or `LinkSpeedMbps` properties are required.
 
 For example, the following processor request requests 4 CPUs and 2 FPGAs.  Other properties in the request can further characterize the processor resource.
 
@@ -951,14 +951,14 @@ Content-Length: <computed-length>
 Location: /redfish/v1/Systems/NewSystem2
 ```
 
-The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation `@Redfish.AllowOverprovisioning` permits the Redfish service to supply more resources that what was requested.  The usage of the annotation `@Redfish.ZoneAffinity` indicates the client wants the components for the composition to be all selected from the [Resource Zone](#resource-zones) that contains the value `"1"` for the `Id` property.
+The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at `/redfish/v1/Systems`.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation `@Redfish.AllowOverprovisioning` permits the Redfish service to supply more resources than what was requested.  The usage of the annotation `@Redfish.ZoneAffinity` indicates the client wants the components for the composition to be all selected from the [Resource Zone](#resource-zones) that contains the value `"1"` for the `Id` property.
 
 In the above Service Response Example, the service responded with a successful 201 response, and indicates that the new Computer System can be found at `/redfish/v1/Systems/NewSystem2`.
 
 
 #### Modify a Composed Resource
 
-If the Redfish service supports updating an existing composition, the client can do so by either using PUT/PATCH on the composed resource, or by using actions on the composed resource.
+If the Redfish service supports updating an existing composition, the client can do so either by using PUT/PATCH on the composed resource, or by using actions on the composed resource.
 
 
 ##### PUT/PATCH method for modifying
@@ -982,7 +982,7 @@ OData-Version: 4.0
 }
 ```
 
-The above example will preserve the existing Resource Blocks in the composed resource for array elements 0 and 1, and it will add a the `NetworkBlock8` Resource Block to array element 2.
+The above example will preserve the existing Resource Blocks in the composed resource for array elements 0 and 1, and it will add the `NetworkBlock8` Resource Block to array element 2.
 
 
 ##### Actions for modifying
@@ -1043,7 +1043,7 @@ In the above example, the client is making a request to add `NetworkBlock8` to t
 
 #### Delete a Composed Resource
 
-The client can retire or decompose an already composed resource using DELETE.
+The client can retire or decompose an already composed resource by using DELETE.
 
 Client Request Example:
 ```http
@@ -1066,7 +1066,7 @@ The above example will request that the composed system called `NewSystem` be re
 
 | Version | Date       | Description |
 | ------- | ---------- | ----------- |
-| 1.2.0   | 2018-11-29 | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
+| 1.2.0   | 2018-12-11 | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
 |         |            | Added text in the Constrained Composition section to link to the appendix. |
 |         |            | Added Expandable Resources section. |
 |         |            | Added new methods for modifying composed resources. |
