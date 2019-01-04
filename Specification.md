@@ -1033,7 +1033,7 @@ HTTP defines status codes that can be returned in response messages.
 Where the HTTP status code indicates a failure, the response body contains an [extended error resource](#error-responses) to provide the client more meaningful and deterministic error semantics.
 
 * Services should return the extended error resource as described in this specification in the response body when a status code [400](#status-400) or greater is returned. Services may return the extended error resource as described in this specification in the response body when other status codes are returned for those codes and operations that allow a response body.
-* Extended error messages MUST NOT provide privileged information when authentication failures occur
+* Extended error messages MUST NOT provide privileged information when authentication failures occur.
 
 NOTE: Refer to the [Security](#security) clause for security implications of extended errors
 
@@ -2301,7 +2301,7 @@ Companies, OEMs, and other organizations can define additional resources and lin
 
 ` *BaseUri*/Oem/*OemName*/*ResourceName*`
 
-where:
+where
 * *BaseUri* is the URI segment of the standard Redfish Resource where the "Oem" property is used.
 * *OemName* is the name of the OEM, that follows the same naming as defined in the [Oem property format and content section](#oem-property-format-and-content).
 * *ResourceName* is the name of the resource defined by the OEM.
@@ -2651,7 +2651,7 @@ In the unlikely event that a [202](#status-202) (Accepted) is returned on the DE
 
 After the operation has been completed, the service shall update the TaskState with the appropriate value.  The values indicating that a task has been completed are defined in the Task schema.
 
-After the operation has beem completed, the Task Monitor shall return the appropriate status code (such as, but not limited to, OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had been completed synchronously.  If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+After the operation has been completed, the Task Monitor shall return the appropriate status code (such as, but not limited to, OK [200](#status-200) for most operations, Created [201](#status-201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had been completed synchronously.  If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
 
 The service may return a status code of [410](#status-410) (Gone) or [404](#status-404) (Not Found) if the operation has been completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor.
 
@@ -2975,7 +2975,7 @@ X-Auth-Token: <session-auth-token>
 ~~~
 
 The client sending the session login request should save the "session auth token" and the hyperlink returned in the Location header.
-The "session auth token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "Session Auth Token" received from the login POST.
+The "session auth token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "session auth token" received from the login POST.
 The client will later use the hyperlink that was returned in the Location header of the POST to logout or terminate the session.
 
 Note that the "session ID" and "session auth token" are different.  The session ID uniquely identifies the session resource and is returned with the response data as well as the last segment of the Location header hyperlink.
