@@ -3,9 +3,9 @@ DocTitle: Redfish Interoperability Profiles Bundle
 DocNumber: '8013'
 DocClass: Normative
 DocVersion: '2018.2'
-modified: '2018-11-29'
+modified: '2018-12-17'
 status: published
-released: True
+released: true
 copyright: '2017-2018'
 ---
 
@@ -30,11 +30,11 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 The root folder of this bundle contains tools useful for constructing a new Redfish Interoperability Profile.  
 
 * RedfishInteroperabilityProfile.v1_n_n.json - A JSON schema definition for a Redfish Interoperability Profile JSON document. This schema file can be used with a JSON schema validator to ensure that a created profile conforms to the Redfish Interoperability Profile Specification.
-* SampleProfile.json - A sample profile JSON document which shows the features available in the profile definition.
+* SampleProfile.json - A sample profile JSON document that shows the features available in the profile definition.
 
 ## Profile folders
 
-As Profiles are defined, approved and published, they will be added to folders in this bundle.  Each published profile is expected to include at least two files: the JSON document which conforms to the profile schema, and a Profile Guide to document the contents of the profile.
+As Profiles are defined, approved and published, they will be added to folders in this bundle.  Each published profile is expected to include at least two files: the JSON document, which conforms to the profile schema, and a Profile Guide to document the contents of the profile.
 
 As of this publication, there are no normative profiles (work-in-progress profiles are available separately).
 
