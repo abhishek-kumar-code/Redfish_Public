@@ -819,7 +819,7 @@ The request body defines the changes to make to one or more properties in the re
 
 The PATCH request does not change any properties that are not in the request body.
 
-When modification succeeds, the response may contain a representation of the updated resource. See [Modification success responses](#success-responses-to-modification-requests).
+When modification succeeds, the response may contain a representation of the updated resource. See [Modification success responses](#modification-success-responses).
 
 The implementation may reject the update on certain fields based on its own policies and, in this case, not make the requested modifications.
 
@@ -858,7 +858,7 @@ To gain the protection semantics of an ETag, the service shall use the `If-Match
 
 To completely replace a resource, use the PUT method.  The service may add properties to the response resource that the client omits from the request body, the resource definition requires, or the service normally supplies.
 
-When the replace operation succeeds, the response may contain a the resource representation after the replacement occurs.  See [Modification success responses](#success-responses-to-modification-requests).
+When the replace operation succeeds, the response may contain a the resource representation after the replacement occurs.  See [Modification success responses](#modification-success-responses).
 
 * To replace a resource in whole, services may support the PUT method.
 * If a service does not implement this method, the service shall return the HTTP [405](#status-405) status code.
@@ -870,7 +870,7 @@ When the replace operation succeeds, the response may contain a the resource rep
 
 To create a new resource, use the POST method.  
 
-The POST request is submitted to the resource collection to which the new resource is to belong.  When the create operation succeeds, the response may contain the resource representation after the update occurs.  See [Modification success responses](#success-responses-to-modification-requests).
+The POST request is submitted to the resource collection to which the new resource is to belong.  When the create operation succeeds, the response may contain the resource representation after the update occurs.  See [Modification success responses](#modification-success-responses).
 
 The body of the create request contains a representation of the object to create.  The service may ignore any service-controlled properties, such as ID, which would force the service to overwrite those properties.  Additionally, the service shall set the `Location` header in the response to the URI of the new resource.
 
@@ -888,7 +888,7 @@ To remove a resource, call the DELETE method.
 
 When the delete operation succeeds, the response may contain the resource representation after the deletion occurs.  
 
-See [Modification success responses](#success-responses-to-modification-requests).
+See [Modification success responses](#modification-success-responses).
 
 * For resources that can be deleted, the service shall support the DELETE method.  If the resource can never be deleted, the service shall return the HTTP [405](#status-405) status code.
 * If the client specifies a DELETE request against a resource collection, the service should return the HTTP [405](#status-405) status code.
