@@ -359,6 +359,23 @@ mockups/DSP2046-examples/Assembly-v1-example.json
 ### Mockup
 mockups/DSP2046-examples/Bios-v1-example.json
 
+## Certificate
+
+### Mockup
+mockups/DSP2046-examples/Certificate-v1-example.json
+
+## CertificateLocations
+
+### Mockup
+mockups/DSP2046-examples/CertificateLocations-v1-example.json
+
+## CertificateService
+
+### Mockup
+mockups/DSP2046-examples/CertificateService-v1-example.json
+
+
+
 ## Chassis
 
 ### Mockup

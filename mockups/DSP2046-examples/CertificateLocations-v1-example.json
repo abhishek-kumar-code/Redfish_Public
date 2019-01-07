@@ -1,0 +1,20 @@
+{
+    "@odata.id": "/redfish/v1/CertificateService/CertificateLocations",
+    "@odata.type": "#CertificateLocations.v1_0_0.CertificateLocations",
+    "Id": "CertificateLocations",
+    "Name": "Certificate Locations",
+    "Links": {
+        "Certificates": [
+            {
+                "@odata.id": "/redfish/v1/Managers/1/NetworkProtocol/HTTPS/Certificates/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/AccountService/Accounts/Jim/Certificates/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders/LDAP/Certificates/1"
+            }
+        ]
+    },
+    "Oem": {}
+}
