@@ -89,7 +89,7 @@
             "insertable": false,
             "updatable": false,
             "uris": [
-                "/redfish/v1/Fabrics/{FabricId}"
+                "/redfish/v1/Fabrics"
             ]
         }
     },
