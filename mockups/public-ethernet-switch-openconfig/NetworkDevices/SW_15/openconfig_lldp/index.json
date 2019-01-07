@@ -1,0 +1,40 @@
+{
+    "@odata.type": "#openconfig_lldp.lldp.v1_0_0.lldp",
+    "@odata.context": "/redfish/v1/$metadata#openconfig_lldp.lldp.lldp",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lldp",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+    "lldp": {
+        "interfaces": {
+            "interface": {}
+        },
+        "config": {
+            "enabled": 1,
+            "hello-timer": 0,
+            "chassis-id": "",
+            "suppress-tlv-advertisement": [],
+            "system-description": "",
+            "chassis-id-type": "",
+            "system-name": ""
+        },
+        "state": {
+            "enabled": 1,
+            "suppress-tlv-advertisement": [],
+            "chassis-id": "",
+            "counters": {
+                "tlv-discard": 0,
+                "entries-aged-out": 0,
+                "frame-in": 0,
+                "frame-error-in": 0,
+                "tlv-accepted": 0,
+                "tlv-unknown": 0,
+                "frame-discard": 0,
+                "last-clear": "",
+                "frame-out": 0
+            },
+            "system-description": "",
+            "hello-timer": 0,
+            "chassis-id-type": "",
+            "system-name": ""
+        }
+    }
+}

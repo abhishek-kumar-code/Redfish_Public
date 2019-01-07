@@ -1,0 +1,24 @@
+{
+    "@odata.type": "#openconfig_qos.qos.v1_0_0.qos",
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.qos",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+
+    "qos": {
+        "interfaces": {
+            "interface": {}
+        },
+        "classifiers": {
+            "classifier": {}
+        },
+        "forwarding-groups": {
+            "forwarding-group": {}
+        },
+        "queues": {
+            "queue": {}
+        },
+        "scheduler-policies": {
+            "scheduler-policy": {}
+        }
+    }
+}

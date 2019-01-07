@@ -1,0 +1,13 @@
+{
+    "lacp": {
+        "state": {
+            "system-priority": 0
+        },
+        "interfaces": {
+            "interface": {}
+        },
+        "config": {
+            "system-priority": 0
+        }
+    }
+}
