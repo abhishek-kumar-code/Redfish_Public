@@ -1,13 +1,31 @@
 {
-    "@odata.id": "/redfish/v1/Managers/1/NetworkProtocol/HTTPS/Certificates/1",
     "@odata.type": "#Certificate.v1_0_0.Certificate",
     "Id": "1",
-    "Name": "Certificate",
-    "CertificateString": "-----BEGIN CERTIFICATE-----...-----END CERTIFICATE-----",
-    "Issuer": { ... },
-    "Subject": { ... },
-    "ValidNotAfter": "2031-06-22T16:36:05Z",
-    "ValidNotBefore": "2016-06-22T16:36:05Z",
-    "KeyUsage": [ "KeyEncipherment", "ServerAuthentication" ],
-    "CertificateType": "PEM"
+    "Name": "HTTPS Certificate",
+    "CertificateString": "-----BEGIN CERTIFICATE-----\nMIIFsTCC [**truncated example**] GXG5zljlu\n-----END CERTIFICATE-----",
+    "CertificateType": "PEM",
+    "Issuer": {
+        "Country": "US",
+        "State": "Oregon",
+        "City": "Portland",
+        "Organization": "Contoso",
+        "OrganizationalUnit": "ABC",
+        "CommonName": "manager.contoso.org"
+    },
+    "Subject": {
+        "Country": "US",
+        "State": "Oregon",
+        "City": "Portland",
+        "Organization": "Contoso",
+        "OrganizationalUnit": "ABC",
+        "CommonName": "manager.contoso.org"
+    },
+    "ValidNotBefore": "2018-09-07T13:22:05Z",
+    "ValidNotAfter": "2019-09-07T13:22:05Z",
+    "KeyUsage": [
+        "KeyEncipherment",
+        "ServerAuthentication"
+    ],
+    "Oem": {},
+    "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates/1"
 }
