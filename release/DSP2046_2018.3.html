@@ -152,6 +152,7 @@ pre.code{
   <p>For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit <a href="http://www.dmtf.org/about/policies/disclosures.php">http://www.dmtf.org/about/policies/disclosures.php</a>.</p>
   <p>This document's normative language is English. Translation into other languages is permitted.</p>
   <br></p>
+<p style="page-break-before: always">
 <h1 id="contents">Contents</h1>
 <p><div class="toc"><ul>
 <li><a href="#contents">Contents</a></li>
@@ -275,6 +276,7 @@ pre.code{
 </ul>
 </div>
 </p>
+<p style="page-break-before: always">
 <h1 id="overview">Overview</h1>
 <p>The Redfish standard comprises a set of specifications maintained by the Redfish Forum, a working group within the DMTF. The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.</p>
 <p>The Redfish standard addresses several key issues for infrastructures that require scalability. Large infrastructures often consist of many simple servers of different makes and types. This hyper-scale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard protocol based on out-of-band systems management.</p>
@@ -332,6 +334,7 @@ The property-level details include:</p>
 <p>The Redfish Specification v1.6.0 added mandatory support for the OpenAPI Specification v3.0.  As part of this support, the URIs for every Redfish Resource are defined to appear at known, fixed locations. Resource Collections also appear at fixed locations, with the Members of each collection appearing at URIs constructed using a fixed path structure, with appropriate path segments equal to the value of "Id" properties of Members along the path.  </p>
 <p>Support for v1.6.0 and OpenAPI can be determined by comparing the value of the "RedfishVersion" property in the Service Root (\redfish\v1).  Services reporting a value of "1.6.0" or higher (such as "1.6.1" or "1.7.0") adhere to the URI definitions shown.</p>
 <p>The URI listings do not apply to Redfish Services reporting support of Specification versions prior to v1.6.0.  For those Services, clients must utilize the hypermedia features of the API to discover links from the Service Root to each resource.  While Services will typically match the URIs listed in this documents for many of their resources, this is not guaranteed and will result in errors.</p>
+<p style="page-break-before: always">
 <h1 id="common-properties">Common properties</h1>
 <h2 id="properties-defined-for-all-redfish-schemas">Properties defined for all Redfish schemas</h2>
 <p>The following properties are defined for inclusion in every Redfish schema, and therefore may be encountered in any Response payload.  They are documented here to avoid repetition in the Reference Guide property tables.  Note that several of these properties are payload annotations, but are listed here as they are required for all Redfish resources.</p>
@@ -971,7 +974,7 @@ The property-level details include:</p>
 <tr><td>EthernetInterfaceCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/EthernetInterfaces<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/HostInterfaces/<i><a href="#HostInterface">{HostInterfaceId}</a></i>/HostEthernetInterfaces<br>/redfish/v1/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/EthernetInterfaces</td></tr>
 <tr><td>EventDestinationCollection</td><td>/redfish/v1/EventService/Subscriptions</td></tr>
 <tr><td>ExternalAccountProviderCollection</td><td>/redfish/v1/AccountService/ExternalAccountProviders<br>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/RemoteAccountService/ExternalAccountProviders</td></tr>
-<tr><td>FabricCollection</td><td>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i></td></tr>
+<tr><td>FabricCollection</td><td>/redfish/v1/Fabrics</td></tr>
 <tr><td>HostInterfaceCollection</td><td>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/HostInterfaces</td></tr>
 <tr><td>JobCollection</td><td>/redfish/v1/JobService/Jobs<br>/redfish/v1/JobService/Jobs/<i><a href="#Job">{JobId}</a></i>/Steps</td></tr>
 <tr><td>JsonSchemaFileCollection</td><td>/redfish/v1/JsonSchemas</td></tr>
@@ -1009,6 +1012,7 @@ The property-level details include:</p>
 <tr><td>VolumeCollection</td><td>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i>/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes<br>/redfish/v1/Systems/<i><a href="#ComputerSystem">{ComputerSystemId}</a></i>/Storage/<i><a href="#Storage">{StorageId}</a></i>/Volumes</td></tr>
 <tr><td>ZoneCollection</td><td>/redfish/v1/CompositionService/ResourceZones<br>/redfish/v1/Fabrics/<i><a href="#Fabric">{FabricId}</a></i>/Zones</td></tr>
 </tbody></table>
+<p style="page-break-before: always">
 <h1 id="reference-guide">Reference Guide</h1>
 <p>This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.3 and merged with supplemental text using the DMTF's <a href="#redfish-documentation-generator">Redfish Documentation Generator</a>.  </p><h2 id="AccelerationFunction">AccelerationFunction 1.0.0</h2>
 <p>The AccelerationFunction schema defines the accelerator implemented in a Processor device.</p>
@@ -1056,6 +1060,30 @@ The property-level details include:</p>
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#AccelerationFunction.v1_0_0.AccelerationFunction&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Compression&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Compression Accelerator&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;FpgaReconfigurationSlots&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;AFU0&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;AccelerationFunctionType&quot;</span><span class="p">:</span> <span class="s2">&quot;Compression&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel (R) Corporation&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;Green Compression Type 1 v.1.00.86&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;PowerWatts&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Endpoints&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="nt">&quot;PCIeFunctions&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Processors/FPGA1/AccelerationFunctions/Compression&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="AccountService">AccountService 1.4.0</h2>
 <p>The AccountService schema contains properties for managing user accounts. The properties are common to all user accounts, such as password requirements, and control features such as account lockout. The schema also contains links to the collections of Manager Accounts and Roles.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/AccountService</li>
@@ -1735,7 +1763,7 @@ The property-level details include:</p>
 <table class="properties">
 <tbody>
 <tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
-<tr><td><nobr><b>Alias</b></nobr></td><td></td><td><nobr>read-only</nobr> (null)</td><td>The alias of this Boot Source.</td></tr>
+<tr><td><nobr><b>Alias</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>The alias of this Boot Source.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/BootOption.json|details|Alias">Alias</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>BootOptionEnabled</b></nobr></td><td>boolean</td><td><nobr>read-write</nobr> (null)</td><td>A flag that shows if the Boot Option is enabled.</td></tr>
 <tr><td><nobr><b>BootOptionReference</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required</nobr> (null)</td><td>The unique boot option string that is referenced in the BootOrder.</td></tr>
 <tr><td><nobr><b>DisplayName</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The user-readable display string of the Boot Option.</td></tr>
@@ -1743,6 +1771,35 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td><nobr><b>UefiDevicePath</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The UEFI device path used to access this UEFI Boot Option.</td></tr>
 </tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/BootOption.json|details|Alias">Alias:</h4>
+<p>The alias of this Boot Source.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>BiosSetup</td><td>Boot to the BIOS Setup Utility.</td></tr>
+<tr><td>Cd</td><td>Boot from the CD/DVD disc.</td></tr>
+<tr><td>Diags</td><td>Boot the manufacturer's Diagnostics program.</td></tr>
+<tr><td>Floppy</td><td>Boot from the floppy disk drive.</td></tr>
+<tr><td>Hdd</td><td>Boot from a hard drive.</td></tr>
+<tr><td>None</td><td>Boot from the normal boot device.</td></tr>
+<tr><td>Pxe</td><td>Boot from the Pre-Boot EXecution (PXE) environment.</td></tr>
+<tr><td>RemoteDrive</td><td>Boot from a remote drive (e.g. iSCSI).</td></tr>
+<tr><td>SDCard</td><td>Boot from an SD Card.</td></tr>
+<tr><td>UefiBootNext</td><td>Boot to the UEFI Device specified in the BootNext property.</td></tr>
+<tr><td>UefiHttp</td><td>Boot from a UEFI HTTP network location.</td></tr>
+<tr><td>UefiShell</td><td>Boot to the UEFI Shell.</td></tr>
+<tr><td>UefiTarget</td><td>Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property.</td></tr>
+<tr><td>Usb</td><td>Boot from a USB device as specified by the system BIOS.</td></tr>
+<tr><td>Utilities</td><td>Boot the manufacturer's Utilities program(s).</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h2 id="Certificate">Certificate 1.0.0</h2>
 <p>The Certificate resource describes a certificate used to prove the identify of a component, account, or service.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/AccountService/Accounts/<i><a href="#ManagerAccount">{ManagerAccountId}</a></i>/Certificates/<i><a href="#Certificate">{CertificateId}</a></i></li>
@@ -1758,7 +1815,7 @@ The property-level details include:</p>
 <tbody>
 <tr><td><nobr><b>Actions</b> { }</nobr></td><td>object</td><td></td><td>The available actions for this resource.</td></tr>
 <tr><td><nobr><b>CertificateString</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required on create</nobr> (null)</td><td>The string for the certificate.</td></tr>
-<tr><td><nobr><b>CertificateType</b></nobr></td><td></td><td><nobr>read-only</nobr> <nobr>required on create</nobr> (null)</td><td>The format of the certificate.</td></tr>
+<tr><td><nobr><b>CertificateType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> <nobr>required on create</nobr> (null)</td><td>The format of the certificate.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Certificate.json|details|CertificateType">CertificateType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Issuer</b> {</nobr></td><td>object</td><td></td><td>The issuer of the certificate.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>City</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The city or locality of the organization of the entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CommonName</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The fully qualified domain name of the entity.</td></tr>
@@ -1767,7 +1824,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Organization</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The name of the organization of the entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OrganizationalUnit</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The name of the unit or division of the organization of the entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>State</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>The state, province, or region of the organization of the entity.</td></tr>
-<tr><td><nobr><b>KeyUsage</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-only</nobr> (null)</td><td>The usage of the key contained in the certificate.</td></tr>
+<tr><td><nobr><b>KeyUsage</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr> (null)</td><td>The usage of the key contained in the certificate. The usages of a key contained within a certificate.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Certificate.json|details|KeyUsage">KeyUsage</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>Subject</b> {</nobr></td><td>object</td><td></td><td>The subject of the certificate.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>City</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The city or locality of the organization of the entity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CommonName</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The fully qualified domain name of the entity.</td></tr>
@@ -1779,6 +1836,79 @@ The property-level details include:</p>
 <tr><td><nobr><b>ValidNotAfter</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The date when the certificate is no longer valid.</td></tr>
 <tr><td><nobr><b>ValidNotBefore</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>The date when the certificate becomes valid.</td></tr>
 </tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/Certificate.json|details|CertificateType">CertificateType:</h4>
+<p>The format of the certificate.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>PEM </td><td>A PEM encoded certificate.</td></tr>
+<tr><td>PKCS7 </td><td>A PEM encoded PKCS7 certificate.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/Certificate.json|details|KeyUsage">KeyUsage:</h4>
+<p>The usage of the key contained in the certificate. The usages of a key contained within a certificate.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>ClientAuthentication </td><td>The public key is used for TLS WWW client authentication.</td></tr>
+<tr><td>CodeSigning </td><td>The public key is used for the signing of executable code.</td></tr>
+<tr><td>CRLSigning </td><td>The public key is used for verifying signatures on certificate revocation lists (CLRs).</td></tr>
+<tr><td>DataEncipherment </td><td>The public key is used for directly enciphering raw user data without the use of an intermediate symmetric cipher.</td></tr>
+<tr><td>DecipherOnly </td><td>The public key could be used for deciphering data while performing key agreement.</td></tr>
+<tr><td>DigitalSignature </td><td>The public key is used for verifying digital signatures, other than signatures on certificates and CRLs.</td></tr>
+<tr><td>EmailProtection </td><td>The public key is used for email protection.</td></tr>
+<tr><td>EncipherOnly </td><td>The public key could be used for enciphering data while performing key agreement.</td></tr>
+<tr><td>KeyAgreement </td><td>The public key is used for key agreement.</td></tr>
+<tr><td>KeyCertSign </td><td>The public key is used for verifying signatures on public key certificates.</td></tr>
+<tr><td>KeyEncipherment </td><td>The public key is used for enciphering private or secret keys.</td></tr>
+<tr><td>NonRepudiation </td><td>The public key is used to verify digital signatures, other than signatures on certificates and CRLs, and used to provide a non-repudiation service that protects against the signing entity falsely denying some action.</td></tr>
+<tr><td>OCSPSigning </td><td>The public key is used for signing OCSP responses.</td></tr>
+<tr><td>ServerAuthentication </td><td>The public key is used for TLS WWW server authentication.</td></tr>
+<tr><td>Timestamping </td><td>The public key is used for binding the hash of an object to a time.</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Certificate.v1_0_0.Certificate&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTPS Certificate&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CertificateString&quot;</span><span class="p">:</span> <span class="s2">&quot;-----BEGIN CERTIFICATE-----\nMIIFsTCC [**truncated example**] GXG5zljlu\n-----END CERTIFICATE-----&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CertificateType&quot;</span><span class="p">:</span> <span class="s2">&quot;PEM&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Issuer&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Oregon&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;City&quot;</span><span class="p">:</span> <span class="s2">&quot;Portland&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Organization&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;OrganizationalUnit&quot;</span><span class="p">:</span> <span class="s2">&quot;ABC&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CommonName&quot;</span><span class="p">:</span> <span class="s2">&quot;manager.contoso.org&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Subject&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Oregon&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;City&quot;</span><span class="p">:</span> <span class="s2">&quot;Portland&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Organization&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;OrganizationalUnit&quot;</span><span class="p">:</span> <span class="s2">&quot;ABC&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CommonName&quot;</span><span class="p">:</span> <span class="s2">&quot;manager.contoso.org&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ValidNotBefore&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-09-07T13:22:05Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ValidNotAfter&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-09-07T13:22:05Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;KeyUsage&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;KeyEncipherment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ServerAuthentication&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates/1&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="CertificateLocations">CertificateLocations 1.0.0</h2>
 <p>The CertificateLocations schema defines a resource that an administrator can use in order to locate all certificates installed on a given service.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/CertificateService/CertificateLocations</li></ul>
@@ -1790,6 +1920,22 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Certificate resource. See the Links section and the <a href="#Certificate">Certificate</a> schema for details.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr><br>}</td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#CertificateLocations.v1_0_0.CertificateLocations&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;CertificateLocations&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Certificate Locations&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;Certificates&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates/1&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CertificateService/CertificateLocations&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="CertificateService">CertificateService 1.0.0</h2>
 <p>The CertificateService schema defines a Certificate Service which represents the actions available to manage certificates and links to where certificates are installed.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/CertificateService</li></ul>
@@ -1824,8 +1970,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KeyBitLength</b></nobr></td><td>integer</td><td><nobr>read-write</nobr></td><td>The length of the key in bits, if needed based on the value of the 'KeyPairAlgorithm' parameter.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KeyCurveId</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The curve ID to be used with the key, if needed based on the value of the 'KeyPairAlgorithm' parameter.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KeyPairAlgorithm</b></nobr></td><td>string</td><td><nobr>read-write</nobr></td><td>The type of key pair for use with signing algorithms.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KeyUsage</b> [ {</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>The usage of the key contained in the certificate.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} ]</td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>KeyUsage</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-write</nobr></td><td>The usage of the key contained in the certificate. The usages of a key contained within a certificate.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/CertificateService.json|details|KeyUsage">KeyUsage</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Organization</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The name of the organization making the request.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OrganizationalUnit</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The name of the unit or division of the organization making the request.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>State</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The state, province, or region of the organization making the request.</td></tr>
@@ -1839,12 +1984,74 @@ The property-level details include:</p>
 <tbody>
 <tr><td>{</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CertificateString</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The string for the certificate.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CertificateType</b></nobr></td><td></td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>The format of the certificate.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CertificateType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>The format of the certificate.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/CertificateService.json|details|CertificateType">CertificateType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>CertificateUri</b> {</nobr></td><td>object</td><td></td><td>A link to the certificate that is being replaced. See the <a href="#Certificate">Certificate</a> schema for details on this property.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Certificate resource. See the Links section and the <a href="#Certificate">Certificate</a> schema for details.</td></tr>
 </tbody></table>
 </div>
 </div>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/CertificateService.json|details|CertificateType">CertificateType:</h4>
+<p>The format of the certificate.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>PEM</td><td>A PEM encoded certificate.</td></tr>
+<tr><td>PKCS7</td><td>A PEM encoded PKCS7 certificate.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/CertificateService.json|details|KeyUsage">KeyUsage:</h4>
+<p>The usage of the key contained in the certificate. The usages of a key contained within a certificate.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>ClientAuthentication</td><td>The public key is used for TLS WWW client authentication.</td></tr>
+<tr><td>CodeSigning</td><td>The public key is used for the signing of executable code.</td></tr>
+<tr><td>CRLSigning</td><td>The public key is used for verifying signatures on certificate revocation lists (CLRs).</td></tr>
+<tr><td>DataEncipherment</td><td>The public key is used for directly enciphering raw user data without the use of an intermediate symmetric cipher.</td></tr>
+<tr><td>DecipherOnly</td><td>The public key could be used for deciphering data while performing key agreement.</td></tr>
+<tr><td>DigitalSignature</td><td>The public key is used for verifying digital signatures, other than signatures on certificates and CRLs.</td></tr>
+<tr><td>EmailProtection</td><td>The public key is used for email protection.</td></tr>
+<tr><td>EncipherOnly</td><td>The public key could be used for enciphering data while performing key agreement.</td></tr>
+<tr><td>KeyAgreement</td><td>The public key is used for key agreement.</td></tr>
+<tr><td>KeyCertSign</td><td>The public key is used for verifying signatures on public key certificates.</td></tr>
+<tr><td>KeyEncipherment</td><td>The public key is used for enciphering private or secret keys.</td></tr>
+<tr><td>NonRepudiation</td><td>The public key is used to verify digital signatures, other than signatures on certificates and CRLs, and used to provide a non-repudiation service that protects against the signing entity falsely denying some action.</td></tr>
+<tr><td>OCSPSigning</td><td>The public key is used for signing OCSP responses.</td></tr>
+<tr><td>ServerAuthentication</td><td>The public key is used for TLS WWW server authentication.</td></tr>
+<tr><td>Timestamping</td><td>The public key is used for binding the hash of an object to a time.</td></tr>
+</tbody></table>
+
+</div>
+</div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#CertificateService.v1_0_0.CertificateService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;CertificateService&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Certificate Service&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;#CertificateService.GenerateCSR&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CertificateService/Actions/CertificateService.GenerateCSR&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;@Redfish.ActionInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CertificateService/GenerateCSRActionInfo&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;#CertificateService.ReplaceCertificate&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;@Redfish.ActionInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CertificateService/ReplaceCertificateActionInfo&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;CertificateLocations&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CertificateService/CertificateLocations&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/CertificateService&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="Chassis">Chassis 1.9.0</h2>
 <p>The Chassis schema represents the physical components of a system.  This resource represents the sheet-metal confined spaces and logical zones such as racks, enclosures, chassis and all other containers. Subsystems (like sensors) that operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/Chassis/<i><a href="#Chassis">{ChassisId}</a></i></li></ul>
@@ -2168,7 +2375,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a Bios resource. See the Links section and the <a href="#Bios">Bios</a> schema for details.</td></tr>
 <tr><td><nobr><b>BiosVersion</b></nobr></td><td>string</td><td><nobr>read-only</nobr> (null)</td><td>The version of the system BIOS or primary system firmware.</td></tr>
 <tr><td><nobr><b>Boot</b> {</nobr></td><td>object</td><td></td><td>Information about the boot settings for this system.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AliasBootOrder</b> [ ] </nobr></td><td>array ()</td><td><nobr>read-write</nobr> (null)</td><td>Ordered array of boot source aliases representing the persistent Boot Order associated with this computer system.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>AliasBootOrder</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-write</nobr> (null)</td><td>Ordered array of boot source aliases representing the persistent Boot Order associated with this computer system.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|AliasBootOrder">AliasBootOrder</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootNext</b> <i>(v1.5+)</i></nobr></td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the BootOptionReference of the Boot Option to perform a one time boot from when BootSourceOverrideTarget is UefiBootNext.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootOptions</b> <i>(v1.5+)</i> {</nobr></td><td>object</td><td></td><td>A reference to the collection of the UEFI Boot Options associated with this Computer System. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#BootOption">BootOption</a>. See the BootOption schema for details.</td></tr>
@@ -2176,7 +2383,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootOrderPropertySelection</b> <i>(v1.6+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>Choice of which boot order property to use when specifying the boot order.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootOrderPropertySelection">BootOrderPropertySelection</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootSourceOverrideEnabled</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>Describes the state of the Boot Source Override feature.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootSourceOverrideEnabled">BootSourceOverrideEnabled</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootSourceOverrideMode</b> <i>(v1.1+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The BIOS Boot Mode (either Legacy or UEFI) to be used when BootSourceOverrideTarget boot source is booted from.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootSourceOverrideMode">BootSourceOverrideMode</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootSourceOverrideTarget</b></nobr></td><td></td><td><nobr>read-write</nobr> (null)</td><td>The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>BootSourceOverrideTarget</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr> (null)</td><td>The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootSourceOverrideTarget">BootSourceOverrideTarget</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>UefiTargetBootSourceOverride</b></nobr><br>}</td><td>string</td><td><nobr>read-write</nobr> (null)</td><td>This property is the UEFI Device Path of the device to boot from when BootSourceOverrideTarget is UefiTarget.</td></tr>
 <tr><td><nobr><b>EthernetInterfaces</b> {</nobr></td><td>object</td><td></td><td>A reference to the collection of Ethernet interfaces associated with this system. Contains a link to a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>}</td><td>string</td><td><nobr>read-only</nobr></td><td>Link to Collection of <a href="#EthernetInterface">EthernetInterface</a>. See the EthernetInterface schema for details.</td></tr>
@@ -2303,6 +2510,30 @@ The property-level details include:</p>
 <div class="property-details">
 <h3>Property Details</h3>
 <div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|AliasBootOrder">AliasBootOrder:</h4>
+<p>Ordered array of boot source aliases representing the persistent Boot Order associated with this computer system.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>BiosSetup</td><td>Boot to the BIOS Setup Utility.</td></tr>
+<tr><td>Cd</td><td>Boot from the CD/DVD disc.</td></tr>
+<tr><td>Diags</td><td>Boot the manufacturer's Diagnostics program.</td></tr>
+<tr><td>Floppy</td><td>Boot from the floppy disk drive.</td></tr>
+<tr><td>Hdd</td><td>Boot from a hard drive.</td></tr>
+<tr><td>None</td><td>Boot from the normal boot device.</td></tr>
+<tr><td>Pxe</td><td>Boot from the Pre-Boot EXecution (PXE) environment.</td></tr>
+<tr><td>RemoteDrive <i>(v1.2+)</i></td><td>Boot from a remote drive (e.g. iSCSI).</td></tr>
+<tr><td>SDCard</td><td>Boot from an SD Card.</td></tr>
+<tr><td>UefiBootNext <i>(v1.5+)</i></td><td>Boot to the UEFI Device specified in the BootNext property.</td></tr>
+<tr><td>UefiHttp</td><td>Boot from a UEFI HTTP network location.</td></tr>
+<tr><td>UefiShell</td><td>Boot to the UEFI Shell.</td></tr>
+<tr><td>UefiTarget</td><td>Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property.</td></tr>
+<tr><td>Usb</td><td>Boot from a USB device as specified by the system BIOS.</td></tr>
+<tr><td>Utilities</td><td>Boot the manufacturer's Utilities program(s).</td></tr>
+</tbody></table>
+
 <h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootOrderPropertySelection">BootOrderPropertySelection:</h4>
 <p>Choice of which boot order property to use when specifying the boot order.</p>
 <table class="enum enum-details">
@@ -2335,6 +2566,30 @@ The property-level details include:</p>
 <tbody>
 <tr><td>Legacy</td><td>The system will boot in non-UEFI boot mode to the Boot Source Override Target.</td></tr>
 <tr><td>UEFI</td><td>The system will boot in UEFI boot mode to the Boot Source Override Target.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|BootSourceOverrideTarget">BootSourceOverrideTarget:</h4>
+<p>The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>BiosSetup</td><td>Boot to the BIOS Setup Utility.</td></tr>
+<tr><td>Cd</td><td>Boot from the CD/DVD disc.</td></tr>
+<tr><td>Diags</td><td>Boot the manufacturer's Diagnostics program.</td></tr>
+<tr><td>Floppy</td><td>Boot from the floppy disk drive.</td></tr>
+<tr><td>Hdd</td><td>Boot from a hard drive.</td></tr>
+<tr><td>None</td><td>Boot from the normal boot device.</td></tr>
+<tr><td>Pxe</td><td>Boot from the Pre-Boot EXecution (PXE) environment.</td></tr>
+<tr><td>RemoteDrive <i>(v1.2+)</i></td><td>Boot from a remote drive (e.g. iSCSI).</td></tr>
+<tr><td>SDCard</td><td>Boot from an SD Card.</td></tr>
+<tr><td>UefiBootNext <i>(v1.5+)</i></td><td>Boot to the UEFI Device specified in the BootNext property.</td></tr>
+<tr><td>UefiHttp</td><td>Boot from a UEFI HTTP network location.</td></tr>
+<tr><td>UefiShell</td><td>Boot to the UEFI Shell.</td></tr>
+<tr><td>UefiTarget</td><td>Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property.</td></tr>
+<tr><td>Usb</td><td>Boot from a USB device as specified by the system BIOS.</td></tr>
+<tr><td>Utilities</td><td>Boot the manufacturer's Utilities program(s).</td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/ComputerSystem.json|details|HostingRoles">HostingRoles:</h4>
@@ -3298,7 +3553,7 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventGroupId</b> <i>(v1.3+)</i></nobr></td><td>integer</td><td><nobr>read-only</nobr></td><td>This value is the identifier used to correlate events that came from the same cause.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventId</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is a unique instance identifier of an event.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventTimestamp</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is time the event occurred.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventType</b> <i>(deprecated v1.3)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This indicates the type of event sent, according to the definitions in the EventService. <i>Deprecated v1.3+. This property has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventType</b> <i>(deprecated v1.3)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>This indicates the type of event sent, according to the definitions in the EventService.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/Event.json|details|EventType">EventType</a> in Property Details, below, for the possible values of this property.</i> <i>Deprecated v1.3+. This property has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MemberId</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the identifier for the member within the collection.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Message</b></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is the human readable message, if provided.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MessageArgs</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-only</nobr></td><td>This array of message arguments are substituted for the arguments in the message when looked up in the message registry.</td></tr>
@@ -3308,6 +3563,26 @@ The property-level details include:</p>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>@odata.id</b></nobr><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td>string</td><td><nobr>read-only</nobr></td><td>The unique identifier for a resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Severity</b></nobr><br>} ]</td><td>string</td><td><nobr>read-only</nobr></td><td>This is the severity of the event.</td></tr>
 </tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<div class="property-details-content">
+<h4 id="redfish.dmtf.org/schemas/v1/Event.json|details|EventType">EventType:</h4>
+<p>This indicates the type of event sent, according to the definitions in the EventService.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Alert</td><td>A condition exists which requires attention.</td></tr>
+<tr><td>MetricReport </td><td>A metric report managed by the Telemetry Service is being sent.</td></tr>
+<tr><td>ResourceAdded</td><td>A resource has been added.</td></tr>
+<tr><td>ResourceRemoved</td><td>A resource has been removed.</td></tr>
+<tr><td>ResourceUpdated</td><td>The value of this resource has been updated.</td></tr>
+<tr><td>StatusChange</td><td>The status of this resource has changed.</td></tr>
+</tbody></table>
+
+</div>
+</div>
 <h2 id="EventDestination">EventDestination 1.4.0</h2>
 <p>An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/EventService/Subscriptions/<i><a href="#EventDestination">{EventDestinationId}</a></i></li></ul>
@@ -3317,8 +3592,7 @@ The property-level details include:</p>
 <tr><td><nobr><b>Context</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr> (null)</td><td>A client-supplied string that is stored with the event destination subscription.</td></tr>
 <tr><td><nobr><b>Destination</b></nobr></td><td>string</td><td><nobr>read-only</nobr> <nobr>required on create</nobr></td><td>The URI of the destination Event Service.</td></tr>
 <tr><td><nobr><b>EventFormatType</b> <i>(v1.4+)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr> (null)</td><td>Indicates the content types of the message that will be sent to the EventDestination.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventDestination.json|details|EventFormatType">EventFormatType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>EventTypes</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr> <nobr>required on create</nobr></td><td>This property contains the types of events that will be sent to the desination.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr><br>} ]</td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
+<tr><td><nobr><b>EventTypes</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This property contains the types of events that will be sent to the desination.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventDestination.json|details|EventTypes">EventTypes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>HttpHeaders</b> [ { } ]</nobr></td><td>array</td><td><nobr>read-write</nobr></td><td>This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.</td></tr>
 <tr><td><nobr><b>MessageIds</b> <i>(v1.1+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>A list of MessageIds that the service will only send.  If this property is absent or the array is empty, then Events with any MessageId will be sent to the subscriber.</td></tr>
 <tr><td><nobr><b>OriginResources</b> <i>(v1.1+)</i> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>A list of resources for which the service will only send related events.  If this property is absent or the array is empty, then Events originating from any resource will be sent to the subscriber.</td></tr>
@@ -3341,6 +3615,21 @@ The property-level details include:</p>
 <tbody>
 <tr><td>Event</td><td>The subscription destination will receive JSON Bodies of the Resource Type Event.</td></tr>
 <tr><td>MetricReport</td><td>The subscription destination will receive JSON Bodies of the Resource Type MetricReport.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/EventDestination.json|details|EventTypes">EventTypes:</h4>
+<p>This property contains the types of events that will be sent to the desination.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Alert</td><td>A condition exists which requires attention.</td></tr>
+<tr><td>MetricReport</td><td>A metric report managed by the Telemetry Service is being sent.</td></tr>
+<tr><td>ResourceAdded</td><td>A resource has been added.</td></tr>
+<tr><td>ResourceRemoved</td><td>A resource has been removed.</td></tr>
+<tr><td>ResourceUpdated</td><td>The value of this resource has been updated.</td></tr>
+<tr><td>StatusChange</td><td>The status of this resource has changed.</td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/EventDestination.json|details|Protocol">Protocol:</h4>
@@ -3392,8 +3681,7 @@ The property-level details include:</p>
 <tr><td><nobr><b>DeliveryRetryAttempts</b></nobr></td><td>integer</td><td><nobr>read-write</nobr></td><td>This is the number of attempts an event posting is retried before the subscription is terminated.  This retry is at the service level, meaning the HTTP POST to the Event Destination was returned by the HTTP operation as unsuccessful (4xx or 5xx return code) or an HTTP timeout occurred this many times before the Event Destination subscription is terminated.</td></tr>
 <tr><td><nobr><b>DeliveryRetryIntervalSeconds</b></nobr></td><td>integer<br>(seconds)</td><td><nobr>read-write</nobr></td><td>This represents the number of seconds between retry attempts for sending any given Event.</td></tr>
 <tr><td><nobr><b>EventFormatTypes</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr> (null)</td><td>Indicates the content types of the message that this service can send to the event destination.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventService.json|details|EventFormatTypes">EventFormatTypes</a> in Property Details, below, for the possible values of this property.</i></td></tr>
-<tr><td><nobr><b>EventTypesForSubscription</b> [ {</nobr></td><td>array</td><td><nobr>read-only</nobr></td><td>This is the types of Events that can be subscribed to.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b></b></nobr><br>} ]</td><td></td><td><nobr>read-write</nobr></td><td></td></tr>
+<tr><td><nobr><b>EventTypesForSubscription</b> [ ] </nobr></td><td>array (string<br>(enum))</td><td><nobr>read-only</nobr></td><td>This is the types of Events that can be subscribed to.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventService.json|details|EventTypesForSubscription">EventTypesForSubscription</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td><nobr><b>RegistryPrefixes</b> <i>(v1.2+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>A list of the Prefixes of the Message Registries that can be used for the RegistryPrefix property on a subscription.</td></tr>
 <tr><td><nobr><b>ResourceTypes</b> <i>(v1.2+)</i> [ ] </nobr></td><td>array<br>(string, null)</td><td><nobr>read-only</nobr></td><td>A list of @odata.type values (Schema names) that can be specified in a ResourceType on a subscription.</td></tr>
 <tr><td><nobr><b>ServerSentEventUri</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>Link to a URI for receiving Sever Sent Event representations of the events generated by this service.</td></tr>
@@ -3422,7 +3710,7 @@ The property-level details include:</p>
 <tr><td>{</td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventId</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the ID of event to be added.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventTimestamp</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the time stamp of event to be added.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventType</b></nobr></td><td></td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the type of event to be added.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>EventType</b></nobr></td><td>string<br>(enum)</td><td><nobr>read-write</nobr></td><td>This is the type of event to be added.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/EventService.json|details|EventType">EventType</a> in Property Details, below, for the possible values of this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Message</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the human readable message of event to be added.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MessageArgs</b> [ ] </nobr></td><td>array<br>(string)</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the array of message arguments of the event to be added.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>MessageId</b></nobr></td><td>string</td><td><nobr>read-write</nobr> <nobr>required</nobr></td><td>This is the message ID of event to be added.</td></tr>
@@ -3443,6 +3731,36 @@ The property-level details include:</p>
 <tbody>
 <tr><td>Event</td><td>The subscription destination will receive JSON Bodies of the Resource Type Event.</td></tr>
 <tr><td>MetricReport</td><td>The subscription destination will receive JSON Bodies of the Resource Type MetricReport.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/EventService.json|details|EventType">EventType:</h4>
+<p>This is the type of event to be added.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Alert</td><td>A condition exists which requires attention.</td></tr>
+<tr><td>MetricReport</td><td>A metric report managed by the Telemetry Service is being sent.</td></tr>
+<tr><td>ResourceAdded</td><td>A resource has been added.</td></tr>
+<tr><td>ResourceRemoved</td><td>A resource has been removed.</td></tr>
+<tr><td>ResourceUpdated</td><td>The value of this resource has been updated.</td></tr>
+<tr><td>StatusChange</td><td>The status of this resource has changed.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/EventService.json|details|EventTypesForSubscription">EventTypesForSubscription:</h4>
+<p>This is the types of Events that can be subscribed to.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Alert</td><td>A condition exists which requires attention.</td></tr>
+<tr><td>MetricReport</td><td>A metric report managed by the Telemetry Service is being sent.</td></tr>
+<tr><td>ResourceAdded</td><td>A resource has been added.</td></tr>
+<tr><td>ResourceRemoved</td><td>A resource has been removed.</td></tr>
+<tr><td>ResourceUpdated</td><td>The value of this resource has been updated.</td></tr>
+<tr><td>StatusChange</td><td>The status of this resource has changed.</td></tr>
 </tbody></table>
 
 </div>
@@ -3920,7 +4238,7 @@ The property-level details include:</p>
 <tr><td><nobr><b>EventGroupId</b> <i>(v1.4+)</i></nobr></td><td>integer</td><td><nobr>read-only</nobr> (null)</td><td>This value is the identifier used to correlate events that came from the same cause.</td></tr>
 <tr><td><nobr><b>EventId</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is a unique instance identifier of an event.</td></tr>
 <tr><td><nobr><b>EventTimestamp</b> <i>(v1.1+)</i></nobr></td><td>string</td><td><nobr>read-only</nobr></td><td>This is time the event occurred.</td></tr>
-<tr><td><nobr><b>EventType</b> <i>(v1.1+, deprecated v1.4)</i></nobr></td><td></td><td><nobr>read-only</nobr></td><td>This indicates the type of an event recorded in this log. <i>Deprecated v1.4+. This property has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType.</i></td></tr>
+<tr><td><nobr><b>EventType</b> <i>(v1.1+, deprecated v1.4)</i></nobr></td><td>string<br>(enum)</td><td><nobr>read-only</nobr></td><td>This indicates the type of an event recorded in this log.<br><i>See <a href="#redfish.dmtf.org/schemas/v1/LogEntry.json|details|EventType">EventType</a> in Property Details, below, for the possible values of this property.</i> <i>Deprecated v1.4+. This property has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType.</i></td></tr>
 <tr><td><nobr><b>Links</b> {</nobr></td><td>object</td><td></td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>Oem</b> { }</nobr></td><td>object</td><td></td><td>See the OEM object definition in the <a href="#common-properties">Common properties</a> section.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>OriginOfCondition</b> {</nobr></td><td>object</td><td></td><td>This is the URI of the resource that caused the log entry.</td></tr>
@@ -4017,6 +4335,21 @@ The property-level details include:</p>
 <tr><td>Event</td><td>Contains a Redfish-defined message (event).</td></tr>
 <tr><td>Oem</td><td>Contains an entry in an OEM-defined format.</td></tr>
 <tr><td>SEL</td><td>Contains a legacy IPMI System Event Log (SEL) entry.</td></tr>
+</tbody></table>
+
+<h4 id="redfish.dmtf.org/schemas/v1/LogEntry.json|details|EventType">EventType:</h4>
+<p>This indicates the type of an event recorded in this log.</p>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Alert</td><td>A condition exists which requires attention.</td></tr>
+<tr><td>MetricReport</td><td>A metric report managed by the Telemetry Service is being sent.</td></tr>
+<tr><td>ResourceAdded</td><td>A resource has been added.</td></tr>
+<tr><td>ResourceRemoved</td><td>A resource has been removed.</td></tr>
+<tr><td>ResourceUpdated</td><td>The value of this resource has been updated.</td></tr>
+<tr><td>StatusChange</td><td>The status of this resource has changed.</td></tr>
 </tbody></table>
 
 <h4 id="redfish.dmtf.org/schemas/v1/LogEntry.json|details|SensorType">SensorType:</h4>
@@ -7063,6 +7396,76 @@ The property-level details include:</p>
 <tr><td><nobr><b>ThrottlingCelsius</b></nobr></td><td>number<br>(Celsius)</td><td><nobr>read-only</nobr> (null)</td><td>The CPU margin to throttle (temperature offset in degree Celsius).</td></tr>
 <tr><td><nobr><b>UserPercent</b></nobr></td><td>number<br>(%)</td><td><nobr>read-only</nobr> (null)</td><td>The percentage of time spent in user mode.</td></tr>
 </tbody></table>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ProcessorMetrics.v1_0_0.ProcessorMetrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Metrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Processor Metrics&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;BandwidthPercent&quot;</span><span class="p">:</span> <span class="mi">62</span><span class="p">,</span>
+    <span class="nt">&quot;AverageFrequencyMHz&quot;</span><span class="p">:</span> <span class="mi">2400</span><span class="p">,</span>
+    <span class="nt">&quot;ThrottlingCelsius&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="nt">&quot;TemperatureCelsius&quot;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span>
+    <span class="nt">&quot;ConsumedPowerWatt&quot;</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span>
+    <span class="nt">&quot;FrequencyRatio&quot;</span><span class="p">:</span> <span class="mf">0.00432</span><span class="p">,</span>
+    <span class="nt">&quot;Cache&quot;</span><span class="p">:[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;Level&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;CacheMiss&quot;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span>
+            <span class="nt">&quot;HitRatio&quot;</span><span class="p">:</span> <span class="mf">0.719</span><span class="p">,</span>
+            <span class="nt">&quot;CacheMissesPerInstruction&quot;</span><span class="p">:</span> <span class="mf">0.00088</span><span class="p">,</span>
+            <span class="nt">&quot;OccupancyBytes&quot;</span><span class="p">:</span> <span class="mi">3030144</span><span class="p">,</span>
+            <span class="nt">&quot;OccupancyPercent&quot;</span><span class="p">:</span> <span class="mf">90.1</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;LocalMemoryBandwidthBytes&quot;</span><span class="p">:</span> <span class="mi">18253611008</span><span class="p">,</span>
+    <span class="nt">&quot;RemoteMemoryBandwidthBytes&quot;</span><span class="p">:</span> <span class="mi">81788928</span><span class="p">,</span>
+    <span class="nt">&quot;KernelPercent&quot;</span><span class="p">:</span> <span class="mf">2.3</span><span class="p">,</span>
+    <span class="nt">&quot;UserPercent&quot;</span><span class="p">:</span> <span class="mf">34.7</span><span class="p">,</span>
+    <span class="nt">&quot;CoreMetrics&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;CoreId&quot;</span><span class="p">:</span> <span class="s2">&quot;core0&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;InstructionsPerCycle&quot;</span><span class="p">:</span> <span class="mf">1.16</span><span class="p">,</span>
+            <span class="nt">&quot;UnhaltedCycles&quot;</span><span class="p">:</span> <span class="mi">6254383746</span><span class="p">,</span>
+            <span class="nt">&quot;MemoryStallCount&quot;</span><span class="p">:</span> <span class="mi">58372</span><span class="p">,</span>
+            <span class="nt">&quot;IOStallCount&quot;</span><span class="p">:</span> <span class="mi">2634872</span><span class="p">,</span>
+            <span class="nt">&quot;CoreCache&quot;</span><span class="p">:[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;Level&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;CacheMiss&quot;</span><span class="p">:</span> <span class="mf">0.472</span><span class="p">,</span>
+                    <span class="nt">&quot;HitRatio&quot;</span><span class="p">:</span> <span class="mf">0.57</span><span class="p">,</span>
+                    <span class="nt">&quot;CacheMissesPerInstruction&quot;</span><span class="p">:</span> <span class="mf">0.00346</span><span class="p">,</span>
+                    <span class="nt">&quot;OccupancyBytes&quot;</span><span class="p">:</span> <span class="mi">198231</span><span class="p">,</span>
+                    <span class="nt">&quot;OccupancyPercent&quot;</span><span class="p">:</span> <span class="mf">77.4</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;CStateResidency&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;Level&quot;</span><span class="p">:</span> <span class="s2">&quot;C0&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;Residency&quot;</span><span class="p">:</span> <span class="mf">1.13</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;Level&quot;</span><span class="p">:</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;Residency&quot;</span><span class="p">:</span> <span class="mi">26</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;Level&quot;</span><span class="p">:</span> <span class="s2">&quot;C3&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;Residency&quot;</span><span class="p">:</span> <span class="mf">0.00878</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;Level&quot;</span><span class="p">:</span> <span class="s2">&quot;C6&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;Residency&quot;</span><span class="p">:</span> <span class="mf">0.361</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;Level&quot;</span><span class="p">:</span> <span class="s2">&quot;C7&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;Residency&quot;</span><span class="p">:</span> <span class="mf">72.5</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/1/Processors/FPGA1/ProcessorMetrics&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="ResourceBlock">ResourceBlock 1.3.0</h2>
 <p>This schema defines a Resource Block resource.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/CompositionService/ResourceBlocks/<i><a href="#ResourceBlock">{ResourceBlockId}</a></i></li>
@@ -7535,6 +7938,43 @@ The property-level details include:</p>
 
 </div>
 </div>
+<h3>Example Response</h3>
+<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Sensor.v1_0_0.Sensor&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;CabinetTemp&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rack Temperature&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ReadingType&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Reading&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="nt">&quot;ReadingUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ReadingRangeMin&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;ReadingRangeMax&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span>
+    <span class="nt">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span>
+    <span class="nt">&quot;Precision&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;SensingFrequency&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;Chassis&quot;</span><span class="p">,</span>
+
+    <span class="nt">&quot;Thresholds&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;UpperCritical&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Reading&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
+            <span class="nt">&quot;Activation&quot;</span><span class="p">:</span> <span class="s2">&quot;Increasing&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;UpperCaution&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Reading&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span>
+            <span class="nt">&quot;Activation&quot;</span><span class="p">:</span> <span class="s2">&quot;Increasing&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;LowerCaution&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Reading&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="nt">&quot;Activation&quot;</span><span class="p">:</span> <span class="s2">&quot;Increasing&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1/Sensors/CabinetTemp&quot;</span>
+<span class="p">}</span>
+</pre></div></div>
 <h2 id="SerialInterface">SerialInterface 1.1.3</h2>
 <p>This schema defines an asynchronous serial interface resource.</p>
 <h4>URIs:</h4><ul class="nobullet"><li>/redfish/v1/Managers/<i><a href="#Manager">{ManagerId}</a></i>/SerialInterfaces/<i><a href="#SerialInterface">{SerialInterfaceId}</a></i></li></ul>
@@ -9530,7 +9970,9 @@ The property-level details include:</p>
     <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Zone.Zone&quot;</span><span class="p">,</span>
     <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Fabrics/SAS/Zones/1&quot;</span>
 <span class="p">}</span>
-</pre></div></div><h1 id="redfish-documentation-generator">Redfish documentation generator</h1>
+</pre></div></div>
+<p style="page-break-before: always">
+<h1 id="redfish-documentation-generator">Redfish documentation generator</h1>
 <p>This document was created using the Redfish Documentation Generator utility, which uses the contents of the Redfish schema files (in JSON schema format) to automatically generate the bulk of the text.  The source code for the utility is available for download at the DMTF's Github repository located at <a href="http://www.github.com/DMTF/Redfish-Tools">http://www.github.com/DMTF/Redfish-Tools</a>.</p>
 <h1 id="annex-a">ANNEX A</h1>
 <h2 id="change-log">Change log</h2>
