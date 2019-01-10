@@ -285,10 +285,10 @@
           <Annotation Term="OData.Description" String="The direction of crossing that activates this threshold."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the direction of crossing of the Reading value for this Sensor that triggers the threshold."/>
         </Property>
-        <Property Name="DwellTime" Type="Edm.String">
+        <Property Name="DwellTime" Type="Edm.Duration">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated."/>
-          <Annotation Term="OData.LongDescription" String="This property shall reflect the amount of time a sensor reading remains passed the trigger point before declaring the crossing to be a violation. In other words, if the sensor reading returns back to a reading before the trigger point, the threshold crossing may be disregarded."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated."/>
         </Property>
       </ComplexType>
 
