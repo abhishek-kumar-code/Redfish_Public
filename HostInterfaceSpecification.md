@@ -50,6 +50,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="DMTFDSP0239">DMTF DSP0239</a> Management Component Transport Protocol (MCTP) IDs and Codes, Version 1.4, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf")
 * <a id="DMTFDSP0266">DMTF DSP0266</a> Redfish Scalable Platforms Management API Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf")
 * <a id="ISODIR">ISO/IEC Directives, Part 2</a> Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype")
+* <a id="PCIFirmwareSpec">PCI Firmware Specification</a>, PCI SIG [http://pcisig.com/specifications/conventional/pci_firmware](http://pcisig.com/specifications/conventional/pci_firmware "http://pcisig.com/specifications/conventional/pci_firmware")
 
 
 ## Terms and definitions
@@ -184,7 +185,7 @@ The SMBIOS Type 42 structure is used to describe a Management Controller Host In
  --------------------------
  Interface Specific Data
    - Device Description
-   - (1 of 3 types)
+   - (1 of 5 types)
  --------------------------
    Protocol Record Header
  --------------------------
@@ -197,95 +198,178 @@ Further details about the SMBIOS Type 42 structure can be found in the [SMBIOS S
 The remaining sections document how the SMBIOS Type 42 structure is defined for use by the Redfish Host Interface.
 
 
-### Table-1: SMBIOS Type 42 structure definition for Redfish Host Interfaces
+### Table 1: SMBIOS Type 42 structure definition for Redfish Host Interfaces<a id="Table1"></a>
 
 The following describes the SMBIOS Management Controller Host Interface (Type 42) structure.  Offset 00h-04h is the Type 42 Header.  Starting at Offset 05h is the Interface-specific Data.
 
-| Offset | Name                               | Length  | Value  | Description                                                                                                 |
-| ---    | ---                                | ---     | ---    | ---                                                                                                         |
-| 00h    | Type                               | BYTE    | 42     | Management Controller Host Interface structure indicator                                                    |
-| 01h    | Length                             | BYTE    | Varies | Length of the structure, a minimum of 09h                                                               |
-| 02h    | Handle                             | WORD    | Varies |                                                                                                             |
-| 04h    | Interface Type                     | BYTE    | Varies | Management Controller Interface Type. <br/> --Network Host Interface = 40h                                  |
-| 05h    | Interface Specific Data Length (n) | BYTE    | Varies | Interface-specific Data as specified by the Interface type. <br/> if 0, there is no Interface specific data |
-| 06h    | Interface Specific data            | n BYTEs | Varies | Defined by Interface Type.  See Table-2 below.                                                              |
-| 06h+n  | Protocol count                     | BYTE    | Varies | Number of protocols defined for the Host Interface (typically 1)                                        |
-| 07h+n  | Protocol Records                   | m Bytes | Varies | Include a Protocol Record for each protocol supported.  See Table-4 below record format                     |
+| Offset | Name                               | Length  | Value  | Description |
+| ---    | ---                                | ---     | ---    | ---         |
+| 00h    | Type                               | BYTE    | 42     | Management Controller Host Interface structure indicator |
+| 01h    | Length                             | BYTE    | Varies | Length of the structure, a minimum of 09h |
+| 02h    | Handle                             | WORD    | Varies |             |
+| 04h    | Interface Type                     | BYTE    | ENUM   | Management Controller Interface Type.  Network Host Interface is 40h. |
+| 05h    | Interface Specific Data Length (N) | BYTE    | N      | Number of bytes (N) in the Interface Specific Data field.  If 0, there is no Interface specific data. |
+| 06h    | Interface Specific Data            | N BYTEs | Varies | Management Controller Host Interface Data as specified by the Interface Type.  See [Table 2](#Table2) below for Network Host Interface definitions. |
+| 06h+N  | Protocol Count                     | BYTE    | X      | X number of Protocol Records for this Host Interface Type (typically 1). |
+| 07h+N  | Protocol Records                   | M BYTEs | Varies | Protocol Records for each protocol supported.  See Table 9 below record format. |
 
 
-### Table-2: Interface specific data (for Interface Type 40h)
+### Table 2: Interface Specific Data (for Interface Type 40h)<a id="Table2"></a>
 
-Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  This table defines the Interface Specific data for Interface Type 40h.  There are five types of Device Descriptors defined (see Table-3); however, only one may be used in specific Type 42 table.
+Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  This table defines the Interface Specific data for Interface Type 40h.  There are several types of Device Descriptors defined (see [Table 3](#Table3)); however, only one may be used in specific Type 42 table.
 
-| Offset | Name               | Length    | Value  | Description |
-| ---    | ---                | ---       | ---    | ---         |
-| X      | Device Type        | BYTE      | Enum   | USB Network Interface = 02h, <br/> PCI/PCIe Network Interface = 03h, <br/> USB Network Interface v2 = 04h, <br/> PCI/PCIe Network Interface v2 = 05h, <br/> OEM = 80h-FFh <br/> other values reserved |
-| X+1    | Device Descriptors | n-1 Bytes | Varies | Device descriptor data formatted based on Device Type.  See Table-3 |
+| Offset | Name                   | Length    | Value  | Description |
+| ---    | ---                    | ---       | ---    | ---         |
+| X      | Device Type            | BYTE      | ENUM   | The Device Type of the interface.  The value of this field determines how the Device Descriptor Data is decoded.  [Table 3](#Table3). |
+| X+1    | Device Descriptor Data | N-1 BYTEs | Varies | The Device Descriptor Data formatted based on Device Type.  See [Table 3](#Table3). |
 
 
-### Table-3: Device descriptor data
+#### Table 3: Device Type values<a id="Table3"></a>
 
-The following table defines the specific Device Descriptor data (referenced in Table-2) for each defined Device Type:
+The following table defines the possible values for the Device Type field found in [Table 2](#Table2).
 
-| Device Type enum value | Device Type Name              | Length  | Value  | Description |
-| ---                    | ---                           | ---     | ---    | ---         |
-| 02h                    | USB Network Interface         | Varies  | Varies | Device Descriptors for USB Device Type: <br/> - idVendor (2 bytes) <br/> - idProduct (2 bytes) <br/> - iSerialNumber: <br/> --- bLength (1 byte) <br/> --- bDescriptorType (1 byte) <br/> --- bString (Varies) |
-| 03h                    | PCI/PCIe Network Interface    | 8 bytes | Varies | Device Descriptors for PCI/PCIe Device Type: <br/> - Vendor ID (2 bytes) <br/> - Device ID (2 bytes) <br/> - Subsystem Vendor ID (2 bytes) <br/> - Subsystem ID (2 bytes) |
-| 04h                    | USB Network Interface v2      | Varies  | Varies | Device Descriptors for USB Device Type v2: <br/> - Length of this structure, including type and length fields (1 byte) <br/> - Vendor ID (2 bytes) <br/> - Product ID (2 bytes) <br/> - String Number for the Serial Number (1 byte) <br/> - MAC Address (6 bytes) |
-| 05h                    | PCI/PCIe Network Interface v2 | Varies  | Varies | Device Descriptors for PCI/PCIe Device Type v2: <br/> - Length of this structure, including type and length fields (1 byte) <br/> - Vendor ID (2 bytes) <br/> - Device ID (2 bytes) <br/> - Subsystem Vendor ID (2 bytes) <br/> - Subsystem ID (2 bytes) <br/> - MAC Address (6 bytes) <br/> - Segment Group Number (2 bytes) <br/> --- Segment Group Number is defined in the PCI Firmware Specification.  The value is 0 for a single-segment topology <br/> - Bus Number (1 byte) <br/> - Device/Function Number (1 byte): <br/> --- Bits 7:3 - Device Number <br/> --- Bits 2:0 - Function Number |
-| 80h-FFh                | OEM                           | Varies  | Varies | Device Descriptors for OEM  Device Type: <br/> - Vendor IANA (4 bytes) <br/> - OEM defined data |
+| Value   | Description |
+| ---     | ---         |
+| 02h     | USB Network Interface.  See [Table 4](#Table4). |
+| 03h     | PCI/PCIe Network Interface.  See [Table 5](#Table5). |
+| 04h     | USB Network Interface v2.  See [Table 6](#Table6). |
+| 05h     | PCI/PCIe Network Interface v2.  See [Table 7](#Table7). |
+| 80h-FFh | OEM.  See [Table 8](#Table8). |
+| Others  | Reserved |
 
-For USB devices (types 02h and 04h):
-* idVendor (Vendor ID), idProduct (Product ID), and iSerialNumber (Serial Number) originate from the USB descriptor for the device.
-* For type 02h, within iSerialNumber, bDescriptorType is always 0x03 and bString is a Unicode string without a NULL terminator.
-    * This string does not follow typical string patterns found elsewhere in SMBIOS definitions.
-* For type 04h, the string referenced by the string number after the descriptor is converted from Unicode to ASCII and is NULL terminated per SMBIOS design patterns.
 
-Examples of USB devices (type 02h):
+#### Table 4: Device Descriptor Data for Device Type 02h (USB Network Interface)<a id="Table4"></a>
+
+The following table defines the Device Descriptor Data format for when the Device Type field is 02h, which indicates the device is a USB Network Interface.
+
+| Offset | Name                            | Length  | Value  | Description |
+| ---    | ---                             | ---     | ---    | ---         |
+| 00h    | Vendor ID                       | WORD    | Varies | The Vendor ID of the device, as read from the idVendor field of the USB descriptor (LSB first). |
+| 02h    | Product ID                      | WORD    | Varies | The Product ID of the device, as read from the idProduct field of the USB descriptor (LSB first). |
+| 04h    | Serial Number Descriptor Length | BYTE    | Varies | The number of bytes of the Serial Number, Serial Number Descriptor Type, and Serial Number Descriptor Length, as read from the iSerialNumber.bLength field of the USB descriptor.  This field has a minimum value of 0x02. |
+| 05h    | Serial Number Descriptor Type   | BYTE    | 0x03   | The Descriptor Type of the Serial Number, as read from the iSerialNumber.bDescriptorType field of the USB descriptor.  This is always 0x03 to indicate that the descriptor is a string. |
+| 06h    | Serial Number                   | Varies  | Varies | The Serial Number of the device as a Unicode string without a NULL terminator, as read from the iSerialNumber.bString field of the USB descriptor.  This string does not follow typical string patterns found elsewhere in SMBIOS definitions. |
+
+Examples type 02h descriptors:
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, and the Serial Number is "SN00001": `0xBB 0xAA 0xDD 0xCC 0x10 0x03 0x53 0x00 0x4E 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x31 0x00`
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, but there is no Serial Number: `0xBB 0xAA 0xDD 0xCC 0x02 0x03`
 
-For PCI/PCIe devices (types 03h and 05h):
-* Vendor ID, Device ID, Subsystem Vendor ID, and Subsystem ID originate from the PCI configuration space for the device.
 
-Examples of PCI/PCIe devices (type 03h):
+#### Table 5: Device Descriptor Data for Device Type 03h (PCI/PCIe Network Interface)<a id="Table5"></a>
+
+The following table defines the Device Descriptor Data format for when the Device Type field is 03h, which indicates the device is a PCI/PCIe Network Interface.
+
+| Offset | Name                | Length  | Value  | Description |
+| ---    | ---                 | ---     | ---    | ---         |
+| 00h    | Vendor ID           | WORD    | Varies | The Vendor ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+| 02h    | Device ID           | WORD    | Varies | The Device ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+| 04h    | Subsystem Vendor ID | WORD    | Varies | The Subsystem Vendor ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+| 06h    | Subsystem ID        | WORD    | Varies | The Subsystem ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+
+Examples type 03h descriptors:
 * Vendor ID is 0xAABB, Product ID is 0xCCDD, Subsystem Vendor ID is 0x0011, and Subsystem ID is 0x2233: `0xBB 0xAA 0xDD 0xCC 0x11 0x00 0x33 0x22`
 
 
-### Table-4: Protocol Records data format:
+#### Table 6: Device Descriptor Data for Device Type 04h (USB Network Interface v2)<a id="Table6"></a>
+
+The following table defines the Device Descriptor Data format for when the Device Type field is 04h, which indicates the device is a USB Network Interface, version 2.
+
+| Offset | Name          | Length  | Value  | Description |
+| ---    | ---           | ---     | ---    | ---         |
+| 00h    | Length        | BYTE    | Varies | Length of the structure, including Device Type and Length fields. |
+| 01h    | Vendor ID     | WORD    | Varies | The Vendor ID of the device, as read from the idVendor field of the USB descriptor (LSB first). |
+| 03h    | Product ID    | WORD    | Varies | The Product ID of the device, as read from the idProduct field of the USB descriptor (LSB first). |
+| 05h    | Serial Number | BYTE    | STRING | The string number for the Serial Number of the device.  The string data is read from the iSerialNumber.bDescriptorType field of the USB descriptor, and is converted from Unicode to ASCII and is NULL terminated. |
+| 06h    | MAC Address   | 6 BYTEs | Varies | The MAC address of the USB network device (most significant octet first). |
+
+
+#### Table 7: Device Descriptor Data for Device Type 05h (PCI/PCIe Network Interface v2)<a id="Table7"></a>
+
+The following table defines the Device Descriptor Data format for when the Device Type field is 05h, which indicates the device is a PCI/PCIe Network Interface, version 2.
+
+| Offset | Name                   | Length  | Value  | Description |
+| ---    | ---                    | ---     | ---    | ---         |
+| 00h    | Length                 | BYTE    | Varies | Length of the structure, including Device Type and Length fields. |
+| 01h    | Vendor ID              | WORD    | Varies | The Vendor ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+| 03h    | Device ID              | WORD    | Varies | The Device ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+| 05h    | Subsystem Vendor ID    | WORD    | Varies | The Subsystem Vendor ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+| 07h    | Subsystem ID           | WORD    | Varies | The Subsystem ID of the PCI/PCIe device as read from its PCI configuration space (LSB first). |
+| 09h    | MAC Address            | 6 BYTEs | Varies | The MAC address of the PCI/PCIe network device (most significant octet first). |
+| 0Fh    | Segment Group Number   | WORD    | Varies | The Segment Group Number of the PCI/PCIe device as defined in the [PCI Firmware Specification](#PCIFirmwareSpec).  The value is 0 for a single-segment topology.
+| 11h    | Bus Number             | BYTE    | Varies | The Bus Number of the PCI/PCIe device. |
+| 12h    | Device/Function Number | BYTE    | Varies | The Device/Function Number of the PCI/PCIe device. <br/> Bits 7:3 - Device Number <br/> Bits 2:0 - Function Number |
+
+
+#### Table 8: Device Descriptor Data for Device Types 80h-FFh (OEM)<a id="Table8"></a>
+
+The following table defines the Device Descriptor Data format for when the Device Type field is 80h-FFh, which indicates the device is an OEM device.
+
+| Offset | Name        | Length  | Value  | Description |
+| ---    | ---         | ---     | ---    | ---         |
+| 00h    | Vendor IANA | 4 BYTEs | Varies | The IANA code for the vendor (MSB first). |
+| 04h    | Vendor Data | Varies  | Varies | OEM defined data. |
+
+
+### Table 9: Protocol Records data format<a id="Table9"></a>
 
 The following table defines the general Protocol Record layout specific data for Redfish over IP protocol:
 
-| Offset | Name                          | Length  | Value    | Description                                                                 |
-| ---    | ---                           | ---     | ---      | ---                                                                         |
-| X      | Protocol Identifier           | BYTE    | Varies   | Protocol identifier <br/> --"Redfish over IP" = 04h                     |
-| X+1    | Length                        | BYTE    | Varies   | Length of protocol specific data for Redfish over IP protocol           |
-| X+2    | Protocol specific record data | p Bytes | Varies   | Defined by protocol. <br/> See Table-5 below for "Redfish over IP" protocol |
+| Offset | Name                               | Length  | Value  | Description |
+| ---    | ---                                | ---     | ---    | ---         |
+| X      | Protocol Type                      | BYTE    | ENUM   | The Protocol Type.  "Redfish over IP" is 04h. |
+| X+1    | Protocol Type Specific Data Length | BYTE    | P      | The length of the Protocol Specific Record Data field. |
+| X+2    | Protocol Specific Record Data      | P BYTEs | Varies | The data for the protocol as defined by the Protocol Type.  See [Table 10](#Table10) for "Redfish over IP" protocol. |
 
 
-### Table-5: "Redfish over IP" Protocol-specific record data
+#### Table 10: "Redfish over IP" Protocol Specific Record Data<a id="Table10"></a>
 
 The following table defines the protocol-specific data for the "Redfish Over IP" protocol:
 
-| Offset | Name                              | Length  | Value  | Description                                                                                                                 |
-| ---    | ---                               | ---     | ---    | ---                                                                                                                         |
-| X+0    | Service UUID                      | 16BYTEs | Varies | Same as Redfish Service UUID in Redfish Service Root resource; set to all 0s if the UUID is not supported or unknown.       |
-| X+16   | Host IP Assignment Type           | BYTE    | Enum   | Unknown=00h, <br/> Static=01h, <br/> DHCP=02h, <br/> AutoConfigure=03h, <br/> HostSelected=04h, <br/> other values reserved |
-| X+17   | Host IP Address Format            | BYTE    | Enum   | Unknown=00h, <br/> IPv4=01h, <br/> IPv6=02h, <br/> other values reserved                                                    |
-| X+18   | Host IP Address                   | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
-| X+34   | Host IP Mask                      | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
-| X+50   | Redfish Service IP Discovery Type | BYTE    | Enum   | Unknown=00h, <br/> Static=01h, <br/> DHCP=02h, <br/> AutoConfigure=03h, <br/> HostSelected=04h, <br/> other values reserved |
-| X+51   | Redfish Service IP Address Format | BYTE    | Enum   | Unknown=00h, <br/> IPv4=01h, <br/> IPv6=02h, <br/> other values reserved                                                    |
-| X+52   | Redfish Service IP Address        | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
-| X+68   | Redfish Service IP Mask           | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
-| X+84   | Redfish Service IP Port           | WORD    | Varies | Used for Static and AutoConfigure.                                                                                          |
-| X+86   | Redfish Service VLAN ID           | DWORD   | Varies | Used for Static and AutoConfigure.                                                                                          |
-| X+90   | Redfish Service Hostname Length   | BYTE    | Varies | The length in bytes of the "Redfish Service Hostname" field, including any NULL characters in the field                     |
-| X+91   | Redfish Service Hostname          | varies  | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.  This string does not follow typical string patterns found elsewhere in SMBIOS definitions. |
+| Offset | Name                              | Length   | Value  | Description |
+| ---    | ---                               | ---      | ---    | ---         |
+| X+0    | Service UUID                      | 16 BYTEs | Varies | Same as Redfish Service UUID in Redfish Service Root resource; set to all 0s if the UUID is not supported or unknown. |
+| X+16   | Host IP Assignment Type           | BYTE     | ENUM   | The method for how the host IP address is assigned.  See [Table 11](#Table11). |
+| X+17   | Host IP Address Format            | BYTE     | ENUM   | The format of the Host IP Address.  See [Table 12](#Table12). |
+| X+18   | Host IP Address                   | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| X+34   | Host IP Mask                      | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| X+50   | Redfish Service IP Discovery Type | BYTE     | ENUM   | The method for how the Redfish Service IP address is discovered.  See [Table 11](#Table11). |
+| X+51   | Redfish Service IP Address Format | BYTE     | ENUM   | The format of the Redfish Service IP Address.  See [Table 12](#Table12). |
+| X+52   | Redfish Service IP Address        | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| X+68   | Redfish Service IP Mask           | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| X+84   | Redfish Service IP Port           | WORD     | Varies | Used for Static and AutoConfigure. |
+| X+86   | Redfish Service VLAN ID           | DWORD    | Varies | Used for Static and AutoConfigure. |
+| X+90   | Redfish Service Hostname Length   | BYTE     | Varies | The length in bytes of the "Redfish Service Hostname" field, including any NULL characters in the field. |
+| X+91   | Redfish Service Hostname          | Varies   | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.  This string does not follow typical string patterns found elsewhere in SMBIOS definitions. |
 
 In the above table, the fields "Host IP Address", "Host IP Mask", "Redfish Service IP Address", and "Redfish Service IP Mask" shall be stored in network byte order.
 * IPv4 Example: 10.12.110.57 will be stored, from lowest offset first, as `0x0A 0x0C 0x6E 0x39 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`
 * IPv6 Example: 2001:db8:63b3:1::3490 will be stored, from lowest offset first, as `0x20 0x01 0x0D 0xB8 0x63 0xB3 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x34 0x90`
+
+
+#### Table 11: Assignment/Discovery Type values<a id="Table11"></a>
+
+The following table defines the possible values for the Assignment Type and Discovery Type fields found in [Table 10](#Table10).
+
+| Value  | Description |
+| ---    | ---         |
+| 00h    | Unknown |
+| 01h    | Static |
+| 02h    | DHCP |
+| 03h    | AutoConfigure |
+| 04h    | HostSelected |
+| Others | Reserved |
+
+
+#### Table 12: IP Address Format values<a id="Table12"></a>
+
+The following table defines the possible values for the Host IP Address Format and Redfish Service IP Address Format fields found in [Table 10](#Table10).
+
+| Value  | Description |
+| ---    | ---         |
+| 00h    | Unknown |
+| 01h    | IPv4 |
+| 02h    | IPv6 |
+| Others | Reserved |
 
 
 ## Delivery of kernel authentication information via UEFI runtime variables
