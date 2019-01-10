@@ -216,12 +216,12 @@ The following describes the SMBIOS Management Controller Host Interface (Type 42
 
 ### Table 2: Interface Specific Data (for Interface Type 40h)<a id="Table2"></a>
 
-Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  This table defines the Interface Specific data for Interface Type 40h.  There are several types of Device Descriptors defined (see [Table 3](#Table3)); however, only one may be used in specific Type 42 table.
+Interface Specific Data starts at offset 06h of the [SMBIOS Type 42 structure](#Table1).  This table defines the Interface Specific data for Interface Type 40h.  There are several types of Device Descriptors defined (see [Table 3](#Table3)); however, only one may be used in specific Type 42 table.
 
 | Offset | Name                   | Length    | Value  | Description |
 | ---    | ---                    | ---       | ---    | ---         |
-| X      | Device Type            | BYTE      | ENUM   | The Device Type of the interface.  The value of this field determines how the Device Descriptor Data is decoded.  [Table 3](#Table3). |
-| X+1    | Device Descriptor Data | N-1 BYTEs | Varies | The Device Descriptor Data formatted based on Device Type.  See [Table 4](#Table4), [Table 5](#Table5), [Table 6](#Table6), [Table 7](#Table7), and [Table 8](#Table8). |
+| 00h    | Device Type            | BYTE      | ENUM   | The Device Type of the interface.  The value of this field determines how the Device Descriptor Data is decoded.  [Table 3](#Table3). |
+| 01h    | Device Descriptor Data | N-1 BYTEs | Varies | The Device Descriptor Data formatted based on Device Type.  See [Table 4](#Table4), [Table 5](#Table5), [Table 6](#Table6), [Table 7](#Table7), and [Table 8](#Table8). |
 
 
 #### Table 3: Device Type values<a id="Table3"></a>
@@ -312,34 +312,34 @@ The following table defines the Device Descriptor Data format for when the Devic
 
 ### Table 9: Protocol Records data format<a id="Table9"></a>
 
-The following table defines the general Protocol Record layout specific data for Redfish over IP protocol:
+Protocol Records start at offset 07h+N of the [SMBIOS Type 42 structure](#Table1).  The following table defines the general Protocol Record layout specific data for Redfish over IP protocol:
 
 | Offset | Name                               | Length  | Value  | Description |
 | ---    | ---                                | ---     | ---    | ---         |
-| X      | Protocol Type                      | BYTE    | ENUM   | The Protocol Type.  "Redfish over IP" is 04h. |
-| X+1    | Protocol Type Specific Data Length | BYTE    | P      | The length of the Protocol Specific Record Data field. |
-| X+2    | Protocol Specific Record Data      | P BYTEs | Varies | The data for the protocol as defined by the Protocol Type.  See [Table 10](#Table10) for "Redfish over IP" protocol. |
+| 00h    | Protocol Type                      | BYTE    | ENUM   | The Protocol Type.  "Redfish over IP" is 04h. |
+| 01h    | Protocol Type Specific Data Length | BYTE    | P      | The length of the Protocol Specific Record Data field. |
+| 02h    | Protocol Specific Record Data      | P BYTEs | Varies | The data for the protocol as defined by the Protocol Type.  See [Table 10](#Table10) for "Redfish over IP" protocol. |
 
 
 #### Table 10: "Redfish over IP" Protocol Specific Record Data<a id="Table10"></a>
 
-The following table defines the protocol-specific data for the "Redfish Over IP" protocol:
+Protocol Specific Record Data starts at offset 02h of the [Protocol Record structure](#Table9).  The following table defines the protocol specific data for the "Redfish Over IP" protocol:
 
 | Offset | Name                              | Length   | Value  | Description |
 | ---    | ---                               | ---      | ---    | ---         |
-| X+0    | Service UUID                      | 16 BYTEs | Varies | Same as Redfish Service UUID in Redfish Service Root resource; set to all 0s if the UUID is not supported or unknown. |
-| X+16   | Host IP Assignment Type           | BYTE     | ENUM   | The method for how the host IP address is assigned.  See [Table 11](#Table11). |
-| X+17   | Host IP Address Format            | BYTE     | ENUM   | The format of the Host IP Address.  See [Table 12](#Table12). |
-| X+18   | Host IP Address                   | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
-| X+34   | Host IP Mask                      | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
-| X+50   | Redfish Service IP Discovery Type | BYTE     | ENUM   | The method for how the Redfish Service IP address is discovered.  See [Table 11](#Table11). |
-| X+51   | Redfish Service IP Address Format | BYTE     | ENUM   | The format of the Redfish Service IP Address.  See [Table 12](#Table12). |
-| X+52   | Redfish Service IP Address        | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
-| X+68   | Redfish Service IP Mask           | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
-| X+84   | Redfish Service IP Port           | WORD     | Varies | Used for Static and AutoConfigure. |
-| X+86   | Redfish Service VLAN ID           | DWORD    | Varies | Used for Static and AutoConfigure. |
-| X+90   | Redfish Service Hostname Length   | BYTE     | Varies | The length in bytes of the "Redfish Service Hostname" field, including any NULL characters in the field. |
-| X+91   | Redfish Service Hostname          | Varies   | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.  This string does not follow typical string patterns found elsewhere in SMBIOS definitions. |
+| 00h    | Service UUID                      | 16 BYTEs | Varies | Same as Redfish Service UUID in Redfish Service Root resource; set to all 0s if the UUID is not supported or unknown. |
+| 10h    | Host IP Assignment Type           | BYTE     | ENUM   | The method for how the host IP address is assigned.  See [Table 11](#Table11). |
+| 11h    | Host IP Address Format            | BYTE     | ENUM   | The format of the Host IP Address.  See [Table 12](#Table12). |
+| 12h    | Host IP Address                   | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| 22h    | Host IP Mask                      | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| 32h    | Redfish Service IP Discovery Type | BYTE     | ENUM   | The method for how the Redfish Service IP address is discovered.  See [Table 11](#Table11). |
+| 33h    | Redfish Service IP Address Format | BYTE     | ENUM   | The format of the Redfish Service IP Address.  See [Table 12](#Table12). |
+| 34h    | Redfish Service IP Address        | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| 44h    | Redfish Service IP Mask           | 16 BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes. |
+| 54h    | Redfish Service IP Port           | WORD     | Varies | Used for Static and AutoConfigure. |
+| 56h    | Redfish Service VLAN ID           | DWORD    | Varies | Used for Static and AutoConfigure. |
+| 5Ah    | Redfish Service Hostname Length   | BYTE     | Varies | The length in bytes of the "Redfish Service Hostname" field, including any NULL characters in the field. |
+| 5Bh    | Redfish Service Hostname          | Varies   | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.  This string does not follow typical string patterns found elsewhere in SMBIOS definitions. |
 
 In the above table, the fields "Host IP Address", "Host IP Mask", "Redfish Service IP Address", and "Redfish Service IP Mask" shall be stored in network byte order.
 * IPv4 Example: 10.12.110.57 will be stored, from lowest offset first, as `0x0A 0x0C 0x6E 0x39 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`
