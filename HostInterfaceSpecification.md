@@ -221,7 +221,7 @@ Interface Specific Data starts at offset 06h of the SMBIOS Type 42 structure.  T
 | Offset | Name                   | Length    | Value  | Description |
 | ---    | ---                    | ---       | ---    | ---         |
 | X      | Device Type            | BYTE      | ENUM   | The Device Type of the interface.  The value of this field determines how the Device Descriptor Data is decoded.  [Table 3](#Table3). |
-| X+1    | Device Descriptor Data | N-1 BYTEs | Varies | The Device Descriptor Data formatted based on Device Type.  See [Table 3](#Table3). |
+| X+1    | Device Descriptor Data | N-1 BYTEs | Varies | The Device Descriptor Data formatted based on Device Type.  See [Table 4](#Table4), [Table 5](#Table5), [Table 6](#Table6), [Table 7](#Table7), and [Table 8](#Table8). |
 
 
 #### Table 3: Device Type values<a id="Table3"></a>
