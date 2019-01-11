@@ -1,0 +1,305 @@
+{
+	"overrideDescription": "Redfish Property Index DSP2053 generation file",
+	"version": "2018.3",
+	"uri_mapping": {
+		"redfish.dmtf.org/schemas/v1": "./json-schema",
+		"redfish.dmtf.org/schemas/swordfish/v1": "../Swordfish/json-schema"
+	},
+	"ExcludedProperties": [
+		"@odata.context",
+		"@odata.type",
+		"@odata.id",
+		"@odata.etag",
+		"*@odata.count"
+	],
+	"DescriptionOverrides": {
+		"Name": [{
+			"overrideDescription": "Name of the resource as assigned by the Redfish Service.",
+			"globalOverride": true,
+			"type": "string"
+		}],
+		"Description": [{
+			"overrideDescription": "A description of the resource or its purpose.",
+			"globalOverride": true,
+			"type": "string"
+		}],
+		"Id": [{
+			"overrideDescription": "The identifier for this resource.",
+			"globalOverride": true,
+			"type": "string"
+		}],
+		"AdjustedMaxAllowableOperatingValue": [{
+			"overrideDescription": "Adjusted maximum allowable operating value for this equipment based on the current environmental conditions present.",
+			"knownException": true,			
+			"schemas": [
+				"Thermal/Temperatures",
+				"Sensor"
+			],
+			"type": "number"
+		}],
+		"AdjustedMinAllowableOperatingValue": [{
+			"overrideDescription": "Adjusted minimum allowable operating value for this equipment based on the current environmental conditions present.",
+			"knownException": true,
+			"schemas": [
+				"Thermal/Temperatures",
+				"Sensor"
+			],
+			"type": "number"
+		}],
+		"Assembly": [{
+			"overrideDescription": "A reference to the Assembly resource associated with this item.",
+			"schemas": [
+				"PCIeDevice",
+				"Storage/StorageControllers",
+				"NetworkAdapter",
+				"Chassis",
+				"Drive",
+				"Thermal/Fans",
+				"Memory",
+				"Power/PowerSupplies",
+				"Processor"
+			],
+			"type": "object"
+		}],
+		"AssetTag": [{
+			"overrideDescription": "The user assigned asset tag for this device.",
+			"schemas": [
+				"PCIeDevice",
+				"Drive",
+				"Storage/StorageControllers",
+				"Switch",
+				"Chassis",
+				"ComputerSystem"
+			],
+			"type": "string"
+		}],
+		"Attributes": [{
+				"overrideDescription": "The array containing the attributes and their possible values.",
+				"knownException": true,
+				"schemas": [
+					"AttributeRegistry/RegistryEntries"
+				],
+				"type": "array"
+			},
+			{
+				"overrideDescription": "The list of BIOS attributes specific to the manufacturer or provider.",
+				"knownException": true,
+				"schemas": [
+					"Bios"
+				],
+				"type": "object"
+			}
+		],
+
+		"BlockSizeBytes": [{
+				"overrideDescription": "The size of the smallest addressible unit (Block) of this device in bytes.",
+				"knownException": true,
+				"schemas": [
+					"Drive",
+					"MemoryMetrics"
+				],
+				"type": "integer"
+			},
+			{
+				"overrideDescription": "The size of the smallest addressible unit (Block) of this volume in bytes.",
+				"knownException": true,
+				"schemas": [
+					"Volume"
+				],
+				"type": "number"
+			}
+		],
+		"BlocksRead": [{
+			"overrideDescription": "Number of blocks read.",
+			"knownException": true,			
+			"schemas": [
+				"MemoryMetrics/LifeTime",
+				"MemoryMetrics/CurrentPeriod"
+			],
+			"type": "integer"
+		}],
+		"BlocksWritten": [{
+			"overrideDescription": "Number of blocks written.",
+				"knownException": true,
+				"schemas": [
+				"MemoryMetrics/CurrentPeriod",
+				"MemoryMetrics/LifeTime"
+			],
+			"type": "integer"
+		}],
+		"CapacityBytes": [{
+				"overrideDescription": "The capacity of the device in bytes.",
+				"knownException": true,
+				"schemas": [
+					"Drive",
+					"SimpleStorage/Devices"
+				],
+				"type": "integer"
+			},
+			{
+				"overrideDescription": "The size in bytes of this Volume.",
+				"knownException": true,
+				"schemas": [
+					"Volume"
+				],
+				"type": "number"
+			}
+		],
+		"CapacityMiB": [{
+			"overrideDescription": "Memory Capacity in mebibytes (MiB).",
+				"knownException": true,
+				"schemas": [
+				"Memory",
+				"Processor/ProcessorMemory"
+			],
+			"type": "integer"
+		}],
+		"Chassis": [{
+				"overrideDescription": "An array of references to the Chassis that is related or contains this resource.",
+				"knownException": true,
+				"schemas": [
+					"ResourceBlock/Links",
+					"PCIeDevice/Links",
+					"ComputerSystem/Links"
+				],
+				"type": "array"
+			},
+			{
+				"overrideDescription": "A reference to the Chassis which contains this resource.",
+				"knownException": true,
+				"schemas": [
+					"Drive/Links",
+					"EthernetInterface/Links",
+					"Memory/Links",
+					"Processor/Links",
+					"SimpleStorage/Links",
+					"Switch/Links"
+				],
+				"type": "object"
+			},
+			{
+				"overrideDescription": "This is a link to a collection of Chassis.",
+				"knownException": true,
+				"schemas": [
+					"ServiceRoot"
+				],
+				"type": "object"
+			}
+		],
+		"ComputerSystems": [{
+			"overrideDescription": "An array of references to the Computer Systems related to this resource.",
+			"knownException": true,
+			"schemas": [
+				"ResourceBlock",
+				"HostInterface/Links",
+				"ResourceBlock/Links",
+				"Chassis/Links"
+			],
+			"type": "array"
+		}],
+		"ConnectTypesSupported": [{
+			"overrideDescription": "This object is used to enumerate connection types allowed by the implementation.",
+			"knownException": true,
+			"schemas": [
+				"Manager/CommandShell",
+				"Manager/GraphicalConsole",
+				"Manager/SerialConsole"
+			],
+			"type": "array"
+		}],
+		"Context": [{
+			"overrideDescription": "A client-supplied string that is stored with the event destination subscription.",
+			"knownException": true,
+			"schemas": [
+				"EventDestination",
+				"Event",
+				"Event/Events"
+			],
+			"type": "string"
+		}],
+		"CooledBy": [{
+			"overrideDescription": "An array of ID[s] of resources that cool this resource. Normally the ID will be a chassis or a specific set of fans.",
+			"knownException": true,
+			"schemas": [
+				"Chassis/Links",
+				"ComputerSystem/Links"
+			],
+			"type": "array"
+		}],
+		"Links": [{
+				"overrideDescription": "This indicates whether the $expand support of tilde (expand only entries in the Links section) is supported.",
+				"knownException": true,
+				"schemas": [
+					"ServiceRoot/ProtocolFeaturesSupported/ExpandQuery"
+				],
+				"type": "boolean"
+			},
+			{
+				"overrideDescription": "Contains references to other resources that are related to this resource.",
+				"knownException": true,
+				"schemas": [
+					"AccelerationFunction",
+					"CertificateLocations",
+					"Chassis",
+					"ComputerSystem",
+					"Drive",
+					"EthernetInterface",
+					"ExternalAccountProvider",
+					"Fabric",
+					"HostInterface",
+					"LogEntry",
+					"Manager",
+					"ManagerAccount",
+					"Memory",
+					"PCIeSlots/Slots",
+					"Port",
+					"Processor",
+					"ResourceBlock",
+					"ServiceRoot",
+					"SimpleStorage",
+					"Storage",
+					"Storage/StorageControllers",
+					"Switch",
+					"Volume",
+					"Zone"
+				],
+				"type": "object"
+			}
+		],
+		"PartNumber": [{
+			"overrideDescription": "Part number for this resource or device.",
+			"schemas": [
+				"NetworkAdapter",
+				"Assembly/Assemblies",
+				"Thermal/Fans",
+				"PCIeDevice",
+				"Power/PowerSupplies",
+				"Drive",
+				"Storage/StorageControllers",
+				"Switch",
+				"ComputerSystem",
+				"Chassis",
+				"Memory"
+			],
+			"type": "string"
+		}],
+		"SerialNumber": [{
+			"overrideDescription": "The serial number of this device.",
+			"schemas": [
+				"Memory",
+				"Thermal/Fans",
+				"PCIeDevice",
+				"Power/PowerSupplies",
+				"Drive",
+				"NetworkAdapter",
+				"Storage/StorageControllers",
+				"Switch",
+				"ComputerSystem",
+				"Chassis",
+				"Assembly/Assemblies"
+			],
+			"type": "string"
+		}]
+	}
+
+}
