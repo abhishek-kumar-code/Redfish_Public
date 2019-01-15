@@ -528,18 +528,7 @@ table.properties{
 <tr><td><b>Location</b></td><td>MessageRegistryFile</td><td>array</td><td>Location information for this registry file.</td></tr>
 <tr><td><b>Location</b></td><td>JsonSchemaFile</td><td>array</td><td>Location information for this schema file.</td></tr>
 <tr><td><b>Location</b></td><td>Drive</td><td>array</td><td>The Location of the drive.</td></tr>
-<tr><td><b>Location</b></td><td>PCIeSlots (Slots)</td><td>object</td><td>The Location of the PCIe slot.</td></tr>
-<tr><td><b>Location</b></td><td>Chassis</td><td>object</td><td>The Location of the chassis.</td></tr>
-<tr><td><b>Location</b></td><td>Thermal (Fans)</td><td>object</td><td>The Location of the fan.</td></tr>
-<tr><td><b>Location</b></td><td>Memory</td><td>object</td><td>The Location of the memory.</td></tr>
-<tr><td><b>Location</b></td><td>NetworkAdapter (Controllers)</td><td>object</td><td>The Location of the network adapter controller.</td></tr>
-<tr><td><b>Location</b></td><td>Port</td><td>object</td><td>The Location of the port.</td></tr>
-<tr><td><b>Location</b></td><td>Power (PowerSupplies)</td><td>object</td><td>The Location of the power supply.</td></tr>
-<tr><td><b>Location</b></td><td>Processor</td><td>object</td><td>The Location of the processor.</td></tr>
-<tr><td><b>Location</b></td><td>Storage (StorageControllers)</td><td>object</td><td>The Location of the storage controller.</td></tr>
-<tr><td><b>Location</b></td><td>Switch</td><td>object</td><td>The Location of the switch.</td></tr>
-<tr><td><b>Location</b></td><td>Sensor</td><td>object</td><td>The location information for this Sensor.</td></tr>
-<tr><td><b>Location</b></td><td>Drive (Location)</td><td>object</td><td>This type describes the location of a resource.</td></tr>
+<tr><td><b>Location</b></td><td><i>various</i><br>(Chassis, <br>Drive (Location) ... )</td><td>object</td><td>The physical location of this device or resource.</td></tr>
 <tr><td><b>Locked</b></td><td>ManagerAccount</td><td>boolean</td><td>This property indicates that the account has been auto-locked by the account service because the lockout threshold has been exceeded.  When set to true, the account is locked. A user admin can write the property to false to manually unlock, or the account service will unlock it once the lockout duration period has passed.</td></tr>
 <tr><td><b>Log</b></td><td>JobService</td><td>object</td><td>This is a reference to a Log Service used by the Job Service.</td></tr>
 <tr><td><b>LogEntryType</b></td><td>LogService</td><td>string</td><td>The format of the Entries of this log.</td></tr>
@@ -562,15 +551,11 @@ table.properties{
 <tr><td><b>LowerThresholdNonCritical</b></td><td>Power (Voltages), <br>Thermal (Temperatures)</td><td>number</td><td>Below normal range.</td></tr>
 <tr><td><b>LowerWarning</b></td><td>Triggers (NumericThresholds)</td><td>object</td><td>Below normal range.</td></tr>
 <tr><td><b>LowestSupportedVersion</b></td><td>SoftwareInventory</td><td>string</td><td>A string representing the lowest supported version of this software.</td></tr>
-<tr><td><b>MACAddress</b></td><td>EthernetInterface</td><td>string</td><td>This is the currently configured MAC address of the (logical port) interface.</td></tr>
-<tr><td><b>MACAddress</b></td><td>NetworkDeviceFunction (Ethernet)</td><td>string</td><td>This is the currently configured MAC address of the (logical port) network device function.</td></tr>
-<tr><td><b>MTUSize</b></td><td>NetworkDeviceFunction (Ethernet)</td><td>integer</td><td>The Maximum Transmission Unit (MTU) configured for this network device function.</td></tr>
-<tr><td><b>MTUSize</b></td><td>EthernetInterface</td><td>integer</td><td>This is the currently configured Maximum Transmission Unit (MTU) in bytes on this interface.</td></tr>
+<tr><td><b>MACAddress</b></td><td>EthernetInterface, <br>NetworkDeviceFunction (Ethernet)</td><td>string</td><td>This is the currently configured MAC address of the interface.</td></tr>
+<tr><td><b>MTUSize</b></td><td>EthernetInterface, <br>NetworkDeviceFunction (Ethernet)</td><td>integer</td><td>The Maximum Transmission Unit (MTU) configured for this interface.</td></tr>
 <tr><td><b>MaintenanceWindowDurationInSeconds</b></td><td>UpdateService (HttpPushUriOptions > HttpPushUriApplyTime)</td><td>integer</td><td>The value of this property as specified by client indicates the expiry time of maintenance window in seconds.</td></tr>
 <tr><td><b>MaintenanceWindowStartTime</b></td><td>UpdateService (HttpPushUriOptions > HttpPushUriApplyTime)</td><td>string</td><td>The value of this property as specified by client to indicate the start time of a maintenance window.</td></tr>
-<tr><td><b>ManagedBy</b></td><td>Chassis (Links)</td><td>array</td><td>An array of references to the Managers responsible for managing this chassis.</td></tr>
-<tr><td><b>ManagedBy</b></td><td>ComputerSystem (Links)</td><td>array</td><td>An array of references to the Managers responsible for this system.</td></tr>
-<tr><td><b>ManagedBy</b></td><td>Switch (Links)</td><td>array</td><td>An array of references to the managers that manage this switch.</td></tr>
+<tr><td><b>ManagedBy</b></td><td>Chassis (Links), <br>ComputerSystem (Links), <br>Switch (Links)</td><td>array</td><td>An array of references to the Managers responsible for managing this resource.</td></tr>
 <tr><td><b>ManagerEthernetInterface</b></td><td>HostInterface</td><td>object</td><td>The Redfish link to a single network interface controllers or cards (NIC) that this Manager uses for network communication with this Host Interface.</td></tr>
 <tr><td><b>ManagerForChassis</b></td><td>Manager (Links)</td><td>array</td><td>This property is an array of references to the chassis that this manager has control over.</td></tr>
 <tr><td><b>ManagerForServers</b></td><td>Manager (Links)</td><td>array</td><td>This property is an array of references to the systems that this manager has control over.</td></tr>
@@ -579,20 +564,7 @@ table.properties{
 <tr><td><b>ManagerType</b></td><td>Manager</td><td>string</td><td>This property represents the type of manager that this resource represents.</td></tr>
 <tr><td><b>Managers</b></td><td>ServiceRoot</td><td>object</td><td>This is a link to a collection of Managers.</td></tr>
 <tr><td><b>ManagersInChassis</b></td><td>Chassis (Links)</td><td>array</td><td>An array of references to the managers located in this Chassis.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>SoftwareInventory</td><td>string</td><td>A string representing the manufacturer/producer of this software.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Memory</td><td>string</td><td>The Memory manufacturer.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>AccelerationFunction</td><td>string</td><td>The acceleration function code manufacturer.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Chassis</td><td>string</td><td>The manufacturer of this chassis.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>NetworkAdapter</td><td>string</td><td>The manufacturer or OEM of this network adapter.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>ComputerSystem</td><td>string</td><td>The manufacturer or OEM of this system.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>SimpleStorage (Devices)</td><td>string</td><td>The name of the manufacturer of this device.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Processor</td><td>string</td><td>The processor manufacturer.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Thermal (Fans)</td><td>string</td><td>This is the manufacturer of this Fan.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>PCIeDevice</td><td>string</td><td>This is the manufacturer of this PCIe device.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Drive</td><td>string</td><td>This is the manufacturer of this drive.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Power (PowerSupplies)</td><td>string</td><td>This is the manufacturer of this power supply.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Storage (StorageControllers)</td><td>string</td><td>This is the manufacturer of this storage controller.</td></tr>
-<tr><td><b>Manufacturer</b></td><td>Switch</td><td>string</td><td>This is the manufacturer of this switch.</td></tr>
+<tr><td><b>Manufacturer</b></td><td><i>various</i><br>(AccelerationFunction, <br>Chassis ... )</td><td>string</td><td>A the manufacturer/producer of this device or resource.</td></tr>
 <tr><td><b>MapFrom</b></td><td>AttributeRegistry (RegistryEntries > Dependencies > Dependency)</td><td>array</td><td>Array of the map-from conditions for mapping dependency.</td></tr>
 <tr><td><b>MapFromAttribute</b></td><td>AttributeRegistry (RegistryEntries > Dependencies > Dependency > MapFrom)</td><td>string</td><td>The attribute that is used to evaluate this dependency expression.</td></tr>
 <tr><td><b>MapFromCondition</b></td><td>AttributeRegistry (RegistryEntries > Dependencies > Dependency > MapFrom)</td><td>string</td><td>The condition that is used to evaluate this dependency expression.</td></tr>
@@ -614,8 +586,7 @@ table.properties{
 <tr><td><b>MaxFrameSize</b></td><td>NetworkPort</td><td>integer</td><td>The maximum frame size supported by the port.</td></tr>
 <tr><td><b>MaxIPv6StaticAddresses</b></td><td>EthernetInterface</td><td>integer</td><td>This indicates the maximum number of Static IPv6 addresses that can be configured on this interface.</td></tr>
 <tr><td><b>MaxJobs</b></td><td>JobService (ServiceCapabilities)</td><td>integer</td><td>Maximum number of Jobs supported.</td></tr>
-<tr><td><b>MaxLanes</b></td><td>PCIeDevice (PCIeInterface)</td><td>integer</td><td>This is the number of PCIe lanes supported by this device.</td></tr>
-<tr><td><b>MaxLanes</b></td><td>Processor (FPGA > ExternalInterfaces > Ethernet), <br>Processor (FPGA > HostInterface > Ethernet)</td><td>integer</td><td>This is the number of lanes supported by this interface.</td></tr>
+<tr><td><b>MaxLanes</b></td><td>PCIeDevice (PCIeInterface), <br>Processor (FPGA > ExternalInterfaces > Ethernet), <br>Processor (FPGA > HostInterface > Ethernet)</td><td>integer</td><td>This is the number of lanes supported by this interface.</td></tr>
 <tr><td><b>MaxLength</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>integer</td><td>The maximum character length of the value of an attribute of type 'String'.</td></tr>
 <tr><td><b>MaxLevels</b></td><td>ServiceRoot (ProtocolFeaturesSupported > ExpandQuery)</td><td>integer</td><td>This indicates the maximum number value of the $levels qualifier in $expand operations.</td></tr>
 <tr><td><b>MaxNumberOfRecords</b></td><td>LogService</td><td>integer</td><td>The maximum number of log entries this service can have.</td></tr>
