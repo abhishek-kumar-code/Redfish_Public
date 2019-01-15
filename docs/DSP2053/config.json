@@ -30,7 +30,7 @@
 		}],
 		"AdjustedMaxAllowableOperatingValue": [{
 			"overrideDescription": "Adjusted maximum allowable operating value for this equipment based on the current environmental conditions present.",
-			"knownException": true,			
+			"knownException": true,
 			"schemas": [
 				"Thermal/Temperatures",
 				"Sensor"
@@ -90,7 +90,6 @@
 				"type": "object"
 			}
 		],
-
 		"BlockSizeBytes": [{
 				"overrideDescription": "The size of the smallest addressible unit (Block) of this device in bytes.",
 				"knownException": true,
@@ -111,7 +110,7 @@
 		],
 		"BlocksRead": [{
 			"overrideDescription": "Number of blocks read.",
-			"knownException": true,			
+			"knownException": true,
 			"schemas": [
 				"MemoryMetrics/LifeTime",
 				"MemoryMetrics/CurrentPeriod"
@@ -120,8 +119,8 @@
 		}],
 		"BlocksWritten": [{
 			"overrideDescription": "Number of blocks written.",
-				"knownException": true,
-				"schemas": [
+			"knownException": true,
+			"schemas": [
 				"MemoryMetrics/CurrentPeriod",
 				"MemoryMetrics/LifeTime"
 			],
@@ -147,8 +146,8 @@
 		],
 		"CapacityMiB": [{
 			"overrideDescription": "Memory Capacity in mebibytes (MiB).",
-				"knownException": true,
-				"schemas": [
+			"knownException": true,
+			"schemas": [
 				"Memory",
 				"Processor/ProcessorMemory"
 			],
@@ -266,6 +265,53 @@
 				"type": "object"
 			}
 		],
+		"Location": [{
+			"overrideDescription": "The physical location of this device or resource.",
+			"knownException": true,
+			"schemas": [
+				"PCIeSlots/Slots",
+				"Chassis",
+				"Thermal/Fans",
+				"Memory",
+				"NetworkAdapter/Controllers",
+				"Port",
+				"Power/PowerSupplies",
+				"Processor",
+				"Storage/StorageControllers",
+				"Switch",
+				"Sensor",
+				"Drive/Location"
+			],
+			"type": "object"
+		}],
+		"MACAddress": [{
+			"overrideDescription": "This is the currently configured MAC address of the interface.",
+			"knownException": true,
+			"schemas": [
+				"EthernetInterface",
+				"NetworkDeviceFunction/Ethernet"
+			],
+			"type": "string"
+		}],
+		"MTUSize": [{
+			"overrideDescription": "The Maximum Transmission Unit (MTU) configured for this interface.",
+			"knownException": true,
+			"schemas": [
+				"NetworkDeviceFunction/Ethernet",
+				"EthernetInterface"
+			],
+			"type": "integer"
+		}],
+		"ManagedBy": [{
+			"overrideDescription": "An array of references to the Managers responsible for managing this resource.",
+			"knownException": true,
+			"schemas": [
+				"Chassis/Links",
+				"ComputerSystem/Links",
+				"Switch/Links"
+			],
+			"type": "array"
+		}],
 		"PartNumber": [{
 			"overrideDescription": "Part number for this resource or device.",
 			"schemas": [
@@ -282,6 +328,37 @@
 				"Memory"
 			],
 			"type": "string"
+		}],
+		"Manufacturer": [{
+			"overrideDescription": "A the manufacturer/producer of this device or resource.",
+			"knownException": true,
+			"schemas": [
+				"SoftwareInventory",
+				"Memory",
+				"AccelerationFunction",
+				"Chassis",
+				"NetworkAdapter",
+				"ComputerSystem",
+				"SimpleStorage/Devices",
+				"Processor",
+				"Thermal/Fans",
+				"PCIeDevice",
+				"Drive",
+				"Power/PowerSupplies",
+				"Storage/StorageControllers",
+				"Switch"
+			],
+			"type": "string"
+		}],
+		"MaxLanes": [{
+			"overrideDescription": "This is the number of lanes supported by this interface.",
+			"knownException": true,
+			"schemas": [
+				"PCIeDevice/PCIeInterface",
+				"Processor/FPGA/ExternalInterfaces/Ethernet",
+				"Processor/FPGA/HostInterface/Ethernet"
+			],
+			"type": "integer"
 		}],
 		"SerialNumber": [{
 			"overrideDescription": "The serial number of this device.",
