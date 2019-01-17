@@ -1,0 +1,31 @@
+{
+    "@odata.type": "#openconfig_lldp.interface.v1_0_0.interface",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lldp/blank",
+    "Id": "blank",
+
+    "name": "TenGigE0/4/2/0",
+    "config": {
+        "name": "TenGigE0/4/2/0",
+        "enabled": 1
+    },
+    "state": {
+        "name": "",
+        "enabled": 1,
+        "counters": {
+            "last-clear": "",
+            "frame-error-out": 0,
+            "frame-error-in": 0,
+            "frame-in": 0,
+            "frame-discard": 0,
+            "frame-out": 0,
+            "tlv-unknown": 0,
+            "tlv-discard": 0
+        }
+    },
+    "neighbors": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces/blank/neighbors"
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_lldp.interface.interface",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

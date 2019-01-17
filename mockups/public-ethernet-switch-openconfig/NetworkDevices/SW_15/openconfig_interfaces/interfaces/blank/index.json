@@ -1,10 +1,9 @@
 {
     "@odata.type": "#openconfig_interfaces.interface.v1_0_0.interface",
-    "@odata.context": "/redfish/v1/$metadata#openconfig_interfaces.interface.interface",
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/blank",
-    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
 
     "Id": "blank",
+
     "name": "blank",
     "hold-time": {
         "config": {
@@ -15,9 +14,6 @@
             "down": 0,
             "up": 0
         }
-    },
-    "subinterfaces": {
-        "subinterface": {}
     },
     "config": {
         "mtu": 0,
@@ -56,5 +52,11 @@
         "description": "",
         "ifindex": 0,
         "last-change": 0
-    }
+    },
+    "subinterfaces": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces/blank/subinterfaces"
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_interfaces.interface.interface",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

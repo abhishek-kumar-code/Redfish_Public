@@ -1,0 +1,15 @@
+{
+    "@odata.type": "#openconfig_lldp.lldp.interfaces.interface.neighbors.neighbor.capabilities.capability.v1_0_0.capability",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lldp/interfaces/blank/neighbors/a_neighbor/capabilities/a_capability",
+    "Id": "a_capability",
+
+    "name": "a_capability",
+    "state": {
+        "name": "",
+        "enabled": false
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_lldp.interfaces.interface.neighbors.neighbor.capabilities.capability.capability",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+
+}

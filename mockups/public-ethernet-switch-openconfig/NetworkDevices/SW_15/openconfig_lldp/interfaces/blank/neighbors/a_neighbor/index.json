@@ -1,0 +1,34 @@
+{
+    "@odata.type": "#openconfig_lldp.lldp.interfaces.interface.neighbors.neighbor.v1_0_0.lldp",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lldp/interfaces/blank/neighbors/a_neighbor",
+    "Id": "a_neighbor",
+
+    "id": "a_neighbor",
+    "state": {
+        "management-address": "",
+        "id": "",
+        "port-id": "",
+        "chassis-id": "",
+        "ttl": 0,
+        "system-description": "",
+        "management-address-type": "",
+        "port-id-type": "",
+        "system-name": "",
+        "port-description": "",
+        "last-update": 0,
+        "age": 0,
+        "chassis-id-type": ""
+    },
+    "interfaces": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces"
+    },
+    "capabilities": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces/blank/neighbors/a_neighbor/capabilities"
+    },
+    "custom_tlvs": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_interfaces/interfaces/blank/neighbors/a_neighbor/custom_tlvs"
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_lldp.interfaces.interface.neighbors.neighbor.neighbor",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+
