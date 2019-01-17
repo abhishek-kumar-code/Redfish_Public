@@ -218,7 +218,7 @@ Redfish does not guarantee that client software will never need to be updated.  
 
 Interoperable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.
 
-For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This not possible as it is a hypermedia API. Only the root object has a well-known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer.
+For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well-known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer.
 
 Additionally, not all Redfish resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
 
@@ -1246,7 +1246,7 @@ For usage and additional requirements imposed by this specification, see the **D
 | <a id="status-428"></a>`428 Precondition Required` | The request did not provide the required precondition, such as an `If-Match` or `If-None-Match` header. |
 | <a id="status-431"></a>`431 Request Header Field Too Large` | The server is unwilling to process the request because either an individual header field or all header fields are too large. |
 | <a id="status-500"></a>`500 Internal Server Error` | The server encountered an unexpected condition that prevented it from fulfilling the request.  The service shall return an extended error in the response body.  See [Error responses](#error-responses). |
-| <a id="status-501"></a>`501 Not Implemented` | The server does not support the functionality required to fulfill the request.  This the appropriate response when the server does not recognize the request method and cannot support the method for any resource. |
+| <a id="status-501"></a>`501 Not Implemented` | The server does not support the functionality required to fulfill the request.  The appropriate response when the server does not recognize the request method and cannot support the method for any resource. |
 | <a id="status-503"></a>`503 Service Unavailable` | The server cannot handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is completing initialization or other maintenance on the resource.  It may also use this response to indicate that the service itself is undergoing maintenance, such as finishing initialization steps after a reboot of the service. |
 | <a id="status-507"></a>`507 Insufficient Storage` | The server cannot build the response for the client due to the size of the response. |
 
@@ -1400,7 +1400,7 @@ where
 | <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
 | <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>Many Redfish implementations concatenate the resource type namespace with a period (`.`) followed by the resource type. |
 
-For example, the following context URL specifies that the result show a single `ComputerSystem` resource:
+For example, the following context URL specifies that the results show a single `ComputerSystem` resource:
 
 ```json
 {
@@ -1490,26 +1490,26 @@ where
 | <code><var>SSS</var></code> | The decimal fraction of a second.  One or more digits where the number of digits imply the precision. |
 | <code>Z</code> | The time zone separator.  Must be a capital `Z`. |
 
-When the time of day is unknown or serves no purpose, the service shall report `00:00:00Z` for the time of day portion of the `DateTime` value.
+When the time of day is unknown or serves no purpose, the service shall report `00:00:00Z` for the time of day value in `DateTime`.
 
 ###### Duration values
 
 Return duration values as JSON strings according to the ISO 8601 duration format, in the format:
 
-<pre>P[<var>Y</var>Y][<var>M</var>M][<var>W</var>W][<var>D</var>D][T[<var>h</var>H][<var>m</var>M][<var>s</var>[.<var>S</var>]S]]</pre>
+<pre>P[<var>yyyy</var>Y][<var>mm</var>M][<var>ww</var>W][<var>dd</var>D][T[<var>hh</var>H][<var>mm</var>M][<var>ss</var>[.<var>fff</var>]S]]</pre>
 
 where
 
-| Variable | Defines the number of |
+| Variable | Defines |
 |:--|:--|
-| <code><var>Y</var></code> | Years. |
-| <code><var>M</var></code> | Months. |
-| <code><var>W</var></code> | Weeks. |
-| <code><var>D</var></code> | Days. |
-| <code><var>h</var></code> | Hours. |
-| <code><var>m</var></code> | Minutes. |
-| <code><var>s</var></code> | Seconds. |
-| <code><var>S</var></code> | Fractional seconds. |
+| <code><var>yyyy</var></code> | Years. |
+| <code><var>mm</var></code> | Months. |
+| <code><var>ww</var></code> | Weeks. |
+| <code><var>dd</var></code> | Days. |
+| <code><var>hh</var></code> | Hours. |
+| <code><var>mm</var></code> | Minutes. |
+| <code><var>ss</var></code> | Seconds. |
+| <code><var>fff</var></code> | Fractional seconds. |
 
 Each field is optional and may contain more than one digit.
 
@@ -1846,9 +1846,9 @@ An extended error resource, which is a single JSON object, defines the error res
 
 | Property | Description |
 |:---|:---|
-| `code` | String. Defines a `MessageId` from the message registry. |
-| `message` | A human-readable error message that corresponds to the message in the message registry. |
-| `@Message.ExtendedInfo` | Array of [message objects](#message-object). Describes one or more error messages. |
+| `code` | String.  Defines a `MessageId` from the message registry. |
+| `message` | Displays a human-readable error message that corresponds to the message in the message registry. |
+| `@Message.ExtendedInfo` | Displays an array of [message objects](#message-object). Describes one or more error messages. |
 
 ```json
 {
@@ -1921,7 +1921,7 @@ where
 
 To search the message registry for a corresponding message, the client can use the `MessageId`.
 
-The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation, because large strings need not be included with the implementation.
+The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
 
 The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
 
@@ -1956,7 +1956,6 @@ Standard Redfish schema, registry, and profile files published in the repository
 ##### CSDL (XML) schema file naming
 
 Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
-   
   *TypeName*_*vMajorVersion*.*xml*
 
 For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml".
@@ -2021,7 +2020,7 @@ The namespace for types defined by this specification is in the format:
 
 where
 
-* *ResourceTypeName* = the name of the resource type. For [structured (complex) types](#structured-types), [enumerations](#enums), and [actions](#resource-actions), this generally the name of the containing resource type.
+* *ResourceTypeName* = the name of the resource type. For [structured (complex) types](#structured-types), [enumerations](#enums), and [actions](#resource-actions), this is generally the name of the containing resource type.
 * *MajorVersion* = integer: something in the class changed in a backward incompatible way.
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minor versions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
@@ -2030,7 +2029,7 @@ An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an ex
 
 #### Type identifiers in JSON Schema
 
-In JSON Schema definitions for Redfish schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
+In JSON Schema definitions for Redfish schema, the JSON Schema-defined "title" property shall contain the Type URI that identifies the schema.
 
 For example, the "title" property for the ComputerSystem schema would be:
 
@@ -2046,7 +2045,7 @@ NOTE: Refer to the [Security](#security) clause for security implications of Dat
 
 ### Common naming conventions
 
-The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
+The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
 
 Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
 * The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
@@ -2117,7 +2116,7 @@ The outer element of the OData Schema representation document shall be the `Edmx
 
 ##### Referencing other schemas
 
-Redfish Schemas may reference types defined in other schema documents.  In the OData Schema representation, this done by including a `Reference` element. In the JSON Schema and OpenAPI representations, this done with a $ref property.
+Redfish Schemas may reference types defined in other schema documents.  In the OData Schema representation, this done by including a `Reference` element. In the JSON Schema and OpenAPI representations, this is done with a $ref property.
 
 The reference element specifies the `Uri` of the OData schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
@@ -2166,8 +2165,8 @@ The EntityType contains the [property](#resource-properties) and [reference prop
 
 ```xml
   <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
-    <Annotation Term="OData.Description" String="This the description of TypeA."/>
-    <Annotation Term="OData.LongDescription" String="This the specification of TypeA."/>
+    <Annotation Term="OData.Description" String="This is the description of TypeA."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
 
     <!-- Property and Reference Property definitions go here -->
 
@@ -2250,7 +2249,7 @@ Properties that must have a non-nullable value include the [nullable attribute](
 ```xml
   <Property Name="Property1" Type="Edm.String" Nullable="false">
     <Annotation Term="OData.Description" String="This a property of TypeA."/>
-    <Annotation Term="OData.LongDescription" String="This the specification of Property1."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of Property1."/>
     <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
     <Annotation Term="Redfish.Required"/>
     <Annotation Term="Measures.Unit" String="Watts"/>
@@ -2297,8 +2296,8 @@ Structured types may be reused across different properties of different resource
 
 ```xml
   <ComplexType Name="PropertyTypeA">
-    <Annotation Term="OData.Description" String="This type used to describe a structured property."/>
-    <Annotation Term="OData.LongDescription" String="This the specification of the type."/>
+    <Annotation Term="OData.Description" String="This type describes a structured property."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
 
     <!-- Property and Reference Property definitions go here -->
 
@@ -2320,8 +2319,8 @@ EnumType elements contain `Member` elements that define the members of the enume
 
 ```xml
   <EnumType Name="EnumTypeA">
-    <Annotation Term="OData.Description" String="This the EnumTypeA enumeration."/>
-    <Annotation Term="OData.LongDescription" String="This used to describe the EnumTypeA enumeration."/>
+    <Annotation Term="OData.Description" String="This is the EnumTypeA enumeration."/>
+    <Annotation Term="OData.LongDescription" String="This describes the EnumTypeA enumeration."/>
     <Member Name="MemberA">
       <Annotation Term="OData.Description" String="Description of MemberA"/>
     </Member>
@@ -2422,7 +2421,7 @@ If the property references a single type, the value of the type attribute is the
 ```xml
   <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
     <Annotation Term="OData.Description" String="This property references a related resource."/>
-    <Annotation Term="OData.LongDescription" String="This the specification of the related property."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
     <Annotation Term="OData.AutoExpandReferences"/>
   </NavigationProperty>
 ```
@@ -2438,7 +2437,7 @@ where `NamespaceQualifiedTypeName` is the namespace qualified name of the type o
 ```xml
   <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
     <Annotation Term="OData.Description" String="This property represents a collection of related resources."/>
-    <Annotation Term="OData.LongDescription" String="This the specification of the related property."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
     <Annotation Term="OData.AutoExpandReferences"/>
   </NavigationProperty>
 ```
@@ -2511,11 +2510,13 @@ The first parameter is called the "binding parameter" and specifies the resource
   </Action>
 ```
 
-In the above example, three parameters are defined:
-* Thing: This the binding parameter that is not provided in the request by the client
-* Parameter1: A boolean parameter used in the client payload for the request
-* Parameter2: A string parameter used in the client payload for the request and is also required to be provided by the client
+The previous example defines these parameters:
 
+| Parameter | Description |
+|:----------|:------------|
+| `Thing` | Binding parameter.  Not provided in the client request payload. |
+| `Parameter1` | Boolean.  Provided in the client request payload. |
+| `Parameter2` | String.  Provided in the client request payload.  Required. |
 
 #### Resource extensibility
 
@@ -2557,7 +2558,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 
 ##### Oem property format and content
 
-Each property contained within the [Oem property](#oem-property) shall be a JSON object.  The name of the object (property) shall uniquely identify the OEM or organization that defines the properties contained by that object.  This described in more detail in the following clause.  The OEM-specified object shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema.  The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
+Each property within the [Oem property](#oem-property) shall be a JSON object.  The name of the object (property) shall uniquely identify the OEM or organization that defines the properties contained by that object.  The following clause describes this property in more detail.  The OEM-specified object shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema.  The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
 
 The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
 
@@ -2572,8 +2573,7 @@ The OEM identifier portion of the property name may be followed by an underscore
 
 There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a sub-organization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
 
-The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
-
+The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
 
 ##### URIs for OEM resources
 
@@ -2663,11 +2663,11 @@ where
 
 This clause contains a set of common properties across all Redfish resources. The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this in Resource_v1.xml.  For JSON Schema representations, this in Resource.v1_0_0.json.  For OpenAPI representations, this in Resource.v1_0_0.yaml.
+Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this is in `Resource_v1.xml`.  For JSON Schema representations, this is in `Resource.v1_0_0.json`.  For OpenAPI representations, this is in `Resource.v1_0_0.yaml`.
 
 #### Id<a id="id-property"></a>
 
-The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
+The `Id` property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of `Id` shall be unique across a Resource Collection.
 
 #### Name<a id="name-property"></a>
 
@@ -2696,7 +2696,8 @@ The [Links Property](#links-property) represents the hyperlinks associated with 
 The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
 
 #### RelatedItem
-The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+
+The [RelatedItem](#relateditem) property defines hyperlinks to a resource, or part of a resource, as defined by that resources schema definition.  This is not intended to be a strong linking methodology like other references.  Instead it shows a relationship between elements or subelements in disparate parts of the service.  For example, because Fans may be in one area of the implementation and processors in another, RelatedItem can inform the client that one is related to the other.  In this case, the Fan cools the Processor.
 
 #### Actions
 
@@ -2792,7 +2793,7 @@ There are some situations that arise with certain kinds of resources that need t
 
 #### Absent resources
 
-Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe elot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources for a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
+Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe slot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources for a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
 
 For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the State property of the Status object as "Absent".  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the "Power" and "Thermal" resources under a "Chassis" resource should not exist for an absent Chassis).
 
@@ -2850,9 +2851,9 @@ A service may support the "ServerSentEventUri" property within the Event Service
 
 There are three types of events generated in a Redfish Service - life cycle, alert, and metric report.  This method of eventing has been deprecated in the Redfish Schema.
 
-Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any properties that changed.
+Life cycle events occur when resources are created, modified, or destroyed.  Not every resource modification results in an event, similar to when ETags are changed.  Also, implementations may not send an event for every resource change.  For example, more events than can fit in a scalable interface would be sent if an event is sent either for every Ethernet packet that is received or every time a sensor changes one degree.  This event usually indicates the resource that changed as well as, optionally, any properties that changed.
 
-Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
+Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged, or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
 Metric report events happen when the TelemetryService has generated a new Metric Report or updated an existing Metric Report.  These types of events shall be generated as specified by the MetricReportDefinition resources found subordinate to the TelemetryService.  This can be defined to be done on a periodic basis, on demand, or when changes in the metric properties are detected.  See the Redfish MetricReportDefinition Schema for full details.
 
@@ -2880,7 +2881,7 @@ Event message objects POSTed to the specified client endpoint shall contain the 
 
 This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIds in a well-known format.  These MessageIds are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.
 
-The MessageId property contents shall be is in the format:
+The MessageId property contents shall be in the format:
 
  *RegistryName*.*MajorVersion*.*MinorVersion*.*MessageKey*
 
@@ -3273,7 +3274,7 @@ Note that Redfish sessions "time-out" as opposed to having a token expiration ti
 
 ##### Session termination or logout
 
-A Redfish session is terminated when the client logs out.  This accomplished by performing a DELETE to the Session resource identified by the hyperlink returned in the Location header when the session was created, or the 'sessionId' returned in the response data.
+A Redfish session is terminated when the client logs out.  This is accomplished through a DELETE to the Session resource identified by the hyperlink returned in the Location header when the session was created, or the 'sessionId' returned in the response data.
 
 The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users' sessions from a different session.
 
@@ -3554,7 +3555,7 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
 
 ##### ResourceURI Override
 
-In the following example, use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URis demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required to call a PATCH operation on the two resource URIs listed as Targets.
+In the following example, use of the ResourceURI Override syntax to represent the operation privilege variations for specific resource URIs.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required to call a PATCH operation on the two resource URIs listed as Targets.
 
 ```json
 {
