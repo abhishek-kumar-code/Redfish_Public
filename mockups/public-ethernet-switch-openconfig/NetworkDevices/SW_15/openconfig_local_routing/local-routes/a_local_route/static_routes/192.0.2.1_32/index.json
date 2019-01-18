@@ -1,0 +1,31 @@
+{
+    "@odata.type": "#openconfig_local_routing.local_routes.local_route.static_routes.static_route.v1_0_0.static_route",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_local_routing/local_routes/a_local_route/static_routes/192.0.2.1_32",
+    "Id": "192.0.2.1_32",
+
+    "192.0.2.1/32": {
+        "prefix": "192.0.2.1/32",
+        "next-hops": {
+            "next-hop": {
+                "0": {
+                    "index": "0",
+                        "config": {
+                            "next-hop": "192.168.0.1"
+                        }
+                    },
+                "1": {
+                    "index": "1",
+                        "config": {
+                            "next-hop": "10.0.0.1"
+                    }
+                }
+            }
+        },
+        "config": {
+            "set-tag": 42
+        }
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_local_routing.local_routes.local_route.static_routes.static_route.static_route",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

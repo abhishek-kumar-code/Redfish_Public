@@ -1,0 +1,14 @@
+{
+    "@odata.type": "#openconfig_local_routing.local_routes.local_route.local_aggregatesCollection.v1_0_0.local_aggregatesCollection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_local_routing/local_routes/a_local_route/local_aggregates",
+
+    "Name": "local_aggregates Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_local_routing/local_routes/a_local_route/local_aggregates/a_aggregate"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#openconfig_local_routing.local_routes.local_route.local_aggregatesCollection.local_aggregatesCollection",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
