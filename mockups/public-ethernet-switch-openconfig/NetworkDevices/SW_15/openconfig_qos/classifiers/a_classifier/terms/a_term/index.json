@@ -1,0 +1,110 @@
+{
+    "@odata.type": "#openconfig_qos.qos.classifiers.classifier.v1_0_0.classifier",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/classifiers/a_classifier/terms/a_term",
+    "Id": "a_term",
+
+    "id": "Classifier1",
+    "config": {
+        "id": ""
+    },
+    "state": {
+        "id": ""
+    },
+    "conditions": {
+        "ipv4": {
+            "config": {
+                "hop-limit": 0,
+                "source-address": "",
+                "protocol": 0,
+                "destination-address": "",
+                "dscp": 0
+            },
+            "state": {
+                "hop-limit": 0,
+                "source-address": "",
+                "protocol": 0,
+                "destination-address": "",
+                "dscp": 0
+            }
+        },
+        "l2": {
+            "config": {
+                "source-mac-mask": "",
+                "destination-mac-mask": "",
+                "source-mac": "",
+                "destination-mac": "",
+                "ethertype": 0
+            },
+            "state": {
+                "source-mac-mask": "",
+                "destination-mac-mask": "",
+                "source-mac": "",
+                "destination-mac": "",
+                "ethertype": 0
+            }
+        },
+        "ipv6": {
+            "config": {
+                "source-address": "",
+                "destination-address": "",
+                "hop-limit": 0,
+                "dscp": 0,
+                "destination-flow-label": 0,
+                "protocol": 0,
+                "source-flow-label": 0
+            },
+            "state": {
+                "source-address": "",
+                "destination-address": "",
+                "hop-limit": 0,
+                "dscp": 0,
+                "destination-flow-label": 0,
+                "protocol": 0,
+                "source-flow-label": 0
+            }
+        },
+        "mpls": {
+            "config": {
+                "traffic-class": 0
+            },
+            "state": {
+                "traffic-class": 0
+            }
+        },
+        "transport": {
+            "config": {
+                "source-port": "",
+                "destination-port": "",
+                "tcp-flags": []
+            },
+            "state": {
+                "source-port": "",
+                "destination-port": "",
+                "tcp-flags": []
+            }
+        }
+    },
+    "actions": {
+        "config": {
+            "target-group": ""
+        },
+        "state": {
+            "target-group": ""
+        },
+        "remark": {
+            "config": {
+                "set-dot1p": 0,
+                "set-dscp": 0,
+                "set-mpls-tc": 0
+            },
+            "state": {
+                "set-dot1p": 0,
+                "set-dscp": 0,
+                "set-mpls-tc": 0
+            }
+        }
+    }
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.classifiers.classifier.classifier",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

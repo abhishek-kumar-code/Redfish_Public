@@ -1,0 +1,21 @@
+{
+    "@odata.type": "#openconfig_qos.qos.classifiers.classifier.v1_0_0.classifier",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/classifiers/a_classifier",
+    "Id": "a_classifier",
+
+    "name": "Classifier1",
+    "state": {
+        "type": "",
+        "name": ""
+    },
+    "config": {
+        "type": "",
+        "name": ""
+    },
+    "terms": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_classifiers/a_classifier/terms"
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.classifiers.classifier.classifier",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

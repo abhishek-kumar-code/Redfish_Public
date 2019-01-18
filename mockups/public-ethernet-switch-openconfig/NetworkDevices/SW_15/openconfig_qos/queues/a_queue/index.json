@@ -1,0 +1,28 @@
+    "@odata.type": "#openconfig_qos.qos.queues.queue.v1_0_0.queue",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/queues/a_queue",
+    "Id": "a_queue",
+
+    "name": "Queue1",
+    "wred": {},
+    "state": {
+        "queue-type": "",
+        "name": ""
+    },
+    "config": {
+        "queue-type": "",
+        "name": ""
+    },
+    "red": {
+        "state": {
+            "maxth": 0,
+            "minth": 0
+        },
+        "config": {
+            "maxth": 0,
+            "minth": 0
+        }
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.queues.queue.queue",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

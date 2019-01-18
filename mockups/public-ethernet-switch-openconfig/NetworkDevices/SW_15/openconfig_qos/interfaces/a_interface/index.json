@@ -1,0 +1,77 @@
+{
+    "@odata.type": "#openconfig_qos.qos.interfaces.interface.v1_0_0.interfaces",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/interfaces/a_interface",
+    "Id": "a_interface",
+
+    "interface-id": "TenGigE0/4/2/0",
+    "config": {
+        "interface-id": ""
+    },
+    "state": {
+        "interface-id": ""
+    },
+    "interface-ref": {
+        "config": {
+            "interface": "",
+            "subinterface": ""
+        },
+        "state": {
+            "interface": "",
+            "subinterface": ""
+        }
+    },
+    "input": {
+        "scheduler-policy": {
+            "config": {
+                "name": ""
+            },
+            "state": {
+                "name": ""
+            },
+            "schedulers": {
+                "scheduler": {}
+            }
+        },
+        "classifers": {
+            "classifier": {}
+        },
+        "queues": {
+            "queue": {}
+        },
+        "virtual-output-queues": {
+            "voq-interface": {}
+        }
+    },
+    "output": {
+        "scheduler-policy": {
+            "config": {
+                "name": ""
+            },
+            "state": {
+                "name": ""
+            },
+            "schedulers": {
+                "scheduler": {}
+            }
+        },
+        "classifers": {
+            "classifier": {}
+        },
+        "interface-ref": {
+            "config": {
+                "interface": "",
+                "subinterface": ""
+            },
+            "state": {
+                "interface": "",
+                "subinterface": ""
+            }
+        },
+        "queues": {
+            "queue": {}
+        }
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.interfaces.interface.interface",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

@@ -1,0 +1,18 @@
+    "@odata.type": "#openconfig_qos.qos.scheduler_policies.scheduler_policy.v1_0_0.scheduler_policy",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/scheduler_policies/a_scheduler_policy",
+    "Id": "a_scheduler_policy",
+
+    "name": "SchedulerPolicy1",
+    "state": {
+        "name": ""
+    },
+    "config": {
+        "name": ""
+    },
+    "schedulers": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/scheduler_policies/a_scheduler_policy/schedulers"
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.scheduler_policies.scheduler_policy.scheduler_policy",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

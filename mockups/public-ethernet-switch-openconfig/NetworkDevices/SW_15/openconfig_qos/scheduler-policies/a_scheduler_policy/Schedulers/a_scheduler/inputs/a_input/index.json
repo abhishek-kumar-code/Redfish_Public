@@ -1,0 +1,22 @@
+{
+    "@odata.type": "#openconfig_qos.scheduler_policies.scheduler_policy.schedulers.scheduler.inputs.input.v1_0_0.input",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/scheduler_policies/a_scheduler_policy/schedulers/a_scheduler/inputs/a_input",
+    "Id": "a_input",
+
+    "id": "Input1",
+    "config": {
+        "queue": "",
+        "weight": 0,
+        "id": "",
+        "input-type": ""
+    },
+    "state": {
+        "queue": "",
+        "weight": 0,
+        "id": "",
+        "input-type": ""
+    },
+    
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.scheduler_policies.scheduler_policy.schedulers.scheduler.inputs.input.input",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

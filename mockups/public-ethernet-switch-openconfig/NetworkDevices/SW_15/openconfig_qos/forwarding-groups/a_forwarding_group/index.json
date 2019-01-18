@@ -1,0 +1,19 @@
+    "@odata.type": "#openconfig_qos.qos.forwarding_groups.forwarding_group.v1_0_0.forwarding_group",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/forwarding_groups/a_forwarding_group",
+    "Id": "a_forwarding_group",
+
+    "name": "Forwarding_Grp1",
+    "state": {
+        "fabric-priority": 0,
+        "output-queue": "",
+        "name": ""
+    },
+    "config": {
+        "fabric-priority": 0,
+        "output-queue": "",
+        "name": ""
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.forwarding_groups.forwarding_group.forwarding_group",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
