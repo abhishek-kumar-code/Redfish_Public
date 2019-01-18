@@ -1,0 +1,22 @@
+{
+	"@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/3",
+	"@odata.type": "#Endpoint.v1_2_0.Endpoint",
+	"Id": "3",
+	"Name": "Local Bridge",
+	"Description": "Local Bridge Control Space",
+	"EndpointProtocol": "GenZ",
+	"ConnectedEntities": [
+		{
+			"EntityType": "Bridge",
+			"EntityRole": "Initiator",
+			"GCID": {
+				"ComponentID": "0x100",
+				"SubnetID": "0x9"
+			},
+			"EntityLink": { 
+				"@odata.id": "/redfish/v1/Systems/1/FabricAdapter"
+			}
+		}
+	],
+	"Oem": { }
+}

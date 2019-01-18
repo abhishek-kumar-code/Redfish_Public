@@ -1,0 +1,20 @@
+{
+        "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/Metrics",
+	"@odata.type": "#FabricAdapterPortMetrics.v1_1_0.FabricAdapterPortMetrics",
+	"Id": "Metrics",
+	"Name": "GenZ Port 2 Metrics",
+	"Description": "GenZ Port 2 Metrics",
+	"TimeStamp": "2017-11-23T17:17:42-0600",
+	"PCRC": 24,
+	"ECRC": 3,
+	"RXStomped ECRC": 1,
+	"TXStomped ECRC": 2,
+	"Non-CRC Transient Errors": 2,
+	"LLR Recovery": 1,
+	"Marked ECN": 1,
+	"Packet Deadline Discards": 1,
+	"AKEY Violations": 1,
+	"Link NTE": 1,
+	"Received ECN": 1,
+	"Oem": { }
+}

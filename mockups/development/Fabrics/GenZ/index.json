@@ -1,0 +1,22 @@
+{
+	"@odata.id": "/redfish/v1/Fabrics/GenZ",
+	"@odata.type": "#Fabric.v1_0_3.Fabric",
+	"Id": "GenZ",
+	"Name": "GenZ Fabric",
+	"FabricType": "GenZ",
+	"Description": "A GenZ Fabric Switch",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Switches": {
+		"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches"
+	},
+	"EndPoints": {
+		"@odata.id": "/redfish/v1/Fabrics/GenZ/EndPoints"
+	},
+	"Zones": {
+		"@odata.id": "/redfish/v1/Fabrics/GenZ/Zones"
+	},
+	"Oem": { }
+}

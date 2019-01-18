@@ -1,0 +1,44 @@
+{
+	"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2",
+	"@odata.type": "#Port.v1_1_0.Port",
+	"Id": "2",
+	"Name": "GenZ Port 2",
+	"Description": "GenZ Port 2",
+	"PortProtocol": "GenZ",
+	"PortType": "BidirectionalPort",
+	"PortMedium": "Electrical",
+	"CurrentSpeedGbps": 56,
+	"Width": 4,
+	"MaxSpeedGbps": 56,
+	"LinkState": "Disabled",
+	"InterfaceState": "Disabled",
+	"Status": {
+		"State": "Disabled | Starting | StandbyOffline | Enabled",
+		"Health": "OK | Warning | Critical"
+	},
+	"Actions": {
+		"#Port.Reset": {
+			"target": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/Action/Port.Reset",
+			"ResetType@Redfish.AllowableValues": "ForceRestart"
+		}
+	},
+	"Links": {
+		"AssociatedEndpoints": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/3" }
+		],
+		"ConnectedAdapterPorts": [
+			{ "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts/0" }
+		]
+	},
+	"Routes": [
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/MPRT" }
+	],
+	"VirtualChannels": [
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/VCAT" }
+	],
+	"Metrics": {
+		"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/Metrics"
+	},
+	"Oem": { }
+}

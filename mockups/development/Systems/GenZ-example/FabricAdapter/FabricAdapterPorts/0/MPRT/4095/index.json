@@ -1,0 +1,61 @@
+{
+	"@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricPorts/0/MPRT/4095",
+	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
+	"Id": "4095",  
+	"Name": "MPRT4095",
+	"Description": "GenZ Port 0 MPRT Entry 4095",
+	"RawEntryHex": "0x12345678",
+	"RouteSet": {
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		"MinimumHopCount": 1,
+		"EntryValid": false,
+		"HopCount": 2
+	}
+}

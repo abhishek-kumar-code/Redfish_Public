@@ -1,0 +1,12 @@
+{
+    "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricPorts/0/LPRT",
+    "@odata.type": "#Routes.v1_1_0.Routes",
+    "Name": "GenZ Fabric Port 0 Linear Packet Relay Table",
+    "Id": "LPRT",
+    "Members": [
+		{ "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricPorts/0/LPRT/0" },
+		{ "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricPorts/0/LPRT/1" },
+		{ "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricPorts/0/LPRT/4095" }
+    ],
+	"Members.count": 4096
+}

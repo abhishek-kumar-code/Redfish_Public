@@ -1,0 +1,37 @@
+{
+	"@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1/Ports/0",
+	"@odata.type": "#Port.v1_1_0.Port",
+	"Id": "0",
+	"Name": "GenZ Port 0",
+	"Description": "GenZ Port 0",
+	"PortProtocol": "GenZ",
+	"PortType": "BidirectionalPort",
+	"PortMedium": "Electrical",
+	"CurrentSpeedGbps": 56,
+	"Width": 4,
+	"MaxSpeedGbps": 56,
+	"LinkState": "Disabled",
+	"InterfaceState": "Disabled",
+	"Status": {
+		"State": "Disabled | Starting | StandbyOffline | Enabled",
+		"Health": "OK"
+	},
+	"Actions": {
+		"#Port.Reset": {
+			"target": "/redfish/v1/Chassis/1/MediaControllers/1/Ports/0/Action/Port.Reset",
+			"ResetType@Redfish.AllowableValues": "ForceRestart"
+		}
+	},
+	"Links": {
+		"ConnectedSwitches": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1" }
+		],
+		"ConnectedSwitchPorts": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/0" }
+		]
+	},
+	"Metrics": {
+		"@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1/Ports/0/Metrics"
+	},
+	"Oem": { }
+}

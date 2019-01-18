@@ -1,0 +1,20 @@
+{
+	"@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1/Ports/0/Metrics",
+	"@odata.type": "#PortMetrics.v1_1_0.PortMetrics",
+	"Id": "Metrics",
+	"Name": "GenZ Port 0 Metrics",
+	"Description": "GenZ Port 0 Metrics",
+	"TimeStamp": "2017-11-23T17:17:42-0600",
+	"PCRC": 24,
+	"ECRC": 3,
+	"RXStompedECRC": 1,
+	"TXStompedECRC": 2,
+	"NonCRCTransientErrors": 2,
+	"LLRRecovery": 1,
+	"MarkedECN": 1,
+	"PacketDeadline Discards": 1,
+	"AKEYViolations": 1,
+	"LinkNTE": 1,
+	"ReceivedECN": 1,
+	"Oem": { }
+}

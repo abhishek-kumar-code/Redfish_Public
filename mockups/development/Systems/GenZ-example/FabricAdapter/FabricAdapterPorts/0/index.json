@@ -1,0 +1,61 @@
+{
+        "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts/0",
+	"@odata.type": "#FabricAdapterPort.v1_1_0.FabricAdapterPort",
+	"@Redfish.Copyright": "Copyright 2017-2018 DMTF. All rights reserved.",
+	"ETag": "5665F4DE331",
+	"Id": "0",
+	"Name": "Fabric Adapter Port 0",
+	"Description": "Fabric Adapter Port 0",
+	"PhysicalPortNumber": 1,
+	"PortProtocol": "GenZ",
+	"PortType": "BidirectionalPort",
+	"PortMedium": "Optical",
+	"Width": 4,
+	"MaxSpeedGbps": 56,
+	"CurrentSpeedGbps": 56,
+	"LinkFabricTechnology": "Gen-Z",
+	"LinkPhysicalMediaDependentProtocol": "PAM4",
+	"LinkStatus": "Up",
+	"MaxLaneCount": 4,
+	"CurrentLaneCount": 4,
+	"SignalDetected": true,
+	"LinkTransitionIndicator": 0,
+	"LinkState": "Disabled",
+	"InterfaceState": "Disabled",
+	"Status": {
+		"State": "Disabled | Starting | StandbyOffline | Enabled",
+		"Health": "OK | Warning | Critical"
+	},
+	"$Redfish.Settings": {
+		"@odata.type": "#Settings.1.0.0.Settings",
+		"SettingsObject": {
+			"@odata.id": "/redfish/v1/Systems/1/FabricAdapter/1/FabricAdapterPorts/0/SD"
+		}
+	},
+	"Actions": {
+		"#Port.Reset": {
+                        "target": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts/0/Action/Port.Reset",
+			"ResetType@Redfish.AllowableValues": "ForceRestart"
+		}
+	},
+	"Routes": [
+		{ "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts/0/LPRT" },
+		{ "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts/0/MPRT" }
+	],
+	"VirtualChannels": [
+		{ "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts/0/VCAT" }
+	],
+	"Metrics": {
+		"@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts/0/Metrics"
+	},
+	"Links": {
+		"ConnectedSwitches": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1" }
+		],
+		"ConnectedSwitchPort": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2" }
+		]
+	},
+			
+	"Oem": { }
+}

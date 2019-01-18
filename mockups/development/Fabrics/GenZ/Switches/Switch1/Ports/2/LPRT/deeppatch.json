@@ -1,0 +1,41 @@
+{
+    "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT",
+    "@odata.type": "#Port.v1_1_0.Port",
+    "Name": "GenZ Fabric Port 2 Linear Packet Relay Table Deep Patch",
+    "Id": "LPRT",
+
+	"MembersOption1": [
+		
+		{ "Id": "0",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "1",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "2",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "3",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "4",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "5",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "6",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "7",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "8",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "9",    "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "10",   "RawEntryHex": "0x34EF124500000000" },
+		{ "Id": "4096", "RawEntryHex": "0x34EF124500000000" }
+
+	],
+	"MembersOption2": [
+		
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/0",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/1",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/2",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/2",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/3",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/4",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/5",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/6",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/7",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/8",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/9",    "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/10",   "RawEntryHex": "0x34EF124500000000" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/4096", "RawEntryHex": "0x34EF124500000000" }
+
+	],
+	"Members.count": 4096
+}

@@ -1,0 +1,32 @@
+{
+  "@odata.id": "/redfish/v1/Chassis/1/Memory/1/",
+  "@odata.type": "#Memory.v1_4_0.Memory",
+  "BaseModuleType": "RDIMM",
+  "BusWidthBits": 72,
+  "CapacityMiB": 32768,
+  "DataWidthBits": 64,
+  "DeviceLocator": "DIMM 1",
+  "ErrorCorrection": "MultiBitECC",
+  "Id": "DRAM 1",
+  "Manufacturer": "HPE",
+  "MemoryDeviceType": "DDR4",
+  "MemoryLocation": {
+    "Channel": 0,
+    "MemoryController": 0,
+    "Slot": 1,
+    "Socket": 1
+  },
+  "MemoryMedia": [
+    "DRAM"
+  ],
+  "MemoryType": "DRAM",
+  "Name": "Traditional DIMM ",
+  "OperatingSpeedMhz": 1333,
+  "PartNumber": "HPE Part Number or Unknown",
+  "RankCount": 2,
+  "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+  },
+  "Oem": { }
+}
