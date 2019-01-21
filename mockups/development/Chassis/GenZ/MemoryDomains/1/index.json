@@ -1,20 +1,20 @@
 {
-    "@odata.id": "/redfish/v1/Chassis/1/MemoryDomains/1",
+    "@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains/1",
     "@odata.type": "#MemoryDomain.v1_2_0.MemoryDomain",
     "Name": "Node Memory Domain",
     "Id": "1",
     "MemoryChunks": {
-        "@odata.id": "/redfish/v1/Chassis/1/MemoryDomains/1/MemoryChunks"
+        "@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains/1/MemoryChunks"
     },
     "AllowsMemoryChunkCreation": false,
     "AllowsBlockProvisioning": false,
     "InterleaveMemorySets": [
         {
     	    "MemorySet": [
-                {"@odata.id": "/redfish/v1/Chassis/1/Memory/1"},
-                {"@odata.id": "/redfish/v1/Chassis/1/Memory/2"},
-                {"@odata.id": "/redfish/v1/Chassis/1/Memory/3"},
-                {"@odata.id": "/redfish/v1/Chassis/1/Memory/4"}
+                {"@odata.id": "/redfish/v1/Chassis/GenZ/Memory/1"},
+                {"@odata.id": "/redfish/v1/Chassis/GenZ/Memory/2"},
+                {"@odata.id": "/redfish/v1/Chassis/GenZ/Memory/3"},
+                {"@odata.id": "/redfish/v1/Chassis/GenZ/Memory/4"}
             ]
         }
     ],

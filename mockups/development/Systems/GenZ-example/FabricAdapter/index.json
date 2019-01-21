@@ -19,15 +19,15 @@
 		"Health": "OK"
 	},
 	"FabricAdapterPorts": {
-		"@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricAdapterPorts"
+		"@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/FabricAdapterPorts"
 	},
 	"Routes": [
-                { "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/SSDT" },
-                { "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/MSDT" }
+                { "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/SSDT" },
+                { "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/MSDT" }
         ],
 	"VirtualChannel":  [
-                { "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/REQ-VCAT" },
-                { "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/RSP-VCAT" }
+                { "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/REQ-VCAT" },
+                { "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/RSP-VCAT" }
 	],
 	"RIT": [
 		"0x12",

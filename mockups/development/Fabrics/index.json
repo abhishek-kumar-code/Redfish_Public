@@ -1,10 +1,10 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2019-2020 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#FabricCollection.FabricCollection",
     "@odata.id": "/redfish/v1/Fabrics",
     "@odata.type": "#FabricCollection.FabricCollection",
     "Name": "Fabric Collection",
-    "Members@odata.count": 4,
+    "Members@odata.count": 8,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe"
@@ -17,6 +17,18 @@
         },
 		{
             "@odata.id": "/redfish/v1/Fabrics/SAS"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/GenZ"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/HA_SAS"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/iSCSI"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/NVMe-oF"
         }
     ]
 }

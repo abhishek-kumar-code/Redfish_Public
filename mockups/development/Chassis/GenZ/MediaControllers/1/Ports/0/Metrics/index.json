@@ -1,5 +1,5 @@
 {
-	"@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1/Ports/0/Metrics",
+	"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1/Ports/0/Metrics",
 	"@odata.type": "#PortMetrics.v1_1_0.PortMetrics",
 	"Id": "Metrics",
 	"Name": "GenZ Port 0 Metrics",

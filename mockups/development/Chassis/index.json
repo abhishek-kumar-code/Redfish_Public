@@ -4,13 +4,16 @@
     "@odata.id": "/redfish/v1/Chassis",
     "@odata.type": "#ChassisCollection.ChassisCollection",
     "Name": "Chassis Collection",
-    "Members@odata.count": 22,
+    "Members@odata.count": 23,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Chassis/1"
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/GenZ"
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Blade1"

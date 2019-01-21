@@ -1,9 +1,9 @@
 {
-	"@odata.id": "/redfish/v1/Chassis/1/MediaControllers",
+	"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers",
 	"@odata.type": "#MediaControllerCollection.MediaControllerCollection",
 	"Name": "MediaController Collection",
 	"Members@odata.count": 1,
 	"Members": [
-		{ "@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1" }
+		{ "@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1" }
 	]
 }

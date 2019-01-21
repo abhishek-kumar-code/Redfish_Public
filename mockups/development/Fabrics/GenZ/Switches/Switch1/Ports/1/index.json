@@ -27,7 +27,7 @@
 			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/1" }
 		],
 		"ConnectedAdapterPorts": [
-			{ "@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1/Ports/0" }
+			{ "@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1/Ports/0" }
 		]
 	},
 	"Routes": [

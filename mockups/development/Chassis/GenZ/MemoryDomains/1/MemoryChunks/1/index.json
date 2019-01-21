@@ -1,5 +1,5 @@
 {
-    "@odata.id": "/redfish/v1/Chassis/1/MemoryDomains/1/MemoryChunks/1",
+    "@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains/1/MemoryChunks/1",
     "@odata.type": "#MemoryChunks.v1_2_0.MemoryChunks",
     "Name": "Memory Chunk 1",
     "Id": "1",
@@ -10,16 +10,16 @@
     "OffsetMiB": 0,
     "InterleaveMemorySets": [
         {"Memory" : {
-            "@odata.id": "/redfish/v1/Chassis/1/Memory/1"
+            "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/1"
         }},
         {"Memory" : {
-            "@odata.id": "/redfish/v1/Chassis/1/Memory/2"
+            "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/2"
         }},
         {"Memory" : {
-            "@odata.id": "/redfish/v1/Chassis/1/Memory/3"
+            "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/3"
         }},
         {"Memory" : {
-            "@odata.id": "/redfish/v1/Chassis/1/Memory/4"
+            "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/4"
         }}
     ],
     "Links": {

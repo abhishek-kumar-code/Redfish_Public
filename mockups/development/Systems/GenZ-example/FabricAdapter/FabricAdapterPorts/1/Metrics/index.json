@@ -1,5 +1,5 @@
 {
-        "@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricPorts/1/Metrics",
+        "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/FabricPorts/1/Metrics",
 	"@odata.type": "#FabricAdapterPortMetrics.v1_1_0.FabricAdapterPortMetrics",
 	"Id": "Metrics",
 	"Name": "GenZ Port 1 Metrics",

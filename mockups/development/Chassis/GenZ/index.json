@@ -1,6 +1,6 @@
 {
 	"@odata.type": "#Chassis.v1_6_0.Chassis",
-	"@odata.id": "/redfish/v1/Chassis/1",
+	"@odata.id": "/redfish/v1/Chassis/GenZ",
 	"Id": "1",
 	"Name": "Memory Node",
 	"Manufacturer": "HPE",
@@ -14,13 +14,13 @@
 		"Health": "OK"
 	} ,
 	"MediaControllers": {
-		"@odata.id": "/redfish/v1/Chassis/1/MediaControllers"
+		"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers"
 	},
 	"Memory": {
-		"@odata.id": "/redfish/v1/Chassis/1/Memory"
+		"@odata.id": "/redfish/v1/Chassis/GenZ/Memory"
 	},
 	"MemoryDomains": {
-		"@odata.id": "/redfish/v1/Chassis/1/MemoryDomains"
+		"@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains"
 	},
 	"Links": {
 		"ManagedBy": [
@@ -36,7 +36,7 @@
 	},
 	"Actions": {
     		"#Chassis.Reset": {
-      			"target": "/redfish/v1/Chassis/1/Actions/Chassis.Reset/",
+      			"target": "/redfish/v1/Chassis/GenZ/Actions/Chassis.Reset/",
       			"ResetType@Redfish.AllowableValues": [
 				  "On",
 				  "ForceOff",

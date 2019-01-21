@@ -1,5 +1,5 @@
 {
-	"@odata.id": "/redfish/v1/Systems/1/FabricAdapter/FabricPorts/0/MPRT/0",
+	"@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/FabricPorts/0/MPRT/0",
 	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
 	"Id": "0",  
 	"Name": "MPRT0",

@@ -14,7 +14,7 @@
 				"SubnetID": "0x9"
 			},
 			"EntityLink": { 
-				"@odata.id": "/redfish/v1/Systems/1/FabricAdapter"
+				"@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter"
 			}
 		}
 	],

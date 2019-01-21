@@ -1,5 +1,5 @@
 {
-  "@odata.id": "/redfish/v1/Chassis/1/Memory/3/",
+  "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/3/",
   "@odata.type": "#Memory.v1_5_0.Memory",
   "BaseModuleType": "RDIMM",
   "BusWidthBits": 72,

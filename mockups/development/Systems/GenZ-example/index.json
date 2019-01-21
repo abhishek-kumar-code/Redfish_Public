@@ -1,6 +1,6 @@
 {
 	"@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
-	"@odata.id": "/redfish/v1/Systems/1",
+	"@odata.id": "/redfish/v1/Systems/GenZ-example",
 	"ID": "1",
 	"Name": "Compute Node",
 	"SystemType": "Physical",
@@ -18,12 +18,12 @@
 	"PowerState": "On",
 	"Links": {
 		"Chassis": [
-			{ "@odata.id": "/redfish/v1/Chassis/1" }
+			{ "@odata.id": "/redfish/v1/Chassis/GenZ" }
 		],
 		"ManagedBy": [
 			{ "@odata.id": "/redfish/v1/Managers/1" }
 		],
-		"FabricAdapter": "/redfish/v1/Systems/1/FabricAdapter"
+		"FabricAdapter": "/redfish/v1/Systems/GenZ-example/FabricAdapter"
 	},
 	"Oem": { }
 }

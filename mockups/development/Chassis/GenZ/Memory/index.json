@@ -1,13 +1,13 @@
 {
-  "@odata.id": "/redfish/v1/Chassis/1/Memory",
+  "@odata.id": "/redfish/v1/Chassis/GenZ/Memory",
   "@odata.type": "#MemoryCollection.MemoryCollection",
   "Name": "Memory Collection",
   "Description": "Memory Collection",
   "Members@odata.count": 4,
   "Members": [
-    { "@odata.id": "/redfish/v1/Chassis/1/Memory/1/" },
-    { "@odata.id": "/redfish/v1/Chassis/1/Memory/2/" },
-    { "@odata.id": "/redfish/v1/Chassis/1/Memory/3/" },
-    { "@odata.id": "/redfish/v1/Chassis/1/Memory/4/" }
+    { "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/1/" },
+    { "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/2/" },
+    { "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/3/" },
+    { "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/4/" }
   ]
 }

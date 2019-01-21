@@ -1,5 +1,5 @@
 {
-	"@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1",
+	"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1",
 	"@odata.type": "#MediaController.v1_0_0.MediaController",
 	"Id": "MediaController1",
 	"Name": "Media Controller 1",
@@ -12,11 +12,11 @@
 		"Health": "OK"
 	},
 	"Ports": {
-		"@odata.id": "/redfish/v1/Chassis/1/MediaControllers/1/Ports"
+		"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1/Ports"
 	} ,
 	"Actions": {
 		"#MediaController.Reset": {
-			"target": "/redfish/v1/Chassis/1/MediaControllers/1/Actions/MediaController.Reset",
+			"target": "/redfish/v1/Chassis/GenZ/MediaControllers/1/Actions/MediaController.Reset",
 			"ResetType@Redfish.AllowableValues": [
 				"ForceRestart"
 			]
