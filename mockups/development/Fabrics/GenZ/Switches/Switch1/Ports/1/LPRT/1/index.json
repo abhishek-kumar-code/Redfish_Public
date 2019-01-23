@@ -53,11 +53,9 @@
 			"VCAction": 0,
 			"HopCount": 0,
 			"EgressIdentifier": 0
-		},
-		"MinimumHopCount": 1,
-		"EntryValid": false,
-		"HopCount": 2
+		}
 	],
+	"MinimumHopCount": 1,
 	"Oem": { }
 }
 

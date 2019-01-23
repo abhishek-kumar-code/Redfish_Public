@@ -29,6 +29,27 @@
                 { "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/REQ-VCAT" },
                 { "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/RSP-VCAT" }
 	],
+	"PCIeInterface": {
+		"MaxPCIeType": "Gen4",
+		"MaxLanes": 64,
+		"PCIeType": "Gen4",
+		"LanesInUse": 64
+	},
+	"UUID": "45724775-ed3b-2214-1313-9865200c1cc1",
+	"Links": { 
+		"Endpoints": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/3" }
+		]
+	},
+	"Actions": {
+		"#FabricAdapter.Reset": {
+			"target": "/redfish/v1/System/1/FabricAdapter/Actions/FabricAdapter.Reset",
+			"ResetType@Redfish.AllowableValues": "ForceRestart"
+		}
+	},
+	"ControllerCapabilities": {
+		"FabricAdapterPortCount": 2
+	},
 	"RIT": [
 		"0x12",
 		"0x3E",
@@ -81,26 +102,5 @@
 		"0x12345678",
 		"0x12345678"
 	],
-	"PCIeInterface": {
-		"MaxPCIeType": "Gen4",
-		"MaxLanes": 64,
-		"PCIeType": "Gen4",
-		"LanesInUse": 64
-	},
-	"UUID": "45724775-ed3b-2214-1313-9865200c1cc1",
-	"Links": { 
-		"Endpoints": [
-			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/3" }
-		]
-	},
-	"Actions": {
-		"#FabricAdapter.Reset": {
-			"target": "/redfish/v1/System/1/FabricAdapter/Actions/FabricAdapter.Reset",
-			"ResetType@Redfish.AllowableValues": "ForceRestart"
-		}
-	},
-	"ControllerCapabilities": {
-		"FabricAdapterPortCount": 2
-	},
 	"Oem": { }
 }

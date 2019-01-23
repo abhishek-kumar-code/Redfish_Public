@@ -13,7 +13,7 @@
 				"ComponentID": "0x1",
 				"SubnetID": "0x1"
 			},
-            		"AccessKey": "0x123454321",
+      		"AccessKey": "0x123454321",
 			"EntityLink": { 
 				"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1"
 			}

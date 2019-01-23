@@ -1,5 +1,5 @@
 {
-        "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/FabricAdapterPorts/0",
+    "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter/FabricAdapterPorts/0",
 	"@odata.type": "#FabricAdapterPort.v1_1_0.FabricAdapterPort",
 	"@Redfish.Copyright": "Copyright 2017-2018 DMTF. All rights reserved.",
 	"ETag": "5665F4DE331",
