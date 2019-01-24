@@ -273,7 +273,11 @@ The use of [HTTP status codes](#status-codes) enable a client to determine wheth
 
 In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.
 
-Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.  All subscriptions are persistent configuration settings.
+Two styles of eventing are currently defined by this specification - push style eventing, and [Server-Sent Events (SSE)](#sse-eventservice). 
+
+In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.  All subscriptions are persistent configuration settings.
+
+In SSE style eventing, the client opens an SSE connection to the service by peroforming a GET on the URI specified by the "ServerSentEventUri" in the Event Service. 
 
 The clause on [Eventing](#eventing) in this specification discusses the details of the eventing mechanism.
 
