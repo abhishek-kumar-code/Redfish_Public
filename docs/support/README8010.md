@@ -73,7 +73,7 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Bios                           | 1.0.5   | Errata release.  Clarified the description for "Attributes". |
 | Drive                          | 1.x.x   | Errata release.  Modified references to Volume to point to the Swordfish definition. |
 | Job                            | 1.0.1   | Errata release.  Added missing "Units" term on "PercentComplete". |
-| JSONSchemaFile                 | 1.x.x   | Errata release.  Removed strict normative wording about the format of the schema file name in favor of pointing to the specification for the acceptable format. |
+| JsonSchemaFile                 | 1.x.x   | Errata release.  Removed strict normative wording about the format of the schema file name in favor of pointing to the specification for the acceptable format. |
 | MetricDefinition               | 1.0.1   | Errata release.  Updated descriptions for "Wildcards" to match other schemas. |
 | MetricReport                   | 1.0.1   | Errata release.  Clarified "Timestamp" property description within a "MetricValue". |
 | MetricReportDefinition         | 1.0.1   | Errata release.  Updated descriptions for "Wildcards" to match other schemas. |

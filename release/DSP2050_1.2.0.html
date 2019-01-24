@@ -12,7 +12,7 @@
   <div class="preamble">
     <div class="logo"></div>
     <p>Document Identifier: <span class="dsp">DSP2050</span></p>
-    <p>Date: 2018-11-29</p>
+    <p>Date: 2018-12-11</p>
     <p>Version: <span class="version">1.2.0</span></p>
     
   </div>
@@ -31,7 +31,7 @@
   </div>
   <div class="copyright">
     <p>Copyright Notice</p>
-    <p>Copyright &copy; 2014-2018 DMTF. All rights reserved.
+    <p>Copyright &copy; 2017-2018 DMTF. All rights reserved.
   </div>
   <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
   <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -88,7 +88,7 @@
 </code></pre>
 <h3 id="resource-blocks">2.2. Resource Blocks</h3>
 <p>Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not in a state where system software is able to use them until they belong in a composition.  For example, if a Resource Block contains a Drive instance, the Drive will not belong to any given Computer System until a composition request is made that makes use of its Resource Block.</p>
-<p>The property <code>ResourceBlockType</code> contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each <code>ResourceBlockType</code> is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value <code>Storage</code> was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value <code>Compute</code> has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value <code>Expansion</code> is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.</p>
+<p>The property <code>ResourceBlockType</code> contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each <code>ResourceBlockType</code> is associated with specific schema elements, which will be contained within that Resource Block.  For example, if the value <code>Storage</code> was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value <code>Compute</code> has special meaning: this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value <code>Expansion</code> is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.</p>
 <p>The property <code>CompositionStatus</code> is an object that contains several properties:</p>
 <ul>
 <li><code>CompositionState</code> is used to inform the client of the state of this Resource Block regarding its use in a composition.</li>
@@ -392,7 +392,7 @@
 <h3 id="specific-composition">3.1. Specific Composition</h3>
 <p>The Specific Composition allows clients to create and manage the life cycle of composed resources through predefined <a href="#resource-blocks">Resource Blocks</a> and <a href="#resource-zones">Resource Zones</a>.  Since Resource Blocks are self contained entities within a Resource Zone, clients are able to pick and choose specific Resource Blocks for their composition request.</p>
 <p>An example of choosing a Resource Block according to the binding rules and providing details of specific Resource Blocks in the a create (POST) request can be found in the <a href="#create-a-composed-resource">Create a Composed Resource</a> section.</p>
-<p>Another industry standard server design which fits into the example of Specific Composition is defined in the <a href="#references">Bladed Partitions Mockup</a>.  In this example, a Multi-Blade Enclosure consisting of a disaggregated hardware chassis can be bound together to create what are called <a href="http://www.computerworld.com/article/2593387/server-partitioning.html">partitioned servers</a>.  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with <code>ResourceBlockType</code> set to either <code>Compute</code> or <code>Storage</code>, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.</p>
+<p>Another industry standard server design that fits into the example of Specific Composition is defined in the <a href="#references">Bladed Partitions Mockup</a>.  In this example, a Multi-Blade Enclosure consisting of a disaggregated hardware chassis can be bound together to create what are called <a href="http://www.computerworld.com/article/2593387/server-partitioning.html">partitioned servers</a>.  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with <code>ResourceBlockType</code> set to either <code>Compute</code> or <code>Storage</code>, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.</p>
 <p>Example Create (POST) Body for a Specific Composition:</p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"Sample Composed System"</span>,
@@ -436,10 +436,10 @@ Allow: GET, PATCH, PUT, HEAD
 <h4 id="identify-whether-redfish-service-supports-composition">4.1.1. Identify whether Redfish service supports Composition</h4>
 <p>Application code should always start at the root: <code>/redfish/v1/</code></p>
 <ol>
-<li>Read the Service Root Resource<ol>
-<li>Find the <code>CompositionService</code> property</li>
-<li>Perform a GET on the URI given by that property</li>
-<li>Look for the value of <code>ServiceEnabled</code> attribute to be true</li>
+<li>Read the Service Root Resource.<ol>
+<li>Find the <code>CompositionService</code> property.</li>
+<li>Perform a GET on the URI given by that property.</li>
+<li>Look for the value of <code>ServiceEnabled</code> attribute to be true.</li>
 </ol>
 </li>
 </ol>
@@ -451,13 +451,13 @@ Allow: GET, PATCH, PUT, HEAD
 <p>The client needs to understand the composition model reported by the <a href="#composition-service">Composition Service</a> by reading the <a href="#resource-blocks">Resource Blocks</a> and <a href="#resource-zones">Resource Zones</a> collections.  This relationship will be used to execute the reported <code>UseCase</code> supported by the Redfish service described later in the <a href="#create-a-composed-resource">Create a Composed Resource</a> section.</p>
 <h5 id="read-the-resource-blocks">4.1.2.1. Read the Resource Blocks</h5>
 <ol>
-<li>Perform a GET on the Composition Service URI</li>
-<li>Look for the <code>ResourceBlocks</code> property</li>
-<li>Perform a GET on that URI to get a list of all Resource Blocks</li>
-<li>For accessing details of a particular Resource Block, perform a GET on the associated URI listed for a given entry in the <code>Members</code> array</li>
-<li>The <code>CompositionStatus</code> property in each Resource Block will identify the availablity of the Resource Block in composition requests<ul>
-<li>Clients should take note of this when making decisions on what Resource Blocks to use in a composition request</li>
-<li>Depending on what's contained in the <code>CompositionStatus</code> property, a given Resource Block may not be currently available for composition</li>
+<li>Perform a GET on the Composition Service URI.</li>
+<li>Look for the <code>ResourceBlocks</code> property.</li>
+<li>Perform a GET on that URI to get a list of all Resource Blocks.</li>
+<li>For accessing details of a particular Resource Block, perform a GET on the associated URI listed for a given entry in the <code>Members</code> array.</li>
+<li>The <code>CompositionStatus</code> property in each Resource Block will identify the availability of the Resource Block in composition requests.<ul>
+<li>Clients should take note of this when making decisions on what Resource Blocks to use in a composition request.</li>
+<li>Depending on what's contained in the <code>CompositionStatus</code> property, a given Resource Block may not be currently available for composition.</li>
 </ul>
 </li>
 </ol>
@@ -482,10 +482,10 @@ Allow: GET, PATCH, PUT, HEAD
 </code></pre>
 <h5 id="read-the-resource-zones">4.1.2.2. Read the Resource Zones</h5>
 <ol>
-<li>Perform a GET on the Composition Service URI</li>
-<li>Look for the <code>ResourceZones</code> property</li>
-<li>Perform a GET on that URI to get a list of all Resource Zones</li>
-<li>For accessing details of a particular Resource Zone, perform a GET on the associated URI listed for a given entry in the <code>Members</code> array</li>
+<li>Perform a GET on the Composition Service URI.</li>
+<li>Look for the <code>ResourceZones</code> property.</li>
+<li>Perform a GET on that URI to get a list of all Resource Zones.</li>
+<li>For accessing details of a particular Resource Zone, perform a GET on the associated URI listed for a given entry in the <code>Members</code> array.</li>
 </ol>
 <p>Resource Zone Collection Sample:</p>
 <pre><code class="lang-json">{
@@ -501,10 +501,10 @@ Allow: GET, PATCH, PUT, HEAD
 </code></pre>
 <h5 id="read-the-capabilities-for-each-resource-zone">4.1.2.3. Read the capabilities for each Resource Zone</h5>
 <ol>
-<li>Perform a GET on each Resource Zone using the URI found in each entry of the <code>Members</code> array</li>
-<li>Look for the <code>@Redfish.CollectionCapabilities</code> annotation in each Resource Zone<ul>
-<li>The <code>UseCase</code> property will be used later when a client has determined what type of composition to create</li>
-<li>The <code>TargetCollection</code> property will be used later for making the composition request</li>
+<li>Perform a GET on each Resource Zone using the URI found in each entry of the <code>Members</code> array.</li>
+<li>Look for the <code>@Redfish.CollectionCapabilities</code> annotation in each Resource Zone.<ul>
+<li>The <code>UseCase</code> property will be used later when a client has determined what type of composition to create.</li>
+<li>The <code>TargetCollection</code> property will be used later for making the composition request.</li>
 </ul>
 </li>
 </ol>
@@ -536,7 +536,7 @@ Allow: GET, PATCH, PUT, HEAD
 </code></pre>
 <h5 id="read-each-capabilities-object">4.1.2.4. Read each Capabilities Object</h5>
 <ol>
-<li>Perform a GET on the URI listed in the <code>CapabilitiesObject</code> property for each of the Capabilities</li>
+<li>Perform a GET on the URI listed in the <code>CapabilitiesObject</code> property for each of the Capabilities.</li>
 </ol>
 <p>Capabilities Object Sample for a Specific Composition:</p>
 <pre><code class="lang-json">{
@@ -577,41 +577,41 @@ Allow: GET, PATCH, PUT, HEAD
 }
 </code></pre>
 <h5 id="create-a-composed-resource">4.1.2.5. Create a Composed Resource</h5>
-<p>The client builds a specific composition request, the client with the following steps.</p>
+<p>The client builds a specific composition request with the following steps.</p>
 <ol>
-<li>List all <a href="#resource-blocks">Resource Blocks</a> that belong to a particular <a href="#resource-zones">Resource Zone</a> by doing a GET on their collection URIs as described in <a href="#read-the-resource-blocks">the above example</a><ul>
-<li>When reading the Resource Blocks, take note of the <code>CompositionStatus</code> property</li>
-<li>Depending on what's contained in the <code>CompositionStatus</code> property, a given Resource Block may not be currently available for composition</li>
+<li>List all <a href="#resource-blocks">Resource Blocks</a> that belong to a particular <a href="#resource-zones">Resource Zone</a> by doing a GET on their collection URIs as described in <a href="#read-the-resource-blocks">the above example</a>.<ul>
+<li>When reading the Resource Blocks, take note of the <code>CompositionStatus</code> property.</li>
+<li>Depending on what's contained in the <code>CompositionStatus</code> property, a given Resource Block may not be currently available for composition.</li>
 </ul>
 </li>
-<li>(Optional) Reserve each Resource Block that has been identified for the composition request<ul>
-<li>Perform a PATCH on each Resource Block with <code>Reserved</code> set to true</li>
-<li>This step should be done in scenarios where multiple clients may be making composition requests</li>
+<li>(Optional) Reserve each Resource Block that has been identified for the composition request.<ul>
+<li>Perform a PATCH on each Resource Block with <code>Reserved</code> set to true.</li>
+<li>This step should be done in scenarios where multiple clients may be making composition requests.</li>
 </ul>
 </li>
-<li>Identify the needs of a specific composition <code>UseCase</code><ul>
-<li>Perform a GET on the desired Resource Zone</li>
-<li>Find the matching <code>UseCase</code> value in the <code>@Redfish.CollectionCapabilities</code> annotation<ul>
-<li>For example, look for the value <code>ComputerSystemComposition</code> if trying to compose a new Computer System from a specific list of Resource Blocks</li>
+<li>Identify the needs of a specific composition <code>UseCase</code>.<ul>
+<li>Perform a GET on the desired Resource Zone.</li>
+<li>Find the matching <code>UseCase</code> value in the <code>@Redfish.CollectionCapabilities</code> annotation.<ul>
+<li>For example, look for the value <code>ComputerSystemComposition</code> if trying to compose a new Computer System from a specific list of Resource Blocks.</li>
 </ul>
 </li>
-<li>Perform a GET on the URI found in the property <code>CapabilitiesObject</code></li>
-<li>Mark down all of the properties annotated with <code>RequiredOnCreate</code><ul>
-<li>These are the properties which need to be passed as part of the composition request</li>
+<li>Perform a GET on the URI found in the property <code>CapabilitiesObject</code>.</li>
+<li>Mark down all of the properties annotated with <code>RequiredOnCreate</code>.<ul>
+<li>These are the properties that need to be passed as part of the composition request.</li>
 </ul>
 </li>
-<li>Mark down the <code>TargetCollection</code> URI<ul>
-<li>This is where the create (POST) request for the new composition is made</li>
+<li>Mark down the <code>TargetCollection</code> URI.<ul>
+<li>This is where the create (POST) request for the new composition is made.</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Using all the properties that were annotated with <code>RequiredOnCreate</code>, build a create (POST) request body that will be sent to the <code>TargetCollection</code> URI<ul>
-<li>In step 4 of <a href="#read-the-resource-blocks">the above example</a>, only <code>Name</code> and <code>ResourceBlocks</code> found in <code>Links</code> are required</li>
-<li>The Redfish service may accept other properties as part of the request so they do not need to be updated later</li>
+<li>Using all the properties that were annotated with <code>RequiredOnCreate</code>, build a create (POST) request body that will be sent to the <code>TargetCollection</code> URI.<ul>
+<li>In step 4 of <a href="#read-the-resource-blocks">the above example</a>, only <code>Name</code> and <code>ResourceBlocks</code> found in <code>Links</code> are required.</li>
+<li>The Redfish service may accept other properties as part of the request so they do not need to be updated later.</li>
 </ul>
 </li>
-<li>The <code>Location</code> HTTP header in the service response contains the URI of the composed resource</li>
+<li>The <code>Location</code> HTTP header in the service response contains the URI of the composed resource.</li>
 </ol>
 <p>General flow diagram:</p>
 <pre><code>Client  |                                                                     | Redfish Service
@@ -807,25 +807,25 @@ OData-Version: 4.0
 <p>Based on the capabilities example in <a href="#read-the-capabilities-object">the previous section</a>, the following structures can contain an enumeration annotation and may required sub-properties.</p>
 <ul>
 <li>The processors request<ul>
-<li>The <code>@Redfish.RequestedCount</code> is required</li>
-<li>The <code>ProcessorType</code> and <code>TotalCores</code> properties are required</li>
+<li>The <code>@Redfish.RequestedCount</code> is required.</li>
+<li>The <code>ProcessorType</code> and <code>TotalCores</code> properties are required.</li>
 </ul>
 </li>
 <li>The memory request<ul>
-<li>The <code>@Redfish.RequestedCount</code> is required</li>
-<li>The <code>MemoryType</code> and <code>CapacityMiB</code> properties are required</li>
+<li>The <code>@Redfish.RequestedCount</code> is required.</li>
+<li>The <code>MemoryType</code> and <code>CapacityMiB</code> properties are required.</li>
 </ul>
 </li>
 <li>The storage request<ul>
-<li>The <code>@Redfish.RequestedCount</code> is required</li>
-<li>Either the <code>SimpleStorage</code> or <code>Storage</code> property may be present, or neither</li>
-<li>If present, <code>CapacityBytes</code> property is required</li>
+<li>The <code>@Redfish.RequestedCount</code> is required.</li>
+<li>Either the <code>SimpleStorage</code> or <code>Storage</code> property may be present, or neither.</li>
+<li>If present, <code>CapacityBytes</code> property is required.</li>
 </ul>
 </li>
 <li>The network interface request<ul>
-<li>The <code>@Redfish.RequestedCount</code> is required</li>
-<li>Either <code>EthernetInterfaces</code> or <code>NetworkInterfaces</code> property may be present, or neither</li>
-<li>If present, <code>SpeedMbps</code> or <code>LinkSpeedMbps</code> properties are required</li>
+<li>The <code>@Redfish.RequestedCount</code> is required.</li>
+<li>Either <code>EthernetInterfaces</code> or <code>NetworkInterfaces</code> property may be present, or neither.</li>
+<li>If present, <code>SpeedMbps</code> or <code>LinkSpeedMbps</code> properties are required.</li>
 </ul>
 </li>
 </ul>
@@ -940,10 +940,10 @@ OData-Version: 4.0
 <span class="hljs-attribute">Content-Length</span>: &lt;computed-length&gt;
 <span class="hljs-attribute">Location</span>: /redfish/v1/Systems/NewSystem2
 </code></pre>
-<p>The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at <code>/redfish/v1/Systems</code>.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation <code>@Redfish.AllowOverprovisioning</code> permits the Redfish service to supply more resources that what was requested.  The usage of the annotation <code>@Redfish.ZoneAffinity</code> indicates the client wants the components for the composition to be all selected from the <a href="#resource-zones">Resource Zone</a> that contains the value <code>"1"</code> for the <code>Id</code> property.</p>
+<p>The above Client Request Example shows a composition request by the client being made to the Computer System Collection found at <code>/redfish/v1/Systems</code>.  In the request, the client is requesting a new Computer System with 4 CPUs, 4 FPGAs, 4 GB of memory, 6 322GB local drives, and a 1GB Ethernet interface.  The setting of the annotation <code>@Redfish.AllowOverprovisioning</code> permits the Redfish service to supply more resources than what was requested.  The usage of the annotation <code>@Redfish.ZoneAffinity</code> indicates the client wants the components for the composition to be all selected from the <a href="#resource-zones">Resource Zone</a> that contains the value <code>"1"</code> for the <code>Id</code> property.</p>
 <p>In the above Service Response Example, the service responded with a successful 201 response, and indicates that the new Computer System can be found at <code>/redfish/v1/Systems/NewSystem2</code>.</p>
 <h4 id="modify-a-composed-resource">4.1.4. Modify a Composed Resource</h4>
-<p>If the Redfish service supports updating an existing composition, the client can do so by either using PUT/PATCH on the composed resource, or by using actions on the composed resource.</p>
+<p>If the Redfish service supports updating an existing composition, the client can do so either by using PUT/PATCH on the composed resource, or by using actions on the composed resource.</p>
 <h5 id="put-patch-method-for-modifying">4.1.4.1. PUT/PATCH method for modifying</h5>
 <p>The PUT/PATCH method can be done by updating the <code>ResourceBlocks</code> array found in the composed resource.  When using PATCH, the same array semantics apply as described in the Redfish Specification.</p>
 <p>Client Request Example:</p>
@@ -961,7 +961,7 @@ OData-Version: 4.0
     }
 }
 </code></pre>
-<p>The above example will preserve the existing Resource Blocks in the composed resource for array elements 0 and 1, and it will add a the <code>NetworkBlock8</code> Resource Block to array element 2.</p>
+<p>The above example will preserve the existing Resource Blocks in the composed resource for array elements 0 and 1, and it will add the <code>NetworkBlock8</code> Resource Block to array element 2.</p>
 <h5 id="actions-for-modifying">4.1.4.2. Actions for modifying</h5>
 <p>Composed resources that support using actions for modification will have them advertised in the GET response for the resource.</p>
 <p>Sample ComputerSystem with Modification Actions</p>
@@ -1010,7 +1010,7 @@ OData-Version: 4.0
 </code></pre>
 <p>In the above example, the client is making a request to add <code>NetworkBlock8</code> to the Computer System <code>ComposedSystem</code>.  It also uses the optional parameters <code>ResourceBlockETag</code> and <code>ComputerSystemETag</code> to help protect the usage of the Computer System and Resource Block in multi-client scenarios so that the action is not carried out of if the specified ETags do not match the state of the resources.</p>
 <h4 id="delete-a-composed-resource">4.1.5. Delete a Composed Resource</h4>
-<p>The client can retire or decompose an already composed resource using DELETE.</p>
+<p>The client can retire or decompose an already composed resource by using DELETE.</p>
 <p>Client Request Example:</p>
 <pre><code class="lang-http"><span class="hljs-keyword">DELETE</span> <span class="hljs-string">/redfish/v1/Systems/NewSystem</span> HTTP/1.1
 </code></pre>
@@ -1035,7 +1035,7 @@ OData-Version: 4.0
 <tbody>
 <tr>
 <td>1.2.0</td>
-<td>2018-11-29</td>
+<td>2018-12-11</td>
 <td>Added documentation for usage of <code>@Redfish.ResourceBlockLimits</code> term.</td>
 </tr>
 <tr>
