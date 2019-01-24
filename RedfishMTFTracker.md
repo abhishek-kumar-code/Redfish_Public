@@ -17,6 +17,8 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | SDC | September 24-27, 2018 | Santa Clara, CA | Jeff Hilland, Richelle Ahlvers | Propose session |
 | NOMS 2019  | April 2019 |               |                     | Submission deadline likely November 2018    |
 | OCP Summit | March 2019 | TBD  | www.opencompute.org | Booth and workshop attendance / presentation |
+| SDC        | Sept 2019  | Santa Clara   | Jeff Hilland, Richelle Ahlvers | Propose session |
+| SC 2019    | Nov 2019   | Denver        |                     | Booth, sessions |
 
 
 ## Specifications
