@@ -805,7 +805,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
-      <Annotation Term="OData.Description" String="This version was created to add TDPWatts and MaxTDPWatts.  It was also created to add Power architecture to ProcessorArchitecture and PowerISA to InstructionSet."/>
+      <Annotation Term="OData.Description" String="This version was created to add TotalEnabledCores property."/>
 
       <EntityType Name="Processor" BaseType="Processor.v1_4_0.Processor">
         <Property Name="TotalEnabledCores" Type="Edm.Int64">
