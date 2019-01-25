@@ -20,6 +20,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml">
     <edmx:Include Namespace="CollectionCapabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Certificate_v1.xml">
+    <edmx:Include Namespace="Certificate"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml">
     <edmx:Include Namespace="ResourceBlock"/>
   </edmx:Reference>
@@ -130,6 +133,9 @@
       <Term Name="ExcerptCopyOnly" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term specifies that the property is a data element that shall appear only when the resource definition is used as a copy (using the ExcerptCopy term), and shall not appear in the original data resource."/>
       </Term>
+      <Term Name="SupportedCertificates" Type="Collection(Certificate.CertificateType)">
+        <Annotation Term="OData.Description" String="The term specifies the supported certificate formats for a given certificate collection."/>
+      </Term>
       <Term Name="ResourceBlockLimits" Type="ResourceBlock.ResourceBlockLimits">
         <Annotation Term="OData.Description" String="The term specifies the allowable quantities of types of Resource Blocks for a given composition request."/>
       </Term>
@@ -138,6 +144,9 @@
       </Term>
       <Term Name="Translation" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term specifies a translated language (localized) version of the property name, parameter, or enumeration string. The language used shall match the Redfish.Language value for this schema."/>
+      </Term>
+      <Term Name="License" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The term is applied to Redfish schema or registry in order to specify licensing information."/>
       </Term>
 
       <EnumType Name="ReleaseStatusType">
@@ -183,7 +192,7 @@
           <Annotation Term="OData.Description" String="The kind of revision."/>
           <Annotation Term="OData.LongDescription" String="This property shall describe the type of change made."/>
         </Property>
-        <Property Name="Description" Type="Edm.String" Nullable="false">
+        <Property Name="Description" Type="Edm.String">
           <Annotation Term="OData.Description" String="Text describing the reason for the revision."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a description of the change made."/>
         </Property>

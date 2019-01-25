@@ -6,9 +6,12 @@ components:
       - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_0_0.yaml#/components/schemas/NetworkPort
       - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_0_1.yaml#/components/schemas/NetworkPort
       - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_0_2.yaml#/components/schemas/NetworkPort
+      - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_0_3.yaml#/components/schemas/NetworkPort
       - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_1_0.yaml#/components/schemas/NetworkPort
       - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_1_1.yaml#/components/schemas/NetworkPort
+      - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_1_2.yaml#/components/schemas/NetworkPort
       - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_2_0.yaml#/components/schemas/NetworkPort
+      - $ref: http://redfish.dmtf.org/schemas/v1/NetworkPort.v1_2_1.yaml#/components/schemas/NetworkPort
       description: A Network Port represents a discrete physical port capable of connecting
         to a network.
       x-longDescription: A Network Port represents a discrete physical port capable
