@@ -415,7 +415,7 @@ Other HTTP methods are not allowed and shall receive a [405](#status-405) respon
 
 #### HTTP redirect
 
-HTTP redirect allows a service to redirect a request to another URL. Among other things, this enables Redfish resources to alias areas of the data model.
+HTTP redirect allows a service to redirect a request to another URL.  Among other things, this enables Redfish resources to alias areas of the data model.
 
 * All Redfish Clients shall correctly handle HTTP redirect.
 
@@ -425,11 +425,11 @@ NOTE: Refer to the [Security](#security) clause for security implications of HTT
 
 Some resources may be available in more than one type of representation. The type of representation is indicated by the media type.
 
-In HTTP messages the media type is specified in the Content-Type header. A client can tell a service that it wants the response to be sent using certain media types by setting the HTTP Accept header to a list of the acceptable media types.
+In HTTP messages the media type is specified in the Content-Type header.  A client can tell a service that it wants the response to be sent using certain media types by setting the HTTP Accept header to a list of the acceptable media types.
 
 * All resources shall be made available using the JSON media type
   "application/json".
-* Redfish services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
+* Redfish services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON.  An implementation may offer additional representations using non-JSON media types.
 
 Clients may request compression by specifying an [Accept-Encoding header](#request-headers) in the request.
 * Services should support gzip compression when requested by the client.
@@ -530,7 +530,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Accept-Encoding  | No                  | No                 | [RFC 7231](#RFC7231)               | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response that is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                      |
 | Accept-Language  | No                  | No                 | [RFC 7231](#RFC7231)               | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                                                                                                                                                                                                                     |
 | Content-Type     | Conditional         | Conditional        | [RFC 7231](#RFC7231)               | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`. It is recommended that Clients use these values in requests since other values may result in an error.                                                                                                                                                                         |
-| Content-Length   | No                  | No                 | [RFC 7231](#RFC7231)               | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411).                                                                                                                                                                                                    |
+| Content-Length   | No                  | No                 | [RFC 7231](#RFC7231)               | Describes the size of the message body.  An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411).                                                                                                                                                                                                    |
 | OData-MaxVersion | No                  | No                 | 4.0                                | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | OData-Version    | Yes                 | No                 | 4.0                                | Services shall reject requests that specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).                                                                                                                                                                                                                                                                                                        |
 | Authorization    | Conditional         | Conditional        | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authentication](#basic-authentication).  A client can access unsecured resources without using this header on systems that support Basic Authentication.                                                                                                                                                                                                                                                                                                                                               |
@@ -676,7 +676,7 @@ Any other supported syntax for $filter is outside the scope of this specificatio
 
 ###### Retrieving Resource Collections
 
-Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including an array of its Members. A subset of the Members can be returned using [client paging query parameters](#query-parameters).
+Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including an array of its Members.  A subset of the Members can be returned using [client paging query parameters](#query-parameters).
 
 No requirements are placed on implementations to return a consistent set of Members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve the Members array instances using paging.
 
@@ -744,7 +744,7 @@ The PUT method is used to completely replace a resource.  Properties omitted fro
 
 ##### Create (POST)<a id="create-post"></a>
 
-The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When the create operation is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled properties (e.g., Id), forcing those properties to be overridden by the service. Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
+The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When the create operation is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled properties (e.g., Id), forcing those properties to be overridden by the service.  Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
 
 * Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
     * For example, if a client is adding a new Member to the Resource Collection found at "/redfish/v1/EventService/Subscriptions", it can do so by sending a POST request to either "/redfish/v1/EventService/Subscriptions" or "/redfish/v1/EventService/Subscriptions/Members".
@@ -1016,7 +1016,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | OData-Version                      | Yes         | 4.0                                 | Describes the OData version of the payload that the response conforms to. |
 | Content-Type                       | Yes         | [RFC 7231](#RFC7231)                | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
 | Content-Encoding                   | No          | [RFC 7231](#RFC7231)                | Describes the encoding that has been performed on the media type. |
-| Content-Length                     | No          | [RFC 7231](#RFC7231)                | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
+| Content-Length                     | No          | [RFC 7231](#RFC7231)                | Describes the size of the message body.  An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
 | ETag                               | Conditional | [RFC 7232](#RFC7232)                | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects. |
 | Server                             | Yes         | [RFC 7231](#RFC7231)                | Required to describe a product token and its version. Multiple product tokens may be listed. |
 | <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)     | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
@@ -1132,7 +1132,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
   </edmx:Reference>
 ~~~
 
-The service's [Metadata Document](#metadata-document-request) shall include an EntityContainer that defines the top-level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot schema for the implementation's [OData Service Document](#odata-service-document-request).
+The service's [Metadata Document](#metadata-document-request) shall include an EntityContainer that defines the top-level resources and Resource Collections.  An implementation may extend the ServiceContainer defined in the ServiceRoot schema for the implementation's [OData Service Document](#odata-service-document-request).
 
 ~~~xml
   <edmx:DataServices>
@@ -1590,7 +1590,7 @@ The client can get the definition of the annotation from the [service metadata](
 
 HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of [400](#status-400) does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics.
 
-A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM-defined errors or both depending on the implementation's ability to convey the most useful information about the underlying error.
+A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can.  Additionally, the service may provide Redfish standardized errors, OEM-defined errors or both depending on the implementation's ability to convey the most useful information about the underlying error.
 
 Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
 
@@ -1702,11 +1702,15 @@ Standard Redfish Schema, registry, profile, and dictionary files published in th
 
 ##### CSDL (XML) schema file naming
 
-Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
-   
-  *TypeName*_*vMajorVersion*.*xml*
+Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by `_v` and the major version of the schema.
 
-For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml".
+Becausae a single CSDL schema file contains all minor revisions of the schema, use only the major version in the file name.  
+
+Format the file name as:
+
+<pre><var>TypeName</var>&lowbar;v<var>MajorVersion</var>.xml</pre>
+
+For example, the Chassis schema version 1.3.0 is named `Chassis_v1.xml`.
 
 ##### JSON Schema file naming
 
@@ -1742,7 +1746,7 @@ For example, version 1.2.0 of the BasicServer profile would be named "BasicServe
 
 ##### Dictionary file naming
 
-The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
+The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from.  As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
 
   *DictionaryName_vMajorVersion.dict*
 
@@ -1755,9 +1759,6 @@ To avoid namespace collisions with current or future standard Redfish Schema fil
 #### Programmatic access to schema, registry, or profile files
 
 Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
-
-
-
 
 ### Type identifiers
 
