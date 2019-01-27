@@ -73,7 +73,9 @@ The Redfish Scalable Platforms Management API (*Redfish*) is a standard that use
 
 The initial Redfish scope targeted servers.
 
-The DMTF and its alliance partners expanded that scope to cover most data center IT equipment and other solutions, and both in- and out-of-band access methods.
+The DMTF and its alliance partners expanded that scope to cover most data center IT equipment and other solutions, and both in- and out-of-band access methods. 
+
+Additionally, the DMTF and other organizations that use Redfish as part of their industry standard or solution have added educational material.
 
 ## Normative references
 
