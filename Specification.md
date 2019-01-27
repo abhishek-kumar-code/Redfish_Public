@@ -1,9 +1,9 @@
 ---
-DocTitle: Redfish Scalable Platforms Management API Specification
+DocTitle: Redfish Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.6.1'
-modified: '2010-01-03'
+modified: '2019-01-30'
 SupersedesVersion: '1.6.0'
 status: published
 released: true
@@ -12,7 +12,7 @@ copyright: '2014-2019'
 
 # Foreword
 
-The Redfish Forum of the DMTF develops the Redfish Scalable Platforms Management API ("Redfish").
+The Redfish Forum of the DMTF develops the Redfish Scalable Platforms Management API (*Redfish*).
 
 DMTF is a not-for-profit association of industry members that promotes enterprise and systems management and interoperability.  For information about the DMTF, see [https://www.dmtf.org/](https://www.dmtf.org/).
 
@@ -69,17 +69,16 @@ The DMTF acknowledges the following individuals for their contributions to the R
 
 ## Abstract
 
-The Redfish Scalable Platforms Management API (_*Redfish*_) is a standard API that uses RESTful interface semantics to access format-defined model data to complete systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large-scale cloud environments.
+The Redfish Scalable Platforms Management API (*Redfish*) is a standard that uses RESTful interface semantics to access a schema based data model to conduct management operations.  It is suitable for a wide range of devices, from stand-alone servers, to composable infrastructures, and to large-scale cloud environments.
 
 The initial Redfish scope targeted servers.
 
 The DMTF and its alliance partners expanded that scope to cover most data center IT equipment and other solutions, and both in- and out-of-band access methods.
 
-The DMTF and other organizations that use Redfish as part of their industry standard and solutions have also enhanced the educational materials.
 
 ## Normative references
 
-The following documents are indispensable for the application of this document.  For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies.  For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
+The following referenced documents are indispensable for the application of this document.  For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies.  For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
 
 * <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
 * <a id="HTML5-Spec-SSE">HTML Living Standard: Server-sent events</a> [https://html.spec.whatwg.org/multipage/server-sent-events.html](https://html.spec.whatwg.org/multipage/server-sent-events.html "https://html.spec.whatwg.org/multipage/server-sent-events.html")
@@ -141,7 +140,7 @@ This document defines these additional terms:
 | <a id="redfish-client"></a>Redfish client | Communicates with a [Redfish service](#redfish-service) and accesses one or more of the service's resources or functions. |
 | <a id="redfish-event-receiver"></a>Redfish event receiver | Software that runs at the event destination that receives events from a [Redfish service](#redfish-service). |
 | <a id="redfish-protocol"></a>Redfish protocol | Discovers, connects to, and inter-communicates with a [Redfish service](#redfish-service). |
-| <a id="redfish-schema"></a>Redfish schema | Defines Redfish resources according to OData schema representation.  You can directly translate a Redfish schema to a JSON schema representation. |
+| <a id="redfish-schema"></a>Redfish Schema | Defines Redfish resources according to OData schema representation.  You can directly translate a Redfish Schema to a JSON Schema representation. |
 | <a id="redfish-service"><a/>Redfish service | Implementation of the protocols, resources, and functions that deliver the interface that this specification defines and its associated behaviors for one or more [managed systems](#managed-system).  Also known as the *service*. |
 | <a id="redfish-service-entry-point"></a>Redfish service entry point | Interface through which you can access an instance of a Redfish service.  A Redfish service may have more than one service entry point.  Also known as the *service entry point*. |
 | <a id="request"></a>Request | Message from a client to a service. |
@@ -175,25 +174,23 @@ This document uses these acronyms:
 
 ## Overview
 
-The Redfish Scalable Platforms Management API (_**Redfish**_) is a management standard that uses a data model representation in a hypermedia RESTful interface.
+Redfish is a management standard that uses a data model representation with a RESTful interface.
 
-As a REST-based API, Redfish is easier to use and implement than many other solutions.
+Being RESTful, Redfish is easier to use and implement.
 
-As a model-oriented API, it can express the relationships between components in modern systems and the semantics of the services and components within them.  A client can also easily extend it.
+Being model-oriented, it can express the relationships between components and the semantics of the services and components within them.  The model is also easy to extend.
 
-By using a hypermedia approach to REST, Redfish can model a large variety of vendors' systems.  By requiring JSON representation, a client can create a wide variety of resources in a denormalized fashion, which improves scalability and enables programming environments and humans to easily interpret the payload.
+By requiring JSON representation, Redfish enables easy integration with programming environments.  It is also easy to interpret by humans.
 
-The model is an interoperable Redfish Schema in an OData Schema representation with translations to a JSON schema and OpenAPI representations.  The payload of messages is in JSON format, which follows OData JSON conventions.
-
-Clients can externally host the Redfish Schema definition of the resources in a machine-readable format, which enables them to associate the metadata with the data without having to encumber Redfish services with the metadata.  This feature makes possible the advanced client scenarios, as found in many data center and cloud environments.
+The model is defined by an interoperable Redfish Schema.  It is published in OpenAPI YAML, OData CSDL, and JSON Schema, and is freely available.
 
 ### Scope
 
-This specification defines the required protocols, data model, behaviors, and other architectural components for an interoperable, cross-vendor, remote, and out-of-band capable interface that meets the cloud- and web-based IT professionals' expectations for scalable platform management.  While large-scale systems are the primary focus, clients can use the specifications for more traditional system platform management implementations.
+This specification defines the required protocols, data model, behaviors, and other architectural components for an interoperable, multi-vendor, remote, and out-of-band capable interface.  This interface meets the cloud-based and web-based IT professionals' expectations for scalable platform management.  While large and hyperscale environments are the primary focus, clients can use the specification for individual system management.
 
-The specification defines required and optional elements for all Redfish implementations, including system vendor and manufacturer implementations.  The specification also defines where an OEM, or system vendor, can extend the implementation.
+The specifications defines elements that are mandatory for all Redfish implementations, as well as optional elements that can be chosen by system vendors or manufacturers.  This specification also defines points at which extensions specific to the OEM (system vendor) can be provided by a given implementation.
 
-The specification sets normative requirements for Redfish services and associated materials, such as Redfish Schema files.  In general, the specification does not set requirements for Redfish clients, but indicates what a Redfish client should do to successfully and effectively access and use a Redfish Service.
+The specification sets normative requirements for Redfish services and associated materials, such as Redfish Schema files.  In general, the specification does not set requirements for Redfish clients, but indicates what a Redfish client should do to successfully and effectively access and use a Redfish service.
 
 The specifications do not require that implementation of the Redfish interfaces and functions require particular hardware or firmware.
 
@@ -1681,13 +1678,13 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 * Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
 
-### Schema, registry and profile repository
+### Schema, registry, and profile repository
 
-All Redfish schemas, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
+All Redfish Schema documents, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
-| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
+| redfish.dmtf.org/schemas | Current (most recent minor or errata) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
 | redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
 | redfish.dmtf.org/schemas/archive | Subfolders contain schema files specific to a particular version release. |
 | redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
@@ -1700,7 +1697,7 @@ All Redfish schemas, registries, and profiles published or re-published by the D
 | redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
 | redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
 
-Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
+Standard Redfish Schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
 
 ##### CSDL (XML) schema file naming
 
@@ -1752,7 +1749,7 @@ For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.
 
 ##### OEM schema file naming
 
-To avoid namespace collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
+To avoid namespace collisions with current or future standard Redfish Schema files, third parties defining Redfish Schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
  
 #### Programmatic access to schema, registry, or profile files
 
@@ -1787,7 +1784,7 @@ An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an ex
 
 #### Type identifiers in JSON Schema
 
-In JSON Schema definitions for Redfish schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
+In JSON Schema definitions for Redfish Schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
 
 For example, the "title" property for the ComputerSystem schema would be:
 
@@ -1847,7 +1844,7 @@ The `Description` annotation is defined in http://docs.oasis-open.org/odata/odat
 
 ##### Long description
 
-The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.  Where the LongDescriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
+The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.  Where the LongDescriptions in the Redfish Schema files contain "shall" references, the service shall be required to conform with the statement.
 
 The `LongDescription` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
@@ -2282,7 +2279,7 @@ While the information and semantics of these extensions are outside of the stand
 
 ##### Oem property
 
-In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
+In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish Schema is thus a predefined placeholder that is available for OEM-specific property definitions.
 
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
@@ -2584,7 +2581,7 @@ The Redfish service requires a client or administrator to create subscriptions t
 
 The client locates the Event Service by traversing the Redfish service interface.  The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
 
-When the service has been discovered, clients subscribe to messages by sending a HTTP POST to the URI of the Resource Collection for "Subscriptions" in the Event Service.  This request includes the URI where an [event receiver](#redfish-event-receiver) expects events to be sent, as well as the type of events to be sent.  The Redfish service will then, when an event is triggered within the service, send an event to that URI.  The specific syntax of the subscription body is found in the Redfish Schema definition for "EventDestination".
+When the service has been discovered, clients subscribe to messages by sending an HTTP POST to the URI of the resource collection for `Subscriptions` in the Event service.  This request includes the URI where an [event receiver](#redfish-event-receiver) expects events to be sent, as well as the type of events to send.  When an event is triggered within the Redfish service, the service sends an event to that URI.  Find the specific syntax of the subscription body in the Redfish Schema `EventDestination` definition.
 
 On success, the Event Service shall return an HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created subscription resource.  The body of the response, if any, shall contain a representation of the subscription resource conforming to the "EventDestination" schema.  Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.  Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively.  Historical events are not retained by the service.
 
@@ -2928,7 +2925,7 @@ Redfish implementations shall use certificates that are compliant with X.509 v3 
 
 ##### HTTP redirect
 
-* When there is a HTTP Redirect, the privilege requirements for the target resource shall be enforced.
+* When there is an HTTP Redirect, the privilege requirements for the target resource shall be enforced.
 * Generally if the location is reachable without authentication, but only over https, the server should issue a redirect to the https version of the resource. For cases where the resource is only accessible with authentication, a [404](#status-404) should be returned.
 
 #### Extended error handling
@@ -3095,10 +3092,9 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 #### Redfish service Operation-to-Privilege mapping
 
-For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
-the authenticated identity of the requester has the authorization to perform the requested operation on the resource specified in the request.
-Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
-against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
+For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that the authenticated identity of the requester has the authorization to perform the requested operation on the resource specified in the request.
+
+Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check an HTTP request against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
 
 ##### Why specify Operation-to-Privilege mapping
 
@@ -3112,7 +3108,7 @@ and representing the operation-to-privilege mapping prevents the Redfish Forum o
 ##### Representing Operation-to-Privilege mappings
 
 A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
-Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single 
+Privilege(s) required to perform an operation against a URI specified in an HTTP request to the service. The Privilege Registry is a single 
 JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity 
 supported by the service.  The operation-to-privilege mapping is defined for every entity schema and applies to every resource the service 
 implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing 
@@ -3463,7 +3459,7 @@ OData-Version: 4.0
 | 1.6.0   | 2018-08-23 | Added methods of using $filter on the SSE URI for the EventService. |
 |         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
 |         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 must conform to these URI patterns. |
-|         |            | Added support for creating and naming Redfish schema files in the OpenAPI YAML-based format. |
+|         |            | Added support for creating and naming Redfish Schema files in the OpenAPI YAML-based format. |
 |         |            | Added URI construction rules for OEM extensions. |
 |         |            | Changed ETag usage to require strong ETag format. |
 |         |            | Added requirement for HTTP Allow header as a response header for GET and HEAD operations. |
