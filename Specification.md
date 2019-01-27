@@ -1944,14 +1944,15 @@ All Redfish schemas, registries, and profiles published or re-published by the D
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
 | redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
 | redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
-| redfish.dmtf.org/registries/archive | Sub-folders contain registry files specific to a particular version release. |
+| redfish.dmtf.org/registries/archive | Subfolders contain registry files specific to a particular version release. |
 | redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
 | redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
-| redfish.dmtf.org/profiles/archive | Sub-folders contain profile files specific to a particular profile version or release. |
+| redfish.dmtf.org/profiles/archive | Subfolders contain profile files specific to a particular profile version or release. |
+| redfish.dmtf.org/dictionaries | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
 
-#### Schema, registry, and profile file naming conventions
-
-Standard Redfish schema, registry, and profile files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
+Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
 
 ##### CSDL (XML) schema file naming
 
@@ -1991,6 +1992,14 @@ The JSON document describing a Profile follows the Redfish Schema file naming co
   *ProfileName.vMajorVersion_MinorVersion_Errata.json*
 
 For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The file name shall include the Profile name and Profile version matching those property values within the document.
+
+##### Dictionary file naming
+
+The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
+
+  *DictionaryName_vMajorVersion.dict*
+
+For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.dict".
 
 ##### OEM schema file naming
 
