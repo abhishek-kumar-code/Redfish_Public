@@ -1,13 +1,13 @@
 ---
-DocTitle: Redfish Specification
+DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.6.1'
+DocVersion: '1.6.2'
 modified: '2019-01-30'
-SupersedesVersion: '1.6.0'
+SupersedesVersion: '1.6.1'
 status: published
 released: true
-copyright: '2014-2019'
+copyright: '2015-2019'
 ---
 
 # Foreword
@@ -74,7 +74,6 @@ The Redfish Scalable Platforms Management API (*Redfish*) is a standard that use
 The initial Redfish scope targeted servers.
 
 The DMTF and its alliance partners expanded that scope to cover most data center IT equipment and other solutions, and both in- and out-of-band access methods.
-
 
 ## Normative references
 
