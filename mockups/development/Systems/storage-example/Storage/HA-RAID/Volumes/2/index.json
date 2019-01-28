@@ -1,14 +1,14 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/2",
-    "@odata.type": "#Volume.v1_0_0.Volume",
+    "@odata.type": "#Volume.v1_3_0.Volume",
     "Id": "2",
     "Name": "Virtual Disk 2",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-    "VolumeType": "Mirrored",
+    "RAIDType": "RAID1",
     "CapacityBytes": 104857600,
     "Identifiers": [
         {
@@ -24,9 +24,15 @@
     ],
     "Links": {
         "Drives": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"
+            }
         ]
     },
     "Actions": {

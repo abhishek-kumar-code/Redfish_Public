@@ -171,7 +171,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/Volume_v1.xml">
     <edmx:Include Namespace="Volume"/>
-    <edmx:Include Namespace="Volume.v1_0_3"/>
+    <edmx:Include Namespace="Volume.v1_3_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/VolumeCollection_v1.xml">
     <edmx:Include Namespace="VolumeCollection"/>

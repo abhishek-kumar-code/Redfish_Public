@@ -1,14 +1,14 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1",
-    "@odata.type": "#Volume.v1_0_0.Volume",
+    "@odata.type": "#Volume.v1_3_0.Volume",
     "Id": "1",
     "Name": "Virtual Disk 1",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-    "VolumeType": "NonRedundant",
+    "RAIDType": "RAID0",
     "CapacityBytes": 104857600,
     "Identifiers": [
         {
@@ -18,7 +18,9 @@
     ],
     "Links": {
         "Drives": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"
+            }
         ]
     },
     "Actions": {

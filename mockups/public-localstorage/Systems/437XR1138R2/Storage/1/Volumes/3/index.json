@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Volume.v1_0_3.Volume",
+    "@odata.type": "#Volume.v1_3_0.Volume",
     "Id": "3",
     "Name": "Virtual Disk 3",
     "Status": {
@@ -7,7 +7,7 @@
         "Health": "OK"
     },
     "Encrypted": false,
-    "VolumeType": "NonRedundant",
+    "RAIDType": "RAID0",
     "CapacityBytes": 107374182400,
     "Identifiers": [
         {

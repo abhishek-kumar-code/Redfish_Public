@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Volume.v1_0_3.Volume",
+    "@odata.type": "#Volume.v1_3_0.Volume",
     "Id": "1",
     "Name": "Virtual Disk 1",
     "Status": {
@@ -7,7 +7,7 @@
         "Health": "OK"
     },
     "Encrypted": false,
-    "VolumeType": "Mirrored",
+    "RAIDType": "RAID1",
     "CapacityBytes": 899527000000,
     "Identifiers": [
         {

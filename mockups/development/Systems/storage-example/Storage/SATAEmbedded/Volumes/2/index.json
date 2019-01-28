@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/2",
-    "@odata.type": "#Volume.v1_0_0.Volume",
+    "@odata.type": "#Volume.v1_3_0.Volume",
     "Id": "2",
     "Name": "SATA Bay 2",
     "Status": {
@@ -12,9 +12,10 @@
     "CapacityBytes": 104857600,
     "Links": {
         "Drives": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"
+            }
         ]
     },
-    "Actions": {
-    }
+    "Actions": {}
 }
