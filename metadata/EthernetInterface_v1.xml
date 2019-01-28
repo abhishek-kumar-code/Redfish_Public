@@ -416,7 +416,7 @@
           <Annotation Term="OData.Description" String="The IPv6 static default gateways for this interface."/>
           <Annotation Term="OData.LongDescription" String="The values in this array shall represent the IPv6 static default gateway addresses for this interface."/>
         </Property>
-        <Property Name="StaticNameServers" Type="Collection(Edm.String)" Nullable="false">
+        <Property Name="StaticNameServers" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A statically defined set of DNS server IP addresses (both IPv4 and IPv6)."/>
           <Annotation Term="OData.LongDescription" String="A statically defined set of DNS server IP addresses to be used when DHCP provisioning is not in enabled for name server configuration. As an implementation option they may also be used in addition to DHCP provided addresses, or in cases where the DHCP server provides no DNS assigments."/>
