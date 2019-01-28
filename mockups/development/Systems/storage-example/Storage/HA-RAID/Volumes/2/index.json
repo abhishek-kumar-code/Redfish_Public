@@ -25,7 +25,7 @@
     "Links": {
         "Drives": [
             {
-                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"
             },
             {
                 "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"
