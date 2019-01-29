@@ -4,7 +4,7 @@
 	"Id": "Switch1",
 	"Name": "GenZ Switch",
 	"SwitchType": "GenZ",
-	"Manufacturer": "HPE",
+	"Manufacturer": "Contoso",
 	"Model": "Switch Model XM13",
 	"SerialNumber": "2M220100SL",
 	"Ports": {
@@ -27,5 +27,11 @@
 			
 		}
 	},
+    "Links": {
+
+            "Endpoints": [
+                    { "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/2" }
+            ] 
+    },
 	"Oem": { }
 }

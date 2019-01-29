@@ -4,7 +4,7 @@
 	"@Redfish.Copyright": "Copyright 2018-2019 DMTF.  All rights reserved.",
 	"Id": "Bridge",
 	"Name": "GenZ Bridge",
-	"Manufacturer": "HPE",
+	"Manufacturer": "Contoso",
 	"Model": "Gen-Z Bridge Model X",
 	"PartNumber": "975999-001",
 	"SparePartNumber": "152111-A01",
@@ -12,7 +12,7 @@
 	"SerialNumber": "2M220100SL",
 	"ASICRevisionIdentifier": "A0",
 	"ASICPartNumber": "53312",
-	"ASICManufacturer": "HPE",
+	"ASICManufacturer": "Contoso",
 	"FirmwareVersion": "7.4.10",
 	"Status": {
 		"State": "Enabled",

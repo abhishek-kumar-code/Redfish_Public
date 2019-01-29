@@ -13,7 +13,7 @@
 				"ComponentID": "0x1",
 				"SubnetID": "0x1"
 			},
-      		"AccessKey": "0x123454321",
+      		"AccessKey": "0x1A345C3",
 			"EntityLink": { 
 				"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1"
 			}
@@ -24,7 +24,7 @@
             		"EntityLink": {
                 		"@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains/MemoryChunks/1"
             		},
-            		"RegionKey": "0x12323423acdef"
+            		"RegionKey": "0x12C2F42A"
         	},
    		{
             		"EntityType": "MemoryChunk?? | MemoryRegion??",
@@ -32,11 +32,11 @@
             		"EntityLink": {
                 		"@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains/MemoryChunks/2"
             		},
-            		"RegionKey": "0x12323423acdef"
+            		"RegionKey": "0xDC14995F"
         	}
 	],
 	"Links": {
-		"Ports": [
+		"ConnectedSwitchPorts": [
 			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1" }
 		]
 	},

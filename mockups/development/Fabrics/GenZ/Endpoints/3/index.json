@@ -18,5 +18,10 @@
 			}
 		}
 	],
+    "Links": {
+            "ConnectedSwitchPorts": [
+                    { "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2" }
+            ]
+    },
 	"Oem": { }
 }

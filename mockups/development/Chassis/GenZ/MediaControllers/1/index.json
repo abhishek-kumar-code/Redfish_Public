@@ -4,8 +4,8 @@
 	"Id": "MediaController1",
 	"Name": "Media Controller 1",
 	"MediaControllerType": "Memory",
-	"Manufacturer": "HPE",
-	"Model": "HPE MediaController",
+	"Manufacturer": "Contoso",
+	"Model": "Contoso MediaController",
 	"SerialNumber": "2M220100SL",
 	"Status": {
 		"State": "Enabled",

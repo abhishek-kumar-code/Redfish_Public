@@ -8,7 +8,7 @@
   "DeviceLocator": "DIMM 3",
   "ErrorCorrection": "MultiBitECC",
   "Id": "DRAM 3",
-  "Manufacturer": "HPE",
+  "Manufacturer": "Contoso",
   "MemoryDeviceType": "DDR4",
   "MemoryLocation": {
     "Channel": 0,
@@ -22,7 +22,7 @@
   "MemoryType": "DRAM",
   "Name": "Traditional DIMM ",
   "OperatingSpeedMhz": 1333,
-  "PartNumber": "HPE Part Number or Unknown",
+  "PartNumber": "Contoso Part Number or Unknown",
   "RankCount": 1,
   "Status": {
     "Health": "OK",

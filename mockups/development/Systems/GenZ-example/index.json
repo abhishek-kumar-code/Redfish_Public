@@ -4,7 +4,7 @@
 	"ID": "1",
 	"Name": "Compute Node",
 	"SystemType": "Physical",
-	"Manufacturer": "HPE",
+	"Manufacturer": "Contoso",
 	"Model": "ComputeNodeModel",
 	"Description": "Compute Node",
 	"HostName": "node_r1c1b1s1",
