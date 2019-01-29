@@ -320,7 +320,7 @@ The Redfish protocol is designed around a web service based interface model, and
 
 [HTTP status codes](#status-codes) are used to indicate the server's attempt at processing the request.  [Extended error handling](#error-responses) is used to return more information than the HTTP error code provides.
 
-The ability to send secure messages is important; the [Security](#security) clause of this document describes specific TLS requirements.
+The ability to send secure messages is important; the [Security](#security-details) clause of this document describes specific TLS requirements.
 
 Some operations may take longer than required for synchronous return semantics. Consequently, deterministic [asynchronous semantic](#synchronous-and-asynchronous-operation-support) are included in the architecture.
 
@@ -398,7 +398,7 @@ HTTP redirect allows a service to redirect a request to another URL. Among other
 
 * All Redfish Clients shall correctly handle HTTP redirect.
 
-NOTE: Refer to the [Security](#security) clause for security implications of HTTP Redirect
+NOTE: Refer to the [Security](#security-details) clause for security implications of HTTP Redirect
 
 #### Media types
 
@@ -1005,7 +1005,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Max-Forwards                       | No          | [RFC 7231](#RFC7231)                | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely. |
 | Access-Control-Allow-Origin        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks. |
 | Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
-| WWW-Authenticate                   | Yes         | [RFC 7235](#RFC7235), Section 4.1   | Required for Basic and other optional authentication mechanisms. See the [Security](#security) clause for details. |
+| WWW-Authenticate                   | Yes         | [RFC 7235](#RFC7235), Section 4.1   | Required for Basic and other optional authentication mechanisms. See the [Security](#security-details) clause for details. |
 | X-Auth-Token                       | Yes         | Opaque encoded octet strings        | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 | Retry-After                        | No          | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
 
@@ -1040,7 +1040,7 @@ Where the HTTP status code indicates a failure, the response body contains an [e
 * Services should return the extended error resource as described in this specification in the response body when a status code [400](#status-400) or greater is returned. Services may return the extended error resource as described in this specification in the response body when other status codes are returned for those codes and operations that allow a response body.
 * Extended error messages MUST NOT provide privileged information when authentication failures occur.
 
-NOTE: Refer to the [Security](#security) clause for security implications of extended errors
+NOTE: Refer to the [Security](#security-details) clause for security implications of extended errors
 
 The following table lists HTTP status codes that have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification. Other codes may be returned by the service as appropriate, and their usage is implementation-specific. See the Description column for usage and additional requirements imposed by this specification.
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
@@ -1782,7 +1782,7 @@ Types used within a JSON payload shall be defined in, or referenced by, the [ser
 
 Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Data Model and Schema.
+NOTE: Refer to the [Security](#security-details) clause for security implications of Data Model and Schema.
 
 ### Common naming conventions
 
@@ -2561,7 +2561,7 @@ A Redfish Service may split the schema resources into separate files such as Sch
 
 This clause covers the REST-based mechanism for subscribing to and receiving event messages.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
+NOTE: Refer to the [Security](#security-details) clause for security implications of Eventing.
 
 #### Event subscription types
 
@@ -2853,7 +2853,7 @@ data:}
 ```
 
 
-## Security
+## Security<a id="security-details"></a>
 
 ### Protocols
 
