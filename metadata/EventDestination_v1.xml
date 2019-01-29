@@ -109,8 +109,8 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification."/>
         </Property>
         <Property Name="HttpHeaders" Type="Collection(EventDestination.v1_0_0.HttpHeaderProperty)" Nullable="false">
-          <Annotation Term="OData.Description" String="This is for setting HTTP headers, such as authorization information.  This object will be null or an empty array on a GET."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null or an empty array on a GET."/>
+          <Annotation Term="OData.Description" String="This is for setting HTTP headers, such as authorization information.  This object will be null or an empty array on a GET.  An empty array is the preferred return value on GET."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null or an empty array on a GET.  An empty array is the preferred return value on GET."/>
         </Property>
       </EntityType>
 
