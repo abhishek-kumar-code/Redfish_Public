@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/1",
-    "@odata.type": "#Volume.v1_3_0.Volume",
+    "@odata.type": "#Volume.v1_3_1.Volume",
     "Id": "1",
     "Name": "SATA Bay 1",
     "Status": {
