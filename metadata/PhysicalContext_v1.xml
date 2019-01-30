@@ -138,8 +138,30 @@
         <Member Name="PowerSupply">
           <Annotation Term="OData.Description" String="A power supply."/>
         </Member>
+        <Member Name="PowerSubsystem">
+          <Annotation Term="OData.Description" String="The entire power subsystem."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2019.1"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
         <Member Name="VoltageRegulator">
           <Annotation Term="OData.Description" String="A voltage regulator device."/>
+        </Member>
+        <Member Name="Rectifier">
+          <Annotation Term="OData.Description" String="A rectifier device."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="2019.1"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Member>
         <Member Name="StorageDevice">
           <Annotation Term="OData.Description" String="A storage device."/>

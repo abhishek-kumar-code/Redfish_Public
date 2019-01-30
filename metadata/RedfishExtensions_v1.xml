@@ -139,6 +139,12 @@
       <Term Name="ResourceBlockLimits" Type="ResourceBlock.ResourceBlockLimits">
         <Annotation Term="OData.Description" String="The term specifies the allowable quantities of types of Resource Blocks for a given composition request."/>
       </Term>
+      <Term Name="Language" Type="Edm.String" DefaultValue="en">
+        <Annotation Term="OData.Description" String="The term specifies the ISO 639-1 language code (Alpha-2) that matches the language used for the descriptive text in this schema file. If this term is not present, the default value shall be English (en)."/>
+      </Term>
+      <Term Name="Translation" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The term specifies a translated language (localized) version of the property name, parameter, or enumeration string. The language used shall match the Redfish.Language value for this schema."/>
+      </Term>
       <Term Name="License" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term is applied to Redfish schema or registry in order to specify licensing information."/>
       </Term>
