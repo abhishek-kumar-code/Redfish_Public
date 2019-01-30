@@ -3431,6 +3431,9 @@ OData-Version: 4.0
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
+| 1.6.2   | TBD        | Added Dictionary file naming rules and repository locations. |
+|         |            | Enhanced localization definitions and defined repository locations. |
+|         |            | Added missing statement about SSE within the "Eventing mechanism" clause. |
 | 1.6.1   | 2018-12-13 | Added clause about percent encoding being allowed for query parameters. |
 |         |            | Changed Expand example to use SoftwareInventory instead of LogEntry. |
 |         |            | Added missing clause about the usage of a separator for multiple query parameters. |

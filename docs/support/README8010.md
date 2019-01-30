@@ -36,6 +36,17 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 
 ## Redfish Schema Release History
 
+### Release 2019.1 (TBD)
+
+| Schema Name       | Version | Description |
+| ---               | ---     | ---         |
+| PCIeSlots         | 1.1.0   | Added "HotPluggable" property. |
+| PhysicalContext   | N/A     | Added "PowerSubsystem"  and "Rectifier" physical context types. |
+| Processor         | 1.5.0   | Added "TotalEnabledCores" property. |
+| EthernetInterface | 1.4.2   | Errata release.  Corrected "StaticNameServers" to allow for null values. |
+| EventDestination  | 1.x.x   | Errata release.  Modified rules around usage of "HttpHeaders" in a GET response to allow for an empty array. |
+
+
 ### Release 2018.3 (December 2018)
 
 | Schema Name                    | Version | Description |
