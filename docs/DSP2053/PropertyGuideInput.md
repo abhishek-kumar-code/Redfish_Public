@@ -120,7 +120,8 @@ With the above goals in mind, the Redfish protocol was designed as an open indus
 
 ## Who should read this document?
 
-This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API. 
+This document is intended primarily as a reference for schema authors to locate existing property definitions within the Redfish Schema.  End users and other consumers of Redfish data may also use this guide to look up property definitions without regard to their location in the schema.
+
 
 ## Where can I find more information?
 
@@ -134,25 +135,17 @@ The following web sites provide more information about the Redfish standard:
 
 # Using this guide
 
-Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard schema.
-
-Each schema section contains:
-
-* The name, current version and description of the schema.
-* A listing of the possible URIs where resources defined by this schema can appear in a Redfish Service (v1.6 or later). See [URI listings](#uri-listings) below for more information.
-* A table defining each property with additional details for those properties when needed.
-* A listing of the available Actions defined for the schema.
-* An example JSON payload for a resource using the schema.
+Every Redfish API response consists of a JSON payload containing properties that are strictly defined by a schema for that resource.  The schema defining a particular resource can be determined from the value of the "@odata.type" property returned in every Redfish response.  This guide details the definitions for every Redfish standard property defined in the DMTF-published Redfish schemas.
 
 <br>
 The property-level details include:
 
 | Column | Purpose |
 |--------|---------|
-| Property Name | The name of the JSON property as it will appear (case sensitive) in the JSON payload.  For properties added to the schema after the initial release (v1.0.0), the version that the property was added will be shown in parenthesis.  Properties that have been deprecated will also be indicated (along with the version where the deprecation occurred). |
+| Property Name | The name of the JSON property as it will appear (case sensitive) in the JSON payload.  |
+| Defined in Schema(s) | The name(s) of the Redfish schema(s) where this property is defined, and therefore which resources it may appear in. For properties that appear within embedded JSON objects, the object name will be shown in parenthesis. |
 | Type | The JSON data type(s) for the property.  This can include boolean, number, string or object. String types that use defined enumerations will state "(enum)".  Number types will state their units where used. |
-| Attributes | Designates whether the property is read-only or read-write (if supported by the implementation), and whether a 'null' value may be returned by the Service if the value of the property is temporarily unavailable. |
-| Description | The description of the property, as copied directly from the schema 'Description' definition. |
+| Description | The description of the property, as copied directly from the schema 'Description' definition, or, for properties that appear in multiple schemas, a general description of its usage in any of the listed schemas. |
 
 # Reference Guide
 
