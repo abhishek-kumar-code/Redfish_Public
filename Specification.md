@@ -143,7 +143,6 @@ This document defines these additional terms:
 | <a id="redfish-protocol"></a>Redfish protocol | Discovers, connects to, and inter-communicates with a [Redfish service](#redfish-service). |
 | <a id="redfish-schema"></a>Redfish Schema | Defines Redfish resources according to OData schema representation.  You can directly translate a Redfish Schema to a JSON Schema representation. |
 | <a id="redfish-service"><a/>Redfish service | Implementation of the protocols, resources, and functions that deliver the interface that this specification defines and its associated behaviors for one or more [managed systems](#managed-system).  Also known as the *service*. |
-| <a id="redfish-service-entry-point"></a>Redfish service entry point | Interface through which you can access an instance of a Redfish service.  A Redfish service may have more than one service entry point.  Also known as the *service entry point*. |
 | <a id="request"></a>Request | Message from a client to a service. |
 | <a id="resource"></a>Resource | Addressable by a URI and represents a Redfish data structure. |
 | <a id="resource-collection"></a>Resource collection | Resource that contains a set of like resources where the number of instances can shrink or grow. |
