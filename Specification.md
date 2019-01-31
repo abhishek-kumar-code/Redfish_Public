@@ -198,17 +198,16 @@ The specifications do not require that implementation of the Redfish interfaces 
 
 As an architecture, data representation, and definition of protocols that enable a client to access Redfish services, Redfish has these goals:
 
-| Goal | Supports |
-|:-----|:---------|
-| Scalable | Stand-alone machines and racks of cloud-service equipment. |
-| Flexible | Wide variety of currently in-use systems. | 
-| Extensible | New and vendor-specific capabilities within the data model framework. | 
-| Backward-compatible | Additional capabilities while preserving investments in earlier specification versions. | 
-| Interoperable | Consistent functionality and implementation across multiple vendors through a useful, required baseline. | 
-| System-focused | Common platform hardware-management capabilities that scalable environments use and management of contemporary server environments. | 
-| Standards-based | Accepted protocols and standards.  Specifically, the programming environments that web-based clients use for development. |
-| Simple | Software development without the need for highly specialized programming skills or systems knowledge. | 
-| Lightweight | Reduced complexity and implementation costs, including the cost of Redfish services' validation on managed systems. | 
+| Goal                | Purpose |
+| ---                 | ---     |
+| Scalable            | Stand-alone machines and racks of equipment. |
+| Flexible            | Can be implemented existing hardware, or entirely as a software service. | 
+| Extensible          | New and vendor-specific capabilities can be easily added to the data model. | 
+| Backward-compatible | Additional capabilities can be added while preserving investments in implementations of earlier versions of the specification. | 
+| Interoperable       | Consistent functionality across multiple vendor implementations. | 
+| Standards-based     | Built on ubiquitous and secure protocols and leveraging other standards where applicable. |
+| Simple              | Usable without the need for highly specialized programming skills or systems knowledge. | 
+| Lightweight         | Designed to reduce complexity and implementation cost. | 
 
 ### Design tenets
 
