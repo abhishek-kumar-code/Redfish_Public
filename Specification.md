@@ -207,22 +207,22 @@ As an architecture, data representation, and definition of protocols that enable
 | Interoperable       | Consistent functionality across multiple vendor implementations. | 
 | Standards-based     | Built on ubiquitous and secure protocols and leveraging other standards where applicable. |
 | Simple              | Usable without the need for highly specialized programming skills or systems knowledge. | 
-| Lightweight         | Designed to reduce complexity and implementation cost. | 
+| Lightweight         | Designed to reduce complexity and implementation cost, as well as minimizing required footprint for implementations. | 
 
 ### Design tenets
 
 To deliver these goals, Redfish adheres to these design tenets:
 
-| Tenet | Description |
-|:------|:------------|
-| Internet protocol standards | When they meet architectural requirements, Redfish leverages Internet protocol standards.<br/><br/>Standards include REST, JSON, HTTP, OData, and the RFCs that this document references.<br/><br/>Specifically, Redfish uses a RESTful interface with a JSON payload and an entity data model. |
-| Separate protocol from the data model<br/>Version the protocol independently from the data model | This separation enables a client to revise the protocol and data model independently. |
-| Out-of-band access | Clients can implement out-of-band access on BMC and firmware products. |
-| Standard schema with some enhancements | The schema includes both standard items and value-add features. |
-| Intuitive data definitions | In context, the data definitions are as obvious as possible. |
-| Implementation flexibility | Redfish does not tie the interface to a specific implementation architecture.<blockquote><i>Standardize the interface, not the implementation.</i></blockquote> |
-| Common-denominator capabilities | Redfish does not implement functions that only a small percentage of users value. |
-| Reduced complexity | Redfish reduces complexity by not adding operations to the management controller that the client can implement. |
+The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
+
+* Provide a RESTful interface using a JSON payload and a data model.
+* Separate protocol from data model, allowing them to be revised and used independently.
+* Specify versioning rules for protocols and schema.
+* Leverage strength of ubiquitous standards where it meets architectural requirements, such as JSON, HTTP, OData, OpenAPI, and the RFCs referenced by this document.
+* Organize the data model to present value-add features, clearly demarcated, while in the same payload as standardized items.
+* Make data in payloads as obvious in context as possible.
+* Maintain implementation flexibility.  Do not tie the interface to any particular underlying implementation or architecture.
+* Focus on most widely used capabilities.  Avoid adding complexity to address functions that are only valued by a small percentage of users.
 
 ### Limitations
 
