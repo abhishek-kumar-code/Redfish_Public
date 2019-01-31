@@ -1,5 +1,5 @@
 ---
-DocTitle: Redfish Scalable Platforms Management API Specification
+DocTitle: Redfish Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.6.2'
@@ -12,7 +12,7 @@ copyright: '2015-2019'
 
 # Foreword
 
-The Redfish Forum of the DMTF develops the Redfish Scalable Platforms Management API (*Redfish*).
+The Redfish Forum of the DMTF develops the Redfish standard.
 
 DMTF is a not-for-profit association of industry members that promotes enterprise and systems management and interoperability.  For information about the DMTF, see [https://www.dmtf.org/](https://www.dmtf.org/).
 
@@ -69,7 +69,7 @@ The DMTF acknowledges the following individuals for their contributions to the R
 
 ## Abstract
 
-The Redfish Scalable Platforms Management API (*Redfish*) is a standard that uses RESTful interface semantics to access a schema based data model to conduct management operations.  It is suitable for a wide range of devices, from stand-alone servers, to composable infrastructures, and to large-scale cloud environments.
+Redfish is a standard that uses RESTful interface semantics to access a schema based data model to conduct management operations.  It is suitable for a wide range of devices, from stand-alone servers, to composable infrastructures, and to large-scale cloud environments.
 
 The initial Redfish scope targeted servers.
 
