@@ -226,15 +226,13 @@ The following design tenets and technologies are used to help deliver the previo
 
 ### Limitations
 
-Redfish does not guarantee that clients never need to update their software.  For example, clients might need to upgrade to new types of systems, their components, or the data model.
+Redfish minimizes the need for clients to complete upgrades by using strict versioning and forward-compatibility rules, and separation of the protocols from the data model.  However, Redfish does not guarantee that clients never need to update their software.  For example, clients might need to upgrade for managing new types of systems or components, as well as updates to the data model.
 
-System optimization for an application always requires architectural oversight.  However, to minimize the need for clients to complete upgrades, Redfish uses schemas, strict versioning and forward-compatibility rules, and separation of the protocols from the data model.
-
-Interoperable does not mean identical.  A Redfish client might need to adapt to the optional vendor-provided elements.  Specific vendor-provided implementations and configurations can also vary.
+Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients must be prepared to discover the optional elements using the built in discovery methods.
 
 For example, Redfish does not enable a client to read a resource tree and write it to another Redfish service.  Because Redfish is a hypermedia API, this action is not possible.
 
-The resource topology reflects the topology of the system and its devices.  Consequently, different server or device types result in different resource trees, even for identical systems from the same manufacturer.
+The resource topology reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.
 
 Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients that traverse the resource tree must provide logic to avoid infinite loops.
 
