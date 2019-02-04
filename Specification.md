@@ -1,5 +1,5 @@
 ---
-DocTitle: Redfish Scalable Platforms Management API Specification
+DocTitle: Redfish Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.6.2'
@@ -12,7 +12,7 @@ copyright: '2015-2019'
 
 # Foreword
 
-The Redfish Forum of the DMTF develops the Redfish Scalable Platforms Management API (*Redfish*).
+The Redfish Forum of the DMTF develops the Redfish standard.
 
 DMTF is a not-for-profit association of industry members that promotes enterprise and systems management and interoperability.  For information about the DMTF, see [https://www.dmtf.org/](https://www.dmtf.org/).
 
@@ -69,7 +69,7 @@ The DMTF acknowledges the following individuals for their contributions to the R
 
 ## Abstract
 
-The Redfish Scalable Platforms Management API (*Redfish*) is a standard that uses RESTful interface semantics to access a schema based data model to conduct management operations.  It is suitable for a wide range of devices, from stand-alone servers, to composable infrastructures, and to large-scale cloud environments.
+Redfish is a standard that uses RESTful interface semantics to access a schema based data model to conduct management operations.  It is suitable for a wide range of devices, from stand-alone servers, to composable infrastructures, and to large-scale cloud environments.
 
 The initial Redfish scope targeted servers.
 
@@ -143,7 +143,6 @@ This document defines these additional terms:
 | <a id="redfish-protocol"></a>Redfish protocol | Discovers, connects to, and inter-communicates with a [Redfish service](#redfish-service). |
 | <a id="redfish-schema"></a>Redfish Schema | Defines Redfish resources according to OData schema representation.  You can directly translate a Redfish Schema to a JSON Schema representation. |
 | <a id="redfish-service"><a/>Redfish service | Implementation of the protocols, resources, and functions that deliver the interface that this specification defines and its associated behaviors for one or more [managed systems](#managed-system).  Also known as the *service*. |
-| <a id="redfish-service-entry-point"></a>Redfish service entry point | Interface through which you can access an instance of a Redfish service.  A Redfish service may have more than one service entry point.  Also known as the *service entry point*. |
 | <a id="request"></a>Request | Message from a client to a service. |
 | <a id="resource"></a>Resource | Addressable by a URI and represents a Redfish data structure. |
 | <a id="resource-collection"></a>Resource collection | Resource that contains a set of like resources where the number of instances can shrink or grow. |
@@ -199,44 +198,41 @@ The specifications do not require that implementation of the Redfish interfaces 
 
 As an architecture, data representation, and definition of protocols that enable a client to access Redfish services, Redfish has these goals:
 
-| Goal | Supports |
-|:-----|:---------|
-| Scalable | Stand-alone machines and racks of cloud-service equipment. |
-| Flexible | Wide variety of currently in-use systems. | 
-| Extensible | New and vendor-specific capabilities within the data model framework. | 
-| Backward-compatible | Additional capabilities while preserving investments in earlier specification versions. | 
-| Interoperable | Consistent functionality and implementation across multiple vendors through a useful, required baseline. | 
-| System-focused | Common platform hardware-management capabilities that scalable environments use and management of contemporary server environments. | 
-| Standards-based | Accepted protocols and standards.  Specifically, the programming environments that web-based clients use for development. |
-| Simple | Software development without the need for highly specialized programming skills or systems knowledge. | 
-| Lightweight | Reduced complexity and implementation costs, including the cost of Redfish services' validation on managed systems. | 
+| Goal                | Purpose |
+| ---                 | ---     |
+| Scalable            | Stand-alone machines and racks of equipment. |
+| Flexible            | Can be implemented existing hardware, or entirely as a software service. | 
+| Extensible          | New and vendor-specific capabilities can be easily added to the data model. | 
+| Backward-compatible | Additional capabilities can be added while preserving investments in implementations of earlier versions of the specification. | 
+| Interoperable       | Consistent functionality across multiple vendor implementations. | 
+| Standards-based     | Built on ubiquitous and secure protocols and leveraging other standards where applicable. |
+| Simple              | Usable without the need for highly specialized programming skills or systems knowledge. | 
+| Lightweight         | Designed to reduce complexity and implementation cost, as well as minimizing required footprint for implementations. | 
 
 ### Design tenets
 
 To deliver these goals, Redfish adheres to these design tenets:
 
-| Tenet | Description |
-|:------|:------------|
-| Internet protocol standards | When they meet architectural requirements, Redfish leverages Internet protocol standards.<br/><br/>Standards include REST, JSON, HTTP, OData, and the RFCs that this document references.<br/><br/>Specifically, Redfish uses a RESTful interface with a JSON payload and an entity data model. |
-| Separate protocol from the data model<br/>Version the protocol independently from the data model | This separation enables a client to revise the protocol and data model independently. |
-| Out-of-band access | Clients can implement out-of-band access on BMC and firmware products. |
-| Standard schema with some enhancements | The schema includes both standard items and value-add features. |
-| Intuitive data definitions | In context, the data definitions are as obvious as possible. |
-| Implementation flexibility | Redfish does not tie the interface to a specific implementation architecture.<blockquote><i>Standardize the interface, not the implementation.</i></blockquote> |
-| Common-denominator capabilities | Redfish does not implement functions that only a small percentage of users value. |
-| Reduced complexity | Redfish reduces complexity by not adding operations to the management controller that the client can implement. |
+The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
+
+* Provide a RESTful interface using a JSON payload and a data model.
+* Separate protocol from data model, allowing them to be revised and used independently.
+* Specify versioning rules for protocols and schema.
+* Leverage strength of ubiquitous standards where it meets architectural requirements, such as JSON, HTTP, OData, OpenAPI, and the RFCs referenced by this document.
+* Organize the data model to present value-add features, clearly demarcated, while in the same payload as standardized items.
+* Make data in payloads as obvious in context as possible.
+* Maintain implementation flexibility.  Do not tie the interface to any particular underlying implementation or architecture.
+* Focus on most widely used capabilities.  Avoid adding complexity to address functions that are only valued by a small percentage of users.
 
 ### Limitations
 
-Redfish does not guarantee that clients never need to update their software.  For example, clients might need to upgrade to new types of systems, their components, or the data model.
+Redfish minimizes the need for clients to complete upgrades by using strict versioning and forward-compatibility rules, and separation of the protocols from the data model.  However, Redfish does not guarantee that clients never need to update their software.  For example, clients might need to upgrade for managing new types of systems or components, as well as updates to the data model.
 
-System optimization for an application always requires architectural oversight.  However, to minimize the need for clients to complete upgrades, Redfish uses schemas, strict versioning and forward-compatibility rules, and separation of the protocols from the data model.
-
-Interoperable does not mean identical.  A Redfish client might need to adapt to the optional vendor-provided elements.  Specific vendor-provided implementations and configurations can also vary.
+Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients must be prepared to discover the optional elements using the built in discovery methods.
 
 For example, Redfish does not enable a client to read a resource tree and write it to another Redfish service.  Because Redfish is a hypermedia API, this action is not possible.
 
-The resource topology reflects the topology of the system and its devices.  Consequently, different server or device types result in different resource trees, even for identical systems from the same manufacturer.
+The resource topology reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.
 
 Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients that traverse the resource tree must provide logic to avoid infinite loops.
 
