@@ -278,46 +278,42 @@ Redfish has a single service root URI and clients can discover all other resourc
 
 #### Synchronous and asynchronous operation support
 
-While the majority of operations in this architecture are synchronous in nature, some operations can take a long time to execute, more time than a client typically wants to wait.  For this reason, some operations can be asynchronous at the discretion of the service.  The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.
+Some operations can take more time than a client typically wants to wait.  For this reason, some operations can be asynchronous at the discretion of the service.  The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.
 
 To determine whether an operation was completed synchronously or asynchronously, clients can review the [HTTP status codes](#status-codes).  For more information, see the [Tasks](#async-tasks) clause.
 
 #### Eventing mechanism
 
-In some situations, a service can send messages outside the normal request and response paradigm to clients.  The service uses these messages, or _events_, to asynchronously notify the client of a state change or error condition, usually of a time critical nature.
+Redfish provides the ability to send messages outside the normal request and response paradigm to clients.  The service uses these messages, or _events_, to asynchronously notify the client of a state change or error condition, usually of a time critical nature.
 
 Two styles of eventing are currently defined by this specification - push style eventing, and [Server-Sent Events (SSE)](#sse-eventservice). 
 
-In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.  All subscriptions are persistent configuration settings.
+In push style eventing, when the service detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.
 
 In SSE style eventing, the client opens an SSE connection to the service by performing a GET on the URI specified by the "ServerSentEventUri" in the Event Service. 
 
-For information about the eventing mechanism, see the [Eventing](#eventing) clause.
+For information, see the [Eventing](#eventing) clause.
 
 #### Actions
 
-An operations can be an intrinsic or extrinsic operation:
-
-* **Intrinsic operation**.  Maps to an [HTTP method](#http-methods).  Also known as a _CRUD operation_.
-* **Extrinsic operation**.  Does not map easily to CRUD.  Completes multiple operations as a set for scalability, ease of interface, preservation of server-side semantics, or so on.  An example extrinsic operation is a system reset.  Semantically, a system reset requests a state change but does not change the state.  In Redfish, these extrinsic operations are _**actions**_.  Different parts of this specification describe actions.
-
-The Redfish Schema defines certain standard actions for common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  Clients can define OEM extensions to the Redfish [schema](#resource-extensibility), including [actions](#oem-actions) for existing resources.
+Actions are Redfish operations that do map to CRUD.  The Redfish Schema defines certain standard actions for common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.
 
 #### Service discovery
 
-While the service itself is at a well-known URI, clients must discover the service host.  Like UPnP, Redfish uses SSDP for discovery.  A wide variety of devices, such as printers, support SSDP.  It is simple, lightweight, IPv6 capable, and suitable for implementation in embedded environments.
+While the service itself is at a well-known URI, clients must discover the network address of the service.  Like UPnP, Redfish uses SSDP for discovery.  A wide variety of devices, such as printers and client operating systems, support SSDP.  It is simple, lightweight, IPv6 capable, and suitable for implementation in embedded environments.
 
 For more information, see the [Discovery](#discovery) clause.
 
 #### Remote access support
 
-This architecture supports a wide variety of remote access and redirection services.  Critical to out-of-band environments support Serial Console access, Keyboard Video and Mouse redirection (KVM-IP), Command Shell, such as Command Line interface, and remote Virtual Media. 
+TODO: Jeff will make less bad
+~~This architecture supports a wide variety of remote access and redirection services.  Critical to out-of-band environments support Serial Console access, Keyboard Video and Mouse redirection (KVM-IP), Command Shell, such as Command Line interface, and remote Virtual Media.~~
 
-This standard encompasses and the Redfish Schema expresses support for Serial Console, Command Shell, KVM-IP and Virtual Media.  This standard does not define the protocols or access mechanisms for those devices and services.  The Redfish Schema provides for the representation and configuration of those services, establishment of connections to enable those services, and the operational status of those services.  However, the definitions of the protocols are outside the scope of this specification.
+~~This standard encompasses and the Redfish Schema expresses support for Serial Console, Command Shell, KVM-IP and Virtual Media.  This standard does not define the protocols or access mechanisms for those devices and services.  The Redfish Schema provides for the representation and configuration of those services, establishment of connections to enable those services, and the operational status of those services.  However, the definitions of the protocols are outside the scope of this specification.~~
 
 ### Security
 
-The challenge of remote interface security is to ensure the security of both the Redfish interfaces and exchanged data.  To accomplish this type of security, Redfish provides proper security control mechanisms around the interfaces and secures the channels to exchange the data.  As part of this security, Redfish defines and uses minimum levels of encryption for communication channels, for example.
+The challenge of remote interface security is to protect both the interface and exchanged data.  To accomplish this, Redfish provides authentication and encryption.  As part of this security, Redfish defines and requires minimum levels of encryption.
 
 ## Protocol details
 
