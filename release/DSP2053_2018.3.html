@@ -287,7 +287,8 @@ The property-level details include:</p>
 <tr><td><b>Dependency</b></td><td>AttributeRegistry (RegistryEntries > Dependencies)</td><td>object</td><td>The dependency expression for one or more Attributes in this Attribute Registry.</td></tr>
 <tr><td><b>DependencyFor</b></td><td>AttributeRegistry (RegistryEntries > Dependencies)</td><td>string</td><td>The AttributeName of the attribute whose change triggers the evaluation of this dependency expression.</td></tr>
 <tr><td><b>DepthMm</b></td><td>Chassis</td><td>number</td><td>The depth of the chassis.</td></tr>
-<tr><td><b>Description</b></td><td><i>various</i><br>(AccelerationFunction, <br>AccelerationFunctionCollection ... )</td><td>string</td><td>A description of the resource or its purpose.</td></tr>
+<tr><td><b>Description</b></td><td>Assembly (Assemblies)</td><td>string</td><td>Description of the Assembly.</td></tr>
+<tr><td><b>Description</b></td><td><i>various</i><br>(AccelerationFunction, <br>AccelerationFunctionCollection ... )</td><td>string</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>Destination</b></td><td>EventDestination</td><td>string</td><td>The URI of the destination Event Service.</td></tr>
 <tr><td><b>DeviceClass</b></td><td>PCIeFunction</td><td>string</td><td>The class for this PCIe Function.</td></tr>
 <tr><td><b>DeviceEnabled</b></td><td>NetworkDeviceFunction</td><td>boolean</td><td>Whether the network device function is enabled.</td></tr>
@@ -307,13 +308,8 @@ The property-level details include:</p>
 <tr><td><b>DisplayOrder</b></td><td>AttributeRegistry (RegistryEntries > Menus)</td><td>integer</td><td>The numeric value describing the ascending order in which this menu is displayed relative to other menus.</td></tr>
 <tr><td><b>DisplayOrder</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>integer</td><td>The numeric value describing the ascending order that the attribute is displayed relative to other attributes.</td></tr>
 <tr><td><b>DomainID</b></td><td>Switch</td><td>integer</td><td>The Domain ID for this switch.</td></tr>
-<tr><td><b>Drives</b></td><td>ResourceBlock</td><td>array</td><td>An array of references to the Drives available in this Resource Block.</td></tr>
-<tr><td><b>Drives</b></td><td>Chassis (Links)</td><td>array</td><td>An array of references to the disk drives located in this Chassis.</td></tr>
-<tr><td><b>Drives</b></td><td>Volume (Links)</td><td>array</td><td>An array of references to the drives which contain this volume. This will reference Drives that either wholly or only partly contain this volume.</td></tr>
-<tr><td><b>Drives</b></td><td>PCIeFunction (Links)</td><td>array</td><td>An array of references to the drives which the PCIe device produces.</td></tr>
-<tr><td><b>Drives</b></td><td>Storage</td><td>array</td><td>The set of drives attached to the storage controllers represented by this resource.</td></tr>
-<tr><td><b>DwellTime</b></td><td>Sensor (Thresholds > LowerCaution), <br>Sensor (Thresholds > LowerCritical), <br>Sensor (Thresholds > LowerFatal), <br>Sensor (Thresholds > UpperCaution), <br>Sensor (Thresholds > UpperCritical), <br>Sensor (Thresholds > UpperFatal), <br>Triggers (NumericThresholds > LowerCritical), <br>Triggers (NumericThresholds > LowerWarning), <br>Triggers (NumericThresholds > UpperCritical), <br>Triggers (NumericThresholds > UpperWarning)</td><td>string</td><td>The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.</td></tr>
-<tr><td><b>DwellTime</b></td><td>Triggers (DiscreteTriggers)</td><td>string</td><td>This time the trigger occurance persists before a trigger event has occurred.</td></tr>
+<tr><td><b>Drives</b></td><td>Chassis (Links), <br>PCIeFunction (Links), <br>ResourceBlock, <br>Storage, <br>Volume (Links)</td><td>array</td><td>An array of references to the Drives associated with this resource.</td></tr>
+<tr><td><b>DwellTime</b></td><td><i>various</i><br>(Sensor (Thresholds > LowerCaution), <br>Sensor (Thresholds > LowerCritical) ... )</td><td>string</td><td>The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.</td></tr>
 <tr><td><b>EEEEnabled</b></td><td>NetworkPort</td><td>boolean</td><td>Whether IEEE 802.3az Energy Efficient Ethernet (EEE) is enabled for this network port.</td></tr>
 <tr><td><b>EffectiveFamily</b></td><td>Processor (ProcessorId)</td><td>string</td><td>The effective Family for this processor.</td></tr>
 <tr><td><b>EffectiveModel</b></td><td>Processor (ProcessorId)</td><td>string</td><td>The effective Model for this processor.</td></tr>
@@ -327,17 +323,9 @@ The property-level details include:</p>
 <tr><td><b>EncryptionAbility</b></td><td>Drive</td><td>string</td><td>The encryption abilities of this drive.</td></tr>
 <tr><td><b>EncryptionStatus</b></td><td>Drive</td><td>string</td><td>The status of the encrytion of this drive.</td></tr>
 <tr><td><b>EncryptionTypes</b></td><td>Volume</td><td>array</td><td>The types of encryption used by this Volume.</td></tr>
-<tr><td><b>EndTime</b></td><td>Job</td><td>string</td><td>The date-time stamp that the job was completed.</td></tr>
-<tr><td><b>EndTime</b></td><td>Task</td><td>string</td><td>The date-time stamp that the task was last completed.</td></tr>
+<tr><td><b>EndTime</b></td><td>Job, <br>Task</td><td>string</td><td>The date-time stamp that the job or task was completed.</td></tr>
 <tr><td><b>EndpointProtocol</b></td><td>Endpoint</td><td>string</td><td>The protocol supported by this endpoint.</td></tr>
-<tr><td><b>Endpoints</b></td><td>NetworkDeviceFunction (Links)</td><td>array</td><td>An array of references to endpoints associated with this network device function.</td></tr>
-<tr><td><b>Endpoints</b></td><td>AccelerationFunction (Links)</td><td>array</td><td>An array of references to the endpoints that connect to this acceleartion function.</td></tr>
-<tr><td><b>Endpoints</b></td><td>Storage (StorageControllers > Links)</td><td>array</td><td>An array of references to the endpoints that connect to this controller.</td></tr>
-<tr><td><b>Endpoints</b></td><td>Drive (Links)</td><td>array</td><td>An array of references to the endpoints that connect to this drive.</td></tr>
-<tr><td><b>Endpoints</b></td><td>EthernetInterface (Links)</td><td>array</td><td>An array of references to the endpoints that connect to this ethernet interface.</td></tr>
-<tr><td><b>Endpoints</b></td><td>Processor (Links)</td><td>array</td><td>An array of references to the endpoints that connect to this processor.</td></tr>
-<tr><td><b>Endpoints</b></td><td>ComputerSystem (Links)</td><td>array</td><td>An array of references to the endpoints that connect to this system.</td></tr>
-<tr><td><b>Endpoints</b></td><td>Zone (Links)</td><td>array</td><td>Represents an array of references to the endpoints that are contained in this zone.</td></tr>
+<tr><td><b>Endpoints</b></td><td>AccelerationFunction (Links), <br>ComputerSystem (Links), <br>Drive (Links), <br>EthernetInterface (Links), <br>NetworkDeviceFunction (Links), <br>Processor (Links), <br>Storage (StorageControllers > Links), <br>Zone (Links)</td><td>array</td><td>An array of references to endpoints associated with this resource.</td></tr>
 <tr><td><b>Endpoints</b></td><td>Fabric</td><td>object</td><td>A collection of references to the endpoints contained in this fabric.</td></tr>
 <tr><td><b>EngineeringChangeLevel</b></td><td>Assembly (Assemblies)</td><td>string</td><td>Engineering change level of the Assembly.</td></tr>
 <tr><td><b>Entity</b></td><td>PrivilegeRegistry (Mappings)</td><td>string</td><td>Indicates entity name. e.g., Manager.</td></tr>
@@ -350,12 +338,9 @@ The property-level details include:</p>
 <tr><td><b>EntryType</b></td><td>LogEntry</td><td>string</td><td>This is the type of log entry.</td></tr>
 <tr><td><b>EnvironmentalClass</b></td><td>Chassis</td><td>string</td><td>The ASHRAE Environmental Class for this Chassis.</td></tr>
 <tr><td><b>ErrorCorrection</b></td><td>Memory</td><td>string</td><td>Error correction scheme supported for this memory.</td></tr>
-<tr><td><b>Ethernet</b></td><td>Processor (FPGA > ExternalInterfaces), <br>Processor (FPGA > HostInterface)</td><td>object</td><td>Describes the Ethernet related information about this FPGA interface.</td></tr>
-<tr><td><b>Ethernet</b></td><td>NetworkDeviceFunction</td><td>object</td><td>Ethernet.</td></tr>
-<tr><td><b>EthernetInterfaces</b></td><td>ResourceBlock</td><td>array</td><td>An array of references to the Ethernet Interfaces available in this Resource Block.</td></tr>
-<tr><td><b>EthernetInterfaces</b></td><td>PCIeFunction (Links)</td><td>array</td><td>An array of references to the ethernet interfaces which the PCIe device produces.</td></tr>
-<tr><td><b>EthernetInterfaces</b></td><td>ComputerSystem</td><td>object</td><td>A reference to the collection of Ethernet interfaces associated with this system.</td></tr>
-<tr><td><b>EthernetInterfaces</b></td><td>Manager</td><td>object</td><td>This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings.</td></tr>
+<tr><td><b>Ethernet</b></td><td>NetworkDeviceFunction, <br>Processor (FPGA > ExternalInterfaces), <br>Processor (FPGA > HostInterface)</td><td>object</td><td>Describes the Ethernet related information about this device or interface.</td></tr>
+<tr><td><b>EthernetInterfaces</b></td><td>PCIeFunction (Links), <br>ResourceBlock</td><td>array</td><td>An array of references to the Ethernet Interfaces related to this resource.</td></tr>
+<tr><td><b>EthernetInterfaces</b></td><td>ComputerSystem, <br>Manager</td><td>object</td><td>A reference to the collection of Ethernet interfaces associated with this resource.</td></tr>
 <tr><td><b>EventFormatType</b></td><td>EventService (SSEFilterPropertiesSupported)</td><td>boolean</td><td>This indicates if the EventFormatType property is supported.</td></tr>
 <tr><td><b>EventFormatType</b></td><td>EventDestination</td><td>string</td><td>Indicates the content types of the message that will be sent to the EventDestination.</td></tr>
 <tr><td><b>EventFormatTypes</b></td><td>EventService</td><td>array</td><td>Indicates the content types of the message that this service can send to the event destination.</td></tr>
@@ -379,8 +364,7 @@ The property-level details include:</p>
 <tr><td><b>FCoEActiveVLANId</b></td><td>NetworkDeviceFunction (FibreChannel)</td><td>integer</td><td>The active FCoE VLAN ID.</td></tr>
 <tr><td><b>FCoELocalVLANId</b></td><td>NetworkDeviceFunction (FibreChannel)</td><td>integer</td><td>The locally configured FCoE VLAN ID.</td></tr>
 <tr><td><b>FPGA</b></td><td>Processor</td><td>object</td><td>The properties specific for Processors of type FPGA.</td></tr>
-<tr><td><b>FQDN</b></td><td>EthernetInterface</td><td>string</td><td>This is the complete, fully qualified domain name obtained by DNS for this interface.</td></tr>
-<tr><td><b>FQDN</b></td><td>ManagerNetworkProtocol</td><td>string</td><td>This is the fully qualified domain name for the manager obtained by DNS including the host name and top-level domain name.</td></tr>
+<tr><td><b>FQDN</b></td><td>EthernetInterface, <br>ManagerNetworkProtocol</td><td>string</td><td>This is the fully qualified domain name obtained by DNS including the host name and top-level domain name.</td></tr>
 <tr><td><b>FabricType</b></td><td>Fabric</td><td>string</td><td>The protocol being sent over this fabric.</td></tr>
 <tr><td><b>Fabrics</b></td><td>ServiceRoot</td><td>object</td><td>A link to a collection of all fabric entities.</td></tr>
 <tr><td><b>FailurePredicted</b></td><td>Drive</td><td>boolean</td><td>Is this drive currently predicting a failure in the near future.</td></tr>
@@ -398,13 +382,7 @@ The property-level details include:</p>
 <tr><td><b>FirmwareManufacturer</b></td><td>Processor (FPGA)</td><td>string</td><td>The FPGA firmware manufacturer.</td></tr>
 <tr><td><b>FirmwarePackageVersion</b></td><td>NetworkAdapter (Controllers)</td><td>string</td><td>The version of the user-facing firmware package.</td></tr>
 <tr><td><b>FirmwareRevision</b></td><td>Memory</td><td>string</td><td>Revision of firmware on the Memory controller.</td></tr>
-<tr><td><b>FirmwareVersion</b></td><td>AttributeRegistry (SupportedSystems)</td><td>string</td><td>Firmware version.</td></tr>
-<tr><td><b>FirmwareVersion</b></td><td>Processor (FPGA)</td><td>string</td><td>The FPGA firmware version.</td></tr>
-<tr><td><b>FirmwareVersion</b></td><td>Power (PowerSupplies)</td><td>string</td><td>The firmware version for this Power Supply.</td></tr>
-<tr><td><b>FirmwareVersion</b></td><td>Manager</td><td>string</td><td>The firmware version of this Manager.</td></tr>
-<tr><td><b>FirmwareVersion</b></td><td>ComputerSystem (TrustedModules)</td><td>string</td><td>The firmware version of this Trusted Module.</td></tr>
-<tr><td><b>FirmwareVersion</b></td><td>Storage (StorageControllers)</td><td>string</td><td>The firmware version of this storage Controller.</td></tr>
-<tr><td><b>FirmwareVersion</b></td><td>PCIeDevice</td><td>string</td><td>The version of firmware for this PCIe device.</td></tr>
+<tr><td><b>FirmwareVersion</b></td><td>AttributeRegistry (SupportedSystems), <br>ComputerSystem (TrustedModules), <br>Manager, <br>PCIeDevice, <br>Power (PowerSupplies), <br>Processor (FPGA), <br>Storage (StorageControllers)</td><td>string</td><td>The firmware version for this device.</td></tr>
 <tr><td><b>FirmwareVersion2</b></td><td>ComputerSystem (TrustedModules)</td><td>string</td><td>The 2nd firmware version of this Trusted Module, if applicable.</td></tr>
 <tr><td><b>FlowControl</b></td><td>SerialInterface</td><td>string</td><td>The type of flow control, if any, that will be imposed on the serial connection.</td></tr>
 <tr><td><b>FlowControlConfiguration</b></td><td>NetworkPort</td><td>string</td><td>The locally configured 802.3x flow control setting for this network port.</td></tr>
@@ -422,8 +400,7 @@ The property-level details include:</p>
 <tr><td><b>GET</b></td><td>PrivilegeRegistry (Mappings > OperationMap), <br>PrivilegeRegistry (Mappings > PropertyOverrides > OperationMap), <br>PrivilegeRegistry (Mappings > ResourceURIOverrides > OperationMap), <br>PrivilegeRegistry (Mappings > SubordinateOverrides > OperationMap)</td><td>array</td><td>Indicates privilege required for HTTP GET operation.</td></tr>
 <tr><td><b>GenerateCSR (Action)</b></td><td>CertificateService (Actions)</td><td>object</td><td>This action is used to perform a certificate signing request.</td></tr>
 <tr><td><b>GraphicalConsole</b></td><td>Manager</td><td>object</td><td>The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager.</td></tr>
-<tr><td><b>GrayOut</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>boolean</td><td>The gray-out state of this attribute.</td></tr>
-<tr><td><b>GrayOut</b></td><td>AttributeRegistry (RegistryEntries > Menus)</td><td>boolean</td><td>The gray-out state of this menu. A grayed-only menu is not accessible in user interfaces.</td></tr>
+<tr><td><b>GrayOut</b></td><td>AttributeRegistry (RegistryEntries > Attributes), <br>AttributeRegistry (RegistryEntries > Menus)</td><td>boolean</td><td>The gray-out state of this attribute or menu. A grayed-only menu is not accessible in user interfaces.</td></tr>
 <tr><td><b>GroupNameAttribute</b></td><td>AccountService (ActiveDirectory > LDAPService > SearchSettings), <br>AccountService (LDAP > LDAPService > SearchSettings), <br>ExternalAccountProvider (LDAPService > SearchSettings)</td><td>string</td><td>The attribute name that contains the name of the Group.</td></tr>
 <tr><td><b>GroupsAttribute</b></td><td>AccountService (ActiveDirectory > LDAPService > SearchSettings), <br>AccountService (LDAP > LDAPService > SearchSettings), <br>ExternalAccountProvider (LDAPService > SearchSettings)</td><td>string</td><td>The attribute name that contains the Groups for a user.</td></tr>
 <tr><td><b>HEAD</b></td><td>PrivilegeRegistry (Mappings > OperationMap), <br>PrivilegeRegistry (Mappings > PropertyOverrides > OperationMap), <br>PrivilegeRegistry (Mappings > ResourceURIOverrides > OperationMap), <br>PrivilegeRegistry (Mappings > SubordinateOverrides > OperationMap)</td><td>array</td><td>Indicates privilege required for HTTP HEAD operation.</td></tr>
@@ -432,18 +409,15 @@ The property-level details include:</p>
 <tr><td><b>HealthData</b></td><td>MemoryMetrics</td><td>object</td><td>This object describes the health information of the memory.</td></tr>
 <tr><td><b>HeightMm</b></td><td>Chassis</td><td>number</td><td>The height of the chassis.</td></tr>
 <tr><td><b>HelpText</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>string</td><td>The help text for the attribute.</td></tr>
-<tr><td><b>Hidden</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>boolean</td><td>The hidden state of this attribute.</td></tr>
-<tr><td><b>Hidden</b></td><td>AttributeRegistry (RegistryEntries > Menus)</td><td>boolean</td><td>The hidden state of this menu.</td></tr>
-<tr><td><b>HidePayload</b></td><td>Job</td><td>boolean</td><td>Indicates that the contents of the Payload should be hidden from view after the Job has been created.  When set to True, the Payload object will not be returned on GET.</td></tr>
-<tr><td><b>HidePayload</b></td><td>Task</td><td>boolean</td><td>Indicates that the contents of the Payload should be hidden from view after the Task has been created.  When set to True, the Payload object will not be returned on GET.</td></tr>
+<tr><td><b>Hidden</b></td><td>AttributeRegistry (RegistryEntries > Attributes), <br>AttributeRegistry (RegistryEntries > Menus)</td><td>boolean</td><td>The hidden state of this attribute or menu.</td></tr>
+<tr><td><b>HidePayload</b></td><td>Job, <br>Task</td><td>boolean</td><td>Indicates that the contents of the Payload should be hidden from view after the Job or Task has been created.  When set to True, the Payload object will not be returned on GET.</td></tr>
 <tr><td><b>HitRatio</b></td><td>ProcessorMetrics (Cache), <br>ProcessorMetrics (CoreMetrics > CoreCache)</td><td>number</td><td>The cache line hit ratio.</td></tr>
 <tr><td><b>HostEthernetInterfaces</b></td><td>HostInterface</td><td>object</td><td>The Redfish link to the collection of network interface controllers or cards (NICs) that a Computer System uses to communicate with this Host Interface.</td></tr>
 <tr><td><b>HostInterface</b></td><td>Processor (FPGA)</td><td>object</td><td>The FPGA interface to the host.</td></tr>
 <tr><td><b>HostInterface</b></td><td>EthernetInterface (Links)</td><td>object</td><td>This is a reference to a Host Interface that is associated with this Ethernet Interface.</td></tr>
 <tr><td><b>HostInterfaceType</b></td><td>HostInterface</td><td>string</td><td>Indicates the Host Interface type for this interface.</td></tr>
 <tr><td><b>HostInterfaces</b></td><td>Manager</td><td>object</td><td>This is a reference to a collection of Host Interfaces that this manager uses for local host communication.  It is here that clients will find Host Interface configuration options and settings.</td></tr>
-<tr><td><b>HostName</b></td><td>ManagerNetworkProtocol</td><td>string</td><td>The DNS Host Name of this manager, without any domain information.</td></tr>
-<tr><td><b>HostName</b></td><td>ComputerSystem, <br>EthernetInterface</td><td>string</td><td>The DNS Host Name, without any domain information.</td></tr>
+<tr><td><b>HostName</b></td><td>ComputerSystem, <br>EthernetInterface, <br>ManagerNetworkProtocol</td><td>string</td><td>The DNS Host Name, without any domain information.</td></tr>
 <tr><td><b>HostReservationMemoryBytes</b></td><td>Endpoint</td><td>integer</td><td>The amount of memory in Bytes that the Host should allocate to connect to this endpoint.</td></tr>
 <tr><td><b>HostWatchdogTimer</b></td><td>ComputerSystem</td><td>object</td><td>This object describes the Host Watchdog Timer functionality for this system.</td></tr>
 <tr><td><b>HostedServices</b></td><td>ComputerSystem</td><td>object</td><td>The services that this computer system supports.</td></tr>
@@ -452,9 +426,7 @@ The property-level details include:</p>
 <tr><td><b>HotPluggable</b></td><td>Power (PowerSupplies), <br>Thermal (Fans)</td><td>boolean</td><td>Indicates if this device can be inserted or removed while the equipment is in operation.</td></tr>
 <tr><td><b>HotspareReplacementMode</b></td><td>Drive</td><td>string</td><td>The replacement mode for the hotspare drive.</td></tr>
 <tr><td><b>HotspareType</b></td><td>Drive</td><td>string</td><td>The type of hotspare this drive is currently serving as.</td></tr>
-<tr><td><b>HttpHeaders</b></td><td>EventDestination</td><td>array</td><td>This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.</td></tr>
-<tr><td><b>HttpHeaders</b></td><td>Task (Payload)</td><td>array</td><td>This represents the HTTP headers used in the operation of this Task.</td></tr>
-<tr><td><b>HttpHeaders</b></td><td>Job (Payload)</td><td>array</td><td>This represents the HTTP headers used in the operation of this job.</td></tr>
+<tr><td><b>HttpHeaders</b></td><td>EventDestination, <br>Job (Payload), <br>Task (Payload)</td><td>array</td><td>This represents the HTTP headers used in the operation of this Task or Job, or that will be supplied to an EventDestination when an Event is sent. For usage in EventDestination, this object will be null on a GET.</td></tr>
 <tr><td><b>HttpOperation</b></td><td>Task (Payload)</td><td>string</td><td>The HTTP operation to perform to execute this Task.</td></tr>
 <tr><td><b>HttpOperation</b></td><td>Job (Payload)</td><td>string</td><td>The HTTP operation to perform to execute this job.</td></tr>
 <tr><td><b>HttpPushUri</b></td><td>UpdateService</td><td>string</td><td>The URI used to perform an HTTP or HTTPS push update to the Update Service.</td></tr>
@@ -496,12 +468,7 @@ The property-level details include:</p>
 <tr><td><b>ImageName</b></td><td>VirtualMedia</td><td>string</td><td>The current image name.</td></tr>
 <tr><td><b>Immutable</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>boolean</td><td>Defines whether this attribute is immutable or not.</td></tr>
 <tr><td><b>Implementation</b></td><td>MetricDefinition</td><td>string</td><td>The implementation of the metric.</td></tr>
-<tr><td><b>IndicatorLED</b></td><td>Chassis</td><td>string</td><td>The state of the indicator LED, used to identify the chassis.</td></tr>
-<tr><td><b>IndicatorLED</b></td><td>Drive</td><td>string</td><td>The state of the indicator LED, used to identify the drive.</td></tr>
-<tr><td><b>IndicatorLED</b></td><td>Power (PowerSupplies)</td><td>string</td><td>The state of the indicator LED, used to identify the power supply.</td></tr>
-<tr><td><b>IndicatorLED</b></td><td>Switch</td><td>string</td><td>The state of the indicator LED, used to identify the switch.</td></tr>
-<tr><td><b>IndicatorLED</b></td><td>ComputerSystem</td><td>string</td><td>The state of the indicator LED, used to identify the system.</td></tr>
-<tr><td><b>IndicatorLED</b></td><td>Thermal (Fans)</td><td>string</td><td>The state of the indicator LED, used to identify this Fan.</td></tr>
+<tr><td><b>IndicatorLED</b></td><td>Chassis, <br>ComputerSystem, <br>Drive, <br>Power (PowerSupplies), <br>Switch, <br>Thermal (Fans)</td><td>string</td><td>The state of the indicator LED, used to identify this device.</td></tr>
 <tr><td><b>Initialize (Action)</b></td><td>Volume (Actions)</td><td>object</td><td>This action is used to prepare the contents of the volume for use by the system.</td></tr>
 <tr><td><b>InitiatorDefaultGateway</b></td><td>NetworkDeviceFunction (iSCSIBoot)</td><td>string</td><td>The IPv6 or IPv4 iSCSI boot default gateway.</td></tr>
 <tr><td><b>InitiatorIPAddress</b></td><td>NetworkDeviceFunction (iSCSIBoot)</td><td>string</td><td>The IPv6 or IPv4 address of the iSCSI initiator.</td></tr>
@@ -514,8 +481,7 @@ The property-level details include:</p>
 <tr><td><b>InstructionSet</b></td><td>Processor</td><td>string</td><td>The instruction set of the processor.</td></tr>
 <tr><td><b>InstructionsPerCycle</b></td><td>ProcessorMetrics (CoreMetrics)</td><td>number</td><td>The number of instructions per clock cycle of this core.</td></tr>
 <tr><td><b>IntegratedMemory</b></td><td>Processor (ProcessorMemory)</td><td>boolean</td><td>This indicates whether this memory is integrated within the Processor.</td></tr>
-<tr><td><b>InterfaceEnabled</b></td><td>HostInterface</td><td>boolean</td><td>Indicates whether this interface is enabled.</td></tr>
-<tr><td><b>InterfaceEnabled</b></td><td>EthernetInterface, <br>SerialInterface</td><td>boolean</td><td>This indicates whether this interface is enabled.</td></tr>
+<tr><td><b>InterfaceEnabled</b></td><td>EthernetInterface, <br>HostInterface, <br>SerialInterface</td><td>boolean</td><td>Indicates whether this interface is enabled.</td></tr>
 <tr><td><b>InterfaceType</b></td><td>Processor (FPGA > ExternalInterfaces), <br>Processor (FPGA > HostInterface)</td><td>string</td><td>The FPGA interface type.</td></tr>
 <tr><td><b>InterfaceType</b></td><td>ComputerSystem (TrustedModules)</td><td>string</td><td>This property indicates the interface type of the Trusted Module.</td></tr>
 <tr><td><b>InterfaceTypeSelection</b></td><td>ComputerSystem (TrustedModules)</td><td>string</td><td>The Interface Type selection supported by this Trusted Module.</td></tr>
@@ -539,8 +505,7 @@ The property-level details include:</p>
 <tr><td><b>JobState</b></td><td>Job</td><td>string</td><td>The state of the job.</td></tr>
 <tr><td><b>JobStatus</b></td><td>Job</td><td>string</td><td>The status of the job.</td></tr>
 <tr><td><b>Jobs</b></td><td>JobService</td><td>object</td><td>References to the Jobs collection.</td></tr>
-<tr><td><b>JsonBody</b></td><td>Job (Payload)</td><td>string</td><td>This property contains the JSON payload to use in the execution of this Job.</td></tr>
-<tr><td><b>JsonBody</b></td><td>Task (Payload)</td><td>string</td><td>This property contains the JSON payload to use in the execution of this Task.</td></tr>
+<tr><td><b>JsonBody</b></td><td>Job (Payload), <br>Task (Payload)</td><td>string</td><td>This property contains the JSON payload to use in the execution of this Job or Task.</td></tr>
 <tr><td><b>JsonSchemas</b></td><td>ServiceRoot</td><td>object</td><td>This is a link to a collection of Json-Schema files.</td></tr>
 <tr><td><b>KVMIP</b></td><td>ManagerNetworkProtocol</td><td>object</td><td>Settings for this Manager's KVM-IP protocol support.</td></tr>
 <tr><td><b>KerberosKeytab</b></td><td>AccountService (ActiveDirectory > Authentication), <br>AccountService (LDAP > Authentication), <br>ExternalAccountProvider (Authentication)</td><td>string</td><td>This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET.</td></tr>
@@ -577,14 +542,11 @@ The property-level details include:</p>
 <tr><td><b>LinkStatus</b></td><td>NetworkPort</td><td>string</td><td>The status of the link between this port and its link partner.</td></tr>
 <tr><td><b>Links</b></td><td>ServiceRoot (ProtocolFeaturesSupported > ExpandQuery)</td><td>boolean</td><td>This indicates whether the $expand support of tilde (expand only entries in the Links section) is supported.</td></tr>
 <tr><td><b>Links</b></td><td><i>various</i><br>(AccelerationFunction, <br>CertificateLocations ... )</td><td>object</td><td>Contains references to other resources that are related to this resource.</td></tr>
-<tr><td><b>Links</b></td><td>NetworkAdapter (Controllers), <br>NetworkDeviceFunction, <br>NetworkInterface</td><td>object</td><td>Links.</td></tr>
-<tr><td><b>Links</b></td><td>Endpoint, <br>PCIeDevice, <br>PCIeFunction</td><td>object</td><td>The links object contains the links to other resources that are related to this resource.</td></tr>
 <tr><td><b>LoadPercent</b></td><td>Sensor</td><td>number</td><td>The power load utilization for this Sensor.</td></tr>
 <tr><td><b>LocalAccountAuth</b></td><td>AccountService</td><td>string</td><td>Controls when this service will use the accounts defined withing this AccountService as part of authentication.</td></tr>
 <tr><td><b>LocalMemoryBandwidthBytes</b></td><td>ProcessorMetrics</td><td>integer</td><td>The local memory bandwidth usage in bytes.</td></tr>
 <tr><td><b>LocalRole</b></td><td>AccountService (ActiveDirectory > RemoteRoleMapping), <br>AccountService (LDAP > RemoteRoleMapping), <br>ExternalAccountProvider (RemoteRoleMapping)</td><td>string</td><td>The name of the local role in which to map the remote user or group.</td></tr>
-<tr><td><b>Location</b></td><td>MessageRegistryFile</td><td>array</td><td>Location information for this registry file.</td></tr>
-<tr><td><b>Location</b></td><td>JsonSchemaFile</td><td>array</td><td>Location information for this schema file.</td></tr>
+<tr><td><b>Location</b></td><td>JsonSchemaFile, <br>MessageRegistryFile</td><td>array</td><td>Location information for this registry or schema file.</td></tr>
 <tr><td><b>Location</b></td><td>Drive</td><td>array</td><td>The Location of the drive.</td></tr>
 <tr><td><b>Location</b></td><td><i>various</i><br>(Chassis, <br>Drive (Location) ... )</td><td>object</td><td>The physical location of this device or resource.</td></tr>
 <tr><td><b>Locked</b></td><td>ManagerAccount</td><td>boolean</td><td>This property indicates that the account has been auto-locked by the account service because the lockout threshold has been exceeded.  When set to true, the account is locked. A user admin can write the property to false to manually unlock, or the account service will unlock it once the lockout duration period has passed.</td></tr>
@@ -749,20 +711,7 @@ The property-level details include:</p>
 <tr><td><b>MinimumFrequencyHz</b></td><td>Power (PowerSupplies > InputRanges)</td><td>number</td><td>The minimum line input frequency at which this power supply input range is effective.</td></tr>
 <tr><td><b>MinimumValue</b></td><td>ActionInfo (Parameters)</td><td>number</td><td>The minimum supported value for this parameter.</td></tr>
 <tr><td><b>MinimumVoltage</b></td><td>Power (PowerSupplies > InputRanges)</td><td>number</td><td>The minimum line input voltage at which this power supply input range is effective.</td></tr>
-<tr><td><b>Model</b></td><td>Assembly (Assemblies)</td><td>string</td><td>Model number of the Assembly.</td></tr>
-<tr><td><b>Model</b></td><td>Processor (FPGA)</td><td>string</td><td>The FPGA model.</td></tr>
-<tr><td><b>Model</b></td><td>Manager</td><td>string</td><td>The model information of this Manager as defined by the manufacturer.</td></tr>
-<tr><td><b>Model</b></td><td>Thermal (Fans)</td><td>string</td><td>The model number for this Fan.</td></tr>
-<tr><td><b>Model</b></td><td>Power (PowerSupplies)</td><td>string</td><td>The model number for this Power Supply.</td></tr>
-<tr><td><b>Model</b></td><td>Chassis</td><td>string</td><td>The model number of the chassis.</td></tr>
-<tr><td><b>Model</b></td><td>NetworkAdapter</td><td>string</td><td>The model string for this network adapter.</td></tr>
-<tr><td><b>Model</b></td><td>ComputerSystem (ProcessorSummary)</td><td>string</td><td>The processor model for the primary or majority of processors in this system.</td></tr>
-<tr><td><b>Model</b></td><td>Processor, <br>SimpleStorage (Devices)</td><td>string</td><td>The product model number of this device.</td></tr>
-<tr><td><b>Model</b></td><td>Switch</td><td>string</td><td>The product model number of this switch.</td></tr>
-<tr><td><b>Model</b></td><td>ComputerSystem</td><td>string</td><td>The product name for this system, without the manufacturer name.</td></tr>
-<tr><td><b>Model</b></td><td>PCIeDevice</td><td>string</td><td>This is the model number for the PCIe device.</td></tr>
-<tr><td><b>Model</b></td><td>Drive</td><td>string</td><td>This is the model number for the drive.</td></tr>
-<tr><td><b>Model</b></td><td>Storage (StorageControllers)</td><td>string</td><td>This is the model number for the storage controller.</td></tr>
+<tr><td><b>Model</b></td><td><i>various</i><br>(Assembly (Assemblies), <br>Chassis ... )</td><td>string</td><td>Model number for this product or device.</td></tr>
 <tr><td><b>ModifyRedundancySet (Action)</b></td><td>Manager (Actions)</td><td>object</td><td>The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager.</td></tr>
 <tr><td><b>ModuleManufacturerID</b></td><td>Memory</td><td>string</td><td>The manufacturer ID of this memory module.</td></tr>
 <tr><td><b>ModuleProductID</b></td><td>Memory</td><td>string</td><td>The product ID of this memory module.</td></tr>
@@ -812,8 +761,7 @@ The property-level details include:</p>
 <tr><td><b>ObjectDataType</b></td><td>ActionInfo (Parameters)</td><td>string</td><td>The OData Type of an object-based parameter.</td></tr>
 <tr><td><b>OccupancyBytes</b></td><td>ProcessorMetrics (Cache), <br>ProcessorMetrics (CoreMetrics > CoreCache)</td><td>integer</td><td>The total cache level occupancy in bytes.</td></tr>
 <tr><td><b>OccupancyPercent</b></td><td>ProcessorMetrics (Cache), <br>ProcessorMetrics (CoreMetrics > CoreCache)</td><td>number</td><td>The total cache occupancy percentage.</td></tr>
-<tr><td><b>Oem</b></td><td><i>various</i><br>(AccelerationFunction (Links), <br>AccountService (ActiveDirectory > Authentication) ... )</td><td>object</td><td>Oem extension object.</td></tr>
-<tr><td><b>Oem</b></td><td><i>various</i><br>(AccelerationFunction, <br>AccelerationFunctionCollection ... )</td><td>object</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>Oem</b></td><td><i>various</i><br>(AccelerationFunction (Links), <br>AccelerationFunction ... )</td><td>object</td><td>The OEM extension object.</td></tr>
 <tr><td><b>OemLogEntryCode</b></td><td>LogEntry</td><td>string</td><td>If the LogEntryCode type is OEM, this will contain the OEM-specific entry code.</td></tr>
 <tr><td><b>OemPrivileges</b></td><td>Role</td><td>array</td><td>The OEM privileges that this role includes.</td></tr>
 <tr><td><b>OemRecordFormat</b></td><td>LogEntry</td><td>string</td><td>If the EntryType is Oem, this will contain more information about the record format from the Oem.</td></tr>
@@ -893,13 +841,7 @@ The property-level details include:</p>
 <tr><td><b>PersistentRegionNumberLimit</b></td><td>Memory</td><td>integer</td><td>Total number of persistent regions this Memory can support.</td></tr>
 <tr><td><b>PersistentRegionSizeLimitMiB</b></td><td>Memory</td><td>integer</td><td>Total size of persistent regions in mebibytes (MiB).</td></tr>
 <tr><td><b>PersistentRegionSizeMaxMiB</b></td><td>Memory</td><td>integer</td><td>Maximum size of a single persistent region in mebibytes (MiB).</td></tr>
-<tr><td><b>PhysicalContext</b></td><td>Thermal (Fans)</td><td>string</td><td>Describes the area or device associated with this fan.</td></tr>
-<tr><td><b>PhysicalContext</b></td><td>Assembly (Assemblies)</td><td>string</td><td>Describes the area or device to which this assembly data applies.</td></tr>
-<tr><td><b>PhysicalContext</b></td><td>Sensor</td><td>string</td><td>Describes the area or device to which this sensor measurement applies.</td></tr>
-<tr><td><b>PhysicalContext</b></td><td>Thermal (Temperatures)</td><td>string</td><td>Describes the area or device to which this temperature measurement applies.</td></tr>
-<tr><td><b>PhysicalContext</b></td><td>Power (Voltages)</td><td>string</td><td>Describes the area or device to which this voltage measurement applies.</td></tr>
-<tr><td><b>PhysicalContext</b></td><td>Power (PowerControl)</td><td>string</td><td>Describes the area, device, or set of devices to which this power control applies.</td></tr>
-<tr><td><b>PhysicalContext</b></td><td>MetricDefinition</td><td>string</td><td>Specifies the physical context of the metric.</td></tr>
+<tr><td><b>PhysicalContext</b></td><td>Assembly (Assemblies), <br>MetricDefinition, <br>Power (PowerControl), <br>Power (Voltages), <br>Sensor, <br>Thermal (Fans), <br>Thermal (Temperatures)</td><td>string</td><td>Describes the area or device associated with this resource.</td></tr>
 <tr><td><b>PhysicalLocation</b></td><td>Drive</td><td>object</td><td>The Location of the drive.</td></tr>
 <tr><td><b>PhysicalPortAssignment</b></td><td>NetworkDeviceFunction (Links), <br>NetworkDeviceFunction</td><td>object</td><td>The physical port that this network device function is currently assigned to.</td></tr>
 <tr><td><b>PhysicalPortNumber</b></td><td>NetworkPort</td><td>string</td><td>The physical port number label for this port.</td></tr>
@@ -1011,12 +953,7 @@ The property-level details include:</p>
 <tr><td><b>RegistryPrefixes</b></td><td>EventService</td><td>array</td><td>A list of the Prefixes of the Message Registries that can be used for the RegistryPrefix property on a subscription.</td></tr>
 <tr><td><b>RegistryVersion</b></td><td>AttributeRegistry</td><td>string</td><td>This is the attribute registry version which is used in the middle portion of a AttributeRegistry.</td></tr>
 <tr><td><b>RegistryVersion</b></td><td>MessageRegistry</td><td>string</td><td>This is the message registry version which is used in the middle portion of a messageID.</td></tr>
-<tr><td><b>RelatedItem</b></td><td>Thermal (Temperatures)</td><td>array</td><td>Describes the areas or devices to which this temperature measurement applies.</td></tr>
-<tr><td><b>RelatedItem</b></td><td>Power (Voltages)</td><td>array</td><td>Describes the areas or devices to which this voltage measurement applies.</td></tr>
-<tr><td><b>RelatedItem</b></td><td>BootOption</td><td>array</td><td>The ID(s) of the resources associated with this Boot Option.</td></tr>
-<tr><td><b>RelatedItem</b></td><td>Power (PowerControl), <br>Power (PowerSupplies)</td><td>array</td><td>The ID(s) of the resources associated with this Power Limit.</td></tr>
-<tr><td><b>RelatedItem</b></td><td>SoftwareInventory</td><td>array</td><td>The ID(s) of the resources associated with this software inventory item.</td></tr>
-<tr><td><b>RelatedItem</b></td><td>Thermal (Fans)</td><td>array</td><td>The ID(s) of the resources serviced with this fan.</td></tr>
+<tr><td><b>RelatedItem</b></td><td>BootOption, <br>Power (PowerControl), <br>Power (PowerSupplies), <br>Power (Voltages), <br>SoftwareInventory, <br>Thermal (Fans), <br>Thermal (Temperatures)</td><td>array</td><td>Describes the areas or devices related to this resource.</td></tr>
 <tr><td><b>ReleaseDate</b></td><td>SoftwareInventory</td><td>string</td><td>Release date of this software.</td></tr>
 <tr><td><b>RemainingSpareBlockPercentage</b></td><td>MemoryMetrics (HealthData)</td><td>number</td><td>Remaining spare blocks in percentage.</td></tr>
 <tr><td><b>RemoteAccountService</b></td><td>Manager</td><td>object</td><td>This property contains a reference to the AccountService resource for the remote Manager represented by this resource.</td></tr>
@@ -1064,14 +1001,7 @@ The property-level details include:</p>
 <tr><td><b>Roles</b></td><td>AccountService</td><td>object</td><td>A link to a collection of Roles.</td></tr>
 <tr><td><b>RotationSpeedRPM</b></td><td>Drive</td><td>number</td><td>The rotation speed of this Drive in Revolutions per Minute (RPM).</td></tr>
 <tr><td><b>RouterAdvertisementEnabled</b></td><td>NetworkDeviceFunction (iSCSIBoot)</td><td>boolean</td><td>Whether IPv6 router advertisement is enabled for the iSCSI boot target.</td></tr>
-<tr><td><b>SKU</b></td><td>Assembly (Assemblies)</td><td>string</td><td>SKU of the Assembly.</td></tr>
-<tr><td><b>SKU</b></td><td>Chassis</td><td>string</td><td>The SKU of the chassis.</td></tr>
-<tr><td><b>SKU</b></td><td>NetworkAdapter</td><td>string</td><td>The manufacturer SKU for this network adapter.</td></tr>
-<tr><td><b>SKU</b></td><td>ComputerSystem</td><td>string</td><td>The manufacturer SKU for this system.</td></tr>
-<tr><td><b>SKU</b></td><td>PCIeDevice</td><td>string</td><td>This is the SKU for this PCIe device.</td></tr>
-<tr><td><b>SKU</b></td><td>Drive</td><td>string</td><td>This is the SKU for this drive.</td></tr>
-<tr><td><b>SKU</b></td><td>Storage (StorageControllers)</td><td>string</td><td>This is the SKU for this storage controller.</td></tr>
-<tr><td><b>SKU</b></td><td>Switch</td><td>string</td><td>This is the SKU for this switch.</td></tr>
+<tr><td><b>SKU</b></td><td>Assembly (Assemblies), <br>Chassis, <br>ComputerSystem, <br>Drive, <br>NetworkAdapter, <br>PCIeDevice, <br>Storage (StorageControllers), <br>Switch</td><td>string</td><td>SKU of the product or device.</td></tr>
 <tr><td><b>SNMP</b></td><td>ManagerNetworkProtocol</td><td>object</td><td>Settings for this Manager's SNMP support.</td></tr>
 <tr><td><b>SRIOV</b></td><td>NetworkAdapter (Controllers > ControllerCapabilities > VirtualizationOffload)</td><td>object</td><td>Single-Root Input/Output Virtualization (SR-IOV) capabilities.</td></tr>
 <tr><td><b>SRIOVVEPACapable</b></td><td>NetworkAdapter (Controllers > ControllerCapabilities > VirtualizationOffload > SRIOV)</td><td>boolean</td><td>Whether this controller supports Single Root Input/Output Virtualization (SR-IOV) in Virtual Ethernet Port Aggregator (VEPA) mode.</td></tr>
@@ -1079,8 +1009,7 @@ The property-level details include:</p>
 <tr><td><b>SSEFilterPropertiesSupported</b></td><td>EventService</td><td>object</td><td>Contains a set of properties that indicate which properties are supported in the $filter query parameter for the ServerSentEventUri.</td></tr>
 <tr><td><b>SSH</b></td><td>ManagerNetworkProtocol</td><td>object</td><td>Settings for this Manager's SSH (Secure Shell) protocol support.</td></tr>
 <tr><td><b>ScalarIncrement</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>integer</td><td>The amount to increment or decrement the value of an attribute of type 'Integer' each time a user requests a value change.</td></tr>
-<tr><td><b>Schedule</b></td><td>MetricReportDefinition</td><td>object</td><td>Specifies the schedule for generating the metric report.</td></tr>
-<tr><td><b>Schedule</b></td><td>Job</td><td>object</td><td>The Schedule Settings for this Job.</td></tr>
+<tr><td><b>Schedule</b></td><td>Job, <br>MetricReportDefinition</td><td>object</td><td>Specifies the schedule for this job or metric report.</td></tr>
 <tr><td><b>Scheduling</b></td><td>JobService (ServiceCapabilities)</td><td>boolean</td><td>Indicates whether scheduling of Jobs is supported.</td></tr>
 <tr><td><b>Schema</b></td><td>JsonSchemaFile</td><td>string</td><td>The @odata.type name this schema describes.</td></tr>
 <tr><td><b>SearchSettings</b></td><td>AccountService (ActiveDirectory > LDAPService), <br>AccountService (LDAP > LDAPService), <br>ExternalAccountProvider (LDAPService)</td><td>object</td><td>This property contains the settings needed to search an external LDAP service.</td></tr>
@@ -1161,8 +1090,7 @@ The property-level details include:</p>
 <tr><td><b>State</b></td><td>Certificate (Issuer), <br>Certificate (Subject)</td><td>string</td><td>The state, province, or region of the organization of the entity.</td></tr>
 <tr><td><b>StatelessAddressAutoConfig</b></td><td>EthernetInterface</td><td>object</td><td>Stateless Address Automatic Configuration (SLAAC) parameters for this interface.</td></tr>
 <tr><td><b>StaticNameServers</b></td><td>EthernetInterface</td><td>array</td><td>A statically defined set of DNS server IP addresses (both IPv4 and IPv6).</td></tr>
-<tr><td><b>Status</b></td><td><i>various</i><br>(AccelerationFunction, <br>AccountService ... )</td><td>object</td><td>This property describes the status and health of the resource and its children.</td></tr>
-<tr><td><b>Status</b></td><td>Volume</td><td>object</td><td>This type describes the status and health of a resource and its children.</td></tr>
+<tr><td><b>Status</b></td><td><i>various</i><br>(AccelerationFunction, <br>AccountService ... )</td><td>object</td><td>This object describes the state and health of the resource and its children.</td></tr>
 <tr><td><b>StatusIndicator</b></td><td>Drive</td><td>string</td><td>The state of the status indicator, used to communicate status information about this drive.</td></tr>
 <tr><td><b>Step</b></td><td>Processor (ProcessorId)</td><td>string</td><td>The Step value for this processor.</td></tr>
 <tr><td><b>StepOrder</b></td><td>Job</td><td>array</td><td>This represents the serialized execution order of the Job Steps.</td></tr>
@@ -1243,13 +1171,7 @@ The property-level details include:</p>
 <tr><td><b>TrustedModules</b></td><td>ComputerSystem</td><td>array</td><td>This object describes the array of Trusted Modules in the system.</td></tr>
 <tr><td><b>Type</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>string</td><td>The type of the attribute.</td></tr>
 <tr><td><b>Type</b></td><td>AttributeRegistry (RegistryEntries > Dependencies)</td><td>string</td><td>The type of the dependency structure.</td></tr>
-<tr><td><b>UUID</b></td><td>Chassis</td><td>string</td><td>The Universal Unique Identifier (UUID) for this Chassis.</td></tr>
-<tr><td><b>UUID</b></td><td>Manager</td><td>string</td><td>The Universal Unique Identifier (UUID) for this Manager.</td></tr>
-<tr><td><b>UUID</b></td><td>AccelerationFunction</td><td>string</td><td>The universal unique identifier (UUID) for this acceleration function.</td></tr>
-<tr><td><b>UUID</b></td><td>Processor</td><td>string</td><td>The universal unique identifier (UUID) for this processor.</td></tr>
-<tr><td><b>UUID</b></td><td>Processor (FPGA > ReconfigurationSlots)</td><td>string</td><td>The universal unique identifier (UUID) for this reconfiguration slot.</td></tr>
-<tr><td><b>UUID</b></td><td>ComputerSystem</td><td>string</td><td>The universal unique identifier (UUID) for this system.</td></tr>
-<tr><td><b>UUID</b></td><td>ServiceRoot</td><td>string</td><td>Unique identifier for a service instance. When SSDP is used, this value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery.</td></tr>
+<tr><td><b>UUID</b></td><td>AccelerationFunction, <br>Chassis, <br>ComputerSystem, <br>Manager, <br>Processor (FPGA > ReconfigurationSlots), <br>Processor, <br>ServiceRoot</td><td>string</td><td>The Universal Unique Identifier (UUID) for this device.</td></tr>
 <tr><td><b>UefiDevicePath</b></td><td>EthernetInterface</td><td>string</td><td>The UEFI device path for this interface.</td></tr>
 <tr><td><b>UefiDevicePath</b></td><td>AttributeRegistry (RegistryEntries > Attributes)</td><td>string</td><td>The UEFI device path that qualifies this attribute.</td></tr>
 <tr><td><b>UefiDevicePath</b></td><td>BootOption</td><td>string</td><td>The UEFI device path used to access this UEFI Boot Option.</td></tr>
