@@ -158,21 +158,21 @@ This document defines these additional terms:
 This document uses these acronyms:
 
 | Acronym | Definition |
-|:--------|:-----------|
-| BMC | Baseboard management controller |
-| CRUD | Create, Replace, Update and Delete |
-| CSRF | Cross-Site Request Forgery |
-| HTTP | Hypertext Transfer Protocol |
-| HTTPS | Hypertext Transfer Protocol over TLS |
-| IP | Internet Protocol |
-| IPMI | Intelligent Platform Management Interface |
-| JSON | JavaScript Object Notation |
-| KVM-IP | Keyboard, Video, Mouse redirection over IP |
-| NIC | Network Interface Card |
-| PCI | Peripheral Component Interconnect |
-| PCIe | PCI Express |
-| TCP | Transmission Control Protocol |
-| XSS | Cross-Site Scripting |
+| ---     | ---        |
+| BMC     | Baseboard management controller |
+| CRUD    | Create, Replace, Update and Delete |
+| CSRF    | Cross-Site Request Forgery |
+| HTTP    | Hypertext Transfer Protocol |
+| HTTPS   | Hypertext Transfer Protocol over TLS |
+| IP      | Internet Protocol |
+| IPMI    | Intelligent Platform Management Interface |
+| JSON    | JavaScript Object Notation |
+| KVM-IP  | Keyboard, Video, Mouse redirection over IP |
+| NIC     | Network Interface Card |
+| PCI     | Peripheral Component Interconnect |
+| PCIe    | PCI Express |
+| TCP     | Transmission Control Protocol |
+| XSS     | Cross-Site Scripting |
 
 ## Overview
 
