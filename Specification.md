@@ -246,37 +246,33 @@ Redfish exposes many service applications as RESTful interfaces.  This document 
 
 Redfish defines a RESTful interface because it:
 
-* Enables a lightweight implementation, where economy is a necessity.
-    
-    For example, data transmissions smaller than SOAP, or fewer layers to the protocol than WS-Man.
+* Enables a lightweight implementation, using fewer layers than previous standards.
 * Is a prevalent access method in the industry.
-* Is easy to learn and document.
-* Has a number of toolkits and development environments.
-* Supports data model semantics and maps easily to the common CRUD operations.
-* Fits with our design principle of simplicity.
-* Is equally applicable to software application space as it is for embedded environments, which enables convergence and sharing of code of components within the management ecosystem.
-* Is schema-agnostic, so adapts well to any modeling language.
+* Is easy to learn, document, and implement in modern programming languages.
+* Has a number of development environments and a healthy tooling ecosystem.
+* Fits with the design goal of simplicity.
+* Equally applies to software application space as it does to embedded environments, which enables convergence and sharing of code within the management ecosystem.
+* Adapts well to any data modeling language.
 * Has industry-provided security and discovery mechanisms.
 
 #### Follow OData conventions
 
-With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications.  While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there is no interoperability between them.
+With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications.  While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there few common conventions between them.
 
-OData defines a set of common RESTful conventions and annotations that, if adopted, provides for interoperability between APIs.
-
-Adopting OData conventions for describing Redfish Schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulates best practices for RESTful APIs but further enables a growing ecosystem of generic client libraries, applications, and tools to consume Redfish services.
+To provide for interoperability between APIs, [OData](#OData-Protocol) defines a set of common RESTful conventions and annotations.  Redfish adopts OData conventions for describing schema, URL conventions, and definitions for typical properties in a JSON payload.
 
 #### Model-oriented
 
-The Redfish model is built for managing systems.  The OData Schema representation defines all resources and translates them to JSON Schema and OpenAPI representations.  OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types.  Multiple disciplines widely adopt JSON.  When clients adopt these approaches, they can use a large number of tools and programming languages to accelerate development.
+TODO: Need to rewrite to not show that everything stems from OData; OData is just a piece of the puzzle
+~~The Redfish model is built for managing systems.  The OData Schema representation defines all resources and translates them to JSON Schema and OpenAPI representations.  OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types.  Multiple disciplines widely adopt JSON.  When clients adopt these approaches, they can use a large number of tools and programming languages to accelerate development.~~
 
 #### Separation of protocol from data model
 
-Redfish separates the protocol operations from the data model and versions the protocols independently from the data model.  The expectation is that the protocol version changes extremely infrequently, while the data model version can change as needed.  This implies that innovation should happen primarily in the data model, not the protocols.  It enables clients to extend and change the data model as needed without requiring the protocols or API version to change.  Conversely, separating the protocols from the data model enables changes to occur in the protocols without causing significant changes to the data model.
+Redfish separates the protocol operations from the data model and versions the protocol independently from the data model.  This enables clients to extend and change the data model as needed without requiring the protocol version to change.
 
-#### Hypermedia API service endpoint
+#### Hypermedia API service root
 
-Like other hypermedia APIs, Redfish has a single service endpoint URI and clients can access all other resources through root-referenced URIs.  If clients discover a resource through hyperlinks that they access through any root service or any root-service-referenced service or resource, the discovered resource version is the same version as the protocols that the root service supports.
+Redfish has a single service root URI and clients can discover all other resources through referenced URIs.
 
 ### Service elements
 
