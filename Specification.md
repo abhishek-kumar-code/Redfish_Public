@@ -232,15 +232,11 @@ Redfish minimizes the need for clients to complete upgrades by using strict vers
 
 Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients must be prepared to discover the optional elements using the built in discovery methods.
 
-For example, Redfish does not enable a client to read a resource tree and write it to another Redfish service.  Because Redfish is a hypermedia API, this action is not possible.
+The resource tree reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.  References between resources may result in graph instead of a tree.  Clients that traverse the resource tree must provide logic to avoid infinite loops.
 
-The resource topology reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.
+Additionally, not all Redfish resources use simple REST read-and-write semantics.  Different use cases may follow other types of client logic.  For example, clients cannot simply read user credentials or certificates from one service and write them to another service.
 
-Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients that traverse the resource tree must provide logic to avoid infinite loops.
-
-Additionally, not all Redfish resources are simple read-and-write resources.  Implementations can follow other interaction patterns, which this specification discusses later.  For example, clients cannot simply read user credentials or certificates from one service and write them to another service.  Another example is setting instead of writing data to the same resource from which the data was read.
-
-Finally, the value of hyperlinks between resources and other elements can vary across implementations.  Clients should not assume that they can reuse hyperlinks across different Redfish service instances.
+Finally, the hyperlink values between resources and other elements can vary across implementations.  Clients should not assume that they can reuse hyperlinks across different Redfish service instances.
 
 ### Additional design background and rationale
 
