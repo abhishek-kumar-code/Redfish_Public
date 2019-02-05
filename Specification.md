@@ -126,32 +126,32 @@ The terms "normative" and "informative" in this document are to be interpreted a
 
 This document defines these additional terms:
 
-| Term | Definition |
-|:-----|:-----------|
+| Term                                                                                        | Definition |
+| ---                                                                                         | ---        |
 | <a id="baseboard-management-controller"></a>Baseboard&nbsp;management&nbsp;controller (BMC) | Embedded device or service.  Typically an independent microprocessor or system-on-chip with associated firmware in a computer system that completes out-of-band systems monitoring and management-related tasks. |
-| <a id="collection"></a>Collection | See [resource collection](#resource-collection). |
-| <a id="crud"></a>CRUD | Basic **C**reate, **R**ead, **U**pdate, and **D**elete operations that any interface can support. |
-| <a id="event"></a>Event | Data structure that corresponds to one or more alerts. |
-| <a id="hypermedia-api"></a>Hypermedia API | API that you navigate through URIs that a service returns. |
-| <a id="managed-system"></a>Managed system | System that provides information, status, or control via a Redfish-defined interface. |
-| <a id="member"></a>Member | Single [resource](#resource) instance in a [resource collection](#resource-collection). |
-| <a id="message"></a>Message | Complete HTTP- or HTTPS-formatted request or response.  In the REST-based Redfish protocol, every request should result in a response. |
-| <a id="odata"></a>OData | Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol). |
-| <a id="odata-service-document"></a>OData service document | Resource that provides information about the [service root](#service-root) for generic OData clients. |
-| <a id="operation"></a>Operation | The HTTP request methods that map generic [CRUD](#crud) operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE. |
-| <a id="property"></a>Property | Name-and-value pair in a Redfish-defined request or response.  A property can be any valid JSON data type. |
-| <a id="redfish-client"></a>Redfish client | Communicates with a [Redfish service](#redfish-service) and accesses one or more of the service's resources or functions. |
-| <a id="redfish-event-receiver"></a>Redfish event receiver | Software that runs at the event destination that receives events from a [Redfish service](#redfish-service). |
-| <a id="redfish-protocol"></a>Redfish protocol | Discovers, connects to, and inter-communicates with a [Redfish service](#redfish-service). |
-| <a id="redfish-schema"></a>Redfish Schema | Defines Redfish resources according to OData schema representation.  You can directly translate a Redfish Schema to a JSON Schema representation. |
-| <a id="redfish-service"><a/>Redfish service | Implementation of the protocols, resources, and functions that deliver the interface that this specification defines and its associated behaviors for one or more [managed systems](#managed-system).  Also known as the *service*. |
-| <a id="request"></a>Request | Message from a client to a service. |
-| <a id="resource"></a>Resource | Addressable by a URI and represents a Redfish data structure. |
-| <a id="resource-collection"></a>Resource collection | Resource that contains a set of like resources where the number of instances can shrink or grow. |
-| <a id="resource-tree"></a>Resource tree | Tree structure of resources accessible through a well-known starting URI.  A client may discover the resources available on a Redfish service by following the resource hyperlinks from the base of the tree. |
-| <a id="response"></a>Response | Message from a service to a client in response to a request message. |
-| <a id="service-root"></a>Service root | Resource that serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish service. |
-| <a id="subscription"></a>Subscription | Registration of a destination to receive events. |
+| <a id="collection"></a>Collection                                                           | See [resource collection](#resource-collection). |
+| <a id="crud"></a>CRUD                                                                       | Basic **C**reate, **R**ead, **U**pdate, and **D**elete operations that any interface can support. |
+| <a id="event"></a>Event                                                                     | Data structure that corresponds to one or more alerts. |
+| <a id="hypermedia-api"></a>Hypermedia API                                                   | API that you navigate through URIs that a service returns. |
+| <a id="managed-system"></a>Managed system                                                   | System that provides information, status, or control via a Redfish-defined interface. |
+| <a id="member"></a>Member                                                                   | Single [resource](#resource) instance in a [resource collection](#resource-collection). |
+| <a id="message"></a>Message                                                                 | Complete HTTP- or HTTPS-formatted request or response.  In the REST-based Redfish protocol, every request should result in a response. |
+| <a id="odata"></a>OData                                                                     | Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol). |
+| <a id="odata-service-document"></a>OData service document                                   | Resource that provides information about the [service root](#service-root) for generic OData clients. |
+| <a id="operation"></a>Operation                                                             | The HTTP request methods that map generic [CRUD](#crud) operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE. |
+| <a id="property"></a>Property                                                               | Name-and-value pair in a Redfish-defined request or response.  A property can be any valid JSON data type. |
+| <a id="redfish-client"></a>Redfish client                                                   | Communicates with a [Redfish service](#redfish-service) and accesses one or more of the service's resources or functions. |
+| <a id="redfish-event-receiver"></a>Redfish event receiver                                   | Software that runs at the event destination that receives events from a [Redfish service](#redfish-service). |
+| <a id="redfish-protocol"></a>Redfish protocol                                               | Discovers, connects to, and inter-communicates with a [Redfish service](#redfish-service). |
+| <a id="redfish-schema"></a>Redfish Schema                                                   | Defines Redfish resources according to OData schema representation.  You can directly translate a Redfish Schema to a JSON Schema representation. |
+| <a id="redfish-service"><a/>Redfish service                                                 | Implementation of the protocols, resources, and functions that deliver the interface that this specification defines and its associated behaviors for one or more [managed systems](#managed-system).  Also known as the *service*. |
+| <a id="request"></a>Request                                                                 | Message from a client to a service. |
+| <a id="resource"></a>Resource                                                               | Addressable by a URI and represents a Redfish data structure. |
+| <a id="resource-collection"></a>Resource collection                                         | Resource that contains a set of like resources where the number of instances can shrink or grow. |
+| <a id="resource-tree"></a>Resource tree                                                     | Tree structure of resources accessible through a well-known starting URI.  A client may discover the resources available on a Redfish service by following the resource hyperlinks from the base of the tree. |
+| <a id="response"></a>Response                                                               | Message from a service to a client in response to a request message. |
+| <a id="service-root"></a>Service root                                                       | Resource that serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish service. |
+| <a id="subscription"></a>Subscription                                                       | Registration of a destination to receive events. |
 
 ## Acronyms
 
