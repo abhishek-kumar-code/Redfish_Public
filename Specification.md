@@ -306,10 +306,7 @@ For more information, see the [Discovery](#discovery) clause.
 
 #### Remote access support
 
-TODO: Jeff will make less bad
-~~This architecture supports a wide variety of remote access and redirection services.  Critical to out-of-band environments support Serial Console access, Keyboard Video and Mouse redirection (KVM-IP), Command Shell, such as Command Line interface, and remote Virtual Media.~~
-
-~~This standard encompasses and the Redfish Schema expresses support for Serial Console, Command Shell, KVM-IP and Virtual Media.  This standard does not define the protocols or access mechanisms for those devices and services.  The Redfish Schema provides for the representation and configuration of those services, establishment of connections to enable those services, and the operational status of those services.  However, the definitions of the protocols are outside the scope of this specification.~~
+Remote management functionality typically include access mechanisms for redirecting operator interfaces such as Serial Console, Keyboard Video and Mouse (KVM-IP), Command Shell (i.e., Command Line Interface), and Removable (Virtual) Media.  While these mechanisms are critical functionality, they cannot be reasonably implemented as a RESTful interface.  Therefore, this standard does not define the protocols or access mechanisms for those services, but encourages implementations that leverage existing standards.  However, the Redfish schema includes resources and properties allowing client discovery of these capabilities and describing access mechanisms to enable interoperability.
 
 ### Security
 
