@@ -134,7 +134,7 @@
       <Annotation Term="Redfish.Release" String="2019.1"/>
 
       <EntityType Name="Session" BaseType="Session.v1_1_1.Session">
-        <Property Name="SessionType" Type="Session.v1_1_2.SessionTypes">
+        <Property Name="SessionType" Type="Session.v1_2_0.SessionTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The active session type."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the type of session that is currently active."/>
