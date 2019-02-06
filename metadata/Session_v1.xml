@@ -141,31 +141,31 @@
 					<Annotation Term="OData.Description" String="The active session type defined by the OEM."/>
 					<Annotation Term="OData.LongDescription" String="When SessionType is reported as Oem, this property should be used to report the OEM-specific session type. Thus, this property shall represent the type of OEM session that is currently active."/>
 				</Property>
-
-				<EnumType Name="SessionTypes">
-					<Member Name="HostSerialConsole">
-						<Annotation Term="Odata.Description" String="The Host's serial console."/>
-					</Member>
-					<Member Name="IPMI">
-						<Annotation Term="Odata.Description" String="Intelligent Platform Management Interface"/>
-					</Member>
-					<Member Name="KVM">
-						<Annotation Term="Odata.Description" String="Keyboard-Video-Mouse over IP Session"/>
-					</Member>
-					<Member Name="Oem">
-						<Annotation Term="Odata.Description" String="OEM Type. Please look at OemSessionType for OEM session type(s)."/>
-					</Member>
-					<Member Name="Redfish">
-						<Annotation Term="Odata.Description" String="A Redfish Session"/>
-					</Member>
-					<Member Name="vMedia">
-						<Annotation Term="Odata.Description" String="Virtual Media"/>
-					</Member>
-					<Member Name="WebUI">
-						<Annotation Term="Odata.Description" String="A non-Redfish Web User Interface session such as a graphical interface or other kinds of web-based protocols."/>
-					</Member>
-				</EnumType>
 			</EntityType> 
+
+			<EnumType Name="SessionTypes">
+				<Member Name="HostSerialConsole">
+					<Annotation Term="Odata.Description" String="The Host's serial console."/>
+				</Member>
+				<Member Name="IPMI">
+					<Annotation Term="Odata.Description" String="Intelligent Platform Management Interface"/>
+				</Member>
+				<Member Name="KVM">
+					<Annotation Term="Odata.Description" String="Keyboard-Video-Mouse over IP Session"/>
+				</Member>
+				<Member Name="Oem">
+					<Annotation Term="Odata.Description" String="OEM Type. Please look at OemSessionType for OEM session type(s)."/>
+				</Member>
+				<Member Name="Redfish">
+					<Annotation Term="Odata.Description" String="A Redfish Session"/>
+				</Member>
+				<Member Name="vMedia">
+					<Annotation Term="Odata.Description" String="Virtual Media"/>
+				</Member>
+				<Member Name="WebUI">
+					<Annotation Term="Odata.Description" String="A non-Redfish Web User Interface session such as a graphical interface or other kinds of web-based protocols."/>
+				</Member>
+			</EnumType>
     </Schema>
 
   </edmx:DataServices>
