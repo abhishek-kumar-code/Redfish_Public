@@ -1,10 +1,11 @@
 {
-    "@odata.type": "#Triggers.v1_0_0.Triggers",
+    "@odata.type": "#Triggers.v1_1_0.Triggers",
     "Id": "PlatformPowerCapTriggers",
     "Name": "Triggers for platform power consumed",
     "MetricType": "Numeric",
     "TriggerActions": [
-        "RedfishEvent"
+        "RedfishEvent",
+        "RedfishMetricReport"
     ],
     "NumericThresholds": {
         "UpperCritical": {
@@ -20,6 +21,17 @@
     },
     "MetricProperties": [
         "/redfish/v1/Chassis/1/Power#/PowerControl/0/PowerConsumedWatts"
+    ],
+    "MetricReportDefinitions": [
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetricStats"
+        },
+        {
+            "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage"
+        }
     ],
     "@odata.context": "/redfish/v1/$metadata#Triggers.Triggers",
     "@odata.id": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers",
