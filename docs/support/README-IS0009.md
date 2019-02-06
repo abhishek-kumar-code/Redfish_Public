@@ -16,8 +16,8 @@ IMPORTANT: These documents are not final.  They do not necessarily reflect the v
 The following files are part of the Redfish Gen-Z Management development effort:
 
 * Mockup folder containing...
-    * Chassis Collection: Shows fabric attached memory and the media controllers needed to operate them
-    * Fabrics Collection: Shows GenZ Switches, Ports, Endpoints and Zones.
-    * Systems Collection - Shows systems and their controllers to connect to the fabric."
-* RedfishGenZManagement.pdf - Presentation describing the Redfish Gen-Z Management data model
+    * Chassis: Shows fabric attached memory and the media controllers needed to operate them
+    * Fabrics: Shows Gen-Z Switches, Ports, Endpoints and Zones.
+    * Systems: Shows systems and their controllers to connect to the fabric.
+* RedfishGen-ZManagement.pdf - Presentation describing the Redfish Gen-Z Management data model
 
