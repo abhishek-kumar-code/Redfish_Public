@@ -162,7 +162,7 @@
         <Member Name="Redfish">
           <Annotation Term="OData.Description" String="A Redfish Session."/>
         </Member>
-        <Member Name="vMedia">
+        <Member Name="VirtualMedia">
           <Annotation Term="OData.Description" String="Virtual Media."/>
         </Member>
         <Member Name="WebUI">
