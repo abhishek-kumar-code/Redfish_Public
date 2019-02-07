@@ -109,6 +109,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
 * <a id="HTML5-Spec-SSE">HTML5 Specification: Server-Sent Events</a> [https://html.spec.whatwg.org/multipage/server-sent-events.html](https://html.spec.whatwg.org/multipage/server-sent-events.html "https://html.spec.whatwg.org/multipage/server-sent-events.html")
 * <a id="OpenAPI-Spec">OpenAPI Specification</a> [https://github.com/OAI/OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification "https://github.com/OAI/OpenAPI-Specification")
+* <a id="RESTful-Architecture">Architectural Styles and the Design of Network-based Software Architectures, Chapter 5</a>. R. Fielding, 2000. [https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
 
 ## Terms and definitions
@@ -301,19 +302,21 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 ## Protocol details
 
-The REST-based Redfish Scalable Platform Management API follows these standards and conventions:
+Redfish follows these standards and conventions:
 
-| Standard or convention | Based on |
-|:--|:--|
-| OData conventions for interoperability | [OData-Protocol](#OData-Protocol) |
-| JSON payloads | [OData-JSON](#OData-JSON) |
-| A machine-readable representation of schema | [OData Schema](#OData-CSDL)<br/>Includes annotations for direct translation to JSON schema and OpenAPI representations for:<ul><li>Validation</li><li>Consumption by tools that support JSON schema and OpenAPI</li></ul> | 
+* [JSON payloads](#RFC4627)
+* HTTP/HTTPS as the application protocol that transports the messages
+* TCP/IP as the transport protocol
+* A machine-readable representation of schema
+    * [OData Schema](#OData-CSDL)
+    * [JSON Schema](#JSONSchema-Core)
+    * [OpenAPI Schema](OpenAPI-Spec)
+* [OData conventions](#OData-Protocol)
+* [RESTful conventions](#RESTful-Architecture)
 
-The Redfish API's use of these common standards and conventions increases interoperability and enables the leverage of existing tool chains.
+Redfish's use of these common standards and conventions increases interoperability and enables the leverage of existing tool chains.
 
-This specification defines the Redfish protocol as one that maps to a data model.  More accurately, HTTP is the application protocol that transports the messages, and TCP/IP is the transport protocol.  The RESTful interface is a mapping to the message protocol.  For simplicity though, this specification describes the Redfish protocol as the RESTful mapping to HTTP, TCP/IP, and other protocols, and transport and messaging layers.
-
-The Redfish protocol uses a web service-based interface model, and provides network and interaction efficiency for both user interface (UI) and automation usage.  The interface specifically uses REST pattern semantics.
+The Redfish protocol uses a web service-based interface model, and provides network and interaction efficiency for both user interface (UI) and automation usage.
 
 The Redfish protocol uses:
 
@@ -322,50 +325,43 @@ The Redfish protocol uses:
 * [Media types](#media-types) to negotiate the type of data sent in the message body.
 * [HTTP status codes](#status-codes) to indicate the success or failure of the server's request.
 * [Extended error handling](#error-responses) to return more information than HTTP error codes.
+* TLS for sending secure messages.  See [Security](#security).
+* [Asynchronous semantics](#synchronous-and-asynchronous-operation-support) for long operations.
 
-The ability to send secure messages is important.  For the specific TLS requirements, see [Security](#security).
+### Hypertext Transfer Protocol
 
-Some operations may take longer than required for synchronous return semantics.  Consequently, the architecture includes deterministic [asynchronous semantics](#synchronous-and-asynchronous-operation-support).
+HTTP and HTTPS are ideally suited to a RESTful interface.
 
-### HTTP
+This clause describes how the Redfish interface uses and adds constraints to HTTP to ensure interoperability of Redfish implementations.
 
-HTTP is ideally suited to a RESTful interface.
+A Redfish interface shall be exposed through a web service endpoint implemented using HTTP, version 1.1 ([RFC7230](#RFC7230), [RFC7231](#RFC7231), [RFC7232](#RFC7232)).
 
-This clause describes how the Redfish interface uses and adds constraints to HTTP to assure interoperability of Redfish-compliant implementations.
+#### Universal Resource Identifiers
 
-* A Redfish interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC7230](#RFC7230), [RFC7231](#RFC7231), [RFC7232](#RFC7232)).
-
-#### URIs
-
-A URI identifies a resource, including the base service and all Redfish resources.
+A URI identifies a resource, including the service root and all Redfish resources.
 
 * A URI shall identify each unique instance of a resource.
-
 * URIs shall not include any [RFC1738](#RFC1738)-defined unsafe characters.
-
-    For example, the **`{`**, **`}`**, **` `**, **`|`**, **`^`**, **`~`**, **`[`**, **`]`**, <strong><code>&#96;</code></strong>, and **`\`** characters are unsafe because gateways and other transport agents can sometimes modify these characters.
-
-    Do not use the **`#`** character for anything other than the start of a fragment.
-    
+    * For example, the **`{`**, **`}`**, **` `**, **`|`**, **`^`**, **`~`**, **`[`**, **`]`**, <strong><code>&#96;</code></strong>, and **`\`** characters are unsafe because gateways and other transport agents can sometimes modify these characters.
+    * Do not use the **`#`** character for anything other than the start of a fragment.
 * URIs shall not include any percent-encoding of characters.  This restriction does not apply to the [query parameter](#query-parameters) portion of the URI.
-    
-    * To begin operations, a client must know the URI for a resource.
 
-    * To get the resource representation with properties and hyperlinks to associated resources, call the GET operation.  
-    
-    * The base resource URI is well known and based on the protocol version.
+MIKE to reconcile the following two blocks
+Performing a GET operation yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-    * To discover the URIs to additional resources, observe the associated resource hyperlinks from previous responses.
-
-    * To consume a hypermedia API, navigate the URIs that the service returns.
+To begin operations, a client must know the URI for a resource.
+* To get the resource representation with properties and hyperlinks to associated resources, call the GET operation.  
+* The base resource URI is well known and based on the protocol version.
+* To discover the URIs to additional resources, observe the associated resource hyperlinks from previous responses.
+* To consume a hypermedia API, navigate the URIs that the service returns.
 
 Redfish considers the [RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-defined scheme, authority, root service and version, and unique resource path component parts of the URI.
 
 For example, the `https://mgmt.vendor.com/redfish/v1/Systems/1` URI contains these component parts:
 
 | Component part | In the example |
-|:---------------|:---------------|
-| The scheme. | `https:` |
+| ---            | ---            |
+| The scheme.    | `https:` |
 | The authority, which defines the authority to which to delegate the URI. | `//mgmt.vendor.com` |
 | The root service and version. | `/redfish/v1/` |
 | The resource path, which provides a unique identifier for the resource. | `Systems/1` | 
