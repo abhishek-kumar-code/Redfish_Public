@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#EthernetInterface.v1_0_2.EthernetInterface",
+    "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
     "Id": "2",
     "Name": "Ethernet Interface",
     "Description": "System NIC 2",
@@ -7,6 +7,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "LinkStatus": "LinkUp",
     "PermanentMACAddress": "12:44:6A:3B:88:90",
     "MACAddress": "AA:BB:CC:DD:EE:00",
     "SpeedMbps": 1000,
@@ -39,5 +40,5 @@
     },
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B8890",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

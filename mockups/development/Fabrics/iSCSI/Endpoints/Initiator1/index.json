@@ -1,0 +1,38 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/iSCSI/Endpoints/Initiator1",
+    "@odata.type": "#Endpoint.v1_1_0.Endpoint",
+    "Id": "Initiator1",
+    "Name": "iSCSI initiator 1",
+    "Description": "iSCSI initiator implemented by the computer system",
+    "EndpointProtocol": "iSCSI",
+    "Identifiers": [
+        {
+            "DurableName": "host.corp.com:iscsi-subsys-sn-4635",
+            "DurableNameFormat": "iQN"
+        },
+        {
+            "DurableName": "18D5E212-165B-4CA0-909B-C86B9CEE0111",
+            "DurableNameFormat": "UUID"
+        }
+    ],
+    "ConnectedEntities": [
+        {
+            "EntityType": "NetworkController",
+            "EntityRole": "Initiator",
+            "EntityLink": {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100"
+            }
+        }
+    ],
+    "IPTransportDetails": [
+        {
+            "TransportProtocol": "iSCSI",
+            "IPv4Address": {
+                "Address": "10.3.5.131"
+            },
+            "Port": 13244
+        }
+    ]
+}

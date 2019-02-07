@@ -1,0 +1,28 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#PCIeFunction.PCIeFunction",
+    "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/PCIeFunctions/2",
+    "@odata.type": "#PCIeFunction.v1_0_0.PCIeFunction",
+    "Id": "2",
+    "Name": "NIC Port 2",
+    "Description": "NIC Port 2",
+    "FunctionId": 2,
+    "FunctionType": "Physical",
+    "DeviceClass": "NetworkController",
+    "DeviceId": "0xABCD",
+    "VendorId": "0xABCD",
+    "ClassCode": "0x010802",
+    "RevisionId": "0x00",
+    "SubsystemId": "0xABCD",
+    "SubsystemVendorId": "0xABCD",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "Links": {
+        "PCIeDevice": {
+            "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC"
+        }
+    },
+    "Oem": {}
+}

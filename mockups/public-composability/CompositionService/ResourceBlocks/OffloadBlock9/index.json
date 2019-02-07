@@ -1,18 +1,20 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
-    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9",
+    "@odata.type": "#ResourceBlock.v1_3_0.ResourceBlock",
     "Id": "OffloadBlock9",
     "Name": "Offload Block 0",
-    "ResourceBlockType": [ "Processor" ],
+    "ResourceBlockType": [
+        "Processor"
+    ],
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
     "CompositionStatus": {
         "Reserved": false,
-        "CompositionState": "Unused"
+        "CompositionState": "Unused",
+        "SharingCapable": false,
+        "MaxCompositions": 1,
+        "NumberOfCompositions": 0
     },
     "Processors": [
         {
@@ -36,5 +38,8 @@
             }
         ]
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

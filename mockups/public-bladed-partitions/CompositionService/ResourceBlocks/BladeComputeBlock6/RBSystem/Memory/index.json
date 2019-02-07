@@ -11,5 +11,6 @@
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#MemoryCollection.MemoryCollection",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem/Memory"
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem/Memory",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

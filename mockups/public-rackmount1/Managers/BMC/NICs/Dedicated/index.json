@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#EthernetInterface.v1_0_2.EthernetInterface",
+    "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
     "Id": "Dedicated",
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
@@ -7,6 +7,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "LinkStatus": "LinkUp",
     "InterfaceEnabled": true,
     "PermanentMACAddress": "23:11:8A:33:CF:EA",
     "MACAddress": "23:11:8A:33:CF:EA",
@@ -75,5 +76,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Managers/BMC/NICs/Dedicated",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

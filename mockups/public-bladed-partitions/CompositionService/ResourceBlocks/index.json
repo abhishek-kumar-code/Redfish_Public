@@ -1,10 +1,9 @@
 {
-   "@odata.context": "/redfish/v1/$metadata#ResourceBlockCollection.ResourceBlockCollection",
     "@odata.type": "#ResourceBlockCollection.ResourceBlockCollection",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks",
     "Name": "MultiBlade Partitioning Resource Block Collection",
     "Members@odata.count": 8,
-    "Members": [{
+    "Members": [
+        {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1"
         },
         {
@@ -28,5 +27,8 @@
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeStorageBlock8"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlockCollection.ResourceBlockCollection",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

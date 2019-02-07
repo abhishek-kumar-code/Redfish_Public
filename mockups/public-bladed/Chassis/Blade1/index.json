@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "@odata.type": "#Chassis.v1_5_0.Chassis",
     "Id": "Blade1",
     "Name": "Blade",
     "ChassisType": "Blade",
@@ -13,6 +13,15 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK"
+    },
+    "Location": {
+        "PartLocation": {
+            "ServiceLabel": "Blade 1",
+            "LocationType": "Slot",
+            "LocationOrdinalValue": 0,
+            "Reference": "Front",
+            "Orientation": "LeftToRight"
+        }
     },
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/Blade1/Thermal"
@@ -56,5 +65,5 @@
     },
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/Blade1",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

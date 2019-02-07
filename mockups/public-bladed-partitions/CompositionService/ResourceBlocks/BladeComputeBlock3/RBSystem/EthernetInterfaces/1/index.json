@@ -14,17 +14,20 @@
     "NameServers": [
         "names.redfishspecification.org"
     ],
-    "IPv4Addresses": [{
-        "Address": null,
-        "SubnetMask": null,
-        "AddressOrigin": "DHCP",
-        "Gateway": null
-    }],
+    "IPv4Addresses": [
+        {
+            "Address": null,
+            "SubnetMask": null,
+            "AddressOrigin": "DHCP",
+            "Gateway": null
+        }
+    ],
     "Links": {
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Blade3"
         }
     },
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/EthernetInterfaces/1"
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/EthernetInterfaces/1",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,17 +1,17 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
-    "@odata.id": "/redfish/v1/Systems",
     "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
     "Name": "Computer System Collection",
-    "Members@odata.count": 1,
+    "Members@odata.count": 2,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Systems/ComposedSystem"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/ComposedSystem2"
         }
     ],
     "@Redfish.CollectionCapabilities": {
-        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "@odata.type": "#CollectionCapabilities.v1_1_0.CollectionCapabilities",
         "Capabilities": [
             {
                 "CapabilitiesObject": {
@@ -33,5 +33,8 @@
                 }
             }
         ]
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
+    "@odata.id": "/redfish/v1/Systems",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

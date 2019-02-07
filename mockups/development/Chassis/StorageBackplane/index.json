@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reservd.",
+    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 DMTF. All rights reservd.",
     "@odata.id":"/redfish/v1/Chassis/StorageBackplane",
     "@odata.context":"/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.type":"#Chassis.v1_2_0.Chassis",
@@ -21,8 +21,8 @@
             "@odata.id": "/redfish/v1/Chassis/Rack2WithDAS"
         },
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/3/Storage/RAIDIntegrated"},
-            {"@odata.id":"/redfish/v1/Systems/3/Storage/SATAEmbedded"}
+            {"@odata.id":"/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated"},
+            {"@odata.id":"/redfish/v1/Systems/storage-example/Storage/SATAEmbedded"}
         ],
         "Drives": [
             {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"},

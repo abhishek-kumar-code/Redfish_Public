@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Thermal.v1_1_0.Thermal",
+    "@odata.type": "#Thermal.v1_3_0.Thermal",
     "Id": "Thermal",
     "Name": "Thermal",
     "Temperatures": [
@@ -16,8 +16,8 @@
             "UpperThresholdNonCritical": 35,
             "UpperThresholdCritical": 40,
             "UpperThresholdFatal": 50,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake"
         },
         {
@@ -33,8 +33,8 @@
             "UpperThresholdNonCritical": 30,
             "UpperThresholdCritical": 40,
             "UpperThresholdFatal": 50,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "SystemBoard"
         },
         {
@@ -49,8 +49,8 @@
             "ReadingCelsius": 45,
             "UpperThresholdNonCritical": 60,
             "UpperThresholdCritical": 82,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU"
         },
         {
@@ -65,8 +65,8 @@
             "ReadingCelsius": 46,
             "UpperThresholdNonCritical": 60,
             "UpperThresholdCritical": 82,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU"
         }
     ],
@@ -146,5 +146,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/1/Thermal",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

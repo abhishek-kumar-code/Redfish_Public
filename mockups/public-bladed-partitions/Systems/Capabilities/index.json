@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/Capabilities",
     "Id": "MultiBladeEncCapabilities",
     "Name": "MultiBlade Enclosure Zone Capabilities",
     "Description": "This reports the capabilities that should be included by clients while requesting to create a *Composed* resource",
@@ -12,5 +9,8 @@
     "Links": {
         "ResourceBlocks@Redfish.RequiredOnCreate": true,
         "ResourceBlocks@Redfish.UpdatableAfterCreate": true
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/Capabilities",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

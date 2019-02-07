@@ -1,12 +1,13 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
-    "title": "#SimpleStorage.SimpleStorage",
+    "$id": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.json",
     "$ref": "#/definitions/SimpleStorage",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "SimpleStorage": {
             "anyOf": [
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_0_0.json#/definitions/SimpleStorage"
@@ -21,6 +22,9 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_0_4.json#/definitions/SimpleStorage"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_0_5.json#/definitions/SimpleStorage"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_1_0.json#/definitions/SimpleStorage"
                 },
                 {
@@ -30,10 +34,29 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_1_2.json#/definitions/SimpleStorage"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_1_3.json#/definitions/SimpleStorage"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_0.json#/definitions/SimpleStorage"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_1.json#/definitions/SimpleStorage"
                 }
+            ],
+            "deletable": false,
+            "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices.",
+            "insertable": false,
+            "longDescription": "This resource shall be used to represent a storage controller and its directly-attached devices.",
+            "updatable": false,
+            "uris": [
+                "/redfish/v1/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}",
+                "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/SimpleStorage/{SimpleStorageId}",
+                "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}",
+                "/redfish/v1/ResourceBlocks/{ResourceBlockId}/SimpleStorage/{SimpleStorageId}",
+                "/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/SimpleStorage/{SimpleStorageId}"
             ]
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "owningEntity": "DMTF",
+    "title": "#SimpleStorage.SimpleStorage"
 }

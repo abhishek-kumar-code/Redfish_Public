@@ -1,7 +1,7 @@
 {
     "@odata.type": "#Memory.v1_2_0.Memory",
-    "Name": "PartitionedServer Memory",
     "Id": "5",
+    "Name": "PartitionedServer Memory",
     "MemoryDeviceType": "DDR4",
     "MemoryType": "DRAM",
     "PartNumber": "M393A4K40BB0-CPB",
@@ -21,5 +21,6 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Memory/1"
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Memory/1",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
