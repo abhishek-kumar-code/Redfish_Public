@@ -296,7 +296,7 @@ For information, see the [Eventing](#eventing) clause.
 
 #### Actions
 
-Actions are Redfish operations that do map to CRUD.  The Redfish Schema defines certain standard actions for common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.
+Actions are Redfish operations that do not easily map to RESTful interface semantics.  These types of operations may not directly affect properties in the Redfish resources.  The Redfish Schema defines certain standard actions for common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.
 
 #### Service discovery
 
@@ -306,7 +306,7 @@ For more information, see the [Discovery](#discovery) clause.
 
 #### Remote access support
 
-Remote management functionality typically include access mechanisms for redirecting operator interfaces such as Serial Console, Keyboard Video and Mouse (KVM-IP), Command Shell (i.e., Command Line Interface), and Removable (Virtual) Media.  While these mechanisms are critical functionality, they cannot be reasonably implemented as a RESTful interface.  Therefore, this standard does not define the protocols or access mechanisms for those services, but encourages implementations that leverage existing standards.  However, the Redfish schema includes resources and properties allowing client discovery of these capabilities and describing access mechanisms to enable interoperability.
+Remote management functionality typically includes access mechanisms for redirecting operator interfaces such as serial console, keyboard video and mouse (KVM-IP), command shell (i.e., command line interface), and virtual media.  While these mechanisms are critical functionality, they cannot be reasonably implemented as a RESTful interface.  Therefore, this standard does not define the protocols or access mechanisms for those services, but encourages implementations that leverage existing standards.  However, the Redfish schema includes resources and properties allowing client discovery of these capabilities and describing access mechanisms to enable interoperability.
 
 ### Security
 
