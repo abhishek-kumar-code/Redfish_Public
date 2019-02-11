@@ -109,6 +109,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
 * <a id="HTML5-Spec-SSE">HTML5 Specification: Server-Sent Events</a> [https://html.spec.whatwg.org/multipage/server-sent-events.html](https://html.spec.whatwg.org/multipage/server-sent-events.html "https://html.spec.whatwg.org/multipage/server-sent-events.html")
 * <a id="OpenAPI-Spec">OpenAPI Specification</a> [https://github.com/OAI/OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification "https://github.com/OAI/OpenAPI-Specification")
+* <a id="ISO-639-1">ISO 639-1:2002 Code for the representation of names of languages</a> [https://www.iso.org/standard/22109.html](https://www.iso.org/standard/22109.html  "https://www.iso.org/standard/22109.html")
 
 
 ## Terms and definitions
@@ -273,7 +274,11 @@ The use of [HTTP status codes](#status-codes) enable a client to determine wheth
 
 In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.
 
-Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.  All subscriptions are persistent configuration settings.
+Two styles of eventing are currently defined by this specification - push style eventing, and [Server-Sent Events (SSE)](#sse-eventservice). 
+
+In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.  All subscriptions are persistent configuration settings.
+
+In SSE style eventing, the client opens an SSE connection to the service by performing a GET on the URI specified by the "ServerSentEventUri" in the Event Service. 
 
 The clause on [Eventing](#eventing) in this specification discusses the details of the eventing mechanism.
 
@@ -323,7 +328,7 @@ The Redfish protocol uses:
 * [HTTP status codes](#status-codes) to indicate the success or failure of the server's request.
 * [Extended error handling](#error-responses) to return more information than HTTP error codes.
 
-The ability to send secure messages is important.  For the specific TLS requirements, see [Security](#security).
+The ability to send secure messages is important; the [Security](#security-details) clause of this document describes specific TLS requirements.
 
 Some operations may take longer than required for synchronous return semantics.  Consequently, the architecture includes deterministic [asynchronous semantics](#synchronous-and-asynchronous-operation-support).
 
@@ -416,7 +421,7 @@ HTTP redirect enables a service to redirect a request to another URL.  Among oth
 
 * All Redfish clients shall correctly handle HTTP redirect.
 
-> **Note:** For the security implications of HTTP redirect, see [Security](#security).
+NOTE: Refer to the [Security](#security-details) clause for security implications of HTTP Redirect
 
 #### Media types
 
@@ -1160,41 +1165,43 @@ Redfish defines these response types:
  
 #### Response headers
 
-HTTP defines the following headers that services can use in response messages:
+HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for Redfish Services.
 
-| Header&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Required | Supported values | Description |
-|:--------|:---|:-----------------|:------------|
-| `Access-Control-Allow-Origin` | Yes | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain.  Prevents CSRF attacks. |
-| `Allow` | Yes | POST, PUT, PATCH, DELETE, GET, and HEAD | Indicates the valid methods for a GET or HEAD request URI through the HTTP [405 Method Not Allowed](#status-405) status code.  |
-| `Cache-Control` | Yes | [RFC7234](#RFC7234) | Indicates whether a response can or cannot be cached. |
-| `Content-Encoding` | No | [RFC7231](#RFC7231) | Indicates the encoding that has been performed on the media type. |
-| `Content-Length` | No | [RFC7231](#RFC7231) | Defines the size of the message body.  If a service does not support the `Transfer-Encoding` header but supports the `Content-Length` header, the service responds with the [411](#status-411) status code.<blockquote><strong>Note:</strong> Clients define the size of the message body through the `Transfer-Encoding: chunked` request header.</blockquote> |
-| `Content-Type` | Yes | [RFC7231](#RFC7231) | Defines the request format.  To return JSON resources, services specify a `Content-Type` header value of `application/json`.<br/>If the chosen media-type in the `Accept` header specifies `Content-Type`, services append `;charset=utf-8` to the `Content-Type` header value. |
-| `ETag` | Conditional | [RFC7232](#RFC7232) | Defines an ID for a resource version, which is often a message digest.  The service includes ETags in GET `ManagerAccount` object responses. |
-| <a id="link-header-table"></a>`Link` | Yes | [Link header](#link-header) | Provides metadata information on the accessed resource in the HEAD or GET operation response. |
-| `Location` | Conditional | [RFC7231](#RFC7231) | Defines a URI to request the resource representation.  When a client creates a resource, the service returns this header.  The service includes the `Location` and `X-Auth-Token` headers in create user session responses. |
-| `Max-Forwards` | No | [RFC7231](#RFC7231) | Limits gateway and proxy hops.  Prevents messages from remaining in the network indefinitely. |
-| `OData-Version` | Yes | 4.0 | Defines the OData version of the payload to which the response conforms. |
-| `Retry-After` | No | [RFC7231](#RFC7231), Section 7.1.3 | Informs a client how long to wait before requesting the task information again. |
-| `Server` | Yes | [RFC7231](#RFC7231) | Defines the product token and its version.  This header can list multiple product tokens. |
-| `Via` | No | [RFC7230](#RFC7230) | Defines the network hierarchy and recognizes message loops.  Each pass inserts its own VIA. |
-| `WWW-Authenticate` | Yes | [RFC7235](#RFC7235), Section 4.1 | Indicates the authentication schemes and parameters that apply to the target resource.  Required for Basic and other optional authentication mechanisms.  See [Security](#security). |
-| `X-Auth-Token` | Yes | Opaque encoded octet strings | Authenticates of user sessions.  The token value shall be indistinguishable from random. |
+* Redfish Services shall be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
+* Redfish Services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".
+* Redfish clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.
 
-In the previous table:
+| Header                             | Required    | Supported Values                    | Description |
+| --------                           | ---         | -----------------                   | ----------- |
+| OData-Version                      | Yes         | 4.0                                 | Describes the OData version of the payload that the response conforms to. |
+| Content-Type                       | Yes         | [RFC 7231](#RFC7231)                | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
+| Content-Encoding                   | No          | [RFC 7231](#RFC7231)                | Describes the encoding that has been performed on the media type. |
+| Content-Length                     | No          | [RFC 7231](#RFC7231)                | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
+| ETag                               | Conditional | [RFC 7232](#RFC7232)                | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects. |
+| Server                             | Yes         | [RFC 7231](#RFC7231)                | Required to describe a product token and its version. Multiple product tokens may be listed. |
+| <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)     | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
+| Location                           | Conditional | [RFC 7231](#RFC7231)                | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses that create user sessions. |
+| Cache-Control                      | Yes         | [RFC 7234](#RFC7234)                | This header shall be supported and is meant to indicate whether a response can be cached or not. |
+| Via                                | No          | [RFC 7230](#RFC7230)                | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA. |
+| Max-Forwards                       | No          | [RFC 7231](#RFC7231)                | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely. |
+| Access-Control-Allow-Origin        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks. |
+| Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
+| WWW-Authenticate                   | Yes         | [RFC 7235](#RFC7235), Section 4.1   | Required for Basic and other optional authentication mechanisms. See the [Security](#security-details) clause for details. |
+| X-Auth-Token                       | Yes         | Opaque encoded octet strings        | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
+| Retry-After                        | No          | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
 
-* Redfish services shall return the HTTP 1.1-defined headers if the **Required** column value is **Yes** or **No**.
-* Redfish clients shall understand and process the HTTP 1.1-defined headers.
 
-##### Link header
+##### Link Header
 
-The [`Link` header](#link-header-table) provides the metadata information that the response returns for a resource that a HEAD or GET operation accesses.
+The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can describe things such as hyperlinks from the resource and JSON Schemas that describe the resource.
 
-The metadata information describes hyperlinks from the resource and JSON schemas that describe the resource.
+Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.
+- The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
+- The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
+- The third Link Header is an example for the JSON Schema that describes the actual resource.
+- Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).
 
-The following example shows the `Link` headers for a `ManagerAccount` resource with the `Administrator` role that has a `Settings` annotation:
-
-```http
+~~~http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
 Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
@@ -1217,47 +1224,40 @@ To provide the client more meaningful and deterministic error semantics, the res
 * Services should return the extended error resource as described in this specification in the response body when the service returns the HTTP [400](#status-400) or greater status code.  Services may return the extended error resource, as described in this specification, in the response body when other status codes are returned for those codes and operations that allow a response body.
 * Extended error messages MUST NOT provide privileged information when authentication failures occur.
 
-> **Note:** For the security implications of extended errors, see [Security](#security).
+NOTE: Refer to the [Security](#security-details) clause for security implications of extended errors
 
-The following table lists HTTP status codes that have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification.  The service can return other codes as appropriate, and their usage is implementation-specific.
+The following table lists HTTP status codes that have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification. Other codes may be returned by the service as appropriate, and their usage is implementation-specific. See the Description column for usage and additional requirements imposed by this specification.
+* Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
+* Services shall respond with these status codes as appropriate.
+* Exceptions from operations shall be mapped to HTTP status codes.
+* Redfish Services should not return the status code 100. Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
 
-For usage and additional requirements imposed by this specification, see the **Description** column.
-
-| HTTP&nbsp;status&nbsp;code | Description |
-|:----|:----|
-| <a id="status-200"></a>`200 OK` | The request succeeded and includes a representation in its body. |
-| <a id="status-201"></a>`201 Created` | A create resource request succeeded.  The service shall set the `Location` header to the canonical URI for the new resource.  The service may include a representation of the new resource in the response body. |
-| <a id="status-202"></a>`202 Accepted` | The request has been accepted for processing, but the processing has not completed.  The service shall set the `Location` header to the URI of a task monitor that the client can later query to determine the status of the operation.  The service may include a representation of the task resource in the response body. |
-| <a id="status-204"></a>`204 No Content` | The request succeeded, but no content is returned in the response body. |
-| <a id="status-301"></a>`301 Moved Permanently` | The requested resource resides under a different URI. |
-| <a id="status-302"></a>`302 Found` | The requested resource resides temporarily under a different URI. |
-| <a id="status-304"></a>`304 Not Modified` | The service made a conditional GET request where access is allowed, but the resource content has not changed.  To initiate conditional requests when resource content has not changed, use the `If-Modified-Since` or `If-None-Match` header.  See HTTP 1.1, sections 14.25 and 14.26. |
-| <a id="status-400"></a>`400 Bad Request` | The request could not be processed because it contains missing or invalid information, such as a validation error on an input field or a missing required value.  The service shall return an extended error in the response body.  See [Error responses](#error-responses). |
-| <a id="status-401"></a>`401 Unauthorized` | The authentication credentials in this request are missing or invalid. |
-| <a id="status-403"></a>`403 Forbidden` | The server recognized the credentials in the request, but those credentials do not possess authorization to complete this request. |
-| <a id="status-404"></a>`404 Not Found` | The request specified a URI of a resource that does not exist. |
-| <a id="status-405"></a>`405 Method Not Allowed` | This request URI does not support the HTTP verb.  The response shall include an `Allow` header that provides a list of methods that are supported by the resource identified by the `Request-URI`. |
-| <a id="status-406"></a>`406 Not Acceptable` | The request set the `Accept` request header and the resource in this request cannot generate a representation that corresponds to one of the media types in the `Accept` header. |
-| <a id="status-409"></a>`409 Conflict` | A creation or update request could not be completed because it would cause a conflict in the current state of the resources that the platform supports.  For example, an attempt was made to set multiple properties that work in a linked manner by using incompatible values. |
-| <a id="status-410"></a>`410 Gone` | The requested resource is no longer available at the server and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities SHOULD delete references to the `Request-URI` after user approval.  If the server does not know or cannot determine whether the condition is permanent, the service SHOULD issue the [`404 (Not Found)`](#status-404) status code instead. This response is cacheable unless indicated otherwise. |
-| <a id="status-411"></a>`411 Length Required` | The request did not use the use the `Content-Length` header to specify the length of its content.  Perhaps the request used the `Transfer-Encoding: chunked` header instead.  The addressed resource requires the `Content-Length` header. |
-| <a id="status-412"></a>`412 Precondition Failed` | The precondition, such as `OData-Version`, `If-Match`, or `If-Not-Modified` header, check failed. |
-| <a id="status-415"></a>`415 Unsupported Media Type` | The request specifies a `Content-Type` that the body does not support. |
-| <a id="status-428"></a>`428 Precondition Required` | The request did not provide the required precondition, such as an `If-Match` or `If-None-Match` header. |
-| <a id="status-431"></a>`431 Request Header Field Too Large` | The server is unwilling to process the request because either an individual header field or all header fields are too large. |
-| <a id="status-500"></a>`500 Internal Server Error` | The server encountered an unexpected condition that prevented it from fulfilling the request.  The service shall return an extended error in the response body.  See [Error responses](#error-responses). |
-| <a id="status-501"></a>`501 Not Implemented` | The server does not support the functionality required to fulfill the request.  The appropriate response when the server does not recognize the request method and cannot support the method for any resource. |
-| <a id="status-503"></a>`503 Service Unavailable` | The server cannot handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is completing initialization or other maintenance on the resource.  It may also use this response to indicate that the service itself is undergoing maintenance, such as finishing initialization steps after a reboot of the service. |
-| <a id="status-507"></a>`507 Insufficient Storage` | The server cannot build the response for the client due to the size of the response. |
-
-In the previous table:
-
-* Redfish clients shall understand and process the HTTP 1.1-defined status codes.
-    The additional requirements that this specification defines shall constrain clients.
-* Redfish services shall respond with these HTTP 1.1-defined status codes, as appropriate.
-* Redfish services shall map exceptions from operations to the HTTP 1.1-defined status codes.
-* Redfish services should not return the HTTP `100` status code.
-    Services should avoid the use of the HTTP protocol for a multipass data transfer, except upload of extremely large data.
+| HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| <a id="status-200"></a>200 OK                     | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-201"></a>201 Created                | A request that created a new resource completed successfully.  The Location header shall be set to the canonical URI for the newly created resource.  A representation of the newly created resource may be included in the response body.                                                                                                                                                                                                                                                      |
+| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed.  The Location header shall be set to the URI of a Task Monitor that can later be queried to determine the status of the operation.  A representation of the Task resource may be included in the response body.                                                                                                                                                                                        |
+| <a id="status-204"></a>204 No Content             | The request succeeded, but no content is being returned in the body of the response.                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id="status-301"></a>301 Moved Permanently      | The requested resource resides under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| <a id="status-302"></a>302 Found                  | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-304"></a>304 Not Modified           | The service has performed a conditional GET request where access is allowed, but the resource content has not changed.  Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                                   |
+| <a id="status-400"></a>400 Bad Request            | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on).  An extended error shall be returned in the response body, as defined in clause [Error responses](#error-responses).                                                                                                                                                                                                   |
+| <a id="status-401"></a>401 Unauthorized           | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-403"></a>403 Forbidden              | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-404"></a>404 Not Found              | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| <a id="status-405"></a>405 Method Not Allowed     | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI.  The response shall include an Allow header, that provides a list of methods that are supported by the resource identified by the Request-URI.                                                                                                                                                                                                                       |
+| <a id="status-406"></a>406 Not Acceptable         | The Accept header was specified in the request and the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the Accept header.                                                                                                                                                                                                                                                                                          |
+| <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple properties that work in a linked manner using incompatible values).                                                                                                                                                                                                                             |
+| <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities SHOULD delete references to the Request-URI after user approval.  If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code [404](#status-404) (Not Found) SHOULD be used instead.  This response is cacheable unless indicated otherwise. |
+| <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead).  The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                        |
+| <a id="status-412"></a>412 Precondition Failed    |The precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| <a id="status-428"></a>428 Precondition Required  | The request did not provide the required precondition, such as an If-Match or If-None-Match header.                                                                                                                                                                                                                                                                                                                                                                                             |
+| <a id="status-431"></a>431 Request Header Field Too Large  | The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.                                                                                                                                                                                                                                                                                                                                        |
+| <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
+| <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
+| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.  It may also use this response to indicate the service itself is undergoing maintenance, such as finishing initialization steps after reboot of the service.                                                     |
+| <a id="status-507"></a>507 Insufficient Storage   | The server is unable to build the response for the client due to the size of the response.                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 #### Metadata responses
 
@@ -1941,9 +1941,11 @@ All Redfish schemas, registries, and profiles published or re-published by the D
 |-----|-----------------|
 | redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
 | redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
-| redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
+| redfish.dmtf.org/schemas/v1/{code} |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
+| redfish.dmtf.org/schemas/archive | Subfolders contain schema files specific to a particular version release. |
 | redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
 | redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
+| redfish.dmtf.org/registries/v1/{code} | Durable URL for programmatic access to localized v1.xx registry files.   Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
 | redfish.dmtf.org/registries/archive | Subfolders contain registry files specific to a particular version release. |
 | redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
 | redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
@@ -1952,7 +1954,11 @@ All Redfish schemas, registries, and profiles published or re-published by the D
 | redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
 | redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
 
+
+#### Schema, registry, and profile file naming conventions
+
 Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
+
 
 ##### CSDL (XML) schema file naming
 
@@ -2050,7 +2056,7 @@ Types used within a JSON payload shall be defined in, or referenced by, the [ser
 
 Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Data Model and Schema.
+NOTE: Refer to the [Security](#security-details) clause for security implications of Data Model and Schema.
 
 ### Common naming conventions
 
@@ -2079,8 +2085,13 @@ For properties that have units, or other special meaning, the unit identifier sh
 
 ### Localization considerations
 
-Localization and translation of data or metadata is outside of the scope of version 1.0 of the Redfish Specification.
-Property names are never localized.
+The creation of separate localized copies of Redfish schemas and registries is allowed and encouraged.  Localized schema and registry files may be submitted to the DMTF for republication in the Redfish Schema Repository.
+
+Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
+
+Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO-639-1) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
+
+Descriptive property, parameter, and enumeration text not translated into the languge specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
 
 ### Schema definition
 
@@ -2826,7 +2837,7 @@ A Redfish Service may split the schema resources into separate files such as Sch
 
 This clause covers the REST-based mechanism for subscribing to and receiving event messages.
 
-NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
+NOTE: Refer to the [Security](#security-details) clause for security implications of Eventing.
 
 #### Event subscription types
 
@@ -3118,7 +3129,7 @@ data:}
 ```
 
 
-## Security
+## Security<a id="security-details"></a>
 
 ### Protocols
 

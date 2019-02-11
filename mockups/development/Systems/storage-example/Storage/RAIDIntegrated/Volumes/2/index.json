@@ -1,14 +1,14 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes/2",
-    "@odata.type": "#Volume.v1_0_0.Volume",
+    "@odata.type": "#Volume.v1_3_1.Volume",
     "Id": "2",
     "Name": "Virtual Disk 2",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-    "VolumeType": "Mirrored",
+    "RAIDType": "RAID1",
     "CapacityBytes": 104857600,
     "Encrypted": true,
     "EncryptionTypes": [
@@ -26,8 +26,12 @@
     ],
     "Links": {
         "Drives": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"
+            }
         ]
     },
     "Actions": {
