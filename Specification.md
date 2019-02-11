@@ -2,12 +2,12 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.6.2'
-modified: '2019-01-30'
-SupersedesVersion: '1.6.2'
+DocVersion: '1.6.1'
+modified: '2018-12-13'
+SupersedesVersion: '1.6.0'
 status: published
 released: true
-copyright: '2015-2019'
+copyright: '2015-2018'
 ---
 
 # Foreword
@@ -77,20 +77,20 @@ Educational material is also increasing, both from the DMTF and other organizati
 
 The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
 
-* <a id="RFC1738">IETF RFC1738</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI), [http://www.ietf.org/rfc/rfc1738.txt](http://www.ietf.org/rfc/rfc1738.txt "http://www.ietf.org/rfc/rfc1738.txt")
-* <a id="RFC3986">IETF RFC3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
-* <a id="RFC4627">IETF RFC4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
-* <a id="RFC5789">IETF RFC5789</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
-* <a id="RFC5280">IETF RFC5280</a>, D. Cooper et al, Web linking, [http://www.ietf.org/rfc/rfc5280.txt](http://www.ietf.org/rfc/rfc5280.txt "http://www.ietf.org/rfc/rfc5280.txt")
-* <a id="RFC5988">IETF RFC5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
-* <a id="RFC6585">IETF RFC6585</a>, M. Nottingham, et al, Additional HTTP Status Codes, [http://www.ietf.org/rfc/rfc6585.txt](http://www.ietf.org/rfc/rfc6585.txt "http://www.ietf.org/rfc/rfc6585.txt")
-* <a id="RFC6901">IETF RFC6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
-* <a id="RFC6909">IETF RFC6906</a>, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
-* <a id="RFC7230">IETF RFC7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, [http://www.ietf.org/rfc/rfc7230.txt](http://www.ietf.org/rfc/rfc7230.txt "http://www.ietf.org/rfc/rfc7230.txt")
-* <a id="RFC7231">IETF RFC7231</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content, [http://www.ietf.org/rfc/rfc7231.txt](http://www.ietf.org/rfc/rfc7231.txt "http://www.ietf.org/rfc/rfc7231.txt")
-* <a id="RFC7232">IETF RFC7232</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests, [http://www.ietf.org/rfc/rfc7232.txt](http://www.ietf.org/rfc/rfc7232.txt "http://www.ietf.org/rfc/rfc7232.txt")
-* <a id="RFC7234">IETF RFC7234</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Caching, [http://www.ietf.org/rfc/rfc7234.txt](http://www.ietf.org/rfc/rfc7234.txt "http://www.ietf.org/rfc/rfc7234.txt")
-* <a id="RFC7235">IETF RFC7235</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Authentication, [http://www.ietf.org/rfc/rfc7235.txt](http://www.ietf.org/rfc/rfc7235.txt "http://www.ietf.org/rfc/rfc7235.txt")
+* <a id="RFC1738">IETF RFC 1738</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI), [http://www.ietf.org/rfc/rfc1738.txt](http://www.ietf.org/rfc/rfc1738.txt "http://www.ietf.org/rfc/rfc1738.txt")
+* <a id="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
+* <a id="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
+* <a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
+* <a id="RFC5280">IETF RFC 5280</a>, D. Cooper et al, Web linking, [http://www.ietf.org/rfc/rfc5280.txt](http://www.ietf.org/rfc/rfc5280.txt "http://www.ietf.org/rfc/rfc5280.txt")
+* <a id="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
+* <a id="RFC6585">IETF RFC 6585</a>, M. Nottingham, et al, Additional HTTP Status Codes, [http://www.ietf.org/rfc/rfc6585.txt](http://www.ietf.org/rfc/rfc6585.txt "http://www.ietf.org/rfc/rfc6585.txt")
+* <a id="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
+* <a id="RFC6909">IETF RFC 6906</a>, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
+* <a id="RFC7230">IETF RFC 7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, [http://www.ietf.org/rfc/rfc7230.txt](http://www.ietf.org/rfc/rfc7230.txt "http://www.ietf.org/rfc/rfc7230.txt")
+* <a id="RFC7231">IETF RFC 7231</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content, [http://www.ietf.org/rfc/rfc7231.txt](http://www.ietf.org/rfc/rfc7231.txt "http://www.ietf.org/rfc/rfc7231.txt")
+* <a id="RFC7232">IETF RFC 7232</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests, [http://www.ietf.org/rfc/rfc7232.txt](http://www.ietf.org/rfc/rfc7232.txt "http://www.ietf.org/rfc/rfc7232.txt")
+* <a id="RFC7234">IETF RFC 7234</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Caching, [http://www.ietf.org/rfc/rfc7234.txt](http://www.ietf.org/rfc/rfc7234.txt "http://www.ietf.org/rfc/rfc7234.txt")
+* <a id="RFC7235">IETF RFC 7235</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Authentication, [http://www.ietf.org/rfc/rfc7235.txt](http://www.ietf.org/rfc/rfc7235.txt "http://www.ietf.org/rfc/rfc7235.txt")
 * <a id="Directives">ISO/IEC Directives</a>, Part 2, Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH")
 * <a id="JSONSchema-Core">JSON Schema: A Media Type for Describing JSON Documents, Draft 7</a>
 [https://tools.ietf.org/html/draft-handrews-json-schema-01](https://tools.ietf.org/html/draft-handrews-json-schema-01 "https://tools.ietf.org/html/draft-handrews-json-schema-01")
@@ -140,7 +140,7 @@ The following additional terms are used in this document.
 | Redfish Alert Receiver          | The name for the functionality that receives alerts from a Redfish Service. This functionality is typically software running on a remote system that is separate from the managed system.                                                                                                                                                                                                                                                                                                 |
 | Redfish Client                  | The name for the functionality that communicates with a Redfish Service and accesses one or more resources or functions of the Service.                                                                                                                                                                                                                                                                                                                                                       |
 | Redfish Protocol                | The set of protocols that are used to discover, connect to, and inter-communicate with a Redfish Service.                                                                                                                                                                                                                                                                                                                                                                                 |
-| Redfish Provider                | A Redfish provider interacts with the Redfish Service to contribute resources to the Redfish resource tree and reacts to changes in its owned resources. There are two types of Redfish providers: internal providers and external providers. A internal provider is the Redfish Service itself that has a data model and can react to RESTful operations from a client. An external provider is a designed means for agents external to the Redfish Service to augment the Redfish resource tree. The interaction between a Redfish provider and a Redfish Service is not covered by this specification.|
+| Redfish Provider                | A Redfish provider interacts with the Redfish Service to contribute resources to the Redfish resource tree and reacts to changes in its owned resources. There are two types of Redfish providers: internal providers and external providers. A internal provider is the Redfish Service itself that has a data model and can react to RESTful operations from a client. An external provider is an architected means for agents external to the Redfish Service to augment the Redfish resource tree. The interaction between a Redfish provider and a Redfish Service is not covered by this specification.|
 | Redfish Schema                  | The Schema definitions for Redfish resources.  It is defined according to OData Schema representation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                    |
 | Redfish Service                 | Also referred to as the "Service". The set of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                                                |
 | Redfish Service Entry Point     | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point.                                                                                                                                                                                                                                                                                              |
@@ -183,7 +183,7 @@ The scope of this specification is to define the protocols, data model, and beha
 
 The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which extensions specific to the OEM (system vendor) can be provided by a given implementation.
 
-The specifications set normative requirements for Redfish Services and associated materials, such as Redfish Schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do to access and utilize a Redfish Service successfully and effectively.
+The specifications set normative requirements for Redfish Services and associated materials, such as Redfish Schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
 
 The specifications do not set requirements that particular hardware or firmware must be used to implement the Redfish interfaces and functions.
 
@@ -306,19 +306,21 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 ## Protocol details
 
-The REST-based Redfish Scalable Platform Management API follows these standards and conventions:
+Redfish follows these standards and conventions:
 
-| Standard or convention | Based on |
-|:--|:--|
-| OData conventions for interoperability | [OData-Protocol](#OData-Protocol) |
-| JSON payloads | [OData-JSON](#OData-JSON) |
-| A machine-readable representation of schema | [OData Schema](#OData-CSDL)<br/>Includes annotations for direct translation to JSON schema and OpenAPI representations for:<ul><li>Validation</li><li>Consumption by tools that support JSON schema and OpenAPI</li></ul> | 
+* [JSON payloads](#RFC4627)
+* HTTP/HTTPS as the application protocol that transports the messages
+* TCP/IP as the transport protocol
+* A machine-readable representation of schema
+    * [OData Schema](#OData-CSDL)
+    * [JSON Schema](#JSONSchema-Core)
+    * [OpenAPI Schema](OpenAPI-Spec)
+* [OData conventions](#OData-Protocol)
+* [RESTful conventions](#RESTful-Architecture)
 
-The Redfish API's use of these common standards and conventions increases interoperability and enables the leverage of existing tool chains.
+Redfish's use of these common standards and conventions increases interoperability and enables the leverage of existing tool chains.
 
-This specification defines the Redfish protocol as one that maps to a data model.  More accurately, HTTP is the application protocol that transports the messages, and TCP/IP is the transport protocol.  The RESTful interface is a mapping to the message protocol.  For simplicity though, this specification describes the Redfish protocol as the RESTful mapping to HTTP, TCP/IP, and other protocols, and transport and messaging layers.
-
-The Redfish protocol uses a web service-based interface model, and provides network and interaction efficiency for both user interface (UI) and automation usage.  The interface specifically uses REST pattern semantics.
+The Redfish protocol uses a web service-based interface model, and provides network and interaction efficiency for both user interface (UI) and automation usage.
 
 The Redfish protocol uses:
 
@@ -327,50 +329,45 @@ The Redfish protocol uses:
 * [Media types](#media-types) to negotiate the type of data sent in the message body.
 * [HTTP status codes](#status-codes) to indicate the success or failure of the server's request.
 * [Extended error handling](#error-responses) to return more information than HTTP error codes.
+* TLS for sending secure messages.  See [Security](#security).
+* [Asynchronous semantics](#synchronous-and-asynchronous-operation-support) for long operations.
 
 The ability to send secure messages is important; the [Security](#security-details) clause of this document describes specific TLS requirements.
 
 Some operations may take longer than required for synchronous return semantics.  Consequently, the architecture includes deterministic [asynchronous semantics](#synchronous-and-asynchronous-operation-support).
 
-### HTTP
+HTTP and HTTPS are ideally suited to a RESTful interface.
 
-HTTP is ideally suited to a RESTful interface.
+This clause describes how the Redfish interface uses and adds constraints to HTTP to ensure interoperability of Redfish implementations.
 
-This clause describes how the Redfish interface uses and adds constraints to HTTP to assure interoperability of Redfish-compliant implementations.
+A Redfish interface shall be exposed through a web service endpoint implemented using HTTP, version 1.1 ([RFC7230](#RFC7230), [RFC7231](#RFC7231), [RFC7232](#RFC7232)).
 
-* A Redfish interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC7230](#RFC7230), [RFC7231](#RFC7231), [RFC7232](#RFC7232)).
+#### Universal Resource Identifiers
 
-#### URIs
-
-A URI identifies a resource, including the base service and all Redfish resources.
+A URI identifies a resource, including the service root and all Redfish resources.
 
 * A URI shall identify each unique instance of a resource.
-
 * URIs shall not include any [RFC1738](#RFC1738)-defined unsafe characters.
-
-    For example, the **`{`**, **`}`**, **` `**, **`|`**, **`^`**, **`~`**, **`[`**, **`]`**, <strong><code>&#96;</code></strong>, and **`\`** characters are unsafe because gateways and other transport agents can sometimes modify these characters.
-
-    Do not use the **`#`** character for anything other than the start of a fragment.
-    
+    * For example, the **`{`**, **`}`**, **` `**, **`|`**, **`^`**, **`~`**, **`[`**, **`]`**, <strong><code>&#96;</code></strong>, and **`\`** characters are unsafe because gateways and other transport agents can sometimes modify these characters.
+    * Do not use the **`#`** character for anything other than the start of a fragment.
 * URIs shall not include any percent-encoding of characters.  This restriction does not apply to the [query parameter](#query-parameters) portion of the URI.
-    
-    * To begin operations, a client must know the URI for a resource.
 
-    * To get the resource representation with properties and hyperlinks to associated resources, call the GET operation.  
-    
-    * The base resource URI is well known and based on the protocol version.
+MIKE to reconcile the following two blocks
+Performing a GET operation yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-    * To discover the URIs to additional resources, observe the associated resource hyperlinks from previous responses.
-
-    * To consume a hypermedia API, navigate the URIs that the service returns.
+To begin operations, a client must know the URI for a resource.
+* To get the resource representation with properties and hyperlinks to associated resources, call the GET operation.  
+* The base resource URI is well known and based on the protocol version.
+* To discover the URIs to additional resources, observe the associated resource hyperlinks from previous responses.
+* To consume a hypermedia API, navigate the URIs that the service returns.
 
 Redfish considers the [RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-defined scheme, authority, root service and version, and unique resource path component parts of the URI.
 
 For example, the `https://mgmt.vendor.com/redfish/v1/Systems/1` URI contains these component parts:
 
 | Component part | In the example |
-|:---------------|:---------------|
-| The scheme. | `https:` |
+| ---            | ---            |
+| The scheme.    | `https:` |
 | The authority, which defines the authority to which to delegate the URI. | `//mgmt.vendor.com` |
 | The root service and version. | `/redfish/v1/` |
 | The resource path, which provides a unique identifier for the resource. | `Systems/1` | 
