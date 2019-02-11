@@ -1,0 +1,22 @@
+{
+	"@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/2",
+	"@odata.type": "#Endpoint.v1_2_0.Endpoint",
+	"Id": "2",
+	"Name": "Local Switch",
+	"Description": "Local Switch Control Space",
+	"EndpointProtocol": "GenZ",
+	"ConnectedEntities": [
+		{
+			"EntityType": "Switch",
+			"EntityRole": "Target",
+			"GCID": {
+				"ComponentID": "0x100",
+				"SubnetID": "0x1"
+			},
+			"EntityLink": { 
+				"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1"
+			}
+		}
+	],
+	"Oem": { }
+}

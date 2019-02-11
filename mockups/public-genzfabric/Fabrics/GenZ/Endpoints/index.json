@@ -1,0 +1,11 @@
+{
+	"@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints", 
+	"@odata.type": "#EndpointCollection.EndpointCollection", 
+	"Name": "GenZ Endpoint Collection", 
+	"Members@odata.count": 3, 
+	"Members": [ 
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/1" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/2" },
+		{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/3" }
+	]
+}

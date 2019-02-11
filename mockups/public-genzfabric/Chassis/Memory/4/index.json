@@ -1,0 +1,32 @@
+{
+  "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/4/",
+  "@odata.type": "#Memory.v1_5_0.Memory",
+  "BaseModuleType": "RDIMM",
+  "BusWidthBits": 72,
+  "CapacityMiB": 16384,
+  "DataWidthBits": 64,
+  "DeviceLocator": "DIMM 4",
+  "ErrorCorrection": "MultiBitECC",
+  "Id": "DRAM 4",
+  "Manufacturer": "Contoso",
+  "MemoryDeviceType": "DDR4",
+  "MemoryLocation": {
+    "Channel": 0,
+    "MemoryController": 0,
+    "Slot": 1,
+    "Socket": 1
+  },
+  "MemoryMedia": [
+    "DRAM"
+  ],
+  "MemoryType": "DRAM",
+  "Name": "Traditional DIMM ",
+  "OperatingSpeedMhz": 1333,
+  "PartNumber": "Contoso Part Number or Unknown",
+  "RankCount": 1,
+  "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+  },
+  "Oem": { }
+}

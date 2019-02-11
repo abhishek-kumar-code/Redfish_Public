@@ -1,0 +1,72 @@
+{
+    "name" : "Simple SAS Fabric",
+    "description" : "A managed SAS fabric with redundant switches.",
+    "navlinks" : [
+        {
+            "text" : "Main",
+            "target" : "main"
+        },
+        {
+            "text" : "Fabrics",
+            "target" : "Fabrics",
+            "navlinks" : [
+                {
+                    "text" : "GenZ",
+                    "target" : "GenZ"
+                }
+            ]
+        },
+        {
+            "text" : "Chassis",
+            "target": "Chassis",
+            "navlinks" : [
+                {
+                    "text" : "GenZ",
+                    "target" : "GenZ"
+                }
+            ]
+        },
+        {
+            "text" : "Systems",
+            "target" : "Systems",
+            "navlinks" : [
+                {
+                    "text" : "System",
+                    "target" : "Gen-Z"
+                }
+            ]
+        },        
+        {
+            "text" : "Managers",
+            "target" : "Managers",
+            "navlinks" : [
+                {
+                    "text" : "Server Manager",
+                    "target" : "BMC"
+                }
+            ]
+        },
+        {
+            "text" : "Task Service",
+            "target" : "TaskService"
+        },
+        {
+            "text" : "Session Service",
+            "target" : "SessionService"
+        },
+        {
+            "target" : "AccountService",
+            "text" : "Account Service"
+        },
+        {
+            "target" :  "EventService",
+            "text" : "Event Service",
+            "navlinks" : [
+                {
+                    "text" : "Subscriptions",
+                    "target" : "Subscriptions"
+                }
+            ]
+        }
+    ]
+}

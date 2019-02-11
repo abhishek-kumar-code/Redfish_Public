@@ -1,0 +1,62 @@
+{
+	"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/LPRT/4095",
+	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
+	"Id": "4095",  
+	"Name": "LPRT4095",
+	"Description": "GenZ Port 2 LPRT Entry 4095",
+	"RawEntryHex": "0x12EF345400000000",
+	"RouteSet": [
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		{
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		"MinimumHopCount": 1,
+		"EntryValid": false,
+		"HopCount": 2
+	],
+	"Oem": { }
+}

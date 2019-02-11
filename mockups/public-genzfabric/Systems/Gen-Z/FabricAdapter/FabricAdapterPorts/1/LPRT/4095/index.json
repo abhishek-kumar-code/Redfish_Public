@@ -1,0 +1,63 @@
+{
+	"@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter/FabricPorts/1/LPRT/4095",
+	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
+	"Id": "4095",  
+	"Name": "LPRT4095",
+	"Description": "GenZ Port 1 LPRT Entry 4095",
+	"RawEntryHex": "0x12EF345400000000",
+	"RouteSet": [
+		"Route0": {
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		"Route1": {
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		"Route2": {
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		"Route3": {
+			"Valid": false,
+			"VCAction": 1,
+			"HopCount": 2,
+			"EgressIdentifier": 0
+		},
+		"Route4": {
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		"Route5": {
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		"Route6": {
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		"Route7": {
+			"Valid": false,
+			"VCAction": 0,
+			"HopCount": 0,
+			"EgressIdentifier": 0
+		},
+		"MinimumHopCount": 1,
+		"EntryValid": false,
+		"HopCount": 2
+	]
+}
+
+

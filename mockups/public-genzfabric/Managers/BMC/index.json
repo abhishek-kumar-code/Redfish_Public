@@ -57,16 +57,16 @@
     "Links": {
         "ManagerForServers": [
             {
-                "@odata.id": "/redfish/v1/Systems/437XR1138R2"
+                "@odata.id": "/redfish/v1/Systems/Gen-Z"
             }
         ],
         "ManagerForChassis": [
             {
-                "@odata.id": "/redfish/v1/Chassis/1U"
+                "@odata.id": "/redfish/v1/Chassis/GenZ"
             }
         ],
         "ManagerInChassis": {
-            "@odata.id": "/redfish/v1/Chassis/1U"
+            "@odata.id": "/redfish/v1/Chassis/GenZ"
         },	
         "Oem": {}
     },

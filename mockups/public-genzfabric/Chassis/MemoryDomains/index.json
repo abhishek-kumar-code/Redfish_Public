@@ -1,0 +1,11 @@
+{
+    "@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains",
+    "@odata.type" : "#MemoryDomainCollection.MemoryDomainCollection",
+    "Name": "Memory Domains Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/GenZ/MemoryDomains/1"
+        }
+    ]
+}

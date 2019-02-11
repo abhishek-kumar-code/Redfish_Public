@@ -1,0 +1,106 @@
+{
+	"@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter",
+	"@odata.type": "#FabricAdapter.v1_0_0.FabricAdapter",
+	"@Redfish.Copyright": "Copyright 2018-2019 DMTF.  All rights reserved.",
+	"Id": "Bridge",
+	"Name": "GenZ Bridge",
+	"Manufacturer": "Contoso",
+	"Model": "Gen-Z Bridge Model X",
+	"PartNumber": "975999-001",
+	"SparePartNumber": "152111-A01",
+	"SKU": "Globex Z-Net 2-port Gen-Z Bridge",
+	"SerialNumber": "2M220100SL",
+	"ASICRevisionIdentifier": "A0",
+	"ASICPartNumber": "53312",
+	"ASICManufacturer": "Contoso",
+	"FirmwareVersion": "7.4.10",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"FabricAdapterPorts": {
+		"@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter/FabricAdapterPorts"
+	},
+	"Routes": [
+                { "@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter/SSDT" },
+                { "@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter/MSDT" }
+        ],
+	"VirtualChannel":  [
+                { "@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter/REQ-VCAT" },
+                { "@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter/RSP-VCAT" }
+	],
+	"PCIeInterface": {
+		"MaxPCIeType": "Gen4",
+		"MaxLanes": 64,
+		"PCIeType": "Gen4",
+		"LanesInUse": 64
+	},
+	"UUID": "45724775-ed3b-2214-1313-9865200c1cc1",
+	"Links": { 
+		"Endpoints": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/3" }
+		]
+	},
+	"Actions": {
+		"#FabricAdapter.Reset": {
+			"target": "/redfish/v1/Systems/Gen-Z/FabricAdapter/Actions/FabricAdapter.Reset",
+			"ResetType@Redfish.AllowableValues": "ForceRestart"
+		}
+	},
+	"ControllerCapabilities": {
+		"FabricAdapterPortCount": 2
+	},
+	"RIT": [
+		"0x12",
+		"0x3E",
+		"0x12",
+		"0x3E",
+		"0x12",
+		"0x3E",
+		"0x12",
+		"0x3E",
+		"0x12",
+		"0x3E",
+		"0x12",
+		"0x3E",
+		"0x12",
+		"0x3E",
+		"0x12",
+		"0x3E"
+	],
+    	"PIDT": [
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678",
+		"0x12345678"
+	],
+	"Oem": { }
+}

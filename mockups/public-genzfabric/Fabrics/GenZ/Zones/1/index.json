@@ -1,0 +1,19 @@
+{
+	"@odata.id": "/redfish/v1/Fabrics/GenZ/Zones/1",
+	"@odata.type": "#Zone.v1_1_0.Zone",
+	"Id": "1",
+	"Name": "GenZ Zone 1",
+	"Description": "GenZ Zone 1",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK" 
+	},
+	"Links": {
+		"Endpoints": [
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/1" },
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/2" },
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/3" }
+		]
+	},
+	"Oem": { }
+}

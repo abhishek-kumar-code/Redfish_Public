@@ -1,0 +1,11 @@
+{
+    "@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapter/FabricAdapterPorts",
+    "@odata.type": "#PortCollection.PortCollection",
+    "Name": "GenZ Fabric Adapter Ports",
+    "Members@odata.count": 2,
+    "Members": [
+            { "@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapterPorts/0" },
+            { "@odata.id": "/redfish/v1/Systems/Gen-Z/FabricAdapterPorts/1" } 
+    ]
+}
+

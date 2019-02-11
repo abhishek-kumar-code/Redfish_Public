@@ -1,0 +1,31 @@
+{
+	"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1",
+	"@odata.type": "#MediaController.v1_0_0.MediaController",
+	"Id": "MediaController1",
+	"Name": "Media Controller 1",
+	"MediaControllerType": "Memory",
+	"Manufacturer": "Contoso",
+	"Model": "Contoso MediaController",
+	"SerialNumber": "2M220100SL",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"Ports": {
+		"@odata.id": "/redfish/v1/Chassis/GenZ/MediaControllers/1/Ports"
+	} ,
+	"Actions": {
+		"#MediaController.Reset": {
+			"target": "/redfish/v1/Chassis/GenZ/MediaControllers/1/Actions/MediaController.Reset",
+			"ResetType@Redfish.AllowableValues": [
+				"ForceRestart"
+			]
+		}
+	},
+	"Links": {
+		"Endpoints": [
+			"@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/1"
+		]
+	},
+	"Oem": { }
+}

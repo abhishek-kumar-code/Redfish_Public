@@ -1,0 +1,29 @@
+{
+	"@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
+	"@odata.id": "/redfish/v1/Systems/Gen-Z",
+	"ID": "Gen-Z",
+	"Name": "Compute Node",
+	"SystemType": "Physical",
+	"Manufacturer": "Contoso",
+	"Model": "ComputeNodeModel",
+	"Description": "Compute Node",
+	"HostName": "node_r1c1b1s1",
+	"SerialNumber": "437X1BR2-001",
+	"UUID": "<UUID>",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK",
+		"HealthRollup": "OK"
+	},
+	"PowerState": "On",
+	"Links": {
+		"Chassis": [
+			{ "@odata.id": "/redfish/v1/Chassis/GenZ" }
+		],
+		"ManagedBy": [
+			{ "@odata.id": "/redfish/v1/Managers/1" }
+		],
+		"FabricAdapter": "/redfish/v1/Systems/Gen-Z/FabricAdapter"
+	},
+	"Oem": { }
+}
