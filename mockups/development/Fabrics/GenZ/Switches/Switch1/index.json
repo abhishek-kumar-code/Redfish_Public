@@ -15,11 +15,6 @@
 		"Health": "OK"
 	},
 	"UUID": "1ad59fe9-49f9-52fa-9a93-e349f9477fe0",
-	"Links": {
-		"AssociatedEndpoints": [
-			{"odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/2" }
-		]
-	},
 	"Actions": {
 		"#Switch.Reset": {
 			"target": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Actions/Switch.Reset",
@@ -28,7 +23,6 @@
 		}
 	},
     "Links": {
-
             "Endpoints": [
                     { "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/2" }
             ] 
