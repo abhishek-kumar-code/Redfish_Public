@@ -24,7 +24,7 @@
 	},
 	"Links": {
 		"Endpoints": [
-			"@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/1"
+			{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Endpoints/1" }
 		]
 	},
 	"Oem": { }
