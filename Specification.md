@@ -1198,7 +1198,7 @@ Below is an example of the Link Headers of a ManagerAccount with a role of Admin
 - The third Link Header is an example for the JSON Schema that describes the actual resource.
 - Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).
 
-~~~http
+```http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
 Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
