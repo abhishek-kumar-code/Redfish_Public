@@ -538,17 +538,22 @@ This clause describes the requests that clients can send to Redfish services.
 
 #### Request headers
 
-HTTP defines headers that services and clients can use in request messages.  
+The HTTP specification defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services and Clients.
 
-The following table defines these headers and their requirements for Redfish services.
+For Redfish Services:
+* Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Yes", or if the value is set to "Conditional" under the conditions noted in the Description column.
+* Redfish Services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "No".
 
-> **Note:** These requirements pertain to Redfish services but do not pertain to the clients that send the HTTP requests.
+For Redfish Clients (sending the HTTP requests):
+* Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Yes", or if the value in the Client Requirement column is set to "Conditional" under the conditions noted in the Description column.
+* Redfish Clients should transmit the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "No".
 
-| Header&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Required by service | Required by client | Supported values | Description |
-|:--------|:---|:---|:-----------------|:------------|
-| `Accept` | Yes | No | [RFC7231](#RFC7231) | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support requests for:<ul><li>Resources with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>All resources with any of these `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
+
+| Header  | Service Requirement | Client Requirement | Supported Values | Description  |
+| ------- | ------------------- | ------------------ | ---------------- | ------------ |
+| Accept           | Yes                 | No                 | [RFC 7231](#RFC7231)               | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
 | `Accept-Encoding` | No | No | [RFC7231](#RFC7231) | Indicates whether the client can handle gzip-encoded responses.<br/>If a request contains this header and the service cannot send an acceptable response:<ul><li>The service shall respond with the HTTP [406](#status-406) status code.</li></ul>If the request omits this header:<ul><li>The service shall not return gzip-encoded responses.</li></ul> |
-| `Accept-Language` | No | No | [RFC7231](#RFC7231) | The languages that the API accepts in the response.<br/>If the request omits this header, defaults to the appliance's default locale in the response. |
+| `Accept-Language` | No | No | [RFC7231](#RFC7231) | The languages that the client accepts in the response.<br/>If the request omits this header, the service's default language is used for the response. |
 | `Authorization` | Conditional | Conditional | [RFC7235](#RFC7235), Section 4.2 | Required for [Basic authentication](#basic-authentication).<br/>A client can access unsecured resources without this header on systems that support basic authentication. |
 | `Content-Length` | No | No | [RFC7231](#RFC7231) | The size of the message body.<br/>A client can also use the `Transfer-Encoding: chunked` header to indicate the size of the body.<br/>If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service responds with the [411](#status-411) status code. |
 | `Content-Type` | Conditional | Conditional | [RFC7231](#RFC7231) | The request format.  Required for operations with a request body.<br/>Services shall accept `Content-Type` header values of `application/json` or `application/json;charset=utf-8`.<br/>It is recommended that clients use these values in requests because other values can cause an error. |
@@ -562,13 +567,13 @@ The following table defines these headers and their requirements for Redfish ser
 | `Origin` | Yes | No | [W3C CORS](#W3C-CORS), Section 5.7 | Enables web applications to consume a Redfish service while preventing CSRF attacks. |
 | `User-Agent` | Yes | No | [RFC7231](#RFC7231) | Traces product tokens and their versions.<br/>The header can list multiple product tokens. |
 | `Via` | No | No | [RFC7230](#RFC7230) | Defines the network hierarchy and recognizes message loops.<br/>Each pass inserts its own VIA. |
+
+Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
+
+| Header  | Service Requirement | Client Requirement | Supported Values | Description  |
+| ------- | ------------------- | ------------------ | ---------------- | ------------ |
 | `X-Auth-Token` | Yes | Conditional | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
 
-In the previous table:
-
-* Redfish services shall understand and process the HTTP 1.1-defined headers if the **Required by service** column value is **Yes**, **Conditional** under the conditions noted in the description, or **No**.
-* Redfish clients shall include the HTTP 1.1-defined headers if the **Required by client** column value is **Yes** or the **Required by service** column value is **Conditional** under the conditions noted in the description.
-* Redfish clients shall transmit the HTTP 1.1-defined headers if the **Required by client** column value is **No**.
 
 #### GET (read requests)
 
@@ -779,7 +784,7 @@ Services shall not support any other use of the HEAD method.
 
 The HEAD method shall be idempotent in the absence of outside changes to the resource.
 
-#### POST, PATCH, PUT, and DELETE (modification requests)
+#### POST, PATCH, PUT, and DELETE (data modification requests)
 
 To create, modify, and delete resources, clients issue the following operations:
 
@@ -788,6 +793,8 @@ To create, modify, and delete resources, clients issue the following operations:
 * [PUT (replace)](#put-replace)
 * [DELETE (delete)](#delete-delete)
 * [POST (action)](#post-action) on the resource
+
+The following clauses describe the success and error response requirements common to all data modification requests.
 
 ##### Modification success responses
 
@@ -813,7 +820,7 @@ If the resource exists but does not support the requested operation, services ma
 
 Otherwise, if the service returns a client `4xx` or service `5xx` [status code](#status-codes), the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
-##### PATCH (update)<a id="patch-update"></a>
+#### PATCH (update)<a id="patch-update"></a>
 
 To update resources, the PATCH method is the preferred method.
 
@@ -856,7 +863,7 @@ If an update request only contains OData annotations, the service should return 
 
 To gain the protection semantics of an ETag, the service shall use the `If-Match` or `If-None-Match` header and not the `@odata.etag` property value for that protection.
 
-##### PUT (replace)<a id="put-replace"></a>
+#### PUT (replace)<a id="put-replace"></a>
 
 To completely replace a resource, use the PUT method.  The service may add properties to the response resource that the client omits from the request body, the resource definition requires, or the service normally supplies.
 
@@ -868,7 +875,7 @@ When the replace operation succeeds, the response may contain a the resource rep
 * If the client makes a PUT request against a resource collection, services should return the HTTP [405](#status-405) status code.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that the operation might change ETag values.
 
-##### POST (create)<a id="post-create"></a>
+#### POST (create)<a id="post-create"></a>
 
 To create a new resource, use the POST method.  
 
@@ -884,7 +891,7 @@ The body of the create request contains a representation of the object to create
 * The POST operation shall not be idempotent.
 * Services may allow the inclusion of `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
-##### DELETE (delete)<a id="delete-delete"></a>
+#### DELETE (delete)<a id="delete-delete"></a>
 
 To remove a resource, call the DELETE method.
 
@@ -897,7 +904,7 @@ See [Modification success responses](#modification-success-responses).
 * If the resource was already deleted, the service may return HTTP status code [404](#status-404) or a success code.
 * The service may allow the inclusion of the `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
-##### POST (action)<a id="post-action"></a>
+#### POST (Action)<a id="post-action"></a>
 
 To initiate operations on an object, such as `Actions`, call the POST method.
 
