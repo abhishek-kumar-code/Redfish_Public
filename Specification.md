@@ -2,8 +2,8 @@
 DocTitle: Redfish Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.6.2'
-modified: '2019-01-30'
+DocVersion: '1.7.0'
+modified: '2019-02-26'
 SupersedesVersion: '1.6.1'
 status: published
 released: true
@@ -1823,7 +1823,7 @@ The creation of separate localized copies of Redfish schemas and registries is a
 
 Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
 
-Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO-639-1) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
+Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
 
 Descriptive property, parameter, and enumeration text not translated into the languge specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
 
