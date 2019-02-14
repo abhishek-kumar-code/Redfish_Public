@@ -402,7 +402,7 @@ Other HTTP methods are not allowed and shall receive a [405](#status-405) respon
 
 #### HTTP redirect
 
-HTTP redirect allows a service to redirect a request to another URL.  Among other things, this enables Redfish resources to alias areas of the data model.
+HTTP redirect allows a service to redirect a request to another URL. Among other things, this enables Redfish resources to alias areas of the data model.
 
 * All Redfish Clients shall correctly handle HTTP redirect.
 
@@ -412,18 +412,18 @@ NOTE: Refer to the [Security](#security-details) clause for security implication
 
 Some resources may be available in more than one type of representation. The type of representation is indicated by the media type.
 
-In HTTP messages the media type is specified in the Content-Type header.  A client can tell a service that it wants the response to be sent using certain media types by setting the HTTP Accept header to a list of the acceptable media types.
+In HTTP messages the media type is specified in the Content-Type header. A client can tell a service that it wants the response to be sent using certain media types by setting the HTTP Accept header to a list of the acceptable media types.
 
 * All resources shall be made available using the JSON media type
   "application/json".
-* Redfish services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON.  An implementation may offer additional representations using non-JSON media types.
+* Redfish Services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
 
 Clients may request compression by specifying an [Accept-Encoding header](#request-headers) in the request.
 * Services should support gzip compression when requested by the client.
 
 #### ETags
 
-In order to reduce the cases of unnecessary RESTful accesses to resources, the Redfish service should support associating a separate ETag with each resource.
+In order to reduce the cases of unnecessary RESTful accesses to resources, the Redfish Service should support associating a separate ETag with each resource.
 
 * Implementations should support returning [ETag properties](#etag-property) for each resource.
 * Implementations should support returning ETag headers for each response that represents a single resource.
@@ -437,8 +437,8 @@ If a client [PUTs](#replace-put) or [PATCHes](#update-patch) a resource, it shou
 
 In addition to returning the ETag property on each resource,
 
-* A Redfish service should return the ETag header on client PUT/POST/PATCH
-* A Redfish service should return the ETag header on a GET of an individual resource
+* A Redfish Service should return the ETag header on client PUT/POST/PATCH
+* A Redfish Service should return the ETag header on a GET of an individual resource
 
 The format of the ETag header is:
 
@@ -448,7 +448,7 @@ The format of the ETag header is:
 
 The protocol version is separate from the version of the resources or the version of the Redfish Schema supported by them.
 
-Each version of the Redfish protocol is strongly typed.  This is accomplished using the URI of the Redfish service in combination with the resource obtained at that URI, called the ServiceRoot.
+Each version of the Redfish protocol is strongly typed.  This is accomplished using the URI of the Redfish Service in combination with the resource obtained at that URI, called the ServiceRoot.
 
 The root URI for this version of the Redfish protocol shall be "/redfish/v1/".
 
@@ -474,7 +474,7 @@ A GET on the resource "/redfish" shall return the following body:
 
 ### Redfish-defined URIs and relative URI rules
 
-The following Redfish-defined URIs shall be supported by a Redfish service:
+The following Redfish-defined URIs shall be supported by a Redfish Service:
 
 | URI                   | Description                                                                       |
 | ---------             | -----------                                                                       |
@@ -489,23 +489,23 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
 
-All other Redfish URIs that the service supports shall match the URI patterns that [Resource URI pattern definitions](#resource-uri-pattern-definitions) describes, with the exception to supplemental resources referenced by the "@Redfish.Settings", "@Redfish.ActionInfo", and "@Redfish.CollectionCapabilities" payload annotations.  The URIs for these supplemental resources shall be treated as opaque by the client.
+All other Redfish URIs supported by the service shall match the URI patterns described by the [Resource URI pattern definitions section](#resource-uri-pattern-definitions), with the exception to supplemental resources referenced by the "@Redfish.Settings", "@Redfish.ActionInfo", and "@Redfish.CollectionCapabilities" payload annotations.  The URIs for these supplemental resources shall be treated as opaque by the client.
 
-The URIs that a Redfish service supports shall be considered reserved for future standardization by DMTF and DMTF Alliance Partners, with the exception to OEM extension URIs that shall conform to the requirements in the [URIs for OEM resources](#uris-for-oem-resources) clause.
+All URIs supported by a Redfish Service shall be considered reserved for future standardization by DMTF and DMTF Alliance Parterns, with the exception to OEM extension URIs, which shall conform to the requirements in clause [URIs for OEM resources](#uris-for-oem-resources).
 
 All relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g., //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g., /redfish/v1/Systems).
 
 ### Requests
 
-This clause describes the requests that can be sent to Redfish services.
+This clause describes the requests that can be sent to Redfish Services.
 
 #### Request headers
 
-HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish services. Note that these are requirements for the Redfish services, and not the clients sending the HTTP requests.
+HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services. Note that these are requirements for the Redfish Services, and not the clients sending the HTTP requests.
 
-* Redfish services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Yes".
-* Redfish services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Conditional" under the conditions noted in the description.
-* Redfish services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "No".
+* Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Yes".
+* Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Conditional" under the conditions noted in the description.
+* Redfish Services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "No".
 
 * Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Yes".
 * Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Conditional" under the conditions noted in the description.
@@ -517,20 +517,20 @@ HTTP defines headers that can be used in request messages. The following table d
 | Accept-Encoding  | No                  | No                 | [RFC 7231](#RFC7231)               | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response that is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                      |
 | Accept-Language  | No                  | No                 | [RFC 7231](#RFC7231)               | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                                                                                                                                                                                                                     |
 | Content-Type     | Conditional         | Conditional        | [RFC 7231](#RFC7231)               | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`. It is recommended that Clients use these values in requests since other values may result in an error.                                                                                                                                                                         |
-| Content-Length   | No                  | No                 | [RFC 7231](#RFC7231)               | Describes the size of the message body.  An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411).                                                                                                                                                                                                    |
+| Content-Length   | No                  | No                 | [RFC 7231](#RFC7231)               | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411).                                                                                                                                                                                                    |
 | OData-MaxVersion | No                  | No                 | 4.0                                | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | OData-Version    | Yes                 | No                 | 4.0                                | Services shall reject requests that specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).                                                                                                                                                                                                                                                                                                        |
 | Authorization    | Conditional         | Conditional        | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authentication](#basic-authentication).  A client can access unsecured resources without using this header on systems that support Basic Authentication.                                                                                                                                                                                                                                                                                                                                               |
 | User-Agent       | Yes                 | No                 | [RFC 7231](#RFC7231)               | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Host             | Yes                 | No                 | [RFC 7230](#RFC7230)               | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Origin           | Yes                 | No                 | [W3C CORS](#W3C-CORS), Section 5.7 | Used to allow web applications to consume Redfish service while preventing CSRF attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Origin           | Yes                 | No                 | [W3C CORS](#W3C-CORS), Section 5.7 | Used to allow web applications to consume Redfish Service while preventing CSRF attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Via              | No                  | No                 | [RFC 7230](#RFC7230)               | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Max-Forwards     | No                  | No                 | [RFC 7231](#RFC7231)               | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | If-Match         | Conditional         | No                 | [RFC 7232](#RFC7232)               | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state. While not required for clients, it is highly recommended for PUT and PATCH operations.                                                                                                                                                                                                                                                            |
 | If-None-Match    | No                  | No                 | [RFC 7232](#RFC7232)               | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).                                                                                                                                                                                                         |
-| Last-Event-ID    | No                  | No                 | [HTML5 SSE](#HTML5-Spec-SSE)       | Used by the client to request history event data.  For more information, see the [Server-Sent Events](#server-sent-events) clause.                                                                                                                                                                                                                                                                                                                                                                                         |
+| Last-Event-ID    | No                  | No                 | [HTML5 SSE](#HTML5-Spec-SSE)       | Used by the client to request history event data.  See the [Server-Sent Events section](#server-sent-events) for more information.                                                                                                                                                                                                                                                                                                                                                                                         |
 
-* Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
+* Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
 | Header       | Service Requirement | Client Requirement | Supported Values             | Description                                                                                       |
 | --------     | ---                 | ---                | -----------------            | ------------                                                                                      |
@@ -555,13 +555,13 @@ Services shall not require authentication in order to retrieve the service root 
 
 ##### Metadata document request
 
-Redfish services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
+Redfish Services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
 Services shall not require authentication in order to retrieve the metadata document.
 
 ##### OData service document request
 
-Redfish services shall expose an [OData Service Document](#odata-service-document), at the "/redfish/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
+Redfish Services shall expose an [OData Service Document](#odata-service-document), at the "/redfish/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
 
 Services shall not require authentication in order to retrieve the service document.
 
@@ -634,7 +634,7 @@ The $select parameter indicates to the implementation that it should return a su
 An example of the use of select might be:
 * GET /redfish/v1/Systems/1$select=Name,SystemType,Status/State
 
-When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed. If the ["@odata.context"](#context-property) property is supported, it shall be in the response payload and should be in the recommended format specified by the [Context property](#context-property) section.  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
+When performing $select, Services shall return all of the requested properties of the referenced resource.  The ["@odata.id"](#resource-identifier-property) and ["@odata.type"](#type-property) properties shall be in the response payload and contain the same values as if $select was not performed. If the ["@odata.context"](#context-property) property is supported, it shall be in the response payload and should be in the recommended format specified by the [Context property section](#context-property).  If the ["@odata.etag"](#etag-property) property is supported, it shall be in the response payload and contain the same values as if $select was not performed.
 
 Any other supported syntax for $select is outside the scope of this specification.
 
@@ -663,7 +663,7 @@ Any other supported syntax for $filter is outside the scope of this specificatio
 
 ###### Retrieving Resource Collections
 
-Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including an array of its Members.  A subset of the Members can be returned using [client paging query parameters](#query-parameters).
+Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including an array of its Members. A subset of the Members can be returned using [client paging query parameters](#query-parameters).
 
 No requirements are placed on implementations to return a consistent set of Members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve the Members array instances using paging.
 
@@ -731,7 +731,7 @@ The PUT method is used to completely replace a resource.  Properties omitted fro
 
 ##### Create (POST)<a id="create-post"></a>
 
-The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When the create operation is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled properties (e.g., Id), forcing those properties to be overridden by the service.  Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
+The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong. When the create operation is successful, the response may contain a representation of the resource after the update was done as described in [Success responses to modification requests](#success-responses-to-modification-requests). The body of the create request contains a representation of the object to be created. The service may ignore any service controlled properties (e.g., Id), forcing those properties to be overridden by the service. Additionally, the service shall set the Location header in the response to the URI of the newly created resource.
 
 * Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
     * For example, if a client is adding a new Member to the Resource Collection found at "/redfish/v1/EventService/Subscriptions", it can do so by sending a POST request to either "/redfish/v1/EventService/Subscriptions" or "/redfish/v1/EventService/Subscriptions/Members".
@@ -992,10 +992,10 @@ Redfish defines four types of responses:
 
 #### Response headers
 
-HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for Redfish services.
+HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for Redfish Services.
 
-* Redfish services shall be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
-* Redfish services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".
+* Redfish Services shall be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
+* Redfish Services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".
 * Redfish clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.
 
 | Header                             | Required    | Supported Values                    | Description |
@@ -1003,7 +1003,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | OData-Version                      | Yes         | 4.0                                 | Describes the OData version of the payload that the response conforms to. |
 | Content-Type                       | Yes         | [RFC 7231](#RFC7231)                | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
 | Content-Encoding                   | No          | [RFC 7231](#RFC7231)                | Describes the encoding that has been performed on the media type. |
-| Content-Length                     | No          | [RFC 7231](#RFC7231)                | Describes the size of the message body.  An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
+| Content-Length                     | No          | [RFC 7231](#RFC7231)                | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
 | ETag                               | Conditional | [RFC 7232](#RFC7232)                | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects. |
 | Server                             | Yes         | [RFC 7231](#RFC7231)                | Required to describe a product token and its version. Multiple product tokens may be listed. |
 | <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)     | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
@@ -1054,7 +1054,7 @@ The following table lists HTTP status codes that have meaning or usage defined f
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
-* Redfish services should not return the status code 100. Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
+* Redfish Services should not return the status code 100. Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
 
 | HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -1087,7 +1087,7 @@ The following table lists HTTP status codes that have meaning or usage defined f
 Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
 
 ##### Service metadata
-The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The Redfish service Metadata is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
+The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The Redfish Service Metadata is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
   <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -1119,7 +1119,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
   </edmx:Reference>
 ~~~
 
-The service's [Metadata Document](#metadata-document-request) shall include an EntityContainer that defines the top-level resources and Resource Collections.  An implementation may extend the ServiceContainer defined in the ServiceRoot schema for the implementation's [OData Service Document](#odata-service-document-request).
+The service's [Metadata Document](#metadata-document-request) shall include an EntityContainer that defines the top-level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot schema for the implementation's [OData Service Document](#odata-service-document-request).
 
 ~~~xml
   <edmx:DataServices>
@@ -1577,7 +1577,7 @@ The client can get the definition of the annotation from the [service metadata](
 
 HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of [400](#status-400) does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics.
 
-A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can.  Additionally, the service may provide Redfish standardized errors, OEM-defined errors or both depending on the implementation's ability to convey the most useful information about the underlying error.
+A Redfish Service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM-defined errors or both depending on the implementation's ability to convey the most useful information about the underlying error.
 
 Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
 
@@ -1666,19 +1666,19 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 * Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
 
-### Schema, registry, and profile repository
+### Schema, registry and profile repository
 
-All Redfish Schema documents, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
+All Redfish schemas, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
-| redfish.dmtf.org/schemas | Current (most recent minor or errata) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
+| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
 | redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
-| redfish.dmtf.org/schemas/v1/{code} |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character [ISO 639-1](#ISO6391) language code as the {code} segment. |
+| redfish.dmtf.org/schemas/v1/{code} |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
 | redfish.dmtf.org/schemas/archive | Subfolders contain schema files specific to a particular version release. |
 | redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
 | redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
-| redfish.dmtf.org/registries/v1/{code} | Durable URL for programmatic access to localized v1.xx registry files.   Localized schemas are organized in sub-folders using the 2-character [ISO 639-1](#ISO6391) language code as the {code} segment. |
+| redfish.dmtf.org/registries/v1/{code} | Durable URL for programmatic access to localized v1.xx registry files.   Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
 | redfish.dmtf.org/registries/archive | Subfolders contain registry files specific to a particular version release. |
 | redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
 | redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
@@ -1687,21 +1687,19 @@ All Redfish Schema documents, registries, and profiles published or re-published
 | redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
 | redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
 
+
 #### Schema, registry, and profile file naming conventions
 
 Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
 
+
 ##### CSDL (XML) schema file naming
 
-Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by `_v` and the major version of the schema.
+Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
+   
+  *TypeName*_*vMajorVersion*.*xml*
 
-Becausae a single CSDL schema file contains all minor revisions of the schema, use only the major version in the file name.  
-
-Format the file name as:
-
-<pre><var>TypeName</var>&lowbar;v<var>MajorVersion</var>.xml</pre>
-
-For example, the Chassis schema version 1.3.0 is named `Chassis_v1.xml`.
+For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml".
 
 ##### JSON Schema file naming
 
@@ -1737,7 +1735,7 @@ For example, version 1.2.0 of the BasicServer profile would be named "BasicServe
 
 ##### Dictionary file naming
 
-The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from.  As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
+The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
 
   *DictionaryName_vMajorVersion.dict*
 
@@ -1745,11 +1743,14 @@ For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.
 
 ##### OEM schema file naming
 
-To avoid namespace collisions with current or future standard Redfish Schema files, third parties defining Redfish Schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
+To avoid namespace collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
  
 #### Programmatic access to schema, registry, or profile files
 
 Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+
+
+
 
 ### Type identifiers
 
@@ -1777,7 +1778,7 @@ An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an ex
 
 #### Type identifiers in JSON Schema
 
-In JSON Schema definitions for Redfish Schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
+In JSON Schema definitions for Redfish schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
 
 For example, the "title" property for the ComputerSystem schema would be:
 
@@ -1822,7 +1823,7 @@ The creation of separate localized copies of Redfish schemas and registries is a
 
 Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
 
-Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
+Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO-639-1) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
 
 Descriptive property, parameter, and enumeration text not translated into the languge specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
 
@@ -1842,7 +1843,7 @@ The `Description` annotation is defined in http://docs.oasis-open.org/odata/odat
 
 ##### Long description
 
-The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.  Where the LongDescriptions in the Redfish Schema files contain "shall" references, the service shall be required to conform with the statement.
+The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.  Where the LongDescriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
 
 The `LongDescription` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
@@ -2029,7 +2030,7 @@ Type of a property is specified by the `Type` attribute. The value of the type a
 
 Primitive types are prefixed with the "Edm" namespace prefix.
 
-Redfish services may use any of the following primitive types:
+Redfish Services may use any of the following primitive types:
 
 | Type               | Meaning                                                               |
 | ---                | ---                                                                   |
@@ -2277,7 +2278,7 @@ While the information and semantics of these extensions are outside of the stand
 
 ##### Oem property
 
-In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish Schema is thus a predefined placeholder that is available for OEM-specific property definitions.
+In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
 
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
@@ -2322,7 +2323,7 @@ Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contos
 
 The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
 
-There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a "Research" suborganization, in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
+There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a suborganization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
 
 The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
 
@@ -2448,7 +2449,6 @@ The [Links Property](#links-property) represents the hyperlinks associated with 
 The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
 
 #### RelatedItem
-
 The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or subelements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
 
 #### Actions
@@ -2514,7 +2514,7 @@ Below is an example body for a resource that supports a Settings resource. A cli
 }
 ~~~
 
-The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response body that represents the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
+The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response body that represents the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
 
 Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied:
 
@@ -2533,7 +2533,7 @@ Below is an example request body that shows a client configuring when the values
 
 #### Services
 
-Service resources represent components of the Redfish service itself as well as dependent resources.  While the complete list is discoverable only by traversing the Redfish service tree, the list includes services like the Eventing service, Task management and Session management.
+Service resources represent components of the Redfish Service itself as well as dependent resources.  While the complete list is discoverable only by traversing the Redfish Service tree, the list includes services like the Eventing service, Task management and Session management.
 
 #### Registry
 
@@ -2553,13 +2553,13 @@ Client software should be aware that when absent resources are later populated, 
 
 #### Schema variations
 
-There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
+There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
 
-* All Redfish services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
+* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
 * The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
 * For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
 
-A Redfish service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
+A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
 
 * Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
 
@@ -2573,13 +2573,13 @@ NOTE: Refer to the [Security](#security-details) clause for security implication
 
 #### Event subscription types
 
-The Redfish service requires a client or administrator to create subscriptions to receive events.  There are two methods of creating a subscription: directly by sending an HTTP POST to the subscription collection, or indirectly when a [Server-Sent Events (SSE)](#sse-eventservice) connection is opened for the Event Service.
+The Redfish Service requires a client or administrator to create subscriptions to receive events.  There are two methods of creating a subscription: directly by sending an HTTP POST to the subscription collection, or indirectly when a [Server-Sent Events (SSE)](#sse-eventservice) connection is opened for the Event Service.
 
 ##### POST to the subscription collection method
 
-The client locates the Event Service by traversing the Redfish service interface.  The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
+The client locates the Event Service by traversing the Redfish Service interface.  The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
 
-When the service has been discovered, clients subscribe to messages by sending an HTTP POST to the URI of the resource collection for `Subscriptions` in the Event service.  This request includes the URI where an [event receiver](#redfish-event-receiver) expects events to be sent, as well as the type of events to send.  When an event is triggered within the Redfish service, the service sends an event to that URI.  Find the specific syntax of the subscription body in the Redfish Schema `EventDestination` definition.
+When the service has been discovered, clients subscribe to messages by sending a HTTP POST to the URI of the Resource Collection for "Subscriptions" in the Event Service.  This request includes the URI where an event-receiver client expects events to be sent, as well as the type of events to be sent.  The Redfish Service will then, when an event is triggered within the service, send an event to that URI.  The specific syntax of the subscription body is found in the Redfish Schema definition for "EventDestination".
 
 On success, the Event Service shall return an HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created subscription resource.  The body of the response, if any, shall contain a representation of the subscription resource conforming to the "EventDestination" schema.  Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.  Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively.  Historical events are not retained by the service.
 
@@ -2597,11 +2597,11 @@ These are some configurable properties that are global settings that define the 
 
 ##### SSE method
 
-A service may support the "ServerSentEventUri" property within the Event Service resource.  If a client performs a GET on the URI specified by the "ServerSentEventUri", an SSE connection will be opened for the client.  For details about this method, see the [Server-Sent Events: EventService section](#sse-eventservice).
+A service may support the "ServerSentEventUri" property within the Event Service resource.  If a client performs a GET on the URI specified by the "ServerSentEventUri", an SSE connection will be opened for the client.  See the [Server-Sent Events: EventService section](#sse-eventservice) for details on this method.
 
 #### EventType based eventing
 
-There are three types of events generated in a Redfish service - life cycle, alert, and metric report.  This method of eventing has been deprecated in the Redfish Schema.
+There are three types of events generated in a Redfish Service - life cycle, alert, and metric report.  This method of eventing has been deprecated in the Redfish Schema.
 
 Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this is similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any properties that changed.
 
@@ -2724,13 +2724,13 @@ The UUID supplied in the USN field of the service shall equal the UUID property 
 
 #### M-SEARCH response
 
-The Redfish service Search Target (ST) is defined as: urn:dmtf-org:service:redfish-rest:1
+The Redfish Service Search Target (ST) is defined as: urn:dmtf-org:service:redfish-rest:1
 
-The managed device shall respond to M-SEARCH queries searching for Search Target (ST) of the Redfish service as well as "ssdp:all".  For UPnP compatibility, the managed device should respond to M-SEARCH queries searching for Search Target (ST) of "upnp:rootdevice".
+The managed device shall respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service as well as "ssdp:all".  For UPnP compatibility, the managed device should respond to M-SEARCH queries searching for Search Target (ST) of "upnp:rootdevice".
 
 The URN provided in the ST header in the reply shall use a service name of "redfish-rest:" followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backward-compatible with previous minor revisions, then that minor version shall be appended and preceded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
 
-The managed device shall provide clients with the AL header pointing to the Redfish service Root URL.
+The managed device shall provide clients with the AL header pointing to the Redfish Service Root URL.
 
 For UPnP compatibility, the managed device should provide clients with the LOCATION header pointing to the UPnP XML descriptor.
 
@@ -2923,7 +2923,7 @@ Redfish implementations shall use certificates that are compliant with X.509 v3 
 
 ##### HTTP redirect
 
-* When there is an HTTP Redirect, the privilege requirements for the target resource shall be enforced.
+* When there is a HTTP Redirect, the privilege requirements for the target resource shall be enforced.
 * Generally if the location is reachable without authentication, but only over https, the server should issue a redirect to the https version of the resource. For cases where the resource is only accessible with authentication, a [404](#status-404) should be returned.
 
 #### Extended error handling
@@ -2943,10 +2943,10 @@ Every request that establishes a secure channel shall be accompanied by an authe
 
 ##### Session life cycle management
 
-Session management is left to the implementation of the Redfish service.  This
+Session management is left to the implementation of the Redfish Service.  This
 includes orphaned session timeout and the number of simultaneous open sessions.
 
-* **A Redfish service shall provide login sessions compliant with this specification.**
+* **A Redfish Service shall provide login sessions compliant with this specification.**
 
 ##### Redfish login sessions
 
@@ -3088,11 +3088,12 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - Implementations shall enforce the same privilege model for ETag-related activity as is enforced for the data being represented by the ETag.
   - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
 
-#### Redfish service Operation-to-Privilege mapping
+#### Redfish Service Operation-to-Privilege mapping
 
-For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that the authenticated identity of the requester has the authorization to perform the requested operation on the resource specified in the request.
-
-Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check an HTTP request against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
+For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
+the authenticated identity of the requester has the authorization to perform the requested operation on the resource specified in the request.
+Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
+against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
 
 ##### Why specify Operation-to-Privilege mapping
 
@@ -3106,7 +3107,7 @@ and representing the operation-to-privilege mapping prevents the Redfish Forum o
 ##### Representing Operation-to-Privilege mappings
 
 A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
-Privilege(s) required to perform an operation against a URI specified in an HTTP request to the service. The Privilege Registry is a single 
+Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single 
 JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity 
 supported by the service.  The operation-to-privilege mapping is defined for every entity schema and applies to every resource the service 
 implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing 
@@ -3457,11 +3458,11 @@ OData-Version: 4.0
 | 1.6.0   | 2018-08-23 | Added methods of using $filter on the SSE URI for the EventService. |
 |         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
 |         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 must conform to these URI patterns. |
-|         |            | Added support for creating and naming Redfish Schema files in the OpenAPI YAML-based format. |
+|         |            | Added support for creating and naming Redfish schema files in the OpenAPI YAML-based format. |
 |         |            | Added URI construction rules for OEM extensions. |
 |         |            | Changed ETag usage to require strong ETag format. |
 |         |            | Added requirement for HTTP Allow header as a response header for GET and HEAD operations. |
-|         |            | Added Metric Reports as a type of event that can be produced by a Redfish service. Added support for SSE streaming of Metric reports in support of new TelemetryService schema. |
+|         |            | Added Metric Reports as a type of event that can be produced by a Redfish Service. Added support for SSE streaming of Metric reports in support of new TelemetryService schema. |
 |         |            | Added Registry, Resource, Origin, or EventFormatType-based event subscription methods as detailed in the Specification and schema. Added an EventFormatType to allow for additional payload types for subscription-based or streaming events. Deprecated 'EventType'-based event subscription mechanism. |
 |         |            | Added Event message grouping capability. |
 |         |            | Provided guidance for defining and using OEM extensions for Messages and Message Registries. |
@@ -3505,7 +3506,7 @@ OData-Version: 4.0
 |         |            | Added missing durable URIs for Registries and Profiles, clarified intended usage for each folder in the Repository. Added missing file naming conventions for Registries and Profiles, and clarified file naming for Schemas. |
 |         |            | Added statement to clarify that additional headers may be added to M-SEARCH responses for SSDP to allow for UPnP compatibility. |
 |         |            | Clarified assignment requirements for predefined or custom roles when new Manager Account instances are created, using the 'RoleId' property. |
-| 1.4.0   | 2017-11-17 | Added support for optional Query parameters ("$expand", "$filter", and "$select") on requests to allow for more efficient retrieval of resources or properties from a Redfish service. |
+| 1.4.0   | 2017-11-17 | Added support for optional Query parameters ("$expand", "$filter", and "$select") on requests to allow for more efficient retrieval of resources or properties from a Redfish Service. |
 |         |            | Clarified HTTP status and payload responses after successful processing of data modification requests. This includes POST operations for performing Actions, as well as other POST, PATCH, or PUT requests. |
 |         |            | Added HTTP status code entries for 428 and 507 to clarify the proper response to certain error conditions. Added reference links to the HTTP status code table throughout. |
 |         |            | Updated Abstract to reflect current state of the Specification. |
