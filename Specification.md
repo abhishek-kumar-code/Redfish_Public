@@ -264,6 +264,7 @@ To provide for interoperability between APIs, [OData](#OData-Protocol) defines a
 
 #### Model-oriented
 
+TODO: Jeff H to rewrite
 The Redfish data model is designed for management data center equipment.  Resources within the data model map to different aspects of the equipment, which range from single components, to systems, and up to entire racks.  The different resources also express relationships between each other.  The data model is defined in various schema languages, including OpenAPI YAML, OData CSDL, and JSON Schema.
 
 #### Separation of protocol from data model
