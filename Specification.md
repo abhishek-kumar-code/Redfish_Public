@@ -316,7 +316,7 @@ Redfish follows these standards and conventions:
     * [JSON Schema](#JSONSchema-Core)
     * [OpenAPI Schema](OpenAPI-Spec)
 * [OData conventions](#OData-Protocol)
-* [RESTful conventions](#RESTful-Architecture)
+* RESTful conventions
 
 Redfish's use of these common standards and conventions increases interoperability and enables the leverage of existing tool chains.
 
