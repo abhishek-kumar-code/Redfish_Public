@@ -619,22 +619,13 @@ This service document provides a standard format in which to enumerate the resou
 
 Services shall not require authentication to retrieve the OData service document.
 
-#### Query parameters on GET requests
+#### Query parameters
 
-To paginate, retrieve subsets of resources, or expand the results in a single response, clients can include the query parameters.  Some query parameter apply only to resource collection resources.  Only GET operations shall support query parameters.
-
-| Query&nbsp;parameter | Description | Example |
-|:----------------|:------------|:--------|
-| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
-| `$expand` | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink. | `http://resourcecollection?$expand=.($levels=1)` |
-| `$filter` | Returns a subset of collection members that match the `$filter` expression. | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
-| `only` | Applied to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
-| `$select` | Returns a subset of the resource's properties that match the `$select` expression. | `http://resource?$select=SystemType,Status` |
-| `$skip` | Integer.  Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
-| `$top` | Integer.  Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
+To paginate, retrieve subsets of resources, or expand the results in a single response, clients can include the query parameters.  Some query parameters apply only to resource collections.
 
 Services:
 
+* Shall only support query parameters on GET operations.
 * Should support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
 * May support the `$expand`, `$filter`, and `$select` query parameters.
 * Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters.
@@ -652,6 +643,15 @@ The response body shall reflect the evaluation of the query parameters in this o
 * Prior to service side pagination: `$filter`, `$skip`, `$top`
 * After applying any service side pagination: `$expand`, `$select`
 
+| Query&nbsp;parameter | Description | Example |
+| ---                  | ---         | ---     |
+| `excerpt`            | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
+| `$expand=<string>`   | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink.  See [below](#using-the-$expand-query-parameter). | `http://resource?$expand=*($levels=3)`<br/>`http://resourcecollection?$expand=.($levels=1)` |
+| `$filter=<string>`   | Applies to resource collections.  Returns a subset of collection members that match the `$filter` expression.  See [below](#using-the-$filter-query-parameter). | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
+| `only`               | Applies to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
+| `$select=<string>`   | Returns a subset of the resource's properties that match the `$select` expression.  See [below](#using-the-$select-query-parameter). | `http://resource?$select=SystemType,Status` |
+| `$skip=<integer>`    | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
+| `$top=<integer>`     | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
 ##### Using the $expand query parameter
 
