@@ -541,8 +541,8 @@ This clause describes the requests that clients can send to Redfish services.
 The HTTP specification defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services and Clients.
 
 For Redfish Services:
-* Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Yes", or if the value is set to "Conditional" under the conditions noted in the Description column.
-* Redfish Services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "No".
+* Redfish Services shall process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Yes", or if the value is set to "Conditional" under the conditions noted in the Description column.
+* Redfish Services should process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "No".
 
 For Redfish Clients (sending the HTTP requests):
 * Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Yes", or if the value in the Client Requirement column is set to "Conditional" under the conditions noted in the Description column.
@@ -603,21 +603,13 @@ The service returns the `ServiceRoot` resource, as defined by this specification
 
 Services shall not require authentication to retrieve the service root and `/redfish` resources.
 
-##### OData $metadata document request
+##### OData service and $metadata document requests
 
-Redfish services shall expose an [OData $metadata document](#service-metadata) that describes the service at the `/redfish/v1/$metadata` URI.  
+Redfish services expose two OData-defined documents at specific URIs to enable generic OData clients to navigate the Redfish service.
 
-This document describes the resources available from the service root, and references additional metadata documents that describe the full set of resource types that the service exposes.
-
-Services shall not require authentication to retrieve the metadata document.
-
-##### OData service document request
-
-Redfish services shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` resource.
-
-This service document provides a standard format in which to enumerate the resources that the service exposes, which enables generic hypermedia-driven OData clients to navigate to the service's resources.
-
-Services shall not require authentication to retrieve the OData service document.
+* Service shall expose an [OData $metadata document](#service-metadata) at the `/redfish/v1/$metadata` URI.  
+* Service shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` URI.
+* Service shall not require authentication to retrieve the OData $metadata document or the OData Service document.
 
 #### Query parameters
 
