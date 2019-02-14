@@ -350,7 +350,7 @@ A URI identifies a resource, including the service root and all Redfish resource
 * URIs shall not include any [RFC1738](#RFC1738)-defined unsafe characters.
     * For example, the **`{`**, **`}`**, **` `**, **`|`**, **`^`**, **`~`**, **`[`**, **`]`**, <strong><code>&#96;</code></strong>, and **`\`** characters are unsafe because gateways and other transport agents can sometimes modify these characters.
     * Do not use the **`#`** character for anything other than the start of a fragment.
-* URIs shall not include any percent-encoding of characters.  This restriction does not apply to the [query parameter](#query-parameters) portion of the URI.
+* URIs shall not include any percent-encoding of characters.  This restriction does not apply to the [query parameters](#query-parameters-on-get-requests) portion of the GET URI.
 
 MIKE to reconcile the following two blocks
 Performing a GET operation yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
@@ -386,7 +386,7 @@ For example, a POST operation may return the `/redfish/v1/Systems/2` URI in the 
 
 Assuming that the client connects through the `mgmt.vendor.com` appliance, the client accesses the resource through the `https://mgmt.vendor.com/redfish/v1/Systems/2` absolute URI.
 
-[RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-compliant URIs may also contain the query, `?query`, and frag, `#frag`, components.  For information about queries, see [Query parameters](#query-parameters).  When a URI includes a fragment (`frag`) to submit an operation, the server ignores the fragment.
+[RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-compliant URIs may also contain the query, `?query`, and frag, `#frag`, components.  For information about queries, see [Query parameters](#query-parameters-on-get-requests).  When a URI includes a fragment (`frag`) to submit an operation, the server ignores the fragment.
 
 If a property in a response is a reference to another property within a resource, use the [RFC6901](#RFC6901)-defined URI Fragment Identifier Representation format.  If the property is as a [reference property](#reference-properties) in the schema, the fragment shall reference a valid [resource identifier](#resource-identifier-property).  For example, the following fragment identifies a property at index 0 of the `Fans` array in the `/redfish/v1/Chassis/MultiBladeEncl/Thermal` resource:
 
@@ -587,7 +587,7 @@ The service shall return the resource representation using one of the media type
 
 ##### Resource collection requests
 
-Clients retrieve a resource collection by making a GET request to the resource collection URI.  The response includes the resource collection's properties and an array of its `Members`.  A subset of the Members can be retrieved using client paging [query parameters](#query-parameters).
+Clients retrieve a resource collection by making a GET request to the resource collection URI.  The response includes the resource collection's properties and an array of its `Members`.  A subset of the Members can be retrieved using client paging [query parameters](#query-parameters-on-get-requests).
 
 No requirements are placed on implementations to return a consistent set of members when a series of requests that use paging query parameters are made over time to obtain the entire set of members. It is possible that these calls can result in missed or duplicate elements if multiple GETs are used to retrieve the `Members` array instances through paging.
 
@@ -1796,7 +1796,7 @@ where
 
 ##### Count property
 
-The `count` property defines the total number of resources, or members, that are available in the resource collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the resource collection.  The `$top` or `$skip` [query parameters](#query-parameters) do not affect this count.
+The `count` property defines the total number of resources, or members, that are available in the resource collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the resource collection.  The `$top` or `$skip` [query parameters](#query-parameters-on-get-requests) do not affect this count.
 
 ##### Members property
 
@@ -3031,7 +3031,7 @@ There are two formats of SSE streams:
 * [Metric report SSE stream](#metric-report-sse-stream): This format shall be used when the TelemetryService has generated a new Metric Report or updated an existing Metric Report.
 * [Event message SSE stream](#event-message-sse-stream): This format shall be used for all other types of events.
 
-The service should support using the $filter query parameter provided in the URI for the SSE stream by the client in order to reduce the amount of data returned to the client.  The following table shows the properties that the service should allow to be filtered.  The $filter syntax shall follow the format specified in the [Query parameters for Filter clause](#query-parameters).
+The service should support using the $filter query parameter provided in the URI for the SSE stream by the client in order to reduce the amount of data returned to the client.  The following table shows the properties that the service should allow to be filtered.  The $filter syntax shall follow the format specified in the [Query parameters for Filter clause](#query-parameters-on-get-requests).
 
 | Property                         | Description                                                                                                                                                       | Example |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
