@@ -577,39 +577,47 @@ Redfish Services shall understand and be able to process the headers in the foll
 
 #### GET (read requests)
 
-Clients make GET calls to retrieve a single resource representation and resource collection representations.
+The GET operation is used to retrieve resources from a Redfish Service.  Clients make a GET request to the individual resource URI.  Clients may obtain the resource URI from published sources, such as the OpenAPI document, or from a [resource identifier property](#resource-identifier-property) in a previously retrieved resource response, such as the [Links Property](#links-property). 
 
-| Request | Description | Response | Notes |
-|:--------|:------------|:---------|:------|
-| Single resource | Clients make a GET request to the individual resource URI.<br/>The client can get the URI for a resource from the [resource identifier property](#resource-identifier-property) in a previous response, such as the [Links Property](#links-property) of a resource in a previous response. | The service shall return the resource representation in one of the media types listed in the `Accept` header, subject to the [media types'](#media-types) requirements.<br/>If the `Accept` header is absent, the service shall return the resource's representation as `application/json`. | <ul><li>Services may, but are not required to, enable the retrieval of individual resource properties through the resource URI appended with the property name.</li><li>Clients shall use the HTTP GET method to retrieve a resource without causing any side effects.</li><li>The service shall ignore the body content in the GET request.</li><li>The GET operation shall be idempotent in the absence of outside changes to the resource.</li></ul> |
-| Resource&nbsp;collection | Clients make a GET request to the resource collection URI. | The response includes the resource collection's properties including an array of its members.  To return a subset of the members, use the client paging [query parameters](#query-parameters). | <ul><li>No requirements are placed on implementations to return a consistent set of members when a series of requests that use paging query parameters are made over time to obtain the entire set of members. It is possible that these calls can result in missed or duplicate elements if multiple GETs are used to retrieve the `Members` array instances through paging.</li><li>Clients shall not make assumptions about the URIs for the members of a resource collection.</li><li>Retrieved resource collections shall always include the [count](#count-property) property to specify the total number of entries in its `Members` array.</li><li>Regardless of [paging](#next-link-property-and-partial-results), the [count](#count-property) property shall return the total number of resources that the `Members` array references.</li></ul> |
+The service shall return the resource representation using one of the media types listed in the `Accept` header, subject to the [media types'](#media-types) requirements.  If the `Accept` header is absent, the service shall return the resource's representation as `application/json`.  Services may, but are not required to, support the convention of retrieving individual properties within a resource by appending a segment containing the property name to the URI of the resource.  
+
+* The HTTP GET operation shall retrieve a resource without causing any side effects.
+* The service shall ignore the content of the body on a GET.
+* The GET operation shall be idempotent in the absence of outside changes to the resource.
+
+##### Resource collection requests
+
+Clients retrieve a resource collection by making a GET request to the resource collection URI.  The response includes the resource collection's properties and an array of its `Members`.  A subset of the Members can be retrieved using client paging [query parameters](#query-parameters).
+
+No requirements are placed on implementations to return a consistent set of members when a series of requests that use paging query parameters are made over time to obtain the entire set of members. It is possible that these calls can result in missed or duplicate elements if multiple GETs are used to retrieve the `Members` array instances through paging.
+
+* Clients shall not make assumptions about the URIs for the members of a resource collection.
+* Retrieved resource collections shall always include the [count](#count-property) property to specify the total number of entries in its `Members` array.
+* Regardless of [paging](#next-link-property-and-partial-results), the [count](#count-property) property shall return the total number of resources that the `Members` array references.
 
 ##### Service root request
 
-The root URL for Redfish version 1 services shall be `/redfish/v1/`.
+The root URL for Redfish version 1.x services shall be `/redfish/v1/`.
 
-The service returns the `ServiceRoot` resource, as defined by this specification.
+The service returns the `ServiceRoot` resource, as defined by this specification, as a response for the root URL.
 
-Services shall not require authentication to retrieve the service root and `/redfish` documents.
+Services shall not require authentication to retrieve the service root and `/redfish` resources.
 
-##### Metadata document request
+##### OData $metadata document request
 
-Redfish services shall expose a [metadata document](#service-metadata) that describes the service at the `/redfish/v1/$metadata` resource.  
+Redfish services shall expose an [OData $metadata document](#service-metadata) that describes the service at the `/redfish/v1/$metadata` URI.  
 
-This metadata document:
-
-* Describes the resources available at the root.
-* References additional metadata documents that describe the full set of resource types that the service exposes.
+This document describes the resources available from the service root, and references additional metadata documents that describe the full set of resource types that the service exposes.
 
 Services shall not require authentication to retrieve the metadata document.
 
 ##### OData service document request
 
-Redfish services shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` resource.  
+Redfish services shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` resource.
 
 This service document provides a standard format in which to enumerate the resources that the service exposes, which enables generic hypermedia-driven OData clients to navigate to the service's resources.
 
-Services shall not require authentication to retrieve the service document.
+Services shall not require authentication to retrieve the OData service document.
 
 ##### Query parameters
 
