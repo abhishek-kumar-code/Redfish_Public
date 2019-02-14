@@ -653,7 +653,7 @@ The response body shall reflect the evaluation of the query parameters in this o
 | `$skip=<integer>`    | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
 | `$top=<integer>`     | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
-##### Using the $expand query parameter<a id="query-parameter"></a>
+##### Using the $expand query parameter<a id="expand-parameter"></a>
 
 The `$expand` query parameter indicates that the implementation should return a hyperlink and its contents in-line with retrieved resources, as if a GET response is included in-line with that hyperlink.
 
