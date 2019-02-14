@@ -619,54 +619,41 @@ This service document provides a standard format in which to enumerate the resou
 
 Services shall not require authentication to retrieve the OData service document.
 
-##### Query parameters
+#### Query parameters on GET requests
 
-To paginate, select, filter, and expand the results in an API response, clients can include these query parameters:
+To paginate, retrieve subsets of resources, or expand the results in a single response, clients can include the query parameters.  Some query parameter apply only to resource collection resources.  Only GET operations shall support query parameters.
 
 | Query&nbsp;parameter | Description | Example |
 |:----------------|:------------|:--------|
-| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If the request omits the `excerpt` parameter, returns the entire resource. | `http://resource?excerpt` |
+| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
 | `$expand` | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink. | `http://resourcecollection?$expand=.($levels=1)` |
 | `$filter` | Returns a subset of collection members that match the `$filter` expression. | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
-| `only` | For resource collections with one member, returns only that member's resource. | `http://resourcecollection?only` |
+| `only` | Applied to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
 | `$select` | Returns a subset of the resource's properties that match the `$select` expression. | `http://resource?$select=SystemType,Status` |
-| `$skip` | Integer.  Defines the number of [_**members**_](#members) in the [_**resource collection**_](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
-| `$top` | Integer.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
-
-Only GET operations shall support query parameters.
+| `$skip` | Integer.  Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
+| `$top` | Integer.  Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
 Services:
 
-* Shall support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
+* Should support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
 * May support the `$expand`, `$filter`, and `$select` query parameters.
-* Shall include the `ProtocolFeaturesSupported` object in the service root to support query parameters.
+* Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters.
+* Shall ignore unknown or unsupported query parameters that do not begin with `$`.
+* Shall use the `&` operator to separate multiple query parameters in a single request
 
-Implementations shall return:
+Service shall return:
 
 * The HTTP [`501 Not Implemented`](#status-501) status code for any unsupported query parameters that start with `$`.
 * An [extended error](#error-responses) that indicates the unsupported query parameters for this resource.
-* The HTTP [`400 Bad Request`](#status-400) status code for either:
-    * Any query parameters that contain invalid values.
-    * Invalid requests that include query parameters without values, such as `excerpt` or `only`.
-
-Implementations shall ignore unknown or unsupported query parameters that do not begin with `$`.
-
-Implementations shall use the `&` operator to separate multiple query parameters in a single request.
+* The HTTP [`400 Bad Request`](#status-400) status code for any query parameters that contain values that are invalid, or values applied to query parameters without defined values (e.g. `excerpt` or `only`).
 
 The response body shall reflect the evaluation of the query parameters in this order:
 
 * Prior to service side pagination: `$filter`, `$skip`, `$top`
 * After applying any service side pagination: `$expand`, `$select`
 
-###### Resource collection query parameters
 
-| Query&nbsp;parameter | Description | Example |
-|:----------------|:------------|:--------|
-| `only` | If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
-| `$skip` | To return a subset of the members in a resource collection, clients may use this paging query parameter, which applies to the `Members` array property in a resource collection. | `http://resourcecollection?$skip=5` |
-| `$top` | To return a subset of the members in a resource collection, clients may use this paging query parameter, which applies to the `Members` array property in a resource collection. | `http://resourcecollection?$top=30` |
-
-###### $expand query parameter
+##### Using the $expand query parameter
 
 The `$expand` query parameter indicates that the implementation should return a hyperlink and its contents in-line with retrieved resources, as if a GET response is included in-line with that hyperlink.
 
@@ -709,7 +696,7 @@ If a service cannot return the payload due to its size, it shall return HTTP [50
 
 Any other supported syntax for `$expand` is outside the scope of this specification.
 
-###### $select query parameter
+##### Using the $select query parameter
 
 The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression. indicates that the implementation should return a subset of the resources' properties based on the value of the `$select` expression.
 
@@ -731,7 +718,7 @@ When services execute `$select`, they shall return all requested properties of t
 
 Any other supported syntax for `$select` is outside the scope of this specification.
 
-###### $filter query parameter
+##### Using the $filter query parameter
 
 The `$filter parameter` indicates that the implementation should return a subset of the collection's members based on the `$filter` expression.
 
@@ -792,7 +779,7 @@ Services shall not support any other use of the HEAD method.
 
 The HEAD method shall be idempotent in the absence of outside changes to the resource.
 
-#### POST, PATCH, PUT, and DELETE (data modification requests)
+#### Data modification requests
 
 To create, modify, and delete resources, clients issue the following operations:
 
