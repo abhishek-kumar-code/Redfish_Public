@@ -538,17 +538,22 @@ This clause describes the requests that clients can send to Redfish services.
 
 #### Request headers
 
-HTTP defines headers that services and clients can use in request messages.  
+The HTTP specification defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services and Clients.
 
-The following table defines these headers and their requirements for Redfish services.
+For Redfish Services:
+* Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "Yes", or if the value is set to "Conditional" under the conditions noted in the Description column.
+* Redfish Services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Service Requirement column is set to "No".
 
-> **Note:** These requirements pertain to Redfish services but do not pertain to the clients that send the HTTP requests.
+For Redfish Clients (sending the HTTP requests):
+* Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Yes", or if the value in the Client Requirement column is set to "Conditional" under the conditions noted in the Description column.
+* Redfish Clients should transmit the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "No".
 
-| Header&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Required by service | Required by client | Supported values | Description |
-|:--------|:---|:---|:-----------------|:------------|
-| `Accept` | Yes | No | [RFC7231](#RFC7231) | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support requests for:<ul><li>Resources with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>All resources with any of these `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
+
+| Header  | Service Requirement | Client Requirement | Supported Values | Description  |
+| ------- | ------------------- | ------------------ | ---------------- | ------------ |
+| Accept           | Yes                 | No                 | [RFC 7231](#RFC7231)               | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
 | `Accept-Encoding` | No | No | [RFC7231](#RFC7231) | Indicates whether the client can handle gzip-encoded responses.<br/>If a request contains this header and the service cannot send an acceptable response:<ul><li>The service shall respond with the HTTP [406](#status-406) status code.</li></ul>If the request omits this header:<ul><li>The service shall not return gzip-encoded responses.</li></ul> |
-| `Accept-Language` | No | No | [RFC7231](#RFC7231) | The languages that the API accepts in the response.<br/>If the request omits this header, defaults to the appliance's default locale in the response. |
+| `Accept-Language` | No | No | [RFC7231](#RFC7231) | The languages that the client accepts in the response.<br/>If the request omits this header, the service's default language is used for the response. |
 | `Authorization` | Conditional | Conditional | [RFC7235](#RFC7235), Section 4.2 | Required for [Basic authentication](#basic-authentication).<br/>A client can access unsecured resources without this header on systems that support basic authentication. |
 | `Content-Length` | No | No | [RFC7231](#RFC7231) | The size of the message body.<br/>A client can also use the `Transfer-Encoding: chunked` header to indicate the size of the body.<br/>If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service responds with the [411](#status-411) status code. |
 | `Content-Type` | Conditional | Conditional | [RFC7231](#RFC7231) | The request format.  Required for operations with a request body.<br/>Services shall accept `Content-Type` header values of `application/json` or `application/json;charset=utf-8`.<br/>It is recommended that clients use these values in requests because other values can cause an error. |
@@ -562,98 +567,93 @@ The following table defines these headers and their requirements for Redfish ser
 | `Origin` | Yes | No | [W3C CORS](#W3C-CORS), Section 5.7 | Enables web applications to consume a Redfish service while preventing CSRF attacks. |
 | `User-Agent` | Yes | No | [RFC7231](#RFC7231) | Traces product tokens and their versions.<br/>The header can list multiple product tokens. |
 | `Via` | No | No | [RFC7230](#RFC7230) | Defines the network hierarchy and recognizes message loops.<br/>Each pass inserts its own VIA. |
+
+Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
+
+| Header  | Service Requirement | Client Requirement | Supported Values | Description  |
+| ------- | ------------------- | ------------------ | ---------------- | ------------ |
 | `X-Auth-Token` | Yes | Conditional | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
 
-In the previous table:
-
-* Redfish services shall understand and process the HTTP 1.1-defined headers if the **Required by service** column value is **Yes**, **Conditional** under the conditions noted in the description, or **No**.
-* Redfish clients shall include the HTTP 1.1-defined headers if the **Required by client** column value is **Yes** or the **Required by service** column value is **Conditional** under the conditions noted in the description.
-* Redfish clients shall transmit the HTTP 1.1-defined headers if the **Required by client** column value is **No**.
 
 #### GET (read requests)
 
-Clients make GET calls to retrieve a single resource representation and resource collection representations.
+The GET operation is used to retrieve resources from a Redfish Service.  Clients make a GET request to the individual resource URI.  Clients may obtain the resource URI from published sources, such as the OpenAPI document, or from a [resource identifier property](#resource-identifier-property) in a previously retrieved resource response, such as the [Links Property](#links-property). 
 
-| Request | Description | Response | Notes |
-|:--------|:------------|:---------|:------|
-| Single resource | Clients make a GET request to the individual resource URI.<br/>The client can get the URI for a resource from the [resource identifier property](#resource-identifier-property) in a previous response, such as the [Links Property](#links-property) of a resource in a previous response. | The service shall return the resource representation in one of the media types listed in the `Accept` header, subject to the [media types'](#media-types) requirements.<br/>If the `Accept` header is absent, the service shall return the resource's representation as `application/json`. | <ul><li>Services may, but are not required to, enable the retrieval of individual resource properties through the resource URI appended with the property name.</li><li>Clients shall use the HTTP GET method to retrieve a resource without causing any side effects.</li><li>The service shall ignore the body content in the GET request.</li><li>The GET operation shall be idempotent in the absence of outside changes to the resource.</li></ul> |
-| Resource&nbsp;collection | Clients make a GET request to the resource collection URI. | The response includes the resource collection's properties including an array of its members.  To return a subset of the members, use the client paging [query parameters](#query-parameters). | <ul><li>No requirements are placed on implementations to return a consistent set of members when a series of requests that use paging query parameters are made over time to obtain the entire set of members. It is possible that these calls can result in missed or duplicate elements if multiple GETs are used to retrieve the `Members` array instances through paging.</li><li>Clients shall not make assumptions about the URIs for the members of a resource collection.</li><li>Retrieved resource collections shall always include the [count](#count-property) property to specify the total number of entries in its `Members` array.</li><li>Regardless of [paging](#next-link-property-and-partial-results), the [count](#count-property) property shall return the total number of resources that the `Members` array references.</li></ul> |
+The service shall return the resource representation using one of the media types listed in the `Accept` header, subject to the [media types'](#media-types) requirements.  If the `Accept` header is absent, the service shall return the resource's representation as `application/json`.  Services may, but are not required to, support the convention of retrieving individual properties within a resource by appending a segment containing the property name to the URI of the resource.  
+
+* The HTTP GET operation shall retrieve a resource without causing any side effects.
+* The service shall ignore the content of the body on a GET.
+* The GET operation shall be idempotent in the absence of outside changes to the resource.
+
+##### Resource collection requests
+
+Clients retrieve a resource collection by making a GET request to the resource collection URI.  The response includes the resource collection's properties and an array of its `Members`.  A subset of the Members can be retrieved using client paging [query parameters](#query-parameters).
+
+No requirements are placed on implementations to return a consistent set of members when a series of requests that use paging query parameters are made over time to obtain the entire set of members. It is possible that these calls can result in missed or duplicate elements if multiple GETs are used to retrieve the `Members` array instances through paging.
+
+* Clients shall not make assumptions about the URIs for the members of a resource collection.
+* Retrieved resource collections shall always include the [count](#count-property) property to specify the total number of entries in its `Members` array.
+* Regardless of [paging](#next-link-property-and-partial-results), the [count](#count-property) property shall return the total number of resources that the `Members` array references.
 
 ##### Service root request
 
-The root URL for Redfish version 1 services shall be `/redfish/v1/`.
+The root URL for Redfish version 1.x services shall be `/redfish/v1/`.
 
-The service returns the `ServiceRoot` resource, as defined by this specification.
+The service returns the `ServiceRoot` resource, as defined by this specification, as a response for the root URL.
 
-Services shall not require authentication to retrieve the service root and `/redfish` documents.
+Services shall not require authentication to retrieve the service root and `/redfish` resources.
 
-##### Metadata document request
+##### OData $metadata document request
 
-Redfish services shall expose a [metadata document](#service-metadata) that describes the service at the `/redfish/v1/$metadata` resource.  
+Redfish services shall expose an [OData $metadata document](#service-metadata) that describes the service at the `/redfish/v1/$metadata` URI.  
 
-This metadata document:
-
-* Describes the resources available at the root.
-* References additional metadata documents that describe the full set of resource types that the service exposes.
+This document describes the resources available from the service root, and references additional metadata documents that describe the full set of resource types that the service exposes.
 
 Services shall not require authentication to retrieve the metadata document.
 
 ##### OData service document request
 
-Redfish services shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` resource.  
+Redfish services shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` resource.
 
 This service document provides a standard format in which to enumerate the resources that the service exposes, which enables generic hypermedia-driven OData clients to navigate to the service's resources.
 
-Services shall not require authentication to retrieve the service document.
+Services shall not require authentication to retrieve the OData service document.
 
-##### Query parameters
+#### Query parameters on GET requests
 
-To paginate, select, filter, and expand the results in an API response, clients can include these query parameters:
+To paginate, retrieve subsets of resources, or expand the results in a single response, clients can include the query parameters.  Some query parameter apply only to resource collection resources.  Only GET operations shall support query parameters.
 
 | Query&nbsp;parameter | Description | Example |
 |:----------------|:------------|:--------|
-| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If the request omits the `excerpt` parameter, returns the entire resource. | `http://resource?excerpt` |
+| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
 | `$expand` | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink. | `http://resourcecollection?$expand=.($levels=1)` |
 | `$filter` | Returns a subset of collection members that match the `$filter` expression. | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
-| `only` | For resource collections with one member, returns only that member's resource. | `http://resourcecollection?only` |
+| `only` | Applied to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
 | `$select` | Returns a subset of the resource's properties that match the `$select` expression. | `http://resource?$select=SystemType,Status` |
-| `$skip` | Integer.  Defines the number of [_**members**_](#members) in the [_**resource collection**_](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
-| `$top` | Integer.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
-
-Only GET operations shall support query parameters.
+| `$skip` | Integer.  Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
+| `$top` | Integer.  Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
 Services:
 
-* Shall support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
+* Should support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
 * May support the `$expand`, `$filter`, and `$select` query parameters.
-* Shall include the `ProtocolFeaturesSupported` object in the service root to support query parameters.
+* Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters.
+* Shall ignore unknown or unsupported query parameters that do not begin with `$`.
+* Shall use the `&` operator to separate multiple query parameters in a single request
 
-Implementations shall return:
+Service shall return:
 
 * The HTTP [`501 Not Implemented`](#status-501) status code for any unsupported query parameters that start with `$`.
 * An [extended error](#error-responses) that indicates the unsupported query parameters for this resource.
-* The HTTP [`400 Bad Request`](#status-400) status code for either:
-    * Any query parameters that contain invalid values.
-    * Invalid requests that include query parameters without values, such as `excerpt` or `only`.
-
-Implementations shall ignore unknown or unsupported query parameters that do not begin with `$`.
-
-Implementations shall use the `&` operator to separate multiple query parameters in a single request.
+* The HTTP [`400 Bad Request`](#status-400) status code for any query parameters that contain values that are invalid, or values applied to query parameters without defined values (e.g. `excerpt` or `only`).
 
 The response body shall reflect the evaluation of the query parameters in this order:
 
 * Prior to service side pagination: `$filter`, `$skip`, `$top`
 * After applying any service side pagination: `$expand`, `$select`
 
-###### Resource collection query parameters
 
-| Query&nbsp;parameter | Description | Example |
-|:----------------|:------------|:--------|
-| `only` | If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
-| `$skip` | To return a subset of the members in a resource collection, clients may use this paging query parameter, which applies to the `Members` array property in a resource collection. | `http://resourcecollection?$skip=5` |
-| `$top` | To return a subset of the members in a resource collection, clients may use this paging query parameter, which applies to the `Members` array property in a resource collection. | `http://resourcecollection?$top=30` |
-
-###### $expand query parameter
+##### Using the $expand query parameter
 
 The `$expand` query parameter indicates that the implementation should return a hyperlink and its contents in-line with retrieved resources, as if a GET response is included in-line with that hyperlink.
 
@@ -696,7 +696,7 @@ If a service cannot return the payload due to its size, it shall return HTTP [50
 
 Any other supported syntax for `$expand` is outside the scope of this specification.
 
-###### $select query parameter
+##### Using the $select query parameter
 
 The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression. indicates that the implementation should return a subset of the resources' properties based on the value of the `$select` expression.
 
@@ -718,7 +718,7 @@ When services execute `$select`, they shall return all requested properties of t
 
 Any other supported syntax for `$select` is outside the scope of this specification.
 
-###### $filter query parameter
+##### Using the $filter query parameter
 
 The `$filter parameter` indicates that the implementation should return a subset of the collection's members based on the `$filter` expression.
 
@@ -779,7 +779,7 @@ Services shall not support any other use of the HEAD method.
 
 The HEAD method shall be idempotent in the absence of outside changes to the resource.
 
-#### POST, PATCH, PUT, and DELETE (modification requests)
+#### Data modification requests
 
 To create, modify, and delete resources, clients issue the following operations:
 
@@ -788,6 +788,8 @@ To create, modify, and delete resources, clients issue the following operations:
 * [PUT (replace)](#put-replace)
 * [DELETE (delete)](#delete-delete)
 * [POST (action)](#post-action) on the resource
+
+The following clauses describe the success and error response requirements common to all data modification requests.
 
 ##### Modification success responses
 
@@ -813,7 +815,7 @@ If the resource exists but does not support the requested operation, services ma
 
 Otherwise, if the service returns a client `4xx` or service `5xx` [status code](#status-codes), the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
-##### PATCH (update)<a id="patch-update"></a>
+#### PATCH (update)<a id="patch-update"></a>
 
 To update resources, the PATCH method is the preferred method.
 
@@ -856,7 +858,7 @@ If an update request only contains OData annotations, the service should return 
 
 To gain the protection semantics of an ETag, the service shall use the `If-Match` or `If-None-Match` header and not the `@odata.etag` property value for that protection.
 
-##### PUT (replace)<a id="put-replace"></a>
+#### PUT (replace)<a id="put-replace"></a>
 
 To completely replace a resource, use the PUT method.  The service may add properties to the response resource that the client omits from the request body, the resource definition requires, or the service normally supplies.
 
@@ -868,7 +870,7 @@ When the replace operation succeeds, the response may contain a the resource rep
 * If the client makes a PUT request against a resource collection, services should return the HTTP [405](#status-405) status code.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that the operation might change ETag values.
 
-##### POST (create)<a id="post-create"></a>
+#### POST (create)<a id="post-create"></a>
 
 To create a new resource, use the POST method.  
 
@@ -884,7 +886,7 @@ The body of the create request contains a representation of the object to create
 * The POST operation shall not be idempotent.
 * Services may allow the inclusion of `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
-##### DELETE (delete)<a id="delete-delete"></a>
+#### DELETE (delete)<a id="delete-delete"></a>
 
 To remove a resource, call the DELETE method.
 
@@ -897,7 +899,7 @@ See [Modification success responses](#modification-success-responses).
 * If the resource was already deleted, the service may return HTTP status code [404](#status-404) or a success code.
 * The service may allow the inclusion of the `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
-##### POST (action)<a id="post-action"></a>
+#### POST (Action)<a id="post-action"></a>
 
 To initiate operations on an object, such as `Actions`, call the POST method.
 
@@ -1198,7 +1200,7 @@ Below is an example of the Link Headers of a ManagerAccount with a role of Admin
 - The third Link Header is an example for the JSON Schema that describes the actual resource.
 - Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).
 
-~~~http
+```http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
 Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
