@@ -262,7 +262,7 @@
         <Property Name="HttpPushUri" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The URI used to perform an HTTP or HTTPS push update to the Update Service."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a URI at which the UpdateService supports an HTTP or HTTPS POST of a software image for the purpose of installing software contained within the image.  Access to this URI shall require the same privilege as access to the Update Service."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI at which the UpdateService supports an HTTP or HTTPS POST of a software image for the purpose of installing software contained within the image.  Access to this URI shall require the same privilege as access to the Update Service.  If the service requires Content-Length header for POST requests to this URI, the service should return HTTP 411 if the client does not include this header in the POST request."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
       </EntityType>
@@ -290,6 +290,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also updated to clarify the description of HttpPushUri."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_3.UpdateService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was added to update the long description of HttpPushUri."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_4.UpdateService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_0">
@@ -328,6 +334,12 @@
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_2.UpdateService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_4">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was added to update the long description of HttpPushUri."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_2_3.UpdateService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2018.2"/>
@@ -339,6 +351,12 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to make use of the new Revisions annotation. It was also updated to clarify the description of HttpPushUri."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_0.UpdateService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_3_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was added to update the long description of HttpPushUri."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_3_1.UpdateService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_4_0">
@@ -410,11 +428,17 @@
       </EnumType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_4_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was added to update the long description of HttpPushUri."/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_4_0.UpdateService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
 
-      <EntityType Name="UpdateService" BaseType="UpdateService.v1_4_0.UpdateService">
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_4_1.UpdateService">
         <Property Name="MaxImageSizeBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum size in bytes of the software update image that this service supports."/>
