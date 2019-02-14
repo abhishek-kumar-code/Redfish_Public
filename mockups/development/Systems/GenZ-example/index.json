@@ -9,12 +9,15 @@
 	"Description": "Compute Node",
 	"HostName": "node_r1c1b1s1",
 	"SerialNumber": "437X1BR2-001",
-	"UUID": "<UUID>",
+	"UUID": "00000000-0000-0000-0000-000000000000",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK",
 		"HealthRollup": "OK"
 	},
+	"FabricAdapter": {
+           "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter"
+    },
 	"PowerState": "On",
 	"Links": {
 		"Chassis": [
@@ -22,8 +25,7 @@
 		],
 		"ManagedBy": [
 			{ "@odata.id": "/redfish/v1/Managers/1" }
-		],
-		"FabricAdapter": "/redfish/v1/Systems/GenZ-example/FabricAdapter"
+		]
 	},
 	"Oem": { }
 }
