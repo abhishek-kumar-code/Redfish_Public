@@ -1,18 +1,21 @@
 {
 	"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports",
 	"@odata.type": "#PortCollection.PortCollection",
-	"Name": "GenZ Port Collection",
+	"Name": "Gen-Z Port Collection",
 	"Members@odata.count": 2,
+
 	"Members": [
 		{
-		"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1", 
+			"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1", 
 			"Status": 
-				{ "State": "Enabled" }, 
-					"LPRT1": { "Members": [ { "Id": "1", "RawHexValue": "0x1234568" }
-		} ,
+				{ "LinkState": "Enabled" }, 
+					"LPRT": { "Members": [  { "Id": "1", "RawHexValue": "0x1234568" },
+								{ "Id": "4", "RawHexValue": "0x3B558DF" }
+							     ]
+						}
+		},
 		{
 		"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2"
 		} 
 	]
-
 }
