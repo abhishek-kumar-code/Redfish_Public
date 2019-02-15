@@ -334,25 +334,18 @@ A URI identifies a resource, including the service root and all Redfish resource
     * Do not use the **`#`** character for anything other than the start of a fragment.
 * URIs shall not include any percent-encoding of characters.  This restriction does not apply to the [query parameters](#query-parameters) portion of the URI.
 
-MIKE to reconcile the following two blocks
-Performing a GET operation yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
-
-To begin operations, a Redfish client must know the URI for a resource.
-* To get the resource representation with properties and hyperlinks to associated resources, call the GET operation.  
-* The base resource URI is well known and based on the protocol version.
-* To discover the URIs to additional resources, observe the associated resource hyperlinks from previous responses.
-* To consume a hypermedia API, navigate the URIs that the service returns.
+Performing a GET operation on a URI yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of methodology that is consumed by navigating URIs returned by the service is known as a Hypermedia.
 
 Redfish considers the [RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-defined scheme, authority, root service and version, and unique resource path component parts of the URI.
 
 For example, the `https://mgmt.vendor.com/redfish/v1/Systems/1` URI contains these component parts:
 
-| Component part | In the example |
-| ---            | ---            |
-| The scheme.    | `https:` |
+| Component part                                                           | In the example |
+| ---                                                                      | ---            |
+| The scheme.                                                              | `https:` |
 | The authority, which defines the authority to which to delegate the URI. | `//mgmt.vendor.com` |
-| The root service and version. | `/redfish/v1/` |
-| The resource path, which provides a unique identifier for the resource. | `Systems/1` | 
+| The root service and version.                                            | `/redfish/v1/` |
+| The resource path, which provides a unique identifier for the resource.  | `Systems/1` | 
 
 In a URI:
 
@@ -385,15 +378,15 @@ The following table describes the mapping of HTTP methods to the operations whic
 * If the value is "no", the value may be supported.
 For HTTP methods not supported by the Redfish Service or not listed in the table, a [405](#status-405) response shall be returned by the Redfish Service.
 
-| HTTP&nbsp;method | Interface&nbsp;semantic | Required |
-|:-----------------|:------------------------|:---------|
-| POST | Object create<br/>Object action<br/>Eventing | Yes |
-| GET | Object retrieval | Yes |
-| PUT | Object replace | No |
-| PATCH | Object update | Yes |
-| DELETE | Object delete | Yes |
-| HEAD | Object header retrieval | No |
-| OPTIONS | Header retrieval<br/>CORs preflight | No |
+| HTTP&nbsp;method | Interface&nbsp;semantic                      | Required |
+| ---              | ---                                          | ---      |
+| POST             | Object create<br/>Object action<br/>Eventing | Yes |
+| GET              | Object retrieval                             | Yes |
+| PUT              | Object replace                               | No |
+| PATCH            | Object update                                | Yes |
+| DELETE           | Object delete                                | Yes |
+| HEAD             | Object header retrieval                      | No |
+| OPTIONS          | Header retrieval<br/>CORs preflight          | No |
 
 ### HTTP redirect
 
@@ -470,10 +463,10 @@ The protocol version is a string in the format:
 
 where
 
-| Variable | Type | Version | Description |
-|:--|:--|:--|:--|
-| *MajorVersion* | Integer | The major version | A backward-compatible class change. |
-| *MinorVersion* | Integer | The minor version | A minor update.  Redfish introduces new functionality but does not remove any functionality.<br/>The minor version preserves compatibility with earlier minor versions. |
+| Variable        | Type    | Version            | Description |
+| ---             | ---     | ---                | ---         |
+| *MajorVersion*  | Integer | The major version  | A backward-compatible class change. |
+| *MinorVersion*  | Integer | The minor version  | A minor update.  Redfish introduces new functionality but does not remove any functionality.<br/>The minor version preserves compatibility with earlier minor versions. |
 | *ErrataVersion* | Integer | The errata version | A fix in the earlier version. |
 
 Any resource that a client discovers through hyperlinks that the root service or any root service-referenced service or resource returns shall conform to the same protocol version that the root service supports.
@@ -490,11 +483,11 @@ A GET operation on the `/redfish` resource shall return this response body:
 
 A Redfish service shall support these Redfish-defined URIs:
 
-| URI | Returns |
-|:----|:--------|
-| `/redfish` | The [version](#protocol-version). |
-| `/redfish/v1/` | The Redfish [service root](#service-root-request). |
-| `/redfish/v1/odata` | The Redfish [OData service document](#odata-service-document). |
+| URI                     | Returns |
+| ---                     | ---     |
+| `/redfish`              | The [version](#protocol-version). |
+| `/redfish/v1/`          | The Redfish [service root](#service-root-request). |
+| `/redfish/v1/odata`     | The Redfish [OData service document](#odata-service-document). |
 | `/redfish/v1/$metadata` | The Redfish [metadata document](#metadata-document-request). |
 
 In addition, the service shall process the following URI without a trailing slash in one of these ways:
@@ -502,8 +495,8 @@ In addition, the service shall process the following URI without a trailing slas
 * Redirect it to the associated Redfish-defined URI.
 * Treat it as the equivalent URI to the associated Redfish-defined URI:
 
-| URI | Associated Redfish-defined URI |
-|:----|:-------------------------------|
+| URI           | Associated Redfish-defined URI |
+| ---           | ---                            |
 | `/redfish/v1` | `/redfish/v1/` |
 
 All other Redfish service-supported URIs shall match the [Resource URI pattern definitions](#resource-uri-pattern-definitions), except the supplemental resources that the `@Redfish.Settings`, `@Redfish.ActionInfo`, and `@Redfish.CollectionCapabilities` payload annotations reference.  The client shall treat the URIs for these supplemental resources as opaque.
@@ -531,30 +524,30 @@ For Redfish Clients (sending the HTTP requests):
 * Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Yes", or if the value in the Client Requirement column is set to "Conditional" under the conditions noted in the Description column.
 * Redfish Clients should transmit the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "No".
 
-| Header | Service requirement | Client requirement | Supported values | Description |
-|:-------|:--------------------|:-------------------|:-----------------|:------------|
-| `Accept` | Yes | No | [RFC 7231](#RFC7231) | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
-| `Accept-Encoding` | No | No | [RFC7231](#RFC7231) | Indicates whether the client can handle gzip-encoded responses.<br/>If a request contains this header and the service cannot send an acceptable response:<ul><li>The service shall respond with the HTTP [406](#status-406) status code.</li></ul>If the request omits this header:<ul><li>The service shall not return gzip-encoded responses.</li></ul> |
-| `Accept-Language` | No | No | [RFC7231](#RFC7231) | The languages that the client accepts in the response.<br/>If the request omits this header, the service's default language is used for the response. |
-| `Authorization` | Conditional | Conditional | [RFC7235](#RFC7235), Section 4.2 | Required for [Basic authentication](#basic-authentication).<br/>A client can access unsecured resources without this header on systems that support basic authentication. |
-| `Content-Length` | No | No | [RFC7231](#RFC7231) | The size of the message body.<br/>A client can also use the `Transfer-Encoding: chunked` header to indicate the size of the body.<br/>If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service responds with the [411](#status-411) status code. |
-| `Content-Type` | Conditional | Conditional | [RFC7231](#RFC7231) | The request format.  Required for operations with a request body.<br/>Services shall accept `Content-Type` header values of `application/json` or `application/json;charset=utf-8`.<br/>It is recommended that clients use these values in requests because other values can cause an error. |
-| `Host` | Yes | No | [RFC7230](#RFC7230) | Enables support of multiple origin hosts at a single IP address. |
-| `If-Match` | Conditional | No | [RFC7232](#RFC7232) | To ensure that clients update the resource from a known state, PUT and PATCH requests for resources for which the service returns ETags shall support `If-Match`.<br/>While not required for clients, it is highly recommended for PUT and PATCH operations. |
-| `If-None-Match` | No | No | [RFC7232](#RFC7232) | The service only returns the requested resource if the current ETag of that resource does not match the ETag sent in this header.<br/>If the ETag in this header matches the resource's current ETag, the GET operation returns the HTTP [304](#status-304) status code. |
-| `Last-Event-ID` | No | No | [HTML5 SSE](#HTML5-Spec-SSE) | The event source’s last event ID.  Requests history event data.<br/>See [Server-Sent Events](#server-sent-events). |
-| `Max-Forwards` | No | No | [RFC7231](#RFC7231) | Limits gateway and proxy hops.<br/>Prevents messages from remaining in the network indefinitely. |
-| `OData-MaxVersion` | No | No | 4.0 | The maximum OData version that an OData-aware client understands. |
-| `OData-Version` | Yes | No | 4.0 | The OData version.<br/>Services shall reject requests that specify an unsupported OData version.<br/>If a service encounters an unsupported OData version, it should reject the request with the HTTP [412](#status-412) status code. |
-| `Origin` | Yes | No | [W3C CORS](#W3C-CORS), Section 5.7 | Enables web applications to consume a Redfish service while preventing CSRF attacks. |
-| `User-Agent` | Yes | No | [RFC7231](#RFC7231) | Traces product tokens and their versions.<br/>The header can list multiple product tokens. |
-| `Via` | No | No | [RFC7230](#RFC7230) | Defines the network hierarchy and recognizes message loops.<br/>Each pass inserts its own VIA. |
+| Header             | Service requirement | Client requirement | Supported values                   | Description |
+| ---                | ---                 | ---                | ---                                | ---         |
+| `Accept`           | Yes                 | No                 | [RFC 7231](#RFC7231)               | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
+| `Accept-Encoding`  | No                  | No                 | [RFC7231](#RFC7231)                | Indicates whether the client can handle gzip-encoded responses.<br/>If a request contains this header and the service cannot send an acceptable response:<ul><li>The service shall respond with the HTTP [406](#status-406) status code.</li></ul>If the request omits this header:<ul><li>The service shall not return gzip-encoded responses.</li></ul> |
+| `Accept-Language`  | No                  | No                 | [RFC7231](#RFC7231)                | The languages that the client accepts in the response.<br/>If the request omits this header, the service's default language is used for the response. |
+| `Authorization`    | Conditional         | Conditional        | [RFC7235](#RFC7235), Section 4.2   | Required for [Basic authentication](#basic-authentication).<br/>A client can access unsecured resources without this header on systems that support basic authentication. |
+| `Content-Length`   | No                  | No                 | [RFC7231](#RFC7231)                | The size of the message body.<br/>A client can also use the `Transfer-Encoding: chunked` header to indicate the size of the body.<br/>If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service responds with the [411](#status-411) status code. |
+| `Content-Type`     | Conditional         | Conditional        | [RFC7231](#RFC7231)                | The request format.  Required for operations with a request body.<br/>Services shall accept `Content-Type` header values of `application/json` or `application/json;charset=utf-8`.<br/>It is recommended that clients use these values in requests because other values can cause an error. |
+| `Host`             | Yes                 | No                 | [RFC7230](#RFC7230)                | Enables support of multiple origin hosts at a single IP address. |
+| `If-Match`         | Conditional         | No                 | [RFC7232](#RFC7232)                | To ensure that clients update the resource from a known state, PUT and PATCH requests for resources for which the service returns ETags shall support `If-Match`.<br/>While not required for clients, it is highly recommended for PUT and PATCH operations. |
+| `If-None-Match`    | No                  | No                 | [RFC7232](#RFC7232)                | The service only returns the requested resource if the current ETag of that resource does not match the ETag sent in this header.<br/>If the ETag in this header matches the resource's current ETag, the GET operation returns the HTTP [304](#status-304) status code. |
+| `Last-Event-ID`    | No                  | No                 | [HTML5 SSE](#HTML5-Spec-SSE)       | The event source's last event ID.  Requests history event data.<br/>See [Server-Sent Events](#server-sent-events). |
+| `Max-Forwards`     | No                  | No                 | [RFC7231](#RFC7231)                | Limits gateway and proxy hops.<br/>Prevents messages from remaining in the network indefinitely. |
+| `OData-MaxVersion` | No                  | No                 | 4.0                                | The maximum OData version that an OData-aware client understands. |
+| `OData-Version`    | Yes                 | No                 | 4.0                                | The OData version.<br/>Services shall reject requests that specify an unsupported OData version.<br/>If a service encounters an unsupported OData version, it should reject the request with the HTTP [412](#status-412) status code. |
+| `Origin`           | Yes                 | No                 | [W3C CORS](#W3C-CORS), Section 5.7 | Enables web applications to consume a Redfish service while preventing CSRF attacks. |
+| `User-Agent`       | Yes                 | No                 | [RFC7231](#RFC7231)                | Traces product tokens and their versions.<br/>The header can list multiple product tokens. |
+| `Via`              | No                  | No                 | [RFC7230](#RFC7230)                | Defines the network hierarchy and recognizes message loops.<br/>Each pass inserts its own VIA. |
 
 Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the **Required** column is _**Yes**_.
 
-| Header | Service requirement | Client requirement | Supported values | Description |
-|:-------|:--------------------|:-------------------|------------------|:------------|
-| `X-Auth-Token` | Yes | Conditional | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
+| Header         | Service requirement | Client requirement | Supported values             | Description |
+| ---            | ---                 | ---                | ---                          | ---         |
+| `X-Auth-Token` | Yes                 | Conditional        | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
 
 ### GET (read requests)
 
