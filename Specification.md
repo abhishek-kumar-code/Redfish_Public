@@ -262,10 +262,9 @@ With the popularity of RESTful APIs, there are nearly as many RESTful interfaces
 
 To provide for interoperability between APIs, [OData](#OData-Protocol) defines a set of common RESTful conventions and annotations.  Redfish adopts OData conventions for describing schema, URL conventions, and definitions for typical properties in a JSON payload.
 
-#### Model-oriented
+#### Data oriented
 
-TODO: Jeff H to rewrite
-The Redfish data model is designed for management data center equipment.  Resources within the data model map to different aspects of the equipment, which range from single components, to systems, and up to entire racks.  The different resources also express relationships between each other.  The data model is defined in various schema languages, including OpenAPI YAML, OData CSDL, and JSON Schema.
+The Redfish data model is developed by focusing on the contents of the payload.  By concentrating on the contents of the payload first, Redfish payloads are easily mapped to schema definition languages and encoding types.  The data model is defined in various schema languages, including OpenAPI YAML, OData CSDL, and JSON Schema.
 
 #### Separation of protocol from data model
 
