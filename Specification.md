@@ -584,7 +584,7 @@ The service returns the `ServiceRoot` resource, as defined by this specification
 
 Services shall not require authentication to retrieve the service root and `/redfish` resources.
 
-#### OData service and $metadata document requests
+#### OData service and $metadata document requests<a id="metadata-document-request"></a>
 
 Redfish services expose two OData-defined documents at specific URIs to enable generic OData clients to navigate the Redfish service.
 
