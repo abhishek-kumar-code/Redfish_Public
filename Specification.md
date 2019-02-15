@@ -306,21 +306,9 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 ## Protocol details
 
-Redfish follows these standards and conventions:
+In this document, the Redfish protocol refers to the RESTful mapping to HTTP, TCP/IP and other protocol, transport, and messaging layer aspects. HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.
 
-* [JSON payloads](#RFC4627)
-* HTTP/HTTPS as the application protocol that transports the messages
-* TCP/IP as the transport protocol
-* A machine-readable representation of schema
-    * [OData Schema](#OData-CSDL)
-    * [JSON Schema](#JSONSchema-Core)
-    * [OpenAPI Schema](OpenAPI-Spec)
-* [OData conventions](#OData-Protocol)
-* RESTful conventions
-
-Redfish's use of these common standards and conventions increases interoperability and enables the leverage of existing tool chains.
-
-The Redfish protocol uses a web service-based interface model, and provides network and interaction efficiency for both user interface (UI) and automation usage.
+The Redfish protocol is designed around a web service based interface model. This provides network and interaction efficiency for both user interface (UI) and automation usage. Specifically, the ability to leverage existing tool chains.
 
 The Redfish protocol uses:
 
@@ -330,17 +318,11 @@ The Redfish protocol uses:
 * [HTTP status codes](#status-codes) to indicate the success or failure of the server's request.
 * [Extended error handling](#error-responses) to return more information than HTTP error codes.
 * TLS for sending secure messages.  See [Security](#security).
-* [Asynchronous semantics](#synchronous-and-asynchronous-operation-support) for long operations.
-
-The ability to send secure messages is important; the [Security](#security-details) clause of this document describes specific TLS requirements.
-
-Some operations may take longer than required for synchronous return semantics.  Consequently, the architecture includes deterministic [asynchronous semantics](#synchronous-and-asynchronous-operation-support).
-
-HTTP and HTTPS are ideally suited to a RESTful interface.
-
-This clause describes how the Redfish interface uses and adds constraints to HTTP to ensure interoperability of Redfish implementations.
+* [Asynchronous semantics](#synchronous-and-asynchronous-operation-support) for long running operations.
 
 A Redfish interface shall be exposed through a web service endpoint implemented using HTTP, version 1.1 ([RFC7230](#RFC7230), [RFC7231](#RFC7231), [RFC7232](#RFC7232)).
+
+The subsequent clauses describes how the Redfish interface uses and adds constraints to HTTP to ensure interoperability of Redfish implementations.
 
 #### Universal Resource Identifiers
 
@@ -355,7 +337,7 @@ A URI identifies a resource, including the service root and all Redfish resource
 MIKE to reconcile the following two blocks
 Performing a GET operation yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-To begin operations, a client must know the URI for a resource.
+To begin operations, a Redfish client must know the URI for a resource.
 * To get the resource representation with properties and hyperlinks to associated resources, call the GET operation.  
 * The base resource URI is well known and based on the protocol version.
 * To discover the URIs to additional resources, observe the associated resource hyperlinks from previous responses.
@@ -398,7 +380,10 @@ If a property in a response is a reference to another property within a resource
 
 #### HTTP methods
 
-An attractive feature of the RESTful interface is the limited number of supported operations.  The following table describes the general mapping of operations to HTTP methods.  If the **Required** column shows the method as required, a Redfish interface supports the HTTP method.
+The following table describes the mapping of HTTP methods to the operations which are supported by Redfish.  The "required" column specifies whether the method is supported by a Redfish interface.
+* If the value is "yes", then the HTTP method shall be supported.
+* If the value is "no", the value may be supported.
+For HTTP methods not supported by the Redfish Service or not listed in the table, a [405](#status-405) response shall be returned by the Redfish Service.
 
 | HTTP&nbsp;method | Interface&nbsp;semantic | Required |
 |:-----------------|:------------------------|:---------|
@@ -409,8 +394,6 @@ An attractive feature of the RESTful interface is the limited number of supporte
 | DELETE | Object delete | Yes |
 | HEAD | Object header retrieval | No |
 | OPTIONS | Header retrieval<br/>CORs preflight | No |
-
-Redfish does not permit other HTTP methods.  Other methods return the HTTP [405](#status-405) status code.
 
 #### HTTP redirect
 
