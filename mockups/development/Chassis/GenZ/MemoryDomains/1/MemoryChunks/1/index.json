@@ -8,7 +8,7 @@
     "IsMirrorEnabled": false,
     "IsSpare": false,
     "OffsetMiB": 0,
-    "InterleaveMemorySets": [
+    "InterleaveSets": [
         {"Memory" : {
             "@odata.id": "/redfish/v1/Chassis/GenZ/Memory/1"
         }},
