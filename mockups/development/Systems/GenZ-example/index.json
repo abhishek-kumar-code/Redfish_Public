@@ -15,8 +15,8 @@
 		"Health": "OK",
 		"HealthRollup": "OK"
 	},
-	"FabricAdapter": {
-           "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapter"
+	"FabricAdapters": {
+           "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters"
     },
 	"PowerState": "On",
 	"Links": {

@@ -1,0 +1,345 @@
+{
+	"@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/VCAT",
+	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
+	"Id": "1",  
+	"Name": "VCAT",
+	"Description": "FabricAdapter Port 1 Virtual Channel Action Table",
+	"VCAT": [
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		},
+		{
+		  "RawEntryHex": "0x12345678ABCDEF",
+		  "VCATEntry": [
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  },
+			  {
+			  	"VCMask": "0x34",
+			  	"TH": "0x12"
+			  }
+		  ]
+		}
+	]
+}

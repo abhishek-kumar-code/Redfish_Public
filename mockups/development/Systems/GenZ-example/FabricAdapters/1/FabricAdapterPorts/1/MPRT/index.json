@@ -1,0 +1,12 @@
+{
+    "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/MPRT",
+    "@odata.type": "#Routes.v1_1_0.Routes",
+    "Name": "FabricAdapter Port 1 Multi-Subnet Packet Relay Table",
+    "Id": "MPRT",
+    "Members": [
+		{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/MPRT/0" },
+		{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/MPRT/1" },
+		{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/MPRT/4095" }
+    ],
+	"Members.count": 4096
+}

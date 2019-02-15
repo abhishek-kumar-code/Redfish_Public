@@ -1,0 +1,46 @@
+{
+        "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1",
+	"@odata.type": "#FabricAdapterPort.v1_1_0.FabricAdapterPort",
+	"@Redfish.Copyright": "Copyright 2018-2019 DMTF. All rights reserved.",
+	"ETag": "5665F4DE331",
+	"Id": "1",
+	"Name": "Fabric Adapter Port 1",
+	"Description": "Fabric Adapter Port 1",
+	"PhysicalPortNumber": 1,
+	"PortProtocol": "Gen-Z",
+	"PortType": "BidirectionalPort",
+	"PortMedium": "Optical",
+	"Width": 4,
+	"MaxSpeedGbps": 56,
+	"CurrentSpeedGbps": 56,
+	"LinkFabricTechnology": "Gen-Z",
+	"LinkPhysicalMediaDependentProtocol": "PAM4",
+	"LinkStatus": "Up",
+	"MaxLaneCount": 4,
+	"CurrentLaneCount": 4,
+	"SignalDetected": true,
+	"LinkTransitionIndicator": 0,
+	"LinkState": "Disabled",
+	"InterfaceState": "Disabled",
+	"Status": {
+		"State": "Disabled | Starting | StandbyOffline | Enabled",
+		"Health": "OK | Warning | Critical"
+	},
+	"Actions": {
+		"#Port.Reset": {
+                        "target": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/Action/Port.Reset",
+			"ResetType@Redfish.AllowableValues": "ForceRestart"
+		}
+	},
+	"Routes": [
+		{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/LPRT" },
+		{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/MPRT" }
+	],
+	"VirtualChannels": [
+		{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/VCAT" }
+	],
+	"Metrics": {
+		"@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/Metrics"
+	},
+	"Oem": { }
+}

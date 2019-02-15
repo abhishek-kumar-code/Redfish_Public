@@ -1,0 +1,15 @@
+{
+    "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/SSDT",
+    "@odata.type": "#Route.v1_1_0.Route",
+    "Name": "Gen-Z Fabric Adapter Single Subnet Destination Table",
+    "Id": "SSDT",
+    "Members": [
+	{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/SSDT/0" },
+	{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/SSDT/1" },
+	{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/SSDT/2" },
+	{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/SSDT/3" },
+	{ "@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/SSDT/4096" }
+
+    ],
+    "Members.count": 4096
+}
