@@ -324,7 +324,7 @@ A Redfish interface shall be exposed through a web service endpoint implemented 
 
 The subsequent clauses describes how the Redfish interface uses and adds constraints to HTTP to ensure interoperability of Redfish implementations.
 
-### Universal Resource Identifiers
+### Universal Resource Identifiers<a id="uris"></a>
 
 A URI identifies a resource, including the service root and all Redfish resources.
 
