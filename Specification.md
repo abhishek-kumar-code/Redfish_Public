@@ -607,9 +607,9 @@ Services shall not require authentication to retrieve the service root and `/red
 
 Redfish services expose two OData-defined documents at specific URIs to enable generic OData clients to navigate the Redfish service.
 
-* Service shall expose an [OData $metadata document](#service-metadata) at the `/redfish/v1/$metadata` URI.  
+* Service shall expose an [OData $metadata Document](#service-metadata) at the `/redfish/v1/$metadata` URI.  
 * Service shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` URI.
-* Service shall not require authentication to retrieve the OData $metadata document or the OData Service document.
+* Service shall not require authentication to retrieve the OData $metadata Document or the OData Service Document.
 
 ### Query parameters
 
@@ -647,17 +647,15 @@ The response body shall reflect the evaluation of the query parameters in this o
 
 #### Using the $expand query parameter<a id="expand-parameter"></a>
 
-The `$expand` query parameter indicates that the implementation should return a hyperlink and its contents in-line with retrieved resources, as if a GET response is included in-line with that hyperlink.
+The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources included in-line. 
 
-In CSDL terms, because implementations can use the `NavigationProperty` element to expand any entries associated with an entity or collection of entities, the response includes these entries.
-
-The `$expand` query parameter has a set of possible values that determine which hyperlinks, or _*navigation properties*_, to expand.
+The `$expand` query parameter has a set of possible values that determine which hyperlinks in a resource are included in the expanded response.
 
 The Redfish-supported values for the `$expand` query parameter are:
 
 | Value | Description | Example |
 |:------|:------------|:--------|
-| asterisk&nbsp;(`*`) | Expands all hyperlinks. | `http://resourcecollection?$expand=*` |
+| asterisk&nbsp;(`*`) | Expands all hyperlinks. | `http://resource?$expand=*` |
 | `$levels` | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource, or `level=1`.</li><li>The expanded resource, or `level=2`.</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
 | period&nbsp;(`.`) | Expands all subordinate hyperlinks.<br/>Subordinate hyperlinks are those that are directly referenced, or not in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
 | tilde&nbsp;(`~`) | Expands all dependent hyperlinks.<br/>Dependent hyperlinks are those that are not directly referenced, or in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
