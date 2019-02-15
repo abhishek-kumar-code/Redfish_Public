@@ -626,32 +626,32 @@ The response body shall reflect the evaluation of the query parameters in this o
 | `$skip=<integer>` | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
 | `$top=<integer>` | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
-#### Use the $expand query parameter<a id="expand-parameter"></a>
+#### Use of the $expand query parameter<a id="expand-parameter"></a>
 
-The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources included in-line. 
+The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources in-line.  The definition of this query parameter follows the [OData Protocol](#odata-protocol) specification.
 
 The `$expand` query parameter has a set of possible values that determine which hyperlinks in a resource are included in the expanded response.
 
-The Redfish-supported values for the `$expand` query parameter are:
+The Redfish-supported values for the `$expand` query parameter are listed in the following table.  Any other supported syntax for `$expand` is outside the scope of this specification.
 
 | Value | Description | Example |
 |:------|:------------|:--------|
-| asterisk&nbsp;(`*`) | Expands all hyperlinks. | `http://resource?$expand=*` |
-| `$levels` | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource, or `level=1`.</li><li>The expanded resource, or `level=2`.</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
-| period&nbsp;(`.`) | Expands all subordinate hyperlinks.<br/>Subordinate hyperlinks are those that are directly referenced, or not in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
-| tilde&nbsp;(`~`) | Expands all dependent hyperlinks.<br/>Dependent hyperlinks are those that are not directly referenced, or in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
+| asterisk&nbsp;(`*`) | Shall expand all hyperlinks. | `http://resource?$expand=*` |
+| `$levels` | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
+| period&nbsp;(`.`) | Shall expand all subordinate hyperlinks.<br/>Subordinate hyperlinks are those that are directly referenced, or not in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
+| tilde&nbsp;(`~`) | Shall expand all dependent hyperlinks.<br/>Dependent hyperlinks are those that are not directly referenced, or in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
 
 Examples of `$expand` usage include:
 
 * GET of a `SoftwareInventoryCollection`.
     
-    With `$expand`, the client can request multiple `SoftwareInventory` resources in one request rather than fetching them one at a time.
+    With `$expand`, the client can request multiple `SoftwareInventory` collection member resources in one request rather than fetching them one at a time.
 
 * GET of a `ComputerSystem`.
     
-    With `$levels`, a single GET request can include collections, such as `Processors` and `Memory`.
+    With `$levels`, a single GET request can include the subordinate resource collections, such as `Processors` and `Memory`.
 
-* GET all UUIDs in the `ComputerSystem` collection.
+* GET all UUIDs in Members of the `ComputerSystem` collection.
     
     To accomplish this result, include both `$select` and `$expand` on the URI.  
 
@@ -663,19 +663,18 @@ When clients use `$expand`, they should be aware that the payload may increase b
 
 If a service cannot return the payload due to its size, it shall return HTTP [507](#status-507) status code.
 
-> **Note:** Resources that contain `ReferenceableMembers` that the `AutoExpand` annotation already expands, such as the `Temperature` object in the `Thermal` resource, are part of the current resource and are at the same level as the queried resource.
+> **Note:** Some resources may already be expanded due to the resource's schema annotation 'AutoExpand`, such as the `Temperature` object in the `Thermal` resource.
 
-Any other supported syntax for `$expand` is outside the scope of this specification.
 
-#### Use the $select query parameter<a id="select-parameter"></a>
+#### Use of the $select query parameter<a id="select-parameter"></a>
 
-The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression. indicates that the implementation should return a subset of the resources' properties based on the value of the `$select` expression.
+The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression.  The definition of this query parameter follows the [OData Protocol](#odata-protocol) specification.
 
 The `$select` expression shall not affect the resource itself.
 
 The `$select` expression defines a comma-separated list of properties to return in the response body.
 
-The syntax for properties in complex types shall be the property names concatenated with a slash (`/`).  
+The syntax for properties in object types shall be the object and property names concatenated with a slash (`/`).  
 
 > **Note:** If a request omits the`$select` query parameter, the response returns all properties by default.
 
@@ -689,9 +688,9 @@ When services execute `$select`, they shall return all requested properties of t
 
 Any other supported syntax for `$select` is outside the scope of this specification.
 
-#### Use the $filter query parameter<a id="filter-parameter"></a>
+#### Use of the $filter query parameter<a id="filter-parameter"></a>
 
-The `$filter parameter` indicates that the implementation should return a subset of the collection's members based on the `$filter` expression.
+The `$filter parameter` allows a client to request a subset of the resource collection's members based on the `$filter` expression.  The definition of this query parameter follows the [OData Protocol](#odata-protocol) specification.
 
 The `$filter` query parameter defines a set of properties and literals with an operator.
 
@@ -705,7 +704,7 @@ If the literal value does not match the data type for the specified property, th
 
 The `$filter` section of the OData ABNF components specification contains the grammar for the allowable syntax of the `$filter` query parameter, with the additional restriction that only built-in filter operations are supported.
 
-The Redfish-supported values for the `$filter` query parameter are:
+The following table lists the Redfish-supported values for the `$filter` query parameter.  Any other supported syntax for `$filter` is outside the scope of this specification.
 
 | Value | Description | Example |
 |:------|:------------|:--------|
@@ -728,8 +727,6 @@ When evaluating expressions, services shall use the following operator precedenc
 * Equality comparison. `eq` and `ne` both have equal precedence.
 * Logical `and`
 * Logical `or`
-
-Any other supported syntax for `$filter` is outside the scope of this specification.
 
 If the service receives an unsupported `$filter` query parameter, it shall reject the request and return the HTTP [501](#status-501) status code.
 
