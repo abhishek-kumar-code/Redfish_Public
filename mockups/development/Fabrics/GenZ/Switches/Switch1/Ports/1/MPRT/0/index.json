@@ -3,7 +3,7 @@
 	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
 	"Id": "0",  
 	"Name": "MPRT0",
-	"Description": "GenZ Port 1 MPRT Entry 0",
+	"Description": "Gen-Z Port 1 MPRT Entry 0",
 	"RawEntryHex": "0x12345678",
 	"RouteSet": [
 		{
@@ -55,6 +55,6 @@
 			"EgressIdentifier": 0
 		}
     ],
-	"MinimumHopCount": 1,
+    "MinimumHopCount": 1,
     "Oem": { }
 }

@@ -3,7 +3,7 @@
 	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
 	"Id": "0",  
 	"Name": "LPRT0",
-	"Description": "GenZ Port 1 LPRT Entry 0",
+	"Description": "Gen-Z Port 1 LPRT Entry 0",
 	"RawEntryHex": "0x34EF124500000000",
 	"RouteSet": [
 		{

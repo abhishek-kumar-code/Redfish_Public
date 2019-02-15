@@ -3,7 +3,7 @@
 	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
 	"Id": "4095",  
 	"Name": "MPRT4095",
-	"Description": "GenZ Port 1 MPRT Entry 4095",
+	"Description": "Gen-Z Port 1 MPRT Entry 4095",
 	"RawEntryHex": "0x12345678",
 	"RouteSet": [
 		{

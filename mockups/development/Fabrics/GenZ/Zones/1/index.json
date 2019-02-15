@@ -2,8 +2,8 @@
 	"@odata.id": "/redfish/v1/Fabrics/GenZ/Zones/1",
 	"@odata.type": "#Zone.v1_1_0.Zone",
 	"Id": "1",
-	"Name": "GenZ Zone 1",
-	"Description": "GenZ Zone 1",
+	"Name": "Gen-Z Zone 1",
+	"Description": "Gen-Z Zone 1",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK" 

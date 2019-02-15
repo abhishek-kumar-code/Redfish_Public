@@ -1,7 +1,7 @@
 {
     "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1",
     "@odata.type": "#Port.v1_1_0.Port",
-    "Name": "GenZ Fabric Port 1 Linear Packet Relay Table Deep Patch",
+    "Name": "Gen-Z Fabric Port 1 Linear Packet Relay Table Deep Patch",
     "Id": "LPRT",
 
 	"MembersOption1": [

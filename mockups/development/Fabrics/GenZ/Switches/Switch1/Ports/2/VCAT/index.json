@@ -3,7 +3,7 @@
 	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
 	"Id": "2",  
 	"Name": "VCAT",
-	"Description": "GenZ Port 2 Virtual Channel Action Table",
+	"Description": "Gen-Z Port 2 Virtual Channel Action Table",
 	"VCAT": [
 		{
 		  "RawEntryHex": "0x12345678ABCDEF",

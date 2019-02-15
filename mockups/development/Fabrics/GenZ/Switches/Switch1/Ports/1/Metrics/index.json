@@ -1,9 +1,9 @@
 {
         "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1/Metrics",
-	"@odata.type": "#FabricAdapterPortMetrics.v1_1_0.FabricAdapterPortMetrics",
+	"@odata.type": "#PortMetrics.v1_1_0.PortMetrics",
 	"Id": "Metrics",
-	"Name": "GenZ Port 1 Metrics",
-	"Description": "GenZ Port 1 Metrics",
+	"Name": "Gen-Z Port 1 Metrics",
+	"Description": "Gen-Z Port 1 Metrics",
 	"TimeStamp": "2017-11-23T17:17:42-0600",
 	"PCRC": 24,
 	"ECRC": 3,

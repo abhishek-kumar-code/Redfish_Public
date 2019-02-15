@@ -2,9 +2,9 @@
 	"@odata.id": "/redfish/v1/Fabrics/GenZ",
 	"@odata.type": "#Fabric.v1_0_3.Fabric",
 	"Id": "GenZ",
-	"Name": "GenZ Fabric",
-	"FabricType": "GenZ",
-	"Description": "A GenZ Fabric Switch",
+	"Name": "Gen-Z Fabric",
+	"FabricType": "Gen-Z",
+	"Description": "A Gen-Z Fabric Switch",
 	"Status": {
 		"State": "Enabled",
 		"Health": "OK"
