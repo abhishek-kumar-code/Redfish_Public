@@ -324,7 +324,7 @@ A Redfish interface shall be exposed through a web service endpoint implemented 
 
 The subsequent clauses describes how the Redfish interface uses and adds constraints to HTTP to ensure interoperability of Redfish implementations.
 
-#### Universal Resource Identifiers
+### Universal Resource Identifiers
 
 A URI identifies a resource, including the service root and all Redfish resources.
 
@@ -378,7 +378,7 @@ If a property in a response is a reference to another property within a resource
 }
 ```
 
-#### HTTP methods
+### HTTP methods
 
 The following table describes the mapping of HTTP methods to the operations which are supported by Redfish.  The "required" column specifies whether the method is supported by a Redfish interface.
 * If the value is "yes", then the HTTP method shall be supported.
@@ -395,7 +395,7 @@ For HTTP methods not supported by the Redfish Service or not listed in the table
 | HEAD | Object header retrieval | No |
 | OPTIONS | Header retrieval<br/>CORs preflight | No |
 
-#### HTTP redirect
+### HTTP redirect
 
 HTTP redirect enables a service to redirect a request to another URL.  Among other things, HTTP redirect enables Redfish resources to alias areas of the data model.
 
@@ -403,7 +403,7 @@ HTTP redirect enables a service to redirect a request to another URL.  Among oth
 
 NOTE: Refer to the [Security](#security-details) clause for security implications of HTTP Redirect
 
-#### Media types
+### Media types
 
 Some resources may be available in more than one type of representation.  The media type indicates the representation type.
 
@@ -416,7 +416,7 @@ To request compression, clients specify an [`Accept-Encoding` request header](#r
 
 When requested by the client, services should support gzip compression.
 
-#### ETags
+### ETags
 
 To reduce unnecessary RESTful accesses to resources, the Redfish service should support the association of a separate entity tag (ETag) with each resource.
 
@@ -515,7 +515,7 @@ All relative URIs that the service uses shall start with either:
 * A double forward slash (`//`) and include the authority, such as `//mgmt.vendor.com/redfish/v1/Systems`.
 * A single forward slash (`/`) and include the absolute-path, such as `/redfish/v1/Systems`.
 
-## Service Requests
+## Service requests
 
 This clause describes the requests that clients can send to Redfish services.
 
@@ -531,10 +531,9 @@ For Redfish Clients (sending the HTTP requests):
 * Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Yes", or if the value in the Client Requirement column is set to "Conditional" under the conditions noted in the Description column.
 * Redfish Clients should transmit the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "No".
 
-
-| Header  | Service Requirement | Client Requirement | Supported Values | Description  |
-| ------- | ------------------- | ------------------ | ---------------- | ------------ |
-| Accept           | Yes                 | No                 | [RFC 7231](#RFC7231)               | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
+| Header | Service requirement | Client requirement | Supported values | Description |
+|:-------|:--------------------|:-------------------|:-----------------|:------------|
+| `Accept` | Yes | No | [RFC 7231](#RFC7231) | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
 | `Accept-Encoding` | No | No | [RFC7231](#RFC7231) | Indicates whether the client can handle gzip-encoded responses.<br/>If a request contains this header and the service cannot send an acceptable response:<ul><li>The service shall respond with the HTTP [406](#status-406) status code.</li></ul>If the request omits this header:<ul><li>The service shall not return gzip-encoded responses.</li></ul> |
 | `Accept-Language` | No | No | [RFC7231](#RFC7231) | The languages that the client accepts in the response.<br/>If the request omits this header, the service's default language is used for the response. |
 | `Authorization` | Conditional | Conditional | [RFC7235](#RFC7235), Section 4.2 | Required for [Basic authentication](#basic-authentication).<br/>A client can access unsecured resources without this header on systems that support basic authentication. |
@@ -551,12 +550,11 @@ For Redfish Clients (sending the HTTP requests):
 | `User-Agent` | Yes | No | [RFC7231](#RFC7231) | Traces product tokens and their versions.<br/>The header can list multiple product tokens. |
 | `Via` | No | No | [RFC7230](#RFC7230) | Defines the network hierarchy and recognizes message loops.<br/>Each pass inserts its own VIA. |
 
-Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
+Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the **Required** column is _**Yes**_.
 
-| Header  | Service Requirement | Client Requirement | Supported Values | Description  |
-| ------- | ------------------- | ------------------ | ---------------- | ------------ |
+| Header | Service requirement | Client requirement | Supported values | Description |
+|:-------|:--------------------|:-------------------|------------------|:------------|
 | `X-Auth-Token` | Yes | Conditional | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
-
 
 ### GET (read requests)
 
@@ -619,16 +617,16 @@ The response body shall reflect the evaluation of the query parameters in this o
 * After applying any service side pagination: `$expand`, `$select`
 
 | Query&nbsp;parameter | Description | Examples |
-| ---                  | ---         | ---     |
-| `excerpt`            | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
-| `$expand=<string>`   | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink.  See [below](#expand-parameter). | `http://resource?$expand=*($levels=3)`<br/>`http://resourcecollection?$expand=.($levels=1)` |
-| `$filter=<string>`   | Applies to resource collections.  Returns a subset of collection members that match the `$filter` expression.  See [below](#filter-parameter). | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
-| `only`               | Applies to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
-| `$select=<string>`   | Returns a subset of the resource's properties that match the `$select` expression.  See [below](#select-parameter). | `http://resource?$select=SystemType,Status` |
-| `$skip=<integer>`    | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
-| `$top=<integer>`     | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
+|:---------------------|:------------|:---------|
+| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
+| `$expand=<string>` | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink.  See [below](#expand-parameter). | `http://resource?$expand=*($levels=3)`<br/>`http://resourcecollection?$expand=.($levels=1)` |
+| `$filter=<string>` | Applies to resource collections.  Returns a subset of collection members that match the `$filter` expression.  See [below](#filter-parameter). | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
+| `only` | Applies to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
+| `$select=<string>` | Returns a subset of the resource's properties that match the `$select` expression.  See [below](#select-parameter). | `http://resource?$select=SystemType,Status` |
+| `$skip=<integer>` | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
+| `$top=<integer>` | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
-#### Using the $expand query parameter<a id="expand-parameter"></a>
+#### Use the $expand query parameter<a id="expand-parameter"></a>
 
 The `$expand` query parameter indicates that the implementation should return a hyperlink and its contents in-line with retrieved resources, as if a GET response is included in-line with that hyperlink.
 
@@ -671,7 +669,7 @@ If a service cannot return the payload due to its size, it shall return HTTP [50
 
 Any other supported syntax for `$expand` is outside the scope of this specification.
 
-#### Using the $select query parameter<a id="select-parameter"></a>
+#### Use the $select query parameter<a id="select-parameter"></a>
 
 The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression. indicates that the implementation should return a subset of the resources' properties based on the value of the `$select` expression.
 
@@ -693,7 +691,7 @@ When services execute `$select`, they shall return all requested properties of t
 
 Any other supported syntax for `$select` is outside the scope of this specification.
 
-#### Using the $filter query parameter<a id="filter-parameter"></a>
+#### Use the $filter query parameter<a id="filter-parameter"></a>
 
 The `$filter parameter` indicates that the implementation should return a subset of the collection's members based on the `$filter` expression.
 
@@ -808,7 +806,7 @@ The implementation may reject the update on certain fields based on its own poli
 For the following requests, services shall return the following HTTP status codes and other information:
 
 | Request | The service returns |
-|:--|:--|
+|:--------|:--------------------|
 | Modify several properties where one or more properties can never be updated.<br/>For example, such as when a property is read-only, unknown, or unsupported. | <ul><li>The HTTP [200](#status-200) status code.</li><li>A resource representation with a message [annotation](#extended-information) that lists the non-updatable properties.</li><li>The service may update other properties in the resource.</li></ul> |
 | Modify a single property that can never be updated.<br/>For example, a property that is read-only, unknown, or unsupported. | <ul><li>The HTTP [400](#status-400) status code.</li><li>A resource representation with a message [annotation](#extended-information) that shows the non-updatable property.</li></ul> |
 | Modify a resource or all properties that can never be updated. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
@@ -1126,7 +1124,7 @@ Services that support the `@Redfish.OperationApplyTime` annotation for a resourc
 
 The `Settings` Redfish Schema defines the structure of the `@Redfish.OperationApplyTimeSupport` object and the `@Redfish.OperationApplyTime` annotation value.
 
-## Service Responses
+## Service responses
 
 Redfish defines these response types:
 
@@ -1145,27 +1143,26 @@ HTTP defines headers that can be used in response messages.  The following table
 * Redfish Services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".
 * Redfish clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.
 
-| Header                             | Required    | Supported Values                    | Description |
-| --------                           | ---         | -----------------                   | ----------- |
-| OData-Version                      | Yes         | 4.0                                 | Describes the OData version of the payload that the response conforms to. |
-| Content-Type                       | Yes         | [RFC 7231](#RFC7231)                | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
-| Content-Encoding                   | No          | [RFC 7231](#RFC7231)                | Describes the encoding that has been performed on the media type. |
-| Content-Length                     | No          | [RFC 7231](#RFC7231)                | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
-| ETag                               | Conditional | [RFC 7232](#RFC7232)                | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects. |
-| Server                             | Yes         | [RFC 7231](#RFC7231)                | Required to describe a product token and its version. Multiple product tokens may be listed. |
-| <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)     | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
-| Location                           | Conditional | [RFC 7231](#RFC7231)                | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses that create user sessions. |
-| Cache-Control                      | Yes         | [RFC 7234](#RFC7234)                | This header shall be supported and is meant to indicate whether a response can be cached or not. |
-| Via                                | No          | [RFC 7230](#RFC7230)                | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA. |
-| Max-Forwards                       | No          | [RFC 7231](#RFC7231)                | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely. |
-| Access-Control-Allow-Origin        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks. |
-| Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
-| WWW-Authenticate                   | Yes         | [RFC 7235](#RFC7235), Section 4.1   | Required for Basic and other optional authentication mechanisms. See the [Security](#security-details) clause for details. |
-| X-Auth-Token                       | Yes         | Opaque encoded octet strings        | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
-| Retry-After                        | No          | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
+| Header | Required | Supported values | Description |
+|:-------|:---------|:-----------------|:------------|
+| `OData-Version` | Yes | 4.0 | The OData version of the payload to which the response conforms. |
+| `Content-Type` | Yes | [RFC 7231](#RFC7231) | The type of representation used in the message body.  Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the `Content-Type` if specified in the chosen media-type in the Accept header for the request. |
+| `Content-Encoding` | No | [RFC 7231](#RFC7231) | The encoding that has been performed on the media type. |
+| `Content-Length` | No | [RFC 7231](#RFC7231) | The size of the message body.  An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
+| `ETag` | Conditional | [RFC 7232](#RFC7232) | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects. |
+| `Server` | Yes | [RFC 7231](#RFC7231) | Required.  A product token and its version. Multiple product tokens may be listed. |
+| <a id="link-header-table"></a>`Link` | Yes | See [Link Header](#link-header) | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
+| `Location` | Conditional | [RFC 7231](#RFC7231) | A URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  `Location` and `X-Auth-Token` shall be included on responses that create user sessions. |
+| `Cache-Control` | Yes | [RFC 7234](#RFC7234) | Shall be supported and indicates whether a response can or cannot be cached. |
+| `Via` | No | [RFC 7230](#RFC7230) | The network hierarchy and recognizes message loops. Each pass inserts its own VIA. |
+| `Max-Forwards` | No | [RFC 7231](#RFC7231) | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely. |
+| `Access-Control-Allow-Origin` | Yes | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks. |
+| `Allow` | Yes | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
+| `WWW-Authenticate` | Yes | [RFC 7235](#RFC7235), Section 4.1 | Required for Basic and other optional authentication mechanisms. See the [Security](#security-details) clause for details. |
+| `X-Auth-Token` | Yes | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
+| `Retry-After` | No | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
 
-
-#### Link Header
+### Link header
 
 The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can describe things such as hyperlinks from the resource and JSON Schemas that describe the resource.
 
@@ -1231,13 +1228,13 @@ The following table lists HTTP status codes that have meaning or usage defined f
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
 | <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.  It may also use this response to indicate the service itself is undergoing maintenance, such as finishing initialization steps after reboot of the service.                                                     |
-| <a id="status-507"></a>507 Insufficient Storage   | The server is unable to build the response for the client due to the size of the response.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <a id="status-507"></a>507 Insufficient Storage | The server is unable to build the response for the client due to the size of the response. |
 
 ### Metadata responses
 
 Metadata describes resources, resource collections, capabilities, and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification.  Clients are not required to request metadata if they already have sufficient understanding of the target service.  For example, clients are not required to request metadata to request and interpret a JSON representation of a resource that this specification defines.
 
-#### Service metadata
+### Service metadata
 
 The service metadata describes top-level service resources and resource types according to [OData-Schema](#OData-CSDL).  The Redfish service metadata is represented as an XML document with an `Edmx` root element in the `https://docs.oasis-open.org/odata/ns/edmx` namespace with an OData version attribute set to `4.0`.
 
@@ -1247,7 +1244,7 @@ The service metadata describes top-level service resources and resource types ac
 </edmx:Edmx>
 ```
 
-##### Referencing other schemas
+#### Referencing other schemas
 
 The service metadata shall include the namespaces for each of the Redfish resource types, along with the `RedfishExtensions.v1_0_0` namespace.
 
@@ -1289,7 +1286,7 @@ An implementation may extend the `ServiceContainer` that the `ServiceRoot` schem
 </edmx:DataServices>
 ```
 
-##### Referencing OEM extensions
+#### Referencing OEM extensions
 
 The metadata document may reference additional schema documents that describe OEM-specific extensions that the service uses.
 
@@ -1301,7 +1298,7 @@ For example, the metadata document may reference custom types for additional res
 </edmx:Reference>
 ```
 
-#### OData service document
+### OData service document
 
 The OData service document serves as a top-level entry point for generic OData clients.
 
@@ -1448,7 +1445,7 @@ Return primitive properties as JSON values:
 
 When receiving values from the client, services should support other valid representations of the data in the specified JSON type.  In particular, services should support valid integer and decimal values in exponential notation and integer values that contain a decimal point with no non-zero trailing digits.
 
-##### DateTime values
+#### DateTime values
 
 Return `DateTime` values as JSON strings according to the ISO 8601 extended format, including the time offset or UTC suffix, in the format:
 
@@ -1466,7 +1463,7 @@ where
 
 When the time of day is unknown or serves no purpose, the service shall report `00:00:00Z` for the time of day value in `DateTime`.
 
-##### Duration values
+#### Duration values
 
 Return duration values as JSON strings according to the ISO 8601 duration format, in the format:
 
