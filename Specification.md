@@ -494,7 +494,7 @@ A Redfish service shall support these Redfish-defined URIs:
 |:----|:--------|
 | `/redfish` | The [version](#protocol-version). |
 | `/redfish/v1/` | The Redfish [service root](#service-root-request). |
-| `/redfish/v1/odata` | The Redfish [OData service document](#odata-service-document-request). |
+| `/redfish/v1/odata` | The Redfish [OData service document](#odata-service-document). |
 | `/redfish/v1/$metadata` | The Redfish [metadata document](#metadata-document-request). |
 
 In addition, the service shall process the following URI without a trailing slash in one of these ways:
@@ -1276,7 +1276,7 @@ These references may use either:
 
 The service's [metadata document](#metadata-document-request) shall include an `EntityContainer` that defines the top-level resources and resource collections.
 
-An implementation may extend the `ServiceContainer` that the `ServiceRoot` schema defines for the implementation's [OData service document](#odata-service-document-request).
+An implementation may extend the `ServiceContainer` that the `ServiceRoot` schema defines for the implementation's [OData service document](#odata-service-document).
 
 ```xml
 <edmx:DataServices>
