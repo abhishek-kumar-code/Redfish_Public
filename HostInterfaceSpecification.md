@@ -279,7 +279,7 @@ The following table defines the Device Descriptor Data format for when the Devic
 | 00h    | Length        | BYTE    | Varies | Length of the structure, including Device Type and Length fields. |
 | 01h    | Vendor ID     | WORD    | Varies | The Vendor ID of the device, as read from the idVendor field of the USB descriptor (LSB first). |
 | 03h    | Product ID    | WORD    | Varies | The Product ID of the device, as read from the idProduct field of the USB descriptor (LSB first). |
-| 05h    | Serial Number | BYTE    | STRING | The string number for the Serial Number of the device.  The string data is read from the iSerialNumber.bDescriptorType field of the USB descriptor, and is converted from Unicode to ASCII and is NULL terminated. |
+| 05h    | Serial Number | BYTE    | STRING | The string number for the Serial Number of the device.  The string data is read from the iSerialNumber.bDescriptorType field of the USB descriptor, and is converted from Unicode to ASCII and is NULL terminated.  See "Text Strings" in the [SMBIOS Specification](#DMTFDSP0134) for how this field is constructed. |
 | 06h    | MAC Address   | 6 BYTEs | Varies | The MAC address of the USB network device (most significant octet first). |
 
 
