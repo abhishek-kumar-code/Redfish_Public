@@ -610,14 +610,14 @@ The response body shall reflect the evaluation of the query parameters in this o
 * After applying any service side pagination: `$expand`, `$select`
 
 | Query&nbsp;parameter | Description | Examples |
-|:---------------------|:------------|:---------|
-| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
-| `$expand=<string>` | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink.  See [below](#expand-parameter). | `http://resource?$expand=*($levels=3)`<br/>`http://resourcecollection?$expand=.($levels=1)` |
-| `$filter=<string>` | Applies to resource collections.  Returns a subset of collection members that match the `$filter` expression.  See [below](#filter-parameter). | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
-| `only` | Applies to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
-| `$select=<string>` | Returns a subset of the resource's properties that match the `$select` expression.  See [below](#select-parameter). | `http://resource?$select=SystemType,Status` |
-| `$skip=<integer>` | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
-| `$top=<integer>` | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
+| ---                  | ---         | ---      |
+| `excerpt`            | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
+| `$expand=<string>`   | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink.  See [below](#expand-parameter). | `http://resource?$expand=*($levels=3)`<br/>`http://resourcecollection?$expand=.($levels=1)` |
+| `$filter=<string>`   | Applies to resource collections.  Returns a subset of collection members that match the `$filter` expression.  See [below](#filter-parameter). | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
+| `only`               | Applies to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
+| `$select=<string>`   | Returns a subset of the resource's properties that match the `$select` expression.  See [below](#select-parameter). | `http://resource?$select=SystemType,Status` |
+| `$skip=<integer>`    | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
+| `$top=<integer>`     | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
 #### Use of the $expand query parameter<a id="expand-parameter"></a>
 
@@ -627,12 +627,12 @@ The `$expand` query parameter has a set of possible values that determine which 
 
 The Redfish-supported values for the `$expand` query parameter are listed in the following table.  Any other supported syntax for `$expand` is outside the scope of this specification.
 
-| Value | Description | Example |
-|:------|:------------|:--------|
+| Value               | Description | Example |
+| ---                 | ---         | ---     |
 | asterisk&nbsp;(`*`) | Shall expand all hyperlinks. | `http://resource?$expand=*` |
-| `$levels` | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
-| period&nbsp;(`.`) | Shall expand all subordinate hyperlinks.<br/>Subordinate hyperlinks are those that are directly referenced, or not in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
-| tilde&nbsp;(`~`) | Shall expand all dependent hyperlinks.<br/>Dependent hyperlinks are those that are not directly referenced, or in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
+| `$levels`           | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
+| period&nbsp;(`.`)   | Shall expand all subordinate hyperlinks.<br/>Subordinate hyperlinks are those that are directly referenced, or not in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
+| tilde&nbsp;(`~`)    | Shall expand all dependent hyperlinks.<br/>Dependent hyperlinks are those that are not directly referenced, or in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
 
 Examples of `$expand` usage include:
 
@@ -699,18 +699,18 @@ The `$filter` section of the OData ABNF components specification contains the gr
 
 The following table lists the Redfish-supported values for the `$filter` query parameter.  Any other supported syntax for `$filter` is outside the scope of this specification.
 
-| Value | Description | Example |
-|:------|:------------|:--------|
-| `()` | Precedence grouping operator. | `(Status/State eq 'Enabled' and Status/Health eq 'OK') or SystemType eq 'Physical'` |
-| `and` | Logical and operator. | `ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64` |
-| `eq` | Equal comparison operator. | `ProcessorSummary/Count eq 2` |
-| `ge` | Greater than or equal to comparison operator. | `ProcessorSummary/Count ge 2` |
-| `gt` | Great than comparison operator. | `ProcessorSummary/Count gt 2` |
-| `le` | Less than or equal to comparison operator. | `MemorySummary/TotalSystemMemoryGiB le 64` |
-| `lt` | Less than comparison operator. | `MemorySummary/TotalSystemMemoryGiB lt 64` |
-| `ne` | Not equal comparison operator. | `SystemType ne 'Physical'` |
-| `not` | Logical negation operator. | `not (ProcessorSummary/Count eq 2)` |
-| `or` | Logical or operator. | `ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4` |
+| Value | Description                                   | Example |
+| ---   | ---                                           | ---     |
+| `()`  | Precedence grouping operator.                 | `(Status/State eq 'Enabled' and Status/Health eq 'OK') or SystemType eq 'Physical'` |
+| `and` | Logical and operator.                         | `ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64` |
+| `eq`  | Equal comparison operator.                    | `ProcessorSummary/Count eq 2` |
+| `ge`  | Greater than or equal to comparison operator. | `ProcessorSummary/Count ge 2` |
+| `gt`  | Great than comparison operator.               | `ProcessorSummary/Count gt 2` |
+| `le`  | Less than or equal to comparison operator.    | `MemorySummary/TotalSystemMemoryGiB le 64` |
+| `lt`  | Less than comparison operator.                | `MemorySummary/TotalSystemMemoryGiB lt 64` |
+| `ne`  | Not equal comparison operator.                | `SystemType ne 'Physical'` |
+| `not` | Logical negation operator.                    | `not (ProcessorSummary/Count eq 2)` |
+| `or`  | Logical or operator.                          | `ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4` |
 
 When evaluating expressions, services shall use the following operator precedence: 
 
@@ -794,7 +794,7 @@ The implementation may reject the update on certain fields based on its own poli
 For the following requests, services shall return the following HTTP status codes and other information:
 
 | Request | The service returns |
-|:--------|:--------------------|
+| ---     | ---                 |
 | Modify several properties where one or more properties can never be updated.<br/>For example, such as when a property is read-only, unknown, or unsupported. | <ul><li>The HTTP [200](#status-200) status code.</li><li>A resource representation with a message [annotation](#extended-information) that lists the non-updatable properties.</li><li>The service may update other properties in the resource.</li></ul> |
 | Modify a single property that can never be updated.<br/>For example, a property that is read-only, unknown, or unsupported. | <ul><li>The HTTP [400](#status-400) status code.</li><li>A resource representation with a message [annotation](#extended-information) that shows the non-updatable property.</li></ul> |
 | Modify a resource or all properties that can never be updated. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
@@ -810,10 +810,10 @@ These annotations include those in the <code><var>PropertyName</var>@odata.<var>
 
 where 
 
-| Variable | Description |
-|:--|:--|
+| Variable                             | Description |
+| ---                                  | ---         |
 | <code><var>PropertyName</var></code> | The name of the property being annotated. |
-| <code><var>TermName</var></code> | The OData annotation term. |  
+| <code><var>TermName</var></code>     | The OData annotation term. |  
 
 If an update request only contains OData annotations, the service should return the `NoOperation` message that the base message registry defines.
 
@@ -874,10 +874,10 @@ To request actions on a resource, send the HTTP POST method to the URI of the ac
 
 where
 
-| Variable | Description |
-|:--|:--|
-| <code><var>ResourceUri</var></code> | The URI of the resource that supports the action. |
-| `Actions` | The name of the property that contains the actions for a resource, as defined by this specification. |
+| Variable                                    | Description |
+| ---                                         | ---         |
+| <code><var>ResourceUri</var></code>         | The URI of the resource that supports the action. |
+| `Actions`                                   | The name of the property that contains the actions for a resource, as defined by this specification. |
 | <code><var>QualifiedActionName</var></code> | The qualified name of the action.  Includes the namespace. |
 
 The first parameter of a bound function is the resource on which the action occurs.  The remaining parameters are name-and-value pairs in the request body.
@@ -974,17 +974,17 @@ The `ResetActionInfo` resource contains a more detailed description of the param
 
 To indicate the success or failure of the `Action` request processing, the service may return a response with one of the following HTTP status codes and additional information:
 
-| To&nbsp;indicate | HTTP&nbsp;status&nbsp;code | Additional&nbsp;information |
-|:-----------------|:-----------------|:----------------------------|
-| The `Action` request succeeds. | [200](#status-200) | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.<br/>If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
-| The `Action` request may require extra time to process. | [202](#status-202) | A `Location` response header set to the URI of a task monitor. |
-| The `Action` request succeeds. | [204](#status-204) | No JSON message body. |
-| An error was detected and the `Action` request was not processed. | 400 or greater | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
+| To&nbsp;indicate                                                  | HTTP&nbsp;status&nbsp;code | Additional&nbsp;information |
+| ---                                                               | ---                        | ---                         |
+| The `Action` request succeeds.                                    | [200](#status-200)         | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.<br/>If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
+| The `Action` request may require extra time to process.           | [202](#status-202)         | A `Location` response header set to the URI of a task monitor. |
+| The `Action` request succeeds.                                    | [204](#status-204)         | No JSON message body. |
+| An error was detected and the `Action` request was not processed. | 400 or greater             | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
 
 Actions may have required parameters.  See [Resource actions](#resource-actions).
 
 | Scenario | Response |
-|:---------|:---------|
+| ---      | ---      |
 | The client did not provide all required parameters. | The service should respond with the HTTP [400](#status-400) status code. |
 | The `Action` does not have any required parameters. | The service should accept an empty JSON object in the HTTP body for the `Action` request.  |
 | The client provides a parameter that the service does not support. | The service shall either reject the request with HTTP [400](#status-400) status code or ignore the unknown parameters. |
