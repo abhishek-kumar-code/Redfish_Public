@@ -621,7 +621,7 @@ The response body shall reflect the evaluation of the query parameters in this o
 
 #### Use of the $expand query parameter<a id="expand-parameter"></a>
 
-The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources in-line.  The definition of this query parameter follows the [OData Protocol](#odata-protocol) specification.
+The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources in-line.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
 The `$expand` query parameter has a set of possible values that determine which hyperlinks in a resource are included in the expanded response.
 
@@ -661,7 +661,7 @@ If a service cannot return the payload due to its size, it shall return HTTP [50
 
 #### Use of the $select query parameter<a id="select-parameter"></a>
 
-The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression.  The definition of this query parameter follows the [OData Protocol](#odata-protocol) specification.
+The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
 The `$select` expression shall not affect the resource itself.
 
@@ -683,7 +683,7 @@ Any other supported syntax for `$select` is outside the scope of this specificat
 
 #### Use of the $filter query parameter<a id="filter-parameter"></a>
 
-The `$filter parameter` allows a client to request a subset of the resource collection's members based on the `$filter` expression.  The definition of this query parameter follows the [OData Protocol](#odata-protocol) specification.
+The `$filter parameter` allows a client to request a subset of the resource collection's members based on the `$filter` expression.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
 The `$filter` query parameter defines a set of properties and literals with an operator.
 
