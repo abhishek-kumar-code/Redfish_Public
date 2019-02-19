@@ -67,7 +67,7 @@
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
             <PropertyValue Property="Deletable" Bool="true"/>
-            <Annotation Term="OData.Description" String="Endpoints not automatically discovered by the service can be unenumerated by deleting to the Endpoint Collection."/>
+            <Annotation Term="OData.Description" String="Endpoints not automatically discovered by the service can be unenumerated by deleting the Endpoint."/>
           </Record>
         </Annotation>
         <Annotation Term="Redfish.Uris">
