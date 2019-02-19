@@ -788,7 +788,7 @@ The implementation may reject the update on certain properties based on its own 
 | Modify a single property that can never be updated.<br/>For example, a property that is read-only, unknown, or unsupported. | <ul><li>The HTTP [400](#status-400) status code.</li><li>A resource representation with a message [annotation](#extended-information) that shows the non-updatable property.</li></ul> |
 | Modify a resource or all properties that can never be updated. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
 | A client PATCH request against a resource collection. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
-| A client only provides OData annotations. | <ul><li>The HTTP [400](#status-400) status code with the `NoOperation` message or HTTP [200](#status-200) with an unmodified representation of the resource.<li></ul>
+| A client only provides OData annotations. | <ul><li>The HTTP [400](#status-400) status code with the `NoOperation` message or  one of the [modification success responses](#modification-success-responses).</li></ul>
 
 In the absence of outside changes to the resource, the PATCH operation should be idempotent, although the original `ETag` value may no longer match.
 
