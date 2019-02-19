@@ -798,54 +798,49 @@ To show the number of entries that a client can update in a PATCH request, servi
 
 ### PUT (replace)<a id="put-replace"></a>
 
-To completely replace a resource, use the PUT method.  The service may add properties to the response resource that the client omits from the request body, the resource definition requires, or the service normally supplies.
+To completely replace a resource, services may support the PUT method.  The service may add properties to the response resource that the client omits from the request body, the resource definition requires, or the service normally supplies.
 
-When the replace operation succeeds, the response may contain a the resource representation after the replacement occurs.  See [Modification success responses](#modification-success-responses).
+The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that the operation might change ETag values.
 
-* To replace a resource in whole, services may support the PUT method.
+When the replace operation succeeds, the response may contain a resource representation after the replacement occurs.  See [Modification success responses](#modification-success-responses).
+
+The following list contains the exception cases for PUT:
 * If a service does not implement this method, the service shall return the HTTP [405](#status-405) status code.
 * Services may reject requests that do not include properties that the resource definition (schema) requires.
 * If the client makes a PUT request against a resource collection, services should return the HTTP [405](#status-405) status code.
-* The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that the operation might change ETag values.
 
 ### POST (create)<a id="post-create"></a>
 
-To create a new resource, use the POST method.  
+To create a new resource, services shall support the POST method on resource collections.
 
-The POST request is submitted to the resource collection to which the new resource is to belong.  When the create operation succeeds, the response may contain the resource representation after the update occurs.  See [Modification success responses](#modification-success-responses).
+The POST request is submitted to the resource collection to which the new resource will belong.  When the create operation succeeds, the response may contain the new resource representation.  See [Modification success responses](#modification-success-responses).
 
-The body of the create request contains a representation of the object to create.  The service may ignore any service-controlled properties, such as ID, which would force the service to overwrite those properties.  Additionally, the service shall set the `Location` header in the response to the URI of the new resource.
+The body of the create request contains a representation of the object to create.  The service may ignore any service-controlled properties, such as `Id`, which would force the service to overwrite those properties.  Additionally, the service shall set the `Location` header in the response to the URI of the new resource.
 
 * Submitting a POST request to a resource collection is equivalent to submitting the same request to the `Members` property of that resource collection.  Services that support the addition of `Members` to a resource collection shall support both forms.
     * For example, if a client adds a new member to the resource collection at `/redfish/v1/EventService/Subscriptions`, it can send a POST request to either `/redfish/v1/EventService/Subscriptions` or `/redfish/v1/EventService/Subscriptions/Members`.
-* Services shall support the POST method for resource creation.  If the resource does not offer anything to create, the service shall return the HTTP [405](#status-405) status code.
-* Services shall support POST operations on a URL that references a resource collection instance.
-* Services shall also support POST operations on a URL that references an action.  See [POST (action)](#post-action).
+* If the service does not allow for the creation of new resources, the service shall return the HTTP [405](#status-405) status code.
 * The POST operation shall not be idempotent.
 * Services may allow the inclusion of `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
 ### DELETE (delete)<a id="delete-delete"></a>
 
-To remove a resource, call the DELETE method.
+To remove a resource, the service shall support the DELETE method.
 
-When the delete operation succeeds, the response may contain the resource representation after the deletion occurs.  
+When the delete operation succeeds, the response may contain the resource representation after the deletion occurs.  See [Modification success responses](#modification-success-responses).
 
-See [Modification success responses](#modification-success-responses).
-
-* For resources that can be deleted, the service shall support the DELETE method.  If the resource can never be deleted, the service shall return the HTTP [405](#status-405) status code.
-* If the client specifies a DELETE request against a resource collection, the service should return the HTTP [405](#status-405) status code.
-* If the resource was already deleted, the service may return HTTP status code [404](#status-404) or a success code.
+* If the resource can never be deleted, the service shall return the HTTP [405](#status-405) status code.
+* If the resource was already deleted, the service may return HTTP status code [404](#status-404) or a [success code](#modification-success-responses).
 * The service may allow the inclusion of the `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
 ### POST (Action)<a id="post-action"></a>
 
-To initiate operations on an object, such as `Actions`, call the POST method.
+Services shall support the POST method to send actions to resources.
 
-* Services shall support the POST method to send actions.
 * The POST operation may not be idempotent.
 * Services may allow the inclusion of the `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
-To request actions on a resource, send the HTTP POST method to the URI of the action.  The `target` property in the resource's [`actions` property](#actions-property) shall contain the URI of the action.  The URI of the action shall be in the format:
+To request actions on a resource, send the HTTP POST method to the URI of the action.  The `target` property in the resource's [`Actions` property](#actions-property) shall contain the URI of the action.  The URI of the action shall be in the format:
 
 <pre><var>ResourceUri</var>/Actions/<var>QualifiedActionName</var></pre>
 
@@ -974,13 +969,15 @@ Example successful `Action` response:
     "error": {
         "code": "Base.1.0.Success",
         "message": "completed successfully Request",
-        "@Message.ExtendedInfo": [{
-            "@odata.type": "#Message.v1_0_0.Message",
-            "MessageId": "Base.1.0.Success",
-            "Message": "completed successfully Request",
-            "Severity": "OK",
-            "Resolution": "None"
-        }]
+        "@Message.ExtendedInfo": [
+	    {
+                "@odata.type": "#Message.v1_0_0.Message",
+                "MessageId": "Base.1.0.Success",
+                "Message": "completed successfully Request",
+                "Severity": "OK",
+                "Resolution": "None"
+            }
+	]
     }
 }
 ```
