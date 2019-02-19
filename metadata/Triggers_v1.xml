@@ -136,7 +136,7 @@
           <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall produce a Redfish Event of type Event to matching subscribers indicated in the EventSubscription collection found on the EventService."/>
         </Member>
         <Member Name="RedfishMetricReport">
-          <Annotation Term="OData.Description" String="Upon a trigger, force an updated of the specified Metric Reports."/>
+          <Annotation Term="OData.Description" String="Upon a trigger, force an update of the specified Metric Reports."/>
           <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall force the Metric Reports managed by the MetricReportDefinitions specified by the MetricReportDefinitions property to be updated.  The actions specified in the ReportActions property of each MetricReportDefinition shall be performed."/>
           <Annotation Term="Redfish.Revisions">
             <Collection>
