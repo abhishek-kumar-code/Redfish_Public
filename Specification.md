@@ -334,7 +334,7 @@ A URI identifies a resource, including the service root and all Redfish resource
     * Do not use the **`#`** character for anything other than the start of a fragment.
 * URIs shall not include any percent-encoding of characters.  This restriction does not apply to the [query parameters](#query-parameters) portion of the URI.
 
-Performing a GET operation on a URI yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of methodology that is consumed by navigating URIs returned by the service is known as a Hypermedia.
+Performing a GET operation on a URI yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This practice, known as hypermedia, allows for the discovery of resources by following links.
 
 Redfish considers the [RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-defined scheme, authority, root service and version, and unique resource path component parts of the URI.
 
