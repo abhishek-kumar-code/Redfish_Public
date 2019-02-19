@@ -1,0 +1,23 @@
+{
+	"@odata.context": "/redfish/v1/$metadata#Port.Port",
+	"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Ports/4",
+	"@odata.type": "#Port.v1_0_0.Port",
+	"Id": "4",
+	"Name": "SAS Port 4",
+	"Description": "SAS Port 4",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"PortId": "4",
+    "PortProtocol": "SAS",
+	"PortType": "DownstreamPort",
+	"CurrentSpeedGbps": 0,
+	"Width": 4,
+	"MaxSpeedGbps": 48,
+	"Actions": {
+		"Oem": {}
+	},
+	"Oem": {}
+}
+
