@@ -631,8 +631,8 @@ The Redfish-supported values for the `$expand` query parameter are listed in the
 | ---                 | ---         | ---     |
 | asterisk&nbsp;(`*`) | Shall expand all hyperlinks. | `http://resource?$expand=*` |
 | `$levels`           | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
-| period&nbsp;(`.`)   | Shall expand all subordinate hyperlinks.<br/>Subordinate hyperlinks are those that are directly referenced, or not in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
-| tilde&nbsp;(`~`)    | Shall expand all dependent hyperlinks.<br/>Dependent hyperlinks are those that are not directly referenced, or in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
+| period&nbsp;(`.`)   | Shall expand all hyperlinks **not** in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
+| tilde&nbsp;(`~`)    | Shall expand all hyperlinks found in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
 
 Examples of `$expand` usage include:
 
