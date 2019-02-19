@@ -52,6 +52,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
     <edmx:Include Namespace="PCIeDevice"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Port_v1.xml">
+    <edmx:Include Namespace="Port"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/StorageService_v1.xml">
     <edmx:Include Namespace="StorageService"/>
   </edmx:Reference>
@@ -506,6 +509,20 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object describes the RAID Types supported by the storage controller."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain all the RAIDType values supported by the current resource."/>
+        </Property>
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_7_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2019.1"/>
+      <EntityType Name="Storage" BaseType="Storage.v1_6_0.Storage"/>
+      <EntityType Name="StorageController" BaseType="Storage.v1_6_0.StorageController">
+        <Property Name="Ports" Type="Collection(Port.Port)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This object describes the Ports that exist on the storage controller."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain all the Ports that exist on the current resource."/>
         </Property>
       </EntityType>
 
