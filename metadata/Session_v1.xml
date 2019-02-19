@@ -142,13 +142,16 @@
         <Property Name="OemSessionType" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The active session type defined by the OEM."/>
-          <Annotation Term="OData.LongDescription" String="When SessionType is reported as Oem, this property should be used to report the OEM-specific session type.  Thus, this property shall represent the type of OEM session that is currently active."/>
+          <Annotation Term="OData.LongDescription" String="When SessionType is reported as OEM, this property should be used to report the OEM-specific session type.  Thus, this property shall represent the type of OEM session that is currently active."/>
         </Property>
       </EntityType> 
 
       <EnumType Name="SessionTypes">
-        <Member Name="HostSerialConsole">
-          <Annotation Term="OData.Description" String="The Host's serial console."/>
+        <Member Name="HostConsole">
+          <Annotation Term="OData.Description" String="The Host's console, which could be connected via Telnet, SSH, or other protocol."/>
+        </Member>
+        <Member Name="ManagerConsole">
+          <Annotation Term="OData.Description" String="The Manager's console, which could be connected via Telnet, SSH, SM CLP, or other protocol."/>
         </Member>
         <Member Name="IPMI">
           <Annotation Term="OData.Description" String="Intelligent Platform Management Interface."/>
@@ -156,7 +159,7 @@
         <Member Name="KVMIP">
           <Annotation Term="OData.Description" String="Keyboard-Video-Mouse over IP Session."/>
         </Member>
-        <Member Name="Oem">
+        <Member Name="OEM">
           <Annotation Term="OData.Description" String="OEM Type. Please look at OemSessionType for OEM session type(s)."/>
         </Member>
         <Member Name="Redfish">
