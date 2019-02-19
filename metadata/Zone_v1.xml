@@ -197,15 +197,15 @@
       <EnumType Name="ExternalAccessibility">
         <Member Name="GloballyAccessible">
           <Annotation Term="OData.Description" String="The endpoints listed in this zone are accessible to any external entity that has the correct access details (which may include authorization information)."/>
-          <Annotation Term="OData.LongDescription" String="This indicates that all endpoints explicitly listed in this zone are not masked from other endpoints."/>
+          <Annotation Term="OData.LongDescription" String="This indicates that all endpoints explicitly listed in this zone are visible from other endpoints, regardless of zone."/>
         </Member>
         <Member Name="NonZonedAccessible">
           <Annotation Term="OData.Description" String="The endpoints listed in this zone are accessible to any external entity that is not explicitly listed in another zone."/>
-          <Annotation Term="OData.LongDescription" String="This indicates that all endpoints explicitly listed in this zone are not masked from other endpoints that are not currently in another zone."/>
+          <Annotation Term="OData.LongDescription" String="This indicates that all endpoints explicitly listed in this zone are visible from other endpoints that are not currently in another zone."/>
         </Member>
         <Member Name="ZoneOnly">
           <Annotation Term="OData.Description" String="The endpoints listed in this zone are accessible only to other endpoints listed in this zone."/>
-          <Annotation Term="OData.LongDescription" String="This indicates that only endpoints explictly listed in this zone may access the other endpoints explictly listed in this zone."/>
+          <Annotation Term="OData.LongDescription" String="This indicates that only endpoints explictly listed in this zone are visible to the other endpoints explictly listed in this zone."/>
         </Member>
       </EnumType>
     </Schema>
