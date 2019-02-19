@@ -3405,10 +3405,9 @@ A service that implements the CompositionService (as defined by the CompositionS
 
 A service that supports removing a composed resource shall support the DELETE method on the composed resource.
 
-A service that supports updating a composed resource shall provide one of the following methods for updating composed resources:
+A service that supports updating a composed resource shall provide one or more of the following methods for updating composed resources:
 * The PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
-* Actions on the composed resource for adding and removing ResourceBlocks
-
+* Actions on the composed resource for adding and removing ResourceBlocks.
 
 #### Specific Composition
 
