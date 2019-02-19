@@ -37,7 +37,8 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Resource Collection of Endpoint instances for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
-            <PropertyValue Property="Insertable" Bool="false"/>
+            <PropertyValue Property="Insertable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Endpoints not automatically discovered by the service can be enumerated by posting to the Endpoint Collection."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.UpdateRestrictions">
@@ -47,7 +48,8 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="false"/>
+            <PropertyValue Property="Deletable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Endpoints not automatically discovered by the service can be unenumerated by deleting to the Endpoint Collection."/>
           </Record>
         </Annotation>
         <Annotation Term="Redfish.Uris">
