@@ -780,6 +780,8 @@ The request body defines the changes to make to one or more properties in the re
 
 When modification succeeds, the response may contain a representation of the updated resource.  See [Modification success responses](#modification-success-responses).
 
+To gain the protection semantics of an ETag, the service shall use the `If-Match` or `If-None-Match` header and not the `@odata.etag` property value for that protection.
+
 The implementation may reject the update on certain properties based on its own policies and, in this case, not perform the requested update.  For the following exception cases, services shall return the following HTTP status codes and other information:
 
 | Exception case | The service returns |
@@ -793,8 +795,6 @@ The implementation may reject the update on certain properties based on its own 
 In the absence of outside changes to the resource, the PATCH operation should be idempotent, although the original `ETag` value may no longer match.
 
 To show the number of entries that a client can update in a PATCH request, services may have null entries for properties that are JSON arrays.  Within a PATCH request, the service may specify unchanged members as empty JSON objects in a JSON array.  To clear members, the client may specify null in a JSON array.
-
-To gain the protection semantics of an ETag, the service shall use the `If-Match` or `If-None-Match` header and not the `@odata.etag` property value for that protection.
 
 ### PUT (replace)<a id="put-replace"></a>
 
