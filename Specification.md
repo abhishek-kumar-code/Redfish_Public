@@ -1002,7 +1002,8 @@ The following example response for a resource collection supports the `@Redfish.
     "Name": "Storage Volume Collection",
     "Description": "Storage Volume Collection",
     "Members@odata.count": 2,
-    "Members": [{
+    "Members": [
+        {
             "@odata.id": "/redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes/1"
         },
         {
@@ -1011,7 +1012,7 @@ The following example response for a resource collection supports the `@Redfish.
     ],
     "@Redfish.OperationApplyTimeSupport": {
         "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
-        "SupportedValues": ["Immediate", "OnReset"]
+        "SupportedValues": [ "Immediate", "OnReset" ]
     }
 }
 ```
@@ -1053,7 +1054,7 @@ The following example response for a `ComputerSystem` resource supports the `@Re
             ],
             "@Redfish.OperationApplyTimeSupport": {
                 "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
-                "SupportedValues": ["Immediate", "AtMaintenanceWindowStart"],
+                "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
                 "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
                 "MaintenanceWindowDurationInSeconds": 600,
                 "MaintenanceWindowResource": {
@@ -1109,7 +1110,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | <a id="link-header-table"></a>`Link` | Yes         | See [Link Header](#link-header)     | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
 | `Location`                           | Conditional | [RFC 7231](#RFC7231)                | A URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  `Location` and `X-Auth-Token` shall be included on responses that create user sessions. |
 | `Cache-Control`                      | Yes         | [RFC 7234](#RFC7234)                | Shall be supported and indicates whether a response can or cannot be cached. |
-| `Via`                                | No          | [RFC 7230](#RFC7230)                | The network hierarchy and recognizes message loops.  Each pass inserts its own VIA. |
+| `Via`                                | No          | [RFC 7230](#RFC7230)                | The network hierarchy and recognizes message loops.  Each pass inserts its own `Via` header. |
 | `Max-Forwards`                       | No          | [RFC 7231](#RFC7231)                | Limits gateway and proxy hops.  Prevents messages from remaining in the network indefinitely. |
 | `Access-Control-Allow-Origin`        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain.  Used to prevent CSRF attacks. |
 | `Allow`                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
@@ -1123,9 +1124,9 @@ The [Link Header](#link-header-table) provides metadata information on the acces
 
 Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.
 * The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
-* The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
+* The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have `rel=describedby`.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
 * The third Link Header is an example for the JSON Schema that describes the actual resource.
-* Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).
+* Note that the URL can reference an unversioned JSON Schema (since the `@odata.type` in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the `@odata.typ`e property of the resource).
 
 ```http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
