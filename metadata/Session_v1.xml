@@ -153,7 +153,7 @@
         <Member Name="IPMI">
           <Annotation Term="OData.Description" String="Intelligent Platform Management Interface."/>
         </Member>
-        <Member Name="KVM">
+        <Member Name="KVMIP">
           <Annotation Term="OData.Description" String="Keyboard-Video-Mouse over IP Session."/>
         </Member>
         <Member Name="Oem">
