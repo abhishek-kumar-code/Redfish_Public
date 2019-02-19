@@ -928,19 +928,21 @@ The `ResetActionInfo` resource contains a more detailed description of the param
     "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
     "Id": "ResetActionInfo",
     "Name": "Reset Action Info",
-    "Parameters": [{
-        "Name": "ResetType",
-        "Required": true,
-        "DataType": "String",
-        "AllowableValues": [
-            "On",
-            "ForceOff",
-            "ForceRestart",
-            "Nmi",
-            "ForceOn",
-            "PushPowerButton"
-        ]
-    }]
+    "Parameters": [
+        {
+            "Name": "ResetType",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "On",
+                "ForceOff",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+               "PushPowerButton"
+            ]
+        }
+    ]
 }
 ```
 
@@ -1120,19 +1122,20 @@ HTTP defines headers that can be used in response messages.  The following table
 
 #### Link header
 
-The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can describe things such as hyperlinks from the resource and JSON Schemas that describe the resource.
+The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can contain items such as hyperlinks from the resource and JSON Schemas that describe the resource.
 
 Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.
-* The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
-* The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have `rel=describedby`.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
-* The third Link Header is an example for the JSON Schema that describes the actual resource.
-* Note that the URL can reference an unversioned JSON Schema (since the `@odata.type` in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the `@odata.typ`e property of the resource).
 
 ```http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
 Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ```
+
+* The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
+* The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have `rel=describedby`.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
+* The third Link Header is an example for the JSON Schema that describes the actual resource.
+* Note that the URL can reference an unversioned JSON Schema (since the `@odata.type` in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the `@odata.typ`e property of the resource).
 
 A Link Header containing `rel=describedby` shall be returned on GET and HEAD requests.  If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the `@odata.type` property returned in this resource.
 
