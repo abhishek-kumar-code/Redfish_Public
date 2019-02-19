@@ -623,7 +623,7 @@ The response body shall reflect the evaluation of the query parameters in this o
 
 The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources in-line.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
-The `$expand` query parameter has a set of possible values that determine which hyperlinks in a resource are included in the expanded response.
+The `$expand` query parameter has a set of possible values that determine which hyperlinks in a resource are included in the expanded response.  Some resources may already be expanded due to the resource's schema annotation `AutoExpand`, such as the `Temperature` object in the `Thermal` resource.
 
 The Redfish-supported values for the `$expand` query parameter are listed in the following table.  Any other supported syntax for `$expand` is outside the scope of this specification.
 
@@ -656,20 +656,16 @@ When clients use `$expand`, they should be aware that the payload may increase b
 
 If a service cannot return the payload due to its size, it shall return HTTP [507](#status-507) status code.
 
-> **Note:** Some resources may already be expanded due to the resource's schema annotation 'AutoExpand`, such as the `Temperature` object in the `Thermal` resource.
-
 
 #### Use of the $select query parameter<a id="select-parameter"></a>
 
-The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
+The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression.  If a request omits the `$select` query parameter, the response returns all properties by default.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
 The `$select` expression shall not affect the resource itself.
 
 The `$select` expression defines a comma-separated list of properties to return in the response body.
 
 The syntax for properties in object types shall be the object and property names concatenated with a slash (`/`).  
-
-> **Note:** If a request omits the`$select` query parameter, the response returns all properties by default.
 
 An example of `$select` usage is:
 
@@ -725,7 +721,7 @@ If the service receives an unsupported `$filter` query parameter, it shall rejec
 
 ### HEAD
 
-The HEAD method differs from the GET method in that it MUST NOT return message body information.  
+The HEAD method differs from the GET method in that it shall not return message body information.  
 
 However, the HEAD method completes the same authorization checks and returns all the same meta information and status codes in the HTTP headers as a GET method.
 
@@ -758,14 +754,14 @@ For create operations, the response from the service after the create request su
 
 * HTTP [201](#status-201) status code with a body that contains the JSON representation of the newly created resource after the request has been applied.
 * HTTP [202](#status-202) status code with a `Location` header set to the URI of a task monitor when the processing of the request requires additional time to complete.
-    In this case, a response with the HTTP 201 status code and the created resource may be returned in response to request to the task monitor URI after processing succeeds.
+    * After processing of the task is complete, the created resource may be returned in response to request to the task monitor URI with the HTTP [201](#status-201) status code.
 * HTTP [204](#status-204) status code with empty payload in the event that service cannot return a representation of the created resource.
 
 For update, replace, and delete operations, the response from the service after successful modification should be one of the following responses:
 
 * HTTP [200](#status-200) status code with a body that contains the JSON representation of the targeted resource after the modification has been applied, or, for the delete operation, a representation of the deleted resource.
 * HTTP [202](#status-202) status code with a `Location` header set to the URI of a task monitor when the processing of the modification requires additional time.
-    In this case, a response with the HTTP 200 status code and the modified resource may be returned in response to request to the task monitor URI after processing succeeds.
+    * After processing of the task is complete, the modified resource may be returned in response to request to the task monitor URI with the HTTP [200](#status-200) status code.
 * HTTP [204](#status-204) status code with an empty payload in the event that service cannot return a representation of the modified or deleted resource.
 
 For details on success responses to action requests, see [POST (action)](#post-action).
@@ -778,44 +774,25 @@ Otherwise, if the service returns a client `4xx` or service `5xx` [status code](
 
 ### PATCH (update)<a id="patch-update"></a>
 
-To update resources, the PATCH method is the preferred method.
+To update a resource's properties, the service shall support the PATCH method.
 
-The request body defines the changes to make to one or more properties in the resource that the request URI references.
+The request body defines the changes to make to one or more properties in the resource that the request URI references.  The PATCH request does not change any properties that are not in the request body.  The service shall ignore OData annotations in the request body, such as [resource identifier](#resource-identifier-property), [type](#type-property), and [ETag](#etag-property) properties.  Services may accept a PATCH with an empty JSON object, which indicates that the service should make no changes to the resource.
 
-The PATCH request does not change any properties that are not in the request body.
+When modification succeeds, the response may contain a representation of the updated resource.  See [Modification success responses](#modification-success-responses).
 
-When modification succeeds, the response may contain a representation of the updated resource. See [Modification success responses](#modification-success-responses).
+The implementation may reject the update on certain properties based on its own policies and, in this case, not perform the requested update.  For the following exception cases, services shall return the following HTTP status codes and other information:
 
-The implementation may reject the update on certain fields based on its own policies and, in this case, not make the requested modifications.
-
-* To update a resource's properties, the service shall support the PATCH method.
-* Services may accept a PATCH with an empty JSON object, which indicates that the service should make no changes to the resource.
-
-For the following requests, services shall return the following HTTP status codes and other information:
-
-| Request | The service returns |
-| ---     | ---                 |
+| Exception case | The service returns |
+| ---            | ---                 |
 | Modify several properties where one or more properties can never be updated.<br/>For example, such as when a property is read-only, unknown, or unsupported. | <ul><li>The HTTP [200](#status-200) status code.</li><li>A resource representation with a message [annotation](#extended-information) that lists the non-updatable properties.</li><li>The service may update other properties in the resource.</li></ul> |
 | Modify a single property that can never be updated.<br/>For example, a property that is read-only, unknown, or unsupported. | <ul><li>The HTTP [400](#status-400) status code.</li><li>A resource representation with a message [annotation](#extended-information) that shows the non-updatable property.</li></ul> |
 | Modify a resource or all properties that can never be updated. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
 | A client PATCH request against a resource collection. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
+| A client only provides OData annotations. | <ul><li>The HTTP [400](#status-400) status code with the `NoOperation` message or HTTP [200](#status-200) with an unmodified representation of the resource.<li></ul>
 
 In the absence of outside changes to the resource, the PATCH operation should be idempotent, although the original `ETag` value may no longer match.
 
-To show the number of entries that a client can update in a PATCH request, services may have null entries for properties that are JSON arrays.  Within a PATCH request, the service may specify unchanged members as empty JSON objects in a JSON array.  To clear members, the service may specify null in a JSON array.
-
-On update, the service shall ignore OData annotations, such as [resource identifier](#resource-identifier-property), [type](#type-property), and [ETag](#etag-property) properties.
-
-These annotations include those in the <code><var>PropertyName</var>@odata.<var>TermName</var></code> or <code>@odata.<var>TermName</var></code> format.
-
-where 
-
-| Variable                             | Description |
-| ---                                  | ---         |
-| <code><var>PropertyName</var></code> | The name of the property being annotated. |
-| <code><var>TermName</var></code>     | The OData annotation term. |  
-
-If an update request only contains OData annotations, the service should return the `NoOperation` message that the base message registry defines.
+To show the number of entries that a client can update in a PATCH request, services may have null entries for properties that are JSON arrays.  Within a PATCH request, the service may specify unchanged members as empty JSON objects in a JSON array.  To clear members, the client may specify null in a JSON array.
 
 To gain the protection semantics of an ETag, the service shall use the `If-Match` or `If-None-Match` header and not the `@odata.etag` property value for that protection.
 
