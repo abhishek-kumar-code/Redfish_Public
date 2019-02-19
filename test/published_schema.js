@@ -1,5 +1,6 @@
 const request = require('request');
 const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 module.exports.getPublishedSchemaVersionList = function(uri, callback) {
   let obj = {'callback': callback};
@@ -10,20 +11,20 @@ module.exports.getPublishedSchemaVersionList = function(uri, callback) {
 function processDirectoryListFile(error, response, body) {
   let callback = this.callback;
   if (!error && response.statusCode == 200) {
-    jsdom.env(body, ["http://code.jquery.com/jquery.js"], function(err, window) {
-      let list = {};
-      let links = window.$('a');
-      for(let i = 0; i < links.length; i++) {
-        if(links[i].href.indexOf('.json') !== -1 && links[i].href.indexOf('.v') !== -1) {
-          let parts = links[i].href.split('.');
-          if(list[parts[0]] === undefined) {
-            list[parts[0]] = {};
-          }
-          addVersionToList(list[parts[0]], parts[1]);
-        }
+    let doc = new JSDOM(body);
+    let $ = require('jquery')(doc.window);
+    let links = $('a');
+    let list = {};
+    for(let i = 0; i < links.length; i++) {
+      if(links[i].href.indexOf('.json') !== -1 && links[i].href.indexOf('.v') !== -1) {
+        let parts = links[i].href.split('.');
+        if(list[parts[0]] === undefined) {
+          list[parts[0]] = {};
+	}
+        addVersionToList(list[parts[0]], parts[1]);
       }
-      callback(null, list);
-    });
+    }
+    callback(null, list);
   }
   else {
     callback('Unable to read directory listing!', null);
@@ -41,3 +42,4 @@ function addVersionToList(listEntry, version) {
   }
   subEntry[parts[1]].push(parts[2]+'');
 }
+/* vim: set tabstop=2 shiftwidth=2 expandtab: */
