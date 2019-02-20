@@ -52,7 +52,7 @@ The DMTF acknowledges the following individuals for their contributions to the R
 * Steve Lyle - Hewlett Packard Enterprise
 * Jagan Molleti - Dell Inc.
 * Milena Natanov - Microsoft Corporation
-* Scott Phuong - Cisco 
+* Scott Phuong - Cisco Systems, Inc.
 * Michael Pizzo - Microsoft Corporation
 * Chris Poblete - Dell Inc.
 * Michael Raineri - Dell Inc.
