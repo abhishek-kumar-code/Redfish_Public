@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
     "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Zones/1",
-    "@odata.type": "#Zone.v1_0_0.Zone",
+    "@odata.type": "#Zone.v1_3_0.Zone",
     "Id": "2",
     "Name": "NVMe-oF Zone 2",
     "Description": "NVMe-oF Zone with the discovery service",
@@ -9,6 +9,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "ExternalAccessiblility": "GloballyAccessible",
     "Links": {
         "Endpoints": [
             {

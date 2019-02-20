@@ -536,6 +536,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of all resource block entities.  This collection is intended for implementations that do not contain a Composition Service, but will expose resources to an orchestrator that implements a Composition Service."/>
           <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all Resource Block instances."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
     </Schema>

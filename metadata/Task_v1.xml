@@ -304,7 +304,7 @@
         <Property Name="Payload" Type="Task.v1_3_0.Payload" Nullable="false">
           <Annotation Term="OData.Description" String="The HTTP and JSON payload details for this task."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain information detailing the HTTP and JSON payload information for executing this task. This object shall not be included in the response if the HidePayload property is set to True."/>
-        </Property>	
+        </Property>
         <Property Name="HidePayload" Type="Edm.Boolean" Nullable="false">
          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
          <Annotation Term="OData.Description" String="Indicates that the contents of the Payload should be hidden from view after the Task has been created.  When set to True, the Payload object will not be returned on GET."/>

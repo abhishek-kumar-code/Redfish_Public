@@ -335,7 +335,7 @@
         <Property Name="Password" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The password to be used when accessing the URI specified by the Image parameter. This property is null on a GET."/>
-          <Annotation Term="OData.LongDescription" String="This parameter shall contain a string representing the password to be used when accessing the URI specified by the Image parameter. The value shall be null for GET requests."/>        
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a string representing the password to be used when accessing the URI specified by the Image parameter. The value shall be null for GET requests."/>
         </Property>
         <Property Name="TransferProtocolType" Type="VirtualMedia.v1_3_0.TransferProtocolType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
