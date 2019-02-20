@@ -3402,12 +3402,10 @@ The ResourceZone resource within the CompositionService shall include the Collec
 A service that implements the CompositionService (as defined by the CompositionService schema) shall support one or more of the following types of composition requests:
 * [Specific Composition](#specific-composition)
 * [Constrained Composition](#constrained-composition)
+* [Expandable Resources](#expandable-resources)
 
 A service that supports removing a composed resource shall support the DELETE method on the composed resource.
 
-A service that supports updating a composed resource shall provide one or more of the following methods for updating composed resources:
-* The PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
-* Actions on the composed resource for adding and removing ResourceBlocks.
 
 #### Specific Composition
 
@@ -3505,6 +3503,18 @@ OData-Version: 4.0
     }
 }
 ~~~
+
+
+#### Expandable Resources
+
+An Expandable Resource is when a service base a baseline composition that cannot be removed.  Instead of a client making requests to create a new composed resource, a client is only allowed to add or remove resources from the composed resource.  A service that supports Expandable Resources shall support one or more of the update methods listed in the [Updating a Composed Resource](#updating-a-composed-resource) clause.
+
+
+### Updating a Composed Resource
+
+A service that supports updating a composed resource shall provide one or more of the following methods for updating composed resources:
+* The PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
+* Actions on the composed resource for adding and removing ResourceBlocks.
 
 
 ## ANNEX A (informative)
