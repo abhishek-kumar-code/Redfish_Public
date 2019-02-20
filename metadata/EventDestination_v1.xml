@@ -168,7 +168,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_7">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders."/>
+      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_6.EventDestination"/>
     </Schema>
 
@@ -221,7 +221,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders."/>
+      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_5.EventDestination"/>
     </Schema>
 
@@ -272,7 +272,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_2_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders."/>
+      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_2_3.EventDestination"/>
     </Schema>
 
@@ -306,7 +306,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_3_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders."/>
+      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_3_1.EventDestination"/>
     </Schema>
 
@@ -340,7 +340,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_4_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders."/>
+      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_4_0.EventDestination"/>
     </Schema>
 

@@ -11,7 +11,7 @@ addons:
       - libxml2-utils
 sudo: false
 node_js:
-  - "6.3"
+  - "8.10"
 branches:
   only:
     - master

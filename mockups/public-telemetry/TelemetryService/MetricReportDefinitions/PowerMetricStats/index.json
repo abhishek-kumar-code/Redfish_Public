@@ -1,8 +1,9 @@
 {
-    "@odata.type": "#MetricReportDefinition.v1_1_0.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_2_0.MetricReportDefinition",
     "Id": "PowerMetricStats",
     "Name": "Transmit Power Metric Statistics",
     "MetricReportDefinitionType": "Periodic",
+    "MetricReportDefinitionEnabled": true,
     "Schedule": {
         "RecurrenceInterval": "T00:00:000.001",
         "Lifetime": "00-00-05T00:00:00"

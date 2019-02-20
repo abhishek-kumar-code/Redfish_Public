@@ -294,11 +294,17 @@
       <EntityType Name="Triggers" BaseType="Triggers.v1_0_0.Triggers"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Triggers.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Triggers" BaseType="Triggers.v1_0_1.Triggers"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Triggers.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
 
-      <EntityType Name="Triggers" BaseType="Triggers.v1_0_1.Triggers">
+      <EntityType Name="Triggers" BaseType="Triggers.v1_0_2.Triggers">
         <Property Name="Links" Type="Triggers.v1_1_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>

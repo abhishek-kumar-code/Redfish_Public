@@ -1,8 +1,9 @@
 {
-    "@odata.type": "#MetricReportDefinition.v1_1_0.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_2_0.MetricReportDefinition",
     "Id": "PlatformPowerUsage",
     "Name": "Transmit and Log Platform Power Usage",
     "MetricReportDefinitionType": "Periodic",
+    "MetricReportDefinitionEnabled": true,
     "Schedule": {
         "RecurrenceInterval": "T01:00:00"
     },
