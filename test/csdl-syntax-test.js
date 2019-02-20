@@ -931,7 +931,7 @@ function validCSDLTypeInMockup(err, json) {
         if(namespace === '') {
           throw new Error('Cannot get type of "' + typeLookup + '"');
         }
-        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 15)
       }
       let propType = CSDL.findByType({_options: options}, typeLookup);
       if(propType === null || propType === undefined) {
@@ -995,7 +995,7 @@ function validCSDLTypeInMockup(err, json) {
         if(namespace === '') {
           throw new Error('Cannot get type of "' + typeLookup + '"');
         }
-        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 15)
       }
       let propType = CSDL.findByType({_options: options}, typeLookup);
       let propValue = json[propName];
@@ -1250,7 +1250,7 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
       if(namespace === '') {
         throw new Error('Cannot get type of "' + typeLookup + '"');
       }
-      typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+      typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 15)
     }
     let propType = CSDL.findByType({_options: options}, typeLookup);
     if(typeof propType === 'string') {
