@@ -284,6 +284,12 @@
       <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_0_0.MetricReportDefinition"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_0_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_0_1.MetricReportDefinition"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_1_0">
       <Annotation Term="OData.Description" String="This version was created to add the Values property to the Wildcard property."/>
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
@@ -298,11 +304,17 @@
       </ComplexType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_1_1">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_1_0.MetricReportDefinition"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MetricReportDefinition.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
 
-      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_1_0.MetricReportDefinition">
+      <EntityType Name="MetricReportDefinition" BaseType="MetricReportDefinition.v1_1_1.MetricReportDefinition">
         <Property Name="SuppressRepeatedMetricValue" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A value of true indicates that any Metric in the MetricReport currently be generated will be suppressed and not included in the MetricReport when the value of the Metric equals the value of the same Metric in the previously generated MetricReport.  A value of false means that the suppression mechanism is not applied to the MetricReport being generated.  A MetricReport may be generated with no MetricProperty array values if all Metrics had the same values as in the previously generated MetricReport."/>

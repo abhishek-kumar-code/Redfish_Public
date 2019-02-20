@@ -220,7 +220,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_0_9">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property."/>
+      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property, and so that URI properties use the format of uri-reference."/>
       <EntityType Name="Event" BaseType="Event.v1_0_8.Event"/>
     </Schema>
 
@@ -274,7 +274,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_1_7">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property."/>
+      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property, and so that URI properties use the format of uri-reference."/>
       <EntityType Name="Event" BaseType="Event.v1_1_6.Event"/>
     </Schema>
 
@@ -348,7 +348,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_2_4">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property."/>
+      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property, and so that URI properties use the format of uri-reference."/>
       <EntityType Name="Event" BaseType="Event.v1_2_3.Event"/>
     </Schema>
 
@@ -375,7 +375,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_3_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property."/>
+      <Annotation Term="OData.Description" String="This version was created to regenerate JSON Schema so that @odata.id is not provided as a property, and so that URI properties use the format of uri-reference."/>
       <EntityType Name="Event" BaseType="Event.v1_3_1.Event"/>
     </Schema>
 

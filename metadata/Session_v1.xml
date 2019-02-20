@@ -96,6 +96,12 @@
       <EntityType Name="Session" BaseType="Session.v1_0_3.Session"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_0_5">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Session" BaseType="Session.v1_0_4.Session"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_1_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2017.1"/>
@@ -129,11 +135,17 @@
       <EntityType Name="Session" BaseType="Session.v1_1_0.Session"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_1_2">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <EntityType Name="Session" BaseType="Session.v1_1_1.Session"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/OData/ns/edm" Namespace="Session.v1_2_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
 
-      <EntityType Name="Session" BaseType="Session.v1_1_1.Session">
+      <EntityType Name="Session" BaseType="Session.v1_1_2.Session">
         <Property Name="SessionType" Type="Session.v1_2_0.SessionTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The active session type."/>
@@ -144,7 +156,7 @@
           <Annotation Term="OData.Description" String="The active session type defined by the OEM."/>
           <Annotation Term="OData.LongDescription" String="When SessionType is reported as OEM, this property should be used to report the OEM-specific session type.  Thus, this property shall represent the type of OEM session that is currently active."/>
         </Property>
-      </EntityType> 
+      </EntityType>
 
       <EnumType Name="SessionTypes">
         <Member Name="HostConsole">
