@@ -137,7 +137,7 @@
         </Member>
         <Member Name="RedfishMetricReport">
           <Annotation Term="OData.Description" String="Upon a trigger, force an update of the specified Metric Reports."/>
-          <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall force the Metric Reports managed by the MetricReportDefinitions specified by the MetricReportDefinitions property to be updated.  The actions specified in the ReportActions property of each MetricReportDefinition shall be performed."/>
+          <Annotation Term="OData.LongDescription" String="When a trigger condition is met, the service shall force the Metric Reports managed by the MetricReportDefinitions specified by the MetricReportDefinitions property to be updated, regardless of the MetricReportDefinitionType property.  The actions specified in the ReportActions property of each MetricReportDefinition shall be performed."/>
           <Annotation Term="Redfish.Revisions">
             <Collection>
               <Record>
@@ -316,8 +316,8 @@
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="MetricReportDefinitions" Type="Collection(MetricReportDefinition.MetricReportDefinition)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The metric report definitions that are updated when a trigger occurs when the TriggerActions property contains the value RedfishMetricReport."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be a set of references to metric report definitions that are updated when a trigger occurs when the TriggerActions property contains the value RedfishMetricReport."/>
+          <Annotation Term="OData.Description" String="The metric report definitions that will generate new metric reports when a trigger occurs when the TriggerActions property contains the value RedfishMetricReport."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be a set of references to metric report definitions that will generate new metric reports when a trigger occurs when the TriggerActions property contains the value RedfishMetricReport."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
