@@ -796,9 +796,9 @@ In the absence of outside changes to the resource, the PATCH operation should be
 
 #### PATCH on array properties
 
-To show the number of entries that a client can update in a PATCH request, services may have null entries for properties that are JSON arrays.  
+For array properties, services may report `null` values as placeholders to indicate the maximum number of elements that the service supports for that array property.  
 
-Within a PATCH request, the client can use `null` to remove an element, and use an empty object `{}` to leave an element unchanged.  A PATCH request with fewer elements than currently exist in the array will truncate the array. 
+Within a PATCH request, the client can use `null` to remove an element, and use an empty object `{}` to leave an element unchanged.  A PATCH request with fewer elements than currently exist in the array will truncate the array to that length. 
 
 For example, an array of 'Flavors' indicates the service supports a maximum of six elements, with four populated. 
 
@@ -806,16 +806,16 @@ For example, an array of 'Flavors' indicates the service supports a maximum of s
    "Flavors": [ "Chocolate", "Vanilla", "Mango", "Strawberry", null, null ]
 ```
 
-A client could issue the following PATCH request to remove `Vanilla`, replace `Strawberry` with `Cherry`, and add 'Coffee' to the array, while leaving the other elements unchanged.
+A client could issue the following PATCH request to remove `Vanilla`, replace `Strawberry` with `Cherry`, and add 'Coffee' and 'Banana' to the array, while leaving the other elements unchanged.
 
 ```
-  "Flavors": [ {}, null, {}, "Cherry", "Coffee", {} ]
+  "Flavors": [ {}, null, {}, "Cherry", "Coffee", "Banana" ]
 ```
 
 The resulting array after the PATCH is:
 
 ```
-  "Flavors": [ "Chocolate", null, "Mango", "Cherry", "Coffee", null ]
+  "Flavors": [ "Chocolate", "Mango", "Cherry", "Coffee", "Banana", null ]
 ```
 
 
