@@ -594,7 +594,7 @@ Services:
 * Shall only support query parameters on GET operations.
 * Should support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
 * May support the `$expand`, `$filter`, and `$select` query parameters.
-* Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters.
+* Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters, to indicate which parameters and options have been implemented.
 * Shall ignore unknown or unsupported query parameters that do not begin with `$`.
 * Shall use the `&` operator to separate multiple query parameters in a single request
 
@@ -623,14 +623,14 @@ The response body shall reflect the evaluation of the query parameters in this o
 
 The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources in-line.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
-The `$expand` query parameter has a set of possible values that determine which hyperlinks in a resource are included in the expanded response.  Some resources may already be expanded due to the resource's schema annotation `AutoExpand`, such as the `Temperature` object in the `Thermal` resource.
+The `$expand` query parameter has a set of possible options that determine which hyperlinks in a resource are included in the expanded response.  Some resources may already be expanded due to the resource's schema annotation `AutoExpand`, such as the `Temperature` object in the `Thermal` resource.
 
-The Redfish-supported values for the `$expand` query parameter are listed in the following table.  Any other supported syntax for `$expand` is outside the scope of this specification.
+The Redfish-supported options for the `$expand` query parameter are listed in the following table.  The service may implement some of these options but not others.  Any other supported syntax for `$expand` is outside the scope of this specification.
 
 | Value               | Description | Example |
 | ---                 | ---         | ---     |
 | asterisk&nbsp;(`*`) | Shall expand all hyperlinks. | `http://resource?$expand=*` |
-| `$levels`           | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
+| `$levels`           | The number of levels the service should cascade the `$expand` operation. The default level shall be 1.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
 | period&nbsp;(`.`)   | Shall expand all hyperlinks **not** in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
 | tilde&nbsp;(`~`)    | Shall expand all hyperlinks found in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
 
