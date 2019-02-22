@@ -794,7 +794,30 @@ The implementation may reject the update on certain properties based on its own 
 
 In the absence of outside changes to the resource, the PATCH operation should be idempotent, although the original `ETag` value may no longer match.
 
-To show the number of entries that a client can update in a PATCH request, services may have null entries for properties that are JSON arrays.  Within a PATCH request, the service may specify unchanged members as empty JSON objects in a JSON array.  To clear members, the client may specify null in a JSON array.
+#### PATCH on array properties
+
+To show the number of entries that a client can update in a PATCH request, services may have null entries for properties that are JSON arrays.  
+
+Within a PATCH request, the client can use `null` to remove an element, and use an empty object `{}` to leave an element unchanged.  A PATCH request with fewer elements than currently exist in the array will truncate the array. 
+
+For example, an array of 'Flavors' indicates the service supports a maximum of six elements, with four populated. 
+
+```
+   "Flavors": [ "Chocolate", "Vanilla", "Mango", "Strawberry", null, null ]
+```
+
+A client could issue the following PATCH request to remove `Vanilla`, replace `Strawberry` with `Cherry`, and add 'Coffee' to the array, while leaving the other elements unchanged.
+
+```
+  "Flavors": [ {}, null, {}, "Cherry", "Coffee", {} ]
+```
+
+The resulting array after the PATCH is:
+
+```
+  "Flavors": [ "Chocolate", null, "Mango", "Cherry", "Coffee", null ]
+```
+
 
 ### PUT (replace)<a id="put-replace"></a>
 
