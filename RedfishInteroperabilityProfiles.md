@@ -111,7 +111,7 @@ The RequiredProfiles object contains properties (of type object) that are named 
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| `Repository` | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles). |
+| `Repository` | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Schema or Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Schema Repository (http://redfish.dmtf.org/schemas) or the Redfish Profile Repository (http://redfish.dmtf.org/profiles) as appropriate.|
 | `MinVersion` | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 
 #### Example
@@ -215,21 +215,21 @@ The following options are available at the schema level:
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| `Repository` | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles).  |
+| `Repository` | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Schema and Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Schema Repository (http://redfish.dmtf.org/schemas) or the Redfish Profile Repository (http://redfish.dmtf.org/profiles) as appropriate. |
 | `MinVersion` | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | `ReadRequirement` | string | Resource-level requirement for this schema; see [ReadRequirement](#readrequirement) clause. |
-| `Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
+| `Purpose' | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | `ConditionalRequirements` | object | Resource-level conditional requirements that apply to instances of this schema; see [Conditional requirements](#conditional-requirements) clause. |
 | `CreateResource` | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support creation of instances of this resource type. |
 | `DeleteResource` | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support deletion of instances of this resource type. |
 | `UpdateResource` | boolean | Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply. |
-| `URIs` | array | An array of URIs to which the `ReadRequirement` and `WriteRequirement` is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. If the URIs property is absent, the list of URIs obtained from the schema will be applied. The URI requirements are used if the Profile's minimum protocol version is v1.6 or higher, otherwise the URI requirements are ignored. |
+| `URIs` | array | An array of URIs to which the `ReadRequirement` and `WriteRequirement` are applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
 
 ###### URI patterns
 
 As the Redfish Specification version 1.6 or higher defines the set of possible URIs for each resource type, this fact can be used to easily create requirements or conditional requirements for resource types that occur at multiple locations in the resource tree. This method is preferred for any profile that will also desire OpenAPI compatibility, which requires Redfish v1.6 protocol support and therefore the URIs of any conforming implementation will match those listed in the profile.
 
-Profiles which intend to apply to implementations conforming to Redfish Specification versions 1.0-1.5 cannot use this URI pattern matching in their profile definition.
+Profiles which intend to apply to implementations conforming to Redfish Specification versions 1.0-1.5 cannot use this URI pattern matching in their profile definition.  Profiles containing URI pattern requirements shall require a Redfish Specification version 1.6 or higher in the profile's 'Protocol' object 'MinVersion' property.
 
 ##### Example
 
@@ -364,6 +364,7 @@ Because there can be several instances of a particular Redfish schema in the res
 
 `SubordinateToResource` allows specifying the schema (resource) path from parent resources to the resource to which the requirements apply.  This property contains an array of schema names, in the top-down order that they appear in the path to the required resource.
 
+
 ###### Example
 
 For the property `HostName` in the `EthernetInterface` schema, the example shows it as `Recommended` property.  But if an instance of `EthernetInterface` is linked from a `ComputerSystem` resource, through the `EthernetInterfaceCollection`,  the `Condition` is met, which changes the `HostName` property requirement to `Mandatory`.
@@ -494,7 +495,7 @@ The following functions are available to specify Registry-level requirements:
 | --- | --- | --- |
 | `Repository` | string | A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles).  |
 | `MinVersion` | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| `ReadRequirement | string | Resource-level requirement for this Registry; see [ReadRequirement](#readrequirement) clause. |
+| `ReadRequirement` | string | Resource-level requirement for this Registry; see [ReadRequirement](#readrequirement) clause. |
 | `Purpose` | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | `Messages` | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level `ReadRequirement`. |
 
@@ -539,7 +540,7 @@ In the case of the OEM-defined Registry `ContosoPizzaMessages`, the `Mandatory` 
 
 | Version | Date | Description |
 | --- | --- | --- |
-| 1.1.0 | 2019-02-26 |  Added support for new protocol features from Redfish Specification v1.6. Added ability to make requirements based on URI patterns as specified in Redfish schema files.  Updated normative references to current versions. Formatting improvements. |
+| 1.1.0 | 2019-02-26 |  Added support for new protocol features from Redfish Specification v1.6. Added ability to make requirements based on URI patterns as specified in Redfish schema files.  Updated normative references to current versions.  Clarified that `Repository` value may indicate a Profile or Schema file location, as appropriate.  Formatting improvements. |
 | 1.0.1 | 2018-05-15 |  Errata release.  Corrected definition of `Comparison` for Conditional Requirements to match the schema usage (and consistent with other usage).  Added missing `Values` property for Conditional Requirements and added new `CompareType` property to replace the inconsisent usage of `Comparison`.  Added example for a Conditional Requirement that uses the `Values` array. |
 | 1.0.0 | 2018-01-02 |  Initial release. |
 |   |   |   |

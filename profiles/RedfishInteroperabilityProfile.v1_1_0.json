@@ -296,7 +296,7 @@
         },
         "URIs": {
             "type": "array",
-            "description": "An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. If the URIs property is absent, the list of URIs obtained from the schema will be applied. The URI requirements are used if the Profile's minimum protocol version is v1.6 or higher, otherwise the URI requirements are ignored.",
+            "description": "An array of URIs to which the ReadRequirement and WriteRequirement are applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification.",
             "items": {
                 "type": "string",
                 "format": "uri"
@@ -437,7 +437,7 @@
         "Repository": {
             "type": "string",
             "format": "uri",
-            "description": "A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles)."
+            "description": "A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Schema or Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Schema Repository (http://redfish.dmtf.org/schemas) or the Redfish Profile Repository (http://redfish.dmtf.org/profiles) as appropriate."
         }
     }
 }
