@@ -1,13 +1,13 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
     "title": "#RedfishInteroperabilityProfile.v1_1_0.RedfishInteroperabilityProfile",
-    "copyright": "Copyright 2017-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "copyright": "Copyright 2017-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "type": "object",
     "additionalProperties": false,
     "properties": {
         "SchemaDefinition": {
             "type": "string",
-            "description": "The JSON schema which defines this Redfish Interoperability Profile document and can be used to validate its contents."
+            "description": "The JSON schema that defines this Redfish Interoperability Profile document and can be used to validate its contents."
         },
         "ProfileName": {
             "type": "string",
@@ -19,7 +19,7 @@
         },
         "OwningEntity": {
             "type": "string",
-            "description": "Name of the owning entity that defined this Redfish Interoperability Profile."
+            "description": "The name of the owning entity that defined this Redfish Interoperability Profile."
         },
         "Purpose": {
             "$ref": "#/definitions/Purpose"
@@ -30,7 +30,7 @@
         },
         "RequiredProfiles": {
             "type": "object",
-            "description": "A set of Redfish Interoperability Profiles which serve as a basis for this Profile.  The requirements set forth in those Profiles are included in this Profile.",
+            "description": "A set of Redfish Interoperability Profiles that serve as a basis for this Profile.  The requirements set forth in those Profiles are included in this Profile.",
             "additionalProperties": {
                 "Repository": {
                     "$ref": "#/definitions/Repository"
@@ -46,7 +46,7 @@
             "properties": {
                 "MinVersion": {
                     "$ref": "#/definitions/MinVersion",
-                    "description": "The minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'."
+                    "description": "Indicates the minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'."
                 },
                 "Discovery": {
                     "$ref": "#/definitions/ProtocolRequirement",
@@ -220,6 +220,7 @@
                     "patternProperties": {
                         "^.*$": {
                             "type": "object",
+                            "description": "The requirements for any parameter available for this Action.",
                             "properties": {
                                 "ReadRequirement": {
                                     "$ref": "#/definitions/ReadRequirement"
@@ -409,7 +410,7 @@
                 "LessThan": "The value of the property must be less than the Values. This comparison is only valid for properties of type 'number'.",
                 "LessThanOrEqual": "The value of the property must be less than or equal to the Values. This comparison is only valid for properties of type 'number'.",
                 "Present": "The property is present in this resource.",
-                "LinkToResource": "The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the un-versioned schema name (e.g. 'Thermal' or 'Memory')."
+                "LinkToResource": "The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the unversioned schema name (e.g. 'Thermal' or 'Memory')."
             }
         },
         "ProtocolRequirement": {
@@ -435,7 +436,7 @@
         "Repository": {
             "type": "string",
             "format": "uri",
-            "description": "A URI providing the location of the repository which contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles)."
+            "description": "A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles)."
         }
     }
 }
