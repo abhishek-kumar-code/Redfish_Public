@@ -97,13 +97,13 @@ At the top level of the JSON document are the basic properties, which describe t
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| SchemaDefinition | string | The JSON schema that defines this Redfish Interoperability Profile document and can be used to validate its contents. |
-| ProfileName | string | The name of this Redfish Profile. |
-| ProfileVersion | string | The version of this Redfish Profile. |
-| Purpose | string | A description of the purpose of this Redfish Profile, such as its intended target audience, product segments, etc.|
-| ContactInfo | string | An email address that can be used to provide feedback about this Redfish Profile. |
-| OwningEntity | string | The name of the owning entity that defined this Redfish Interoperability Profile. |
-| RequiredProfiles | object | A set of Redfish Profiles that serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
+| `SchemaDefinition` | string | The JSON schema that defines this Redfish Interoperability Profile document and can be used to validate its contents. |
+| `ProfileName` | string | The name of this Redfish Profile. |
+| `ProfileVersion` | string | The version of this Redfish Profile. |
+| `Purpose` | string | A description of the purpose of this Redfish Profile, such as its intended target audience, product segments, etc.|
+| `ContactInfo` | string | An email address that can be used to provide feedback about this Redfish Profile. |
+| `OwningEntity` | string | The name of the owning entity that defined this Redfish Interoperability Profile. |
+| `RequiredProfiles` | object | A set of Redfish Profiles that serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
 
 #### Required profiles
 
@@ -111,8 +111,8 @@ The RequiredProfiles object contains properties (of type object) that are named 
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| Repository | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles). |
-| MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
+| `Repository` | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles). |
+| `MinVersion` | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 
 #### Example
 
@@ -138,18 +138,18 @@ The following is an example of the top-level properties in a Profile, with two R
 
 ### Protocol requirements
 
-An object named 'Protocol' contains properties which describe Redfish protocol functionality that is not related to the supported schemas or properties.  Therefore, these functions cannot be validated by comparing retrieved JSON payloads.
+An object named `Protocol` contains properties which describe Redfish protocol functionality that is not related to the supported schemas or properties.  Therefore, these functions cannot be validated by comparing retrieved JSON payloads.
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| MinVersion | string |  Indicates the minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'. |
-| Discovery | string | Indicates support requirements for the Redfish SSDP Discovery protocol. If this property is absent, there is no requirement for SSDP. See the [Requirement values](#requirement-values) clause. |
-| HostInterface | string | Indicates support requirements for the Redfish Host Interface. If this property is absent, there is no requirement for a Host Interface. See the [Requirement values](#requirement-values) clause.|
-| ExpandQuery | string | Indicates support requirements for the Expand query parameter. Additional Expand support requirements may be specified in the Resource entry for the 'ProtocolFeaturesSupported' object within 'ServiceRoot'. If this property is absent, there is no requirement for support of the Expand query parameter. See the [Requirement values](#requirement-values) clause. |
-| FilterQuery | string | Indicates support requirements for the Filter query parameter. If this property is absent, there is no requirement for support of the Filter query parameter. See the [Requirement values](#requirement-values) clause. |
-| SelectQuery | string | Indicates support requirements for the Select query parameter. If this property is absent, there is no requirement for support of the Select query parameter. See the [Requirement values](#requirement-values) clause. |
-| OnlyQuery | string | Indicates support requirements for the Only query parameter. If this property is absent, there is no requirement for support of the Only query parameter. See the [Requirement values](#requirement-values) clause. |
-| ExcerptQuery | string | Indicates support requirements for the Excerpt query parameter. If this property is absent, there is no requirement for support of the Excerpt query parameter. See the [Requirement values](#requirement-values) clause. |
+| `MinVersion` | string |  Indicates the minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property `RedfishVersion`.  If this property is absent, the minimum value shall be '1.0.0'. |
+| `Discovery` | string | Indicates support requirements for the Redfish SSDP Discovery protocol. If this property is absent, there is no requirement for SSDP. See the [Requirement values](#requirement-values) clause. |
+| `HostInterface` | string | Indicates support requirements for the Redfish Host Interface. If this property is absent, there is no requirement for a Host Interface. See the [Requirement values](#requirement-values) clause.|
+| `ExpandQuery` | string | Indicates support requirements for the `$expand` query parameter. Additional Expand support requirements may be specified in the Resource entry for the `ProtocolFeaturesSupported` object within `ServiceRoot`. If this property is absent, there is no requirement for support of the `$expand` query parameter. See the [Requirement values](#requirement-values) clause. |
+| `FilterQuery` | string | Indicates support requirements for the `$filter` query parameter. If this property is absent, there is no requirement for support of the `$filter` query parameter. See the [Requirement values](#requirement-values) clause. |
+| `SelectQuery` | string | Indicates support requirements for the `$select` query parameter. If this property is absent, there is no requirement for support of the `$select` query parameter. See the [Requirement values](#requirement-values) clause. |
+| `OnlyQuery` | string | Indicates support requirements for the `only` query parameter. If this property is absent, there is no requirement for support of the `only` query parameter. See the [Requirement values](#requirement-values) clause. |
+| `ExcerptQuery` | string | Indicates support requirements for the `excerpt` query parameter. If this property is absent, there is no requirement for support of the `excerpt` query parameter. See the [Requirement values](#requirement-values) clause. |
 
 #### Example 
 
@@ -170,16 +170,16 @@ An object named 'Protocol' contains properties which describe Redfish protocol f
 
 | Value | Description |
 | --- | --- |
-| Mandatory | This protocol feature is required for this Profile. |
-| Recommended | It is recommended, but not required, that this protocol feature be supported. |
-| None | This feature is not required by this Profile.  It is listed here for clarity. |
+| `Mandatory` | This protocol feature is required for this Profile. |
+| `Recommended` | It is recommended, but not required, that this protocol feature be supported. |
+| `None` | This feature is not required by this Profile.  It is listed here for clarity. |
 
 
 ### Resource (Schema) requirements
 
 The primary content in a Redfish Profile is the set of supported property requirements.  As Redfish is organized and defined by schema-backed JSON resources, these requirements are also organized by schema.
 
-For each schema, an object is created in the JSON document, named to match the schema's name.  Within this object, properties describe the location of the schema file, and schema-level requirements.  Within each schema-level object is a 'PropertyRequirements' object that describes the property-level requirements for that schema.  The definition of both the schema/resource-level and property-level requirements are accomplished using the same mechanisms, which are described in the next clause.  
+For each schema, an object is created in the JSON document, named to match the schema's name.  Within this object, properties describe the location of the schema file, and schema-level requirements.  Within each schema-level object is a `PropertyRequirements` object that describes the property-level requirements for that schema.  The definition of both the schema/resource-level and property-level requirements are accomplished using the same mechanisms, which are described in the next clause.  
 
 The structure of the resource and property requirements is:
 ~~~
@@ -215,15 +215,15 @@ The following options are available at the schema level:
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| Repository | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles).  |
-| MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| ReadRequirement | string | Resource-level requirement for this schema; see [ReadRequirement](#readrequirement) clause. |
-| Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
-| ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema; see [Conditional requirements](#conditional-requirements) clause. |
-| CreateResource | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support creation of instances of this resource type. |
-| DeleteResource | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support deletion of instances of this resource type. |
-| UpdateResource | boolean | Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply. |
-| URIs | array | An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. If the URIs property is absent, the list of URIs obtained from the schema will be applied. The URI requirements are used if the Profile's minimum protocol version is v1.6 or higher, otherwise the URI requirements are ignored. |
+| `Repository` | string | A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Profile Repository (http://redfish.dmtf.org/profiles).  |
+| `MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
+| `ReadRequirement` | string | Resource-level requirement for this schema; see [ReadRequirement](#readrequirement) clause. |
+| `Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
+| `ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema; see [Conditional requirements](#conditional-requirements) clause. |
+| `CreateResource` | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support creation of instances of this resource type. |
+| `DeleteResource` | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support deletion of instances of this resource type. |
+| `UpdateResource` | boolean | Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply. |
+| `URIs` | array | An array of URIs to which the `ReadRequirement` and `WriteRequirement` is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. If the URIs property is absent, the list of URIs obtained from the schema will be applied. The URI requirements are used if the Profile's minimum protocol version is v1.6 or higher, otherwise the URI requirements are ignored. |
 
 ###### URI patterns
 
@@ -248,25 +248,25 @@ This example shows a simple required schema:
 
 #### Property-level functions
 
-Within the 'PropertyRequirements' object are additional objects that are named to match the property name in the parent object's schema definition.  This object then contains the property-level requirements, which account for the bulk of a Profile's definition.  One additional level of JSON objects may be embedded, essentially nesting a 'PropertyRequirements' object.
+Within the `PropertyRequirements` object are additional objects that are named to match the property name in the parent object's schema definition.  This object then contains the property-level requirements, which account for the bulk of a Profile's definition.  One additional level of JSON objects may be embedded, essentially nesting a `PropertyRequirements` object.
 
 The following options are available at the property level:
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| ReadRequirement | string | Property-level requirement for this property; see [ReadRequirement](#readrequirement) clause. |
-| WriteRequirement | string | Property-level write (HTTP PATCH or PUT) requirement for this property; see [WriteRequirement](#writerequirement) clause. |
-| ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property; see [Conditional Requirements](#conditional-requirements) clause. |
-| MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
-| MinSupportValues |  array | The minimum set of enumerations that must be supported for this writable property. |
-| Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) clause. |
-| Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
-| Values | array | The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison. |
-| PropertyRequirements | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
+| `ReadRequirement` | string | Property-level requirement for this property; see [ReadRequirement](#readrequirement) clause. |
+| `WriteRequirement` | string | Property-level write (HTTP PATCH or PUT) requirement for this property; see [WriteRequirement](#writerequirement) clause. |
+| `ConditionalRequirements` | object | Property-level conditional requirements that apply to instances of this property; see [Conditional Requirements](#conditional-requirements) clause. |
+| `MinCount` | integer | For array type properties, the minimum number of non-NULL instances within the array. |
+| `MinSupportValues` |  array | The minimum set of enumerations that must be supported for this writable property. |
+| `Comparison | string | The condition used to compare the value of the property to `Values`. See the [Comparison](#comparison) clause. |
+| `Purpose` | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
+| `Values` | array | The value(s) used to perform a `Comparison`. Multiple values are only allowed for `AnyOf` or `AllOf` comparisons.  If no `Comparison` property is present, the comparison is assumed to be an `AnyOf` comparison. |
+| `PropertyRequirements` | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
 
 ##### Example
 
-This example shows property-level requirements, including one of type 'object' containing further requirements on that object's properties.  For each 'Power' resource, the 'PowerSupplies' and 'Voltages' array properties are required.  'Voltages' has no further requirements (by default, this property is mandatory, and as an array type, must have at least one item in the array. The 'PowerSupplies' array must contain at least two (object) items.  Within the array, at least one item's 'PowerSupplyType' property must have a value of 'AC' or 'DC'.
+This example shows property-level requirements, including one of type 'object' containing further requirements on that object's properties.  For each `Power` resource, the `PowerSupplies` and `Voltages` array properties are required.  `Voltages` has no further requirements (by default, this property is mandatory, and as an array type, must have at least one item in the array. The `PowerSupplies` array must contain at least two (object) items.  Within the array, at least one item's `PowerSupplyType` property must have a value of `AC` or `DC`.
 
 ~~~
    "Power": {
@@ -299,76 +299,76 @@ The Comparison function uses the following enumerations to represent the various
 
 | Value | Description |
 | --- | --- |
-| Absent | The property is not present in this resource. |
-| AnyOf | At least one instance of the property in this resource must be equal to one of the values listed. |
-| AllOf | At least one instance of the property in this resource must be equal to each of the values listed. |
-| Equal | The value must be equal to the KeyValue. |
-| NotEqual | The value of the property must not be equal to the value(s) listed. |
-| GreaterThan | The value of the property must be greater than the Values. This comparison is only valid for properties of type 'number'. |
-| GreaterThanOrEqual | The value of the property must be greater than or equal to the Values. This comparison is only valid for properties of type 'number'.|
-| LessThan | The value of the property must be less than the Values. This comparison is only valid for properties of type 'number'.|
-| LessThanOrEqual | The value of the property must be less than or equal to the Values. This comparison is only valid for properties of type 'number'.|
-| Present | The property is present in this resource. |
-| LinkToResource | The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the unversioned schema name (e.g., 'Thermal' or 'Memory').|
+| `Absent` | The property is not present in this resource. |
+| `AnyOf` | At least one instance of the property in this resource must be equal to one of the values listed. |
+| `AllOf` | At least one instance of the property in this resource must be equal to each of the values listed. |
+| `Equal` | The value must be equal to the KeyValue. |
+| `NotEqual` | The value of the property must not be equal to the value(s) listed. |
+| `GreaterThan` | The value of the property must be greater than the Values. This comparison is only valid for properties of type 'number'. |
+| `GreaterThanOrEqual` | The value of the property must be greater than or equal to the Values. This comparison is only valid for properties of type 'number'.|
+| `LessThan` | The value of the property must be less than the Values. This comparison is only valid for properties of type 'number'.|
+| `LessThanOrEqual` | The value of the property must be less than or equal to the Values. This comparison is only valid for properties of type 'number'.|
+| `Present` | The property is present in this resource. |
+| `LinkToResource` | The object contains a link to a resource with a Type equal to one of the schema names listed in Values. The Type is the unversioned schema name (e.g., `Thermal` or `Memory`).|
 
-Many of these Comparison types are simple arithmetic, boolean or string value comparisons.  In addition, 'Absent' and 'Present' allow for comparisons concerning the existence or absence of a property.  The 'LinkToResource' comparison specifies that the object property contains an 'odata.id' property to a resource whose schema name (Type) is listed in the 'Values' array. 
+Many of these Comparison types are simple arithmetic, boolean or string value comparisons.  In addition, `Absent` and `Present` allow for comparisons concerning the existence or absence of a property.  The `LinkToResource` comparison specifies that the object property contains an `odata.id` property to a resource whose schema name (Type) is listed in the `Values` array. 
 
 ##### ReadRequirement
 
-This function specifies the level of basic read (HTTP GET) requirement applied to the resource or property.  The default value, or if no 'ReadRequirement' is present, is 'Mandatory'. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.
+This function specifies the level of basic read (HTTP GET) requirement applied to the resource or property.  The default value, or if no `ReadRequirement` is present, is `Mandatory`. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.
 
 | Value | Description |
 | --- | --- |
-| Mandatory |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
-| Recommended | It is recommended, but not required, that this property be supported. |
-| IfImplemented | This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present. |
-| Conditional | This property is only required if 'ConditionalRequirements' items apply to this instance of the resource. |
-| None | This property is not required by this profile.  It is listed here for clarity. |
+| `Mandatory` |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If `Values` are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
+| `Recommended` | It is recommended, but not required, that this property be supported. |
+| `IfImplemented` | This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present. |
+| `Conditional` | This property is only required if `ConditionalRequirements` items apply to this instance of the resource. |
+| `None` | This property is not required by this profile.  It is listed here for clarity. |
 
 ##### WriteRequirement
 
-This function specifies the level of write support (HTTP PATCH or PUT) applied to a property.  The default value, or if no 'WriteRequirement' is present, is 'None'.  
+This function specifies the level of write support (HTTP PATCH or PUT) applied to a property.  The default value, or if no `WriteRequirement` is present, is `None`.  
 
 | Value | Description |
 | --- | --- |
-| Mandatory |  This property is required to be writable in all instances of this resource. |
-| Recommended | It is recommended, but not required, that this property be writable. |
-| None | This property is not required to be writable by this profile.  It is listed here for clarity, and is the default value used if 'WriteRequirement' is not present. |
+| `Mandatory` |  This property is required to be writable in all instances of this resource. |
+| `Recommended` | It is recommended, but not required, that this property be writable. |
+| `None` | This property is not required to be writable by this profile.  It is listed here for clarity, and is the default value used if `WriteRequirement` is not present. |
 
 
 ##### Conditional requirements
 
 The most flexible aspect of the Redfish Profile definition is the ability to make resource or property-level requirements that are dependent on one or more ConditionalRequirements within the resource and the parent resource(s) in the resource tree.
 
-The 'ConditionalRequirements' array function specifies these conditional requirements, which add to any requirements also defined for the resource or property.  Note that a condition cannot override or weaken a requirement already specified.  For example, if a property requirement is marked as 'Mandatory', no conditional requirement could mark the property as 'None'.  Instead, the property would be specified with a 'None' requirement, and with one or more ConditionalRequirements that would specify when the property requirement becomes 'Mandatory'.
+The `ConditionalRequirements` array function specifies these conditional requirements, which add to any requirements also defined for the resource or property.  Note that a condition cannot override or weaken a requirement already specified.  For example, if a property requirement is marked as `Mandatory`, no conditional requirement could mark the property as `None`.  Instead, the property would be specified with a `None` requirement, and with one or more ConditionalRequirements that would specify when the property requirement becomes `Mandatory`.
 
 The following options are available for each conditional requirement:
 
 | Property | Type | Description | 
 | --- | --- | --- |
-| ReadRequirement | string | The requirement to apply to the resource or property if the condition is met.|
-| WriteRequirement | string | Property-level write (HTTP PATCH or PUT) requirement for this property; see [WriteRequirement](#writerequirement) clause. |
-| Purpose | string | Text describing the purpose of this conditional requirement. |
-| URIs    | array  | An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
-| SubordinateToResource | array | An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) clause. |
-| Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) clause. |
-| Values | array | The value(s) used to perform a 'Comparison'. Multiple values are only allowed for 'AnyOf' or 'AllOf' comparisons.  If no 'Comparison' property is present, the comparison is assumed to be an 'AnyOf' comparison. |
-| CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) clause.|
-| CompareValues | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) clause. |
-| CompareType | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'CompareValues'.  If the comparison is true, this conditional requirement applies. See the [Compare Property](#compare-property) clause. |
+| `ReadRequirement` | string | The requirement to apply to the resource or property if the condition is met.|
+| `WriteRequirement` | string | Property-level write (HTTP PATCH or PUT) requirement for this property; see [WriteRequirement](#writerequirement) clause. |
+| `Purpose` | string | Text describing the purpose of this conditional requirement. |
+| `URIs`    | array  | An array of URIs to which the ReadRequirement and WriteRequirement is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
+| `SubordinateToResource` | array | An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) clause. |
+| `Comparison` | string | The condition used to compare the value of the property to `Values`. See the [Comparison](#comparison) clause. |
+| `Values` | array | The value(s) used to perform a `Comparison`. Multiple values are only allowed for `AnyOf` or `AllOf` comparisons.  If no `Comparison` property is present, the comparison is assumed to be an `AnyOf` comparison. |
+| `CompareProperty` | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) clause.|
+| `CompareValues` | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) clause. |
+| `CompareType` | string | The condition used to compare the value of the property named by `CompareProperty` to the value of `CompareValues`.  If the comparison is true, this conditional requirement applies. See the [Compare Property](#compare-property) clause. |
 
 
 ###### Parent and subordinate resources
 
-Because there can be several instances of a particular Redfish schema in the resource tree, the requirements placed on those resources may vary depending on their usage.  Since the Profile is schema-centric, the 'SubordinateToResource' function allows a Profile to specify requirements based a resource instance's placement in the resource tree.
+Because there can be several instances of a particular Redfish schema in the resource tree, the requirements placed on those resources may vary depending on their usage.  Since the Profile is schema-centric, the `SubordinateToResource` function allows a Profile to specify requirements based a resource instance's placement in the resource tree.
 
-'SubordinateToResource' allows specifying the schema (resource) path from parent resources to the resource to which the requirements apply.  This property contains an array of schema names, in the top-down order that they appear in the path to the required resource.
+`SubordinateToResource` allows specifying the schema (resource) path from parent resources to the resource to which the requirements apply.  This property contains an array of schema names, in the top-down order that they appear in the path to the required resource.
 
 ###### Example
 
-For the property 'HostName' in the 'EthernetInterface' schema, the example shows it as 'Recommended' property.  But if an instance of 'EthernetInterface' is linked from a 'ComputerSystem' resource, through the 'EthernetInterfaceCollection',  the 'Condition' is met, which changes the 'HostName' property requirement to 'Mandatory'.
+For the property `HostName` in the `EthernetInterface` schema, the example shows it as `Recommended` property.  But if an instance of `EthernetInterface` is linked from a `ComputerSystem` resource, through the `EthernetInterfaceCollection`,  the `Condition` is met, which changes the `HostName` property requirement to `Mandatory`.
 
-In the second part of the example, the 'IPv6Addresses' array property is required to have at least one item ('MinCount') in the array.  But if, as above, the instance is subordinate to a 'ComputerSystem' (and 'EthernetInterfaceCollection') resource,  at least two items are required in the array.
+In the second part of the example, the `IPv6Addresses` array property is required to have at least one item (`MinCount`) in the array.  But if, as above, the instance is subordinate to a `ComputerSystem` (and `EthernetInterfaceCollection`) resource,  at least two items are required in the array.
 
 ~~~
    "EthernetInterface": {
@@ -403,13 +403,13 @@ To accomplish this, there are three Profile properties related to this function:
 | Property | Type | Description | 
 | --- | --- | --- |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
-| CompareType | string |The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true,  this conditional requirement applies.|
+| CompareType | string |The condition used to compare the value of the property named by `CompareProperty` to the value of `Values`.  If the comparison is true,  this conditional requirement applies.|
 | CompareValues | array | Values of the CompareProperty used to test this condition. |
 
 
 ###### Examples
 
-Simple dependencies can be expressed using the conditional requirement and a comparison.  This example shows a CompareProperty condition applied to the 'Pepperoni' property.  If the 'PizzaType' property is not equal to 'Cheese', then the 'Pepperoni' property becomes both mandatory and must have a value of 'true'.
+Simple dependencies can be expressed using the conditional requirement and a comparison.  This example shows a CompareProperty condition applied to the `Pepperoni` property.  If the `PizzaType` property is not equal to `Cheese`, then the `Pepperoni` property becomes both mandatory and must have a value of `true`.
 
 ~~~
    "Pepperoni": {
@@ -426,7 +426,7 @@ Simple dependencies can be expressed using the conditional requirement and a com
    },
 ~~~
 
-This example shows a CompareProperty condition applied to the 'IndicatorLED' property, which has a base 'Recommended' requirement, but becomes 'Mandatory' if the 'SystemType' property has a value of 'Physical' or 'Composed'.
+This example shows a CompareProperty condition applied to the `IndicatorLED` property, which has a base `Recommended` requirement, but becomes `Mandatory` if the `SystemType` property has a value of `Physical` or `Composed`.
 
 ~~~
    "IndicatorLED": {
@@ -444,7 +444,7 @@ This example shows a CompareProperty condition applied to the 'IndicatorLED' pro
 
 #### Action requirements
 
-Because several critical functions of a Redfish Service are implemented as 'Actions', the Profile may place requirements for support of these Actions.  The requirements can specify which Parameters must be supported, and may specify Allowable Values for those parameters.
+Because several critical functions of a Redfish Service are implemented as `Actions`, the Profile may place requirements for support of these Actions.  The requirements can specify which Parameters must be supported, and may specify Allowable Values for those parameters.
 
 The following functions are available to specify requirements for an Action within a Resource requirement:
 
@@ -466,7 +466,7 @@ The following functions are available to specify requirements for a parameter on
 
 ##### Example
 
-This example shows the 'Reset' action as required for this resource, along with the required parameter 'ResetType', which must support the values of 'ForceOff' and 'PowerCycle'.
+This example shows the `Reset` action as required for this resource, along with the required parameter `ResetType`, which must support the values of `ForceOff` and `PowerCycle`.
 
 ~~~
    "ActionRequirements": {
@@ -496,7 +496,7 @@ The following functions are available to specify Registry-level requirements:
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | ReadRequirement | string | Resource-level requirement for this Registry; see [ReadRequirement](#readrequirement) clause. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
-| Messages | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'ReadRequirement'. |
+| Messages | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level `ReadRequirement`. |
 
 #### Messages
 
@@ -511,9 +511,9 @@ The following options are available at the property level:
 
 #### Example
 
-This example shows requirements for two Message Registries, including one OEM-defined registry.  The 'Base' Registry is a DMTF standard Registry (by default since no 'OwningEntity' is listed) and therefore can be retrieved by default from the DMTF Repository. The 'Base' Registry lists only four Messages that are required. 
+This example shows requirements for two Message Registries, including one OEM-defined registry.  The 'Base' Registry is a DMTF standard Registry (by default since no `OwningEntity` is listed) and therefore can be retrieved by default from the DMTF Repository. The 'Base' Registry lists only four Messages that are required. 
 
-In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' requirement set at the Registry level specifies that all Messages defined in that Registry are required.
+In the case of the OEM-defined Registry `ContosoPizzaMessages`, the `Mandatory` requirement set at the Registry level specifies that all Messages defined in that Registry are required.
 
 ~~~
    "Registries": {
@@ -539,6 +539,6 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 
 | Version | Date | Description |
 | --- | --- | --- |
-| 1.0.1 | 2018-05-15 |  Errata release.  Corrected definition of 'Comparison' for Conditional Requirements to match the schema usage (and consistent with other usage).  Added missing 'Values' property for Conditional Requirements and added new 'CompareType' property to replace the inconsisent usage of 'Comparison'.  Added example for a Conditional Requirement that uses the 'Values' array. |
+| 1.0.1 | 2018-05-15 |  Errata release.  Corrected definition of `Comparison` for Conditional Requirements to match the schema usage (and consistent with other usage).  Added missing `Values` property for Conditional Requirements and added new `CompareType` property to replace the inconsisent usage of `Comparison`.  Added example for a Conditional Requirement that uses the `Values` array. |
 | 1.0.0 | 2018-01-02 |  Initial release. |
 |   |   |   |
