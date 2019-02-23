@@ -1,0 +1,51 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example/EthernetInterfaces/NIC",
+    "@odata.type": "#EthernetInterface.v1_0_2.EthernetInterface",
+    "Id": "NIC",
+    "Name": "External Ethernet Interface",
+    "Description": "External Network Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "PermanentMACAddress": "AA:BB:CC:DD:EE:FD",
+    "MACAddress": "AA:BB:CC:DD:EE:FD",
+    "SpeedMbps": 100,
+    "AutoNeg": true,
+    "FullDuplex": true,
+    "MTUSize": 1500,
+    "MaxIPv6StaticAddresses": 1,
+    "IPv4Addresses": [
+        {
+            "Address": "192.168.10.169",
+            "SubnetMask": "255.255.255.0",
+            "AddressOrigin": "Static",
+            "Gateway": "192.168.10.1"
+        }
+    ],
+    "IPv6AddressPolicyTable": [
+        {
+            "Prefix": "::1/128",
+            "Precedence": 50,
+            "Label": 0
+        }
+    ],
+    "IPv6StaticAddresses": [
+        {
+            "Address": "fe80:0:0:0:0:0:c0a8:800",
+            "PrefixLength": 64
+        }
+    ],
+    "IPv6DefaultGateway": "fe80:0:0:0:0:0:c0a8:801",
+    "IPv6Addresses": [
+        {
+            "Address": "fe80:0:0:0:0:0:c0a8:800",
+            "PrefixLength": 64,
+            "AddressOrigin": "Static",
+            "AddressState": "Preferred"
+        }
+    ]
+}

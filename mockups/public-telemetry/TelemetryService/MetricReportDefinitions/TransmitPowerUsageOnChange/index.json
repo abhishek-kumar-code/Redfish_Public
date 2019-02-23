@@ -1,8 +1,9 @@
 {
-    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_2_0.MetricReportDefinition",
     "Id": "TransmitPowerUsageOnChange",
     "Name": "Transmit Power Usage on change",
     "MetricReportDefinitionType":"OnChange",
+    "MetricReportDefinitionEnabled": true,
     "ReportActions": [
         "RedfishEvent"
     ],
@@ -11,7 +12,8 @@
     },
     "Wildcards": [
         {
-            "Wild": [
+            "Name": "Wild",
+            "Values": [
                 "0"
             ]
         }

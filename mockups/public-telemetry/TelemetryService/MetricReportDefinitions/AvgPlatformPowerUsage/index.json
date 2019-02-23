@@ -1,8 +1,9 @@
 {
-    "@odata.type": "#MetricReportDefinition.v1_0_0.MetricReportDefinition",
+    "@odata.type": "#MetricReportDefinition.v1_2_0.MetricReportDefinition",
     "Id": "AvgPlatformPowerUsage",
     "Name": "Average Platform Power Usage",
     "MetricReportDefinitionType": "Periodic",
+    "MetricReportDefinitionEnabled": true,
     "Schedule": {
         "RecurrenceInterval": "T01:00:00.000"
     },
@@ -21,9 +22,7 @@
     "Wildcards": [ 
         {
             "Name": "Wild",
-            "Values": [
-                "0"
-            ]
+            "Values": [ "0" ]
         }
     ],
     "Metrics": [

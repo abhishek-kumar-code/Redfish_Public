@@ -1,4 +1,5 @@
 {
+    "$id": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.json",
     "$ref": "#/definitions/ServiceRoot",
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
     "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
@@ -63,7 +64,16 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_3_2.json#/definitions/ServiceRoot"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_3_3.json#/definitions/ServiceRoot"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_4_0.json#/definitions/ServiceRoot"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_4_1.json#/definitions/ServiceRoot"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_5_0.json#/definitions/ServiceRoot"
                 }
             ],
             "deletable": false,

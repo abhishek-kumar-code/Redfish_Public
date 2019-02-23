@@ -1,0 +1,61 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example",
+    "@odata.type": "#ComputerSystem.v1_2_0.ComputerSystem",
+    "Id": "cpu-memory-example",
+    "Name": "My Computer System",
+    "SystemType": "Physical",
+    "AssetTag": "CHI2335",
+    "Manufacturer": "Manufacturer Name",
+    "Model": "Model Name",
+    "SerialNumber": "2M220100SL",
+    "PartNumber": "8688-787",
+    "Description": "Description of server",
+    "IndicatorLED": "Lit",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "PowerState": "On",
+    "HostName": "chicago22",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollup": "OK"
+    },
+    "Boot": {},
+    "Processors": {
+        "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors"
+    },
+    "Memory": {
+        "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory"
+    },
+    "MemoryDomains": {
+        "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains"
+    },		
+    "Links": {
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Blade1"
+            }
+        ],
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/1"
+            }
+        ],
+        "PoweredBy": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/0"
+            }
+        ],
+        "CooledBy": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/1"
+            }
+        ],
+        "Oem": {}
+    },
+    "Oem": {}
+}

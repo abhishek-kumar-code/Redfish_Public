@@ -237,8 +237,15 @@ For USB devices:
 * idVendor, idProduct, and iSerialNumber originate from the USB descriptor for the device.
 * Within iSerialNumber, bDescriptorType is always 0x03 and bString is a Unicode string without a NULL terminator.
 
+Examples of USB devices:
+* Vendor ID is 0xAABB, Product ID is 0xCCDD, and the Serial Number is "SN00001": `0xBB 0xAA 0xDD 0xCC 0x10 0x03 0x53 0x00 0x4E 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x30 0x00 0x31 0x00`
+* Vendor ID is 0xAABB, Product ID is 0xCCDD, but there is no Serial Number: `0xBB 0xAA 0xDD 0xCC 0x02 0x03`
+
 For PCI/PCIe devices:
 * VendorID, DeviceID, Subsystem_Vendor_ID, and Subsystem_ID originate from the PCI configuration space for the device.
+
+Examples of PCI/PCIe devices:
+* Vendor ID is 0xAABB, Product ID is 0xCCDD, Subsystem Vendor ID is 0x0011, and Subsystem ID is 0x2233: `0xBB 0xAA 0xDD 0xCC 0x11 0x00 0x33 0x22`
 
 
 ### Table-4: Protocol Records data format:
@@ -368,12 +375,16 @@ For convenience when identifying the auto-generated credentials when active and 
 
 ### Change log
 
-| Version | Date       | Description     |
-| ---     | ---        | ---             |
+| Version | Date       | Description |
+| ---     | ---        | ---         |
+| 1.0.2   | TBD        | Clarified the byte ordering in SMBIOS structures. |
+|         |            | Clarified the data shown in the Device Descriptor Table. |
+|         |            | Clarified the format of the Host Name field. |
+|         |            | Added example device descriptors. |
 | 1.0.1   | 2017-12-11 | Errata release. Numerous terminology clarifications and typographical corrections. |
 |         |            | Terminology for 'host', 'manager' and 'service' were edited for consistency. |
 |         |            | Added additional wording about the SMBIOS Type 42 structure to describe its purpose. |
 |         |            | Added references to the UEFI Specification. |
 |         |            | Clarified byte ordering of IPv4 and IPv6 addresses in the SMBIOS Type 42 structure. |
 |         |            | Added missing case for what to use for the UUID in the SMBIOS Type 42 structure if it is unknown or not supported. |
-| 1.0.0   | 2016-12-30 | Initial release |
+| 1.0.0   | 2016-12-30 | Initial release. |

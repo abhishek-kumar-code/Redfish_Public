@@ -8,9 +8,13 @@ components:
       - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_0_2.yaml#/components/schemas/Endpoint
       - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_0_3.yaml#/components/schemas/Endpoint
       - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_0_4.yaml#/components/schemas/Endpoint
+      - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_0_5.yaml#/components/schemas/Endpoint
       - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_1_0.yaml#/components/schemas/Endpoint
       - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_1_1.yaml#/components/schemas/Endpoint
+      - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_1_2.yaml#/components/schemas/Endpoint
       - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_2_0.yaml#/components/schemas/Endpoint
+      - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_2_1.yaml#/components/schemas/Endpoint
+      - $ref: http://redfish.dmtf.org/schemas/v1/Endpoint.v1_3_0.yaml#/components/schemas/Endpoint
       description: The Endpoint schema defines the properties of an Endpoint resource.  It
         represents the properties of an entity that sends or receives protocol defined
         messages over a transport.

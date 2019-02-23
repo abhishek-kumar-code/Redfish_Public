@@ -1,4 +1,5 @@
 {
+    "$id": "http://redfish.dmtf.org/schemas/v1/PCIeDevice.json",
     "$ref": "#/definitions/PCIeDevice",
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
     "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
@@ -70,7 +71,8 @@
                 "Gen4": "A PCIe v4.0 slot.",
                 "Gen5": "A PCIe v5.0 slot."
             },
-            "type": "string"
+            "type": "string",
+            "versionAdded": "v1_3_0"
         }
     },
     "owningEntity": "DMTF",

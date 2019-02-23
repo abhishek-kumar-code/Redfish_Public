@@ -1,0 +1,35 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1",
+    "@odata.type": "#Volume.v1_3_1.Volume",
+    "Id": "1",
+    "Name": "Virtual Disk 1",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "RAIDType": "RAID0",
+    "CapacityBytes": 104857600,
+    "Identifiers": [
+        {
+            "DurableNameFormat": "UUID",
+            "DurableName": "995dff70-48eb-4cd3-9ae1-0f8e3cdfe80e"
+        }
+    ],
+    "Links": {
+        "Drives": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"
+            }
+        ]
+    },
+    "Actions": {
+        "#Volume.Initialize": {
+            "target": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1/Actions/Volume.Initialize",
+            "InitializeType@Redfish.AllowableValues": [
+                "Fast",
+                "Slow"
+            ]
+        }
+    }
+}

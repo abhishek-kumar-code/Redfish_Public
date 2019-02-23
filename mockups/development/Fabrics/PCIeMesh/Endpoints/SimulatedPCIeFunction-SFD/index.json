@@ -1,34 +1,32 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/SimulatedPCIeFunction-SFD",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "SimulatedPCIeFunction-SFD",
-	"Name": "PCIe Simulated Function for SFD-DF0",
-	"Description": "PCIe Simulated Function for Syn-SFD-DF0",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/SimulatedPCIeFunction-SFD",
+    "@odata.type": "#Endpoint.v1_0_0.Endpoint",
+    "Id": "SimulatedPCIeFunction-SFD",
+    "Name": "PCIe Simulated Function for SFD-DF0",
+    "Description": "PCIe Simulated Function for Syn-SFD-DF0",
     "EndpointProtocol": "PCIe",
-    "ConnectedEntities": [
-        {
-            "EntityType": null,
-            "EntityPciId": {
-                "DeviceId": "0xABCD",
-                "VendorId": "0xABCD",
-                "SubsystemId": "0xABCD",
-                "SubsystemVendorId": "0xABCD",
-				"HostReservationMemoryBytes": 67108864,
-				"FunctionNumber": 0,
-				"ClassType": "0x1234"
-            },
-            "EntityLink": {
-                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
-			},
-            "Oem": {}
-        }
-    ],
+    "ConnectedEntities": [{
+        "EntityType": null,
+        "EntityPciId": {
+            "DeviceId": "0xABCD",
+            "VendorId": "0xABCD",
+            "SubsystemId": "0xABCD",
+            "SubsystemVendorId": "0xABCD"
+        },
+        "PciFunctionNumber": 0,
+        "PciClassCode": "0x123456",
+        "EntityLink": {
+            "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+        },
+        "Oem": {}
+    }],
+    "HostReservationMemoryBytes": 67108864,
     "Links": {
-        "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3/Ports/Down2"}
-        ]
+        "Ports": [{
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3/Ports/Down2"
+        }]
     },
-	"Oem": {}
+    "Oem": {}
 }
