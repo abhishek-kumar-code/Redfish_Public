@@ -4,10 +4,10 @@ DocNumber: '0272'
 DocClass: Normative
 DocVersion: '1.1.0'
 SupersedesVersion: '1.0.1'
-modified: '2018-10-15'
+modified: '2019-02-26'
 status: published
-released: False
-copyright: '2017-2018'
+released: True
+copyright: '2017-2019'
 ---
 
 # Foreword
