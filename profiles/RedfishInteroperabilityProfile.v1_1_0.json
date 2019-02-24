@@ -437,7 +437,7 @@
         "Repository": {
             "type": "string",
             "format": "uri",
-            "description": "A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Schema or Redfish Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Schema Repository (http://redfish.dmtf.org/schemas) or the Redfish Profile Repository (http://redfish.dmtf.org/profiles) as appropriate."
+            "description": "A URI providing the location of the repository that contains the JSON file(s) to be included.  The filenames of the JSON files contained in the repository are expected to follow the Redfish Schema, Registry, Interoperability Profile filename conventions. If absent, the repository location shall be the Redfish Schema Repository (http://redfish.dmtf.org/schemas), Redfish Registry repository (http://redfish.dmtf.org/registries) or the Redfish Profile Repository (http://redfish.dmtf.org/profiles) as appropriate."
         }
     }
 }
