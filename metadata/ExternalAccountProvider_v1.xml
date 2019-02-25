@@ -196,17 +196,17 @@
         </Property>
         <Property Name="UsernameAttribute" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The attribute name that contains the Username."/>
+          <Annotation Term="OData.Description" String="The attribute name that contains the Username on the user LDAP entry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the attribute name that contains the Username."/>
         </Property>
         <Property Name="GroupNameAttribute" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The attribute name that contains the name of the Group."/>
+          <Annotation Term="OData.Description" String="The attribute name that contains the name of the Group on the group LDAP entry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the attribute name that contains the name of the Group."/>
         </Property>
         <Property Name="GroupsAttribute" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The attribute name that contains the Groups for a user."/>
+          <Annotation Term="OData.Description" String="The attribute name that contains the Groups for a user on the user LDAP entry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the attribute name that contains the Groups for a user."/>
         </Property>
       </ComplexType>
