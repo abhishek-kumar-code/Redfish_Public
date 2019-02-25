@@ -277,13 +277,13 @@
 
       <EnumType Name="EntityRole">
         <Member Name="Initiator">
-          <Annotation Term="OData.Description" String="The entity is acting as an initiator."/>
+          <Annotation Term="OData.Description" String="The entity sends commands to other entities on the fabric, but does not have the ability to recieve commands from other entities."/>
         </Member>
         <Member Name="Target">
-          <Annotation Term="OData.Description" String="The entity is acting as a target."/>
+          <Annotation Term="OData.Description" String="The entity receives commands from other entities on the fabric, but does not have the ability to send commands to other entities."/>
         </Member>
         <Member Name="Both">
-          <Annotation Term="OData.Description" String="The entity is acting as both an initiator and a target."/>
+          <Annotation Term="OData.Description" String="The entity is able to both send and receive commands to other entities on the fabric."/>
         </Member>
       </EnumType>
 
