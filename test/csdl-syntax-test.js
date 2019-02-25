@@ -1,12 +1,9 @@
 const vows = require('vows');
 const glob = require('glob');
 const path = require('path');
-const xmljs = require('libxmljs-mt');
 const assert = require('assert');
-const request = require('request');
 const CSDL = require('CSDLParser');
 const fs = require('fs');
-const jsonlint = require('jsonlint');
 const published = require('./published_schema');
 const ucum = require('./fixtures/units');
 
@@ -129,7 +126,7 @@ function constructMockupTest(file) {
     topic: function() {
       var txt = fs.readFileSync(file);
       try {
-        var json = jsonlint.parse(txt.toString());
+        var json = JSON.parse(txt.toString());
         this.callback(null, json);
       }
       catch(e) {
