@@ -3,10 +3,10 @@
     "@odata.type": "#Port.v1_1_0.Port",
     "Name": "Gen-Z Fabric Port 1 Multi-Subnet Packet Relay Table",
     "Id": "MPRT",
-    "Members.count": 4096,
+    "Members.count": 65536,
     "Members": [
 	{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1/MPRT/0" },
 	{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1/MPRT/1" },
-	{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1/MPRT/4095" }
+	{ "@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/1/MPRT/65535" }
     ]
 }

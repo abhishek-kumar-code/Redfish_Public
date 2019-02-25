@@ -1,9 +1,9 @@
 {
-	"@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/1/MPRT/4095",
+	"@odata.id": "/redfish/v1/Systems/GenZ-example/FabricAdapters/1/FabricAdapterPorts/0/MPRT/65535",
 	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
-	"Id": "4095",  
-	"Name": "MPRT4095",
-	"Description": "FabricAdapter Port 1 MPRT Entry 4095",
+	"Id": "65535",  
+	"Name": "MPRT65535",
+	"Description": "FabricAdapter Port 0 MPRT Entry 65535",
 	"RawEntryHex": "0x12345678",
 	"RouteSet": [
 		{
@@ -56,5 +56,5 @@
 		}
 	],
 	"MinimumHopCount": 1,
-	"Oem": { } 
+    "Oem": { }
 }

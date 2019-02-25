@@ -1,9 +1,9 @@
 {
-	"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/MPRT/4095",
+	"@odata.id": "/redfish/v1/Fabrics/GenZ/Switches/Switch1/Ports/2/MPRT/65535",
 	"@odata.type": "#RouteEntry.v1_1_0.RouteEntry",
-	"Id": "4095",  
-	"Name": "MPRT4095",
-	"Description": "Gen-Z Port 2 MPRT Entry 4095",
+	"Id": "65535",  
+	"Name": "MPRT65535",
+	"Description": "Gen-Z Port 2 MPRT Entry 65535",
 	"RawEntryHex": "0x12345678",
 	"RouteSet": [
 		{
