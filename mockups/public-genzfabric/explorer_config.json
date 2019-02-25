@@ -1,6 +1,6 @@
 {
-    "name" : "Simple SAS Fabric",
-    "description" : "A managed SAS fabric with redundant switches.",
+    "name" : "Gen-Z WIP Mockup",
+    "description" : "A managed Gen-Z fabric for review.",
     "navlinks" : [
         {
             "text" : "Main",
