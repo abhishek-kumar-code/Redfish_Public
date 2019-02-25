@@ -43,8 +43,8 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Port" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="Port contains properties describing a port of a switch."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a simple switch port for a Redfish implementation."/>
+        <Annotation Term="OData.Description" String="Port contains properties describing a port of a switch, controller, chassis, or any other device that could be connected to another entity."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a simple port for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -90,8 +90,8 @@
         </Property>
         <Property Name="PortId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the label of this port on the physical switch package."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the switch port as indicated on the outside of the switch."/>
+          <Annotation Term="OData.Description" String="This is the label of this port on the physical package for this port."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the port as indicated on the device containing the port."/>
         </Property>
         <Property Name="PortProtocol" Type="Protocol.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -135,13 +135,13 @@
         <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="AssociatedEndpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to the switch through this port."/>
+          <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to the device through this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="ConnectedSwitches" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the switches that connect to the switch through this port."/>
+          <Annotation Term="OData.Description" String="An array of references to the switches that connect to the device through this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Switch."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
