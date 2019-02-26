@@ -3515,7 +3515,7 @@ An Expandable Resource is when a service has a baseline composition that cannot 
 A service that supports updating a composed resource shall provide one or more of the following methods for updating composed resources:
 * The PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
 * Actions on the composed resource for adding and removing ResourceBlocks.
-    * If the actions for adding and removing ResourceBlocks is present in the resource, it is recommended to us this method over PUT/PATCH.
+    * If the actions for adding and removing ResourceBlocks are present in the resource, clients should use this method before attempting PUT/PATCH.
 
 
 ## ANNEX A (informative)
