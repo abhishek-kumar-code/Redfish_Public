@@ -296,7 +296,7 @@
         },
         "URIs": {
             "type": "array",
-            "description": "An array of URIs to which the ReadRequirement and WriteRequirement are applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification.",
+            "description": "An array of URI references to which the ReadRequirement and WriteRequirement are applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification.",
             "items": {
                 "type": "string",
                 "format": "uri-reference"
