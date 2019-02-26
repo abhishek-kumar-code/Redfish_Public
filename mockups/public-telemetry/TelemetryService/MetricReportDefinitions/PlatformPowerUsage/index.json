@@ -32,6 +32,13 @@
     "MetricProperties": [
         "/redfish/v1/Chassis/{TWild}/Power#/PowerControl/{PWild}/PowerConsumedWatts"
     ],
+    "Links": {
+        "Triggers": [
+            {
+                "@odata.is": "/redfish/v1/TelemetryService/Triggers/PlatformPowerCapTriggers"
+            }
+        ]
+    },
     "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
     "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PlatformPowerUsage",
     "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
