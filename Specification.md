@@ -3507,7 +3507,7 @@ OData-Version: 4.0
 
 #### Expandable Resources
 
-An Expandable Resource is when a service base a baseline composition that cannot be removed.  Instead of a client making requests to create a new composed resource, a client is only allowed to add or remove resources from the composed resource.  A service that supports Expandable Resources shall support one or more of the update methods listed in the [Updating a Composed Resource](#updating-a-composed-resource) clause.
+An Expandable Resource is when a service has a baseline composition that cannot be removed.  Instead of a client making requests to create a new composed resource, a client is only allowed to add or remove resources from the composed resource.  A service that supports Expandable Resources shall support one or more of the update methods listed in the [Updating a Composed Resource](#updating-a-composed-resource) clause.
 
 
 ### Updating a Composed Resource
@@ -3515,6 +3515,7 @@ An Expandable Resource is when a service base a baseline composition that cannot
 A service that supports updating a composed resource shall provide one or more of the following methods for updating composed resources:
 * The PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
 * Actions on the composed resource for adding and removing ResourceBlocks.
+    * If the actions for adding and removing ResourceBlocks is present in the resource, it is recommended to us this method over PUT/PATCH.
 
 
 ## ANNEX A (informative)
