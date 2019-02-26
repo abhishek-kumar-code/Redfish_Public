@@ -119,21 +119,21 @@ The RequiredProfiles object contains properties (of type object) that are named 
 The following is an example of the top-level properties in a Profile, with two Required profiles included.
 
 ~~~
-   "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
-   "ProfileName": "Anchovy",
-   "ProfileVersion": "1.0.2",
-   "OwningEntity": "Pizza Box Consortium",
-   "Purpose": "This is a sample Redfish Interoperability profile.",
-   "ContactInfo": "pizza@contoso.com",
-   "RequiredProfiles": {
-      "DMTFBasic": {
-         "MinVersion": "1.0.0"
-      },
-      "ContosoPizza": {
-         "Repository": "http://contoso.com/profiles",
-         "MinVersion": "1.0.0"
-      }
-   }
+    "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+    "ProfileName": "Anchovy",
+    "ProfileVersion": "1.0.2",
+    "OwningEntity": "Pizza Box Consortium",
+    "Purpose": "This is a sample Redfish Interoperability profile.",
+    "ContactInfo": "pizza@contoso.com",
+    "RequiredProfiles": {
+        "DMTFBasic": {
+            "MinVersion": "1.0.0"
+        },
+        "ContosoPizza": {
+            "Repository": "http://contoso.com/profiles",
+            "MinVersion": "1.0.0"
+        }
+    }
 ~~~
 
 ### Protocol requirements
@@ -154,16 +154,16 @@ An object named `Protocol` contains properties which describe Redfish protocol f
 #### Example 
 
 ~~~
-   "Protocol": {
-      "MinVersion": "1.6",
-      "Discovery": "Mandatory",
-      "HostInterface": "Recommended",
-      "ExpandQuery": "Mandatory",
-      "SelectQuery": "None",
-      "FilterQuery": "Recommended",
-      "OnlyQuery": "Mandatory",
-      "ExcerptQuery": "Recommended"
-   }
+    "Protocol": {
+        "MinVersion": "1.6",
+        "Discovery": "Mandatory",
+        "HostInterface": "Recommended",
+        "ExpandQuery": "Mandatory",
+        "SelectQuery": "None",
+        "FilterQuery": "Recommended",
+        "OnlyQuery": "Mandatory",
+        "ExcerptQuery": "Recommended"
+    }
 ~~~
 
 #### Requirement values
@@ -184,29 +184,29 @@ For each schema, an object is created in the JSON document, named to match the s
 The structure of the resource and property requirements is:
 ~~~
     <Schema Name>: {
-      "MinVersion": <version>,
-      "CreateResource": <boolean>,
-      "DeleteResource": <boolean>,
-      "UpdateResource": <boolean>,
-      "URIs": [ <uri pattern>, <uri pattern>],
-      "PropertyRequirements": {
-         <Property Name>: { 
-            <Requirements for this property>
-         },
-         <Property Name>: {
-         }
-      },
-      "ActionRequirements": {
-         <Action Name>: {
-            <Requirements for this action>
-         }
-      },
-	  "ConditionalRequirements": [ {
-	     <Conditional Requirement> }, 
-		 { <Conditional Requirement> }
-	  }
+        "MinVersion": <version>,
+        "CreateResource": <boolean>,
+        "DeleteResource": <boolean>,
+        "UpdateResource": <boolean>,
+        "URIs": [ <uri pattern>, <uri pattern> ],
+        "PropertyRequirements": {
+            <Property Name>: { 
+                <Requirements for this property>
+            },
+            <Property Name>: {
+            }
+        },
+        "ActionRequirements": {
+            <Action Name>: {
+                <Requirements for this action>
+            }
+        },
+        "ConditionalRequirements": [
+	    { <Conditional Requirement> },
+	    { <Conditional Requirement> }
+        }
     },
-   <Additional Schemas...>
+    <Additional Schemas...>
 ~~~
 
 #### Schema-level functions
@@ -223,7 +223,7 @@ The following options are available at the schema level:
 | `CreateResource` | boolean | Specifies a requirement that a user may create an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support creation of instances of this resource type. |
 | `DeleteResource` | boolean | Specifies a requirement that a user may delete an instance of this resource type. This normally applies to Redfish Collections. If this property is absent, there is no requirement to support deletion of instances of this resource type. |
 | `UpdateResource` | boolean | Specifies a requirement that a user may update an instance of this resource type. If this property is absent, there is no requirement to support updating instances of this resource type, but individual property-level read-write requirements apply. |
-| `URIs` | array | An array of URIs to which the `ReadRequirement` and `WriteRequirement` are applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
+| `URIs` | array | An array of URI references to which the `ReadRequirement` and `WriteRequirement` are applied. The values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
 
 ###### URI patterns
 
@@ -235,15 +235,15 @@ Profiles which intend to apply to implementations conforming to Redfish Specific
 
 This example shows a simple required schema: 
 ~~~
-   "ComputerSystem": {
-      "MinVersion": "1.2.0",
-      "Purpose": "Every instance must have a logical-view ComputerSystem resource.",
-      "PropertyRequirements": {
-         "SerialNumber": {},
-         "Manufacturer": {},
-         "Model": {
-            "ReadRequirement": "Recommended"
-         },
+    "ComputerSystem": {
+        "MinVersion": "1.2.0",
+        "Purpose": "Every instance must have a logical-view ComputerSystem resource.",
+        "PropertyRequirements": {
+            "SerialNumber": {},
+            "Manufacturer": {},
+            "Model": {
+                "ReadRequirement": "Recommended"
+            },
 ~~~
 
 #### Property-level functions
@@ -349,7 +349,7 @@ The following options are available for each conditional requirement:
 | `ReadRequirement` | string | The requirement to apply to the resource or property if the condition is met.|
 | `WriteRequirement` | string | Property-level write (HTTP PATCH or PUT) requirement for this property; see [WriteRequirement](#writerequirement) clause. |
 | `Purpose` | string | Text describing the purpose of this conditional requirement. |
-| `URIs`    | array  | An array of URIs to which the `ReadRequirement` and `WriteRequirement` is applied. The URI values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
+| `URIs`    | array  | An array of URI references to which the `ReadRequirement` and `WriteRequirement` is applied. The values shall follow the Resource URI pattern definition specified in the Redfish Specification. |
 | `SubordinateToResource` | array | An ordered list (from top of hierarchy to bottom) of resources where this resource is linked as a subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) clause. |
 | `Comparison` | string | The condition used to compare the value of the property to `Values`. See the [Comparison](#comparison) clause. |
 | `Values` | array | The value(s) used to perform a `Comparison`. Multiple values are only allowed for `AnyOf` or `AllOf` comparisons.  If no `Comparison` property is present, the comparison is assumed to be an `AnyOf` comparison. |
