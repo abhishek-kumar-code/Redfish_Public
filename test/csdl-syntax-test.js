@@ -57,7 +57,6 @@ describe('CSDL Tests', () => {
       overrideCSDLs = res.slice(1);
       done();
     }).catch((err) => {
-      console.log(err);
       assert.equal(err, null);
     });
   });
@@ -340,7 +339,6 @@ function checkPermissionsInSchema(schema, csdl) {
       if(type === null || type === undefined) {
         if(overrideCSDLs.length > 0) {
           for(let j = 0; j < overrideCSDLs.length; j++) {
-            console.log('Looking in overrideCSDL '+str(j));
             type = CSDL.findByType(overrideCSDLs[j], propType);
             if(type !== null && type !== undefined) {
               break;
@@ -995,7 +993,6 @@ function validCSDLTypeInMockup(json, file) {
             }
             //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
             if(propValue['@odata.id'] === undefined) {
-              console.log(this.context.title);
               if(!file.includes('non-resource-examples')) {
                 throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
               }
@@ -1253,8 +1250,6 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
       return;
     }
     else {
-      console.log(CSDLType);
-      console.log(CSDL.findByType({_options: options}, CSDLType.BaseType));
       let string = 'Unknown property "'+propName+'" in type '+CSDLType.Name;
       if(parentPropName) {
         string+=' under parent property "'+parentPropName+'"';

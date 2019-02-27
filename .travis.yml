@@ -24,4 +24,4 @@ cache:
   - node_modules # NPM packages
 script:
   - xmllint --noout metadata/*.xml
-  - npm test -- --reporter progress
+  - npm test -- --reporter dot
