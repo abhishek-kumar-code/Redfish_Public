@@ -43,7 +43,7 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
         const utf8 = txt.toString('utf-8');
         // Exploit the fact illegal byte codes are dropped from the text stream
         // on conversion to detect an invalid file
-        assert(txt.equals(new Buffer(utf8, 'utf-8')), 'contains invalid utf-8 byte code');
+        assert(txt.equals(new Buffer.from(utf8, 'utf-8')), 'contains invalid utf-8 byte code');
       },
       'is valid JSON': function(err, txt) {
         try {

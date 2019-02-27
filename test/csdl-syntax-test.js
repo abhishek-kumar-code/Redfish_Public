@@ -1,6 +1,7 @@
 const vows = require('vows');
 const glob = require('glob');
 const path = require('path');
+const xmljs = require('libxmljs');
 const assert = require('assert');
 const CSDL = require('CSDLParser');
 const fs = require('fs');
