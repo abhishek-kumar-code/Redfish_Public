@@ -24,4 +24,4 @@ cache:
   - node_modules # NPM packages
 script:
   - xmllint --noout metadata/*.xml
-  - npm test -- --reporter travis-spec.js --reporter-options foldAt=3
+  - npm test -- --reporter list
