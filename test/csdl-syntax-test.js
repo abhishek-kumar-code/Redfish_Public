@@ -1,20 +1,17 @@
-const vows = require('vows');
 const glob = require('glob');
 const path = require('path');
-const xmljs = require('libxmljs');
 const assert = require('assert');
 const CSDL = require('CSDLParser');
 const fs = require('fs');
-const published = require('./published_schema');
+const traverse = require('traverse');
+const url = require('url');
+const fuzzy = require('fuzzy');
+const jptr = require('json8-pointer');
+const published = require('./helpers/published_schema');
 const ucum = require('./fixtures/units');
 
 const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 
-const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'));
-var mockupFiles = [];
-if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
-  mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
-}
 const syntaxBatch = {};
 const overrideBatch = {};
 const mockupsCSDL = {};
@@ -24,9 +21,6 @@ var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normali
 
 //Setup a global cache for speed
 options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
-
-let publishedSchemas = {};
-let overrideCSDLs = [];
 
 /***************** White lists ******************************/
 //Units that don't exist in UCUM
@@ -51,108 +45,243 @@ const NamespacesWithoutReleaseTerm = ['RedfishExtensions.v1_0_0', 'Validation.v1
 const OverRideFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume_v1.xml'];
 /************************************************************/
 
-const setupBatch = {
-  'get Published Schemas': {
-    topic: function() {
-      published.getPublishedSchemaVersionList('http://redfish.dmtf.org/schemas/v1/', this.callback);
-    },
-    'store Data': function(err, list) {
-      if(list !== null) {
-        publishedSchemas = list;
+describe('CSDL Tests', () => {
+  const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'));
+  let publishedSchemas = {};
+  let overrideCSDLs = [];
+  before(function(done){
+    this.timeout(10000);
+    let promise = csdlTestSetup();
+    promise.then((res) => {
+      publishedSchemas = res[0];
+      overrideCSDLs = res.slice(1);
+      done();
+    }).catch((err) => {
+      console.log(err);
+      assert.equal(err, null);
+    });
+  });
+  
+  files.forEach((file) => {
+    describe(file, () => {
+      let fileName = file.substring(file.lastIndexOf('/')+1);
+      let csdl = null;
+      before(function(done) {
+        this.timeout(60000);
+        CSDL.parseMetadataFile(file, options, (err, data) => {
+          if(err) {
+            throw err;
+          }
+          csdl = data;
+          done();
+        });
+      });
+      it('Valid Syntax', () => {
+        assert.notEqual(csdl, null);
+      });
+      //These tests are only valid for new format CSDL...
+      if(file.indexOf('_v') !== -1) {
+        it('Units are valid', () => {validUnitsTest(csdl);});
       }
+      //Permissions checks are not valid on this file...
+      if(file.includes('RedfishExtensions_v1.xml') === false) {
+        it('Has Permission Annotations', () => {permissionsCheck(csdl);});
+        it('Complex Types Should Not Have Permissions', () => {complexTypesPermissions(csdl);});
+      }
+      it('Descriptions have trailing periods', () => {descriptionPeriodCheck(csdl);});
+      it('No Empty Schema Tags', () => {checkForEmptySchemas(csdl);});
+      it('BaseTypes are valid', () => {checkBaseTypes(csdl);});
+      it('All Annotation Terms are valid', () => {checkAnnotationTerms(csdl);});
+      it('Enum Members are valid names', () => {checkEnumMembers(csdl);});
+      //Don't do Pascal Case checking in the RedfishErrors file; the properties are dictated by the OData spec
+      if(file.includes('RedfishError_v1.xml') === false) {
+        it('Properties are Pascal-cased', () => {checkPropertiesPascalCased(csdl);});
+      }
+      it('Reference URIs are valid', () => {checkReferenceUris(csdl);});
+      //skip the metadata mockup
+      if(file.includes('$metadata') === false) {
+        it('All References Used', () => {checkReferencesUsed(csdl);});
+        it('All namespaces have OwningEntity', () => {schemaOwningEntityCheck(csdl);});
+      }
+      it('All EntityType defintions have Actions', () => {entityTypesHaveActions(csdl);});
+      it('NavigationProperties for Collections cannot be Nullable', () => {navigationPropNullCheck(csdl);});
+      it('All new schemas are one version off published', () => {schemaVersionCheck(csdl, publishedSchemas);});
+      //Skip OEM extentions and metadata files
+      if(ContosoSchemaFileList.indexOf(fileName) === -1 && fileName !== 'index.xml' && fileName !== 'Volume_v1.xml') {
+        it('All definitions shall include Description and LongDescription annotations', () => {definitionsHaveAnnotations(csdl);});
+        it('All versioned, non-errata namespaces have Release', () => {schemaReleaseCheck(csdl);});
+      }
+    });
+  });
+});
+
+function csdlTestSetup() {
+  let arr = [];
+  arr.push(published.getPublishedSchemaVersionList('http://redfish.dmtf.org/schemas/v1/'));
+  OverRideFiles.forEach((file) => {
+    arr.push(new Promise((resolve, reject) => {
+      CSDL.parseMetadataUri(file, options, (err, csdl) => {
+        if(err) {
+          reject(err);
+          return;
+        }
+        assert.notEqual(csdl, null);
+        resolve(csdl);
+      });
+    }));
+  });
+  return Promise.all(arr);
+}
+
+describe('Mockup Syntax Tests', () => {
+  let mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
+  let linkCache = {};
+  let txtCache = {};
+  let jsonCache = {};
+
+  before(function(done) {
+    this.timeout(10000);
+    //setup cache's
+    let arr = [];
+    mockupFiles.forEach((file) => {
+      addFileToLinkCache(file, linkCache);
+      arr.push(fileToCachePromise(file));
+    });
+    Promise.all(arr).then((data) => {
+      for(let i = 0; i < data.length; i++) {
+        let name = data[i].name;
+        txtCache[name] = data[i].txt;
+        jsonCache[name] = data[i].json;
+      }
+      done();
+    });
+  });
+
+  mockupFiles.forEach((file) => {
+    let fileName = file.substring(file.lastIndexOf('/')+1);
+    //Just completely skip old files and the explorer config files...
+    if(OldRegistries.includes(fileName) || file.includes('explorer_config.json')) {
+      return;
     }
-  }
+    describe(file, function() {
+      let txt = null;
+      let json = null;
+      before(() => {
+        txt = txtCache[file];
+        //Free this memory up...
+        delete txtCache[file];
+        json = jsonCache[file];
+      });
+      it('Is UTF-8 Encoded', function() {
+        let utf8 = txt.toString('utf-8');
+        assert.ok(txt.equals(Buffer.from(utf8, 'utf-8')), 'contains invalid utf-8 byte code');
+      });
+      it('Is Valid JSON', function() {
+        assert.notEqual(json, null);
+      });
+      //Don't worry about links in the non-resource-examples as they probably belong to other mockups
+      //Also skip the DSP2046 examples as this isn't a full tree, but just individual examples
+      if(file.includes('non-resource-examples') === false && file.includes('DSP2046-examples') === false) {
+        it('Links are consistent', function() {
+          let linkToFile = getCache(file, linkCache);
+          let walker = traverse(json);
+          walker.forEach(function() {
+            if(!this.isLeaf) return;
+
+            if(!isLink(this.key)) return;
+            let link = url.parse(this.node); 
+            let filepath = linkToFile[link.pathname];
+            if(filepath === undefined && link.pathname.substr(link.pathname.length - 1) === '/') {
+              //Try without the trailing slash...
+              filepath = linkToFile[link.pathname.substr(0, link.pathname.length - 1)];
+            }
+            let refd = jsonCache[filepath];
+            if(refd === undefined) {
+              let split = path.normalize(file).split(path.sep).slice(0, 2);
+              let mockupPath = split.join('/');
+              let errorMsg = 'Invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.';
+              let invalidPath = this.node.replace('/redfish/v1/', mockupPath).split('/');
+              let files = Object.keys(linkToFile);
+              let possible = fuzzy.filter(path.join(...invalidPath), files).map(x => path2Redfish(x.string, true));
+              if(possible.length) {
+                errorMsg += `\nPerhaps you meant one of:\n${possible.join('\n')}`;
+              }
+              assert.fail(errorMsg);
+            }
+            if(link.hash) {
+              refd = jptr.find(refd, link.hash.slice(1));
+              assert(refd !== undefined, 'invalid fragment component in JSON at property /' + this.path.join('/') + ' with fragment value ' + link.hash);
+            }
+          });
+        });
+      }
+      //Only do Metadata <=> Mockup tests on master branch or local dev test
+      if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
+        //Ignore the paging file and the external error example
+        if(file.includes('$ref') === false && file.includes('/ExtErrorResp') === false && file.includes('/ConstrainedCompositionCapabilities') === false) {
+          it('Is Valid Type', function() {
+            validCSDLTypeInMockup(json, file);
+          });
+        }
+      }
+    });
+  });
+});
+
+function fileToCachePromise(file) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(file, (err, data) => {
+      if(err) {
+        resolve({name: file, txt: null, json: null});
+        return;
+      }
+      resolve({name: file, txt: data, json: JSON.parse(data.toString('utf-8'))});
+    });
+  });
 }
 
-OverRideFiles.forEach(addOverrideTest);
+function path2Redfish(p, removeIndex) {
+  let myP = path.normalize(p);
+  const link = myP.split(path.sep).slice(2, removeIndex ? -1 : void 0);
+  link.unshift('', 'redfish', 'v1', '');
+  //Need unix style pathing...
+  return path.posix.normalize(link.join('/'));
+}
 
-function addOverrideTest(file) {
-  overrideBatch[file] = {
-    topic: function() {
-      CSDL.parseMetadataUri(file, options, this.callback);
-    },
-    'is valid syntax': function(err, csdl) {
-      if(err) {
-        throw err;
-      }
-      assert.notEqual(csdl, null);
-      overrideCSDLs.push(csdl);
+function addFileToLinkCache(filename, cache) {
+  let split = path.normalize(filename).split(path.sep);
+  if(split[0] === 'mockups') {
+    let mockupName = split[1];
+    if(cache[mockupName] === undefined) {
+      cache[mockupName] = {};
     }
+    split = split.slice(2, -1); 
+    split.unshift('redfish', 'v1');
+    let link = '/'+split.join('/');
+    cache[mockupName][link] = filename;
   }
 }
 
-files.forEach(constructTest);
-
-function constructTest(file) {
-  syntaxBatch[file] = {
-    topic: function() {
-      CSDL.parseMetadataFile(file, options, this.callback);
-    },
-    'is valid syntax': function(err, csdl) {
-      if(err) {
-        throw err;
-      }
-      assert.notEqual(csdl, null);
-    },
-    'units are valid': validUnitsTest,
-    /* The next two tests have a side effect of ensure all explict types are present*/
-    'has permission annotations': permissionsCheck,
-    'complex types should not have permissions': complexTypesPermissions,
-    'descriptions have trailing periods': descriptionPeriodCheck,
-    'no empty Schema tags': checkForEmptySchemas,
-    'BaseTypes are valid': checkBaseTypes,
-    'All Annotation Terms are valid': checkAnnotationTerms,
-    'Enum Members are valid names': checkEnumMembers,
-    'Properties are Pascal-cased': checkPropertiesPascalCased,
-    'Reference URIs are valid': checkReferenceUris,
-    'All References Used': checkReferencesUsed,
-    'All EntityType defintions have Actions': entityTypesHaveActions,
-    'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
-    'All new schemas are one version off published': schemaVersionCheck,
-    'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
-    'All namespaces have OwningEntity': schemaOwningEntityCheck,
-    'All versioned, non-errata namespaces have Release': schemaReleaseCheck
+function getCache(filename, cache) {
+  let split = path.normalize(filename).split(path.sep);
+  if(split[0] === 'mockups') {
+    return cache[split[1]];
   }
 }
 
-mockupFiles.forEach(constructMockupTest);
+const LinkProperties = [
+  /^@odata\.id$/,
+  /^[^@]*@odata\.navigationLink$/,
+  /^[^@]*@odata\.nextLink$/
+]
 
-function constructMockupTest(file) {
-  let justFileName = file.split('/');
-  justFileName = justFileName[justFileName.length - 1];
-  if(OldRegistries.includes(justFileName) || file.includes('explorer_config.json')) {
-    return;
+function isLink(key) {
+  for (var i = 0, llen = LinkProperties.length - 1; i < llen; i++) {
+    if (LinkProperties[i].test(key)) return true
   }
-  mockupsCSDL[file] = {
-    topic: function() {
-      var txt = fs.readFileSync(file);
-      try {
-        var json = JSON.parse(txt.toString());
-        this.callback(null, json);
-      }
-      catch(e) {
-        this.callback(e, null);
-      }
-    },
-    'is Valid JSON': function(err, json) {
-      if(err) {
-        throw err;
-      }
-      if(json === null || json === undefined) {
-        throw new Error('Unable to parse JSON!');
-      }
-    },
-    'is Valid Type': validCSDLTypeInMockup
-  };
 }
 
-function validUnitsTest(err, csdl) {
-  if(err) {
-    return;
-  }
-  if(this.context.title.indexOf('_v') === -1) {
-    return;
-  }
+function validUnitsTest(csdl) {
   let measures = CSDL.search(csdl, 'Annotation', 'Measures.Unit');
   if(measures.length === 0) {
     return;
@@ -182,14 +311,7 @@ function validUnitsTest(err, csdl) {
   }
 }
 
-function permissionsCheck(err, csdl) {
-  if(err) {
-    return;
-  }
-  if(this.context.name.includes('RedfishExtensions_v1.xml')) {
-    //Ignore the RedfishExtensions file. It's just about annotations
-    return;
-  }
+function permissionsCheck(csdl) {
   let schemas = CSDL.search(csdl, 'Schema');
   if(schemas.length === 0) {
     return;
@@ -238,14 +360,7 @@ function checkPermissionsInSchema(schema, csdl) {
   }
 }
 
-function complexTypesPermissions(err, csdl) {
-  if(err) {
-    return;
-  }
-  if(this.context.name.includes('RedfishExtensions_v1.xml')) {
-    //Ignore the RedfishExtensions file. It's just about annotations
-    return;
-  }
+function complexTypesPermissions(csdl) {
   let schemas = CSDL.search(csdl, 'Schema');
   if(schemas.length === 0) {
     return;
@@ -271,7 +386,7 @@ function checkComplexTypePermissionsInSchema(schema, csdl) {
         propType = propType.substring(11, propType.length-1);
       }
       let type = CSDL.findByType(csdl, propType);
-      if(type === null) {
+      if(type === null || type === undefined) {
         throw new Error('Unable to locate type "'+propType+'"');
       }
       else {
@@ -283,10 +398,7 @@ function checkComplexTypePermissionsInSchema(schema, csdl) {
   }
 }
 
-function descriptionPeriodCheck(err, csdl) {
-  if(err) {
-    return;
-  }
+function descriptionPeriodCheck(csdl) {
   let descriptions = CSDL.search(csdl, 'Annotation', 'OData.Description');
   if(descriptions.length !== 0) {
     for(let i = 0; i < descriptions.length; i++) {
@@ -308,10 +420,7 @@ function descriptionEndsInPeriod(desc) {
   }
 }
 
-function checkForEmptySchemas(err, csdl) {
-  if(err) {
-    return;
-  }
+function checkForEmptySchemas(csdl) {
   let schemas = CSDL.search(csdl, 'Schema');
   if(schemas.length === 0) {
     return;
@@ -347,10 +456,7 @@ function trivialNamespaceCheck(schema) {
   }
 }
 
-function checkBaseTypes(err, csdl) {
-  if(err) {
-    return;
-  }
+function checkBaseTypes(csdl) {
   let entityTypes =  CSDL.search(csdl, 'EntityType');
   for(let i = 0; i < entityTypes.length; i++) {
     verifyBaseType(entityTypes[i], csdl);
@@ -372,10 +478,7 @@ function verifyBaseType(entityType, csdl) {
   }
 }
 
-function checkAnnotationTerms(err, csdl) {
-  if(err) {
-    return;
-  }
+function checkAnnotationTerms(csdl) {
   let annotations = CSDL.search(csdl, 'Annotation');
   for(let i = 0; i < annotations.length; i++) {
     let type = CSDL.findByType(csdl, annotations[i].Name);
@@ -385,10 +488,7 @@ function checkAnnotationTerms(err, csdl) {
   }
 }
 
-function checkEnumMembers(err, csdl) {
-  if(err) {
-    return;
-  }
+function checkEnumMembers(csdl) {
   let enums = CSDL.search(csdl, 'EnumType');
   for(let i = 0; i < enums.length; i++) {
     let keys = Object.keys(enums[i].Members);
@@ -400,16 +500,7 @@ function checkEnumMembers(err, csdl) {
   }
 }
 
-function checkPropertiesPascalCased(err, csdl) {
-  if(err) {
-    return;
-  }
-
-  if(this.context.name.includes('RedfishError_v1.xml')) {
-    // Ignore the RedfishErrors file; the properties are dictated by the OData spec
-    return;
-  }
-
+function checkPropertiesPascalCased(csdl) {
   let properties = CSDL.search(csdl, 'Property');
   for(let i = 0; i < properties.length; i++) {
     if(properties[i].Name.match(PascalRegex) === null && NonPascalCasePropertyWhiteList.indexOf(properties[i].Name) === -1) {
@@ -424,11 +515,7 @@ function checkPropertiesPascalCased(err, csdl) {
   }
 }
 
-function checkReferenceUris(err, csdl) {
-    if(err) {
-        return;
-    }
-
+function checkReferenceUris(csdl) {
     // Find all external schema references
     let references = CSDL.search(csdl, 'Reference', undefined, true);
 
@@ -474,10 +561,6 @@ function checkReferenceUris(err, csdl) {
 }
 
 function checkReferencesUsed(err, csdl) {
-    if(err) {
-        return;
-    }
-
     if(this.context.name.includes('$metadata')) {
       //Skip $metadata docs. They should include everything...
       return;
@@ -658,11 +741,7 @@ function propertiesHaveNamespace(props, nameSpaceAliases) {
   return nameSpaceAliases;
 }
 
-function entityTypesHaveActions(err, csdl) {
-    if(err) {
-        return;
-    }
-
+function entityTypesHaveActions(csdl) {
     let entityTypes = CSDL.search(csdl, 'EntityType');
     for(let i = 0; i < entityTypes.length; i++) {
       let entityType = entityTypes[i];
@@ -693,11 +772,7 @@ function entityTypesHaveActions(err, csdl) {
     }
 }
 
-function navigationPropNullCheck(err, csdl) {
-    if(err) {
-        return;
-    }
-
+function navigationPropNullCheck(csdl) {
     let navProps = CSDL.search(csdl, 'NavigationProperty');
     for(let i = 0; i < navProps.length; i++) {
       let navProp = navProps[i];
@@ -707,11 +782,7 @@ function navigationPropNullCheck(err, csdl) {
     }
 }
 
-function schemaVersionCheck(err, csdl) {
-  if(err) {
-    return;
-  }
-
+function schemaVersionCheck(csdl, publishedSchemas) {
   let schemas = CSDL.search(csdl, 'Schema');
   for(let i = 0; i < schemas.length; i++) {
     let schema = schemas[i];
@@ -756,17 +827,7 @@ function checkVersionInPublishedList(version, publishedList, schemaName) {
   }
 }
 
-function definitionsHaveAnnotations(err, csdl) {
-  if(err) {
-    return;
-  }
-
-  let fileName = this.context.name.substring(this.context.name.lastIndexOf('/')+1);
-  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml' || fileName === 'Volume_v1.xml') {
-    //Ignore OEM extensions and metadata files
-    return;
-  }
-
+function definitionsHaveAnnotations(csdl) {
   let entityTypes = CSDL.search(csdl, 'EntityType');
   for(let i = 0; i < entityTypes.length; i++) {
     let entityType = entityTypes[i];
@@ -774,7 +835,7 @@ function definitionsHaveAnnotations(err, csdl) {
       continue;
     }
 
-    typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType');
+    typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType', csdl);
   }
 
   let complexTypes = CSDL.search(csdl, 'ComplexType');
@@ -784,7 +845,7 @@ function definitionsHaveAnnotations(err, csdl) {
       continue;
     }
 
-    typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
+    typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType', csdl);
   }
 
   let properties = CSDL.search(csdl, 'Property');
@@ -795,21 +856,21 @@ function definitionsHaveAnnotations(err, csdl) {
       continue;
     }
 
-    typeOrBaseTypesHaveAnnotations(property, ['OData.Description', 'OData.LongDescription'], property.Name, 'Property');
+    typeOrBaseTypesHaveAnnotations(property, ['OData.Description', 'OData.LongDescription'], property.Name, 'Property' , csdl);
   }
 
   let navProperties = CSDL.search(csdl, 'NavigationProperty');
   for(let i = 0; i < navProperties.length; i++) {
     let navProperty = navProperties[i];
 
-    typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty');
+    typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty', csdl);
   }
 
   let actions = CSDL.search(csdl, 'Action');
   for(let i = 0; i < actions.length; i++) {
     let action = actions[i];
 
-    typeOrBaseTypesHaveAnnotations(action, ['OData.Description', 'OData.LongDescription'], action.Name, 'Action');
+    typeOrBaseTypesHaveAnnotations(action, ['OData.Description', 'OData.LongDescription'], action.Name, 'Action', csdl);
   }
 
   let parameters = CSDL.search(csdl, 'Parameter');
@@ -820,30 +881,29 @@ function definitionsHaveAnnotations(err, csdl) {
       continue;
     }
 
-    typeOrBaseTypesHaveAnnotations(parameter, ['OData.Description', 'OData.LongDescription'], parameter.Name, 'Parameter');
+    typeOrBaseTypesHaveAnnotations(parameter, ['OData.Description', 'OData.LongDescription'], parameter.Name, 'Parameter', csdl);
   }
 }
 
-function typeOrBaseTypesHaveAnnotations(type, annotations, typeName, typeType) {
+function typeOrBaseTypesHaveAnnotations(type, annotations, typeName, typeType, csdl) {
+  let unfound = annotations;
   for(let i = 0; i < annotations.length; i++) {
     if(type.Annotations[annotations[i]] === undefined) {
       if(type.BaseType === undefined) {
         throw new Error(typeType+' "'+typeName+'" lacks an '+annotations[i]+' Annotation!');
       }
-      let baseType = CSDL.findByType({_options: options}, type.BaseType);
-      typeOrBaseTypesHaveAnnotations(baseType, annotations, typeName, typeType);
     }
+    else {
+      unfound = unfound.filter(function(value, index, arr){ return (value !== annotations[i]);});
+    }
+  }
+  if(unfound.length > 0) {
+    let baseType = CSDL.findByType(csdl || {_options: options}, type.BaseType);
+    typeOrBaseTypesHaveAnnotations(baseType, unfound, typeName, typeType, csdl);
   }
 }
 
-function validCSDLTypeInMockup(err, json) {
-  if(err) {
-    return;
-  }
-  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp') || this.context.name.includes('/ConstrainedCompositionCapabilities')) {
-    //Ignore the paging file and the external error example
-    return;
-  }
+function validCSDLTypeInMockup(json, file) { 
   if(json["$schema"] !== undefined) {
     //Ignore JSON schema files
     return;
@@ -936,7 +996,7 @@ function validCSDLTypeInMockup(err, json) {
             //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
             if(propValue['@odata.id'] === undefined) {
               console.log(this.context.title);
-              if(!this.context.title.includes('non-resource-examples')) {
+              if(!file.includes('non-resource-examples')) {
                 throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
               }
             }
@@ -1007,15 +1067,22 @@ function validCSDLTypeInMockup(err, json) {
 }
 
 function getLatestTypeVersion(defaultType, namespace, type, majorVersion, minorVersion) {
-  if(minorVersion < 0) {
-    return defaultType
+  let schemas = options.cache.getSchemasThatStartWith(namespace+'.');
+  schemas.sort((a, b) => {
+    if(a._Name > b._Name) {
+      return -1;
+    }
+    else if(a._Name < b._Name) {
+      return 1;
+    }
+    return 0;
+  });
+  for(let i = 0; i < schemas.length; i++) {
+    if(schemas[i][type] !== undefined) {
+      return schemas[i]._Name+'.'+type;
+    }
   }
-  let typeName = namespace + '.v' + majorVersion.toString() + '_' +  minorVersion.toString() + '_0.' + type
-  let propType = CSDL.findByType({_options: options}, typeName)
-  if(propType === null || propType === undefined) {
-    return getLatestTypeVersion(defaultType, namespace, type, majorVersion, minorVersion - 1)
-  }
-  return typeName
+  return defaultType;
 }
 
 function complexTypeCheck(propType, propValue, propName, type) {
@@ -1186,6 +1253,8 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
       return;
     }
     else {
+      console.log(CSDLType);
+      console.log(CSDL.findByType({_options: options}, CSDLType.BaseType));
       let string = 'Unknown property "'+propName+'" in type '+CSDLType.Name;
       if(parentPropName) {
         string+=' under parent property "'+parentPropName+'"';
@@ -1273,16 +1342,7 @@ function validateActions(actions) {
  } 
 }
 
-function schemaOwningEntityCheck(err, csdl) {
-  if(err) {
-    return;
-  }
-
-  if(this.context.name.includes('index.xml')) {
-    // Ignore the $metadata resource in mockups
-    return;
-  }
-
+function schemaOwningEntityCheck(csdl) {
   let schemas = CSDL.search(csdl, 'Schema');
   for(let i = 0; i < schemas.length; i++) {
     let owningEntity = CSDL.search(schemas[i], 'Annotation', 'Redfish.OwningEntity');
@@ -1295,18 +1355,7 @@ function schemaOwningEntityCheck(err, csdl) {
   }
 }
 
-function schemaReleaseCheck(err, csdl) {
-  if(err) {
-    return;
-  }
-
-  if(this.context.name.includes('index.xml') ||
-     this.context.name.includes('ContosoExtensions_v1.xml') ||
-     this.context.name.includes('TurboencabulatorService_v1.xml')) {
-    // Ignore mockup files
-    return;
-  }
-
+function schemaReleaseCheck(csdl) {
   let schemas = CSDL.search(csdl, 'Schema');
   for(let i = 0; i < schemas.length; i++) {
     let release = CSDL.search(schemas[i], 'Annotation', 'Redfish.Release');
@@ -1333,9 +1382,4 @@ function schemaReleaseCheck(err, csdl) {
     }
   }
 }
-
-process.on('unhandledRejection', (reason, promise) => {
-});
-
-vows.describe('CSDL').addBatch(setupBatch).addBatch(overrideBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
 /* vim: set tabstop=2 shiftwidth=2 expandtab: */
