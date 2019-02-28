@@ -1127,27 +1127,27 @@ HTTP defines headers that can be used in response messages.  The following table
 | Header                               | Required    | Supported values                    | Description |
 | ---                                  | ---         | ---                                 | ---         |
 | `OData-Version`                      | Yes         | 4.0                                 | The OData version of the payload to which the response conforms. |
-| `Content-Type`                       | Yes         | [RFC 7231](#RFC7231)                | The type of representation used in the message body.  Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML.  `;charset=utf-8` shall be appended to the `Content-Type` if specified in the chosen media-type in the Accept header for the request. |
+| `Content-Type`                       | Yes         | [RFC 7231](#RFC7231)                | The type of representation used in the message body.  Services shall specify a `Content-Type` of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML.  `;charset=utf-8` shall be appended to the `Content-Type` if specified in the chosen media-type in the `Accept` header for the request. |
 | `Content-Encoding`                   | No          | [RFC 7231](#RFC7231)                | The encoding that has been performed on the media type. |
-| `Content-Length`                     | No          | [RFC 7231](#RFC7231)                | The size of the message body.  An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header.  If a service does not support Transfer-Encoding and needs Content-Length instead, the service shall respond with status code [411](#status-411). |
-| `ETag`                               | Conditional | [RFC 7232](#RFC7232)                | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects. |
+| `Content-Length`                     | No          | [RFC 7231](#RFC7231)                | The size of the message body.  An optional means of indicating size of the body uses `Transfer-Encoding: chunked`, that does not use the `Content-Length` header.  If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service shall respond with status code [411](#status-411). |
+| `ETag`                               | Conditional | [RFC 7232](#RFC7232)                | An identifier for a specific version of a resource, often a message digest.  The `ETag` header shall be included on responses to GETs of `ManagerAccount` resources. |
 | `Server`                             | Yes         | [RFC 7231](#RFC7231)                | A product token and its version.  Multiple product tokens may be listed. |
-| <a id="link-header-table"></a>`Link` | Yes         | See [Link Header](#link-header)     | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
+| <a id="link-header-table"></a>`Link` | Yes         | See [Link header](#link-header)     | `Link` headers shall be returned as described in the clause on [Link headers](#link-header). |
 | `Location`                           | Conditional | [RFC 7231](#RFC7231)                | A URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  `Location` and `X-Auth-Token` shall be included on responses that create user sessions. |
 | `Cache-Control`                      | Yes         | [RFC 7234](#RFC7234)                | Shall be supported and indicates whether a response can or cannot be cached. |
 | `Via`                                | No          | [RFC 7230](#RFC7230)                | The network hierarchy and recognizes message loops.  Each pass inserts its own `Via` header. |
 | `Max-Forwards`                       | No          | [RFC 7231](#RFC7231)                | Limits gateway and proxy hops.  Prevents messages from remaining in the network indefinitely. |
 | `Access-Control-Allow-Origin`        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain.  Used to prevent CSRF attacks. |
-| `Allow`                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
+| `Allow`                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
 | `WWW-Authenticate`                   | Yes         | [RFC 7235](#RFC7235), Section 4.1   | Required for Basic and other optional authentication mechanisms.  See the [Security](#security-details) clause for details. |
 | `X-Auth-Token`                       | Yes         | Opaque encoded octet strings        | Used for authentication of user sessions.  The token value shall be indistinguishable from random. |
 | `Retry-After`                        | No          | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
 
 #### Link header
 
-The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can contain items such as hyperlinks from the resource and JSON Schemas that describe the resource.
+The [Link header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can contain items such as hyperlinks from the resource and JSON Schemas that describe the resource.
 
-Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.
+Below is an example of the `Link` headers of a `ManagerAccount` with a role of `Administrator` that has a Settings Annotation.
 
 ```http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
@@ -1155,22 +1155,25 @@ Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ```
 
-* The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
-* The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have `rel=describedby`.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
-* The third Link Header is an example for the JSON Schema that describes the actual resource.
-* Note that the URL can reference an unversioned JSON Schema (since the `@odata.type` in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the `@odata.typ`e property of the resource).
+* The first `Link` header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
+* The second `Link` header is an example of an Annotation `Link` header as it references the JSON Schema that describes the annotation and does not have `rel=describedby`.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
+* The third `Link` header is an example for the JSON Schema that describes the actual resource.
+    * Note that the URL can reference an unversioned JSON Schema (since the `@odata.type` in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the `@odata.type` property of the resource).
 
-A Link Header containing `rel=describedby` shall be returned on GET and HEAD requests.  If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the `@odata.type` property returned in this resource.
+A `Link` header containing `rel=describedby` shall be returned on GET and HEAD requests.  If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the `@odata.type` property returned in this resource.
 
-A Link Header satisfying annotations should be returned on GET and HEAD requests.
+A `Link` header satisfying annotations should be returned on GET and HEAD requests.
 
 ### Status codes
 
+Mike to revisit.
+
 HTTP defines status codes that services can return in response messages.
 
-To provide the client more meaningful and deterministic error semantics, the response body contains an [extended error resource](#error-responses) when the HTTP status code indicates a failure.
+To provide the client more meaningful and deterministic error semantics, the response body may contain an [extended error response](#error-responses) when the HTTP status code indicates a failure.
 
-* Services should return the extended error resource as described in this specification in the response body when the service returns the HTTP [400](#status-400) or greater status code.  Services may return the extended error resource, as described in this specification, in the response body when other status codes are returned for those codes and operations that allow a response body.
+* Services should return the extended error resource as described in this specification in the response body when the service returns the HTTP [400](#status-400) or greater status code.
+* Services may use [Extended property information](#extended-property-information) for other responses.
 * Extended error messages shall not provide privileged information when authentication failures occur.
 
 NOTE: Refer to the [Security](#security-details) clause for security implications of extended errors.
@@ -1180,6 +1183,8 @@ The following table lists HTTP status codes that have meaning or usage defined f
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
 * Redfish Services should not return the status code 100.  Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
+
+Mike to add clause about "Use 400 for default client badness" and "Use 500 for default service badness".
 
 | HTTP Status Code                                           | Description |
 | ---                                                        | ---         |
@@ -1208,15 +1213,17 @@ The following table lists HTTP status codes that have meaning or usage defined f
 | <a id="status-503"></a>503 Service Unavailable             | The service is currently unable to handle the request due to temporary overloading or maintenance of the service.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.  It may also use this response to indicate the service itself is undergoing maintenance, such as finishing initialization steps after reboot of the service. |
 | <a id="status-507"></a>507 Insufficient Storage            | The service is unable to build the response for the client due to the size of the response. |
 
-### Metadata responses
+### OData metadata responses
 
-Metadata describes resources, resource collections, capabilities, and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification.  Clients are not required to request metadata if they already have sufficient understanding of the target service.  For example, clients are not required to request metadata to request and interpret a JSON representation of a resource that this specification defines.
+OData metadata describes resources, resource collections, capabilities, and service-dependent behavior to generic OData consumers with no specific understanding of this specification.  Clients are not required to request metadata if they already have sufficient understanding of the target service.  For example, clients are not required to request metadata to request and interpret a JSON representation of a resource that this specification defines.
 
-A client is able to access the metadata via the `/redfish/v1/$metadata` URI.
+A client is able to access the OData metadata via the `/redfish/v1/$metadata` URI.
 
-#### Service metadata
+A client is able to access the OData service document via the `/redfish/v1/odata` URI.
 
-The service metadata describes top-level service resources and resource types according to [OData-Schema](#OData-CSDL).  The Redfish service metadata is represented as an XML document with an `Edmx` root element in the `https://docs.oasis-open.org/odata/ns/edmx` namespace with an OData version attribute set to `4.0`.
+#### OData $metadata
+
+The OData metadata describes top-level service resources and resource types according to [OData-Schema](#OData-CSDL).  The OData metadata is represented as an XML document with an `Edmx` root element in the `https://docs.oasis-open.org/odata/ns/edmx` namespace with an OData version attribute set to `4.0`.
 
 ```xml
 <edmx:Edmx xmlns:edmx="https://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -1226,51 +1233,37 @@ The service metadata describes top-level service resources and resource types ac
 
 ##### Referencing other schemas
 
-The service metadata shall include the namespaces for each of the Redfish resource types, along with the `RedfishExtensions.v1_0_0` namespace.
+The OData metadata shall include the namespaces for each of the Redfish resource types, along with the `RedfishExtensions.v1_0_0` namespace.
 
 These references may use either:
 
-* The standard URI for the hosted Redfish Schema definitions, such as on `http://redfish.dmtf.org/schemas`.
-* A URI to a local version of the Redfish Schema that shall be identical to the public version.
+* The standard URI for the published Redfish Schema definitions, such as on `http://redfish.dmtf.org/schemas`.
+* A URI to a local version of the Redfish Schema.
 
 ```xml
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
-  <edmx:Include Namespace="AccountService" />
-  <edmx:Include Namespace="AccountService.v1_0_0" />
-</edmx:Reference>
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
-  <edmx:Include Namespace="ServiceRoot" />
-  <edmx:Include Namespace="ServiceRoot.v1_0_0" />
+  <edmx:Include Namespace="ServiceRoot"/>
+  <edmx:Include Namespace="ServiceRoot.v1_0_0"/>
 </edmx:Reference>
 
 ...
 
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
-  <edmx:Include Namespace="VirtualMedia" />
-  <edmx:Include Namespace="VirtualMedia.v1_0_0" />
+  <edmx:Include Namespace="VirtualMedia"/>
+  <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
 </edmx:Reference>
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-  <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish" />
+  <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
 </edmx:Reference>
 ```
 
-The service's [metadata document](#metadata-document-request) shall include an `EntityContainer` that defines the top-level resources and resource collections.
-
-An implementation may extend the `ServiceContainer` that the `ServiceRoot` schema defines for the implementation's [OData service document](#odata-service-document).
-
-```xml
-<edmx:DataServices>
-  <Schema xmlns="https://docs.oasis-open.org/odata/ns/edm" Namespace="Service">
-    <EntityContainer Name="Service" Extends="ServiceRoot.v1_0_0.ServiceContainer" />
-  </Schema>
-</edmx:DataServices>
-```
+The service's [OData metadata document](#metadata-document-request) shall include an `EntityContainer` that defines the top-level resources and resource collections.
 
 ##### Referencing OEM extensions
 
-The metadata document may reference additional schema documents that describe OEM-specific extensions that the service uses.
+The OData metadata document may reference additional schema documents that describe OEM-specific extensions that the service uses.
 
-For example, the metadata document may reference custom types for additional resource collections.
+For example, the OData metadata document may reference custom types for additional resource collections.
 
 ```xml
 <edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
@@ -1278,9 +1271,11 @@ For example, the metadata document may reference custom types for additional res
 </edmx:Reference>
 ```
 
-### OData service document
+#### OData service document
 
 The OData service document serves as a top-level entry point for generic OData clients.
+
+Mike to add reference to OData spec
 
 ```json
 {
@@ -1296,16 +1291,6 @@ The OData service document serves as a top-level entry point for generic OData c
             "kind": "Singleton",
             "url": "/redfish/v1/Systems"
         },
-        {
-            "name": "Chassis",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Chassis"
-        },
-        {
-            "name": "Managers",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Managers"
-        },
         ...
     ]
 }
@@ -1314,8 +1299,6 @@ The OData service document serves as a top-level entry point for generic OData c
 The service shall return the OData service document as a JSON object by using the `application/json` MIME type.
 
 The JSON object shall contain the `@odata.context` context property set to `/redfish/v1/$metadata`.
-
-This context tells a generic OData client how to find the [service metadata](#service-metadata) that describes the types that the service exposes.
 
 The JSON object shall include a `value` property set to a JSON array that contains an entry for the [service root](#service-root-request) and each resource that is a direct child of the service root.
 
