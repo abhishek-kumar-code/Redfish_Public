@@ -594,7 +594,8 @@ Services:
 * Shall only support query parameters on GET operations.
 * Should support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
 * May support the `$expand`, `$filter`, and `$select` query parameters.
-* Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters, to indicate which parameters and options have been implemented.
+* Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters.
+    * This is to indicate which parameters and options have been implemented.
 * Shall ignore unknown or unsupported query parameters that do not begin with `$`.
 * Shall use the `&` operator to separate multiple query parameters in a single request
 
@@ -627,10 +628,10 @@ The `$expand` query parameter has a set of possible options that determine which
 
 The Redfish-supported options for the `$expand` query parameter are listed in the following table.  The service may implement some of these options but not others.  Any other supported syntax for `$expand` is outside the scope of this specification.
 
-| Value               | Description | Example |
+| Option              | Description | Example |
 | ---                 | ---         | ---     |
 | asterisk&nbsp;(`*`) | Shall expand all hyperlinks. | `http://resource?$expand=*` |
-| `$levels`           | The number of levels the service should cascade the `$expand` operation. The default level shall be 1.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
+| `$levels`           | The number of levels the service should cascade the `$expand` operation.  The default level shall be 1.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
 | period&nbsp;(`.`)   | Shall expand all hyperlinks **not** in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
 | tilde&nbsp;(`~`)    | Shall expand all hyperlinks found in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
 
@@ -798,15 +799,15 @@ In the absence of outside changes to the resource, the PATCH operation should be
 
 For array properties, services may report `null` values as placeholders to indicate the maximum number of elements that the service supports for that array property.  
 
-Within a PATCH request, the client can use `null` to remove an element, and use an empty object `{}` to leave an element unchanged.  A PATCH request with fewer elements than currently exist in the array will truncate the array to that length. 
+Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  A PATCH request with fewer elements than currently exist in the array shall truncate the array to that length. 
 
 For example, an array of 'Flavors' indicates the service supports a maximum of six elements, with four populated. 
 
 ```
-   "Flavors": [ "Chocolate", "Vanilla", "Mango", "Strawberry", null, null ]
+  "Flavors": [ "Chocolate", "Vanilla", "Mango", "Strawberry", null, null ]
 ```
 
-A client could issue the following PATCH request to remove `Vanilla`, replace `Strawberry` with `Cherry`, and add 'Coffee' and 'Banana' to the array, while leaving the other elements unchanged.
+A client could issue the following PATCH request to remove `Vanilla`, replace `Strawberry` with `Cherry`, and add `Coffee` and `Banana` to the array, while leaving the other elements unchanged.
 
 ```
   "Flavors": [ {}, null, {}, "Cherry", "Coffee", "Banana" ]
@@ -817,7 +818,6 @@ The resulting array after the PATCH is:
 ```
   "Flavors": [ "Chocolate", "Mango", "Cherry", "Coffee", "Banana", null ]
 ```
-
 
 ### PUT (replace)<a id="put-replace"></a>
 
