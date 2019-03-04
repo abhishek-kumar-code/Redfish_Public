@@ -21,6 +21,20 @@
             "uris": [
                 "/redfish/v1/Chassis/{ChassisId}/Sensors/{SensorId}"
             ]
+        },
+        "SensorExcerpt": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_0.json#/definitions/SensorExcerpt"
+                }
+            ]
+        },
+        "SensorPowerExcerpt": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Sensor.v1_0_0.json#/definitions/SensorPowerExcerpt"
+                }
+            ]
         }
     },
     "owningEntity": "DMTF",

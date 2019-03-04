@@ -9731,6 +9731,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedfishError'
           description: Error condition
+  /redfish/v1/Fabrics:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/FabricCollection.yaml#/components/schemas/FabricCollection
+          description: The response contains a representation of the FabricCollection
+            resource
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
   /redfish/v1/Fabrics/{FabricId}:
     get:
       parameters:
