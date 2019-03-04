@@ -53,6 +53,7 @@
         <Annotation Term="Redfish.Uris">
           <Collection>
             <String>/redfish/v1/Fabrics/{FabricId}/Switches/{SwitchId}/Ports</String>
+            <String>/redfish/v1/Chassis/{ChassisId}/Ports</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Port.Port)">
