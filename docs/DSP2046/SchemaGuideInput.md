@@ -2,8 +2,8 @@
 DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
-DocVersion: '2018.2'
-modified: '2018-08-10'
+DocVersion: '2018.3'
+modified: '2018-12-14'
 status: published
 released: True
 copyright: '2017-2018'
@@ -41,6 +41,7 @@ The doc generator will use the local files when specified and otherwise
 follow the full URI, including data from remote files if possible.
 
 ## Local-repo: redfish.dmtf.org/schemas/v1 ./json-schema
+## Local-repo: redfish.dmtf.org/schemas/swordfish/v1 ../Swordfish/json-schema
 
 # Keyword Configuration
 
@@ -141,8 +142,8 @@ A number of corner-case issues have been found in the schema definitions which c
   <img src="http://redfish.dmtf.org/sites/default/files/DMTF_Redfish_logo_R.jpg" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2018-8-10</p>
-<p align="right">Version: <span class="version">2018.2</span></p>
+<p align="right">Date: 2018-12-15</p>
+<p align="right">Version: <span class="version">2018.3</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
@@ -328,10 +329,15 @@ The following table lists all of the Redfish-defined Resource Collections and th
 
 # Reference Guide
 
-This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.2 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
+This guide was produced using the contents of the schema files from DMTF Redfish Schema bundle DSP8010 version 2018.3 and merged with supplemental text using the DMTF's [Redfish Documentation Generator](#redfish-documentation-generator).  
 
 
 # Schema Supplement
+
+## AccelerationFunction
+
+### Mockup
+mockups/DSP2046-examples/AccelerationFunction-v1-example.json
 
 ## AccountService
 
@@ -352,6 +358,23 @@ mockups/DSP2046-examples/Assembly-v1-example.json
 
 ### Mockup
 mockups/DSP2046-examples/Bios-v1-example.json
+
+## Certificate
+
+### Mockup
+mockups/DSP2046-examples/Certificate-v1-example.json
+
+## CertificateLocations
+
+### Mockup
+mockups/DSP2046-examples/CertificateLocations-v1-example.json
+
+## CertificateService
+
+### Mockup
+mockups/DSP2046-examples/CertificateService-v1-example.json
+
+
 
 ## Chassis
 
@@ -503,6 +526,11 @@ mockups/DSP2046-examples/Power-v1-example.json
 ### Mockup
 mockups/DSP2046-examples/Processor-v1-example.json
 
+## ProcessorMetrics
+
+### Mockup
+mockups/DSP2046-examples/ProcessorMetrics-v1-example.json
+
 ## ResourceBlock
 
 ### Mockup
@@ -512,6 +540,11 @@ mockups/DSP2046-examples/ResourceBlock-v1-example.json
 
 ### Mockup
 mockups/DSP2046-examples/Role-v1-example.json
+
+## Sensor
+
+### Mockup
+mockups/DSP2046-examples/Sensor-v1-example.json
 
 ## SerialInterface
 
@@ -616,6 +649,7 @@ This document was created using the Redfish Documentation Generator utility, whi
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
+| 2018.3  | 2018-12-15 | Release built from Redfish schemas released in DSP8010 version 2018.3 |
 | 2018.2  | 2018-08-10 | Release built from Redfish schemas released in DSP8010 version 2018.2 |
 |         |            | Expanded introduction section with additional information. |
 |         |            | Expanded Common Objects section to include previously excluded objects. |

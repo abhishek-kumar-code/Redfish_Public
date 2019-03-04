@@ -2,18 +2,18 @@
 DocTitle: Redfish Interoperability Profiles Bundle
 DocNumber: '8013'
 DocClass: Normative
-DocVersion: '2018.2'
-modified: '2018-11-29'
+DocVersion: '2019.1'
+modified: '2019-02-26'
 status: published
-released: True
-copyright: '2017-2018'
+released: true
+copyright: '2017-2019'
 ---
 
 # Foreword
 
-The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort:
+The following files are part of the Redfish development effort:
 
-* DSP0226 - Redfish Specification - This file is the main Redfish Scalable Platforms Management API Specification.
+* DSP0226 - Redfish Specification - This file is the main Redfish Specification.
 * DSP0270 - Redfish Host Interface Specification - This document specifies the "in-band" or "OS-based" Redfish Host Interface. 
 * DSP0272 - Redfish Interoperability Profile Specification - Specifies the structure and JSON document used to define and publish an interoperability profile used to check an implementation's conformance to a defined minimum set of functionality.
 * DSP2044 - Redfish Whitepaper - This is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish Service and understand common functions and tasks.
@@ -30,11 +30,11 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 The root folder of this bundle contains tools useful for constructing a new Redfish Interoperability Profile.  
 
 * RedfishInteroperabilityProfile.v1_n_n.json - A JSON schema definition for a Redfish Interoperability Profile JSON document. This schema file can be used with a JSON schema validator to ensure that a created profile conforms to the Redfish Interoperability Profile Specification.
-* SampleProfile.json - A sample profile JSON document which shows the features available in the profile definition.
+* SampleProfile.json - A sample profile JSON document that shows the features available in the profile definition.
 
 ## Profile folders
 
-As Profiles are defined, approved and published, they will be added to folders in this bundle.  Each published profile is expected to include at least two files: the JSON document which conforms to the profile schema, and a Profile Guide to document the contents of the profile.
+As Profiles are defined, approved and published, they will be added to folders in this bundle.  Each published profile is expected to include at least two files: the JSON document, which conforms to the profile schema, and a Profile Guide to document the contents of the profile.
 
 As of this publication, there are no normative profiles (work-in-progress profiles are available separately).
 
@@ -59,6 +59,7 @@ Creates end user documentation by combining the Redfish Schemas with a Profile d
 
 | File                           | Version | Date       | Description |
 | ---                            | ---     | ---        | ---         |
+| RedfishInteroperabilityProfile | 1.1.0   | 2019-02-26 | Added support for basing requirements on URIs when applied with Redfish Specification v1.6 OpenAPI support.  Corrected the format of the 'Repository' property to use 'uri-reference' and clarified its description to reflect usage for profiles, schemas, and registries. |
 | RedfishInteroperabilityProfile | 1.0.3   | 2018-11-29 | Errata release.  Corrected the type for 'CompareType' to allow for booleans, numbers, and strings. |
 | RedfishInteroperabilityProfile | 1.0.2   | 2018-11-29 | Errata release.  Corrected the depth of 'additionalProperties' found in 'Parameters' for 'ActionProfile'. |
 | RedfishInteroperabilityProfile | 1.0.1   | 2018-05-01 | Errata release.  Corrected inconsistent usage of the 'Comparison' property within Conditional Requirements.  Added missing 'Values' property to Conditional Requirements to enable specification of property values when a condition is met. |

@@ -17,6 +17,8 @@ For details on any item listed, contact: spmf-chair@dmtf.org
 | SDC | September 24-27, 2018 | Santa Clara, CA | Jeff Hilland, Richelle Ahlvers | Propose session |
 | NOMS 2019  | April 2019 |               |                     | Submission deadline likely November 2018    |
 | OCP Summit | March 2019 | TBD  | www.opencompute.org | Booth and workshop attendance / presentation |
+| SDC        | Sept 2019  | Santa Clara   | Jeff Hilland, Richelle Ahlvers | Propose session |
+| SC 2019    | Nov 2019   | Denver        |                     | Booth, sessions |
 
 
 ## Specifications
@@ -82,7 +84,7 @@ The links in the Tutorials/Education side bar will be reflected on the developer
 
 Here the Pub column means has it been published yet.  The intent is to publish all of these presentations on the Tutorials/Education side bar of dmtf.org/standards/Redfish and reflected on the Developer Hub Education Page (http://redfish.dmtf.org/education) 
 
-| Subject             | Presenter | Rec? | Pub? | DocID |
+| Subject             | Presenter | Rec? | Pub? | Doc   |
 | ---                 | ---       | ---  | ---  | ---   |
 | Why Redfish         | Jeff A    | Y    | N    | 84013 |
 | Architecture        | Jeff H    | Y    | N    | 84151 |
@@ -96,36 +98,48 @@ Here the Pub column means has it been published yet.  The intent is to publish a
 | Storage             | Mike R    | Y    | N    | 86144 |
 | Composability       | Mike R    | Y    | N    | 86073 |
 | Case for Redfish    | Jeff H    | Y    | Y    | 85771 |
-| Tasks               | Jeff H    |      | Y    | 86324 |
-| Adv Comm Device     | Jeff H    |      | N    | 86894 |
-| Eventing            | Jeff H    |      | Y    | 86372 |
+| Tasks               | Jeff H    | Y    | Y    | 86324 |
+| Adv Comm Device     | Jeff H    | Y    | N    | 86894 |
+| Eventing            | Jeff H    | Y    | Y    | 86372 |
 | Proc & Memory       | Jeff H    |      |      |       |
-| Sessions            | Jeff H    |      |      |       |
-| Users & Priv        | Jon H     |      |      |       |
+| Sessions            | Jeff H    | Y    | N    | 88762 |
+| Users & Priv        | Mike R    |      |      |       |
 | BIOS                | Samer     |      |      |       |
 | Telemetry           | John L    |      |      |       |
-| Host Interface      | Paul V    |      |      |       |
+| Host Interface      | Mike R    |      |      |       |
 | Profiles            | Jeff A    |      |      |       |
 | FW Update           | Jeff A    |      |      |       |
-| Service Validator   | Jeff A    |      |      |       |
 | Boot model / option | Ghazi B   |      |      |       |
 | PCI device and slot |           |      |      |       |
-| OEM Extensions      |           |      |      |       |
-| How to Model in Redfish | Jeff A |     |      |       |
+| OEM Extensions      | Jeff A    |      |      |       |
+| How to Model in Redfish (published on Brighttalk currently) | Jeff A | N | N | 82380 |
 | OpenAPI             | Mike R    |      |      |       |
 | SSE                 | Mike R    |      |      |       |
 | Fabrics             | Jeff H    |      |      |       |
-| Conformance Check   |           |      |      |       |
-| Interop Validator   | JL        |      |      |       |
 | Sensor Model        | Jeff A    |      |      |       |
 | Alarms              | John L    |      |      |       |
 | Jobs                | Jeff A    |      |      |       |
 | Privilege Map       | Jon H     |      |      |       |
-| Mockup Server/Creator |         |      |      |       |
-| JSON Schema Validator | Paul V  |      |      |       |
-| Redfishtool         | Paul V    |      |      |       |
 | DCIM WIP v.8        | Jon H     |      |      |       |
 | Ethernet Switching  | Joe White |      |      |       |
+
+
+### Tacklebox
+
+Videos for demonstrating how different tools are used.
+
+| Subject             | Presenter | Rec? | Pub? |
+| ---                 | ---       | ---  | ---  |
+| Conformance Check   |           |      |      |
+| Interop Validator   | JL        |      |      |
+| Service Validator   | Jeff A    |      |      |
+| JSON Schema Validator | Paul V  |      |      |
+| Redfishtool         | Paul V    |      |      |
+| Mockup Server/Creator |         |      |      |
+| Use Case Checkers   |           |      |      |
+| OpenStack - BIOS    |           |      |      |
+| Ansible - ???       |           |      |      |
+| Test Framework      |           |      |      |
 
 
 ### Presentations

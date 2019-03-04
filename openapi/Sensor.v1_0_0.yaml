@@ -352,6 +352,7 @@ components:
           nullable: true
           readOnly: true
           type: number
+          x-excerpt: Sensor
           x-longDescription: The value of this property shall be the peak value of
             the Reading for this sensor during the last interval.
         PeakReadingTime:
@@ -360,7 +361,6 @@ components:
           nullable: true
           readOnly: true
           type: string
-          x-excerpt: Sensor
           x-longDescription: The value of this property shall the timestamp when the
             Peak Reading value was observed.
         PhysicalContext:
@@ -520,15 +520,14 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
           readOnly: true
           x-excerpt: Sensor
-        PeakReadingTime:
-          description: The time at which the Peak Reading value occurred.
-          format: date-time
+        PeakReading:
+          description: The peak reading value for this sensor.
           nullable: true
           readOnly: true
-          type: string
+          type: number
           x-excerpt: Sensor
-          x-longDescription: The value of this property shall the timestamp when the
-            Peak Reading value was observed.
+          x-longDescription: The value of this property shall be the peak value of
+            the Reading for this sensor during the last interval.
         PhysicalContext:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Describes the area or device to which this sensor measurement
@@ -622,15 +621,14 @@ components:
           $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/Name
           readOnly: true
           x-excerpt: Sensor
-        PeakReadingTime:
-          description: The time at which the Peak Reading value occurred.
-          format: date-time
+        PeakReading:
+          description: The peak reading value for this sensor.
           nullable: true
           readOnly: true
-          type: string
+          type: number
           x-excerpt: Sensor
-          x-longDescription: The value of this property shall the timestamp when the
-            Peak Reading value was observed.
+          x-longDescription: The value of this property shall be the peak value of
+            the Reading for this sensor during the last interval.
         PhysicalContext:
           $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
           description: Describes the area or device to which this sensor measurement
@@ -725,12 +723,12 @@ components:
             through this Threshold value before the threshold is considered to be
             violated.
           nullable: true
+          pattern: -?P(\d+D)?(T(\d+H)?(\d+M)?(\d+(.\d+)?S)?)?
           readOnly: false
           type: string
-          x-longDescription: This property shall reflect the amount of time a sensor
-            reading remains passed the trigger point before declaring the crossing
-            to be a violation. In other words, if the sensor reading returns back
-            to a reading before the trigger point, the threshold crossing may be disregarded.
+          x-longDescription: This property shall indicate the time interval over which
+            the sensor reading must have passed through this Threshold value before
+            the threshold is considered to be violated.
         Reading:
           description: The threshold value.
           nullable: true

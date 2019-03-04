@@ -3,7 +3,8 @@ const glob = require('glob');
 const fs = require('fs');
 const assert = require('assert');
 const marked = require('marked');
-const cheerio = require('cheerio');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 const files = glob.sync('*.md');
 
@@ -15,7 +16,9 @@ files.forEach(file => {
         if (err) { return this.callback(err) }
         marked(data, (err2, html) => {
           if (err2) { return this.callback(err2) };
-          this.callback(err2, cheerio.load(`<body>${html}</body>`));
+          let doc = new JSDOM(`<body>${html}</body>`);
+          let $ = require('jquery')(doc.window);
+          this.callback(err2, $);
         });
       });
     },
