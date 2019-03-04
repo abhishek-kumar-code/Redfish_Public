@@ -1,13 +1,12 @@
 const vows = require('vows');
 const glob = require('glob');
 const path = require('path');
-const xmljs = require('libxmljs-mt');
+const xmljs = require('libxmljs');
 const assert = require('assert');
-const request = require('request');
 const CSDL = require('CSDLParser');
 const fs = require('fs');
-const jsonlint = require('jsonlint');
 const published = require('./published_schema');
+const ucum = require('./fixtures/units');
 
 const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 
@@ -26,8 +25,6 @@ var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normali
 //Setup a global cache for speed
 options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
 
-let ucum = null;
-let ucumError = false;
 let publishedSchemas = {};
 let overrideCSDLs = [];
 
@@ -55,19 +52,6 @@ const OverRideFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume_v1.x
 /************************************************************/
 
 const setupBatch = {
-  'get UCUM file': {
-    topic: function() {
-      request({url: 'http://unitsofmeasure.org/ucum-essence.xml', timeout: 5000}, this.callback);
-    },
-    'parse UCUM file': function(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        ucum = xmljs.parseXml(body);
-      }
-      else {
-        ucumError = true;
-      }
-    }
-  },
   'get Published Schemas': {
     topic: function() {
       published.getPublishedSchemaVersionList('http://redfish.dmtf.org/schemas/v1/', this.callback);
@@ -143,7 +127,7 @@ function constructMockupTest(file) {
     topic: function() {
       var txt = fs.readFileSync(file);
       try {
-        var json = jsonlint.parse(txt.toString());
+        var json = JSON.parse(txt.toString());
         this.callback(null, json);
       }
       catch(e) {
@@ -166,10 +150,6 @@ function validUnitsTest(err, csdl) {
   if(err) {
     return;
   }
-  if(ucum === null) {
-    process.stderr.write('Skipping units test due to inability to obtain UCUM file...');
-    return;
-  }
   if(this.context.title.indexOf('_v') === -1) {
     return;
   }
@@ -186,31 +166,19 @@ function validUnitsTest(err, csdl) {
     if(pos !== -1) {
       unitName = unitName.substring(0, pos);
     }
-    let ucumTypes = ucum.get('//*[@Code="'+unitName+'"]');
-    if(ucumTypes === undefined) {
-      let prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName[0]+'"]');
-      if(prefix !== undefined) {
-        let tmp = unitName.substring(1);
-        ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
-        if(ucumTypes === undefined) {
-          prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
-          if(prefix !== undefined) {
-            tmp = unitName.substring(2);
-            ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
-          }
-        }
-      }
-      else {
-        prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
-        if(prefix !== undefined) {
-          let tmp = unitName.substring(2);
-          ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
-        }
-      }
-      if(ucumTypes === undefined) {
-        throw new Error('Unit name '+unitName+' is not a valid UCUM measure');
-      }
+    if(ucum.units.includes(unitName)) {
+      //Have unit, all good...
+      return;
     }
+    else if(ucum.prefixes.includes(unitName[0]) && ucum.units.includes(unitName.substring(1))) {
+      //Have prefix and unit, all good...
+      return;
+    }
+    else if(ucum.prefixes.includes(unitName.substring(0,2)) && ucum.units.includes(unitName.substring(2))) {
+      //Have prefix and unit, all good...
+      return;
+    }
+    throw new Error('Unit name '+unitName+' is not a valid UCUM measure');
   }
 }
 
