@@ -64,10 +64,10 @@
           <Collection>
             <String>/redfish/v1/Fabrics/{FabricId}/Switches/{SwitchId}/Ports/{PortId}</String>
             <String>/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/{ControllerId}/Ports/{PortId}</String>
-            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/{ControllerId}/Ports/{PortId}</String>
-            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/{ControllerId}/Ports/{PortId}</String>
-            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/{ControllerId}/Ports/{PortId}</String>
-            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/{ControllerId}/Ports/{PortId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/StorageController/{StorageControllerMemberId}/Ports/{PortId}</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/StorageController/{StorageControllerMemberId}/Ports/{PortId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Storage/{StorageId}/StorageController/{StorageControllerMemberId}/Ports/{PortId}</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Storage/{StorageId}/StorageController/{StorageControllerMemberId}/Ports/{PortId}</String>
           </Collection>
         </Annotation>
       </EntityType>
