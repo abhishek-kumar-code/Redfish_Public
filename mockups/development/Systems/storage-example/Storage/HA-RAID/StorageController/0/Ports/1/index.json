@@ -10,7 +10,7 @@
 		"Health": "OK"
 	},
 	"PortId": "1",
-    "PortProtocol": "SAS",
+	"PortProtocol": "SAS",
 	"PortType": "BidirectionalPort",
 	"CurrentSpeedGbps": 48,
 	"Width": 4,
