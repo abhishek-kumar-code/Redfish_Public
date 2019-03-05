@@ -558,15 +558,45 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_7_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
-      <EntityType Name="Storage" BaseType="Storage.v1_6_0.Storage"/>
+      <EntityType Name="Storage" BaseType="Storage.v1_6_1.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_6_0.StorageController">
         <Property Name="Ports" Type="PortCollection.PortCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object describes the Ports that exist on the storage controller."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain all the Ports that exist on the current resource."/>
         </Property>
+        <Property Name="ControllerRates" Type="Storage.v1_7_0.Rates">
+          <Annotation Term="OData.Description" String="This object describes the various controller rates used for things like Volume Rebuild or Consistency Checks."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain all the rate settings available on the controller."/>
+        </Property>
       </EntityType>
-
+      
+      <ComplexType Name="Rates">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object describes the various controller rates used for things like Volume Rebuild or Consistency Checks."/>
+        <Annotation Term="OData.LongDescription" String="This object shall contain all the rate settings available on the controller."/>
+        <Property Name="RebuildRatePercent" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The percentage of controller resources used for rebuilding/repairing volumes."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the percentage of controller resources used for rebuilding Volumes."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
+        </Property>
+        <Property Name="TransformationRatePercent" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The percentage of controller resources used for transforming volumes from one configuration to another."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the percentage of controller resources used for transforming Volumes."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
+        </Property>
+        <Property Name="ConsistencyCheckRatePercent" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The percentage of controller resources used for performing a data consistency check on volumes."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the percentage of controller resources used for checking data consistency on Volumes."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Validation.Maximum" Int="100"/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
