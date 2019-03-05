@@ -60,7 +60,7 @@
             ],
             "ControllerRates": {
                 "RebuildRatePercent": 30,
-                "ConsistencyCheckRate": 15
+                "ConsistencyCheckRatePercent": 15
             }
         }
     ],
