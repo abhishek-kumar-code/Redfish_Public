@@ -1166,7 +1166,7 @@ A `Link` header satisfying annotations should be returned on GET and HEAD reques
 
 ### Status codes
 
-HTTP defines status codes that are used in response messages.  The status codes themselves provide general information about how the request was processed, such as whether the request was successful, if the client provided bad information, or the service encountered an error when performing the request.
+HTTP defines status codes that are used in responses.  The status codes themselves provide general information about how the request was processed, such as whether the request was successful, if the client provided bad information, or the service encountered an error when performing the request.
 
 * When the service returns a status code in the 4xx or 5xx range, services should return an [extended error response](#error-responses) in the response body.
     * This is to provide the client more meaningful and deterministic error semantics.
@@ -1177,8 +1177,7 @@ NOTE: Refer to the [Security](#security-details) clause for security implication
 
 The following table lists HTTP status codes that have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification.  Other codes may be returned by the service as appropriate, and their usage is implementation-specific.  See the description column for usage and additional requirements imposed by this specification.
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
-* Services shall respond with these status codes as appropriate.
-* Exceptions from operations shall be mapped to HTTP status codes.
+* Services shall respond with the status codes in the table below as defined in description column.
 * Redfish Services should not return the status code 100.  Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
 * The HTTP [400 Bad Request](#status-400) status code should be used as the default status code for client-side errors if no other status code in the 4xx range is appropriate.
 * The HTTP [500 Internal Server Error](#status-500) status code should be used as the default status code for service-side errors if no other status code in the 5xx range is appropriate.
@@ -1319,9 +1318,9 @@ An extended error response, which is a single JSON object, defines the error res
 
 | Property                | Description |
 | ---                     | ---         |
-| `code`                  | String.  Defines a `MessageId` from the message registry. |
-| `message`               | Displays a human-readable error message that corresponds to the message in the message registry. |
-| `@Message.ExtendedInfo` | Displays an array of [message objects](#message-object).  Describes one or more error messages. |
+| `code`                  | String.  Defines a `MessageId` from the Message Registry. |
+| `message`               | Displays a human-readable error message that corresponds to the Message in the Message Registry. |
+| `@Message.ExtendedInfo` | Displays an array of [Message objects](#message-object).  Describes one or more error messages. |
 
 ```json
 {
