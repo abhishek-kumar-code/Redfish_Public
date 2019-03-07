@@ -40,7 +40,7 @@
         ],
         "ManagerInChassis": {
             "@odata.id": "/redfish/v1/Chassis/ExpansionEnclosure"
-        }	
+        }
     },
     "Actions": {
         "#Manager.Reset": {

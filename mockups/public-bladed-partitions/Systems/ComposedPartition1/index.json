@@ -53,7 +53,7 @@
     "Links": {
         "ResourceBlocks": [
             {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1"
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1"
             }
         ],
         "ManagedBy": [

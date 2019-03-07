@@ -1,66 +1,66 @@
 {
-    "name" : "Simple Rack-mounted Server",
-    "description" : "A typical 1U or 2U server intended for scale-out deployments.",
-    "navlinks" : [
+    "name": "Simple Rack-mounted Server",
+    "description": "A typical 1U or 2U server intended for scale-out deployments.",
+    "navlinks": [
         {
-            "text" : "Main",
-            "target" : "main"
+            "text": "Main",
+            "target": "main"
         },
         {
-            "text" : "Systems",
-            "target" : "Systems",
-            "navlinks" : [
+            "text": "Systems",
+            "target": "Systems",
+            "navlinks": [
                 {
-                    "text" : "437XR1138R2",
-                    "target" : "437XR1138R2"
+                    "text": "437XR1138R2",
+                    "target": "437XR1138R2"
                 }
             ]
         },
         {
-            "text" : "Chassis",
+            "text": "Chassis",
             "target": "Chassis",
-            "navlinks" : [
+            "navlinks": [
                 {
-                    "text" : "1U",
-                    "target" : "1U"
+                    "text": "1U",
+                    "target": "1U"
                 }
             ]
         },
         {
-            "text" : "Managers",
-            "target" : "Managers",
-            "navlinks" : [
+            "text": "Managers",
+            "target": "Managers",
+            "navlinks": [
                 {
-                    "text" : "BMC",
-                    "target" : "BMC"
+                    "text": "BMC",
+                    "target": "BMC"
                 }
             ]
         },
         {
-            "text" : "Task Service",
-            "target" : "TaskService"
+            "text": "Task Service",
+            "target": "TaskService"
         },
         {
-            "text" : "Session Service",
-            "target" : "SessionService"
+            "text": "Session Service",
+            "target": "SessionService"
         },
         {
-            "target" : "AccountService",
-            "text" : "Account Service"
+            "target": "AccountService",
+            "text": "Account Service"
         },
         {
-            "target" :  "EventService",
-            "text" : "Event Service",
-            "navlinks" : [
+            "target": "EventService",
+            "text": "Event Service",
+            "navlinks": [
                 {
-                    "text" : "Subscriptions",
-                    "target" : "Subscriptions"
+                    "text": "Subscriptions",
+                    "target": "Subscriptions"
                 }
             ]
         },
         {
-            "target" : "UpdateService",
-            "text" : "Update Service"
+            "target": "UpdateService",
+            "text": "Update Service"
         }
     ]
 }

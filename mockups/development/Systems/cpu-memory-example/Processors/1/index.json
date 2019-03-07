@@ -31,7 +31,7 @@
             "LocationOrdinalValue": 0
         }
     },
-    "SubProcessors" : {
-      "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors/1/SubProcessors"
+    "SubProcessors": {
+        "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Processors/1/SubProcessors"
     }
 }

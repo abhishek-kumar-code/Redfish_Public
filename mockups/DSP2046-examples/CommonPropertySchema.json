@@ -45,8 +45,8 @@
                     "type": "object",
                     "description": "This object contains definitions for the Redfish Actions available for this resource.",
                     "properties": {
-                       "target": {
-                           "type": "string",
+                        "target": {
+                            "type": "string",
                             "description": "**** TBD ****"
                         }
                     }

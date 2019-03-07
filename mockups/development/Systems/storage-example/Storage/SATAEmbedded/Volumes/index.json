@@ -15,7 +15,11 @@
     ],
     "@Redfish.OperationApplyTimeSupport": {
         "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
-        "SupportedValues": [ "Immediate", "OnReset", "AtMaintenanceWindowStart" ],
+        "SupportedValues": [
+            "Immediate",
+            "OnReset",
+            "AtMaintenanceWindowStart"
+        ],
         "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
         "MaintenanceWindowDurationInSeconds": 600,
         "MaintenanceWindowResource": {

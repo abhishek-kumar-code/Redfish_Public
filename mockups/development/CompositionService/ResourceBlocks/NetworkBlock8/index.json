@@ -5,7 +5,9 @@
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8",
     "Id": "NetworkBlock8",
     "Name": "Network Block 8",
-    "ResourceBlockType": [ "Network" ],
+    "ResourceBlockType": [
+        "Network"
+    ],
     "Status": {
         "State": "Enabled",
         "Health": "OK"
