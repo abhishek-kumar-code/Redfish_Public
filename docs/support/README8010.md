@@ -41,11 +41,13 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Schema Name            | Version | Description |
 | ---                    | ---     | ---         |
 | ComputerSystem         | 1.7.0   | Added "Certificates" property to "Boot". |
-| MetricReportDefinition | 1.2.0   | Added "MetricReportDefinitionEnabled", "SuppressRepeatedMetricValue", and "MetricReportHeartbeatInterval" properties. |
+| MetricReportDefinition | 1.2.0   | Added "MetricReportDefinitionEnabled", "SuppressRepeatedMetricValue", and "MetricReportHeartbeatInterval" properties.  Added "Triggers" to "Links". |
 | PCIeSlots              | 1.1.0   | Added "HotPluggable" property. |
 | PhysicalContext        | N/A     | Added "PowerSubsystem"  and "Rectifier" physical context types. |
 | Processor              | 1.5.0   | Added "TotalEnabledCores" property. |
 | Session                | 1.2.0   | Added "SessionType" and "OemSessionType" properties. |
+| Storage                | 1.7.0   | Added "Ports" and "ControllerRates" to "StorageControllers". |
+| Triggers               | 1.1.0   | Added "EventTriggers" property.  Added "MetricReportDefinitions" to "Links".  Added "RedfishMetricReport" to "TriggerActionEnum". |
 | UpdateService          | 1.5.0   | Added "MaxImageSizeBytes" property. |
 | Zone                   | 1.3.0   | Added "ExternalAccessiblility" property. |
 | EthernetInterface      | 1.4.2   | Errata release.  Corrected "StaticNameServers" to allow for null values. |

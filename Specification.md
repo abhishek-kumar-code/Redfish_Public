@@ -3527,6 +3527,7 @@ A service that supports updating a composed resource shall provide one or more o
 | 1.6.2   | TBD        | Added Dictionary file naming rules and repository locations. |
 |         |            | Enhanced localization definitions and defined repository locations. |
 |         |            | Added missing statement about SSE within the "Eventing mechanism" clause. |
+|         |            | Added Constrained Composition and Expandable Resources clauses to Redfish Composability. |
 | 1.6.1   | 2018-12-13 | Added clause about percent encoding being allowed for query parameters. |
 |         |            | Changed Expand example to use SoftwareInventory instead of LogEntry. |
 |         |            | Added missing clause about the usage of a separator for multiple query parameters. |
