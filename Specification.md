@@ -501,7 +501,7 @@ In addition, the service shall process the following URI without a trailing slas
 | ---           | ---                            |
 | `/redfish/v1` | `/redfish/v1/` |
 
-All other Redfish service-supported URIs shall match the [Resource URI pattern definitions](#resource-uri-pattern-definitions), except the supplemental resources that the `@Redfish.Settings`, `@Redfish.ActionInfo`, and `@Redfish.CollectionCapabilities` payload annotations reference.  The client shall treat the URIs for these supplemental resources as opaque.
+All other Redfish service-supported URIs shall match the [Resource URI pattern definitions](#resource-uri-patterns), except the supplemental resources that the `@Redfish.Settings`, `@Redfish.ActionInfo`, and `@Redfish.CollectionCapabilities` payload annotations reference.  The client shall treat the URIs for these supplemental resources as opaque.
 
 All Redfish service-supported URIs are reserved for future standardization by DMTF and DMTF alliance partners, except OEM extension URIs, which shall conform to the [URIs for OEM resources](#uris-for-oem-resources) requirements.
 
@@ -1366,7 +1366,7 @@ An extended error response, which is a single JSON object, defines the error res
 
 One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
 
-* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
+* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
 
 ### Resources and Resource Collections
 
@@ -1385,6 +1385,72 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 ### Schema annotations
 
+Schema annotations are used throughout the schema definitions of the data model in order to provide additional documentation for developers.  This clause describes the different types of schema annotations used by the Redfish data model.  See the [Schema definition languages](#schema-definition-languages) clause for information for how each of the annotations are implemented in their respective schema languages.
+
+#### Description
+
+The Description Annotation can be applied to any type, property, action, or parameter in order to provide a human-readable description of the Redfish Schema element.
+
+All Redfish types and properties shall include a Description Annotation.
+
+#### Long Description
+
+The Long Description Annotation can be applied to any type, property, action, or parameter in order to provide a formal, normative specification of the schema element.  Where the Long Descriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
+
+All Redfish types and properties shall include a Long Description Annotation.
+
+#### Resource Capabilities
+
+The Resource Capabilities Annotation can be applied to Resources and Resource Collections to express the different type of HTTP operations a client is able to invole on the given Resource or Resource Collection.
+
+* Insert Capabilities is used to show whether or not a client is able to perform a POST on the resource.
+* Update Capabilities is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
+* Delete Capabilities is used to show whether or not a client is able to perform a DELETE on the resource.
+* A service may only implement a subset of the capabilities that are allowed on the Resource or Resource Collection.
+
+All Redfish Resources and Resource Collections shall include Resource Capabilities Annotations
+
+#### Resource URI Patterns
+
+The Resource URI Patterns Annotation is used to express the valid URI patterns for a given Resource or Resource Collection.
+
+The strings for the URI patterns may use `{` and `}` characters to express parameters within a given URI pattern.  Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the `Id` string property for the corresponding Resource, or the `MemberId` string property for the corresponding object within a Resource.
+
+The following string is an example URI pattern that describes a Manager Account Resource: `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`
+
+Using the above example, `{ManagerAccountId}` would be replaced by the `Id` property of the corresponding Manager Account resource.  If the `Id` property for a given Manager Account resource is `John`, then the full URI for that resource would be `/redfish/v1/AccountService/Accounts/John`.
+
+All Redfish Resources and Redfish Resource Collections shall be annotated with the Resource URI Patterns Annotation.
+
+All Redfish Resources and Redfish Resource Collections implemented by a service shall match the URI pattern described by the Resource URI Patterns Annotation for their given definition.
+
+#### Additional Properties
+
+The Additional Properties Annotation is used to specify whether a type can contain additional properties outside of those defined in the schema.  Types that do not support additional properties shall not contain properties beyond those described in the schema.
+
+#### Permissions
+
+The Permissions Annotation is used to specity if a client is allowed to write a given property, or if the property is read-only.
+
+#### Required
+
+The Required Annotation is used to specify that a property is required to be supported by services.  Required properties shall be annotated with the Required Annotation.  All other properties are optional.
+
+If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases.  Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
+
+#### Required on Create
+
+The Required on Create Annotation is used to specify that a property is required to be provided by the client on creation of the resource.  Properties not annotated with the Required on Create Annotation, are not required to be provided by the client on a create operation.
+
+#### Units of Measure
+
+In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units of Measure Annotation in order to specify the units of measurement for the property.
+
+The value of the annotation should be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
+
+#### Expanded Resources
+
+The Expanded Resources Annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [Resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
 
 ### Versioning
 
@@ -1397,6 +1463,104 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 ## Schema definition languages
 
+### Common Schema Definition Language
+
+Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
+
+#### Schema annotations in CSDL
+
+Annotations in CSDL are expressed using the `Annotation` element.  The `Annotation` element can be applied to any schema element in CSDL.  The following examples show how each of the different [schema annotations](#schema-annotations) used by Redfish are expressed in CSDL.
+
+Example Description Annotation:
+```xml
+  <Annotation Term="OData.Description" String="This property contains the user name for the account."/>
+```
+
+Example Long Description Annotation:
+```xml
+  <Annotation Term="OData.LongDescription" String="This property shall contain the user name for the account."/>
+```
+
+Example Additional Properties Annotation:
+```xml
+  <Annotation Term="OData.AdditionalProperties"/>
+```
+
+Example Permissions Annotation (Read Only):
+```xml
+  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+```
+
+Example Permissions Annotation (Read/Write):
+```xml
+  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+```
+
+Example Required Annotation:
+```xml
+  <Annotation Term="Redfish.Required"/>
+```
+
+Example Required on Create Annotation:
+```xml
+  <Annotation Term="Redfish.RequiredOnCreate"/>
+```
+
+Example Units of Measure Annotation:
+```xml
+  <Annotation Term="Measures.Unit" String="MiBy"/>
+```
+
+Example Expanded Resources Annotation:
+```xml
+  <Annotation Term="OData.AutoExpandReferences"/>
+```
+
+Example Insert Capabilities Annotation (POST is not allowed):
+```xml
+  <Annotation Term="Capabilities.InsertRestrictions">
+    <Record>
+      <PropertyValue Property="Insertable" Bool="false"/>
+    </Record>
+  </Annotation>
+```
+
+Example Update Capabilities Annotation (PATCH and PUT are allowed):
+```xml
+  <Annotation Term="Capabilities.UpdateRestrictions">
+    <Record>
+      <PropertyValue Property="Updatable" Bool="true"/>
+      <Annotation Term="OData.Description" String="Manager Accounts can be updated to change the password and other writable properties."/>
+    </Record>
+  </Annotation>
+```
+
+Example Delete Capabilities Annotation (DELETE is allowed):
+```xml
+  <Annotation Term="Capabilities.DeleteRestrictions">
+    <Record>
+      <PropertyValue Property="Deletable" Bool="true"/>
+      <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
+    </Record>
+  </Annotation>
+```
+
+Example Resource URI Patterns Annotation:
+```xml
+  <Annotation Term="Redfish.Uris">
+    <Collection>
+      <String>/redfish/v1/AccountService/Accounts/{ManagerAccountId}</String>
+    </Collection>
+  </Annotation>
+```
+
+Terms with the prefix `OData` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml.
+
+Terms with the prefix `Measures` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml.
+
+Terms with the prefix `Redfish` are defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
+
+#### File naming conventions for CSDL
 
 ## Service details
 
@@ -3112,22 +3276,6 @@ Descriptive property, parameter, and enumeration text not translated into the la
 
 Individual resources and their dependent types and actions are defined within a Redfish [schema document](#schema-documents).
 
-#### Common annotations
-
-All Redfish types and properties shall include [description](#description) and [long description](#long-description) annotations.
-
-##### Description
-
-The Description annotation can be applied to any type, property, action or parameter in order to provide a human-readable description of the Redfish Schema element.
-
-The `Description` annotation is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
-
-##### Long description
-
-The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.  Where the LongDescriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
-
-The `LongDescription` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
-
 #### Schema documents
 
 Individual resources are defined as entity types within an OData Schema representation of the Redfish Schema according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema and OpenAPI representations of the Redfish Schema capable of validating JSON payloads.
@@ -3211,67 +3359,6 @@ The EntityType contains the [property](#resource-properties) and [reference prop
 All resources shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
 
-#### Resource capabilities
-
-The capabilities of a resource are expressed using the `Capabilities.InsertRestrictions`, `Capabilities.UpdateRestrictions`, and `Capabilities.DeleteRestrictions` terms.
-* `Capabilities.InsertRestrictions` is used to show whether or not a client is able to perform a POST on the resource.
-* `Capabilities.UpdateRestrictions` is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
-* `Capabilities.DeleteRestrictions` is used to show whether or not a client is able to perform a DELETE on the resource.
-* A service may only implement a subset of the capabilities that are set to true.
-
-~~~xml
-  <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-
-    <!-- Other definitions for the EntityType go here -->
-
-    <Annotation Term="Capabilities.InsertRestrictions">
-      <Record>
-        <PropertyValue Property="Insertable" Bool="false"/>
-      </Record>
-    </Annotation>
-    <Annotation Term="Capabilities.UpdateRestrictions">
-      <Record>
-        <PropertyValue Property="Updatable" Bool="true"/>
-        <Annotation Term="OData.Description" String="Manager Accounts can be updated to change the password and other writable properties."/>
-      </Record>
-    </Annotation>
-    <Annotation Term="Capabilities.DeleteRestrictions">
-      <Record>
-        <PropertyValue Property="Deletable" Bool="true"/>
-        <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
-      </Record>
-    </Annotation>
-  </EntityType>
-~~~
-
-In the above example, the `Capabilities.InsertRestrictions` term has the `Insertable` property set to false, meaning a client is not able to perform a POST on the resource.  It also uses the `Capabilities.UpdateRestrictions` term with the `Updatable` property set to true, meaning a client is able to perform a PATCH or PUT on the resource, assuming the client has the right privilege to perform these operations.  It also uses the `Capabilities.DeleteRestrictions` term with the `Deletable` property set to true, meaning a client is able to perform a DELETE on the resource, assuming the client has the right privilege to perform this operation.
-
-
-#### Resource URI pattern definitions
-
-The URI patterns allowed for a given Redfish Resource are expressed using the `Redfish.Uris` annotation within the `EntityType` element.
-
-~~~xml
-  <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-
-    <!-- Other definitions for the EntityType go here -->
-
-    <Annotation Term="Redfish.Uris">
-      <Collection>
-        <String>/redfish/v1/AccountService/Accounts/{ManagerAccountId}</String>
-      </Collection>
-    </Annotation>
-  </EntityType>
-~~~
-
-In the above example, the `Redfish.Uris` annotation describes a single URI pattern.  This definition means the client can expect to find the `ManagerAccount` resource at the URI `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`, if the resource is implemented by the service.
-
-Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the "Id" string property for the corresponding Redfish resource, or the "MemberId" string property for the corresponding object within a Redfish resource.  Using the above example, "{ManagerAccountId}" would be replaced by the "Id" property of the corresponding ManagerAccount resource.  If the "Id" property for a given ManagerAccount resource is "John", then the full URI for that resource would be "/redfish/v1/AccountService/Accounts/John".
-
-All Redfish Resources and Redfish Resource Collections shall be annotated with `Redfish.Uris`.
-
-All Redfish Resources and Redfish Resource Collections implemented by a service shall match the URI pattern described by the `Redfish.Uris` annotation for their given `EntityType` definition.
-
 
 #### Resource properties
 
@@ -3293,12 +3380,12 @@ Properties that must have a non-nullable value include the [nullable attribute](
 
 All properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
-Properties that are read-only are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/Read`.
+Properties that are read-only are annotated with the [Permissions annotation](#permissions) with a value of `OData.Permission/Read`.
 
-Properties that are writable are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/ReadWrite`.
+Properties that are writable are annotated with the [Permissions annotation](#permissions) with a value of `OData.Permission/ReadWrite`.
 * A service may implement a writable property as read-only.
 
-Properties that are required to be implemented by all services are annotated with the [required annotation](#required-properties).
+Properties that are required to be implemented by all services are annotated with the [required annotation](#required).
 
 Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure).
 
@@ -3379,73 +3466,6 @@ The value of the type attribute for a collection-valued property is of the form:
 
 where *NamespaceQualifiedTypeName* is the namespace qualified name of the primitive, structured, or enumeration type.
 
-##### Additional properties
-
-The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a value of `"False"`, shall not contain additional properties.
-
-~~~xml
-  <Annotation Term="OData.AdditionalProperties"/>
-~~~
-
-The `AdditionalProperties` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
-
-##### Non-nullable properties
-
-Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
-
-~~~xml
-  <Property Name="Property1" Type="Edm.String" Nullable="false">
-~~~
-
-##### Permissions of properties
-
-The Permissions annotation term can be applied to a property with the value of `OData.Permission/Read` in order to specify that it is read-only.
-
-~~~xml
-  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-~~~
-
-The Permissions annotation term can be applied to a property with the value of `OData.Permission/ReadWrite` in order to specify that it is writable.
-
-~~~xml
-  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-~~~
-
-The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
-
-##### Required properties
-
-The Required annotation is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation. All other properties are optional.
-
-If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
-
-~~~xml
-  <Annotation Term="Redfish.Required"/>
-~~~
-
-The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
-
-##### Required properties on create
-
-The RequiredOnCreate annotation term is used to specify that a property is required to be specified on creation of the resource. Properties not annotated with the RequiredOnCreate annotation, or annotated with a `Boolean` attribute with a value of `"false"`, are not required on create.
-
-~~~xml
-  <Annotation Term="Redfish.RequiredOnCreate"/>
-~~~
-
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
-
-##### Units of measure
-
-In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
-
-The value of the annotation should be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
-
-~~~xml
-  <Annotation Term="Measures.Unit" String="MiBy"/>
-~~~
-
-The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
 
 #### Reference properties
 
@@ -3479,6 +3499,14 @@ where `NamespaceQualifiedTypeName` is the namespace qualified name of the type o
 
 All reference properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
+##### Non-nullable properties
+
+Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
+
+~~~xml
+  <Property Name="Property1" Type="Edm.String" Nullable="false">
+~~~
+
 ##### Contained resources
 
 Reference properties whose members are contained by the referencing resource are specified with the `ContainsTarget` attribute with a value of `true`.
@@ -3493,25 +3521,6 @@ For example, to specify that a Chassis resource contains a Power resource, you w
   </NavigationProperty>
 ~~~
 
-##### Expanded references
-
-Reference properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the AutoExpandReferences annotation.
-
-~~~xml
-  <Annotation Term="OData.AutoExpandReferences"/>
-~~~
-
-The `AutoExpandReferences` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
-
-##### Expanded resources
-
-This term can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
-
-~~~xml
-  <Annotation Term="OData.AutoExpand"/>
-~~~
-
-The `AutoExpand` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
 
 #### Resource actions
 
