@@ -581,7 +581,7 @@ Services shall not require authentication to retrieve the service root and `/red
 
 Redfish services expose two OData-defined documents at specific URIs to enable generic OData clients to navigate the Redfish service.
 
-* Service shall expose an [OData $metadata Document](#service-metadata) at the `/redfish/v1/$metadata` URI.  
+* Service shall expose an [OData $metadata Document](#odata-metadata) at the `/redfish/v1/$metadata` URI.  
 * Service shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` URI.
 * Service shall not require authentication to retrieve the OData $metadata Document or the OData Service Document.
 
@@ -601,9 +601,9 @@ Services:
 
 Service shall return:
 
-* The HTTP [`501 Not Implemented`](#status-501) status code for any unsupported query parameters that start with `$`.
+* The HTTP [501 Not Implemented](#status-501) status code for any unsupported query parameters that start with `$`.
 * An [extended error](#error-responses) that indicates the unsupported query parameters for this resource.
-* The HTTP [`400 Bad Request`](#status-400) status code for any query parameters that contain values that are invalid, or values applied to query parameters without defined values (e.g. `excerpt` or `only`).
+* The HTTP [400 Bad Request](#status-400) status code for any query parameters that contain values that are invalid, or values applied to query parameters without defined values (e.g. `excerpt` or `only`).
 
 The response body shall reflect the evaluation of the query parameters in this order:
 
@@ -771,7 +771,7 @@ For details on success responses to action requests, see [POST (action)](#post-a
 
 If the resource exists but does not support the requested operation, services may return the HTTP [405](#status-405) status code.
 
-Otherwise, if the service returns a client `4xx` or service `5xx` [status code](#status-codes), the service encountered an error and the resource shall not have been modified or created as a result of the operation.
+Otherwise, if the service returns a client 4xx or service 5xx [status code](#status-codes), the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
 ### PATCH (update)<a id="patch-update"></a>
 
@@ -1166,14 +1166,11 @@ A `Link` header satisfying annotations should be returned on GET and HEAD reques
 
 ### Status codes
 
-Mike to revisit.
+HTTP defines status codes that are used in response messages.  The status codes themselves provide general information about how the request was processed, such as whether the request was successful, if the client provided bad information, or the service encountered an error when performing the request.
 
-HTTP defines status codes that services can return in response messages.
-
-To provide the client more meaningful and deterministic error semantics, the response body may contain an [extended error response](#error-responses) when the HTTP status code indicates a failure.
-
-* Services should return the extended error resource as described in this specification in the response body when the service returns the HTTP [400](#status-400) or greater status code.
-* Services may use [Extended property information](#extended-property-information) for other responses.
+* When the service returns a status code in the 4xx or 5xx range, services should return an [extended error response](#error-responses) in the response body.
+    * This is to provide the client more meaningful and deterministic error semantics.
+* When the service returns a status code in the 2xx range and the response contains a representation of a resource, services may use [extended information](#extended-information) to convey additional information about the resource.
 * Extended error messages shall not provide privileged information when authentication failures occur.
 
 NOTE: Refer to the [Security](#security-details) clause for security implications of extended errors.
@@ -1183,8 +1180,8 @@ The following table lists HTTP status codes that have meaning or usage defined f
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
 * Redfish Services should not return the status code 100.  Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
-
-Mike to add clause about "Use 400 for default client badness" and "Use 500 for default service badness".
+* The HTTP [400 Bad Request](#status-400) status code should be used as the default status code for client-side errors if no other status code in the 4xx range is appropriate.
+* The HTTP [500 Internal Server Error](#status-500) status code should be used as the default status code for service-side errors if no other status code in the 5xx range is appropriate.
 
 | HTTP Status Code                                           | Description |
 | ---                                                        | ---         |
@@ -1221,7 +1218,7 @@ A client is able to access the OData metadata via the `/redfish/v1/$metadata` UR
 
 A client is able to access the OData service document via the `/redfish/v1/odata` URI.
 
-#### OData $metadata
+#### OData $metadata<a id="odata-metadata"></a>
 
 The OData metadata describes top-level service resources and resource types according to [OData-Schema](#OData-CSDL).  The OData metadata is represented as an XML document with an `Edmx` root element in the `https://docs.oasis-open.org/odata/ns/edmx` namespace with an OData version attribute set to `4.0`.
 
@@ -1273,9 +1270,7 @@ For example, the OData metadata document may reference custom types for addition
 
 #### OData service document
 
-The OData service document serves as a top-level entry point for generic OData clients.
-
-Mike to add reference to OData spec
+The OData service document serves as a top-level entry point for generic OData clients.  More information about the OData service document can be found in the [OData JSON Format](#OData-JSON) specification.
 
 ```json
 {
@@ -1492,7 +1487,7 @@ For example, the "title" property for the ComputerSystem schema would be:
 
 #### Type identifiers in JSON
 
-Types used within a JSON payload shall be defined in, or referenced by, the [service metadata](#service-metadata).
+Types used within a JSON payload shall be defined in, or referenced by, the [OData $metadata document](#odata-metadata).
 
 Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
 
@@ -3381,7 +3376,7 @@ The resource identifier is the canonical URL for the resource.  Use it to retrie
 
 #### Type property
 
-All resources in a response shall include a `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The `type` property value shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be in the format:
+All resources in a response shall include a `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The `type` property value shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [OData $metadata document](#odata-metadata) and shall be in the format:
 
 <pre>#<var>Namespace</var>.<var>TypeName</var></pre>
 
@@ -3688,12 +3683,12 @@ where
 | Variable | Description |
 |:--|:--|
 | <code><var>PropertyName</var></code> | The name of the property to annotate.  If absent, the annotation applies to the entire resource. |
-| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [metadata document](#service-metadata) in the [context URL](#context-property) of the request must reference this namespace. |
+| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [OData $metadata document](#odata-metadata) in the [context URL](#context-property) of the request must reference this namespace. |
 | <code><var>TermName</var></code> | The name of the annotation term to apply to the resource or property of the resource. |
 
 Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
 
-The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
+The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
 
 ### Resource collection responses
 
@@ -3762,12 +3757,12 @@ where
 
 | Variable | Description |
 |:--|:--|
-| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [metadata document](#service-metadata) that the [context URL](#context-property) of the request defines shall reference this namespace. |
+| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [OData $metadata document](#odata-metadata) that the [context URL](#context-property) of the request defines shall reference this namespace. |
 | <code><var>TermName</var></code> | The name of the annotation term to apply to the resource collection. |
 
 Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
 
-The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations that the Redfish namespace defines.
+The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations that the Redfish namespace defines.
 
 
 #### Message object
