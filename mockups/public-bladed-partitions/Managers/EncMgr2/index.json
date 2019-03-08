@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Manager.v1_1_0.Manager",
+    "@odata.type": "#Manager.v1_3_1.Manager",
     "Name": "Enclosure Manager - StandBy",
     "Description": "Onboard Multi-Blade Enclosure Management Controller",
     "Id": "EncMgr2",
@@ -13,24 +13,28 @@
         "Health": "OK",
         "State": "Enabled"
     },
-    "Redundancy": [{
-        "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy/0",
-        "MemberId": "Redundancy",
-        "Mode": "Failover",
-        "MaxNumSupported": 2,
-        "MinNumNeeded": 1,
-        "Status": {
-            "State": "Enabled",
-            "Health": "OK"
-        },
-        "RedundancySet": [{
-                "@odata.id": "/redfish/v1/Managers/EncMgr1"
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy/0",
+            "MemberId": "Redundancy",
+            "Name": "Manager Redundancy",
+            "Mode": "Failover",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
             },
-            {
-                "@odata.id": "/redfish/v1/Managers/EncMgr2"
-            }
-        ]
-    }],
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Managers/EncMgr1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Managers/EncMgr2"
+                }
+            ]
+        }
+    ],
     "GraphicalConsole": {
         "ServiceEnabled": true,
         "ConnectTypesSupported": [
@@ -60,10 +64,11 @@
         "@odata.id": "/redfish/v1/Managers/EncMgr1/EthernetInterfaces"
     },
     "VirtualMedia": {
-        "@odata.id": "/redfish/v1/Managers/EncMgr1/VM/CDDVD"
+        "@odata.id": "/redfish/v1/Managers/EncMgr1/VirtualMedia"
     },
     "Links": {
-        "ManagerForServers": [{
+        "ManagerForServers": [
+            {
                 "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
             },
             {
@@ -76,7 +81,8 @@
         "ManagerInChassis": {
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },
-        "ManagerForChassis": [{
+        "ManagerForChassis": [
+            {
                 "@odata.id": "/redfish/v1/Chassis/Enclosure"
             },
             {
@@ -112,5 +118,6 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
-    "@odata.id": "/redfish/v1/Managers/EncMgr1"
+    "@odata.id": "/redfish/v1/Managers/EncMgr1",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

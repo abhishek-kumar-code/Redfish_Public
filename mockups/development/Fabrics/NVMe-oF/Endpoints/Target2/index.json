@@ -1,0 +1,46 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target2",
+    "@odata.type": "#Endpoint.v1_1_0.Endpoint",
+    "Id": "Target2",
+    "Name": "NVMe Drive 1",
+    "Description": "The NVMe Drive in NVMeChassis 1 Bay 1",
+    "EndpointProtocol": "NVMeOverFabrics",
+    "Identifiers": [
+        {
+            "DurableName": "nqn.corp.com:nvme:nvm-subsys-sn-5381",
+            "DurableNameFormat": "NQN"
+        },
+        {
+            "DurableName": "68D5E212-165B-4CA0-909B-C86B9CEE0113",
+            "DurableNameFormat": "UUID"
+        }
+
+    ],
+    "ConnectedEntities": [
+        {
+            "EntityType": "NetworkController",
+            "EntityRole": "Initiator",
+            "EntityLink": {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkDeviceFunctions/11100"
+            }
+        },
+        {
+            "EntityType": "Drive",
+            "EntityRole": "Target",
+            "EntityLink": {
+                "@odata.id":"/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.1"
+            }
+        }
+    ],
+    "IPTransportDetails": [
+        {
+            "TransportProtocol": "iWARP",
+            "IPv4Address": {
+                "Address": "10.3.5.132"
+            },
+            "Port": 13244
+        }
+    ]
+}

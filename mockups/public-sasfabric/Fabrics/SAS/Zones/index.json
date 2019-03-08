@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#ZoneCollection.ZoneCollection",
-    "@odata.id": "/redfish/v1/Fabrics/SAS/Zones",
     "@odata.type": "#ZoneCollection.ZoneCollection",
     "Name": "SAS Zone Collection",
     "Members@odata.count": 3,
@@ -15,6 +12,9 @@
         {
             "@odata.id": "/redfish/v1/Fabrics/SAS/Zones/3"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ZoneCollection.ZoneCollection",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Zones",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
 

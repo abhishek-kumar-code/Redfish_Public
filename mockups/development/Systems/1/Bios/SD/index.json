@@ -1,5 +1,5 @@
 {
-  "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+  "@Redfish.Copyright": "Copyright 2016 DMTF. All rights reserved.",
   "@odata.context": "/redfish/v1/$metadata#Systems/1/Bios/SD",
   "@odata.id": "/redfish/v1/Systems/1/Bios/SD",
   "@odata.type": "#Bios.v1_0_0.Bios",
@@ -17,6 +17,7 @@
     "ProcCoreDisable": 0,
     "ProcHyperthreading": "Enabled",
     "ProcTurboMode": "Disabled",
-    "UsbControl": "UsbEnabled"
+    "UsbControl": "UsbEnabled",
+    "ConsoleBaudRate": "115200"
   }
 }

@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
 	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator1PortA",
 	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
@@ -9,10 +9,10 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "EntityType": "Initiator",
+            "EntityType": "StorageInitiator",
             "EntityRole": "Initiator",
             "EntityLink": {
-                "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/0"
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/0"
             },
             "Oem": {}
         }

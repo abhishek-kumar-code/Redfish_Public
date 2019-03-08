@@ -16,10 +16,12 @@
     "Manufacturer": "Contoso",
     "SerialNumber": "1234568",
     "PartNumber": "C123-1111",
-    "Identifiers": [{
-        "DurableNameFormat": "NAA",
-        "DurableName": "32ADF365C6C1B7BD"
-    }],
+    "Identifiers": [
+        {
+            "DurableNameFormat": "NAA",
+            "DurableName": "32ADF365C6C1B7BD"
+        }
+    ],
     "EncryptionAbility": "SelfEncryptingDrive",
     "RotationSpeedRPM": 15000,
     "BlockSizeBytes": 512,
@@ -31,6 +33,6 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Drive.Drive",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeStorageBlock8/Storage/1/Drives/Drive1"
-
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeStorageBlock8/Storage/1/Drives/Drive1",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

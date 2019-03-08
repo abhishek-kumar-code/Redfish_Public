@@ -22,10 +22,13 @@
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem/EthernetInterfaces"
     },
     "Links": {
-        "Chassis": [{
-            "@odata.id": "/redfish/v1/Chassis/Blade6"
-        }]
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Blade6"
+            }
+        ]
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem"
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

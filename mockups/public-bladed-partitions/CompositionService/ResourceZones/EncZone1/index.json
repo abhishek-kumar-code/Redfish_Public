@@ -1,7 +1,5 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
     "@odata.type": "#Zone.v1_1_0.Zone",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1",
     "Id": "1",
     "Name": "MultiBlade Enclosure Resource Zone",
     "Status": {
@@ -9,7 +7,8 @@
         "Health": "OK"
     },
     "Links": {
-        "ResourceBlocks": [{
+        "ResourceBlocks": [
+            {
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1"
             },
             {
@@ -37,16 +36,21 @@
     },
     "@Redfish.CollectionCapabilities": {
         "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
-        "Capabilities": [{
-            "CapabilitiesObject": {
-                "@odata.id": "/redfish/v1/Systems/Capabilities"
-            },
-            "UseCase": "ComputerSystemComposition",
-            "Links": {
-                "TargetCollection": {
-                    "@odata.id": "/redfish/v1/Systems"
+        "Capabilities": [
+            {
+                "CapabilitiesObject": {
+                    "@odata.id": "/redfish/v1/Systems/Capabilities"
+                },
+                "UseCase": "ComputerSystemComposition",
+                "Links": {
+                    "TargetCollection": {
+                        "@odata.id": "/redfish/v1/Systems"
+                    }
                 }
             }
-        }]
-    }
+        ]
+    },
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

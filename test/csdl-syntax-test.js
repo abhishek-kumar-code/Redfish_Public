@@ -14,14 +14,15 @@ const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'));
 var mockupFiles = [];
 if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
-  mockupFiles = glob.sync(path.join('mockups', '**', 'index.json'));
+  mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
 }
 const syntaxBatch = {};
+const overrideBatch = {};
 const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
                           path.normalize(__dirname+'/../metadata/rfc7223'), path.normalize(__dirname+'/../metadata/rfc7224'),
                           path.normalize(__dirname+'/../metadata/rfc7277'), path.normalize(__dirname+'/../metadata/rfc7317'),
-                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com')],
+                          path.normalize(__dirname+'/../mockups/public-oem-examples/Contoso.com')],
                useNetwork: true};
 
 //Setup a global cache for speed
@@ -30,6 +31,7 @@ options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
 let ucum = null;
 let ucumError = false;
 let publishedSchemas = {};
+let overrideCSDLs = [];
 
 /***************** White lists ******************************/
 //Units that don't exist in UCUM
@@ -39,15 +41,20 @@ const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310'
                                     'NVDIMM_F', 'NVDIMM_P', 'DDR4_SDRAM', 'DDR4E_SDRAM', 'LPDDR4_SDRAM', 'DDR3_SDRAM',
                                     'LPDDR3_SDRAM', 'DDR2_SDRAM', 'DDR2_SDRAM_FB_DIMM', 'DDR2_SDRAM_FB_DIMM_PROBE', 
                                     'DDR_SGRAM', 'DDR_SDRAM', 'SO_DIMM', 'Mini_RDIMM', 'Mini_UDIMM', 'SO_RDIMM_72b',
-                                    'SO_UDIMM_72b', 'SO_DIMM_16b', 'SO_DIMM_32b', 'TPM1_2', 'TPM2_0', 'TCM1_0'];
+                                    'SO_UDIMM_72b', 'SO_DIMM_16b', 'SO_DIMM_32b', 'TPM1_2', 'TPM2_0', 'TCM1_0', 'iWARP',
+                                    'RSA_2048Bit', 'RSA_3072Bit', 'RSA_4096Bit', 'EC_P256', 'EC_P384', 'EC_P521', 'EC_X25519', 'EC_X448', 'EC_Ed25519', 'EC_Ed448'];
 //Properties names that are non-Pascal Cased
 const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 
 const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ];
-const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ];
+const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml', 'StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml', 'StorageService_v1.xml', 'Volume_v1.xml', 'VolumeCollection_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
-const EntityTypesWithNoActions = [ 'ServiceRoot', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
 const IETFSchemaFolders = [ 'metadata/rfc7223/', 'metadata/rfc7224/', 'metadata/rfc7277/', 'metadata/rfc7317/' ]
+const EntityTypesWithNoActions = [ 'ServiceRoot', 'ItemOrCollection', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
+const OldRegistries = ['Base.1.0.0.json', 'ResourceEvent.1.0.0.json', 'TaskEvent.1.0.0.json', 'Redfish_1.0.1_PrivilegeRegistry.json', 'Redfish_1.0.2_PrivilegeRegistry.json'];
+const NamespacesWithReleaseTerm = ['PhysicalContext', 'Protocol' ];
+const NamespacesWithoutReleaseTerm = ['RedfishExtensions.v1_0_0', 'Validation.v1_0_0', 'RedfishError.v1_0_0', 'Schedule.v1_0_0', 'Schedule.v1_1_0' ];
+const OverRideFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume_v1.xml'];
 /************************************************************/
 
 const setupBatch = {
@@ -72,6 +79,23 @@ const setupBatch = {
       if(list !== null) {
         publishedSchemas = list;
       }
+    }
+  }
+}
+
+OverRideFiles.forEach(addOverrideTest);
+
+function addOverrideTest(file) {
+  overrideBatch[file] = {
+    topic: function() {
+      CSDL.parseMetadataUri(file, options, this.callback);
+    },
+    'is valid syntax': function(err, csdl) {
+      if(err) {
+        throw err;
+      }
+      assert.notEqual(csdl, null);
+      overrideCSDLs.push(csdl);
     }
   }
 }
@@ -104,13 +128,20 @@ function constructTest(file) {
     'All EntityType defintions have Actions': entityTypesHaveActions,
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck,
-    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations
+    'All definitions shall include Description and LongDescription annotations': definitionsHaveAnnotations,
+    'All namespaces have OwningEntity': schemaOwningEntityCheck,
+    'All versioned, non-errata namespaces have Release': schemaReleaseCheck
   }
 }
 
 mockupFiles.forEach(constructMockupTest);
 
 function constructMockupTest(file) {
+  let justFileName = file.split('/');
+  justFileName = justFileName[justFileName.length - 1];
+  if(OldRegistries.includes(justFileName) || file.includes('explorer_config.json')) {
+    return;
+  }
   mockupsCSDL[file] = {
     topic: function() {
       var txt = fs.readFileSync(file);
@@ -229,8 +260,19 @@ function checkPermissionsInSchema(schema, csdl) {
         propType = propType.substring(11, propType.length-1);
       }
       let type = CSDL.findByType(csdl, propType);
-      if(type === null) {
-        throw new Error('Unable to locate type "'+propType+'"');
+      if(type === null || type === undefined) {
+        if(overrideCSDLs.length > 0) {
+          for(let j = 0; j < overrideCSDLs.length; j++) {
+            console.log('Looking in overrideCSDL '+str(j));
+            type = CSDL.findByType(overrideCSDLs[j], propType);
+            if(type !== null && type !== undefined) {
+              break;
+            }
+          }
+        }
+        if(type === null || type === undefined) {
+          throw new Error('Unable to locate type "'+propType+'"');
+        }
       }
       else {
         if(type.constructor.name !== 'ComplexType') {
@@ -416,8 +458,14 @@ function checkPropertiesPascalCased(err, csdl) {
   if(err) {
     return;
   }
+
   if( isIETFSchema( this.context.name ) ) {
     // Properties in the IETF schema files need to match the Yang definitions
+    return;
+  }
+
+  if(this.context.name.includes('RedfishError_v1.xml')) {
+    // Ignore the RedfishErrors file; the properties are dictated by the OData spec
     return;
   }
 
@@ -598,7 +646,7 @@ function checkReferencesUsed(err, csdl) {
                         nameSpaceAliases = propertiesHaveNamespace(entity.Parameters, nameSpaceAliases);
                         if(entity.ReturnType !== null) {
                           for(let j = 0; j < nameSpaceAliases.length; j++) {
-                            if(entity.ReturnType.startsWith(nameSpaceAliases[j])) {
+                            if(entity.ReturnType.Type.startsWith(nameSpaceAliases[j])) {
                               nameSpaceAliases.splice(j, 1);
                               break;
                             }
@@ -609,7 +657,7 @@ function checkReferencesUsed(err, csdl) {
                         nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
                         if(entity.Type !== null) {
                           for(let j = 0; j < nameSpaceAliases.length; j++) {
-                            if(entity.Type.startsWith(nameSpaceAliases[j])) {
+                            if(entity.Type.startsWith(nameSpaceAliases[j]) || entity.Type.startsWith('Collection('+nameSpaceAliases[j])) {
                               nameSpaceAliases.splice(j, 1);
                               break;
                             }
@@ -793,15 +841,25 @@ function checkVersionInPublishedList(version, publishedList, schemaName) {
   }
 }
 
-function complexTypesHaveAnnotations(err, csdl) {
+function definitionsHaveAnnotations(err, csdl) {
   if(err) {
     return;
   }
 
   let fileName = this.context.name.substring(this.context.name.lastIndexOf('/')+1);
-  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml') {
+  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml' || fileName === 'Volume_v1.xml') {
     //Ignore OEM extensions and metadata files
     return;
+  }
+
+  let entityTypes = CSDL.search(csdl, 'EntityType');
+  for(let i = 0; i < entityTypes.length; i++) {
+    let entityType = entityTypes[i];
+    if(entityType.Abstract === true) {
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(entityType, ['OData.Description', 'OData.LongDescription'], entityType.Name, 'EntityType');
   }
 
   let complexTypes = CSDL.search(csdl, 'ComplexType');
@@ -812,6 +870,42 @@ function complexTypesHaveAnnotations(err, csdl) {
     }
 
     typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
+  }
+
+  let properties = CSDL.search(csdl, 'Property');
+  for(let i = 0; i < properties.length; i++) {
+    let property = properties[i];
+    if(property.Name === "Id" || property.Name === "Name" || property.Name === "Description") {
+      // Special case for properties that reference TypeDefinitions; annotations get carried over in these cases, and these ones already have descriptions
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(property, ['OData.Description', 'OData.LongDescription'], property.Name, 'Property');
+  }
+
+  let navProperties = CSDL.search(csdl, 'NavigationProperty');
+  for(let i = 0; i < navProperties.length; i++) {
+    let navProperty = navProperties[i];
+
+    typeOrBaseTypesHaveAnnotations(navProperty, ['OData.Description', 'OData.LongDescription'], navProperty.Name, 'NavigationProperty');
+  }
+
+  let actions = CSDL.search(csdl, 'Action');
+  for(let i = 0; i < actions.length; i++) {
+    let action = actions[i];
+
+    typeOrBaseTypesHaveAnnotations(action, ['OData.Description', 'OData.LongDescription'], action.Name, 'Action');
+  }
+
+  let parameters = CSDL.search(csdl, 'Parameter');
+  for(let i = 0; i < parameters.length; i++) {
+    let parameter = parameters[i];
+    if(parameter.Type.endsWith('.Actions')) {
+      // This is the binding parameter; no descriptions needed since it's not part of the client's payload
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(parameter, ['OData.Description', 'OData.LongDescription'], parameter.Name, 'Parameter');
   }
 }
 
@@ -831,8 +925,12 @@ function validCSDLTypeInMockup(err, json) {
   if(err) {
     return;
   }
-  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp')) {
+  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp') || this.context.name.includes('/ConstrainedCompositionCapabilities')) {
     //Ignore the paging file and the external error example
+    return;
+  }
+  if(json["$schema"] !== undefined) {
+    //Ignore JSON schema files
     return;
   }
   if(json['@odata.type'] === undefined) {
@@ -867,12 +965,95 @@ function validCSDLTypeInMockup(err, json) {
       if(!Array.isArray(json[propName])) {
         throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
       }
+      let typeLookup = CSDLProperty.Type.substring(11);
+      typeLookup = typeLookup.substring(0, typeLookup.length-1);
+      let namespaceIndex = typeLookup.indexOf('.');
+      if(namespaceIndex === -1) {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      let namespace = typeLookup.substring(0, namespaceIndex);
+      if(namespace === '') {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice' || namespace === 'Message') {
+        let typeNameIndex = typeLookup.lastIndexOf('.');
+        if(typeNameIndex === -1) {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        let typeName = typeLookup.substring(typeNameIndex+1);
+        if(namespace === '') {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+      }
+      let propType = CSDL.findByType({_options: options}, typeLookup);
+      if(propType === null || propType === undefined) {
+        throw new Error('Cannot locate property type '+typeLookup+'.');
+      }
+      for(let i = 0; i < json[propName].length; i++) {
+        let propValue = json[propName][i];
+        if(typeof propType === 'string') {
+          simpleTypeCheck(propType, propValue, CSDLProperty, propName);
+        }
+        else {
+          if(propType.constructor.name === 'EnumType') {
+            enumTypeCheck(propType, propValue, CSDLProperty, propName);
+          }
+          else if(propType.constructor.name === 'TypeDefinition') {
+            simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
+          }
+          else if(propType.constructor.name === 'ComplexType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is a ComplexType, but the value in the mockup is not a valid JSON object.');
+            }
+            //Ignore Oem and Actions types...
+            if(propType.Name === 'Actions') {
+              validateActions(propValue);
+            }
+            else if(propType.Name !== 'Oem') {
+              complexTypeCheck(propType, propValue, propName+'['+i.toString()+']', type);
+            }
+          }
+          else if(propType.constructor.name === 'EntityType') {
+            if(typeof propValue !== 'object') {
+              throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
+            }
+            //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
+            if(propValue['@odata.id'] === undefined) {
+              console.log(this.context.title);
+              if(!this.context.title.includes('non-resource-examples')) {
+                throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+              }
+            }
+          }
+        }
+      }
     }
     else {
-      let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+      let typeLookup = CSDLProperty.Type
+      let namespaceIndex = typeLookup.indexOf('.');
+      if(namespaceIndex === -1) {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      let namespace = typeLookup.substring(0, namespaceIndex);
+      if(namespace === '') {
+        throw new Error('Cannot get namespace of "' + typeLookup + '"');
+      }
+      if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice') {
+        let typeNameIndex = typeLookup.lastIndexOf('.');
+        if(typeNameIndex === -1) {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        let typeName = typeLookup.substring(typeNameIndex+1);
+        if(namespace === '') {
+          throw new Error('Cannot get type of "' + typeLookup + '"');
+        }
+        typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+      }
+      let propType = CSDL.findByType({_options: options}, typeLookup);
       let propValue = json[propName];
       if(propType === null || propType === undefined) {
-        throw new Error('Cannot locate property type '+CSDLProperty.Type+'.');
+        throw new Error('Cannot locate property type '+typeLookup+'.');
       }
       else if(typeof propType === 'string') {
         simpleTypeCheck(propType, propValue, CSDLProperty, propName);
@@ -908,6 +1089,18 @@ function validCSDLTypeInMockup(err, json) {
       }
     }
   }
+}
+
+function getLatestTypeVersion(defaultType, namespace, type, majorVersion, minorVersion) {
+  if(minorVersion < 0) {
+    return defaultType
+  }
+  let typeName = namespace + '.v' + majorVersion.toString() + '_' +  minorVersion.toString() + '_0.' + type
+  let propType = CSDL.findByType({_options: options}, typeName)
+  if(propType === null || propType === undefined) {
+    return getLatestTypeVersion(defaultType, namespace, type, majorVersion, minorVersion - 1)
+  }
+  return typeName
 }
 
 function complexTypeCheck(propType, propValue, propName, type) {
@@ -1014,7 +1207,7 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
       if(typeof propValue !== 'string' && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
       }
-      if(CSDLProperty.Annotations['Validation.Pattern']) {
+      if(CSDLProperty.Annotations['Validation.Pattern'] && propValue !== null) {
         let regex = CSDLProperty.Annotations['Validation.Pattern'].String;
         if(regex[0] === '/') {
           regex = regex.substring(1);
@@ -1022,6 +1215,11 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
         if(propValue.match(regex) === null) {
           throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup does not match the pattern.');
         }
+      }
+      break;
+    case 'Edm.Duration':
+      if(typeof propValue !== 'string' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.Duration, but the value in the mockup is not a valid JSON string.');
       }
       break;
     default:
@@ -1087,7 +1285,27 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
     //TODO do a check for each entry in the array...
   }
   else {
-    let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+    let typeLookup = CSDLProperty.Type
+    let namespaceIndex = typeLookup.indexOf('.');
+    if(namespaceIndex === -1) {
+      throw new Error('Cannot get namespace of "' + typeLookup + '"');
+    }
+    let namespace = typeLookup.substring(0, namespaceIndex);
+    if(namespace === '') {
+      throw new Error('Cannot get namespace of "' + typeLookup + '"');
+    }
+    if(namespace === 'Resource' || namespace === 'IPAddresses' || namespace === 'VLanNetworkInterface' || namespace === 'Schedule' || namespace === 'PCIeDevice') {
+      let typeNameIndex = typeLookup.lastIndexOf('.');
+      if(typeNameIndex === -1) {
+        throw new Error('Cannot get type of "' + typeLookup + '"');
+      }
+      let typeName = typeLookup.substring(typeNameIndex+1);
+      if(namespace === '') {
+        throw new Error('Cannot get type of "' + typeLookup + '"');
+      }
+      typeLookup = getLatestTypeVersion(typeLookup, namespace, typeName, 1, 10)
+    }
+    let propType = CSDL.findByType({_options: options}, typeLookup);
     if(typeof propType === 'string') {
       simpleTypeCheck(propType, propValue, CSDLProperty, propName);
     }
@@ -1140,8 +1358,69 @@ function validateActions(actions) {
  } 
 }
 
+function schemaOwningEntityCheck(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  if(this.context.name.includes('index.xml')) {
+    // Ignore the $metadata resource in mockups
+    return;
+  }
+
+  let schemas = CSDL.search(csdl, 'Schema');
+  for(let i = 0; i < schemas.length; i++) {
+    let owningEntity = CSDL.search(schemas[i], 'Annotation', 'Redfish.OwningEntity');
+    if(owningEntity.length === 0) {
+      let owningEntity = CSDL.search(schemas[i], 'Annotation', 'RedfishExtensions.v1_0_0.OwningEntity');
+      if(owningEntity.length === 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks OwningEntity!');
+      }
+    }
+  }
+}
+
+function schemaReleaseCheck(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  if(this.context.name.includes('index.xml') ||
+     this.context.name.includes('ContosoExtensions_v1.xml') ||
+     this.context.name.includes('TurboencabulatorService_v1.xml')) {
+    // Ignore mockup files
+    return;
+  }
+
+  let schemas = CSDL.search(csdl, 'Schema');
+  for(let i = 0; i < schemas.length; i++) {
+    let release = CSDL.search(schemas[i], 'Annotation', 'Redfish.Release');
+    if(NamespacesWithReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and require the Release term
+      if(release.length === 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }    
+    }
+    else if(NamespacesWithoutReleaseTerm.indexOf(schemas[i]._Name) !== -1) {
+      // These namespaces do not follow the normal rules and do not use the Release term
+      if(release.length !== 0) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
+      }    
+    }
+    else {
+      // All other namespaces require the Release term if it's versioned and non-errata
+      if((release.length === 0) && schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' lacks Release term!');
+      }
+      if((release.length !== 0) && !schemas[i]._Name.endsWith('_0')) {
+        throw new Error('Namespace '+schemas[i]._Name+' contains an unexpected Release term!');
+      }
+    }
+  }
+}
+
 process.on('unhandledRejection', (reason, promise) => {
 });
 
-vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
+vows.describe('CSDL').addBatch(setupBatch).addBatch(overrideBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
 /* vim: set tabstop=2 shiftwidth=2 expandtab: */

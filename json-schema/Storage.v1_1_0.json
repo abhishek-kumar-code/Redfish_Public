@@ -1,7 +1,6 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
-    "title": "#Storage.v1_1_0.Storage",
-    "$ref": "#/definitions/Storage",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#Storage.v1_1_0",
     "definitions": {
         "SetEncryptionKey": {
             "patternProperties": {
@@ -46,8 +45,6 @@
                 "FC",
                 "iSCSI",
                 "FCoE",
-                "FCP",
-                "FICON",
                 "NVMeOverFabrics",
                 "SMB",
                 "NFSv3",
@@ -58,26 +55,24 @@
                 "SFTP"
             ],
             "enumDescriptions": {
-                "PCIe": "PCI Express (Vendor Proprietary).",
-                "AHCI": "Advanced Host Controller Interface.",
-                "UHCI": "Universal Host Controller Interface.",
-                "SAS": "Serial Attached SCSI.",
-                "SATA": "Serial AT Attachment.",
-                "USB": "Universal Serial Bus.",
-                "NVMe": "Non-Volatile Memory Express.",
-                "FC": "Fibre Channel.",
-                "iSCSI": "Internet SCSI.",
-                "FCoE": "Fibre Channel over Ethernet.",
-                "FCP": "Fibre Channel Protocol for SCSI.",
-                "FICON": "FIbre CONnection (FICON).",
-                "NVMeOverFabrics": "NVMe over Fabrics.",
-                "SMB": "Server Message Block (aka CIFS Common Internet File System).",
-                "NFSv3": "Network File System version 3.",
-                "NFSv4": "Network File System version 4.",
-                "HTTP": "Hypertext Transport Protocol.",
-                "HTTPS": "Secure Hypertext Transport Protocol.",
-                "FTP": "File Transfer Protocol.",
-                "SFTP": "Secure File Transfer Protocol."
+                "PCIe": "PCI Express (Vendor Proprietary)",
+                "AHCI": "Advanced Host Controller Interface",
+                "UHCI": "Universal Host Controller Interface",
+                "SAS": "Serial Attached SCSI",
+                "SATA": "Serial AT Attachment",
+                "USB": "Universal Serial Bus",
+                "NVMe": "Non-Volatile Memory Express",
+                "FC": "Fibre Channel",
+                "iSCSI": "Internet SCSI",
+                "FCoE": "Fibre Channel over Ethernet",
+                "NVMeOverFabrics": "NVMe over Fabrics",
+                "SMB": "Server Message Block (aka CIFS Common Internet File System)",
+                "NFSv3": "Network File System version 3",
+                "NFSv4": "Network File System version 4",
+                "HTTP": "Hypertext Transport Protocol",
+                "HTTPS": "Secure Hypertext Transport Protocol",
+                "FTP": "File Transfer Protocol",
+                "SFTP": "Secure File Transfer Protocol"
             },
             "enumLongDescriptions": {
                 "PCIe": "This value shall mean that this device conforms to the PCI-SIG PCI Express Base Specification only beyond that is uses some vendor proprietary mechanism to communicate.",
@@ -90,8 +85,6 @@
                 "FC": "This value shall mean that this device conforms to the T11 Fibre Channel Physical and Signaling Interface Specification.",
                 "iSCSI": "This value shall mean that this device conforms to the IETF Internet Small Computer Systems Interface (iSCSI) Specification.",
                 "FCoE": "This value shall mean that this device conforms to the T11 FC-BB-5 Specification.",
-                "FCP": "This enumeration literal shall indicate the INCITS 481: Information technology - Fibre Channel Protocol for SCSI.  The Fibre Channel SCSI Protocol.",
-                "FICON": "This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol. ",
                 "NVMeOverFabrics": "This value shall mean that this device conforms to the NVM Express over Fabrics Specification.",
                 "SMB": "This value shall mean that this device conforms to the Microsoft Server Message Block Protocol.",
                 "NFSv3": "This value shall mean that this device conforms to the Network File System protocol as defined by RFC 1813.",
@@ -134,19 +127,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Links": {
                     "type": "object",
@@ -183,10 +173,11 @@
                                 "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"
                             },
                             "readonly": true,
-                            "description": "An array of references to the chassis to which this storage subsystem is attached.",
+                            "description": "An array of references to the chassis to which this storage subsystem is attached",
                             "longDescription": "The value of this property shall reference a resource of type Chassis that represents the physical containers attached to this resource."
                         }
                     },
+                    "readonly": true,
                     "description": "Contains references to other resources that are related to this resource.",
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
@@ -223,14 +214,13 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {},
-                            "description": "The available OEM specific actions for this resource.",
-                            "longDescription": "This type shall contain any additional OEM actions for this resource."
+                            "properties": {}
                         },
                         "#Storage.SetEncryptionKey": {
                             "$ref": "#/definitions/SetEncryptionKey"
                         }
                     },
+                    "readonly": true,
                     "description": "The available actions for this resource.",
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
@@ -287,7 +277,8 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
-                    "description": "Redundancy information for the storage subsystem."
+                    "readonly": true,
+                    "description": "Redundancy information for the storage subsystem"
                 }
             },
             "required": [
@@ -321,7 +312,6 @@
                 },
                 "MemberId": {
                     "type": "string",
-                    "readonly": true,
                     "description": "This is the identifier for the member within the collection.",
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
@@ -345,7 +335,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The firmware version of this storage Controller.",
+                    "description": "The firmware version of this storage Controller",
                     "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the associated storage controller."
                 },
                 "Manufacturer": {
@@ -398,7 +388,6 @@
                         "string",
                         "null"
                     ],
-                    "readonly": false,
                     "description": "The user assigned asset tag for this storage controller.",
                     "longDescription": "The value of this property shall be an identifying string used to track the storage controller for inventory purposes."
                 },
@@ -425,7 +414,8 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/Identifier"
                     },
-                    "description": "The Durable names for the storage controller.",
+                    "readonly": true,
+                    "description": "The Durable names for the storage controller",
                     "longDescription": "This property shall contain a list of all known durable names for the associated storage controller."
                 },
                 "Links": {
@@ -462,10 +452,12 @@
                             "items": {
                                 "$ref": "http://redfish.dmtf.org/schemas/v1/Endpoint.json#/definitions/Endpoint"
                             },
+                            "readonly": true,
                             "description": "An array of references to the endpoints that connect to this controller.",
                             "longDescription": "The value of this property shall be a reference to the resources that this controller is associated with and shall reference a resource of type Endpoint."
                         }
                     },
+                    "readonly": true,
                     "description": "Contains references to other resources that are related to this resource.",
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 }
@@ -474,5 +466,5 @@
             "longDescription": "This resource shall be used to represent a resource that represents a storage controller in the Redfish specification."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

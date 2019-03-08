@@ -1,28 +1,30 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/6",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "6",
-	"Name": "SAS Port 6",
-	"Description": "SAS Port 6",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "6",
-	"PortProtocol": "SAS",
-	"PortType": "BidirectionalPort",
-	"CurrentSpeedGbps": 48,
-	"Width": 4,
-	"MaxSpeedGbps": 48,
-	"Actions": {
-		"Oem": {}
-	},
+    "@odata.type": "#Port.v1_0_2.Port",
+    "Id": "6",
+    "Name": "SAS Port 6",
+    "Description": "SAS Port 6",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "6",
+    "PortProtocol": "SAS",
+    "PortType": "BidirectionalPort",
+    "CurrentSpeedGbps": 48,
+    "Width": 4,
+    "MaxSpeedGbps": 48,
+    "Actions": {
+        "Oem": {}
+    },
     "Links": {
         "AssociatedEndpoints": [
-             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/TapeDrive"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/TapeDrive"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/6",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
-

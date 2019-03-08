@@ -1,10 +1,13 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#ZoneCollection.ZoneCollection",
     "@odata.type": "#ZoneCollection.ZoneCollection",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceZones",
     "Name": "MultiBlade Partitioning Resource Zone Collection",
     "Members@odata.count": 1,
-    "Members": [{
-        "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1"
-    }]
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ZoneCollection.ZoneCollection",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

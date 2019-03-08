@@ -1,0 +1,38 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Initiator1",
+    "@odata.type": "#Endpoint.v1_1_0.Endpoint",
+    "Id": "Initiator1",
+    "Name": "NVMe-oF initiator 1",
+    "Description": "NVMe-oF initiator implemented by the computer system",
+    "EndpointProtocol": "NVMeOverFabrics",
+    "Identifiers":  [
+        {
+            "DurableName": "host.corp.com:nvme:nvm-subsys-sn-4635",
+            "DurableNameFormat": "NQN"
+        },
+        {
+            "DurableName": "58D5E212-165B-4CA0-909B-C86B9CEE0111",
+            "DurableNameFormat": "UUID"
+        }
+    ],
+    "ConnectedEntities": [
+        {
+            "EntityType": "NetworkController",
+            "EntityRole": "Initiator",
+            "EntityLink": {
+                "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100"
+            }
+        }
+    ],
+    "IPTransportDetails": [
+      	{
+            "TransportProtocol": "iWARP",
+            "IPv4Address": {
+                "Address": "10.3.5.131"
+            },
+            "Port": 13244
+        }
+    ]
+}

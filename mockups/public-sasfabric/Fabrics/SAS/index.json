@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
-    "@odata.id": "/redfish/v1/Fabrics/SAS",
-    "@odata.type": "#Fabric.v1_0_0.Fabric",
+    "@odata.type": "#Fabric.v1_0_2.Fabric",
     "Id": "SAS",
     "Name": "SAS Fabric",
     "FabricType": "SAS",
@@ -26,5 +23,8 @@
     "Actions": {
         "Oem": {}
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
+    "@odata.id": "/redfish/v1/Fabrics/SAS",
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

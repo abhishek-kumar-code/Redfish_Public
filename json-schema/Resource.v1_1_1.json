@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Resource.v1_1_1",
     "definitions": {
         "ReferenceableMember": {
@@ -35,7 +35,6 @@
                 },
                 "MemberId": {
                     "type": "string",
-                    "readonly": true,
                     "description": "This is the identifier for the member within the collection.",
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 }
@@ -75,19 +74,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 }
             },
             "required": [
@@ -126,12 +122,10 @@
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Oem": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
@@ -150,11 +144,11 @@
                 "EUI"
             ],
             "enumDescriptions": {
-                "NAA": "Name Address Authority Format.",
-                "iQN": "iSCSI Qualified Name.",
-                "FC_WWN": "Fibre Channel World Wide Name.",
-                "UUID": "Universally Unique Identifier.",
-                "EUI": "IEEE-defined 64-bit Extended Unique Identifier."
+                "NAA": "Name Address Authority Format",
+                "iQN": "iSCSI Qualified Name",
+                "FC_WWN": "Fibre Channel World Wide Name",
+                "UUID": "Universally Unique Identifier",
+                "EUI": "IEEE-defined 64-bit Extended Unique Identifier"
             },
             "enumLongDescriptions": {
                 "NAA": "This durable name shall be a hexadecimal representation of the Name Address Authority structure as defined in the T11 Fibre Channel - Framing and Signaling - 3 (FC-FS-3) specification.",
@@ -188,7 +182,7 @@
                     ],
                     "readonly": true,
                     "description": "This indicates the world wide, persistent name of the resource.",
-                    "longDescription": "This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property."
+                    "longDescription": "This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property"
                 },
                 "DurableNameFormat": {
                     "anyOf": [
@@ -200,9 +194,7 @@
                     "longDescription": "This property shall represent the format of the DurableName property."
                 }
             },
-            "readonly": true,
-            "description": "This type describes any additional identifiers for a resource.",
-            "longDescription": "This type shall contain any additional identifiers of a resource."
+            "readonly": true
         },
         "IndicatorLED": {
             "type": "string",
@@ -256,10 +248,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
                 }
             },
-            "readonly": true,
-            "description": "This type describes the location of a resource.",
-            "longDescription": "This type shall describe the location of a resource."
+            "readonly": true
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

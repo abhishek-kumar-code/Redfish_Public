@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#LogEntry.v1_0_2.LogEntry",
     "$ref": "#/definitions/LogEntry",
     "definitions": {
@@ -163,19 +163,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Severity": {
                     "anyOf": [
@@ -206,7 +203,7 @@
                     ],
                     "readonly": true,
                     "description": "If the entry type is Oem, this will contain more information about the record format from the Oem.",
-                    "longDescription": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem."
+                    "longDescription": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"
                 },
                 "EntryCode": {
                     "anyOf": [
@@ -215,7 +212,7 @@
                     ],
                     "readonly": true,
                     "description": "If the EntryType is SEL, this will have the entry code for the log entry.",
-                    "longDescription": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification."
+                    "longDescription": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"
                 },
                 "SensorType": {
                     "anyOf": [
@@ -284,10 +281,11 @@
                         "OriginOfCondition": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
                             "readonly": true,
-                            "description": "This is the URI of the resource that caused the log entry.",
+                            "description": "This is the URI of the resource that caused the log entry",
                             "longDescription": "The value of this property shall be an href that references the resource for which the log is associated."
                         }
                     },
+                    "readonly": true,
                     "description": "Contains references to other resources that are related to this resource.",
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 }
@@ -304,5 +302,5 @@
             "longDescription": "This resource shall represent the log format for log services in a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

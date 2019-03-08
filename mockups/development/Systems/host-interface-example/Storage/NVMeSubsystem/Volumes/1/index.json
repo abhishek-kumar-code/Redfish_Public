@@ -1,0 +1,21 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes/1",
+    "@odata.type": "#Volume.v1_3_1.Volume",
+    "Id": "1",
+    "Name": "NVMe Bay 0",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "RAIDType": "RAID0",
+    "CapacityBytes": 104857600,
+    "Links": {
+        "Drives": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.0"
+            }
+        ]
+    },
+    "Actions": {}
+}

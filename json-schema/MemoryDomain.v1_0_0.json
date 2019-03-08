@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#MemoryDomain.v1_0_0.MemoryDomain",
     "$ref": "#/definitions/MemoryDomain",
     "definitions": {
@@ -35,19 +35,16 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ],
-                    "readonly": true
+                    ]
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
-                    "readonly": true
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "AllowsMemoryChunkCreation": {
                     "type": [
@@ -75,6 +72,7 @@
                             {"type": "null"}
                         ]
                     },
+                    "readonly": true,
                     "description": "This is the interleave sets for the memory chunk.",
                     "longDescription": "These properties shall represent the interleave sets for the memory chunk."
                 },
@@ -128,10 +126,8 @@
                     "description": "This is the collection of memory for a particular interleave set.",
                     "longDescription": "The values in this collection shall be links to objects of type Memory."
                 }
-            },
-            "description": "This is the interleave sets for a memory chunk.",
-            "longDescription": "This type shall represent the interleave sets for a memory chunk."
+            }
         }
     },
-    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

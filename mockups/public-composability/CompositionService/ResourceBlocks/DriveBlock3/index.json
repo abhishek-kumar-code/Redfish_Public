@@ -1,30 +1,36 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
-    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3",
+    "@odata.type": "#ResourceBlock.v1_3_0.ResourceBlock",
     "Id": "DriveBlock3",
     "Name": "Drive Block 3",
-    "ResourceBlockType": [ "Storage" ],
+    "ResourceBlockType": [
+        "Storage"
+    ],
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
     "CompositionStatus": {
         "Reserved": false,
-        "CompositionState": "Composed"
+        "CompositionState": "ComposedAndAvailable",
+        "SharingCapable": true,
+        "SharingEnabled": true,
+        "MaxCompositions": 8,
+        "NumberOfCompositions": 2
     },
     "Processors": [],
     "Memory": [],
-    "Storage": [
+    "Drives": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Storage/Block3NVMe"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Drives/Block3Slot0"
         }
     ],
     "Links": {
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/ComposedSystem"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedSystem2"
             }
         ],
         "Chassis": [
@@ -41,5 +47,8 @@
             }
         ]
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1",
-    "@odata.type": "#NetworkAdapter.v1_0_0.NetworkAdapter",
+    "@odata.type": "#NetworkAdapter.v1_2_0.NetworkAdapter",
     "Id": "9fa725a1",
     "Name": "Network Adapter View",
     "Manufacturer": "Globex",
@@ -22,7 +22,7 @@
             "Links":  {
                 "PCIeDevices": [
                     {
-                        "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"
+                        "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC"
                     }
                 ],
                 "NetworkPorts": [
@@ -55,7 +55,26 @@
                 "NPIV": {
                     "MaxDeviceLogins": 4,
                     "MaxPortLogins": 2
+                },
+                "NPAR": {
+                    "NparCapable": true,
+                    "NparEnabled": false
                 }
+            },
+            "PCIeInterface": {
+                "PCIeType": "Gen2",
+                "MaxPCIeType": "Gen3",
+                "LanesInUse": 1,
+                "MaxLanes": 4
+            },
+            "Location": {
+              "PartLocation": {
+                "ServiceLabel": "Slot 1",
+                "LocationType": "Slot",
+                "LocationOrdinalValue": 0,
+                "Reference": "Rear",
+                "Orientation": "LeftToRight"
+              }
             }
         }
     ],

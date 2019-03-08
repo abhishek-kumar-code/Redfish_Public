@@ -1,19 +1,15 @@
 {
-    "@odata.type": "#LogEntry.v1_0_2.LogEntry",
+    "@odata.type": "#LogEntry.v1_2_0.LogEntry",
     "Id": "2",
     "Name": "Log Entry 2",
     "EntryType": "SEL",
-    "OemRecordFormat": "CompanyX",
     "Severity": "Critical",
-    "Created": "2012-03-07T14:45",
-    "EntryCode": "Assert",
+    "Created": "2012-03-07T14:45:00Z",
+    "EntryCode": "Upper Critical - going high",
     "SensorType": "Temperature",
     "SensorNumber": 2,
-    "Message": "Message for Event, Description for SEL, OEM depends",
-    "MessageId": "Event.1.0.TempAssert",
-    "MessageArgs": [
-        "ArrayOfMessageArgs"
-    ],
+    "Message": "Temperature threshold exceeded",
+    "MessageId": "0x592E28",
     "Links": {
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal"
@@ -23,5 +19,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#LogEntry.LogEntry",
     "@odata.id": "/redfish/v1/Systems/1/LogServices/SEL/Entries/2",
-    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
