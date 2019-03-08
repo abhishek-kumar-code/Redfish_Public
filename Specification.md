@@ -1364,14 +1364,21 @@ An extended error response, which is a single JSON object, defines the error res
 
 ## Data model
 
-One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
-
-* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
 
 ### Resources and Resource Collections
 
 
 ### Properties
+
+* A service may implement a writable property as read-only.
+
+Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
+
+Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
+
+Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
+
+#### Reference properties
 
 
 ### Settings Resource
@@ -1391,13 +1398,21 @@ Schema annotations are used throughout the schema definitions of the data model 
 
 The Description Annotation can be applied to any type, property, action, or parameter in order to provide a human-readable description of the Redfish Schema element.
 
-All Redfish types and properties shall include a Description Annotation.
+All Redfish types, [properties](#properties), and [reference properties](#reference-properties) shall include a Description Annotation.
+
+All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Description Annotation.
+
+All [structured types](#structured-properties) shall include a Description Annotation.
 
 #### Long Description
 
 The Long Description Annotation can be applied to any type, property, action, or parameter in order to provide a formal, normative specification of the schema element.  Where the Long Descriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
 
-All Redfish types and properties shall include a Long Description Annotation.
+All Redfish types, [properties](#properties), and [reference properties](#reference-properties) shall include a Long Description Annotation.
+
+All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Long Description Annotation.
+
+All [structured types](#structured-properties) shall include a Long Description Annotation.
 
 #### Resource Capabilities
 
@@ -1450,7 +1465,7 @@ The value of the annotation should be a string that contains the case-sensitive 
 
 #### Expanded Resources
 
-The Expanded Resources Annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [Resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
+The Expanded Resources Annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to provide the contents of the related [Resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
 
 ### Versioning
 
@@ -1467,7 +1482,185 @@ The Expanded Resources Annotation can be applied to a [reference property](#refe
 
 Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
 
-#### Schema annotations in CSDL
+#### File naming conventions for CSDL
+
+Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
+   
+  *TypeName*_*vMajorVersion*.*xml*
+
+For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml".
+
+#### CSDL format
+
+The outer element of the OData Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
+
+```xml
+  <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <!-- edmx:Reference and edmx:DataService elements go here -->
+  </edmx:Edmx>
+```
+
+The [Referencing other CSDL files](#referencing-other-csdl-files) and [CSDL Data Services](#csdl-data-services) clauses describe the items that are found within the `Edmx` element.
+
+##### Referencing other CSDL files
+
+CSDL files may reference types defined in other CSDL documents.  This is done by including `Reference` tags.
+
+The Reference element uses the `Uri` attribute to specify a CSDL file.  The Reference element also contains one or more `Include` tags that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
+
+Type definitions generally reference the OData and Redfish namespaces for common type annotation terms.  Redfish CSDL files always use the `Alias` attribute on the following namespaces:
+
+* `Org.OData.Core.V1` is aliased as `OData`.
+* `Org.OData.Measures.V1` is aliased as `Measures`.
+* `RedfishExtensions.v1_0_0` is aliased as `Redfish`.
+* `Validation.v1_0_0` is aliased as `Validation`.
+
+```xml
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference
+    Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+```
+
+##### CSDL Data Services
+
+Structures, enums, and other definitions are defined within a namespace in CSDL.  The namespace is defined through a `Schema` tag and using the `Namespace` attribute to declare the name of the namespace.  Redfish uses namespaces to differentiate different versions of the schema.  CSDL allows for structures to inherit from other structures, which allows for newer namespaces to only define the additional definitions.  This behavior is described further in the [Elements of CSDL namespaces](#elements-of-csdl-namespaces) clause.
+
+The `Schema` element is a child of the `DataServices` element, which is a child of the `Edmx` element.
+
+```xml
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.v1_0_0">
+      <!-- Type definitions for version 1.0.0 of MyTypes go here -->
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.v1_1_0">
+      <!-- Type definitions for version 1.1.0 of MyTypes go here -->
+    </Schema>
+  </edmx:DataServices>
+```
+
+#### Elements of CSDL namespaces
+
+The following clauses describe the different definitions that can be found within each namespace.
+
+##### Qualified names
+
+Many definitions in CSDL use references to qualified names.  CSDL defines this as a string in the form of "_Namespace_._TypeName_", where:
+
+* _Namespace_ is the name of the namespace.
+* _TypeName_ is the name of the element contained within the namespace.
+
+For example, if a reference is being made to `MyType.v1_1_0.MyDefinition`, this means the definition can be found in the `MyType.v1_0_0` namespace with an element of the name `MyDefinition`.
+
+##### Entity Type and Complex Type elements
+
+The Entity Type and Complex Type elements are defined using the `EntityType` and `ComplexType` tags respectively.  These elements are used to define a JSON structure and their set of properties.  This is done by defining [Property elements](#property-element) and [Navigation Property element](#navigation-property-element) within the `EntityType` or `ComplexType` tags.
+
+All Entity Types and Complex Types contain a `Name` attribute, which specifies the name of the definition.
+
+Entity Types and Complex Types may have a `BaseType` attribute, which specifies a [qualified name](#qualified-names).  When the `BaseType` attribute is used, all of the definitions of the referenced `BaseType` are made available to the Entity Type or Complex Type being defined.
+
+```xml
+  <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
+    <Annotation Term="OData.Description" String="This is the description of TypeA."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
+
+    <!-- Property and Navigation Property definitions go here -->
+
+  </EntityType>
+
+  <ComplexType Name="PropertyTypeA">
+    <Annotation Term="OData.Description" String="This is type used to describe a structured property."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
+
+    <!-- Property and Navigation Property definitions go here -->
+
+  </ComplexType>
+```
+
+All [Resources and Resource Collections](resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
+
+Most (structured properties)[#structured-properties] are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  This allows for references to be made using the [Navigation Property element](#navigation-property-element).
+
+##### Enum Type element
+
+
+
+##### Action element
+
+
+
+##### Property element
+
+[Properties](#properties) of [Resources, Resource Collections](resources-and-resource-collections), and (structured properties)[#structured-properties] are defined using the Property element.  The `Property` tag is used to define a Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type elements).
+
+All Property elements contain a `Name` attribute, which specifies the name of the property.
+
+All Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute can be one of the following:
+
+* A [qualified name](#qualified-names) that references an [Enum Type element](#enum-type-element).
+* A [qualified name](#qualified-names) that references a [Complex Type element](#entity-type-and-complex-type elements).
+* A primitive data type.
+* An array of any of the above using the `Collection` term.
+
+Primitive data types can be one of the following:
+
+| Type               | Meaning |
+| ---                | ---     |
+| Edm.Boolean        | True or False. |
+| Edm.DateTimeOffset | A [date-time](#datetime-values) string. |
+| Edm.Decimal        | Numeric values with fixed precision and scale. |
+| Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits). |
+| Edm.Duration       | A [duration](#duration-values) string. |
+| Edm.Guid           | A globally unique identifier. |
+| Edm.Int64          | Signed 64-bit integer. |
+| Edm.String         | A UTF-8 string. |
+
+Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
+
+```xml
+  <Property Name="Property1" Type="Edm.String" Nullable="false">
+    <Annotation Term="OData.Description" String="This is a property of TypeA."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of Property1."/>
+    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+    <Annotation Term="Redfish.Required"/>
+    <Annotation Term="Measures.Unit" String="Watts"/>
+  </Property>
+```
+
+##### Navigation Property element
+
+[Reference properties](#reference-properties) of [Resources, Resource Collections](resources-and-resource-collections), and (structured properties)[#structured-properties] are defined using the Navigation Property element.  The `NavigationProperty` tag is used to define a Navigation Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type elements).
+
+All Navigation Property elements contain a `Name` attribute, which specifies the name of the property.
+
+All Navigation Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute is a [qualified name](#qualified-names) that references an [Entity Type element](#entity-type-and-complex-type elements).  This can also be made into an array using the `Collection` term.
+
+Navigation Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
+
+Unless the reference property is to be [expanded](#expanded-resources), all Navigation Properties in Redfish use the `OData.AutoExpandReferences` Annotation element in order to show that the reference is always available.
+
+```xml
+  <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
+    <Annotation Term="OData.Description" String="This property references a related resource."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
+    <Annotation Term="OData.AutoExpandReferences"/>
+  </NavigationProperty>
+```
+
+##### Annotation element
 
 Annotations in CSDL are expressed using the `Annotation` element.  The `Annotation` element can be applied to any schema element in CSDL.  The following examples show how each of the different [schema annotations](#schema-annotations) used by Redfish are expressed in CSDL.
 
@@ -1559,8 +1752,6 @@ Terms with the prefix `OData` are defined in http://docs.oasis-open.org/odata/od
 Terms with the prefix `Measures` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml.
 
 Terms with the prefix `Redfish` are defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
-
-#### File naming conventions for CSDL
 
 ## Service details
 
@@ -3109,7 +3300,9 @@ When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the imple
 
 
 
+One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
 
+* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified by a unique [type identifier](#type-property).
 
 ### Schema, registry and profile repository
 
@@ -3138,13 +3331,7 @@ All Redfish schemas, registries, and profiles published or re-published by the D
 Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
 
 
-##### CSDL (XML) schema file naming
 
-Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
-   
-  *TypeName*_*vMajorVersion*.*xml*
-
-For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml".
 
 ##### JSON Schema file naming
 
@@ -3288,151 +3475,11 @@ Schema referenced from the implementation, either from the OData Service Documen
 * Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
 * Other modifications to the Schema shall not be allowed.
 
-##### Schema version requirements
-The outer element of the OData Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
-~~~xml
-  <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-    <!-- edmx:Reference and edmx:DataService elements go here -->
-  </edmx:Edmx>
-~~~
-
-##### Referencing other schemas
-
-Redfish Schemas may reference types defined in other schema documents.  In the OData Schema representation, this is done by including a `Reference` element. In the JSON Schema and OpenAPI representations, this is done with a $ref property.
-
-The reference element specifies the `Uri` of the OData schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
-
-Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.v1_0_0 namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#units-of-measure).
-
-~~~xml
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
-  </edmx:Reference>
-  <edmx:Reference
-    Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0"/>
-  </edmx:Reference>
-~~~
-
-##### Namespace definitions
-
-Resource types are defined within a namespace in the OData Schema representations. The namespace is defined through a `Schema` element that contains attributes for declaring the `Namespace` and local `Alias` for the schema.
-
-The OData Schema element is a child of the `DataServices` element, which is a child of the [Edmx](#schema-documents) element.
-
-~~~xml
-  <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.v1_0_0">
-
-      <!-- Type definitions go here -->
-
-    </Schema>
-  </edmx:DataServices>
-~~~
-
-#### Resource type definitions
-
-Resource types are defined within a [namespace](#namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
-
-Redfish resources derive from a common resource base type named "Resource" in the Resource.v1_0_0 namespace.
-
-The EntityType contains the [property](#resource-properties) and [reference property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
-
-~~~xml
-  <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
-    <Annotation Term="OData.Description" String="This is the description of TypeA."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
-
-    <!-- Property and Reference Property definitions go here -->
-
-  </EntityType>
-~~~
-
-All resources shall include [Description](#description) and [LongDescription](#long-description) annotations.
-
-
-
-#### Resource properties
-
-Structural properties of the resource are defined using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#property-types) its type.
-
-Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
-
-Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
-
-~~~xml
-  <Property Name="Property1" Type="Edm.String" Nullable="false">
-    <Annotation Term="OData.Description" String="This is a property of TypeA."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of Property1."/>
-    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-    <Annotation Term="Redfish.Required"/>
-    <Annotation Term="Measures.Unit" String="Watts"/>
-  </Property>
-~~~
-
-All properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
-
-Properties that are read-only are annotated with the [Permissions annotation](#permissions) with a value of `OData.Permission/Read`.
-
-Properties that are writable are annotated with the [Permissions annotation](#permissions) with a value of `OData.Permission/ReadWrite`.
-* A service may implement a writable property as read-only.
-
-Properties that are required to be implemented by all services are annotated with the [required annotation](#required).
-
-Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure).
-
-
-##### Property types
-
-Type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#primitive-types), a [structured type](#structured-types), an [enumeration type](#enums) or a [collection](#collections) of primitive, structured or enumeration types.
-
-###### Primitive types
-
-Primitive types are prefixed with the "Edm" namespace prefix.
-
-Redfish Services may use any of the following primitive types:
-
-| Type               | Meaning                                                               |
-| ---                | ---                                                                   |
-| Edm.Boolean        | True or False                                                         |
-| Edm.DateTimeOffset | Date and time with a time-zone                                        |
-| Edm.Decimal        | Numeric values with fixed precision and scale                         |
-| Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits)        |
-| Edm.Guid           | A globally unique identifier                                          |
-| Edm.Int64          | Signed 64-bit integer                                                 |
-| Edm.String         | Sequence of UTF-8 characters                                          |
-
-###### Structured types
-
-Structured types are defined within a [namespace](#namespace-definitions) using `ComplexType` elements. The `Name` attribute of the complex type specifies the name of the structured type. Complex types can include a `BaseType` attribute that specifies the base type, if any.
-
-Structured types may be reused across different properties of different resource types.
-
-~~~xml
-  <ComplexType Name="PropertyTypeA">
-    <Annotation Term="OData.Description" String="This is type used to describe a structured property."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
-
-    <!-- Property and Reference Property definitions go here -->
-
-  </ComplexType>
-~~~
-
-Structured types can contain [properties](#resource-properties), [reference properties](#reference-properties) and annotations.
-
-Structured types shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
 ###### Enums
 
-Enumeration types are defined within a [namespace](#namespace-definitions) using `EnumType` elements. The `Name` attribute of the enumeration type specifies the name of the enumeration type.
+Enumeration types are defined within a namespace using `EnumType` elements. The `Name` attribute of the enumeration type specifies the name of the enumeration type.
 
 Enumeration types may be reused across different properties of different resource types.
 
@@ -3456,56 +3503,6 @@ Enumeration Types may include [Description](#description) and [LongDescription](
 
 Enumeration Members shall include [Description](#description) annotations.
 
-###### Collections
-
-The [type](#property-types) attribute may specify a collection of [primitive](#primitive-types), [structured](#structured-types) or [enumeration](#enums) types.
-
-The value of the type attribute for a collection-valued property is of the form:
-
- Collection(*NamespaceQualifiedTypeName*)
-
-where *NamespaceQualifiedTypeName* is the namespace qualified name of the primitive, structured, or enumeration type.
-
-
-#### Reference properties
-
-Properties that reference other resources are represented as reference properties using the `NavigationProperty` element. The `NavigationProperty` element specifies the `Name` and namespace qualified [`Type`](#property-types) of the related resource(s).
-
-If the property references a single type, the value of the type attribute is the namespace qualified name of the related resource type.
-
-~~~xml
-  <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
-    <Annotation Term="OData.Description" String="This property references a related resource."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
-    <Annotation Term="OData.AutoExpandReferences"/>
-  </NavigationProperty>
-~~~
-
-If the property references a collection of resources, the value of the type attribute is of the form:
-
-~~~
-  Collection(NamespaceQualifiedTypeName)
-~~~
-
-where `NamespaceQualifiedTypeName` is the namespace qualified name of the type of related resources.
-
-~~~xml
-  <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
-    <Annotation Term="OData.Description" String="This property represents a collection of related resources."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
-    <Annotation Term="OData.AutoExpandReferences"/>
-  </NavigationProperty>
-~~~
-
-All reference properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
-
-##### Non-nullable properties
-
-Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
-
-~~~xml
-  <Property Name="Property1" Type="Edm.String" Nullable="false">
-~~~
 
 ##### Contained resources
 
@@ -3540,7 +3537,7 @@ The type of the Actions property is a [structured type](#structured-types) with 
   <ComplexType Name="OemActions"/>
 ~~~
 
-Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
+Individual actions are defined within a namespace using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
 
