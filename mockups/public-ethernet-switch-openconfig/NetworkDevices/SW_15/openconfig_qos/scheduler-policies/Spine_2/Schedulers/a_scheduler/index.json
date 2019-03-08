@@ -1,0 +1,145 @@
+{
+    "@odata.type": "#openconfig_qos.scheduler_policies.scheduler_policy.schedulers.scheduler.v1_0_0.scheduler",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/scheduler_policies/a_scheduler_policy/schedulers/a_scheduler",
+    "Id": "a_scheduler",
+
+    "sequence": "Scheduler1",
+    "config": {
+        "type": "",
+        "sequence": 0,
+        "priority": ""
+    },
+    "state": {
+        "type": "",
+        "sequence": 0,
+        "priority": ""
+    },
+    "inputs": {
+        "input": {}
+    },
+    "output": {
+        "config": {
+            "output-fwd-group": "",
+            "child-scheduler": "",
+            "output-type": ""
+        },
+        "state": {
+            "output-fwd-group": "",
+            "child-scheduler": "",
+            "output-type": ""
+        }
+    },
+    "two-rate-three-color": {
+        "state": {
+            "cir": 0,
+            "cir-pct": 0,
+            "pir": 0,
+            "pir-pct": 0,
+            "cir-pct-remaining": 0,
+            "be": 0,
+            "bc": 0,
+            "pir-pct-remaining": 0
+        },
+        "violate-action": {
+            "config": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0,
+                "drop": false
+            },
+            "state": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0,
+                "drop": false
+            }
+        },
+        "exceed-action": {
+            "config": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0,
+                "drop": false
+            },
+            "state": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0,
+                "drop": false
+            }
+        },
+        "config": {
+            "cir": 0,
+            "cir-pct": 0,
+            "pir": 0,
+            "pir-pct": 0,
+            "cir-pct-remaining": 0,
+            "be": 0,
+            "bc": 0,
+            "pir-pct-remaining": 0
+        },
+        "conform-action": {
+            "config": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0
+            },
+            "state": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0
+            }
+        }
+    },
+    "one-rate-two-color": {
+        "state": {
+            "queuing-behavior": "",
+            "cir": 0,
+            "max-queue-depth-percent": 0,
+            "max-queue-depth-bytes": 0,
+            "cir-pct-remaining": 0,
+            "max-queue-depth-packets": 0,
+            "bc": 0,
+            "cir-pct": 0
+        },
+        "exceed-action": {
+            "config": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0,
+                "drop": false
+            },
+            "state": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0,
+                "drop": false
+            }
+        },
+        "config": {
+            "queuing-behavior": "",
+            "cir": 0,
+            "max-queue-depth-percent": 0,
+            "max-queue-depth-bytes": 0,
+            "cir-pct-remaining": 0,
+            "max-queue-depth-packets": 0,
+            "bc": 0,
+            "cir-pct": 0
+        },
+        "conform-action": {
+            "config": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0
+            },
+            "state": {
+                "set-mpls-tc": 0,
+                "set-dscp": 0,
+                "set-dot1p": 0
+            }
+        }
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.scheduler_policies.scheduler_policy.schedulers.scheduler.scheduler",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

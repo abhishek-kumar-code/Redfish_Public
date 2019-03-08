@@ -1,0 +1,12 @@
+{
+    "@odata.type": "#openconfig_qos.qos.classifiers.classifier.v1_0_0.classifier",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/classifiers/60_PrefferedData",
+    "Id": "60_PrefferedData",
+
+    "name":"6Q_PrefferedData_dscp",
+    "match":"ip-any",
+    "dscp": 8,
+
+    "@odata.context": "/redfish/v1/$metadata#openconfig_qos.qos.classifiers.classifier.classifier",
+    "@Redfish.Copyright": "Copyright 2019 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
