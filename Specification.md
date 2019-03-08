@@ -1572,6 +1572,11 @@ All Entity Types and Complex Types contain a `Name` attribute, which specifies t
 
 Entity Types and Complex Types may have a `BaseType` attribute, which specifies a [qualified name](#qualified-names).  When the `BaseType` attribute is used, all of the definitions of the referenced `BaseType` are made available to the Entity Type or Complex Type being defined.
 
+All [Resources and Resource Collections](resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
+
+Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  This allows for references to be made using the [Navigation Property element](#navigation-property-element).
+
+Example Entity Type and Complex Type element:
 ```xml
   <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
     <Annotation Term="OData.Description" String="This is the description of TypeA."/>
@@ -1590,10 +1595,6 @@ Entity Types and Complex Types may have a `BaseType` attribute, which specifies 
   </ComplexType>
 ```
 
-All [Resources and Resource Collections](resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
-
-Most (structured properties)[#structured-properties] are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  This allows for references to be made using the [Navigation Property element](#navigation-property-element).
-
 ##### Enum Type element
 
 
@@ -1604,14 +1605,14 @@ Most (structured properties)[#structured-properties] are defined with the Comple
 
 ##### Property element
 
-[Properties](#properties) of [Resources, Resource Collections](resources-and-resource-collections), and (structured properties)[#structured-properties] are defined using the Property element.  The `Property` tag is used to define a Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type elements).
+[Properties](#properties) of [Resources, Resource Collections](resources-and-resource-collections), and [structured properties](#structured-properties) are defined using the Property element.  The `Property` tag is used to define a Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
 
 All Property elements contain a `Name` attribute, which specifies the name of the property.
 
 All Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute can be one of the following:
 
 * A [qualified name](#qualified-names) that references an [Enum Type element](#enum-type-element).
-* A [qualified name](#qualified-names) that references a [Complex Type element](#entity-type-and-complex-type elements).
+* A [qualified name](#qualified-names) that references a [Complex Type element](#entity-type-and-complex-type-elements).
 * A primitive data type.
 * An array of any of the above using the `Collection` term.
 
@@ -1630,6 +1631,7 @@ Primitive data types can be one of the following:
 
 Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
 
+Example Property element:
 ```xml
   <Property Name="Property1" Type="Edm.String" Nullable="false">
     <Annotation Term="OData.Description" String="This is a property of TypeA."/>
@@ -1642,16 +1644,17 @@ Property elements may specify a `Nullable` attribute.  If the value is `false`, 
 
 ##### Navigation Property element
 
-[Reference properties](#reference-properties) of [Resources, Resource Collections](resources-and-resource-collections), and (structured properties)[#structured-properties] are defined using the Navigation Property element.  The `NavigationProperty` tag is used to define a Navigation Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type elements).
+[Reference properties](#reference-properties) of [Resources, Resource Collections](resources-and-resource-collections), and [structured properties](#structured-properties) are defined using the Navigation Property element.  The `NavigationProperty` tag is used to define a Navigation Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
 
 All Navigation Property elements contain a `Name` attribute, which specifies the name of the property.
 
-All Navigation Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute is a [qualified name](#qualified-names) that references an [Entity Type element](#entity-type-and-complex-type elements).  This can also be made into an array using the `Collection` term.
+All Navigation Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute is a [qualified name](#qualified-names) that references an [Entity Type element](#entity-type-and-complex-type-elements).  This can also be made into an array using the `Collection` term.
 
 Navigation Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
 
 Unless the reference property is to be [expanded](#expanded-resources), all Navigation Properties in Redfish use the `OData.AutoExpandReferences` Annotation element in order to show that the reference is always available.
 
+Example Navigation Property element:
 ```xml
   <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
     <Annotation Term="OData.Description" String="This property references a related resource."/>
