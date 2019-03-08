@@ -3,10 +3,19 @@
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/queues",
 
     "Name": "queue Collection",
-    "Members@odata.count": 1,
+    "Members@odata.count": 4,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/queues/a_queue"
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/queues/0"
+        },
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/queues/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/queues/4"
+        },
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/queues/13"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#openconfig_qos.queuesCollection.queuesCollection",

@@ -1,10 +1,10 @@
 {
     "lacp": {
         "config": {
-            "system-priority": 0
+            "system-priority": 32768
         },
         "state": {
-            "system-priority": 0
+            "system-priority": 32768
         },
         "interfaces": {
             "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_lacp/interfaces"

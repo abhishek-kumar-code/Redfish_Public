@@ -3,7 +3,6 @@
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/openconfig_qos/classifiers/a_classifier/terms/a_term",
     "Id": "a_term",
 
-    "id": "Classifier1",
     "config": {
         "id": ""
     },

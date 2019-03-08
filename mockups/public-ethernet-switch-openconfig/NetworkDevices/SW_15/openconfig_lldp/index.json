@@ -9,12 +9,12 @@
         },
         "config": {
             "enabled": 1,
-            "hello-timer": 0,
-            "chassis-id": "",
+            "hello-timer": 30,
+            "chassis-id": "service-tag-1",
             "suppress-tlv-advertisement": [],
-            "system-description": "",
-            "chassis-id-type": "",
-            "system-name": ""
+            "system-description": "Spine-1 of CLOS fabric",
+            "chassis-id-type": "MAC_ADDRESS",
+            "system-name": "z1234-spine1"
         },
         "state": {
             "enabled": 1,
@@ -31,10 +31,10 @@
                 "last-clear": "",
                 "frame-out": 0
             },
-            "system-description": "",
-            "hello-timer": 0,
-            "chassis-id-type": "",
-            "system-name": ""
+            "system-description": "Spine-1 of CLOS fabric",
+            "hello-timer": 30,
+            "chassis-id-type": "MAC_ADDRESS",
+            "system-name": "z1234-spine1"
         }
     }
 }
