@@ -1308,7 +1308,7 @@ Each JSON object entry includes:
 
 ### Resource responses
 
-Services return resources and resource collections as JSON payloads by using the `application/json` MIME type.  The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages] clauses for rules about the Redfish schema, and how it maps to JSON payloads.
+Services return resources and resource collections as JSON payloads by using the `application/json` MIME type.  The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages) clauses for rules about the Redfish schema, and how it maps to JSON payloads.
 
 ### Error responses
 
@@ -1562,7 +1562,7 @@ Many definitions in CSDL use references to qualified names.  CSDL defines this a
 * _Namespace_ is the name of the namespace.
 * _TypeName_ is the name of the element contained within the namespace.
 
-For example, if a reference is being made to `MyType.v1_1_0.MyDefinition`, this means the definition can be found in the `MyType.v1_0_0` namespace with an element of the name `MyDefinition`.
+For example, if a reference is being made to `MyType.v1_0_0.MyDefinition`, this means the definition can be found in the `MyType.v1_0_0` namespace with an element of the name `MyDefinition`.
 
 ##### Entity Type and Complex Type elements
 
