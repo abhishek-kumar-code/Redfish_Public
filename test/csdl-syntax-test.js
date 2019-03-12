@@ -50,7 +50,7 @@ describe('CSDL Tests', () => {
   let publishedSchemas = {};
   let overrideCSDLs = [];
   before(function(done){
-    this.timeout(10000);
+    this.timeout(30000);
     let promise = csdlTestSetup();
     promise.then((res) => {
       publishedSchemas = res[0];
