@@ -21,13 +21,12 @@
     "Volumes": {
         "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem/Volumes"
     },
-    "Links": { 
+    "Links": {
         "Enclosures": [
             {
                 "@odata.id": "/redfish/v1/Chassis/NVMeChassis"
             }
         ]
     },
-    "Actions": {
-    }
+    "Actions": {}
 }

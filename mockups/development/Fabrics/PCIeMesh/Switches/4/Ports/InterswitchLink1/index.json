@@ -1,39 +1,42 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink1",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "InterswitchLink1",
-	"Name": "PCIe Interswitch Port",
-	"Description": "PCIe Interswitch Port",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "0",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink1",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "InterswitchLink1",
+    "Name": "PCIe Interswitch Port",
+    "Description": "PCIe Interswitch Port",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "0",
     "PortProtocol": "PCIe",
-	"PortType": "InterswitchPort",
-	"CurrentSpeedGbps": 128,
-	"Width": 16,
-	"MaxSpeedGbps": 128,
-	"Actions": {
-		"#Port.Reset": {
-			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink1/Actions/Port.Reset",
-			"ResetType@Redfish.AllowableValues": [
-				"ForceOff",
-				"ForceRestart",
-				"ForceOn"
-			]
-		},
-		"Oem": {}
-	},
+    "PortType": "InterswitchPort",
+    "CurrentSpeedGbps": 128,
+    "Width": 16,
+    "MaxSpeedGbps": 128,
+    "Actions": {
+        "#Port.Reset": {
+            "target": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink1/Actions/Port.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceOff",
+                "ForceRestart",
+                "ForceOn"
+            ]
+        },
+        "Oem": {}
+    },
     "Links": {
         "ConnectedSwitches": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3"
+            }
         ],
         "ConnectedSwitchPorts": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink3"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink3"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-
