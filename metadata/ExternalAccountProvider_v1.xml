@@ -265,7 +265,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ExternalAccountProvider.v1_0_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to clarify property descriptions in LDAPSearchSettings."/>
       <EntityType Name="ExternalAccountProvider" BaseType="ExternalAccountProvider.v1_0_1.ExternalAccountProvider"/>
     </Schema>
 
@@ -284,7 +284,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ExternalAccountProvider.v1_1_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to clarify property descriptions in LDAPSearchSettings."/>
       <EntityType Name="ExternalAccountProvider" BaseType="ExternalAccountProvider.v1_1_0.ExternalAccountProvider"/>
     </Schema>
 
