@@ -13,7 +13,7 @@
     "StorageControllers": [
         {
             "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/0",
-            "@odata.type": "#Storage.v1_1_0.StorageController",
+            "@odata.type": "#Storage.v1_7_0.StorageController",
             "Id": "0",
             "Name": "Contoso External RAID",
             "Description": "Contoso External RAID (Slot 6)",
@@ -42,6 +42,9 @@
                 "SAS",
                 "SATA"
             ],
+            "Ports": {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/StorageController/0/Ports"
+            },
             "Links": {
                 "Endpoints": [
                     {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator1"}
@@ -50,7 +53,7 @@
         },
         {
             "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/1",
-            "@odata.type": "#Storage.v1_0_0.StorageController",
+            "@odata.type": "#Storage.v1_7_0.StorageController",
             "Id": "1",
             "Name": "Contoso External RAID",
             "Description": "Contoso External RAID (Slot 7)",
@@ -79,6 +82,9 @@
                 "SAS",
                 "SATA"
             ],
+            "Ports": {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/StorageController/1/Ports"
+            },
             "Links": {
                 "Endpoints": [
                     {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"}
