@@ -386,8 +386,8 @@
         <Annotation Term="OData.Description" String="This object contains settings for software update via HttpPushUri."/>
         <Annotation Term="OData.LongDescription" String="The properties in this object shall contain settings and requirements of the service for software update via HttpPushUri."/>
         <Property Name="HttpPushUriApplyTime" Type="UpdateService.v1_4_0.HttpPushUriApplyTime" Nullable="false">
-          <Annotation Term="OData.Description" String="This property contains settings for when software is to be applied when provided via HttpPushUri."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain settings for when software is to be applied when provided via HttpPushUri. If a Task is created by the service to schedule this update, the Task shall include the @Redfish.OperationApplyTime property. Such Tasks shall also persist across service restarts, until the Task starts."/>
+          <Annotation Term="OData.Description" String="This property contains settings for when firmware is to be applied when provided via HttpPushUri."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain settings for when firmware is to be applied when provided via HttpPushUri."/>
         </Property>
       </ComplexType>
 
@@ -436,7 +436,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_4_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was added to update the long description of HttpPushUri and HttpPushUriOptions.  It was also updated to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was added to update the long description of HttpPushUri.  It was also updated to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_4_0.UpdateService"/>
     </Schema>
 
