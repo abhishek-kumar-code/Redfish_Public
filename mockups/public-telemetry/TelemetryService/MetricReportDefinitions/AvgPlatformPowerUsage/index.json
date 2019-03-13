@@ -19,10 +19,12 @@
     "Status": {
         "State": "Enabled"
     },
-    "Wildcards": [ 
+    "Wildcards": [
         {
             "Name": "Wild",
-            "Values": [ "0" ]
+            "Values": [
+                "0"
+            ]
         }
     ],
     "Metrics": [

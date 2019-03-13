@@ -5,7 +5,9 @@
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7",
     "Id": "DriveBlock7",
     "Name": "Drive Block 7",
-    "ResourceBlockType": [ "Storage" ],
+    "ResourceBlockType": [
+        "Storage"
+    ],
     "Status": {
         "State": "Enabled",
         "Health": "OK"

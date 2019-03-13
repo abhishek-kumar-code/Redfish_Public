@@ -1,35 +1,34 @@
 {
-	"@odata.type": "#Sensor.v1_0_0.Sensor",
-	"Id": "CabinetTemp",
-	"Name": "Rack Temperature",
-	"ReadingType": "Temperature",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"Reading": 31,
-	"ReadingUnits": "C",
-	"ReadingRangeMin": 0,
-	"ReadingRangeMax": 70,
-	"Accuracy": 0.25,
-	"Precision": 1,
-	"SensingFrequency": 3,
-	"PhysicalContext": "Chassis",
-
-	"Thresholds": {
-		"UpperCritical": {
-			"Reading": 40,
-			"Activation": "Increasing"
-		},
-		"UpperCaution": {
-			"Reading": 35,
-			"Activation": "Increasing"
-		},
-		"LowerCaution": {
-			"Reading": 10,
-			"Activation": "Increasing"
-		}
-	},
-	"Oem": {},
-	"@odata.id": "/redfish/v1/Chassis/1/Sensors/CabinetTemp"
+    "@odata.type": "#Sensor.v1_0_0.Sensor",
+    "Id": "CabinetTemp",
+    "Name": "Rack Temperature",
+    "ReadingType": "Temperature",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Reading": 31,
+    "ReadingUnits": "C",
+    "ReadingRangeMin": 0,
+    "ReadingRangeMax": 70,
+    "Accuracy": 0.25,
+    "Precision": 1,
+    "SensingFrequency": 3,
+    "PhysicalContext": "Chassis",
+    "Thresholds": {
+        "UpperCritical": {
+            "Reading": 40,
+            "Activation": "Increasing"
+        },
+        "UpperCaution": {
+            "Reading": 35,
+            "Activation": "Increasing"
+        },
+        "LowerCaution": {
+            "Reading": 10,
+            "Activation": "Increasing"
+        }
+    },
+    "Oem": {},
+    "@odata.id": "/redfish/v1/Chassis/1/Sensors/CabinetTemp"
 }

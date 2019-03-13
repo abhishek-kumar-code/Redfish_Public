@@ -7,7 +7,7 @@
     "Name": "NVMe-oF initiator 1",
     "Description": "NVMe-oF initiator implemented by the computer system",
     "EndpointProtocol": "NVMeOverFabrics",
-    "Identifiers":  [
+    "Identifiers": [
         {
             "DurableName": "host.corp.com:nvme:nvm-subsys-sn-4635",
             "DurableNameFormat": "NQN"
@@ -27,7 +27,7 @@
         }
     ],
     "IPTransportDetails": [
-      	{
+        {
             "TransportProtocol": "iWARP",
             "IPv4Address": {
                 "Address": "10.3.5.131"
