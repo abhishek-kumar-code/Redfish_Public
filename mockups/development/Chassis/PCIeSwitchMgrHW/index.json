@@ -12,8 +12,7 @@
     "SerialNumber": "SN1703737",
     "PartNumber": "",
     "AssetTag": "CustomerWritableThingy",
-	"PowerState": "On",
-	
+    "PowerState": "On",
     "Status": {
         "State": "Enabled",
         "Health": "OK"

@@ -1,23 +1,22 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/3",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "3",
-	"Name": "SAS Port 3",
-	"Description": "SAS Port 3",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "3",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/3",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "3",
+    "Name": "SAS Port 3",
+    "Description": "SAS Port 3",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "3",
     "PortProtocol": "SAS",
-	"PortType": "BidirectionalPort",
-	"CurrentSpeedGbps": 48,
-	"Width": 4,
-	"MaxSpeedGbps": 48,
-	"Actions": {
-		"Oem": {}
-	},
-	"Oem": {}
+    "PortType": "BidirectionalPort",
+    "CurrentSpeedGbps": 48,
+    "Width": 4,
+    "MaxSpeedGbps": 48,
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
 }
-

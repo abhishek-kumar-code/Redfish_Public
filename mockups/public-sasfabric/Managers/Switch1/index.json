@@ -52,7 +52,7 @@
                 }
             ]
         }
-    ],    
+    ],
     "Links": {
         "ManagerForChassis": [
             {
@@ -64,7 +64,7 @@
         ],
         "ManagerInChassis": {
             "@odata.id": "/redfish/v1/Chassis/Switch1"
-        },	
+        },
         "Oem": {}
     },
     "Actions": {

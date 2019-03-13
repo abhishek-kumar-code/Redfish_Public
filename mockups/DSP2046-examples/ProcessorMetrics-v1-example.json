@@ -8,7 +8,7 @@
     "TemperatureCelsius": 41,
     "ConsumedPowerWatt": 82,
     "FrequencyRatio": 0.00432,
-    "Cache":[
+    "Cache": [
         {
             "Level": "3",
             "CacheMiss": 0.12,
@@ -29,7 +29,7 @@
             "UnhaltedCycles": 6254383746,
             "MemoryStallCount": 58372,
             "IOStallCount": 2634872,
-            "CoreCache":[
+            "CoreCache": [
                 {
                     "Level": "2",
                     "CacheMiss": 0.472,
