@@ -2862,14 +2862,14 @@ A service that supports updating software or firmware components should implemen
 * [Simple updates](#simple-updates): This is a pull model, where the client indicates a network location for the service to pull updates from.
 * [HTTP Push updates](#http-push-update): This model allows a client to push a software image to the service using HTTP or HTTPs.  
 
-##### Simple updates
+##### Simple updates<a id="simple-updates"></a>
 A service may support the "SimpleUpdate" action within the Update Service resource.  A client can perform a POST to this action target URI to initiate a pull-based update.  The POST request body includes properties such as "ImageURI" and "TransferProtocol" to specify the network location and protocol for the service to pull the update image.
 
 * After a successful "SimpleUpdate" action POST, the service shall return HTTP Status code of [202](#status-202) with a location header set to the URI of a Task Monitor.  This Task can be used by clients to monitor the progress and results of the update, which includes the progrss of image transfer to the service.
 * A client may specifiy the targest(s) of the update by setting the "Targets" property in the action POST request.
-* If the client included the "@Redfish.OperationApplyTime" property on the "SimpleUpdate" action, the service shall include the appropritate "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" properties on the created Task, and keep the "TaskState" as Pending until the Task starts.  The service shall persist the scheduled Task across servcice restarts, until the Task starts.
+* If the client included the "@Redfish.OperationApplyTime" property on the "SimpleUpdate" action, the service should include the appropritate "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" properties on the created Task, and keep the "TaskState" as Pending until the Task starts.  The service shall persist the scheduled Task across servcice restarts, until the Task starts.
 
-##### HTTP Push updates
+##### HTTP Push updates<a id="http-push-update"></a>
 A service may support the "RedfishHttpPushUri" property within the Update Service resource.  A client can perform an HTTP or HTTPs POST on the URI specified by this property to initiate a push-based update.
 
 * Access to the URI pointed to by "RedfishHttpPushUri" shall require the same privilege as access to the Update Service.
