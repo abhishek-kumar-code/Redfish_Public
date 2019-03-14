@@ -2852,6 +2852,33 @@ data:    ]
 data:}
 ```
 
+### Update Service<a id="details-updateservice"></a>
+
+This clause covers the REST-based mechanism for software update using the Update Service.
+
+#### Software Update
+A service that supports updating software or firmware components should implement the Update Service resource.  There are two methods for clients to provide the  updates through the Update Service:
+
+* [Simple updates](#simple-updates): This is a pull model, where the client indicates a network location for the service to pull updates from.
+* [HTTP Push updates](#http-push-update): This model allows a client to push a software image to the service using HTTP or HTTPs.  
+
+##### Simple updates
+A service may support the "SimpleUpdate" action within the Update Service resource.  A client can perform a POST to this action target URI to initiate a pull-based update.  The POST request body includes properties such as "ImageURI" and "TransferProtocol" to specify the network location and protocol for the service to pull the update image.
+
+* After a successful "SimpleUpdate" action POST, the service shall return HTTP Status code of [202](#status-202) with a location header set to the URI of a Task Monitor.  This Task can be used by clients to monitor the progress and results of the update, which includes the progrss of image transfer to the service.
+* A client may specifiy the targest(s) of the update by setting the "Targets" property in the action POST request.
+* If the client included the "@Redfish.OperationApplyTime" property on the "SimpleUpdate" action, the service shall include the appropritate "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" properties on the created Task, and keep the "TaskState" as Pending until the Task starts.  The service shall persist the scheduled Task across servcice restarts, until the Task starts.
+
+##### HTTP Push updates
+A service may support the "RedfishHttpPushUri" property within the Update Service resource.  A client can perform an HTTP or HTTPs POST on the URI specified by this property to initiate a push-based update.
+
+* Access to the URI pointed to by "RedfishHttpPushUri" shall require the same privilege as access to the Update Service.
+* A client POST request to this URI shall contain a raw binary image in the request body.  The rquest shall not contain a Content-Type multi-part/formdata request header, or a Content-Disposition formatted body.
+* A service may require Content-Length header for POST requests to this URI.  In tihs case, if a client does not include the required Content-Length header in the POST request, the service shall return status code [411](#status-411).
+* After a successful POST to this URI, the service shall return HTTP Status code of [202](#status-202) with a location header set to the URI of a Task Monitor.  This Task can be used by clients to monitor the progress and results of the update.
+* A client may specifiy the targest(s) of the update by setting the "HttpPushUriTargets" and "HttpPushUriTargetsBusy" properties in the Update Service resource, before performing the POST to this URI.
+* A client may specificy additional parameters for the update by setting the "HttpPushUriOptions" and "HttpPushUriOptionsBusy" properties in the Update Service resource, before performing the POST to this URI.
+* A client may schedule the update by setting the "HttpPushUriApplyTime" property in the Update Service, before performing the POST to this URI. In this case, the service shall include the appropritate "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" properties on the created Task, and keep the "TaskState" as Pending until the Task starts.  The service shall persist the scheduled Task across servcice restarts, until the Task starts. 
 
 ## Security<a id="security-details"></a>
 
@@ -3022,7 +3049,7 @@ A Redfish session is terminated when the client logs out.  This is accomplished 
 
 The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users' sessions from a different session.
 
-When a session is terminated, the service shall not affect independent connections established originally by this session for other purposes, such as connections for [Server-Sent Events](#server-sent-events) or transferring an image for the Update Service.
+When a session is terminated, the service shall not affect independent connections established originally by this session for other purposes, such as connections for [Server-Sent Events](#server-sent-events) or transferring an image for the [Update Service](#details-updateservice).
 
 
 #### AccountService
