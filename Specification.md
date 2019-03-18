@@ -334,25 +334,18 @@ A URI identifies a resource, including the service root and all Redfish resource
     * Do not use the **`#`** character for anything other than the start of a fragment.
 * URIs shall not include any percent-encoding of characters.  This restriction does not apply to the [query parameters](#query-parameters) portion of the URI.
 
-MIKE to reconcile the following two blocks
-Performing a GET operation yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
-
-To begin operations, a Redfish client must know the URI for a resource.
-* To get the resource representation with properties and hyperlinks to associated resources, call the GET operation.  
-* The base resource URI is well known and based on the protocol version.
-* To discover the URIs to additional resources, observe the associated resource hyperlinks from previous responses.
-* To consume a hypermedia API, navigate the URIs that the service returns.
+Performing a GET operation on a URI yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This practice, known as hypermedia, allows for the discovery of resources by following hyperlinks.
 
 Redfish considers the [RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-defined scheme, authority, root service and version, and unique resource path component parts of the URI.
 
 For example, the `https://mgmt.vendor.com/redfish/v1/Systems/1` URI contains these component parts:
 
-| Component part | In the example |
-| ---            | ---            |
-| The scheme.    | `https:` |
+| Component part                                                           | In the example |
+| ---                                                                      | ---            |
+| The scheme.                                                              | `https:` |
 | The authority, which defines the authority to which to delegate the URI. | `//mgmt.vendor.com` |
-| The root service and version. | `/redfish/v1/` |
-| The resource path, which provides a unique identifier for the resource. | `Systems/1` | 
+| The root service and version.                                            | `/redfish/v1/` |
+| The resource path, which provides a unique identifier for the resource.  | `Systems/1` | 
 
 In a URI:
 
@@ -381,19 +374,21 @@ If a property in a response is a reference to another property within a resource
 ### HTTP methods
 
 The following table describes the mapping of HTTP methods to the operations which are supported by Redfish.  The "required" column specifies whether the method is supported by a Redfish interface.
+
 * If the value is "yes", then the HTTP method shall be supported.
 * If the value is "no", the value may be supported.
-For HTTP methods not supported by the Redfish Service or not listed in the table, a [405](#status-405) response shall be returned by the Redfish Service.
 
-| HTTP&nbsp;method | Interface&nbsp;semantic | Required |
-|:-----------------|:------------------------|:---------|
-| POST | Object create<br/>Object action<br/>Eventing | Yes |
-| GET | Object retrieval | Yes |
-| PUT | Object replace | No |
-| PATCH | Object update | Yes |
-| DELETE | Object delete | Yes |
-| HEAD | Object header retrieval | No |
-| OPTIONS | Header retrieval<br/>CORs preflight | No |
+For HTTP methods not supported by the Redfish Service or not listed in the table, an HTTP [405](#status-405) status code shall be returned by the Redfish Service.
+
+| HTTP&nbsp;method | Interface&nbsp;semantic                      | Required |
+| ---              | ---                                          | ---      |
+| POST             | Object create<br/>Object action<br/>Eventing | Yes |
+| GET              | Object retrieval                             | Yes |
+| PUT              | Object replace                               | No |
+| PATCH            | Object update                                | Yes |
+| DELETE           | Object delete                                | Yes |
+| HEAD             | Object header retrieval                      | No |
+| OPTIONS          | Header retrieval<br/>CORs preflight          | No |
 
 ### HTTP redirect
 
@@ -470,10 +465,10 @@ The protocol version is a string in the format:
 
 where
 
-| Variable | Type | Version | Description |
-|:--|:--|:--|:--|
-| *MajorVersion* | Integer | The major version | A backward-compatible class change. |
-| *MinorVersion* | Integer | The minor version | A minor update.  Redfish introduces new functionality but does not remove any functionality.<br/>The minor version preserves compatibility with earlier minor versions. |
+| Variable        | Type    | Version            | Description |
+| ---             | ---     | ---                | ---         |
+| *MajorVersion*  | Integer | The major version  | A backward-compatible class change. |
+| *MinorVersion*  | Integer | The minor version  | A minor update.  Redfish introduces new functionality but does not remove any functionality.<br/>The minor version preserves compatibility with earlier minor versions. |
 | *ErrataVersion* | Integer | The errata version | A fix in the earlier version. |
 
 Any resource that a client discovers through hyperlinks that the root service or any root service-referenced service or resource returns shall conform to the same protocol version that the root service supports.
@@ -490,11 +485,11 @@ A GET operation on the `/redfish` resource shall return this response body:
 
 A Redfish service shall support these Redfish-defined URIs:
 
-| URI | Returns |
-|:----|:--------|
-| `/redfish` | The [version](#protocol-version). |
-| `/redfish/v1/` | The Redfish [service root](#service-root-request). |
-| `/redfish/v1/odata` | The Redfish [OData service document](#odata-service-document). |
+| URI                     | Returns |
+| ---                     | ---     |
+| `/redfish`              | The [version](#protocol-version). |
+| `/redfish/v1/`          | The Redfish [service root](#service-root-request). |
+| `/redfish/v1/odata`     | The Redfish [OData service document](#odata-service-document). |
 | `/redfish/v1/$metadata` | The Redfish [metadata document](#metadata-document-request). |
 
 In addition, the service shall process the following URI without a trailing slash in one of these ways:
@@ -502,11 +497,11 @@ In addition, the service shall process the following URI without a trailing slas
 * Redirect it to the associated Redfish-defined URI.
 * Treat it as the equivalent URI to the associated Redfish-defined URI:
 
-| URI | Associated Redfish-defined URI |
-|:----|:-------------------------------|
+| URI           | Associated Redfish-defined URI |
+| ---           | ---                            |
 | `/redfish/v1` | `/redfish/v1/` |
 
-All other Redfish service-supported URIs shall match the [Resource URI pattern definitions](#resource-uri-pattern-definitions), except the supplemental resources that the `@Redfish.Settings`, `@Redfish.ActionInfo`, and `@Redfish.CollectionCapabilities` payload annotations reference.  The client shall treat the URIs for these supplemental resources as opaque.
+All other Redfish service-supported URIs shall match the [Resource URI pattern definitions](#resource-uri-patterns-annotation), except the supplemental resources that the `@Redfish.Settings`, `@Redfish.ActionInfo`, and `@Redfish.CollectionCapabilities` payload annotations reference.  The client shall treat the URIs for these supplemental resources as opaque.
 
 All Redfish service-supported URIs are reserved for future standardization by DMTF and DMTF alliance partners, except OEM extension URIs, which shall conform to the [URIs for OEM resources](#uris-for-oem-resources) requirements.
 
@@ -531,30 +526,30 @@ For Redfish Clients (sending the HTTP requests):
 * Redfish Clients shall include the headers in the following table as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "Yes", or if the value in the Client Requirement column is set to "Conditional" under the conditions noted in the Description column.
 * Redfish Clients should transmit the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Client Requirement column is set to "No".
 
-| Header | Service requirement | Client requirement | Supported values | Description |
-|:-------|:--------------------|:-------------------|:-----------------|:------------|
-| `Accept` | Yes | No | [RFC 7231](#RFC7231) | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
-| `Accept-Encoding` | No | No | [RFC7231](#RFC7231) | Indicates whether the client can handle gzip-encoded responses.<br/>If a request contains this header and the service cannot send an acceptable response:<ul><li>The service shall respond with the HTTP [406](#status-406) status code.</li></ul>If the request omits this header:<ul><li>The service shall not return gzip-encoded responses.</li></ul> |
-| `Accept-Language` | No | No | [RFC7231](#RFC7231) | The languages that the client accepts in the response.<br/>If the request omits this header, the service's default language is used for the response. |
-| `Authorization` | Conditional | Conditional | [RFC7235](#RFC7235), Section 4.2 | Required for [Basic authentication](#basic-authentication).<br/>A client can access unsecured resources without this header on systems that support basic authentication. |
-| `Content-Length` | No | No | [RFC7231](#RFC7231) | The size of the message body.<br/>A client can also use the `Transfer-Encoding: chunked` header to indicate the size of the body.<br/>If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service responds with the [411](#status-411) status code. |
-| `Content-Type` | Conditional | Conditional | [RFC7231](#RFC7231) | The request format.  Required for operations with a request body.<br/>Services shall accept `Content-Type` header values of `application/json` or `application/json;charset=utf-8`.<br/>It is recommended that clients use these values in requests because other values can cause an error. |
-| `Host` | Yes | No | [RFC7230](#RFC7230) | Enables support of multiple origin hosts at a single IP address. |
-| `If-Match` | Conditional | No | [RFC7232](#RFC7232) | To ensure that clients update the resource from a known state, PUT and PATCH requests for resources for which the service returns ETags shall support `If-Match`.<br/>While not required for clients, it is highly recommended for PUT and PATCH operations. |
-| `If-None-Match` | No | No | [RFC7232](#RFC7232) | The service only returns the requested resource if the current ETag of that resource does not match the ETag sent in this header.<br/>If the ETag in this header matches the resource's current ETag, the GET operation returns the HTTP [304](#status-304) status code. |
-| `Last-Event-ID` | No | No | [HTML5 SSE](#HTML5-Spec-SSE) | The event source’s last event ID.  Requests history event data.<br/>See [Server-Sent Events](#server-sent-events). |
-| `Max-Forwards` | No | No | [RFC7231](#RFC7231) | Limits gateway and proxy hops.<br/>Prevents messages from remaining in the network indefinitely. |
-| `OData-MaxVersion` | No | No | 4.0 | The maximum OData version that an OData-aware client understands. |
-| `OData-Version` | Yes | No | 4.0 | The OData version.<br/>Services shall reject requests that specify an unsupported OData version.<br/>If a service encounters an unsupported OData version, it should reject the request with the HTTP [412](#status-412) status code. |
-| `Origin` | Yes | No | [W3C CORS](#W3C-CORS), Section 5.7 | Enables web applications to consume a Redfish service while preventing CSRF attacks. |
-| `User-Agent` | Yes | No | [RFC7231](#RFC7231) | Traces product tokens and their versions.<br/>The header can list multiple product tokens. |
-| `Via` | No | No | [RFC7230](#RFC7230) | Defines the network hierarchy and recognizes message loops.<br/>Each pass inserts its own VIA. |
+| Header             | Service requirement | Client requirement | Supported values                   | Description |
+| ---                | ---                 | ---                | ---                                | ---         |
+| `Accept`           | Yes                 | No                 | [RFC 7231](#RFC7231)               | Communicates to the server the media type or types that this client is prepared to accept.<br/>Services shall support:<ul><li>Resource requests with either of these `Accept` header values:<ul><li>`application/json`</li><li>`application/json;charset=utf-8`</li></ul></li><li>Metadata requests with either of these `Accept` header values:<ul><li>`application/xml`</li><l>`application/xml;charset=utf-8`</li></ul></li><li>Any request with the following `Accept` header values:<ul><li>`application/*`</li><li>`application/*;charset=utf-8`</li><li>`*/*`</li><li>`*/*;charset=utf-8`</li></ul></li></ul> |
+| `Accept-Encoding`  | No                  | No                 | [RFC7231](#RFC7231)                | Indicates whether the client can handle gzip-encoded responses.<br/>If a request contains this header and the service cannot send an acceptable response:<ul><li>The service shall respond with the HTTP [406](#status-406) status code.</li></ul>If the request omits this header:<ul><li>The service shall not return gzip-encoded responses.</li></ul> |
+| `Accept-Language`  | No                  | No                 | [RFC7231](#RFC7231)                | The languages that the client accepts in the response.<br/>If the request omits this header, the service's default language is used for the response. |
+| `Authorization`    | Conditional         | Conditional        | [RFC7235](#RFC7235), Section 4.2   | Required for [Basic authentication](#basic-authentication).<br/>A client can access unsecured resources without this header on systems that support basic authentication. |
+| `Content-Length`   | No                  | No                 | [RFC7231](#RFC7231)                | The size of the message body.<br/>A client can also use the `Transfer-Encoding: chunked` header to indicate the size of the body.<br/>If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service responds with the [411](#status-411) status code. |
+| `Content-Type`     | Conditional         | Conditional        | [RFC7231](#RFC7231)                | The request format.  Required for operations with a request body.<br/>Services shall accept `Content-Type` header values of `application/json` or `application/json;charset=utf-8`.<br/>It is recommended that clients use these values in requests because other values can cause an error. |
+| `Host`             | Yes                 | No                 | [RFC7230](#RFC7230)                | Enables support of multiple origin hosts at a single IP address. |
+| `If-Match`         | Conditional         | No                 | [RFC7232](#RFC7232)                | To ensure that clients update the resource from a known state, PUT and PATCH requests for resources for which the service returns ETags shall support `If-Match`.<br/>While not required for clients, it is highly recommended for PUT and PATCH operations. |
+| `If-None-Match`    | No                  | No                 | [RFC7232](#RFC7232)                | The service only returns the requested resource if the current ETag of that resource does not match the ETag sent in this header.<br/>If the ETag in this header matches the resource's current ETag, the GET operation returns the HTTP [304](#status-304) status code. |
+| `Last-Event-ID`    | No                  | No                 | [HTML5 SSE](#HTML5-Spec-SSE)       | The event source's last event ID.  Requests history event data.<br/>See [Server-Sent Events](#server-sent-events). |
+| `Max-Forwards`     | No                  | No                 | [RFC7231](#RFC7231)                | Limits gateway and proxy hops.<br/>Prevents messages from remaining in the network indefinitely. |
+| `OData-MaxVersion` | No                  | No                 | 4.0                                | The maximum OData version that an OData-aware client understands. |
+| `OData-Version`    | Yes                 | No                 | 4.0                                | The OData version.<br/>Services shall reject requests that specify an unsupported OData version.<br/>If a service encounters an unsupported OData version, it should reject the request with the HTTP [412](#status-412) status code. |
+| `Origin`           | Yes                 | No                 | [W3C CORS](#W3C-CORS), Section 5.7 | Enables web applications to consume a Redfish service while preventing CSRF attacks. |
+| `User-Agent`       | Yes                 | No                 | [RFC7231](#RFC7231)                | Traces product tokens and their versions.<br/>The header can list multiple product tokens. |
+| `Via`              | No                  | No                 | [RFC7230](#RFC7230)                | Defines the network hierarchy and recognizes message loops.<br/>Each pass inserts its own VIA. |
 
 Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the **Required** column is _**Yes**_.
 
-| Header | Service requirement | Client requirement | Supported values | Description |
-|:-------|:--------------------|:-------------------|------------------|:------------|
-| `X-Auth-Token` | Yes | Conditional | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
+| Header         | Service requirement | Client requirement | Supported values             | Description |
+| ---            | ---                 | ---                | ---                          | ---         |
+| `X-Auth-Token` | Yes                 | Conditional        | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
 
 ### GET (read requests)
 
@@ -588,7 +583,7 @@ Services shall not require authentication to retrieve the service root and `/red
 
 Redfish services expose two OData-defined documents at specific URIs to enable generic OData clients to navigate the Redfish service.
 
-* Service shall expose an [OData $metadata Document](#service-metadata) at the `/redfish/v1/$metadata` URI.  
+* Service shall expose an [OData $metadata Document](#odata-metadata) at the `/redfish/v1/$metadata` URI.  
 * Service shall expose an [OData Service Document](#odata-service-document) at the `/redfish/v1/odata` URI.
 * Service shall not require authentication to retrieve the OData $metadata Document or the OData Service Document.
 
@@ -602,14 +597,15 @@ Services:
 * Should support the `$top`, `$skip`, `only`, and `excerpt` query parameters.
 * May support the `$expand`, `$filter`, and `$select` query parameters.
 * Shall include the `ProtocolFeaturesSupported` object in the service root if the service supports query parameters.
+    * This is to indicate which parameters and options have been implemented.
 * Shall ignore unknown or unsupported query parameters that do not begin with `$`.
 * Shall use the `&` operator to separate multiple query parameters in a single request
 
 Service shall return:
 
-* The HTTP [`501 Not Implemented`](#status-501) status code for any unsupported query parameters that start with `$`.
+* The HTTP [501 Not Implemented](#status-501) status code for any unsupported query parameters that start with `$`.
 * An [extended error](#error-responses) that indicates the unsupported query parameters for this resource.
-* The HTTP [`400 Bad Request`](#status-400) status code for any query parameters that contain values that are invalid, or values applied to query parameters without defined values (e.g. `excerpt` or `only`).
+* The HTTP [400 Bad Request](#status-400) status code for any query parameters that contain values that are invalid, or values applied to query parameters without defined values (e.g. `excerpt` or `only`).
 
 The response body shall reflect the evaluation of the query parameters in this order:
 
@@ -617,41 +613,41 @@ The response body shall reflect the evaluation of the query parameters in this o
 * After applying any service side pagination: `$expand`, `$select`
 
 | Query&nbsp;parameter | Description | Examples |
-|:---------------------|:------------|:---------|
-| `excerpt` | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
-| `$expand=<string>` | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink.  See [below](#expand-parameter). | `http://resource?$expand=*($levels=3)`<br/>`http://resourcecollection?$expand=.($levels=1)` |
-| `$filter=<string>` | Applies to resource collections.  Returns a subset of collection members that match the `$filter` expression.  See [below](#filter-parameter). | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
-| `only` | Applies to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
-| `$select=<string>` | Returns a subset of the resource's properties that match the `$select` expression.  See [below](#select-parameter). | `http://resource?$select=SystemType,Status` |
-| `$skip=<integer>` | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
-| `$top=<integer>` | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
+| ---                  | ---         | ---      |
+| `excerpt`            | Returns a subset of the resource's properties that match the defined `Excerpt` schema annotation.<br/>If no Excerpt schema annotation is defined for the resource, the entire resource is returned. | `http://resource?excerpt` |
+| `$expand=<string>`   | Returns a hyperlink and its contents in-line with retrieved resources, as if a GET call response was included in-line with that hyperlink.  See [below](#expand-parameter). | `http://resource?$expand=*($levels=3)`<br/>`http://resourcecollection?$expand=.($levels=1)` |
+| `$filter=<string>`   | Applies to resource collections.  Returns a subset of collection members that match the `$filter` expression.  See [below](#filter-parameter). | `http://resourcecollection?$filter=SystemType eq 'Physical'` |
+| `only`               | Applies to resource collections.  If the target resource collection contains exactly one member, clients can use this query parameter to return that member's resource.<br/>If the collection contains either zero members or more than one member, the response returns the collection resource, as expected. | `http://resourcecollection?only` |
+| `$select=<string>`   | Returns a subset of the resource's properties that match the `$select` expression.  See [below](#select-parameter). | `http://resource?$select=SystemType,Status` |
+| `$skip=<integer>`    | Applies to resource collections.  Returns a subset of the members in a resource collection.  This paging query parameter defines the number of ['Members'](#members) in the [resource collection](#resource-collection-responses) to skip. | `http://resourcecollection?$skip=5` |
+| `$top=<integer>`     | Applies to resource collections.  Defines the number of members to show in the response.<br/>Minimum value is `1`.  By default, returns all members. | `http://resourcecollection?$top=30` |
 
-#### Use the $expand query parameter<a id="expand-parameter"></a>
+#### Use of the $expand query parameter<a id="expand-parameter"></a>
 
-The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources included in-line. 
+The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources in-line.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
-The `$expand` query parameter has a set of possible values that determine which hyperlinks in a resource are included in the expanded response.
+The `$expand` query parameter has a set of possible options that determine which hyperlinks in a resource are included in the expanded response.  Some resources may already be expanded due to the resource's schema annotation `AutoExpand`, such as the `Temperature` object in the `Thermal` resource.
 
-The Redfish-supported values for the `$expand` query parameter are:
+The Redfish-supported options for the `$expand` query parameter are listed in the following table.  The service may implement some of these options but not others.  Any other supported syntax for `$expand` is outside the scope of this specification.
 
-| Value | Description | Example |
-|:------|:------------|:--------|
-| asterisk&nbsp;(`*`) | Expands all hyperlinks. | `http://resource?$expand=*` |
-| `$levels` | The number of levels the service should cascade the `$expand` operation.<br/>So, `$levels=2` expands both:<ul><li>The current resource, or `level=1`.</li><li>The expanded resource, or `level=2`.</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
-| period&nbsp;(`.`) | Expands all subordinate hyperlinks.<br/>Subordinate hyperlinks are those that are directly referenced, or not in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
-| tilde&nbsp;(`~`) | Expands all dependent hyperlinks.<br/>Dependent hyperlinks are those that are not directly referenced, or in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
+| Option              | Description | Example |
+| ---                 | ---         | ---     |
+| asterisk&nbsp;(`*`) | Shall expand all hyperlinks. | `http://resource?$expand=*` |
+| `$levels`           | The number of levels the service should cascade the `$expand` operation.  The default level shall be 1.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
+| period&nbsp;(`.`)   | Shall expand all hyperlinks **not** in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
+| tilde&nbsp;(`~`)    | Shall expand all hyperlinks found in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
 
 Examples of `$expand` usage include:
 
 * GET of a `SoftwareInventoryCollection`.
     
-    With `$expand`, the client can request multiple `SoftwareInventory` resources in one request rather than fetching them one at a time.
+    With `$expand`, the client can request multiple `SoftwareInventory` collection member resources in one request rather than fetching them one at a time.
 
 * GET of a `ComputerSystem`.
     
-    With `$levels`, a single GET request can include collections, such as `Processors` and `Memory`.
+    With `$levels`, a single GET request can include the subordinate resource collections, such as `Processors` and `Memory`.
 
-* GET all UUIDs in the `ComputerSystem` collection.
+* GET all UUIDs in Members of the `ComputerSystem` collection.
     
     To accomplish this result, include both `$select` and `$expand` on the URI.  
 
@@ -663,21 +659,16 @@ When clients use `$expand`, they should be aware that the payload may increase b
 
 If a service cannot return the payload due to its size, it shall return HTTP [507](#status-507) status code.
 
-> **Note:** Resources that contain `ReferenceableMembers` that the `AutoExpand` annotation already expands, such as the `Temperature` object in the `Thermal` resource, are part of the current resource and are at the same level as the queried resource.
 
-Any other supported syntax for `$expand` is outside the scope of this specification.
+#### Use of the $select query parameter<a id="select-parameter"></a>
 
-#### Use the $select query parameter<a id="select-parameter"></a>
-
-The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression. indicates that the implementation should return a subset of the resources' properties based on the value of the `$select` expression.
+The `$select` query parameter indicates that the implementation should return a subset of the resource's properties that match the `$select` expression.  If a request omits the `$select` query parameter, the response returns all properties by default.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
 The `$select` expression shall not affect the resource itself.
 
 The `$select` expression defines a comma-separated list of properties to return in the response body.
 
-The syntax for properties in complex types shall be the property names concatenated with a slash (`/`).  
-
-> **Note:** If a request omits the`$select` query parameter, the response returns all properties by default.
+The syntax for properties in object types shall be the object and property names concatenated with a slash (`/`).  
 
 An example of `$select` usage is:
 
@@ -689,9 +680,9 @@ When services execute `$select`, they shall return all requested properties of t
 
 Any other supported syntax for `$select` is outside the scope of this specification.
 
-#### Use the $filter query parameter<a id="filter-parameter"></a>
+#### Use of the $filter query parameter<a id="filter-parameter"></a>
 
-The `$filter parameter` indicates that the implementation should return a subset of the collection's members based on the `$filter` expression.
+The `$filter parameter` allows a client to request a subset of the resource collection's members based on the `$filter` expression.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
 The `$filter` query parameter defines a set of properties and literals with an operator.
 
@@ -705,20 +696,20 @@ If the literal value does not match the data type for the specified property, th
 
 The `$filter` section of the OData ABNF components specification contains the grammar for the allowable syntax of the `$filter` query parameter, with the additional restriction that only built-in filter operations are supported.
 
-The Redfish-supported values for the `$filter` query parameter are:
+The following table lists the Redfish-supported values for the `$filter` query parameter.  Any other supported syntax for `$filter` is outside the scope of this specification.
 
-| Value | Description | Example |
-|:------|:------------|:--------|
-| `()` | Precedence grouping operator. | `(Status/State eq 'Enabled' and Status/Health eq 'OK') or SystemType eq 'Physical'` |
-| `and` | Logical and operator. | `ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64` |
-| `eq` | Equal comparison operator. | `ProcessorSummary/Count eq 2` |
-| `ge` | Greater than or equal to comparison operator. | `ProcessorSummary/Count ge 2` |
-| `gt` | Great than comparison operator. | `ProcessorSummary/Count gt 2` |
-| `le` | Less than or equal to comparison operator. | `MemorySummary/TotalSystemMemoryGiB le 64` |
-| `lt` | Less than comparison operator. | `MemorySummary/TotalSystemMemoryGiB lt 64` |
-| `ne` | Not equal comparison operator. | `SystemType ne 'Physical'` |
-| `not` | Logical negation operator. | `not (ProcessorSummary/Count eq 2)` |
-| `or` | Logical or operator. | `ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4` |
+| Value | Description                                   | Example |
+| ---   | ---                                           | ---     |
+| `()`  | Precedence grouping operator.                 | `(Status/State eq 'Enabled' and Status/Health eq 'OK') or SystemType eq 'Physical'` |
+| `and` | Logical and operator.                         | `ProcessorSummary/Count eq 2 and MemorySummary/TotalSystemMemoryGiB gt 64` |
+| `eq`  | Equal comparison operator.                    | `ProcessorSummary/Count eq 2` |
+| `ge`  | Greater than or equal to comparison operator. | `ProcessorSummary/Count ge 2` |
+| `gt`  | Great than comparison operator.               | `ProcessorSummary/Count gt 2` |
+| `le`  | Less than or equal to comparison operator.    | `MemorySummary/TotalSystemMemoryGiB le 64` |
+| `lt`  | Less than comparison operator.                | `MemorySummary/TotalSystemMemoryGiB lt 64` |
+| `ne`  | Not equal comparison operator.                | `SystemType ne 'Physical'` |
+| `not` | Logical negation operator.                    | `not (ProcessorSummary/Count eq 2)` |
+| `or`  | Logical or operator.                          | `ProcessorSummary/Count eq 2 or ProcessorSummary/Count eq 4` |
 
 When evaluating expressions, services shall use the following operator precedence: 
 
@@ -729,13 +720,11 @@ When evaluating expressions, services shall use the following operator precedenc
 * Logical `and`
 * Logical `or`
 
-Any other supported syntax for `$filter` is outside the scope of this specification.
-
 If the service receives an unsupported `$filter` query parameter, it shall reject the request and return the HTTP [501](#status-501) status code.
 
 ### HEAD
 
-The HEAD method differs from the GET method in that it MUST NOT return message body information.  
+The HEAD method differs from the GET method in that it shall not return message body information.  
 
 However, the HEAD method completes the same authorization checks and returns all the same meta information and status codes in the HTTP headers as a GET method.
 
@@ -768,14 +757,14 @@ For create operations, the response from the service after the create request su
 
 * HTTP [201](#status-201) status code with a body that contains the JSON representation of the newly created resource after the request has been applied.
 * HTTP [202](#status-202) status code with a `Location` header set to the URI of a task monitor when the processing of the request requires additional time to complete.
-    In this case, a response with the HTTP 201 status code and the created resource may be returned in response to request to the task monitor URI after processing succeeds.
+    * After processing of the task is complete, the created resource may be returned in response to request to the task monitor URI with the HTTP [201](#status-201) status code.
 * HTTP [204](#status-204) status code with empty payload in the event that service cannot return a representation of the created resource.
 
 For update, replace, and delete operations, the response from the service after successful modification should be one of the following responses:
 
 * HTTP [200](#status-200) status code with a body that contains the JSON representation of the targeted resource after the modification has been applied, or, for the delete operation, a representation of the deleted resource.
 * HTTP [202](#status-202) status code with a `Location` header set to the URI of a task monitor when the processing of the modification requires additional time.
-    In this case, a response with the HTTP 200 status code and the modified resource may be returned in response to request to the task monitor URI after processing succeeds.
+    * After processing of the task is complete, the modified resource may be returned in response to request to the task monitor URI with the HTTP [200](#status-200) status code.
 * HTTP [204](#status-204) status code with an empty payload in the event that service cannot return a representation of the modified or deleted resource.
 
 For details on success responses to action requests, see [POST (action)](#post-action).
@@ -784,110 +773,108 @@ For details on success responses to action requests, see [POST (action)](#post-a
 
 If the resource exists but does not support the requested operation, services may return the HTTP [405](#status-405) status code.
 
-Otherwise, if the service returns a client `4xx` or service `5xx` [status code](#status-codes), the service encountered an error and the resource shall not have been modified or created as a result of the operation.
+Otherwise, if the service returns a client 4xx or service 5xx [status code](#status-codes), the service encountered an error and the resource shall not have been modified or created as a result of the operation.
 
 ### PATCH (update)<a id="patch-update"></a>
 
-To update resources, the PATCH method is the preferred method.
+To update a resource's properties, the service shall support the PATCH method.
 
-The request body defines the changes to make to one or more properties in the resource that the request URI references.
+The request body defines the changes to make to one or more properties in the resource that the request URI references.  The PATCH request does not change any properties that are not in the request body.  The service shall ignore OData annotations in the request body, such as [resource identifier](#resource-identifier-property), [type](#type-property), and [ETag](#etag-property) properties.  Services may accept a PATCH with an empty JSON object, which indicates that the service should make no changes to the resource.
 
-The PATCH request does not change any properties that are not in the request body.
+When modification succeeds, the response may contain a representation of the updated resource.  See [Modification success responses](#modification-success-responses).
 
-When modification succeeds, the response may contain a representation of the updated resource. See [Modification success responses](#modification-success-responses).
+To gain the protection semantics of an ETag, the service shall use the `If-Match` or `If-None-Match` header and not the `@odata.etag` property value for that protection.
 
-The implementation may reject the update on certain fields based on its own policies and, in this case, not make the requested modifications.
+The implementation may reject the update on certain properties based on its own policies and, in this case, not perform the requested update.  For the following exception cases, services shall return the following HTTP status codes and other information:
 
-* To update a resource's properties, the service shall support the PATCH method.
-* Services may accept a PATCH with an empty JSON object, which indicates that the service should make no changes to the resource.
-
-For the following requests, services shall return the following HTTP status codes and other information:
-
-| Request | The service returns |
-|:--------|:--------------------|
+| Exception case | The service returns |
+| ---            | ---                 |
 | Modify several properties where one or more properties can never be updated.<br/>For example, such as when a property is read-only, unknown, or unsupported. | <ul><li>The HTTP [200](#status-200) status code.</li><li>A resource representation with a message [annotation](#extended-information) that lists the non-updatable properties.</li><li>The service may update other properties in the resource.</li></ul> |
 | Modify a single property that can never be updated.<br/>For example, a property that is read-only, unknown, or unsupported. | <ul><li>The HTTP [400](#status-400) status code.</li><li>A resource representation with a message [annotation](#extended-information) that shows the non-updatable property.</li></ul> |
 | Modify a resource or all properties that can never be updated. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
 | A client PATCH request against a resource collection. | <ul><li>The HTTP [405](#status-405) status code.</li></ul> |
+| A client only provides OData annotations. | <ul><li>The HTTP [400](#status-400) status code with the `NoOperation` message or  one of the [modification success responses](#modification-success-responses).</li></ul>
 
 In the absence of outside changes to the resource, the PATCH operation should be idempotent, although the original `ETag` value may no longer match.
 
-To show the number of entries that a client can update in a PATCH request, services may have null entries for properties that are JSON arrays.  Within a PATCH request, the service may specify unchanged members as empty JSON objects in a JSON array.  To clear members, the service may specify null in a JSON array.
+#### PATCH on array properties
 
-On update, the service shall ignore OData annotations, such as [resource identifier](#resource-identifier-property), [type](#type-property), and [ETag](#etag-property) properties.
+For array properties, services may report `null` values as placeholders to indicate the maximum number of elements that the service supports for that array property.  
 
-These annotations include those in the <code><var>PropertyName</var>@odata.<var>TermName</var></code> or <code>@odata.<var>TermName</var></code> format.
+Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  A PATCH request with fewer elements than currently exist in the array shall truncate the array to that length. 
 
-where 
+For example, an array of 'Flavors' indicates the service supports a maximum of six elements, with four populated. 
 
-| Variable | Description |
-|:--|:--|
-| <code><var>PropertyName</var></code> | The name of the property being annotated. |
-| <code><var>TermName</var></code> | The OData annotation term. |  
+```
+  "Flavors": [ "Chocolate", "Vanilla", "Mango", "Strawberry", null, null ]
+```
 
-If an update request only contains OData annotations, the service should return the `NoOperation` message that the base message registry defines.
+A client could issue the following PATCH request to remove `Vanilla`, replace `Strawberry` with `Cherry`, and add `Coffee` and `Banana` to the array, while leaving the other elements unchanged.
 
-To gain the protection semantics of an ETag, the service shall use the `If-Match` or `If-None-Match` header and not the `@odata.etag` property value for that protection.
+```
+  "Flavors": [ {}, null, {}, "Cherry", "Coffee", "Banana" ]
+```
+
+The resulting array after the PATCH is:
+
+```
+  "Flavors": [ "Chocolate", "Mango", "Cherry", "Coffee", "Banana", null ]
+```
 
 ### PUT (replace)<a id="put-replace"></a>
 
-To completely replace a resource, use the PUT method.  The service may add properties to the response resource that the client omits from the request body, the resource definition requires, or the service normally supplies.
+To completely replace a resource, services may support the PUT method.  The service may add properties to the response resource that the client omits from the request body, the resource definition requires, or the service normally supplies.
 
-When the replace operation succeeds, the response may contain a the resource representation after the replacement occurs.  See [Modification success responses](#modification-success-responses).
+The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that the operation might change ETag values.
 
-* To replace a resource in whole, services may support the PUT method.
+When the replace operation succeeds, the response may contain a resource representation after the replacement occurs.  See [Modification success responses](#modification-success-responses).
+
+The following list contains the exception cases for PUT:
 * If a service does not implement this method, the service shall return the HTTP [405](#status-405) status code.
 * Services may reject requests that do not include properties that the resource definition (schema) requires.
 * If the client makes a PUT request against a resource collection, services should return the HTTP [405](#status-405) status code.
-* The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that the operation might change ETag values.
 
 ### POST (create)<a id="post-create"></a>
 
-To create a new resource, use the POST method.  
+To create a new resource, services shall support the POST method on resource collections.
 
-The POST request is submitted to the resource collection to which the new resource is to belong.  When the create operation succeeds, the response may contain the resource representation after the update occurs.  See [Modification success responses](#modification-success-responses).
+The POST request is submitted to the resource collection to which the new resource will belong.  When the create operation succeeds, the response may contain the new resource representation.  See [Modification success responses](#modification-success-responses).
 
-The body of the create request contains a representation of the object to create.  The service may ignore any service-controlled properties, such as ID, which would force the service to overwrite those properties.  Additionally, the service shall set the `Location` header in the response to the URI of the new resource.
+The body of the create request contains a representation of the object to create.  The service may ignore any service-controlled properties, such as `Id`, which would force the service to overwrite those properties.  Additionally, the service shall set the `Location` header in the response to the URI of the new resource.
 
 * Submitting a POST request to a resource collection is equivalent to submitting the same request to the `Members` property of that resource collection.  Services that support the addition of `Members` to a resource collection shall support both forms.
     * For example, if a client adds a new member to the resource collection at `/redfish/v1/EventService/Subscriptions`, it can send a POST request to either `/redfish/v1/EventService/Subscriptions` or `/redfish/v1/EventService/Subscriptions/Members`.
-* Services shall support the POST method for resource creation.  If the resource does not offer anything to create, the service shall return the HTTP [405](#status-405) status code.
-* Services shall support POST operations on a URL that references a resource collection instance.
-* Services shall also support POST operations on a URL that references an action.  See [POST (action)](#post-action).
+* If the service does not allow for the creation of new resources, the service shall return the HTTP [405](#status-405) status code.
 * The POST operation shall not be idempotent.
 * Services may allow the inclusion of `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
 ### DELETE (delete)<a id="delete-delete"></a>
 
-To remove a resource, call the DELETE method.
+To remove a resource, the service shall support the DELETE method.
 
-When the delete operation succeeds, the response may contain the resource representation after the deletion occurs.  
+When the delete operation succeeds, the response may contain the resource representation after the deletion occurs.  See [Modification success responses](#modification-success-responses).
 
-See [Modification success responses](#modification-success-responses).
-
-* For resources that can be deleted, the service shall support the DELETE method.  If the resource can never be deleted, the service shall return the HTTP [405](#status-405) status code.
-* If the client specifies a DELETE request against a resource collection, the service should return the HTTP [405](#status-405) status code.
-* If the resource was already deleted, the service may return HTTP status code [404](#status-404) or a success code.
+* If the resource can never be deleted, the service shall return the HTTP [405](#status-405) status code.
+* If the resource was already deleted, the service may return HTTP status code [404](#status-404) or a [success code](#modification-success-responses).
 * The service may allow the inclusion of the `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
 ### POST (Action)<a id="post-action"></a>
 
-To initiate operations on an object, such as `Actions`, call the POST method.
+Services shall support the POST method to send actions to resources.
 
-* Services shall support the POST method to send actions.
 * The POST operation may not be idempotent.
 * Services may allow the inclusion of the `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
-To request actions on a resource, send the HTTP POST method to the URI of the action.  The `target` property in the resource's [`actions` property](#actions-property) shall contain the URI of the action.  The URI of the action shall be in the format:
+To request actions on a resource, send the HTTP POST method to the URI of the action.  The `target` property in the resource's [`Actions` property](#actions-property) shall contain the URI of the action.  The URI of the action shall be in the format:
 
 <pre><var>ResourceUri</var>/Actions/<var>QualifiedActionName</var></pre>
 
 where
 
-| Variable | Description |
-|:--|:--|
-| <code><var>ResourceUri</var></code> | The URI of the resource that supports the action. |
-| `Actions` | The name of the property that contains the actions for a resource, as defined by this specification. |
+| Variable                                    | Description |
+| ---                                         | ---         |
+| <code><var>ResourceUri</var></code>         | The URI of the resource that supports the action. |
+| `Actions`                                   | The name of the property that contains the actions for a resource, as defined by this specification. |
 | <code><var>QualifiedActionName</var></code> | The qualified name of the action.  Includes the namespace. |
 
 The first parameter of a bound function is the resource on which the action occurs.  The remaining parameters are name-and-value pairs in the request body.
@@ -966,35 +953,37 @@ The `ResetActionInfo` resource contains a more detailed description of the param
     "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
     "Id": "ResetActionInfo",
     "Name": "Reset Action Info",
-    "Parameters": [{
-        "Name": "ResetType",
-        "Required": true,
-        "DataType": "String",
-        "AllowableValues": [
-            "On",
-            "ForceOff",
-            "ForceRestart",
-            "Nmi",
-            "ForceOn",
-            "PushPowerButton"
-        ]
-    }]
+    "Parameters": [
+        {
+            "Name": "ResetType",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "On",
+                "ForceOff",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+               "PushPowerButton"
+            ]
+        }
+    ]
 }
 ```
 
 To indicate the success or failure of the `Action` request processing, the service may return a response with one of the following HTTP status codes and additional information:
 
-| To&nbsp;indicate | HTTP&nbsp;status&nbsp;code | Additional&nbsp;information |
-|:-----------------|:-----------------|:----------------------------|
-| The `Action` request succeeds. | [200](#status-200) | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.<br/>If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
-| The `Action` request may require extra time to process. | [202](#status-202) | A `Location` response header set to the URI of a task monitor. |
-| The `Action` request succeeds. | [204](#status-204) | No JSON message body. |
-| An error was detected and the `Action` request was not processed. | 400 or greater | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
+| To&nbsp;indicate                                                  | HTTP&nbsp;status&nbsp;code | Additional&nbsp;information |
+| ---                                                               | ---                        | ---                         |
+| The `Action` request succeeds.                                    | [200](#status-200)         | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.<br/>If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
+| The `Action` request may require extra time to process.           | [202](#status-202)         | A `Location` response header set to the URI of a task monitor. |
+| The `Action` request succeeds.                                    | [204](#status-204)         | No JSON message body. |
+| An error was detected and the `Action` request was not processed. | 400 or greater             | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
 
 Actions may have required parameters.  See [Resource actions](#resource-actions).
 
 | Scenario | Response |
-|:---------|:---------|
+| ---      | ---      |
 | The client did not provide all required parameters. | The service should respond with the HTTP [400](#status-400) status code. |
 | The `Action` does not have any required parameters. | The service should accept an empty JSON object in the HTTP body for the `Action` request.  |
 | The client provides a parameter that the service does not support. | The service shall either reject the request with HTTP [400](#status-400) status code or ignore the unknown parameters. |
@@ -1007,13 +996,15 @@ Example successful `Action` response:
     "error": {
         "code": "Base.1.0.Success",
         "message": "completed successfully Request",
-        "@Message.ExtendedInfo": [{
-            "@odata.type": "#Message.v1_0_0.Message",
-            "MessageId": "Base.1.0.Success",
-            "Message": "completed successfully Request",
-            "Severity": "OK",
-            "Resolution": "None"
-        }]
+        "@Message.ExtendedInfo": [
+	    {
+                "@odata.type": "#Message.v1_0_0.Message",
+                "MessageId": "Base.1.0.Success",
+                "Message": "completed successfully Request",
+                "Severity": "OK",
+                "Resolution": "None"
+            }
+	]
     }
 }
 ```
@@ -1038,7 +1029,8 @@ The following example response for a resource collection supports the `@Redfish.
     "Name": "Storage Volume Collection",
     "Description": "Storage Volume Collection",
     "Members@odata.count": 2,
-    "Members": [{
+    "Members": [
+        {
             "@odata.id": "/redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes/1"
         },
         {
@@ -1047,7 +1039,7 @@ The following example response for a resource collection supports the `@Redfish.
     ],
     "@Redfish.OperationApplyTimeSupport": {
         "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
-        "SupportedValues": ["Immediate", "OnReset"]
+        "SupportedValues": [ "Immediate", "OnReset" ]
     }
 }
 ```
@@ -1089,7 +1081,7 @@ The following example response for a `ComputerSystem` resource supports the `@Re
             ],
             "@Redfish.OperationApplyTimeSupport": {
                 "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
-                "SupportedValues": ["Immediate", "AtMaintenanceWindowStart"],
+                "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
                 "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
                 "MaintenanceWindowDurationInSeconds": 600,
                 "MaintenanceWindowResource": {
@@ -1124,51 +1116,40 @@ The `Settings` Redfish Schema defines the structure of the `@Redfish.OperationAp
 
 ## Service responses
 
-Redfish defines these response types:
+This clause describes the responses that Redfish services can send to clients.
 
-| Response type | Description |
-|:--------------|:------------|
-| [Metadata responses](#metadata-responses) | The resources and types that the service exposes to generic clients. |
-| [Resource responses](#resource-responses) | The JSON representation of an individual resource. |
-| [Resource collection responses](#resource-collection-responses) | The JSON representation of a resource collection. |
-| [Error responses](#error-responses) | The top-level JSON response that provides additional information for an HTTP error. |
- 
 ### Response headers
 
 HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for Redfish Services.
 
-* Redfish Services shall be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
-* Redfish Services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".
+* Redfish Services shall return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes" .
+* Redfish Services should return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".
 * Redfish clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.
 
-| Header | Required | Supported values | Description |
-|:-------|:---------|:-----------------|:------------|
-| `OData-Version` | Yes | 4.0 | The OData version of the payload to which the response conforms. |
-| `Content-Type` | Yes | [RFC 7231](#RFC7231) | The type of representation used in the message body.  Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the `Content-Type` if specified in the chosen media-type in the Accept header for the request. |
-| `Content-Encoding` | No | [RFC 7231](#RFC7231) | The encoding that has been performed on the media type. |
-| `Content-Length` | No | [RFC 7231](#RFC7231) | The size of the message body.  An optional means of indicating size of the body uses Transfer-Encoding: chunked, that does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
-| `ETag` | Conditional | [RFC 7232](#RFC7232) | An identifier for a specific version of a resource, often a message digest.   ETags shall be included on responses to GETs of ManagerAccount objects. |
-| `Server` | Yes | [RFC 7231](#RFC7231) | Required.  A product token and its version. Multiple product tokens may be listed. |
-| <a id="link-header-table"></a>`Link` | Yes | See [Link Header](#link-header) | Link Headers shall be returned as described in the clause on [Link Headers](#link-header). |
-| `Location` | Conditional | [RFC 7231](#RFC7231) | A URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  `Location` and `X-Auth-Token` shall be included on responses that create user sessions. |
-| `Cache-Control` | Yes | [RFC 7234](#RFC7234) | Shall be supported and indicates whether a response can or cannot be cached. |
-| `Via` | No | [RFC 7230](#RFC7230) | The network hierarchy and recognizes message loops. Each pass inserts its own VIA. |
-| `Max-Forwards` | No | [RFC 7231](#RFC7231) | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely. |
-| `Access-Control-Allow-Origin` | Yes | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks. |
-| `Allow` | Yes | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
-| `WWW-Authenticate` | Yes | [RFC 7235](#RFC7235), Section 4.1 | Required for Basic and other optional authentication mechanisms. See the [Security](#security-details) clause for details. |
-| `X-Auth-Token` | Yes | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
-| `Retry-After` | No | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
+| Header                               | Required    | Supported values                    | Description |
+| ---                                  | ---         | ---                                 | ---         |
+| `OData-Version`                      | Yes         | 4.0                                 | The OData version of the payload to which the response conforms. |
+| `Content-Type`                       | Yes         | [RFC 7231](#RFC7231)                | The type of representation used in the message body.  Services shall specify a `Content-Type` of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML.  `;charset=utf-8` shall be appended to the `Content-Type` if specified in the chosen media-type in the `Accept` header for the request. |
+| `Content-Encoding`                   | No          | [RFC 7231](#RFC7231)                | The encoding that has been performed on the media type. |
+| `Content-Length`                     | No          | [RFC 7231](#RFC7231)                | The size of the message body.  An optional means of indicating size of the body uses `Transfer-Encoding: chunked`, that does not use the `Content-Length` header.  If a service does not support `Transfer-Encoding` and needs `Content-Length` instead, the service shall respond with status code [411](#status-411). |
+| `ETag`                               | Conditional | [RFC 7232](#RFC7232)                | An identifier for a specific version of a resource, often a message digest.  The `ETag` header shall be included on responses to GETs of `ManagerAccount` resources. |
+| `Server`                             | Yes         | [RFC 7231](#RFC7231)                | A product token and its version.  Multiple product tokens may be listed. |
+| <a id="link-header-table"></a>`Link` | Yes         | See [Link header](#link-header)     | `Link` headers shall be returned as described in the clause on [Link headers](#link-header). |
+| `Location`                           | Conditional | [RFC 7231](#RFC7231)                | A URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  `Location` and `X-Auth-Token` shall be included on responses that create user sessions. |
+| `Cache-Control`                      | Yes         | [RFC 7234](#RFC7234)                | Shall be supported and indicates whether a response can or cannot be cached. |
+| `Via`                                | No          | [RFC 7230](#RFC7230)                | The network hierarchy and recognizes message loops.  Each pass inserts its own `Via` header. |
+| `Max-Forwards`                       | No          | [RFC 7231](#RFC7231)                | Limits gateway and proxy hops.  Prevents messages from remaining in the network indefinitely. |
+| `Access-Control-Allow-Origin`        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1  | Prevents or allows requests based on originating domain.  Used to prevent CSRF attacks. |
+| `Allow`                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD | Shall be returned with a [405](#status-405) (Method Not Allowed) response to indicate the valid methods for the request URI.  Shall be returned with any GET or HEAD operation to indicate the other allowable operations for this resource. |
+| `WWW-Authenticate`                   | Yes         | [RFC 7235](#RFC7235), Section 4.1   | Required for Basic and other optional authentication mechanisms.  See the [Security](#security-details) clause for details. |
+| `X-Auth-Token`                       | Yes         | Opaque encoded octet strings        | Used for authentication of user sessions.  The token value shall be indistinguishable from random. |
+| `Retry-After`                        | No          | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
 
-### Link header
+#### Link header
 
-The [Link Header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can describe things such as hyperlinks from the resource and JSON Schemas that describe the resource.
+The [Link header](#link-header-table) provides metadata information on the accessed resource in response to a HEAD or GET operation.  The information can contain items such as hyperlinks from the resource and JSON Schemas that describe the resource.
 
-Below is an example of the Link Headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.
-- The first Link Header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
-- The second Link Header is an example of an Annotation Link Header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
-- The third Link Header is an example for the JSON Schema that describes the actual resource.
-- Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).
+Below is an example of the `Link` headers of a `ManagerAccount` with a role of `Administrator` that has a Settings Annotation.
 
 ```http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
@@ -1176,134 +1157,127 @@ Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ```
 
-In the example:
+* The first `Link` header is an example of a hyperlink that comes from the resource.  It describes hyperlinks within the resource.  This type of header is outside the scope of this specification.
+* The second `Link` header is an example of an Annotation `Link` header as it references the JSON Schema that describes the annotation and does not have `rel=describedby`.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.
+* The third `Link` header is an example for the JSON Schema that describes the actual resource.
+    * Note that the URL can reference an unversioned JSON Schema (since the `@odata.type` in the resource indicates the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the `@odata.type` property of the resource).
 
-| `Link`<br/>header | Description |
-|:--------------|:------------|
-| 1 | Describes hyperlinks within the resource.  This type of header is outside the scope of this specification. |
-| 2 | An annotation header.  References the JSON schema that describes the annotation and does not have `rel=describedby`.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository.<blockquote><strong>Note:</strong> The URL can reference either:<ul><li>An unversioned JSON schema because the `@odata.type` in the resource indicates the appropriate version.</li><li>The versioned JSON schema, which according to previous normative statements must match the version in the `@odata.type` property of the resource.</li></ul></blockquote> |
-| 3 | The JSON schema that describes the actual resource.  The service shall return a `Link` header that contains `rel=describedby` for GET and HEAD requests.  GET and HEAD requests should return a `Link` header that satisfies annotations.  If the referenced JSON schema is a versioned schema, it shall match the version in the `@odata.type` property value that the resource returns. |
+A `Link` header containing `rel=describedby` shall be returned on GET and HEAD requests.  If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the `@odata.type` property returned in this resource.
+
+A `Link` header satisfying annotations should be returned on GET and HEAD requests.
 
 ### Status codes
 
-HTTP defines status codes that services can return in response messages.
+HTTP defines status codes that are used in responses.  The status codes themselves provide general information about how the request was processed, such as whether the request was successful, if the client provided bad information, or the service encountered an error when performing the request.
 
-To provide the client more meaningful and deterministic error semantics, the response body contains an [extended error resource](#error-responses) when the HTTP status code indicates a failure.
+* When the service returns a status code in the 4xx or 5xx range, services should return an [extended error response](#error-responses) in the response body.
+    * This is to provide the client more meaningful and deterministic error semantics.
+* When the service returns a status code in the 2xx range and the response contains a representation of a resource, services may use [extended information](#extended-information) to convey additional information about the resource.
+* Extended error messages shall not provide privileged information when authentication failures occur.
 
-* Services should return the extended error resource as described in this specification in the response body when the service returns the HTTP [400](#status-400) or greater status code.  Services may return the extended error resource, as described in this specification, in the response body when other status codes are returned for those codes and operations that allow a response body.
-* Extended error messages MUST NOT provide privileged information when authentication failures occur.
+NOTE: Refer to the [Security](#security-details) clause for security implications of extended errors.
 
-NOTE: Refer to the [Security](#security-details) clause for security implications of extended errors
-
-The following table lists HTTP status codes that have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification. Other codes may be returned by the service as appropriate, and their usage is implementation-specific. See the Description column for usage and additional requirements imposed by this specification.
+The following table lists HTTP status codes that have meaning or usage defined for a Redfish service, or are otherwise referenced by this specification.  Other codes may be returned by the service as appropriate, and their usage is implementation-specific.  See the description column for usage and additional requirements imposed by this specification.
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification.
-* Services shall respond with these status codes as appropriate.
-* Exceptions from operations shall be mapped to HTTP status codes.
-* Redfish Services should not return the status code 100. Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
+* Services shall respond with the status codes in the table below as defined in description column.
+* Redfish Services should not return the status code 100.  Using the HTTP protocol for a multipass data transfer should be avoided, except upload of extremely large data.
+* The HTTP [400 Bad Request](#status-400) status code should be used as the default status code for client-side errors if no other status code in the 4xx range is appropriate.
+* The HTTP [500 Internal Server Error](#status-500) status code should be used as the default status code for service-side errors if no other status code in the 5xx range is appropriate.
 
-| HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| <a id="status-200"></a>200 OK                     | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| <a id="status-201"></a>201 Created                | A request that created a new resource completed successfully.  The Location header shall be set to the canonical URI for the newly created resource.  A representation of the newly created resource may be included in the response body.                                                                                                                                                                                                                                                      |
-| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed.  The Location header shall be set to the URI of a Task Monitor that can later be queried to determine the status of the operation.  A representation of the Task resource may be included in the response body.                                                                                                                                                                                        |
-| <a id="status-204"></a>204 No Content             | The request succeeded, but no content is being returned in the body of the response.                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id="status-301"></a>301 Moved Permanently      | The requested resource resides under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| <a id="status-302"></a>302 Found                  | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| <a id="status-304"></a>304 Not Modified           | The service has performed a conditional GET request where access is allowed, but the resource content has not changed.  Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                                   |
-| <a id="status-400"></a>400 Bad Request            | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on).  An extended error shall be returned in the response body, as defined in clause [Error responses](#error-responses).                                                                                                                                                                                                   |
-| <a id="status-401"></a>401 Unauthorized           | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| <a id="status-403"></a>403 Forbidden              | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                               |
-| <a id="status-404"></a>404 Not Found              | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| <a id="status-405"></a>405 Method Not Allowed     | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI.  The response shall include an Allow header, that provides a list of methods that are supported by the resource identified by the Request-URI.                                                                                                                                                                                                                       |
-| <a id="status-406"></a>406 Not Acceptable         | The Accept header was specified in the request and the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the Accept header.                                                                                                                                                                                                                                                                                          |
-| <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple properties that work in a linked manner using incompatible values).                                                                                                                                                                                                                             |
-| <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities SHOULD delete references to the Request-URI after user approval.  If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code [404](#status-404) (Not Found) SHOULD be used instead.  This response is cacheable unless indicated otherwise. |
-| <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead).  The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                        |
-| <a id="status-412"></a>412 Precondition Failed    |The precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                      |
-| <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| <a id="status-428"></a>428 Precondition Required  | The request did not provide the required precondition, such as an If-Match or If-None-Match header.                                                                                                                                                                                                                                                                                                                                                                                             |
-| <a id="status-431"></a>431 Request Header Field Too Large  | The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.                                                                                                                                                                                                                                                                                                                                        |
-| <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
-| <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
-| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.  It may also use this response to indicate the service itself is undergoing maintenance, such as finishing initialization steps after reboot of the service.                                                     |
-| <a id="status-507"></a>507 Insufficient Storage | The server is unable to build the response for the client due to the size of the response. |
+| HTTP Status Code                                           | Description |
+| ---                                                        | ---         |
+| <a id="status-200"></a>200 OK                              | The request was successfully completed and includes a representation in its body. |
+| <a id="status-201"></a>201 Created                         | A request that created a new resource completed successfully.  The `Location` header shall be set to the canonical URI for the newly created resource.  A representation of the newly created resource may be included in the response body. |
+| <a id="status-202"></a>202 Accepted                        | The request has been accepted for processing, but the processing has not been completed.  The `Location` header shall be set to the URI of a Task Monitor that can later be queried to determine the status of the operation.  A representation of the Task resource may be included in the response body. |
+| <a id="status-204"></a>204 No Content                      | The request succeeded, but no content is being returned in the body of the response. |
+| <a id="status-301"></a>301 Moved Permanently               | The requested resource resides under a different URI. |
+| <a id="status-302"></a>302 Found                           | The requested resource resides temporarily under a different URI. |
+| <a id="status-304"></a>304 Not Modified                    | The service has performed a conditional GET request where access is allowed, but the resource content has not changed.  Conditional requests are initiated using the headers `If-Modified-Since` and/or `If-None-Match` (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change. |
+| <a id="status-400"></a>400 Bad Request                     | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on).  An extended error shall be returned in the response body, as defined in clause [Error responses](#error-responses). |
+| <a id="status-401"></a>401 Unauthorized                    | The authentication credentials included with this request are missing or invalid. |
+| <a id="status-403"></a>403 Forbidden                       | The service recognized the credentials in the request, but those credentials do not possess authorization to perform this request. |
+| <a id="status-404"></a>404 Not Found                       | The request specified a URI of a resource that does not exist. |
+| <a id="status-405"></a>405 Method Not Allowed              | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI.  The response shall include an `Allow` header, that provides a list of methods that are supported by the resource identified by the URI in the client request. |
+| <a id="status-406"></a>406 Not Acceptable                  | The `Accept` header was specified in the request and the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the `Accept` header. |
+| <a id="status-409"></a>409 Conflict                        | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple properties that work in a linked manner using incompatible values). |
+| <a id="status-410"></a>410 Gone                            | The requested resource is no longer available at the service and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities should delete references to the URI in the client request after user approval.  If the service does not know, or has no facility to determine, whether or not the condition is permanent, the status code [404](#status-404) (Not Found) should be used instead.  This response is cacheable unless indicated otherwise. |
+| <a id="status-411"></a>411 Length Required                 | The request did not specify the length of its content using the `Content-Length` header (perhaps `Transfer-Encoding: chunked` was used instead).  The addressed resource requires the `Content-Length` header. |
+| <a id="status-412"></a>412 Precondition Failed             | The precondition (such as `OData-Version`, `If-Match` or `If-Not-Modified` headers) check failed. |
+| <a id="status-415"></a>415 Unsupported Media Type          | The request specifies a `Content-Type` for the body that is not supported. |
+| <a id="status-428"></a>428 Precondition Required           | The request did not provide the required precondition, such as an `If-Match` or `If-None-Match` header. |
+| <a id="status-431"></a>431 Request Header Field Too Large  | The service is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large. |
+| <a id="status-500"></a>500 Internal Server Error           | The service encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses). |
+| <a id="status-501"></a>501 Not Implemented                 | The service does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the service does not recognize the request method and is not capable of supporting the method for any resource. |
+| <a id="status-503"></a>503 Service Unavailable             | The service is currently unable to handle the request due to temporary overloading or maintenance of the service.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.  It may also use this response to indicate the service itself is undergoing maintenance, such as finishing initialization steps after reboot of the service. |
+| <a id="status-507"></a>507 Insufficient Storage            | The service is unable to build the response for the client due to the size of the response. |
 
-### Metadata responses
+### OData metadata responses
 
-Metadata describes resources, resource collections, capabilities, and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification.  Clients are not required to request metadata if they already have sufficient understanding of the target service.  For example, clients are not required to request metadata to request and interpret a JSON representation of a resource that this specification defines.
+OData metadata describes resources, resource collections, capabilities, and service-dependent behavior to generic OData consumers with no specific understanding of this specification.  Clients are not required to request metadata if they already have sufficient understanding of the target service.  For example, clients are not required to request metadata to request and interpret a JSON representation of a resource that this specification defines.
 
-### Service metadata
+A client is able to access the OData metadata via the `/redfish/v1/$metadata` URI.
 
-The service metadata describes top-level service resources and resource types according to [OData-Schema](#OData-CSDL).  The Redfish service metadata is represented as an XML document with an `Edmx` root element in the `https://docs.oasis-open.org/odata/ns/edmx` namespace with an OData version attribute set to `4.0`.
+A client is able to access the OData service document via the `/redfish/v1/odata` URI.
+
+#### OData $metadata<a id="odata-metadata"></a>
+
+The OData metadata describes top-level service resources and resource types according to [OData-Schema](#OData-CSDL).  The OData metadata is represented as an XML document with an `Edmx` root element in the `https://docs.oasis-open.org/odata/ns/edmx` namespace with an OData version attribute set to `4.0`.
 
 ```xml
 <edmx:Edmx xmlns:edmx="https://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-    <!-- edmx:Reference and edmx:Schema elements go here -->
+  <!-- edmx:Reference and edmx:Schema elements go here -->
 </edmx:Edmx>
 ```
 
-#### Referencing other schemas
+##### Referencing other schemas
 
-The service metadata shall include the namespaces for each of the Redfish resource types, along with the `RedfishExtensions.v1_0_0` namespace.
+The OData metadata shall include the namespaces for each of the Redfish resource types, along with the `RedfishExtensions.v1_0_0` namespace.
 
 These references may use either:
 
-* The standard URI for the hosted Redfish Schema definitions, such as on `http://redfish.dmtf.org/schemas`.
-* A URI to a local version of the Redfish Schema that shall be identical to the hosted version.
+* The standard URI for the published Redfish Schema definitions, such as on `http://redfish.dmtf.org/schemas`.
+* A URI to a local version of the Redfish Schema.
 
 ```xml
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
-    <edmx:Include Namespace="AccountService" />
-    <edmx:Include Namespace="AccountService.v1_0_0" />
-</edmx:Reference>
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
-    <edmx:Include Namespace="ServiceRoot" />
-    <edmx:Include Namespace="ServiceRoot.v1_0_0" />
+  <edmx:Include Namespace="ServiceRoot"/>
+  <edmx:Include Namespace="ServiceRoot.v1_0_0"/>
 </edmx:Reference>
 
 ...
 
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
-    <edmx:Include Namespace="VirtualMedia" />
-    <edmx:Include Namespace="VirtualMedia.v1_0_0" />
+  <edmx:Include Namespace="VirtualMedia"/>
+  <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
 </edmx:Reference>
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish" />
+  <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
 </edmx:Reference>
 ```
 
-The service's [metadata document](#metadata-document-request) shall include an `EntityContainer` that defines the top-level resources and resource collections.
+The service's [OData metadata document](#metadata-document-request) shall include an `EntityContainer` that defines the top-level resources and resource collections.
 
-An implementation may extend the `ServiceContainer` that the `ServiceRoot` schema defines for the implementation's [OData service document](#odata-service-document).
+##### Referencing OEM extensions
 
-```xml
-<edmx:DataServices>
-    <Schema xmlns="https://docs.oasis-open.org/odata/ns/edm" Namespace="Service">
-        <EntityContainer Name="Service" Extends="ServiceRoot.v1_0_0.ServiceContainer" />
-    </Schema>
-</edmx:DataServices>
-```
+The OData metadata document may reference additional schema documents that describe OEM-specific extensions that the service uses.
 
-#### Referencing OEM extensions
-
-The metadata document may reference additional schema documents that describe OEM-specific extensions that the service uses.
-
-For example, the metadata document may reference custom types for additional resource collections.
+For example, the OData metadata document may reference custom types for additional resource collections.
 
 ```xml
 <edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
-    <edmx:Include Namespace="CustomTypes" />
+  <edmx:Include Namespace="CustomTypes"/>
 </edmx:Reference>
 ```
 
-### OData service document
+#### OData service document
 
-The OData service document serves as a top-level entry point for generic OData clients.
+The OData service document serves as a top-level entry point for generic OData clients.  More information about the OData service document can be found in the [OData JSON Format](#OData-JSON) specification.
 
 ```json
 {
     "@odata.context": "/redfish/v1/$metadata",
-    "value": [{
+    "value": [
+        {
             "name": "Service",
             "kind": "Singleton",
             "url": "/redfish/v1/"
@@ -1312,16 +1286,6 @@ The OData service document serves as a top-level entry point for generic OData c
             "name": "Systems",
             "kind": "Singleton",
             "url": "/redfish/v1/Systems"
-        },
-        {
-            "name": "Chassis",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Chassis"
-        },
-        {
-            "name": "Managers",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Managers"
         },
         ...
     ]
@@ -1332,499 +1296,41 @@ The service shall return the OData service document as a JSON object by using th
 
 The JSON object shall contain the `@odata.context` context property set to `/redfish/v1/$metadata`.
 
-This context tells a generic OData client how to find the [service metadata](#service-metadata) that describes the types that the service exposes.
-
 The JSON object shall include a `value` property set to a JSON array that contains an entry for the [service root](#service-root-request) and each resource that is a direct child of the service root.
 
 Each JSON object entry includes:
 
 | Property | Defines |
-|:---------|:--------|
-| `name` | A user-friendly resource name of the resource. | 
-| `kind` | The type of resource.  Value is either:<ul><li>`Singleton` for an individual resource, including a resource collection.</li><li>`EntitySet` for top-level resource collections.</li></ul> |
-| `url` | The relative URL for the top-level resource. |
+| ---      | ---     |
+| `name`   | A user-friendly resource name of the resource. | 
+| `kind`   | The type of resource.  Value is `Singleton` for all cases defined by Redfish. |
+| `url`    | The relative URL for the top-level resource. |
 
 ### Resource responses
 
-Services return resources as JSON payloads by using the `application/json` MIME type.  Resource property names match the case in the [Schema](#resource-properties).
-
-Responses for a single resource shall contain the [`Id`](#id-property) and [`Name`](#name-property) properties and may contain the [`Description`](#description-property) property.
-
-See also [Resource collection responses](#resource-collection-responses).
-
-#### Context property
-
-Responses for a single resource may contain a `@odata.context` context property that describes the source of the payload.
-
-If the [`@odata.context`](#context-property) property is present, it shall be the context URL that describes the resource, according to [OData-Protocol](#OData-Protocol).
-
-The context URL for a resource should be in the format:
-
-<pre><var>MetadataUrl</var>#<var>ResourceType</var></pre> 
- 
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
-| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>Many Redfish implementations concatenate the resource type namespace with a period (`.`) followed by the resource type. |
-
-For example, the following context URL specifies that the results show a single `ComputerSystem` resource:
-
-```json
-{
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    ...
-}
-```
-
-The context URL for a resource may be in one of the following formats:
- 
-<pre><var>MetadataUrl</var>#<var>ResourcePath</var>/$<var>entity</var></pre>
-
-or
-
-<pre><var>MetadataUrl</var>#<var>ResourceType</var>/$<var>entity</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
-| <code><var>ResourcePath</var></code> | The path from the service root to the singleton or resource collection that contains the resource. |
-| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>While <code><var>ResourcePath</var></code> or <code><var>ResourceType</var></code> is allowed, services should use the <code><var>MetadataUrl</var>#<var>ResourceType</var></code> format for the `@odata.context` property values.<br/>Use <code><var>ResourceType</var></code> because the [OData-Protocol](#OData-Protocol) requires additional constraints when the response returns partial or expanded results that pose an additional burden on services. |
-| <code><var>entity</var></code> | The entity.  Defines whether the response is a single resource from either:<ul><li>An entity set.</li><li>A navigation property.</li></ul> |
-
-#### Resource identifier property
-
-Resources in a response shall include a unique `@odata.id` identifier property.  The value of the identifier property shall be the unique resource [URI](#uris)
-
-In JSON payloads, resource identifiers are strings that conform to the rules for RFC3986-defined URI paths.  See **3.3. Path** in [Uniform Resource Identifier (URI): Generic Syntax](https://www.ietf.org/rfc/rfc3986.txt).
-
-Represent resources in the same authority as the request URI according to the rules of `path-absolute`, which that specification defines.
-
-That is, they shall always start with a single forward slash (`/`).
-
-Resources within a different authority as the request URI shall start with a double-slash (`//`) followed by the authority and path to the resource.
-
-The resource identifier is the canonical URL for the resource.  Use it to retrieve or edit the resource, as appropriate.
-
-#### Type property
-
-All resources in a response shall include a `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The `type` property value shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be in the format:
-
-<pre>#<var>Namespace</var>.<var>TypeName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The full namespace name of the Redfish Schema that defines the type.  For Redfish resources, the versioned namespace name. |
-| <code><var>TypeName</var></code> | The name of the resource type. |
-
-#### ETag property
-
-ETags enable clients to conditionally retrieve or update a resource.  Resources should include an `@odata.etag` ETag property.  For a resource, the value of the ETag property is the [ETag](#etags).
-
-#### Primitive properties
-
-Return primitive properties as JSON values:
-
-| Type | JSON representation |
-|:---|:---|
-| `Edm.Boolean` | Boolean. |
-| `Edm.DateTimeOffset` | String, as a [DateTime value](#datetime-values). |
-| `Edm.Duration` | String, as a [Duration value](#duration-values). |
-| `Edm.Decimal` | Number.  Optionally contains a decimal point. |
-| `Edm.Double` | Number.  Optionally contains a decimal point and an exponent. |
-| `Edm.Guid` | String.  Matches the `([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})` pattern. |
-| `Edm.Int64` | Number with no decimal point. |
-| `Edm.String` | String. |
-
-When receiving values from the client, services should support other valid representations of the data in the specified JSON type.  In particular, services should support valid integer and decimal values in exponential notation and integer values that contain a decimal point with no non-zero trailing digits.
-
-#### DateTime values
-
-Return `DateTime` values as JSON strings according to the ISO 8601 extended format, including the time offset or UTC suffix, in the format:
-
-<pre>
-	<var>YYYY</var>-<var>MM</var>-<var>DD</var> T <var>hh</var>:<var>mm</var>:<var>ss</var>[.<var>SSS</var>](Z|(+|-)<var>hh</var>:<var>mm</var>)
-</pre>
-
-where
-
-| Variable or separator | Description |
-|:--|:--|
-| <code>T</code> | The time separator.  Must be a capital `T`. |
-| <code><var>SSS</var></code> | The decimal fraction of a second.  One or more digits where the number of digits imply the precision. |
-| <code>Z</code> | The time zone separator.  Must be a capital `Z`. |
-
-When the time of day is unknown or serves no purpose, the service shall report `00:00:00Z` for the time of day value in `DateTime`.
-
-#### Duration values
-
-Return duration values as JSON strings according to the ISO 8601 duration format, in the format:
-
-<pre>P[<var>yyyy</var>Y][<var>mm</var>M][<var>ww</var>W][<var>dd</var>D][T[<var>hh</var>H][<var>mm</var>M][<var>ss</var>[.<var>fff</var>]S]]</pre>
-
-where
-
-| Variable | Defines |
-|:--|:--|
-| <code><var>yyyy</var></code> | Years. |
-| <code><var>mm</var></code> | Months. |
-| <code><var>ww</var></code> | Weeks. |
-| <code><var>dd</var></code> | Days. |
-| <code><var>hh</var></code> | Hours. |
-| <code><var>mm</var></code> | Minutes. |
-| <code><var>ss</var></code> | Seconds. |
-| <code><var>fff</var></code> | Fractional seconds. |
-
-Each field is optional and may contain more than one digit.
-
-For example, the following values represent the following durations:
-
-| Value | Specifies a duration of |
-|:--|:--|
-| `P3D` | Three days. |
-| `PT6H` | Six hours. |
-| `PT10S` | Ten seconds. |
-| `PT0.001S` | 0.001 seconds. |
-| `PT1H30M` | One hour and 30 minutes. |
-
-#### Structured properties
-
-Return structured properties, defined as [complex types](#structured-types) or [expanded](#expanded-resources) [resource types](#resource-type-definitions), as JSON objects.  Specify the type of JSON object in the Redfish Schema definition of the property that contains the structured value.
-
-Some structured properties inherit from the `Resource.v1_0_0.ReferenceableMember` definition.  Structured properties that follow this definition shall contain the [`MemberId`](#memberid-property) and [resource identifier](#resource-identifier-property) properties.
-
-Because the definition of structured properties can evolve over time, clients must be aware of the inheritance model that the different structured property definitions use.  
-
-For example, the `Location` definition in `Resource_v1.xml` has gone through several iterations since the `Resource.v1_1_0` namespace was introduced, and each iteration inherits from the previous version so that existing references in other schemas can leverage the new additions.
-
-Structured property references must resolve both local and external references.
-
-A local reference is a resource that has a structured property in its own schema, such as `ProcessorSummary` in the `ComputerSystem` resource.  In these cases, the [`type`](#type-property) property for the resource is the starting point for resolving the structured property definition.
-
-To find the latest applicable version, clients can step the [version of the resource](#type-identifiers) backwards.
-
-For example, if a service returns `#ComputerSystem.v1_4_0.ComputerSystem` as the resource type, a client can step backwards from `ComputerSystem.v1_4_0`, to `ComputerSystem.v1_3_0`, to `ComputerSystem.v1_2_0`, and so on, until it finds the `ProcessorSummary` structured property definition.
-
-An external reference is a resource that has a property that references a definition found in a different schema, such as `Location` in the `Chassis` resource.
-
-In these cases, clients can use the latest version of the external schema file as a starting point to resolve the structured property definition.
-
-For example, if the latest version of `Resource_v1.xml` is `1.6.0`, a client can go backward from `Resource.v1_6_0`, to `Resource.v1_5_0`, to `Resource.v1_4_0`, and so on, until it finds the `Location` structured property definition.
-
-#### Actions property
-
-Represent available actions for a resource as individual properties nested under a single structured property on the `Actions` resource.
-
-##### Action representation
-
-Represent actions as a property nested under `Actions`.  Use the unique URI that identifies the action to name the action.
-
-This URI shall be in the format
-
-<pre>#<var>Namespace</var>.<var>ActionName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The namespace in the reference to the Redfish Schema where the action is defined.  For Redfish resources, this shall be the version-independent namespace. |
-| <code><var>ActionName</var></code> | The name of the action. |
-
-The client may use this fragment to identify the [action definition](#resource-actions) in the [referenced](#referencing-other-schemas) Redfish Schema document that is associated with the specified namespace.
-
-The property is a JSON object that contains a `target` property.  The `target` property defines the relative or absolute URL to invoke the action.  The JSON object for the action may contain a `title` property, which is a string that defines the action's name.
-
-The [OData JSON Format](#OData-JSON) specification defines the `target` and `title` properties.
-
-To specify the list of allowable values for a parameter, the client can use the [`AllowableValues`](#allowable-values) annotation to annotate the property for the available action.
-
-For example, the following property defines the `Reset` action in the `ComputerSystem` namespace:
-
-```json
-{
-    "#ComputerSystem.Reset": {
-        "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-        "title": "Computer System Reset",
-        "ResetType@Redfish.AllowableValues": [
-            "On",
-            "ForceOff",
-            "GracefulRestart",
-            "GracefulShutdown",
-            "ForceRestart",
-            "Nmi",
-            "ForceOn",
-            "PushPowerButton"
-        ]
-    },
-    ...
-}
-```
-
-Given this, the client could invoke a POST request to `/redfish/v1/Systems/1/Actions/ComputerSystem.Reset` with the following body:
-
-```json
-{
-    "ResetType": "On"
-}
-```
-
-##### Allowable values
-
-To specify the list of allowable values for a parameter, clients can use `AllowableValues` annotation to annotate the property for the action.
-
-To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
-
-#### Links property
-
-A resource's `Links` property [references](#reference-properties) other resources.
-
-The `Links` property shall be named `Links` and contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) that the Redfish Schema for that type defines.
-
-* For single-valued reference properties, the value of the property shall be the [single related resource ID](#reference-to-a-single-related-resource).
-* For collection-valued reference properties, the value of the property shall be the [array of related resource IDs](#array-of-references-to-related-resources).
-
-To navigate vendor-specific hyperlinks, the `Links` property shall also include an [OEM property](#oem-property).
-
-##### Reference to a single-related resource
-
-A reference to a single resource is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The name of this reference is the name of the relationship.  The value of this reference is the URI of the referenced resource.
-
-```json
-{
-    "Links": {
-        "ManagedBy": {
-            "@odata.id": "/redfish/v1/Chassis/Encl1"
-        }
-    }
-}
-```
-
-##### Array of references to related resources
-
-A reference to a set of zero or more related resources is an array of JSON objects.  The name of this reference is the name of the relationship.  Each member of the array is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The member's value is the URI of the referenced resource.
-
-```json
-{
-    "Links": {
-        "Contains": [{
-                "@odata.id": "/redfish/v1/Chassis/1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Encl1"
-            }
-        ]
-    }
-}
-```
-
-#### OEM property
-
-OEM-specific properties are nested under an [OEM property](#oem-property).
-
-#### Partial resource results
-
-A service shall not break responses for a single resource into multiple results.  For details about the format of these responses, see [partial results](#next-link-property-and-partial-results).
-
-#### Extended information
-
-Response objects may include extended information.  For example, response objects may include information about properties that cannot be updated.  To define this information, apply an annotation to a specific property of the JSON response or an entire JSON object.  See [Extended property information](#extended-property-information).
-
-##### Extended object information
-
-To specify object-level status information, services can annotate a JSON object with `@Message.ExtendedInfo`.
-
-```json
-{
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
-    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
-    "Name": "Managed Serial Interface 1",
-    "Description": "Management for Serial Interface",
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
-    "InterfaceEnabled": true,
-    "SignalType": "Rs232",
-    "BitRate": "115200",
-    "Parity": "None",
-    "DataBits": "8",
-    "StopBits": "1",
-    "FlowControl": "None",
-    "ConnectorType": "RJ45",
-    "PinOut": "Cyclades",
-    "@Message.ExtendedInfo": [{
-        "MessageId": "Base.1.0.PropertyDuplicate",
-        "Message": "The property InterfaceEnabled was duplicated in the request.",
-        "RelatedProperties": [
-            "#/InterfaceEnabled"
-        ],
-        "Severity": "Warning",
-        "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
-    }]
-}
-```
-
-The value of the property is an array of [message objects](#message-object).
-
-##### Extended property information
-
-Services can use `@Message.ExtendedInfo`, prepended with the name of the property to annotate an individual property in a JSON object with extended information:
-
-```json
-{
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
-    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
-    "Name": "Managed Serial Interface 1",
-    "Description": "Management for Serial Interface",
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
-    "InterfaceEnabled": true,
-    "SignalType": "Rs232",
-    "BitRate": 115200,
-    "Parity": "None",
-    "DataBits": 8,
-    "StopBits": 1,
-    "FlowControl": "None",
-    "ConnectorType": "RJ45",
-    "PinOut": "Cyclades",
-    "PinOut@Message.ExtendedInfo": [{
-        "MessageId": "Base.1.0.PropertyValueNotInList",
-        "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
-        "Severity": "Warning",
-        "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
-    }]
-}
-```
-
-The value of the property is an array of [message objects](#message-object).
-
-#### Additional annotations
-
-A JSON resource representation may include additional annotations as properties with the name in the format:
-
-<pre>[<var>PropertyName</var>]@<var>Namespace</var>.<var>TermName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>PropertyName</var></code> | The name of the property to annotate.  If absent, the annotation applies to the entire resource. |
-| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [metadata document](#service-metadata) in the [context URL](#context-property) of the request must reference this namespace. |
-| <code><var>TermName</var></code> | The name of the annotation term to apply to the resource or property of the resource. |
-
-Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
-
-The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
-
-### Resource collection responses
-
-Resource collections are JSON payloads that use the `application/json` MIME type.  Resource property names match the case in the [Schema](#resource-properties).  
-
-Clients shall derive resource collection schema from the `Resource` schema.  Thus, resource collection responses shall contain the following properties:
-
-* The [`Name` property](#name-property)
-* The [Resource Identifier property](#resource-identifier-property)
-* The [`Type` property](#type-property)
-* An array of [`Members`](#members-property)
-* A [resource count](#count-property)
-
-Responses for resource collections may contain the following properties:
-
-* The [`Description` property](#description-property)
-* The [`Context` property](#context-property)
-* An [`Etag` property](#etag-property)
-* A [`Next Link` property](#next-link-property-and-partial-results) for partial results
-* An [`OEM` property](#oem-property)
-
-Responses for resource collections shall not contain any property that this section of this specification does not explicitly define.
-
-#### Context property
-
-Responses shall contain an `@odata.context` context property that describes the source of the payload.  The value of the context property shall be the context URL that describes the resource collection, according to [OData-Protocol](#OData-Protocol).
-
-The context URL for a resource collection has one of these formats:
-
-<pre><var>MetadataUrl</var>.#<var>CollectionResourceType</var></pre>
-<pre><var>MetadataUrl</var>.#<var>CollectionResourcePath</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>MetadataUrl</var></code> | The metadata URL of the service, which is `/redfish/v1/$metadata`. |
-| <code><var>CollectionResourceType</var></code> | The fully qualified name of the unversioned type of resources in the resource collection. |
-| <code><var>CollectionResourcePath</var></code> | The path from the service root to the resource collection. |
-
-#### Count property
-
-The `count` property defines the total number of resources, or members, that are available in the resource collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the resource collection.  The `$top` or `$skip` [query parameters](#query-parameters) do not affect this count.
-
-#### Members property
-
-The `Members` property defines a collection of resources as a array of JSON objects. 
-
-The Redfish Schema document that describes the containing type defines the type of each JSON object in the array.  The name of the property representing the members of the collection shall be `Members`.  The `Members` property shall not be null.  Empty collections shall be an empty JSON array.
-
-#### Next Link Property and partial results
-
-Responses may contain a subset of the members of the full resource collection.  For partial resource collections, the response includes a `Next Link` property named `Members@odata.nextLink`.  
-
-The value of the `Next Link` property shall be an opaque URL to a resource, with the same `@odata.type`, which contains the next set of partial members.  The `Next Link` property shall only be present if the number of `Members` in the resource collection is greater than the number of members returned, and if the payload does not represent the end of the requested resource collection.
-
-The [`count` property](#count-property) value is the total number of resources available if the client enumerates all pages of the resource collection.
-
-#### Additional annotations
-
-A JSON object that represents a resource collection may include additional annotations represented as properties whose name is in the format:
-
-<pre>@<var>Namespace</var>.<var>TermName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [metadata document](#service-metadata) that the [context URL](#context-property) of the request defines shall reference this namespace. |
-| <code><var>TermName</var></code> | The name of the annotation term to apply to the resource collection. |
-
-Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
-
-The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations that the Redfish namespace defines.
+Services return resources and resource collections as JSON payloads by using the `application/json` MIME type.  The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages) clauses for rules about the Redfish schema, and how it maps to JSON payloads.
 
 ### Error responses
 
-HTTP response status codes often do not provide enough information to enable deterministic error semantics.
+HTTP response status codes often do not provide enough information to enable deterministic error semantics.  For example, if a client makes a PATCH call and some properties do not match while others are not supported, the HTTP [400](#status-400) status code does not tell the client which values are in error.  Error responses are used to provide the client more meaningful and deterministic error semantics.
 
-For example, if a client makes a PATCH call and some properties do not match while others are not supported, the HTTP [400](#status-400) status code does not tell the client which values are in error.
+To provide the client with as much information about the error as possible, a Redfish service may provide multiple error responses in the HTTP response.  Additionally, the service may provide Redfish standardized errors, OEM-defined errors, or both, depending on the implementation's ability to convey the most useful information about the underlying error.
 
-Error responses provide the client more meaningful and deterministic error semantics.
+An extended error response, which is a single JSON object, defines the error responses, with an `error` property, which contains the following properties.
 
-To provide the client with as much information about the error as possible, a Redfish service may provide multiple error responses in the HTTP response.
-
-Additionally, the service may provide Redfish standardized errors, OEM-defined errors, or both, depending on the implementation's ability to convey the most useful information about the underlying error.
-
-An extended error resource, which is a single JSON object, defines the error responses, with an `error` property with the following properties.
-
-| Property | Description |
-|:---|:---|
-| `code` | String.  Defines a `MessageId` from the message registry. |
-| `message` | Displays a human-readable error message that corresponds to the message in the message registry. |
-| `@Message.ExtendedInfo` | Displays an array of [message objects](#message-object). Describes one or more error messages. |
+| Property                | Description |
+| ---                     | ---         |
+| `code`                  | String.  Defines a `MessageId` from the Message Registry. |
+| `message`               | Displays a human-readable error message that corresponds to the Message in the Message Registry. |
+| `@Message.ExtendedInfo` | Displays an array of [Message objects](#message-object).  Describes one or more error messages. |
 
 ```json
 {
     "error": {
         "code": "Base.1.0.GeneralError",
         "message": "A general error has occurred.  See ExtendedInfo for more information.",
-        "@Message.ExtendedInfo": [{
+        "@Message.ExtendedInfo": [
+            {
                 "@odata.type": "#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyValueNotInList",
                 "RelatedProperties": [
@@ -1856,80 +1362,127 @@ An extended error resource, which is a single JSON object, defines the error res
 }
 ```
 
-#### Message object
-
-A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
-
-A `Message` object is a JSON object with the following properties:
-
-| Property | Type | Required | Defines |
-|:---|:---|:---|:---|
-| `MessageId` | String | Required | The error or message, which is not to be confused with the HTTP status code.<br/>Clients can use this code to access a detailed message from a message registry. |
-| `Message` | String | Required | The human-readable error message that indicates the semantics associated with the error.<br/>This shall be the complete message, and not rely on substitution variables. |
-| `RelatedProperties` | An array of JSON pointers | Optional | The properties in a JSON payload that the message describes. |
-| `MessageArgs` | An array of strings | Optional | The substitution parameter values for the message.<br/>If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
-| `Severity` | String | Optional | The severity of the error. |
-| `Resolution` | String | Optional | The recommended actions to take to resolve the error. |
-
-Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
-
-`MessageIds` identify specific messages that a message registry defines.
-
-The `MessageId` property value shall be in the format:
-
-<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
-| <code><var>MajorVersion</var></code> | A positive integer. The major version of the registry. |
-| <code><var>MinorVersion</var></code> | A positive integer. The minor version of the registry. |
-| <code><var>MessageKey</var></code> | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
-
-To search the message registry for a corresponding message, the client can use the `MessageId`.
-
-The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
-
-The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
-
-When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
-
-## Data model and Schema
-
-One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
-
-* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
-
-### Schema, registry and profile repository
-
-All Redfish schemas, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
-
-| URL | Folder contents |
-|-----|-----------------|
-| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
-| redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
-| redfish.dmtf.org/schemas/v1/{code} |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
-| redfish.dmtf.org/schemas/archive | Subfolders contain schema files specific to a particular version release. |
-| redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
-| redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
-| redfish.dmtf.org/registries/v1/{code} | Durable URL for programmatic access to localized v1.xx registry files.   Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
-| redfish.dmtf.org/registries/archive | Subfolders contain registry files specific to a particular version release. |
-| redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
-| redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
-| redfish.dmtf.org/profiles/archive | Subfolders contain profile files specific to a particular profile version or release. |
-| redfish.dmtf.org/dictionaries | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
-| redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
-| redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
+## Data model
 
 
-#### Schema, registry, and profile file naming conventions
-
-Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
+### Resources and Resource Collections
 
 
-##### CSDL (XML) schema file naming
+### Properties
+
+* A service may implement a writable property as read-only.
+
+Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
+
+Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
+
+Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
+
+#### Reference properties
+
+
+### Settings Resource
+
+
+### Special Resource situations
+
+
+### Registries
+
+
+### Schema annotations
+
+Schema annotations are used throughout the schema definitions of the data model in order to provide additional documentation for developers.  This clause describes the different types of schema annotations used by the Redfish data model.  See the [Schema definition languages](#schema-definition-languages) clause for information for how each of the annotations are implemented in their respective schema languages.
+
+#### Description annotation
+
+The Description annotation can be applied to any type, property, action, or parameter in order to provide a human-readable description of the Redfish Schema element.
+
+All Redfish types, [properties](#properties), [reference properties](#reference-properties), and enumeration values shall include a Description annotation.
+
+All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Description annotation.
+
+All [structured types](#structured-properties) shall include a Description annotation.
+
+#### Long Description annotation
+
+The Long Description annotation can be applied to any type, property, action, or parameter in order to provide a formal, normative specification of the schema element.  Where the Long Descriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
+
+All Redfish types, [properties](#properties), and [reference properties](#reference-properties) shall include a Long Description annotation.
+
+All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Long Description annotation.
+
+All [structured types](#structured-properties) shall include a Long Description annotation.
+
+#### Resource Capabilities annotation
+
+The Resource Capabilities annotation can be applied to Resources and Resource Collections to express the different type of HTTP operations a client is able to invole on the given Resource or Resource Collection.
+
+* Insert Capabilities is used to show whether or not a client is able to perform a POST on the resource.
+* Update Capabilities is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
+* Delete Capabilities is used to show whether or not a client is able to perform a DELETE on the resource.
+* A service may only implement a subset of the capabilities that are allowed on the Resource or Resource Collection.
+
+All Redfish Resources and Resource Collections shall include Resource Capabilities annotations
+
+#### Resource URI Patterns annotation
+
+The Resource URI Patterns annotation is used to express the valid URI patterns for a given Resource or Resource Collection.
+
+The strings for the URI patterns may use `{` and `}` characters to express parameters within a given URI pattern.  Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the `Id` string property for the corresponding Resource, or the `MemberId` string property for the corresponding object within a Resource.
+
+The following string is an example URI pattern that describes a Manager Account Resource: `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`
+
+Using the above example, `{ManagerAccountId}` would be replaced by the `Id` property of the corresponding Manager Account resource.  If the `Id` property for a given Manager Account resource is `John`, then the full URI for that resource would be `/redfish/v1/AccountService/Accounts/John`.
+
+All Redfish Resources and Redfish Resource Collections shall be annotated with the Resource URI Patterns annotation.
+
+All Redfish Resources and Redfish Resource Collections implemented by a service shall match the URI pattern described by the Resource URI Patterns annotation for their given definition.
+
+#### Additional Properties annotation
+
+The Additional Properties annotation is used to specify whether a type can contain additional properties outside of those defined in the schema.  Types that do not support additional properties shall not contain properties beyond those described in the schema.
+
+#### Permissions annotation
+
+The Permissions annotation is used to specity if a client is allowed to write a given property, or if the property is read-only.
+
+#### Required annotation
+
+The Required annotation is used to specify that a property is required to be supported by services.  Required properties shall be annotated with the Required annotation.  All other properties are optional.
+
+If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases.  Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
+
+#### Required on Create annotation
+
+The Required on Create annotation is used to specify that a property is required to be provided by the client on creation of the resource.  Properties not annotated with the Required on Create annotation, are not required to be provided by the client on a create operation.
+
+#### Units of Measure annotation
+
+In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units of Measure annotation in order to specify the units of measurement for the property.
+
+The value of the annotation should be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
+
+#### Expanded Resource annotation
+
+The Expanded Resource annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to provide the contents of the related [Resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
+
+### Versioning
+
+
+### Localization
+
+
+### Schema repository
+
+
+## Schema definition languages
+
+### Common Schema Definition Language
+
+Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
+
+#### File naming conventions for CSDL
 
 Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
    
@@ -1937,182 +1490,32 @@ Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers)
 
 For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml".
 
-##### JSON Schema file naming
+#### CSDL format
 
-Redfish JSON Schema files shall be named using the [Type identifiers](#type-identifiers), following the format:
-
-  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
-  
-For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
-
-##### OpenAPI file naming
-
-Redfish OpenAPI files shall be named using the [Type identifiers](#type-identifiers), following the format:
-
-  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.yaml*
-  
-For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.yaml".
-
-##### Registry file naming
-
-Redfish message or privilege registry files shall be named using the Registry name, following the format:
-
-  *RegistryName.MajorVersion.MinorVersion.Errata.json*
-  
-For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
-
-##### Profile file naming
-
-The JSON document describing a Profile follows the Redfish Schema file naming conventions. The file name format for Profiles shall be formatted as:
-
-  *ProfileName.vMajorVersion_MinorVersion_Errata.json*
-
-For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The file name shall include the Profile name and Profile version matching those property values within the document.
-
-##### Dictionary file naming
-
-The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
-
-  *DictionaryName_vMajorVersion.dict*
-
-For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.dict".
-
-##### OEM schema file naming
-
-To avoid namespace collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
- 
-#### Programmatic access to schema, registry, or profile files
-
-Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
-
-
-
-
-### Type identifiers
-
-Types are identified by a *Type URI*. The URI for a type is of the form:
-
- `  #*Namespace*.*TypeName*`
-
-where
-
-* *Namespace* = the name of the namespace where the type is defined
-* *TypeName* = the name of the type
-
-The namespace for types defined by this specification is of the form:
-
- ` *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*`
-
-where
-
-* *ResourceTypeName* = the name of the resource type. For [structured (complex) types](#structured-types), [enumerations](#enums), and [actions](#resource-actions), this is generally the name of the containing resource type.
-* *MajorVersion* = integer: something in the class changed in a backward incompatible way.
-* *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minor versions.
-* *Errata* = integer: something in the prior version was broken and needed to be fixed.
-
-An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an example of a corresponding Type URI would be "#ComputerSystem.v1_0_0.ComputerSystem".
-
-#### Type identifiers in JSON Schema
-
-In JSON Schema definitions for Redfish schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
-
-For example, the "title" property for the ComputerSystem schema would be:
-
- ` "title": "#ComputerSystem.v1_0_0.ComputerSystem"`
-
-#### Type identifiers in JSON
-
-Types used within a JSON payload shall be defined in, or referenced by, the [service metadata](#service-metadata).
-
-Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
-
-NOTE: Refer to the [Security](#security-details) clause for security implications of Data Model and Schema.
-
-### Common naming conventions
-
-The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
-
-Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
-* The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
-* No underscores are used.
-* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
-
-Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI" (e.g.,"iSCSITarget")
- * Product names like "iLO"
- * Well-known abbreviations or acronyms
- * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
- * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
-
-For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
- * Bandwidth (Mbps), (e.g., PortSpeedMbps)
- * CPU speed (Mhz), (e.g., ProcessorSpeedMhz)
- * Memory size (MegaBytes, MB), (e.g., MemoryMB)
- * Counts of items (Count), (e.g., ProcessorCount, FanCount)
- * The State of a resource (State) (e.g., PowerState.)
- * State values where "work" is being done end in (ing) (e.g., Applying, Clearing)
-
-### Localization considerations
-
-The creation of separate localized copies of Redfish schemas and registries is allowed and encouraged.  Localized schema and registry files may be submitted to the DMTF for republication in the Redfish Schema Repository.
-
-Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
-
-Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO-639-1) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
-
-Descriptive property, parameter, and enumeration text not translated into the languge specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
-
-### Schema definition
-
-Individual resources and their dependent types and actions are defined within a Redfish [schema document](#schema-documents).
-
-#### Common annotations
-
-All Redfish types and properties shall include [description](#description) and [long description](#long-description) annotations.
-
-##### Description
-
-The Description annotation can be applied to any type, property, action or parameter in order to provide a human-readable description of the Redfish Schema element.
-
-The `Description` annotation is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
-
-##### Long description
-
-The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.  Where the LongDescriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
-
-The `LongDescription` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
-
-#### Schema documents
-
-Individual resources are defined as entity types within an OData Schema representation of the Redfish Schema according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema and OpenAPI representations of the Redfish Schema capable of validating JSON payloads.
-
-##### Schema modification rules
-
-Schema referenced from the implementation, either from the OData Service Document or from the JSON Schema File representations, may vary from the canonical definitions of those Schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
-* Modified schema may constrain a read/write property to be read only.
-* Modified schema may remove properties. 
-* Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
-* Other modifications to the Schema shall not be allowed.
-
-##### Schema version requirements
 The outer element of the OData Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
-~~~xml
+```xml
   <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
     <!-- edmx:Reference and edmx:DataService elements go here -->
   </edmx:Edmx>
-~~~
+```
 
-##### Referencing other schemas
+The [Referencing other CSDL files](#referencing-other-csdl-files) and [CSDL Data Services](#csdl-data-services) clauses describe the items that are found within the `Edmx` element.
 
-Redfish Schemas may reference types defined in other schema documents.  In the OData Schema representation, this is done by including a `Reference` element. In the JSON Schema and OpenAPI representations, this is done with a $ref property.
+##### Referencing other CSDL files
 
-The reference element specifies the `Uri` of the OData schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
+CSDL files may reference types defined in other CSDL documents.  This is done by including `Reference` tags.
 
-Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.v1_0_0 namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#units-of-measure).
+The Reference element uses the `Uri` attribute to specify a CSDL file.  The Reference element also contains one or more `Include` tags that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-~~~xml
+Type definitions generally reference the OData and Redfish namespaces for common type annotation terms.  Redfish CSDL files always use the `Alias` attribute on the following namespaces:
+
+* `Org.OData.Core.V1` is aliased as `OData`.
+* `Org.OData.Measures.V1` is aliased as `Measures`.
+* `RedfishExtensions.v1_0_0` is aliased as `Redfish`.
+* `Validation.v1_0_0` is aliased as `Validation`.
+
+```xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
@@ -2122,121 +1525,110 @@ Type definitions generally reference the OData and Redfish namespaces for common
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
-~~~
+```
 
-##### Namespace definitions
+##### CSDL Data Services
 
-Resource types are defined within a namespace in the OData Schema representations. The namespace is defined through a `Schema` element that contains attributes for declaring the `Namespace` and local `Alias` for the schema.
+Structures, enums, and other definitions are defined within a namespace in CSDL.  The namespace is defined through a `Schema` tag and using the `Namespace` attribute to declare the name of the namespace.  Redfish uses namespaces to differentiate different versions of the schema.  CSDL allows for structures to inherit from other structures, which allows for newer namespaces to only define the additional definitions.  This behavior is described further in the [Elements of CSDL namespaces](#elements-of-csdl-namespaces) clause.
 
-The OData Schema element is a child of the `DataServices` element, which is a child of the [Edmx](#schema-documents) element.
+The `Schema` element is a child of the `DataServices` element, which is a child of the `Edmx` element.
 
-~~~xml
+```xml
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.v1_0_0">
+      <!-- Type definitions for version 1.0.0 of MyTypes go here -->
+    </Schema>
 
-      <!-- Type definitions go here -->
-
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.v1_1_0">
+      <!-- Type definitions for version 1.1.0 of MyTypes go here -->
     </Schema>
   </edmx:DataServices>
-~~~
+```
 
-#### Resource type definitions
+#### Elements of CSDL namespaces
 
-Resource types are defined within a [namespace](#namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
+The following clauses describe the different definitions that can be found within each namespace.
 
-Redfish resources derive from a common resource base type named "Resource" in the Resource.v1_0_0 namespace.
+##### Qualified names
 
-The EntityType contains the [property](#resource-properties) and [reference property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
+Many definitions in CSDL use references to qualified names.  CSDL defines this as a string in the form of "_Namespace_._TypeName_", where:
 
-~~~xml
+* _Namespace_ is the name of the namespace.
+* _TypeName_ is the name of the element contained within the namespace.
+
+For example, if a reference is being made to `MyType.v1_0_0.MyDefinition`, this means the definition can be found in the `MyType.v1_0_0` namespace with an element of the name `MyDefinition`.
+
+##### Entity Type and Complex Type elements
+
+The Entity Type and Complex Type elements are defined using the `EntityType` and `ComplexType` tags respectively.  These elements are used to define a JSON structure and their set of properties.  This is done by defining [Property elements](#property-element) and [Navigation Property element](#navigation-property-element) within the `EntityType` or `ComplexType` tags.
+
+All Entity Types and Complex Types contain a `Name` attribute, which specifies the name of the definition.
+
+Entity Types and Complex Types may have a `BaseType` attribute, which specifies a [qualified name](#qualified-names).  When the `BaseType` attribute is used, all of the definitions of the referenced `BaseType` are made available to the Entity Type or Complex Type being defined.
+
+All [Resources and Resource Collections](resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
+
+Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  This allows for references to be made using the [Navigation Property element](#navigation-property-element).
+
+Example Entity Type and Complex Type element:
+```xml
   <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
     <Annotation Term="OData.Description" String="This is the description of TypeA."/>
     <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
 
-    <!-- Property and Reference Property definitions go here -->
+    <!-- Property and Navigation Property definitions go here -->
 
   </EntityType>
-~~~
 
-All resources shall include [Description](#description) and [LongDescription](#long-description) annotations.
+  <ComplexType Name="PropertyTypeA">
+    <Annotation Term="OData.Description" String="This is type used to describe a structured property."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
 
+    <!-- Property and Navigation Property definitions go here -->
 
-#### Resource capabilities
+  </ComplexType>
+```
 
-The capabilities of a resource are expressed using the `Capabilities.InsertRestrictions`, `Capabilities.UpdateRestrictions`, and `Capabilities.DeleteRestrictions` terms.
-* `Capabilities.InsertRestrictions` is used to show whether or not a client is able to perform a POST on the resource.
-* `Capabilities.UpdateRestrictions` is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
-* `Capabilities.DeleteRestrictions` is used to show whether or not a client is able to perform a DELETE on the resource.
-* A service may only implement a subset of the capabilities that are set to true.
-
-~~~xml
-  <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-
-    <!-- Other definitions for the EntityType go here -->
-
-    <Annotation Term="Capabilities.InsertRestrictions">
-      <Record>
-        <PropertyValue Property="Insertable" Bool="false"/>
-      </Record>
-    </Annotation>
-    <Annotation Term="Capabilities.UpdateRestrictions">
-      <Record>
-        <PropertyValue Property="Updatable" Bool="true"/>
-        <Annotation Term="OData.Description" String="Manager Accounts can be updated to change the password and other writable properties."/>
-      </Record>
-    </Annotation>
-    <Annotation Term="Capabilities.DeleteRestrictions">
-      <Record>
-        <PropertyValue Property="Deletable" Bool="true"/>
-        <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
-      </Record>
-    </Annotation>
-  </EntityType>
-~~~
-
-In the above example, the `Capabilities.InsertRestrictions` term has the `Insertable` property set to false, meaning a client is not able to perform a POST on the resource.  It also uses the `Capabilities.UpdateRestrictions` term with the `Updatable` property set to true, meaning a client is able to perform a PATCH or PUT on the resource, assuming the client has the right privilege to perform these operations.  It also uses the `Capabilities.DeleteRestrictions` term with the `Deletable` property set to true, meaning a client is able to perform a DELETE on the resource, assuming the client has the right privilege to perform this operation.
+##### Action element
 
 
-#### Resource URI pattern definitions
 
-The URI patterns allowed for a given Redfish Resource are expressed using the `Redfish.Uris` annotation within the `EntityType` element.
+##### Property element
 
-~~~xml
-  <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+[Properties](#properties) of [Resources, Resource Collections](resources-and-resource-collections), and [structured properties](#structured-properties) are defined using the Property element.  The `Property` tag is used to define a Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
 
-    <!-- Other definitions for the EntityType go here -->
+All Property elements contain a `Name` attribute, which specifies the name of the property.
 
-    <Annotation Term="Redfish.Uris">
-      <Collection>
-        <String>/redfish/v1/AccountService/Accounts/{ManagerAccountId}</String>
-      </Collection>
-    </Annotation>
-  </EntityType>
-~~~
+All Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute can be one of the following:
 
-In the above example, the `Redfish.Uris` annotation describes a single URI pattern.  This definition means the client can expect to find the `ManagerAccount` resource at the URI `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`, if the resource is implemented by the service.
+* A [qualified name](#qualified-names) that references an [Enum Type element](#enum-type-element).
+* A [qualified name](#qualified-names) that references a [Complex Type element](#entity-type-and-complex-type-elements).
+* A primitive data type.
+* An array of any of the above using the `Collection` term.
 
-Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the "Id" string property for the corresponding Redfish resource, or the "MemberId" string property for the corresponding object within a Redfish resource.  Using the above example, "{ManagerAccountId}" would be replaced by the "Id" property of the corresponding ManagerAccount resource.  If the "Id" property for a given ManagerAccount resource is "John", then the full URI for that resource would be "/redfish/v1/AccountService/Accounts/John".
+Primitive data types can be one of the following:
 
-All Redfish Resources and Redfish Resource Collections shall be annotated with `Redfish.Uris`.
+| Type               | Meaning |
+| ---                | ---     |
+| Edm.Boolean        | True or False. |
+| Edm.DateTimeOffset | [Date-time](#datetime-values) string. |
+| Edm.Decimal        | Numeric values with fixed precision and scale. |
+| Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits). |
+| Edm.Duration       | [Duration](#duration-values) string. |
+| Edm.Guid           | Globally unique identifier. |
+| Edm.Int64          | Signed 64-bit integer. |
+| Edm.String         | UTF-8 string. |
 
-All Redfish Resources and Redfish Resource Collections implemented by a service shall match the URI pattern described by the `Redfish.Uris` annotation for their given `EntityType` definition.
+Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
 
-
-#### Resource properties
-
-Structural properties of the resource are defined using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#property-types) its type.
-
-Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
-
-Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
-
-~~~xml
+Example Property element:
+```xml
   <Property Name="Property1" Type="Edm.String" Nullable="false">
     <Annotation Term="OData.Description" String="This is a property of TypeA."/>
     <Annotation Term="OData.LongDescription" String="This is the specification of Property1."/>
@@ -2244,70 +1636,39 @@ Properties that must have a non-nullable value include the [nullable attribute](
     <Annotation Term="Redfish.Required"/>
     <Annotation Term="Measures.Unit" String="Watts"/>
   </Property>
-~~~
+```
 
-All properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
+##### Navigation Property element
 
-Properties that are read-only are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/Read`.
+[Reference properties](#reference-properties) of [Resources, Resource Collections](resources-and-resource-collections), and [structured properties](#structured-properties) are defined using the Navigation Property element.  The `NavigationProperty` tag is used to define a Navigation Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
 
-Properties that are writable are annotated with the [Permissions annotation](#permissions-of-properties) with a value of `OData.Permission/ReadWrite`.
-* A service may implement a writable property as read-only.
+All Navigation Property elements contain a `Name` attribute, which specifies the name of the property.
 
-Properties that are required to be implemented by all services are annotated with the [required annotation](#required-properties).
+All Navigation Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute is a [qualified name](#qualified-names) that references an [Entity Type element](#entity-type-and-complex-type-elements).  This can also be made into an array using the `Collection` term.
 
-Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure).
+Navigation Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
 
+Unless the reference property is to be [expanded](#expanded-resource), all Navigation Properties in Redfish use the `OData.AutoExpandReferences` Annotation element in order to show that the reference is always available.
 
-##### Property types
+Example Navigation Property element:
+```xml
+  <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
+    <Annotation Term="OData.Description" String="This property references a related resource."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
+    <Annotation Term="OData.AutoExpandReferences"/>
+  </NavigationProperty>
+```
 
-Type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#primitive-types), a [structured type](#structured-types), an [enumeration type](#enums) or a [collection](#collections) of primitive, structured or enumeration types.
+##### Enum Type element
 
-###### Primitive types
+The Enum Type element is defined using the `EnumType` tag.  This element is used to define a set of enumeration values, which may be applied to one or more properties.
 
-Primitive types are prefixed with the "Edm" namespace prefix.
+All Enum Types contain a `Name` attribute, which specifies the name of the set of enumeration values.
 
-Redfish Services may use any of the following primitive types:
-
-| Type               | Meaning                                                               |
-| ---                | ---                                                                   |
-| Edm.Boolean        | True or False                                                         |
-| Edm.DateTimeOffset | Date and time with a time-zone                                        |
-| Edm.Decimal        | Numeric values with fixed precision and scale                         |
-| Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits)        |
-| Edm.Guid           | A globally unique identifier                                          |
-| Edm.Int64          | Signed 64-bit integer                                                 |
-| Edm.String         | Sequence of UTF-8 characters                                          |
-
-###### Structured types
-
-Structured types are defined within a [namespace](#namespace-definitions) using `ComplexType` elements. The `Name` attribute of the complex type specifies the name of the structured type. Complex types can include a `BaseType` attribute that specifies the base type, if any.
-
-Structured types may be reused across different properties of different resource types.
-
-~~~xml
-  <ComplexType Name="PropertyTypeA">
-    <Annotation Term="OData.Description" String="This is type used to describe a structured property."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
-
-    <!-- Property and Reference Property definitions go here -->
-
-  </ComplexType>
-~~~
-
-Structured types can contain [properties](#resource-properties), [reference properties](#reference-properties) and annotations.
-
-Structured types shall include [Description](#description) and [LongDescription](#long-description) annotations.
-
-###### Enums
-
-Enumeration types are defined within a [namespace](#namespace-definitions) using `EnumType` elements. The `Name` attribute of the enumeration type specifies the name of the enumeration type.
-
-Enumeration types may be reused across different properties of different resource types.
-
-EnumType elements contain `Member` elements that define the members of the enumeration. The Member elements contain a `Name` attribute that specifies the string value of the member name.
+Enum Types contain `Member` elements that define the members of the enumeration.  The `Member` elements contain a `Name` attribute that specifies the string value of the member name.
 
 
-~~~xml
+```xml
   <EnumType Name="EnumTypeA">
     <Annotation Term="OData.Description" String="This is the EnumTypeA enumeration."/>
     <Annotation Term="OData.LongDescription" String="This is used to describe the EnumTypeA enumeration."/>
@@ -2318,497 +1679,100 @@ EnumType elements contain `Member` elements that define the members of the enume
       <Annotation Term="OData.Description" String="Description of MemberB"/>
     </Member>
   </EnumType>
-~~~
+```
 
-Enumeration Types may include [Description](#description) and [LongDescription](#long-description) annotations.
+##### Annotation element
 
-Enumeration Members shall include [Description](#description) annotations.
+Annotations in CSDL are expressed using the `Annotation` element.  The `Annotation` element can be applied to any schema element in CSDL.  The following examples show how each of the different [schema annotations](#schema-annotations) used by Redfish are expressed in CSDL.
 
-###### Collections
+Example [Description annotation](#description-annotation):
+```xml
+  <Annotation Term="OData.Description" String="This property contains the user name for the account."/>
+```
 
-The [type](#property-types) attribute may specify a collection of [primitive](#primitive-types), [structured](#structured-types) or [enumeration](#enums) types.
+Example [Long Description annotation](#long-description-annotation):
+```xml
+  <Annotation Term="OData.LongDescription" String="This property shall contain the user name for the account."/>
+```
 
-The value of the type attribute for a collection-valued property is of the form:
-
- Collection(*NamespaceQualifiedTypeName*)
-
-where *NamespaceQualifiedTypeName* is the namespace qualified name of the primitive, structured, or enumeration type.
-
-##### Additional properties
-
-The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a value of `"False"`, shall not contain additional properties.
-
-~~~xml
+Example [Additional Properties annotation](#additional-properties-annotation):
+```xml
   <Annotation Term="OData.AdditionalProperties"/>
-~~~
+```
 
-The `AdditionalProperties` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
-
-##### Non-nullable properties
-
-Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
-
-~~~xml
-  <Property Name="Property1" Type="Edm.String" Nullable="false">
-~~~
-
-##### Permissions of properties
-
-The Permissions annotation term can be applied to a property with the value of `OData.Permission/Read` in order to specify that it is read-only.
-
-~~~xml
+Example [Permissions annotation](#permissions-annotation) (Read Only):
+```xml
   <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-~~~
+```
 
-The Permissions annotation term can be applied to a property with the value of `OData.Permission/ReadWrite` in order to specify that it is writable.
-
-~~~xml
+Example [Permissions annotation](#permissions-annotation) (Read/Write):
+```xml
   <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-~~~
+```
 
-The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
-
-##### Required properties
-
-The Required annotation is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation. All other properties are optional.
-
-If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
-
-~~~xml
+Example [Required annotation](#required-annotation):
+```xml
   <Annotation Term="Redfish.Required"/>
-~~~
+```
 
-The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
-
-##### Required properties on create
-
-The RequiredOnCreate annotation term is used to specify that a property is required to be specified on creation of the resource. Properties not annotated with the RequiredOnCreate annotation, or annotated with a `Boolean` attribute with a value of `"false"`, are not required on create.
-
-~~~xml
+Example [Required on Create annotation](#required-on-create-annotation):
+```xml
   <Annotation Term="Redfish.RequiredOnCreate"/>
-~~~
+```
 
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
-
-##### Units of measure
-
-In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
-
-The value of the annotation should be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
-
-~~~xml
+Example [Units of Measure annotation](#units-of-measure-annotation):
+```xml
   <Annotation Term="Measures.Unit" String="MiBy"/>
-~~~
+```
 
-The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
-
-#### Reference properties
-
-Properties that reference other resources are represented as reference properties using the `NavigationProperty` element. The `NavigationProperty` element specifies the `Name` and namespace qualified [`Type`](#property-types) of the related resource(s).
-
-If the property references a single type, the value of the type attribute is the namespace qualified name of the related resource type.
-
-~~~xml
-  <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
-    <Annotation Term="OData.Description" String="This property references a related resource."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
-    <Annotation Term="OData.AutoExpandReferences"/>
-  </NavigationProperty>
-~~~
-
-If the property references a collection of resources, the value of the type attribute is of the form:
-
-~~~
-  Collection(NamespaceQualifiedTypeName)
-~~~
-
-where `NamespaceQualifiedTypeName` is the namespace qualified name of the type of related resources.
-
-~~~xml
-  <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
-    <Annotation Term="OData.Description" String="This property represents a collection of related resources."/>
-    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
-    <Annotation Term="OData.AutoExpandReferences"/>
-  </NavigationProperty>
-~~~
-
-All reference properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
-
-##### Contained resources
-
-Reference properties whose members are contained by the referencing resource are specified with the `ContainsTarget` attribute with a value of `true`.
-
-For example, to specify that a Chassis resource contains a Power resource, you would specify `ContainsTarget=true` on the resource property representing the Power Resource within the Chassis type definition.
-
-~~~xml
-  <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true">
-    <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
-    <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
-    <Annotation Term="OData.AutoExpandReferences"/>
-  </NavigationProperty>
-~~~
-
-##### Expanded references
-
-Reference properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the AutoExpandReferences annotation.
-
-~~~xml
+Example [Expanded Resource annotation](#expanded-resource-annotation):
+```xml
   <Annotation Term="OData.AutoExpandReferences"/>
-~~~
-
-The `AutoExpandReferences` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
-
-##### Expanded resources
-
-This term can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
-
-~~~xml
-  <Annotation Term="OData.AutoExpand"/>
-~~~
-
-The `AutoExpand` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
-
-#### Resource actions
-
-Actions are grouped under a property named "Actions".
-
-~~~xml
-  <Property Name="Actions" Type="MyType.Actions">
-~~~
-
-The type of the Actions property is a [structured type](#structured-types) with a single OEM property whose type is a structured type with no defined properties.
-
-~~~xml
-  <ComplexType Name="Actions">
-    <Property Name="Oem" Type="MyType.OemActions"/>
-  </ComplexType>
-
-  <ComplexType Name="OemActions"/>
-~~~
-
-Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
-
-The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
-
-The first parameter is called the "binding parameter" and specifies the resource or [structured type](#structured-types) that the action appears as a member of (the type of the Actions property on the resource).  The remaining Parameter elements describe additional parameters to be passed to the action.  Parameters containing the term `Nullable="false"` are required to be provided in the Action request.
-
-~~~xml
-  <Action Name="MyAction" IsBound="true">
-    <Parameter Name="Thing" Type="MyType.Actions"/>
-    <Parameter Name="Parameter1" Type="Edm.Boolean"/>
-    <Parameter Name="Parameter2" Type="Edm.String" Nullable="false"/>
-  </Action>
-~~~
-
-In the above example, three parameters are defined:
-* Thing: This is the binding parameter that is not provided in the request by the client
-* Parameter1: A boolean parameter used in the client payload for the request
-* Parameter2: A string parameter used in the client payload for the request and is also required to be provided by the client
-
-
-#### Resource extensibility
-
-Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
-
-While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
-
-##### Oem property
-
-In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
-
-Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
-
-~~~xml
-  <Schema Namespace="Contoso.v1_2_0">
-    ...
-    <ComplexType Name="AnvilType1">
-      <Property Name="slogan" Type="Edm.String"/>
-      <Property Name="disclaimer" Type="Edm.String"/>
-    </ComplexType>
-    ...
-  </Schema>
-~~~
-
-The next fragment shows an example of how the previous schema and the "AnvilType1" property type might appear in the instantiation of an Oem property as the result of a GET on a resource. The example shows two required elements in the use of the Oem property: A name for the object and a type property for the object. Detailed requirements for these elements are provided in the following clauses.
-
-~~~json
-{
-    "Oem": {
-        "Contoso": {
-            "@odata.type": "#Contoso.v1_2_0.AnvilType1",
-            "slogan": "Contoso anvils never fail",
-            "disclaimer": "* Most of the time"
-        }
-    },
-    ...
-}
-~~~
-
-##### Oem property format and content
-
-Each property contained within the [Oem property](#oem-property) shall be a JSON object.  The name of the object (property) shall uniquely identify the OEM or organization that defines the properties contained by that object.  This is described in more detail in the following clause.  The OEM-specified object shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema.  The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
-
-The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
-
-##### Oem property naming
-
-The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
-DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
-
-Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
-
-The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
-
-There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a suborganization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
-
-The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
-
-
-##### URIs for OEM resources
-
-Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources shall be in the form of:
-
-` *BaseUri*/Oem/*OemName*/*ResourceName*`
-
-where
-* *BaseUri* is the URI segment of the standard Redfish Resource where the "Oem" property is used.
-* *OemName* is the name of the OEM, that follows the same naming as defined in the [Oem property format and content section](#oem-property-format-and-content).
-* *ResourceName* is the name of the resource defined by the OEM.
-
-For example, if Contoso defined a new resource called "AccountServiceMetrics" to be linked via the "Oem" property found at the URI "/redfish/v1/AccountService", the OEM resource would have the URI "/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics".
-
-
-#### Oem property examples
-
-The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
-
-~~~json
-{
-    "Oem": {
-        "Contoso": {
-            "@odata.type": "#Contoso.v1_2_1.AnvilTypes1",
-            "slogan": "Contoso anvils never fail",
-            "disclaimer": "* Most of the time"
-        },
-        "Contoso_biz": {
-            "@odata.type": "#ContosoBiz.v1_1.RelatedSpeed",
-            "speed" : "ludicrous"
-        },
-        "EID_412_ASB_123": {
-            "@odata.type": "#OtherSchema.v1_0_1.powerInfoExt",
-            "readingInfo": {
-                "readingAccuracy": "5",
-                "readingInterval": "20"
-            }
-        },
-        "Contoso_customers_customerA": {
-            "@odata.type" : "#ContosoCustomer.v2015.slingPower",
-            "AvailableTargets" : [ "rabbit", "duck", "runner" ],
-            "launchPowerOptions" : [ "low", "medium", "eliminate" ],
-            "powerSetting" : "eliminate",
-            "targetSetting" : "rabbit"
-        }
-    },
-    ...
-}
-~~~
-
-##### OEM actions
-
-OEM-specific actions can be defined by defining actions bound to the Oem property of the [resource's Actions](#resource-actions) property type.
-
-~~~xml
-  <Action Name="Ping" IsBound="true">
-    <Parameter Name="ContosoType" Type="MyType.OemActions"/>
-  </Action>
-~~~
-
-Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
-
-~~~json
-{
-    "Actions": {
-        "Oem": {
-            "#Contoso.Ping": {
-                "target":"/redfish/v1/Systems/1/Actions/Oem/Contoso.Ping"
-            }
-        }
-    },
-    ...
-}
-~~~
-
-The URI of the OEM action in the "target" property shall be in the form of:
-
-` *ResourceUri*/Actions/Oem/*QualifiedActionName*`
-
-where
-* *ResourceUri* is the URI of the resource that supports invoking the action.
-* "Actions" is the name of the property containing the actions for a resource.
-* "Oem" is the name of the OEM property within the Actions property.
-* *QualifiedActionName* is the qualified name of the action, including namespace.
-
-### Common Redfish resource properties
-
-This clause contains a set of common properties across all Redfish resources.  The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
-
-Common properties are defined in the base `Resource` Redfish Schema.  For OData Schema representations, the `Resource_v1.xml` file contains common properties.  For JSON Schema representations, the `Resource.v1_0_0.json` file contains common properties.  For OpenAPI representations, the `Resource.v1_0_0.yaml` contains common properties.
-
-#### Id<a id="id-property"></a>
-
-The `Id` property contains a unique identifier (ID) for a resource in a resource collection.  The `Id` value shall be unique across a resource collection.
-
-#### Name<a id="name-property"></a>
-
-The `Name` property contains a human-readable name for the resource or resource collection.  The `Name` property shall be the string type.  The `Name` value is NOT required to be unique across resource instances in a resource collection.
-
-#### Description<a id="description-property"></a>
-
-The `Description` property contains a human-readable description of the resource or resource collection.  The `Description` property type shall be the string type.
-
-#### MemberId<a id="memberid-property"></a>
-
-The `MemberId` property of an object in a resource that uniquely identifies the object in the array that contains it.  The `MemberId` value shall be unique across the array in the resource.
-
-#### Status
-
-The `Status` property indicates the status, or health, of a resource.
-
-The `Status` property value is a common status object type as defined by this specification.  By having a common representation of status, clients can depend on consistent semantics.  The `Status` object can indicate:
-
-* The current intended state.
-* The state to which the resource is to change.
-* The current actual state and any problems that affect the current state of the resource.
-
-#### Location
-
-The `Location` property contains information that enables a user to find the physical equipment.
-
-#### Links
-
-The [Links Property](#links-property) contains the hyperlinks associated with the resource, as defined by that resource's schema definition.  All associated reference properties defined for a resource shall be nested under the `Links` property.  All directly, or subordinate, referenced properties defined for a resource shall be in the root of the resource.
-
-#### Members
-
-The [Members](#members-property) property of a resource collection contains the members of the collection.
-
-#### RelatedItem
-
-The [RelatedItem](#relateditem) property contains hyperlinks to a resource or part of a resource as defined by that resource's schema definition.
-
-This property shows a relationship between elements or subelements in disparate parts of the service but is not intended to be a strong linking methodology like other references.  For example, because `Fans` might be in one area of the implementation and processors in another, the `RelatedItem` property can be used to inform the client that one is related to the other.  In this case, the `Fan` cools the processor.
-
-#### Actions
-
-The [Actions](#actions-property) property contains the actions supported by a resource.
-
-#### Oem
-
-The `Oem` property is an empty object that vendors can populate with custom properties.  The [Oem](#oem-property) property is used for OEM extensions [Schema Extensibility](#resource-extensibility) defines.  
-
-### Redfish resources
-
-Collectively known as the Redfish Schema, the set of resource descriptions contains normative requirements on implementations conforming to this specification.
-
-Redfish Resources are one of several general kinds:
-
-* Root Service Resource
-  * Contains the mapping of a particular service instance to applicable resources.
-  * Contains the UUID of a service instance.  This UUID would be the same UUID returned via SSDP discovery.
-* Current Configuration Resources, contain a mixture of:
-  * Inventory (static and read-only)
-  * Health Telemetry (dynamic and read-only)
-  * Current Configuration Settings (dynamic and read/write)
-  * Current Metric values
-* Setting Resources
-  * Dynamic, Read/Write Pending Configuration Settings
-* Services
-  * Common services like Eventing, Tasks, Sessions
-* Registry Resources
-  * Static, Read-Only JSON encoded information for Event and Message Registries
-
-#### Current configuration
-
-Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH and/or PUT to a separate [Settings resource](#settings).  For resources that can be modified immediately, the Allow header shall contain PATCH and/or PUT in the GET response.  When a resource is read-only, the Allow header shall not contain PATCH or PUT in the GET response.
-
-#### Settings
-
-A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
-
-The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful. The Messages property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. The ETag property contains the ETag of the Settings resource that was last applied. The Time property indicate the time when the Settings resource was last applied.
-
-Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
-
-~~~json
-{
-    "@Redfish.Settings": {
-        "@odata.type": "#Settings.v1_0_0.Settings",
-        "SettingsObject": {
-            "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
-        },
-        "Time": "2017-05-03T23:12:37-05:00",
-        "ETag": "A89B031B62",
-        "Messages": [
-           {
-              "MessageId": "Base.1.0.PropertyNotWritable",
-              "RelatedProperties": [
-                 "#/Attributes/ProcTurboMode"
-              ]
-           }
-        ]
-    },
-    ...
-}
-~~~
-
-The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response body that represents the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
-
-Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied:
-
-~~~json
-{
-    "@Redfish.SettingsApplyTime": {
-        "@odata.type": "#Settings.v1_1_0.PreferredApplyTime",
-        "ApplyTime": "OnReset",
-        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
-        "MaintenanceWindowDurationInSeconds": 600
-    },
-    ...
-}
-~~~
-
-
-#### Services
-
-Service resources represent components of the Redfish Service itself as well as dependent resources.  While the complete list is discoverable only by traversing the Redfish Service tree, the list includes services like the Eventing service, Task management and Session management.
-
-#### Registry
-
-Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
-
-### Special resource situations
-
-There are some situations that arise with certain kinds of resources that need to exhibit common semantic behavior.
-
-#### Absent resources
-
-Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe elot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
-
-For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the State property of the Status object as "Absent".  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the "Power" and "Thermal" resources under a "Chassis" resource should not exist for an absent Chassis).
-
-Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the "Memory" resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an "Absent" State).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
-
-#### Schema variations
-
-There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
-
-* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
-* The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
-* For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
-
-A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
-
-* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
+```
+
+Example Insert Capabilities Annotation (POST is not allowed):
+```xml
+  <Annotation Term="Capabilities.InsertRestrictions">
+    <Record>
+      <PropertyValue Property="Insertable" Bool="false"/>
+    </Record>
+  </Annotation>
+```
+
+Example Update Capabilities Annotation (PATCH and PUT are allowed):
+```xml
+  <Annotation Term="Capabilities.UpdateRestrictions">
+    <Record>
+      <PropertyValue Property="Updatable" Bool="true"/>
+      <Annotation Term="OData.Description" String="Manager Accounts can be updated to change the password and other writable properties."/>
+    </Record>
+  </Annotation>
+```
+
+Example Delete Capabilities Annotation (DELETE is allowed):
+```xml
+  <Annotation Term="Capabilities.DeleteRestrictions">
+    <Record>
+      <PropertyValue Property="Deletable" Bool="true"/>
+      <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
+    </Record>
+  </Annotation>
+```
+
+Example Resource URI Patterns Annotation:
+```xml
+  <Annotation Term="Redfish.Uris">
+    <Collection>
+      <String>/redfish/v1/AccountService/Accounts/{ManagerAccountId}</String>
+    </Collection>
+  </Annotation>
+```
+
+Terms with the prefix `OData` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml.
+
+Terms with the prefix `Measures` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml.
+
+Terms with the prefix `Redfish` are defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ## Service details
 
@@ -3642,29 +2606,24 @@ For logical AND combinations, the privilege label is placed in the Privilege pro
 ## Redfish Host Interface
 The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See [DSP0270](#DSP0270) for details.
 
-
 ## Redfish Composability
 
 A service may implement the CompositionService resource off of ServiceRoot to support the binding of resources together.  One example is disaggregated hardware, which allows for independent components, such as processors, memory, I/O controllers, and drives, to be bound together to create logical constructs that operate together.  This allows for a client to dynamically assign resources for a given application.
-
-A service that supports Composability shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
-
-The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, the different [composition request](#composition-requests) types allowed, and how the POST request for the collection is formatted, as well as what properties are required.
-
 
 ### Composition requests
 
 A service that implements the CompositionService (as defined by the CompositionService schema) shall support one or more of the following types of composition requests:
 * [Specific Composition](#specific-composition)
-* [Constrained Composition](#constrained-composition)
-* [Expandable Resources](#expandable-resources)
 
 A service that supports removing a composed resource shall support the DELETE method on the composed resource.
 
-
 #### Specific Composition
 
-A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Compositions shall support a POST request that contains an array of hyperlinks to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
+A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Composition requests shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
+
+The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports Specific Compositions shall support a POST request that contains an array of hyperlinks to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
+
+A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
 
 Example Specific Composition of a ComputerSystem:
 ~~~http
@@ -3678,100 +2637,12 @@ OData-Version: 4.0
     "Links": {
         "ResourceBlocks": [
             { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock0" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock2" },
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock2" } ,
             { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetBlock4" }
         ]
     }
 }
 ~~~
-
-
-#### Constrained Composition
-
-A Constrained Composition is when a client has identified a set of criteria (or constraints) in which to build a logical entity.  This includes criteria such as quantities of components, or characteristics of components.  A service that supports Constrained Compositions shall support a POST request that contains the set of characteristics to apply to the composed resource.  The specific format of the request is defined by the schema for the resource being composed.  This type of request may include expanded elements of resources subordinate to the composed resource.
-
-Example Constrained Composition of a ComputerSystem:
-~~~http
-POST /redfish/v1/Systems HTTP/1.1
-Content-Type: application/json;charset=utf-8
-Content-Length: <computed length>
-OData-Version: 4.0
-
-{
-    "Name": "Sample Composed System",
-    "PowerState": "On",
-    "BiosVersion": "P79 v1.00 (09/20/2013)",
-    "Processors": {
-        "Members": [
-            {
-                "@Redfish.RequestedCount": 4,
-                "@Redfish.AllowOverprovisioning": true,
-                "ProcessorType": "CPU",
-                "ProcessorArchitecture": "x86",
-                "InstructionSet": "x86-64",
-                "MaxSpeedMHz": 3700,
-                "TotalCores": 8,
-                "TotalThreads": 16
-            }
-        ]
-    },
-    "Memory": {
-        "Members": [
-            {
-                "@Redfish.RequestedCount": 4,
-                "CapacityMiB": 8192,
-                "MemoryType": "DRAM",
-                "MemoryDeviceType": "DDR4"
-            }
-        ]
-    },
-    "SimpleStorage": {
-        "Members" : [
-            {
-                "@Redfish.RequestedCount": 6,
-                "Devices": [
-                    {
-                        "CapacityBytes": 322122547200
-                    }
-                ]
-            }
-        ]
-    },
-    "EthernetInterfaces": {
-        "Members": [
-            {
-                "@Redfish.RequestedCount": 1,
-                "SpeedMbps": 1000,
-                "FullDuplex": true,
-                "NameServers": [
-                    "names.redfishspecification.org"
-                ],
-                "IPv4Addresses": [
-                    {
-                        "SubnetMask": "255.255.252.0",
-                        "AddressOrigin": "Dynamic",
-                        "Gateway": "192.168.0.1"
-                    }
-                ]
-            }
-        ]
-    }
-}
-~~~
-
-
-#### Expandable Resources
-
-An Expandable Resource is when a service has a baseline composition that cannot be removed.  Instead of a client making requests to create a new composed resource, a client is only allowed to add or remove resources from the composed resource.  A service that supports Expandable Resources shall support one or more of the update methods listed in the [Updating a Composed Resource](#updating-a-composed-resource) clause.
-
-
-### Updating a Composed Resource
-
-A service that supports updating a composed resource shall provide one or more of the following methods for updating composed resources:
-* The PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
-* Actions on the composed resource for adding and removing ResourceBlocks.
-    * If the actions for adding and removing ResourceBlocks are present in the resource, clients should use this method before attempting PUT/PATCH.
-
 
 ## ANNEX A (informative)
 
@@ -3933,3 +2804,1024 @@ A service that supports updating a composed resource shall provide one or more o
 |         |            | Clarified relative URI resolution rules. |
 |         |            | Clarified USN format.  |
 | 1.0.0   | 2015-08-04 | Initial release. |
+
+
+
+
+
+
+
+
+
+
+
+
+
+TODO: Items below here are being migrated to the Schema and Data Model section
+
+### Resource responses
+
+Services return resources as JSON payloads by using the `application/json` MIME type.  Resource property names match the case in the [Schema](#resource-properties).
+
+Responses for a single resource shall contain the [`Id`](#id-property) and [`Name`](#name-property) properties and may contain the [`Description`](#description-property) property.
+
+See also [Resource collection responses](#resource-collection-responses).
+
+#### Context property
+
+Responses for a single resource may contain a `@odata.context` context property that describes the source of the payload.
+
+If the [`@odata.context`](#context-property) property is present, it shall be the context URL that describes the resource, according to [OData-Protocol](#OData-Protocol).
+
+The context URL for a resource should be in the format:
+
+<pre><var>MetadataUrl</var>#<var>ResourceType</var></pre> 
+ 
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
+| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>Many Redfish implementations concatenate the resource type namespace with a period (`.`) followed by the resource type. |
+
+For example, the following context URL specifies that the results show a single `ComputerSystem` resource:
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    ...
+}
+```
+
+The context URL for a resource may be in one of the following formats:
+ 
+<pre><var>MetadataUrl</var>#<var>ResourcePath</var>/$<var>entity</var></pre>
+
+or
+
+<pre><var>MetadataUrl</var>#<var>ResourceType</var>/$<var>entity</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
+| <code><var>ResourcePath</var></code> | The path from the service root to the singleton or resource collection that contains the resource. |
+| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>While <code><var>ResourcePath</var></code> or <code><var>ResourceType</var></code> is allowed, services should use the <code><var>MetadataUrl</var>#<var>ResourceType</var></code> format for the `@odata.context` property values.<br/>Use <code><var>ResourceType</var></code> because the [OData-Protocol](#OData-Protocol) requires additional constraints when the response returns partial or expanded results that pose an additional burden on services. |
+| <code><var>entity</var></code> | The entity.  Defines whether the response is a single resource from either:<ul><li>An entity set.</li><li>A navigation property.</li></ul> |
+
+#### Resource identifier property
+
+Resources in a response shall include a unique `@odata.id` identifier property.  The value of the identifier property shall be the unique resource [URI](#uris)
+
+In JSON payloads, resource identifiers are strings that conform to the rules for RFC3986-defined URI paths.  See **3.3. Path** in [Uniform Resource Identifier (URI): Generic Syntax](https://www.ietf.org/rfc/rfc3986.txt).
+
+Represent resources in the same authority as the request URI according to the rules of `path-absolute`, which that specification defines.
+
+That is, they shall always start with a single forward slash (`/`).
+
+Resources within a different authority as the request URI shall start with a double-slash (`//`) followed by the authority and path to the resource.
+
+The resource identifier is the canonical URL for the resource.  Use it to retrieve or edit the resource, as appropriate.
+
+#### Type property
+
+All resources in a response shall include a `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The `type` property value shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [OData $metadata document](#odata-metadata) and shall be in the format:
+
+<pre>#<var>Namespace</var>.<var>TypeName</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>Namespace</var></code> | The full namespace name of the Redfish Schema that defines the type.  For Redfish resources, the versioned namespace name. |
+| <code><var>TypeName</var></code> | The name of the resource type. |
+
+#### ETag property
+
+ETags enable clients to conditionally retrieve or update a resource.  Resources should include an `@odata.etag` ETag property.  For a resource, the value of the ETag property is the [ETag](#etags).
+
+#### Primitive properties
+
+Return primitive properties as JSON values:
+
+| Type | JSON representation |
+|:---|:---|
+| `Edm.Boolean` | Boolean. |
+| `Edm.DateTimeOffset` | String, as a [DateTime value](#datetime-values). |
+| `Edm.Duration` | String, as a [Duration value](#duration-values). |
+| `Edm.Decimal` | Number.  Optionally contains a decimal point. |
+| `Edm.Double` | Number.  Optionally contains a decimal point and an exponent. |
+| `Edm.Guid` | String.  Matches the `([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})` pattern. |
+| `Edm.Int64` | Number with no decimal point. |
+| `Edm.String` | String. |
+
+When receiving values from the client, services should support other valid representations of the data in the specified JSON type.  In particular, services should support valid integer and decimal values in exponential notation and integer values that contain a decimal point with no non-zero trailing digits.
+
+#### DateTime values
+
+Return `DateTime` values as JSON strings according to the ISO 8601 extended format, including the time offset or UTC suffix, in the format:
+
+<pre>
+	<var>YYYY</var>-<var>MM</var>-<var>DD</var> T <var>hh</var>:<var>mm</var>:<var>ss</var>[.<var>SSS</var>](Z|(+|-)<var>hh</var>:<var>mm</var>)
+</pre>
+
+where
+
+| Variable or separator | Description |
+|:--|:--|
+| <code>T</code> | The time separator.  Must be a capital `T`. |
+| <code><var>SSS</var></code> | The decimal fraction of a second.  One or more digits where the number of digits imply the precision. |
+| <code>Z</code> | The time zone separator.  Must be a capital `Z`. |
+
+When the time of day is unknown or serves no purpose, the service shall report `00:00:00Z` for the time of day value in `DateTime`.
+
+#### Duration values
+
+Return duration values as JSON strings according to the ISO 8601 duration format, in the format:
+
+<pre>P[<var>yyyy</var>Y][<var>mm</var>M][<var>ww</var>W][<var>dd</var>D][T[<var>hh</var>H][<var>mm</var>M][<var>ss</var>[.<var>fff</var>]S]]</pre>
+
+where
+
+| Variable | Defines |
+|:--|:--|
+| <code><var>yyyy</var></code> | Years. |
+| <code><var>mm</var></code> | Months. |
+| <code><var>ww</var></code> | Weeks. |
+| <code><var>dd</var></code> | Days. |
+| <code><var>hh</var></code> | Hours. |
+| <code><var>mm</var></code> | Minutes. |
+| <code><var>ss</var></code> | Seconds. |
+| <code><var>fff</var></code> | Fractional seconds. |
+
+Each field is optional and may contain more than one digit.
+
+For example, the following values represent the following durations:
+
+| Value | Specifies a duration of |
+|:--|:--|
+| `P3D` | Three days. |
+| `PT6H` | Six hours. |
+| `PT10S` | Ten seconds. |
+| `PT0.001S` | 0.001 seconds. |
+| `PT1H30M` | One hour and 30 minutes. |
+
+#### Structured properties
+
+Return structured properties, defined as [complex types](#structured-types) or [expanded](#expanded-resource) [resource types](#resource-type-definitions), as JSON objects.  Specify the type of JSON object in the Redfish Schema definition of the property that contains the structured value.
+
+Some structured properties inherit from the `Resource.v1_0_0.ReferenceableMember` definition.  Structured properties that follow this definition shall contain the [`MemberId`](#memberid-property) and [resource identifier](#resource-identifier-property) properties.
+
+Because the definition of structured properties can evolve over time, clients must be aware of the inheritance model that the different structured property definitions use.  
+
+For example, the `Location` definition in `Resource_v1.xml` has gone through several iterations since the `Resource.v1_1_0` namespace was introduced, and each iteration inherits from the previous version so that existing references in other schemas can leverage the new additions.
+
+Structured property references must resolve both local and external references.
+
+A local reference is a resource that has a structured property in its own schema, such as `ProcessorSummary` in the `ComputerSystem` resource.  In these cases, the [`type`](#type-property) property for the resource is the starting point for resolving the structured property definition.
+
+To find the latest applicable version, clients can step the [version of the resource](#type-identifiers) backwards.
+
+For example, if a service returns `#ComputerSystem.v1_4_0.ComputerSystem` as the resource type, a client can step backwards from `ComputerSystem.v1_4_0`, to `ComputerSystem.v1_3_0`, to `ComputerSystem.v1_2_0`, and so on, until it finds the `ProcessorSummary` structured property definition.
+
+An external reference is a resource that has a property that references a definition found in a different schema, such as `Location` in the `Chassis` resource.
+
+In these cases, clients can use the latest version of the external schema file as a starting point to resolve the structured property definition.
+
+For example, if the latest version of `Resource_v1.xml` is `1.6.0`, a client can go backward from `Resource.v1_6_0`, to `Resource.v1_5_0`, to `Resource.v1_4_0`, and so on, until it finds the `Location` structured property definition.
+
+#### Actions property
+
+Represent available actions for a resource as individual properties nested under a single structured property on the `Actions` resource.
+
+##### Action representation
+
+Represent actions as a property nested under `Actions`.  Use the unique URI that identifies the action to name the action.
+
+This URI shall be in the format
+
+<pre>#<var>Namespace</var>.<var>ActionName</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>Namespace</var></code> | The namespace in the reference to the Redfish Schema where the action is defined.  For Redfish resources, this shall be the version-independent namespace. |
+| <code><var>ActionName</var></code> | The name of the action. |
+
+The client may use this fragment to identify the [action definition](#resource-actions) in the [referenced](#referencing-other-schemas) Redfish Schema document that is associated with the specified namespace.
+
+The property is a JSON object that contains a `target` property.  The `target` property defines the relative or absolute URL to invoke the action.  The JSON object for the action may contain a `title` property, which is a string that defines the action's name.
+
+The [OData JSON Format](#OData-JSON) specification defines the `target` and `title` properties.
+
+To specify the list of allowable values for a parameter, the client can use the [`AllowableValues`](#allowable-values) annotation to annotate the property for the available action.
+
+For example, the following property defines the `Reset` action in the `ComputerSystem` namespace:
+
+```json
+{
+    "#ComputerSystem.Reset": {
+        "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "title": "Computer System Reset",
+        "ResetType@Redfish.AllowableValues": [
+            "On",
+            "ForceOff",
+            "GracefulRestart",
+            "GracefulShutdown",
+            "ForceRestart",
+            "Nmi",
+            "ForceOn",
+            "PushPowerButton"
+        ]
+    },
+    ...
+}
+```
+
+Given this, the client could invoke a POST request to `/redfish/v1/Systems/1/Actions/ComputerSystem.Reset` with the following body:
+
+```json
+{
+    "ResetType": "On"
+}
+```
+
+##### Allowable values
+
+To specify the list of allowable values for a parameter, clients can use `AllowableValues` annotation to annotate the property for the action.
+
+To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
+
+#### Links property
+
+A resource's `Links` property [references](#reference-properties) other resources.
+
+The `Links` property shall be named `Links` and contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) that the Redfish Schema for that type defines.
+
+* For single-valued reference properties, the value of the property shall be the [single related resource ID](#reference-to-a-single-related-resource).
+* For collection-valued reference properties, the value of the property shall be the [array of related resource IDs](#array-of-references-to-related-resources).
+
+To navigate vendor-specific hyperlinks, the `Links` property shall also include an [OEM property](#oem-property).
+
+##### Reference to a single-related resource
+
+A reference to a single resource is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The name of this reference is the name of the relationship.  The value of this reference is the URI of the referenced resource.
+
+```json
+{
+    "Links": {
+        "ManagedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Encl1"
+        }
+    }
+}
+```
+
+##### Array of references to related resources
+
+A reference to a set of zero or more related resources is an array of JSON objects.  The name of this reference is the name of the relationship.  Each member of the array is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The member's value is the URI of the referenced resource.
+
+```json
+{
+    "Links": {
+        "Contains": [{
+                "@odata.id": "/redfish/v1/Chassis/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Encl1"
+            }
+        ]
+    }
+}
+```
+
+#### OEM property
+
+OEM-specific properties are nested under an [OEM property](#oem-property).
+
+#### Partial resource results
+
+A service shall not break responses for a single resource into multiple results.  For details about the format of these responses, see [partial results](#next-link-property-and-partial-results).
+
+#### Extended information
+
+Response objects may include extended information.  For example, response objects may include information about properties that cannot be updated.  To define this information, apply an annotation to a specific property of the JSON response or an entire JSON object.  See [Extended property information](#extended-property-information).
+
+##### Extended object information
+
+To specify object-level status information, services can annotate a JSON object with `@Message.ExtendedInfo`.
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
+    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
+    "Name": "Managed Serial Interface 1",
+    "Description": "Management for Serial Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "SignalType": "Rs232",
+    "BitRate": "115200",
+    "Parity": "None",
+    "DataBits": "8",
+    "StopBits": "1",
+    "FlowControl": "None",
+    "ConnectorType": "RJ45",
+    "PinOut": "Cyclades",
+    "@Message.ExtendedInfo": [{
+        "MessageId": "Base.1.0.PropertyDuplicate",
+        "Message": "The property InterfaceEnabled was duplicated in the request.",
+        "RelatedProperties": [
+            "#/InterfaceEnabled"
+        ],
+        "Severity": "Warning",
+        "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
+    }]
+}
+```
+
+The value of the property is an array of [message objects](#message-object).
+
+##### Extended property information
+
+Services can use `@Message.ExtendedInfo`, prepended with the name of the property to annotate an individual property in a JSON object with extended information:
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
+    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
+    "Name": "Managed Serial Interface 1",
+    "Description": "Management for Serial Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "SignalType": "Rs232",
+    "BitRate": 115200,
+    "Parity": "None",
+    "DataBits": 8,
+    "StopBits": 1,
+    "FlowControl": "None",
+    "ConnectorType": "RJ45",
+    "PinOut": "Cyclades",
+    "PinOut@Message.ExtendedInfo": [{
+        "MessageId": "Base.1.0.PropertyValueNotInList",
+        "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
+        "Severity": "Warning",
+        "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
+    }]
+}
+```
+
+The value of the property is an array of [message objects](#message-object).
+
+#### Additional annotations
+
+A JSON resource representation may include additional annotations as properties with the name in the format:
+
+<pre>[<var>PropertyName</var>]@<var>Namespace</var>.<var>TermName</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>PropertyName</var></code> | The name of the property to annotate.  If absent, the annotation applies to the entire resource. |
+| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [OData $metadata document](#odata-metadata) in the [context URL](#context-property) of the request must reference this namespace. |
+| <code><var>TermName</var></code> | The name of the annotation term to apply to the resource or property of the resource. |
+
+Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
+
+The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
+
+### Resource collection responses
+
+Resource collections are JSON payloads that use the `application/json` MIME type.  Resource property names match the case in the [Schema](#resource-properties).  
+
+Clients shall derive resource collection schema from the `Resource` schema.  Thus, resource collection responses shall contain the following properties:
+
+* The [`Name` property](#name-property)
+* The [Resource Identifier property](#resource-identifier-property)
+* The [`Type` property](#type-property)
+* An array of [`Members`](#members-property)
+* A [resource count](#count-property)
+
+Responses for resource collections may contain the following properties:
+
+* The [`Description` property](#description-property)
+* The [`Context` property](#context-property)
+* An [`Etag` property](#etag-property)
+* A [`Next Link` property](#next-link-property-and-partial-results) for partial results
+* An [`OEM` property](#oem-property)
+
+Responses for resource collections shall not contain any property that this section of this specification does not explicitly define.
+
+#### Context property
+
+Responses shall contain an `@odata.context` context property that describes the source of the payload.  The value of the context property shall be the context URL that describes the resource collection, according to [OData-Protocol](#OData-Protocol).
+
+The context URL for a resource collection has one of these formats:
+
+<pre><var>MetadataUrl</var>.#<var>CollectionResourceType</var></pre>
+<pre><var>MetadataUrl</var>.#<var>CollectionResourcePath</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>MetadataUrl</var></code> | The metadata URL of the service, which is `/redfish/v1/$metadata`. |
+| <code><var>CollectionResourceType</var></code> | The fully qualified name of the unversioned type of resources in the resource collection. |
+| <code><var>CollectionResourcePath</var></code> | The path from the service root to the resource collection. |
+
+#### Count property
+
+The `count` property defines the total number of resources, or members, that are available in the resource collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the resource collection.  The `$top` or `$skip` [query parameters](#query-parameters) do not affect this count.
+
+#### Members property
+
+The `Members` property defines a collection of resources as a array of JSON objects. 
+
+The Redfish Schema document that describes the containing type defines the type of each JSON object in the array.  The name of the property representing the members of the collection shall be `Members`.  The `Members` property shall not be null.  Empty collections shall be an empty JSON array.
+
+#### Next Link Property and partial results
+
+Responses may contain a subset of the members of the full resource collection.  For partial resource collections, the response includes a `Next Link` property named `Members@odata.nextLink`.  
+
+The value of the `Next Link` property shall be an opaque URL to a resource, with the same `@odata.type`, which contains the next set of partial members.  The `Next Link` property shall only be present if the number of `Members` in the resource collection is greater than the number of members returned, and if the payload does not represent the end of the requested resource collection.
+
+The [`count` property](#count-property) value is the total number of resources available if the client enumerates all pages of the resource collection.
+
+#### Additional annotations
+
+A JSON object that represents a resource collection may include additional annotations represented as properties whose name is in the format:
+
+<pre>@<var>Namespace</var>.<var>TermName</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [OData $metadata document](#odata-metadata) that the [context URL](#context-property) of the request defines shall reference this namespace. |
+| <code><var>TermName</var></code> | The name of the annotation term to apply to the resource collection. |
+
+Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
+
+The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations that the Redfish namespace defines.
+
+
+#### Message object
+
+A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
+
+A `Message` object is a JSON object with the following properties:
+
+| Property | Type | Required | Defines |
+|:---|:---|:---|:---|
+| `MessageId` | String | Required | The error or message, which is not to be confused with the HTTP status code.<br/>Clients can use this code to access a detailed message from a message registry. |
+| `Message` | String | Required | The human-readable error message that indicates the semantics associated with the error.<br/>This shall be the complete message, and not rely on substitution variables. |
+| `RelatedProperties` | An array of JSON pointers | Optional | The properties in a JSON payload that the message describes. |
+| `MessageArgs` | An array of strings | Optional | The substitution parameter values for the message.<br/>If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
+| `Severity` | String | Optional | The severity of the error. |
+| `Resolution` | String | Optional | The recommended actions to take to resolve the error. |
+
+Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
+
+`MessageIds` identify specific messages that a message registry defines.
+
+The `MessageId` property value shall be in the format:
+
+<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
+| <code><var>MajorVersion</var></code> | A positive integer. The major version of the registry. |
+| <code><var>MinorVersion</var></code> | A positive integer. The minor version of the registry. |
+| <code><var>MessageKey</var></code> | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
+
+To search the message registry for a corresponding message, the client can use the `MessageId`.
+
+The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
+
+The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
+
+When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
+
+
+
+
+
+
+
+One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
+
+* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified by a unique [type identifier](#type-property).
+
+### Schema, registry and profile repository
+
+All Redfish schemas, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
+
+| URL | Folder contents |
+|-----|-----------------|
+| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
+| redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
+| redfish.dmtf.org/schemas/v1/{code} |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
+| redfish.dmtf.org/schemas/archive | Subfolders contain schema files specific to a particular version release. |
+| redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
+| redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
+| redfish.dmtf.org/registries/v1/{code} | Durable URL for programmatic access to localized v1.xx registry files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
+| redfish.dmtf.org/registries/archive | Subfolders contain registry files specific to a particular version release. |
+| redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
+| redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
+| redfish.dmtf.org/profiles/archive | Subfolders contain profile files specific to a particular profile version or release. |
+| redfish.dmtf.org/dictionaries | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
+
+
+#### Schema, registry, and profile file naming conventions
+
+Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
+
+
+
+
+##### JSON Schema file naming
+
+Redfish JSON Schema files shall be named using the [Type identifiers](#type-identifiers), following the format:
+
+  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
+  
+For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
+
+##### OpenAPI file naming
+
+Redfish OpenAPI files shall be named using the [Type identifiers](#type-identifiers), following the format:
+
+  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.yaml*
+  
+For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.yaml".
+
+##### Registry file naming
+
+Redfish message or privilege registry files shall be named using the Registry name, following the format:
+
+  *RegistryName.MajorVersion.MinorVersion.Errata.json*
+  
+For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
+
+##### Profile file naming
+
+The JSON document describing a Profile follows the Redfish Schema file naming conventions. The file name format for Profiles shall be formatted as:
+
+  *ProfileName.vMajorVersion_MinorVersion_Errata.json*
+
+For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The file name shall include the Profile name and Profile version matching those property values within the document.
+
+##### Dictionary file naming
+
+The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
+
+  *DictionaryName_vMajorVersion.dict*
+
+For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.dict".
+
+##### OEM schema file naming
+
+To avoid namespace collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
+ 
+#### Programmatic access to schema, registry, or profile files
+
+Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+
+
+
+
+### Type identifiers
+
+Types are identified by a *Type URI*. The URI for a type is of the form:
+
+ `  #*Namespace*.*TypeName*`
+
+where
+
+* *Namespace* = the name of the namespace where the type is defined
+* *TypeName* = the name of the type
+
+The namespace for types defined by this specification is of the form:
+
+ ` *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*`
+
+where
+
+* *ResourceTypeName* = the name of the resource type. For [structured (complex) types](#structured-types), [enumerations](#enums), and [actions](#resource-actions), this is generally the name of the containing resource type.
+* *MajorVersion* = integer: something in the class changed in a backward incompatible way.
+* *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minor versions.
+* *Errata* = integer: something in the prior version was broken and needed to be fixed.
+
+An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an example of a corresponding Type URI would be "#ComputerSystem.v1_0_0.ComputerSystem".
+
+#### Type identifiers in JSON Schema
+
+In JSON Schema definitions for Redfish schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
+
+For example, the "title" property for the ComputerSystem schema would be:
+
+ ` "title": "#ComputerSystem.v1_0_0.ComputerSystem"`
+
+#### Type identifiers in JSON
+
+Types used within a JSON payload shall be defined in, or referenced by, the [OData $metadata document](#odata-metadata).
+
+Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
+
+NOTE: Refer to the [Security](#security-details) clause for security implications of Data Model and Schema.
+
+### Common naming conventions
+
+The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
+
+Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
+* The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
+* No underscores are used.
+* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
+* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
+
+Exceptions are allowed for the following cases:
+ * Well-known technology names like "iSCSI" (e.g.,"iSCSITarget")
+ * Product names like "iLO"
+ * Well-known abbreviations or acronyms
+ * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
+ * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
+
+For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
+ * Bandwidth (Mbps), (e.g., PortSpeedMbps)
+ * CPU speed (Mhz), (e.g., ProcessorSpeedMhz)
+ * Memory size (MegaBytes, MB), (e.g., MemoryMB)
+ * Counts of items (Count), (e.g., ProcessorCount, FanCount)
+ * The State of a resource (State) (e.g., PowerState.)
+ * State values where "work" is being done end in (ing) (e.g., Applying, Clearing)
+
+### Localization considerations
+
+The creation of separate localized copies of Redfish schemas and registries is allowed and encouraged.  Localized schema and registry files may be submitted to the DMTF for republication in the Redfish Schema Repository.
+
+Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
+
+Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO-639-1) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
+
+Descriptive property, parameter, and enumeration text not translated into the languge specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
+
+### Schema definition
+
+Individual resources and their dependent types and actions are defined within a Redfish [schema document](#schema-documents).
+
+#### Schema documents
+
+Individual resources are defined as entity types within an OData Schema representation of the Redfish Schema according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema and OpenAPI representations of the Redfish Schema capable of validating JSON payloads.
+
+##### Schema modification rules
+
+Schema referenced from the implementation, either from the OData Service Document or from the JSON Schema File representations, may vary from the canonical definitions of those Schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
+* Modified schema may constrain a read/write property to be read only.
+* Modified schema may remove properties. 
+* Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
+* Other modifications to the Schema shall not be allowed.
+
+#### Resource actions
+
+Actions are grouped under a property named "Actions".
+
+~~~xml
+  <Property Name="Actions" Type="MyType.Actions">
+~~~
+
+The type of the Actions property is a [structured type](#structured-types) with a single OEM property whose type is a structured type with no defined properties.
+
+~~~xml
+  <ComplexType Name="Actions">
+    <Property Name="Oem" Type="MyType.OemActions"/>
+  </ComplexType>
+
+  <ComplexType Name="OemActions"/>
+~~~
+
+Individual actions are defined within a namespace using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
+
+The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
+
+The first parameter is called the "binding parameter" and specifies the resource or [structured type](#structured-types) that the action appears as a member of (the type of the Actions property on the resource).  The remaining Parameter elements describe additional parameters to be passed to the action.  Parameters containing the term `Nullable="false"` are required to be provided in the Action request.
+
+~~~xml
+  <Action Name="MyAction" IsBound="true">
+    <Parameter Name="Thing" Type="MyType.Actions"/>
+    <Parameter Name="Parameter1" Type="Edm.Boolean"/>
+    <Parameter Name="Parameter2" Type="Edm.String" Nullable="false"/>
+  </Action>
+~~~
+
+In the above example, three parameters are defined:
+* Thing: This is the binding parameter that is not provided in the request by the client
+* Parameter1: A boolean parameter used in the client payload for the request
+* Parameter2: A string parameter used in the client payload for the request and is also required to be provided by the client
+
+
+#### Resource extensibility
+
+Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
+
+While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
+
+##### Oem property
+
+In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
+
+Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
+
+~~~xml
+  <Schema Namespace="Contoso.v1_2_0">
+    ...
+    <ComplexType Name="AnvilType1">
+      <Property Name="slogan" Type="Edm.String"/>
+      <Property Name="disclaimer" Type="Edm.String"/>
+    </ComplexType>
+    ...
+  </Schema>
+~~~
+
+The next fragment shows an example of how the previous schema and the "AnvilType1" property type might appear in the instantiation of an Oem property as the result of a GET on a resource. The example shows two required elements in the use of the Oem property: A name for the object and a type property for the object. Detailed requirements for these elements are provided in the following clauses.
+
+~~~json
+{
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.v1_2_0.AnvilType1",
+            "slogan": "Contoso anvils never fail",
+            "disclaimer": "* Most of the time"
+        }
+    },
+    ...
+}
+~~~
+
+##### Oem property format and content
+
+Each property contained within the [Oem property](#oem-property) shall be a JSON object.  The name of the object (property) shall uniquely identify the OEM or organization that defines the properties contained by that object.  This is described in more detail in the following clause.  The OEM-specified object shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema.  The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
+
+The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
+
+##### Oem property naming
+
+The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
+DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
+
+Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
+
+The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
+
+There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a suborganization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
+
+The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
+
+
+##### URIs for OEM resources
+
+Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources shall be in the form of:
+
+` *BaseUri*/Oem/*OemName*/*ResourceName*`
+
+where
+* *BaseUri* is the URI segment of the standard Redfish Resource where the "Oem" property is used.
+* *OemName* is the name of the OEM, that follows the same naming as defined in the [Oem property format and content section](#oem-property-format-and-content).
+* *ResourceName* is the name of the resource defined by the OEM.
+
+For example, if Contoso defined a new resource called "AccountServiceMetrics" to be linked via the "Oem" property found at the URI "/redfish/v1/AccountService", the OEM resource would have the URI "/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics".
+
+
+#### Oem property examples
+
+The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
+
+~~~json
+{
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.v1_2_1.AnvilTypes1",
+            "slogan": "Contoso anvils never fail",
+            "disclaimer": "* Most of the time"
+        },
+        "Contoso_biz": {
+            "@odata.type": "#ContosoBiz.v1_1.RelatedSpeed",
+            "speed" : "ludicrous"
+        },
+        "EID_412_ASB_123": {
+            "@odata.type": "#OtherSchema.v1_0_1.powerInfoExt",
+            "readingInfo": {
+                "readingAccuracy": "5",
+                "readingInterval": "20"
+            }
+        },
+        "Contoso_customers_customerA": {
+            "@odata.type" : "#ContosoCustomer.v2015.slingPower",
+            "AvailableTargets" : [ "rabbit", "duck", "runner" ],
+            "launchPowerOptions" : [ "low", "medium", "eliminate" ],
+            "powerSetting" : "eliminate",
+            "targetSetting" : "rabbit"
+        }
+    },
+    ...
+}
+~~~
+
+##### OEM actions
+
+OEM-specific actions can be defined by defining actions bound to the Oem property of the [resource's Actions](#resource-actions) property type.
+
+~~~xml
+  <Action Name="Ping" IsBound="true">
+    <Parameter Name="ContosoType" Type="MyType.OemActions"/>
+  </Action>
+~~~
+
+Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
+
+~~~json
+{
+    "Actions": {
+        "Oem": {
+            "#Contoso.Ping": {
+                "target":"/redfish/v1/Systems/1/Actions/Oem/Contoso.Ping"
+            }
+        }
+    },
+    ...
+}
+~~~
+
+The URI of the OEM action in the "target" property shall be in the form of:
+
+` *ResourceUri*/Actions/Oem/*QualifiedActionName*`
+
+where
+* *ResourceUri* is the URI of the resource that supports invoking the action.
+* "Actions" is the name of the property containing the actions for a resource.
+* "Oem" is the name of the OEM property within the Actions property.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
+
+### Common Redfish resource properties
+
+This clause contains a set of common properties across all Redfish resources. The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
+
+Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this is in Resource_v1.xml.  For JSON Schema representations, this is in Resource.v1_0_0.json.  For OpenAPI representations, this is in Resource.v1_0_0.yaml.
+
+#### Id<a id="id-property"></a>
+
+The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
+
+#### Name<a id="name-property"></a>
+
+The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.
+
+#### Description<a id="description-property"></a>
+
+The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
+
+#### MemberId<a id="memberid-property"></a>
+
+The MemberId property of an object within a resource uniquely identifies the object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.
+
+#### Status
+
+The Status property represents the status of a resource.
+
+The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.
+
+#### Links
+
+The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the Links Property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+
+#### Members
+
+The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
+
+#### RelatedItem
+The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or subelements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+
+#### Actions
+
+The [Actions](#actions-property) property contains the actions supported by a resource.
+
+#### OEM
+
+The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+
+### Redfish resources
+
+Collectively known as the Redfish Schema, the set of resource descriptions contains normative requirements on implementations conforming to this specification.
+
+Redfish Resources are one of several general kinds:
+
+* Root Service Resource
+  * Contains the mapping of a particular service instance to applicable resources.
+  * Contains the UUID of a service instance.  This UUID would be the same UUID returned via SSDP discovery.
+* Current Configuration Resources, contain a mixture of:
+  * Inventory (static and read-only)
+  * Health Telemetry (dynamic and read-only)
+  * Current Configuration Settings (dynamic and read/write)
+  * Current Metric values
+* Setting Resources
+  * Dynamic, Read/Write Pending Configuration Settings
+* Services
+  * Common services like Eventing, Tasks, Sessions
+* Registry Resources
+  * Static, Read-Only JSON encoded information for Event and Message Registries
+
+#### Current configuration
+
+Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH and/or PUT to a separate [Settings resource](#settings).  For resources that can be modified immediately, the Allow header shall contain PATCH and/or PUT in the GET response.  When a resource is read-only, the Allow header shall not contain PATCH or PUT in the GET response.
+
+#### Settings
+
+A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
+
+The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful. The Messages property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. The ETag property contains the ETag of the Settings resource that was last applied. The Time property indicate the time when the Settings resource was last applied.
+
+Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+
+~~~json
+{
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
+        },
+        "Time": "2017-05-03T23:12:37-05:00",
+        "ETag": "A89B031B62",
+        "Messages": [
+           {
+              "MessageId": "Base.1.0.PropertyNotWritable",
+              "RelatedProperties": [
+                 "#/Attributes/ProcTurboMode"
+              ]
+           }
+        ]
+    },
+    ...
+}
+~~~
+
+The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response body that represents the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
+
+Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied:
+
+~~~json
+{
+    "@Redfish.SettingsApplyTime": {
+        "@odata.type": "#Settings.v1_1_0.PreferredApplyTime",
+        "ApplyTime": "OnReset",
+        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+        "MaintenanceWindowDurationInSeconds": 600
+    },
+    ...
+}
+~~~
+
+#### Services
+
+Service resources represent components of the Redfish Service itself as well as dependent resources.  While the complete list is discoverable only by traversing the Redfish Service tree, the list includes services like the Eventing service, Task management and Session management.
+
+#### Registry
+
+Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
+
+### Special resource situations
+
+There are some situations that arise with certain kinds of resources that need to exhibit common semantic behavior.
+
+#### Absent resources
+
+Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe elot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
+
+For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the State property of the Status object as "Absent".  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the "Power" and "Thermal" resources under a "Chassis" resource should not exist for an absent Chassis).
+
+Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the "Memory" resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an "Absent" State).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
+
+#### Schema variations
+
+There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
+
+* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
+* The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
+* For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
+
+A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
+
+* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
