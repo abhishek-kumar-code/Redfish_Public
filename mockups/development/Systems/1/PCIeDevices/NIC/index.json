@@ -25,9 +25,11 @@
         "MaxLanes": 4
     },
     "Links": {
-        "Chassis": [{
-            "@odata.id": "/redfish/v1/Chassis/1"
-        }],
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/1"
+            }
+        ],
         "PCIeFunctions": [
             {
                 "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/PCIeFunctions/1"

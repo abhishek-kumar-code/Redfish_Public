@@ -9,13 +9,12 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "Identifiers":  [
+    "Identifiers": [
         {
             "DurableName": "98D5E212-165B-4CA0-909B-C86B9CEE0119",
             "DurableNameFormat": "UUID"
         }
     ],
-
     "Links": {
         "Endpoints": [
             {

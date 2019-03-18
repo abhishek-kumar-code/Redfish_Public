@@ -15,5 +15,5 @@
         {
             "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID"
         }
-     ]
+    ]
 }

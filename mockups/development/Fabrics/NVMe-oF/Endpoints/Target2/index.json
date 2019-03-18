@@ -16,7 +16,6 @@
             "DurableName": "68D5E212-165B-4CA0-909B-C86B9CEE0113",
             "DurableNameFormat": "UUID"
         }
-
     ],
     "ConnectedEntities": [
         {
@@ -30,7 +29,7 @@
             "EntityType": "Drive",
             "EntityRole": "Target",
             "EntityLink": {
-                "@odata.id":"/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.1"
+                "@odata.id": "/redfish/v1/Chassis/NVMeChassis/Drives/Disk.Bay.1"
             }
         }
     ],
