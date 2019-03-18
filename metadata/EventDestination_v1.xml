@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EventDestination  v1.4.2-->
+<!--# Redfish Schema:  EventDestination  v1.4.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -340,14 +340,9 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_4_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also created to update the descriptions for EventTypes and ResourceTypes, regarding MetricReports."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_4_0.EventDestination"/>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_4_2">
-      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to update the descriptions for EventTypes and ResourceTypes, regarding MetricReports."/>
-      <EntityType Name="EventDestination" BaseType="EventDestination.v1_4_1.EventDestination"/>
-    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
