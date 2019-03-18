@@ -18,16 +18,16 @@
         ]
     },
     "Processors": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Processors"
+        "@odata.id": "/redfish/v1/Systems/ComposedSystem/Processors"
     },
     "Memory": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Memory"
+        "@odata.id": "/redfish/v1/Systems/ComposedSystem/Memory"
     },
     "EthernetInterfaces": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/EthernetInterfaces"
+        "@odata.id": "/redfish/v1/Systems/ComposedSystem/EthernetInterfaces"
     },
     "Storage": {
-        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Storage"
+        "@odata.id": "/redfish/v1/Systems/ComposedSystem/Storage"
     },
     "Links": {
         "ResourceBlocks": [

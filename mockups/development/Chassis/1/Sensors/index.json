@@ -3,18 +3,18 @@
     "Name": "Chassis sensors",
     "Members@odata.count": 4,
     "Members": [
-      {
-        "@odata.id": "/redfish/v1/Chassis/1/Sensors/0"
-      },
-      {
-        "@odata.id": "/redfish/v1/Chassis/1/Sensors/1"
-      },
-      {
-        "@odata.id": "/redfish/v1/Chassis/1/Sensors/2"
-      },
-      {
-        "@odata.id": "/redfish/v1/Chassis/1/Sensors/3"
-      }
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Sensors/0"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Sensors/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Sensors/2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Sensors/3"
+        }
     ],
     "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
     "@odata.id": "/redfish/v1/Chassis/1/Sensors",

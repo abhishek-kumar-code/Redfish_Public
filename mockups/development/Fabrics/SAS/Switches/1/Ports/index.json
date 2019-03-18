@@ -1,18 +1,33 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#PortCollection.PortCollection",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports",
-	"@odata.type": "#PortCollection.PortCollection",
-	"Name": "SAS Port Collection",
-	"Members@odata.count": 8,
-	"Members": [
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/1"},
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/2"}, 
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/3"},
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/4"},
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/5"},
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/6"},
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/7"},
-        {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/8"}
+    "@odata.context": "/redfish/v1/$metadata#PortCollection.PortCollection",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports",
+    "@odata.type": "#PortCollection.PortCollection",
+    "Name": "SAS Port Collection",
+    "Members@odata.count": 8,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/7"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/8"
+        }
     ]
 }
-

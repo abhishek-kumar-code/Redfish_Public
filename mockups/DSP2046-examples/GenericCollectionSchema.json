@@ -36,8 +36,12 @@
                         },
                         "Description": {
                             "anyOf": [
-                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
-                                {"type": "null"}
+                                {
+                                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                                },
+                                {
+                                    "type": "null"
+                                }
                             ],
                             "readonly": true
                         },

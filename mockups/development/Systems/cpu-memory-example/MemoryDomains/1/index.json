@@ -11,11 +11,19 @@
     "AllowsBlockProvisioning": false,
     "InterleavableMemorySets": [
         {
-    	    "MemorySet": [
-                {"@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/1"},
-                {"@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/2"},
-                {"@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/3"},
-                {"@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4"}
+            "MemorySet": [
+                {
+                    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/Memory/4"
+                }
             ]
         }
     ],

@@ -5,7 +5,10 @@
     "IndicatorLED": "Lit",
     "StatusIndicator": "Fail",
     "Model": "Drive Model string",
-    "Status": { "State": "Enabled", "Health": "Warning" },
+    "Status": {
+        "State": "Enabled",
+        "Health": "Warning"
+    },
     "CapacityBytes": 899527000000,
     "Protocol": "SATA",
     "MediaType": "SSD",
@@ -16,9 +19,10 @@
     "PredictedMediaLifeLeftPercent": 80,
     "Links": {
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/2"}
+            {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded/Volumes/2"
+            }
         ]
     },
-    "Actions": {
-    }
+    "Actions": {}
 }

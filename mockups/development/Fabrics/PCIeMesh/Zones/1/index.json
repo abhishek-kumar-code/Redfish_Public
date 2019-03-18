@@ -1,23 +1,31 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Zones/1",
-	"@odata.type": "#Zone.v1_0_0.Zone",
-	"Id": "1",
-	"Name": "PCIe Zone 1",
-	"Description": "PCIe Zone 1",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"Links": {
-		"Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/HostRootComplex1"},
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/NVMeDrivePF"},
-			{"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/SimulatedPCIeFunction-SFD"}
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Zones/1",
+    "@odata.type": "#Zone.v1_0_0.Zone",
+    "Id": "1",
+    "Name": "PCIe Zone 1",
+    "Description": "PCIe Zone 1",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/HostRootComplex1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/NVMeDrivePF"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/SimulatedPCIeFunction-SFD"
+            }
         ],
         "InvolvedSwitches": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/2"
+            }
         ]
-	},
-	"Oem": {}
+    },
+    "Oem": {}
 }
