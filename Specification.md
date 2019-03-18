@@ -1572,7 +1572,7 @@ All Entity Types and Complex Types contain a `Name` attribute, which specifies t
 
 Entity Types and Complex Types may have a `BaseType` attribute, which specifies a [qualified name](#qualified-names).  When the `BaseType` attribute is used, all of the definitions of the referenced `BaseType` are made available to the Entity Type or Complex Type being defined.
 
-All [Resources and Resource Collections](resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
+All [Resources and Resource Collections](#resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
 
 Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  This allows for references to be made using the [Navigation Property element](#navigation-property-element).
 
@@ -1597,7 +1597,34 @@ Example Entity Type and Complex Type element:
 
 ##### Action element
 
+The Action element is defined using the `Action` tag.  This element is used to define an action that can be performed on a [Resource](#resources-and-resource-collections).  
 
+All Actions contain a `Name` attribute, which specifies the name of the action.
+
+In Redfish, all Actions contain the `IsBound` attribute and is always set to `true`.  This is used to indicate that the action appears as a member of a given structured type.
+
+The Action element contains one or more `Parameter` elements that specify the `Name` and `Type` of each parameter.
+
+Since all actions in Redfish use the term `IsBound="true"`, the first parameter is called the "binding parameter" and specifies the [structured type](#structured-types) to which the action belongs.  In Redfish, this is always going to be one of the following [Complex Type elements](#entity-type-and-complex-type-elements):
+* For standard actions, the "Actions" Complex Type for the Resource.
+* For OEM actions, the "OemActions" Complex Type for the Resource.
+
+The remaining `Parameter` elements describe additional parameters to be passed to the action.  Parameters containing the term `Nullable="false"` are required to be provided in the action request.
+
+```xml
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyType">
+    <Action Name="MyAction" IsBound="true">
+      <Parameter Name="Thing" Type="MyType.Actions"/>
+      <Parameter Name="Parameter1" Type="Edm.Boolean"/>
+      <Parameter Name="Parameter2" Type="Edm.String" Nullable="false"/>
+    </Action>
+
+    <ComplexType Name="Actions">
+      ...
+    </ComplexType>
+    ...
+  </Schema>
+```
 
 ##### Property element
 
@@ -3495,44 +3522,6 @@ Schema referenced from the implementation, either from the OData Service Documen
 * Modified schema may remove properties. 
 * Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
 * Other modifications to the Schema shall not be allowed.
-
-#### Resource actions
-
-Actions are grouped under a property named "Actions".
-
-~~~xml
-  <Property Name="Actions" Type="MyType.Actions">
-~~~
-
-The type of the Actions property is a [structured type](#structured-types) with a single OEM property whose type is a structured type with no defined properties.
-
-~~~xml
-  <ComplexType Name="Actions">
-    <Property Name="Oem" Type="MyType.OemActions"/>
-  </ComplexType>
-
-  <ComplexType Name="OemActions"/>
-~~~
-
-Individual actions are defined within a namespace using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
-
-The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
-
-The first parameter is called the "binding parameter" and specifies the resource or [structured type](#structured-types) that the action appears as a member of (the type of the Actions property on the resource).  The remaining Parameter elements describe additional parameters to be passed to the action.  Parameters containing the term `Nullable="false"` are required to be provided in the Action request.
-
-~~~xml
-  <Action Name="MyAction" IsBound="true">
-    <Parameter Name="Thing" Type="MyType.Actions"/>
-    <Parameter Name="Parameter1" Type="Edm.Boolean"/>
-    <Parameter Name="Parameter2" Type="Edm.String" Nullable="false"/>
-  </Action>
-~~~
-
-In the above example, three parameters are defined:
-* Thing: This is the binding parameter that is not provided in the request by the client
-* Parameter1: A boolean parameter used in the client payload for the request
-* Parameter2: A string parameter used in the client payload for the request and is also required to be provided by the client
-
 
 #### Resource extensibility
 
