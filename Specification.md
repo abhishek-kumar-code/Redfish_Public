@@ -1517,7 +1517,7 @@ The CSDL defines these namespaces and resources:
 
 | Namespace | Resource | Description |
 |:----------|:---------|:------------|
-| `Session` | A single `EntityType` named `Session` | Represents a single resource and so has no version information. |
+| `Session` | A single `EntityType`, or resource, named `Session` | Represents a resource collection, and so defines no version information. |
 | `Session.v1_0_0` | Its `EntityType` definition inherits from `Session.Session` entity type. | Defines v1.0.0 of the `Session` namespace. |  
 | `Session.v1_0_2` | Its `EntityType` definition inherits from the previous `EntityType` versions.  This entity type fixes annotations in the v1.0.0 definition. | Defines v1.0.2 of the `Session` namespace. |
 | `Session.v1_0_3` | Its `EntityType` definition inherits from the previous `EntityType` versions.  This entity type fixes annotations in the v1.0.0 definition. | Defines v1.0.3 of the `Session` namespace. |
