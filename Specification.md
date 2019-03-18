@@ -1398,7 +1398,7 @@ Schema annotations are used throughout the schema definitions of the data model 
 
 The Description annotation can be applied to any type, property, action, or parameter in order to provide a human-readable description of the Redfish Schema element.
 
-All Redfish types, [properties](#properties), and [reference properties](#reference-properties) shall include a Description annotation.
+All Redfish types, [properties](#properties), [reference properties](#reference-properties), and enumeration values shall include a Description annotation.
 
 All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Description annotation.
 
@@ -1595,10 +1595,6 @@ Example Entity Type and Complex Type element:
   </ComplexType>
 ```
 
-##### Enum Type element
-
-
-
 ##### Action element
 
 
@@ -1621,13 +1617,13 @@ Primitive data types can be one of the following:
 | Type               | Meaning |
 | ---                | ---     |
 | Edm.Boolean        | True or False. |
-| Edm.DateTimeOffset | A [date-time](#datetime-values) string. |
+| Edm.DateTimeOffset | [Date-time](#datetime-values) string. |
 | Edm.Decimal        | Numeric values with fixed precision and scale. |
 | Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits). |
-| Edm.Duration       | A [duration](#duration-values) string. |
-| Edm.Guid           | A globally unique identifier. |
+| Edm.Duration       | [Duration](#duration-values) string. |
+| Edm.Guid           | Globally unique identifier. |
 | Edm.Int64          | Signed 64-bit integer. |
-| Edm.String         | A UTF-8 string. |
+| Edm.String         | UTF-8 string. |
 
 Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
 
@@ -1661,6 +1657,28 @@ Example Navigation Property element:
     <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
     <Annotation Term="OData.AutoExpandReferences"/>
   </NavigationProperty>
+```
+
+##### Enum Type element
+
+The Enum Type element is defined using the `EnumType` tag.  This element is used to define a set of enumeration values, which may be applied to one or more properties.
+
+All Enum Types contain a `Name` attribute, which specifies the name of the set of enumeration values.
+
+Enum Types contain `Member` elements that define the members of the enumeration.  The `Member` elements contain a `Name` attribute that specifies the string value of the member name.
+
+
+```xml
+  <EnumType Name="EnumTypeA">
+    <Annotation Term="OData.Description" String="This is the EnumTypeA enumeration."/>
+    <Annotation Term="OData.LongDescription" String="This is used to describe the EnumTypeA enumeration."/>
+    <Member Name="MemberA">
+      <Annotation Term="OData.Description" String="Description of MemberA"/>
+    </Member>
+    <Member Name="MemberB">
+      <Annotation Term="OData.Description" String="Description of MemberB"/>
+    </Member>
+  </EnumType>
 ```
 
 ##### Annotation element
@@ -3477,50 +3495,6 @@ Schema referenced from the implementation, either from the OData Service Documen
 * Modified schema may remove properties. 
 * Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
 * Other modifications to the Schema shall not be allowed.
-
-
-
-###### Enums
-
-Enumeration types are defined within a namespace using `EnumType` elements. The `Name` attribute of the enumeration type specifies the name of the enumeration type.
-
-Enumeration types may be reused across different properties of different resource types.
-
-EnumType elements contain `Member` elements that define the members of the enumeration. The Member elements contain a `Name` attribute that specifies the string value of the member name.
-
-
-~~~xml
-  <EnumType Name="EnumTypeA">
-    <Annotation Term="OData.Description" String="This is the EnumTypeA enumeration."/>
-    <Annotation Term="OData.LongDescription" String="This is used to describe the EnumTypeA enumeration."/>
-    <Member Name="MemberA">
-      <Annotation Term="OData.Description" String="Description of MemberA"/>
-    </Member>
-    <Member Name="MemberB">
-      <Annotation Term="OData.Description" String="Description of MemberB"/>
-    </Member>
-  </EnumType>
-~~~
-
-Enumeration Types may include [Description](#description) and [LongDescription](#long-description) annotations.
-
-Enumeration Members shall include [Description](#description) annotations.
-
-
-##### Contained resources
-
-Reference properties whose members are contained by the referencing resource are specified with the `ContainsTarget` attribute with a value of `true`.
-
-For example, to specify that a Chassis resource contains a Power resource, you would specify `ContainsTarget=true` on the resource property representing the Power Resource within the Chassis type definition.
-
-~~~xml
-  <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true">
-    <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
-    <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
-    <Annotation Term="OData.AutoExpandReferences"/>
-  </NavigationProperty>
-~~~
-
 
 #### Resource actions
 
