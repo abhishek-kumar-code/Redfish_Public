@@ -2650,50 +2650,61 @@ where
 
 ### Common Redfish resource properties
 
-This clause contains a set of common properties across all Redfish resources. The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
+This clause contains a set of common properties across all Redfish resources.  The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this is in Resource_v1.xml.  For JSON Schema representations, this is in Resource.v1_0_0.json.  For OpenAPI representations, this is in Resource.v1_0_0.yaml.
+Common properties are defined in the base `Resource` Redfish Schema.  For OData Schema representations, the `Resource_v1.xml` file contains common properties.  For JSON Schema representations, the `Resource.v1_0_0.json` file contains common properties.  For OpenAPI representations, the `Resource.v1_0_0.yaml` contains common properties.
 
 #### Id<a id="id-property"></a>
 
-The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
+The `Id` property contains a unique identifier (ID) for a resource in a resource collection.  The `Id` value shall be unique across a resource collection.
 
 #### Name<a id="name-property"></a>
 
-The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.
+The `Name` property contains a human-readable name for the resource or resource collection.  The `Name` property shall be the string type.  The `Name` value is NOT required to be unique across resource instances in a resource collection.
 
 #### Description<a id="description-property"></a>
 
-The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
+The `Description` property contains a human-readable description of the resource or resource collection.  The `Description` property type shall be the string type.
 
 #### MemberId<a id="memberid-property"></a>
 
-The MemberId property of an object within a resource uniquely identifies the object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.
+The `MemberId` property of an object in a resource that uniquely identifies the object in the array that contains it.  The `MemberId` value shall be unique across the array in the resource.
 
 #### Status
 
-The Status property represents the status of a resource.
+The `Status` property indicates the status, or health, of a resource.
 
-The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.
+The `Status` property value is a common status object type as defined by this specification.  By having a common representation of status, clients can depend on consistent semantics.  The `Status` object can indicate:
+
+* The current intended state.
+* The state to which the resource is to change.
+* The current actual state and any problems that affect the current state of the resource.
+
+#### Location
+
+The `Location` property contains information that enables a user to find the physical equipment.
 
 #### Links
 
-The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the Links Property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The [Links Property](#links-property) contains the hyperlinks associated with the resource, as defined by that resource's schema definition.  All associated reference properties defined for a resource shall be nested under the `Links` property.  All directly, or subordinate, referenced properties defined for a resource shall be in the root of the resource.
 
 #### Members
 
-The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
+The [Members](#members-property) property of a resource collection contains the members of the collection.
 
 #### RelatedItem
-The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or subelements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+
+The [RelatedItem](#relateditem) property contains hyperlinks to a resource or part of a resource as defined by that resource's schema definition.
+
+This property shows a relationship between elements or subelements in disparate parts of the service but is not intended to be a strong linking methodology like other references.  For example, because `Fans` might be in one area of the implementation and processors in another, the `RelatedItem` property can be used to inform the client that one is related to the other.  In this case, the `Fan` cools the processor.
 
 #### Actions
 
 The [Actions](#actions-property) property contains the actions supported by a resource.
 
-#### OEM
+#### Oem
 
-The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+The `Oem` property is an empty object that vendors can populate with custom properties.  The [Oem](#oem-property) property is used for OEM extensions [Schema Extensibility](#resource-extensibility) defines.  
 
 ### Redfish resources
 
