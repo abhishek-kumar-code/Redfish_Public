@@ -12,9 +12,9 @@
     "Oem": {},
     "Location": [
         {
-            "Language": "en",         
+            "Language": "en",
             "Uri": "/redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json",
-            "PublicationUri" : "http://redfish.dmtf.org/schemas/ManagerAccount.v1_0_2.json"
+            "PublicationUri": "http://redfish.dmtf.org/schemas/ManagerAccount.v1_0_2.json"
         }
     ]
 }

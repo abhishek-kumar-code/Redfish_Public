@@ -7,7 +7,9 @@
             "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates/1"
         }
     ],
-    "@Redfish.SupportedCertificates": [ "PEM" ],
+    "@Redfish.SupportedCertificates": [
+        "PEM"
+    ],
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#CertificateCollection.CertificateCollection",
     "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol/HTTPS/Certificates",

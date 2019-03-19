@@ -3,7 +3,9 @@
     "Name": "Certificate Collection",
     "Members@odata.count": 0,
     "Members": [],
-    "@Redfish.SupportedCertificates": [ "PEM" ],
+    "@Redfish.SupportedCertificates": [
+        "PEM"
+    ],
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#CertificateCollection.CertificateCollection",
     "@odata.id": "/redfish/v1/AccountService/Accounts/1/Certificates",

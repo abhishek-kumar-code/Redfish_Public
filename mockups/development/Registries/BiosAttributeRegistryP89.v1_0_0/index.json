@@ -1,35 +1,35 @@
 {
-  "@Redfish.Copyright": "Copyright (C) 2014-2016 DMTF. All rights reserved.",
-  "@odata.context": "/redfish/v1/$metadata#Registries/Members/$entity",
-  "@odata.id": "/redfish/v1/Registries/BiosAttributeRegistryP89.v1_0_0",
-  "@odata.type": "#MessageRegistryFile.v1_0_0.MessageRegistryFile",
-  "Description": "P89 BIOS Attribute Registry File locations",
-  "Id": "BiosAttributeRegistryP89.v1_0_0",
-  "Languages": [
-    "en",
-    "zh",
-    "xy"
-  ],
-  "Location": [
-    {
-      "ArchiveFile": "BiosAttributeRegistryP89.v1_0_0.json",
-      "ArchiveUri": "/<someuri>/Registries.gz",
-      "Language": "en",
-      "PublicationUri": "http://redfish.dmtf.org/registries/BiosAttributeRegistryP89.v1_0_0.json"
-    },
-    {
-      "ArchiveFile": "BiosAttributeRegistryP89.v1_0_0.zh.json",
-      "ArchiveUri": "/<someuri>/Registries.zh.gz",
-      "Language": "zh",
-      "PublicationUri": "http://redfish.dmtf.org/registries/BiosAttributeRegistryP89.zh.json"
-    },
-    {
-      "Language": "xy",
-      "PublicationUri": "http://redfish.dmtf.org/registries/BiosAttributeRegistryP89.v1_0_0.xy.json",
-      "Uri": "/<someLocalUri>/BiosAttributeRegistryP89.v1_0_0.xy.json"
-    }
-  ],
-  "Name": "P89 BIOS Attribute Registry File",
-  "Oem": {},
-  "Registry": "BiosAttributeRegistryP89.1.0"
+    "@Redfish.Copyright": "Copyright (C) 2014-2016 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Registries/Members/$entity",
+    "@odata.id": "/redfish/v1/Registries/BiosAttributeRegistryP89.v1_0_0",
+    "@odata.type": "#MessageRegistryFile.v1_0_0.MessageRegistryFile",
+    "Description": "P89 BIOS Attribute Registry File locations",
+    "Id": "BiosAttributeRegistryP89.v1_0_0",
+    "Languages": [
+        "en",
+        "zh",
+        "xy"
+    ],
+    "Location": [
+        {
+            "ArchiveFile": "BiosAttributeRegistryP89.v1_0_0.json",
+            "ArchiveUri": "/<someuri>/Registries.gz",
+            "Language": "en",
+            "PublicationUri": "http://redfish.dmtf.org/registries/BiosAttributeRegistryP89.v1_0_0.json"
+        },
+        {
+            "ArchiveFile": "BiosAttributeRegistryP89.v1_0_0.zh.json",
+            "ArchiveUri": "/<someuri>/Registries.zh.gz",
+            "Language": "zh",
+            "PublicationUri": "http://redfish.dmtf.org/registries/BiosAttributeRegistryP89.zh.json"
+        },
+        {
+            "Language": "xy",
+            "PublicationUri": "http://redfish.dmtf.org/registries/BiosAttributeRegistryP89.v1_0_0.xy.json",
+            "Uri": "/<someLocalUri>/BiosAttributeRegistryP89.v1_0_0.xy.json"
+        }
+    ],
+    "Name": "P89 BIOS Attribute Registry File",
+    "Oem": {},
+    "Registry": "BiosAttributeRegistryP89.1.0"
 }

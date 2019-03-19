@@ -12,10 +12,10 @@
         {
             "@odata.id": "/redfish/v1/Fabrics/PCIe"
         },
-		{
+        {
             "@odata.id": "/redfish/v1/Fabrics/PCIeMesh"
         },
-		{
+        {
             "@odata.id": "/redfish/v1/Fabrics/SAS"
         }
     ]

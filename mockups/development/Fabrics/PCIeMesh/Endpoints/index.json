@@ -6,7 +6,7 @@
     "Name": "PCIe Endpoint Collection",
     "Members@odata.count": 7,
     "Members": [
-       {
+        {
             "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/FCPort1"
         },
         {
@@ -26,7 +26,6 @@
         },
         {
             "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/SimulatedPCIeFunction-SFD"
-        }		
+        }
     ]
 }
-
