@@ -68,7 +68,7 @@
     },
     "Links": {
         "Endpoints": [],
-        "ConnectedProcessors":[
+        "ConnectedProcessors": [
             {
                 "@odata.id": "/redfish/v1/Systems/1/Processors/1"
             }

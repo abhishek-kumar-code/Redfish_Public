@@ -14,8 +14,15 @@
     },
     "FirmwareVersion": "1.06",
     "Links": {
-        "ManagerForChassis": [ { "@odata.id": "/redfish/v1/Chassis/StorageBackplane" } ], "Oem": {}
+        "ManagerForChassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane"
+            }
+        ],
+        "Oem": {}
     },
-    "Actions": {"Oem": {}},
+    "Actions": {
+        "Oem": {}
+    },
     "Oem": {}
 }

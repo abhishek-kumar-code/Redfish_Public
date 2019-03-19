@@ -5,7 +5,9 @@
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9",
     "Id": "OffloadBlock9",
     "Name": "Offload Block 0",
-    "ResourceBlockType": [ "Processor" ],
+    "ResourceBlockType": [
+        "Processor"
+    ],
     "Status": {
         "State": "Enabled",
         "Health": "OK"
