@@ -84,7 +84,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="RESTful-Architecture">Architectural Styles and the Design of Network-based Software Architectures</a>, R. Fielding, 2000. [https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm "https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm")
 * <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
 * <a id="HTML5-Spec-SSE">HTML Living Standard: Server-sent events</a> [https://html.spec.whatwg.org/multipage/server-sent-events.html](https://html.spec.whatwg.org/multipage/server-sent-events.html "https://html.spec.whatwg.org/multipage/server-sent-events.html")
-* <a id="ISO6391">ISO 639-1:2002</a> [ISO 639-1:2002 Codes for the representation of names of languages -- Part 1: Alpha-2 code](https://www.iso.org/standard/22109.html) "https://www.iso.org/standard/22109.html")
+* <a id="ISO6391">ISO 639-1:2002</a> [ISO 639-1:2002 Codes for the representation of names of languages -- Part 1: Alpha-2 code](https://www.iso.org/standard/22109.html "https://www.iso.org/standard/22109.html")
 * <a id="RFC1738">IETF RFC 1738</a> T. Berners-Lee et al, Uniform Resource Locators (URL), [https://www.ietf.org/rfc/rfc1738.txt](https://www.ietf.org/rfc/rfc1738.txt "https://www.ietf.org/rfc/rfc1738.txt")
 * <a id="RFC3986">IETF RFC 3986</a> T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [https://www.ietf.org/rfc/rfc3986.txt](https://www.ietf.org/rfc/rfc3986.txt "https://www.ietf.org/rfc/rfc3986.txt")
 * <a id="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [https://www.ietf.org/rfc/rfc4627.txt](https://www.ietf.org/rfc/rfc4627.txt "https://www.ietf.org/rfc/rfc4627.txt")
@@ -311,6 +311,8 @@ Remote management functionality typically includes access mechanisms for redirec
 ### Security
 
 The challenge of remote interface security is to protect both the interface and exchanged data.  To accomplish this, Redfish provides authentication and encryption.  As part of this security, Redfish defines and requires minimum levels of encryption.
+
+For more information, see the [Security](#security-details) clause.
 
 ## Protocol details
 
