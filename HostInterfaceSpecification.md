@@ -2,11 +2,11 @@
 DocTitle: Redfish Host Interface Specification
 DocNumber: '0270'
 DocClass: Normative
-DocVersion: '1.1.0a'
+DocVersion: '1.1.0'
 modified: '2018-11-29'
-status: Work in Progress
+status: published
 released: false
-copyright: '2014-2018'
+copyright: '2014-2019'
 ---
 
 # Foreword
