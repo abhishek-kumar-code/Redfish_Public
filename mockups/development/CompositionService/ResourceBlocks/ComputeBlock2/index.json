@@ -5,7 +5,9 @@
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2",
     "Id": "ComputeBlock2",
     "Name": "Compute Block 2",
-    "ResourceBlockType": [ "Compute" ],
+    "ResourceBlockType": [
+        "Compute"
+    ],
     "Status": {
         "State": "Enabled",
         "Health": "OK"

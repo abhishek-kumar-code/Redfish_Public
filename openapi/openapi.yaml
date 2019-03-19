@@ -998,7 +998,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: http://redfish.dmtf.org/schemas/v1/CertificateService.v1_0_0.yaml#/definitions/GenerateCSRResponse
+                $ref: http://redfish.dmtf.org/schemas/v1/CertificateService.v1_0_0.yaml#/components/schemas/GenerateCSRResponse
           description: The response contains the results of the GenerateCSR action
         '202':
           content:

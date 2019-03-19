@@ -9,5 +9,5 @@
         {
             "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem"
         }
-     ]
+    ]
 }

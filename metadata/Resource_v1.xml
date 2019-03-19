@@ -59,7 +59,7 @@
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
-              <PropertyValue Property="Pattern" String="[A-Za-z0-9_.:]+"/>
+              <PropertyValue Property="Pattern" String="^[A-Za-z0-9_]+$"/>
               <PropertyValue Property="Type" String="Resource.OemObject"/>
             </Record>
           </Collection>

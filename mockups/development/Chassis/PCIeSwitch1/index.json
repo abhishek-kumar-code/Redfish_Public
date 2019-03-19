@@ -12,17 +12,17 @@
     "SerialNumber": "SN1-ABC-DEFG",
     "PartNumber": "",
     "AssetTag": "CustomerWritableThingy",
-	"PowerState": "On",
+    "PowerState": "On",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-	"Thermal": {
-        "@odata.id":"/redfish/v1/Chassis/PCIeSwitch1/Thermal"
+    "Thermal": {
+        "@odata.id": "/redfish/v1/Chassis/PCIeSwitch1/Thermal"
     },
     "Power": {
-        "@odata.id":"/redfish/v1/Chassis/PCIeSwitch1/Power"
-    }, 
+        "@odata.id": "/redfish/v1/Chassis/PCIeSwitch1/Power"
+    },
     "Links": {
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
