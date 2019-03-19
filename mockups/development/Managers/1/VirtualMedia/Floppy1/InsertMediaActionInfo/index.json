@@ -42,7 +42,7 @@
                 "NFS",
                 "FTP",
                 "SFTP"
-               ]
+            ]
         },
         {
             "Name": "TransferMethod",

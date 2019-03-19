@@ -41,7 +41,9 @@
     },
     "Links": {
         "Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/NICPort1"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/NICPort1"
+            }
         ]
     },
     "Oem": {}

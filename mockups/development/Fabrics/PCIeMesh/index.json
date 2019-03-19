@@ -11,7 +11,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
-	"MaxZones": 64,
+    "MaxZones": 64,
     "Zones": {
         "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Zones"
     },

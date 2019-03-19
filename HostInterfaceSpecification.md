@@ -51,6 +51,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="DMTFDSP0266">DMTF DSP0266</a> Redfish Scalable Platforms Management API Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf")
 * <a id="ISODIR">ISO/IEC Directives, Part 2</a> Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype")
 * <a id="PCIFirmwareSpec">PCI Firmware Specification</a>, PCI SIG [http://pcisig.com/specifications/conventional/pci_firmware](http://pcisig.com/specifications/conventional/pci_firmware "http://pcisig.com/specifications/conventional/pci_firmware")
+* <a id="RFC4122">IETF RFC4122</a>, A Universally Unique IDentifier (UUID) URN Namespace, The Internet Society, July 2005, http://www.ietf.org/rfc/rfc4122.txt 
 
 
 ## Terms and definitions
@@ -341,6 +342,9 @@ Protocol Specific Record Data starts at offset 02h of the [Protocol Record struc
 | 5Ah    | Redfish Service Hostname Length   | BYTE     | Varies | The length in bytes of the "Redfish Service Hostname" field, including any NULL characters in the field. |
 | 5Bh    | Redfish Service Hostname          | Varies   | Varies | Hostname of Redfish Service; this string may end with zero or more NULL characters.  This string does not follow typical string patterns found elsewhere in SMBIOS definitions. |
 
+The UUID is 128 bits long.  Its format is described in [RFC4122](#RFC4122).  Although [RFC4122](#RFC4122) recommends network byte order for all fields, the PC industry (including the ACPI, [UEFI](#UEFISPEC), and Microsoft specifications) has consistently used little-endian byte encoding for the first three fields: time_low, time_mid, time_hi_and_version.  The same encoding, also known as wire format, should  also be used for the SMBIOS representation of the UUID.
+* The UUID {00112233-4455-6677-8899-AABBCCDDEEFF} would thus be represented as: `0x33 0x22 0x11 0x00 0x55 0x44 0x77 0x66 0x88 0x99 0xAA 0xBB 0xCC 0xDD 0xEE 0xFF`
+
 In the above table, the fields "Host IP Address", "Host IP Mask", "Redfish Service IP Address", and "Redfish Service IP Mask" shall be stored in network byte order.
 * IPv4 Example: 10.12.110.57 will be stored, from lowest offset first, as `0x0A 0x0C 0x6E 0x39 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`
 * IPv6 Example: 2001:db8:63b3:1::3490 will be stored, from lowest offset first, as `0x20 0x01 0x0D 0xB8 0x63 0xB3 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x34 0x90`
@@ -465,11 +469,12 @@ For convenience when identifying the auto-generated credentials when active and 
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
-| 1.1.0a  | 2018-11-29 | Clarified the byte ordering in SMBIOS structures. |
+| 1.1.0   | 2018-11-29 | Clarified the byte ordering in SMBIOS structures. |
 |         |            | Clarified the data shown in the Device Descriptor Table. |
 |         |            | Clarified the format of the Host Name field. |
 |         |            | Added example device descriptors. |
 |         |            | Added version 2 of the USB and PCI/PCI-e device descriptors. |
+|         |            | Clarified the format of the UUID. |
 | 1.0.1   | 2017-12-11 | Errata release. Numerous terminology clarifications and typographical corrections. |
 |         |            | Terminology for 'host', 'manager' and 'service' were edited for consistency. |
 |         |            | Added additional wording about the SMBIOS Type 42 structure to describe its purpose. |

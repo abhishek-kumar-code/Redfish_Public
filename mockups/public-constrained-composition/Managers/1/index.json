@@ -46,7 +46,7 @@
         ],
         "ManagerInChassis": {
             "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure"
-        }	
+        }
     },
     "Actions": {
         "#Manager.Reset": {

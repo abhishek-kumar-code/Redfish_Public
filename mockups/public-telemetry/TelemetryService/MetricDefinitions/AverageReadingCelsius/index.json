@@ -9,7 +9,7 @@
     "CalculationTimeInterval": "PT1S",
     "IsLinear": true,
     "Calculable": "NonSummable",
-    "Wildcards": [ 
+    "Wildcards": [
         {
             "Name": "Wild",
             "Values": [

@@ -16,9 +16,8 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-		"HealthRollup": "Warning"
+        "HealthRollup": "Warning"
     },
-
     "SerialConsole": {
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 1,
@@ -47,7 +46,6 @@
     "LogServices": {
         "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager/LogServices"
     },
-
     "Links": {
         "ManagerForChassis": [
             {
@@ -63,6 +61,6 @@
         "Oem": {}
     },
     "Oem": {
-			"ManagementConfigurationMode": "Manual"
-	}
+        "ManagementConfigurationMode": "Manual"
+    }
 }

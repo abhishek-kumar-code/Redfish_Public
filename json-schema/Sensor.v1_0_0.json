@@ -354,6 +354,7 @@
                 },
                 "PeakReading": {
                     "description": "The peak reading value for this sensor.",
+                    "excerpt": "Sensor",
                     "longDescription": "The value of this property shall be the peak value of the Reading for this sensor during the last interval.",
                     "readonly": true,
                     "type": [
@@ -363,7 +364,6 @@
                 },
                 "PeakReadingTime": {
                     "description": "The time at which the Peak Reading value occurred.",
-                    "excerpt": "Sensor",
                     "format": "date-time",
                     "longDescription": "The value of this property shall the timestamp when the Peak Reading value was observed.",
                     "readonly": true,
@@ -577,14 +577,13 @@
                     "excerpt": "Sensor",
                     "readonly": true
                 },
-                "PeakReadingTime": {
-                    "description": "The time at which the Peak Reading value occurred.",
+                "PeakReading": {
+                    "description": "The peak reading value for this sensor.",
                     "excerpt": "Sensor",
-                    "format": "date-time",
-                    "longDescription": "The value of this property shall the timestamp when the Peak Reading value was observed.",
+                    "longDescription": "The value of this property shall be the peak value of the Reading for this sensor during the last interval.",
                     "readonly": true,
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ]
                 },
@@ -704,14 +703,13 @@
                     "excerpt": "Sensor",
                     "readonly": true
                 },
-                "PeakReadingTime": {
-                    "description": "The time at which the Peak Reading value occurred.",
+                "PeakReading": {
+                    "description": "The peak reading value for this sensor.",
                     "excerpt": "Sensor",
-                    "format": "date-time",
-                    "longDescription": "The value of this property shall the timestamp when the Peak Reading value was observed.",
+                    "longDescription": "The value of this property shall be the peak value of the Reading for this sensor during the last interval.",
                     "readonly": true,
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ]
                 },
@@ -831,7 +829,8 @@
                 },
                 "DwellTime": {
                     "description": "The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
-                    "longDescription": "This property shall reflect the amount of time a sensor reading remains passed the trigger point before declaring the crossing to be a violation. In other words, if the sensor reading returns back to a reading before the trigger point, the threshold crossing may be disregarded.",
+                    "longDescription": "This property shall indicate the time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
                     "readonly": false,
                     "type": [
                         "string",
