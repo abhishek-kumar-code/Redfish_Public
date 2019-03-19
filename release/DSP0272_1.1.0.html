@@ -12,7 +12,7 @@
   <div class="preamble">
     <div class="logo"></div>
     <p>Document Identifier: <span class="dsp">DSP0272</span></p>
-    <p>Date: 2019-02-26</p>
+    <p>Date: 2019-03-18</p>
     <p>Version: <span class="version">1.1.0</span></p>
     
   </div>
@@ -77,8 +77,8 @@
 </ul>
 <h2 id="terms-and-definitions">4. Terms and definitions</h2>
 <p>In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.</p>
-<p>The terms "shall" ("required"), "shall not", "should" ("recommended"), "should not" ("not recommended"), "may", "need not" ("not required"), "can" and "cannot" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Annex H. The terms in parenthesis are alternatives for the preceding term, for use in exceptional cases when the preceding term cannot be used for linguistic reasons. Note that ISO/IEC Directives, Part 2, Annex H specifies additional alternatives. Occurrences of such additional alternatives shall be interpreted in their normal English meaning.</p>
-<p>The terms "clause", "subclause", "paragraph", and "annex" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 5.</p>
+<p>The terms "shall" ("required"), "shall not", "should" ("recommended"), "should not" ("not recommended"), "may", "need not" ("not required"), "can" and "cannot" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 7. The terms in parenthesis are alternatives for the preceding term, for use in exceptional cases when the preceding term cannot be used for linguistic reasons. Note that ISO/IEC Directives, Part 2, Clause 7 specifies additional alternatives. Occurrences of such additional alternatives shall be interpreted in their normal English meaning.</p>
+<p>The terms "clause", "subclause", "paragraph", and "annex" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 6.</p>
 <p>The terms "normative" and "informative" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 3. In this document, clauses, subclauses, or annexes labeled "(informative)" do not contain normative content. Notes and examples are always informative elements.</p>
 <h2 id="design-tenets">5. Design tenets</h2>
 <p>All profile entries (at the Profile, Resource, or Property level) are "additive".  That is, each requirement can only apply more rigid requirements that override less rigid requirements.</p>
@@ -394,7 +394,7 @@
 <tr>
 <td><code>ConditionalRequirements</code></td>
 <td>object</td>
-<td>Property-level conditional requirements that apply to instances of this property; see <a href="#conditional-requirements">Conditional Requirements</a> clause.</td>
+<td>Property-level conditional requirements that apply to instances of this property; see <a href="#conditional-requirements">Conditional requirements</a> clause.</td>
 </tr>
 <tr>
 <td><code>MinCount</code></td>
@@ -616,17 +616,17 @@
 <tr>
 <td><code>CompareProperty</code></td>
 <td>string</td>
-<td>The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the <a href="#compare-property">Compare Property</a> clause.</td>
+<td>The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the <a href="#compare-property">Compare property</a> clause.</td>
 </tr>
 <tr>
 <td><code>CompareValues</code></td>
 <td>array</td>
-<td>Values of the CompareProperty used to test this condition. See the <a href="#compare-property">Compare Property</a> clause.</td>
+<td>Values of the CompareProperty used to test this condition. See the <a href="#compare-property">Compare property</a> clause.</td>
 </tr>
 <tr>
 <td><code>CompareType</code></td>
 <td>string</td>
-<td>The condition used to compare the value of the property named by <code>CompareProperty</code> to the value of <code>CompareValues</code>.  If the comparison is true, this conditional requirement applies. See the <a href="#compare-property">Compare Property</a> clause.</td>
+<td>The condition used to compare the value of the property named by <code>CompareProperty</code> to the value of <code>CompareValues</code>.  If the comparison is true, this conditional requirement applies. See the <a href="#compare-property">Compare property</a> clause.</td>
 </tr>
 </tbody>
 </table>
@@ -687,7 +687,7 @@
 </tbody>
 </table>
 <h6 id="examples">8.4.2.5.4. Examples</h6>
-<p>Simple dependencies can be expressed using the conditional requirement and a comparison.  This example shows a <code>CompareProperty</code> condition applied to the <code>Pepperoni</code> property.  If the <code>PizzaType</code> property is not equal to <code>Cheese</code>, then the <code>Pepperoni</code> property becomes both mandatory and must have a value of <code>true</code>.</p>
+<p>Simple dependencies can be expressed using the conditional requirement and a comparison.  This example shows a <code>CompareProperty</code> condition applied to the <code>Pepperoni</code> property.  If the <code>PizzaType</code> property is not equal to <code>Cheese</code>,  the <code>Pepperoni</code> property becomes both mandatory and must have a value of <code>true</code>.</p>
 <pre><code>   "Pepperoni": {
       "ReadRequirement": "Recommended",
       "ConditionalRequirements": [{
@@ -874,7 +874,7 @@
 <tbody>
 <tr>
 <td>1.1.0</td>
-<td>2019-02-26</td>
+<td>2019-03-18</td>
 <td>Added support for new protocol features from Redfish Specification v1.6. Added ability to make requirements based on URI patterns as specified in Redfish schema files.  Updated normative references to current versions.  Clarified that <code>Repository</code> value may indicate a Profile or Schema file location, as appropriate.  Formatting improvements.</td>
 </tr>
 <tr>
