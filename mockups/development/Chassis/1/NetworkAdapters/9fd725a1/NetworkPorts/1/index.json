@@ -14,8 +14,9 @@
         }
     ],
     "ActiveLinkTechnology": "Ethernet",
-    "SupportedEthernetCapabilities":  [
-        "WakeOnLAN", "EEE"
+    "SupportedEthernetCapabilities": [
+        "WakeOnLAN",
+        "EEE"
     ],
     "NetDevFuncMinBWAlloc": [
         {
@@ -34,7 +35,8 @@
         }
     ],
     "AssociatedNetworkAddresses": [
-        "00:0C:29:9A:98:ED", "00:0C:29:9A:98:EF"
+        "00:0C:29:9A:98:ED",
+        "00:0C:29:9A:98:EF"
     ],
     "EEEEnabled": true,
     "WakeOnLANEnabled": true,

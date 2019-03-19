@@ -47,7 +47,9 @@
             },
             "Links": {
                 "Endpoints": [
-                    {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator1"}
+                    {
+                        "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator1"
+                    }
                 ]
             }
         },
@@ -87,48 +89,101 @@
             },
             "Links": {
                 "Endpoints": [
-                    {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"}
+                    {
+                        "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"
+                    }
                 ]
             }
         }
     ],
     "Drives": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.3"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.4"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.5"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.6"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.7"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.8"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.9"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.10"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.11"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.1"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.2"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.3"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.4"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.5"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.6"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.7"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.8"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.9"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.10"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.11"}
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.7"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.8"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.9"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.10"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.11"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.7"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.8"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.9"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.10"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.11"
+        }
     ],
     "Volumes": {
         "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes"
     },
     "Links": {
         "Enclosures": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"
+            }
         ]
     },
-    "Actions": {
-    },
+    "Actions": {},
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/Redundancy/0",
@@ -138,8 +193,12 @@
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "RedundancySet": [
-                {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/0"},
-                {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/1"}
+                {
+                    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID#/StorageControllers/1"
+                }
             ],
             "Status": {
                 "State": "Enabled",
@@ -147,5 +206,5 @@
             }
         }
     ],
-    "Oem": {}    
+    "Oem": {}
 }

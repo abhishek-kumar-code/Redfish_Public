@@ -8,10 +8,10 @@
     "MetricDataType": "Decimal",
     "Units": "W",
     "Precision": 4,
-    "Accuracy": 1.0,
+    "Accuracy": 1,
     "Calibration": 2,
-    "MinReadingRange": 0.0,
-    "MaxReadingRange": 50.0,
+    "MinReadingRange": 0,
+    "MaxReadingRange": 50,
     "SensingInterval": "PT1S",
     "TimestampAccuracy": "PT1S",
     "Wildcards": [

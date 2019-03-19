@@ -1,26 +1,57 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#PortCollection.PortCollection",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports",
-	"@odata.type": "#PortCollection.PortCollection",
-	"Name": "PCIe Port Collection",
-	"Members@odata.count": 16,
-	"Members": [
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up1"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up2"}, 
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up3"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up4"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up5"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up6"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down1"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down2"}, 
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down3"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down4"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down5"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down6"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Management"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/InterswitchLink1"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/InterswitchLink2"},
-		{"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/InterswitchLink3"}
+    "@odata.context": "/redfish/v1/$metadata#PortCollection.PortCollection",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports",
+    "@odata.type": "#PortCollection.PortCollection",
+    "Name": "PCIe Port Collection",
+    "Members@odata.count": 16,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Up6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Management"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/InterswitchLink1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/InterswitchLink2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/InterswitchLink3"
+        }
     ]
 }
-
