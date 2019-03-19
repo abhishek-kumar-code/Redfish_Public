@@ -94,7 +94,7 @@
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains the types of events that will be sent to the desination."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be an array that contains the types of events that shall be sent to the destination. To specify that a client is subscribing for Metric Reports, the EventTypes property should include 'MetricReport'."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be an array that contains the types of events that shall be sent to the destination.  To specify that a client is subscribing for Metric Reports, the EventTypes property should include 'MetricReport'."/>
         </Property>
         <Property Name="Context" Type="Edm.String">
           <Annotation Term="Redfish.Required"/>
@@ -323,7 +323,7 @@
         <Property Name="ResourceTypes" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of Resource Type values (Schema names) that correspond to the OriginOfCondition.  The version and full namespace should not be specified."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of Resource Type values.  When an event is generated, if the OriginOfCondition's Resource Type matches a value in this array, the event shall be sent to the event destination (unless it would be filtered by other property conditions such as RegistryPrefix).  If this property is absent or the array is empty, the service shall send Events from any Resource Type to the subscriber.  The value of this property shall be only the general namespace for the type and not the versioned value.  For example, it shall not be Task.v1_2_0.Task and instead shall just be Task. To specify that a client is subscribing for Metric Reports, the EventTypes property should include 'MetricReport'."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of Resource Type values.  When an event is generated, if the OriginOfCondition's Resource Type matches a value in this array, the event shall be sent to the event destination (unless it would be filtered by other property conditions such as RegistryPrefix).  If this property is absent or the array is empty, the service shall send Events from any Resource Type to the subscriber.  The value of this property shall be only the general namespace for the type and not the versioned value.  For example, it shall not be Task.v1_2_0.Task and instead shall just be Task.  To specify that a client is subscribing for Metric Reports, the EventTypes property should include 'MetricReport'."/>
         </Property>
         <Property Name="SubordinateResources" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
