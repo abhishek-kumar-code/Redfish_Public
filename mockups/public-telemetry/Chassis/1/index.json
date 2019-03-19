@@ -11,7 +11,7 @@
     "AssetTag": "CustomerWritableThingy",
     "IndicatorLED": "Lit",
     "PowerState": "On",
-    "Location" : {
+    "Location": {
         "PostalAddress": {
             "Country": "US",
             "Territory": "TX",

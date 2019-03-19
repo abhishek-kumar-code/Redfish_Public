@@ -4,7 +4,7 @@
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
+                "@odata.type": "/redfish/v1/$metadata#Message.v1_0_0.Message",
                 "MessageId": "Base.v1_0_0.PropertyValueNotInList",
                 "RelatedProperties": [
                     "#/IndicatorLED"
@@ -18,7 +18,7 @@
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
+                "@odata.type": "/redfish/v1/$metadata#Message.v1_0_0.Message",
                 "MessageId": "Base.v1_0_0.PropertyNotWriteable",
                 "RelatedProperties": [
                     "#/SKU"

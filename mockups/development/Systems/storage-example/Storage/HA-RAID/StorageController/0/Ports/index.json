@@ -1,0 +1,15 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#PortCollection.PortCollection",
+    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/StorageController/0/Ports",
+    "@odata.type": "#PortCollection.PortCollection",
+    "Name": "Stroage Controller Port Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/StorageController/0/Ports/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/StorageController/0/Ports/2"
+        }
+    ]
+}

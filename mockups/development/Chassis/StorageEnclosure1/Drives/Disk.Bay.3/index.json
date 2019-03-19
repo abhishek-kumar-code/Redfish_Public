@@ -5,7 +5,10 @@
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
-    "Status": { "State": "Enabled", "Health": "OK" },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
     "CapacityBytes": 899527000000,
     "FailurePredicted": false,
     "Protocol": "SAS",
@@ -24,8 +27,7 @@
     "CapableSpeedGbs": 12,
     "NegotiatedSpeedGbs": 12,
     "Links": {
-        "Volumes": [
-        ]
+        "Volumes": []
     },
     "Actions": {
         "#Drive.SecureErase": {

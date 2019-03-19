@@ -8,7 +8,7 @@
         },
         {
             "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/2"
-        }, 
+        },
         {
             "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/3"
         },

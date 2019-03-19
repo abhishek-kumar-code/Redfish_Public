@@ -62,6 +62,9 @@
             <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/LDAP/Certificates</String>
             <String>/redfish/v1/Managers/{ManagerId}/RemoteAccountService/ExternalAccountProviders/{ExternalAccountProviderId}/Certificates</String>
             <String>/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates</String>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/Boot/Certificates</String>
+            <String>/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Boot/Certificates</String>
+            <String>/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/Boot/Certificates</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Certificate.Certificate)">

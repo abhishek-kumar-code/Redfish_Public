@@ -12,7 +12,11 @@
             "Name": "TransferProtocol",
             "Required": false,
             "DataType": "String",
-            "AllowableValues": [ "HTTP", "HTTPS", "FTP" ]
+            "AllowableValues": [
+                "HTTP",
+                "HTTPS",
+                "FTP"
+            ]
         }
     ],
     "Oem": {},
