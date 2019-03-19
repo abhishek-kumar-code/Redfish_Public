@@ -2701,6 +2701,8 @@ The client can continue to get information about the status by directly querying
 * GET requests to either the Task Monitor or the Task resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
 * Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP GET, PUT, PATCH, POST, and DELETE methods.
+* Services that support scheduling tasks (using for instance "@Redfish.OperationApplyTime" annotation in the request) shall persist pending Tasks across service restarts, until the Task begins execution.
+* Tasks that are pending execution should include the "@Redfish.OperationApplyTime" property to indicate when the Task will start.  If the OperationApplyTime value is AtMaintenanceWindowStart or InMaintenanceWindowOnReset, then the task should also include the "@Redfish.MaintenanceWindow" property.
 
 ### Resource Tree stability
 
