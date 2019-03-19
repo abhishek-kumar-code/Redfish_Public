@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.7.0-->
+<!--# Redfish Schema:  ComputerSystem  v1.8.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -1287,6 +1287,22 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type CertificateCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_8_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2019.1"/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_7_0.ComputerSystem"/>
+
+      <ComplexType Name="ProcessorSummary" BaseType="ComputerSystem.v1_5_0.ProcessorSummary">
+        <Property Name="OverallBandwidthPercent" Type="Edm.Decimal">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The Overall CPU bandwidth as a percentage."/>
+            <Annotation Term="OData.LongDescription" String="The value of this property shall be the Overall CPU utilization of the processors as a percentage."/>
+            <Annotation Term="Validation.Minimum" Int="0"/>
+            <Annotation Term="Measures.Unit" String="%"/>
+        </Property>
       </ComplexType>
     </Schema>
 
