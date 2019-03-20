@@ -65,17 +65,27 @@
         }
     ],
     "Drives": [
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"},
-        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"
+        }
     ],
     "Volumes": {
         "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes"
     },
     "Links": {
         "Enclosures": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane"
+            }
         ]
     },
     "Actions": {

@@ -52,6 +52,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
     <edmx:Include Namespace="PCIeDevice"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
+    <edmx:Include Namespace="PCIeFunction"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PortCollection_v1.xml">
     <edmx:Include Namespace="PortCollection"/>
   </edmx:Reference>
@@ -596,6 +599,14 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
+      </ComplexType>
+
+      <ComplexType Name="StorageControllerLinks" BaseType="Storage.v1_4_0.StorageControllerLinks">
+        <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)">
+          <Annotation Term="OData.Description" String="An array of references to the PCIe Functions which the stroage controller produces."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type PCIeFunction that represents the PCIe functions associated with this resource."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </ComplexType>
     </Schema>
 

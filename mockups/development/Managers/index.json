@@ -35,6 +35,6 @@
         },
         {
             "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
-        }	
+        }
     ]
 }
