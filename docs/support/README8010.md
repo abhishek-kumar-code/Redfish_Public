@@ -38,23 +38,30 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 
 ### Release 2019.1 (TBD)
 
-| Schema Name            | Version | Description |
-| ---                    | ---     | ---         |
-| ComputerSystem         | 1.7.0   | Added "Certificates" property to "Boot". |
-| MetricReportDefinition | 1.2.0   | Added "MetricReportDefinitionEnabled", "SuppressRepeatedMetricValue", and "MetricReportHeartbeatInterval" properties.  Added "Triggers" to "Links". |
-| PCIeSlots              | 1.1.0   | Added "HotPluggable" property. |
-| PhysicalContext        | N/A     | Added "PowerSubsystem"  and "Rectifier" physical context types. |
-| Processor              | 1.5.0   | Added "TotalEnabledCores" property. |
-| Session                | 1.2.0   | Added "SessionType" and "OemSessionType" properties. |
-| Storage                | 1.7.0   | Added "Ports" and "ControllerRates" to "StorageControllers". |
-| Triggers               | 1.1.0   | Added "EventTriggers" property.  Added "MetricReportDefinitions" to "Links".  Added "RedfishMetricReport" to "TriggerActionEnum". |
-| UpdateService          | 1.5.0   | Added "MaxImageSizeBytes" property. |
-| Zone                   | 1.3.0   | Added "ExternalAccessiblility" property. |
-| EthernetInterface      | 1.4.2   | Errata release.  Corrected "StaticNameServers" to allow for null values. |
-| Event                  | 1.x.x   | Errata release.  Removed "@odata.id" and "@odata.etag" properties from JSON Schema. |
-| EventDestination       | 1.x.x   | Errata release.  Modified rules around usage of "HttpHeaders" in a GET response to allow for an empty array. |
-| UpdateService          | 1.x.x   | Errata release.  Clarified "HttpPushUri" description to include a recommendation of using HTTP status 411 when the request does not include the "Content-Length" header. |
-| (various files)        | various | Errata release.  Regenerating JSON Schema to use "uri-reference" instead of "uri" as the format for properties that represent URIs. |
+| Schema Name             | Version | Description |
+| ---                     | ---     | ---         |
+| Certificate             | 1.1.0   | Added "Renew" and "Rekey" actions. |
+| ComputerSystem          | 1.7.0   | Added "Certificates" property to "Boot". |
+| Drive                   | 1.6.0   | Added "PCIeFunctions" to "Links". |
+| MetricReportDefinition  | 1.2.0   | Added "MetricReportDefinitionEnabled", "SuppressRepeatedMetricValue", and "MetricReportHeartbeatInterval" properties.  Added "Triggers" to "Links". |
+| PCIeSlots               | 1.1.0   | Added "HotPluggable" property. |
+| PhysicalContext         | N/A     | Added "PowerSubsystem"  and "Rectifier" physical context types. |
+| Processor               | 1.5.0   | Added "TotalEnabledCores" property. |
+| Session                 | 1.2.0   | Added "SessionType" and "OemSessionType" properties. |
+| Storage                 | 1.7.0   | Added "Ports", "ControllerRates", and "PCIeFunctions" to "StorageControllers". |
+| Triggers                | 1.1.0   | Added "EventTriggers" property.  Added "MetricReportDefinitions" to "Links".  Added "RedfishMetricReport" to "TriggerActionEnum". |
+| UpdateService           | 1.5.0   | Added "MaxImageSizeBytes" property. |
+| Zone                    | 1.3.0   | Added "ExternalAccessiblility" property. |
+| AccountService          | 1.x.x   | Errata release.  Clarified descriptions within "LDAPSearchSettings". |
+| Endpoint                | 1.x.x   | Errata release.  Clarified the descriptions for "EntityRole". |
+| EthernetInterface       | 1.4.2   | Errata release.  Corrected "StaticNameServers" to allow for null values. |
+| Event                   | 1.x.x   | Errata release.  Removed "@odata.id" and "@odata.etag" properties from JSON Schema. |
+| EventDestination        | 1.x.x   | Errata release.  Modified rules around usage of "HttpHeaders" in a GET response to allow for an empty array.  Clarified the descriptions for "EventTypes" and "ResourceTypes". |
+| ExternalAccountProvider | 1.x.x   | Errata release.  Clarified descriptions within "LDAPSearchSettings". |
+| Port                    | 1.x.x   | Errata release.  Clarified the descriptions for "PortId", "AssociatedEndpoints", and "ConnectedSwitches".  Clarified the description of the overall resource. |
+| Resource                | 1.x.x   | Errata release.  Corrected regex pattern for properties inside of "Oem" to match requirements in the specification. |
+| UpdateService           | 1.x.x   | Errata release.  Clarified "HttpPushUri" description to include a recommendation of using HTTP status 411 when the request does not include the "Content-Length" header. |
+| (various files)         | various | Errata release.  Regenerating JSON Schema to use "uri-reference" instead of "uri" as the format for properties that represent URIs. |
 
 
 ### Release 2018.3 (December 2018)
