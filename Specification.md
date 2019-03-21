@@ -1374,19 +1374,57 @@ An extended error response, which is a single JSON object, defines the error res
 
 ## Data model
 
+One of the key tenets of Redfish is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
 
 ### Resources and Resource Collections
 
+Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified in the response payload by a unique [type identifier](#type-property) property.
+
+#### Resource and schema naming
+
+Standard Redfish resources defined and published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  The resource name is used to construct both the type identifier property and the schema filename for each of the supported schema description languages.
 
 ### Properties
 
 * A service may implement a writable property as read-only.
 
-Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
+Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute in the defining schema.
 
 Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
 
 Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
+
+
+### Resource, schema, and property naming conventions 
+
+The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
+
+Standard Redfish resources defined and published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  The resource name is used to construct both the type identifier property and the schema filename for each of the supported schema description languages.
+
+Standard Redfish properties follow similar naming conventions, and should use a common definition when defined in multiple schemas across the Redfish data model.  This consistency allows for code re-use across resources and increases interoperability.  Existing property definitions should be leveraged for new resource definitions whenever possible.
+
+The Resource, schema, and property naming rules are as follows:
+* Resource Names, Property Names, and constants such as Enumerations shall be Pascal-cased
+* The first letter of each word in a name shall be uppercase and spaces between words shall be removed (e.g., 'ComputerSystem', 'PowerState', 'SerialNumber'.)
+* Names shall not contain spaces or underscore characters
+* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
+* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
+
+Exceptions are allowed for the following cases:
+ * Well-known technology names like "iSCSI" (e.g.,`iSCSITarget`)
+ * Product names like "iLO"
+ * Well-known abbreviations or acronyms
+ * OEM appears as `Oem` in resource and property names (alone or as a portion of a name), but should be `OEM` when used alone as a constant.
+ * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
+
+For properties that have units, or other special meaning, a unit identifier should be appended to the name. The current list includes:
+ * Bandwidth (Mbps), (e.g., `PortSpeedMbps`)
+ * CPU speed (Mhz), (e.g., `ProcessorSpeedMhz`)
+ * Memory size (MegaBytes, MB), (e.g., `MemoryMB`)
+ * Counts of items (Count), (e.g., `ProcessorCount`, `FanCount`)
+ * The State of a resource (State) (e.g., `PowerState`)
+ * State values where "work" is being done end in (ing) (e.g., `Applying`, `ClearingLogic`)
+
 
 #### Reference properties
 
@@ -1395,6 +1433,28 @@ Properties may include the Nullable attribute with a value of false to specify t
 
 
 ### Special Resource situations
+
+There are some situations that arise with certain kinds of resources that need to exhibit common semantic behavior.
+
+#### Absent resources
+
+Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe slot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits `SoftwareInventory` to a maximum of 20 items should not populate 18 absent resources when only two items are present).
+
+For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the `State` property of the `Status` object as `Absent`.  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the `Power` and `Thermal` resources under a `Chassis` resource should not exist for an absent Chassis).
+
+Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the `Memory` resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an `Absent` value for 'State` within the 'Status' object).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
+
+#### Schema variations
+
+There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
+
+* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
+* The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
+* For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
+
+A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
+
+* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
 
 
 ### Registries
@@ -3438,16 +3498,6 @@ When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the imple
 
 
 
-One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
-
-* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified by a unique [type identifier](#type-property).
-
-
-
-#### Schema, registry, and profile file naming conventions
-
-Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
-
 
 
 
@@ -3542,30 +3592,7 @@ Resource types defined by this specification shall be referenced in JSON documen
 
 NOTE: Refer to the [Security](#security-details) clause for security implications of Data Model and Schema.
 
-### Common naming conventions
 
-The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
-
-Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
-* The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
-* No underscores are used.
-* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
-
-Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI" (e.g.,"iSCSITarget")
- * Product names like "iLO"
- * Well-known abbreviations or acronyms
- * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
- * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
-
-For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
- * Bandwidth (Mbps), (e.g., PortSpeedMbps)
- * CPU speed (Mhz), (e.g., ProcessorSpeedMhz)
- * Memory size (MegaBytes, MB), (e.g., MemoryMB)
- * Counts of items (Count), (e.g., ProcessorCount, FanCount)
- * The State of a resource (State) (e.g., PowerState.)
- * State values where "work" is being done end in (ing) (e.g., Applying, Clearing)
 
 
 ### Schema definition
@@ -3852,26 +3879,3 @@ Service resources represent components of the Redfish Service itself as well as 
 
 Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
 
-### Special resource situations
-
-There are some situations that arise with certain kinds of resources that need to exhibit common semantic behavior.
-
-#### Absent resources
-
-Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe elot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
-
-For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the State property of the Status object as "Absent".  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the "Power" and "Thermal" resources under a "Chassis" resource should not exist for an absent Chassis).
-
-Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the "Memory" resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an "Absent" State).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
-
-#### Schema variations
-
-There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
-
-* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
-* The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
-* For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
-
-A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
-
-* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
