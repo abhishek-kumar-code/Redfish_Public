@@ -1380,9 +1380,19 @@ One of the key tenets of Redfish is the separation of protocol and data model.  
 
 Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified in the response payload by a unique [type identifier](#type-property) property.
 
+### Resource Collections 
+
 #### Resource and schema naming
 
 Standard Redfish resources defined and published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  The resource name is used to construct both the type identifier property and the schema filename for each of the supported schema description languages.
+
+### OEM resources
+
+OEMs and other third parties can extend the Redfish data model by creating new resource types.  This is accomplished by defining an OEM schema for each resource type, and connecting instances of those resources to the resource tree.  Any OEM resource accessed from hyperlinks within the Redfish resource tree shall follow the Redfish resource definitions and structure.  OEMs are encouraged to follow the design tenets and naming conventions in this specification when defining OEM resources or properties.
+
+#### OEM resource and schema naming
+
+To avoid naming collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the resource name.  For example, "ContosoDisk" would not conflict with a "Disk" resource or another OEM's disk-related resource.
 
 ### Properties
 
@@ -3541,9 +3551,6 @@ The binary file describing a Redfish Device Enablement Dictionary follows the Re
 
 For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.dict".
 
-##### OEM schema file naming
-
-To avoid namespace collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
  
 #### Programmatic access to schema, registry, or profile files
 
