@@ -1404,6 +1404,8 @@ Properties that must have a non-nullable value include the [nullable attribute](
 
 Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
 
+If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then the value of `null` is an acceptable values in most cases.  Properties not returned from a GET operation indicates that the property is not supported by the implementation.
+
 
 ### Resource, schema, and property naming conventions 
 
@@ -1476,46 +1478,52 @@ Schema annotations are used throughout the schema definitions of the data model 
 
 #### Description annotation
 
-The Description annotation can be applied to any type, property, action, or parameter in order to provide a human-readable description of the Redfish Schema element.
+The Description annotation can be applied to any type, property, action, or parameter in order to provide a description of Redfish Schema elements suitable for end users or user interface help text.
 
-All Redfish types, [properties](#properties), [reference properties](#reference-properties), and enumeration values shall include a Description annotation.
-
-All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Description annotation.
-
-All [structured types](#structured-properties) shall include a Description annotation.
+A Description annotation shall be included on the following schema definitions:
+* Redfish types
+* [Properties](#properties)
+* [Reference properties](#reference-properties)
+* Enumeration values
+* [Resources and Resource Collections](#resources-and-resource-collections)
+* [Structured types](#structured-properties)
 
 #### Long Description annotation
 
-The Long Description annotation can be applied to any type, property, action, or parameter in order to provide a formal, normative specification of the schema element.  Where the Long Descriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
+The Long Description annotation can be applied to any type, property, action, or parameter in order to provide a formal, normative specification of the schema element.  Where the Long Descriptions in the Redfish Schema contains normative language, the service shall be required to conform with the statement.
 
-All Redfish types, [properties](#properties), and [reference properties](#reference-properties) shall include a Long Description annotation.
-
-All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Long Description annotation.
-
-All [structured types](#structured-properties) shall include a Long Description annotation.
+A Long Description annotation shall be included on the following schema definitions:
+* Redfish types
+* [Properties](#properties)
+* [Reference properties](#reference-properties)
+* [Resources and Resource Collections](#resources-and-resource-collections)
+* [Structured types](#structured-properties)
 
 #### Resource Capabilities annotation
 
-The Resource Capabilities annotation can be applied to Resources and Resource Collections to express the different type of HTTP operations a client is able to invole on the given Resource or Resource Collection.
+The Resource Capabilities annotation can be applied to [Resources and Resource Collections](#resources-and-resource-collections) to express the different type of HTTP operations a client is able to invoke on the given Resource or Resource Collection.
 
-* Insert Capabilities is used to show whether or not a client is able to perform a POST on the resource.
-* Update Capabilities is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
-* Delete Capabilities is used to show whether or not a client is able to perform a DELETE on the resource.
-* A service may only implement a subset of the capabilities that are allowed on the Resource or Resource Collection.
+* Insert Capabilities is used to indicate whether or not a client is able to perform a POST on the Resource.
+* Update Capabilities is used to indicate whether or not a client is able to perform a PATCH or PUT on the Resource.
+* Delete Capabilities is used to indicate whether or not a client is able to perform a DELETE on the Resource.
+* A service may implement a subset of the capabilities that are allowed on the Resource or Resource Collection.
 
-All Redfish Resources and Resource Collections shall include Resource Capabilities annotations
+All schema definitions for Redfish Resources and Resource Collections shall include Resource Capabilities annotations.
 
 #### Resource URI Patterns annotation
 
-The Resource URI Patterns annotation is used to express the valid URI patterns for a given Resource or Resource Collection.
+The Resource URI Patterns annotation is used to express the valid URI patterns for a given [Resource or Resource Collection](#resources-and-resource-collections).
 
 The strings for the URI patterns may use `{` and `}` characters to express parameters within a given URI pattern.  Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the `Id` string property for the corresponding Resource, or the `MemberId` string property for the corresponding object within a Resource.
 
+MIKER to look at adding properties too (like how HTTPS is used in the Certificate path URI).
+MIKER to add language about URI construction with relation to the tree
+
 The following string is an example URI pattern that describes a Manager Account Resource: `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`
 
-Using the above example, `{ManagerAccountId}` would be replaced by the `Id` property of the corresponding Manager Account resource.  If the `Id` property for a given Manager Account resource is `John`, then the full URI for that resource would be `/redfish/v1/AccountService/Accounts/John`.
+Using the above example, `{ManagerAccountId}` would be replaced by the `Id` property of the corresponding `ManagerAccount` resource.  If the `Id` property for a given Manager Account resource is `John`, then the full URI for that resource would be `/redfish/v1/AccountService/Accounts/John`.
 
-All Redfish Resources and Redfish Resource Collections shall be annotated with the Resource URI Patterns annotation.
+All schema definitions for Redfish Resources and Redfish Resource Collections shall be annotated with the Resource URI Patterns annotation.
 
 All Redfish Resources and Redfish Resource Collections implemented by a service shall match the URI pattern described by the Resource URI Patterns annotation for their given definition.
 
@@ -1525,27 +1533,31 @@ The Additional Properties annotation is used to specify whether a type can conta
 
 #### Permissions annotation
 
-The Permissions annotation is used to specity if a client is allowed to write a given property, or if the property is read-only.
+The Permissions annotation is used to specity if a client is allowed to modify the value of a property, or if the property is read-only.
+
+A service may implement a modifiable property as read-only.
 
 #### Required annotation
 
 The Required annotation is used to specify that a property is required to be supported by services.  Required properties shall be annotated with the Required annotation.  All other properties are optional.
 
-If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases.  Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
-
 #### Required on Create annotation
 
-The Required on Create annotation is used to specify that a property is required to be provided by the client on creation of the resource.  Properties not annotated with the Required on Create annotation, are not required to be provided by the client on a create operation.
+The Required on Create annotation is used to specify that a property is required to be provided by the client on creation of the resource.  Properties not annotated with the Required on Create annotation are not required to be provided by the client on a create operation.
 
 #### Units of Measure annotation
 
 In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units of Measure annotation in order to specify the units of measurement for the property.
 
-The value of the annotation should be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
+The value of the annotation shall be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., `RPM` is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes, the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For example, Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By", would use `MiBy` as the value for the annotation.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., `Mbit/s`).
 
 #### Expanded Resource annotation
 
-The Expanded Resource annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to provide the contents of the related [Resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
+The Expanded Resource annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to include the contents of the related [Resource](#structured-properties) or Resource Collection in responses.
+
+MIKER to add a sentence about what expand is and link to query parameter for expand; mention it's a level 1 expand.
+
+Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
 
 ### Versioning
 
@@ -1609,37 +1621,37 @@ The creation of separate localized copies of Redfish schemas and registries is a
 
 Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
 
-Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.
+Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an `en` sub-folder for consistency.
 
 Descriptive property, parameter, and enumeration text not translated into the language specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
 
-### Schema, registry, dictionary and profile repository
+### Schema, registry, dictionary, and profile repository
 
 All Redfish schemas, registries, dictionaries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
 
-| URL | Folder contents |
-|-----|-----------------|
-| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
-| redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
-| redfish.dmtf.org/schemas/v1/{code} |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
-| redfish.dmtf.org/schemas/archive | Subfolders contain schema files specific to a particular version release. |
-| redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
-| redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
-| redfish.dmtf.org/registries/v1/{code} | Durable URL for programmatic access to localized v1.xx registry files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
-| redfish.dmtf.org/registries/archive | Subfolders contain registry files specific to a particular version release. |
-| redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
-| redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
-| redfish.dmtf.org/profiles/archive | Subfolders contain profile files specific to a particular profile version or release. |
-| redfish.dmtf.org/dictionaries | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
-| redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
-| redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
+| URL                                     | Folder contents |
+| ---                                     | ---             |
+| `redfish.dmtf.org/schemas`              | Current (most recent minor or errata) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
+| `redfish.dmtf.org/schemas/v1`           |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
+| `redfish.dmtf.org/schemas/v1/{code}`    |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
+| `redfish.dmtf.org/schemas/archive`      | Subfolders contain schema files specific to a particular version release. |
+| `redfish.dmtf.org/registries`           | Current (most recent minor or errata) release of each registry file. |
+| `redfish.dmtf.org/registries/v1`        | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
+| `redfish.dmtf.org/registries/v1/{code}` | Durable URL for programmatic access to localized v1.xx registry files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
+| `redfish.dmtf.org/registries/archive`   | Subfolders contain registry files specific to a particular version release. |
+| `redfish.dmtf.org/profiles`             | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
+| `redfish.dmtf.org/profiles/v1`          | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
+| `redfish.dmtf.org/profiles/archive`     | Subfolders contain profile files specific to a particular profile version or release. |
+| `redfish.dmtf.org/dictionaries`         | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| `redfish.dmtf.org/dictionaries/v1`      | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| `redfish.dmtf.org/dictionaries/archive` | Subfolders contain dictionary files specific to a particular version release. |
 
 
 ## Schema definition languages
 
-### Common Schema Definition Language
+### OData Common Schema Definition Language
 
-Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
+OData Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
 
 #### File naming conventions for CSDL
 
@@ -1733,7 +1745,7 @@ Entity Types and Complex Types may have a `BaseType` attribute, which specifies 
 
 All [Resources and Resource Collections](#resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
 
-Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  This allows for references to be made using the [Navigation Property element](#navigation-property-element).
+Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  The Entity Type element allows for references to be made using the [Navigation Property element](#navigation-property-element), whereas Complex Type element does not allow for this usage.
 
 Example Entity Type and Complex Type element:
 ```xml
@@ -1756,15 +1768,15 @@ Example Entity Type and Complex Type element:
 
 ##### Action element
 
-The Action element is defined using the `Action` tag.  This element is used to define an action that can be performed on a [Resource](#resources-and-resource-collections).  
+The Action element is defined using the `Action` tag.  This element is used to define an [action](#post-action) that can be performed on a [Resource](#resources-and-resource-collections).  
 
-All Actions contain a `Name` attribute, which specifies the name of the action.
+All Action elements contain a `Name` attribute, which specifies the name of the action.
 
-In Redfish, all Actions contain the `IsBound` attribute and is always set to `true`.  This is used to indicate that the action appears as a member of a given structured type.
+In Redfish, all Action elements contain the `IsBound` attribute and is always set to `true`.  This is used to indicate that the action appears as a member of a given structured type.
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and `Type` of each parameter.
 
-Since all actions in Redfish use the term `IsBound="true"`, the first parameter is called the "binding parameter" and specifies the [structured type](#structured-types) to which the action belongs.  In Redfish, this is always going to be one of the following [Complex Type elements](#entity-type-and-complex-type-elements):
+Since all Action elements in Redfish use the term `IsBound="true"`, the first parameter is called the "binding parameter" and specifies the [structured type](#structured-types) to which the action belongs.  In Redfish, this is always going to be one of the following [Complex Type elements](#entity-type-and-complex-type-elements):
 * For standard actions, the "Actions" Complex Type for the Resource.
 * For OEM actions, the "OemActions" Complex Type for the Resource.
 
@@ -1791,14 +1803,14 @@ The remaining `Parameter` elements describe additional parameters to be passed t
 
 All Property elements contain a `Name` attribute, which specifies the name of the property.
 
-All Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute can be one of the following:
+All Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute shall be one of the following:
 
 * A [qualified name](#qualified-names) that references an [Enum Type element](#enum-type-element).
 * A [qualified name](#qualified-names) that references a [Complex Type element](#entity-type-and-complex-type-elements).
 * A primitive data type.
 * An array of any of the above using the `Collection` term.
 
-Primitive data types can be one of the following:
+Primitive data types shall be one of the following:
 
 | Type               | Meaning |
 | ---                | ---     |
@@ -1811,7 +1823,7 @@ Primitive data types can be one of the following:
 | Edm.Int64          | Signed 64-bit integer. |
 | Edm.String         | UTF-8 string. |
 
-Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
+Property elements may specify a `Nullable` attribute.  If the value is `false`, value of `null` is not allowed as a value for the property.  If the attribute is `true` or not specified, a value of `null` is allowed.
 
 Example Property element:
 ```xml
@@ -1832,7 +1844,7 @@ All Navigation Property elements contain a `Name` attribute, which specifies the
 
 All Navigation Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute is a [qualified name](#qualified-names) that references an [Entity Type element](#entity-type-and-complex-type-elements).  This can also be made into an array using the `Collection` term.
 
-Navigation Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
+Navigation Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.  If the attribute is `true` or not specified, a value of `null` is allowed.
 
 Unless the reference property is to be [expanded](#expanded-resource), all Navigation Properties in Redfish use the `OData.AutoExpandReferences` Annotation element in order to show that the reference is always available.
 
@@ -1870,6 +1882,12 @@ Enum Types contain `Member` elements that define the members of the enumeration.
 ##### Annotation element
 
 Annotations in CSDL are expressed using the `Annotation` element.  The `Annotation` element can be applied to any schema element in CSDL.  The following examples show how each of the different [schema annotations](#schema-annotations) used by Redfish are expressed in CSDL.
+
+Terms with the prefix `OData` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml.
+
+Terms with the prefix `Measures` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml.
+
+Terms with the prefix `Redfish` are defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 Example [Description annotation](#description-annotation):
 ```xml
@@ -1916,7 +1934,7 @@ Example [Expanded Resource annotation](#expanded-resource-annotation):
   <Annotation Term="OData.AutoExpandReferences"/>
 ```
 
-Example Insert Capabilities Annotation (POST is not allowed):
+Example Insert Capabilities Annotation (showing POST is not allowed):
 ```xml
   <Annotation Term="Capabilities.InsertRestrictions">
     <Record>
@@ -1925,7 +1943,7 @@ Example Insert Capabilities Annotation (POST is not allowed):
   </Annotation>
 ```
 
-Example Update Capabilities Annotation (PATCH and PUT are allowed):
+Example Update Capabilities Annotation (showing PATCH and PUT are allowed):
 ```xml
   <Annotation Term="Capabilities.UpdateRestrictions">
     <Record>
@@ -1935,7 +1953,7 @@ Example Update Capabilities Annotation (PATCH and PUT are allowed):
   </Annotation>
 ```
 
-Example Delete Capabilities Annotation (DELETE is allowed):
+Example Delete Capabilities Annotation (showing DELETE is allowed):
 ```xml
   <Annotation Term="Capabilities.DeleteRestrictions">
     <Record>
@@ -1953,12 +1971,6 @@ Example Resource URI Patterns Annotation:
     </Collection>
   </Annotation>
 ```
-
-Terms with the prefix `OData` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml.
-
-Terms with the prefix `Measures` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml.
-
-Terms with the prefix `Redfish` are defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ## Service details
 
