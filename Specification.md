@@ -1374,7 +1374,9 @@ An extended error response, which is a single JSON object, defines the error res
 
 ## Data model
 
-One of the key tenets of Redfish is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
+One of the key tenets of Redfish is the separation of protocol from the data model.  This separation makes the data both transport and protocol agnostic.  By concentrating on the data transported in the payload of the protocol (in HTTP, it is the HTTP body), Redfish is also able to define the payload in any encoding as well as nearly any schema language.  So while Redfish is defined using JSON, this is really intended to provide a common encoding type and helps to ensure property naming conventions that make it easier for developers in many languages such as JavaScript and Python.  And while Redfish was initially defined using OData and JSON Schema, adding OpenAPI support was relatively easy to do with a programmatic transformation of the schema.  All of this helps the Redfish data model to be more easily accessible in modern tools and programming environments. 
+
+This clause describes common data model, resource, and Redfish Schema requirements.
 
 ### Resources and Resource Collections
 
@@ -1443,6 +1445,61 @@ For properties that have units, or other special meaning, a unit identifier shou
 
 ### Settings Resource
 
+A Settings resource is used to represent the future intended state of a resource.  Some resources have properties that can be updated and the updates take place immediately.  Other resources, the properties must be updated at a certain point in time, such as system reset.  When the service provider knows a priori that a resource can only be updated at a certain point in time, it uses a Settings resource to indicate this to the client in the form of the "@Redfish.Settings" payload annotation.  The Settings annotation contains a link to an subordinate resource with the same schema definition.  While the resource represents the current state, the Settings resource represents the future intended state.
+
+For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  When a Settings annotation is used, the following conditions shall apply:
+* The resource linked to with the Settings annotation shall be of the same schema definition.
+* The resource should not be writable, even if the schema allows writable properties.
+* The Settings resource should be a subset of properties that can be updated. 
+* The Settings resource shall not contain a Settings annotation.
+* The Settings resource may contain SettingsApplyTime annotation.
+
+The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful. 
+* The Messages property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. 
+* The ETag property contains the ETag of the Settings resource that was last applied.
+* The Time property indicate the time when the Settings resource was last applied.
+
+Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+
+~~~json
+{
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
+        },
+        "Time": "2017-05-03T23:12:37-05:00",
+        "ETag": "A89B031B62",
+        "Messages": [
+           {
+              "MessageId": "Base.1.0.PropertyNotWritable",
+              "RelatedProperties": [
+                 "#/Attributes/ProcTurboMode"
+              ]
+           }
+        ]
+    },
+    ...
+}
+~~~
+
+A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when updating the Settings resource.  
+* If a service supports configuring when to apply the future settings, the Settings resource shall contain a property with the  "@Redfish.SettingsApplyTime" annotation. 
+* Only Settings resources shall contain a SettingsApplyTime annotation.
+
+Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied.  In this case it is either on reset or during the specified maintenance window:
+
+~~~json
+{
+    "@Redfish.SettingsApplyTime": {
+        "@odata.type": "#Settings.v1_1_0.PreferredApplyTime",
+        "ApplyTime": "OnReset",
+        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+        "MaintenanceWindowDurationInSeconds": 600
+    },
+    ...
+}
+~~~
 
 ### Special Resource situations
 
