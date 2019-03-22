@@ -1,5 +1,5 @@
 ---
-DocTitle: Redfish Scalable Platforms Management API Specification
+DocTitle: Redfish Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.7.0'
@@ -12,13 +12,14 @@ copyright: '2015-2019'
 
 # Foreword
 
-The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Redfish Forum of the DMTF.
+The Redfish Forum of the DMTF develops the Redfish standard.
 
-DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
+DMTF is a not-for-profit association of industry members that promotes enterprise and systems management and interoperability.  For information about the DMTF, see [https://www.dmtf.org/](https://www.dmtf.org/).
 
 # Acknowledgments
 
-The DMTF acknowledges the following individuals for their contributions to the Redfish standard, including this document and Redfish Schemas, Interoperability Profiles, and Message Registries:
+The DMTF acknowledges the following individuals for their contributions to the Redfish standard, including this document and Redfish Schemas, interoperability profiles, and message registries:
+
 * Rafiq Ahamed - Hewlett Packard Enterprise
 * Richelle Ahlvers - Broadcom Limited
 * Jeff Autor - Hewlett Packard Enterprise
@@ -67,54 +68,55 @@ The DMTF acknowledges the following individuals for their contributions to the R
 * Linda Wu - Super Micro Computer, Inc.
 
 ## Abstract
-The Redfish Scalable Platforms Management API ("Redfish") is a standard that uses RESTful interface semantics to access data defined in model format to perform systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
-While the initial Redfish scope was targeted at servers, expansion of scope has grown both in the DMTF and through DMTF alliance partners to cover most data center IT equipment and other solutions as well.  It also covers both in-band and out-of-band access methods.
+Redfish is a standard that uses RESTful interface semantics to access a schema based data model to conduct management operations.  It is suitable for a wide range of devices, from stand-alone servers, to composable infrastructures, and to large-scale cloud environments.
 
-Educational material is also increasing, both from the DMTF and other organizations that utilize Redfish as part of their industry standard or solution.
+The initial Redfish scope targeted servers.
+
+The DMTF and its alliance partners expanded that scope to cover most data center IT equipment and other solutions, and both in- and out-of-band access methods. 
+
+Additionally, the DMTF and other organizations that use Redfish as part of their industry standard or solution have added educational material.
 
 ## Normative references
 
-The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
+The following referenced documents are indispensable for the application of this document.  For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies.  For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
 
-* <a id="RFC1738">IETF RFC 1738</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI), [http://www.ietf.org/rfc/rfc1738.txt](http://www.ietf.org/rfc/rfc1738.txt "http://www.ietf.org/rfc/rfc1738.txt")
-* <a id="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
-* <a id="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
-* <a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
-* <a id="RFC5280">IETF RFC 5280</a>, D. Cooper et al, Web linking, [http://www.ietf.org/rfc/rfc5280.txt](http://www.ietf.org/rfc/rfc5280.txt "http://www.ietf.org/rfc/rfc5280.txt")
-* <a id="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
-* <a id="RFC6585">IETF RFC 6585</a>, M. Nottingham, et al, Additional HTTP Status Codes, [http://www.ietf.org/rfc/rfc6585.txt](http://www.ietf.org/rfc/rfc6585.txt "http://www.ietf.org/rfc/rfc6585.txt")
-* <a id="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
-* <a id="RFC6909">IETF RFC 6906</a>, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
-* <a id="RFC7230">IETF RFC 7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, [http://www.ietf.org/rfc/rfc7230.txt](http://www.ietf.org/rfc/rfc7230.txt "http://www.ietf.org/rfc/rfc7230.txt")
-* <a id="RFC7231">IETF RFC 7231</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content, [http://www.ietf.org/rfc/rfc7231.txt](http://www.ietf.org/rfc/rfc7231.txt "http://www.ietf.org/rfc/rfc7231.txt")
-* <a id="RFC7232">IETF RFC 7232</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests, [http://www.ietf.org/rfc/rfc7232.txt](http://www.ietf.org/rfc/rfc7232.txt "http://www.ietf.org/rfc/rfc7232.txt")
-* <a id="RFC7234">IETF RFC 7234</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Caching, [http://www.ietf.org/rfc/rfc7234.txt](http://www.ietf.org/rfc/rfc7234.txt "http://www.ietf.org/rfc/rfc7234.txt")
-* <a id="RFC7235">IETF RFC 7235</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Authentication, [http://www.ietf.org/rfc/rfc7235.txt](http://www.ietf.org/rfc/rfc7235.txt "http://www.ietf.org/rfc/rfc7235.txt")
-* <a id="Directives">ISO/IEC Directives</a>, Part 2, Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH")
-* <a id="JSONSchema-Core">JSON Schema: A Media Type for Describing JSON Documents, Draft 7</a>
-[https://tools.ietf.org/html/draft-handrews-json-schema-01](https://tools.ietf.org/html/draft-handrews-json-schema-01 "https://tools.ietf.org/html/draft-handrews-json-schema-01")
-* <a id="JSONSchema-Validation">JSON Schema Validation: A Vocabulary for Structural Validation of JSON, Draft 7</a>
-[https://tools.ietf.org/html/draft-handrews-json-schema-validation-01](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01 "https://tools.ietf.org/html/draft-handrews-json-schema-validation-01")
-* <a id="OData-Protocol">OData Version 4.0 Part 1: Protocol</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html](http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html "http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html")
-* <a id="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html](http://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html "http://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html")
-* <a id="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html](http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html "http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html")
-* <a id="OData-Core">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml](http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml "http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
-* <a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html](http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html "http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
-* <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml](http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml "http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
-* <a id="SSDP">Simple Service Discovery Protocol/1.0</a>. 28 October 1999. [http://tools.ietf.org/html/draft-cai-ssdp-v1-03](http://tools.ietf.org/html/draft-cai-ssdp-v1-03 "http://tools.ietf.org/html/draft-cai-ssdp-v1-03")
-* <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html](http://www.unitsofmeasure.org/ucum.html "http://www.unitsofmeasure.org/ucum.html")
-* <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")
-* <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [http://www.snia.org/tls/](http://www.snia.org/tls/ "http://www.snia.org/tls/")
-* <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
-* <a id="HTML5-Spec-SSE">HTML5 Specification: Server-Sent Events</a> [https://html.spec.whatwg.org/multipage/server-sent-events.html](https://html.spec.whatwg.org/multipage/server-sent-events.html "https://html.spec.whatwg.org/multipage/server-sent-events.html")
-* <a id="OpenAPI-Spec">OpenAPI Specification</a> [https://github.com/OAI/OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification "https://github.com/OAI/OpenAPI-Specification")
-* <a id="ISO-639-1">ISO 639-1:2002 Code for the representation of names of languages</a> [https://www.iso.org/standard/22109.html](https://www.iso.org/standard/22109.html  "https://www.iso.org/standard/22109.html")
-
+* <a id="RESTful-Architecture">Architectural Styles and the Design of Network-based Software Architectures</a>, R. Fielding, 2000. [https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm "https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm")
+* <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "https://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
+* <a id="HTML5-Spec-SSE">HTML Living Standard: Server-sent events</a> [https://html.spec.whatwg.org/multipage/server-sent-events.html](https://html.spec.whatwg.org/multipage/server-sent-events.html "https://html.spec.whatwg.org/multipage/server-sent-events.html")
+* <a id="ISO6391">ISO 639-1:2002</a> [ISO 639-1:2002 Codes for the representation of names of languages -- Part 1: Alpha-2 code](https://www.iso.org/standard/22109.html "https://www.iso.org/standard/22109.html")
+* <a id="RFC1738">IETF RFC 1738</a> T. Berners-Lee et al, Uniform Resource Locators (URL), [https://www.ietf.org/rfc/rfc1738.txt](https://www.ietf.org/rfc/rfc1738.txt "https://www.ietf.org/rfc/rfc1738.txt")
+* <a id="RFC3986">IETF RFC 3986</a> T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [https://www.ietf.org/rfc/rfc3986.txt](https://www.ietf.org/rfc/rfc3986.txt "https://www.ietf.org/rfc/rfc3986.txt")
+* <a id="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [https://www.ietf.org/rfc/rfc4627.txt](https://www.ietf.org/rfc/rfc4627.txt "https://www.ietf.org/rfc/rfc4627.txt")
+* <a id="RFC5280">IETF RFC 5280</a>, D. Cooper et al, Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile, [https://www.ietf.org/rfc/rfc5280.txt](https://www.ietf.org/rfc/rfc5280.txt "https://www.ietf.org/rfc/rfc5280.txt")
+* <a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH Method for HTTP, [https://www.ietf.org/rfc/rfc5789.txt](https://www.ietf.org/rfc/rfc5789.txt "https://www.ietf.org/rfc/rfc5789.txt")
+* <a id="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web Linking, [https://www.ietf.org/rfc/rfc5988.txt](https://www.ietf.org/rfc/rfc5988.txt "https://www.ietf.org/rfc/rfc5988.txt")
+* <a id="RFC6585">IETF RFC 6585</a>, M. Nottingham, et al, Additional HTTP Status Codes, [https://www.ietf.org/rfc/rfc6585.txt](https://www.ietf.org/rfc/rfc6585.txt "https://www.ietf.org/rfc/rfc6585.txt")
+* <a id="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [https://www.ietf.org/rfc/rfc6901.txt](https://www.ietf.org/rfc/rfc6901.txt "https://www.ietf.org/rfc/rfc6901.txt")
+* <a id="RFC6909">IETF RFC 6906</a>, E. Wilde, The 'profile' Link Relation Type, [https://www.ietf.org/rfc/rfc6906.txt](https://www.ietf.org/rfc/rfc6906.txt "https://www.ietf.org/rfc/rfc6906.txt")
+* <a id="RFC7230">IETF RFC 7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, [https://www.ietf.org/rfc/rfc7230.txt](https://www.ietf.org/rfc/rfc7230.txt "https://www.ietf.org/rfc/rfc7230.txt")
+* <a id="RFC7231">IETF RFC 7231</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content, [https://www.ietf.org/rfc/rfc7231.txt](https://www.ietf.org/rfc/rfc7231.txt "https://www.ietf.org/rfc/rfc7231.txt")
+* <a id="RFC7232">IETF RFC 7232</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests, [https://www.ietf.org/rfc/rfc7232.txt](https://www.ietf.org/rfc/rfc7232.txt "https://www.ietf.org/rfc/rfc7232.txt")
+* <a id="RFC7234">IETF RFC 7234</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Caching, [https://www.ietf.org/rfc/rfc7234.txt](https://www.ietf.org/rfc/rfc7234.txt "https://www.ietf.org/rfc/rfc7234.txt")
+* <a id="RFC7235">IETF RFC 7235</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Authentication, [https://www.ietf.org/rfc/rfc7235.txt](https://www.ietf.org/rfc/rfc7235.txt "https://www.ietf.org/rfc/rfc7235.txt")
+* <a id="Directives">ISO/IEC Directives</a>, ISO/IEC Directives, Part 2 (English), [https://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH](https://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH "https://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH")
+* <a id="JSONSchema-Core">JSON Schema: A Media Type for Describing JSON Documents draft-handrews-json-schema-01</a>, [https://tools.ietf.org/html/draft-handrews-json-schema-01](https://tools.ietf.org/html/draft-handrews-json-schema-01 "https://tools.ietf.org/html/draft-handrews-json-schema-01")
+* <a id="JSONSchema-Validation">JSON Schema Validation: A Vocabulary for Structural Validation of JSON draft-handrews-json-schema-validation-01</a>, [https://tools.ietf.org/html/draft-handrews-json-schema-validation-01](https://tools.ietf.org/html/draft-handrews-json-schema-validation-01 "https://tools.ietf.org/html/draft-handrews-json-schema-validation-01")
+* <a id="OData-Core">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml](https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml "https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
+* <a id="OData-JSON">OData JSON Format Version 4.0</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html](https://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html "https://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
+* <a id="OData-Protocol">OData Version 4.0 Part 1: Protocol</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html](https://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html "https://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html")
+* <a id="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html](https://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html "https://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html")
+* <a id="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html](https://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html "https://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html")
+* <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml](https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml "https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
+* <a id="OpenAPI-Spec">The OpenAPI Specification</a> [https://github.com/OAI/OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification "https://github.com/OAI/OpenAPI-Specification")
+* <a id="SSDP">Simple Service Discovery Protocol/1.0 Operating without an Arbiter</a>. 28 October 1999. [https://tools.ietf.org/html/draft-cai-ssdp-v1-03](https://tools.ietf.org/html/draft-cai-ssdp-v1-03 "https://tools.ietf.org/html/draft-cai-ssdp-v1-03")
+* <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [https://www.snia.org/tech_activities/standards/curr_standards/tls](https://www.snia.org/tech_activities/standards/curr_standards/tls "https://www.snia.org/tech_activities/standards/curr_standards/tls")
+* <a id="UCUM">The Unified Code for Units of Measure</a>. [https://www.unitsofmeasure.org/ucum.html](https://www.unitsofmeasure.org/ucum.html "https://www.unitsofmeasure.org/ucum.html")
+* <a id="W3C-CORS">W3C Cross-Origin Resource Sharing</a>. 16 January 2014. [https://www.w3.org/TR/cors/](https://www.w3.org/TR/cors "https://www.w3.org/TR/cors/")
 
 ## Terms and definitions
 
-In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
+Some terms and phrases in this document have specific meanings beyond their typical English meanings.  This clause defines those terms and phrases.
 
 The terms "shall" ("required"), "shall not", "should" ("recommended"), "should not" ("not recommended"), "may", "need not" ("not required"), "can" and "cannot" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Annex H. The terms in parenthesis are alternatives for the preceding term, for use in exceptional cases when the preceding term cannot be used for linguistic reasons. Note that ISO/IEC Directives, Part 2, Annex H specifies additional alternatives. Occurrences of such additional alternatives shall be interpreted in their normal English meaning.
 
@@ -122,187 +124,195 @@ The terms "clause", "subclause", "paragraph", and "annex" in this document are t
 
 The terms "normative" and "informative" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 3. In this document, clauses, subclauses, or annexes labeled "(informative)" do not contain normative content. Notes and examples are always informative elements.
 
-The following additional terms are used in this document.
+This document defines these additional terms:
 
-| Term                            | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ---                             | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks, which are commonly performed out-of-band.                                                                                                                                                                                                                                    |
-| Collection                      | See Resource Collection.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| CRUD                            | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Event                           | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Managed System                  | In the context of this specification, a managed system is a system that provides information or status, or is controllable, via a Redfish-defined interface.                                                                                                                                                                                                                                                                                                                              |
-| Member                          | A Member is a single resource instance contained in a Resource Collection                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Message                         | A complete request or response, formatted in HTTP/HTTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                    |
-| Operation                       | The HTTP request methods that map generic CRUD operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                                              |
-| OData                           | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| OData Service Document          | The name for a resource that provides information about the Service Root. The Service Document  provides a standard format for enumerating the resources exposed by the service that enables generic hypermedia-driven OData clients to navigate to the resources of the Redfish Service.                                                                                                                                                                                                 |
-| Property          | A name/value pair included in a Redfish-defined resource as part of a request or response.  A property may be defined as any valid JSON data type.        |
-| Redfish Alert Receiver          | The name for the functionality that receives alerts from a Redfish Service. This functionality is typically software running on a remote system that is separate from the managed system.                                                                                                                                                                                                                                                                                                 |
-| Redfish Client                  | The name for the functionality that communicates with a Redfish Service and accesses one or more resources or functions of the Service.                                                                                                                                                                                                                                                                                                                                                       |
-| Redfish Protocol                | The set of protocols that are used to discover, connect to, and inter-communicate with a Redfish Service.                                                                                                                                                                                                                                                                                                                                                                                 |
-| Redfish Provider                | A Redfish provider interacts with the Redfish Service to contribute resources to the Redfish resource tree and reacts to changes in its owned resources. There are two types of Redfish providers: internal providers and external providers. A internal provider is the Redfish Service itself that has a data model and can react to RESTful operations from a client. An external provider is an architected means for agents external to the Redfish Service to augment the Redfish resource tree. The interaction between a Redfish provider and a Redfish Service is not covered by this specification.|
-| Redfish Schema                  | The Schema definitions for Redfish resources.  It is defined according to OData Schema representation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                    |
-| Redfish Service                 | Also referred to as the "Service". The set of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                                                |
-| Redfish Service Entry Point     | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point.                                                                                                                                                                                                                                                                                              |
-| Request                         | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                          |
-| Resource                        | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a Collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                       |
-| Resource Collection             | A Resource Collection is a Resource that acts as a container of other Resources. The Members of a Resource Collection usually have similar characteristics. The container processes messages sent to the container. The Members of the container process messages sent only to that Member without affecting other Members of the container.                                                                                                                                              |
-| Resource Tree                   | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource hyperlinks from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops. |
-| Response                        | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                        |
-| Service Root                    | The term Service Root is used to refer to a particular resource that is directly accessed via the service entry point. This resource serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish Service.                                                                                                                                                                                          |
-| Subscription                    | The act of registering a destination for the reception of events.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Term                                                                                        | Definition |
+| ---                                                                                         | ---        |
+| <a id="baseboard-management-controller"></a>Baseboard&nbsp;management&nbsp;controller (BMC) | Embedded device or service.  Typically an independent microprocessor or system-on-chip with associated firmware in a computer system that completes out-of-band systems monitoring and management-related tasks. |
+| <a id="collection"></a>Collection                                                           | See [resource collection](#resource-collection). |
+| <a id="crud"></a>CRUD                                                                       | Basic **C**reate, **R**ead, **U**pdate, and **D**elete operations that any interface can support. |
+| <a id="event"></a>Event                                                                     | Data structure that corresponds to one or more alerts. |
+| <a id="hypermedia-api"></a>Hypermedia API                                                   | API that you navigate through URIs that a service returns. |
+| <a id="managed-system"></a>Managed system                                                   | System that provides information, status, or control via a Redfish-defined interface. |
+| <a id="member"></a>Member                                                                   | Single [resource](#resource) instance in a [resource collection](#resource-collection). |
+| <a id="message"></a>Message                                                                 | Complete HTTP- or HTTPS-formatted request or response.  In the REST-based Redfish protocol, every request should result in a response. |
+| <a id="odata"></a>OData                                                                     | Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol). |
+| <a id="odata-service-document"></a>OData service document                                   | Resource that provides information about the [service root](#service-root) for generic OData clients. |
+| <a id="operation"></a>Operation                                                             | The HTTP request methods that map generic [CRUD](#crud) operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE. |
+| <a id="property"></a>Property                                                               | Name-and-value pair in a Redfish-defined request or response.  A property can be any valid JSON data type. |
+| <a id="redfish-client"></a>Redfish client                                                   | Communicates with a [Redfish service](#redfish-service) and accesses one or more of the service's resources or functions. |
+| <a id="redfish-event-receiver"></a>Redfish event receiver                                   | Software that runs at the event destination that receives events from a [Redfish service](#redfish-service). |
+| <a id="redfish-protocol"></a>Redfish protocol                                               | Discovers, connects to, and inter-communicates with a [Redfish service](#redfish-service). |
+| <a id="redfish-schema"></a>Redfish Schema                                                   | Defines Redfish resources according to OData schema representation.  You can directly translate a Redfish Schema to a JSON Schema representation. |
+| <a id="redfish-service"><a/>Redfish service                                                 | Implementation of the protocols, resources, and functions that deliver the interface that this specification defines and its associated behaviors for one or more [managed systems](#managed-system).  Also known as the *service*. |
+| Redfish Provider                                                                            | A Redfish provider interacts with the Redfish Service to contribute resources to the Redfish resource tree and reacts to changes in its owned resources.  There are two types of Redfish providers: internal providers and external providers.  A internal provider is the Redfish Service itself that has a data model and can react to RESTful operations from a client.  An external provider is a designed means for agents external to the Redfish Service to augment the Redfish resource tree.  The interaction between a Redfish provider and a Redfish Service is not covered by this specification. |
+| <a id="request"></a>Request                                                                 | Message from a client to a service. |
+| <a id="resource"></a>Resource                                                               | Addressable by a URI and represents a Redfish data structure. |
+| <a id="resource-collection"></a>Resource collection                                         | Resource that contains a set of like resources where the number of instances can shrink or grow. |
+| <a id="resource-tree"></a>Resource tree                                                     | Tree structure of resources accessible through a well-known starting URI.  A client may discover the resources available on a Redfish service by following the resource hyperlinks from the base of the tree. |
+| <a id="response"></a>Response                                                               | Message from a service to a client in response to a request message. |
+| <a id="service-root"></a>Service root                                                       | Resource that serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish service. |
+| <a id="subscription"></a>Subscription                                                       | Registration of a destination to receive events. |
 
-## Symbols and abbreviated terms
+## Acronyms
 
-The following additional abbreviations are used in this document.
+This document uses these acronyms:
 
-| Term   | Definition                                          |
-| ---    | ---                                                 |
-| BMC    | Baseboard Management Controller                     |
-| CRUD   | Create, Replace, Update and Delete                  |
-| CSRF   | Cross-Site Request Forgery                          |
-| HTTP   | Hypertext Transfer Protocol                         |
-| HTTPS  | Hypertext Transfer Protocol over TLS                |
-| IP     | Internet Protocol                                   |
-| IPMI   | Intelligent Platform Management Interface           |
-| JSON   | JavaScript Object Notation                          |
-| KVM-IP | Keyboard, Video, Mouse redirection over IP          |
-| NIC    | Network Interface Card                              |
-| PCI    | Peripheral Component Interconnect                   |
-| PCIe   | PCI Express                                         |
-| TCP    | Transmission Control Protocol                       |
-| XSS    | Cross-Site Scripting                                |
+| Acronym | Definition |
+| ---     | ---        |
+| BMC     | Baseboard management controller |
+| CRUD    | Create, Replace, Update and Delete |
+| CSRF    | Cross-Site Request Forgery |
+| HTTP    | Hypertext Transfer Protocol |
+| HTTPS   | Hypertext Transfer Protocol over TLS |
+| IP      | Internet Protocol |
+| IPMI    | Intelligent Platform Management Interface |
+| JSON    | JavaScript Object Notation |
+| KVM-IP  | Keyboard, Video, Mouse redirection over IP |
+| NIC     | Network Interface Card |
+| PCI     | Peripheral Component Interconnect |
+| PCIe    | PCI Express |
+| TCP     | Transmission Control Protocol |
+| XSS     | Cross-Site Scripting |
 
 ## Overview
 
-The Redfish Scalable Platforms Management API ("Redfish") is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, Redfish is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, Redfish can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable Redfish Schema, expressed in an OData Schema representation with translations to a JSON Schema and OpenAPI representations, with the payload of the messages being expressed in a JSON following OData JSON conventions. The ability to externally host the Redfish Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering Redfish Services with the metadata, thus enabling more advanced client scenarios as found in many data center and cloud environments.
+Redfish is a management standard that uses a data model representation with a RESTful interface.
+
+Being RESTful, Redfish is easier to use and implement.
+
+Being model-oriented, it can express the relationships between components and the semantics of the services and components within them.  The model is also easy to extend.
+
+By requiring JSON representation, Redfish enables easy integration with programming environments.  It is also easy to interpret by humans.
+
+The model is defined by an interoperable Redfish Schema.  It is published in OpenAPI YAML, OData CSDL, and JSON Schema, and is freely available.
 
 ### Scope
 
-The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an interoperable, cross-vendor, remote and out-of-band capable interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management. While large scale systems are the primary focus, the specifications are also capable of being used for more traditional system platform management implementations.
+This specification defines the required protocols, data model, behaviors, and other architectural components for an interoperable, multi-vendor, remote, and out-of-band capable interface.  This interface meets the cloud-based and web-based IT professionals' expectations for scalable platform management.  While large and hyperscale environments are the primary focus, clients can use the specification for individual system management.
 
-The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which extensions specific to the OEM (system vendor) can be provided by a given implementation.
+The specifications defines elements that are mandatory for all Redfish implementations, as well as optional elements that can be chosen by system vendors or manufacturers.  This specification also defines points at which extensions specific to the OEM (system vendor) can be provided by a given implementation.
 
-The specifications set normative requirements for Redfish Services and associated materials, such as Redfish Schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
+The specification sets normative requirements for Redfish services and associated materials, such as Redfish Schema files.  In general, the specification does not set requirements for Redfish clients, but indicates what a Redfish client should do to successfully and effectively access and use a Redfish service.
 
-The specifications do not set requirements that particular hardware or firmware must be used to implement the Redfish interfaces and functions.
+The specifications do not require that implementation of the Redfish interfaces and functions require particular hardware or firmware.
 
 ### Goals
 
-There are many objectives and goals of Redfish as an architecture, as a data representation, and of the definition of the protocols that are used to access and interact with a Redfish Service. Redfish seeks to provide specifications that meet the following goals:
-* Scalable - To support stand-alone machines to racks of equipment found in cloud service environments.
-* Flexible - To support a wide variety of systems found in service today.
-* Extensible - To support new and vendor-specific capabilities cleanly within the framework of the data model.
-* Backward Compatible - To enable new capabilities to be added while preserving investments in earlier versions of the specifications.
-* Interoperable - To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
-* System-Focused - To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
-* Standards based - To leverage protocols and standards that are widely accepted and used in environments today - in particular, programming environments that are being widely adopted for developing web-based clients today.
-* Simple - To be directly usable by software developers without requiring highly specialized programming skills or systems knowledge.
-* Lightweight - To reduce the complexity and cost of implementing and validating Redfish Services on managed systems.
+As an architecture, data representation, and definition of protocols that enable a client to access Redfish services, Redfish has these goals:
+
+| Goal                | Purpose |
+| ---                 | ---     |
+| Scalable            | Stand-alone machines and racks of equipment. |
+| Flexible            | Can be implemented existing hardware, or entirely as a software service. | 
+| Extensible          | New and vendor-specific capabilities can be easily added to the data model. | 
+| Backward-compatible | Additional capabilities can be added while preserving investments in implementations of earlier versions of the specification. | 
+| Interoperable       | Consistent functionality across multiple vendor implementations. | 
+| Standards-based     | Built on ubiquitous and secure protocols and leveraging other standards where applicable. |
+| Simple              | Usable without the need for highly specialized programming skills or systems knowledge. | 
+| Lightweight         | Designed to reduce complexity and implementation cost, as well as minimizing required footprint for implementations. | 
 
 ### Design tenets
+
+To deliver these goals, Redfish adheres to these design tenets:
+
 The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
-* Provide a RESTful interface using a JSON payload and an Entity Data Model
-* Separate protocol from data model, allowing them to be revised independently
-* Specify versioning rules for protocols and schema
-* Leverage strength of Internet protocol standards where it meets architectural requirements, such as JSON, HTTP, OData, and the RFCs referenced by this document.
-* Focus on out-of-band access -- implementable on existing BMC and firmware products
-* Organize the schema to present value-add features alongside standardized items
-* Make data definitions as obvious in context as possible
-* Maintain implementation flexibility. Do not tie the interface to any particular underlying implementation architecture. "Standardize the interface, not the implementation."
-* Focus on most widely used 'common denominator' capabilities. Avoid adding complexity to address functions that are only valued by a small percentage of users.
-* Avoid placing complexity on the management controller to support operations that can be better done at the client.
+
+* Provide a RESTful interface using a JSON payload and a data model.
+* Separate protocol from data model, allowing them to be revised and used independently.
+* Specify versioning rules for protocols and schema.
+* Leverage strength of ubiquitous standards where it meets architectural requirements, such as JSON, HTTP, OData, OpenAPI, and the RFCs referenced by this document.
+* Organize the data model to present value-add features, clearly demarcated, while in the same payload as standardized items.
+* Make data in payloads as obvious in context as possible.
+* Maintain implementation flexibility.  Do not tie the interface to any particular underlying implementation or architecture.
+* Focus on most widely used capabilities.  Avoid adding complexity to address functions that are only valued by a small percentage of users.
 
 ### Limitations
 
-Redfish does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, Redfish does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocols from the data model.
+Redfish minimizes the need for clients to complete upgrades by using strict versioning and forward-compatibility rules, and separation of the protocols from the data model.  However, Redfish does not guarantee that clients never need to update their software.  For example, clients might need to upgrade for managing new types of systems or components, as well as updates to the data model.
 
-Interoperable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.
+Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients must be prepared to discover the optional elements using the built in discovery methods.
 
-For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well-known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer.
+The resource tree reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.  References between resources may result in graph instead of a tree.  Clients that traverse the resource tree must provide logic to avoid infinite loops.
 
-Additionally, not all Redfish resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
+Additionally, not all Redfish resources use simple REST read-and-write semantics.  Different use cases may follow other types of client logic.  For example, clients cannot simply read user credentials or certificates from one service and write them to another service.
 
-Lastly, the value of hyperlinks between resources and other elements can vary across implementations. Clients should not assume that hyperlinks can be reused across different instantiations of a Redfish Service.
+Finally, the hyperlink values between resources and other elements can vary across implementations.  Clients should not assume that they can reuse hyperlinks across different Redfish service instances.
 
 ### Additional design background and rationale
 
 #### REST-based
 
-This document defines a RESTful interface. Many service applications are exposed as RESTful interfaces.
+Redfish exposes many service applications as RESTful interfaces.  This document defines a RESTful interface.
 
-There are several reasons to define a RESTful interface:
-* It enables a lightweight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).
-* It is a prevalent access method in the industry.
-* It is easy to learn and easy to document.
-* There are a number of toolkits and development environments that can be used for REST.
-* It supports data model semantics and maps easily to the common CRUD operations.
-* It fits with our design principle of simplicity.
-* It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.
-* It is schema agnostic so adapts well to any modeling language.
-* By using it, Redfish can leverage existing security and discovery mechanisms in the industry.
+Redfish defines a RESTful interface because it:
+
+* Enables a lightweight implementation, using fewer layers than previous standards.
+* Is a prevalent access method in the industry.
+* Is easy to learn, document, and implement in modern programming languages.
+* Has a number of development environments and a healthy tooling ecosystem.
+* Fits with the design goal of simplicity.
+* Equally applies to software application space as it does to embedded environments, which enables convergence and sharing of code within the management ecosystem.
+* Adapts well to any data modeling language.
+* Has industry-provided security and discovery mechanisms.
 
 #### Follow OData conventions
 
-With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications. While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there is no interoperability between them.
+With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications.  While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there few common conventions between them.
 
-OData defines a set of common RESTful conventions and annotations that, if adopted, provides for interoperability between APIs.
+To provide for interoperability between APIs, [OData](#OData-Protocol) defines a set of common RESTful conventions and annotations.  Redfish adopts OData conventions for describing schema, URL conventions, and definitions for typical properties in a JSON payload.
 
-Adopting OData conventions for describing Redfish Schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish Services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+#### Data oriented
 
-#### Model-oriented
-
-The Redfish model is built for managing systems. All resources are defined in OData Schema representation and translated to JSON Schema and OpenAPI representations. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches.
+The Redfish data model is developed by focusing on the contents of the payload.  By concentrating on the contents of the payload first, Redfish payloads are easily mapped to schema definition languages and encoding types.  The data model is defined in various schema languages, including OpenAPI YAML, OData CSDL, and JSON Schema.
 
 #### Separation of protocol from data model
 
-The protocol operations are specified independently of the data model.  The protocols are also versioned independently of the data model.  The expectation is that the protocol version changes extremely infrequently, while the data model version is allowed to change as needed.  This implies that innovation should happen primarily in the data model, not the protocols.  It allows the data model to be extended and changed as needed without requiring the protocols or API version to change. Conversely, separating the protocols from the data model allows for changes to occur in the protocols without causing significant changes to the data model.
+Redfish separates the protocol operations from the data model and versions the protocol independently from the data model.  This enables clients to extend and change the data model as needed without requiring the protocol version to change.
 
-#### Hypermedia API service endpoint
+#### Hypermedia API service root
 
-Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via URIs referenced from the root.  Any resource discovered through hyperlinks found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service.
+Redfish has a single service root URI and clients can discover all other resources through referenced URIs.
 
 ### Service elements
 
 #### Synchronous and asynchronous operation support
 
-While the majority of operations in this architecture are synchronous in nature, some operations can take a long time to execute, more time than a client typically wants to wait. For this reason, some operations can be asynchronous at the discretion of the service. The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.
+Some operations can take more time than a client typically wants to wait.  For this reason, some operations can be asynchronous at the discretion of the service.  The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.
 
-The use of [HTTP status codes](#status-codes) enable a client to determine whether the operation was completed synchronously or asynchronously.  For more information, see the clause on [Tasks](#async-tasks).
+To determine whether an operation was completed synchronously or asynchronously, clients can review the [HTTP status codes](#status-codes).  For more information, see the [Tasks](#async-tasks) clause.
 
 #### Eventing mechanism
 
-In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.
+Redfish provides the ability to send messages outside the normal request and response paradigm to clients.  The service uses these messages, or _events_, to asynchronously notify the client of a state change or error condition, usually of a time critical nature.
 
 Two styles of eventing are currently defined by this specification - push style eventing, and [Server-Sent Events (SSE)](#sse-eventservice). 
 
-In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.  All subscriptions are persistent configuration settings.
+In push style eventing, when the service detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can enable reception of events by creating a subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.
 
 In SSE style eventing, the client opens an SSE connection to the service by performing a GET on the URI specified by the "ServerSentEventUri" in the Event Service. 
 
-The clause on [Eventing](#eventing) in this specification discusses the details of the eventing mechanism.
+For information, see the [Eventing](#eventing) clause.
 
 #### Actions
 
-Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to [HTTP methods](#http-methods).  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. One examples is system reset.  It is possible to combine multiple operations into a single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.
+Actions are Redfish operations that do not easily map to RESTful interface semantics.  These types of operations may not directly affect properties in the Redfish resources.  The Redfish Schema defines certain standard actions for common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.
 
-In Redfish, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
+#### Service discovery
 
-The Redfish Schema defines certain standard actions associated with common Redfish resources.  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the Redfish [schema](#resource-extensibility), including defining [actions](#oem-actions) for existing resources.
+While the service itself is at a well-known URI, clients must discover the network address of the service.  Like UPnP, Redfish uses SSDP for discovery.  A wide variety of devices, such as printers and client operating systems, support SSDP.  It is simple, lightweight, IPv6 capable, and suitable for implementation in embedded environments.
 
-#### Service entry point discovery
-
-While the service itself is at a well-known URI, the service host must be discovered. Redfish, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  Redfish is investigating additional service entry point discovery (e.g., DHCP-based) approaches.
-
-For more information, see the clause on [Discovery](#discovery)
+For more information, see the [Discovery](#discovery) clause.
 
 #### Remote access support
 
-A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse re-direction (KVM-IP), Command Shell (i.e., Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the Redfish Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The Redfish Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
+Remote management functionality typically includes access mechanisms for redirecting operator interfaces such as serial console, keyboard video and mouse (KVM-IP), command shell (i.e., command line interface), and virtual media.  While these mechanisms are critical functionality, they cannot be reasonably implemented as a RESTful interface.  Therefore, this standard does not define the protocols or access mechanisms for those services, but encourages implementations that leverage existing standards.  However, the Redfish schema includes resources and properties allowing client discovery of these capabilities and describing access mechanisms to enable interoperability.
 
 ### Security
 
-The challenge with security in a remote interface that is programmatic is to ensure both the interfaces used to interact with Redfish and the data being exchanged are secured. This means designing the proper security control mechanisms around the interfaces and securing the channels used to exchange the data. As part of this, specific behaviors are to be put in place including defining and using minimum levels of encryption for communication channels, etc.
+The challenge of remote interface security is to protect both the interface and exchanged data.  To accomplish this, Redfish provides authentication and encryption.  As part of this security, Redfish defines and requires minimum levels of encryption.
+
+For more information, see the [Security](#security-details) clause.
 
 ## Protocol details
 
@@ -2886,15 +2896,13 @@ OData-Version: 4.0
 | 1.0.0   | 2015-08-04 | Initial release. |
 
 
-
-
-
-
-
-
-
-
-
+* Services shall support "push" style eventing for all resources capable of sending events.
+* Services shall not "push" events (using HTTP POST) unless an event subscription has been created. Either the client or the service can terminate the event stream at any time by deleting the subscription.  The service may delete a subscription if the number of delivery errors exceeds preconfigured thresholds.
+* Services shall respond to a request to create a subscription with an error if the body of the request is conflicting.  For instance, if parameters in the request are not supported, an HTTP status 400 shall be returned.  
+* Services shall respond to a request to create a subscription with an error if the body of the request contains both RegistryPrefixes and MessageIds, and shall return an HTTP status code of 400.  These properties are considered mutually exclusive.
+* Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.  Subscriptions are persistent and shall remain across event service restarts.
+* Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
+* Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status code [404](#status-404).
 
 
 TODO: Items below here are being migrated to the Schema and Data Model section
