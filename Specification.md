@@ -1380,9 +1380,15 @@ This clause describes common data model, resource, and Redfish Schema requiremen
 
 ### Resources and Resource Collections
 
+A _resource_ is a single entity.
+
+A _resource collection_ is a set of resources that share the same schema definition.
+
 Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified in the response payload by a unique [type identifier](#type-property) property.
 
-### Resource Collections 
+### Resource Collections
+
+A resource collection is a set of resources that share the same schema definition.
 
 #### Resource and schema naming
 
@@ -1398,16 +1404,41 @@ To avoid naming collisions with current or future standard Redfish schema files,
 
 ### Properties
 
+Redfish defines two core schema files: 
+
+* `Resource_v1.xml`
+*  `RedfishExtensions_v1.xml`
+
+All other Redfish-published schema files leverage these files in some form.
+
+The `Resource_v1.xml` schema file contains the base definitions for all Redfish resources, which include:
+
+* The base type definitions for all resources:
+    * Resources inherit from `Resource.v1_0_0.Resource`
+    * Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`
+
+* Common properties found in all resources:
+    * `Id`. The unique identifier for a resource in a resource collection.
+    * `Name`. The string name for the resource or resource collection.
+    * `Description`. The string description for the resource or resource collection.
+    * `Oem`. An empty object that vendors are allowed to fill with custom properties.
+
+* Common structures and definitions leveraged by particular resources:
+    * `Status`. The health information for a resource.
+    * `Location`. The information about how a user can find the physical equipment.
+    * Common enumerated lists. For example, `IndicatorLED`, `PowerState`, and `ResetType`.
+
+The `RedfishExtensions_v1.xml` schema file contains `Annotation` elements that enhance documentation and rules about payloads.
+
 * A service may implement a writable property as read-only.
 
-Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute in the defining schema.
+Property names in the JSON request and response payload shall match the casing of the `Name` attribute value in the defining schema.
 
-Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
+Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a `false` value.
 
-Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
+Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a `true` value, or no nullable attribute, can accept null values.
 
 If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then the value of `null` is an acceptable values in most cases.  Properties not returned from a GET operation indicates that the property is not supported by the implementation.
-
 
 ### Resource, schema, and property naming conventions 
 
