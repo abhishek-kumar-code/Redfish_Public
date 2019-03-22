@@ -1374,27 +1374,156 @@ An extended error response, which is a single JSON object, defines the error res
 
 ## Data model
 
+One of the key tenets of Redfish is the separation of protocol from the data model.  This separation makes the data both transport and protocol agnostic.  By concentrating on the data transported in the payload of the protocol (in HTTP, it is the HTTP body), Redfish is also able to define the payload in any encoding as well as nearly any schema language.  So while Redfish is defined using JSON, this is really intended to provide a common encoding type and helps to ensure property naming conventions that make it easier for developers in many languages such as JavaScript and Python.  And while Redfish was initially defined using OData and JSON Schema, adding OpenAPI support was relatively easy to do with a programmatic transformation of the schema.  All of this helps the Redfish data model to be more easily accessible in modern tools and programming environments. 
+
+This clause describes common data model, resource, and Redfish Schema requirements.
 
 ### Resources and Resource Collections
 
+Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified in the response payload by a unique [type identifier](#type-property) property.
+
+### Resource Collections 
+
+#### Resource and schema naming
+
+Standard Redfish resources defined and published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  The resource name is used to construct both the type identifier property and the schema filename for each of the supported schema description languages.
+
+### OEM resources
+
+OEMs and other third parties can extend the Redfish data model by creating new resource types.  This is accomplished by defining an OEM schema for each resource type, and connecting instances of those resources to the resource tree.  Any OEM resource accessed from hyperlinks within the Redfish resource tree shall follow the Redfish resource definitions and structure.  OEMs are encouraged to follow the design tenets and naming conventions in this specification when defining OEM resources or properties.
+
+#### OEM resource and schema naming
+
+To avoid naming collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the resource name.  For example, "ContosoDisk" would not conflict with a "Disk" resource or another OEM's disk-related resource.
 
 ### Properties
 
 * A service may implement a writable property as read-only.
 
-Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
+Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute in the defining schema.
 
 Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
 
 Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
+
+If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then the value of `null` is an acceptable values in most cases.  Properties not returned from a GET operation indicates that the property is not supported by the implementation.
+
+
+### Resource, schema, and property naming conventions 
+
+The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
+
+Standard Redfish resources defined and published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  The resource name is used to construct both the type identifier property and the schema filename for each of the supported schema description languages.
+
+Standard Redfish properties follow similar naming conventions, and should use a common definition when defined in multiple schemas across the Redfish data model.  This consistency allows for code re-use across resources and increases interoperability.  Existing property definitions should be leveraged for new resource definitions whenever possible.
+
+The Resource, schema, and property naming rules are as follows:
+* Resource Names, Property Names, and constants such as Enumerations shall be Pascal-cased
+* The first letter of each word in a name shall be uppercase and spaces between words shall be removed (e.g., 'ComputerSystem', 'PowerState', 'SerialNumber'.)
+* Names shall not contain spaces or underscore characters
+* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
+* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
+
+Exceptions are allowed for the following cases:
+ * Well-known technology names like "iSCSI" (e.g.,`iSCSITarget`)
+ * Product names like "iLO"
+ * Well-known abbreviations or acronyms
+ * OEM appears as `Oem` in resource and property names (alone or as a portion of a name), but should be `OEM` when used alone as a constant.
+ * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
+
+For properties that have units, or other special meaning, a unit identifier should be appended to the name. The current list includes:
+ * Bandwidth (Mbps), (e.g., `PortSpeedMbps`)
+ * CPU speed (Mhz), (e.g., `ProcessorSpeedMhz`)
+ * Memory size (MegaBytes, MB), (e.g., `MemoryMB`)
+ * Counts of items (Count), (e.g., `ProcessorCount`, `FanCount`)
+ * The State of a resource (State) (e.g., `PowerState`)
+ * State values where "work" is being done end in (ing) (e.g., `Applying`, `ClearingLogic`)
+
 
 #### Reference properties
 
 
 ### Settings Resource
 
+A Settings resource is used to represent the future intended state of a resource.  Some resources have properties that can be updated and the updates take place immediately.  Other resources, the properties must be updated at a certain point in time, such as system reset.  When the service provider knows a priori that a resource can only be updated at a certain point in time, it uses a Settings resource to indicate this to the client in the form of the "@Redfish.Settings" payload annotation.  The Settings annotation contains a link to an subordinate resource with the same schema definition.  While the resource represents the current state, the Settings resource represents the future intended state.
+
+For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  When a Settings annotation is used, the following conditions shall apply:
+* The resource linked to with the Settings annotation shall be of the same schema definition.
+* The resource should not be writable, even if the schema allows writable properties.
+* The Settings resource should be a subset of properties that can be updated. 
+* The Settings resource shall not contain a Settings annotation.
+* The Settings resource may contain SettingsApplyTime annotation.
+
+The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful. 
+* The Messages property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. 
+* The ETag property contains the ETag of the Settings resource that was last applied.
+* The Time property indicate the time when the Settings resource was last applied.
+
+Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+
+~~~json
+{
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
+        },
+        "Time": "2017-05-03T23:12:37-05:00",
+        "ETag": "A89B031B62",
+        "Messages": [
+           {
+              "MessageId": "Base.1.0.PropertyNotWritable",
+              "RelatedProperties": [
+                 "#/Attributes/ProcTurboMode"
+              ]
+           }
+        ]
+    },
+    ...
+}
+~~~
+
+A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when updating the Settings resource.  
+* If a service supports configuring when to apply the future settings, the Settings resource shall contain a property with the  "@Redfish.SettingsApplyTime" annotation. 
+* Only Settings resources shall contain a SettingsApplyTime annotation.
+
+Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied.  In this case it is either on reset or during the specified maintenance window:
+
+~~~json
+{
+    "@Redfish.SettingsApplyTime": {
+        "@odata.type": "#Settings.v1_1_0.PreferredApplyTime",
+        "ApplyTime": "OnReset",
+        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+        "MaintenanceWindowDurationInSeconds": 600
+    },
+    ...
+}
+~~~
 
 ### Special Resource situations
+
+There are some situations that arise with certain kinds of resources that need to exhibit common semantic behavior.
+
+#### Absent resources
+
+Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe slot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits `SoftwareInventory` to a maximum of 20 items should not populate 18 absent resources when only two items are present).
+
+For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the `State` property of the `Status` object as `Absent`.  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the `Power` and `Thermal` resources under a `Chassis` resource should not exist for an absent Chassis).
+
+Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the `Memory` resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an `Absent` value for 'State` within the 'Status' object).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
+
+#### Schema variations
+
+There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
+
+* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
+* The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
+* For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
+
+A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
+
+* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
 
 
 ### Registries
@@ -1406,46 +1535,52 @@ Schema annotations are used throughout the schema definitions of the data model 
 
 #### Description annotation
 
-The Description annotation can be applied to any type, property, action, or parameter in order to provide a human-readable description of the Redfish Schema element.
+The Description annotation can be applied to any type, property, action, or parameter in order to provide a description of Redfish Schema elements suitable for end users or user interface help text.
 
-All Redfish types, [properties](#properties), [reference properties](#reference-properties), and enumeration values shall include a Description annotation.
-
-All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Description annotation.
-
-All [structured types](#structured-properties) shall include a Description annotation.
+A Description annotation shall be included on the following schema definitions:
+* Redfish types
+* [Properties](#properties)
+* [Reference properties](#reference-properties)
+* Enumeration values
+* [Resources and Resource Collections](#resources-and-resource-collections)
+* [Structured types](#structured-properties)
 
 #### Long Description annotation
 
-The Long Description annotation can be applied to any type, property, action, or parameter in order to provide a formal, normative specification of the schema element.  Where the Long Descriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
+The Long Description annotation can be applied to any type, property, action, or parameter in order to provide a formal, normative specification of the schema element.  Where the Long Descriptions in the Redfish Schema contains normative language, the service shall be required to conform with the statement.
 
-All Redfish types, [properties](#properties), and [reference properties](#reference-properties) shall include a Long Description annotation.
-
-All [Resources and Resource Collections](#resources-and-resource-collections) shall include a Long Description annotation.
-
-All [structured types](#structured-properties) shall include a Long Description annotation.
+A Long Description annotation shall be included on the following schema definitions:
+* Redfish types
+* [Properties](#properties)
+* [Reference properties](#reference-properties)
+* [Resources and Resource Collections](#resources-and-resource-collections)
+* [Structured types](#structured-properties)
 
 #### Resource Capabilities annotation
 
-The Resource Capabilities annotation can be applied to Resources and Resource Collections to express the different type of HTTP operations a client is able to invole on the given Resource or Resource Collection.
+The Resource Capabilities annotation can be applied to [Resources and Resource Collections](#resources-and-resource-collections) to express the different type of HTTP operations a client is able to invoke on the given Resource or Resource Collection.
 
-* Insert Capabilities is used to show whether or not a client is able to perform a POST on the resource.
-* Update Capabilities is used to show whether or not a client is able to perform a PATCH or PUT on the resource.
-* Delete Capabilities is used to show whether or not a client is able to perform a DELETE on the resource.
-* A service may only implement a subset of the capabilities that are allowed on the Resource or Resource Collection.
+* Insert Capabilities is used to indicate whether or not a client is able to perform a POST on the Resource.
+* Update Capabilities is used to indicate whether or not a client is able to perform a PATCH or PUT on the Resource.
+* Delete Capabilities is used to indicate whether or not a client is able to perform a DELETE on the Resource.
+* A service may implement a subset of the capabilities that are allowed on the Resource or Resource Collection.
 
-All Redfish Resources and Resource Collections shall include Resource Capabilities annotations
+All schema definitions for Redfish Resources and Resource Collections shall include Resource Capabilities annotations.
 
 #### Resource URI Patterns annotation
 
-The Resource URI Patterns annotation is used to express the valid URI patterns for a given Resource or Resource Collection.
+The Resource URI Patterns annotation is used to express the valid URI patterns for a given [Resource or Resource Collection](#resources-and-resource-collections).
 
 The strings for the URI patterns may use `{` and `}` characters to express parameters within a given URI pattern.  Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the `Id` string property for the corresponding Resource, or the `MemberId` string property for the corresponding object within a Resource.
 
+MIKER to look at adding properties too (like how HTTPS is used in the Certificate path URI).
+MIKER to add language about URI construction with relation to the tree
+
 The following string is an example URI pattern that describes a Manager Account Resource: `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`
 
-Using the above example, `{ManagerAccountId}` would be replaced by the `Id` property of the corresponding Manager Account resource.  If the `Id` property for a given Manager Account resource is `John`, then the full URI for that resource would be `/redfish/v1/AccountService/Accounts/John`.
+Using the above example, `{ManagerAccountId}` would be replaced by the `Id` property of the corresponding `ManagerAccount` resource.  If the `Id` property for a given Manager Account resource is `John`, then the full URI for that resource would be `/redfish/v1/AccountService/Accounts/John`.
 
-All Redfish Resources and Redfish Resource Collections shall be annotated with the Resource URI Patterns annotation.
+All schema definitions for Redfish Resources and Redfish Resource Collections shall be annotated with the Resource URI Patterns annotation.
 
 All Redfish Resources and Redfish Resource Collections implemented by a service shall match the URI pattern described by the Resource URI Patterns annotation for their given definition.
 
@@ -1455,27 +1590,31 @@ The Additional Properties annotation is used to specify whether a type can conta
 
 #### Permissions annotation
 
-The Permissions annotation is used to specity if a client is allowed to write a given property, or if the property is read-only.
+The Permissions annotation is used to specity if a client is allowed to modify the value of a property, or if the property is read-only.
+
+A service may implement a modifiable property as read-only.
 
 #### Required annotation
 
 The Required annotation is used to specify that a property is required to be supported by services.  Required properties shall be annotated with the Required annotation.  All other properties are optional.
 
-If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases.  Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
-
 #### Required on Create annotation
 
-The Required on Create annotation is used to specify that a property is required to be provided by the client on creation of the resource.  Properties not annotated with the Required on Create annotation, are not required to be provided by the client on a create operation.
+The Required on Create annotation is used to specify that a property is required to be provided by the client on creation of the resource.  Properties not annotated with the Required on Create annotation are not required to be provided by the client on a create operation.
 
 #### Units of Measure annotation
 
 In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units of Measure annotation in order to specify the units of measurement for the property.
 
-The value of the annotation should be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
+The value of the annotation shall be a string that contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., `RPM` is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes, the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For example, Mebibyte (1024^2 bytes), which have the UCUM prefix "Mi" and symbol "By", would use `MiBy` as the value for the annotation.  For values that also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., `Mbit/s`).
 
 #### Expanded Resource annotation
 
-The Expanded Resource annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to provide the contents of the related [Resource](#structured-properties) or Resource Collection in responses.  Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
+The Expanded Resource annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to include the contents of the related [Resource](#structured-properties) or Resource Collection in responses.
+
+MIKER to add a sentence about what expand is and link to query parameter for expand; mention it's a level 1 expand.
+
+Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
 
 ### Versioning
 
@@ -1535,15 +1674,41 @@ The CSDL defines these namespaces and resources:
 
 ### Localization
 
+The creation of separate localized copies of Redfish schemas and registries is allowed and encouraged.  Localized schema and registry files may be submitted to the DMTF for republication in the Redfish Schema Repository.
 
-### Schema repository
+Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
+
+Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an `en` sub-folder for consistency.
+
+Descriptive property, parameter, and enumeration text not translated into the language specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
+
+### Schema, registry, dictionary, and profile repository
+
+All Redfish schemas, registries, dictionaries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
+
+| URL                                     | Folder contents |
+| ---                                     | ---             |
+| `redfish.dmtf.org/schemas`              | Current (most recent minor or errata) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
+| `redfish.dmtf.org/schemas/v1`           |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
+| `redfish.dmtf.org/schemas/v1/{code}`    |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
+| `redfish.dmtf.org/schemas/archive`      | Subfolders contain schema files specific to a particular version release. |
+| `redfish.dmtf.org/registries`           | Current (most recent minor or errata) release of each registry file. |
+| `redfish.dmtf.org/registries/v1`        | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
+| `redfish.dmtf.org/registries/v1/{code}` | Durable URL for programmatic access to localized v1.xx registry files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
+| `redfish.dmtf.org/registries/archive`   | Subfolders contain registry files specific to a particular version release. |
+| `redfish.dmtf.org/profiles`             | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
+| `redfish.dmtf.org/profiles/v1`          | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
+| `redfish.dmtf.org/profiles/archive`     | Subfolders contain profile files specific to a particular profile version or release. |
+| `redfish.dmtf.org/dictionaries`         | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| `redfish.dmtf.org/dictionaries/v1`      | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
+| `redfish.dmtf.org/dictionaries/archive` | Subfolders contain dictionary files specific to a particular version release. |
 
 
 ## Schema definition languages
 
-### Common Schema Definition Language
+### OData Common Schema Definition Language
 
-Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
+OData Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
 
 #### File naming conventions for CSDL
 
@@ -1637,7 +1802,7 @@ Entity Types and Complex Types may have a `BaseType` attribute, which specifies 
 
 All [Resources and Resource Collections](#resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
 
-Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  This allows for references to be made using the [Navigation Property element](#navigation-property-element).
+Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  The Entity Type element allows for references to be made using the [Navigation Property element](#navigation-property-element), whereas Complex Type element does not allow for this usage.
 
 Example Entity Type and Complex Type element:
 ```xml
@@ -1660,15 +1825,15 @@ Example Entity Type and Complex Type element:
 
 ##### Action element
 
-The Action element is defined using the `Action` tag.  This element is used to define an action that can be performed on a [Resource](#resources-and-resource-collections).  
+The Action element is defined using the `Action` tag.  This element is used to define an [action](#post-action) that can be performed on a [Resource](#resources-and-resource-collections).  
 
-All Actions contain a `Name` attribute, which specifies the name of the action.
+All Action elements contain a `Name` attribute, which specifies the name of the action.
 
-In Redfish, all Actions contain the `IsBound` attribute and is always set to `true`.  This is used to indicate that the action appears as a member of a given structured type.
+In Redfish, all Action elements contain the `IsBound` attribute and is always set to `true`.  This is used to indicate that the action appears as a member of a given structured type.
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and `Type` of each parameter.
 
-Since all actions in Redfish use the term `IsBound="true"`, the first parameter is called the "binding parameter" and specifies the [structured type](#structured-types) to which the action belongs.  In Redfish, this is always going to be one of the following [Complex Type elements](#entity-type-and-complex-type-elements):
+Since all Action elements in Redfish use the term `IsBound="true"`, the first parameter is called the "binding parameter" and specifies the [structured type](#structured-types) to which the action belongs.  In Redfish, this is always going to be one of the following [Complex Type elements](#entity-type-and-complex-type-elements):
 * For standard actions, the "Actions" Complex Type for the Resource.
 * For OEM actions, the "OemActions" Complex Type for the Resource.
 
@@ -1695,14 +1860,14 @@ The remaining `Parameter` elements describe additional parameters to be passed t
 
 All Property elements contain a `Name` attribute, which specifies the name of the property.
 
-All Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute can be one of the following:
+All Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute shall be one of the following:
 
 * A [qualified name](#qualified-names) that references an [Enum Type element](#enum-type-element).
 * A [qualified name](#qualified-names) that references a [Complex Type element](#entity-type-and-complex-type-elements).
 * A primitive data type.
 * An array of any of the above using the `Collection` term.
 
-Primitive data types can be one of the following:
+Primitive data types shall be one of the following:
 
 | Type               | Meaning |
 | ---                | ---     |
@@ -1715,7 +1880,7 @@ Primitive data types can be one of the following:
 | Edm.Int64          | Signed 64-bit integer. |
 | Edm.String         | UTF-8 string. |
 
-Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
+Property elements may specify a `Nullable` attribute.  If the value is `false`, value of `null` is not allowed as a value for the property.  If the attribute is `true` or not specified, a value of `null` is allowed.
 
 Example Property element:
 ```xml
@@ -1736,7 +1901,7 @@ All Navigation Property elements contain a `Name` attribute, which specifies the
 
 All Navigation Property elements contain a `Type` attribute specifies the data type.  The `Type` attribute is a [qualified name](#qualified-names) that references an [Entity Type element](#entity-type-and-complex-type-elements).  This can also be made into an array using the `Collection` term.
 
-Navigation Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.
+Navigation Property elements may specify a `Nullable` attribute.  If the value is `false`, `null` is not allowed as a value for the property.  If the attribute is `true` or not specified, a value of `null` is allowed.
 
 Unless the reference property is to be [expanded](#expanded-resource), all Navigation Properties in Redfish use the `OData.AutoExpandReferences` Annotation element in order to show that the reference is always available.
 
@@ -1774,6 +1939,12 @@ Enum Types contain `Member` elements that define the members of the enumeration.
 ##### Annotation element
 
 Annotations in CSDL are expressed using the `Annotation` element.  The `Annotation` element can be applied to any schema element in CSDL.  The following examples show how each of the different [schema annotations](#schema-annotations) used by Redfish are expressed in CSDL.
+
+Terms with the prefix `OData` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml.
+
+Terms with the prefix `Measures` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml.
+
+Terms with the prefix `Redfish` are defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 Example [Description annotation](#description-annotation):
 ```xml
@@ -1820,7 +1991,7 @@ Example [Expanded Resource annotation](#expanded-resource-annotation):
   <Annotation Term="OData.AutoExpandReferences"/>
 ```
 
-Example Insert Capabilities Annotation (POST is not allowed):
+Example Insert Capabilities Annotation (showing POST is not allowed):
 ```xml
   <Annotation Term="Capabilities.InsertRestrictions">
     <Record>
@@ -1829,7 +2000,7 @@ Example Insert Capabilities Annotation (POST is not allowed):
   </Annotation>
 ```
 
-Example Update Capabilities Annotation (PATCH and PUT are allowed):
+Example Update Capabilities Annotation (showing PATCH and PUT are allowed):
 ```xml
   <Annotation Term="Capabilities.UpdateRestrictions">
     <Record>
@@ -1839,7 +2010,7 @@ Example Update Capabilities Annotation (PATCH and PUT are allowed):
   </Annotation>
 ```
 
-Example Delete Capabilities Annotation (DELETE is allowed):
+Example Delete Capabilities Annotation (showing DELETE is allowed):
 ```xml
   <Annotation Term="Capabilities.DeleteRestrictions">
     <Record>
@@ -1857,12 +2028,6 @@ Example Resource URI Patterns Annotation:
     </Collection>
   </Annotation>
 ```
-
-Terms with the prefix `OData` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml.
-
-Terms with the prefix `Measures` are defined in http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml.
-
-Terms with the prefix `Redfish` are defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ## Service details
 
@@ -1888,7 +2053,7 @@ On success, the Event Service shall return an HTTP status 201 (CREATED) and the 
 * Services shall not "push" events (using HTTP POST) unless an event subscription has been created. Either the client or the service can terminate the event stream at any time by deleting the subscription.  The service may delete a subscription if the number of delivery errors exceeds preconfigured thresholds.
 * Services shall respond to a request to create a subscription with an error if the body of the request is conflicting.  For instance, if parameters in the request are not supported, an HTTP status 400 shall be returned.  
 * Services shall respond to a request to create a subscription with an error if the body of the request contains both RegistryPrefixes and MessageIds, and shall return an HTTP status code of 400.  These properties are considered mutually exclusive.
-* Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.  Subscriptions are persistent and will remain across event service restarts.
+* Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.  Subscriptions are persistent and shall remain across event service restarts.
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status code [404](#status-404).
 
@@ -2000,6 +2165,8 @@ The client can continue to get information about the status by directly querying
 * GET requests to either the Task Monitor or the Task resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
 * Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP GET, PUT, PATCH, POST, and DELETE methods.
+* Services that support scheduling tasks (using for instance "@Redfish.OperationApplyTime" annotation in the request) shall persist pending Tasks across service restarts, until the Task begins execution.
+* Tasks that are pending execution should include the "@Redfish.OperationApplyTime" property to indicate when the Task will start.  If the OperationApplyTime value is AtMaintenanceWindowStart or InMaintenanceWindowOnReset, then the task should also include the "@Redfish.MaintenanceWindow" property.
 
 ### Resource Tree stability
 
@@ -2895,7 +3062,6 @@ OData-Version: 4.0
 |         |            | Clarified USN format.  |
 | 1.0.0   | 2015-08-04 | Initial release. |
 
-
 * Services shall support "push" style eventing for all resources capable of sending events.
 * Services shall not "push" events (using HTTP POST) unless an event subscription has been created. Either the client or the service can terminate the event stream at any time by deleting the subscription.  The service may delete a subscription if the number of delivery errors exceeds preconfigured thresholds.
 * Services shall respond to a request to create a subscription with an error if the body of the request is conflicting.  For instance, if parameters in the request are not supported, an HTTP status 400 shall be returned.  
@@ -2903,7 +3069,6 @@ OData-Version: 4.0
 * Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.  Subscriptions are persistent and shall remain across event service restarts.
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status code [404](#status-404).
-
 
 TODO: Items below here are being migrated to the Schema and Data Model section
 
@@ -3409,36 +3574,6 @@ When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the imple
 
 
 
-One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
-
-* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified by a unique [type identifier](#type-property).
-
-### Schema, registry and profile repository
-
-All Redfish schemas, registries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
-
-| URL | Folder contents |
-|-----|-----------------|
-| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file in CSDL, JSON Schema, and/or OpenAPI formats. |
-| redfish.dmtf.org/schemas/v1 |  Durable URL for programmatic access to all v1.xx schema files.  Every v1.xx minor or errata release of each schema file in CSDL, JSON Schema, OpenAPI formats. |
-| redfish.dmtf.org/schemas/v1/{code} |  Durable URL for programmatic access to localized v1.xx schema files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
-| redfish.dmtf.org/schemas/archive | Subfolders contain schema files specific to a particular version release. |
-| redfish.dmtf.org/registries | Current (most recent minor or errata) release of each registry file. |
-| redfish.dmtf.org/registries/v1 | Durable URL for programmatic access to all v1.xx registry files. Every v1.xx minor or errata release of each registry file. |
-| redfish.dmtf.org/registries/v1/{code} | Durable URL for programmatic access to localized v1.xx registry files.  Localized schemas are organized in sub-folders using the 2-character ISO 639-1 language code as the {code} segment. |
-| redfish.dmtf.org/registries/archive | Subfolders contain registry files specific to a particular version release. |
-| redfish.dmtf.org/profiles | Current release of each Redfish Interoperability Profile (.json) file and associated documentation. |
-| redfish.dmtf.org/profiles/v1 | Durable URL for programmatic access to all v1.xx Redfish Interoperability Profile (.json) files. |
-| redfish.dmtf.org/profiles/archive | Subfolders contain profile files specific to a particular profile version or release. |
-| redfish.dmtf.org/dictionaries | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
-| redfish.dmtf.org/dictionaries/v1 | Durable URL for programmatic access to all v1.xx Redfish Device Enablement Dictionary files. |
-| redfish.dmtf.org/dictionaries/archive | Subfolders contain dictionary files specific to a particular version release. |
-
-
-#### Schema, registry, and profile file naming conventions
-
-Standard Redfish schema, registry, profile, and dictionary files published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  Spaces shall not be part of file names.
-
 
 
 
@@ -3482,9 +3617,6 @@ The binary file describing a Redfish Device Enablement Dictionary follows the Re
 
 For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.dict".
 
-##### OEM schema file naming
-
-To avoid namespace collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
  
 #### Programmatic access to schema, registry, or profile files
 
@@ -3533,40 +3665,8 @@ Resource types defined by this specification shall be referenced in JSON documen
 
 NOTE: Refer to the [Security](#security-details) clause for security implications of Data Model and Schema.
 
-### Common naming conventions
 
-The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage.
 
-Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
-* The first letter of each word shall be uppercase with spaces between words shall be removed  (e.g., PowerState, SerialNumber.)
-* No underscores are used.
-* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
-
-Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI" (e.g.,"iSCSITarget")
- * Product names like "iLO"
- * Well-known abbreviations or acronyms
- * OEM appears as "Oem" in resource or property names (alone or as a portion of a name), but should be "OEM" when used alone as a constant.
- * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
-
-For properties that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:
- * Bandwidth (Mbps), (e.g., PortSpeedMbps)
- * CPU speed (Mhz), (e.g., ProcessorSpeedMhz)
- * Memory size (MegaBytes, MB), (e.g., MemoryMB)
- * Counts of items (Count), (e.g., ProcessorCount, FanCount)
- * The State of a resource (State) (e.g., PowerState.)
- * State values where "work" is being done end in (ing) (e.g., Applying, Clearing)
-
-### Localization considerations
-
-The creation of separate localized copies of Redfish schemas and registries is allowed and encouraged.  Localized schema and registry files may be submitted to the DMTF for republication in the Redfish Schema Repository.
-
-Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
-
-Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO-639-1) language code for those files.  English language files may be duplicated in an "en" sub-folder for consistency.  
-
-Descriptive property, parameter, and enumeration text not translated into the languge specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
 
 ### Schema definition
 
@@ -3852,26 +3952,3 @@ Service resources represent components of the Redfish Service itself as well as 
 
 Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
 
-### Special resource situations
-
-There are some situations that arise with certain kinds of resources that need to exhibit common semantic behavior.
-
-#### Absent resources
-
-Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe elot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits "SoftwareInventory" to a maximum of 20 items should not populate 18 absent resources when only two items are present).
-
-For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the State property of the Status object as "Absent".  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the "Power" and "Thermal" resources under a "Chassis" resource should not exist for an absent Chassis).
-
-Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the "Memory" resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an "Absent" State).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
-
-#### Schema variations
-
-There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
-
-* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
-* The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
-* For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
-
-A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
-
-* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
