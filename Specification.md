@@ -2868,6 +2868,7 @@ A service may support the "SimpleUpdate" action within the Update Service resour
 * After a successful "SimpleUpdate" action POST, the service shall return HTTP Status code of [202](#status-202) with a location header set to the URI of a Task Monitor.  This Task can be used by clients to monitor the progress and results of the update, which includes the progrss of image transfer to the service.
 * A client may specifiy the targest(s) of the update by setting the "Targets" property in the action POST request.
 * If the client included the "@Redfish.OperationApplyTime" property on the "SimpleUpdate" action, the service should include the appropritate "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" properties on the created Task, and keep the "TaskState" as Pending until the Task starts.  The service shall persist the scheduled Task across servcice restarts, until the Task starts.
+* Tasks created by the UpdateService should report status/results using the Task’s Messages array. The Task should use messages from the Update Message Registry. Additional messages from other registries may also be included.
 
 ##### HTTP Push updates<a id="http-push-update"></a>
 A service may support the "RedfishHttpPushUri" property within the Update Service resource.  A client can perform an HTTP or HTTPs POST on the URI specified by this property to initiate a push-based update.
@@ -2878,7 +2879,8 @@ A service may support the "RedfishHttpPushUri" property within the Update Servic
 * After a successful POST to this URI, the service shall return HTTP Status code of [202](#status-202) with a location header set to the URI of a Task Monitor.  This Task can be used by clients to monitor the progress and results of the update.
 * A client may specifiy the targest(s) of the update by setting the "HttpPushUriTargets" and "HttpPushUriTargetsBusy" properties in the Update Service resource, before performing the POST to this URI.
 * A client may specificy additional parameters for the update by setting the "HttpPushUriOptions" and "HttpPushUriOptionsBusy" properties in the Update Service resource, before performing the POST to this URI.
-* A client may schedule the update by setting the "HttpPushUriApplyTime" property in the Update Service, before performing the POST to this URI. In this case, the service shall include the appropritate "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" properties on the created Task, and keep the "TaskState" as Pending until the Task starts.  The service shall persist the scheduled Task across servcice restarts, until the Task starts. 
+* A client may schedule the update by setting the "HttpPushUriApplyTime" property in the Update Service, before performing the POST to this URI. In this case, the service shall include the appropritate "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" properties on the created Task, and keep the "TaskState" as Pending until the Task starts.  The service shall persist the scheduled Task across servcice restarts, until the Task starts.
+* Tasks created by the UpdateService should report status/results using the Task’s Messages array. The Task shall use messages from the Update Message Registry. Additional messages from other registries may also be included.
 
 ## Security<a id="security-details"></a>
 
