@@ -1,0 +1,170 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2019 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.type": "#MessageRegistry.v1_2_0.MessageRegistry",
+    "Id": "Update.1.0.0",
+    "Name": "Update Message Registry",
+    "Language": "en",
+    "Description": "This registry defines update status and error messages for Redfish.",
+    "RegistryPrefix": "Update",
+    "RegistryVersion": "1.0.0",
+    "OwningEntity": "DMTF",	
+	"Messages": {
+        "UpdateDefinitionsBeingDefined": {
+		    "Description": "Indicates that update definitions being defined.",
+			"Message": "Assignment %1: Update definitions.",
+			"Severity": "OK",
+			"NumberOfArgs": 1,
+			"ParamTypes": [
+                "string"
+			],
+			"Resolution": "None"
+		},
+		"UpdateAssignment": {
+			"Description": "Indicates that resource %2 update.",
+			"Message": "Assignment %1: Resource %2 SoftwareID %3 Version %4 to Version %5.",
+			"Severity": "OK",
+			"NumberOfArgs": 5,
+			"ParamTypes": [
+                "string",
+				"string",
+				"string",
+				"string",
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadTransferInProgress": {
+			"Description": "Indicates that transfer %1 percent complete.",
+			"Message": "Assignment %2: Transfer %1 percent complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
+                "number",
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadTransferCompleted": {
+			"Description": "Indicates that transfer complete.",
+			"Message": "Assignment %1: Transfer complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 1,
+			"ParamTypes": [
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadTransferFailed": {
+			"Description": "Indicates that transfer failed.",
+			"Message": "Assignment %1: Transfer failed, protocol %2 error code=%3 - %4",
+			"Severity": "Warning",
+			"NumberOfArgs": 4,
+			"ParamTypes": [
+				"string",
+				"string",
+				"number",
+				"string"
+			],
+			"Resolution": "Resubmit the request. If the problem persists, consider resetting the service."
+		},
+		"PayloadVerifyInProgress": {
+			"Description": "Indicates that verify %1 percent complete.",
+			"Message": "Assignment %2: Verify %1 percent complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
+                "number",
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadVerifyCompleted": {
+			"Description": "Indicates that verify complete.",
+			"Message": "Assignment %1: Verify complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 1,
+			"ParamTypes": [
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadVerifyFailed": {
+			"Description": "Indicates that verify failed.",
+			"Message": "Assignment %1: Verify failed, return code=%2 - %3",
+			"Severity": "Warning",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
+				"string",
+				"number",
+				"string"
+			],
+			"Resolution": "Resubmit the request. If the problem persists, consider resetting the service."
+		},
+		"PayloadApplyInProgress": {
+			"Description": "Indicates that apply %1 percent complete.",
+			"Message": "Assignment %2: Apply %1 percent complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
+                "number",
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadApplyCompleted": {
+			"Description": "Indicates that apply complete.",
+			"Message": "Assignment %1: Apply complete",
+			"Severity": "OK",
+			"NumberOfArgs": 1,
+			"ParamTypes": [
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadApplyFailed": {
+			"Description": "Indicates that apply failed.",
+			"Message": "Assignment %1: Apply failed, return code=%2",
+			"Severity": "Warning",
+			"NumberOfArgs": 3,
+			"ParamTypes": [
+				"string",
+				"number",
+				"string"
+			],
+			"Resolution": "Resubmit the request. If the problem persists, consider resetting the service."
+		},
+		"PayloadActivationRequired": {
+			"Description": "Indicates that action required to activate update.",
+			"Message": "Assignment %1: Action %2 required to complete update.",
+			"Severity": "OK",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
+                "string",
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadActivationCompleted": {
+			"Description": "Indicates that activation complete.",
+			"Message": "Assignment %1: Activation complete",
+			"Severity": "OK",
+			"NumberOfArgs": 1,
+			"ParamTypes": [
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"PayloadActivationFailed": {
+			"Description": "Indicates that activation failed.",
+			"Message": "Assignment %1 activation failed, return code=%2",
+			"Severity": "Warning",
+			"NumberOfArgs": 3,
+			"ParamTypes": [
+				"string",
+				"number",
+				"string"
+			],
+			"Resolution": "Resubmit the request. If the problem persists, consider resetting the service."
+		}
+	}
+}
