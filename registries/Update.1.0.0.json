@@ -9,16 +9,6 @@
 	"RegistryVersion": "1.0.0",
 	"OwningEntity": "DMTF",	
 	"Messages": {
-		"UpdateDefinitionsBeingDefined": {
-			"Description": "Indicates that update definitions being defined.",
-			"Message": "Assignment %1: Update definitions.",
-			"Severity": "OK",
-			"NumberOfArgs": 1,
-			"ParamTypes": [
-				"string"
-			],
-			"Resolution": "None"
-		},
 		"UpdateAssignment": {
 			"Description": "Indicates that resource %2 update.",
 			"Message": "Assignment %1: Resource %2 SoftwareID %3 Version %4 to Version %5.",
@@ -32,6 +22,40 @@
 				"string"
 			],
 			"Resolution": "None"
+		},
+		"UpdateTransferInProgress": {
+			"Description": "Indicates that transfer %1 percent complete.",
+			"Message": "Assignment %2: Transfer %1 percent complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
+				"number",
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"UpdateTransferCompleted": {
+			"Description": "Indicates that transfer complete.",
+			"Message": "Assignment %1: Transfer complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 1,
+			"ParamTypes": [
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"UpdateTransferFailed": {
+			"Description": "Indicates that transfer failed.",
+			"Message": "Assignment %1: Transfer failed, protocol %2 error code=%3 - return message: %4",
+			"Severity": "Warning",
+			"NumberOfArgs": 4,
+			"ParamTypes": [
+				"string",
+				"string",
+				"number",
+				"string"
+			],
+			"Resolution": "Resubmit the request. If the problem persists, consider resetting the service."
 		},
 		"PayloadTransferInProgress": {
 			"Description": "Indicates that transfer %1 percent complete.",
@@ -61,6 +85,39 @@
 			"NumberOfArgs": 4,
 			"ParamTypes": [
 				"string",
+				"string",
+				"number",
+				"string"
+			],
+			"Resolution": "Resubmit the request. If the problem persists, consider resetting the service."
+		},
+		"UpdateVerifyInProgress": {
+			"Description": "Indicates that verify %1 percent complete.",
+			"Message": "Assignment %2: Verify %1 percent complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
+				"number",
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"UpdateVerifyCompleted": {
+			"Description": "Indicates that verify complete.",
+			"Message": "Assignment %1: Verify complete.",
+			"Severity": "OK",
+			"NumberOfArgs": 1,
+			"ParamTypes": [
+				"string"
+			],
+			"Resolution": "None"
+		},
+		"UpdateVerifyFailed": {
+			"Description": "Indicates that verify failed.",
+			"Message": "Assignment %1: Verify failed, return code=%2 - return message: %3",
+			"Severity": "Warning",
+			"NumberOfArgs": 2,
+			"ParamTypes": [
 				"string",
 				"number",
 				"string"
