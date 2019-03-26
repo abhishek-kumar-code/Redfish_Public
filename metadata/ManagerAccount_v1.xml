@@ -237,7 +237,7 @@
         <Property Name="PasswordChangeRequired" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Indicates that the password for this account must be changed.  The service requires the password to be changed before access is allowed."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the password for this account must be changed before further access is allowed.  Access to the service may be denied by the implementation if the password has not been changed.  A ManagerAccount created with an initial PasswordChangeRequired value of true may be used to force a password change before first access using the account."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the password for this account must be changed before further access is allowed. Access to the service may be denied by the implementation if the password has not been changed. A ManagerAccount created with an initial PasswordChangeRequired value of true may be used to force a password change before first access using the account. When the 'Password' property for this account is updated, the service shall set the value to false."/>
         </Property>
       </EntityType>
     </Schema>
