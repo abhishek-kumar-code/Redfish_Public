@@ -147,7 +147,7 @@ The following additional terms are used in this document.
 | Request                         | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                          |
 | Resource                        | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a Collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                       |
 | Resource Collection             | A Resource Collection is a Resource that acts as a container of other Resources. The Members of a Resource Collection usually have similar characteristics. The container processes messages sent to the container. The Members of the container process messages sent only to that Member without affecting other Members of the container.                                                                                                                                              |
-| Resource Tree                   | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource hyperlinks from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients that travers the resource tree should contain logic to avoid infinite loops. |
+| Resource Tree                   | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource hyperlinks from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients that traverse the resource tree should contain logic to avoid infinite loops. |
 | Response                        | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                        |
 | Service Root                    | The term Service Root is used to refer to a particular resource that is directly accessed via the service entry point. This resource serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish Service.                                                                                                                                                                                          |
 | Subscription                    | The act of registering a destination for the reception of events.                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -185,7 +185,7 @@ The specifications define elements that are mandatory for all Redfish implementa
 
 The specifications set normative requirements for Redfish Services and associated materials, such as Redfish Schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
 
-The specifications do not set requirements that implementations should use particular hardware or firmware to implement the Redfish interfaces and functions.
+The specifications do not set requirements that implementations use particular hardware or firmware to implement the Redfish interfaces and functions.
 
 ### Goals
 
@@ -292,7 +292,7 @@ The Redfish Schema defines certain standard actions associated with common Redfi
 
 #### Service entry point discovery
 
-While the service itself is at a well-known URI, clients should discover the service host. Redfish, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  Redfish is investigating additional service entry point discovery (e.g., DHCP-based) approaches.
+While the service itself is at a well-known URI, clients need to discover the network address of the service.  Redfish, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  Redfish is investigating additional service entry point discovery (e.g., DHCP-based) approaches.
 
 For more information, see the clause on [Discovery](#discovery)
 
@@ -665,7 +665,7 @@ No requirements are placed on implementations to return a consistent set of Memb
 
 #### HEAD
 
-The HEAD method differs from the GET method in that it should not return message body information.  However, all of the same meta information and status codes in the HTTP headers will be returned as though a GET method were processed, including authorization checks.
+The HEAD method differs from the GET method in that it shall not return message body information.  However, all of the same meta information and status codes in the HTTP headers will be returned as though a GET method were processed, including authorization checks.
 
 * Services may support the HEAD method in order to return meta information in the form of HTTP response headers.
 * Services may support the HEAD method in order to verify hyperlink validity.
@@ -1038,7 +1038,7 @@ HTTP defines status codes that can be returned in response messages.
 Where the HTTP status code indicates a failure, the response body contains an [extended error resource](#error-responses) to provide the client more meaningful and deterministic error semantics.
 
 * Services should return the extended error resource as described in this specification in the response body when a status code [400](#status-400) or greater is returned. Services may return the extended error resource as described in this specification in the response body when other status codes are returned for those codes and operations that allow a response body.
-* Extended error messages should not provide privileged information when authentication failures occur.
+* Extended error messages shall not provide privileged information when authentication failures occur.
 
 NOTE: Refer to the [Security](#security-details) clause for security implications of extended errors
 
@@ -1497,7 +1497,7 @@ A resource representation in JSON may include additional annotations represented
 where
 
 * *PropertyName* = the name of the property being annotated. If omitted, the annotation applies to the entire resource.
-* *Namespace* = the name of the namespace where the annotation term is defined.  The [metadata document](#service-metadata) that the [context URL](#context-property) of the request specifies should reference this namespace.
+* *Namespace* = the name of the namespace where the annotation term is defined.  The [metadata document](#service-metadata) that the [context URL](#context-property) of the request specifies shall reference this namespace.
 * *TermName* = the name of the annotation term being applied to the resource or property of the resource.
 
 Services shall limit the annotation usage to the "odata", "Redfish", and "Message" namespaces.  The "odata" namespace is defined as part of the [OData JSON Format](#OData-JSON) specification.  The "Redfish" namespace is an alias for the "RedfishExtensions.v1_0_0" namespace.
@@ -1990,7 +1990,7 @@ Structural properties of the resource are defined using the `Property` element. 
 
 Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
 
-Properties that should have a non-nullable value include the [nullable attribute](#non-nullable-properties) set to `false`.
+Properties that shall have a non-nullable value include the [nullable attribute](#non-nullable-properties) set to `false`.
 
 ~~~xml
   <Property Name="Property1" Type="Edm.String" Nullable="false">
@@ -2311,7 +2311,7 @@ The definition of any other properties that are contained within the OEM-specifi
 The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
 DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
 
-Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso', but Contoso.org should use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
+Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso', but Contoso.org shall use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
 
 The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
 
@@ -2474,7 +2474,7 @@ Redfish Resources are one of several general kinds:
 
 #### Current configuration
 
-Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client should PATCH and/or PUT to a separate [Settings resource](#settings).  For resources that can be modified immediately, the Allow header shall contain PATCH and/or PUT in the GET response.  When a resource is read-only, the Allow header shall not contain PATCH or PUT in the GET response.
+Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client shall PATCH and/or PUT to a separate [Settings resource](#settings).  For resources that can be modified immediately, the Allow header shall contain PATCH and/or PUT in the GET response.  When a resource is read-only, the Allow header shall not contain PATCH or PUT in the GET response.
 
 #### Settings
 
@@ -2547,7 +2547,7 @@ Client software should be aware that when absent resources are later populated, 
 
 There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
 
-* All Redfish Services should support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
+* All Redfish Services shall support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
 * The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
 * For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
 
@@ -2739,7 +2739,7 @@ EXT:
 
 #### Notify, alive, and shutdown messages
 
-Redfish devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, should allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.
+Redfish devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, shall allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.
 
 
 ### Server-Sent Events
@@ -3449,7 +3449,7 @@ OData-Version: 4.0
 |         |            | Various spelling and grammar fixes. |
 | 1.6.0   | 2018-08-23 | Added methods of using $filter on the SSE URI for the EventService. |
 |         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
-|         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 should conform to these URI patterns. |
+|         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 conform to these URI patterns. |
 |         |            | Added support for creating and naming Redfish schema files in the OpenAPI YAML-based format. |
 |         |            | Added URI construction rules for OEM extensions. |
 |         |            | Changed ETag usage to require strong ETag format. |
@@ -3545,7 +3545,7 @@ OData-Version: 4.0
 |         |            | Added example of an HTTP Link Header and clarified usage and content. |
 |         |            | Added Schema Modification clause describing allowed usage of the Schema files. |
 |         |            | Added recommendation to use TLS 1.2 or later, and to follow the SNIA TLS Specification.  Added reference to the SNIA TLS Specification.  Added additional recommended TLS_RSA_WITH_AES_128_CBC_SHA Cipher suite. |
-|         |            | Clarified that the "Id" property of a Role resource should match the Role Name. |
+|         |            | Clarified that the "Id" property of a Role resource matches the Role Name. |
 | 1.0.3   | 2016-06-17 | Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References.  Corrected typographical error in ETag example. |
 |         |            | Clarified examples for ExtendedInfo to show arrays of Messages. |
 |         |            | Clarified that a POST to Session Service to create a new Session does not require authorization headers. |
@@ -3557,7 +3557,7 @@ OData-Version: 4.0
 |         |            | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
 |         |            | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
 |         |            | Removed duplicative or out-of-scope sub-clauses from the Security clause, which made unintended requirements on Redfish service implementations. |
-|         |            | Added missing requirement that property names in Resource Responses should match the casing (capitalization) as specified in schema. |
+|         |            | Added missing requirement that property names in Resource Responses matches the casing (capitalization) as specified in schema. |
 |         |            | Updated normative references to current HTTP RFCs and added clause references throughout the document where applicable. |
 |         |            | Clarified ETag header requirements. |
 |         |            | Clarified that no authentication is required for accessing the Service Root resource. |
