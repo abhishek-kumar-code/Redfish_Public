@@ -16,7 +16,7 @@
     "AccountLockoutThreshold": 5,
     "AccountLockoutDuration": 30,
     "AccountLockoutCounterResetAfter": 30,
-    "AccountLockoutResetAfterEnabled": true,
+    "AccountLockoutCounterResetEnabled": true,
     "Accounts": {
         "@odata.id": "/redfish/v1/AccountService/Accounts"
     },
