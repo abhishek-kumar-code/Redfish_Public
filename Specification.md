@@ -3035,13 +3035,13 @@ When a session is terminated, the service shall not affect independent connectio
 
 #### Password Management
 
-A Redfish Service provides local user accounts via a collection of `ManagerAccount` resources located under the `AccountService`.  The 'ManagerAccount' resources allow users to manage their own account information, and for administrators to create, delete, and manage other user accounts.
+A Redfish Service provides local user accounts via a collection of `ManagerAccount` resources located under the `AccountService`.  The `ManagerAccount` resources allow users to manage their own account information, and for administrators to create, delete, and manage other user accounts.
 
-##### Default password handling
+##### Password change required handling
 
-The Service may require that default passwords assigned by the manufacturer be changed by the end user prior to accessing the Service.  In addition, administrators creating accounts on behalf of end users may choose to require users to change their account's password upon first access.  
+The Service may require that passwords assigned by the manufacturer be changed by the end user prior to accessing the Service.  In addition, administrators creating accounts on behalf of end users may  require users to change their account's password upon first access or due to other administrative needs.  
 
-The `ManagerAccount` resource contains `PasswordChangeRequired` boolean property to enable this functionality.  Resources that have the property set to `True` shall require the user to change the write-only `Password` property in that resource before access is granted.  Manufacturers including default user credentials for the Service may use this method to force a change to default credentials before access is granted.
+The `ManagerAccount` resource contains a `PasswordChangeRequired` boolean property to enable this functionality.  Resources that have the property set to `True` shall require the user to change the write-only `Password` property in that resource before access is granted.  Manufacturers including  user credentials for the Service may use this method to force a change to those credentials before access is granted.
 
 When a client accesses the Service using credentials from a `ManagerAccount` resource that has a `PasswordChangeRequired` value of `True`, the Service shall:
 * Allow a Session login and include a @Redfish.Message object in the response containing the `PasswordChangeRequired` message from the Base Message Registry.  This indicates to the client that their session is restricted to performing only the password change operation before access is granted.
