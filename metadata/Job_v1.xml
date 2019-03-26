@@ -43,7 +43,7 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
 
       <EntityType Name="Job" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="This resource contains information about a specific Job scheduled or being executed by a Redfish service's Job Service.  Jobs are created by clients for describing a series of Redfish operations to take place at periodic intervals."/>
+        <Annotation Term="OData.Description" String="This resource contains information about a specific Job scheduled or being executed by a Redfish service's Job Service.  Jobs are created by clients for describing a series of operations to take place at periodic intervals."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Job in a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
