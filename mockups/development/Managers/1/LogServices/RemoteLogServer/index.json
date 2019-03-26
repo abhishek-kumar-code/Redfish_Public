@@ -1,0 +1,25 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#LogService.LogService",
+    "@odata.id": "/redfish/v1/Managers/1/LogServices/Log2",
+    "@odata.type": "#LogService.v1_2_0.LogService",
+    "Id": "RemoteLogServer",
+    "Name": "Remote Syslog LogService",
+    "Description": "This LogService entry contains details of a remote server that aggregates syslog entries.",
+    "DateTime": "2015-03-13T04:14:33+06:00",
+    "DateTimeLocalOffset": "+06:00",
+    "ServiceEnabled": true,
+    "LogServiceType":" RemoteSyslog",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Oem": {},
+    "SyslogUri": "myserver.contoso.com:514",
+    "LowestSyslogSeverity": "Warning",
+    "EnabledSyslogFacilities": [
+         "Daemon",
+         "Kern"
+     ],
+    "SyslogProtocol": "RELP"
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  LogService  v1.1.2 -->
+<!--# Redfish Schema:  LogService  v1.2.0 -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -225,6 +225,165 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
       <EntityType Name="LogService" BaseType="LogService.v1_1_1.LogService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2019.1"/>
+      <Annotation Term="OData.Description" String="This version was created to add RemoteSyslog support."/>
+
+        <Property Name="LogServiceType" Type="LogService.v1_2_0.LogServiceType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The type of LogServce, remote or local, that this service represents."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain either 'Local' for all types of logs that are aggregated on this endpoint or 'RemoteSyslog' for logs that are forwarded to the SyslogUri."/>
+        </Property>
+        <Property Name="LowestSyslogSeverity" Type="LogService.v1_2_0.SyslogSeverity">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The lowest severity level message that should be forwarded."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the lowest level severity that should be forwarded.  The default value of the LowestSyslogSeverity property shall be 'Notice', resulting in messages of all severities being forwareded."/>
+        </Property>
+        <Property Name="EnabledSyslogFacilities" Type="Collection(LogService.v1_2_0.SyslogFacility)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The types of programs that can log messages."/>
+          <Annotation Term="OData.LongDescription" String="The facility code is used to specify the type of program that is logging the message. Messages with different facilities may be handled differently. The list of facilities available is defined by the standard."/>
+        </Property>
+        <Property Name="SyslogProtocol" Type="LogService.v1_2_0.SyslogProtocol">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The transport layer protocol that syslog should utilize to send messages to this remote server."/>
+          <Annotation Term="OData.LongDescription" String="The transport layer protocol that syslog should utilize to send messages to this remote server. The RFC 5424 Syslog specification recommends TLS usage."/>
+        </Property>
+
+      <EnumType Name="LogServiceType">
+        <Annotation Term="OData.Description" String="The type of LogServce, remote or local, that this service represents."/>
+        <Member Name="Local">
+          <Annotation Term="OData.Description" String="Logs are aggregated and retrieved locally on this endpoint."/>
+        </Member>
+        <Member Name="RemoteSyslog">
+          <Annotation Term="OData.Description" String="Logs are aggregated and retrieved via a remote server defined by this service."/>
+        </Member>
+      </EnumType>
+
+
+      <EnumType Name="SyslogProtocol">
+        <Annotation Term="OData.Description" String="The transport layer protocol that syslog should utilize."/>
+        <Annotation Term="OData.LongDescription" String="The transport layer protocol that syslog should utilize, documented in section 5 of the RFC 5424 specification. All implementations must support TLS defined by RFC 5424 and should support UDP defined by RFC5426."/>
+        <Member Name="TCP">
+          <Annotation Term="OData.Description" String="Use Transmission Control Protocol (TCP) for syslog transport."/>
+        </Member>
+        <Member Name="UDP">
+          <Annotation Term="OData.Description" String="Use User Datagram Protocol (UDP) for syslog transport."/>
+        </Member>
+        <Member Name="TLS">
+          <Annotation Term="OData.Description" String="Use Transport Layer Security (TLS) for syslog transport."/>
+        </Member>i
+        <Member Name="RELP">
+          <Annotation Term="OData.Description" String="Use Reliable Event Logging Protocol (RELP) for syslog transport."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="SyslogSeverity">
+        <Annotation Term="OData.Description" String="The syslog severity is an application-specific rating used to describe the urgency of the message."/>
+        <Annotation Term="OData.LongDescription" String="The syslog severity is an application-specific rating used to describe the urgency of the message. Emergency should be reserved for messages indicating the system is unusable and Debug should only be used when debugging a program. Severity values are described in the RFC5424 syslog protocol specification."/>
+        <Member Name="Emergency">
+          <Annotation Term="OData.Description" String="A panic condition."/>
+        </Member>
+        <Member Name="Alert">
+          <Annotation Term="OData.Description" String="A condition that should be corrected immediately, such as a corrupted system database."/>
+        </Member>
+        <Member Name="Critical">
+          <Annotation Term="OData.Description" String="Hard device errors."/>
+        </Member>
+        <Member Name="Error">
+          <Annotation Term="OData.Description" String="An Error."/>
+        </Member>
+        <Member Name="Warning">
+          <Annotation Term="OData.Description" String="A Warning."/>
+        </Member>
+        <Member Name="Notice">
+          <Annotation Term="OData.Description" String="Conditions that are not error conditions, but that may require special handling."/>
+        </Member>
+        <Member Name="Informational">
+          <Annotation Term="OData.Description" String="Informational only."/>
+        </Member>
+        <Member Name="Debug">
+          <Annotation Term="OData.Description" String="Messages that contain information normally of use only when debugging a program."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="SyslogFacility">
+        <Annotation Term="OData.Description" String="The syslog facility code is an enumeration of program types."/>
+        <Annotation Term="OData.LongDescription" String="The syslog facility code is an enumeration of program types. Facility values are described in the RFC5424 syslog protocol specification."/>
+         <Member Name="Kern">
+          <Annotation Term="OData.Description" String="Kernel messages."/>
+        </Member>
+        <Member Name="User">
+          <Annotation Term="OData.Description" String="User-level messages."/>
+        </Member>
+        <Member Name="Mail">
+          <Annotation Term="OData.Description" String="Mail system."/>
+        </Member>
+        <Member Name="Daemon">
+          <Annotation Term="OData.Description" String="System daemons."/>
+        </Member>
+        <Member Name="Auth">
+          <Annotation Term="OData.Description" String="Security/authentication messages."/>
+        </Member>
+        <Member Name="Syslog">
+          <Annotation Term="OData.Description" String="Messages generated internally by syslogd."/>
+        </Member>
+        <Member Name="LPR">
+          <Annotation Term="OData.Description" String="Line printer subsystem."/>
+        </Member>
+        <Member Name="News">
+          <Annotation Term="OData.Description" String="Network news subsystem."/>
+        </Member>
+        <Member Name="UUCP">
+          <Annotation Term="OData.Description" String="UUCP subsystem."/>
+        </Member>
+        <Member Name="Cron">
+          <Annotation Term="OData.Description" String="Clock daemon."/>
+        </Member>
+        <Member Name="Authpriv">
+          <Annotation Term="OData.Description" String="Security/authentication messages."/>
+        </Member>
+        <Member Name="FTP">
+          <Annotation Term="OData.Description" String="FTP daemon."/>
+        </Member>
+        <Member Name="NTP">
+          <Annotation Term="OData.Description" String="NTP subsystem."/>
+        </Member>
+        <Member Name="Security">
+          <Annotation Term="OData.Description" String="Log audit."/>
+        </Member>
+        <Member Name="Console">
+          <Annotation Term="OData.Description" String="Log alert."/>
+        </Member>
+        <Member Name="SolarisCron">
+          <Annotation Term="OData.Description" String="Scheduling daemon."/>
+        </Member>
+        <Member Name="Local0">
+          <Annotation Term="OData.Description" String="Locally used facility 0."/>
+        </Member>
+        <Member Name="Local1">
+          <Annotation Term="OData.Description" String="Locally used facility 1."/>
+        </Member>
+        <Member Name="Local2">
+          <Annotation Term="OData.Description" String="Locally used facility 2."/>
+        </Member>
+        <Member Name="Local3">
+          <Annotation Term="OData.Description" String="Locally used facility 3."/>
+        </Member>
+        <Member Name="Local4">
+          <Annotation Term="OData.Description" String="Locally used facility 4."/>
+        </Member>
+        <Member Name="Local5">
+          <Annotation Term="OData.Description" String="Locally used facility 5."/>
+        </Member>
+        <Member Name="Local7">
+          <Annotation Term="OData.Description" String="Locally used facility 6."/>
+        </Member>
+      </EnumType>
+
     </Schema>
 
   </edmx:DataServices>

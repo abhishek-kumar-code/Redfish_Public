@@ -9,6 +9,9 @@
     "Members": [
         {
             "@odata.id": "/redfish/v1/Managers/1/LogServices/Log1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/1/LogServices/RemoteLogServer"
         }
     ]
 }
