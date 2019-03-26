@@ -1,22 +1,29 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Zone.Zone",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Zones/1",
-	"@odata.type": "#Zone.v1_0_0.Zone",
-	"Id": "1",
-	"Name": "SAS Zone 1",
-	"Description": "SAS Zone 1",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"Links": {
-		"Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator1"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive1"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive2"}
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Zones/1",
+    "@odata.type": "#Zone.v1_0_0.Zone",
+    "Id": "1",
+    "Name": "SAS Zone 1",
+    "Description": "SAS Zone 1",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive2"
+            }
         ]
-	},
-	"Oem": {}
+    },
+    "Oem": {}
 }
-

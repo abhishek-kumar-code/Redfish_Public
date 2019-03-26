@@ -11,10 +11,12 @@
     "SoftwareId": "1624A9DF-5E13-47FC-874A-DF3AFF143089",
     "LowestSupportedVersion": "1.30.367a12-rev1",
     "UefiDevicePaths": [
-      "BMC(0x1,0x0ABCDEF)"
+        "BMC(0x1,0x0ABCDEF)"
     ],
     "RelatedItem": [
-      { "@odata.id": "/redfish/v1/Managers/1" }
+        {
+            "@odata.id": "/redfish/v1/Managers/1"
+        }
     ],
     "Actions": {
         "Oem": {}

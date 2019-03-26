@@ -5,7 +5,10 @@
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
-    "Status": { "State": "Enabled", "Health": "OK" },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
     "CapacityBytes": 899527000000,
     "FailurePredicted": false,
     "Protocol": "NVMe",
@@ -24,7 +27,9 @@
     "NegotiatedSpeedGbs": 12,
     "Links": {
         "Endpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Target2"
+            }
         ]
     },
     "Actions": {

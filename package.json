@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "fixjson": "node ./test/helpers/fixjson.js"
   },
   "repository": {
     "type": "git",

@@ -1,31 +1,30 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down6",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "Down6",
-	"Name": "PCIe Downstream Port 6",
-	"Description": "PCIe Downstream Port 6",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "16",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down6",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "Down6",
+    "Name": "PCIe Downstream Port 6",
+    "Description": "PCIe Downstream Port 6",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "16",
     "PortProtocol": "PCIe",
-	"PortType": "DownstreamPort",
-	"CurrentSpeedGbps": 32,
-	"Width": 4,
-	"MaxSpeedGbps": 32,
-	"Actions": {
-		"#Port.Reset": {
-			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down6/Actions/Port.Reset",
-			"ResetType@Redfish.AllowableValues": [
-				"ForceOff",
-				"ForceRestart",
-				"ForceOn"
-			]
-		},
-		"Oem": {}
-	},
-	"Oem": {}
+    "PortType": "DownstreamPort",
+    "CurrentSpeedGbps": 32,
+    "Width": 4,
+    "MaxSpeedGbps": 32,
+    "Actions": {
+        "#Port.Reset": {
+            "target": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down6/Actions/Port.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceOff",
+                "ForceRestart",
+                "ForceOn"
+            ]
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }
-

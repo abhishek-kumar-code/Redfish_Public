@@ -1,68 +1,68 @@
 {
-    "name" : "Simple SAS Fabric",
-    "description" : "A managed SAS fabric with redundant switches.",
-    "navlinks" : [
+    "name": "Simple SAS Fabric",
+    "description": "A managed SAS fabric with redundant switches.",
+    "navlinks": [
         {
-            "text" : "Main",
-            "target" : "main"
+            "text": "Main",
+            "target": "main"
         },
         {
-            "text" : "Fabrics",
-            "target" : "Fabrics",
-            "navlinks" : [
+            "text": "Fabrics",
+            "target": "Fabrics",
+            "navlinks": [
                 {
-                    "text" : "SAS",
-                    "target" : "SAS"
+                    "text": "SAS",
+                    "target": "SAS"
                 }
             ]
         },
         {
-            "text" : "Chassis",
+            "text": "Chassis",
             "target": "Chassis",
-            "navlinks" : [
+            "navlinks": [
                 {
-                    "text" : "Switch 1",
-                    "target" : "Switch1"
+                    "text": "Switch 1",
+                    "target": "Switch1"
                 },
                 {
-                    "text" : "Switch 2",
-                    "target" : "Switch2"
+                    "text": "Switch 2",
+                    "target": "Switch2"
                 }
             ]
         },
         {
-            "text" : "Managers",
-            "target" : "Managers",
-            "navlinks" : [
+            "text": "Managers",
+            "target": "Managers",
+            "navlinks": [
                 {
-                    "text" : "Switch 1 Manager",
-                    "target" : "Switch1"
+                    "text": "Switch 1 Manager",
+                    "target": "Switch1"
                 },
                 {
-                    "text" : "Switch 2 Manager",
-                    "target" : "Switch2"
+                    "text": "Switch 2 Manager",
+                    "target": "Switch2"
                 }
             ]
         },
         {
-            "text" : "Task Service",
-            "target" : "TaskService"
+            "text": "Task Service",
+            "target": "TaskService"
         },
         {
-            "text" : "Session Service",
-            "target" : "SessionService"
+            "text": "Session Service",
+            "target": "SessionService"
         },
         {
-            "target" : "AccountService",
-            "text" : "Account Service"
+            "target": "AccountService",
+            "text": "Account Service"
         },
         {
-            "target" :  "EventService",
-            "text" : "Event Service",
-            "navlinks" : [
+            "target": "EventService",
+            "text": "Event Service",
+            "navlinks": [
                 {
-                    "text" : "Subscriptions",
-                    "target" : "Subscriptions"
+                    "text": "Subscriptions",
+                    "target": "Subscriptions"
                 }
             ]
         }

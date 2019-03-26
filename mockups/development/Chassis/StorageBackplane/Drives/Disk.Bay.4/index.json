@@ -4,7 +4,10 @@
     "@odata.type": "#Drive.v1_0_0.Drive",
     "IndicatorLED": "Off",
     "Model": null,
-    "Status": { "State": "Absent", "Health": null },
+    "Status": {
+        "State": "Absent",
+        "Health": null
+    },
     "CapacityBytes": null,
     "Protocol": null,
     "MediaType": null,
@@ -16,7 +19,5 @@
     "Links": {
         "Volumes": []
     },
-    "Actions": {
-    }
+    "Actions": {}
 }
-

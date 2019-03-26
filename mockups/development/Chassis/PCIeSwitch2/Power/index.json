@@ -5,7 +5,7 @@
     "@odata.type": "#Power.v1_0_0.Power",
     "Id": "Power",
     "Name": "Power",
-	"PowerControl": [
+    "PowerControl": [
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2/Power#/PowerControl/0",
             "MemberId": "0",
@@ -70,6 +70,6 @@
                 }
             ]
         }
-	],
+    ],
     "Oem": {}
 }
