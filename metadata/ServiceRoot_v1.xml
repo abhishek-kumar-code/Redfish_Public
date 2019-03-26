@@ -108,6 +108,7 @@
         </Annotation>
         <Annotation Term="Redfish.Uris">
           <Collection>
+            <String>/redfish/v1</String>
             <String>/redfish/v1/</String>
           </Collection>
         </Annotation>
