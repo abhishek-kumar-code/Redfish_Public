@@ -9,15 +9,17 @@ const fuzzy = require('fuzzy');
 const jptr = require('json8-pointer');
 const published = require('./helpers/published_schema');
 const ucum = require('./fixtures/units');
+const packageData = require('../package.json');
 
 const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 
 const syntaxBatch = {};
 const overrideBatch = {};
 const mockupsCSDL = {};
-var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
-                          path.normalize(__dirname+'/../mockups/public-oem-examples/Contoso.com')],
+var options = {useLocal: [packageData.Redfish.CSDLDirectory, path.normalize(__dirname+'/fixtures')],
                useNetwork: true};
+
+options.useLocal = options.useLocal.concat(packageData.Redfish.AdditionalSchemaDirs);
 
 //Setup a global cache for speed
 options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
@@ -46,7 +48,7 @@ const OverRideFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume_v1.x
 /************************************************************/
 
 describe('CSDL Tests', () => {
-  const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'));
+  const files = glob.sync(packageData.Redfish.CSDLFilePath);
   let publishedSchemas = {};
   let overrideCSDLs = [];
   before(function(done){
@@ -133,7 +135,7 @@ function csdlTestSetup() {
 }
 
 describe('Mockup Syntax Tests', () => {
-  let mockupFiles = glob.sync(path.join('{mockups,registries}', '**', '*.json'));
+  let mockupFiles = glob.sync(packageData.Redfish.MockupFilePath);
   let linkCache = {};
   let txtCache = {};
   let jsonCache = {};

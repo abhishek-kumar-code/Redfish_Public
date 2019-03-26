@@ -35,5 +35,13 @@
   },
   "devDependencies": {
     "mocha": "^6.0.2"
+  },
+  "Redfish": {
+    "CSDLDirectory": "./metadata",
+    "AdditionalSchemaDirs": ["./mockups/public-oem-examples/Contoso.com"],
+    "CSDLFilePath": "{metadata,mockups}/**/*.xml",
+    "MockupFilePath": "{mockups,registries}/**/*.json",
+    "JsonSchemaFilePath": "json-schema/**/*.json",
+    "OpenAPIFilePath": "openapi/**/*.yaml"
   }
 }
