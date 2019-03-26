@@ -1374,25 +1374,19 @@ An extended error response, which is a single JSON object, defines the error res
 
 ## Data model
 
-One of the key tenets of Redfish is the separation of protocol from the data model.  This separation makes the data both transport and protocol agnostic.  By concentrating on the data transported in the payload of the protocol (in HTTP, it is the HTTP body), Redfish is also able to define the payload in any encoding as well as nearly any schema language.  So while Redfish is defined using JSON, this is really intended to provide a common encoding type and helps to ensure property naming conventions that make it easier for developers in many languages such as JavaScript and Python.  And while Redfish was initially defined using OData and JSON Schema, adding OpenAPI support was relatively easy to do with a programmatic transformation of the schema.  All of this helps the Redfish data model to be more easily accessible in modern tools and programming environments. 
+One of the key tenets of Redfish is the separation of protocol from the data model.  This separation makes the data both transport and protocol agnostic.  By concentrating on the data transported in the payload of the protocol (in HTTP, it is the HTTP body), Redfish is also able to define the payload in any encoding and the data model is intended to be schema language agnostic.  While Redfish is defined using JSON, it is intended to provide a common encoding type and helps to ensure property naming conventions that make it easier for developers in many languages such as JavaScript and Python.  All of this helps the Redfish data model to be more easily accessible in modern tools and programming environments.
 
 This clause describes common data model, resource, and Redfish Schema requirements.
 
-### Resources and Resource Collections
+### Resources
 
-A _resource_ is a single entity.
-
-A _resource collection_ is a set of resources that share the same schema definition.
+A Resource is a single entity.
 
 Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified in the response payload by a unique [type identifier](#type-property) property.
 
 ### Resource Collections
 
-A resource collection is a set of resources that share the same schema definition.
-
-#### Resource and schema naming
-
-Standard Redfish resources defined and published in the repository, or those created by others and republished, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.  The resource name is used to construct both the type identifier property and the schema filename for each of the supported schema description languages.
+A Resource Collection is a set of resources that share the same schema definition.
 
 ### OEM resources
 
@@ -1400,14 +1394,19 @@ OEMs and other third parties can extend the Redfish data model by creating new r
 
 #### OEM resource and schema naming
 
+JEFFA: Move to common naming section
+
 To avoid naming collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the resource name.  For example, "ContosoDisk" would not conflict with a "Disk" resource or another OEM's disk-related resource.
 
 ### Properties
 
+JEFFA: Pull out references to schema files.  Make sub-sections for Resources and Resource Collections.
+MIKER: Add "Core Schemas" section to the Schema section.
+
 Redfish defines two core schema files: 
 
 * `Resource_v1.xml`
-*  `RedfishExtensions_v1.xml`
+* `RedfishExtensions_v1.xml`
 
 All other Redfish-published schema files leverage these files in some form.
 
@@ -1449,50 +1448,53 @@ Standard Redfish resources defined and published in the repository, or those cre
 Standard Redfish properties follow similar naming conventions, and should use a common definition when defined in multiple schemas across the Redfish data model.  This consistency allows for code re-use across resources and increases interoperability.  Existing property definitions should be leveraged for new resource definitions whenever possible.
 
 The Resource, schema, and property naming rules are as follows:
-* Resource Names, Property Names, and constants such as Enumerations shall be Pascal-cased
-* The first letter of each word in a name shall be uppercase and spaces between words shall be removed (e.g., 'ComputerSystem', 'PowerState', 'SerialNumber'.)
+* Resource Names, Property Names, and Enumerations shall be Pascal-cased
+* The first letter of each word in a name shall be uppercase and spaces between words shall be removed (e.g., `ComputerSystem`, `PowerState`, `SerialNumber`).
 * Names shall not contain spaces or underscore characters
-* Both characters are capitalized for two-character acronyms (e.g., IPAddress, RemoteIP).
-* Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (e.g., Wwn, VirtualWwn). If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
+* Both characters should be capitalized for two-character acronyms (e.g., `IPAddress`, `RemoteIP`).
+* Only the first character of acronyms with three or more characters should be capitalized, except the first word of a Pascal-cased identifier (e.g., `Wwn`, `VirtualWwn`).  If a single acronym (or mixed-case name) is used alone as a name (e.g. RDMA, iSCSI, SNMP), then the value should follow the capitalization commonly used for that name.
 
 Exceptions are allowed for the following cases:
- * Well-known technology names like "iSCSI" (e.g.,`iSCSITarget`)
- * Product names like "iLO"
- * Well-known abbreviations or acronyms
- * OEM appears as `Oem` in resource and property names (alone or as a portion of a name), but should be `OEM` when used alone as a constant.
- * Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
+* Well-known technology names like "iSCSI" (e.g.,`iSCSITarget`)
+* Product names like "iLO"
+* Well-known abbreviations or acronyms
+* OEM appears as `Oem` in resource and property names (alone or as a portion of a name), but should be `OEM` when used alone as an enumeration value.
+* Enumeration values should be named for readability as they may appear unmodified on user interfaces, whereas property or resource names should follow the conventions above and strive for consistency in naming with existing Redfish resources or properties.
 
 For properties that have units, or other special meaning, a unit identifier should be appended to the name. The current list includes:
- * Bandwidth (Mbps), (e.g., `PortSpeedMbps`)
- * CPU speed (Mhz), (e.g., `ProcessorSpeedMhz`)
- * Memory size (MegaBytes, MB), (e.g., `MemoryMB`)
- * Counts of items (Count), (e.g., `ProcessorCount`, `FanCount`)
- * The State of a resource (State) (e.g., `PowerState`)
- * State values where "work" is being done end in (ing) (e.g., `Applying`, `ClearingLogic`)
+* Bandwidth (Mbps), (e.g., `PortSpeedMbps`)
+* CPU speed (Mhz), (e.g., `ProcessorSpeedMhz`)
+* Memory size (MegaBytes, MB), (e.g., `MemoryMB`)
+* Counts of items (Count), (e.g., `ProcessorCount`, `FanCount`)
+* The State of a resource (State) (e.g., `PowerState`)
+* State values where "work" is being done end in (ing) (e.g., `Applying`, `ClearingLogic`)
 
 
 #### Reference properties
 
+Talk about @odata.id, pointing to another resource
 
 ### Settings Resource
 
-A Settings resource is used to represent the future intended state of a resource.  Some resources have properties that can be updated and the updates take place immediately.  Other resources, the properties must be updated at a certain point in time, such as system reset.  When the service provider knows a priori that a resource can only be updated at a certain point in time, it uses a Settings resource to indicate this to the client in the form of the "@Redfish.Settings" payload annotation.  The Settings annotation contains a link to an subordinate resource with the same schema definition.  While the resource represents the current state, the Settings resource represents the future intended state.
+JEFFH: Combine sentences two and three.
+JEFFH: Rewrite sentence four.
 
-For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  When a Settings annotation is used, the following conditions shall apply:
-* The resource linked to with the Settings annotation shall be of the same schema definition.
-* The resource should not be writable, even if the schema allows writable properties.
-* The Settings resource should be a subset of properties that can be updated. 
-* The Settings resource shall not contain a Settings annotation.
-* The Settings resource may contain SettingsApplyTime annotation.
+A Settings resource is used to represent the future intended state of a resource.  Some resources have properties that can be updated and the updates take place immediately.  For other resources, properties must be updated at a certain point in time, such as system reset.  When the service knows a priori that a resource can only be updated at a certain point in time, it uses a Settings resource to indicate this to the client in the form of the `@Redfish.Settings` payload annotation.  The Settings annotation contains a link to an subordinate resource with the same schema definition.  While the resource represents the current state, the Settings resource represents the future intended state.
 
-The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful. 
-* The Messages property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. 
-* The ETag property contains the ETag of the Settings resource that was last applied.
-* The Time property indicate the time when the Settings resource was last applied.
+For resources that support a future state and configuration, the response shall contain a property with the `@Redfish.Settings` annotation.  When a Settings annotation is used, the following conditions shall apply:
+* The resource linked to with the `@Redfish.Settings` annotation shall be of the same schema definition.
+* The Settings resource should be a subset of properties that can be updated.
+* The Settings resource shall not contain the `@Redfish.Settings` annotation.
+* The Settings resource may contain the `@Redfish.SettingsApplyTime` annotation.
 
-Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful.
+* The `Messages` property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. 
+* The `ETag` property contains the ETag of the Settings resource that was last applied.
+* The `Time` property indicates the time when the Settings resource was last applied.
 
-~~~json
+Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the `SettingsObject` property.
+
+```json
 {
     "@Redfish.Settings": {
         "@odata.type": "#Settings.v1_0_0.Settings",
@@ -1502,25 +1504,25 @@ Below is an example body for a resource that supports a Settings resource. A cli
         "Time": "2017-05-03T23:12:37-05:00",
         "ETag": "A89B031B62",
         "Messages": [
-           {
-              "MessageId": "Base.1.0.PropertyNotWritable",
-              "RelatedProperties": [
-                 "#/Attributes/ProcTurboMode"
-              ]
-           }
+            {
+                "MessageId": "Base.1.0.PropertyNotWritable",
+                "RelatedProperties": [
+                    "#/Attributes/ProcTurboMode"
+                ]
+            }
         ]
     },
     ...
 }
-~~~
+```
 
-A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when updating the Settings resource.  
-* If a service supports configuring when to apply the future settings, the Settings resource shall contain a property with the  "@Redfish.SettingsApplyTime" annotation. 
-* Only Settings resources shall contain a SettingsApplyTime annotation.
+A client may indicate its preference on when to apply the future configuration by including the `@Redfish.SettingsApplyTime` annotation in the request body when updating the Settings resource.
+* If a service supports configuring when to apply the future settings, the Settings resource shall contain a property with the  `@Redfish.SettingsApplyTime` annotation.
+* Only Settings resources shall contain the `@Redfish.SettingsApplyTime` annotation.
 
 Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied.  In this case it is either on reset or during the specified maintenance window:
 
-~~~json
+```json
 {
     "@Redfish.SettingsApplyTime": {
         "@odata.type": "#Settings.v1_1_0.PreferredApplyTime",
@@ -1530,7 +1532,7 @@ Below is an example request body that shows a client configuring when the values
     },
     ...
 }
-~~~
+```
 
 ### Special Resource situations
 
@@ -1538,24 +1540,13 @@ There are some situations that arise with certain kinds of resources that need t
 
 #### Absent resources
 
+JEFFA: Double check some wordings
+
 Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe slot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits `SoftwareInventory` to a maximum of 20 items should not populate 18 absent resources when only two items are present).
 
-For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the `State` property of the `Status` object as `Absent`.  In this circumstance, any required properties for which there is no known value shall be represented as null. Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the Absent state), should not be returned. Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the `Power` and `Thermal` resources under a `Chassis` resource should not exist for an absent Chassis).
+For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the `State` property of the `Status` object as `Absent`.  In this circumstance, any required properties for which there is no known value shall be represented as `null`.  Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the absent state), should not be returned.  Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the `Power` and `Thermal` resources under a `Chassis` resource should not exist for an absent Chassis).
 
-Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the `Memory` resource shows details about an single DIMM socket and the installed DIMM. When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an `Absent` value for 'State` within the 'Status' object).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
-
-#### Schema variations
-
-There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A Redfish Service may reference a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
-
-* All Redfish Services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
-* The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
-* For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration that specifies limits to the element.  This is an override for the schema only to be used when necessary.
-
-A Redfish Service may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
-
-* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
-
+Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the `Memory` resource shows details about an single DIMM socket and the installed DIMM.  When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an `Absent` value for `State` within the `Status` object).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
 
 ### Registries
 
