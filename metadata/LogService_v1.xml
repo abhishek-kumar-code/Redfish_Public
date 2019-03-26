@@ -232,6 +232,7 @@
       <Annotation Term="Redfish.Release" String="2019.1"/>
       <Annotation Term="OData.Description" String="This version was created to add RemoteSyslog support."/>
 
+      <EntityType Name="LogService" BaseType="LogService.v1_1_2.LogService">
         <Property Name="LogServiceType" Type="LogService.v1_2_0.LogServiceType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of LogServce, remote or local, that this service represents."/>
@@ -252,6 +253,7 @@
           <Annotation Term="OData.Description" String="The transport layer protocol that syslog should utilize to send messages to this remote server."/>
           <Annotation Term="OData.LongDescription" String="The transport layer protocol that syslog should utilize to send messages to this remote server. The RFC 5424 Syslog specification recommends TLS usage."/>
         </Property>
+      </EntityType>
 
       <EnumType Name="LogServiceType">
         <Annotation Term="OData.Description" String="The type of LogServce, remote or local, that this service represents."/>
