@@ -1120,7 +1120,7 @@ OData-Version: 4.0
 }
 ```
 
-Services that support the `@Redfish.OperationApplyTime` annotation for a resource collection or action shall create a [Task](#asynchronous-operations), and respond with the HTTP [202](#status-202) status code with a `Location` header set to the URI of a `Task `resource, if the client's request body contains `@Redfish.OperationApplyTime` in the request.
+Services that support the `@Redfish.OperationApplyTime` annotation for a resource collection or action shall create a [Task](#asynchronous-operations), and respond with the HTTP [202](#status-202) status code with a `Location` header set to the URI of a `Task` resource, if the client's request body contains `@Redfish.OperationApplyTime` in the request.
 
 The `Settings` Redfish Schema defines the structure of the `@Redfish.OperationApplyTimeSupport` object and the `@Redfish.OperationApplyTime` annotation value.
 
