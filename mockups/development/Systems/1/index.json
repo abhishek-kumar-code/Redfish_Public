@@ -65,7 +65,9 @@
             "Health": "OK",
             "HealthRollup": "OK"
         },
-        "OverallBandwidthPercent": 45
+        "OverallMetrics": {
+            "@odata.id": "/redfish/v1/Systems/1/ProcessorMetrics"
+        }
     },
     "MemorySummary": {
         "TotalSystemMemoryGiB": 16,

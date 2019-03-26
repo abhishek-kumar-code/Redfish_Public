@@ -88,6 +88,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CertificateCollection_v1.xml">
     <edmx:Include Namespace="CertificateCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ProcessorMetrics_v1.xml">
+    <edmx:Include Namespace="ProcessorMetrics"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -1296,13 +1299,11 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_6_1.ComputerSystem"/>
 
       <ComplexType Name="ProcessorSummary" BaseType="ComputerSystem.v1_5_0.ProcessorSummary">
-        <Property Name="OverallBandwidthPercent" Type="Edm.Decimal">
+        <NavigationProperty Name="OverallMetrics" Type="ProcessorMetrics.ProcessorMetrics">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="The Overall CPU bandwidth as a percentage."/>
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be the Overall CPU utilization of the processors as a percentage."/>
-            <Annotation Term="Validation.Minimum" Int="0"/>
-            <Annotation Term="Measures.Unit" String="%"/>
-        </Property>
+            <Annotation Term="OData.Description" String="A reference to the Metrics associated with all Processors in this system."/>
+            <Annotation Term="OData.LongDescription" String="This property shall be a reference to the Metrics associated with all Processors in this system."/>
+        </NavigationProperty>
       </ComplexType>
     </Schema>
 
