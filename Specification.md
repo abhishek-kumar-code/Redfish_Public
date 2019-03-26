@@ -3039,7 +3039,7 @@ A Redfish Service provides local user accounts via a collection of `ManagerAccou
 
 ##### Password change required handling
 
-The Service may require that passwords assigned by the manufacturer be changed by the end user prior to accessing the Service.  In addition, administrators creating accounts on behalf of end users may  require users to change their account's password upon first access or due to other administrative needs.  
+The Service may require that passwords assigned by the manufacturer be changed by the end user prior to accessing the Service.  In addition, administrators may require users to change their account's password upon first access.  
 
 The `ManagerAccount` resource contains a `PasswordChangeRequired` boolean property to enable this functionality.  Resources that have the property set to `True` shall require the user to change the write-only `Password` property in that resource before access is granted.  Manufacturers including user credentials for the Service may use this method to force a change to those credentials before access is granted.
 
