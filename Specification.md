@@ -3690,6 +3690,7 @@ NOTE: Refer to the [Security](#security-details) clause for security implication
 
 
 
+MIKER to take "Schema definition" "Schema modification rules" and "Schema modification rules"
 
 ### Schema definition
 
@@ -3706,6 +3707,8 @@ Schema referenced from the implementation, either from the OData Service Documen
 * Modified schema may remove properties. 
 * Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
 * Other modifications to the Schema shall not be allowed.
+
+JEFFA to migrate below this line
 
 #### Resource extensibility
 
