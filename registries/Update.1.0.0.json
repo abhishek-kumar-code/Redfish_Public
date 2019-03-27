@@ -25,32 +25,27 @@
 		},
 		"UpdateTransferInProgress": {
 			"Description": "Indicates that transfer %1 percent complete.",
-			"Message": "Assignment %2: Transfer %1 percent complete.",
+			"Message": "Transfer %1 percent complete.",
 			"Severity": "OK",
-			"NumberOfArgs": 2,
+			"NumberOfArgs": 1,
 			"ParamTypes": [
-				"number",
-				"string"
+				"number"
 			],
 			"Resolution": "None"
 		},
 		"UpdateTransferCompleted": {
 			"Description": "Indicates that transfer complete.",
-			"Message": "Assignment %1: Transfer complete.",
+			"Message": "Transfer complete.",
 			"Severity": "OK",
-			"NumberOfArgs": 1,
-			"ParamTypes": [
-				"string"
-			],
+			"NumberOfArgs": 0,
 			"Resolution": "None"
 		},
 		"UpdateTransferFailed": {
 			"Description": "Indicates that transfer failed.",
-			"Message": "Assignment %1: Transfer failed, protocol %2 error code=%3 - return message: %4",
+			"Message": "Transfer failed, protocol %1 error code=%2 - return message: %3",
 			"Severity": "Warning",
-			"NumberOfArgs": 4,
+			"NumberOfArgs": 3,
 			"ParamTypes": [
-				"string",
 				"string",
 				"number",
 				"string"
@@ -58,13 +53,13 @@
 			"Resolution": "Resubmit the request. If the problem persists, consider resetting the service."
 		},
 		"PayloadTransferInProgress": {
-			"Description": "Indicates that transfer %1 percent complete.",
-			"Message": "Assignment %2: Transfer %1 percent complete.",
+			"Description": "Indicates that transfer %2 percent complete.",
+			"Message": "Assignment %1: Transfer %2 percent complete.",
 			"Severity": "OK",
 			"NumberOfArgs": 2,
 			"ParamTypes": [
-				"number",
-				"string"
+				"string",
+				"number"
 			],
 			"Resolution": "None"
 		},
@@ -93,32 +88,27 @@
 		},
 		"UpdateVerifyInProgress": {
 			"Description": "Indicates that verify %1 percent complete.",
-			"Message": "Assignment %2: Verify %1 percent complete.",
+			"Message": "Verify %1 percent complete.",
 			"Severity": "OK",
-			"NumberOfArgs": 2,
+			"NumberOfArgs": 1,
 			"ParamTypes": [
-				"number",
-				"string"
+				"number"
 			],
 			"Resolution": "None"
 		},
 		"UpdateVerifyCompleted": {
 			"Description": "Indicates that verify complete.",
-			"Message": "Assignment %1: Verify complete.",
+			"Message": "Verify complete.",
 			"Severity": "OK",
-			"NumberOfArgs": 1,
-			"ParamTypes": [
-				"string"
-			],
+			"NumberOfArgs": 0,
 			"Resolution": "None"
 		},
 		"UpdateVerifyFailed": {
 			"Description": "Indicates that verify failed.",
-			"Message": "Assignment %1: Verify failed, return code=%2 - return message: %3",
+			"Message": "Verify failed, return code=%1 - return message: %2",
 			"Severity": "Warning",
 			"NumberOfArgs": 2,
 			"ParamTypes": [
-				"string",
 				"number",
 				"string"
 			],
@@ -126,12 +116,12 @@
 		},
 		"PayloadVerifyInProgress": {
 			"Description": "Indicates that verify %1 percent complete.",
-			"Message": "Assignment %2: Verify %1 percent complete.",
+			"Message": "Assignment %1: Verify %2 percent complete.",
 			"Severity": "OK",
 			"NumberOfArgs": 2,
 			"ParamTypes": [
-				"number",
-				"string"
+				"string",
+				"number"
 			],
 			"Resolution": "None"
 		},
@@ -159,12 +149,12 @@
 		},
 		"PayloadApplyInProgress": {
 			"Description": "Indicates that apply %1 percent complete.",
-			"Message": "Assignment %2: Apply %1 percent complete.",
+			"Message": "Assignment %1: Apply %2 percent complete.",
 			"Severity": "OK",
 			"NumberOfArgs": 2,
 			"ParamTypes": [
-				"number",
-				"string"
+				"string",
+				"number"
 			],
 			"Resolution": "None"
 		},
