@@ -634,7 +634,7 @@ The response body shall reflect the evaluation of the query parameters in this o
 
 #### Use of the $expand query parameter<a id="expand-parameter"></a>
 
-The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but additional subordinate or hyperlinked resources in-line.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
+The `$expand` query parameter allows a client to request a response that includes not only the requested resource, but also includes the contents of the subordinate or hyperlinked resources.  The definition of this query parameter follows the [OData-Protocol](#OData-Protocol) specification.
 
 The `$expand` query parameter has a set of possible options that determine which hyperlinks in a resource are included in the expanded response.  Some resources may already be expanded due to the resource's schema annotation `AutoExpand`, such as the `Temperature` object in the `Thermal` resource.
 
@@ -643,7 +643,7 @@ The Redfish-supported options for the `$expand` query parameter are listed in th
 | Option              | Description | Example |
 | ---                 | ---         | ---     |
 | asterisk&nbsp;(`*`) | Shall expand all hyperlinks. | `http://resource?$expand=*` |
-| `$levels`           | The number of levels the service should cascade the `$expand` operation.  The default level shall be 1.<br/>So, `$levels=2` expands both:<ul><li>The current resource (level 1).</li><li>The expanded resource (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
+| `$levels`           | The number of levels the service should cascade the `$expand` operation.  The default level shall be 1.<br/>So, `$levels=2` expands both:<ul><li>The hyperlinks in the current resource (level 1).</li><li>The hyperlinks in the resulting expanded resources (level 2).</li></ul> | `http://resourcecollection?$expand=.($levels=2)` |
 | period&nbsp;(`.`)   | Shall expand all hyperlinks **not** in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=.` |
 | tilde&nbsp;(`~`)    | Shall expand all hyperlinks found in the [Links Property](#links-property) section of the resource. | `http://resourcecollection?$expand=~` |
 
@@ -668,6 +668,59 @@ When services execute `$expand`, they may omit some of the referenced resource's
 When clients use `$expand`, they should be aware that the payload may increase beyond what can be sent in a single response.
 
 If a service cannot return the payload due to its size, it shall return HTTP [507](#status-507) status code.
+
+The following is an example showing the `RoleCollection` resource being expanded with the level set to 1:
+
+```json
+{
+    "@odata.id": "/redfish/v1/AccountService/Roles",
+    "@odata.type": "#RoleCollection.RoleCollection",
+    "Name": "Roles Collection",
+    "Members@odata.count": 3,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Administrator",
+            "@odata.type": "#Role.v1_1_0.Role",
+            "Id": "Administrator",
+            "Name": "User Role",
+            "Description": "Admin User Role",
+            "IsPredefined": true,
+            "AssignedPrivileges": [
+                "Login",
+                "ConfigureManager",
+                "ConfigureUsers",
+                "ConfigureSelf",
+                "ConfigureComponents"
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Operator",
+            "@odata.type": "#Role.v1_1_0.Role",
+            "Id": "Operator",
+            "Name": "User Role",
+            "Description": "Operator User Role",
+            "IsPredefined": true,
+            "AssignedPrivileges": [
+                "Login",
+                "ConfigureSelf",
+                "ConfigureComponents"
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/AccountService/Roles/ReadOnly",
+            "@odata.type": "#Role.v1_1_0.Role",
+            "Id": "ReadOnly",
+            "Name": "User Role",
+            "Description": "ReadOnly User Role",
+            "IsPredefined": true,
+            "AssignedPrivileges": [
+                "Login",
+                "ConfigureSelf"
+            ]
+        }
+    ]
+}
+```
 
 
 #### Use of the $select query parameter<a id="select-parameter"></a>
