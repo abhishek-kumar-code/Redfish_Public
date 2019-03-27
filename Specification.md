@@ -1726,6 +1726,11 @@ All Redfish schemas, registries, dictionaries, and profiles published or re-publ
 
 ## Schema definition languages
 
+Individual resources and their dependent types and actions are defined within a Redfish schema document.  This clause describes how these documents are constructed in the following formats:
+* [OData Common Schema Definition Language](#odata-common-schema-definition-language)
+* [JSON Schema](#json-schema)
+* [OpenAPI Schema](#openapi-schema)
+
 ### OData Common Schema Definition Language
 
 OData Common Schema Definition Language (CSDL) is an XML schema format defined by the [OData CSDL](#OData-CSDL) specification.  The following clause describes how Redfish uses CSDL in order to describe Resources and Resource Collections.
@@ -2054,6 +2059,15 @@ Example Resource URI Patterns Annotation:
 The file `Resource_v1.xml` contains all base definitions for Resource, Resource Collections, and common properties such as `Status`.
 
 The file `RedfishExtensions_v1.xml` contains the definitions for all Redfish types and annotations.
+
+### Schema modification rules
+
+Schema referenced from the implementation may vary from the canonical definitions of those schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
+* Modified schema may constrain a read/write property to be read only.
+* Modified schema may constrain the capabilities of a Resource or Resource Collection to remove support for HTTP operations.
+* Modified schema may remove properties. 
+* Modified schema may change any external references to point to Redfish Schema that adheres to the modification rules.   
+* Other modifications to the Schema shall not be allowed.
 
 ## Service details
 
@@ -3694,23 +3708,6 @@ NOTE: Refer to the [Security](#security-details) clause for security implication
 
 
 
-MIKER to take "Schema definition" "Schema modification rules" and "Schema modification rules"
-
-### Schema definition
-
-Individual resources and their dependent types and actions are defined within a Redfish [schema document](#schema-documents).
-
-#### Schema documents
-
-Individual resources are defined as entity types within an OData Schema representation of the Redfish Schema according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema and OpenAPI representations of the Redfish Schema capable of validating JSON payloads.
-
-##### Schema modification rules
-
-Schema referenced from the implementation, either from the OData Service Document or from the JSON Schema File representations, may vary from the canonical definitions of those Schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
-* Modified schema may constrain a read/write property to be read only.
-* Modified schema may remove properties. 
-* Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
-* Other modifications to the Schema shall not be allowed.
 
 JEFFA to migrate below this line
 
