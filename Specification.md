@@ -1563,7 +1563,7 @@ A Description annotation shall be included on the following schema definitions:
 * [Properties](#properties)
 * [Reference properties](#reference-properties)
 * Enumeration values
-* [Resources and Resource Collections](#resources-and-resource-collections)
+* [Resources](#resources) and [Resource Collections](#resource-collections)
 * [Structured types](#structured-properties)
 
 #### Long Description annotation
@@ -1574,12 +1574,12 @@ A Long Description annotation shall be included on the following schema definiti
 * Redfish types
 * [Properties](#properties)
 * [Reference properties](#reference-properties)
-* [Resources and Resource Collections](#resources-and-resource-collections)
+* [Resources](#resources) and [Resource Collections](#resource-collections)
 * [Structured types](#structured-properties)
 
 #### Resource Capabilities annotation
 
-The Resource Capabilities annotation can be applied to [Resources and Resource Collections](#resources-and-resource-collections) to express the different type of HTTP operations a client is able to invoke on the given Resource or Resource Collection.
+The Resource Capabilities annotation can be applied to [Resources](#resources) and [Resource Collections](#resource-collections) to express the different type of HTTP operations a client is able to invoke on the given Resource or Resource Collection.
 
 * Insert Capabilities is used to indicate whether or not a client is able to perform a POST on the Resource.
 * Update Capabilities is used to indicate whether or not a client is able to perform a PATCH or PUT on the Resource.
@@ -1590,7 +1590,7 @@ All schema definitions for Redfish Resources and Resource Collections shall incl
 
 #### Resource URI Patterns annotation
 
-The Resource URI Patterns annotation is used to express the valid URI patterns for a given [Resource or Resource Collection](#resources-and-resource-collections).
+The Resource URI Patterns annotation is used to express the valid URI patterns for a given [Resource](#resources) or [Resource Collection](#resource-collections).
 
 The strings for the URI patterns may use `{` and `}` characters to express parameters within a given URI pattern.  Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the `Id` string property for the corresponding Resource, or the `MemberId` string property for the corresponding object within a Resource.
 
@@ -1821,7 +1821,7 @@ All Entity Types and Complex Types contain a `Name` attribute, which specifies t
 
 Entity Types and Complex Types may have a `BaseType` attribute, which specifies a [qualified name](#qualified-names).  When the `BaseType` attribute is used, all of the definitions of the referenced `BaseType` are made available to the Entity Type or Complex Type being defined.
 
-All [Resources and Resource Collections](#resources-and-resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
+All [Resources](#resources) and [Resource Collections](#resource-collections) are defined with the Entity Type element.  Resources inherit from `Resource.v1_0_0.Resource`, and Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`.
 
 Most [structured properties](#structured-properties) are defined with the Complex Type element.  Some are defined using the Entity Type element that inherits from `Resource.v1_0_0.ReferenceableMember`.  The Entity Type element allows for references to be made using the [Navigation Property element](#navigation-property-element), whereas Complex Type element does not allow for this usage.
 
@@ -1846,7 +1846,7 @@ Example Entity Type and Complex Type element:
 
 ##### Action element
 
-The Action element is defined using the `Action` tag.  This element is used to define an [action](#post-action) that can be performed on a [Resource](#resources-and-resource-collections).  
+The Action element is defined using the `Action` tag.  This element is used to define an [action](#post-action) that can be performed on a [Resource](#resources).
 
 All Action elements contain a `Name` attribute, which specifies the name of the action.
 
@@ -1877,7 +1877,7 @@ The remaining `Parameter` elements describe additional parameters to be passed t
 
 ##### Property element
 
-[Properties](#properties) of [Resources, Resource Collections](resources-and-resource-collections), and [structured properties](#structured-properties) are defined using the Property element.  The `Property` tag is used to define a Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
+[Properties](#properties) of [Resources](#resources), [Resource Collections](#resource-collections), and [structured properties](#structured-properties) are defined using the Property element.  The `Property` tag is used to define a Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
 
 All Property elements contain a `Name` attribute, which specifies the name of the property.
 
@@ -1916,7 +1916,7 @@ Example Property element:
 
 ##### Navigation Property element
 
-[Reference properties](#reference-properties) of [Resources, Resource Collections](resources-and-resource-collections), and [structured properties](#structured-properties) are defined using the Navigation Property element.  The `NavigationProperty` tag is used to define a Navigation Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
+[Reference properties](#reference-properties) of [Resources](#resources), [Resource Collections](#resource-collections), and [structured properties](#structured-properties) are defined using the Navigation Property element.  The `NavigationProperty` tag is used to define a Navigation Property element inside of [Entity Type and Complex Type elements](#entity-type-and-complex-type-elements).
 
 All Navigation Property elements contain a `Name` attribute, which specifies the name of the property.
 
