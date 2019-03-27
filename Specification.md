@@ -2056,7 +2056,7 @@ Example Resource URI Patterns Annotation:
 
 #### Core CSDL files
 
-The file `Resource_v1.xml` contains all base definitions for Resource, Resource Collections, and common properties such as `Status`.
+The file `Resource_v1.xml` contains all base definitions for Resources, Resource Collections, and common properties such as `Status`.
 
 The file `RedfishExtensions_v1.xml` contains the definitions for all Redfish types and annotations.
 
