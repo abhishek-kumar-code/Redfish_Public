@@ -1401,7 +1401,6 @@ To avoid naming collisions with current or future standard Redfish schema files,
 ### Properties
 
 JEFFA: Pull out references to schema files.  Make sub-sections for Resources and Resource Collections.
-MIKER: Add "Core Schemas" section to the Schema section.
 
 Redfish defines two core schema files: 
 
@@ -2050,6 +2049,12 @@ Example Resource URI Patterns Annotation:
     </Collection>
   </Annotation>
 ```
+
+#### Core CSDL files
+
+The file `Resource_v1.xml` contains all base definitions for Resource, Resource Collections, and common properties such as `Status`.
+
+The file `RedfishExtensions_v1.xml` contains the definitions for all Redfish types and annotations.
 
 ## Service details
 
