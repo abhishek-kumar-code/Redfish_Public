@@ -1691,59 +1691,25 @@ Reference properties annotated with this term shall be expanded by the service, 
 
 ### Versioning
 
-As stated previously, a resource can be an individual entity or a _**resource collection**_, which acts as a container for other resource entities. 
+As stated previously, a Resource can be an individual entity or a Resource Collection, which acts as a container for a set of Resources.
 
-A resource collection does not contain any version information because it defines a single `Members` property, and the overall collection definition never grows over time.  The `Namespace` in these definitions always has the same name as its associated `EntityType`.  For example, the `ChassisCollection_v1.xml` schema file contains the `ChassisCollection` namespace, and that namespace defines a single `EntityType`, also named `ChassisCollection`.
+A Resource Collection does not contain any version information because it defines a single `Members` property, and the overall collection definition never grows over time.
 
-A single resource does contain version information, which is encoded in the `Namespaces` name that the schema files define.  The first `Namespace` for a single resource has no version and has the same name as the resource itself.  This `Namespace` also defines a single abstract `EntityType` for the resource.  Subsequent namespaces define version information, and the definitions within each namespace inherit from the previous namespace versions.  Versioned namespaces use the format:
+A Resource has both unversioned and versioned definitions.
 
-<pre>ResourceName.v<var>M</var>_<var>m</var>_<var>E</var></pre>
+The unversioned definition of a Resource is used in references from other Resources to ensure there are no version dependencies between the definitions.  The unversioned definition of a Resource contains no property information about the Resource.
+
+The versioned definition of a Resource contains a set of properties, actions, and other definitions associated with the given Resource.  The version of a Resource follows the following format:
+
+<pre>v<var>X</var>.<var>Y</var>.<var>Z</var></pre>
 
 where
 
-| Variable | Type | Version | Description |
-|:---|:---|:---|:---|
-| *M*  | Integer | The major version  | A backward-incompatible class change. |
-| *m*  | Integer | The minor version  | A minor update.  Redfish introduces new functionality but does not remove any functionality.<br/>The minor version preserves compatibility with earlier minor versions.<br/>For example, a new property introduces a new minor version of the resource. |
-| *E* | Integer | The errata version | A fix in an earlier version.  For example, a fix to an `Annotation` term on a property introduces an errata version of the resource. |
-
-The following CSDL shows a collapsed definition of the `Session` resource, which highlights the versioning.
-
-Session CSDL versioning:
-
-~~~xml
-<Schemaxmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session">
-  <EntityTypeName="Session" BaseType="Resource.v1_0_0.Resource" Abstract="true" />
-</Schema>
-
-<Schemaxmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_0_0"> 
-  <EntityTypeName="Session" BaseType="Session.Session" />
-</Schema>
-
-<Schemaxmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_0_2"> 
-  <EntityTypeName="Session" BaseType="Session.v1_0_0.Session" />
-</Schema>
-
-<Schemaxmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_0_3"> 
-  <EntityTypeName="Session" BaseType="Session.v1_0_2.Session" />
-</Schema>
-
-<Schemaxmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_1_0"> 
-  <EntityTypeName="Session" BaseType="Session.v1_0_3.Session">
-    <PropertyName="Actions" Type="Session.v1_1_0.Actions" Nullable="false" />
-  </EntityType>
-</Schema>
-~~~
-
-The CSDL defines these namespaces and resources:
-
-| Namespace | Resource | Description |
-|:----------|:---------|:------------|
-| `Session` | A single `EntityType`, or resource, named `Session` | Represents a resource collection, and so defines no version information. |
-| `Session.v1_0_0` | Its `EntityType` definition inherits from `Session.Session` entity type. | Defines v1.0.0 of the `Session` namespace. |  
-| `Session.v1_0_2` | Its `EntityType` definition inherits from the previous `EntityType` versions.  This entity type fixes annotations in the v1.0.0 definition. | Defines v1.0.2 of the `Session` namespace. |
-| `Session.v1_0_3` | Its `EntityType` definition inherits from the previous `EntityType` versions.  This entity type fixes annotations in the v1.0.0 definition. | Defines v1.0.3 of the `Session` namespace. |
-| `Session.v1_1_0` | The entity type adds an `Actions` property to the `Session` namespace. | Defines v1.1.0 of the `Session` namespace. |
+| Variable | Type    | Version            | Description |
+| ---      | ---     | ---                | ---         |
+| X        | Integer | The major version  | A backward-incompatible change. |
+| Y        | Integer | The minor version  | A minor update.  Redfish introduces new functionality but does not remove any functionality.  The minor version preserves compatibility with earlier minor versions.  For example, a new property introduces a new minor version of the resource. |
+| Z        | Integer | The errata version | A fix in an earlier version.  For example, a fix to a [schema annotation](#schema-annotations) on a property introduces an errata version of the resource. |
 
 ### Localization
 
