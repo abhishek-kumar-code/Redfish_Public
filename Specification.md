@@ -1632,9 +1632,7 @@ The value of the annotation shall be a string that contains the case-sensitive "
 
 #### Expanded Resource annotation
 
-The Expanded Resource annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to include the contents of the related [Resource](#structured-properties) or Resource Collection in responses.
-
-MIKER to add a sentence about what expand is and link to query parameter for expand; mention it's a level 1 expand.
+The Expanded Resource annotation can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to include the contents of the related [Resource](#resources) or [Resource Collection](#resource-collections) in responses.  This behavior follows the same semantics of the [expand query parameter](#expand-parameter) with a level of 1.
 
 Reference properties annotated with this term shall be expanded by the service, even if not requested by the client.
 
