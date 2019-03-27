@@ -1594,12 +1594,13 @@ The Resource URI Patterns annotation is used to express the valid URI patterns f
 
 The strings for the URI patterns may use `{` and `}` characters to express parameters within a given URI pattern.  Items between the `{` and `}` characters are treated as identifiers within the URI for given instances of a Redfish resource.  Clients interpret this as a string to be replaced in order to access a given resource.  A URI pattern may contain multiple identifier terms to support multiple levels of nested Resource Collections.  The identifier term in the URI pattern shall match the `Id` string property for the corresponding Resource, or the `MemberId` string property for the corresponding object within a Resource.
 
-MIKER to look at adding properties too (like how HTTPS is used in the Certificate path URI).
-MIKER to add language about URI construction with relation to the tree
-
 The following string is an example URI pattern that describes a Manager Account Resource: `/redfish/v1/AccountService/Accounts/{ManagerAccountId}`
 
 Using the above example, `{ManagerAccountId}` would be replaced by the `Id` property of the corresponding `ManagerAccount` resource.  If the `Id` property for a given Manager Account resource is `John`, then the full URI for that resource would be `/redfish/v1/AccountService/Accounts/John`.
+
+The URI patterns are constructed based on the formation of the Resource Tree.  When constructing the URI pattern for a subordinate resource, the URI pattern for the current resource is used, and appended.  For example, the `RoleCollection` Resource is subordinate to `AccountService`.  Since the URI pattern for `AccountService` is `/redfish/v1/AccountService`, the URI pattern for the `RoleCollection` Resource will be `/redfish/v1/AccountService/Roles`.
+
+In some cases, the subordinate resource is found inside of a [structured property](#structured-properties) of a Resource.  In these cases, the name of the structured property is used in the URI pattern for the subordinate resource.  For example, the `CertificateCollection` Resource is subordinate to the `ManagerNetworkProtocol` Resource from the `HTTPS` property.  Since the URI pattern for `ManagerNetworkProtocol` is `/redfish/v1/Managers/{ManagerId}/NetworkProtocol`, the URI pattern for the `CertificateCollection` Resource will be `/redfish/v1/Managers/{ManagerId}/NetworkProtocol/HTTPS/Certificates`.
 
 All schema definitions for Redfish Resources and Redfish Resource Collections shall be annotated with the Resource URI Patterns annotation.
 
