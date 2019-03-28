@@ -65,7 +65,7 @@
             "Health": "OK",
             "HealthRollup": "OK"
         },
-        "OverallMetrics": {
+        "Metrics": {
             "@odata.id": "/redfish/v1/Systems/1/ProcessorMetrics"
         }
     },
