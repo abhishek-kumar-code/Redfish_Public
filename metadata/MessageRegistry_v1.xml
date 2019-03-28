@@ -299,14 +299,17 @@
 		
       <ComplexType Name="Message" BaseType="MessageRegistry.v1_2_0.Message">
         <Property Name="LongDescription" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The normative language describing the usage of this Message."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the normative language describing the usage of this Message in a Redfish implementation."/>
         </Property>
         <Property Name="ArgDescriptions" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The MessageArg descriptions, in order, used for this Message."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an ordered array of text describing each argument used as substitution in the Message."/>
         </Property>
         <Property Name="ArgLongDescriptions" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The MessageArg normative descriptions, in order, used for this Message."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an ordered array of normative language for each argument used as substitution in the Message."/>
         </Property>
