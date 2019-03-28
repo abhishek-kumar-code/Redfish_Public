@@ -311,5 +311,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain an ordered array of normative language for each argument used as substitution in the Message."/>
         </Property>
       </ComplexType>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
