@@ -303,7 +303,7 @@
         <Property Name="MemberId" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection.  For services supporting Redfish v1.6 or higher, this value shall be the zero-based array index."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
       </EntityType>
@@ -1115,7 +1115,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_8_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also created to update the description for MemberId to match the requirements of Redfish v1.6."/>
     </Schema>
 
   </edmx:DataServices>
