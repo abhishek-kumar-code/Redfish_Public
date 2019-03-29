@@ -355,6 +355,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2019.1"/>
       <Annotation Term="OData.Description" String="This version was created to deprecate the EventTypes property."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_4_1.EventDestination"/>
     </Schema>
