@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EventService  v1.2.1-->
+<!--# Redfish Schema:  EventService  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -259,12 +259,12 @@
       <EntityType Name="EventService" BaseType="EventService.v1_1_1.EventService">
         <Property Name="RegistryPrefixes" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A list of the Prefixes of the Message Registries that can be used for the RegistryPrefix property on a subscription."/>
+          <Annotation Term="OData.Description" String="A list of the Prefixes of the Message Registries that can be used for the RegistryPrefix property on a subscription.  If this property is absent or contains an empty array, the service does not support RegistryPrefix-based subscriptions."/>
           <Annotation Term="OData.LongDescription" String="The value of this property is the array of the Prefixes of the Message Registries that shall be allowed for an Event Subscription."/>
         </Property>
         <Property Name="ResourceTypes" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A list of @odata.type values (Schema names) that can be specified in a ResourceType on a subscription."/>
+          <Annotation Term="OData.Description" String="A list of @odata.type values (Schema names) that can be specified in a ResourceType on a subscription.  If this property is absent or contains an empty array, the service does not support ResourceType-based subscriptions."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of the valid @odata.type values that can be used for an Event Subscription."/>
         </Property>
         <Property Name="SubordinateResourcesSupported" Type="Edm.Boolean">
@@ -352,7 +352,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
-      <Annotation Term="OData.Description" String="This version was created to deprecate the EventTypesForSubscription and SSEFilterPropertiesSupported\EventType properties."/>
+      <Annotation Term="OData.Description" String="This version was created to deprecate the EventTypesForSubscription and SSEFilterPropertiesSupported\EventType properties. It was also created to update the description of the RegistryPrefix property."/>
       <EntityType Name="EventService" BaseType="EventService.v1_2_1.EventService"/>
     </Schema>
 
