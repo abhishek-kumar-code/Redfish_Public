@@ -1534,52 +1534,53 @@ The context URL for a Resource may be in one of the other formats specified by [
 
 #### Id<a id="id-property"></a>
 
-The `Id` property of a Resource uniquely identifies the resource within the Resource Collection that contains it.  The value of `Id` shall be unique across a Resource Collection.
+The `Id` property of a Resource uniquely identifies the resource within the Resource Collection that contains it.  The value of `Id` shall be unique across a Resource Collection.  The `Id` property shall follow the definition for `Id` in the Resource schema.
 
 #### Name<a id="name-property"></a>
 
-The `Name` property is used to convey a human-readable moniker for a resource.  The type of the `Name` property shall be string.  The value of `Name` is NOT required to be unique across resource instances within a Resource Collection.
+The `Name` property is used to convey a human-readable moniker for a resource.  The type of the `Name` property shall be string.  The value of `Name` is NOT required to be unique across resource instances within a Resource Collection.  The `Name` property shall follow the definition for `Name` in the Resource schema.
 
 #### Description<a id="description-property"></a>
 
-The `Description` property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
+The `Description` property is used to convey a human-readable description of the resource.  The `Description` property shall follow the definition for `Description` in the Resource schema.
 
 #### MemberId<a id="memberid-property"></a>
 
-The `MemberId` property uniquely identifies an object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.  The MemberId property shall be included in every object-type array property.
+The `MemberId` property uniquely identifies an element within an array, where the element can be referenced by a [reference property](#reference-property).  The value of `MemberId` shall be unique across the array.  The `MemberId` property shall follow the definition for `MemberId` in the Resource schema.
 
-#### Count property
+#### Count (Members@odata.count) property
 
-The count property defines the total number of resources, or members, that are available in a Resource Collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the resource collection.  The `$top` or `$skip` [query parameters](#query-parameters) do not affect this count.
+The count property defines the total number of Resources, or members, that are available in a Resource Collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the Resource Collection.  The `$top` or `$skip` [query parameters](#query-parameters) shall not affect this count.
 
-#### Members property
+#### Members
 
-The [Members](#members-property) property of a Resource Collection identifies the members of the collection.  The Members property is required and shall be returned in the response for any Resource Collection.  The Members property shall be an array of JSON object named `Members`.  The `Members` property shall not be null.  Empty collections shall be an empty JSON array.
+The `Members` property of a Resource Collection identifies the members of the collection.  The `Members` property is required and shall be returned in the response for any Resource Collection.  The `Members` property shall be an array of JSON objects named `Members`.  The `Members` property shall not be `null`.  Empty collections shall be an empty JSON array.
+
+JEFFH to reword the next sentence:
 
 The Redfish Schema document that describes the containing type defines the type of each JSON object in the array.
 
-#### Next Link property and partial results
+#### Next link (Members@odata.nextLink) property
 
-Responses may contain a subset of the members of the full resource collection.  For partial resource collections, the response shall include a Next Link property named `Members@odata.nextLink`.
+JEFFH to migrate partial response stuff to general Resource Collection section
 
-The value of the Next Link property shall be an opaque URL to a resource, with the same `@odata.type`, which contains the next set of partial members.  The Next Link property shall only be present if the number of Members in the resource collection is greater than the number of Members returned, and if the payload does not represent the end of the requested resource collection.
+Responses may contain a subset of the members of the full Resource Collection.  For partial Resource Collections, the response shall include a Next Link property named `Members@odata.nextLink`.
 
-The [`count` property](#count-property) value is the total number of resources available if the client enumerates all pages of the resource collection.
+The value of the Next Link property shall be an opaque URL to a Resource, with the same `@odata.type`, which contains the next set of partial members.  The Next Link property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned, and if the payload does not represent the end of the requested Resource Collection.
+
+The [`Members@odata.count` property](#count-property) value is the total number of Resources available if the client enumerates all pages of the Resource Collection.
 
 #### Links property
 
-The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resource's schema definition.  All associated [reference properties](#reference-properties) defined for a resource shall be nested under the Links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The Links property represents the hyperlinks associated with the Resource, as defined by that Resource's schema definition.  All associated [reference properties](#reference-properties) defined for a resource shall be nested under the Links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
-The Links property shall be named `Links` and contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) that the Redfish Schema for that type defines.
+The Links property shall be named `Links` and contain a property for each related Resource.
 
-* For single-valued reference properties, the value of the property shall be the [single related resource ID](#reference-to-a-single-related-resource).
-* For multiple-valued reference properties, the value of the property shall be the [array of related resource IDs](#array-of-references-to-related-resources).
+To navigate vendor-specific hyperlinks, the `Links` property shall also include an [`Oem` property](#oem-property).
 
-To navigate vendor-specific hyperlinks, the `Links` property shall also include an [OEM property](#oem-property).
+##### Reference to a related Resource
 
-##### Reference to a single-related resource
-
-A reference to a single resource is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The name of this reference is the name of the relationship.  The value of this reference is the URI of the referenced resource.
+A reference to a single Resource is a JSON object that contains a single [Resource identifier property](#resource-identifier-property).  The name of this reference is the name of the relationship.  The value of this reference is the URI of the referenced Resource.
 
 ```json
 {
@@ -1591,14 +1592,15 @@ A reference to a single resource is a JSON object that contains a single [resour
 }
 ```
 
-##### Array of references to related resources
+##### References to multiple to related Resources
 
-A reference to a set of zero or more related resources is an array of JSON objects.  The name of this reference is the name of the relationship.  Each member of the array is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The member's value is the URI of the referenced resource.
+A reference to a set of zero or more related Resources is an array of JSON objects.  The name of this reference is the name of the relationship.  Each element of the array is a JSON object that contains a [Resource identifier property](#resource-identifier-property) with the value of the URI of the referenced resource.
 
 ```json
 {
     "Links": {
-        "Contains": [{
+        "Contains": [
+            {
                 "@odata.id": "/redfish/v1/Chassis/1"
             },
             {
@@ -1611,7 +1613,7 @@ A reference to a set of zero or more related resources is an array of JSON objec
 
 #### Actions
 
-The [Actions](#actions-property) property contains the actions supported by a resource.  Those actions are populated as individual properties nested under the 'Actions' structured property.
+The `Actions` property contains the [actions](#post-actions) supported by a Resource.
 
 ##### Action representation
 
@@ -1619,24 +1621,26 @@ Each supported action is represented as a property nested under `Actions`.  The 
 
 This property name shall be in the format
 
-<pre>#<var>Namespace</var>.<var>ActionName</var></pre>
+<pre>#<var>ResourceType</var>.<var>ActionName</var></pre>
 
 where
 
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The namespace in the reference to the Redfish Schema where the action is defined.  For Redfish resources, this shall be the version-independent namespace. |
-| <code><var>ActionName</var></code> | The name of the action. |
+| Variable                              | Description |
+| ---                                   | ---         |
+| <code><var>ResourceType</var></code>  | The Resource where the action is defined. |
+| <code><var>ActionName</var></code>    | The name of the action. |
 
-The client may use this fragment to identify the [action definition](#resource-actions) in the [referenced](#referencing-other-schemas) Redfish Schema document that is associated with the specified namespace.
+The client may use this fragment to identify the [action definition](#resource-actions) in the [referenced](#referencing-other-schemas) Redfish Schema document.
 
-The property is a JSON object that contains a `target` property.  The `target` property defines the relative or absolute URL to invoke the action.  The JSON object for the action may contain a `title` property, which is a string that defines the action's name.
+The property for the action is a JSON object and contains the following properties:
+* The `target` property shall be present, and defines the relative or absolute URL to invoke the action.
+* The`title` property may be present,and defines the action's name.
 
 The [OData JSON Format](#OData-JSON) specification defines the `target` and `title` properties.
 
-To specify the list of allowable values for a parameter, the client can use the [`AllowableValues`](#allowable-values) annotation to annotate the property for the available action.
+To specify the list of supported values for a parameter, the service may include the [`@Redfish.AllowableValues`](#allowable-values) annotation.
 
-For example, the following property defines the `Reset` action in the `ComputerSystem` namespace:
+For example, the following property defines the `Reset` action for a `ComputerSystem`:
 
 ```json
 {
@@ -1666,71 +1670,15 @@ Given this, the client could invoke a POST request to `/redfish/v1/Systems/1/Act
 }
 ```
 
-##### Allowable values
-
-To specify the list of allowable values for a parameter, clients can use `AllowableValues` annotation to annotate the property for the action.
-
-To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
-
 #### Oem
 
 The [Oem](#oem-property) property is used for OEM extensions as defined in [Resource Extensibility](#resource-extensibility).
 
 #### Status
 
-The Status property represents the status of a resource.
+The `Status` property represents the status of a Resource.  The `Status` property shall follow the definition for `Status` in the Resource schema.
 
-The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.
-
-#### RelatedItem
-
-The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or subelements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
-
-#### Location
-
-TODO: Fill this out
-
-TODO: Anything else in Resource???
-
-#### Message object
-
-A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
-
-A `Message` object is a JSON object with the following properties:
-
-| Property | Type | Required | Defines |
-|:---|:---|:---|:---|
-| `MessageId` | String | Required | The error or message, which is not to be confused with the HTTP status code.<br/>Clients can use this code to access a detailed message from a message registry. |
-| `Message` | String | Required | The human-readable error message that indicates the semantics associated with the error.<br/>This shall be the complete message, and not rely on substitution variables. |
-| `RelatedProperties` | An array of JSON pointers | Optional | The properties in a JSON payload that the message describes. |
-| `MessageArgs` | An array of strings | Optional | The substitution parameter values for the message.<br/>If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
-| `Severity` | String | Optional | The severity of the error. |
-| `Resolution` | String | Optional | The recommended actions to take to resolve the error. |
-
-Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
-
-`MessageIds` identify specific messages that a message registry defines.
-
-The `MessageId` property value shall be in the format:
-
-<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
-| <code><var>MajorVersion</var></code> | A positive integer. The major version of the registry. |
-| <code><var>MinorVersion</var></code> | A positive integer. The minor version of the registry. |
-| <code><var>MessageKey</var></code> | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
-
-To search the message registry for a corresponding message, the client can use the `MessageId`.
-
-The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
-
-The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
-
-When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
+By having a common representation of status, clients can depend on consistent semantics.  The `Status` property is capable of indicating the current state, health of the Resource, and the health of subordinate Resources.
 
 ### Resource, schema, and property naming conventions 
 
@@ -1882,20 +1830,20 @@ Talk about @odata.id, pointing to another resource
 
 ### Settings Resource
 
-A Settings resource is used to represent the future intended state of a resource.  Some resources have properties that can be updated and the updates take place immediately; however some properties must be updated at a certain point in time, such as system reset.  While the resource represents the current state, the Settings resource represents the future intended state.  The service represents properties of a resource can only be updated at a certain point in time using a `@Redfish.Settings` payload annotation.  The Settings annotation contains a link to an subordinate resource with the same schema definition and the properties within the Settings resource contains the properties that are updated at a certain point in time.  
+A Settings Resource is used to represent the future intended state of a Resource.  Some Resources have properties that can be updated and the updates take place immediately; however some properties must be updated at a certain point in time, such as system reset.  While the Resource represents the current state, the Settings Resource represents the future intended state.  The service represents properties of a Resource that can only be updated at a certain point in time using a `@Redfish.Settings` payload annotation.  The Settings annotation contains a link to a subordinate Resource with the same schema definition.  The properties within the Settings Resource contains the properties that are updated at a certain point in time.
 
-For resources that support a future state and configuration, the response shall contain a property with the `@Redfish.Settings` annotation.  When a Settings annotation is used, the following conditions shall apply:
-* The Settings resource linked to current resource with the `@Redfish.Settings` annotation shall be of the same schema definition.
-* The Settings resource should be a subset of properties that can be updated.
-* The Settings resource shall not contain the `@Redfish.Settings` annotation.
-* The Settings resource may contain the `@Redfish.SettingsApplyTime` annotation.
+For Resources that support a future state and configuration, the response shall contain a property with the `@Redfish.Settings` annotation.  When a Settings annotation is used, the following conditions shall apply:
+* The Settings Resource linked to current resource with the `@Redfish.Settings` annotation shall be of the same schema definition.
+* The Settings Resource should be a subset of properties that can be updated.
+* The Settings Resource shall not contain the `@Redfish.Settings` annotation.
+* The Settings Resource may contain the `@Redfish.SettingsApplyTime` annotation.
 
-The Settings resource includes several properties to help clients monitor when the resource is consumed by the service and determine the results of applying the values, which may or may not have been successful.
+The Settings Resource includes several properties to help clients monitor when the Resource is consumed by the service and determine the results of applying the values, which may or may not have been successful.
 * The `Messages` property is a collection of Messages that represent the results of the last time the values of the Settings resource were applied. 
 * The `ETag` property contains the ETag of the Settings resource that was last applied.
 * The `Time` property indicates the time when the Settings resource was last applied.
 
-Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings resource using the `SettingsObject` property.
+Below is an example body for a resource that supports a Settings resource. A client is able to locate the URI of the Settings Resource using the `SettingsObject` property.
 
 ```json
 {
@@ -1919,11 +1867,11 @@ Below is an example body for a resource that supports a Settings resource. A cli
 }
 ```
 
-A client may indicate its preference on when to apply the future configuration by including the `@Redfish.SettingsApplyTime` annotation in the request body when updating the Settings resource.
-* If a service supports configuring when to apply the future settings, the Settings resource shall contain a property with the  `@Redfish.SettingsApplyTime` annotation.
-* Only Settings resources shall contain the `@Redfish.SettingsApplyTime` annotation.
+A client may indicate its preference on when to apply the future configuration by including the `@Redfish.SettingsApplyTime` annotation in the request body when updating the Settings Resource.
+* If a service supports configuring when to apply the future settings, the Settings Resource shall contain a property with the  `@Redfish.SettingsApplyTime` annotation.
+* Only Settings Resources shall contain the `@Redfish.SettingsApplyTime` annotation.
 
-Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied.  In this case it is either on reset or during the specified maintenance window:
+Below is an example request body that shows a client configuring when the values in the Settings Resource are to be applied.  In this case it is either on reset or during the specified maintenance window:
 
 ```json
 {
@@ -1953,15 +1901,14 @@ Client software should be aware that when absent resources are later populated, 
 
 ### Registries
 
-Registries are used in Redfish to optimize data being transferred from a Redfish service.  
-There are three kinds of registries in Redfish: Message, Attribute and Privilege. 
+Registries are used in Redfish to optimize data being transferred from a Redfish service.
 
-Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions. In registries, a identifier is used to retrieve more information about a given resource, event, message or other item. This can include other properties, property restrictions and the like. Registries are themselves resources.
+Registry Resources are those Resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions. In registries, a identifier is used to retrieve more information about a given resource, event, message or other item. This can include other properties, property restrictions and the like.  Registries are themselves Resources.
 
-Redfish currently has 3 Registry types:
-* Message Registries.  These are the most common and are used to take a MessageId and other message information in order to construct a message that can be presented to an end user.   These are used in both eventing and in error responses to operations.  More information on how a Registry is used to construct messages can be found in the [Error responses](#error-responses) and [Eventing](#eventing) sections.  
-* BIOS Registries.  A BIOS registry is used to determine the semantics about each of the properties contained in a BIOS resource or the BIOS Settings resource.  Since BIOS information can vary from platform to platform, having a fixed schema for these values is problematic.  The registry contains not only a description of the properties but other information such as data type, allowable values and even user menu information. 
-* Privilege Registries.  These registries contain a mapping of the resources within the Redfish service and which privileges are allowed to perform the specified operations against those resource.  This information allows a client to determine which roles should have specific privileges and thus map accounts to those roles in order to perform the desired operations on Redfish resources.  For more information on how privileges relate to roles, see the [Privilege model/Authorization](#privilege-model/authorization) section.   
+Redfish defines the following registry types:
+* Message Registries.  These are the most common and are used to take a MessageId and other message information in order to construct a message that can be presented to an end user.  These are used in both eventing and in error responses to operations.  More information on how a Registry is used to construct messages can be found in the [Error responses](#error-responses) and [Eventing](#eventing) sections.
+* BIOS Registries.  A BIOS registry is used to determine the semantics about each of the properties contained in a BIOS Resource or the BIOS Settings Resource.  Since BIOS information can vary from platform to platform, Redfish cannot define a fixed schema for these values.  The registry contains not only a description of the properties, but other information such as data type, allowable values, and user menu information.
+* Privilege Registries.  These registries contain a mapping of the resources within the Redfish service and which privileges are allowed to perform the specified operations against those resource.  This information allows a client to determine which roles should have specific privileges and thus map accounts to those roles in order to perform the desired operations on Redfish resources.  For more information on how privileges relate to roles, see the [Privilege model/Authorization](#privilege-model/authorization) section.
 
 ### Schema annotations
 
@@ -2451,7 +2398,11 @@ Redfish JSON Schema files shall be named using the [TypeName](#type-identifiers)
 
 For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
 
+MIKER: Add unversioned files
+
 #### Core JSON Schema files
+
+The file `odata-v4.json` contains the definitions for common OData properties.
 
 The file `redfish-error.v1_0_0.json` contains the payload definition of the [Redfish error response](#error-responses).
 
@@ -2465,8 +2416,8 @@ Each JSON Schema file contains a JSON object in order to describe [Resources](#r
 * `$id`: A reference to the URI where the schema file is published.
 * `$ref`: If the schema file describes a Resource or Resource Collection, this is a reference to the structural definition of the Resource or Resource Collection.
 * `$schema`: A URI to the Redfish schema extensions for JSON Schema, which can be found at `http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json`.
-* `copyright`: A copyright string.
-* `definitions`: Contains structures, enums, and other definitions defined by the schema.
+* `copyright`: The copyright statement for the organization producing the JSON Schema.
+* `definitions`: Contains structures, enumerations, and other definitions defined by the schema.
 * `title`: If the schema file describes a Resource or Resource Collection, this shall be the matching [type identifier](#type-identifiers) for the Resource or Resource Collection.
 
 #### The definitions body in JSON Schema
@@ -4084,3 +4035,49 @@ Service resources represent components of the Redfish Service itself as well as 
 
 Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
 
+##### Allowable values
+
+To specify the list of allowable values for a parameter, clients can use `AllowableValues` annotation to annotate the property for the action.
+
+To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
+
+
+#### Message object
+
+A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
+
+A `Message` object is a JSON object with the following properties:
+
+| Property | Type | Required | Defines |
+|:---|:---|:---|:---|
+| `MessageId` | String | Required | The error or message, which is not to be confused with the HTTP status code.<br/>Clients can use this code to access a detailed message from a message registry. |
+| `Message` | String | Required | The human-readable error message that indicates the semantics associated with the error.<br/>This shall be the complete message, and not rely on substitution variables. |
+| `RelatedProperties` | An array of JSON pointers | Optional | The properties in a JSON payload that the message describes. |
+| `MessageArgs` | An array of strings | Optional | The substitution parameter values for the message.<br/>If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
+| `Severity` | String | Optional | The severity of the error. |
+| `Resolution` | String | Optional | The recommended actions to take to resolve the error. |
+
+Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
+
+`MessageIds` identify specific messages that a message registry defines.
+
+The `MessageId` property value shall be in the format:
+
+<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
+| <code><var>MajorVersion</var></code> | A positive integer. The major version of the registry. |
+| <code><var>MinorVersion</var></code> | A positive integer. The minor version of the registry. |
+| <code><var>MessageKey</var></code> | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
+
+To search the message registry for a corresponding message, the client can use the `MessageId`.
+
+The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
+
+The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
+
+When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
