@@ -346,7 +346,7 @@ A URI identifies a resource, including the service root and all Redfish resource
 
 Performing a GET operation on a URI yields a representation of the resource containing properties and hyperlinks to associated resources.  The service root URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource hyperlinks returned in previous responses.  This practice, known as hypermedia, allows for the discovery of resources by following hyperlinks.
 
-Redfish considers the [RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-defined scheme, authority, root service and version, and unique resource path component parts of the URI.
+Redfish considers the [RFC3986](#RFC3986)-defined scheme, authority, root service and version, and unique resource path component parts of the URI.
 
 For example, the `https://mgmt.vendor.com/redfish/v1/Systems/1` URI contains these component parts:
 
@@ -365,13 +365,13 @@ In an implementation:
 * The resource path component part shall be unique.
 * A [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the body and HTTP headers payload can identify a resource in that same implementation.
 * An absolute URI in the body and HTTP headers payload can identify a resource in a different implementation.  
-For the absolute URI definition, see [RFC3986](https://www.ietf.org/rfc/rfc3986.txt).
+For the absolute URI definition, see [RFC3986](#RFC3986).
 
 For example, a POST operation may return the `/redfish/v1/Systems/2` URI in the `Location` header of the response, which points to the POST-created resource.
 
 Assuming that the client connects through the `mgmt.vendor.com` appliance, the client accesses the resource through the `https://mgmt.vendor.com/redfish/v1/Systems/2` absolute URI.
 
-[RFC3986](https://www.ietf.org/rfc/rfc3986.txt)-compliant URIs may also contain the query, `?query`, and frag, `#frag`, components.  For information about queries, see [Query parameters](#query-parameters).  When a URI includes a fragment (`frag`) to submit an operation, the server ignores the fragment.
+[RFC3986](#RFC3986)-compliant URIs may also contain the query, `?query`, and frag, `#frag`, components.  For information about queries, see [Query parameters](#query-parameters).  When a URI includes a fragment (`frag`) to submit an operation, the server ignores the fragment.
 
 If a property in a response is a reference to another property within a resource, use the [RFC6901](#RFC6901)-defined URI Fragment Identifier Representation format.  If the property is as a [reference property](#reference-properties) in the schema, the fragment shall reference a valid [resource identifier](#resource-identifier-property).  For example, the following fragment identifies a property at index 0 of the `Fans` array in the `/redfish/v1/Chassis/MultiBladeEncl/Thermal` resource:
 
@@ -1433,48 +1433,48 @@ This clause describes common data model, resource, and Redfish Schema requiremen
 
 ### Resources
 
-A Resource is a single entity.  Services return resources as JSON payloads by using the `application/json` MIME type. 
+A Resource is a single entity.  Services return resources as JSON payloads by using the `application/json` MIME type.
 
-Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified in the response payload by a unique [type identifier](#type-property) property.
+Each resource shall be strongly typed and defined in a Redfish [schema document](#schema-definition-languages), and identified in the response payload by a unique [type identifier](#type-property) property.
 
 Responses for a single resource shall contain the following properties:
 
-* The [Resource identifier](#resource-identifier) 
-* The [Type property](#type-property) 
+* [`@odata.id`](#resource-identifier)
+* [`@odata.type`](#type-property)
 * [`Id`](#id-property)
 * [`Name`](#name-property)
 
-Responses may also contain other properties defined within the schema for that resource ['Type'](#type-property).  Responses shall not include any properties not defined by that resource type.
+Responses may also contain other properties defined within the schema for that resource [type](#type-property).  Responses shall not include any properties not defined by that resource type.
 
 ### Resource Collections
 
 A Resource Collection is a set of resources that share the same schema definition.  Services return Resource Collections as JSON payloads by using the `application/json` MIME type.
 
-Resource collection responses shall contain the following properties:
+Resource Collection responses shall contain the following properties:
 
+* [`@odata.id`](#resource-identifier)
+* [`@odata.type`](#type-property) property
 * [`Name`](#name-property)
-* The [Resource identifier](#resource-identifier) property
-* The [Type](#type-property) property
-* An array of [`Members`](#members-property)
-* The [resource count](#count-property) property
+* [`Members`](#members-property)
+* [`Members@odata.count`](#count-property)
 
-Responses for resource collections may contain the following properties:
+Responses for Resource Collections may contain the following properties:
 
+* [`@odata.context`](#context-property) property
+* [`@odata.etag`](#etag-property)
 * [`Description`](#description-property)
-* The [Context](#context-property) property
-* [`Etag`](#etag-property)
-* The [Next Link](#next-link-property-and-partial-results) property for partial results
-* [`OEM`](#oem-property)
+* [`Members@odata.nextLink`](#next-link-property-and-partial-results)
+* [`Oem`](#oem-property)
 
-Responses for resource collections shall not contain any property that this section of this specification does not explicitly define.
+Responses for Resource Collections shall not contain any other properties with the exception of [payload annotations](#payload-annotations).
 
-### OEM resources
+### OEM Resources
 
-OEMs and other third parties can extend the Redfish data model by creating new resource types.  This is accomplished by defining an OEM schema for each resource type, and connecting instances of those resources to the resource tree.  
+OEMs and other third parties can extend the Redfish data model by creating new resource types.  This is accomplished by defining an OEM schema for each resource type, and connecting instances of those Resources to the Resource Tree.
 
-Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for standard Redfish resources using the Oem property in resources, the [Links Property](#links-property), and actions.
+Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for standard Redfish Resources using the `Oem` property in Resources, the [Links Property](#links-property), and actions.
 
-While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.  OEMs are encouraged to follow the design tenets and naming conventions in this specification when defining OEM resources or properties.
+While the information and semantics of these extensions are outside of the standard, the schema representing the data, the Resource itself, and the semantics around the protocol shall conform to the requirements in this specification.  OEMs are encouraged to follow the design tenets and naming conventions in this specification when defining OEM Resources or properties.
 
 ### Properties
 
@@ -1486,61 +1486,42 @@ Every property included in a Redfish response payload shall be defined in the sc
 * If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then the value of `null` is an acceptable value if supported by the schema definition.
 * A service may implement a writable property as read-only.
 
-### Common Redfish resource properties
+This clause also contains a set of common properties across all Redfish resources. The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-This clause contains a set of common properties across all Redfish resources. The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
+#### Resource identifier (@odata.id) property
 
-Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this is in Resource_v1.xml.  For JSON Schema representations, this is in Resource.v1_0_0.json.  For OpenAPI representations, this is in Resource.v1_0_0.yaml.
+Resources in a response shall include an `@odata.id` property.  The value of the identifier property shall be the Resource [URI](#uris).
 
-#### Resource identifier property
+#### Resource type (@odata.type) property
 
-Resources in a response shall include a unique `@odata.id` identifier property.  The value of the identifier property shall be the unique resource [URI](#uris)
-
-In JSON payloads, resource identifiers are strings that conform to the rules for RFC3986-defined URI paths.  See **3.3. Path** in [Uniform Resource Identifier (URI): Generic Syntax](https://www.ietf.org/rfc/rfc3986.txt).
-
-Represent resources in the same authority as the request URI according to the rules of `path-absolute`, which that specification defines.
-
-That is, they shall always start with a single forward slash (`/`).
-
-Resources within a different authority as the request URI shall start with a double-slash (`//`) followed by the authority and path to the resource.
-
-The resource identifier is the canonical URL for the resource.  Use it to retrieve or edit the resource, as appropriate.
-
-#### Type property
-
-All resources in a response shall include a `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The `type` property value shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [OData $metadata document](#odata-metadata) and shall be in the format:
+All Resources in a response shall include an `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The value shall be a URL fragment that specifies the type of the resource and shall be in the format:
 
 <pre>#<var>Namespace</var>.<var>TypeName</var></pre>
 
 where
 
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The full namespace name of the Redfish Schema that defines the type.  For Redfish resources, the versioned namespace name. |
-| <code><var>TypeName</var></code> | The name of the resource type. |
+| Variable                          | Description |
+| ---                               | ---         |
+| <code><var>Namespace</var></code> | The full namespace name of the Redfish Schema that defines the type.  For Redfish Resources, the versioned namespace name. |
+| <code><var>TypeName</var></code>  | The name of the Resource type. |
 
-#### ETag property
+#### Resource ETag (@odata.etag) property
 
-ETags enable clients to conditionally retrieve or update a resource.  Resources should include an `@odata.etag` ETag property.  For a resource, the value of the ETag property is the [ETag](#etags).
+ETags enable clients to conditionally retrieve or update a Resource.  Resources should include an `@odata.etag` property.  For a Resource, the value shall be the [ETag](#etags).
 
-#### Context property
+#### Resource context (@odata.context) property
 
-Responses for a single resource may contain a `@odata.context` context property that describes the source of the payload.
+Responses for a single Resource may contain an `@odata.context` property that describes the source of the payload.
 
-If the [`@odata.context`](#context-property) property is present, it shall be the context URL that describes the resource, according to [OData-Protocol](#OData-Protocol).
+If the `@odata.context` property is present, it shall be the context URL that describes the resource, according to [OData-Protocol](#OData-Protocol).
 
 The context URL for a resource should be in the format:
 
-<pre><var>MetadataUrl</var>#<var>ResourceType</var></pre> 
- 
-where
+<pre>/redfish/v1/$metadata#<var>ResourceType</var></pre>
 
-| Variable | Description |
-|:--|:--|
-| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
-| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>Many Redfish implementations concatenate the resource type namespace with a period (`.`) followed by the resource type. |
+where <code><var>ResourceType</var></code> is the fully qualified name of the unversioned resource type.  Redfish Resource definitions concatenate the Resource type namespace with a period (`.`) followed by the Resource type.
 
-For example, the following context URL specifies that the results show a single `ComputerSystem` resource:
+For example, the following context URL specifies that the results show a single `ComputerSystem` Resource:
 
 ```json
 {
@@ -1549,26 +1530,11 @@ For example, the following context URL specifies that the results show a single 
 }
 ```
 
-The context URL for a resource may be in one of the following formats:
- 
-<pre><var>MetadataUrl</var>#<var>ResourcePath</var>/$<var>entity</var></pre>
-
-or
-
-<pre><var>MetadataUrl</var>#<var>ResourceType</var>/$<var>entity</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
-| <code><var>ResourcePath</var></code> | The path from the service root to the singleton or resource collection that contains the resource. |
-| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>While <code><var>ResourcePath</var></code> or <code><var>ResourceType</var></code> is allowed, services should use the <code><var>MetadataUrl</var>#<var>ResourceType</var></code> format for the `@odata.context` property values.<br/>Use <code><var>ResourceType</var></code> because the [OData-Protocol](#OData-Protocol) requires additional constraints when the response returns partial or expanded results that pose an additional burden on services. |
-| <code><var>entity</var></code> | The entity.  Defines whether the response is a single resource from either:<ul><li>An entity set.</li><li>A navigation property.</li></ul> |
+The context URL for a Resource may be in one of the other formats specified by [OData-Protocol](#OData-Protocol).
 
 #### Id<a id="id-property"></a>
 
-The `Id` property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of `Id` shall be unique across a Resource Collection.
+The `Id` property of a Resource uniquely identifies the resource within the Resource Collection that contains it.  The value of `Id` shall be unique across a Resource Collection.
 
 #### Name<a id="name-property"></a>
 
@@ -2156,6 +2122,12 @@ Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers)
 
 For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml".
 
+#### Core CSDL files
+
+The file `Resource_v1.xml` contains all base definitions for Resources, Resource Collections, and common properties such as `Status`.
+
+The file `RedfishExtensions_v1.xml` contains the definitions for all Redfish types and annotations.
+
 #### CSDL format
 
 The outer element of the OData Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
@@ -2467,12 +2439,6 @@ Example [Resource URI Patterns Annotation](#resource-uri-patterns-annotation):
   </Annotation>
 ```
 
-#### Core CSDL files
-
-The file `Resource_v1.xml` contains all base definitions for Resources, Resource Collections, and common properties such as `Status`.
-
-The file `RedfishExtensions_v1.xml` contains the definitions for all Redfish types and annotations.
-
 ### JSON Schema
 
 The [JSON Schema specification](#JSONSchema-Core) defines a JSON format for describing JSON payloads.  The following clause describes how Redfish uses JSON Schema in order to describe Resources and Resource Collections.
@@ -2484,6 +2450,14 @@ Redfish JSON Schema files shall be named using the [TypeName](#type-identifiers)
   *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
 
 For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
+
+#### Core JSON Schema files
+
+The file `redfish-error.v1_0_0.json` contains the payload definition of the [Redfish error response](#error-responses).
+
+The file `redfish-schema-v1.json` contains extensions to the JSON Schema used to define Redfish JSON Schema files.
+
+The file `Resource.json` and its subsequent versioned definitions contain all base definitions for Resources, Resource Collections, and common properties such as `Status`.
 
 #### JSON Schema format
 
@@ -2646,14 +2620,6 @@ The following JSON Schema properties are used to provide [schema annotations](#s
 * `autoExpand` is used for the [Expanded Resource annotation](#expanded-resource-annotation).
 * `deletable`, `insertable`, and `updatable` are used for the [Resource Capabilities Annotation](#resource-capabilities-annotation).
 * `uris` is used for the [Resource URI Patterns Annotation](#resource-uri-patterns-annotation).
-
-#### Core JSON Schema files
-
-The file `redfish-error.v1_0_0.json` contains the payload definition of the [Redfish error response](#error-responses).
-
-The file `redfish-schema-v1.json` contains extensions to the JSON Schema used to define Redfish JSON Schema files.
-
-The file `Resource.json` and its subsequent versioned definitions contain all base definitions for Resources, Resource Collections, and common properties such as `Status`.
 
 ### OpenAPI Schema
 
