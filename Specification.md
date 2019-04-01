@@ -1433,13 +1433,41 @@ This clause describes common data model, resource, and Redfish Schema requiremen
 
 ### Resources
 
-A Resource is a single entity.
+A Resource is a single entity.  Services return resources as JSON payloads by using the `application/json` MIME type. 
 
 Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions).  The type shall be defined in a Redfish [schema document](#schema-definition-languages) and identified in the response payload by a unique [type identifier](#type-property) property.
 
+Responses for a single resource shall contain the following properties:
+
+* The [Resource identifier](#resource-identifier) 
+* The [Type property](#type-property) 
+* [`Id`](#id-property)
+* [`Name`](#name-property)
+
+
+Responses may also contain other properties defined within the schema for that resource ['Type'](#type-property).  Responses shall not include any properties not defined by that resource type.
+
 ### Resource Collections
 
-A Resource Collection is a set of resources that share the same schema definition.
+A Resource Collection is a set of resources that share the same schema definition.  Services return Resource Collections as JSON payloads by using the `application/json` MIME type.
+
+Resource collection responses shall contain the following properties:
+
+* The [`Name` property](#name-property)
+* The [Resource Identifier property](#resource-identifier-property)
+* The [`Type` property](#type-property)
+* An array of [`Members`](#members-property)
+* A [resource count](#count-property)
+
+Responses for resource collections may contain the following properties:
+
+* The [`Description` property](#description-property)
+* The [`Context` property](#context-property)
+* An [`Etag` property](#etag-property)
+* A [`Next Link` property](#next-link-property-and-partial-results) for partial results
+* An [`OEM` property](#oem-property)
+
+Responses for resource collections shall not contain any property that this section of this specification does not explicitly define.
 
 ### OEM resources
 
@@ -1465,41 +1493,210 @@ This clause contains a set of common properties across all Redfish resources. Th
 
 Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this is in Resource_v1.xml.  For JSON Schema representations, this is in Resource.v1_0_0.json.  For OpenAPI representations, this is in Resource.v1_0_0.yaml.
 
-#### @odata.id
+#### Resource identifier property
 
-TODO: This is an annotation, but is a required property - mention here?
+Resources in a response shall include a unique `@odata.id` identifier property.  The value of the identifier property shall be the unique resource [URI](#uris)
 
-#### @odata.type
+In JSON payloads, resource identifiers are strings that conform to the rules for RFC3986-defined URI paths.  See **3.3. Path** in [Uniform Resource Identifier (URI): Generic Syntax](https://www.ietf.org/rfc/rfc3986.txt).
 
-TODO: This is an annotation, but is a required property - mention here?
+Represent resources in the same authority as the request URI according to the rules of `path-absolute`, which that specification defines.
+
+That is, they shall always start with a single forward slash (`/`).
+
+Resources within a different authority as the request URI shall start with a double-slash (`//`) followed by the authority and path to the resource.
+
+The resource identifier is the canonical URL for the resource.  Use it to retrieve or edit the resource, as appropriate.
+
+#### Type property
+
+All resources in a response shall include a `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The `type` property value shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [OData $metadata document](#odata-metadata) and shall be in the format:
+
+<pre>#<var>Namespace</var>.<var>TypeName</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>Namespace</var></code> | The full namespace name of the Redfish Schema that defines the type.  For Redfish resources, the versioned namespace name. |
+| <code><var>TypeName</var></code> | The name of the resource type. |
+
+#### ETag property
+
+ETags enable clients to conditionally retrieve or update a resource.  Resources should include an `@odata.etag` ETag property.  For a resource, the value of the ETag property is the [ETag](#etags).
+
+#### Context property
+
+Responses for a single resource may contain a `@odata.context` context property that describes the source of the payload.
+
+If the [`@odata.context`](#context-property) property is present, it shall be the context URL that describes the resource, according to [OData-Protocol](#OData-Protocol).
+
+The context URL for a resource should be in the format:
+
+<pre><var>MetadataUrl</var>#<var>ResourceType</var></pre> 
+ 
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
+| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>Many Redfish implementations concatenate the resource type namespace with a period (`.`) followed by the resource type. |
+
+For example, the following context URL specifies that the results show a single `ComputerSystem` resource:
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    ...
+}
+```
+
+The context URL for a resource may be in one of the following formats:
+ 
+<pre><var>MetadataUrl</var>#<var>ResourcePath</var>/$<var>entity</var></pre>
+
+or
+
+<pre><var>MetadataUrl</var>#<var>ResourceType</var>/$<var>entity</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
+| <code><var>ResourcePath</var></code> | The path from the service root to the singleton or resource collection that contains the resource. |
+| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>While <code><var>ResourcePath</var></code> or <code><var>ResourceType</var></code> is allowed, services should use the <code><var>MetadataUrl</var>#<var>ResourceType</var></code> format for the `@odata.context` property values.<br/>Use <code><var>ResourceType</var></code> because the [OData-Protocol](#OData-Protocol) requires additional constraints when the response returns partial or expanded results that pose an additional burden on services. |
+| <code><var>entity</var></code> | The entity.  Defines whether the response is a single resource from either:<ul><li>An entity set.</li><li>A navigation property.</li></ul> |
 
 #### Id<a id="id-property"></a>
 
-The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.  The Id property is required and shall be included in every resoruce response.
+The `Id` property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of `Id` shall be unique across a Resource Collection.
 
 #### Name<a id="name-property"></a>
 
-The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.  The Name property is required and shall be included in every resource response.
+The `Name` property is used to convey a human-readable moniker for a resource.  The type of the `Name` property shall be string.  The value of `Name` is NOT required to be unique across resource instances within a Resource Collection.
 
 #### Description<a id="description-property"></a>
 
-The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
+The `Description` property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
 
 #### MemberId<a id="memberid-property"></a>
 
-The MemberId property uniquely identifies an object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.  The MemberId property is required and shall be included in every object-type array property.
+The `MemberId` property uniquely identifies an object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.  The MemberId property shall be included in every object-type array property.
 
 #### Links
 
 The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resources schema definition.  All associated reference properties defined for a resource shall be nested under the Links Property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
+#### Links property
+
+A resource's `Links` property [references](#reference-properties) other resources.
+
+The `Links` property shall be named `Links` and contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) that the Redfish Schema for that type defines.
+
+* For single-valued reference properties, the value of the property shall be the [single related resource ID](#reference-to-a-single-related-resource).
+* For collection-valued reference properties, the value of the property shall be the [array of related resource IDs](#array-of-references-to-related-resources).
+
+To navigate vendor-specific hyperlinks, the `Links` property shall also include an [OEM property](#oem-property).
+
+##### Reference to a single-related resource
+
+A reference to a single resource is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The name of this reference is the name of the relationship.  The value of this reference is the URI of the referenced resource.
+
+```json
+{
+    "Links": {
+        "ManagedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Encl1"
+        }
+    }
+}
+```
+
+##### Array of references to related resources
+
+A reference to a set of zero or more related resources is an array of JSON objects.  The name of this reference is the name of the relationship.  Each member of the array is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The member's value is the URI of the referenced resource.
+
+```json
+{
+    "Links": {
+        "Contains": [{
+                "@odata.id": "/redfish/v1/Chassis/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Encl1"
+            }
+        ]
+    }
+}
+```
+
 #### Actions
 
-The [Actions](#actions-property) property contains the actions supported by a resource.
+The [Actions](#actions-property) property contains the actions supported by a resource.  Those actions are populated as individual properties nested under the 'Actions' structured property.
+
+##### Action representation
+
+Each supported action is represented as a property nested under `Actions`.  The property name is constructed using the unique URI that identifies the action.
+
+This property name shall be in the format
+
+<pre>#<var>Namespace</var>.<var>ActionName</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>Namespace</var></code> | The namespace in the reference to the Redfish Schema where the action is defined.  For Redfish resources, this shall be the version-independent namespace. |
+| <code><var>ActionName</var></code> | The name of the action. |
+
+The client may use this fragment to identify the [action definition](#resource-actions) in the [referenced](#referencing-other-schemas) Redfish Schema document that is associated with the specified namespace.
+
+The property is a JSON object that contains a `target` property.  The `target` property defines the relative or absolute URL to invoke the action.  The JSON object for the action may contain a `title` property, which is a string that defines the action's name.
+
+The [OData JSON Format](#OData-JSON) specification defines the `target` and `title` properties.
+
+To specify the list of allowable values for a parameter, the client can use the [`AllowableValues`](#allowable-values) annotation to annotate the property for the available action.
+
+For example, the following property defines the `Reset` action in the `ComputerSystem` namespace:
+
+```json
+{
+    "#ComputerSystem.Reset": {
+        "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "title": "Computer System Reset",
+        "ResetType@Redfish.AllowableValues": [
+            "On",
+            "ForceOff",
+            "GracefulRestart",
+            "GracefulShutdown",
+            "ForceRestart",
+            "Nmi",
+            "ForceOn",
+            "PushPowerButton"
+        ]
+    },
+    ...
+}
+```
+
+Given this, the client could invoke a POST request to `/redfish/v1/Systems/1/Actions/ComputerSystem.Reset` with the following body:
+
+```json
+{
+    "ResetType": "On"
+}
+```
+
+##### Allowable values
+
+To specify the list of allowable values for a parameter, clients can use `AllowableValues` annotation to annotate the property for the action.
+
+To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
+
 
 #### Oem
 
-The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+The [Oem](#oem-property) property is used for OEM extensions as defined in [Resource Extensibility](#resource-extensibility).
 
 #### Status
 
@@ -1556,12 +1753,118 @@ For properties that have units, or other special meaning, a unit identifier shou
 * The State of a resource (State) (e.g., `PowerState`)
 * State values where "work" is being done end in (ing) (e.g., `Applying`, `ClearingLogic`)
 
+### Resource Extensibility
 
-#### OEM resource and schema naming
+In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. All Redfish-specified resources include an empty structured property called `Oem` whose value can be used to encapsulate one or more OEM-specified structured properties. This is predefined placeholder available to contain OEM-specific property definitions.
 
-JEFFA: Move to common naming section
+#### OEM property format and content
+
+Each property contained within the [Oem property](#oem-property) shall be a JSON object.  The name of the object (property) shall uniquely identify the OEM or organization that defines the properties contained by that object.  This is described in more detail in the following clause.  The OEM-specified object shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema.  The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
+
+The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
+
+#### OEM property naming
+
+The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
+DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
+
+Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso' intead of 'Contoso_com', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
+
+The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
+
+There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a suborganization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
+
+The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
+
+#### OEM resource naming
 
 To avoid naming collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the resource name.  For example, "ContosoDisk" would not conflict with a "Disk" resource or another OEM's disk-related resource.
+
+#### OEM resource naming and URIs
+
+Companies, OEMs, and other organizations can define additional resources and link to them from an [Oem property](#oem-property) found in a standard Redfish Resource.  To avoid naming collisions with current or future standard Redfish schema files, the defining organization's name should be prepended to the resource (schema) name.  For example, "ContosoDisk" would not conflict with a "Disk" resource or another OEM's disk-related resource.
+
+In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources shall be in the form of:
+
+` *BaseUri*/Oem/*OemName*/*ResourceName*`
+
+where
+* *BaseUri* is the URI segment of the standard Redfish Resource where the "Oem" property is used.
+* *OemName* is the name of the OEM, that follows the same naming as defined in the [Oem property format and content section](#oem-property-format-and-content).
+* *ResourceName* is the name of the resource defined by the OEM.
+
+For example, if Contoso defined a new resource called "ContosoAccountServiceMetrics" to be linked via the "Oem" property found at the URI "/redfish/v1/AccountService", the OEM resource would have the URI "/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics".
+
+
+#### OEM property examples
+
+The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
+
+~~~json
+{
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.v1_2_1.AnvilTypes1",
+            "slogan": "Contoso anvils never fail",
+            "disclaimer": "* Most of the time"
+        },
+        "Contoso_biz": {
+            "@odata.type": "#ContosoBiz.v1_1.RelatedSpeed",
+            "speed" : "ludicrous"
+        },
+        "EID_412_ASB_123": {
+            "@odata.type": "#OtherSchema.v1_0_1.powerInfoExt",
+            "readingInfo": {
+                "readingAccuracy": "5",
+                "readingInterval": "20"
+            }
+        },
+        "Contoso_customers_customerA": {
+            "@odata.type" : "#ContosoCustomer.v2015.slingPower",
+            "AvailableTargets" : [ "rabbit", "duck", "runner" ],
+            "launchPowerOptions" : [ "low", "medium", "eliminate" ],
+            "powerSetting" : "eliminate",
+            "targetSetting" : "rabbit"
+        }
+    },
+    ...
+}
+~~~
+
+#### OEM actions
+
+OEM-specific actions can be defined by defining actions bound to the Oem property of the [resource's Actions](#resource-actions) property type.
+
+~~~xml
+  <Action Name="Ping" IsBound="true">
+    <Parameter Name="ContosoType" Type="MyType.OemActions"/>
+  </Action>
+~~~
+
+Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
+
+~~~json
+{
+    "Actions": {
+        "Oem": {
+            "#Contoso.Ping": {
+                "target":"/redfish/v1/Systems/1/Actions/Oem/Contoso.Ping"
+            }
+        }
+    },
+    ...
+}
+~~~
+
+The URI of the OEM action in the "target" property shall be in the form of:
+
+` *ResourceUri*/Actions/Oem/*QualifiedActionName*`
+
+where
+* *ResourceUri* is the URI of the resource that supports invoking the action.
+* "Actions" is the name of the property containing the actions for a resource.
+* "Oem" is the name of the OEM property within the Actions property.
+* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 
 #### Reference properties
@@ -3180,87 +3483,6 @@ OData-Version: 4.0
 
 TODO: Items below here are being migrated to the Schema and Data Model section
 
-### Resource responses
-
-Services return resources as JSON payloads by using the `application/json` MIME type.  Resource property names match the case in the [Schema](#resource-properties).
-
-Responses for a single resource shall contain the [`Id`](#id-property) and [`Name`](#name-property) properties and may contain the [`Description`](#description-property) property.
-
-See also [Resource collection responses](#resource-collection-responses).
-
-#### Context property
-
-Responses for a single resource may contain a `@odata.context` context property that describes the source of the payload.
-
-If the [`@odata.context`](#context-property) property is present, it shall be the context URL that describes the resource, according to [OData-Protocol](#OData-Protocol).
-
-The context URL for a resource should be in the format:
-
-<pre><var>MetadataUrl</var>#<var>ResourceType</var></pre> 
- 
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
-| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>Many Redfish implementations concatenate the resource type namespace with a period (`.`) followed by the resource type. |
-
-For example, the following context URL specifies that the results show a single `ComputerSystem` resource:
-
-```json
-{
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    ...
-}
-```
-
-The context URL for a resource may be in one of the following formats:
- 
-<pre><var>MetadataUrl</var>#<var>ResourcePath</var>/$<var>entity</var></pre>
-
-or
-
-<pre><var>MetadataUrl</var>#<var>ResourceType</var>/$<var>entity</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>MetadataUrl</var></code> | The metadata URL of the service, such as `/redfish/v1/$metadata`. |
-| <code><var>ResourcePath</var></code> | The path from the service root to the singleton or resource collection that contains the resource. |
-| <code><var>ResourceType</var></code> | The fully qualified name of the unversioned resource type.<br/>While <code><var>ResourcePath</var></code> or <code><var>ResourceType</var></code> is allowed, services should use the <code><var>MetadataUrl</var>#<var>ResourceType</var></code> format for the `@odata.context` property values.<br/>Use <code><var>ResourceType</var></code> because the [OData-Protocol](#OData-Protocol) requires additional constraints when the response returns partial or expanded results that pose an additional burden on services. |
-| <code><var>entity</var></code> | The entity.  Defines whether the response is a single resource from either:<ul><li>An entity set.</li><li>A navigation property.</li></ul> |
-
-#### Resource identifier property
-
-Resources in a response shall include a unique `@odata.id` identifier property.  The value of the identifier property shall be the unique resource [URI](#uris)
-
-In JSON payloads, resource identifiers are strings that conform to the rules for RFC3986-defined URI paths.  See **3.3. Path** in [Uniform Resource Identifier (URI): Generic Syntax](https://www.ietf.org/rfc/rfc3986.txt).
-
-Represent resources in the same authority as the request URI according to the rules of `path-absolute`, which that specification defines.
-
-That is, they shall always start with a single forward slash (`/`).
-
-Resources within a different authority as the request URI shall start with a double-slash (`//`) followed by the authority and path to the resource.
-
-The resource identifier is the canonical URL for the resource.  Use it to retrieve or edit the resource, as appropriate.
-
-#### Type property
-
-All resources in a response shall include a `@odata.type` type property.  To support generic OData clients, all [structured properties](#structured-properties) in a response should include an `@odata.type` type property.  The `type` property value shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [OData $metadata document](#odata-metadata) and shall be in the format:
-
-<pre>#<var>Namespace</var>.<var>TypeName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The full namespace name of the Redfish Schema that defines the type.  For Redfish resources, the versioned namespace name. |
-| <code><var>TypeName</var></code> | The name of the resource type. |
-
-#### ETag property
-
-ETags enable clients to conditionally retrieve or update a resource.  Resources should include an `@odata.etag` ETag property.  For a resource, the value of the ETag property is the [ETag](#etags).
 
 #### Primitive properties
 
@@ -3352,111 +3574,8 @@ In these cases, clients can use the latest version of the external schema file a
 
 For example, if the latest version of `Resource_v1.xml` is `1.6.0`, a client can go backward from `Resource.v1_6_0`, to `Resource.v1_5_0`, to `Resource.v1_4_0`, and so on, until it finds the `Location` structured property definition.
 
-#### Actions property
 
-Represent available actions for a resource as individual properties nested under a single structured property on the `Actions` resource.
 
-##### Action representation
-
-Represent actions as a property nested under `Actions`.  Use the unique URI that identifies the action to name the action.
-
-This URI shall be in the format
-
-<pre>#<var>Namespace</var>.<var>ActionName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The namespace in the reference to the Redfish Schema where the action is defined.  For Redfish resources, this shall be the version-independent namespace. |
-| <code><var>ActionName</var></code> | The name of the action. |
-
-The client may use this fragment to identify the [action definition](#resource-actions) in the [referenced](#referencing-other-schemas) Redfish Schema document that is associated with the specified namespace.
-
-The property is a JSON object that contains a `target` property.  The `target` property defines the relative or absolute URL to invoke the action.  The JSON object for the action may contain a `title` property, which is a string that defines the action's name.
-
-The [OData JSON Format](#OData-JSON) specification defines the `target` and `title` properties.
-
-To specify the list of allowable values for a parameter, the client can use the [`AllowableValues`](#allowable-values) annotation to annotate the property for the available action.
-
-For example, the following property defines the `Reset` action in the `ComputerSystem` namespace:
-
-```json
-{
-    "#ComputerSystem.Reset": {
-        "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-        "title": "Computer System Reset",
-        "ResetType@Redfish.AllowableValues": [
-            "On",
-            "ForceOff",
-            "GracefulRestart",
-            "GracefulShutdown",
-            "ForceRestart",
-            "Nmi",
-            "ForceOn",
-            "PushPowerButton"
-        ]
-    },
-    ...
-}
-```
-
-Given this, the client could invoke a POST request to `/redfish/v1/Systems/1/Actions/ComputerSystem.Reset` with the following body:
-
-```json
-{
-    "ResetType": "On"
-}
-```
-
-##### Allowable values
-
-To specify the list of allowable values for a parameter, clients can use `AllowableValues` annotation to annotate the property for the action.
-
-To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
-
-#### Links property
-
-A resource's `Links` property [references](#reference-properties) other resources.
-
-The `Links` property shall be named `Links` and contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) that the Redfish Schema for that type defines.
-
-* For single-valued reference properties, the value of the property shall be the [single related resource ID](#reference-to-a-single-related-resource).
-* For collection-valued reference properties, the value of the property shall be the [array of related resource IDs](#array-of-references-to-related-resources).
-
-To navigate vendor-specific hyperlinks, the `Links` property shall also include an [OEM property](#oem-property).
-
-##### Reference to a single-related resource
-
-A reference to a single resource is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The name of this reference is the name of the relationship.  The value of this reference is the URI of the referenced resource.
-
-```json
-{
-    "Links": {
-        "ManagedBy": {
-            "@odata.id": "/redfish/v1/Chassis/Encl1"
-        }
-    }
-}
-```
-
-##### Array of references to related resources
-
-A reference to a set of zero or more related resources is an array of JSON objects.  The name of this reference is the name of the relationship.  Each member of the array is a JSON object that contains a single [resource-identifier-property](#resource-identifier-property).  The member's value is the URI of the referenced resource.
-
-```json
-{
-    "Links": {
-        "Contains": [{
-                "@odata.id": "/redfish/v1/Chassis/1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Encl1"
-            }
-        ]
-    }
-}
-```
 
 #### OEM property
 
@@ -3810,110 +3929,6 @@ The next fragment shows an example of how the previous schema and the "AnvilType
     ...
 }
 ~~~
-
-##### Oem property format and content
-
-Each property contained within the [Oem property](#oem-property) shall be a JSON object.  The name of the object (property) shall uniquely identify the OEM or organization that defines the properties contained by that object.  This is described in more detail in the following clause.  The OEM-specified object shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema.  The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
-
-The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
-
-##### Oem property naming
-
-The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
-DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
-
-Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
-
-The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
-
-There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a suborganization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
-
-The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
-
-
-##### URIs for OEM resources
-
-Companies, OEMs, and other organizations can define additional resources and link to them using a `NavigationProperty` from an [Oem property](#oem-property) found in a standard Redfish Resource.  In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources shall be in the form of:
-
-` *BaseUri*/Oem/*OemName*/*ResourceName*`
-
-where
-* *BaseUri* is the URI segment of the standard Redfish Resource where the "Oem" property is used.
-* *OemName* is the name of the OEM, that follows the same naming as defined in the [Oem property format and content section](#oem-property-format-and-content).
-* *ResourceName* is the name of the resource defined by the OEM.
-
-For example, if Contoso defined a new resource called "AccountServiceMetrics" to be linked via the "Oem" property found at the URI "/redfish/v1/AccountService", the OEM resource would have the URI "/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics".
-
-
-#### Oem property examples
-
-The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
-
-~~~json
-{
-    "Oem": {
-        "Contoso": {
-            "@odata.type": "#Contoso.v1_2_1.AnvilTypes1",
-            "slogan": "Contoso anvils never fail",
-            "disclaimer": "* Most of the time"
-        },
-        "Contoso_biz": {
-            "@odata.type": "#ContosoBiz.v1_1.RelatedSpeed",
-            "speed" : "ludicrous"
-        },
-        "EID_412_ASB_123": {
-            "@odata.type": "#OtherSchema.v1_0_1.powerInfoExt",
-            "readingInfo": {
-                "readingAccuracy": "5",
-                "readingInterval": "20"
-            }
-        },
-        "Contoso_customers_customerA": {
-            "@odata.type" : "#ContosoCustomer.v2015.slingPower",
-            "AvailableTargets" : [ "rabbit", "duck", "runner" ],
-            "launchPowerOptions" : [ "low", "medium", "eliminate" ],
-            "powerSetting" : "eliminate",
-            "targetSetting" : "rabbit"
-        }
-    },
-    ...
-}
-~~~
-
-##### OEM actions
-
-OEM-specific actions can be defined by defining actions bound to the Oem property of the [resource's Actions](#resource-actions) property type.
-
-~~~xml
-  <Action Name="Ping" IsBound="true">
-    <Parameter Name="ContosoType" Type="MyType.OemActions"/>
-  </Action>
-~~~
-
-Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
-
-~~~json
-{
-    "Actions": {
-        "Oem": {
-            "#Contoso.Ping": {
-                "target":"/redfish/v1/Systems/1/Actions/Oem/Contoso.Ping"
-            }
-        }
-    },
-    ...
-}
-~~~
-
-The URI of the OEM action in the "target" property shall be in the form of:
-
-` *ResourceUri*/Actions/Oem/*QualifiedActionName*`
-
-where
-* *ResourceUri* is the URI of the resource that supports invoking the action.
-* "Actions" is the name of the property containing the actions for a resource.
-* "Oem" is the name of the OEM property within the Actions property.
-* *QualifiedActionName* is the qualified name of the action, including namespace.
 
 
 
