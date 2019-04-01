@@ -1570,13 +1570,10 @@ Talk about @odata.id, pointing to another resource
 
 ### Settings Resource
 
-JEFFH: Combine sentences two and three.
-JEFFH: Rewrite sentence four.
-
-A Settings resource is used to represent the future intended state of a resource.  Some resources have properties that can be updated and the updates take place immediately.  For other resources, properties must be updated at a certain point in time, such as system reset.  When the service knows a priori that a resource can only be updated at a certain point in time, it uses a Settings resource to indicate this to the client in the form of the `@Redfish.Settings` payload annotation.  The Settings annotation contains a link to an subordinate resource with the same schema definition.  While the resource represents the current state, the Settings resource represents the future intended state.
+A Settings resource is used to represent the future intended state of a resource.  Some resources have properties that can be updated and the updates take place immediately; however some properties must be updated at a certain point in time, such as system reset.  While the resource represents the current state, the Settings resource represents the future intended state.  The service represents properties of a resource can only be updated at a certain point in time using a `@Redfish.Settings` payload annotation.  The Settings annotation contains a link to an subordinate resource with the same schema definition and the properties within the Settings resource contains the properties that are updated at a certain point in time.  
 
 For resources that support a future state and configuration, the response shall contain a property with the `@Redfish.Settings` annotation.  When a Settings annotation is used, the following conditions shall apply:
-* The resource linked to with the `@Redfish.Settings` annotation shall be of the same schema definition.
+* The Settings resource linked to current resource with the `@Redfish.Settings` annotation shall be of the same schema definition.
 * The Settings resource should be a subset of properties that can be updated.
 * The Settings resource shall not contain the `@Redfish.Settings` annotation.
 * The Settings resource may contain the `@Redfish.SettingsApplyTime` annotation.
@@ -1644,6 +1641,15 @@ Client software should be aware that when absent resources are later populated, 
 
 ### Registries
 
+Registries are used in Redfish to optimize data being transferred from a Redfish service.  
+There are three kinds of registries in Redfish: Message, Attribute and Privilege. 
+
+Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions. In registries, a identifier is used to retrieve more information about a given resource, event, message or other item. This can include other properties, property restrictions and the like. Registries are themselves resources.
+
+Redfish currently has 3 Registry types:
+* Message Registries.  These are the most common and are used to take a MessageId and other message information in order to construct a message that can be presented to an end user.   These are used in both eventing and in error responses to operations.  More information on how a Registry is used to construct messages can be found in the [Error responses](#error-responses) and [Eventing](#eventing) sections.  
+* BIOS Registries.  A BIOS registry is used to determine the semantics about each of the properties contained in a BIOS resource or the BIOS Settings resource.  Since BIOS information can vary from platform to platform, having a fixed schema for these values is problematic.  The registry contains not only a description of the properties but other information such as data type, allowable values and even user menu information. 
+* Privilege Registries.  These registries contain a mapping of the resources within the Redfish service and which privileges are allowed to perform the specified operations against those resource.  This information allows a client to determine which roles should have specific privileges and thus map accounts to those roles in order to perform the desired operations on Redfish resources.  For more information on how privileges relate to roles, see the [Privilege model/Authorization](#privilege-model/authorization) section.   
 
 ### Schema annotations
 
