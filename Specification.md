@@ -2426,10 +2426,10 @@ Example [Units of Measure annotation](#units-of-measure-annotation):
 
 Example [Expanded Resource annotation](#expanded-resource-annotation):
 ```xml
-  <Annotation Term="OData.AutoExpandReferences"/>
+  <Annotation Term="OData.AutoExpand"/>
 ```
 
-Example Insert Capabilities Annotation (showing POST is not allowed):
+Example [Insert Capabilities Annotation](#resource-capabilities-annotation) (showing POST is not allowed):
 ```xml
   <Annotation Term="Capabilities.InsertRestrictions">
     <Record>
@@ -2438,7 +2438,7 @@ Example Insert Capabilities Annotation (showing POST is not allowed):
   </Annotation>
 ```
 
-Example Update Capabilities Annotation (showing PATCH and PUT are allowed):
+Example [Update Capabilities Annotation](#resource-capabilities-annotation) (showing PATCH and PUT are allowed):
 ```xml
   <Annotation Term="Capabilities.UpdateRestrictions">
     <Record>
@@ -2448,7 +2448,7 @@ Example Update Capabilities Annotation (showing PATCH and PUT are allowed):
   </Annotation>
 ```
 
-Example Delete Capabilities Annotation (showing DELETE is allowed):
+Example [Delete Capabilities Annotation](#resource-capabilities-annotation) (showing DELETE is allowed):
 ```xml
   <Annotation Term="Capabilities.DeleteRestrictions">
     <Record>
@@ -2458,7 +2458,7 @@ Example Delete Capabilities Annotation (showing DELETE is allowed):
   </Annotation>
 ```
 
-Example Resource URI Patterns Annotation:
+Example [Resource URI Patterns Annotation](#resource-uri-patterns-annotation):
 ```xml
   <Annotation Term="Redfish.Uris">
     <Collection>
@@ -2472,6 +2472,190 @@ Example Resource URI Patterns Annotation:
 The file `Resource_v1.xml` contains all base definitions for Resources, Resource Collections, and common properties such as `Status`.
 
 The file `RedfishExtensions_v1.xml` contains the definitions for all Redfish types and annotations.
+
+### JSON Schema
+
+The [JSON Schema specification](#JSONSchema-Core) defines a JSON format for describing JSON payloads.  The following clause describes how Redfish uses JSON Schema in order to describe Resources and Resource Collections.
+
+#### File naming conventions for JSON Schema
+
+Redfish JSON Schema files shall be named using the [TypeName](#type-identifiers), following the format:
+
+  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
+
+For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
+
+#### JSON Schema format
+
+Each JSON Schema file contains a JSON object in order to describe [Resources](#resources), [Resource Collections](#resource-collections), or other definitions for the data model.  The following properties can be found in the JSON object:
+* `$id`: A reference to the URI where the schema file is published.
+* `$ref`: If the schema file describes a Resource or Resource Collection, this is a reference to the structural definition of the Resource or Resource Collection.
+* `$schema`: A URI to the Redfish schema extensions for JSON Schema, which can be found at `http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json`.
+* `copyright`: A copyright string.
+* `definitions`: Contains structures, enums, and other definitions defined by the schema.
+* `title`: If the schema file describes a Resource or Resource Collection, this shall be the matching [type identifier](#type-identifiers) for the Resource or Resource Collection.
+
+#### The definitions body in JSON Schema
+
+This clause describes the types of definitions that can be found in the `definitions` property of a Redfish JSON Schema file.
+
+##### Resource definitions in JSON Schema
+
+In order to satisfy [versioning](#versioning) requirements, the JSON Schema representation of each [Resource](#resources) has one unversioned schema file, and a set of versioned schema files.
+
+The unversioned definition of a Resource contains an `anyOf` statement.  This statement consists of an array of `$ref` properties, which point to the following:
+* The JSON Schema definition for a [reference property](#reference-properties).
+* The versioned definitions of the Resource.
+
+The unversioned definition of a Resource also uses `uris` property it express the [allowable URIs for the resource](#resource-uri-patterns-annotation), as well as the `deletable`, `insertable`, and `updatable` properties to express the [capabilities of the resource](#resource-capabilities-annotation).
+
+Example unversioned Resource definition in JSON Schema:
+
+```json
+{
+    "ComputerSystem": {
+        "anyOf": [
+            {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
+            },
+            {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_0.json#/definitions/ComputerSystem"
+            },
+            {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_1.json#/definitions/ComputerSystem"
+            },
+            {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_6_0.json#/definitions/ComputerSystem"
+            }
+        ],
+        "deletable": true,
+        "description": "The ComputerSystem schema represents a general purpose machine or system.",
+        "insertable": false,
+        "longDescription": "This resource shall be used to represent resources that represent a computing system.",
+        "updatable": true,
+        "uris": [
+            "/redfish/v1/Systems/{ComputerSystemId}"
+        ]
+    },
+    ...
+}
+```
+
+The versioned definition of a Resource contains the property definitions for the given version of the Resource.
+
+##### Enumerations in JSON Schema
+
+Definitions for enumerations can consist of the following properties:
+* `enum`: A string array that contains the possible enumeration values.
+* `enumDescriptions`: An object that contains the [descriptions](#description-annotation) for each of the enumerations as name-value pairs.
+* `enumLongDescriptions`: An object that contains the [long descriptions](#long-description-annotation) for each of the enumerations as name-value pairs.
+* `type`: Since all enumerations in Redfish are strings, the `type` property always has the value `string`.
+
+Example enumeration definition in JSON Schema:
+
+```json
+{
+    "IndicatorLED": {
+        "enum": [
+            "Lit",
+            "Blinking",
+            "Off"
+        ],
+        "enumDescriptions": {
+            "Blinking": "The Indicator LED is blinking.",
+            "Lit": "The Indicator LED is lit.",
+            "Off": "The Indicator LED is off."
+        },
+        "enumLongDescriptions": {
+            "Blinking": "This value shall represent the Indicator LED is in a blinking state where the LED is being turned on and off in repetition.",
+            "Lit": "This value shall represent the Indicator LED is in a solid on state.",
+            "Off": "This value shall represent the Indicator LED is in a solid off state."
+        },
+        "type": "string"
+    },
+    ...
+}
+```
+
+##### Actions in JSON Schema
+
+Versioned definitions of [Resources](#resources) contain a definition called `Actions`.  This definition is a container with a set of properties that point to the different [actions](#post-action) supported by the resource.
+
+Example `Actions` definition:
+```json
+{
+    "Actions": {
+        "additionalProperties": false,
+        "description": "The available actions for this resource.",
+        "longDescription": "This type shall contain the available actions for this resource.",
+        "properties": {
+            "#ComputerSystem.Reset": {
+                "$ref": "#/definitions/Reset"
+            }
+        },
+        "type": "object"
+    },
+    ...
+}
+```
+
+Another definition within the same schema file is used to describe the action itself.  This definition contains a property called `parameters` to describe the client request body.  It also contains property definitions for the `target` and `title` properties shown in service response payloads for the Resource.
+
+Example definition of an action:
+```json
+{
+    "Reset": {
+        "additionalProperties": false,
+        "description": "This action is used to reset the system.",
+        "longDescription": "This action shall perform a reset of the ComputerSystem.",
+        "parameters": {
+            "ResetType": {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ResetType",
+                "description": "The type of reset to be performed.",
+                "longDescription": "This parameter shall define the type of reset to be performed."
+            }
+        },
+        "properties": {
+            "target": {
+                "description": "Link to invoke action",
+                "format": "uri",
+                "type": "string"
+            },
+            "title": {
+                "description": "Friendly action name",
+                "type": "string"
+            }
+        },
+        "type": "object"
+    },
+    ...
+}
+```
+
+#### JSON Schema properties used by Redfish
+
+The following JSON Schema properties are used to provide [schema annotations](#schema-annotations) for Redfish JSON Schema:
+
+* `description` and `enumDescriptions` are used for the [Description annotation](#description-annotation).
+* `longDescription` and `enumLongDescriptions` are used for the [Long Description annotation](#long-description-annotation).
+* `additionalProperties` is used for the [Additional Properties annotation](#additional-properties-annotation).
+* `readonly` is used for the [Permissions annotation](#permissions-annotation).
+* `required` is used for the [Required annotation](#required-annotation).
+* `requiredOnCreate` is used for the [Required on Create annotation](#required-on-create-annotation).
+* `units` is used for the [Units of Measure annotation](#units-of-measure-annotation).
+* `autoExpand` is used for the [Expanded Resource annotation](#expanded-resource-annotation).
+* `deletable`, `insertable`, and `updatable` are used for the [Resource Capabilities Annotation](#resource-capabilities-annotation).
+* `uris` is used for the [Resource URI Patterns Annotation](#resource-uri-patterns-annotation).
+
+#### Core JSON Schema files
+
+The file `redfish-error.v1_0_0.json` contains the payload definition of the [Redfish error response](#error-responses).
+
+The file `redfish-schema-v1.json` contains extensions to the JSON Schema used to define Redfish JSON Schema files.
+
+The file `Resource.json` and its subsequent versioned definitions contain all base definitions for Resources, Resource Collections, and common properties such as `Status`.
+
+### OpenAPI Schema
 
 ### Schema modification rules
 
@@ -3791,13 +3975,7 @@ The client can get the definition of the annotation from the [OData $metadata do
 
 
 
-##### JSON Schema file naming
 
-Redfish JSON Schema files shall be named using the [Type identifiers](#type-identifiers), following the format:
-
-  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
-  
-For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
 
 ##### OpenAPI file naming
 
@@ -3862,14 +4040,6 @@ where
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
 An example of a valid type namespace might be "ComputerSystem.v1_0_0", and an example of a corresponding Type URI would be "#ComputerSystem.v1_0_0.ComputerSystem".
-
-#### Type identifiers in JSON Schema
-
-In JSON Schema definitions for Redfish schema, the JSON Schema-defined "title" property shall contain the Type URI used to identify the schema.
-
-For example, the "title" property for the ComputerSystem schema would be:
-
- ` "title": "#ComputerSystem.v1_0_0.ComputerSystem"`
 
 #### Type identifiers in JSON
 
