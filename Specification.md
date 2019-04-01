@@ -1443,53 +1443,88 @@ A Resource Collection is a set of resources that share the same schema definitio
 
 ### OEM resources
 
-OEMs and other third parties can extend the Redfish data model by creating new resource types.  This is accomplished by defining an OEM schema for each resource type, and connecting instances of those resources to the resource tree.  Any OEM resource accessed from hyperlinks within the Redfish resource tree shall follow the Redfish resource definitions and structure.  OEMs are encouraged to follow the design tenets and naming conventions in this specification when defining OEM resources or properties.
+OEMs and other third parties can extend the Redfish data model by creating new resource types.  This is accomplished by defining an OEM schema for each resource type, and connecting instances of those resources to the resource tree.  
 
-#### OEM resource and schema naming
+Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for standard Redfish resources using the Oem property in resources, the [Links Property](#links-property), and actions.
 
-JEFFA: Move to common naming section
-
-To avoid naming collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the resource name.  For example, "ContosoDisk" would not conflict with a "Disk" resource or another OEM's disk-related resource.
+While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.  OEMs are encouraged to follow the design tenets and naming conventions in this specification when defining OEM resources or properties.
 
 ### Properties
 
-JEFFA: Pull out references to schema files.  Make sub-sections for Resources and Resource Collections.
+Every property included in a Redfish response payload shall be defined in the schema for that resource.  The following attributes apply to all property definitions:
 
-Redfish defines two core schema files: 
-
-* `Resource_v1.xml`
-* `RedfishExtensions_v1.xml`
-
-All other Redfish-published schema files leverage these files in some form.
-
-The `Resource_v1.xml` schema file contains the base definitions for all Redfish resources, which include:
-
-* The base type definitions for all resources:
-    * Resources inherit from `Resource.v1_0_0.Resource`
-    * Resource Collections inherit from `Resource.v1_0_0.ResourceCollection`
-
-* Common properties found in all resources:
-    * `Id`. The unique identifier for a resource in a resource collection.
-    * `Name`. The string name for the resource or resource collection.
-    * `Description`. The string description for the resource or resource collection.
-    * `Oem`. An empty object that vendors are allowed to fill with custom properties.
-
-* Common structures and definitions leveraged by particular resources:
-    * `Status`. The health information for a resource.
-    * `Location`. The information about how a user can find the physical equipment.
-    * Common enumerated lists. For example, `IndicatorLED`, `PowerState`, and `ResetType`.
-
-The `RedfishExtensions_v1.xml` schema file contains `Annotation` elements that enhance documentation and rules about payloads.
-
+* Property names in the request and response payload shall match the casing of the `Name` attribute value in the defining schema.
+* Required properties shall always be returned in a response.
+* Properties not returned from a GET operation indicate that the property is not supported by the implementation.
+* If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then the value of `null` is an acceptable value if supported by the schema definition.
 * A service may implement a writable property as read-only.
 
-Property names in the JSON request and response payload shall match the casing of the `Name` attribute value in the defining schema.
+### Common Redfish resource properties
 
-Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a `false` value.
+This clause contains a set of common properties across all Redfish resources. The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a `true` value, or no nullable attribute, can accept null values.
+Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this is in Resource_v1.xml.  For JSON Schema representations, this is in Resource.v1_0_0.json.  For OpenAPI representations, this is in Resource.v1_0_0.yaml.
 
-If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then the value of `null` is an acceptable values in most cases.  Properties not returned from a GET operation indicates that the property is not supported by the implementation.
+#### @odata.id
+
+TODO: This is an annotation, but is a required property - mention here?
+
+#### @odata.type
+
+TODO: This is an annotation, but is a required property - mention here?
+
+#### Id<a id="id-property"></a>
+
+The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.  The Id property is required and shall be included in every resoruce response.
+
+#### Name<a id="name-property"></a>
+
+The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.  The Name property is required and shall be included in every resource response.
+
+#### Description<a id="description-property"></a>
+
+The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
+
+#### MemberId<a id="memberid-property"></a>
+
+The MemberId property uniquely identifies an object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.  The MemberId property is required and shall be included in every object-type array property.
+
+#### Links
+
+The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resources schema definition.  All associated reference properties defined for a resource shall be nested under the Links Property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+
+#### Actions
+
+The [Actions](#actions-property) property contains the actions supported by a resource.
+
+#### Oem
+
+The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+
+#### Status
+
+The Status property represents the status of a resource.
+
+The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.
+
+#### RelatedItem
+
+The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or subelements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+
+#### Location
+
+TODO: Fill this out
+
+TODO: Anything else in Resource???
+
+	 
+### Common properties for Resource Collections
+
+For Resource Collection resources, a common structure is used for all types of collections.  The Resource Collection response includes the required properties `Id` and `Name`. 
+
+#### Members
+
+The [Members](#members-property) property of a Resource Collection identifies the members of the collection.  The Members property is required and shall be returned in the response for any Resource Collection.
 
 ### Resource, schema, and property naming conventions 
 
@@ -1520,6 +1555,13 @@ For properties that have units, or other special meaning, a unit identifier shou
 * Counts of items (Count), (e.g., `ProcessorCount`, `FanCount`)
 * The State of a resource (State) (e.g., `PowerState`)
 * State values where "work" is being done end in (ing) (e.g., `Applying`, `ClearingLogic`)
+
+
+#### OEM resource and schema naming
+
+JEFFA: Move to common naming section
+
+To avoid naming collisions with current or future standard Redfish schema files, third parties defining Redfish schemas should prepend an organization name to the resource name.  For example, "ContosoDisk" would not conflict with a "Disk" resource or another OEM's disk-related resource.
 
 
 #### Reference properties
@@ -3730,11 +3772,6 @@ NOTE: Refer to the [Security](#security-details) clause for security implication
 
 JEFFA to migrate below this line
 
-#### Resource extensibility
-
-Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for common Redfish resources using the Oem property on resources, the [Links Property](#links-property), and actions.
-
-While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
 ##### Oem property
 
@@ -3872,52 +3909,7 @@ where
 * "Oem" is the name of the OEM property within the Actions property.
 * *QualifiedActionName* is the qualified name of the action, including namespace.
 
-### Common Redfish resource properties
 
-This clause contains a set of common properties across all Redfish resources. The property names in this clause shall not be used for any other purpose, even if they are not implemented in a particular resource.
-
-Common properties are defined in the base "Resource" Redfish Schema.  For OData Schema representations, this is in Resource_v1.xml.  For JSON Schema representations, this is in Resource.v1_0_0.json.  For OpenAPI representations, this is in Resource.v1_0_0.yaml.
-
-#### Id<a id="id-property"></a>
-
-The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
-
-#### Name<a id="name-property"></a>
-
-The Name property is used to convey a human-readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a Resource Collection.
-
-#### Description<a id="description-property"></a>
-
-The Description property is used to convey a human-readable description of the resource.  The type of the Description property shall be string.
-
-#### MemberId<a id="memberid-property"></a>
-
-The MemberId property of an object within a resource uniquely identifies the object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.
-
-#### Status
-
-The Status property represents the status of a resource.
-
-The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.
-
-#### Links
-
-The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the Links Property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
-
-#### Members
-
-The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
-
-#### RelatedItem
-The [RelatedItem](#relateditem) property represents hyperlinks to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or subelements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
-
-#### Actions
-
-The [Actions](#actions-property) property contains the actions supported by a resource.
-
-#### OEM
-
-The [Oem](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
 
 ### Redfish resources
 
