@@ -1444,7 +1444,6 @@ Responses for a single resource shall contain the following properties:
 * [`Id`](#id-property)
 * [`Name`](#name-property)
 
-
 Responses may also contain other properties defined within the schema for that resource ['Type'](#type-property).  Responses shall not include any properties not defined by that resource type.
 
 ### Resource Collections
@@ -1453,19 +1452,19 @@ A Resource Collection is a set of resources that share the same schema definitio
 
 Resource collection responses shall contain the following properties:
 
-* The [`Name` property](#name-property)
-* The [Resource Identifier property](#resource-identifier-property)
-* The [`Type` property](#type-property)
+* [`Name`](#name-property)
+* The [Resource identifier](#resource-identifier) property
+* The [Type](#type-property) property
 * An array of [`Members`](#members-property)
-* A [resource count](#count-property)
+* The [resource count](#count-property) property
 
 Responses for resource collections may contain the following properties:
 
-* The [`Description` property](#description-property)
-* The [`Context` property](#context-property)
-* An [`Etag` property](#etag-property)
-* A [`Next Link` property](#next-link-property-and-partial-results) for partial results
-* An [`OEM` property](#oem-property)
+* [`Description`](#description-property)
+* The [Context](#context-property) property
+* [`Etag`](#etag-property)
+* The [Next Link](#next-link-property-and-partial-results) property for partial results
+* [`OEM`](#oem-property)
 
 Responses for resource collections shall not contain any property that this section of this specification does not explicitly define.
 
@@ -1583,18 +1582,32 @@ The `Description` property is used to convey a human-readable description of the
 
 The `MemberId` property uniquely identifies an object within an array that contains it.  The value of MemberId shall be unique across the array within the resource.  The MemberId property shall be included in every object-type array property.
 
-#### Links
+#### Count property
 
-The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resources schema definition.  All associated reference properties defined for a resource shall be nested under the Links Property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The count property defines the total number of resources, or members, that are available in a Resource Collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the resource collection.  The `$top` or `$skip` [query parameters](#query-parameters) do not affect this count.
+
+#### Members property
+
+The [Members](#members-property) property of a Resource Collection identifies the members of the collection.  The Members property is required and shall be returned in the response for any Resource Collection.  The Members property shall be an array of JSON object named `Members`.  The `Members` property shall not be null.  Empty collections shall be an empty JSON array.
+
+The Redfish Schema document that describes the containing type defines the type of each JSON object in the array.
+
+#### Next Link property and partial results
+
+Responses may contain a subset of the members of the full resource collection.  For partial resource collections, the response shall include a Next Link property named `Members@odata.nextLink`.
+
+The value of the Next Link property shall be an opaque URL to a resource, with the same `@odata.type`, which contains the next set of partial members.  The Next Link property shall only be present if the number of Members in the resource collection is greater than the number of Members returned, and if the payload does not represent the end of the requested resource collection.
+
+The [`count` property](#count-property) value is the total number of resources available if the client enumerates all pages of the resource collection.
 
 #### Links property
 
-A resource's `Links` property [references](#reference-properties) other resources.
+The [Links Property](#links-property) represents the hyperlinks associated with the resource, as defined by that resource's schema definition.  All associated [reference properties](#reference-properties) defined for a resource shall be nested under the Links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
-The `Links` property shall be named `Links` and contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) that the Redfish Schema for that type defines.
+The Links property shall be named `Links` and contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) that the Redfish Schema for that type defines.
 
 * For single-valued reference properties, the value of the property shall be the [single related resource ID](#reference-to-a-single-related-resource).
-* For collection-valued reference properties, the value of the property shall be the [array of related resource IDs](#array-of-references-to-related-resources).
+* For multiple-valued reference properties, the value of the property shall be the [array of related resource IDs](#array-of-references-to-related-resources).
 
 To navigate vendor-specific hyperlinks, the `Links` property shall also include an [OEM property](#oem-property).
 
@@ -1693,7 +1706,6 @@ To specify the list of allowable values for a parameter, clients can use `Allowa
 
 To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
 
-
 #### Oem
 
 The [Oem](#oem-property) property is used for OEM extensions as defined in [Resource Extensibility](#resource-extensibility).
@@ -1714,14 +1726,45 @@ TODO: Fill this out
 
 TODO: Anything else in Resource???
 
-	 
-### Common properties for Resource Collections
+#### Message object
 
-For Resource Collection resources, a common structure is used for all types of collections.  The Resource Collection response includes the required properties `Id` and `Name`. 
+A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
 
-#### Members
+A `Message` object is a JSON object with the following properties:
 
-The [Members](#members-property) property of a Resource Collection identifies the members of the collection.  The Members property is required and shall be returned in the response for any Resource Collection.
+| Property | Type | Required | Defines |
+|:---|:---|:---|:---|
+| `MessageId` | String | Required | The error or message, which is not to be confused with the HTTP status code.<br/>Clients can use this code to access a detailed message from a message registry. |
+| `Message` | String | Required | The human-readable error message that indicates the semantics associated with the error.<br/>This shall be the complete message, and not rely on substitution variables. |
+| `RelatedProperties` | An array of JSON pointers | Optional | The properties in a JSON payload that the message describes. |
+| `MessageArgs` | An array of strings | Optional | The substitution parameter values for the message.<br/>If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
+| `Severity` | String | Optional | The severity of the error. |
+| `Resolution` | String | Optional | The recommended actions to take to resolve the error. |
+
+Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
+
+`MessageIds` identify specific messages that a message registry defines.
+
+The `MessageId` property value shall be in the format:
+
+<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
+
+where
+
+| Variable | Description |
+|:--|:--|
+| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
+| <code><var>MajorVersion</var></code> | A positive integer. The major version of the registry. |
+| <code><var>MinorVersion</var></code> | A positive integer. The minor version of the registry. |
+| <code><var>MessageKey</var></code> | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
+
+To search the message registry for a corresponding message, the client can use the `MessageId`.
+
+The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
+
+The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
+
+When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
 
 ### Resource, schema, and property naming conventions 
 
@@ -3719,23 +3762,7 @@ where
 | <code><var>CollectionResourceType</var></code> | The fully qualified name of the unversioned type of resources in the resource collection. |
 | <code><var>CollectionResourcePath</var></code> | The path from the service root to the resource collection. |
 
-#### Count property
 
-The `count` property defines the total number of resources, or members, that are available in the resource collection.  The count property shall be named `Members@odata.count` and its value shall be the total number of members available in the resource collection.  The `$top` or `$skip` [query parameters](#query-parameters) do not affect this count.
-
-#### Members property
-
-The `Members` property defines a collection of resources as a array of JSON objects. 
-
-The Redfish Schema document that describes the containing type defines the type of each JSON object in the array.  The name of the property representing the members of the collection shall be `Members`.  The `Members` property shall not be null.  Empty collections shall be an empty JSON array.
-
-#### Next Link Property and partial results
-
-Responses may contain a subset of the members of the full resource collection.  For partial resource collections, the response includes a `Next Link` property named `Members@odata.nextLink`.  
-
-The value of the `Next Link` property shall be an opaque URL to a resource, with the same `@odata.type`, which contains the next set of partial members.  The `Next Link` property shall only be present if the number of `Members` in the resource collection is greater than the number of members returned, and if the payload does not represent the end of the requested resource collection.
-
-The [`count` property](#count-property) value is the total number of resources available if the client enumerates all pages of the resource collection.
 
 #### Additional annotations
 
@@ -3754,46 +3781,6 @@ Services shall limit the annotation usage to the `odata`, `Redfish`, and `Messag
 
 The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations that the Redfish namespace defines.
 
-
-#### Message object
-
-A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
-
-A `Message` object is a JSON object with the following properties:
-
-| Property | Type | Required | Defines |
-|:---|:---|:---|:---|
-| `MessageId` | String | Required | The error or message, which is not to be confused with the HTTP status code.<br/>Clients can use this code to access a detailed message from a message registry. |
-| `Message` | String | Required | The human-readable error message that indicates the semantics associated with the error.<br/>This shall be the complete message, and not rely on substitution variables. |
-| `RelatedProperties` | An array of JSON pointers | Optional | The properties in a JSON payload that the message describes. |
-| `MessageArgs` | An array of strings | Optional | The substitution parameter values for the message.<br/>If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
-| `Severity` | String | Optional | The severity of the error. |
-| `Resolution` | String | Optional | The recommended actions to take to resolve the error. |
-
-Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
-
-`MessageIds` identify specific messages that a message registry defines.
-
-The `MessageId` property value shall be in the format:
-
-<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
-| <code><var>MajorVersion</var></code> | A positive integer. The major version of the registry. |
-| <code><var>MinorVersion</var></code> | A positive integer. The minor version of the registry. |
-| <code><var>MessageKey</var></code> | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
-
-To search the message registry for a corresponding message, the client can use the `MessageId`.
-
-The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
-
-The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
-
-When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
 
 
 
