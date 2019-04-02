@@ -52,7 +52,7 @@
         </Annotation>
         <Annotation Term="Redfish.Uris">
           <Collection>
-            <String>/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeDevices</String>
+            <String>/redfish/v1/Chassis/{ChassisId}/PCIeDevices</String>
           </Collection>
         </Annotation>
         <NavigationProperty Name="Members" Type="Collection(PCIeDevice.PCIeDevice)">
