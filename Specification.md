@@ -838,7 +838,6 @@ Then, the ResetActionInfo resource would contain a more detailed description of 
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
     "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
     "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
     "Id": "ResetActionInfo",
@@ -899,7 +898,6 @@ Services that support the "@Redfish.OperationApplyTime" annotation for create an
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#VolumeCollection.VolumeCollection",
     "@odata.id": "/redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes",
     "@odata.type": "#VolumeCollection.VolumeCollection",
     "Name": "Storage Volume Collection",
@@ -937,7 +935,6 @@ Services that support the "@Redfish.OperationApplyTime" annotation for a given a
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/1",
     "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
     "Actions": {
@@ -1427,7 +1424,6 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
@@ -1467,7 +1463,6 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
@@ -2793,7 +2788,6 @@ The example payload below shows a stream containing a single event with the "id"
 ```
 id: 1
 data:{
-data:    "@odata.context": "/redfish/v1/$metadata#Event.Event",
 data:    "@odata.type": "#Event.v1_1_0.Event",
 data:    "Id": "1",
 data:    "Name": "Event Array",
@@ -2833,7 +2827,6 @@ The example payload below shows a stream containing a metric report with the "id
 id: 127
 data:{
 data:    "@odata.id": "/redfish/v1/TelemetryService/MetricReports/AvgPlatformPowerUsage",
-data:    "@odata.context": "/redfish/v1/$metadata#MetricReport.MetricReport",
 data:    "@odata.type": "#MetricReport.v1_0_0.MetricReport",
 data:    "Id": "AvgPlatformPowerUsage",
 data:    "Name": "Average Platform Power Usage metric report",
@@ -3001,7 +2994,6 @@ Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 
 {
-    "@odata.context": "/redfish/v1/$metadata#Session.Session",
     "@odata.id": "/redfish/v1/SessionService/Sessions/1",
     "@odata.type": "#Session.v1_0_0.Session",
     "Id": "1",
