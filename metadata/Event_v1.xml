@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Event  v1.3.2-->
+<!--# Redfish Schema:  Event  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -88,9 +88,9 @@
             </Collection>
           </Annotation>
         </Member>
-        <Member Name="RegistryOrResource">
-          <Annotation Term="OData.Description" String="The event is based on a Registry or Resource, not an EventType."/>
-          <Annotation Term="OData.LongDescription" String="Events of type RegistryOrResource shall be sent to a client in accordance with subscriptions to RegistryPrefixex or ResourceTypes."/>
+        <Member Name="Other">
+          <Annotation Term="OData.Description" String="As of Redfish Specification v1.6, EventType has been deprecated. The event is therefore based on a Registry or Resource, not an EventType."/>
+          <Annotation Term="OData.LongDescription" String="Events of type Other shall be sent to a client in accordance with subscriptions to RegistryPrefixex or ResourceTypes."/>
           <Annotation Term="Redfish.Revisions">
             <Collection>
               <Record>
@@ -394,7 +394,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_4_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
-      <Annotation Term="OData.Description" String="This version was created to add the RegistryOrResource enumeration value to EventType."/>
+      <Annotation Term="OData.Description" String="This version was created to add the 'Other' enumeration value to EventType."/>
       <EntityType Name="Event" BaseType="Event.v1_3_2.Event"/>
     </Schema>
 
