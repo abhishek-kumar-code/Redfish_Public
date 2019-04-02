@@ -508,18 +508,16 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_5_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
-      <Annotation Term="OData.Description" String="This version was created to add AccountLockoutCounterResetEnabled. Additionally, it was created to update the longdescription of AccountLockoutCounterResetAfter and AccountLockoutDuration."/>
+      <Annotation Term="OData.Description" String="This version was created to add AccountLockoutCounterResetEnabled.  Additionally, it was created to update the long description of AccountLockoutCounterResetAfter and AccountLockoutDuration."/>
 
       <EntityType Name="AccountService" BaseType="AccountService.v1_4_1.AccountService">
-	
         <Property Name="AccountLockoutCounterResetEnabled" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The value indicates whether the threshold counter will be reset after AccountLockoutCounterResetAfter expires."/>
-          <Annotation Term="OData.LongDescription" String="This property indicates whether the threshold counter will be reset after the AccountLockoutCounterResetAfter has expired.  Setting the vlaue to false indicates that only a successful login will reset the threshold counter.  In addition, if the user reaches the limit specified in AccountLockoutThreshold, the account will be locked out indefinitely and only a reset by administrator will clear the threshold counter.  If this property is absent the value shall be assumed to be true."/>
+          <Annotation Term="OData.LongDescription" String="This property indicates whether the threshold counter shall be reset after the AccountLockoutCounterResetAfter has expired.  Setting the value to false shall indicate that only a successful login will reset the threshold counter.  In addition, if the user reaches the limit specified in AccountLockoutThreshold, the account shall be locked out indefinitely and only a reset by administrator shall clear the threshold counter.  If this property is absent the value shall be assumed to be true."/>
         </Property>
-	
       </EntityType>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
