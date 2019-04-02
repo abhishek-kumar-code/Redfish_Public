@@ -1300,9 +1300,9 @@
 
       <ComplexType Name="ProcessorSummary" BaseType="ComputerSystem.v1_5_0.ProcessorSummary">
         <NavigationProperty Name="Metrics" Type="ProcessorMetrics.ProcessorMetrics">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="A reference to the Metrics associated with all Processors in this system."/>
-            <Annotation Term="OData.LongDescription" String="This property shall be a reference to the Metrics associated with all Processors in this system."/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Metrics associated with all Processors in this system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to the Metrics associated with all Processors in this system."/>
         </NavigationProperty>
       </ComplexType>
     </Schema>
