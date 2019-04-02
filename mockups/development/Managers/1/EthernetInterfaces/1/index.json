@@ -38,8 +38,7 @@
         "UseDNSServers": true,
         "UseDomainName": false,
         "UseNTPServers": false,
-        "UseRapidCommit": false,
-        "FallbackAddress": "Static"
+        "UseRapidCommit": false
     },
     "IPv4Addresses": [
         {
