@@ -62,7 +62,7 @@
         <Property Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the message substitution arguments for the specific message referenced by the MessageId and shall only be included if the MessageId is present. Number and integer type arguments shall be converted to strings."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the message substitution arguments for the specific message referenced by the MessageId and shall only be included if the MessageId is present.  Number and integer type arguments shall be converted to strings."/>
         </Property>
         <Property Name="Severity" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
