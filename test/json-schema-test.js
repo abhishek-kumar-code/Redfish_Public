@@ -3,6 +3,7 @@ var glob = require('glob');
 var jsonlint = require('jsonlint');
 var fs = require('fs');
 var Validator = require('jsonschema').Validator;
+const config = require('config');
 
 function isValidJSON(txt)
 {
@@ -62,7 +63,7 @@ function testJSONSchema(schema)
 }
 
 describe('JSON Schema', function() {
-  let schemas = glob.sync('json-schema/*.json');
+  let schemas = glob.sync(config.get('Redfish.JsonSchemaFilePath'));
   schemas.forEach(testJSONSchema);
 });
 
