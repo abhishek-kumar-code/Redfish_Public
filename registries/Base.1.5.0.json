@@ -545,7 +545,7 @@
             "ParamTypes": [
                 "string"
             ],
-            "Resolution": "Change the password for this account using a PATCH to the Password property at the URI provided."
+            "Resolution": "Change the password for this account using a PATCH to the 'Password' property at the URI provided."
         }
     }
 }
