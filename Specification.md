@@ -108,7 +108,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html](https://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html "https://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html")
 * <a id="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html](https://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html "https://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html")
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml](https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml "https://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
-* <a id="OpenAPI-Spec">The OpenAPI Specification</a> [https://github.com/OAI/OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification "https://github.com/OAI/OpenAPI-Specification")
+* <a id="OpenAPI-Spec">The OpenAPI Specification</a> [https://github.com/OAI/OpenAPI-Specification](https://swagger.io/specification/ "https://swagger.io/specification/")
 * <a id="SSDP">Simple Service Discovery Protocol/1.0 Operating without an Arbiter</a>. 28 October 1999. [https://tools.ietf.org/html/draft-cai-ssdp-v1-03](https://tools.ietf.org/html/draft-cai-ssdp-v1-03 "https://tools.ietf.org/html/draft-cai-ssdp-v1-03")
 * <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [https://www.snia.org/tech_activities/standards/curr_standards/tls](https://www.snia.org/tech_activities/standards/curr_standards/tls "https://www.snia.org/tech_activities/standards/curr_standards/tls")
 * <a id="UCUM">The Unified Code for Units of Measure</a>. [https://www.unitsofmeasure.org/ucum.html](https://www.unitsofmeasure.org/ucum.html "https://www.unitsofmeasure.org/ucum.html")
@@ -2055,7 +2055,7 @@ All Redfish schemas, registries, dictionaries, and profiles published or re-publ
 Individual resources and their dependent types and actions are defined within a Redfish schema document.  This clause describes how these documents are constructed in the following formats:
 * [OData Common Schema Definition Language](#odata-common-schema-definition-language)
 * [JSON Schema](#json-schema)
-* [OpenAPI Schema](#openapi-schema)
+* [OpenAPI](#openapi)
 
 ### OData Common Schema Definition Language
 
@@ -2392,13 +2392,17 @@ The [JSON Schema specification](#JSONSchema-Core) defines a JSON format for desc
 
 #### File naming conventions for JSON Schema
 
-Redfish JSON Schema files shall be named using the [TypeName](#type-identifiers), following the format:
+Versioned Redfish JSON Schema files shall be named using the [TypeName](#type-identifiers), following the format:
 
   *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
 
 For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
 
-MIKER: Add unversioned files
+Unversioned Redfish JSON Schema files shall be named using the [TypeName](#type-identifiers), following the format:
+
+  *ResourceTypeName.json*
+
+For example, the unversioned definition of the Chassis schema would be named "Chassis.json".
 
 #### Core JSON Schema files
 
@@ -2572,7 +2576,238 @@ The following JSON Schema properties are used to provide [schema annotations](#s
 * `deletable`, `insertable`, and `updatable` are used for the [Resource Capabilities Annotation](#resource-capabilities-annotation).
 * `uris` is used for the [Resource URI Patterns Annotation](#resource-uri-patterns-annotation).
 
-### OpenAPI Schema
+### OpenAPI
+
+The [OpenAPI specification](#OpenAPI-Spec) defines a format for describing JSON payloads, as well as the set of URIs a client is allowed to access on a service.  The following clause describes how Redfish uses OpenAPI in order to describe Resources and Resource Collections.
+
+#### File naming conventions for OpenAPI Schema
+
+Versioned Redfish OpenAPI files shall be named using the [TypeName](#type-identifiers), following the format:
+
+  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.yaml*
+
+For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.yaml".
+
+Unversioned Redfish OpenAPI files shall be named using the [TypeName](#type-identifiers), following the format:
+
+  *ResourceTypeName.yaml*
+
+For example, the unversioned definition of the Chassis schema would be named "Chassis.yaml".
+
+#### Core OpenAPI Schema files
+
+The file `odata-v4.yaml` contains the definitions for common OData properties.
+
+The file `openapi.yaml` contains the URI paths and their respective payload structures.
+
+The file `Resource.yaml` and its subsequent versioned definitions contain all base definitions for Resources, Resource Collections, and common properties such as `Status`.
+
+#### openapi.yaml
+
+The YAML file `openapi.yaml` is the starting point for clients to understand the construct of the service.  It contains the following properties:
+* `components`: Contains global definitions.  For Redfish, this is used to contain the format of the [Redfish error response](#error-responses).
+* `info`: A structure consisting of information about what the `openapi.yaml` is describing, such as the author of the file and any contact information.
+* `openapi`: The version of OpenAPI the document follows.
+* `paths`: The URIs supported by the document, along with possible methods, response bodies, and request bodies.
+
+The `paths` property contains an array of the [possible URIs](#resource-uri-patterns-annotation).  For each URI, it also lists the [possible methods](#resource-capabilities-annotation).  For each method, it lists the possible response bodies and request bodies.
+
+Example `paths` entry for a Resource:
+```yaml
+  /redfish/v1/Systems/{ComputerSystemId}:
+    get:
+      parameters:
+      - description: The value of the Id property of the ComputerSystem resource
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_6_0.yaml#/components/schemas/ComputerSystem
+          description: The response contains a representation of the ComputerSystem
+            resource
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+```
+
+Example `paths` entry for an action:
+```yaml
+  /redfish/v1/Systems/{ComputerSystemId}/Actions/ComputerSystem.Reset:
+    post:
+      parameters:
+      - description: The value of the Id property of the ComputerSystem resource
+        in: path
+        name: ComputerSystemId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_6_0.yaml#/components/schemas/ResetRequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: The response contains the results of the Reset action
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: http://redfish.dmtf.org/schemas/v1/Task.v1_4_0.yaml#/components/schemas/Task
+          description: Accepted; a Task has been generated
+        '204':
+          description: Success, but no response data
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedfishError'
+          description: Error condition
+```
+
+#### OpenAPI file format
+
+With the exception of `openapi.yaml`, each OpenAPI file contains a YAML object in order to describe [Resources](#resources), [Resource Collections](#resource-collections), or other definitions for the data model.  The following properties can be found in the YAML object:
+* `components`: Contains structures, enumerations, and other definitions defined by the schema.
+* `x-copyright`: The copyright statement for the organization producing the JSON Schema.
+* `x-title`: If the schema file describes a Resource or Resource Collection, this shall be the matching [type identifier](#type-identifiers) for the Resource or Resource Collection.
+
+#### The components body in OpenAPI files
+
+This clause describes the types of definitions that can be found in the `components` property of a Redfish OpenAPI file.
+
+##### Resource definitions in OpenAPI
+
+In order to satisfy [versioning](#versioning) requirements, the OpenAPI representation of each [Resource](#resources) has one unversioned schema file, and a set of versioned schema files.
+
+The unversioned definition of a Resource contains an `anyOf` statement.  This statement consists of an array of `$ref` properties, which point to the following:
+* The JSON Schema definition for a [reference property](#reference-properties).
+* The versioned definitions of the Resource.
+
+The unversioned definition of a Resource also uses `uris` property it express the [allowable URIs for the resource](#resource-uri-patterns-annotation), as well as the `deletable`, `insertable`, and `updatable` properties to express the [capabilities of the resource](#resource-capabilities-annotation).
+
+Example unversioned Resource definition in OpenAPI:
+
+```yaml
+    ComputerSystem:
+      anyOf:
+      - $ref: http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.yaml#/components/schemas/idRef
+      - $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_0.yaml#/components/schemas/ComputerSystem
+      - $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_1.yaml#/components/schemas/ComputerSystem
+      - $ref: http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_6_0.yaml#/components/schemas/ComputerSystem
+      description: The ComputerSystem schema represents a general purpose machine
+        or system.
+      x-longDescription: This resource shall be used to represent resources that represent
+        a computing system.
+```
+
+The versioned definition of a Resource contains the property definitions for the given version of the Resource.
+
+##### Enumerations in OpenAPI
+
+Definitions for enumerations can consist of the following properties:
+* `enum`: A string array that contains the possible enumeration values.
+* `type`: Since all enumerations in Redfish are strings, the `type` property always has the value `string`.
+* `x-enumDescriptions`: An object that contains the [descriptions](#description-annotation) for each of the enumerations as name-value pairs.
+* `x-enumLongDescriptions`: An object that contains the [long descriptions](#long-description-annotation) for each of the enumerations as name-value pairs.
+
+Example enumeration definition in OpenAPI:
+
+```yaml
+    IndicatorLED:
+      enum:
+      - Lit
+      - Blinking
+      - 'Off'
+      type: string
+      x-enumDescriptions:
+        Blinking: The Indicator LED is blinking.
+        Lit: The Indicator LED is lit.
+        'Off': The Indicator LED is off.
+      x-enumLongDescriptions:
+        Blinking: This value shall represent the Indicator LED is in a blinking state
+          where the LED is being turned on and off in repetition.
+        Lit: This value shall represent the Indicator LED is in a solid on state.
+        'Off': This value shall represent the Indicator LED is in a solid off state.
+```
+
+##### Actions in OpenAPI
+
+Versioned definitions of [Resources](#resources) contain a definition called `Actions`.  This definition is a container with a set of properties that point to the different [actions](#post-action) supported by the resource.
+
+Example `Actions` definition:
+```yaml
+    Actions:
+      additionalProperties: false
+      description: The available actions for this resource.
+      properties:
+        '#ComputerSystem.Reset':
+          $ref: '#/components/schemas/Reset'
+      type: object
+      x-longDescription: This type shall contain the available actions for this resource.
+```
+
+Another definition within the same schema file is used to describe the action itself.  This definition contains property definitions for the `target` and `title` properties shown in service response payloads for the Resource.
+
+Example definition of an action:
+```yaml
+    Reset:
+      additionalProperties: false
+      description: This action is used to reset the system.
+      properties:
+        target:
+          description: Link to invoke action
+          format: uri
+          type: string
+        title:
+          description: Friendly action name
+          type: string
+      type: object
+      x-longDescription: This action shall perform a reset of the ComputerSystem.
+```
+
+The parameters for the action are shown in another definition with `RequestBody` appended to the name of the action.  This gets mapped from the `openapi.yaml` file for expressing the POST method for the URI of the action.
+
+Example definition of parameters of an action:
+```yaml
+    ResetRequestBody:
+      additionalProperties: false
+      description: This action is used to reset the system.
+      properties:
+        ResetType:
+          $ref: http://redfish.dmtf.org/schemas/v1/Resource.yaml#/components/schemas/ResetType
+          description: The type of reset to be performed.
+          x-longDescription: This parameter shall define the type of reset to be performed.
+      type: object
+      x-longDescription: This action shall perform a reset of the ComputerSystem..
+```
+
+#### OpenAPI properties used by Redfish
+
+The following OpenAPI properties are used to provide [schema annotations](#schema-annotations) for Redfish OpenAPI files:
+
+* `description` and `x-enumDescriptions` are used for the [Description annotation](#description-annotation).
+* `x-longDescription` and `x-enumLongDescriptions` are used for the [Long Description annotation](#long-description-annotation).
+* `additionalProperties` is used for the [Additional Properties annotation](#additional-properties-annotation).
+* `readOnly` is used for the [Permissions annotation](#permissions-annotation).
+* `required` is used for the [Required annotation](#required-annotation).
+* `x-requiredOnCreate` is used for the [Required on Create annotation](#required-on-create-annotation).
+* `x-units` is used for the [Units of Measure annotation](#units-of-measure-annotation).
+* `x-autoExpand` is used for the [Expanded Resource annotation](#expanded-resource-annotation).
 
 ### Schema modification rules
 
@@ -2580,7 +2815,7 @@ Schema referenced from the implementation may vary from the canonical definition
 * Modified schema may constrain a read/write property to be read only.
 * Modified schema may constrain the capabilities of a Resource or Resource Collection to remove support for HTTP operations.
 * Modified schema may remove properties. 
-* Modified schema may change any external references to point to Redfish Schema that adheres to the modification rules.   
+* Modified schema may change any external references to point to Redfish Schema that adheres to the modification rules.
 * Other modifications to the Schema shall not be allowed.
 
 ## Service details
@@ -3894,13 +4129,7 @@ The client can get the definition of the annotation from the [OData $metadata do
 
 
 
-##### OpenAPI file naming
 
-Redfish OpenAPI files shall be named using the [Type identifiers](#type-identifiers), following the format:
-
-  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.yaml*
-  
-For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.yaml".
 
 ##### Registry file naming
 
