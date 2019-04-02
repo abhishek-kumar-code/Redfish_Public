@@ -543,6 +543,16 @@
                 "string"
             ],
             "Resolution": "Resubmit the request with a payload compatible with the resource's schema."
+        },
+        "PasswordChangeRequired": {
+            "Description": "Indicates that the password for the account provided must be changed before accessing the service.  The password can be changed with a PATCH to the 'Password' property in the ManagerAccount resource instance.  Implementations that provide a default password for an account may require a password change prior to first access to the service.",
+            "Message": "The password provided for this account must be changed before access is granted.  PATCH the 'Password' property for this account located at the target URI '%1' to complete this process.",
+            "Severity": "Critical",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Change the password for this account using a PATCH to the 'Password' property at the URI provided."
         }
     }
 }
