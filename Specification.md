@@ -573,13 +573,22 @@ The service shall return the resource representation using one of the media type
 
 #### Resource collection requests
 
-Clients retrieve a resource collection by making a GET request to the resource collection URI.  The response includes the resource collection's properties and an array of its `Members`.  A subset of the Members can be retrieved using client paging [query parameters](#query-parameters).
+Clients retrieve a resource collection by making a GET request to the resource collection URI.  The response includes the resource collection's properties and an array of its `Members`.  
 
 No requirements are placed on implementations to return a consistent set of members when a series of requests that use paging query parameters are made over time to obtain the entire set of members. It is possible that these calls can result in missed or duplicate elements if multiple GETs are used to retrieve the `Members` array instances through paging.
 
 * Clients shall not make assumptions about the URIs for the members of a resource collection.
 * Retrieved resource collections shall always include the [count](#count-property) property to specify the total number of entries in its `Members` array.
 * Regardless of [paging](#next-link-property), the [count](#count-property) property shall return the total number of resources that the `Members` array references.
+
+A subset of the Members can be retrieved using client paging [query parameters](#query-parameters).
+
+A service may not be able to return all of the contents of a Resource collection request in a single response body. In this case, the response can be paged by the service.  If a service pages a response to a Resource collection request, the following rules shall apply:
+* Responses may contain a subset of the members of the full Resource collection.
+* Members shall not be split across response bodies.
+* A [next link](#next-link-property) annotation in the response body which has the URI to the next set of members in the collection shall be supplied.
+* The [next link](#next-link-property) property shall adhere to the rules in the [Next Link Property](#next-link-property)section.
+* GET Operations on the [next link](#next-link-property) shall return the subsequent section of the Resource collection response.
 
 #### Service root request
 
@@ -1564,11 +1573,7 @@ The Redfish Schema document that describes the containing type defines the type 
 
 #### Next link (Members@odata.nextLink) property<a id="next-link-property"></a>
 
-JEFFH to migrate partial response stuff to general Resource Collection section
-
-Responses may contain a subset of the members of the full Resource Collection.  For partial Resource Collections, the response shall include a Next Link property named `Members@odata.nextLink`.
-
-The value of the Next Link property shall be an opaque URL to a Resource, with the same `@odata.type`, which contains the next set of partial members.  The Next Link property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned, and if the payload does not represent the end of the requested Resource Collection.
+The value of the Next Link property shall be an opaque URL to a Resource, with the same `@odata.type`, which contains the next set of partial members from the original operation.  The Next Link property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned, and if the payload does not represent the end of the requested Resource Collection.
 
 The [`Members@odata.count` property](#count-property) value is the total number of Resources available if the client enumerates all pages of the Resource Collection.
 
