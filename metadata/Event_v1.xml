@@ -90,7 +90,7 @@
         </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="As of Redfish Specification v1.6, EventType has been deprecated. The event is therefore based on a Registry or Resource, not an EventType."/>
-          <Annotation Term="OData.LongDescription" String="Events of type 'Other' shall be sent to a client in accordance with subscriptions to RegistryPrefixex or ResourceTypes."/>
+          <Annotation Term="OData.LongDescription" String="Events of type 'Other' shall be sent to a client in accordance with subscriptions to RegistryPrefixes or ResourceTypes."/>
           <Annotation Term="Redfish.Revisions">
             <Collection>
               <Record>
