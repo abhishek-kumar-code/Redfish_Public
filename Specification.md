@@ -363,7 +363,7 @@ In a URI:
 * The service and resource path component parts _uniquely identify_ the resource in a Redfish service.
 In an implementation:
 * The resource path component part shall be unique.
-* A [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the body and HTTP headers payload can identify a resource in that same implementation.
+* A [relative reference](#redfish-defined-uris-and-relative-reference-rules) in the body and HTTP headers payload can identify a resource in that same implementation.
 * An absolute URI in the body and HTTP headers payload can identify a resource in a different implementation.  
 For the absolute URI definition, see [RFC3986](#RFC3986).
 
@@ -491,7 +491,7 @@ A GET operation on the `/redfish` resource shall return this response body:
 }
 ```
 
-### Redfish-defined URIs and relative URI rules
+### Redfish-defined URIs and relative reference rules
 
 A Redfish service shall support these Redfish-defined URIs:
 
@@ -515,9 +515,9 @@ All other Redfish service-supported URIs shall match the [Resource URI pattern d
 
 All Redfish service-supported URIs are reserved for future standardization by DMTF and DMTF alliance partners, except OEM extension URIs, which shall conform to the [URIs for OEM resources](#uris-for-oem-resources) requirements.
 
-All relative URIs that the service uses shall start with either:
+All relative references (see [RFC3986](#RFC3986)) that the service uses shall start with either:
 
-* A double forward slash (`//`) and include the authority, such as `//mgmt.vendor.com/redfish/v1/Systems`.
+* A double forward slash (`//`) and include the authority (network-path), such as `//mgmt.vendor.com/redfish/v1/Systems`.
 * A single forward slash (`/`) and include the absolute-path, such as `/redfish/v1/Systems`.
 
 ## Service requests
@@ -3730,7 +3730,7 @@ OData-Version: 4.0
 | 1.5.1   | 2018-08-10 | Added clarifications to required properties in structured properties derived from ReferenceableMembers. |
 |         |            | Reorganized Eventing section to break out the different subscription methods to differentiate pub-sub from SSE. |
 |         |            | Removed statements referencing OData conformance levels. |
-|         |            | Clarified terminology to explain usage of absolute versus relative URIs throughout. |
+|         |            | Clarified terminology to explain usage of absolute versus relative referenc throughout. |
 |         |            | Clarified client-side HTTP Accept header requirements. |
 |         |            | Added evaluation order for supported query parameters and clarified examples. |
 |         |            | Clarified handling of annotations in response payloads when used with $select queries. |
