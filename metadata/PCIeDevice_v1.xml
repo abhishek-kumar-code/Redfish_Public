@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  PCIeDevice  v1.3.1-->
+<!--# Redfish Schema:  PCIeDevice  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -172,6 +172,15 @@
           <Annotation Term="OData.Description" String="An array of references to PCIeFunctions exposed by this device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this device exposes and shall reference a resource of type PCIeFunction."/>
           <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_4_0"/>
+                <PropertyValue Property="Description" String="This property has been deprecated in favor of the PCIeFunctions property in the root that provides a link to a Resource Collection."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </NavigationProperty>
       </ComplexType>
 
@@ -325,5 +334,18 @@
       <EntityType Name="PCIeDevice" BaseType="PCIeDevice.v1_3_0.PCIeDevice"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeDevice.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2019.1"/>
+      <Annotation Term="OData.Description" String="This version was created to add a PCIeFunction Resource Collection and to deprecate the Link to an array PCIeFunction."/>
+      <EntityType Name="PCIeDevice" BaseType="PCIeDevice.v1_3_1.PCIeDevice">
+        <NavigationProperty Name="PCIeFunctions" Type="PCIeFunctionCollection.PCIeFunctionCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of PCIe Functions associated with this PCIe Device."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type PCIeFunctionCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+	
   </edmx:DataServices>
 </edmx:Edmx>

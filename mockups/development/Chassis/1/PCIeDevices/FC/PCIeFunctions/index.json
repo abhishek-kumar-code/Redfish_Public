@@ -1,0 +1,15 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/FC/PCIeFunctions",
+    "@odata.type": "#PCIeFunctionCollection.PCIeFunctionCollection",
+    "Name": "PCIe Function Collection",
+    "Members@odata.count": "2",
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/FC/PCIeFunctions/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/FC/PCIeFunctions/1"
+        }
+    ]
+}
