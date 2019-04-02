@@ -578,7 +578,7 @@
 
       <EnumType Name="DHCPFallback">
         <Member Name="Static">
-          <Annotation Term="OData.Description" String="Fall back to a static address specified by IPv4StaticAddresses or IPv6StaticAddresses."/>
+          <Annotation Term="OData.Description" String="Fall back to a static address specified by IPv4StaticAddresses."/>
           <Annotation Term="OData.LongDescription" String="DHCP shall fall back to a static address specified by IPv4StaticAddresses."/>
         </Member>
         <Member Name="AutoConfig">
