@@ -514,7 +514,7 @@
         <Property Name="AccountLockoutCounterResetEnabled" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The value indicates whether the threshold counter will be reset after AccountLockoutCounterResetAfter expires."/>
-          <Annotation Term="OData.LongDescription" String="This property indicates whether the threshold counter shall be reset after the AccountLockoutCounterResetAfter has expired.  Setting the value to false shall indicate that only a successful login will reset the threshold counter.  In addition, if the user reaches the limit specified in AccountLockoutThreshold, the account shall be locked out indefinitely and only a reset by administrator shall clear the threshold counter.  If this property is absent the value shall be assumed to be true."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether the threshold counter will be reset after the AccountLockoutCounterResetAfter has expired.  Setting the value to false shall indicate that only a successful login will reset the threshold counter.  In addition, if the user reaches the limit specified in AccountLockoutThreshold, the account shall be locked out indefinitely and only a reset by administrator will clear the threshold counter.  If this property is absent the value shall be assumed to be true."/>
         </Property>
       </EntityType>
     </Schema>
