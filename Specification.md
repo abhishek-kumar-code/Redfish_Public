@@ -1577,9 +1577,9 @@ The value of the Next Link property shall be an opaque URL to a Resource, with t
 
 The [`Members@odata.count` property](#count-property) value is the total number of Resources available if the client enumerates all pages of the Resource Collection.
 
-#### Links property
+#### Links
 
-The Links property represents the hyperlinks associated with the Resource, as defined by that Resource's schema definition.  All associated [reference properties](#reference-properties) defined for a resource shall be nested under the Links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The `Links` property represents the hyperlinks associated with the Resource, as defined by that Resource's schema definition.  All associated [reference properties](#reference-properties) defined for a resource shall be nested under the Links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
 The Links property shall be named `Links` and contain a property for each related Resource.
 
@@ -1599,7 +1599,7 @@ A reference to a single Resource is a JSON object that contains a single [Resour
 }
 ```
 
-##### References to multiple to related Resources
+##### References to multiple related Resources
 
 A reference to a set of zero or more related Resources is an array of JSON objects.  The name of this reference is the name of the relationship.  Each element of the array is a JSON object that contains a [Resource identifier property](#identifier-property) with the value of the URI of the referenced resource.
 
@@ -1888,13 +1888,11 @@ There are some situations that arise with certain kinds of resources that need t
 
 #### Absent resources
 
-JEFFA: Double check some wordings
+Resources may be absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe slot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits `SoftwareInventory` to a maximum of 20 items should not populate 18 absent resources when only two items are present).
 
-Resources may be either absent or their state unknown at the time a client requests information about that resource.  For resources that represent removable or optional components, absence provides useful information to clients, as it indicates a capability (e.g., an empty PCIe slot, DIMM socket, or drive bay) that would not be apparent if the resource simply did not exist.  This also applies to resources that represent a limited number of items or unconfigured capabilities within an implementation, but this usage should be applied sparingly and should not apply to resources limited in quantity due to arbitrary limits (e.g., an implementation that limits `SoftwareInventory` to a maximum of 20 items should not populate 18 absent resources when only two items are present).
+For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should return a value of `Absent` for the `State` property in the `Status` object.  In this circumstance, any required properties for which there is no known value shall be represented as `null`.  Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the absent state), should not be returned.  Likewise, subordinate resources for an absent resource should not be populated until their support can be determined (e.g., the `Power` and `Thermal` resources under a `Chassis` resource should not exist for an absent Chassis).
 
-For resources that provide useful data in an absent state, and where the URI is expected to remain constant (such as when a DIMM is removed from a memory socket), the resource should exist, and should represent the `State` property of the `Status` object as `Absent`.  In this circumstance, any required properties for which there is no known value shall be represented as `null`.  Properties whose support is based on the configuration choice or the type of component installed (and therefore unknown while in the absent state), should not be returned.  Likewise, subordinate resources for a absent resource should not be populated until their support can be determined (e.g., the `Power` and `Thermal` resources under a `Chassis` resource should not exist for an absent Chassis).
-
-Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the `Memory` resource shows details about an single DIMM socket and the installed DIMM.  When that DIMM is removed, the Memory resource remains to indicate the empty DIMM socket (with an `Absent` value for `State` within the `Status` object).  Later, an upgraded DIMM is installed, and the Memory resource then contains data about this new DIMM, which could have completely different characteristics.
+Client software should be aware that when absent resources are later populated, the updated resource may represent a different configuration or physical item, and previous data (including read-only properties) obtained from that resource may be invalid.  For example, the `Memory` resource shows details about an single DIMM socket and the installed DIMM.  When that DIMM is removed, the `Memory` resource remains as an absent resource to indicate the empty DIMM socket.  Later, a new DIMM is installed in that socket, and the `Memory` resource represents data about this new DIMM, which could have completely different characteristics.
 
 ### Registries
 
