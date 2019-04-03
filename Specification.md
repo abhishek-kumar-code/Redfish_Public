@@ -962,18 +962,18 @@ To determine the available [actions](#actions-property) and the [valid parameter
 
 Clients provide parameters for the action as a JSON object within the request body of the POST operation.  See the [`Actions` property](#actions-property) clause for information about the structure of the request and required parameters.  Some parameter information may require that the client examine the [Redfish Schema](#schema-definition-languages) that corresponds to the Resource.
 
+If an action does not have any required parameters, the service should accept an empty JSON object in the HTTP body for the action request.
+
 To indicate the success or failure of the action request processing, the service may return a response with one of the following HTTP status codes and additional information:
 
 | To&nbsp;indicate                                                   | HTTP&nbsp;status&nbsp;code | Additional&nbsp;information |
 | ---                                                                | ---                        | ---                         |
-| The action request succeeds.                                       | [200](#status-200)         | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.<br/>If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
-| The action request may require extra time to process.              | [202](#status-202)         | A `Location` response header set to the URI of a task monitor. |
+| The action request succeeds.                                       | [200](#status-200)         | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.  If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
+| The action request may require extra time to process.              | [202](#status-202)         | A `Location` response header set to the URI of a Task Monitor. |
 | The action request succeeds.                                       | [204](#status-204)         | No JSON message body. |
 | The client did not provide all required parameters.                | [400](#status-400)         | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
 | The client provides a parameter that the service does not support. | [400](#status-400)         | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
 | An error was detected and the action request was not processed.    | 400 or greater             | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
-
-If an action does not have any required parameters, the service should accept an empty JSON object in the HTTP body for the action request.
 
 If an action requested by the client will have no effect, such as performing a reset of a `ComputerSystem` where the parameter `ResetType` is set to `On` and the `ComputerSystem` is already `On`, the service should respond with an HTTP [200](#status-200) status code and return the `NoOperation` message, defined in the Base Message Registry.
 
@@ -1301,6 +1301,8 @@ Services return resources and resource collections as JSON payloads by using the
 The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages) clauses for rules about the Redfish schema, and how it maps to JSON payloads.
 
 ### Message object
+
+MIKER to move into Data Model section under "Data Types"
 
 A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
 
@@ -1783,7 +1785,7 @@ TODO: Talk about @odata.id, pointing to another resource
 
 ### Payload annotations
 
-A Resources, objects within a Resource, and properties may include additional annotations as properties with the name in the format:
+Resources, objects within a Resource, and properties may include additional annotations as properties with the name in the format:
 
 <pre>[<var>PropertyName</var>]@<var>Namespace</var>.<var>TermName</var></pre>
 
@@ -1797,7 +1799,7 @@ where
 
 Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
 
-The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
+The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), the [HTTP Link header](#link-header), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
 
 #### Allowable values
 
@@ -1829,15 +1831,17 @@ To specify object-level status information, services may annotate a JSON object 
     "FlowControl": "None",
     "ConnectorType": "RJ45",
     "PinOut": "Cyclades",
-    "@Message.ExtendedInfo": [{
-        "MessageId": "Base.1.0.PropertyDuplicate",
-        "Message": "The property InterfaceEnabled was duplicated in the request.",
-        "RelatedProperties": [
-            "#/InterfaceEnabled"
-        ],
-        "Severity": "Warning",
-        "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
-    }]
+    "@Message.ExtendedInfo": [
+        {
+            "MessageId": "Base.1.0.PropertyDuplicate",
+            "Message": "The property InterfaceEnabled was duplicated in the request.",
+            "RelatedProperties": [
+                "#/InterfaceEnabled"
+            ],
+            "Severity": "Warning",
+            "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
+        }
+    ]
 }
 ```
 
@@ -1867,12 +1871,14 @@ Services may use `@Message.ExtendedInfo`, prepended with the name of the propert
     "FlowControl": "None",
     "ConnectorType": "RJ45",
     "PinOut": "Cyclades",
-    "PinOut@Message.ExtendedInfo": [{
-        "MessageId": "Base.1.0.PropertyValueNotInList",
-        "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
-        "Severity": "Warning",
-        "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
-    }]
+    "PinOut@Message.ExtendedInfo": [
+        {
+            "MessageId": "Base.1.0.PropertyValueNotInList",
+            "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
+            "Severity": "Warning",
+            "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
+        }
+    ]
 }
 ```
 
@@ -1896,7 +1902,6 @@ Example `#ComputerSystem.Reset` action with the `@Redfish.ActionInfo` annotation
 The `ResetActionInfo` Resource contains a more detailed description of the parameters and the supported values.  This Resource follows the `ActionInfo` schema definition.
 ```json
 {
-    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
     "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
     "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
     "Id": "ResetActionInfo",
@@ -2505,7 +2510,7 @@ The file `Resource.json` and its subsequent versioned definitions contain all ba
 
 #### JSON Schema format
 
-Each JSON Schema file contains a JSON object in order to describe [Resources](#resources), [Resource Collections](#resource-collections), or other definitions for the data model.  The following properties can be found in the JSON object:
+Each JSON Schema file contains a JSON object in order to describe [Resources](#resources), [Resource Collections](#resource-collections), or other definitions for the data model.  The following terms can be found in the JSON object:
 * `$id`: A reference to the URI where the schema file is published.
 * `$ref`: If the schema file describes a Resource or Resource Collection, this is a reference to the structural definition of the Resource or Resource Collection.
 * `$schema`: A URI to the Redfish schema extensions for JSON Schema, which can be found at `http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json`.
@@ -2515,17 +2520,17 @@ Each JSON Schema file contains a JSON object in order to describe [Resources](#r
 
 #### The definitions body in JSON Schema
 
-This clause describes the types of definitions that can be found in the `definitions` property of a Redfish JSON Schema file.
+This clause describes the types of definitions that can be found in the `definitions` term of a Redfish JSON Schema file.
 
 ##### Resource definitions in JSON Schema
 
 In order to satisfy [versioning](#versioning) requirements, the JSON Schema representation of each [Resource](#resources) has one unversioned schema file, and a set of versioned schema files.
 
-The unversioned definition of a Resource contains an `anyOf` statement.  This statement consists of an array of `$ref` properties, which point to the following:
+The unversioned definition of a Resource contains an `anyOf` statement.  This statement consists of an array of `$ref` terms, which point to the following:
 * The JSON Schema definition for a [reference property](#reference-properties).
 * The versioned definitions of the Resource.
 
-The unversioned definition of a Resource also uses `uris` property it express the [allowable URIs for the resource](#resource-uri-patterns-annotation), as well as the `deletable`, `insertable`, and `updatable` properties to express the [capabilities of the resource](#resource-capabilities-annotation).
+The unversioned definition of a Resource also uses `uris` term it express the [allowable URIs for the resource](#resource-uri-patterns-annotation), as well as the `deletable`, `insertable`, and `updatable` terms to express the [capabilities of the resource](#resource-capabilities-annotation).
 
 Example unversioned Resource definition in JSON Schema:
 
@@ -2563,11 +2568,11 @@ The versioned definition of a Resource contains the property definitions for the
 
 ##### Enumerations in JSON Schema
 
-Definitions for enumerations can consist of the following properties:
+Definitions for enumerations can consist of the following terms:
 * `enum`: A string array that contains the possible enumeration values.
 * `enumDescriptions`: An object that contains the [descriptions](#description-annotation) for each of the enumerations as name-value pairs.
 * `enumLongDescriptions`: An object that contains the [long descriptions](#long-description-annotation) for each of the enumerations as name-value pairs.
-* `type`: Since all enumerations in Redfish are strings, the `type` property always has the value `string`.
+* `type`: Since all enumerations in Redfish are strings, the `type` term always has the value `string`.
 
 Example enumeration definition in JSON Schema:
 
@@ -2597,7 +2602,7 @@ Example enumeration definition in JSON Schema:
 
 ##### Actions in JSON Schema
 
-Versioned definitions of [Resources](#resources) contain a definition called `Actions`.  This definition is a container with a set of properties that point to the different [actions](#post-action) supported by the resource.
+Versioned definitions of [Resources](#resources) contain a definition called `Actions`.  This definition is a container with a set of terms that point to the different [actions](#post-action) supported by the resource.
 
 Example `Actions` definition:
 ```json
@@ -2617,7 +2622,7 @@ Example `Actions` definition:
 }
 ```
 
-Another definition within the same schema file is used to describe the action itself.  This definition contains a property called `parameters` to describe the client request body.  It also contains property definitions for the `target` and `title` properties shown in service response payloads for the Resource.
+Another definition within the same schema file is used to describe the action itself.  This definition contains a term called `parameters` to describe the client request body.  It also contains property definitions for the `target` and `title` properties shown in service response payloads for the Resource.
 
 Example definition of an action:
 ```json
@@ -2650,9 +2655,9 @@ Example definition of an action:
 }
 ```
 
-#### JSON Schema properties used by Redfish
+#### JSON Schema terms used by Redfish
 
-The following JSON Schema properties are used to provide [schema annotations](#schema-annotations) for Redfish JSON Schema:
+The following JSON Schema terms are used to provide [schema annotations](#schema-annotations) for Redfish JSON Schema:
 
 * `description` and `enumDescriptions` are used for the [Description annotation](#description-annotation).
 * `longDescription` and `enumLongDescriptions` are used for the [Long Description annotation](#long-description-annotation).
@@ -2693,13 +2698,13 @@ The file `Resource.yaml` and its subsequent versioned definitions contain all ba
 
 #### openapi.yaml
 
-The YAML file `openapi.yaml` is the starting point for clients to understand the construct of the service.  It contains the following properties:
+The YAML file `openapi.yaml` is the starting point for clients to understand the construct of the service.  It contains the following terms:
 * `components`: Contains global definitions.  For Redfish, this is used to contain the format of the [Redfish error response](#error-responses).
 * `info`: A structure consisting of information about what the `openapi.yaml` is describing, such as the author of the file and any contact information.
 * `openapi`: The version of OpenAPI the document follows.
 * `paths`: The URIs supported by the document, along with possible methods, response bodies, and request bodies.
 
-The `paths` property contains an array of the [possible URIs](#resource-uri-patterns-annotation).  For each URI, it also lists the [possible methods](#resource-capabilities-annotation).  For each method, it lists the possible response bodies and request bodies.
+The `paths` term contains an array of the [possible URIs](#resource-uri-patterns-annotation).  For each URI, it also lists the [possible methods](#resource-capabilities-annotation).  For each method, it lists the possible response bodies and request bodies.
 
 Example `paths` entry for a Resource:
 ```yaml
@@ -2770,24 +2775,24 @@ Example `paths` entry for an action:
 
 #### OpenAPI file format
 
-With the exception of `openapi.yaml`, each OpenAPI file contains a YAML object in order to describe [Resources](#resources), [Resource Collections](#resource-collections), or other definitions for the data model.  The following properties can be found in the YAML object:
+With the exception of `openapi.yaml`, each OpenAPI file contains a YAML object in order to describe [Resources](#resources), [Resource Collections](#resource-collections), or other definitions for the data model.  The following terms can be found in the YAML object:
 * `components`: Contains structures, enumerations, and other definitions defined by the schema.
-* `x-copyright`: The copyright statement for the organization producing the JSON Schema.
+* `x-copyright`: The copyright statement for the organization producing the OpenAPI file.
 * `x-title`: If the schema file describes a Resource or Resource Collection, this shall be the matching [type identifier](#type-property) for the Resource or Resource Collection.
 
 #### The components body in OpenAPI files
 
-This clause describes the types of definitions that can be found in the `components` property of a Redfish OpenAPI file.
+This clause describes the types of definitions that can be found in the `components` term of a Redfish OpenAPI file.
 
 ##### Resource definitions in OpenAPI
 
 In order to satisfy [versioning](#versioning) requirements, the OpenAPI representation of each [Resource](#resources) has one unversioned schema file, and a set of versioned schema files.
 
-The unversioned definition of a Resource contains an `anyOf` statement.  This statement consists of an array of `$ref` properties, which point to the following:
-* The JSON Schema definition for a [reference property](#reference-properties).
+The unversioned definition of a Resource contains an `anyOf` statement.  This statement consists of an array of `$ref` terms, which point to the following:
+* The OpenAPI definition for a [reference property](#reference-properties).
 * The versioned definitions of the Resource.
 
-The unversioned definition of a Resource also uses `uris` property it express the [allowable URIs for the resource](#resource-uri-patterns-annotation), as well as the `deletable`, `insertable`, and `updatable` properties to express the [capabilities of the resource](#resource-capabilities-annotation).
+The unversioned definition of a Resource also uses `uris` term it express the [allowable URIs for the resource](#resource-uri-patterns-annotation), as well as the `deletable`, `insertable`, and `updatable` terms to express the [capabilities of the resource](#resource-capabilities-annotation).
 
 Example unversioned Resource definition in OpenAPI:
 
@@ -2808,9 +2813,9 @@ The versioned definition of a Resource contains the property definitions for the
 
 ##### Enumerations in OpenAPI
 
-Definitions for enumerations can consist of the following properties:
+Definitions for enumerations can consist of the following terms:
 * `enum`: A string array that contains the possible enumeration values.
-* `type`: Since all enumerations in Redfish are strings, the `type` property always has the value `string`.
+* `type`: Since all enumerations in Redfish are strings, the `type` term always has the value `string`.
 * `x-enumDescriptions`: An object that contains the [descriptions](#description-annotation) for each of the enumerations as name-value pairs.
 * `x-enumLongDescriptions`: An object that contains the [long descriptions](#long-description-annotation) for each of the enumerations as name-value pairs.
 
@@ -2836,7 +2841,7 @@ Example enumeration definition in OpenAPI:
 
 ##### Actions in OpenAPI
 
-Versioned definitions of [Resources](#resources) contain a definition called `Actions`.  This definition is a container with a set of properties that point to the different [actions](#post-action) supported by the resource.
+Versioned definitions of [Resources](#resources) contain a definition called `Actions`.  This definition is a container with a set of terms that point to the different [actions](#post-action) supported by the resource.
 
 Example `Actions` definition:
 ```yaml
@@ -2885,9 +2890,9 @@ Example definition of parameters of an action:
       x-longDescription: This action shall perform a reset of the ComputerSystem..
 ```
 
-#### OpenAPI properties used by Redfish
+#### OpenAPI terms used by Redfish
 
-The following OpenAPI properties are used to provide [schema annotations](#schema-annotations) for Redfish OpenAPI files:
+The following OpenAPI terms are used to provide [schema annotations](#schema-annotations) for Redfish OpenAPI files:
 
 * `description` and `x-enumDescriptions` are used for the [Description annotation](#description-annotation).
 * `x-longDescription` and `x-enumLongDescriptions` are used for the [Long Description annotation](#long-description-annotation).
