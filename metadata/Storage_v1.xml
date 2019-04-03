@@ -563,17 +563,17 @@
       <Annotation Term="Redfish.Release" String="2019.1"/>
       <EntityType Name="Storage" BaseType="Storage.v1_6_1.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_6_0.StorageController">
-        <Property Name="Ports" Type="PortCollection.PortCollection">
+        <NavigationProperty Name="Ports" Type="PortCollection.PortCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object describes the Ports that exist on the storage controller."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain all the Ports that exist on the current resource."/>
-        </Property>
+        </NavigationProperty>
         <Property Name="ControllerRates" Type="Storage.v1_7_0.Rates">
           <Annotation Term="OData.Description" String="This object describes the various controller rates used for things like Volume Rebuild or Consistency Checks."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain all the rate settings available on the controller."/>
         </Property>
       </EntityType>
-      
+
       <ComplexType Name="Rates">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This object describes the various controller rates used for things like Volume Rebuild or Consistency Checks."/>

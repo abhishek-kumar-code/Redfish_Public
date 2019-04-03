@@ -3542,6 +3542,17 @@ A service that supports updating a composed resource shall provide one or more o
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
+| 1.7.0   | TBD        | The specification has been significantly re-written for clarity.  Except for the additions listed below, no normative changes were made to the specification.  Any clarifications that inadvertantly altered the normative behavior shall be considered errata, and will be corrected in future revisions to the specification. |
+|         |            | Added Dictionary file naming rules and repository locations. |
+|         |            | Enhanced localization definitions and defined repository locations. |
+|         |            | Added missing statement about SSE within the "Eventing mechanism" clause. |
+|         |            | Added Constrained Composition and Expandable Resources clauses to Redfish Composability. |
+|         |            | Added clause about requiring Event Subscriptions to be persistent across service restarts. |
+|         |            | Added clause about persistence of Tasks generated as a result of using "@Redfish.OperationApplyTime" across service restarts. |
+|         |            | Added clause about using "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" within Task responses. |
+|         |            | Removed "@odata.context" property from example payloads. |
+|         |            | Added "Password Management" clause to describe functional behavior for restricting access when an account requires a password change. |
+|         |            | Added clause around the usage of HTTP status code 403 when an account requires a password change. |
 | 1.6.1   | 2018-12-13 | Added clause about percent encoding being allowed for query parameters. |
 |         |            | Changed Expand example to use SoftwareInventory instead of LogEntry. |
 |         |            | Added missing clause about the usage of a separator for multiple query parameters. |
