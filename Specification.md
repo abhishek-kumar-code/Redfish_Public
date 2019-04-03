@@ -3954,7 +3954,7 @@ OData-Version: 4.0
 
 
 
-TODO: Items below here are being migrated to the Schema and Data Model section
+MIKER to move below
 
 
 #### Primitive properties
@@ -4050,14 +4050,7 @@ For example, if the latest version of `Resource_v1.xml` is `1.6.0`, a client can
 
 
 
-#### Extended information
-
-Response objects may include extended information.  For example, response objects may include information about properties that cannot be updated.  To define this information, apply an annotation to a specific property of the JSON response or an entire JSON object.  See [Extended property information](#extended-property-information).
-
-The value of the property is an array of [message objects](#message-object).
-
-
-
+JEFFA to move below
 
 ##### Registry file naming
 
@@ -4087,72 +4080,3 @@ For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.
 #### Programmatic access to schema, registry, or profile files
 
 Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
-
-
-
-JEFFA to migrate below this line
-
-
-##### Oem property
-
-In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
-
-Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
-
-~~~xml
-  <Schema Namespace="Contoso.v1_2_0">
-    ...
-    <ComplexType Name="AnvilType1">
-      <Property Name="slogan" Type="Edm.String"/>
-      <Property Name="disclaimer" Type="Edm.String"/>
-    </ComplexType>
-    ...
-  </Schema>
-~~~
-
-The next fragment shows an example of how the previous schema and the "AnvilType1" property type might appear in the instantiation of an Oem property as the result of a GET on a resource. The example shows two required elements in the use of the Oem property: A name for the object and a type property for the object. Detailed requirements for these elements are provided in the following clauses.
-
-~~~json
-{
-    "Oem": {
-        "Contoso": {
-            "@odata.type": "#Contoso.v1_2_0.AnvilType1",
-            "slogan": "Contoso anvils never fail",
-            "disclaimer": "* Most of the time"
-        }
-    },
-    ...
-}
-~~~
-
-
-
-### Redfish resources
-
-Collectively known as the Redfish Schema, the set of resource descriptions contains normative requirements on implementations conforming to this specification.
-
-Redfish Resources are one of several general kinds:
-
-* Root Service Resource
-  * Contains the mapping of a particular service instance to applicable resources.
-  * Contains the UUID of a service instance.  This UUID would be the same UUID returned via SSDP discovery.
-* Current Configuration Resources, contain a mixture of:
-  * Inventory (static and read-only)
-  * Health Telemetry (dynamic and read-only)
-  * Current Configuration Settings (dynamic and read/write)
-  * Current Metric values
-* Setting Resources
-  * Dynamic, Read/Write Pending Configuration Settings
-* Services
-  * Common services like Eventing, Tasks, Sessions
-* Registry Resources
-  * Static, Read-Only JSON encoded information for Event and Message Registries
-
-#### Services
-
-Service resources represent components of the Redfish Service itself as well as dependent resources.  While the complete list is discoverable only by traversing the Redfish Service tree, the list includes services like the Eventing service, Task management and Session management.
-
-#### Registry
-
-Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
-
