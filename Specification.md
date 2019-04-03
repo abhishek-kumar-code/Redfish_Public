@@ -864,7 +864,7 @@ In the absence of outside changes to the resource, the PATCH operation should be
 
 For array properties, services may report `null` values as placeholders to indicate the maximum number of elements that the service supports for that array property.  
 
-Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  A PATCH request with fewer elements than currently exist in the array shall truncate the array to that length. 
+Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  When processing a PATCH request, array elements shall be removed from an array as the last operation to ensure updates are applied to the correct elements.  A PATCH request with fewer elements than currently exist in the array shall truncate the array to that length.  After a removal, services shall coalesce remaining array elements (no `null` elements left between populated elements) unless the array property definition specifies otherwise.
 
 For example, an array of 'Flavors' indicates the service supports a maximum of six elements, with four populated. 
 
