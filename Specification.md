@@ -256,16 +256,6 @@ Redfish defines a RESTful interface because it:
 * Adapts well to any data modeling language.
 * Has industry-provided security and discovery mechanisms.
 
-#### OpenAPI v3.0 support
-
-The [OpenAPI Specification v3.0](#OpenAPI-Spec) provides a rich ecosystem of tools for using RESTful interfaces that meet the design requirements of that specification.  Starting with v1.6.0 of the Redfish Specification, the Redfish Schemas support the OpenAPI YAML file format, and URI patterns that conform to the OpenAPI Specification were defined.  Conforming Redfish Services which support the Redfish protocol version v1.6.0 or higher implement those URI patterns to enable use of the OpenAPI ecosystem.
- 
-#### Follow OData conventions
-
-With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications.  While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there few common conventions between them.
-
-To provide for interoperability between APIs, [OData](#OData-Protocol) defines a set of common RESTful conventions and annotations.  Redfish adopts OData conventions for describing schema, URL conventions, and definitions for typical properties in a JSON payload.
-
 #### Data oriented
 
 The Redfish data model is developed by focusing on the contents of the payload.  By concentrating on the contents of the payload first, Redfish payloads are easily mapped to schema definition languages and encoding types.  The data model is defined in various schema languages, including OpenAPI YAML, OData CSDL, and JSON Schema.
@@ -277,6 +267,16 @@ Redfish separates the protocol operations from the data model and versions the p
 #### Hypermedia API service root
 
 Redfish has a single service root URI and clients can discover all other resources through referenced URIs.
+
+#### OpenAPI v3.0 support
+
+The [OpenAPI Specification v3.0](#OpenAPI-Spec) provides a rich ecosystem of tools for using RESTful interfaces that meet the design requirements of that specification.  Starting with v1.6.0 of the Redfish Specification, the Redfish Schemas support the OpenAPI YAML file format, and URI patterns that conform to the OpenAPI Specification were defined.  Conforming Redfish Services that support the Redfish protocol version v1.6.0 or higher implement those URI patterns to enable use of the OpenAPI ecosystem.
+ 
+#### Follow OData conventions
+
+With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications.  While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there few common conventions between them.
+
+To provide for interoperability between APIs, [OData](#OData-Protocol) defines a set of common RESTful conventions and annotations.  Redfish adopts OData conventions for describing schema, URL conventions, and definitions for typical properties in a JSON payload.
 
 ### Service elements
 
