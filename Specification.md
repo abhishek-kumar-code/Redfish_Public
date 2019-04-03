@@ -960,7 +960,7 @@ where
 
 To determine the available [actions](#actions-property) and the [valid parameter values](#allowable-values) for those actions, clients can query a Resource directly.
 
-Clients provide parameters for the action within the request body of the POST operation as a JSON object.  Actions may have required parameters.  See the [`Actions` property](#actions-property) clause for information about the structure of the request and required parameters.  Some parameter information may require that the client examine the [Redfish Schema](#schema-definition-languages) that corresponds to the Resource.
+Clients provide parameters for the action as a JSON object within the request body of the POST operation.  Actions may have required parameters.  See the [`Actions` property](#actions-property) clause for information about the structure of the request and required parameters.  Some parameter information may require that the client examine the [Redfish Schema](#schema-definition-languages) that corresponds to the Resource.
 
 To indicate the success or failure of the action request processing, the service may return a response with one of the following HTTP status codes and additional information:
 
