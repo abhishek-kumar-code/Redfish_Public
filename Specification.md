@@ -256,6 +256,10 @@ Redfish defines a RESTful interface because it:
 * Adapts well to any data modeling language.
 * Has industry-provided security and discovery mechanisms.
 
+#### Supports OpenAPI v3.0
+
+The [OpenAPI Specification v3.0](#OpenAPI-Spec) provides a rich ecosystem of tools for using RESTful interfaces that meet the design requirements of that specification.  Starting with v1.6.0 of the Redfish Specification, the Redfish Schemas support the OpenAPI YAML file format, and URI patterns that conform to the OpenAPI Specification were defined.  Conforming Redfish Services implement those URI patterns to enable use of the OpenAPI ecosystem.
+ 
 #### Follow OData conventions
 
 With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications.  While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there few common conventions between them.
