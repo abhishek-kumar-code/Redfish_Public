@@ -3,7 +3,7 @@ DocTitle: Redfish Host Interface Specification
 DocNumber: '0270'
 DocClass: Normative
 DocVersion: '1.1.0'
-modified: 'TBD'
+modified: '2019-04-03'
 SupersedesVersion: '1.0.1'
 status: published
 released: true
@@ -470,7 +470,7 @@ For convenience when identifying the auto-generated credentials when active and 
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
-| 1.1.0   | TBD        | Clarified the byte ordering in SMBIOS structures. |
+| 1.1.0   | 2019-04-03 | Clarified the byte ordering in SMBIOS structures. |
 |         |            | Clarified the data shown in the Device Descriptor Table. |
 |         |            | Clarified the format of the Host Name field. |
 |         |            | Added example device descriptors. |

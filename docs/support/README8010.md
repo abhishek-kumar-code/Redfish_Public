@@ -2,11 +2,11 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2018.3'
-modified: '2018-11-29'
+DocVersion: '2019.1'
+modified: '2019-04-04'
 status: published
 released: True
-copyright: '2015-2018'
+copyright: '2015-2019'
 ---
 
 # Foreword
@@ -36,13 +36,20 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 
 ## Redfish Schema Release History
 
-### Release 2019.1 (TBD)
+### Release 2019.1 (April 2019)
 
 | Schema Name             | Version | Description |
 | ---                     | ---     | ---         |
+| AccountService          | 1.5.0   | Added "AccountLockoutResetAfterEnabled" property.  Deprecated "AccountProviderType" property in "LDAP" and "ActiveDirectory". |
 | Certificate             | 1.1.0   | Added "Renew" and "Rekey" actions. |
-| ComputerSystem          | 1.7.0   | Added "Certificates" property to "Boot". |
-| Drive                   | 1.6.0   | Added "PCIeFunctions" to "Links". |
+| ComputerSystem          | 1.7.0   | Added "Certificates" property to "Boot".  Added "Metrics" property to "ProcessorySummary". |
+| Drive                   | 1.6.0   | Added "PCIeFunctions" property to "Links". |
+| EthernetInterface       | 1.5.0   | Added "FallbackAddress" property to "DHCPv4". |
+| Event                   | 1.4.0   | Added "Other" to "EventType" enum. |
+| EventDestination        | 1.5.0   | Deprecated "EventTypes" property. |
+| EventService            | 1.3.0   | Deprecated "EventTypesForSubscription" property.  Deprecated "EventType" property in "SSEFilterPropertiesSupported". |
+| ManagerAccount          | 1.3.0   | Added "PasswordChangeRequired" property. |
+| MessageRegistry         | 1.3.0   | Added "LongDescription", "ArgDescriptions", and "ArgLongDescriptions" properties to "Messages". |
 | MetricReportDefinition  | 1.2.0   | Added "MetricReportDefinitionEnabled", "SuppressRepeatedMetricValue", and "MetricReportHeartbeatInterval" properties.  Added "Triggers" to "Links". |
 | PCIeSlots               | 1.1.0   | Added "HotPluggable" property. |
 | PhysicalContext         | N/A     | Added "PowerSubsystem"  and "Rectifier" physical context types. |
@@ -58,8 +65,9 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Event                   | 1.x.x   | Errata release.  Removed "@odata.id" and "@odata.etag" properties from JSON Schema. |
 | EventDestination        | 1.x.x   | Errata release.  Modified rules around usage of "HttpHeaders" in a GET response to allow for an empty array.  Clarified the descriptions for "EventTypes" and "ResourceTypes". |
 | ExternalAccountProvider | 1.x.x   | Errata release.  Clarified descriptions within "LDAPSearchSettings". |
+| Message                 | 1.0.7   | Errata release.  Clarified the description for "MessageArgs". |
 | Port                    | 1.x.x   | Errata release.  Clarified the descriptions for "PortId", "AssociatedEndpoints", and "ConnectedSwitches".  Clarified the description of the overall resource. |
-| Resource                | 1.x.x   | Errata release.  Corrected regex pattern for properties inside of "Oem" to match requirements in the specification. |
+| Resource                | 1.x.x   | Errata release.  Corrected regex pattern for properties inside of "Oem" to match requirements in the specification.  Clarified the description for "MemberId". |
 | UpdateService           | 1.x.x   | Errata release.  Clarified "HttpPushUri" description to include a recommendation of using HTTP status 411 when the request does not include the "Content-Length" header. |
 | (various files)         | various | Errata release.  Regenerating JSON Schema to use "uri-reference" instead of "uri" as the format for properties that represent URIs. |
 

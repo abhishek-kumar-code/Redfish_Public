@@ -1075,6 +1075,9 @@ The above example will request that the composed system called `NewSystem` be re
 
 | Version | Date       | Description |
 | ------- | ---------- | ----------- |
+| 1.2.1   | TBD        | Clarified how `ResourceBlockType` is an array and can represent a mix of devices. |
+|         |            | Removed statement about Constrained Composition users not needing to know about Resource Zones, which isn't really true. |
+|         |            | Added missing workflow step for Constrained Composition for determining the capabilities of the service. |
 | 1.2.0   | 2018-12-11 | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
 |         |            | Added text in the Constrained Composition section to link to the appendix. |
 |         |            | Added Expandable Resources section. |
