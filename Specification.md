@@ -932,12 +932,12 @@ When the delete operation succeeds, the response may contain the resource repres
 
 ### POST (Action)<a id="post-action"></a>
 
-Services shall support the POST method to send actions to resources.
+Services shall support the POST method to send actions to Resources.
 
 * The POST operation may not be idempotent.
 * Services may allow the inclusion of the `@Redfish.OperationApplyTime` property in the request body.  See [Operation Apply Time](#operation-apply-time).
 
-To request actions on a resource, send the HTTP POST method to the URI of the action.  The `target` property in the resource's [`Actions` property](#actions-property) shall contain the URI of the action.  The URI of the action shall be in the format:
+To request actions on a Resource, send the HTTP POST method to the URI of the action.  The `target` property in the Resource's [`Actions` property](#actions-property) shall contain the URI of the action.  The URI of the action shall be in the format:
 
 <pre><var>ResourceUri</var>/Actions/<var>QualifiedActionName</var></pre>
 
@@ -949,119 +949,26 @@ where
 | `Actions`                                   | The name of the property that contains the actions for a resource, as defined by this specification. |
 | <code><var>QualifiedActionName</var></code> | The qualified name of the action.  Includes the namespace. |
 
-The first parameter of a bound function is the resource on which the action occurs.  The remaining parameters are name-and-value pairs in the request body.
+To determine the available [actions](#actions-property) and the [valid parameter values](#allowable-values) for those actions, clients can query a Resource directly.  Some parameter information may require that the client examine the [Redfish Schema](#schema-definition-languages) that corresponds to the Resource.
 
-To determine the available [actions](#actions-property) and the [valid parameter values](#allowable-values) for those actions, clients can query a resource directly.  Some parameter information may require that the client examine the Redfish Schema that corresponds to the resource.
+Clients provide parameters for the action within the request body of the POST operation as a JSON object.  Actions may have required parameters.  See the [`Actions` property](#actions-property) clause for information about the structure of the request and required parameters.
 
-The resource may provide a separate `ActionInfo` resource to describe the parameters and values that a particular instance or implementation supports.  Use the `@Redfish.ActionInfo` annotation to specify the `ActionInfo` resource, which contains a URI to the `ActionInfo` resource for the action.
+To indicate the success or failure of the action request processing, the service may return a response with one of the following HTTP status codes and additional information:
 
-In the following example, the Redfish `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` schema document defines a `Reset` action in the `ComputerSystem` namespace, which is bound to the `ComputerSystem.v1_0_0.Actions` type:
+| To&nbsp;indicate                                                   | HTTP&nbsp;status&nbsp;code | Additional&nbsp;information |
+| ---                                                                | ---                        | ---                         |
+| The action request succeeds.                                       | [200](#status-200)         | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.<br/>If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
+| The action request may require extra time to process.              | [202](#status-202)         | A `Location` response header set to the URI of a task monitor. |
+| The action request succeeds.                                       | [204](#status-204)         | No JSON message body. |
+| The client did not provide all required parameters.                | [400](#status-400)         | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
+| The client provides a parameter that the service does not support. | [400](#status-400)         | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
+| An error was detected and the action request was not processed.    | 400 or greater             | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
 
-```xml
-<Schema Namespace="ComputerSystem">
-  ...
-  <Action Name="Reset" IsBound="true">
-    <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions" />
-    <Parameter Name="ResetType" Type="Resource.ResetType" />
-  </Action>
-  ...
-</Schema>
-```
+If an action does not have any required parameters, the service should accept an empty JSON object in the HTTP body for the action request.
 
-And a computer system resource contains an [Actions](#actions-property) property, such as:
+If an action requested by the client will have no effect, such as performing a reset of a `ComputerSystem` where the parameter `ResetType` is set to `On` and the `ComputerSystem` is already `On`, the service should respond with an HTTP [200](#status-200) status code and return the `NoOperation` message, defined in the Base Message Registry.
 
-```
-{
-    "Actions": {
-        "#ComputerSystem.Reset": {
-            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-            "ResetType@Redfish.AllowableValues": [
-                "On",
-                "ForceOff",
-                "ForceRestart",
-                "Nmi",
-                "ForceOn",
-                "PushPowerButton"
-            ]
-        }
-    },
-    ...
-}
-```
-
-The following code block shows a possible valid request for the `Action`:
-
-```http
-POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
-Content-Type: application/json;charset=utf-8
-Content-Length: <computed length>
-OData-Version: 4.0
-
-{
-    "ResetType": "On"
-}
-```
-
-To convey the allowable values in the same `Reset` example, a computer system resource may use an `ActionInfo` annotation and resource:
-
-```json
-{
-    "Actions": {
-        "#ComputerSystem.Reset": {
-            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
-        }
-    },
-    ...
-}
-```
-
-The `ResetActionInfo` resource contains a more detailed description of the parameters and the supported values.
-
-```json
-{
-    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
-    "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
-    "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
-    "Id": "ResetActionInfo",
-    "Name": "Reset Action Info",
-    "Parameters": [
-        {
-            "Name": "ResetType",
-            "Required": true,
-            "DataType": "String",
-            "AllowableValues": [
-                "On",
-                "ForceOff",
-                "ForceRestart",
-                "Nmi",
-                "ForceOn",
-               "PushPowerButton"
-            ]
-        }
-    ]
-}
-```
-
-To indicate the success or failure of the `Action` request processing, the service may return a response with one of the following HTTP status codes and additional information:
-
-| To&nbsp;indicate                                                  | HTTP&nbsp;status&nbsp;code | Additional&nbsp;information |
-| ---                                                               | ---                        | ---                         |
-| The `Action` request succeeds.                                    | [200](#status-200)         | The JSON message body, as described in [Error responses](#error-responses), with a message that indicates success or any additional relevant messages.<br/>If the action was successfully processed and completed without errors, warnings, or other notifications for the client, the service should return the `Success` message from the base message registry in the `code` property in the response body. |
-| The `Action` request may require extra time to process.           | [202](#status-202)         | A `Location` response header set to the URI of a task monitor. |
-| The `Action` request succeeds.                                    | [204](#status-204)         | No JSON message body. |
-| An error was detected and the `Action` request was not processed. | 400 or greater             | The response may contain a JSON object, as described in [Error responses](#error-responses), which details the error or errors. |
-
-Actions may have required parameters.  See Resource actions.
-
-| Scenario | Response |
-| ---      | ---      |
-| The client did not provide all required parameters. | The service should respond with the HTTP [400](#status-400) status code. |
-| The `Action` does not have any required parameters. | The service should accept an empty JSON object in the HTTP body for the `Action` request.  |
-| The client provides a parameter that the service does not support. | The service shall either reject the request with HTTP [400](#status-400) status code or ignore the unknown parameters. |
-| The client requests an `Action` that has no effect.<br/>For example, the client requests a reset of a computer system but it is already on. | The service should respond with the HTTP [200](#status-200) status code and return the `NoOperation` message, as defined in the base message registry. |
-
-Example successful `Action` response:
+Example successful action response:
 
 ```json
 {
@@ -1069,14 +976,14 @@ Example successful `Action` response:
         "code": "Base.1.0.Success",
         "message": "completed successfully Request",
         "@Message.ExtendedInfo": [
-	    {
+            {
                 "@odata.type": "#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.Success",
                 "Message": "completed successfully Request",
                 "Severity": "OK",
                 "Resolution": "None"
             }
-	]
+        ]
     }
 }
 ```
@@ -1382,6 +1289,46 @@ Each JSON object entry includes:
 
 Services return resources and resource collections as JSON payloads by using the `application/json` MIME type.  The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages) clauses for rules about the Redfish schema, and how it maps to JSON payloads.
 
+### Message object
+
+A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
+
+A `Message` object is a JSON object with the following properties:
+
+| Property            | Type                      | Required | Defines |
+| ---                 | ---                       | ---      | ---     |
+| `MessageId`         | String                    | Yes      | The error or message, which is not to be confused with the HTTP status code.  Clients can use this code to access a detailed message from a message registry. |
+| `Message`           | String                    | Yes      | The human-readable error message that indicates the semantics associated with the error.  This shall be the complete message, and not rely on substitution variables. |
+| `RelatedProperties` | An array of JSON pointers | No       | The properties in a JSON payload that the message describes. |
+| `MessageArgs`       | An array of strings       | No       | The substitution parameter values for the message.  If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
+| `Severity`          | String                    | No       | The severity of the error. |
+| `Resolution`        | String                    | No       | The recommended actions to take to resolve the error. |
+
+Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
+
+`MessageIds` identify specific messages that a message registry defines.
+
+The `MessageId` property value shall be in the format:
+
+<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
+
+where
+
+| Variable                             | Description |
+| ---                                  | ---         |
+| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
+| <code><var>MajorVersion</var></code> | A positive integer.  The major version of the registry. |
+| <code><var>MinorVersion</var></code> | A positive integer.  The minor version of the registry. |
+| <code><var>MessageKey</var></code>   | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
+
+To search the message registry for a corresponding message, the client can use the `MessageId`.
+
+The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
+
+The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
+
+When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
+
 ### Error responses
 
 HTTP response status codes often do not provide enough information to enable deterministic error semantics.  For example, if a client makes a PATCH call and some properties do not match while others are not supported, the HTTP [400](#status-400) status code does not tell the client which values are in error.  Error responses are used to provide the client more meaningful and deterministic error semantics.
@@ -1577,7 +1524,7 @@ The value of the Next Link property shall be an opaque URL to a Resource, with t
 
 The [`Members@odata.count` property](#count-property) value is the total number of Resources available if the client enumerates all pages of the Resource Collection.
 
-#### Links
+#### Links<a id="links-property"></a>
 
 The `Links` property represents the hyperlinks associated with the Resource, as defined by that Resource's schema definition.  All associated [reference properties](#reference-properties) defined for a resource shall be nested under the Links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
@@ -1641,14 +1588,13 @@ The client may use this fragment to identify the action definition in the [refer
 
 The property for the action is a JSON object and contains the following properties:
 * The `target` property shall be present, and defines the relative or absolute URL to invoke the action.
-* The`title` property may be present,and defines the action's name.
+* The `title` property may be present,and defines the action's name.
 
 The [OData JSON Format](#OData-JSON) specification defines the `target` and `title` properties.
 
 To specify the list of supported values for a parameter, the service may include the [`@Redfish.AllowableValues`](#allowable-values) annotation.
 
 For example, the following property defines the `Reset` action for a `ComputerSystem`:
-
 ```json
 {
     "#ComputerSystem.Reset": {
@@ -1671,15 +1617,22 @@ For example, the following property defines the `Reset` action for a `ComputerSy
 
 Given this, the client could invoke a POST request to `/redfish/v1/Systems/1/Actions/ComputerSystem.Reset` with the following body:
 
-```json
+```http
+POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
+Content-Type: application/json;charset=utf-8
+Content-Length: <computed length>
+OData-Version: 4.0
+
 {
     "ResetType": "On"
 }
 ```
 
+The Resource may provide a separate `@Redfish.ActionInfo` Resource to describe the parameters and values that a particular instance or implementation supports.  Use the `@Redfish.ActionInfo` annotation to specify the `ActionInfo` resource, which contains a URI to the `@Redfish.ActionInfo` resource for the action.  See the [Action Info annotation](#action-info-annotation) clause for details.
+
 #### Oem
 
-The [Oem](#oem-property) property is used for OEM extensions as defined in [Resource Extensibility](#resource-extensibility).
+The [`Oem`](#oem-property) property is used for OEM extensions as defined in [Resource Extensibility](#resource-extensibility).
 
 #### Status
 
@@ -1823,7 +1776,141 @@ TODO: Talk about @odata.id, pointing to another resource
 
 ### Payload annotations
 
-TODO: Fill in!
+A Resources, objects within a Resource, and properties may include additional annotations as properties with the name in the format:
+
+<pre>[<var>PropertyName</var>]@<var>Namespace</var>.<var>TermName</var></pre>
+
+where
+
+| Variable                             | Description |
+| ---                                  | ---         |
+| <code><var>PropertyName</var></code> | The name of the property to annotate.  If absent, the annotation applies to the entire JSON object, which may be an entire Resource. |
+| <code><var>Namespace</var></code>    | The name of the namespace that defines the annotation term. |
+| <code><var>TermName</var></code>     | The name of the annotation term to apply to the resource or property of the resource. |
+
+Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
+
+The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
+
+#### Allowable values
+
+To specify the list of allowable values for a parameter, clients can use the `@Redfish.AllowableValues` annotation for properties or action parameters.
+
+To specify the set of allowable values, include a property with the name of the property or parameter, followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
+
+#### Extended object information
+
+To specify object-level status information, services may annotate a JSON object with the `@Message.ExtendedInfo` annotation.
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
+    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
+    "Name": "Managed Serial Interface 1",
+    "Description": "Management for Serial Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "SignalType": "Rs232",
+    "BitRate": "115200",
+    "Parity": "None",
+    "DataBits": "8",
+    "StopBits": "1",
+    "FlowControl": "None",
+    "ConnectorType": "RJ45",
+    "PinOut": "Cyclades",
+    "@Message.ExtendedInfo": [{
+        "MessageId": "Base.1.0.PropertyDuplicate",
+        "Message": "The property InterfaceEnabled was duplicated in the request.",
+        "RelatedProperties": [
+            "#/InterfaceEnabled"
+        ],
+        "Severity": "Warning",
+        "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
+    }]
+}
+```
+
+The value of the property is an array of [message objects](#message-object).
+
+#### Extended property information
+
+Services may use `@Message.ExtendedInfo`, prepended with the name of the property to annotate an individual property in a JSON object with extended information:
+
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
+    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
+    "Name": "Managed Serial Interface 1",
+    "Description": "Management for Serial Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "SignalType": "Rs232",
+    "BitRate": 115200,
+    "Parity": "None",
+    "DataBits": 8,
+    "StopBits": 1,
+    "FlowControl": "None",
+    "ConnectorType": "RJ45",
+    "PinOut": "Cyclades",
+    "PinOut@Message.ExtendedInfo": [{
+        "MessageId": "Base.1.0.PropertyValueNotInList",
+        "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
+        "Severity": "Warning",
+        "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
+    }]
+}
+```
+
+#### Action Info annotation
+
+The Action Info annotation is used to convey the parameter requirements and allowable values on parameters for [actions](#post-action).  This is done using `@Redfish.ActionInfo` term within the [action representation](#actions-property).  This term contains a URI to the `ActionInfo` Resource.
+
+Example `#ComputerSystem.Reset` action with the `@Redfish.ActionInfo` annotation and Resource:
+```json
+{
+    "Actions": {
+        "#ComputerSystem.Reset": {
+            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
+        }
+    },
+    ...
+}
+```
+
+The `ResetActionInfo` Resource contains a more detailed description of the parameters and the supported values.  This Resource follows the `ActionInfo` schema definition.
+```json
+{
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
+    "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+    "Id": "ResetActionInfo",
+    "Name": "Reset Action Info",
+    "Parameters": [
+        {
+            "Name": "ResetType",
+            "Required": true,
+            "DataType": "String",
+            "AllowableValues": [
+                "On",
+                "ForceOff",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+               "PushPowerButton"
+            ]
+        }
+    ]
+}
+```
 
 ### Settings Resource
 
@@ -3843,7 +3930,7 @@ OData-Version: 4.0
 |         |            | Clarified Accept-Encoding Request header handling. |
 |         |            | Deleted duplicative and conflicting statement on returning extended error resources. |
 |         |            | Clarified relative URI resolution rules. |
-|         |            | Clarified USN format.  |
+|         |            | Clarified USN format. |
 | 1.0.0   | 2015-08-04 | Initial release. |
 
 
@@ -3960,127 +4047,7 @@ A service shall not break responses for a single resource into multiple results.
 
 Response objects may include extended information.  For example, response objects may include information about properties that cannot be updated.  To define this information, apply an annotation to a specific property of the JSON response or an entire JSON object.  See [Extended property information](#extended-property-information).
 
-##### Extended object information
-
-To specify object-level status information, services can annotate a JSON object with `@Message.ExtendedInfo`.
-
-```json
-{
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
-    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
-    "Name": "Managed Serial Interface 1",
-    "Description": "Management for Serial Interface",
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
-    "InterfaceEnabled": true,
-    "SignalType": "Rs232",
-    "BitRate": "115200",
-    "Parity": "None",
-    "DataBits": "8",
-    "StopBits": "1",
-    "FlowControl": "None",
-    "ConnectorType": "RJ45",
-    "PinOut": "Cyclades",
-    "@Message.ExtendedInfo": [{
-        "MessageId": "Base.1.0.PropertyDuplicate",
-        "Message": "The property InterfaceEnabled was duplicated in the request.",
-        "RelatedProperties": [
-            "#/InterfaceEnabled"
-        ],
-        "Severity": "Warning",
-        "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
-    }]
-}
-```
-
 The value of the property is an array of [message objects](#message-object).
-
-##### Extended property information
-
-Services can use `@Message.ExtendedInfo`, prepended with the name of the property to annotate an individual property in a JSON object with extended information:
-
-```json
-{
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
-    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
-    "Name": "Managed Serial Interface 1",
-    "Description": "Management for Serial Interface",
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
-    "InterfaceEnabled": true,
-    "SignalType": "Rs232",
-    "BitRate": 115200,
-    "Parity": "None",
-    "DataBits": 8,
-    "StopBits": 1,
-    "FlowControl": "None",
-    "ConnectorType": "RJ45",
-    "PinOut": "Cyclades",
-    "PinOut@Message.ExtendedInfo": [{
-        "MessageId": "Base.1.0.PropertyValueNotInList",
-        "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
-        "Severity": "Warning",
-        "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
-    }]
-}
-```
-
-The value of the property is an array of [message objects](#message-object).
-
-#### Additional annotations
-
-A JSON resource representation may include additional annotations as properties with the name in the format:
-
-<pre>[<var>PropertyName</var>]@<var>Namespace</var>.<var>TermName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>PropertyName</var></code> | The name of the property to annotate.  If absent, the annotation applies to the entire resource. |
-| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [OData $metadata document](#odata-metadata) in the [context URL](#context-property) of the request must reference this namespace. |
-| <code><var>TermName</var></code> | The name of the annotation term to apply to the resource or property of the resource. |
-
-Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
-
-The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations that the `Redfish` namespace defines.
-
-
-#### Additional annotations
-
-A JSON object that represents a resource collection may include additional annotations represented as properties whose name is in the format:
-
-<pre>@<var>Namespace</var>.<var>TermName</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>Namespace</var></code> | The name of the namespace that defines the annotation term.  The [OData $metadata document](#odata-metadata) that the [context URL](#context-property) of the request defines shall reference this namespace. |
-| <code><var>TermName</var></code> | The name of the annotation term to apply to the resource collection. |
-
-Services shall limit the annotation usage to the `odata`, `Redfish`, and `Message` namespaces.  The [OData JSON Format](#OData-JSON) specification defines the `odata` namespace.  The `Redfish` namespace is an alias for the `RedfishExtensions.v1_0_0` namespace.
-
-The client can get the definition of the annotation from the [OData $metadata document](#odata-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations that the Redfish namespace defines.
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ##### Registry file naming
@@ -4180,49 +4147,3 @@ Service resources represent components of the Redfish Service itself as well as 
 
 Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
 
-##### Allowable values
-
-To specify the list of allowable values for a parameter, clients can use `AllowableValues` annotation to annotate the property for the action.
-
-To specify the set of allowable values, include a property with the name of the parameter followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
-
-
-#### Message object
-
-A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
-
-A `Message` object is a JSON object with the following properties:
-
-| Property | Type | Required | Defines |
-|:---|:---|:---|:---|
-| `MessageId` | String | Required | The error or message, which is not to be confused with the HTTP status code.<br/>Clients can use this code to access a detailed message from a message registry. |
-| `Message` | String | Required | The human-readable error message that indicates the semantics associated with the error.<br/>This shall be the complete message, and not rely on substitution variables. |
-| `RelatedProperties` | An array of JSON pointers | Optional | The properties in a JSON payload that the message describes. |
-| `MessageArgs` | An array of strings | Optional | The substitution parameter values for the message.<br/>If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
-| `Severity` | String | Optional | The severity of the error. |
-| `Resolution` | String | Optional | The recommended actions to take to resolve the error. |
-
-Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
-
-`MessageIds` identify specific messages that a message registry defines.
-
-The `MessageId` property value shall be in the format:
-
-<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
-
-where
-
-| Variable | Description |
-|:--|:--|
-| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
-| <code><var>MajorVersion</var></code> | A positive integer. The major version of the registry. |
-| <code><var>MinorVersion</var></code> | A positive integer. The minor version of the registry. |
-| <code><var>MessageKey</var></code> | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
-
-To search the message registry for a corresponding message, the client can use the `MessageId`.
-
-The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
-
-The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
-
-When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
