@@ -571,24 +571,24 @@ The service shall return the resource representation using one of the media type
 * The service shall ignore the content of the body on a GET.
 * The GET operation shall be idempotent in the absence of outside changes to the resource.
 
-#### Resource collection requests
+#### Resource Collection requests
 
-Clients retrieve a resource collection by making a GET request to the resource collection URI.  The response includes the resource collection's properties and an array of its `Members`.  
+Clients retrieve a Resource Collection by making a GET request to the Resource Collection URI.  The response includes the Resource Collection's properties and an array of its `Members`.
 
 No requirements are placed on implementations to return a consistent set of members when a series of requests that use paging query parameters are made over time to obtain the entire set of members. It is possible that these calls can result in missed or duplicate elements if multiple GETs are used to retrieve the `Members` array instances through paging.
 
-* Clients shall not make assumptions about the URIs for the members of a resource collection.
-* Retrieved resource collections shall always include the [count](#count-property) property to specify the total number of entries in its `Members` array.
+* Clients shall not make assumptions about the URIs for the members of a Resource Collection.
+* Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its `Members` array.
 * Regardless of [paging](#next-link-property), the [count](#count-property) property shall return the total number of resources that the `Members` array references.
 
-A subset of the Members can be retrieved using client paging [query parameters](#query-parameters).
+A subset of the members can be retrieved using client paging [query parameters](#query-parameters).
 
-A service may not be able to return all of the contents of a Resource collection request in a single response body. In this case, the response can be paged by the service.  If a service pages a response to a Resource collection request, the following rules shall apply:
-* Responses may contain a subset of the members of the full Resource collection.
-* Members shall not be split across response bodies.
+A service may not be able to return all of the contents of a Resource Collection request in a single response body.  In this case, the response can be paged by the service.  If a service pages a response to a Resource Collection request, the following rules shall apply:
+* Responses may contain a subset of the members of the full Resource Collection.
+* Individual members shall not be split across response bodies.
 * A [next link](#next-link-property) annotation in the response body which has the URI to the next set of members in the collection shall be supplied.
-* The [next link](#next-link-property) property shall adhere to the rules in the [Next Link Property](#next-link-property)section.
-* GET Operations on the [next link](#next-link-property) shall return the subsequent section of the Resource collection response.
+* The [next link](#next-link-property) property shall adhere to the rules in the [Next Link Property](#next-link-property) section.
+* GET Operations on the [next link](#next-link-property) shall return the subsequent section of the Resource Collection response.
 
 #### Service root request
 
@@ -871,7 +871,7 @@ In the absence of outside changes to the resource, the PATCH operation should be
 
 #### PATCH on array properties
 
-For array properties, services may report `null` values as placeholders at the end of the array to indicate the maximum number of elements that the service supports for that array property.  
+For array properties, services may pad `null` values as placeholders at the end of the array to indicate the maximum number of elements that the service supports for that array property.  
 
 Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.
 
@@ -880,7 +880,9 @@ When processing a PATCH request, the order of operations shall be:
 * Deletions
 * Additions
 
-A PATCH request with fewer elements than currently exist in the array shall truncate the array.  After a removal, services shall remove the `null` elements left between populated elements, unless the array property definition specifies otherwise.
+TODO: JEFFA to break out into different array types (variable length, fixed length, and fixed length where positioning does not change)
+
+A PATCH request with fewer elements than currently exist in the array shall remove the remaining elements of the array.  After a removal, services shall remove the `null` elements left between populated elements, unless the array property definition specifies otherwise.
 
 For example, an array of 'Flavors' indicates the service supports a maximum of six elements, with four populated. 
 
@@ -956,9 +958,9 @@ where
 | `Actions`                                   | The name of the property that contains the actions for a resource, as defined by this specification. |
 | <code><var>QualifiedActionName</var></code> | The qualified name of the action.  Includes the namespace. |
 
-To determine the available [actions](#actions-property) and the [valid parameter values](#allowable-values) for those actions, clients can query a Resource directly.  Some parameter information may require that the client examine the [Redfish Schema](#schema-definition-languages) that corresponds to the Resource.
+To determine the available [actions](#actions-property) and the [valid parameter values](#allowable-values) for those actions, clients can query a Resource directly.
 
-Clients provide parameters for the action within the request body of the POST operation as a JSON object.  Actions may have required parameters.  See the [`Actions` property](#actions-property) clause for information about the structure of the request and required parameters.
+Clients provide parameters for the action within the request body of the POST operation as a JSON object.  Actions may have required parameters.  See the [`Actions` property](#actions-property) clause for information about the structure of the request and required parameters.  Some parameter information may require that the client examine the [Redfish Schema](#schema-definition-languages) that corresponds to the Resource.
 
 To indicate the success or failure of the action request processing, the service may return a response with one of the following HTTP status codes and additional information:
 
@@ -1294,7 +1296,9 @@ Each JSON object entry includes:
 
 ### Resource responses
 
-Services return resources and resource collections as JSON payloads by using the `application/json` MIME type.  The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages) clauses for rules about the Redfish schema, and how it maps to JSON payloads.
+Services return resources and resource collections as JSON payloads by using the `application/json` MIME type.  A service shall not break responses for a single resource into multiple results.
+
+The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages) clauses for rules about the Redfish schema, and how it maps to JSON payloads.
 
 ### Message object
 
@@ -1520,10 +1524,6 @@ The count property defines the total number of Resources, or members, that are a
 #### Members<a id="members-property"></a>
 
 The `Members` property of a Resource Collection identifies the members of the collection.  The `Members` property is required and shall be returned in the response for any Resource Collection.  The `Members` property shall be an array of JSON objects named `Members`.  The `Members` property shall not be `null`.  Empty collections shall be an empty JSON array.
-
-JEFFH to reword the next sentence:
-
-The Redfish Schema document that describes the containing type defines the type of each JSON object in the array.
 
 #### Next link (Members@odata.nextLink) property<a id="next-link-property"></a>
 
@@ -4045,16 +4045,13 @@ For example, if the latest version of `Resource_v1.xml` is `1.6.0`, a client can
 
 
 
-
-#### Partial resource results
-
-A service shall not break responses for a single resource into multiple results.  For details about the format of these responses, see [partial results](#next-link-property).
-
 #### Extended information
 
 Response objects may include extended information.  For example, response objects may include information about properties that cannot be updated.  To define this information, apply an annotation to a specific property of the JSON response or an entire JSON object.  See [Extended property information](#extended-property-information).
 
 The value of the property is an array of [message objects](#message-object).
+
+
 
 
 ##### Registry file naming
