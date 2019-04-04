@@ -873,7 +873,7 @@ In the absence of outside changes to the resource, the PATCH operation should be
 
 There are three possible styles of array properties in a Resource, which are detailed in the [Array properties](#array-properties) clause.
 
-Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  Array properties using the fixed or variable length array style will remove those elements, while array properties using the rigid array style will replace removed elements with `null` elements.  A service may indicate the maximum size of an array by padding `null` elements at the end of the array sequence.
+Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  Array properties using the fixed or variable length style array will remove those elements, while array properties using the rigid style array will replace removed elements with `null` elements.  A service may indicate the maximum size of an array by padding `null` elements at the end of the array sequence.
 
 When processing a PATCH request, the order of operations shall be:
 * Modifications
@@ -882,7 +882,7 @@ When processing a PATCH request, the order of operations shall be:
 
 A PATCH request with fewer elements than currently exist in the array shall remove the remaining elements of the array.  
 
-For example, a fixed length form array of 'Flavors' indicates the service supports a maximum of six elements (by padding the array with `null` elements), with four populated. 
+For example, a fixed length style array of 'Flavors' indicates the service supports a maximum of six elements (by padding the array with `null` elements), with four populated. 
 
 ```
   "Flavors": [ "Chocolate", "Vanilla", "Mango", "Strawberry", null, null ]
