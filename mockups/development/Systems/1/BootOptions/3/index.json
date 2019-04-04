@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2017 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2017-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#BootOption.BootOption",
     "@odata.id": "/redfish/v1/Systems/1/BootOptions/3",
     "@odata.type": "#BootOption.v1_0_0.BootOption",

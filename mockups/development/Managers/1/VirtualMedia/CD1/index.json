@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
     "@odata.id": "/redfish/v1/Managers/1/VirtualMedia/CD1",
     "@odata.type": "#VirtualMedia.v1_3_0.VirtualMedia",

@@ -20,5 +20,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
     "@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved."
 }

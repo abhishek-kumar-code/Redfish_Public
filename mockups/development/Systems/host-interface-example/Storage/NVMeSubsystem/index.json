@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/host-interface-example/Storage/NVMeSubsystem",
     "@odata.type": "#Storage.v1_0_0.Storage",
     "Id": "NVMeSubsystem",
