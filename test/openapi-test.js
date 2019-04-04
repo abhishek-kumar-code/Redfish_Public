@@ -5,6 +5,9 @@ var fs = require('fs');
 var yaml = require('js-yaml');
 var SwaggerParser = require('swagger-parser');
 const config = require('config');
+const request = require('request');
+
+const RemoteFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume.yaml'];
 
 describe('OpenAPI/YAML', () => {
   const files = glob.sync(config.get('Redfish.OpenAPIFilePath'));
@@ -42,6 +45,10 @@ let customOpenAPIResolver = {
   canRead: function(file) {
     let index = file.url.lastIndexOf('/');
     if(index === -1) {
+      //Fallback to other resolvers...
+      return false;
+    }
+    if(RemoteFiles.indexOf(file.url) !== -1) {
       //Fallback to other resolvers...
       return false;
     }
