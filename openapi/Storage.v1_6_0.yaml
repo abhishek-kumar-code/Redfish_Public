@@ -392,6 +392,17 @@ components:
           type: array
           x-longDescription: The value of this property shall be the set of protocols
             this storage controller can use to communicate with attached devices.
+        SupportedRAIDTypes:
+          description: This object describes the RAID Types supported by the storage
+            controller.
+          items:
+            $ref: http://redfish.dmtf.org/schemas/swordfish/v1/Volume.yaml#/components/schemas/RAIDType
+            nullable: true
+          readOnly: true
+          type: array
+          x-longDescription: This object shall contain all the RAIDType values supported
+            by the current resource.
+          x-versionAdded: v1_6_0
       required:
       - '@odata.id'
       - MemberId
