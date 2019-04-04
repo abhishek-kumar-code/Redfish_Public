@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2018 DMTF, Inc. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2018-2019 DMTF, Inc. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#PCIeSlots.PCIeSlots",
     "@odata.id": "/redfish/v1/Chassis/1/PCIeSlots",
     "@odata.type": "#PCIeSlots.v1_0_0.PCIeSlots",
