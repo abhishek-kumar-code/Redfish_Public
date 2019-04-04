@@ -2243,20 +2243,20 @@ For consistency in publication and to enable programmatic access, all Redfish-re
 Redfish message or privilege registry files shall be named using the Registry name, following the format:
 
   *RegistryName.MajorVersion.MinorVersion.Errata.json*
-  
+
 For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
 
 ### Profile file naming
 
-The JSON document describing a Profile follows the Redfish Schema file naming conventions. The file name format for Profiles shall be formatted as:
+The document describing a Profile follows the Redfish Schema file naming conventions.  The file name format for Profiles shall be formatted as:
 
   *ProfileName.vMajorVersion_MinorVersion_Errata.json*
 
-For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The file name shall include the Profile name and Profile version matching those property values within the document.
+For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json".  The file name shall include the Profile name and Profile version matching those property values within the document.
 
 ### Dictionary file naming
 
-The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema definition language that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
+The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema definition language that the dictionary is converted from.  As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name.  The file names for Dictionaries shall be formatted as:
 
   *DictionaryName_vMajorVersion.dict*
 
@@ -2264,7 +2264,7 @@ For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.
 
 ### Localized file naming
 
-Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an `en` sub-folder for consistency.
+Localized schemas and registries shall follow the same file naming conventions as the English language versions.  When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an `en` sub-folder for consistency.
 
 ### DMTF Redfish file repository
 
