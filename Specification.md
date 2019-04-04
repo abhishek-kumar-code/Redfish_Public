@@ -1811,7 +1811,6 @@ To specify object-level status information, services may annotate a JSON object 
 
 ```json
 {
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
@@ -1851,7 +1850,6 @@ Services may use `@Message.ExtendedInfo`, prepended with the name of the propert
 
 ```json
 {
-    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
