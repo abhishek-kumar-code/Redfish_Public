@@ -2231,13 +2231,47 @@ The creation of separate localized copies of Redfish schemas and registries is a
 
 Property names, parameter names, and enumeration values in the JSON response payload are never localized, but translated copies of those names may be provided as additional annotations in the localized schema for use by client applications.  A separate file for each localized schema or registry shall be provided for each supported language.  The English-language versions of Redfish schemas and registries shall be the normative versions, and alterations of meaning due to translation in localized versions of schemas and registries shall be forbidden.
 
-Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an `en` sub-folder for consistency.
+Schemas and registries in languages other than English shall identify their language using the appropriate schema annotations.  Descriptive property, parameter, and enumeration text not translated into the language specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
 
-Descriptive property, parameter, and enumeration text not translated into the language specified shall be removed from localized versions.  This removal allows for software and tools to combine normative and localized copies, especially when minor schema version differences exist.
+## File naming and publication
 
-### Schema, registry, dictionary, and profile repository
+For consistency in publication and to enable programmatic access, all Redfish-related files shall follow a set of rules to construct the name of each file.  The filename construction rules for Redfish Schema files are contained in the [Schema definition languages](#schema-definition-languages) clause, while construction rules for other file types are shown below.
 
-All Redfish schemas, registries, dictionaries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  The files are organized on the site in the following manner:
+### Registry file naming
+
+Redfish message or privilege registry files shall be named using the Registry name, following the format:
+
+  *RegistryName.MajorVersion.MinorVersion.Errata.json*
+  
+For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
+
+### Profile file naming
+
+The JSON document describing a Profile follows the Redfish Schema file naming conventions. The file name format for Profiles shall be formatted as:
+
+  *ProfileName.vMajorVersion_MinorVersion_Errata.json*
+
+For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The file name shall include the Profile name and Profile version matching those property values within the document.
+
+### Dictionary file naming
+
+The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema definition language that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
+
+  *DictionaryName_vMajorVersion.dict*
+
+For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.dict".
+
+### Localized file naming
+
+Localized schemas and registries shall follow the same file naming conventions as the English language versions. When multiple localized copies are present in a repository (which will have the same filename), files in languages other than English shall be organized into sub-folders named to match the [ISO 639-1](#ISO6391) language code for those files.  English language files may be duplicated in an `en` sub-folder for consistency.
+
+### DMTF Redfish file repository
+
+All Redfish schemas, registries, dictionaries, and profiles published or re-published by the DMTF's Redfish Forum are available from the DMTF website http://redfish.dmtf.org/ for download.  Programs may access the repository using the durable URLs listed below.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+
+Organizations creating Redfish-related files such as OEM schemas, Redfish Interoperability Profiles, or Message Registries are encouraged to submit those files to the DMTF using the form at https://redfish.dmtf.org/redfish/portal for re-publication in the DMTF Redfish file repository.
+
+The files are organized on the site in the following manner:
 
 | URL                                     | Folder contents |
 | ---                                     | ---             |
@@ -3914,7 +3948,8 @@ OData-Version: 4.0
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
-| 1.7.0   | TBD        | The specification has been significantly re-written for clarity.  Except for the additions listed below, no normative changes were made to the specification.  Any clarifications that inadvertantly altered the normative behavior shall be considered errata, and will be corrected in future revisions to the specification. |
+| 1.7.0   | 2019-04-05 | The specification has been significantly re-written for clarity.  Except for the additions listed below, no normative changes were made to the specification.  Any clarifications that inadvertently altered the normative behavior shall be considered errata, and will be corrected in future revisions to the specification. |
+|         |            | Added missing normative statements regarding handling of array properties and PATCH operations on arrays. |
 |         |            | Added Dictionary file naming rules and repository locations. |
 |         |            | Enhanced localization definitions and defined repository locations. |
 |         |            | Added missing statement about SSE within the "Eventing mechanism" clause. |
@@ -4079,39 +4114,3 @@ OData-Version: 4.0
 |         |            | Clarified relative URI resolution rules. |
 |         |            | Clarified USN format. |
 | 1.0.0   | 2015-08-04 | Initial release. |
-
-
-
-
-
-
-JEFFA to move below
-
-##### Registry file naming
-
-Redfish message or privilege registry files shall be named using the Registry name, following the format:
-
-  *RegistryName.MajorVersion.MinorVersion.Errata.json*
-  
-For example, version 1.0.2 of the Base message registry would be named "Base.1.0.2.json".
-
-##### Profile file naming
-
-The JSON document describing a Profile follows the Redfish Schema file naming conventions. The file name format for Profiles shall be formatted as:
-
-  *ProfileName.vMajorVersion_MinorVersion_Errata.json*
-
-For example, version 1.2.0 of the BasicServer profile would be named "BasicServer.v1_2_0.json". The file name shall include the Profile name and Profile version matching those property values within the document.
-
-##### Dictionary file naming
-
-The binary file describing a Redfish Device Enablement Dictionary follows the Redfish Schema file naming conventions for the schema that the dictionary is converted from. As a single Dictionary file contains all minor revisions of the schema, only the major version is used in the file name. The file names for Dictionaries shall be formatted as:
-
-  *DictionaryName_vMajorVersion.dict*
-
-For example, version 1.2.0 of the Chassis dictionary would be named "Chassis_v1.dict".
-
- 
-#### Programmatic access to schema, registry, or profile files
-
-Programs may access the Schema Repository using the durable URLs listed at the redfish.dmtf.org repository, as these folders will contain every released version of each file.  Programs incorporating remote repository access should implement a local cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
