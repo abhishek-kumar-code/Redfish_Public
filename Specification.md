@@ -1298,48 +1298,6 @@ Services return resources and resource collections as JSON payloads by using the
 
 The format of these payloads is defined by the Redfish schema.  See the [Data model](#data-model) and [Schema definition languages](#schema-definition-languages) clauses for rules about the Redfish schema, and how it maps to JSON payloads.
 
-### Message object
-
-MIKER to move into Data Model section under "Data Types"
-
-A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
-
-A `Message` object is a JSON object with the following properties:
-
-| Property            | Type                      | Required | Defines |
-| ---                 | ---                       | ---      | ---     |
-| `MessageId`         | String                    | Yes      | The error or message, which is not to be confused with the HTTP status code.  Clients can use this code to access a detailed message from a message registry. |
-| `Message`           | String                    | Yes      | The human-readable error message that indicates the semantics associated with the error.  This shall be the complete message, and not rely on substitution variables. |
-| `RelatedProperties` | An array of JSON pointers | No       | The properties in a JSON payload that the message describes. |
-| `MessageArgs`       | An array of strings       | No       | The substitution parameter values for the message.  If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
-| `Severity`          | String                    | No       | The severity of the error. |
-| `Resolution`        | String                    | No       | The recommended actions to take to resolve the error. |
-
-Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
-
-`MessageIds` identify specific messages that a message registry defines.
-
-The `MessageId` property value shall be in the format:
-
-<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
-
-where
-
-| Variable                             | Description |
-| ---                                  | ---         |
-| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
-| <code><var>MajorVersion</var></code> | A positive integer.  The major version of the registry. |
-| <code><var>MinorVersion</var></code> | A positive integer.  The minor version of the registry. |
-| <code><var>MessageKey</var></code>   | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
-
-To search the message registry for a corresponding message, the client can use the `MessageId`.
-
-The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
-
-The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
-
-When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
-
 ### Error responses
 
 HTTP response status codes often do not provide enough information to enable deterministic error semantics.  For example, if a client makes a PATCH call and some properties do not match while others are not supported, the HTTP [400](#status-400) status code does not tell the client which values are in error.  Error responses are used to provide the client more meaningful and deterministic error semantics.
@@ -1442,6 +1400,151 @@ OEMs and other third parties can extend the Redfish data model by creating new r
 Companies, OEMs, and other organizations can define additional [properties](#resource-extensibility), hyperlinks, and [actions](#oem-actions) for standard Redfish Resources using the `Oem` property in Resources, the [Links Property](#links-property), and actions.
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the Resource itself, and the semantics around the protocol shall conform to the requirements in this specification.  OEMs are encouraged to follow the design tenets and naming conventions in this specification when defining OEM Resources or properties.
+
+### Common data types
+
+The following clause details the data types found throughout the Redfish data model.
+
+#### Primitive types
+
+The following are the primitive data types found in the data model:
+
+| Type    | Description |
+| ---     | ---         |
+| Boolean | Can be `true` or `false`. |
+| Number  | A number with optional decimal point or exponent.  Number properties may restrict the representation to be an integer or a number with decimal point. |
+| String  | A sequence of characters enclosed with double quotes (`"`).  |
+| Array   | A comma separated set of the above types enclosed with square braces (`[` and `]`).  String properties may specify a format or pattern in order to restrict the structure of the string. |
+| Object  | A set of properties enclosed with curly braces (`{` and `}`).  See the [Structured properties](#structured-properties) clause for additional information. |
+
+When receiving values from the client, services should support other valid representations of the data in the specified JSON type.  In particular, services should support valid integer and decimal values in exponential notation and integer values that contain a decimal point with no non-zero trailing digits.
+
+#### GUID/UUID values<a id="guid-uuid-values"></a>
+
+GUID/UUID values are unique identifier strings and shall use the format:
+
+`([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})`
+
+#### Date-Time values
+
+Date-Time values are strings according to the ISO 8601 extended format, including the time offset or UTC suffix.  Date-Time values shall use the format:
+
+<pre><var>YYYY</var>-<var>MM</var>-<var>DD</var>T<var>hh</var>:<var>mm</var>:<var>ss</var>[.<var>SSS</var>](Z|(+|-)<var>HH</var>:<var>MM</var>)</pre>
+
+where
+
+| Variable or separator        | Description |
+| ---                          | ---         |
+| <code><var>YYYY</var></code> | The four digit year. |
+| <code><var>MM</var></code>   | The two digit month (1 to 12). |
+| <code><var>DD</var></code>   | the two digit day (1 to 31). |
+| <code>T</code>               | The time separator.  Shall be a capital `T`. |
+| <code><var>hh</var></code>   | the two digit hour (0 to 23). |
+| <code><var>mm</var></code>   | the two digit minute (0 to 59). |
+| <code><var>ss</var></code>   | the two digit second (0 to 59). |
+| <code><var>SSS</var></code>  | The decimal fraction of a second.  One or more digits where the number of digits imply the precision. |
+| <code>Z</code>               | The zero offset indicator.  Shall be a capital `Z`. |
+| <code><var>HH</var></code>   | the two digit hour offset (0 to 23). |
+| <code><var>MM</var></code>   | the two digit minute offset (0 to 59). |
+
+For example, the value `"2015-03-13T04:14:33+06:00"` represents March 13, 2015 at 4:14:33 with a time offset of +06:00.
+
+When the time of day is unknown or serves no purpose, the service shall report `00:00:00Z` for the time of day value.
+
+#### Duration values
+
+Duration values are strings according to the ISO 8601 duration format.  Duration values shall use the format:
+
+<pre>P[<var>y</var>Y][<var>m</var>M][<var>w</var>W][<var>d</var>D][T[<var>h</var>H][<var>m</var>M][<var>s</var>[.<var>f</var>]S]]</pre>
+
+where
+
+| Variable                  | Description |
+| ---                       | ---         |
+| <code><var>y</var></code> | The number of years. |
+| <code><var>m</var></code> | The number of months. |
+| <code><var>w</var></code> | The number of weeks. |
+| <code><var>d</var></code> | The number of days. |
+| <code><var>h</var></code> | The number of hours. |
+| <code><var>m</var></code> | The number of minutes. |
+| <code><var>s</var></code> | The number of seconds. |
+| <code><var>f</var></code> | The fractional seconds. |
+
+Each field is optional and may contain more than one digit.
+
+For example, the following values represent the following durations:
+
+| Value      | Specifies a duration of |
+| ---        | ---                     |
+| `P3D`      | Three days. |
+| `PT6H`     | Six hours. |
+| `PT10S`    | Ten seconds. |
+| `PT0.001S` | 0.001 seconds. |
+| `PT1H30M`  | One hour and 30 minutes. |
+
+#### Structured properties
+
+Structured properties are JSON objects within a response body.
+
+Some structured properties inherit from the `Resource.v1_0_0.ReferenceableMember` definition.  Structured properties that follow this definition shall contain the [`MemberId`](#memberid-property) and [Resource identifier](#identifier-property) properties.
+
+Because the definition of structured properties can evolve over time, clients must be aware of the inheritance model that the different structured property definitions use.  
+
+For example, the `Location` definition in the `Resource` schema has gone through several iterations since the `Resource.v1_1_0` namespace was introduced, and each iteration inherits from the previous version so that existing references in other schemas can leverage the new additions.
+
+Structured property references must resolve both local and external references.
+
+A local reference is a Resource that has a structured property in its own schema, such as `ProcessorSummary` in the `ComputerSystem` Resource.  In these cases, the [type](#type-property) property for the Resource is the starting point for resolving the structured property definition.
+
+To find the latest applicable version, clients can step the [version of the Resource](#versioning) backwards.
+
+For example, if a service returns `#ComputerSystem.v1_4_0.ComputerSystem` as the Resource type, a client can step backwards from `ComputerSystem.v1_4_0`, to `ComputerSystem.v1_3_0`, to `ComputerSystem.v1_2_0`, and so on, until it finds the `ProcessorSummary` structured property definition.
+
+An external reference is a Resource that has a property that references a definition found in a different schema, such as `Location` in the `Chassis` Resource.
+
+In these cases, clients can use the latest version of the external schema file as a starting point to resolve the structured property definition.
+
+For example, if the latest version of the `Resource` schema is `1.6.0`, a client can go backward from `Resource.v1_6_0`, to `Resource.v1_5_0`, to `Resource.v1_4_0`, and so on, until it finds the `Location` structured property definition.
+
+#### Message object
+
+A `Message` object provides additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses).
+
+A `Message` object is a JSON object with the following properties:
+
+| Property            | Type                      | Required | Defines |
+| ---                 | ---                       | ---      | ---     |
+| `MessageId`         | String                    | Yes      | The error or message, which is not to be confused with the HTTP status code.  Clients can use this code to access a detailed message from a message registry. |
+| `Message`           | String                    | Yes      | The human-readable error message that indicates the semantics associated with the error.  This shall be the complete message, and not rely on substitution variables. |
+| `RelatedProperties` | An array of JSON pointers | No       | The properties in a JSON payload that the message describes. |
+| `MessageArgs`       | An array of strings       | No       | The substitution parameter values for the message.  If the parameterized message defines a `MessageId`, the service shall include the `MessageArgs` in the response. |
+| `Severity`          | String                    | No       | The severity of the error. |
+| `Resolution`        | String                    | No       | The recommended actions to take to resolve the error. |
+
+Each instance of a `Message` object shall contain at least a `MessageId`, together with any applicable `MessageArgs`, or a `Message` property that defines the complete human-readable error message.
+
+`MessageIds` identify specific messages that a message registry defines.
+
+The `MessageId` property value shall be in the format:
+
+<pre><var>RegistryName</var>.<var>MajorVersion</var>.<var>MinorVersion</var>.<var>MessageKey</var></pre>
+
+where
+
+| Variable                             | Description |
+| ---                                  | ---         |
+| <code><var>RegistryName</var></code> | The name of the registry.  The registry name shall be Pascal-cased. |
+| <code><var>MajorVersion</var></code> | A positive integer.  The major version of the registry. |
+| <code><var>MinorVersion</var></code> | A positive integer.  The minor version of the registry. |
+| <code><var>MessageKey</var></code>   | The human-readable key into the registry.  The message key shall be Pascal-cased and shall not include spaces, periods, or special characters. |
+
+To search the message registry for a corresponding message, the client can use the `MessageId`.
+
+The message registry approach has advantages for internationalization, because the registry can be translated easily, and lightweight implementation because large strings need not be included with the implementation.
+
+The use of `Base.1.0.GeneralError` as a `MessageId` in `ExtendedInfo` is discouraged.  If no better message exists or the `ExtendedInfo` array contains multiple messages, use `Base.1.0.GeneralError` only in the `code` property of the `error` object.
+
+When an implementation uses `Base.1.0.GeneralError` in `ExtendedInfo`, the implementation should include a `Resolution` property with this error to indicate how to resolve the problem.
 
 ### Properties
 
@@ -2316,16 +2419,16 @@ All Property elements contain a `Type` attribute specifies the data type.  The `
 
 Primitive data types shall be one of the following:
 
-| Type               | Meaning |
-| ---                | ---     |
-| Edm.Boolean        | True or False. |
-| Edm.DateTimeOffset | [Date-time](#datetime-values) string. |
-| Edm.Decimal        | Numeric values with fixed precision and scale. |
-| Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits). |
-| Edm.Duration       | [Duration](#duration-values) string. |
-| Edm.Guid           | Globally unique identifier. |
-| Edm.Int64          | Signed 64-bit integer. |
-| Edm.String         | UTF-8 string. |
+| Type                 | Meaning |
+| ---                  | ---     |
+| `Edm.Boolean`        | True or False. |
+| `Edm.DateTimeOffset` | [Date-time](#date-time-values) string. |
+| `Edm.Decimal`        | Numeric values with fixed precision and scale. |
+| `Edm.Double`         | IEEE 754 binary64 floating-point number (15-17 decimal digits). |
+| `Edm.Duration`       | [Duration](#duration-values) string. |
+| `Edm.Guid`           | [GUID/UUID](#guid-uuid-values) string. |
+| `Edm.Int64`          | Signed 64-bit integer. |
+| `Edm.String`         | UTF-8 string. |
 
 Property elements may specify a `Nullable` attribute.  If the value is `false`, value of `null` is not allowed as a value for the property.  If the attribute is `true` or not specified, a value of `null` is allowed.
 
@@ -3964,106 +4067,6 @@ OData-Version: 4.0
 | 1.0.0   | 2015-08-04 | Initial release. |
 
 
-
-
-
-
-
-
-
-
-MIKER to move below
-
-
-#### Primitive properties
-
-Return primitive properties as JSON values:
-
-| Type | JSON representation |
-|:---|:---|
-| `Edm.Boolean` | Boolean. |
-| `Edm.DateTimeOffset` | String, as a [DateTime value](#datetime-values). |
-| `Edm.Duration` | String, as a [Duration value](#duration-values). |
-| `Edm.Decimal` | Number.  Optionally contains a decimal point. |
-| `Edm.Double` | Number.  Optionally contains a decimal point and an exponent. |
-| `Edm.Guid` | String.  Matches the `([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})` pattern. |
-| `Edm.Int64` | Number with no decimal point. |
-| `Edm.String` | String. |
-
-When receiving values from the client, services should support other valid representations of the data in the specified JSON type.  In particular, services should support valid integer and decimal values in exponential notation and integer values that contain a decimal point with no non-zero trailing digits.
-
-#### DateTime values
-
-Return `DateTime` values as JSON strings according to the ISO 8601 extended format, including the time offset or UTC suffix, in the format:
-
-<pre>
-	<var>YYYY</var>-<var>MM</var>-<var>DD</var> T <var>hh</var>:<var>mm</var>:<var>ss</var>[.<var>SSS</var>](Z|(+|-)<var>hh</var>:<var>mm</var>)
-</pre>
-
-where
-
-| Variable or separator | Description |
-|:--|:--|
-| <code>T</code> | The time separator.  Must be a capital `T`. |
-| <code><var>SSS</var></code> | The decimal fraction of a second.  One or more digits where the number of digits imply the precision. |
-| <code>Z</code> | The time zone separator.  Must be a capital `Z`. |
-
-When the time of day is unknown or serves no purpose, the service shall report `00:00:00Z` for the time of day value in `DateTime`.
-
-#### Duration values
-
-Return duration values as JSON strings according to the ISO 8601 duration format, in the format:
-
-<pre>P[<var>yyyy</var>Y][<var>mm</var>M][<var>ww</var>W][<var>dd</var>D][T[<var>hh</var>H][<var>mm</var>M][<var>ss</var>[.<var>fff</var>]S]]</pre>
-
-where
-
-| Variable | Defines |
-|:--|:--|
-| <code><var>yyyy</var></code> | Years. |
-| <code><var>mm</var></code> | Months. |
-| <code><var>ww</var></code> | Weeks. |
-| <code><var>dd</var></code> | Days. |
-| <code><var>hh</var></code> | Hours. |
-| <code><var>mm</var></code> | Minutes. |
-| <code><var>ss</var></code> | Seconds. |
-| <code><var>fff</var></code> | Fractional seconds. |
-
-Each field is optional and may contain more than one digit.
-
-For example, the following values represent the following durations:
-
-| Value | Specifies a duration of |
-|:--|:--|
-| `P3D` | Three days. |
-| `PT6H` | Six hours. |
-| `PT10S` | Ten seconds. |
-| `PT0.001S` | 0.001 seconds. |
-| `PT1H30M` | One hour and 30 minutes. |
-
-#### Structured properties
-
-Structured properties are JSON objects within a response body.
-
-Some structured properties inherit from the `Resource.v1_0_0.ReferenceableMember` definition.  Structured properties that follow this definition shall contain the [`MemberId`](#memberid-property) and [resource identifier](#identifier-property) properties.
-
-Because the definition of structured properties can evolve over time, clients must be aware of the inheritance model that the different structured property definitions use.  
-
-For example, the `Location` definition in `Resource_v1.xml` has gone through several iterations since the `Resource.v1_1_0` namespace was introduced, and each iteration inherits from the previous version so that existing references in other schemas can leverage the new additions.
-
-Structured property references must resolve both local and external references.
-
-A local reference is a resource that has a structured property in its own schema, such as `ProcessorSummary` in the `ComputerSystem` resource.  In these cases, the [`type`](#type-property) property for the resource is the starting point for resolving the structured property definition.
-
-To find the latest applicable version, clients can step the [version of the resource](#type-property) backwards.
-
-For example, if a service returns `#ComputerSystem.v1_4_0.ComputerSystem` as the resource type, a client can step backwards from `ComputerSystem.v1_4_0`, to `ComputerSystem.v1_3_0`, to `ComputerSystem.v1_2_0`, and so on, until it finds the `ProcessorSummary` structured property definition.
-
-An external reference is a resource that has a property that references a definition found in a different schema, such as `Location` in the `Chassis` resource.
-
-In these cases, clients can use the latest version of the external schema file as a starting point to resolve the structured property definition.
-
-For example, if the latest version of `Resource_v1.xml` is `1.6.0`, a client can go backward from `Resource.v1_6_0`, to `Resource.v1_5_0`, to `Resource.v1_4_0`, and so on, until it finds the `Location` structured property definition.
 
 
 
