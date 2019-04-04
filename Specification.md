@@ -1811,13 +1811,13 @@ The OEM identifier portion of the name will typically identify the company or or
 
 Companies, OEMs, and other organizations can define additional resources and link to them from an [`Oem` property](#oem-property) found in a standard Redfish Resource.  To avoid naming collisions with current or future standard Redfish schema files, the defining organization's name should be prepended to the resource (schema) name.  For example, `ContosoDisk` would not conflict with a `Disk` resource or another OEM's disk-related resource.
 
-In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources shall be in the form of:
+In order to avoid URI collisions with other OEM resources and future Redfish standard resources, the URIs for OEM resources within the Redfish Resource Tree shall be in the form of:
 
 ` *BaseUri*/Oem/*OemName*/*ResourceName*`
 
 where
-* *BaseUri* is the URI segment of the standard Redfish Resource where the `Oem` property is used.
-* *OemName* is the name of the OEM, that follows the same naming as defined in the [`Oem` property format and content section](#oem-property-format-and-content).
+* *BaseUri* is the URI segment of the standard Redfish Resource (starting with `/redfish/`) where the `Oem` property is used.
+* *OemName* is the name of the OEM, that follows the same naming as defined in the [`Oem` property format and content](#oem-property-format-and-content) section.
 * *ResourceName* is the name of the resource defined by the OEM.
 
 For example, if Contoso defined a new resource called "ContosoAccountServiceMetrics" to be linked via the "Oem" property found at the URI "/redfish/v1/AccountService", the OEM resource would have the URI "/redfish/v1/AccountService/Oem/Contoso/AccountServiceMetrics".
