@@ -3908,20 +3908,24 @@ The Redfish Host Interface Specification defines how software executing on a hos
 
 A service may implement the CompositionService resource off of ServiceRoot to support the binding of resources together.  One example is disaggregated hardware, which allows for independent components, such as processors, memory, I/O controllers, and drives, to be bound together to create logical constructs that operate together.  This allows for a client to dynamically assign resources for a given application.
 
+A service that supports Composability shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
+
+The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, the different [composition request](#composition-requests) types allowed, and how the POST request for the collection is formatted, as well as what properties are required.
+
+
 ### Composition requests
 
 A service that implements the CompositionService (as defined by the CompositionService schema) shall support one or more of the following types of composition requests:
 * [Specific Composition](#specific-composition)
+* [Constrained Composition](#constrained-composition)
+* [Expandable Resources](#expandable-resources)
 
 A service that supports removing a composed resource shall support the DELETE method on the composed resource.
 
+
 #### Specific Composition
 
-A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Composition requests shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
-
-The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports Specific Compositions shall support a POST request that contains an array of hyperlinks to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
-
-A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
+A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Compositions shall support a POST request that contains an array of hyperlinks to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
 
 Example Specific Composition of a ComputerSystem:
 ~~~http
@@ -3935,12 +3939,100 @@ OData-Version: 4.0
     "Links": {
         "ResourceBlocks": [
             { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock0" },
-            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock2" } ,
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock2" },
             { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetBlock4" }
         ]
     }
 }
 ~~~
+
+
+#### Constrained Composition
+
+A Constrained Composition is when a client has identified a set of criteria (or constraints) in which to build a logical entity.  This includes criteria such as quantities of components, or characteristics of components.  A service that supports Constrained Compositions shall support a POST request that contains the set of characteristics to apply to the composed resource.  The specific format of the request is defined by the schema for the resource being composed.  This type of request may include expanded elements of resources subordinate to the composed resource.
+
+Example Constrained Composition of a ComputerSystem:
+~~~http
+POST /redfish/v1/Systems HTTP/1.1
+Content-Type: application/json;charset=utf-8
+Content-Length: <computed length>
+OData-Version: 4.0
+
+{
+    "Name": "Sample Composed System",
+    "PowerState": "On",
+    "BiosVersion": "P79 v1.00 (09/20/2013)",
+    "Processors": {
+        "Members": [
+            {
+                "@Redfish.RequestedCount": 4,
+                "@Redfish.AllowOverprovisioning": true,
+                "ProcessorType": "CPU",
+                "ProcessorArchitecture": "x86",
+                "InstructionSet": "x86-64",
+                "MaxSpeedMHz": 3700,
+                "TotalCores": 8,
+                "TotalThreads": 16
+            }
+        ]
+    },
+    "Memory": {
+        "Members": [
+            {
+                "@Redfish.RequestedCount": 4,
+                "CapacityMiB": 8192,
+                "MemoryType": "DRAM",
+                "MemoryDeviceType": "DDR4"
+            }
+        ]
+    },
+    "SimpleStorage": {
+        "Members" : [
+            {
+                "@Redfish.RequestedCount": 6,
+                "Devices": [
+                    {
+                        "CapacityBytes": 322122547200
+                    }
+                ]
+            }
+        ]
+    },
+    "EthernetInterfaces": {
+        "Members": [
+            {
+                "@Redfish.RequestedCount": 1,
+                "SpeedMbps": 1000,
+                "FullDuplex": true,
+                "NameServers": [
+                    "names.redfishspecification.org"
+                ],
+                "IPv4Addresses": [
+                    {
+                        "SubnetMask": "255.255.252.0",
+                        "AddressOrigin": "Dynamic",
+                        "Gateway": "192.168.0.1"
+                    }
+                ]
+            }
+        ]
+    }
+}
+~~~
+
+
+#### Expandable Resources
+
+An Expandable Resource is when a service has a baseline composition that cannot be removed.  Instead of a client making requests to create a new composed resource, a client is only allowed to add or remove resources from the composed resource.  A service that supports Expandable Resources shall support one or more of the update methods listed in the [Updating a Composed Resource](#updating-a-composed-resource) clause.
+
+
+### Updating a Composed Resource
+
+A service that supports updating a composed resource shall provide one or more of the following methods for updating composed resources:
+* The PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
+* Actions on the composed resource for adding and removing ResourceBlocks.
+    * If the actions for adding and removing ResourceBlocks are present in the resource, clients should use this method before attempting PUT/PATCH.
+
 
 ## ANNEX A (informative)
 
