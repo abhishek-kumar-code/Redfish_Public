@@ -1816,7 +1816,7 @@ In order to avoid URI collisions with other OEM resources and future Redfish sta
 ` *BaseUri*/Oem/*OemName*/*ResourceName*`
 
 where
-* *BaseUri* is the URI segment of the standard Redfish Resource (starting with `/redfish/`) where the `Oem` property is used.
+* *BaseUri* is the URI segment of the standard Redfish Resource starting with `/redfish/` where the `Oem` property is used.  For example, `/redfish/v1/Systems/3AZ38944T523`.
 * *OemName* is the name of the OEM, that follows the same naming as defined in the [`Oem` property format and content](#oem-property-format-and-content) section.
 * *ResourceName* is the name of the resource defined by the OEM.
 
