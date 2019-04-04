@@ -231,9 +231,9 @@ The following design tenets and technologies are used to help deliver the previo
 
 Redfish minimizes the need for clients to complete upgrades by using strict versioning and forward-compatibility rules, and separation of the protocols from the data model.  However, Redfish does not guarantee that clients never need to update their software.  For example, clients might need to upgrade for managing new types of systems or components, as well as updates to the data model.
 
-Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients must be prepared to discover the optional elements using the built in discovery methods.
+Interoperable does not mean identical.  Many elements of Redfish are optional.  Clients should be prepared to discover the optional elements using the built in discovery methods.
 
-The resource tree reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.  References between resources may result in graph instead of a tree.  Clients that traverse the resource tree must provide logic to avoid infinite loops.
+The resource tree reflects the topology of the system and its devices.  Consequently, different hardware or device types result in different resource trees, even for identical systems from the same manufacturer.  References between resources may result in graph instead of a tree.  Clients that traverse the resource tree should provide logic to avoid infinite loops.
 
 Additionally, not all Redfish resources use simple REST read-and-write semantics.  Different use cases may follow other types of client logic.  For example, clients cannot simply read user credentials or certificates from one service and write them to another service.
 
@@ -304,7 +304,7 @@ Actions are Redfish operations that do not easily map to RESTful interface seman
 
 #### Service discovery
 
-While the service itself is at a well-known URI, clients must discover the network address of the service.  Like UPnP, Redfish uses SSDP for discovery.  A wide variety of devices, such as printers and client operating systems, support SSDP.  It is simple, lightweight, IPv6 capable, and suitable for implementation in embedded environments.
+While the service itself is at a well-known URI, clients need to discover the network address of the service.  Like UPnP, Redfish uses SSDP for discovery.  A wide variety of devices, such as printers and client operating systems, support SSDP.  It is simple, lightweight, IPv6 capable, and suitable for implementation in embedded environments.
 
 For more information, see the [Discovery](#discovery) clause.
 
@@ -563,7 +563,7 @@ Redfish Services shall understand and be able to process the headers in the foll
 
 | Header         | Service requirement | Client requirement | Supported values             | Description |
 | ---            | ---                 | ---                | ---                          | ---         |
-| `X-Auth-Token` | Yes                 | Conditional        | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services must support this header, a client can access unsecured resources without establishing a session. |
+| `X-Auth-Token` | Yes                 | Conditional        | Opaque encoded octet strings | Authenticates user sessions.<br/>The token value shall be indistinguishable from random.<br/>While services shall support this header, a client can access unsecured resources without establishing a session. |
 
 ### GET (read requests)
 
@@ -1183,7 +1183,7 @@ The following table lists HTTP status codes that have meaning or usage defined f
 | <a id="status-304"></a>304 Not Modified                    | The service has performed a conditional GET request where access is allowed, but the resource content has not changed.  Conditional requests are initiated using the headers `If-Modified-Since` and/or `If-None-Match` (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change. |
 | <a id="status-400"></a>400 Bad Request                     | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on).  An extended error shall be returned in the response body, as defined in clause [Error responses](#error-responses). |
 | <a id="status-401"></a>401 Unauthorized                    | The authentication credentials included with this request are missing or invalid. |
-| <a id="status-403"></a>403 Forbidden                       | The service recognized the credentials in the request, but those credentials do not possess authorization to perform this request.  This code is also returned when the user credentials provided must be changed before access to the service can be granted.  See the [Security](#security) clause for more details. |
+| <a id="status-403"></a>403 Forbidden                       | The service recognized the credentials in the request, but those credentials do not possess authorization to perform this request.  This code is also returned when the user credentials provided need to be changed before access to the service can be granted.  See the [Security](#security) clause for more details. |
 | <a id="status-404"></a>404 Not Found                       | The request specified a URI of a resource that does not exist. |
 | <a id="status-405"></a>405 Method Not Allowed              | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI.  The response shall include an `Allow` header, that provides a list of methods that are supported by the resource identified by the URI in the client request. |
 | <a id="status-406"></a>406 Not Acceptable                  | The `Accept` header was specified in the request and the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the `Accept` header. |
@@ -1507,11 +1507,11 @@ Structured properties are JSON objects within a response body.
 
 Some structured properties inherit from the `Resource.v1_0_0.ReferenceableMember` definition.  Structured properties that follow this definition shall contain the [`MemberId`](#memberid-property) and [Resource identifier](#identifier-property) properties.
 
-Because the definition of structured properties can evolve over time, clients must be aware of the inheritance model that the different structured property definitions use.  
+Because the definition of structured properties can evolve over time, clients need to be aware of the inheritance model that the different structured property definitions use.  
 
 For example, the `Location` definition in the `Resource` schema has gone through several iterations since the `Resource.v1_1_0` namespace was introduced, and each iteration inherits from the previous version so that existing references in other schemas can leverage the new additions.
 
-Structured property references must resolve both local and external references.
+Structured property references need to be resolved for both local and external references.
 
 A local reference is a Resource that has a structured property in its own schema, such as `ProcessorSummary` in the `ComputerSystem` Resource.  In these cases, the [type](#type-property) property for the Resource is the starting point for resolving the structured property definition.
 
@@ -1814,7 +1814,7 @@ The definition of any other properties that are contained within the OEM-specifi
 The OEM-specified objects within the `Oem` property are named using a unique OEM identifier for the top of the namespace under which the property is defined.  There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
 DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
 
-Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso' intead of 'Contoso_com', but Contoso.org must use 'Contoso_org' as their OEM property name).  The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
+Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com would use 'Contoso' intead of 'Contoso_com', but Contoso.org would use 'Contoso_org' as their OEM property name).  The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
 
 The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx".  The form and meaning of any text that follows the trailing underscore is completely OEM-specific.  OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
 
@@ -2044,7 +2044,7 @@ The `ResetActionInfo` Resource contains a more detailed description of the param
 
 ### Settings Resource
 
-A Settings Resource is used to represent the future intended state of a Resource.  Some Resources have properties that can be updated and the updates take place immediately; however some properties must be updated at a certain point in time, such as system reset.  While the Resource represents the current state, the Settings Resource represents the future intended state.  The service represents properties of a Resource that can only be updated at a certain point in time using a `@Redfish.Settings` payload annotation.  The Settings annotation contains a link to a subordinate Resource with the same schema definition.  The properties within the Settings Resource contains the properties that are updated at a certain point in time.
+A Settings Resource is used to represent the future intended state of a Resource.  Some Resources have properties that can be updated and the updates take place immediately; however some properties need to be updated at a certain point in time, such as system reset.  While the Resource represents the current state, the Settings Resource represents the future intended state.  The service represents properties of a Resource that can only be updated at a certain point in time using a `@Redfish.Settings` payload annotation.  The Settings annotation contains a link to a subordinate Resource with the same schema definition.  The properties within the Settings Resource contains the properties that are updated at a certain point in time.
 
 For Resources that support a future state and configuration, the response shall contain a property with the `@Redfish.Settings` annotation.  When a Settings annotation is used, the following conditions shall apply:
 * The Settings Resource linked to current resource with the `@Redfish.Settings` annotation shall be of the same schema definition.
@@ -3205,7 +3205,7 @@ The client can continue to get information about the status by directly querying
 
 ### Resource Tree stability
 
-The Resource Tree, which is defined as the set of URIs and array elements within the implementation, must be consistent on a single service across device reboot and A/C power cycle, and must withstand a reasonable amount of configuration change (e.g., adding an adapter to a server). The Resource Tree on one service may not be consistent across instances of devices.  The client must walk the data model and discover resources to interact with them.
+The Resource Tree, which is defined as the set of URIs and array elements within the implementation, should be consistent on a single service across device reboot and A/C power cycle, and should withstand a reasonable amount of configuration change (e.g., adding an adapter to a server). The Resource Tree on one service may not be consistent across instances of devices.  The client should walk the data model and discover resources to interact with them.
 It is possible that some resources will remain very stable from system to system (e.g., BMC network settings) -- but it is not an architectural guarantee.
 
 * A Resource Tree should remain stable across Service restarts and minor device configuration changes, thus the set of URIs and array element indexes should remain constant.
@@ -3250,7 +3250,7 @@ EXT:
 
 #### Notify, alive, and shutdown messages
 
-Redfish devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, must allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.
+Redfish devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, shall allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.
 
 
 ### Server-Sent Events
@@ -4079,7 +4079,7 @@ A service that supports updating a composed resource shall provide one or more o
 |         |            | Various spelling and grammar fixes. |
 | 1.6.0   | 2018-08-23 | Added methods of using $filter on the SSE URI for the EventService. |
 |         |            | Added support for the OpenAPI Specification v3.0. This allows OpenAPI-conforming software  to access Redfish service implementations. |
-|         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 must conform to these URI patterns. |
+|         |            | Added strict definitions for the URI patterns used for Redfish resources to support OpenAPI. Each URI is now constructed using a combination of fixed, defined path segments and the values of "Id" properties for Resource Collections. Also added restrictions on usage of unsafe characters in URIs. Implementations reporting support for Redfish v1.6.0 conform to these URI patterns. |
 |         |            | Added support for creating and naming Redfish schema files in the OpenAPI YAML-based format. |
 |         |            | Added URI construction rules for OEM extensions. |
 |         |            | Changed ETag usage to require strong ETag format. |
@@ -4175,7 +4175,7 @@ A service that supports updating a composed resource shall provide one or more o
 |         |            | Added example of an HTTP Link Header and clarified usage and content. |
 |         |            | Added Schema Modification clause describing allowed usage of the Schema files. |
 |         |            | Added recommendation to use TLS 1.2 or later, and to follow the SNIA TLS Specification.  Added reference to the SNIA TLS Specification.  Added additional recommended TLS_RSA_WITH_AES_128_CBC_SHA Cipher suite. |
-|         |            | Clarified that the "Id" property of a Role resource must match the Role Name. |
+|         |            | Clarified that the "Id" property of a Role resource matches the Role Name. |
 | 1.0.3   | 2016-06-17 | Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References.  Corrected typographical error in ETag example. |
 |         |            | Clarified examples for ExtendedInfo to show arrays of Messages. |
 |         |            | Clarified that a POST to Session Service to create a new Session does not require authorization headers. |
@@ -4187,7 +4187,7 @@ A service that supports updating a composed resource shall provide one or more o
 |         |            | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
 |         |            | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
 |         |            | Removed duplicative or out-of-scope sub-clauses from the Security clause, which made unintended requirements on Redfish service implementations. |
-|         |            | Added missing requirement that property names in Resource Responses must match the casing (capitalization) as specified in schema. |
+|         |            | Added missing requirement that property names in Resource Responses match the casing (capitalization) as specified in schema. |
 |         |            | Updated normative references to current HTTP RFCs and added clause references throughout the document where applicable. |
 |         |            | Clarified ETag header requirements. |
 |         |            | Clarified that no authentication is required for accessing the Service Root resource. |
