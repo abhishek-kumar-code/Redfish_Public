@@ -5,7 +5,6 @@ var fs = require('fs');
 var yaml = require('js-yaml');
 var SwaggerParser = require('swagger-parser');
 const config = require('config');
-const request = require('request');
 
 const RemoteFiles = ['http://redfish.dmtf.org/schemas/swordfish/v1/Volume.yaml'];
 
