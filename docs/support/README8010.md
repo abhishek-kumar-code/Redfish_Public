@@ -46,8 +46,8 @@ This bundles contains the set of Redfish schema files.  The contents of the fold
 | Drive                   | 1.6.0   | Added "PCIeFunctions" property to "Links". |
 | EthernetInterface       | 1.5.0   | Added "FallbackAddress" property to "DHCPv4". |
 | Event                   | 1.4.0   | Added "Other" to "EventType" enum. |
-| EventDestination        | 1.5.0   | Deprecated "EventTypes" property. |
-| EventService            | 1.3.0   | Deprecated "EventTypesForSubscription" property.  Deprecated "EventType" property in "SSEFilterPropertiesSupported". |
+| EventDestination        | 1.5.0   | Deprecated "EventTypes" property and made it not required. |
+| EventService            | 1.3.0   | Added "EventGroupId" parameter to "SubmitTestEvent".  Deprecated "EventTypesForSubscription" property.  Deprecated "EventType" property in "SSEFilterPropertiesSupported".  Deprecated "EventType" parameter in "SubmitTestEvent". |
 | ManagerAccount          | 1.3.0   | Added "PasswordChangeRequired" property. |
 | MessageRegistry         | 1.3.0   | Added "LongDescription", "ArgDescriptions", and "ArgLongDescriptions" properties to "Messages". |
 | MetricReportDefinition  | 1.2.0   | Added "MetricReportDefinitionEnabled", "SuppressRepeatedMetricValue", and "MetricReportHeartbeatInterval" properties.  Added "Triggers" to "Links". |

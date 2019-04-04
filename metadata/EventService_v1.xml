@@ -72,9 +72,18 @@
         <Annotation Term="OData.Description" String="This action is used to generate a test event."/>
         <Annotation Term="OData.LongDescription" String="This action shall add a test event to the event service with the event data specified in the action parameters. This message should then be sent to any appropriate ListenerDestination targets."/>
         <Parameter Name="EventService" Type="EventService.v1_0_0.Actions"/>
-        <Parameter Name="EventType" Type="Event.EventType" Nullable="false">
+        <Parameter Name="EventType" Type="Event.EventType">
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall define the property name for which the following allowable values apply."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+                <PropertyValue Property="Description" String="This parameter has been deprecated.  Starting Redfish Spec 1.6 (Event 1.3), subscriptions are based on RegistryId and ResourceType and not EventType."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Parameter>
         <Parameter Name="EventId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the ID of event to be added."/>
@@ -104,6 +113,18 @@
           <Annotation Term="OData.Description" String="This is the string of the URL within the OriginOfCondition property of the event to be added.  It is not a reference object."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall be a string that represents the URL contained by the OriginOfCondition property in the Event schema for Redfish."/>
           <Annotation Term="OData.IsURL"/>
+        </Parameter>
+        <Parameter Name="EventGroupId" Type="Edm.Int64">
+          <Annotation Term="OData.Description" String="This is the group ID of the event to be added."/>
+          <Annotation Term="OData.LongDescription" String="The parameter shall have the same semantics as the EventGroupId property in the Event schema for Redfish."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_3_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Parameter>
       </Action>
 
@@ -352,7 +373,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_3_0">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="Redfish.Release" String="2019.1"/>
-      <Annotation Term="OData.Description" String="This version was created to deprecate the EventTypesForSubscription and SSEFilterPropertiesSupported\EventType properties. It was also created to update the description of the RegistryPrefix property."/>
+      <Annotation Term="OData.Description" String="This version was created to deprecate the EventTypesForSubscription and SSEFilterPropertiesSupported\EventType properties.  It was also created to update the description of the RegistryPrefix property.  It was also updated to deprecate the EventType parameter in SubmitTestEvent, and add the EventGroupId parameter in SubmitTestEvent."/>
       <EntityType Name="EventService" BaseType="EventService.v1_2_1.EventService"/>
     </Schema>
 
