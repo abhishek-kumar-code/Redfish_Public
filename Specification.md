@@ -1412,7 +1412,7 @@ The following are the primitive data types found in the data model:
 | Boolean | Can be `true` or `false`. |
 | Number  | A number with optional decimal point or exponent.  Number properties may restrict the representation to be an integer or a number with decimal point. |
 | String  | A sequence of characters enclosed with double quotes (`"`).  |
-| Array   | A comma separated set of the above types enclosed with square braces (`[` and `]`).  See the [Array properties](#array-properties) clause for additional information.|
+| Array   | A comma separated set of the above types enclosed with square braces (`[` and `]`).  See the [Array properties](#array-properties) clause for additional information. |
 | Object  | A set of properties enclosed with curly braces (`{` and `}`).  See the [Structured properties](#structured-properties) clause for additional information. |
 | Null    | The value `null`.  This is used when the Service is unable to determine the property value, or if the schema has requirements around using `null` for other conditions. |
 
