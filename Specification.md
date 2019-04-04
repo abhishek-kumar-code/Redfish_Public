@@ -1990,7 +1990,7 @@ Structural properties of the resource are defined using the `Property` element. 
 
 Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
 
-Properties that shall have a non-nullable value include the [nullable attribute](#non-nullable-properties) set to `false`.
+Properties that have a non-nullable value shall include the [nullable attribute](#non-nullable-properties) set to `false`.
 
 ~~~xml
   <Property Name="Property1" Type="Edm.String" Nullable="false">
@@ -2311,7 +2311,7 @@ The definition of any other properties that are contained within the OEM-specifi
 The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
 DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
 
-Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com may use 'Contoso', but Contoso.org shall use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
+Organizations using '.com' domain names may omit the '.com' suffix (e.g., Contoso.com would use 'Contoso', but Contoso.org would use 'Contoso_org' as their OEM property name).  The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top-level namespace.
 
 The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further creation of namespaces of OEM-specified objects as desired by the OEM, e.g., "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
 
