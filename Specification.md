@@ -871,20 +871,18 @@ In the absence of outside changes to the resource, the PATCH operation should be
 
 #### PATCH on array properties
 
-For array properties, services may pad `null` values as placeholders at the end of the array to indicate the maximum number of elements that the service supports for that array property.  
+There are three possible forms of array properties in a Resource, which are detailed in the [Array properties](#array-properties) clause.
 
-Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.
+Within a PATCH request, the service shall accept `null` to remove an element, and accept an empty object `{}` to leave an element unchanged.  Array properties using the sparse array form will replace removed elements with `null` elements, while fixed or variable length form arrays will remove those elements and adjust the index of remaining elements accordingly.  A service may indicate the maximum size of an array by padding `null` elements at the end of the array sequence. 
 
 When processing a PATCH request, the order of operations shall be:
 * Modifications
 * Deletions
 * Additions
 
-TODO: JEFFA to break out into different array types (variable length, fixed length, and fixed length where positioning does not change)
+A PATCH request with fewer elements than currently exist in the array shall remove the remaining elements of the array.  
 
-A PATCH request with fewer elements than currently exist in the array shall remove the remaining elements of the array.  After a removal, services shall remove the `null` elements left between populated elements, unless the array property definition specifies otherwise.
-
-For example, an array of 'Flavors' indicates the service supports a maximum of six elements, with four populated. 
+For example, a fixed length form array of 'Flavors' indicates the service supports a maximum of six elements (by padding the array with `null` elements), with four populated. 
 
 ```
   "Flavors": [ "Chocolate", "Vanilla", "Mango", "Strawberry", null, null ]
@@ -1414,7 +1412,7 @@ The following are the primitive data types found in the data model:
 | Boolean | Can be `true` or `false`. |
 | Number  | A number with optional decimal point or exponent.  Number properties may restrict the representation to be an integer or a number with decimal point. |
 | String  | A sequence of characters enclosed with double quotes (`"`).  |
-| Array   | A comma separated set of the above types enclosed with square braces (`[` and `]`).  String properties may specify a format or pattern in order to restrict the structure of the string. |
+| Array   | A comma separated set of the above types enclosed with square braces (`[` and `]`).  See the [Array properties](#array-properties) clause for additional information.|
 | Object  | A set of properties enclosed with curly braces (`{` and `}`).  See the [Structured properties](#structured-properties) clause for additional information. |
 
 When receiving values from the client, services should support other valid representations of the data in the specified JSON type.  In particular, services should support valid integer and decimal values in exponential notation and integer values that contain a decimal point with no non-zero trailing digits.
@@ -1485,6 +1483,18 @@ For example, the following values represent the following durations:
 #### Reference properties
 
 Reference properties are used to provide a reference to another Resource in the data model.  Reference properties are JSON objects that contain an [`@odata.id`](#identifier-property) property.  The value of `@odata.id` is the URI of the Resource being referenced.
+
+#### Array properties
+
+Array properties contain a set of values or objects, and appear as JSON arrays within a response body.  Array elements shall all contain values of the same primitive type.  Arrays of string type may specify a format or pattern in order to restrict the structure of the string.  
+
+There are three methods to implement arrays, regardless of the primitive type of the elements:
+* A fixed length array has a static number of elements, with the array size either specified in the property definition, or chosen by the implementation.
+* A variable length array, where the array size is not specified, will vary in size among instances, and may change in size.  This is the most common form.
+* A sparse array, where the array index is meaningful and therefore elements do not change position (index) in the array when elements are added or removed.  Empty elements within a sparse array property shall be represented by `null` elements.  An element removed from a sparse array shall be replaced by a `null` element and all other elements shall remain at their current index.  Any array property using this form shall indicate the sparse form in its schema definition. 
+
+Services may pad an array property with `null` elements at the end of the sequence to indicate the array size to clients.  This is useful for small fixed size arrays, and for variable or sparse arrays with a restrictive maximum size.  Services should not pad array properties if the maximum array size is not restrictive.  For example, an array property typically populated with two elements, that a service limits to a maximum of 16 elements, should not pad the array with 14 `null` elements.
+
 
 #### Structured properties
 
