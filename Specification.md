@@ -375,7 +375,7 @@ Assuming that the client connects through the `mgmt.vendor.com` appliance, the c
 
 If a property in a response is a reference to another property within a resource, use the [RFC6901](#RFC6901)-defined URI Fragment Identifier Representation format.  If the property is as a [reference property](#reference-properties) in the schema, the fragment shall reference a valid [resource identifier](#identifier-property).  For example, the following fragment identifies a property at index 0 of the `Fans` array in the `/redfish/v1/Chassis/MultiBladeEncl/Thermal` resource:
 
-```
+```json
 {
     "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal#/Fans/0"
 }
@@ -1208,9 +1208,9 @@ A client is able to access the OData service document via the `/redfish/v1/odata
 The OData metadata describes top-level service resources and resource types according to [OData-Schema](#OData-CSDL).  The OData metadata is represented as an XML document with an `Edmx` root element in the `https://docs.oasis-open.org/odata/ns/edmx` namespace with an OData version attribute set to `4.0`.
 
 ```xml
-<edmx:Edmx xmlns:edmx="https://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <!-- edmx:Reference and edmx:Schema elements go here -->
-</edmx:Edmx>
+  <edmx:Edmx xmlns:edmx="https://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <!-- edmx:Reference and edmx:Schema elements go here -->
+  </edmx:Edmx>
 ```
 
 ##### Referencing other schemas
@@ -1223,20 +1223,20 @@ These references may use either:
 * A URI to a local version of the Redfish Schema.
 
 ```xml
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
-  <edmx:Include Namespace="ServiceRoot"/>
-  <edmx:Include Namespace="ServiceRoot.v1_0_0"/>
-</edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
+    <edmx:Include Namespace="ServiceRoot"/>
+    <edmx:Include Namespace="ServiceRoot.v1_0_0"/>
+  </edmx:Reference>
 
-...
+  ...
 
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
-  <edmx:Include Namespace="VirtualMedia"/>
-  <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
-</edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-  <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-</edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
+    <edmx:Include Namespace="VirtualMedia"/>
+    <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
 ```
 
 The service's [OData metadata document](#metadata-document-request) shall include an `EntityContainer` that defines the top-level resources and resource collections.
@@ -1248,9 +1248,9 @@ The OData metadata document may reference additional schema documents that descr
 For example, the OData metadata document may reference custom types for additional resource collections.
 
 ```xml
-<edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
-  <edmx:Include Namespace="CustomTypes"/>
-</edmx:Reference>
+  <edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
+    <edmx:Include Namespace="CustomTypes"/>
+  </edmx:Reference>
 ```
 
 #### OData service document
@@ -3950,6 +3950,9 @@ OData-Version: 4.0
 | ---     | ---        | ---         |
 | 1.7.0   | 2019-04-05 | The specification has been significantly re-written for clarity.  Except for the additions listed below, no normative changes were made to the specification.  Any clarifications that inadvertently altered the normative behavior shall be considered errata, and will be corrected in future revisions to the specification. |
 |         |            | Added missing normative statements regarding handling of array properties and PATCH operations on arrays. |
+|         |            | Added missing clauses that describe how JSON Schema and OpenAPI files are formatted. |
+|         |            | Added missing clause about the schema versioning methodology. |
+|         |            | Added missing clause about how URI patterns are constructed based on the Resource Tree and property hierarchy. |
 |         |            | Added Dictionary file naming rules and repository locations. |
 |         |            | Enhanced localization definitions and defined repository locations. |
 |         |            | Added missing statement about SSE within the "Eventing mechanism" clause. |
