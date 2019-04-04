@@ -1482,6 +1482,10 @@ For example, the following values represent the following durations:
 | `PT0.001S` | 0.001 seconds. |
 | `PT1H30M`  | One hour and 30 minutes. |
 
+#### Reference properties
+
+Reference properties are used to provide a reference to another Resource in the data model.  Reference properties are JSON objects that contain an [`@odata.id`](#identifier-property) property.  The value of `@odata.id` is the URI of the Resource being referenced.
+
 #### Structured properties
 
 Structured properties are JSON objects within a response body.
@@ -1879,10 +1883,6 @@ where
 * `Actions` is the name of the property containing the actions for a resource.
 * `Oem` is the name of the OEM property within the Actions property.
 * *QualifiedActionName* is the qualified name of the action, including namespace.
-
-#### Reference properties
-
-TODO: Talk about @odata.id, pointing to another resource
 
 ### Payload annotations
 
