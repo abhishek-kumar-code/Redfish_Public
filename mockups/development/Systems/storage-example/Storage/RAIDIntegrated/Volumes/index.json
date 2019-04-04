@@ -1,10 +1,10 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes",
     "@odata.type": "#VolumeCollection.VolumeCollection",
     "Name": "Storage Volume Collection",
     "Description": "Storage Volume Collection",
-    "Members@odata.count": 1,
+    "Members@odata.count": 2,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes/1"
@@ -13,5 +13,26 @@
             "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes/2"
         }
     ],
+    "@Redfish.CollectionCapabilities": {
+        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "Capabilities": [
+            {
+                "CapabilitiesObject": {
+                    "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes/Capabilities"
+                },
+                "UseCase": "VolumeCreation",
+                "Links": {
+                    "TargetCollection": {
+                        "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated/Volumes"
+                    },
+                    "RelatedItem": [
+                        {
+                            "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
     "Oem": {}
 }

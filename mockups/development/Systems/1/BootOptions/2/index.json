@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2017 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2017-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#BootOption.BootOption",
     "@odata.id": "/redfish/v1/Systems/1/BootOptions/2",
     "@odata.type": "#BootOption.v1_0_0.BootOption",
     "Id": "2",
     "Name": "Boot Option",
-    "Description": "UEFI Boot Option",  
+    "Description": "UEFI Boot Option",
     "BootOptionReference": "Boot0001",
     "DisplayName": "Generic USB Boot",
     "UefiDevicePath": "UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)",

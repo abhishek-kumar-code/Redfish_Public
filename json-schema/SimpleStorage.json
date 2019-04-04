@@ -2,12 +2,12 @@
     "$id": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.json",
     "$ref": "#/definitions/SimpleStorage",
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
-    "copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
     "definitions": {
         "SimpleStorage": {
             "anyOf": [
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_3.json#/definitions/idRef"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/idRef"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_0_0.json#/definitions/SimpleStorage"
@@ -25,6 +25,9 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_0_5.json#/definitions/SimpleStorage"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_0_6.json#/definitions/SimpleStorage"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_1_0.json#/definitions/SimpleStorage"
                 },
                 {
@@ -37,10 +40,16 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_1_3.json#/definitions/SimpleStorage"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_1_4.json#/definitions/SimpleStorage"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_0.json#/definitions/SimpleStorage"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_1.json#/definitions/SimpleStorage"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SimpleStorage.v1_2_2.json#/definitions/SimpleStorage"
                 }
             ],
             "deletable": false,

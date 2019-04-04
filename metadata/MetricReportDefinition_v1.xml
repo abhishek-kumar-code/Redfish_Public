@@ -5,7 +5,7 @@
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 DMTF.                                                            -->
+<!--# Copyright 2014-2019 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -30,6 +30,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Schedule_v1.xml">
     <edmx:Include Namespace="Schedule"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Triggers_v1.xml">
+    <edmx:Include Namespace="Triggers"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -330,7 +333,22 @@
           <Annotation Term="OData.Description" String="This indicates whether this MetricReportDefinition is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this MetricReportDefinition is enabled for generating new MetricReports."/>
         </Property>
+        <Property Name="Links" Type="MetricReportDefinition.v1_2_0.Links" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        </Property>
       </EntityType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        <NavigationProperty Name="Triggers" Type="Collection(Triggers.Triggers)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The triggers that will cause this metric report definition to generate a new metric report upon a trigger occurrence when the TriggerActions property contains the value RedfishMetricReport."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be a set of references to triggers that will cause this metric report definition to generate a new metric report upon a trigger occurrence when the TriggerActions property contains the value RedfishMetricReport."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

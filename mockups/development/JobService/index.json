@@ -1,34 +1,34 @@
 {
-	"@odata.id": "/redfish/v1/JobService",
-	"@odata.type": "#JobService.v1_0_0.JobService",
-	"Id": "JobService",
-	"Name": "Job Service",
-	"DateTime": "2018-06-13T04:14+06:00",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"ServiceEnabled": true,
-	"ServiceCapabilities": {
-		"MaxJobs": 100,
-		"MaxSteps": 50,
-		"Scheduling": true
-	},
-	"Jobs": {
-		"@odata.id": "/redfish/v1/JobService/Jobs"
-	},
-	"Log": {
-		"@odata.id": "/redfish/v1/JobService/Log"
-	},
-	"Actions": {
-		"Oem": {
-			"#Contoso.EasyButton": {
-				"target": "/redfish/v1/JobService/Contoso.EasyButton",
-				"@Redfish.ActionInfo": "/redfish/v1/JobService/EasyButtonActionInfo"
-			}
-		}
-	},
-	"Oem": {},
-	"@odata.context": "/redfish/v1/$metadata/JobService.JobService",
-	"@Redfish.Copyright": "Copyright 2018 DMTF. All rights reserved."
+    "@odata.id": "/redfish/v1/JobService",
+    "@odata.type": "#JobService.v1_0_0.JobService",
+    "Id": "JobService",
+    "Name": "Job Service",
+    "DateTime": "2018-06-13T04:14+06:00",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "ServiceEnabled": true,
+    "ServiceCapabilities": {
+        "MaxJobs": 100,
+        "MaxSteps": 50,
+        "Scheduling": true
+    },
+    "Jobs": {
+        "@odata.id": "/redfish/v1/JobService/Jobs"
+    },
+    "Log": {
+        "@odata.id": "/redfish/v1/JobService/Log"
+    },
+    "Actions": {
+        "Oem": {
+            "#Contoso.EasyButton": {
+                "target": "/redfish/v1/JobService/Contoso.EasyButton",
+                "@Redfish.ActionInfo": "/redfish/v1/JobService/EasyButtonActionInfo"
+            }
+        }
+    },
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata/JobService.JobService",
+    "@Redfish.Copyright": "Copyright 2018-2019 DMTF. All rights reserved."
 }

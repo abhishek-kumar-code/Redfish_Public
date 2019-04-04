@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/NVMeDrivePF",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "NVMeDrivePF",
-	"Name": "NVMe Drive",
-	"Description": "The PCIe Physical function of an 850GB NVMe drive",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/NVMeDrivePF",
+    "@odata.type": "#Endpoint.v1_0_0.Endpoint",
+    "Id": "NVMeDrivePF",
+    "Name": "NVMe Drive",
+    "Description": "The PCIe Physical function of an 850GB NVMe drive",
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
@@ -17,16 +17,16 @@
                 "SubsystemId": "0xABCD",
                 "SubsystemVendorId": "0xABCD"
             },
-            "EntityLink": {
-            },
+            "EntityLink": {},
             "Oem": {}
         }
     ],
     "Links": {
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/PCIe/Switches/1/Ports/Down1"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIe/Switches/1/Ports/Down1"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-

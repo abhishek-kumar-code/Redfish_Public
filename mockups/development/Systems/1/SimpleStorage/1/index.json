@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#SimpleStorage.SimpleStorage",
     "@odata.id": "/redfish/v1/Systems/1/SimpleStorage/1",
     "@odata.type": "#SimpleStorage.v1_0_0.SimpleStorage",
@@ -18,7 +18,7 @@
             "Name": "Drive 1",
             "Manufacturer": "ACME",
             "Model": "Drive Model string",
-	    "CapacityBytes": 322122547200,
+            "CapacityBytes": 322122547200,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -29,7 +29,7 @@
             "Name": "Drive 2",
             "Manufacturer": "SuperDuperSSD",
             "Model": "Drive Model string",
-	    "CapacityBytes": 68719476736,
+            "CapacityBytes": 68719476736,
             "Status": {
                 "State": "Enabled",
                 "Health": "Warning"

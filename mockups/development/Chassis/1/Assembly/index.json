@@ -4,7 +4,8 @@
     "@odata.type": "#Assembly.v1_2_0.Assembly",
     "Id": "Assembly",
     "Name": "System-related Assembly data",
-    "Assemblies": [{
+    "Assemblies": [
+        {
             "@odata.id": "/redfish/v1/Chassis/1/Assembly#/Assemblies/0",
             "MemberId": "0",
             "Name": "System Board",

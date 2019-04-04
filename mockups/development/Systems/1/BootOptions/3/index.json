@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2017 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2017-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#BootOption.BootOption",
     "@odata.id": "/redfish/v1/Systems/1/BootOptions/3",
     "@odata.type": "#BootOption.v1_0_0.BootOption",
     "Id": "3",
     "Name": "Boot Option",
-    "Description": "UEFI Boot Option",  
+    "Description": "UEFI Boot Option",
     "BootOptionReference": "Boot0002",
     "DisplayName": "iSCSI IPv4 Boot LUN 0",
     "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv4(192.168.0.100,TCP,Static,192.168.0.1)/iSCSI(iqn.1991-05.com.microsoft:iscsitarget-iscsidisktarget,0x1,0x0,None,None,None,TCP)/HD(1,GPT,15E39A00-1DD2-1000-8D7F-00A0C92408FC,0x22,0x2710000)",

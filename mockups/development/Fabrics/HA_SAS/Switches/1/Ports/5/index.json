@@ -1,23 +1,22 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports/5",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "5",
-	"Name": "SAS Port 5",
-	"Description": "SAS Port 5",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "5",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports/5",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "5",
+    "Name": "SAS Port 5",
+    "Description": "SAS Port 5",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "5",
     "PortProtocol": "SAS",
-	"PortType": "BidirectionalPort",
-	"CurrentSpeedGbps": 48,
-	"Width": 4,
-	"MaxSpeedGbps": 48,
-	"Actions": {
-		"Oem": {}
-	},
-	"Oem": {}
+    "PortType": "BidirectionalPort",
+    "CurrentSpeedGbps": 48,
+    "Width": 4,
+    "MaxSpeedGbps": 48,
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
 }
-

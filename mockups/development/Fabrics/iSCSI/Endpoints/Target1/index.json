@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
     "@odata.id": "/redfish/v1/Fabrics/iSCSI/Endpoints/Target1",
     "@odata.type": "#Endpoint.v1_1_0.Endpoint",
@@ -16,7 +16,6 @@
             "DurableName": "28D5E212-165B-4CA0-909B-C86B9CEE0112",
             "DurableNameFormat": "UUID"
         }
-
     ],
     "ConnectedEntities": [
         {

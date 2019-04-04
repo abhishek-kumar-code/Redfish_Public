@@ -1,39 +1,42 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1/Ports/InterswitchLink",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "InterswitchLink",
-	"Name": "PCIe Interswitch Port",
-	"Description": "PCIe Interswitch Port",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "16",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1/Ports/InterswitchLink",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "InterswitchLink",
+    "Name": "PCIe Interswitch Port",
+    "Description": "PCIe Interswitch Port",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "16",
     "PortProtocol": "PCIe",
-	"PortType": "InterswitchPort",
-	"CurrentSpeedGbps": 256,
-	"Width": 16,
-	"MaxSpeedGbps": 256,
-	"Actions": {
-		"#Port.Reset": {
-			"target": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1/Ports/InterswitchLink/Actions/PCIePort.Reset",
-			"ResetType@Redfish.AllowableValues": [
-				"ForceOff",
-				"ForceRestart",
-				"ForceOn"
-			]
-		},
-		"Oem": {}
-	},
+    "PortType": "InterswitchPort",
+    "CurrentSpeedGbps": 256,
+    "Width": 16,
+    "MaxSpeedGbps": 256,
+    "Actions": {
+        "#Port.Reset": {
+            "target": "/redfish/v1/Fabrics/ComplexPCIe/Switches/1/Ports/InterswitchLink/Actions/PCIePort.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceOff",
+                "ForceRestart",
+                "ForceOn"
+            ]
+        },
+        "Oem": {}
+    },
     "Links": {
         "ConnectedSwitches": [
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2"
+            }
         ],
         "ConnectedSwitchPorts": [
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/InterswitchLink"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/InterswitchLink"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-

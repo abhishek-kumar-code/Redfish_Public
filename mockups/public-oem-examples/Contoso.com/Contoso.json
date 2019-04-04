@@ -1,39 +1,39 @@
 {
-	"$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_5_0.json",
-	"copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
-	"definitions": {
-		"AutoConfig": {
-			"additionalProperties": false,
-			"description": "This action is used to perform automated configuration of the Account Service.",
-			"longDescription": "This action shall perform automated configuration of the Account Service as specified by the Contoso service manual.",
-			"parameters": {},
-			"patternProperties": {
-				"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
-					"description": "This property shall specify a valid odata or Redfish property.",
-					"type": [
-						"array",
-						"boolean",
-						"number",
-						"null",
-						"object",
-						"string"
-					]
-				}
-			},
-			"properties": {
-				"target": {
-					"description": "Link to invoke action",
-					"format": "uri",
-					"type": "string"
-				},
-				"title": {
-					"description": "Friendly action name",
-					"type": "string"
-				}
-			},
-			"type": "object"
-		},
-		"owningEntity": "Contoso",
-		"title": "#Contoso"
-	}
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_5_0.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AutoConfig": {
+            "additionalProperties": false,
+            "description": "This action is used to perform automated configuration of the Account Service.",
+            "longDescription": "This action shall perform automated configuration of the Account Service as specified by the Contoso service manual.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "owningEntity": "Contoso",
+        "title": "#Contoso"
+    }
 }

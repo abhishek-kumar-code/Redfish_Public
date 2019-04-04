@@ -1,31 +1,30 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Up2",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "Up2",
-	"Name": "PCIe Upstream Port 2",
-	"Description": "PCIe Upstream Port 2",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "9",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Up2",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "Up2",
+    "Name": "PCIe Upstream Port 2",
+    "Description": "PCIe Upstream Port 2",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "9",
     "PortProtocol": "PCIe",
-	"PortType": "UpstreamPort",
-	"CurrentSpeedGbps": 32,
-	"Width": 4,
-	"MaxSpeedGbps": 32,
-	"Actions": {
-		"#Port.Reset": {
-			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Up2/Actions/Port.Reset",
-			"ResetType@Redfish.AllowableValues": [
-				"ForceOff",
-				"ForceRestart",
-				"ForceOn"
-			]
-		},
-		"Oem": {}
-	},
-	"Oem": {}
+    "PortType": "UpstreamPort",
+    "CurrentSpeedGbps": 32,
+    "Width": 4,
+    "MaxSpeedGbps": 32,
+    "Actions": {
+        "#Port.Reset": {
+            "target": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Up2/Actions/Port.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceOff",
+                "ForceRestart",
+                "ForceOn"
+            ]
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }
-

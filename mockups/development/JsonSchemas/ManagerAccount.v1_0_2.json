@@ -39,8 +39,12 @@
                 },
                 "Description": {
                     "anyOf": [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
-                        {"type": "null"}
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "Name": {
@@ -121,5 +125,5 @@
             "longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."
         }
     },
-    "copyright": "Copyright 2014-2016 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

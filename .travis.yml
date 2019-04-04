@@ -1,17 +1,14 @@
 ---
 language: node_js
-env:
-  - CXX=g++-4.8
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
       - libxml2-utils
 sudo: false
 node_js:
-  - "8.10"
+  - lts/*
 branches:
   only:
     - master
@@ -24,4 +21,4 @@ cache:
   - node_modules # NPM packages
 script:
   - xmllint --noout metadata/*.xml
-  - npm test
+  - npm test -- --reporter dot

@@ -1,49 +1,79 @@
 {
-    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 DMTF. All rights reservd.",
-    "@odata.id":"/redfish/v1/Chassis/StorageEnclosure1",
-    "@odata.context":"/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.type":"#Chassis.v1_2_0.Chassis",
-    "Id":"StorageEnclosure1",
-    "Name":"External Enclosure 1",
-    "SKU":"",
-    "Manufacturer":"Manufacturer Name",
-    "AssetTag":"External Enclosure",
-    "Model":"External Enclosure",
-    "ChassisType":"Enclosure",
-    "IndicatorLED":"Lit",
-    "Status":{
-        "State":"Enabled",
-        "Health":"OK"
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reservd.",
+    "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1",
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "Id": "StorageEnclosure1",
+    "Name": "External Enclosure 1",
+    "SKU": "",
+    "Manufacturer": "Manufacturer Name",
+    "AssetTag": "External Enclosure",
+    "Model": "External Enclosure",
+    "ChassisType": "Enclosure",
+    "IndicatorLED": "Lit",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
     },
     "Thermal": {
-        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Thermal"
+        "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Thermal"
     },
     "Power": {
-        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Power"
-    }, 
+        "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Power"
+    },
     "Links": {
         "ManagedBy": [
-            {"@odata.id":"/redfish/v1/Managers/5"},
-            {"@odata.id":"/redfish/v1/Managers/6"}
+            {
+                "@odata.id": "/redfish/v1/Managers/5"
+            },
+            {
+                "@odata.id": "/redfish/v1/Managers/6"
+            }
         ],
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/storage-example/Storage/HA-RAID"}
+            {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID"
+            }
         ],
         "Drives": [
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.3"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.4"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.5"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.6"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.7"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.8"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.9"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.10"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.11"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.3"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.4"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.5"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.6"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.7"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.8"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.9"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.10"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.11"
+            }
         ],
         "Oem": {}
     },
-    "Oem": { }
+    "Oem": {}
 }

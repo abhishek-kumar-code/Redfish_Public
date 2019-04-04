@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/storage-example",
     "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
@@ -36,7 +36,7 @@
             "Utilities",
             "Diags",
             "UefiTarget",
-            "SDCard",            
+            "SDCard",
             "UefiHttp"
         ],
         "UefiTargetBootSourceOverride": "uefi device path"
@@ -61,12 +61,12 @@
     },
     "TrustedModules": [
         {
-          "Status": {
-            "State": "Enabled",
-            "Health": "OK"
-           },
-           "InterfaceType":"TPM2_0",
-           "FirmwareVersion":"3.1"
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "InterfaceType": "TPM2_0",
+            "FirmwareVersion": "3.1"
         }
     ],
     "Processors": {
@@ -107,7 +107,10 @@
             ],
             "@Redfish.OperationApplyTimeSupport": {
                 "@odata.type": "#Settings.v1_2_0.OperationApplyTimeSupport",
-                "SupportedValues": [ "Immediate", "AtMaintenanceWindowStart" ],
+                "SupportedValues": [
+                    "Immediate",
+                    "AtMaintenanceWindowStart"
+                ],
                 "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
                 "MaintenanceWindowDurationInSeconds": 600,
                 "MaintenanceWindowResource": {
@@ -115,14 +118,12 @@
                 }
             }
         },
-        "Oem": {
-        }
+        "Oem": {}
     },
     "@Redfish.MaintenanceWindow": {
         "@odata.type": "#Settings.v1_2_0.MaintenanceWindow",
         "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
         "MaintenanceWindowDurationInSeconds": 600
     },
-    "Oem": {
-    }
+    "Oem": {}
 }

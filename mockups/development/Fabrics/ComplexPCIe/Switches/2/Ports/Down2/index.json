@@ -1,37 +1,40 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/Down2",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "Down2",
-	"Name": "PCIe Downstream Port 2",
-	"Description": "PCIe Downstream Port 2",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "8",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/Down2",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "Down2",
+    "Name": "PCIe Downstream Port 2",
+    "Description": "PCIe Downstream Port 2",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "8",
     "PortProtocol": "PCIe",
-	"PortType": "DownstreamPort",
-	"CurrentSpeedGbps": 32,
-	"Width": 4,
-	"MaxSpeedGbps": 64,
-	"Actions": {
-		"#Port.Reset": {
-			"target": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/Down2/Actions/PCIePort.Reset",
-			"ResetType@Redfish.AllowableValues": [
-				"ForceOff",
-				"ForceRestart",
-				"ForceOn"
-			]
-		},
-		"Oem": {}
-	},
+    "PortType": "DownstreamPort",
+    "CurrentSpeedGbps": 32,
+    "Width": 4,
+    "MaxSpeedGbps": 64,
+    "Actions": {
+        "#Port.Reset": {
+            "target": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/Down2/Actions/PCIePort.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceOff",
+                "ForceRestart",
+                "ForceOn"
+            ]
+        },
+        "Oem": {}
+    },
     "Links": {
         "AssociatedEndpoints": [
-             {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort1"},
-             {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort2"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-

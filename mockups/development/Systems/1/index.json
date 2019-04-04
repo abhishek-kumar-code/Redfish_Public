@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/1",
-    "@odata.type": "#ComputerSystem.v1_6_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_7_0.ComputerSystem",
     "Id": "1",
     "Name": "My Computer System",
     "SystemType": "Physical",
@@ -58,17 +58,20 @@
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "ProcessorSummary": {
         "Count": 8,
-        "LogicalProcessorCount":  256,
+        "LogicalProcessorCount": 256,
         "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
         "Status": {
             "State": "Enabled",
             "Health": "OK",
             "HealthRollup": "OK"
+        },
+        "Metrics": {
+            "@odata.id": "/redfish/v1/Systems/1/ProcessorSummary/ProcessorMetrics"
         }
     },
     "MemorySummary": {
         "TotalSystemMemoryGiB": 16,
-        "MemoryMirroring" : "System",		
+        "MemoryMirroring": "System",
         "Status": {
             "State": "Enabled",
             "Health": "OK",
@@ -77,32 +80,41 @@
     },
     "TrustedModules": [
         {
-          "Status": {
-            "State": "Enabled",
-            "Health": "OK"
-           },
-           "InterfaceType":"TPM2_0",
-           "FirmwareVersion": "3.1",
-           "FirmwareVersion2": "1",
-           "InterfaceTypeSelection": "None"
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "InterfaceType": "TPM2_0",
+            "FirmwareVersion": "3.1",
+            "FirmwareVersion2": "1",
+            "InterfaceTypeSelection": "None"
         }
     ],
     "HostWatchdogTimer": {
         "FunctionEnabled": true,
-	"WarningAction": "DiagnosticInterrupt",
-	"WarningAction@Redfish.AllowableValues": [ "DiagnosticInterrupt", "SMI", "None" ],
-	"TimeoutAction": "ResetSystem",
-	"TimeoutAction@Redfish.AllowableValues": [ "ResetSystem", "PowerCycle", "PowerDown", "None" ],
-	"Status": {
-	   "State": "StandbyOffline"
-	}
+        "WarningAction": "DiagnosticInterrupt",
+        "WarningAction@Redfish.AllowableValues": [
+            "DiagnosticInterrupt",
+            "SMI",
+            "None"
+        ],
+        "TimeoutAction": "ResetSystem",
+        "TimeoutAction@Redfish.AllowableValues": [
+            "ResetSystem",
+            "PowerCycle",
+            "PowerDown",
+            "None"
+        ],
+        "Status": {
+            "State": "StandbyOffline"
+        }
     },
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/1/Processors"
     },
     "Memory": {
         "@odata.id": "/redfish/v1/Systems/1/Memory"
-    },	
+    },
     "EthernetInterfaces": {
         "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces"
     },
@@ -122,11 +134,17 @@
         "@odata.id": "/redfish/v1/Systems/1/Bios"
     },
     "PCIeDevices": [
-        {"@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC"}
+        {
+            "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC"
+        }
     ],
     "PCIeFunctions": [
-        {"@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/PCIeFunctions/1"},
-        {"@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/PCIeFunctions/2"}
+        {
+            "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/PCIeFunctions/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC/PCIeFunctions/2"
+        }
     ],
     "Links": {
         "Chassis": [

@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1",
     "@odata.type": "#NetworkAdapter.v1_2_0.NetworkAdapter",
@@ -19,7 +19,7 @@
     "Controllers": [
         {
             "FirmwarePackageVersion": "7.4.10",
-            "Links":  {
+            "Links": {
                 "PCIeDevices": [
                     {
                         "@odata.id": "/redfish/v1/Systems/1/PCIeDevices/NIC"
@@ -68,13 +68,13 @@
                 "MaxLanes": 4
             },
             "Location": {
-              "PartLocation": {
-                "ServiceLabel": "Slot 1",
-                "LocationType": "Slot",
-                "LocationOrdinalValue": 0,
-                "Reference": "Rear",
-                "Orientation": "LeftToRight"
-              }
+                "PartLocation": {
+                    "ServiceLabel": "Slot 1",
+                    "LocationType": "Slot",
+                    "LocationOrdinalValue": 0,
+                    "Reference": "Rear",
+                    "Orientation": "LeftToRight"
+                }
             }
         }
     ],

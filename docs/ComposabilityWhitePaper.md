@@ -82,7 +82,7 @@ Example Composition Service Resource:
 
 Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not in a state where system software is able to use them until they belong in a composition.  For example, if a Resource Block contains a Drive instance, the Drive will not belong to any given Computer System until a composition request is made that makes use of its Resource Block.
 
-The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements, which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning: this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value `Expansion` is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.
+The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements, which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning: this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.  The value `Expansion` is also a special indicator that shows a particular Resource Block may have different types of devices over time, such as when a Resource Block contains plug-in cards where a user may replace the components at any time.  `ResourceBlockType` is an array, meaning that it's possible for a Resource Block to have multiple types associated with it.  For example, if the Resource Block in question is a CPU-memory complex, but not a full Computer System, and also has an integrated network controller, `ResourceBlockType` could contain both `Compute` and `Network`.
 
 The property `CompositionStatus` is an object that contains several properties:
 * `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.
@@ -379,7 +379,7 @@ Example Create (POST) Body for a Specific Composition:
 
 ### Constrained Composition
 
-The Constrained Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the Resource Blocks is delegated by client to the Composition Service.  In constrained composition, the client does not need to comprehend Resource Zones.  An example of this type of composition can be found in the [Constrained Composition Workflow](#constrained-composition-workflow) section.
+The Constrained Composition allows clients to request a composition by specifying the number and characteristics of the components to assemble into a composition.  The selection of the Resource Blocks is delegated by client to the Composition Service.  An example of this type of composition can be found in the [Constrained Composition Workflow](#constrained-composition-workflow) section.
 
 
 ### Expandable Resources
@@ -654,6 +654,15 @@ The above Client Request Example shows a specific composition request by the cli
 #### Constrained Composition Workflow
 
 Here are the operations that a client is expected to use during the creation and management of Composed Systems using the Redfish Composition models.  The examples below expect the client will have a valid Redfish Session or Basic Authentication header.
+
+
+##### Determine the Provisioning Capabilities of the Service
+
+1. Perform a GET on the Composition Service URI.
+2. Look for the `AllowOverprovisioning` property.
+    * If this property is missing or set to `false`, `@Redfish.AllowOverprovisioning` is not allowed to be supplied in the composition request.
+3. Look for the `AllowZoneAffinity` property.
+    * If this property is missing or set to `false`, `@Redfish.ZoneAffinity` is not allowed to be supplied in the composition request.
 
 
 ##### Read the Capabilities Object
@@ -1066,6 +1075,9 @@ The above example will request that the composed system called `NewSystem` be re
 
 | Version | Date       | Description |
 | ------- | ---------- | ----------- |
+| 1.2.1   | TBD        | Clarified how `ResourceBlockType` is an array and can represent a mix of devices. |
+|         |            | Removed statement about Constrained Composition users not needing to know about Resource Zones, which isn't really true. |
+|         |            | Added missing workflow step for Constrained Composition for determining the capabilities of the service. |
 | 1.2.0   | 2018-12-11 | Added documentation for usage of `@Redfish.ResourceBlockLimits` term. |
 |         |            | Added text in the Constrained Composition section to link to the appendix. |
 |         |            | Added Expandable Resources section. |

@@ -109,12 +109,12 @@
             "LowerThresholdFatal": 42,
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
-            "Redundancy" : [
+            "Redundancy": [
                 {
                     "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0"
                 }
             ],
-            "RelatedItem" : [
+            "RelatedItem": [
                 {
                     "@odata.id": "/redfish/v1/Systems/1"
                 },
@@ -149,12 +149,12 @@
             "LowerThresholdFatal": 42,
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
-            "Redundancy" : [
+            "Redundancy": [
                 {
                     "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0"
                 }
             ],
-            "RelatedItem" : [
+            "RelatedItem": [
                 {
                     "@odata.id": "/redfish/v1/Systems/1"
                 },
@@ -162,7 +162,7 @@
                     "@odata.id": "/redfish/v1/Chassis/1"
                 }
             ]
-       }
+        }
     ],
     "Redundancy": [
         {
@@ -189,5 +189,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/1/Thermal",
-    "@Redfish.Copyright":"Copyright 2014-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved."
 }

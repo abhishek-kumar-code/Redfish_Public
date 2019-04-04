@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort2",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "FCPort2",
-	"Name": "FC Port",
-	"Description": "A Physical function of a multi-function FC-HBA",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Endpoints/FCPort2",
+    "@odata.type": "#Endpoint.v1_0_0.Endpoint",
+    "Id": "FCPort2",
+    "Name": "FC Port",
+    "Description": "A Physical function of a multi-function FC-HBA",
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
@@ -21,9 +21,10 @@
     ],
     "Links": {
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/Down2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/Down2"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {}
 }
-

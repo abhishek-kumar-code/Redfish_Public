@@ -1,23 +1,22 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Port.Port",
-	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Management",
-	"@odata.type": "#Port.v1_0_0.Port",
-	"Id": "Mgmt",
-	"Name": "PCIe Management Port",
-	"Description": "PCIe Management Port",
-	"Status": {
-		"State": "Enabled",
-		"Health": "OK"
-	},
-	"PortId": "24",
+    "@odata.context": "/redfish/v1/$metadata#Port.Port",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Management",
+    "@odata.type": "#Port.v1_0_0.Port",
+    "Id": "Mgmt",
+    "Name": "PCIe Management Port",
+    "Description": "PCIe Management Port",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PortId": "24",
     "PortProtocol": "PCIe",
-	"PortType": "ManagementPort",
-	"CurrentSpeedGbps": 8,
-	"Width": 1,
-	"MaxSpeedGbps": 8,
-	"Actions": {
-		"Oem": {}
-	},
-	"Oem": {}
+    "PortType": "ManagementPort",
+    "CurrentSpeedGbps": 8,
+    "Width": 1,
+    "MaxSpeedGbps": 8,
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
 }
-

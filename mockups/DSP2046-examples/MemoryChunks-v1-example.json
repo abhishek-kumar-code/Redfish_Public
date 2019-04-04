@@ -8,22 +8,22 @@
     "IsSpare": false,
     "InterleaveSets": [
         {
-            "Memory" : {
+            "Memory": {
                 "@odata.id": "/redfish/v1/Systems/2/Memory/1"
             }
         },
         {
-            "Memory" : {
+            "Memory": {
                 "@odata.id": "/redfish/v1/Systems/2/Memory/2"
             }
         },
         {
-            "Memory" : {
+            "Memory": {
                 "@odata.id": "/redfish/v1/Systems/2/Memory/3"
             }
         },
         {
-            "Memory" : {
+            "Memory": {
                 "@odata.id": "/redfish/v1/Systems/2/Memory/4"
             }
         }

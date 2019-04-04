@@ -1,7 +1,7 @@
 {
-    "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains",
-    "@odata.type" : "#MemoryDomainCollection.MemoryDomainCollection",
+    "@odata.type": "#MemoryDomainCollection.MemoryDomainCollection",
     "Name": "Memory Domains Collection",
     "Members@odata.count": 1,
     "Members": [
@@ -11,4 +11,3 @@
     ],
     "Oem": {}
 }
-

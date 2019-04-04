@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkDeviceFunction.NetworkDeviceFunction",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100",
     "@odata.type": "#NetworkDeviceFunction.v1_3_0.NetworkDeviceFunction",
@@ -8,7 +8,8 @@
     "NetDevFuncType": "Ethernet",
     "DeviceEnabled": true,
     "NetDevFuncCapabilities": [
-        "Ethernet","FibreChannel"
+        "Ethernet",
+        "FibreChannel"
     ],
     "Ethernet": {
         "PermanentMACAddress": "00:0C:29:9A:98:ED",

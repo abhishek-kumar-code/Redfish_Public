@@ -1,14 +1,11 @@
 'use strict';
-var vows = require('vows');
 var glob = require('glob');
 var jsonlint = require('jsonlint');
-var path = require('path');
 var fs = require('fs');
 var Validator = require('jsonschema').Validator;
+const config = require('config');
 
-var jsonSuite = vows.describe('JSON');
-
-function isValidJSON(err, txt)
+function isValidJSON(txt)
 {
     try{
         jsonlint.parse(txt.toString());
@@ -18,26 +15,26 @@ function isValidJSON(err, txt)
     }
 }
 
-function isValidSchema(err, txt)
+function isValidSchema(schemaname, txt)
 {
     var v = new Validator();
     var schema = JSON.parse(txt.toString());
-    var parts = this.context.title.split('/');
+    var parts = schemaname.split('/');
     var filename = parts[1];
     v.addSchema(schema, 'http://redfish.dmtf.org/schemas/v1/'+filename);
 }
 
-function isCorrectSchemaType(err, txt)
+function isCorrectSchemaType(schemaname, txt)
 {
     var schema = JSON.parse(txt.toString());
     if(schema['$schema'] === undefined) {
         throw new Error('Missing $schema property!');
     }
-    if(this.context.title.indexOf('redfish-schema')) {
+    if(schemaname.indexOf('redfish-schema')) {
         //Don't test redfish-schema files
         return;
     }
-    var oldStyle = (this.context.title.indexOf('1.0') !== -1);
+    var oldStyle = (schemaname.indexOf('1.0') !== -1);
     if(!oldStyle && schema['$schema'] !== 'http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json') {
         throw new Error('$schema property doesn\'t point to correct redfish schema!');
     }
@@ -48,16 +45,25 @@ function isCorrectSchemaType(err, txt)
 
 function testJSONSchema(schema)
 {
-    var validBatch = {};
-    validBatch[schema] = {
-      topic: function() {fs.readFile(schema, this.callback);}, 
-      'is valid JSON': isValidJSON,
-      'is valid schema': isValidSchema,
-      'is correct schema type': isCorrectSchemaType
-    };
-    jsonSuite.addBatch(validBatch);
+  describe(schema, () => {
+    let schemaTxt = null;
+    before((done) => {
+      fs.readFile(schema, (err, body) => {
+        if(err) {
+          throw err;
+        }
+        schemaTxt = body;
+        done();
+      });
+    });
+    it('Is Valid JSON', () => {isValidJSON(schemaTxt);});
+    it('Is Valid JSON Schema', () => {isValidSchema(schema, schemaTxt);});
+    it('Is Correct Schema Type', () => {isCorrectSchemaType(schema, schemaTxt);});
+  }); 
 }
 
-glob.sync('json-schema/*.json').forEach(testJSONSchema);
+describe('JSON Schema', function() {
+  let schemas = glob.sync(config.get('Redfish.JsonSchemaFilePath'));
+  schemas.forEach(testJSONSchema);
+});
 
-jsonSuite.export(module);

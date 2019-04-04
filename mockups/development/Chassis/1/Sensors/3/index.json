@@ -1,20 +1,20 @@
 {
-  "@Redfish.Copyright": "Copyright 2014-2018 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-  "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
-  "@odata.id": "/redfish/v1/Chassis/1/Sensors/3",
-  "@odata.type": "#Sensor.v1_0_0.Sensor",
-  "AdjustedMinAllowableOperatingValue": 0.378541178,
-  "Id": "3",
-  "Name": "Volumetric Liquid Inlet Flow Rate",
-  "Oem": {},
-  "PhysicalContext": "LiquidInlet",
-  "Reading": 0.504722,
-  "ReadingRangeMax": 0.757082,
-  "ReadingRangeMin": 0,
-  "ReadingType": "LiquidFlow",
-  "ReadingUnits": "gal_us/min",
-  "Status": {
-    "Health": "OK",
-    "State": "Enabled"
-  }
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "@odata.id": "/redfish/v1/Chassis/1/Sensors/3",
+    "@odata.type": "#Sensor.v1_0_0.Sensor",
+    "AdjustedMinAllowableOperatingValue": 0.378541178,
+    "Id": "3",
+    "Name": "Volumetric Liquid Inlet Flow Rate",
+    "Oem": {},
+    "PhysicalContext": "LiquidInlet",
+    "Reading": 0.504722,
+    "ReadingRangeMax": 0.757082,
+    "ReadingRangeMin": 0,
+    "ReadingType": "LiquidFlow",
+    "ReadingUnits": "gal_us/min",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    }
 }

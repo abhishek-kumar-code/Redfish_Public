@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/Rack2WithDAS",
     "@odata.type": "#Chassis.v1_0_0.Chassis",
@@ -27,4 +27,4 @@
         ],
         "Oem": {}
     }
- }
+}

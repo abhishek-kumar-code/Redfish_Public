@@ -1,12 +1,11 @@
 {
-   "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved.",
-   "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains/1/MemoryChunks/1/SD",
-   "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
-   "Id": "SD",
-   "Name": "Memory Chunks Pending Settings",
-   "MemoryChunkSizeMiB": 16384,
-   "IsMirrorEnabled": true,
-   "IsSpare": false,
-   "Oem": {}
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
+    "@odata.id": "/redfish/v1/Systems/cpu-memory-example/MemoryDomains/1/MemoryChunks/1/SD",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
+    "Id": "SD",
+    "Name": "Memory Chunks Pending Settings",
+    "MemoryChunkSizeMiB": 16384,
+    "IsMirrorEnabled": true,
+    "IsSpare": false,
+    "Oem": {}
 }
-

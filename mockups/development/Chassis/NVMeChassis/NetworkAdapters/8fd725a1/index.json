@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
     "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1",
     "@odata.type": "#NetworkAdapter.v1_0_0.NetworkAdapter",
@@ -19,7 +19,7 @@
     "Controllers": [
         {
             "FirmwarePackageVersion": "7.4.10",
-            "Links":  {
+            "Links": {
                 "NetworkPorts": [
                     {
                         "@odata.id": "/redfish/v1/Chassis/NVMeChassis/NetworkAdapters/8fd725a1/NetworkPorts/1"

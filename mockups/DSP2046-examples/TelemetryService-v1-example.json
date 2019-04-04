@@ -13,7 +13,7 @@
     ],
     "MetricDefinitions": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricDefinitions"
-    }, 
+    },
     "MetricReportDefinitions": {
         "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions"
     },

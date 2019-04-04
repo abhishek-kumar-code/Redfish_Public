@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#LogService.LogService",
     "@odata.id": "/redfish/v1/Systems/storage-example/LogServices/Log1",
     "@odata.type": "#LogService.v1_0_0.LogService",

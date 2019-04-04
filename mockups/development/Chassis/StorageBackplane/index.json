@@ -1,40 +1,62 @@
 {
-    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 DMTF. All rights reservd.",
-    "@odata.id":"/redfish/v1/Chassis/StorageBackplane",
-    "@odata.context":"/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.type":"#Chassis.v1_2_0.Chassis",
-    "Id":"StorageBackplane",
-    "Name":"Backplane with 8 slots",
-    "SKU":"Backplane",
-    "Manufacturer":"Manufacturer Name",
-    "Model":"Backplane with 8 slots",
-    "ChassisType":"Enclosure",
-    "Status":{
-        "State":"Enabled",
-        "Health":"OK"
-    }, 
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reservd.",
+    "@odata.id": "/redfish/v1/Chassis/StorageBackplane",
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "Id": "StorageBackplane",
+    "Name": "Backplane with 8 slots",
+    "SKU": "Backplane",
+    "Manufacturer": "Manufacturer Name",
+    "Model": "Backplane with 8 slots",
+    "ChassisType": "Enclosure",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
     "Links": {
         "ManagedBy": [
-            {"@odata.id":"/redfish/v1/Managers/4"}
+            {
+                "@odata.id": "/redfish/v1/Managers/4"
+            }
         ],
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/Rack2WithDAS"
         },
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated"},
-            {"@odata.id":"/redfish/v1/Systems/storage-example/Storage/SATAEmbedded"}
+            {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/RAIDIntegrated"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/SATAEmbedded"
+            }
         ],
         "Drives": [
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.3"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.4"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"},
-            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.3"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.4"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"
+            }
         ],
         "Oem": {}
     },
-    "Oem": { }
+    "Oem": {}
 }

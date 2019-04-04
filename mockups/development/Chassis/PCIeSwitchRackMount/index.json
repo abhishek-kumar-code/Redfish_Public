@@ -1,48 +1,50 @@
 {
-    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 DMTF. All rights reservd.",
-    "@odata.id":"/redfish/v1/Chassis/PCIeSwitchRackMount",
-    "@odata.context":"/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.type":"#Chassis.v1_2_0.Chassis",
-    "Id":"PCIeSwitchRackmount",
-    "Name":"PCIe Switch Rackmount Enclosure",
-    "SKU":"PCIeSwitchRack",
-    "Manufacturer":"Manufacturer Name",
-    "AssetTag":"External Enclosure",
-    "Model":"External Enclosure",
-    "ChassisType":"RackMount",
-    "IndicatorLED":"Lit",
-    "Status":{
-        "State":"Enabled",
-        "Health":"OK"
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reservd.",
+    "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount",
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "Id": "PCIeSwitchRackmount",
+    "Name": "PCIe Switch Rackmount Enclosure",
+    "SKU": "PCIeSwitchRack",
+    "Manufacturer": "Manufacturer Name",
+    "AssetTag": "External Enclosure",
+    "Model": "External Enclosure",
+    "ChassisType": "RackMount",
+    "IndicatorLED": "Lit",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
     },
     "Thermal": {
-        "@odata.id":"/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal"
+        "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal"
     },
     "Power": {
-        "@odata.id":"/redfish/v1/Chassis/PCIeSwitchRackMount/Power"
-    }, 
+        "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Power"
+    },
     "Links": {
         "ManagedBy": [
-            {"@odata.id":"/redfish/v1/Managers/PCIeSwitchManager"}
+            {
+                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+            }
         ],
         "Contains": [
             {
-			"@odata.id":"/redfish/v1/Chassis/PCIeSwitch1"
-			},
+                "@odata.id": "/redfish/v1/Chassis/PCIeSwitch1"
+            },
             {
-			"@odata.id":"/redfish/v1/Chassis/PCIeSwitch2"
-			},
+                "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"
+            },
             {
-			"@odata.id":"/redfish/v1/Chassis/PCIeSwitch3"
-			},
+                "@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"
+            },
             {
-			"@odata.id":"/redfish/v1/Chassis/PCIeSwitch4"
-			},
+                "@odata.id": "/redfish/v1/Chassis/PCIeSwitch4"
+            },
             {
-			"@odata.id":"/redfish/v1/Chassis/PCIeSwitchMgrHW"
-			}
+                "@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"
+            }
         ],
         "Oem": {}
     },
-    "Oem": { }
+    "Oem": {}
 }

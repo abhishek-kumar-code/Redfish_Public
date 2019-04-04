@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Task.Task",
     "@odata.id": "/redfish/v1/TaskService/Tasks/1",
     "@odata.type": "#Task.v1_0_0.Task",
@@ -9,7 +9,7 @@
     "StartTime": "2012-03-07T14:44+06:00",
     "EndTime": "2012-03-07T14:45+06:00",
     "TaskStatus": "OK",
-    "Messages" : [
+    "Messages": [
         {
             "MessageId": "Base.1.0.PropertyNotWriteable",
             "RelatedProperties": [

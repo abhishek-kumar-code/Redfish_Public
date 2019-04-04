@@ -1,11 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Enclosure2PortA",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "Enclosure2PortA",
-	"Name": "SAS Enclosure",
-	"Description": "A zoning capable SAS Enclosure",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Enclosure2PortA",
+    "@odata.type": "#Endpoint.v1_0_0.Endpoint",
+    "Id": "Enclosure2PortA",
+    "Name": "SAS Enclosure",
+    "Description": "A zoning capable SAS Enclosure",
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
@@ -35,14 +35,19 @@
     ],
     "Links": {
         "MutuallyExclusiveEndpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive1PortA"},
-            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive2PortA"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive1PortA"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive2PortA"
+            }
         ],
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports/8"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1/Ports/8"
+            }
         ],
         "Oem": {}
     },
-	"Oem": {}
+    "Oem": {}
 }
-

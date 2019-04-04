@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
     "@odata.id": "/redfish/v1/Fabrics/NVMe-oF/Endpoints/Initiator1",
     "@odata.type": "#Endpoint.v1_1_0.Endpoint",
@@ -7,7 +7,7 @@
     "Name": "NVMe-oF initiator 1",
     "Description": "NVMe-oF initiator implemented by the computer system",
     "EndpointProtocol": "NVMeOverFabrics",
-    "Identifiers":  [
+    "Identifiers": [
         {
             "DurableName": "host.corp.com:nvme:nvm-subsys-sn-4635",
             "DurableNameFormat": "NQN"
@@ -27,7 +27,7 @@
         }
     ],
     "IPTransportDetails": [
-      	{
+        {
             "TransportProtocol": "iWARP",
             "IPv4Address": {
                 "Address": "10.3.5.131"

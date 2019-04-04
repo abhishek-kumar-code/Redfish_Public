@@ -5,7 +5,10 @@
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
-    "Status": { "State": "Enabled", "Health": "OK" },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
     "CapacityBytes": 899527000000,
     "FailurePredicted": false,
     "Protocol": "SAS",
@@ -24,7 +27,9 @@
     "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1"}
+            {
+                "@odata.id": "/redfish/v1/Systems/storage-example/Storage/HA-RAID/Volumes/1"
+            }
         ]
     },
     "Actions": {

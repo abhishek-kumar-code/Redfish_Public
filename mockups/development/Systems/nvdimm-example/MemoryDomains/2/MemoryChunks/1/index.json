@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2016-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
     "@odata.id": "/redfish/v1/Systems/nvdimm-example/MemoryDomains/2/MemoryChunks/1",
     "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Name": "Memory Chunk1 - Volatile",
@@ -10,11 +10,15 @@
     "IsSpare": false,
     "InterleaveSets": [
         {
-            "Memory" : { "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/1"},
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/1"
+            },
             "RegionId": "1"
         },
         {
-            "Memory" : { "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/2"},
+            "Memory": {
+                "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/2"
+            },
             "RegionId": "1"
         }
     ],

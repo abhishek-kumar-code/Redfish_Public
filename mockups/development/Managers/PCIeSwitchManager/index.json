@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
     "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager",
     "@odata.type": "#Manager.v1_0_1.Manager",
@@ -16,9 +16,8 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-		"HealthRollup": "Warning"
+        "HealthRollup": "Warning"
     },
-
     "SerialConsole": {
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 1,
@@ -47,7 +46,6 @@
     "LogServices": {
         "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager/LogServices"
     },
-
     "Links": {
         "ManagerForChassis": [
             {
@@ -63,6 +61,6 @@
         "Oem": {}
     },
     "Oem": {
-			"ManagementConfigurationMode": "Manual"
-	}
+        "ManagementConfigurationMode": "Manual"
+    }
 }

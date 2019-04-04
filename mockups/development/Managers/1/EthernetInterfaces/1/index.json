@@ -1,8 +1,8 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2017 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1",
-    "@odata.type": "#EthernetInterface.v1_4_0.EthernetInterface",
+    "@odata.type": "#EthernetInterface.v1_5_0.EthernetInterface",
     "Id": "1",
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
@@ -30,7 +30,8 @@
         "UseGateway": true,
         "UseNTPServers": false,
         "UseStaticRoutes": true,
-        "UseDomainName": true
+        "UseDomainName": true,
+        "FallbackAddress": "Static"
     },
     "DHCPv6": {
         "OperatingMode": "Stateful",

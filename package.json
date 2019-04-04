@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vows"
+    "test": "mocha",
+    "fixjson": "node ./test/helpers/fixjson.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,8 @@
   },
   "homepage": "https://github.com/DMTF/Redfish",
   "dependencies": {
-    "CSDLParser": "^0.1.8",
-    "cheerio": "^0.22.0",
+    "CSDLParser": "^0.2.0",
+    "config": "^3.0.1",
     "fuzzy": "^0.1.1",
     "glob": "^7.0.0",
     "jquery": "^3.3.0",
@@ -27,12 +28,13 @@
     "json8-pointer": "^0.7.0",
     "jsonlint": "^1.6.2",
     "jsonschema": "^1.1.1",
-    "libxmljs-mt": "^0.18.0",
     "marked": "^0.6.0",
     "request": "^2.69",
     "swagger-parser": "^6.0.5",
     "traverse": "^0.6.6",
-    "vows": "^0.8.1",
     "yaml-lint": "^1.2.4"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
   }
 }

@@ -5,7 +5,9 @@
     "Name": "Regular Memory",
     "Id": "2",
     "RankCount": 2,
-    "MaxTDPMilliWatts": [ 12000 ],
+    "MaxTDPMilliWatts": [
+        12000
+    ],
     "CapacityMiB": 8192,
     "DataWidthBits": 64,
     "BusWidthBits": 72,
@@ -27,10 +29,10 @@
         "Health": "OK"
     },
     "Location": {
-      "PartLocation": {
-        "ServiceLabel": "Socket 1_B",
-        "LocationType": "Socket",
-        "LocationOrdinalValue": 1
-      }
+        "PartLocation": {
+            "ServiceLabel": "Socket 1_B",
+            "LocationType": "Socket",
+            "LocationOrdinalValue": 1
+        }
     }
 }

@@ -5,7 +5,7 @@
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 DMTF.                                                            -->
+<!--# Copyright 2014-2019 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -277,13 +277,13 @@
 
       <EnumType Name="EntityRole">
         <Member Name="Initiator">
-          <Annotation Term="OData.Description" String="The entity is acting as an initiator."/>
+          <Annotation Term="OData.Description" String="The entity sends commands, messages, or other types of requests to other entities on the fabric, but does not have the ability to recieve commands from other entities."/>
         </Member>
         <Member Name="Target">
-          <Annotation Term="OData.Description" String="The entity is acting as a target."/>
+          <Annotation Term="OData.Description" String="The entity receives commands, messages, or other types of requests from other entities on the fabric, but does not have the ability to send commands to other entities."/>
         </Member>
         <Member Name="Both">
-          <Annotation Term="OData.Description" String="The entity is acting as both an initiator and a target."/>
+          <Annotation Term="OData.Description" String="The entity is able to both send and receive commands, messages, or other types of requests to other entities on the fabric."/>
         </Member>
       </EnumType>
 
@@ -351,7 +351,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_6">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to clarify the EntityRole enum descriptions."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_5.Endpoint"/>
     </Schema>
 
@@ -416,7 +416,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_1_3">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to clarify the EntityRole enum descriptions."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_1_2.Endpoint"/>
     </Schema>
 
@@ -448,7 +448,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_2_2">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to clarify the EntityRole enum descriptions."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_2_1.Endpoint"/>
     </Schema>
 
@@ -461,7 +461,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_3_1">
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
-      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference."/>
+      <Annotation Term="OData.Description" String="This version was created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also updated to clarify the EntityRole enum descriptions."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_3_0.Endpoint"/>
     </Schema>
 

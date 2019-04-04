@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterfaceCollection.EthernetInterfaceCollection",
     "@odata.id": "/redfish/v1/Systems/ComposedSystem/EthernetInterfaces",
     "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
@@ -7,7 +7,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id":"/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/EthernetInterfaces/Block1OnboardNIC"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/EthernetInterfaces/Block1OnboardNIC"
         }
     ]
 }

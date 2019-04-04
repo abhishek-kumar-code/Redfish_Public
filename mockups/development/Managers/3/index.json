@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/3",
     "@odata.type": "#Manager.v1_0_0.Manager",
@@ -28,25 +28,27 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "Redundancy": [{
-        "@odata.id": "/redfish/v1/Managers/2#/Redundancy/0",
-        "MemberId": "Redundancy",
-        "Mode": "Failover",
-        "MaxNumSupported": 2,
-        "MinNumNeeded": 1,
-        "Status": {
-            "State": "Offline",
-            "Health": "OK"
-        },
-        "RedundancySet": [
-            {
-                "@odata.id": "/redfish/v1/Managers/2"
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Managers/2#/Redundancy/0",
+            "MemberId": "Redundancy",
+            "Mode": "Failover",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Offline",
+                "Health": "OK"
             },
-            {
-                "@odata.id": "/redfish/v1/Managers/3"
-            }
-        ]
-    }],
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Managers/2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Managers/3"
+                }
+            ]
+        }
+    ],
     "Actions": {
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/3/Actions/Manager.Reset",

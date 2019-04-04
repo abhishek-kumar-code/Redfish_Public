@@ -1,19 +1,21 @@
 {
-	"@odata.context": "/redfish/v1/$metadata#Job.Job",
-	"@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Green",
-	"@odata.type": "#Job.v1_0_0.Job",
-	"Id": "Green",
-	"Name": "Reboot Server GREEN",
-	"JobState": "Completed",
-	"PercentComplete": 100,
-	"JobStatus": "OK",
-	"StartTime": "2018-04-01T01:44+06:00",
-	"EndTime": "2018-04-01T01:49+06:00",
-	"Payload": {
-		"TargetUri": "/redfish/v1/Systems/PDX_Green/Actions#Reset",
-		"HttpOperation": "POST",
-		"HttpHeaders": ["OData-Version=4.0"],
-		"JsonBody": "{}"
-	},
-	"@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved."
+    "@odata.context": "/redfish/v1/$metadata#Job.Job",
+    "@odata.id": "/redfish/v1/JobService/Jobs/RebootRack/Steps/Green",
+    "@odata.type": "#Job.v1_0_0.Job",
+    "Id": "Green",
+    "Name": "Reboot Server GREEN",
+    "JobState": "Completed",
+    "PercentComplete": 100,
+    "JobStatus": "OK",
+    "StartTime": "2018-04-01T01:44+06:00",
+    "EndTime": "2018-04-01T01:49+06:00",
+    "Payload": {
+        "TargetUri": "/redfish/v1/Systems/PDX_Green/Actions#Reset",
+        "HttpOperation": "POST",
+        "HttpHeaders": [
+            "OData-Version=4.0"
+        ],
+        "JsonBody": "{}"
+    },
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved."
 }

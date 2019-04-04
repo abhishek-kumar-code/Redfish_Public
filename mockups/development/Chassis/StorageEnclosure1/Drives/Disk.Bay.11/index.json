@@ -5,7 +5,10 @@
     "IndicatorLED": "Off",
     "Model": null,
     "Revision": null,
-    "Status": { "State": "Absent", "Health": null },
+    "Status": {
+        "State": "Absent",
+        "Health": null
+    },
     "CapacityBytes": null,
     "FailurePredicted": null,
     "Protocol": null,
@@ -19,9 +22,7 @@
     "CapableSpeedGbs": null,
     "NegotiatedSpeedGbs": null,
     "Links": {
-        "Volumes": [
-        ]
+        "Volumes": []
     },
-    "Actions": {
-    }
+    "Actions": {}
 }
