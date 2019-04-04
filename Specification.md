@@ -1744,9 +1744,9 @@ OData-Version: 4.0
 
 The Resource may provide a separate `@Redfish.ActionInfo` Resource to describe the parameters and values that a particular instance or implementation supports.  Use the `@Redfish.ActionInfo` annotation to specify the `ActionInfo` resource, which contains a URI to the `@Redfish.ActionInfo` resource for the action.  See the [Action Info annotation](#action-info-annotation) clause for details.
 
-#### Oem
+#### Oem<a id="oem-property"></a>
 
-The [`Oem`](#oem-property) property is used for OEM extensions as defined in [Resource Extensibility](#resource-extensibility).
+The `Oem` property is used for OEM extensions as defined in [Resource Extensibility](#resource-extensibility).
 
 #### Status
 
@@ -1908,7 +1908,11 @@ To specify the list of allowable values for a parameter, clients can use the `@R
 
 To specify the set of allowable values, include a property with the name of the property or parameter, followed by `@Redfish.AllowableValues`.  The property value is a JSON array of strings that define the allowable values for the parameter.
 
-#### Extended object information
+#### Extended information
+
+The following clause describes the two methods of providing extended information.
+
+##### Extended object information
 
 To specify object-level status information, services may annotate a JSON object with the `@Message.ExtendedInfo` annotation.
 
@@ -1947,7 +1951,7 @@ To specify object-level status information, services may annotate a JSON object 
 
 The value of the property is an array of [message objects](#message-object).
 
-#### Extended property information
+##### Extended property information
 
 Services may use `@Message.ExtendedInfo`, prepended with the name of the property to annotate an individual property in a JSON object with extended information:
 
