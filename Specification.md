@@ -1414,12 +1414,13 @@ The following are the primitive data types found in the data model:
 | String  | A sequence of characters enclosed with double quotes (`"`).  |
 | Array   | A comma separated set of the above types enclosed with square braces (`[` and `]`).  See the [Array properties](#array-properties) clause for additional information.|
 | Object  | A set of properties enclosed with curly braces (`{` and `}`).  See the [Structured properties](#structured-properties) clause for additional information. |
+| Null    | The value `null`.  This is used when the Service is unable to determine the property value, or if the schema has requirements around using `null` for other conditions. |
 
 When receiving values from the client, services should support other valid representations of the data in the specified JSON type.  In particular, services should support valid integer and decimal values in exponential notation and integer values that contain a decimal point with no non-zero trailing digits.
 
 #### GUID/UUID values<a id="guid-uuid-values"></a>
 
-GUID/UUID values are unique identifier strings and shall use the format:
+Globally Unique Identifier (GUID)/Universally Unique Identifier (UUID) values are unique identifier strings and shall use the format:
 
 `([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})`
 
