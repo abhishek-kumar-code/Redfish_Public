@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EventDestination  v1.4.1-->
+<!--# Redfish Schema:  EventDestination  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
-<!--# Copyright 2014-2018 DMTF.                                                            -->
+<!--# Copyright 2014-2019 DMTF.                                                            -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -93,8 +93,17 @@
         <Property Name="EventTypes" Type="Collection(Event.EventType)" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This property contains the types of events that will be sent to the desination."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be an array that contains the types of events that shall be sent to the destination.  To specify that a client is subscribing for Metric Reports, the EventTypes property should include 'MetricReport'."/>
+          <Annotation Term="OData.Description" String="This property contains the types of events that will be sent to the destination."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be an array that contains the types of events that shall be sent to the destination.  To specify that a client is subscribing for Metric Reports, the EventTypes property should include 'MetricReport'. If this property is not included in a subscription, the service shall use a single element with a default value of 'Other'."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                <PropertyValue Property="Version" String="v1_5_0"/>
+                <PropertyValue Property="Description" String="This property has been deprecated. With Redfish Specification v1.6, subscriptions are based on RegistryId and ResourceType, not EventType. Use EventFormatType to create subscriptions for Metric Reports. If this property is not included in a subscription, the service will use a default value of 'Other'."/>
+              </Record>
+            </Collection>
+          </Annotation>
         </Property>
         <Property Name="Context" Type="Edm.String">
           <Annotation Term="Redfish.Required"/>
@@ -328,7 +337,7 @@
         <Property Name="SubordinateResources" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="By setting this to true and specifying OriginResources, this indicates the subscription will be for events from the OriginsResources specified and also all subordinate resources.  Note that resources associated via the Links section are not considered subordinate."/>
-          <Annotation Term="OData.LongDescription" String="When set to true and OriginResources is specifed, indicates the subscription shall be for events from the OriginsResources specified and all subordinate resources.  When set to false and OriginResources is specified, indicates subscription shall be for events only from the OriginResources.  If OriginResources is not specified, it has no relevenace."/>
+          <Annotation Term="OData.LongDescription" String="When set to true and OriginResources is specified, indicates the subscription shall be for events from the OriginsResources specified and all subordinate resources.  When set to false and OriginResources is specified, indicates subscription shall be for events only from the OriginResources.  If OriginResources is not specified, it has no relevance."/>
         </Property>
         <Property Name="EventFormatType" Type="EventDestination.EventFormatType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -342,6 +351,13 @@
       <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
       <Annotation Term="OData.Description" String="This version was created to update the descriptions for HttpHeaders.  It was also created to force the regeneration of JSON Schema so that URI properties use the format of uri-reference.  It was also created to update the descriptions for EventTypes and ResourceTypes, regarding MetricReports."/>
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_4_0.EventDestination"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <Annotation Term="Redfish.Release" String="2019.1"/>
+      <Annotation Term="OData.Description" String="This version was created to deprecate the EventTypes property."/>
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_4_1.EventDestination"/>
     </Schema>
 
   </edmx:DataServices>

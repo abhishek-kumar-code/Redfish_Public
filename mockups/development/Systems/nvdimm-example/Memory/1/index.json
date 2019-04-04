@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2016-2018 DMTF. All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2016-2019 DMTF. All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
     "@odata.id": "/redfish/v1/Systems/nvdimm-example/Memory/1",
     "@odata.type": "#Memory.v1_7_0.Memory",

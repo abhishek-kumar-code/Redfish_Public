@@ -1011,7 +1011,6 @@ The following example response for a resource collection supports the `@Redfish.
 
 ```json
 {
-    "@odata.context": "/redfish/v1/$metadata#VolumeCollection.VolumeCollection",
     "@odata.id": "/redfish/v1/Systems/1/Storage/SATAEmbedded/Volumes",
     "@odata.type": "#VolumeCollection.VolumeCollection",
     "Name": "Storage Volume Collection",
@@ -1053,7 +1052,6 @@ The following example response for a `ComputerSystem` resource supports the `@Re
 
 ```json
 {
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/1",
     "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
     "Actions": {
@@ -1183,7 +1181,7 @@ The following table lists HTTP status codes that have meaning or usage defined f
 | <a id="status-304"></a>304 Not Modified                    | The service has performed a conditional GET request where access is allowed, but the resource content has not changed.  Conditional requests are initiated using the headers `If-Modified-Since` and/or `If-None-Match` (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change. |
 | <a id="status-400"></a>400 Bad Request                     | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on).  An extended error shall be returned in the response body, as defined in clause [Error responses](#error-responses). |
 | <a id="status-401"></a>401 Unauthorized                    | The authentication credentials included with this request are missing or invalid. |
-| <a id="status-403"></a>403 Forbidden                       | The service recognized the credentials in the request, but those credentials do not possess authorization to perform this request. |
+| <a id="status-403"></a>403 Forbidden                       | The service recognized the credentials in the request, but those credentials do not possess authorization to perform this request.  This code is also returned when the user credentials provided must be changed before access to the service can be granted.  See the [Security](#security) clause for more details. |
 | <a id="status-404"></a>404 Not Found                       | The request specified a URI of a resource that does not exist. |
 | <a id="status-405"></a>405 Method Not Allowed              | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI.  The response shall include an `Allow` header, that provides a list of methods that are supported by the resource identified by the URI in the client request. |
 | <a id="status-406"></a>406 Not Acceptable                  | The `Accept` header was specified in the request and the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the `Accept` header. |
@@ -3048,7 +3046,7 @@ The client can continue to get information about the status by directly querying
 * GET requests to either the Task Monitor or the Task resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
 * Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP GET, PUT, PATCH, POST, and DELETE methods.
-* Services that support scheduling tasks (using for instance "@Redfish.OperationApplyTime" annotation in the request) shall persist pending Tasks across service restarts, until the Task begins execution.
+* Services shall persist pending Tasks produced by client requests containing "@Redfish.OperationApplyTime" across service restarts, until the Task begins execution.
 * Tasks that are pending execution should include the "@Redfish.OperationApplyTime" property to indicate when the Task will start.  If the OperationApplyTime value is AtMaintenanceWindowStart or InMaintenanceWindowOnReset, then the task should also include the "@Redfish.MaintenanceWindow" property.
 
 ### Resource Tree stability
@@ -3140,7 +3138,6 @@ The example payload below shows a stream containing a single event with the "id"
 ```
 id: 1
 data:{
-data:    "@odata.context": "/redfish/v1/$metadata#Event.Event",
 data:    "@odata.type": "#Event.v1_1_0.Event",
 data:    "Id": "1",
 data:    "Name": "Event Array",
@@ -3180,7 +3177,6 @@ The example payload below shows a stream containing a metric report with the "id
 id: 127
 data:{
 data:    "@odata.id": "/redfish/v1/TelemetryService/MetricReports/AvgPlatformPowerUsage",
-data:    "@odata.context": "/redfish/v1/$metadata#MetricReport.MetricReport",
 data:    "@odata.type": "#MetricReport.v1_0_0.MetricReport",
 data:    "Id": "AvgPlatformPowerUsage",
 data:    "Name": "Average Platform Power Usage metric report",
@@ -3348,7 +3344,6 @@ Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 
 {
-    "@odata.context": "/redfish/v1/$metadata#Session.Session",
     "@odata.id": "/redfish/v1/SessionService/Sessions/1",
     "@odata.type": "#Session.v1_0_0.Session",
     "Id": "1",
@@ -3383,7 +3378,6 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 
 When a session is terminated, the service shall not affect independent connections established originally by this session for other purposes, such as connections for [Server-Sent Events](#server-sent-events) or transferring an image for the Update Service.
 
-
 #### AccountService
 
 * User passwords should be stored with one-way encryption techniques.
@@ -3392,6 +3386,21 @@ When a session is terminated, the service shall not affect independent connectio
   * Implementations may reject requests that do not include an ETag.
 * User Management activity is atomic.
 * Extended error messages shall NOT provide privileged information when authentication failures occur.
+
+#### Password Management
+
+A Redfish Service provides local user accounts via a collection of `ManagerAccount` resources located under the `AccountService`.  The `ManagerAccount` resources allow users to manage their own account information, and for administrators to create, delete, and manage other user accounts.
+
+##### Password change required handling
+
+The Service may require that passwords assigned by the manufacturer be changed by the end user prior to accessing the Service.  In addition, administrators may require users to change their account's password upon first access.  
+
+The `ManagerAccount` resource contains a `PasswordChangeRequired` boolean property to enable this functionality.  Resources that have the property set to `True` shall require the user to change the write-only `Password` property in that resource before access is granted.  Manufacturers including user credentials for the Service may use this method to force a change to those credentials before access is granted.
+
+When a client accesses the Service using credentials from a `ManagerAccount` resource that has a `PasswordChangeRequired` value of `True`, the Service shall:
+* Allow a Session login and include a `@Message.ExtendedInfo` object in the response containing the `PasswordChangeRequired` message from the Base Message Registry.  This indicates to the client that their session is restricted to performing only the password change operation before access is granted.
+* Allow a PATCH operation on the `ManagerAccount` resource to update the `Password` property.  If the value of `Password` is changed, the service shall also set the `PasswordChangeRequired` property to `False`. 
+* For all other operations, the Service shall respond with status code [403](#status-403) and include a `@Message.ExtendedInfo` object containing the `PasswordChangeRequired` message from the Base Message Registry.
 
 #### Async tasks
 
@@ -3790,6 +3799,17 @@ OData-Version: 4.0
 
 | Version | Date       | Description |
 | ---     | ---        | ---         |
+| 1.7.0   | TBD        | The specification has been significantly re-written for clarity.  Except for the additions listed below, no normative changes were made to the specification.  Any clarifications that inadvertantly altered the normative behavior shall be considered errata, and will be corrected in future revisions to the specification. |
+|         |            | Added Dictionary file naming rules and repository locations. |
+|         |            | Enhanced localization definitions and defined repository locations. |
+|         |            | Added missing statement about SSE within the "Eventing mechanism" clause. |
+|         |            | Added Constrained Composition and Expandable Resources clauses to Redfish Composability. |
+|         |            | Added clause about requiring Event Subscriptions to be persistent across service restarts. |
+|         |            | Added clause about persistence of Tasks generated as a result of using "@Redfish.OperationApplyTime" across service restarts. |
+|         |            | Added clause about using "@Redfish.OperationApplyTime" and "@Redfish.MaintenanceWindow" within Task responses. |
+|         |            | Removed "@odata.context" property from example payloads. |
+|         |            | Added "Password Management" clause to describe functional behavior for restricting access when an account requires a password change. |
+|         |            | Added clause around the usage of HTTP status code 403 when an account requires a password change. |
 | 1.6.1   | 2018-12-13 | Added clause about percent encoding being allowed for query parameters. |
 |         |            | Changed Expand example to use SoftwareInventory instead of LogEntry. |
 |         |            | Added missing clause about the usage of a separator for multiple query parameters. |

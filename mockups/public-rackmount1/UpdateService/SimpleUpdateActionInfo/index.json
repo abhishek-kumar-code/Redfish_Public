@@ -35,5 +35,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
     "@odata.id": "/redfish/v1/UpdateService/SimpleUpdateActionInfo",
-    "@Redfish.Copyright": "Copyright 2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2018-2019 DMTF. All rights reserved."
 }

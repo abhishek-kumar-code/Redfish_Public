@@ -41,5 +41,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Assembly.Assembly",
     "@odata.id": "/redfish/v1/Chassis/1/Assembly",
-    "@Redfish.Copyright": "Copyright 2017-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2017-2019 DMTF. All rights reserved."
 }

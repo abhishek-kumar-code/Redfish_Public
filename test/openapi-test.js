@@ -4,9 +4,10 @@ var yamllint = require('yaml-lint');
 var fs = require('fs');
 var yaml = require('js-yaml');
 var SwaggerParser = require('swagger-parser');
+const config = require('config');
 
 describe('OpenAPI/YAML', () => {
-  const files = glob.sync('openapi/*.yaml');
+  const files = glob.sync(config.get('Redfish.OpenAPIFilePath'));
 
   files.forEach((file) => {
     describe(file, () => {

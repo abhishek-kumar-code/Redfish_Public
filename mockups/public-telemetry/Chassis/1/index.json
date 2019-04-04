@@ -73,5 +73,5 @@
     },
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/1",
-    "@Redfish.Copyright": "Copyright 2014-2018 DMTF. All rights reserved."
+    "@Redfish.Copyright": "Copyright 2014-2019 DMTF. All rights reserved."
 }

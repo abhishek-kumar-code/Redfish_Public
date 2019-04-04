@@ -19,6 +19,7 @@
   "homepage": "https://github.com/DMTF/Redfish",
   "dependencies": {
     "CSDLParser": "^0.2.0",
+    "config": "^3.0.1",
     "fuzzy": "^0.1.1",
     "glob": "^7.0.0",
     "jquery": "^3.3.0",
